@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650158"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838650"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure-cache voor redis met persoonlijke Azure-koppeling (open bare preview)
 In dit artikel leert u hoe u een virtueel netwerk en een Azure-cache maakt voor een redis-exemplaar met een persoonlijk eind punt met behulp van de Azure Portal. U leert ook hoe u een persoonlijk eind punt kunt toevoegen aan een bestaand Azure-cache geheugen voor redis-instantie.
@@ -22,9 +22,8 @@ Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-> Deze functie is momenteel beschikbaar als open bare Preview voor beperkte regio's. [Neem contact met ons op](mailto:azurecache@microsoft.com)als u niet over de mogelijkheid beschikt om een persoonlijk eind punt te maken. Als u persoonlijke eind punten wilt gebruiken, moet uw Azure-cache voor redis-exemplaar zijn gemaakt na 28 juli 2020.
+> Als u persoonlijke eind punten wilt gebruiken, moet uw Azure-cache voor redis-exemplaar zijn gemaakt na 28 juli 2020.
 >
-> Regio's met open bare preview-toegang momenteel: West-Centraal VS, Noord-Centraal VS, VS-West, VS-West 2, VS-Oost, VS-Oost 2, VS-midden, Zuid-Centraal VS, Noor wegen Oost, Noor wegen West, Europa-Noord, Europa-West, Azië Oost, Zuidoost-Azië, Japan-Oost, japan-West, UAE-centraal, Korea-centraal, Korea-zuid Zwitserland-West Zwitserland-noord, UK-zuid, UK-west , Zuid-Afrika-noord, Frankrijk-zuid, Frankrijk-centraal, Canada-oost, Canada-centraal, Duitsland-noord, Duitsland-west-centraal, Australië-centraal, India-West, India-Zuid, Australië-oost, Brazilië-Zuidoost, Brazilië-zuid en Brazilië-zuid.
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Een persoonlijk eind punt maken met een nieuwe Azure-cache voor redis-exemplaar 

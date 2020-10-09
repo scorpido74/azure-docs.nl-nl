@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a3183e1fcac3f1a71d07835cacc37c2f57fb06
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010763"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839041"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Het opdracht regel programma redis gebruiken met Azure cache voor redis
 
@@ -29,7 +29,7 @@ U kunt de gegevens die nodig zijn voor toegang tot de cache verzamelen met behul
 
 1. Azure CLI met [AZ redis List-Keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
 2. Azure PowerShell met [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
-3. Azure Portal gebruiken.
+3. Via Azure Portal.
 
 In deze sectie haalt u de sleutels op uit het Azure Portal.
 
@@ -72,7 +72,7 @@ Wanneer u stunnel gebruikt, voert u *redis-cli.exe*uit en geeft u alleen uw *poo
 redis-cli.exe -p 6380 -a YourAccessKey
 ```
 
-![stunnel met redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
+![Scherm opname die laat zien dat de verbinding met de cache is geslaagd.](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
 Als u een test cache gebruikt met de niet- **beveiligde** niet-TLS-poort, voert u `redis-cli.exe` de *hostnaam*, *poort*en *toegangs sleutel* (primair of secundair) uit om verbinding te maken met de test cache.
 

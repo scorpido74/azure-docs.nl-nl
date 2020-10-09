@@ -1,16 +1,14 @@
 ---
 title: Diagnostische gegevens over Azure Service Fabric stateful Reliable Services
 description: Diagnostische functionaliteit voor stateful Reliable Services in azure Service Fabric
-author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.author: dekapur
-ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253113"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840758"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunctionaliteit voor Stateful Reliable Services
 De Azure Service Fabric stateful Reliable Services StatefulServiceBase-klasse verzendt [Event source](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -gebeurtenissen die kunnen worden gebruikt om fouten in de service op te sporen, inzicht te krijgen in hoe de runtime werkt en om te helpen bij het oplossen van problemen.
@@ -89,7 +87,7 @@ De naam van het volgende item exemplaar is gebruikelijk voor een teller onder de
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-In het vorige voor beeld `00d0126d-3e36-4d68-98da-cc4f7195d85e` is de teken reeks representatie van de service Fabric partitie-id, `131652217797162571` de replica-id, `142652217797162571` de status provider-id en `1337` de instantie van het prestatie meter item onderscheid. `urn:MyReliableDictionary/dataStore`is de naam van de State-provider die gegevens opslaat voor de verzameling met de naam `urn:MyReliableDictionary` .
+In het vorige voor beeld `00d0126d-3e36-4d68-98da-cc4f7195d85e` is de teken reeks representatie van de service Fabric partitie-id, `131652217797162571` de replica-id, `142652217797162571` de status provider-id en `1337` de instantie van het prestatie meter item onderscheid. `urn:MyReliableDictionary/dataStore` is de naam van de State-provider die gegevens opslaat voor de verzameling met de naam `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>Prestatie meter items voor transactionele Replicator
 

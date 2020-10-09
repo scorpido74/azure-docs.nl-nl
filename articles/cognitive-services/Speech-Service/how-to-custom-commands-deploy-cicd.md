@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307549"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839245"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Continue implementatie met Azure DevOps
 
@@ -72,7 +72,7 @@ De scripts worden gehost op [Cognitive Services Voice Assistant-aangepaste opdra
 1. Houd er rekening mee dat deze scripts ervan uitgaan dat u de regio gebruikt `westus2` , als dat niet het geval is, worden de argumenten van de taken dienovereenkomstig bijgewerkt
 
     > [!div class="mx-imgBorder"]
-    > ![Nettolading activiteit verzenden](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![Scherm opname die de regio waarde in de argumenten markeert.](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. Open de vervolg keuzelijst in de knop Opslaan en uitvoeren en klik op opslaan
 
@@ -97,7 +97,7 @@ De scripts worden gehost op [Cognitive Services Voice Assistant-aangepaste opdra
 
     U ziet een lijst met taken die worden uitgevoerd met de volgende items: "exporteren van bron-app", importeren naar doel-app "&" Train en doel-app publiceren "
 
-## <a name="deploy-from-source-code"></a>Implementeren vanuit bron code
+## <a name="deploy-from-source-code"></a>Implementeren vanuit broncode
 
 Als u de definitie van uw toepassing in een opslag plaats wilt blijven gebruiken, bieden we de scripts voor implementaties van de bron code. Omdat de scripts zich in bash bevinden, moet u, als u Windows gebruikt, het [Linux-subsysteem](https://docs.microsoft.com/windows/wsl/install-win10)installeren.
 

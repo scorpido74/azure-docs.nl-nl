@@ -15,12 +15,12 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258589"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841149"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Ontwerp van een inhouds beschermings systeem met toegangs beheer met Azure Media Services
 
@@ -157,7 +157,7 @@ De volgende tabel toont de toewijzing.
 | **DRM-beveiligings werk stroom** |Dynamische beveiliging Media Services |
 | **Levering van DRM-licentie** |* Media Services licentie levering (PlayReady, Widevine, FairPlay) <br/>* Axinom-licentie server <br/>* Aangepaste PlayReady-licentie server |
 | **Oorsprong** |Media Services streaming-eind punt |
-| **Sleutel beheer** |Niet nodig voor referentie-implementatie |
+| **Sleutelbeheer** |Niet nodig voor referentie-implementatie |
 | **Inhoudbeheer** |Een C#-console toepassing |
 
 Met andere woorden, zowel IDP als STS worden gebruikt met Azure AD. De [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) wordt gebruikt voor de speler. Zowel Media Services als Media Player ondersteunen DASH en CENC met multi-DRM.
@@ -206,11 +206,11 @@ De implementatie omvat de volgende stappen:
 
 7. Maak een ASP.NET MVC-app om uw video speler te hosten. Deze ASP.NET-app wordt beveiligd met de gebruikers verificatie voor de Azure AD-Tenant. De juiste claims zijn opgenomen in de toegangs tokens die zijn verkregen na de verificatie van de gebruiker. U kunt OpenID Connect Connect API voor deze stap aanbevelen. Installeer de volgende NuGet-pakketten:
 
-   * Installeer-package micro soft. Azure. ActiveDirectory. GraphClient
-   * Installeer-package micro soft. Owin. Security. OpenIdConnect
-   * Installeer-package micro soft. Owin. Security. cookies
-   * Installeren-package Microsoft.Owin.Host.SystemWeb
-   * Installeer-package micro soft. Identity model. clients. ActiveDirectory
+   * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
+   * Install-Package micro soft. Owin. Security. OpenIdConnect
+   * Install-Package micro soft. Owin. Security. cookies
+   * Install-Package Microsoft.Owin.Host.SystemWeb
+   * Install-Package micro soft. Identity model. clients. ActiveDirectory
 
 8. Een speler maken met behulp van de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) om op te geven welke DRM-technologie op verschillende DRM-platforms moet worden gebruikt.
 
@@ -421,11 +421,11 @@ In de volgende scherm afbeeldingen worden verschillende aanmeldings pagina's wee
 
 **Aangepast domein account voor Azure AD-Tenant**: de aangepaste aanmeldings pagina van het aangepaste domein van de Azure AD-Tenant.
 
-![Aangepast Azure AD-Tenant domein account](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Scherm afbeelding met de aangepaste aanmeldings pagina van het aangepaste domein van een D-Tenant van Azure.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **Micro soft-domein account met Smart Card**: de aanmeldings pagina die door micro soft wordt aangepast met twee ledige verificatie.
 
-![Aangepast Azure AD-Tenant domein account](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![Scherm opname van de aanmeldings pagina die door micro soft Corporate I met een twee ledige verificatie wordt aangepast.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft-account**: de aanmeldings pagina van de Microsoft-account voor consumenten.
 

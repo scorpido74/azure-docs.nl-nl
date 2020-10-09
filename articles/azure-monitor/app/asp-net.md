@@ -4,12 +4,12 @@ description: Configureer prestaties, Beschik baarheid en hulpprogram ma's voor a
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616751"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838939"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Application Insights voor uw ASP.NET-website configureren
 
@@ -349,6 +349,12 @@ Om bewaking aan client zijde toe te voegen, opent u het `_Layout.cshtml` bestand
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 Er is een bekend probleem in de huidige versie van Visual Studio 2019 dat bij het opslaan van de instrumentatie sleutel in een gebruikers geheim is verbroken voor op .NET Framework gebaseerde apps en de sleutel uiteindelijk moet worden vastgelegd in het applicationinsights.config bestand om deze fout te omzeilen. Dit artikel is bedoeld om dit probleem helemaal te voor komen, door geen gebruik te maken van gebruikers geheimen.  
+
+## <a name="open-source-sdk"></a>Open-Source-SDK
+
+* [Lees en bijdragen aan de code](https://github.com/microsoft/ApplicationInsights-dotnet).
+
+[Raadpleeg de opmerkingen bij de release](./release-notes.md)voor de nieuwste updates en oplossingen voor problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

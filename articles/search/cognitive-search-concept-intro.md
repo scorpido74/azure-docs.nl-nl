@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 2195ac4e5753addaee9e13c368b6e6a1b94354ff
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363134"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828086"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-verrijking in azure Cognitive Search
 
@@ -121,6 +121,6 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 + [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking (C#)](cognitive-search-create-custom-skill-example.md)
 + [Quick Start: AI-verrijking in een portal door lopen](cognitive-search-quickstart-blob.md)
 + [Zelf studie: meer informatie over de AI-verrijkings Api's](cognitive-search-tutorial-blob.md)
-+ [Knowledge Store](knowledge-store-concept-intro.md)
++ [Kennisarchief](knowledge-store-concept-intro.md)
 + [Een kennis archief maken in REST](knowledge-store-create-rest.md)
 + [Tips voor probleem oplossing](cognitive-search-concept-troubleshooting.md)

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845934"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839908"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Azure RBAC configureren voor FHIR 
 
@@ -31,11 +31,11 @@ De **instantie** moet worden ingesteld op de Azure Active Directory-Tenant die i
 
 Als u gebruikers, service-principals of groepen toegang tot het FHIR-gegevens vlak wilt verlenen, klikt u op **toegangs beheer (IAM)**, klikt u vervolgens op **Roltoewijzingen en klikt** u op **+ toevoegen**:
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Toewijzing van Azure-functie toevoegen":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="De Azure RBAC-modus bevestigen":::
 
 Zoek in de selectie van de **rol** naar een van de ingebouwde rollen voor het FHIR-gegevens vlak:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Ingebouwde FHIR-gegevens rollen":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="De Azure RBAC-modus bevestigen":::
 
 U kunt kiezen uit:
 
@@ -54,7 +54,7 @@ De Azure API voor FHIR neemt beslissingen tot vijf minuten in de cache. Als u ee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u Azure-rollen kunt toewijzen voor het FHIR-gegevens vlak. Meer informatie over aanvullende instellingen voor de Azure API voor FHIR:
+In dit artikel hebt u geleerd hoe u Azure-rollen kunt toewijzen voor het FHIR-gegevens vlak. Voor meer informatie over aanvullende instellingen voor de Azure API voor FHIR:
  
 >[!div class="nextstepaction"]
->[Aanvullende instellingen Azure API voor FHIR](azure-api-for-fhir-additional-settings.md)
+>[Aanvullende instellingen voor de Azure-API voor FHIR](azure-api-for-fhir-additional-settings.md)

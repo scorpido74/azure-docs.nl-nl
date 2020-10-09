@@ -4,12 +4,12 @@ description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestati
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803588"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839007"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -134,7 +134,7 @@ Voer de toepassing uit en maak er aanvragen aan. Telemetrie moet nu stromen naar
 
 ### <a name="ilogger-logs"></a>ILogger-logboeken
 
-Logboeken `ILogger` die worden verzonden via Ernst `Warning` of meer, worden automatisch vastgelegd. Volg de [ILogger-documenten](ilogger.md#control-logging-level) om aan te passen welke logboek niveaus worden vastgelegd door Application Insights.
+Logboeken `ILogger` die worden verzonden via Ernst `Warning` en hoger worden automatisch vastgelegd. Volg de [ILogger-documenten](ilogger.md#control-logging-level) om aan te passen welke logboek niveaus worden vastgelegd door Application Insights.
 
 ### <a name="dependencies"></a>Afhankelijkheden
 
@@ -397,7 +397,7 @@ Als u [hier](#enable-application-insights-server-side-telemetry-visual-studio)op
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Hoe kan ik telemetrie traceren die niet automatisch wordt verzameld?
 
-Haal een exemplaar op van met `TelemetryClient` behulp van constructor-injectie en roep de vereiste `TrackXXX()` methode aan. Het is niet raadzaam om nieuwe instanties te maken `TelemetryClient` in een ASP.net core-toepassing. Een singleton-exemplaar van `TelemetryClient` is al geregistreerd in de `DependencyInjection` container, die `TelemetryConfiguration` met de rest van de telemetrie deelt. Het maken van een nieuw `TelemetryClient` exemplaar wordt alleen aanbevolen als er een configuratie nodig is die gescheiden is van de rest van de telemetrie.
+Haal een exemplaar op van met `TelemetryClient` behulp van constructor-injectie en roep de vereiste `TrackXXX()` methode aan. Het is niet raadzaam om nieuwe `TelemetryClient` of exemplaren te maken `TelemetryConfiguration` in een ASP.net core-toepassing. Een singleton-exemplaar van `TelemetryClient` is al geregistreerd in de `DependencyInjection` container, die `TelemetryConfiguration` met de rest van de telemetrie deelt. Het maken van een nieuw `TelemetryClient` exemplaar wordt alleen aanbevolen als er een configuratie nodig is die gescheiden is van de rest van de telemetrie.
 
 In het volgende voor beeld ziet u hoe u extra telemetrie van een controller kunt bijhouden.
 
@@ -423,6 +423,40 @@ public class HomeController : Controller
 ```
 
 Voor meer informatie over aangepaste gegevens rapportage in Application Insights raadpleegt u Application Insights data API-naslag informatie voor [aangepaste metrieken](./api-custom-events-metrics.md). Een soort gelijke benadering kan worden gebruikt voor het verzenden van aangepaste metrische gegevens naar Application Insights met behulp van de [GetMetric-API](./get-metric.md).
+
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>Hoe kan ik de ILogger-logboek verzameling aanpassen?
+
+Standaard worden alleen logboeken met Ernst `Warning` en bovenstaande vermeldingen automatisch vastgelegd. Als u dit gedrag wilt wijzigen, moet u de configuratie van de logboek registratie voor de provider expliciet overschrijven, `ApplicationInsights` zoals hieronder wordt weer gegeven.
+Met de volgende configuratie kunnen ApplicationInsights alle logboeken met Ernst `Information` en bovenstaande vermeldingen vastleggen.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+Het is belang rijk te weten dat de volgende reden is dat de ApplicationInsights-provider geen `Information` Logboeken vastlegt. De reden hiervoor is dat de SDK een standaard logboek registratie filter toevoegt, waarmee wordt aangegeven `ApplicationInsights` dat ze alleen en boven moeten worden vastgelegd `Warning` . Daarom is er een expliciete onderdrukking vereist voor ApplicationInsights.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+Meer informatie over [ILogger-configuratie](ilogger.md#control-logging-level).
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Sommige Visual Studio-sjablonen hebben de uitbreidings methode UseApplicationInsights () gebruikt op IWebHostBuilder om Application Insights in te scha kelen. Is dit gebruik nog geldig?
 
@@ -477,7 +511,7 @@ Deze SDK vereist `HttpContext` en werkt daarom niet in niet-HTTP-toepassingen, w
 
 ## <a name="open-source-sdk"></a>Open-Source-SDK
 
-* [Lees en bijdragen aan de code](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Lees en bijdragen aan de code](https://github.com/microsoft/ApplicationInsights-dotnet).
 
 [Raadpleeg de opmerkingen bij de release](./release-notes.md)voor de nieuwste updates en oplossingen voor problemen.
 

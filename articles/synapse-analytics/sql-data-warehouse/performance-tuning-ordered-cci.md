@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48db8541ebad19e3b22b737f7e92dcc980708ef6
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795606"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841591"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestaties afstemmen met geordende en geclusterde columnstore-index  
 
@@ -48,9 +48,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
-
->[!TIP]
-> Voor betere prestaties van Synapse SQL kunt u het gebruik van **sys. pdw_permanent_table_mappings** in plaats van **sys. pdw_table_mappings** op permanente gebruikers tabellen. Zie **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** voor meer informatie.
 
 > [!NOTE] 
 > In een geordende CCI-tabel worden de nieuwe gegevens die voortkomen uit dezelfde batch DML of het laden van gegevens die worden geladen binnen die batch gesorteerd. er is geen algemene Sorteer bewerking voor alle gegevens in de tabel.  Gebruikers kunnen het bestelde CCI opnieuw bouwen om alle gegevens in de tabel te sorteren.  In Synapse SQL is de column store-index opnieuw gebaseerd op een offline bewerking.  Voor een gepartitioneerde tabel is het opnieuw maken van één partitie per keer voltooid.  Gegevens in de partitie die opnieuw worden opgebouwd, zijn offline en zijn pas beschikbaar als het opnieuw opbouwen is voltooid voor die partitie. 
@@ -98,7 +95,7 @@ De prestaties van het laden van gegevens in een geordende CCI-tabel zijn vergeli
 
 Hier volgt een voor beeld van de prestatie vergelijking van het laden van gegevens in tabellen met verschillende schema's.
 
-![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![Staaf diagram waarin de vergelijking van de prestaties van het laden van gegevens in tabellen met verschillende schema's wordt weer gegeven.](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
 Hier volgt een voor beeld van een query prestatie vergelijking tussen CCI en besteld CCI.
@@ -139,7 +136,7 @@ Het maken van een bestelde CCI is een offline bewerking.  Voor tabellen zonder p
 
 ## <a name="examples"></a>Voorbeelden
 
-**A. om te controleren op geordende kolommen en rang telwoord voor bestellingen:**
+**Één. Controleren op geordende kolommen en rang telwoord voor bestellingen:**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 

@@ -11,12 +11,12 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c057944e2c6c511eee20007cc01e2222b38cce1b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319215"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839551"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 verbinden met Azure IoT Hub
 
@@ -131,7 +131,7 @@ De DevKit maakt verbinding met een apparaat-specifiek eind punt op uw IoT-hub en
 
     ![SSID verbinden](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
 
-1. Open **192.168.0.1** in de browser. Selecteer de Wi-Fi waarmee u wilt dat de IoT DevKit verbinding maakt, typ het Wi-Fi-wacht woord en plak het apparaat connection string u eerder een notitie hebt gemaakt. Klik vervolgens op Save.
+1. Open **192.168.0.1** in de browser. Selecteer de Wi-Fi waarmee u de IoT DevKit wilt verbinden, typ het Wi-Fi wacht woord en plak het apparaat connection string u eerder een notitie hebt gemaakt. Klik vervolgens op Save.
 
     ![Configuratie-UI](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui.png)
 
@@ -166,7 +166,7 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 1. Installeer [ARDUINO IDE](https://www.arduino.cc/en/Main/Software). Het biedt de benodigde hulpprogramma keten voor het compileren en uploaden van Arduino-code.
     * **Windows**: Windows Installer versie gebruiken. Installeer niet vanuit de App Store.
     * **macOS**: Sleep de geëxtraheerde **Arduino. app** naar map en zet deze neer. `/Applications`
-    * **Ubuntu**: pak het bestand uit in een map, zoals`$HOME/Downloads/arduino-1.8.8`
+    * **Ubuntu**: pak het bestand uit in een map, zoals `$HOME/Downloads/arduino-1.8.8`
 
 2. Installeer [Visual Studio code](https://code.visualstudio.com/), een bron code-editor op meerdere platformen met krachtige IntelliSense, de ondersteuning voor het volt ooien van code en het opsporen van fouten, evenals uitgebreide uitbrei dingen die kunnen worden geïnstalleerd vanuit Marketplace.
 
@@ -176,9 +176,9 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 
 4. Zoek naar [Azure IOT-Hulpprogram ma's](https://aka.ms/azure-iot-tools) op de uitbreidings Marketplace en installeer deze.
 
-    ![Azure IoT Tools installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+    ![Scherm opname van Azure IoT-Hulpprogram Ma's in de uitbreidings Marketplace.](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    Of kopieer en plak deze URL in een browser venster:`vscode:extension/vsciot-vscode.azure-iot-tools`
+    Of kopieer en plak deze URL in een browser venster: `vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Het extensie pakket voor Azure IoT-Hulpprogram Ma's bevat de [Azure IOT-Device Workbench](https://aka.ms/iot-workbench) die wordt gebruikt voor het ontwikkelen en opsporen van fouten op verschillende IOT Devkit-apparaten. De [Azure IoT Hub-extensie](https://aka.ms/iot-toolkit), die zich ook in het Azure IoT Tools-extensiepakket bevindt, wordt gebruikt voor het beheren van en communiceren met Azure IoT Hubs.
@@ -218,7 +218,7 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 
     ![DevKit SDK installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-az3166-sdk.png)
 
-### <a name="install-st-link-drivers"></a>ST-link Stuur Programma's installeren
+### <a name="install-st-link-drivers"></a>ST-Link Stuur Programma's installeren
 
 [St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) is de USB-interface die door IOT DevKit wordt gebruikt om te communiceren met uw ontwikkel machine. U moet deze in Windows installeren om de gecompileerde apparaatcode weer te geven op de DevKit. Volg de specifieke stappen voor uw besturingssysteem om de machine toegang te geven tot uw apparaat.
 
@@ -362,7 +362,7 @@ U kunt [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?i
 
 1. In het deel venster **uitvoer** ziet u de binnenkomende D2C-berichten voor de IOT hub.
 
-    ![D2C-bericht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
+    ![Scherm opname van de binnenkomende D2C-berichten naar de IoT Hub.](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
 
 ## <a name="review-the-code"></a>De code bekijken
 

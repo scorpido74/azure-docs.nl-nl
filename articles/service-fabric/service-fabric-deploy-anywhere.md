@@ -1,21 +1,19 @@
 ---
 title: Overzicht van Azure en zelfstandige Service Fabric clusters
 description: U kunt Service Fabric clusters maken op alle Vm's of computers met Windows Server of Linux. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving waar u een set Windows Server-of Linux-computers hebt die met elkaar zijn verbonden, Microsoft Azure of met een Cloud provider.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751154"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842594"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Azure en zelfstandige Service Fabric clusters in Windows Server en Linux vergelijken
 
-Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.
+Een Service Fabric-cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.
 
 Met Service Fabric kunt u Service Fabric-clusters maken op alle Vm's of computers met Windows Server of Linux. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving waar u een set Windows Server-of Linux-computers hebt die onderling zijn verbonden, deze on-premises, Microsoft Azure of met een Cloud provider.
 
@@ -28,7 +26,7 @@ In azure bieden we integratie met andere Azure-functies en-services, waardoor be
 * **Service Fabric cluster als een Azure-resource** Een Service Fabric cluster is een Azure-resource, zodat u het kunt model leren als andere resources in Azure.
 * **Integratie met Azure-infra structuur** Service Fabric coördineert met de onderliggende Azure-infra structuur voor het besturings systeem, het netwerk en andere upgrades om de beschik baarheid en betrouw baarheid van uw toepassingen te verbeteren.  
 * **Diagnostische gegevens:** In azure bieden we integratie met Azure Diagnostics en Azure Monitor logs.
-* **Automatisch schalen:** Voor clusters op Azure bieden we ingebouwde functionaliteit voor automatisch schalen vanwege schaal sets van virtuele machines. In on-premises en andere Cloud omgevingen moet u uw eigen functie voor automatisch schalen bouwen of hand matig schalen met behulp van de Api's die Service Fabric voor het schalen van clusters beschikbaar stelt.
+* Automatisch **schalen:** Voor clusters op Azure bieden we ingebouwde functionaliteit voor automatisch schalen via schaal sets van virtuele machines. In on-premises en andere Cloud omgevingen moet u uw eigen functie voor automatisch schalen maken of hand matig schalen met behulp van de Api's die Service Fabric voor het schalen van clusters beschikbaar stelt.
 
 ## <a name="benefits-of-standalone-clusters"></a>Voor delen van zelfstandige clusters
 

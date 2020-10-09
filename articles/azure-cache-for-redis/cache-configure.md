@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460166"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840248"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -169,11 +169,11 @@ Zie [redis-meldingen](https://redis.io/topics/notifications)voor meer informatie
 ## <a name="azure-cache-for-redis-advisor"></a>Azure-cache voor redis Advisor
 In de Blade **Azure cache voor redis Advisor** worden aanbevelingen voor uw cache weer gegeven. Tijdens normale bewerkingen worden er geen aanbevelingen weer gegeven.
 
-![Aanbevelingen](./media/cache-configure/redis-cache-no-recommendations.png)
+![Scherm afbeelding die laat zien waar de aanbevelingen worden weer gegeven.](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Als er omstandigheden optreden tijdens de bewerkingen van uw cache, zoals intensief geheugen gebruik, netwerk bandbreedte of server belasting, wordt er een waarschuwing weer gegeven op de Blade **Azure-cache voor redis** .
 
-![Aanbevelingen](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Scherm afbeelding die laat zien waar waarschuwingen worden weer gegeven in de sectie Azure-cache voor redis.](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 Meer informatie vindt u op de Blade **aanbevelingen** .
 
@@ -314,7 +314,7 @@ Op de Blade **opnieuw opstarten** kunt u de knoop punten van de cache opnieuw op
 
 Als u een Premium-cache met clustering hebt ingeschakeld, kunt u selecteren welke Shards de cache moet worden opgestart.
 
-![Opnieuw opstarten](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Scherm afbeelding die laat zien waar u kunt selecteren welke Shards van de cache moet worden opgestart.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 Als u een of meer knoop punten van uw cache opnieuw wilt opstarten, selecteert u de gewenste knoop punten en klikt u op **opnieuw opstarten**. Als u een Premium-cache met clustering hebt ingeschakeld, selecteert u de Shard (s) om opnieuw op te starten en klikt u vervolgens op **opnieuw opstarten**. Na een paar minuten worden de geselecteerde knoop punten opnieuw opgestart en zijn ze een paar minuten later weer online.
 
@@ -474,11 +474,11 @@ U kunt met behulp van de **redis-console**, die beschikbaar is in de Azure porta
 
 Om toegang te krijgen tot de redis-console, klikt u op **console** in de Blade **Azure-cache voor redis** .
 
-![Redis-console](./media/cache-configure/redis-console-menu.png)
+![Scherm opname van de knop voor de console.](./media/cache-configure/redis-console-menu.png)
 
 Typ de gewenste opdracht in de-console om opdrachten uit te voeren voor uw cache-exemplaar.
 
-![Redis-console](./media/cache-configure/redis-console.png)
+![In de scherm afbeelding Thas wordt de redis-console weer gegeven met de invoer opdracht en de resultaten.](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>De redis-console gebruiken met een Premium geclusterde cache

@@ -1,16 +1,14 @@
 ---
 title: Een cluster op Windows beveiligen met behulp van certificaten
 description: Beveiligde communicatie binnen een Azure-Service Fabric zelfstandig of op een on-premises cluster, en tussen clients en het cluster.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 477a8e75aef3eb676d17c045f16a5c3f4ecf1b81
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 18af6fd79e03cd67e77ed4d0d4b3b6291f90301d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299697"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841285"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten
 In dit artikel wordt beschreven hoe u de communicatie tussen de verschillende knoop punten van uw zelfstandige Windows-cluster kunt beveiligen. Ook wordt beschreven hoe u clients verifieert die verbinding maken met dit cluster met behulp van X. 509-certificaten. Verificatie zorgt ervoor dat alleen gemachtigde gebruikers toegang hebben tot het cluster en de geïmplementeerde toepassingen en beheer taken uitvoeren. Certificaat beveiliging moet worden ingeschakeld op het cluster als het cluster wordt gemaakt.  

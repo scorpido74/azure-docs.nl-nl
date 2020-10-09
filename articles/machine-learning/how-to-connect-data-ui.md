@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542152"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841353"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Verbinding maken met gegevens met behulp van de Azure Machine Learning Studio
 
@@ -87,6 +87,7 @@ Een gegevensset maken in Studio:
 1. Selecteer een **tabel** of **bestand** voor het type gegevensset.
 1. Selecteer **volgende** om het formulier **gegevens opslag en bestand selecteren** te openen. Op dit formulier selecteert u waar u uw gegevensset na het maken moet blijven en selecteert u welke gegevens bestanden u voor uw gegevensset wilt gebruiken.
     1. Schakel overs laan van validatie in als uw gegevens zich in een virtueel netwerk bevindt. Meer informatie over het [isoleren van virtuele netwerken en privacy](how-to-enable-virtual-network.md#machine-learning-studio).
+    1. Voor Tabellaire gegevens sets kunt u een ' tijds Erie-Trait opgeven om tijd gerelateerde bewerkingen op uw gegevensset in te scha kelen. Meer informatie over [het toevoegen van de tijds Erie-eigenschappen aan uw gegevensset](how-to-monitor-datasets.md#studio-dataset).
 1. Selecteer **volgende** om de **instellingen en de voor beeld** -en **schema** formulieren in te vullen. ze worden op intelligente wijze ingevuld op basis van het bestands type en u kunt uw gegevensset verder configureren voordat deze formulieren worden gemaakt. 
 1. Selecteer **volgende** om het formulier **Details bevestigen** weer te geven. Controleer uw selecties en maak een optioneel gegevens profiel voor uw gegevensset. Meer informatie over [gegevensprofilering](#profile).
 1. Selecteer **maken** om het maken van de gegevensset te volt ooien.
@@ -119,7 +120,7 @@ Het gegevens Profiel van Azure Machine Learning gegevensset bevat met name het v
 |Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn hun eigen type, waardoor deze visualisatie nuttig is voor het detecteren van oneven of ontbrekende waarden.
 |Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
 |Min.| Minimum waarde van de kolom. Lege vermeldingen worden weer gegeven voor functies waarvan het type geen inherente ordening (zoals Boole-waarden) heeft.
-|Max| De maximum waarde van de kolom. 
+|Max.| De maximum waarde van de kolom. 
 |Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
 |Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
 |Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.

@@ -6,24 +6,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609162"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842577"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge Beschik baarheid die worden ondersteund door Azure HDInsight
 
- HDInsight is ontwikkeld met een unieke architectuur voor hoge Beschik baarheid (HA) van essentiële services, zodat u een optimale Beschik baarheid kunt bieden voor uw analyse onderdelen. Sommige onderdelen van deze architectuur zijn ontwikkeld door micro soft om automatische failover te bieden. Andere onderdelen zijn standaard Apache-onderdelen die zijn geïmplementeerd ter ondersteuning van specifieke services. In dit artikel wordt de architectuur van het service model HA in HDInsight beschreven, hoe HDInsight failover ondersteunt voor HA-Services en best practices voor het herstellen van andere service onderbrekingen.
+HDInsight is ontwikkeld met een unieke architectuur voor hoge Beschik baarheid (HA) van essentiële services, zodat u een optimale Beschik baarheid kunt bieden voor uw analyse onderdelen. Sommige onderdelen van deze architectuur zijn ontwikkeld door micro soft om automatische failover te bieden. Andere onderdelen zijn standaard Apache-onderdelen die zijn geïmplementeerd ter ondersteuning van specifieke services. In dit artikel wordt de architectuur van het service model HA in HDInsight beschreven, hoe HDInsight failover ondersteunt voor HA-Services en best practices voor het herstellen van andere service onderbrekingen.
  
 > [!NOTE]
 > Afwijking-vrije communicatie
 >
 > Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
 >
-
 
 ## <a name="high-availability-infrastructure"></a>Infra structuur met hoge Beschik baarheid
 
@@ -43,7 +42,7 @@ Deze infra structuur bestaat uit een aantal services en software onderdelen, waa
 
 ![infra structuur met hoge Beschik baarheid](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-Er zijn ook andere services met hoge Beschik baarheid, die worden ondersteund door open source Apache-betrouw bare onderdelen. Deze onderdelen zijn ook aanwezig in HDInsight-clusters:
+Er zijn ook andere services met hoge Beschik baarheid, die worden ondersteund door open-source Apache-betrouw bare onderdelen. Deze onderdelen zijn ook aanwezig in HDInsight-clusters:
 
 - Hadoop File System (HDFS) NameNode
 - GARENs-Resource Manager
@@ -55,9 +54,9 @@ In de volgende secties vindt u meer informatie over de manier waarop deze servic
 
 Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel in HDInsight-clusters. Om ze te onderscheiden van services met hoge Beschik baarheid die worden ondersteund door onderdelen van Apache, worden de *Services van HDINSIGHT ha*genoemd.
 
-| Service | Clusterknooppunten | Cluster typen | Functie |
+| Service | Clusterknooppunten | Cluster typen | Doel |
 |---|---|---|---|
-| Apache Ambari-server| Actieve hoofd knooppunt | Alles | Bewaakt en beheert het cluster.|
+| Apache Ambari-server| Actieve hoofd knooppunt | Alle | Bewaakt en beheert het cluster.|
 | Tijdlijn server van de toepassing voor Apache-GARENs | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt fout opsporingsgegevens over garen taken die op het cluster worden uitgevoerd.|
 | Taak geschiedenis server voor Hadoop-MapReduce | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt gegevens van fout opsporing voor MapReduce-taken.|
 | Apache Livy | Actieve hoofd knooppunt | Spark | Maakt eenvoudige interactie met een Spark-cluster mogelijk via een REST-interface |
@@ -100,7 +99,7 @@ De Master-ha-service wordt alleen uitgevoerd op de actieve hoofd knooppunt, de H
 
 ![failoverproces](./media/hdinsight-high-availability-components/failover-steps.png)
 
-Er wordt een health monitor uitgevoerd op elke hoofd knooppunt samen met de Master-failover-controller om hearbeat-meldingen te verzenden naar het Zookeeper-quorum. De hoofd knooppunt wordt in dit scenario beschouwd als HA-service. De health monitor controleert of elke service voor hoge Beschik baarheid in orde is en of deze klaar is om aan de leiderschaps verkiezing toe te voegen. Zo ja, dan zal deze hoofd knooppunt concurreren met de verkiezing. Als dat niet het geval is, wordt de verkiezing afgesloten totdat deze weer gereed wordt.
+Er wordt een health monitor uitgevoerd op elke hoofd knooppunt samen met de Master-failover-controller om heartbeat-meldingen te verzenden naar het Zookeeper-quorum. De hoofd knooppunt wordt in dit scenario beschouwd als HA-service. De health monitor controleert of elke service voor hoge Beschik baarheid in orde is en of deze klaar is om aan de leiderschaps verkiezing toe te voegen. Zo ja, dan zal deze hoofd knooppunt concurreren met de verkiezing. Als dat niet het geval is, wordt de verkiezing afgesloten totdat deze weer gereed wordt.
 
 Als de stand-hoofd knooppunt ooit het leiderschap realiseert en actief wordt (zoals in het geval van een storing met het vorige actieve knoop punt), start de Master failover controller alle services van HDInsight HA erop. De Master failover controller stopt deze services ook op de andere hoofd knooppunt.
 

@@ -3,12 +3,12 @@ title: 'Veelgestelde vragen: Azure Event Hubs voor Apache Kafka'
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over de ondersteuning van Azure Event Hubs voor Apache Kafka-clients die niet elders worden gedekt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1ca54bf314d795b88b727ddb648f3e1e74133fd3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dc6a12b2098a1fdf33adda92b4347f91ab4e5489
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061458"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828104"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Veelgestelde vragen-Event Hubs voor Apache Kafka 
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over het migreren naar Event Hubs voor Apache Kafka.

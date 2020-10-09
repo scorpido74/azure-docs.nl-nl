@@ -1,17 +1,17 @@
 ---
 title: Een gateway configureren om aanvragen te routeren
 description: Informatie over het configureren van de gateway die inkomend verkeer afhandelt voor uw toepassingen die worden uitgevoerd op Service Fabric net.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461965"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839721"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Een gateway bron configureren om aanvragen te routeren
 
@@ -26,11 +26,11 @@ Omdat de gateway resource fungeert als een brug tussen het netwerk van uw toepas
 ### <a name="gateway-resource-metadata"></a>Meta gegevens van Gateway bron
 
 Een gateway is gedeclareerd met de volgende meta gegevens:
-* `apiVersion`-moet worden ingesteld op 2018-09-01-Preview (of later in de toekomst)
-* `name`-een teken reeks naam voor deze gateway
-* `type`-"Micro soft. ServiceFabricMesh/gateways"
-* `location`-moet worden ingesteld op de locatie van uw app/netwerk. doorgaans is dit een verwijzing naar de locatie parameter in uw implementatie
-* `dependsOn`-het netwerk waarvoor deze gateway fungeert als ingangs punt voor
+* `apiVersion` -moet worden ingesteld op 2018-09-01-Preview (of later in de toekomst)
+* `name` -een teken reeks naam voor deze gateway
+* `type` -"Micro soft. ServiceFabricMesh/gateways"
+* `location` -moet worden ingesteld op de locatie van uw app/netwerk. doorgaans is dit een verwijzing naar de locatie parameter in uw implementatie
+* `dependsOn` -het netwerk waarvoor deze gateway fungeert als ingangs punt voor
 
 Hier ziet u hoe deze wordt weer gegeven in een Azure Resource Manager-implementatie sjabloon (JSON): 
 
@@ -79,9 +79,9 @@ Routerings regels worden opgegeven per poort. Elke ingangs poort heeft een eigen
 #### <a name="tcp-routing-rules"></a>TCP-routerings regels 
 
 Een TCP-routerings regel bestaat uit de volgende eigenschappen: 
-* `name`-verwijzing naar de regel die een wille keurige teken reeks van uw keuze kan zijn 
-* `port`-poort voor het Luis teren naar binnenkomende aanvragen 
-* `destination`-eindpunt specificatie met `applicationName` , `serviceName` en, `endpointName` voor waar de aanvragen moeten worden doorgestuurd
+* `name` -verwijzing naar de regel die een wille keurige teken reeks van uw keuze kan zijn 
+* `port` -poort voor het Luis teren naar binnenkomende aanvragen 
+* `destination` -eindpunt specificatie met `applicationName` , `serviceName` en, `endpointName` voor waar de aanvragen moeten worden doorgestuurd
 
 Hier volgt een voor beeld van een TCP-routerings regel:
 
@@ -106,16 +106,16 @@ Hier volgt een voor beeld van een TCP-routerings regel:
 #### <a name="http-routing-rules"></a>HTTP-routerings regels 
 
 Een HTTP-routerings regel bestaat uit de volgende eigenschappen: 
-* `name`-verwijzing naar de regel die een wille keurige teken reeks van uw keuze kan zijn 
-* `port`-poort voor het Luis teren naar binnenkomende aanvragen 
-* `hosts`-een matrix met beleids regels die van toepassing zijn op aanvragen die afkomstig zijn van de verschillende ' hosts ' op de hierboven opgegeven poort. Hosts zijn de set toepassingen en services die in het netwerk kunnen worden uitgevoerd en die inkomende aanvragen kan verwerken, dat wil zeggen een web-app. Hostbeleid worden in de aangegeven volg orde geïnterpreteerd. u moet het volgende in aflopende mate van specificiteit maken
-    * `name`-de DNS-naam van de host waarvoor de volgende routerings regels zijn opgegeven. Door ' * ' te gebruiken, worden er routerings regels voor alle hosts gemaakt.
-    * `routes`-een matrix met beleids regels voor deze specifieke host
-        * `match`-specificatie van de structuur van de binnenkomende aanvraag voor deze regel die moet worden toegepast, op basis van een`path`
-            * `path`-bevat een `value` (binnenkomende URI), `rewrite` (hoe u de aanvraag wilt door sturen) en een (op `type` dit moment kan alleen ' prefix ' zijn)
-            * `header`-is een optionele matrix met koptekst waarden die overeenkomen in de koptekst van de aanvraag, wanneer de aanvraag overeenkomt met de padspecificatie (hierboven).
+* `name` -verwijzing naar de regel die een wille keurige teken reeks van uw keuze kan zijn 
+* `port` -poort voor het Luis teren naar binnenkomende aanvragen 
+* `hosts` -een matrix met beleids regels die van toepassing zijn op aanvragen die afkomstig zijn van de verschillende ' hosts ' op de hierboven opgegeven poort. Hosts zijn de set toepassingen en services die in het netwerk kunnen worden uitgevoerd en die inkomende aanvragen kan verwerken, dat wil zeggen een web-app. Hostbeleid worden in de aangegeven volg orde geïnterpreteerd. u moet het volgende in aflopende mate van specificiteit maken
+    * `name` -de DNS-naam van de host waarvoor de volgende routerings regels zijn opgegeven. Door ' * ' te gebruiken, worden er routerings regels voor alle hosts gemaakt.
+    * `routes` -een matrix met beleids regels voor deze specifieke host
+        * `match` -specificatie van de structuur van de binnenkomende aanvraag voor deze regel die moet worden toegepast, op basis van een `path`
+            * `path` -bevat een `value` (binnenkomende URI), `rewrite` (hoe u de aanvraag wilt door sturen) en een (op `type` dit moment kan alleen ' prefix ' zijn)
+            * `header` -is een optionele matrix met koptekst waarden die overeenkomen in de koptekst van de aanvraag, wanneer de aanvraag overeenkomt met de padspecificatie (hierboven).
               * elke vermelding bevat `name` (teken reeks naam van de header die moet worden vergeleken), `value` (teken reeks waarde van de koptekst in de aanvraag) en een `type` (op dit moment kan alleen ' exact ' zijn)
-        * `destination`-Als de aanvraag overeenkomt, wordt deze doorgestuurd naar deze bestemming, die wordt opgegeven met behulp van een `applicationName` , `serviceName` en`endpointName`
+        * `destination` -Als de aanvraag overeenkomt, wordt deze doorgestuurd naar deze bestemming, die wordt opgegeven met behulp van een `applicationName` , `serviceName` en `endpointName`
 
 Hier volgt een voor beeld van een HTTP-routerings regel die van toepassing zou zijn op aanvragen die afkomstig zijn van poort 80, naar alle hosts die worden aangeboden door apps in dit netwerk. Als de aanvraag-URL een structuur heeft die overeenkomt met de padspecificatie, dat wil zeggen, `<IPAddress>:80/pickme/<requestContent>` wordt deze omgeleid naar het `myListener` eind punt.  
 

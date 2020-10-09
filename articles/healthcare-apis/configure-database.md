@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795776"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839925"
 ---
 # <a name="configure-database-settings"></a>Data base-instellingen configureren 
 
@@ -38,7 +38,12 @@ Als de doorvoer capaciteit van de data base groter is dan 10.000 RU/s of als de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u de RUs voor Azure API voor FHIR bijwerkt. Implementeer daarna een volledig beheerde Azure-API voor FHIR:
+In dit artikel hebt u geleerd hoe u de RUs voor Azure API voor FHIR bijwerkt. Meer informatie over het configureren van door de klant beheerde sleutels als een database instelling:
+
+>[!div class="nextstepaction"]
+>[Door klant beheerde sleutels configureren](bring-your-own-key.md)
+
+U kunt ook een volledig beheerde Azure API implementeren voor FHIR:
  
 >[!div class="nextstepaction"]
 >[De Azure-API voor FHIR implementeren](fhir-paas-portal-quickstart.md)

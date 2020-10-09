@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618638"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840486"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Batch verwerking gebruiken om de prestaties van Azure SQL Database en Azure SQL Managed instance-toepassingen te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Er zijn enkele gevallen waarin bulksgewijs kopiëren de voor keur geeft aan de para meters met tabel waarden. Zie de vergelijkings tabel van para meters met tabel waarden ten opzichte van BULK INSERT bewerkingen in de [tabel waarden para meters](/sql/relational-databases/tables/use-table-valued-parameters-database-engine).
+Er zijn enkele gevallen waarin bulksgewijs kopiëren de voor keur geeft aan de para meters met tabel waarden. Zie de vergelijkings tabel van Table-Valued-para meters versus BULK INSERT bewerkingen in de [tabel waarden para meters](/sql/relational-databases/tables/use-table-valued-parameters-database-engine).
 
 De volgende ad hoc test resultaten tonen de prestaties van batching met **SqlBulkCopy** in milliseconden.
 
@@ -293,7 +293,7 @@ Met de klasse **Data adapter** kunt u een object **DataSet** wijzigen en vervolg
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework 6](https://github.com/dotnet/ef6) ondersteunt nu batch verwerking.
+[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) ondersteunt batch verwerking.
 
 ### <a name="xml"></a>XML
 

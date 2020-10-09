@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950388"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839344"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection meldingen
 
@@ -44,8 +44,8 @@ Als u een overbelasting van e-mails wilt voor komen, ontvangt u binnen een perio
 Als beheerder kunt u het volgende instellen:
 
 - **Het risico niveau van de gebruiker waarmee het genereren van deze e-mail wordt geactiveerd** : het risico niveau is standaard ingesteld op hoog risico.
-- **De ontvangers van dit e-mail bericht** bevatten standaard alle globale beheerders. Globale beheerders kunnen ook andere globale beheerders, beveiligings beheerders en beveiligings lezers toevoegen als ontvangers.
-   - U kunt desgewenst **extra e-mail berichten toevoegen om waarschuwings meldingen te ontvangen** . deze functie is een preview-versie en gebruikers die zijn gedefinieerd, moeten de juiste machtigingen hebben om de gekoppelde rapporten in de Azure portal weer te geven.
+- **De ontvangers van deze e-mail** -gebruikers in de rol globale beheerder, beveiligings beheerder of beveiligings lezer worden automatisch toegevoegd aan deze lijst. We proberen e-mail berichten te verzenden naar de eerste twintig leden van elke rol. Als een gebruiker is inge schreven bij PIM om deze op aanvraag uit te breiden naar een van deze rollen **, ontvangen ze alleen e-mail berichten als ze worden verhoogd op het moment dat de e-mail wordt verzonden**.
+   - U kunt desgewenst **aangepaste E-mail toevoegen hier** gebruikers gedefinieerd moeten de juiste machtigingen hebben om de gekoppelde rapporten in de Azure portal weer te geven.
 
 Configureer het e-mail adres voor gebruikers met een risico op de **Azure Portal** onder **Azure Active Directory**  >  **Security**  >  gebruikers met beveiligings**identiteits beveiliging**van  >  **Risico's gedetecteerde waarschuwingen**.
 
@@ -60,7 +60,7 @@ Het bevat:
 
 ![E-mail met wekelijkse samen vatting](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
-Ontvangers bevatten standaard alle globale beheerders. Globale beheerders kunnen ook andere globale beheerders, beveiligings beheerders en beveiligings lezers toevoegen als ontvangers.
+Gebruikers in de rol globale beheerder, beveiligings beheerder of beveiligings lezer worden automatisch toegevoegd aan deze lijst. We proberen e-mail berichten te verzenden naar de eerste twintig leden van elke rol. Als een gebruiker is inge schreven bij PIM om deze op aanvraag uit te breiden naar een van deze rollen **, worden alleen e-mail berichten ontvangen als deze zijn verhoogd op het moment dat het e-mail bericht wordt verzonden** .
 
 ### <a name="configure-weekly-digest-email"></a>Wekelijks overzicht van e-mail configureren
 

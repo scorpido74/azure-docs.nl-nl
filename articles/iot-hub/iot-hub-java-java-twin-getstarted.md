@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c439f1a5aaa03774652dc815364c45633096f6de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b433ab29ab5a2520f503e002e630068126ddb328
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327596"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838684"
 ---
 # <a name="get-started-with-device-twins-java"></a>Aan de slag met Device apparaatdubbels (Java)
 
@@ -380,7 +380,7 @@ U bent nu klaar om de console-apps uit te voeren.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Service-app van Java IoT Hub om label waarden bij te werken en query's uit te voeren](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Scherm opname van de uitvoer van de opdracht voor het uitvoeren van de service-app voor het toevoegen van labels.](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     U kunt de **fabrieks** -en **regio** Tags zien die zijn toegevoegd aan het apparaat dubbele. De eerste query retourneert uw apparaat, maar de tweede niet.
 
@@ -390,7 +390,7 @@ U bent nu klaar om de console-apps uit te voeren.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![De apparaatclient voegt de gerapporteerde eigenschap * * connectivityType * * toe](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![De apparaatclient voegt de door het verbindings type gemelde eigenschap toe](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. Voer bij een opdracht prompt in de map **Add-Tags-query** de volgende opdracht uit om een tweede keer de app **Add-Tags-query** service uit te voeren:
 

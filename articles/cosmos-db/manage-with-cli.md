@@ -1,25 +1,25 @@
 ---
-title: Azure Cosmos DB-resources beheren met Azure CLI
-description: Gebruik Azure CLI voor het beheren van uw Azure Cosmos DB-account,-data base en-containers.
+title: Azure Cosmos DB core-API-resources (SQL) beheren met Azure CLI
+description: Beheer van Azure Cosmos DB core-API-resources met behulp van Azure CLI.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: c8726801e8becd6533ae5fec099d6c535b63261a
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767553"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840588"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-resources beheren met Azure CLI
+# <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure Cosmos core (SQL) API-resources beheren met Azure CLI
 
 In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het automatiseren van het beheer van Azure Cosmos DB-accounts, -databases en -containers, met behulp van Azure CLI. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). U kunt ook meer voor beelden vinden in [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md), met inbegrip van het maken en beheren van Cosmos DB accounts, data bases en containers voor MongoDb, Gremlin, Cassandra en Table-API.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.9.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.12.1 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!IMPORTANT]
 > De naam van Azure Cosmos DB resources kan niet worden gewijzigd, omdat dit inbreuk maakt op de manier waarop Azure Resource Manager met resource-Uri's werkt.
@@ -214,8 +214,9 @@ In de volgende secties ziet u hoe u de Azure Cosmos DB-database kunt beheren, me
 
 * [Een database maken](#create-a-database)
 * [Een Data Base maken met gedeelde door Voer](#create-a-database-with-shared-throughput)
+* [Een Data Base migreren naar automatisch schalen door Voer](#migrate-a-database-to-autoscale-throughput)
 * [Data Base-door Voer wijzigen](#change-database-throughput)
-* [Vergren delingen op een Data Base beheren](#manage-lock-on-a-database)
+* [Voor komen dat een Data Base wordt verwijderd](#prevent-a-database-from-being-deleted)
 
 ### <a name="create-a-database"></a>Een database maken
 
@@ -249,6 +250,29 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
+### <a name="migrate-a-database-to-autoscale-throughput"></a>Een Data Base migreren naar automatisch schalen door Voer
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql database throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql database throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -n $databaseName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
 ### <a name="change-database-throughput"></a>Data Base-door Voer wijzigen
 
 Verhoog de door Voer van een Cosmos-data base met 1000 RU/s.
@@ -275,14 +299,14 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-database"></a>Vergren deling voor een Data Base beheren
+### <a name="prevent-a-database-from-being-deleted"></a>Voor komen dat een Data Base wordt verwijderd
 
-Een verwijderings vergrendeling op een Data Base plaatsen. Voor meer informatie over het inschakelen van deze Zie, voor komt u [dat sdk's worden gewijzigd](role-based-access-control.md#prevent-sdk-changes).
+Plaats een Azure-resource delete Lock voor een Data Base om te voor komen dat deze wordt verwijderd. Voor deze functie moet het Cosmos-account worden vergrendeld. Dit kan worden gewijzigd door Sdk's van het gegevens vlak. Zie, voor [komen van het wijzigen van sdk's](role-based-access-control.md#prevent-sdk-changes), voor meer informatie. Azure resource Locks kan ook voor komen dat een resource wordt gewijzigd door een `ReadOnly` vergrendelings type op te geven. Voor een Cosmos-data base kan deze worden gebruikt om te voor komen dat de door Voer wordt gewijzigd.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
+accountName='mycosmosaccount'
+databaseName='database1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -315,7 +339,8 @@ In de volgende secties ziet u hoe u de Azure Cosmos DB-container kunt beheren, m
 * [Een container maken waarvoor TTL is ingeschakeld](#create-a-container-with-ttl)
 * [Een container maken met aangepast indexbeleid](#create-a-container-with-a-custom-index-policy)
 * [Container doorvoer wijzigen](#change-container-throughput)
-* [Vergren delingen op een container beheren](#manage-lock-on-a-container)
+* [Een container migreren naar automatisch schalen door Voer](#migrate-a-container-to-autoscale-throughput)
+* [Voor komen dat een container wordt verwijderd](#prevent-a-container-from-being-deleted)
 
 ### <a name="create-a-container"></a>Een container maken
 
@@ -454,15 +479,41 @@ az cosmosdb sql container throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-container"></a>Vergren deling op een container beheren
+### <a name="migrate-a-container-to-autoscale-throughput"></a>Een container migreren naar automatisch schalen door Voer
 
-Een verwijderings vergrendeling op een container plaatsen. Voor meer informatie over het inschakelen van deze Zie, voor komt u [dat sdk's worden gewijzigd](role-based-access-control.md#prevent-sdk-changes).
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql container throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql container throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
+### <a name="prevent-a-container-from-being-deleted"></a>Voor komen dat een container wordt verwijderd
+
+Plaats een Azure-resource verwijderings vergrendeling op een container om te voor komen dat deze wordt verwijderd. Voor deze functie moet het Cosmos-account worden vergrendeld. Dit kan worden gewijzigd door Sdk's van het gegevens vlak. Zie, voor [komen van het wijzigen van sdk's](role-based-access-control.md#prevent-sdk-changes), voor meer informatie. Azure resource Locks kan ook voor komen dat een resource wordt gewijzigd door een `ReadOnly` vergrendelings type op te geven. Voor een Cosmos-container kan dit worden gebruikt om te voor komen dat door Voer of een andere eigenschap wordt gewijzigd.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
-containerName='myContainer'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -491,6 +542,6 @@ az lock delete --ids $lockid
 
 Zie voor meer informatie over de Azure CLI:
 
-- [Azure-CLI installeren](/cli/azure/install-azure-cli)
-- [Naslag informatie voor Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [Aanvullende voor beelden van Azure CLI voor Azure Cosmos DB](cli-samples.md)
+* [Azure-CLI installeren](/cli/azure/install-azure-cli)
+* [Naslag informatie voor Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [Aanvullende voor beelden van Azure CLI voor Azure Cosmos DB](cli-samples.md)

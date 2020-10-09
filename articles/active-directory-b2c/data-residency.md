@@ -1,5 +1,5 @@
 ---
-title: Beschik baarheid van regio's en gegevens locatie
+title: Regiobeschikbaarheid en gegevenslocatie
 titleSuffix: Azure AD B2C
 description: Beschik baarheid van regio's, gegevens locatie en informatie over Azure Active Directory B2C preview-tenants.
 services: active-directory-b2c
@@ -12,12 +12,12 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: bb9c6dbf9984ec81fbd4b93a61552211928d0f0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388711"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840554"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Beschik baarheid van regio's & gegevens locatie
 
@@ -45,15 +45,15 @@ Data locatie wordt bepaald door het land/de regio die u selecteert bij het [make
 
 De gegevens bevinden zich in de **Verenigde Staten** voor de volgende landen/regio's:
 
-> Verenigde Staten, Canada, Costa Rica, Dominicaanse Republiek, El Salvador, Guatemala, Mexico, Panama, Puerto Rico en Trinidad & Tobago
+> Verenigde Staten (VS), Canada (CA), Costa Rica (CR), Dominicaanse Republiek (DO), El Salvador (SV), Guatemala (GT), Mexico (MX), Panama (PA), Puerto Rico (PR) en Trinidad & Tobago (TT)
 
 Gegevens bevinden zich in **Europa** voor de volgende landen/regio's:
 
-> Algerije, Oosten rijk, Azerbeidzjan, Bahrein, Belarus, België, Bulgarije, Kroatië, Cyprus, Tsjechië, Denemarken, Egypte, Estland, Finland, Frank rijk, Duitsland, Grieken land, Hongarije, IJsland, Ierland, Israël, Italië, Jordanië, Kazachstan, Kenia, Koeweit, Letland, Libanon, Liechtenstein, Litouwen, Luxemburg, Noord Macedonië, Malta, Montenegro, Marokko, Nederland, Nigeria, Noor wegen, Oman, Pakistan, Polen, Portugal, Qatar, Roemenië, Rusland, Saudi-Arabië, Servië, Slowakije, Slovenië, Zuid-Afrika, Spanje, Zweden, Zwitser land
+> Algerije (DZ), Oosten rijk (op), Azerbeidzjan (AZ), Bahrein (BH), Belarus (per), België (zijn), Bulgarije (BG), Kroatië (HR), Cyprus (CY), Tsjechië (CZ), Denemarken (DK), Egypte (bijvoorbeeld), Estland (EE), Finland (FT), Frank rijk (FR) Duitsland (DE), Grieken land (GR), Hongarije (HU), IJsland (IS), Ierland (IE), Israël (IL), Italië (IT), Jordanië (JO), Kazachstan (KZ), Kenia (KE), Koeweit (KW), Letland (LV), Libanon (LB), Liechtenstein (LI), Litouwen (LT) , Luxemburg (LU), North Macedonië (ML), Malta (MT), Montenegro (ME), Marokko (MA), Nederland (NL), Nigeria (aardgas), Noor wegen (NO), Oman (OM), Pakistan (PK), Polen (PL), Portugal (PT), Qatar (QA), Roemenië (RO), Rusland (RU), Saudi-Arabië (SA), Servië (RS), Slowakije (SK), Slovenië (ST), Zuid-Afrika (ZA), Spanje (ES), Zweden (SE), Zwitser land (CH), Tunesië (TN), Turkije (TR), Oekraïne (UA), Verenigde Arabische Emiraten (AE) en Verenigd Konink rijk (GB)
 
 De gegevens bevinden zich in **Azië en Stille Oceaan** voor de volgende landen/regio's:
 
-> Afghanistan, Hong Kong SAR, India, Indonesië, Japan, Korea, Maleisië, Filipijnen, Singapore, Sri Lanka, Taiwan en Thai land.
+> Afghanistan (AF), Hong Kong SAR (HK), India (IN), Indonesië (ID), Japan (JP), Korea (KR), Maleisië (MY), Filip pijnen (PH), Singapore (AG), Sri Lanka (LK), Taiwan (TW) en Thai land (TH).
 
 De volgende landen/regio's worden toegevoegd aan de lijst. U kunt nu nog steeds Azure AD B2C gebruiken door een van de bovenstaande landen/regio's te kiezen.
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008029"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838667"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure-cache beheren voor redis
 In dit onderwerp wordt beschreven hoe u beheer taken uitvoert, zoals het [opnieuw opstarten](#reboot) en het [plannen van updates](#schedule-updates) voor uw Azure-cache voor redis-exemplaren.
@@ -21,11 +21,11 @@ In dit onderwerp wordt beschreven hoe u beheer taken uitvoert, zoals het [opnieu
 ## <a name="reboot"></a>Opnieuw opstarten
 Op de Blade **opnieuw opstarten** kunt u een of meer knoop punten van de cache opnieuw opstarten. Met deze mogelijkheid voor opnieuw opstarten kunt u uw toepassing testen op tolerantie als er een fout optreedt in een cache knooppunt.
 
-![Opnieuw opstarten](./media/cache-administration/redis-cache-administration-reboot.png)
+![Scherm afbeelding die de menu optie opnieuw opstarten markeert.](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Selecteer de knoop punten die u opnieuw wilt opstarten en klik op **opnieuw opstarten**.
 
-![Opnieuw opstarten](./media/cache-administration/redis-cache-reboot.png)
+![Scherm opname van de knoop punten die u opnieuw kunt opstarten.](./media/cache-administration/redis-cache-reboot.png)
 
 Als u een Premium-cache met clustering hebt ingeschakeld, kunt u selecteren welke Shards de cache moet worden opgestart.
 

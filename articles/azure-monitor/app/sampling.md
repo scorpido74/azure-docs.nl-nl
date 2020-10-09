@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 151bc87bd5674a61b8652adfa70634318c405240
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549562"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839602"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -295,9 +295,9 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
 
         var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
         // For older versions of the Application Insights SDK, use the following line instead:
-        // var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+        // var builder = configuration.TelemetryProcessorChainBuilder;
 
-        // Using fixed rate sampling   
+        // Using fixed rate sampling
         double fixedSamplingPercentage = 10;
         builder.UseSampling(fixedSamplingPercentage);
 
@@ -482,7 +482,7 @@ De belangrijkste voor delen van steek proeven zijn:
 
 Als de voor waarden voor het gebruik van de andere vormen van steek proeven niet van toepassing zijn, raden we aan om adaptieve steek proeven te nemen. Deze instelling is standaard ingeschakeld in de ASP.NET/ASP.NET core-SDK. Het verkeer wordt pas verminderd als een bepaald minimum aantal is bereikt. Daarom worden de sites met weinig gebruik waarschijnlijk niet bemonsterd.
 
-## <a name="knowing-whether-sampling-is-in-operation"></a>Weten of steek proeven worden uitgevoerd
+## <a name="knowing-whether-sampling-is-in-operation"></a>Weten wanneer voorbeelden actief zijn
 
 Als u de werkelijke sampling frequentie wilt detecteren, ongeacht waar deze is toegepast, gebruikt u een [analyse query](../log-query/log-query-overview.md) zoals deze:
 

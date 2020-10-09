@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
-ms.openlocfilehash: b92b6930193b77d0fb50ad707001a6fca0401970
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 06d70012756694dca1fad8fa90db0293bb106bf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404759"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828149"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
@@ -56,7 +56,9 @@ Azure Data Factory heeft toegang tot meer dan [90 systeemeigen connectors](conne
 
 ## <a name="sink-settings"></a>Sink-instellingen
 
-Nadat u een Sink hebt toegevoegd, configureert u via het tabblad **sink** . Hier kunt u de gegevensset voor uw sinks selecteren of maken. Hieronder ziet u een video met een aantal verschillende Sink-opties voor door tekst gescheiden bestands typen:
+Nadat u een Sink hebt toegevoegd, configureert u via het tabblad **sink** . Hier kunt u de gegevensset voor uw sinks selecteren of maken. Ontwikkelings waarden voor gegevensset-para meters kunnen worden geconfigureerd in [instellingen voor fout opsporing](concepts-data-flow-debug-mode.md) (hiervoor moet de foutopsporingsmodus worden ingeschakeld).
+
+Hieronder ziet u een video met een aantal verschillende Sink-opties voor door tekst gescheiden bestands typen:
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 

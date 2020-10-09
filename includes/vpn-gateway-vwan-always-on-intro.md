@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e40f421c0fa45d772cd333dac51fe2bdf2779f48
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117021"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828777"
 ---
 Een nieuwe functie van de Windows 10 VPN-client, altijd aan, is de mogelijkheid om een VPN-verbinding te onderhouden. Met Always on kan het actieve VPN-profiel automatisch verbinding maken en blijven verbonden op basis van triggers, zoals het aanmelden van gebruikers, het wijzigen van de netwerk status of het scherm apparaat actief.
 
-U kunt gateways met Windows 10 altijd gebruiken om permanente gebruikers tunnels en tunnels voor apparaten te maken met Azure. Dit artikel helpt u bij het configureren van een always on-VPN-gebruikers tunnel.
+U kunt gateways met Windows 10 altijd gebruiken om permanente gebruikers tunnels en tunnels voor apparaten te maken met Azure.
 
 Altijd op VPN-verbindingen zijn twee typen tunnels:
 

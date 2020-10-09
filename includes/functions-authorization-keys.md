@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 617608f382d3331e59ae92c9eb272347c736b768
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298596"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829172"
 ---
 Met functies kunt u sleutels gebruiken om het moeilijker te maken om toegang te krijgen tot de eind punten van uw HTTP-functies tijdens het ontwikkelen. Tenzij het HTTP-toegangs niveau voor een HTTP-geactiveerde functie is ingesteld op `anonymous` , moeten aanvragen een API-toegangs sleutel bevatten in de aanvraag. 
 
-Hoewel sleutels een standaard beveiligings mechanisme bieden, kunt u extra opties overwegen om een HTTP-eind punt in de productie omgeving te beveiligen. Het is bijvoorbeeld doorgaans geen goede gewoonte om gedeeld geheim in open bare apps te distribueren. Als uw functie wordt aangeroepen vanuit een open bare client, kunt u overwegen om een ander secrity-mechanisme te implementeren. Zie [een HTTP-eind punt in productie beveiligen](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)voor meer informatie.
+Hoewel sleutels een standaard beveiligings mechanisme bieden, kunt u extra opties overwegen om een HTTP-eind punt in de productie omgeving te beveiligen. Het is bijvoorbeeld doorgaans geen goede gewoonte om gedeeld geheim in open bare apps te distribueren. Als uw functie wordt aangeroepen vanuit een open bare client, kunt u overwegen om een ander beveiligings mechanisme te implementeren. Zie [een HTTP-eind punt in productie beveiligen](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)voor meer informatie.
 
 Wanneer u de waarden van de functie sleutel verlengt, moet u de bijgewerkte sleutel waarden hand matig opnieuw distribueren naar alle clients die uw functie aanroepen.  
 

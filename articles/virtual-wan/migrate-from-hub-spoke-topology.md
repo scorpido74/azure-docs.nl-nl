@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777187"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839636"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migreren naar Azure Virtual WAN
 
@@ -110,10 +110,6 @@ Implementeer in elke regio een virtuele WAN-hub. Stel de virtuele WAN-hub in met
 
 Verbind de virtuele WAN-hub met de bestaande ExpressRoute-circuits en stel site-naar-site-Vpn's via internet in op externe filialen.
 
-> [!NOTE]
-> Express route-circuits moeten worden bijgewerkt naar het Premium-SKU-type om verbinding te maken met een virtuele WAN-hub.
->
-
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="hub en spoke":::
 **Afbeelding 3: door de klant beheerde hub en Spaak naar virtuele WAN-migratie**
 
@@ -190,7 +186,7 @@ Pad 2 toont de verkeers stroom van de ExpressRoute verbonden Europese hoofd kant
 
 Het verkeer wordt als volgt gerouteerd:
 
-* Euro pees hoofd kantoor is verbonden via een Premium ExpressRoute-circuit in Europa-west virtuele WAN-hub.
+* Euro pees hoofd kantoor is verbonden via ExpressRoute-circuit in Europa-west virtuele WAN-hub.
 
 * Met Virtual WAN hub-to-hub globale connectiviteit kan verkeer worden overgedragen naar VNet dat is verbonden in de externe regio.
 

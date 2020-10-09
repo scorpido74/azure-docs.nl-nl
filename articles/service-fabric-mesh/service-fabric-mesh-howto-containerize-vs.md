@@ -1,16 +1,16 @@
 ---
 title: Een bestaande .NET-app in een container plaatsen voor Service Fabric Mesh
 description: Voeg ondersteuning toe voor de indeling van Service Fabric mesh-container in ASP.NET-en console projecten die gebruikmaken van het volledige .NET Framework.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462046"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840061"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Een bestaande .NET-app in een container plaatsen voor Service Fabric Mesh
 
@@ -23,7 +23,7 @@ In Visual Studio 2017 kunt u ondersteuning voor plaatsing in containers toevoege
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u geen Azure-abonnement hebt, kunt u [een gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+* Als u nog geen abonnement op Azure hebt, kunt u een [gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 * Zorg er voor dat u [uw ontwikkelomgeving hebt ingesteld](service-fabric-mesh-howto-setup-developer-environment-sdk.md). Dit omvat het installeren van de Service Fabric-runtime, SDK, Docker, Visual Studio 2017 en het maken van een lokaal cluster.
 

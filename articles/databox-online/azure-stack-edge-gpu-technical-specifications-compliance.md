@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899038"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839942"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technische specificaties en naleving voor Azure Stack Edge Pro met GPU 
 
@@ -47,14 +47,14 @@ Het Azure Stack Edge Pro-apparaat heeft twee 100-240 V-energievoedings eenheden 
 | Maximale uitvoer kracht    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Selectie van voltage bereik | Automatisch variërend: 100-240 V AC |
-| Hot pluggable           | Yes                        |
+| Hot pluggable           | Ja                        |
 
 
 ## <a name="network-interface-specifications"></a>Specificaties van netwerk interface
 
 Uw Azure Stack Edge Pro-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
 
-| Specificatie           | Description                 |
+| Specificatie           | Beschrijving                 |
 |-------------------------|----------------------------|
 |  Netwerkinterfaces    | **2 X 1 GbE-interfaces** – 1 beheer interface poort 1 wordt gebruikt voor initiële installatie en is standaard statisch. Nadat de eerste installatie is voltooid, kunt u de interface gebruiken voor gegevens met elk IP-adres. Bij het opnieuw instellen wordt de interface echter teruggezet naar het statische IP-adres. <br>De andere interface poort 2 kan door de gebruiker worden geconfigureerd, kan worden gebruikt voor gegevens overdracht en is standaard DHCP. <br>**4 X 25 GbE-interfaces** : deze gegevens interfaces, poort 3 tot en met poort 6, kunnen worden geconfigureerd door de gebruiker als DHCP (standaard) of statisch. Deze kunnen ook worden gebruikt als 10 GbE-interfaces.  | 
 
@@ -67,7 +67,7 @@ Hier vindt u de Details voor de Mellanox-kaart:
 
 | Parameter           | Beschrijving                 |
 |-------------------------|----------------------------|
-| Model    | Connectx®-4 LX EN netwerk interface kaart                      |
+| Modelleren    | Connectx®-4 LX EN netwerk interface kaart                      |
 | Model beschrijving               | 25GbE Dual Port SFP28; PCIe 3.0 X8; BVGS R6                    |
 | Onderdeel nummer van apparaat (R640) | MCX4121A-ACAT  |
 | PSID (R640)           | MT_2420110034                         |
@@ -79,20 +79,20 @@ Voor een volledige lijst met ondersteunde kabels, schakelaars en ontvangers voor
 
 ## <a name="storage-specifications"></a>Opslag specificaties
 
-De Azure Stack Edge Pro-apparaten hebben vijf 2,5 ' NVMe DC P4610 Ssd's, elk met een capaciteit van 1,6 TB. De opstart schijf is een SATA SSD van 240 GB. De totale bruikbare capaciteit van het apparaat is ongeveer 8,28 TB. De volgende tabel geeft een overzicht van de opslag capaciteit van het apparaat.
+De Azure Stack Edge Pro-apparaten hebben vijf 2,5 ' NVMe DC P4610 Ssd's, elk met een capaciteit van 1,6 TB. De opstart schijf is een SATA SSD van 240 GB. De totale bruikbare capaciteit van het apparaat is ongeveer 4,19 TB. De volgende tabel geeft een overzicht van de opslag capaciteit van het apparaat.
 
 |     Specificatie                          |     Waarde             |
 |--------------------------------------------|-----------------------|
-|    Boot SATA-schijven (Solid-State Drive)      |    1                  |
 |    Aantal NVMe-Ssd's                     |    5                  |
-|    Capaciteit van opstart SSD                       |    240 GB             |
 |    Eén NVMe-SSD-capaciteit                |    1,6 TB             |
-|    Totale capaciteit                          |    8,28 TB            |
-|    Totale bruikbare capaciteit *                  |    ~ 7,95 TB          |
+|    Boot SATA-schijven (Solid-State Drive)      |    1                  |
+|    Capaciteit van opstart SSD                       |    240 GB             |
+|    Totale capaciteit                          |    8,0 TB             |
+|    Totale bruikbare capaciteit *                  |    ~ 4,19 TB          |
 |    SAS-controller                          |    HBA330 12 Gbps     |
 
 
-**Er is ruimte gereserveerd voor intern gebruik.*
+**Na pariteits tolerantie en het reserveren van ruimte voor intern gebruik.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

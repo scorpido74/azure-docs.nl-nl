@@ -1,22 +1,22 @@
 ---
-title: Azure Cosmos DB maken en beheren met behulp van PowerShell
-description: Gebruik Azure PowerShell om uw Azure Cosmos-accounts, -databases, -containers en -doorvoer te beheren.
+title: Azure Cosmos DB core-API-resources beheren met Power shell
+description: Beheer van Azure Cosmos DB core-API-resources met behulp van Power shell.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 77c91d96beb2722b7fce54be8a1db32d66be6196
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767534"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840877"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-resources beheren met behulp van PowerShell
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB core-API-resources (SQL) beheren met Power shell
 
-In de volgende handleiding wordt beschreven hoe u PowerShell kunt gebruiken voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB-resources, waaronder accounts, databases, containers en doorvoer.
+In de volgende hand leiding wordt beschreven hoe u Power shell gebruikt voor het uitvoeren van scripts en het automatiseren van het beheer van Azure Cosmos DB core-API-resources, waaronder het Cosmos-account, de data base, de container en de door voer.
 
 > [!NOTE]
 > De voorbeelden in dit artikel maken gebruik van beheer-cmdlets voor [AZ. CosmosDB](/powershell/module/az.cosmosdb). Zie de referentiepagina van [Az.CosmosDB](/powershell/module/az.cosmosdb) API voor de nieuwste wijzigingen.
@@ -169,6 +169,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
+
 ### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Meerdere schrijfregio's inschakelen voor een Azure Cosmos-account
 
 ```azurepowershell-interactive
@@ -352,6 +353,7 @@ In de volgende secties ziet u hoe u de Azure Cosmos DB-database kunt beheren, me
 * [Een Azure Cosmos DB-database maken](#create-db)
 * [Een Azure Cosmos DB-database met gedeelde doorvoer maken](#create-db-ru)
 * [De doorvoer van een Azure Cosmos DB-database ophalen](#get-db-ru)
+* [Data Base-door Voer migreren naar automatisch schalen](#migrate-db-ru)
 * [Alle Azure Cosmos DB-databases in een account weergeven](#list-db)
 * [ Eén Azure Cosmos DB-database ophalen](#get-db)
 * [Een Azure Cosmos DB-database verwijderen](#delete-db)
@@ -397,6 +399,20 @@ Get-AzCosmosDBSqlDatabaseThroughput `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
+```
+
+## <a name="migrate-database-throughput-to-autoscale"></a><a id="migrate-db-ru"></a>Data Base-door Voer migreren naar automatisch schalen
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+
+Invoke-AzCosmosDBSqlDatabaseThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -Name $databaseName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="get-all-azure-cosmos-db-databases-in-an-account"></a><a id="list-db"></a>Alle Azure Cosmos DB-databases in een account ophalen
@@ -480,6 +496,7 @@ In de volgende secties ziet u hoe u de Azure Cosmos DB-container kunt beheren, m
 * [Een Azure Cosmos DB-container met automatische schaalaanpassing maken](#create-container-autoscale)
 * [Een Azure Cosmos DB-container met een grote partitiesleutel maken](#create-container-big-pk)
 * [De doorvoer van een Azure Cosmos DB-container ophalen](#get-container-ru)
+* [Container doorvoer migreren naar automatisch schalen](#migrate-container-ru)
 * [Een Azure Cosmos DB-container met aangepaste indexering maken](#create-container-custom-index)
 * [Een Azure Cosmos DB-container met uitgeschakelde indexering maken](#create-container-no-index)
 * [Een Azure Cosmos DB-container met unieke sleutel en TTL maken](#create-container-unique-key-ttl)
@@ -565,6 +582,22 @@ Get-AzCosmosDBSqlContainerThroughput `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+
+### <a name="migrate-container-throughput-to-autoscale"></a><a id="migrate-container-ru"></a>Container doorvoer migreren naar automatisch schalen
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+
+Invoke-AzCosmosDBSqlContainerThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>Een Azure Cosmos DB-container met aangepast indexeringsbeleid maken

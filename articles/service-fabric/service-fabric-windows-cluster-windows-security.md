@@ -1,16 +1,14 @@
 ---
 title: Een cluster dat wordt uitgevoerd op Windows beveiligen met behulp van Windows-beveiliging
 description: Meer informatie over het configureren van knoop punt-naar-knoop punt en client-naar-knoop punt-beveiliging op een zelfstandig cluster waarop Windows wordt uitgevoerd met behulp van Windows-beveiliging.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: dekapur
-ms.openlocfilehash: 360bba2ffc344175214c44e2c9c1d3c0859ac3e5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e97a951f6dc0a97b1cfa8f960ed762084c82d2ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255962"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839477"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging
 Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet u het cluster beveiligen. Beveiliging is vooral belang rijk wanneer het cluster productie werkbelastingen uitvoert. In dit artikel wordt beschreven hoe u de beveiliging van knoop punt-naar-knoop punt en client-naar-knoop punt configureert met behulp van Windows-beveiliging in de *ClusterConfig.JSvoor* het bestand.  Het proces komt overeen met de beveiligings stap configureren van [een zelfstandig cluster maken dat wordt uitgevoerd in Windows](service-fabric-cluster-creation-for-windows-server.md). Zie [cluster beveiligings scenario's](service-fabric-cluster-security.md)voor meer informatie over het gebruik van Windows-beveiliging met Service Fabric.
@@ -21,7 +19,7 @@ Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Windows-beveiliging configureren met behulp van gMSA  
-De voorbeeld *ClusterConfig.gMSA.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging met behulp van door de [groep beheerde service accounts (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
+De voorbeeld *ClusterConfig.gMSA.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690) het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging met behulp van door de [groep beheerde service accounts (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
 
 ```
 "security": {
@@ -77,7 +75,7 @@ In het volgende voor beeld van een **beveiligings** sectie wordt Windows-beveili
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Windows-beveiliging configureren met behulp van een computer groep  
-Dit model wordt afgeschaft. De aanbeveling is om gMSA te gebruiken zoals hierboven wordt beschreven. De voorbeeld *ClusterConfig.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging.  Windows-beveiliging is geconfigureerd in de sectie **Eigenschappen** : 
+Dit model wordt afgeschaft. De aanbeveling is om gMSA te gebruiken zoals hierboven wordt beschreven. De voorbeeld *ClusterConfig.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690) het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging.  Windows-beveiliging is geconfigureerd in de sectie **Eigenschappen** : 
 
 ```
 "security": {

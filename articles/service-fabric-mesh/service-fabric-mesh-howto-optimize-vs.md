@@ -1,16 +1,16 @@
 ---
 title: Visual Studio voor Azure Service Fabric-net optimaliseren
 description: In dit artikel ziet u hoe u de prestaties van Visual Studio kunt optimaliseren voor Service Fabric Mesh-projecten, zodat de eerste keer dat u foutopsporing (F5) uitvoert veel sneller verloopt.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 40c4e9972a3d83a5dd8247bacac12e9d67a15f66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa7a959128d3bcdfcce67d3abeac245975339a9f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497974"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840299"
 ---
 # <a name="optimize-visual-studio-performance-for-service-fabric-mesh-projects"></a>Prestaties van Visual Studio optimaliseren voor Service Fabric Mesh-projecten
 
