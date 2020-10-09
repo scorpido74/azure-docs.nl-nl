@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: ffd4ab463080001dbab5b0ed9ece69c4b5f91382
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81272080"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Trage query Logboeken in Azure Database for MariaDB
@@ -59,18 +59,18 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 |---|---|
 | `TenantId` | Uw Tenant-ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Tijds tempel voor het vastleggen van het logboek in UTC |
-| `Type` | Het type van het logboek. Altijd`AzureDiagnostics` |
+| `TimeGenerated` UTC | Tijds tempel voor het vastleggen van het logboek in UTC |
+| `Type` | Het type van het logboek. Altijd `AzureDiagnostics` |
 | `SubscriptionId` | GUID voor het abonnement waartoe de server behoort |
 | `ResourceGroup` | Naam van de resource groep waartoe de server behoort |
-| `ResourceProvider` | De naam van de resource provider. Altijd`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | De naam van de resource provider. Altijd `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Resource-URI |
 | `Resource` | Naam van de server |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Naam van de server |
-| `start_time_t`UTC | Tijdstip waarop de query is gestart |
+| `start_time_t` UTC | Tijdstip waarop de query is gestart |
 | `query_time_s` | De totale tijd die de query heeft uitgevoerd |
 | `lock_time_s` | Totale tijd dat de query is vergrendeld |
 | `user_host_s` | Gebruikersnaam |

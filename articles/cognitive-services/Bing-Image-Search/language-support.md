@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68881923"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Ondersteuning van talen en regio's voor de Bing Afbeeldingen zoeken-API
 
 Het Bing Afbeeldingen zoeken-API ondersteunt meer dan drie dozijn landen/regio's, veel met meer dan één taal. Het opgeven van een land/regio met een query is voornamelijk bedoeld voor het verfijnen van de zoek resultaten op basis van interesses in dat land/deze regio. Daarnaast kunnen de resultaten koppelingen naar Bing bevatten en kunnen deze koppelingen de Bing-gebruikers ervaring lokaliseren op basis van de opgegeven land/regio's of taal.
 
-Als u het land/de regio en taal wilt opgeven `mkt` , stelt u de query parameter (Market) in op een code uit de tabel **markten** hieronder. Op de markt wordt een land/regio en taal opgegeven. Als de gebruiker de weer gave van tekst in een andere taal wilt zien, `setLang` stelt u de query parameter in op de juiste taal code.
+Als u het land/de regio en taal wilt opgeven, stelt `mkt` u de query parameter (Market) in op een code uit de tabel **markten** hieronder. Op de markt wordt een land/regio en taal opgegeven. Als de gebruiker de weer gave van tekst in een andere taal wilt zien, stelt `setLang` u de query parameter in op de juiste taal code.
 
-U kunt ook het land/de regio opgeven met behulp `cc` van de query-para meter. Als u een land/regio opgeeft, moet u ook een of meer taal codes opgeven met de `Accept-Language` http-header. De ondersteunde talen variëren per land/regio. ze worden vermeld voor elk land/elke regio in de tabel markten.
+U kunt ook het land/de regio opgeven met behulp van de `cc` query-para meter. Als u een land/regio opgeeft, moet u ook een of meer taal codes opgeven met de `Accept-Language` http-header. De ondersteunde talen variëren per land/regio. ze worden vermeld voor elk land/elke regio in de tabel markten.
 
 > [!NOTE]
 > De API voor trending-installatie kopieën ondersteunt momenteel alleen de volgende markten:
@@ -85,7 +85,7 @@ U kunt ook het land/de regio opgeven met behulp `cc` van de query-para meter. Al
 |België|Frans|fr-worden|
 |Brazilië|Portugees|pt-BR|
 |Canada|Engels|en-CA|
-|Canada|Frans|FR-CA|
+|Canada|Frans|fr-CA|
 |Chili|Spaans|es-LC|
 |Denemarken|Deens|da-DK|
 |Finland|Fins|fi-FI|
@@ -110,8 +110,8 @@ U kunt ook het land/de regio opgeven met behulp `cc` van de query-para meter. Al
 |Zuid-Afrika|Engels|en-ZA|
 |Spanje|Spaans|es-ES|
 |Zweden|Zweeds|sv-SE|
-|Zwitserland|Frans|FR-CH|
-|Zwitserland|Duits|Dech|
+|Zwitserland|Frans|fr-CH|
+|Zwitserland|Duits|de-CH|
 |Taiwan|Traditioneel Chinees|zh-TW|
 |Turkije|Turks|tr-TR|
 |Verenigd Koninkrijk|Engels|en-GB|

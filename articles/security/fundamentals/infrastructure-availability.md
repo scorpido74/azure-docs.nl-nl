@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727220"
 ---
 # <a name="azure-infrastructure-availability"></a>Beschik baarheid van Azure-infra structuur
@@ -37,7 +37,7 @@ Micro soft zorgt voor hoge Beschik baarheid door middel van geavanceerde bewakin
 ## <a name="disaster-recovery"></a>Herstel na noodgeval
 Azure houdt uw gegevens duurzaam op twee locaties. U kunt de locatie van de back-upsite kiezen. Op beide locaties onderhoudt Azure voortdurend drie gezonde replica's van uw gegevens.
 
-## <a name="database-availability"></a>Beschik baarheid van data base
+## <a name="database-availability"></a>Beschikbaarheid van de database
 Azure zorgt ervoor dat een Data Base toegankelijk is via een Internet gateway met aanhoudende Beschik baarheid van de data base. Bewaking evalueert de status en de status van de actieve data bases met een tijds interval van vijf minuten.
 
 ## <a name="storage-availability"></a>Opslagbeschikbaarheid

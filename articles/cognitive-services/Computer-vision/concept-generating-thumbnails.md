@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68945220"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Miniaturen met slimme bijsnijding genereren met Computer Vision
@@ -24,7 +24,7 @@ Een miniatuur is een weer gave met een verkleinde grootte van een afbeelding. Mi
 
 De Computer Vision algoritme voor het genereren van miniaturen werkt als volgt:
 
-1. Verwijder de Afleidings elementen uit de afbeelding en Identificeer het _gedeelte van_&mdash;de afbeelding waarin de hoofd objecten worden weer gegeven.
+1. Verwijder de Afleidings elementen uit de afbeelding en Identificeer het _gedeelte van_de &mdash; afbeelding waarin de hoofd objecten worden weer gegeven.
 1. De afbeelding bijsnijden op basis van het geïdentificeerde _gedeelte van de interesse_.
 1. Wijzig de hoogte-breedte verhouding zodat deze overeenkomt met de doel miniatuur dimensies.
 

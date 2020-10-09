@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68500599"
 ---
 # <a name="get-insights-about-a-video"></a>Inzichten over een video verkrijgen
@@ -34,7 +34,7 @@ Elke video die wordt geretourneerd door de Bing Video's zoeken-API bevat een vid
     ],
 ```
 
-Vervolgens verzendt u een GET-aanvraag naar het eind punt video details met de ID. Stel de [id-](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) query parameter in `videoId` op het token. Stel de query parameter voor [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) in om de inzichten op te geven die u wilt ophalen. Stel `modules` alle inzichten in op alle. Het antwoord bevat alle inzichten die u hebt aangevraagd, indien beschikbaar.
+Vervolgens verzendt u een GET-aanvraag naar het eind punt video details met de ID. Stel de [id-](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) query parameter in op het `videoId` token. Stel de query parameter voor [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) in om de inzichten op te geven die u wilt ophalen. Stel alle inzichten in op `modules` alle. Het antwoord bevat alle inzichten die u hebt aangevraagd, indien beschikbaar.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Inzichten over gerelateerde Video's ophalen  
 
-Als u Video's wilt ophalen die verwant zijn aan de opgegeven video, [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) stelt u de para `RelatedVideos`meter voor de module-query in op.
+Als u Video's wilt ophalen die verwant zijn aan de opgegeven video, stelt u de para meter voor de [module](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) -query in op `RelatedVideos` .
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  

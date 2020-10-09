@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
 ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883082"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Ontwikkel voor mobiele apparaten met Azure IoT Sdk's
@@ -29,7 +29,7 @@ Azure IoT Hub C SDK is in C99 geschreven voor een maximale portabiliteit voor ve
 
 In deze documentatie wordt uitgelegd hoe u een toepassings-of service toepassing op een iOS-apparaat kunt ontwikkelen:
 
-* [Snelstartgids: Telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-ios.md)  
+* [Snelstart: Telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-ios.md)  
 * [Berichten vanuit de Cloud naar uw apparaat verzenden met IoT hub](iot-hub-ios-swift-c2d.md) 
 
 ### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Ontwikkelen met Azure IoT Hub CocoaPod-bibliotheken
@@ -47,7 +47,7 @@ Azure IoT Hub Java SDK ondersteunt Android-platform.  Voor de geteste API-versie
 
 Deze documenten begeleiden u bij het ontwikkelen van een toepassings-of service toepassing op een Android-apparaat met behulp van Gradle en Android Studio:
 
-* [Snelstartgids: Telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-android.md)  
+* [Snelstart: Telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-android.md)  
 * [Snelstartgids: een apparaat beheren](quickstart-control-device-android.md) 
 
 ## <a name="next-steps"></a>Volgende stappen

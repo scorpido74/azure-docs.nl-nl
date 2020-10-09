@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: c4c6b95996206cfb38ea3f77b89c3ebe3c2c0026
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883492"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Upgrade handleiding voor Bing Afbeeldingen zoeken-API V7
@@ -26,18 +26,18 @@ Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de
 
 ### <a name="endpoints"></a>Eindpunten
 
-- Het versie nummer van het eind punt is gewijzigd van v5 naar v7. Bijvoorbeeld https:\//API.Cognitive.Microsoft.com/Bing/\*\*v 7.0 * */Images/Search.
+- Het versie nummer van het eind punt is gewijzigd van v5 naar v7. Bijvoorbeeld https: \/ /API.Cognitive.Microsoft.com/Bing/ \* \* v 7.0 * */Images/Search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fout bericht objecten en fout codes
 
 - Alle mislukte aanvragen moeten nu een `ErrorResponse` object bevatten in de hoofd tekst van het antwoord.
 
-- De volgende velden zijn toegevoegd aan `Error` het object.  
+- De volgende velden zijn toegevoegd aan het `Error` object.  
   - `subCode`&mdash;Partitioneert de fout code indien mogelijk naar discrete buckets
   - `moreDetails`&mdash;Aanvullende informatie over de fout die in het `message` veld wordt beschreven
 
 
-- De V5-fout codes zijn vervangen door de `code` volgende `subCode` mogelijke en waarden.
+- De V5-fout codes zijn vervangen door de volgende mogelijke `code` en `subCode` waarden.
 
 |Code|SubCode|Beschrijving
 |-|-|-
@@ -83,13 +83,13 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="image-insights-changes"></a>Wijzigingen in image Insights
 
-- De naam van het `annotations` veld van [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) is `imageTags`gewijzigd in.  
+- De naam van het `annotations` veld van [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) is gewijzigd in `imageTags` .  
 
 - De naam van het `AnnotationModule` object is gewijzigd in [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule).  
 
 - De naam van het `Annotation` object is gewijzigd in [Label](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag)en het `confidence` veld is verwijderd.  
 
-- De naam van het `insightsSourcesSummary` veld van het [afbeeldings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object `insightsMetadata`is gewijzigd in.  
+- De naam van het `insightsSourcesSummary` veld van het [afbeeldings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object is gewijzigd in `insightsMetadata` .  
 
 - De naam van het `InsightsSourcesSummary` object is gewijzigd in [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata).  
 
@@ -122,17 +122,17 @@ Geblokkeerd|InvalidRequest. blocked
 
     -   Wijzig het type van het `visuallySimilarProducts` veld van `ProductSummaryImage[]` in [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
 
-    -   Het `ProductSummaryImage` object is verwijderd en de productgerelateerde velden zijn verplaatst naar het [afbeeldings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object. Het `Image` object bevat alleen de productgerelateerde velden wanneer de afbeelding is opgenomen als onderdeel van visueel vergelijk bare producten in een image Insight-reactie.  
+    -   Het object is verwijderd `ProductSummaryImage` en de productgerelateerde velden zijn verplaatst naar het [afbeeldings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) object. Het `Image` object bevat alleen de productgerelateerde velden wanneer de afbeelding is opgenomen als onderdeel van visueel vergelijk bare producten in een image Insight-reactie.  
 
     -   Wijzig het type van het `recognizedEntityGroups` veld van `RecognizedEntityGroup[]` in [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule).  
 
--   De naam van het `categoryClassification` veld van [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) is `annotations`gewijzigd in `AnnotationsModule`.  
+-   De naam van het `categoryClassification` veld van [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) `annotations` is gewijzigd in `AnnotationsModule` .  
 
 ### <a name="images-answer"></a>Antwoord op installatie kopieën
 
 -   De velden displayShoppingSourcesBadges en displayRecipeSourcesBadges zijn verwijderd uit [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images).  
 
--   De naam van het `nextOffsetAddCount` veld met [installatie kopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) is gewijzigd in `nextOffset`. De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen stelt u de [Offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) query-para meter in `nextOffsetAddCount` op de waarde plus de vorige offset waarde plus het aantal afbeeldingen in het resultaat. Nu kunt u de `offset` `nextOffset` waarde instellen.  
+-   De naam van het `nextOffsetAddCount` veld met [installatie kopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) is gewijzigd in `nextOffset` . De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen stelt u de [Offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) query-para meter in op de `nextOffsetAddCount` waarde plus de vorige offset waarde plus het aantal afbeeldingen in het resultaat. Nu kunt u `offset` de waarde instellen `nextOffset` .  
 
 
 ## <a name="non-breaking-changes"></a>Niet-brekende wijzigingen
@@ -149,8 +149,8 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- De `description` velden en `lastUpdated` zijn toegevoegd aan het [aanbiedings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) object.  
+- De `description` velden en zijn toegevoegd `lastUpdated` aan het [aanbiedings](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) object.  
 
-- Het `name` veld is toegevoegd aan het [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) -object.  
+- Het veld is toegevoegd `name` aan het [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) -object.  
 
-- Wordt `similarTerms` toegevoegd aan het [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object. Dit veld bevat een lijst met termen die vergelijkbaar zijn met de query teken reeks van de gebruiker.  
+- Wordt toegevoegd `similarTerms` aan het [afbeeldingen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) -object. Dit veld bevat een lijst met termen die vergelijkbaar zijn met de query teken reeks van de gebruiker.  

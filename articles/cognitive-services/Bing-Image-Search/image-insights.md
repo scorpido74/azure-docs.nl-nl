@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883433"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Image Insights ophalen met de Bing Afbeeldingen zoeken-API
@@ -41,9 +41,9 @@ Als u inzicht wilt krijgen in een afbeelding, legt u het [imageInsightsToken](ht
 }],
 ```
 
-Vervolgens roept u het eind punt voor de afbeeldings [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) gegevens aan en stelt u de insightsToken `imageInsightsToken`-query parameter in op het token in.  
+Vervolgens roept u het eind punt voor de afbeeldings gegevens aan en stelt u de [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) -query parameter in op het token in `imageInsightsToken` .  
 
-Stel de `modules` query-para meter in om de inzichten op te geven die u wilt ophalen. Als u alle inzichten wilt ophalen `modules` , `All`stelt u in op. Als u alleen het bijschrift en verzamel inzichten wilt ophalen `modules` , `Caption%2CCollection`stelt u in op. Zie [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)voor een volledige lijst met mogelijke inzichten. Niet alle inzichten zijn beschikbaar voor alle installatie kopieën. Het antwoord bevat alle inzichten die u hebt aangevraagd, indien beschikbaar.
+Stel de query-para meter in om de inzichten op te geven die u wilt ophalen `modules` . Als u alle inzichten wilt ophalen, stelt `modules` u in op `All` . Als u alleen het bijschrift en verzamel inzichten wilt ophalen, stelt `modules` u in op `Caption%2CCollection` . Zie [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)voor een volledige lijst met mogelijke inzichten. Niet alle inzichten zijn beschikbaar voor alle installatie kopieën. Het antwoord bevat alle inzichten die u hebt aangevraagd, indien beschikbaar.
 
 In het volgende voor beeld wordt alle beschik bare inzichten voor de voor gaande afbeelding opgevraagd.
 
@@ -59,7 +59,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-insights-of-a-known-image"></a>Inzichten verkrijgen van een bekende installatie kopie
 
-Als u de URL naar een afbeelding hebt waarvan u inzicht wilt krijgen, gebruikt u de query parameter [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) in plaats van de para meter [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) om de installatie kopie op te geven. Als u het afbeeldings bestand hebt, kunt u de binaire afbeelding van de installatie kopie verzenden naar de hoofd tekst van een POST-aanvraag. Als u een POST-aanvraag gebruikt, `Content-Type` moet de koptekst worden ingesteld `multipart/data-form`op. Met beide opties kan de grootte van de afbeelding niet groter zijn dan 1 MB.  
+Als u de URL naar een afbeelding hebt waarvan u inzicht wilt krijgen, gebruikt u de query parameter [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl) in plaats van de para meter [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) om de installatie kopie op te geven. Als u het afbeeldings bestand hebt, kunt u de binaire afbeelding van de installatie kopie verzenden naar de hoofd tekst van een POST-aanvraag. Als u een POST-aanvraag gebruikt, `Content-Type` moet de koptekst worden ingesteld op `multipart/data-form` . Met beide opties kan de grootte van de afbeelding niet groter zijn dan 1 MB.  
 
 Als u een URL naar de afbeelding hebt, ziet u in het volgende voor beeld hoe u inzichten van een afbeelding aanvraagt.
 
@@ -75,7 +75,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-all-image-insights"></a>Alle image Insights ophalen  
 
-Als u alle inzichten van een installatie kopie wilt aanvragen [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) , stelt u de `All`query parameter voor modules in op. Om verwante Zoek opdrachten te krijgen, moet de aanvraag de query teken reeks van de gebruiker bevatten. In dit voor beeld ziet u hoe de [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) wordt gebruikt om de afbeelding op te geven.  
+Als u alle inzichten van een installatie kopie wilt aanvragen, stelt u de query parameter voor [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) in op `All` . Om verwante Zoek opdrachten te krijgen, moet de aanvraag de query teken reeks van de gebruiker bevatten. In dit voor beeld ziet u hoe de [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) wordt gebruikt om de afbeelding op te geven.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&insightsToken=mid_68364D764J...&modules=All&mkt=en-us HTTP/1.1  
@@ -174,7 +174,7 @@ Het object op het hoogste niveau is een [ImageInsightsResponse](https://docs.mic
 
 ## <a name="recognizing-entities-in-an-image"></a>Entiteiten herkennen in een installatie kopie  
 
-De functie voor entiteits herkenning identificeert entiteiten in een installatie kopie, momenteel alleen personen. Als u entiteiten in een installatie kopie wilt identificeren [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) , stelt u de `RecognizedEntities`query parameter modules in op.  
+De functie voor entiteits herkenning identificeert entiteiten in een installatie kopie, momenteel alleen personen. Als u entiteiten in een installatie kopie wilt identificeren, stelt u de query parameter [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) in op `RecognizedEntities` .  
 
 > [!NOTE]
 > U mag deze module niet met een andere module opgeven. Als u deze module met andere modules opgeeft, bevat het antwoord geen herkende entiteiten.  
@@ -212,7 +212,7 @@ Hieronder ziet u het antwoord op de vorige aanvraag. Omdat de afbeelding twee pe
 }
 ```
 
-In `region` het veld wordt het gebied van de installatie kopie aangegeven waar Bing de entiteit heeft herkend. Voor personen staat de regio voor het gezicht van de persoon.  
+In het `region` veld wordt het gebied van de installatie kopie aangegeven waar Bing de entiteit heeft herkend. Voor personen staat de regio voor het gezicht van de persoon.  
 
 De waarden van de rechthoek zijn relatief ten opzichte van de breedte en hoogte van de oorspronkelijke afbeelding en zijn in het bereik 0,0 tot en met 1,0. Als de afbeelding bijvoorbeeld 300x200 is en de bovenste, linkerhoek van het gebied op punt (10, 20) en de onderste, rechter hoek op punt (290, 150), is de genormaliseerde rechthoek:  
 
@@ -408,7 +408,7 @@ Hieronder ziet u het antwoord op de vorige aanvraag. Het antwoord bevat een afbe
 }
 ```
 
-Als u een lijst wilt weer geven met de handelaars die het product online aanbieden (Zie het veld [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) ), roept u de `modules` API opnieuw aan en stelt u deze in op ShoppingSources. Vervolgens stelt u de `insightsToken` query-para meter in op het token dat is gevonden in de product samenvattings afbeelding.  
+Als u een lijst wilt weer geven met de handelaars die het product online aanbieden (Zie het veld [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) ), roept u de API opnieuw aan en stelt `modules` u deze in op ShoppingSources. Vervolgens stelt u de `insightsToken` query-para meter in op het token dat is gevonden in de product samenvattings afbeelding.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

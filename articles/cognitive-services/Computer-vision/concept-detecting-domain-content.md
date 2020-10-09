@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68946327"
 ---
 # <a name="detect-domain-specific-content"></a>Domeinspecifieke inhoud detecteren
@@ -26,7 +26,7 @@ Er zijn twee manieren om domein-specifieke modellen te gebruiken: op zichzelf (b
 
 ### <a name="scoped-analysis"></a>Bereik analyse
 
-U kunt een installatie kopie alleen analyseren met het gekozen domein-specifieke model door de [modellen/\<model\>/-](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API aan te roepen.
+U kunt een installatie kopie alleen analyseren met het gekozen domein-specifieke model door de API [modellen/ \<model\> /](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) aan te roepen.
 
 Hier volgt een voor beeld van een JSON-antwoord dat wordt geretourneerd door de **modellen/beroemdheden/analyse-** API voor de opgegeven installatie kopie:
 
@@ -61,7 +61,7 @@ U kunt ook gebruikersspecifieke modellen gebruiken om een aanvulling op de algem
 
 In dit geval wordt de taxonomie classificatie 86-categorie eerst aangeroepen. Als een van de gedetecteerde categorieën een overeenkomend specifiek domein model heeft, wordt de installatie kopie door het model door gegeven en worden de resultaten toegevoegd.
 
-In het volgende JSON-antwoord ziet u hoe serverspecifieke analyses kunnen worden opgenomen als `detail` het knoop punt in een bredere categorisatie analyse.
+In het volgende JSON-antwoord ziet u hoe serverspecifieke analyses kunnen worden opgenomen als het `detail` knoop punt in een bredere categorisatie analyse.
 
 ```json
 "categories":[
@@ -102,8 +102,8 @@ Computer Vision ondersteunt momenteel de volgende domein-specifieke modellen:
 
 | Naam | Beschrijving |
 |------|-------------|
-| beroemdheden | Beroemdheden-herkenning, ondersteund voor installatie kopieën die `people_` in de categorie zijn geclassificeerd |
-| oriëntatie punten | Oriëntatie punt herkenning, ondersteund voor installatie kopieën die `outdoor_` zijn `building_` geclassificeerd in de categorieën of |
+| beroemdheden | Beroemdheden-herkenning, ondersteund voor installatie kopieën die in de categorie zijn geclassificeerd `people_` |
+| oriëntatie punten | Oriëntatie punt herkenning, ondersteund voor installatie kopieën die zijn geclassificeerd in de `outdoor_` `building_` Categorieën of |
 
 Het aanroepen van de [modellen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API retourneert deze informatie samen met de categorieën waarop elk model kan worden toegepast:
 

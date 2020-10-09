@@ -4,7 +4,7 @@
   items:
     - name: Wat is voorwaardelijke toegang?
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Vereisen dat de gebruiksvoorwaarden worden geaccepteerd
       href: require-tou.md

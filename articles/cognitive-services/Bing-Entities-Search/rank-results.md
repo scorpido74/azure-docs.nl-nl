@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68423912"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Classificatie gebruiken om de zoek resultaten van entiteiten weer te geven  
@@ -26,12 +26,12 @@ Binnen elke groep identificeert de [items](https://docs.microsoft.com/rest/api/c
 
 |Veld | Beschrijving  |
 |---------|---------|
-|`answerType` en `resultIndex` | `answerType`identificeert het antwoord (ofwel entiteit of plaats) `resultIndex` en identificeert een resultaat binnen dat antwoord (bijvoorbeeld een entiteit). De index begint bij 0.|
-|`value`    | `value`Bevat een ID die overeenkomt met de ID van een antwoord of een resultaat binnen het antwoord. Het antwoord of de resultaten bevatten de ID, maar niet beide. |
+|`answerType` en `resultIndex` | `answerType` identificeert het antwoord (ofwel entiteit of plaats) en `resultIndex` identificeert een resultaat binnen dat antwoord (bijvoorbeeld een entiteit). De index begint bij 0.|
+|`value`    | `value` Bevat een ID die overeenkomt met de ID van een antwoord of een resultaat binnen het antwoord. Het antwoord of de resultaten bevatten de ID, maar niet beide. |
   
-Met de `answerType` en `resultIndex` is een proces dat uit twee stappen bestaat. Gebruik `answerType` eerst om het antwoord te identificeren dat de resultaten bevat die moeten worden weer gegeven. Gebruik `resultIndex` vervolgens om de resultaten van dat antwoord te indexeren om het resultaat weer te geven. (De `answerType` waarde is de naam van het veld in het object [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) .) Als u wilt dat alle antwoord resultaten samen worden weer gegeven, bevat het positie-antwoord item niet het `resultIndex` veld.
+Met de `answerType` en `resultIndex` is een proces dat uit twee stappen bestaat. Gebruik eerst `answerType` om het antwoord te identificeren dat de resultaten bevat die moeten worden weer gegeven. Gebruik vervolgens `resultIndex` om de resultaten van dat antwoord te indexeren om het resultaat weer te geven. (De `answerType` waarde is de naam van het veld in het object [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) .) Als u wilt dat alle antwoord resultaten samen worden weer gegeven, bevat het positie-antwoord item niet het `resultIndex` veld.
 
-Als u de ID gebruikt, moet u de classificatie-ID overeenkomen met de ID van een antwoord of een van de resultaten. Als een antwoord object een `id` veld bevat, worden alle resultaten van het antwoord samen weer gegeven. Als het `Entities` -object bijvoorbeeld het `id` veld bevat, geeft alle artikelen van de entiteit samen. Als het `Entities` `id` veld niet is opgenomen in het object, bevat elke entiteit een `id` veld en wordt de rang orde van de entiteiten mixen met de locatie resultaten.  
+Als u de ID gebruikt, moet u de classificatie-ID overeenkomen met de ID van een antwoord of een van de resultaten. Als een antwoord object een `id` veld bevat, worden alle resultaten van het antwoord samen weer gegeven. Als het-object bijvoorbeeld `Entities` het veld bevat `id` , geeft alle artikelen van de entiteit samen. Als het `Entities` veld niet is opgenomen in het object `id` , bevat elke entiteit een `id` veld en wordt de rang orde van de entiteiten mixen met de locatie resultaten.  
   
 ## <a name="ranking-response-example"></a>Voor beeld van een rang orde-antwoord
 
