@@ -7,13 +7,13 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85114262"
 ---
-# <a name="common-azure-cosmos-db-use-cases"></a>Algemene Azure Cosmos DB use cases
+# <a name="common-azure-cosmos-db-use-cases"></a>Gebruikelijke Azure Cosmos DB use cases
 In dit artikel vindt u een overzicht van een aantal algemene gebruiks voorbeelden voor Azure Cosmos DB.  De aanbevelingen in dit artikel dienen als uitgangs punt bij het ontwikkelen van uw toepassing met Cosmos DB.   
 
 Na het lezen van dit artikel kunt u de volgende vragen beantwoorden: 
@@ -57,16 +57,16 @@ Scenario's voor het gebruik van catalogus gegevens omvatten het opslaan en opvra
 
 Bekijk een voor beeld van een product catalogus voor een leverancier van auto onderdelen. Elk onderdeel kan zijn eigen kenmerken hebben naast de algemene kenmerken die alle onderdelen delen. Bovendien kunnen kenmerken voor een specifiek deel het volgende jaar wijzigen wanneer een nieuw model wordt vrijgegeven. Azure Cosmos DB biedt ondersteuning voor flexibele schema's en hiërarchische gegevens, zodat deze geschikt zijn voor het opslaan van product catalogus gegevens.
 
-:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Referentie architectuur van de retail Catalog Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="IoT-referentie architectuur Azure Cosmos DB" border="false":::
 
 Azure Cosmos DB wordt vaak gebruikt voor gebeurtenis bronnen voor gestuurde architecturen op basis van de [wijzigings](change-feed.md) functie van de feed. De wijzigings feed biedt downstream micro Services de mogelijkheid om invoegingen en updates (bijvoorbeeld bestel gebeurtenissen) op betrouw bare en incrementele wijze te lezen die zijn aangebracht in een Azure Cosmos DB. Deze functionaliteit kan worden gebruikt om een persistent gebeurtenis archief als een Message Broker te bieden voor status wijzigings gebeurtenissen en werk stroom voor de verwerking van de verwerkings volgorde tussen veel micro Services (die kunnen worden geïmplementeerd als [serverloze Azure functions](https://azure.com/serverless)).
 
-:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Pijplijn referentie architectuur Azure Cosmos DB best Ellen" border="false":::
+:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="IoT-referentie architectuur Azure Cosmos DB" border="false":::
 
 Bovendien kunnen gegevens die zijn opgeslagen in Azure Cosmos DB worden geïntegreerd met HDInsight voor big data Analytics via Apache Spark-taken. Zie [een Spark-taak uitvoeren met Cosmos DB en HDInsight](spark-connector.md)voor meer informatie over de Spark-Connector voor Azure Cosmos db.
 
 ## <a name="gaming"></a>Gaming
-De data base-laag is een cruciaal onderdeel van gaming toepassingen. Moderne games voeren grafische verwerking uit op mobiele/console-clients, maar vertrouw op de cloud om aangepaste en gepersonaliseerde inhoud te leveren, zoals in-game statistieken, integratie van sociale media en klassementen voor hoge scores. Spellen vereisen vaak enkele milliseconde wacht tijden voor lees-en schrijf bewerkingen om een gebruiks vriendelijke ervaring te bieden. Een game database moet snel zijn en in staat zijn om grote pieken in de aanvraag frequenties te verwerken tijdens het starten van het nieuwe spel en updates van onderdelen.
+De databaselaag is een cruciaal onderdeel van gamingtoepassingen. Moderne games voeren grafische verwerking uit op mobiele/consoleclients, maar zijn afhankelijk van de cloud om aangepaste en gepersonaliseerde inhoud te leveren, zoals in-gamestatistieken, integratie van sociale media en klassementen voor hoogste scores. Spellen vereisen vaak enkele milliseconde wacht tijden voor lees-en schrijf bewerkingen om een gebruiks vriendelijke ervaring te bieden. Een gamedatabase moet snel zijn en in staat zijn om grote pieken in het aantal aanvragen te verwerken tijdens het starten van een nieuwe game en functie-updates.
 
 Azure Cosmos DB wordt gebruikt door games als de doorlopende [dood: er is geen man](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) met de [volgende games](https://www.nextgames.com/)en [Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Azure Cosmos DB biedt de volgende voor delen voor spel ontwikkelaars:
 
@@ -76,10 +76,10 @@ Azure Cosmos DB wordt gebruikt door games als de doorlopende [dood: er is geen m
 * Sociale functies met inbegrip van game-chat berichten, Guild-lidmaatschappen van spelers, uitdagingen die zijn voltooid, kwalitatief hoogwaardige klassementen en sociale grafieken zijn eenvoudiger te implementeren met een flexibel schema.
 * Azure Cosmos DB als een beheerde PaaS (platform-as-a-Service) vereist mini maal installatie-en beheer taken om snel te kunnen iteratieen en de tijd op de markt te verminderen.
 
-:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB-naslag architectuur voor games" border="false":::
+:::image type="content" source="./media/use-cases/gaming.png" alt-text="IoT-referentie architectuur Azure Cosmos DB" border="false":::
 
-## <a name="web-and-mobile-applications"></a>Web-en mobiele toepassingen
-Azure Cosmos DB wordt doorgaans gebruikt in web-en mobiele toepassingen en is goed geschikt voor het model leren van sociale interacties, integratie met services van derden en voor het bouwen van geavanceerde persoonlijke ervaringen. De Cosmos DB Sdk's kunnen worden gebruikt om geavanceerde iOS-en Android-toepassingen te bouwen met behulp van het populaire [Xamarin-Framework](mobile-apps-with-xamarin.md).  
+## <a name="web-and-mobile-applications"></a>Webtoepassingen en mobiele toepassingen
+Azure Cosmos DB wordt doorgaans gebruikt in web- en mobiele toepassingen en is zeer geschikt voor het modelleren van sociale interacties, integratie met services van derden en voor het bouwen van geavanceerde persoonlijke ervaringen. De Cosmos DB Sdk's kunnen worden gebruikt om geavanceerde iOS-en Android-toepassingen te bouwen met behulp van het populaire [Xamarin-Framework](mobile-apps-with-xamarin.md).  
 
 ### <a name="social-applications"></a>Sociale toepassingen
 Een veelvoorkomend gebruik van Azure Cosmos DB is het opslaan en opvragen van door de gebruiker gegenereerde inhoud (UGC) voor web-, mobiele en Social-media toepassingen. Enkele voor beelden van UGC zijn chat sessies, tweets, blog berichten, beoordelingen en opmerkingen. Vaak is het UGC van toepassingen in sociale media een combi natie van vrije tekst, eigenschappen, tags en relaties die niet worden begrensd door stijve structuur. Inhoud zoals chats, opmerkingen en Posts kunnen worden opgeslagen in Cosmos DB zonder trans formaties of complex object naar relationele toewijzings lagen te hoeven.  Gegevens eigenschappen kunnen eenvoudig worden toegevoegd of gewijzigd om te voldoen aan de vereisten als ontwikkel aars de code van de toepassing herhalen, waardoor de snelle ontwikkeling kan worden bevorderd.  
@@ -88,14 +88,14 @@ Toepassingen die met sociale netwerken van derden kunnen worden geïntegreerd, m
 
 Veel van de sociale toepassingen worden uitgevoerd op wereld wijde schaal en kunnen onvoorspelbare gebruiks patronen vertonen. De flexibiliteit bij het schalen van het gegevens archief is essentieel voor de schaal van de toepassingslaag zodat deze overeenkomt met de gebruiks vraag.  U kunt uitschalen door extra gegevens partities toe te voegen onder een Cosmos DB-account.  Daarnaast kunt u ook extra Cosmos DB-accounts maken in meerdere regio's. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor Cosmos DB Beschik baarheid van de service regio.
 
-:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Referentie architectuur voor Azure Cosmos DB web-app" border="false":::
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="IoT-referentie architectuur Azure Cosmos DB" border="false":::
 
-### <a name="personalization"></a>Persoonlijke instellingen
+### <a name="personalization"></a>Personalisatie
 Tegenwoordig, moderne toepassingen worden geleverd met complexe weer gaven en ervaringen. Dit zijn doorgaans dynamische, Cate ring voor gebruikers voorkeuren of stemmingen en huismerk vereisten. Daarom moeten toepassingen aangepaste instellingen effectief kunnen ophalen om gebruikers interface-elementen en-ervaringen snel weer te geven. 
 
 JSON, een indeling die wordt ondersteund door Cosmos DB, is een effectief formaat om de indelings gegevens van de gebruikers interface weer te geven, aangezien deze niet alleen lichter zijn, maar ook gemakkelijk kunnen worden geïnterpreteerd door Java script. Cosmos DB biedt instel bare-consistentie niveaus die snelle lees bewerkingen met lage latentie mogelijk maken. Daarom is het opslaan van gegevens over de indeling van de gebruikers interface, inclusief persoonlijke instellingen als JSON-documenten in Cosmos DB een doel matige manier om deze gegevens over de kabel te halen.
 
-:::image type="content" source="./media/use-cases/personalization.png" alt-text="Referentie architectuur voor Azure Cosmos DB web-app" border="false":::
+:::image type="content" source="./media/use-cases/personalization.png" alt-text="IoT-referentie architectuur Azure Cosmos DB" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: e7f5af42d0bb0079746cc9e64b621adfebd565d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072658"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>Bing Entiteiten zoeken-API-eind punt
@@ -24,7 +24,7 @@ De Bing Entiteiten zoeken-API heeft één eind punt dat entiteiten uit het web r
 
 ## <a name="get-entity-results-from-the-endpoint"></a>Entiteits resultaten ophalen van het eind punt
 
-Als u entiteits resultaten wilt ophalen met behulp van `GET` de **Bing API**, verzendt u een aanvraag naar het volgende eind punt. Gebruik [kopteksten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) en [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) om uw zoek opdracht aan te passen. Zoek opdrachten kunnen worden verzonden met behulp van de `?q=` para meter.
+Als u entiteits resultaten wilt ophalen met behulp van de **Bing API**, verzendt `GET` u een aanvraag naar het volgende eind punt. Gebruik [kopteksten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) en [query parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) om uw zoek opdracht aan te passen. Zoek opdrachten kunnen worden verzonden met behulp van de `?q=` para meter.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities

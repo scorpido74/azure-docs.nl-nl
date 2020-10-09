@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76932302"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Overzicht van omgekeerde DNS en ondersteuning in azure
@@ -87,7 +87,7 @@ Een reverse lookup voor het IP-adres ' 192.0.2.129 ' query's voor een PTR-record
 
 ### <a name="ipv6"></a>IPv6
 
-De naam van een IPv6-zone voor reverse lookup moet de volgende vorm hebben:`<IPv6 network prefix in reverse order>.ip6.arpa`
+De naam van een IPv6-zone voor reverse lookup moet de volgende vorm hebben: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
 Bijvoorbeeld. Bij het maken van een reverse zone voor het hosten van records voor hosts met IP-adressen in het voor voegsel 2001: db8:1000: abdc::/64, wordt de zone naam gemaakt door het netwerk voorvoegsel van het adres (2001: db8: abdc::)) te isoleren. Vouw vervolgens het voor voegsel van het IPv6-netwerk uit om [geen compressie van nul](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)te verwijderen, als dit is gebruikt om het IPv6-adres voorvoegsel (2001:0db8: abdc: 0000::)) te verkorten. Keer de volg orde om met een punt als scheidings teken tussen elk hexadecimaal getal in het voor voegsel om het omgekeerde netwerk voorvoegsel ( `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2` ) te maken en het achtervoegsel toe te voegen `.ip6.arpa` .
 

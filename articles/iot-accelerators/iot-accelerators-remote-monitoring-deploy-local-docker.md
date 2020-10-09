@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73888823"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>De externe controle oplossings versneller implementeren lokaal-docker
@@ -53,7 +53,7 @@ set PCS
 
 De opdracht geeft alle omgevings variabelen weer die zijn ingesteld door het script **Start. cmd** .
 
-Zorg ervoor dat docker op uw lokale computer wordt uitgevoerd.
+Zorg ervoor dat Docker wordt uitgevoerd op de lokale computer.
 > [!NOTE]
 > Docker moet Linux- [containers](https://docs.docker.com/docker-for-windows/) uitvoeren als deze wordt uitgevoerd in Windows.
 
@@ -98,7 +98,7 @@ Volg deze stappen om de Stream Analytics taak te starten:
 
 Ga naar in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle `http://localhost:8080` . U kunt nu de Web-UI en de lokale micro Services gebruiken.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Om onnodige kosten te voor komen, kunt u, wanneer u klaar bent met testen, de Cloud Services verwijderen uit uw Azure-abonnement. Als u de services wilt verwijderen, gaat u naar de [Azure Portal](https://ms.portal.azure.com) en verwijdert u de resource groep waarin het script **Start. cmd** is gemaakt.
 

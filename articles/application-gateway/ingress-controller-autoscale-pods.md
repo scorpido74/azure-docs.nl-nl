@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85125460"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Uw AKS-peul automatisch schalen met behulp van Application Gateway metrische gegevens (bèta)
 
 Als binnenkomend verkeer toeneemt, wordt het cruciaal om uw toepassingen op basis van de vraag te schalen.
 
-In de volgende zelf studie wordt uitgelegd hoe u de metrische gegevens van Application Gateway kunt gebruiken `AvgRequestCountPerHealthyHost` om uw toepassing uit te schalen. `AvgRequestCountPerHealthyHost`meet gemiddeld aanvragen die worden verzonden naar een specifieke back-end van een backend-groep en een back-endserver.
+In de volgende zelf studie wordt uitgelegd hoe u de metrische gegevens van Application Gateway kunt gebruiken `AvgRequestCountPerHealthyHost` om uw toepassing uit te schalen. `AvgRequestCountPerHealthyHost` meet gemiddeld aanvragen die worden verzonden naar een specifieke back-end van een backend-groep en een back-endserver.
 
 We gaan de volgende twee onderdelen gebruiken:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)-We gebruiken de metrische adapter om Application Gateway metrische gegevens beschikbaar te stellen via de metrische server. De Azure Kubernetes metric-adapter is een open-source project onder Azure, vergelijkbaar met de Application Gateway ingangs controller. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)-We gebruiken HPA om Application Gateway metrische gegevens te gebruiken en een implementatie te richten op schalen.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) -We gebruiken de metrische adapter om Application Gateway metrische gegevens beschikbaar te stellen via de metrische server. De Azure Kubernetes metric-adapter is een open-source project onder Azure, vergelijkbaar met de Application Gateway ingangs controller. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) -We gebruiken HPA om Application Gateway metrische gegevens te gebruiken en een implementatie te richten op schalen.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>De metrische adapter voor Azure Kubernetes instellen
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: rohink
 ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76937242"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Hoe Azure DNS werkt met andere Azure-Services?
@@ -31,7 +31,7 @@ Azure DNS is een gehoste DNS-beheer-en service voor naam omzetting. U kunt deze 
 
 De volgende tabel geeft een overzicht van de ondersteunde record typen die u voor verschillende Azure-Services kunt gebruiken. Zoals in de tabel wordt weer gegeven, ondersteunt Azure DNS alleen DNS-records voor netwerk bronnen op internet. Azure DNS kan niet worden gebruikt voor naam omzetting van interne, persoonlijke adressen.
 
-| Azure-service | Netwerkinterface | Description |
+| Azure-service | Netwerkinterface | Beschrijving |
 | --- | --- | --- |
 | Azure Application Gateway |[Openbaar IP-adres voor front-end](dns-custom-domain.md#public-ip-address) |U kunt een DNS A-of CNAME-record maken. |
 | Azure Load Balancer |[Openbaar IP-adres voor front-end](dns-custom-domain.md#public-ip-address) |U kunt een DNS A-of CNAME-record maken. Load Balancer kunnen een openbaar IP-adres voor IPv6 zijn dat dynamisch wordt toegewezen. Maak een CNAME-record voor een IPv6-adres. |

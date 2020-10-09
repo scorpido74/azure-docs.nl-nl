@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
 ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85081070"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Een groot aantal fysieke servers beoordelen voor migratie naar Azure
@@ -48,7 +48,7 @@ Gebruik de limieten in deze tabel voor de planning.
 --- | --- 
 **Azure Migrate projecten** | Evalueer Maxi maal 35.000 servers in een project.
 **Azure Migrate-apparaat** | Een apparaat kan Maxi maal 1000 servers detecteren.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/> Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
-**Gegroepeerd** | U kunt Maxi maal 35.000 servers in één groep toevoegen.
+**Groep** | U kunt Maxi maal 35.000 servers in één groep toevoegen.
 **Azure Migrate beoordeling** | U kunt Maxi maal 35.000 servers in één evaluatie evalueren.
 
 

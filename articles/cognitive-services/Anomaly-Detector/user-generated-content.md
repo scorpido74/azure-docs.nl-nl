@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
 ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74012028"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Door de gebruiker gegenereerde inhoud voor de anomalie detectie-API
@@ -30,4 +30,4 @@ Gebruik dit artikel om te ontdekken hoe andere klanten denken en de afwijkende d
 * [Jupyter-notebook die afwijkende detectie en streaming aan Power BI demonstreren](https://github.com/marvinbuss/MS-AnomalyFinder)
 
 Als u een resource wilt benoemen, vult u [een korte vorm](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxSkyhztUNZCtaivu8nmhd1UMENTMEJWTkRORkRGQUtGQzlWQ1dSV1JLTS4u)in.
-Neem AnomalyDetector@microsoft.com contact op met of verhoog een probleem op github als u de inhoud wilt verwijderen.
+Neem contact AnomalyDetector@microsoft.com op met of verhoog een probleem op github als u de inhoud wilt verwijderen.

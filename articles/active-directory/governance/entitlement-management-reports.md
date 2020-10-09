@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85078133"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Rapporten en logboeken weer geven in het beheer van rechten van Azure AD
@@ -35,9 +35,9 @@ Bekijk de volgende video voor meer informatie over hoe u kunt zien welke resourc
 
 Met dit rapport kunt u een lijst weer geven van alle toegangs pakketten die een gebruiker kan aanvragen en de toegangs pakketten die momenteel aan de gebruiker zijn toegewezen.
 
-**Vereiste rol:** Globale beheerder of gebruikers beheerder
+**Vereiste rol:** bedrijfsbeheerder of gebruikersbeheerder
 
-1. Klik op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het linkermenu op **rapporten**.
 
@@ -59,9 +59,9 @@ Met dit rapport kunt u een lijst weer geven van alle toegangs pakketten die een 
 
 Met dit rapport kunt u de resources weer geven die momenteel aan een gebruiker zijn toegewezen in het rechts beheer. Houd er rekening mee dat dit rapport is voor resources die worden beheerd met het rechten beheer. De gebruiker heeft mogelijk toegang tot andere resources in uw directory buiten het beheer van rechten.
 
-**Vereiste rol:** Globale beheerder of gebruikers beheerder
+**Vereiste rol:** bedrijfsbeheerder of gebruikersbeheerder
 
-1. Klik op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het linkermenu op **rapporten**.
 

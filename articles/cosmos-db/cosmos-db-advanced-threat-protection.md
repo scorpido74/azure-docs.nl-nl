@@ -9,17 +9,17 @@ ms.author: memildin
 author: memildin
 manager: rkarlin
 ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85119267"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection voor Azure Cosmos DB (preview-versie)
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Geavanceerde bedreigingsbeveiliging voor Azure Cosmos DB (preview-versie)
 
 Advanced Threat Protection voor Azure Cosmos DB biedt een extra beveiligingslaag die ongebruikelijke en mogelijk schadelijke pogingen detecteert om Azure Cosmos DB accounts te openen of misbruik te maken. Met deze beveiligingslaag kunt u bedreigingen aanpakken, zelfs zonder een beveiligings expert, en ze integreren met centrale beveiligings bewakings systemen.
 
-Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en oplossen van de bedreigingen.
+Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met  [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en oplossen van de bedreigingen.
 
 > [!NOTE]
 >
@@ -44,7 +44,7 @@ U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren con
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com/) .
+1. Start de Azure Portal op  [https://portal.azure.com](https://portal.azure.com/) .
 
 2. Selecteer vanuit het Azure Cosmos DB-account in het menu **instellingen** de optie **geavanceerde beveiliging**.
 
@@ -81,16 +81,16 @@ Gebruik een Azure Policy om geavanceerde bedreigingen beveiliging in te scha kel
 
 1. Start de pagina Azure **Policy-Definitions** en zoek naar het **Cosmos DBS beleid Deploying Advanced Threat Protection** .
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Zoek beleid"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ATP instellen"::: 
 
 1. Klik op het beleid **geavanceerde beveiliging tegen bedreigingen implementeren voor CosmosDB** en klik vervolgens op **toewijzen**.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Abonnement of groep selecteren":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="ATP instellen":::
 
 
 1. Klik in het veld **bereik** op de drie puntjes, selecteer een Azure-abonnement of resource groep en klik vervolgens op **selecteren**.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="Pagina beleids definities":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="ATP instellen":::
 
 
 1. Voer de andere para meters in en klik op **toewijzen**.
@@ -104,11 +104,11 @@ Wanneer Azure Cosmos DB afwijkende activiteiten optreden, wordt een beveiligings
 
  Vanuit Azure Security Center kunt u uw huidige [beveiligings waarschuwingen](../security-center/security-center-alerts-overview.md)controleren en beheren.  Klik op een specifieke waarschuwing in [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) om mogelijke oorzaken en aanbevolen acties te bekijken om de mogelijke dreiging te onderzoeken en te verhelpen. In de volgende afbeelding ziet u een voor beeld van waarschuwings details die zijn opgenomen in Security Center.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Details van bedreiging":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="ATP instellen":::
 
 Er wordt ook een e-mail melding met de waarschuwings Details en aanbevolen acties verzonden. De volgende afbeelding toont een voor beeld van een e-mail waarschuwing.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="Meldingsdetails":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="ATP instellen":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP-waarschuwingen
 

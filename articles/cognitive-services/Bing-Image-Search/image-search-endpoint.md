@@ -11,32 +11,32 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072632"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Eind punten voor de Bing Afbeeldingen zoeken-API
 
-De **afbeeldingen zoeken-API** bevat drie eind punten.  Eind punt 1 retourneert installatie kopieën van het web op basis van een query. Eind punt 2 retourneert [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse).  Eind punt 3 retourneert trend afbeeldingen.
+De **afbeeldingen zoeken-API**  bevat drie eind punten.  Eind punt 1 retourneert installatie kopieën van het web op basis van een query. Eind punt 2 retourneert [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse).  Eind punt 3 retourneert trend afbeeldingen.
 
 ## <a name="endpoints"></a>Eindpunten
 
 Als u afbeeldings resultaten wilt ophalen met behulp van de Bing API, verzendt u een aanvraag naar een van de volgende eind punten. Gebruik de para meters headers en URL om verdere specificaties te definiëren.
 
-**Eind punt 1:** Hiermee worden installatie kopieën geretourneerd die relevant zijn voor de zoek query van `?q=""`de gebruiker die is gedefinieerd door.
+**Eind punt 1:** Hiermee worden installatie kopieën geretourneerd die relevant zijn voor de zoek query van de gebruiker die is gedefinieerd door `?q=""` .
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**Eind punt 2:** Retourneert inzichten over een installatie kopie met `GET` behulp `POST`van of.
+**Eind punt 2:** Retourneert inzichten over een installatie kopie met behulp van `GET` of `POST` .
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
-Een GET-aanvraag retourneert inzichten over een afbeelding, zoals webpagina's die de afbeelding bevatten. Neem de para meter [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) op `GET` met een aanvraag.
+Een GET-aanvraag retourneert inzichten over een afbeelding, zoals webpagina's die de afbeelding bevatten. Neem de para meter [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) op met een `GET` aanvraag.
 
-U kunt ook een binaire installatie kopie in de hoofd tekst van een `POST` aanvraag toevoegen en de para meter [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) instellen op `RecognizedEntities`. Hiermee wordt een [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) geretourneerd dat als para meter wordt gebruikt in een `GET` volgende aanvraag, die informatie over personen in de installatie kopie retourneert.  Stel `modules` deze `All` waarde in op om alle inzichten `RecognizedEntities` op te halen, behalve `POST` in de resultaten van de zonder `insightsToken`een andere aanroep te gebruiken.
+U kunt ook een binaire installatie kopie in de hoofd tekst van een `POST` aanvraag toevoegen en de para meter [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) instellen op `RecognizedEntities` . Hiermee wordt een [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) geretourneerd dat als para meter wordt gebruikt in een volgende `GET` aanvraag, die informatie over personen in de installatie kopie retourneert.  Stel deze waarde in `modules` `All` op om alle inzichten op te halen, behalve `RecognizedEntities` in de resultaten van de `POST` zonder een andere aanroep te gebruiken `insightsToken` .
 
 
 **Eind punt 3:** Hiermee worden afbeeldingen geretourneerd die worden getrendd op basis van zoek opdrachten die door anderen zijn gemaakt. De afbeeldingen worden onderverdeeld in verschillende categorieën, bijvoorbeeld op basis van de vervelende personen of gebeurtenissen.

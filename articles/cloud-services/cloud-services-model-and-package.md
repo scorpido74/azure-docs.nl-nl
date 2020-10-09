@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79247486"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872133"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Wat is het Cloud service model en hoe kan ik het pakket inpakken?
 Een Cloud service wordt gemaakt op basis van drie onderdelen, de service definitie *(. csdef)*, de service configuratie *(. cscfg)* en een service pakket *(. cspkg)*. De bestanden **ServiceDefinition. csdef** en **ServiceConfig. cscfg** zijn gebaseerd op XML en beschrijven de structuur van de Cloud service en hoe deze zijn geconfigureerd. het model wordt gezamenlijk genoemd. **ServicePackage. cspkg** is een zip-bestand dat is gegenereerd op basis van de **ServiceDefinition. csdef** en onder andere, bevat alle vereiste op basis van binaire afhankelijkheden. Azure maakt een Cloud service van zowel **ServicePackage. cspkg** als **ServiceConfig. cscfg**.
@@ -97,7 +97,7 @@ Bevat de definities voor eind punten die worden gebruikt door rolinstanties om m
 **ConfigurationSettings**  
 Bevat de instellings definities voor functies van een specifieke rol.
 
-**Certificaten**  
+**Bewijzen**  
 Bevat de definities voor certificaten die nodig zijn voor een rol. Het vorige code voorbeeld toont een certificaat dat wordt gebruikt voor de configuratie van Azure Connect.
 
 **LocalResources**  
@@ -142,7 +142,7 @@ Hiermee configureert u het aantal actieve instanties voor de rol. Om te voor kom
 **ConfigurationSettings**  
 Hiermee configureert u de instellingen voor de actieve instanties voor een rol. De naam van de `<Setting>` elementen moet overeenkomen met de instellings definities in het service definitie bestand.
 
-**Certificaten**  
+**Bewijzen**  
 Hiermee configureert u de certificaten die door de service worden gebruikt. Het vorige code voorbeeld laat zien hoe u het certificaat voor de RemoteAccess-module definieert. De waarde van het kenmerk *vinger afdruk* moet worden ingesteld op de vinger afdruk van het certificaat dat moet worden gebruikt.
 
 <p/>

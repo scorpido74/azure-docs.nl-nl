@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939346"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Scenario's met persoonlijke zones Azure DNS
+# <a name="azure-dns-private-zones-scenarios"></a>Scenario's voor Azure DNS-privézones
 
 Azure DNS Private Zones naam omzetting bieden binnen een virtueel netwerk en tussen virtuele netwerken. In dit artikel kijken we naar enkele veelvoorkomende scenario's die kunnen worden gerealiseerd met behulp van deze functie.
 
@@ -37,7 +37,7 @@ In het volgende diagram ziet u een eenvoudige versie van dit scenario met slecht
 
 ![Meerdere virtuele netwerk resoluties](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Scenario: Split-horizon-functionaliteit
+## <a name="scenario-split-horizon-functionality"></a>Scenario: Split-Horizon functionaliteit
 
 In dit scenario hebt u een use-case waarbij u verschillende DNS-omzettings gedrag wilt realiseren, afhankelijk van waar de client zich bevindt (binnen Azure of op Internet), voor dezelfde DNS-zone. U hebt bijvoorbeeld een persoonlijke en open bare versie van uw toepassing met verschillende functionaliteit of gedrag, maar u wilt dezelfde domein naam gebruiken voor beide versies. Dit scenario kan worden gerealiseerd met Azure DNS door een open bare DNS-zone en een persoonlijke zone te maken, met dezelfde naam.
 

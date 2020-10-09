@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85132009"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Resource logboeken voor de Azure signalerings service
@@ -84,7 +84,7 @@ properties | Gedetailleerde eigenschappen die betrekking hebben op deze logboek 
 Naam | Beschrijving
 ------- | -------
 type | Het type logboek gebeurtenis. Op dit moment bieden we informatie over de verbinding met de Azure signalerings service. Alleen `ConnectivityLogs` type is beschikbaar
-verzameling | Verzameling van de logboek gebeurtenis. Toegestane waarden zijn: `Connection` `Authorization` en`Throttling`
+verzameling | Verzameling van de logboek gebeurtenis. Toegestane waarden zijn: `Connection` `Authorization` en `Throttling`
 connectionId | Identiteit van de verbinding
 Transport type | Het transport type van de verbinding. Toegestane waarden zijn: `Websockets` \| `ServerSentEvents` \|`LongPolling`
 Connection type | Het type verbinding. Toegestane waarden zijn: `Server` \| `Client` . `Server`: verbinding vanaf server zijde; `Client`: verbinding van client zijde
@@ -131,7 +131,7 @@ De kolommen van het archief logboek bevatten elementen die in de volgende tabel 
 Naam | Beschrijving
 ------- | ------- 
 TimeGenerated | Tijd van logboek gebeurtenis
-Verzameling | Verzameling van de logboek gebeurtenis. Toegestane waarden zijn: `Connection` `Authorization` en`Throttling`
+Verzameling | Verzameling van de logboek gebeurtenis. Toegestane waarden zijn: `Connection` `Authorization` en `Throttling`
 OperationName | De naam van de bewerking van de gebeurtenis
 Locatie | Locatie van uw Azure signalerings service
 Niveau | Niveau van logboek gebeurtenis
@@ -162,7 +162,7 @@ Het verschil tussen `ConnectionAborted` en is `ConnectionEnded` `ConnectionEnded
 
 De redenen voor afbreken worden weer gegeven in de volgende tabel:
 
-Reden | Description
+Reden | Beschrijving
 ------- | ------- 
 Limiet voor aantal verbindingen bereikt | Het aantal verbindingen heeft de limiet van uw huidige prijs categorie bereikt. Overweeg service-eenheid omhoog te schalen
 Toepassings server heeft de verbinding gesloten | App server activeert de Abortion. Het kan worden beschouwd als een verwacht Abortion

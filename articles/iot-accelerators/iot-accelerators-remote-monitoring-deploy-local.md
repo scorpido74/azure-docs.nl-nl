@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890890"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>De externe controle oplossings versneller implementeren lokaal-Visual Studio
@@ -111,7 +111,7 @@ Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer inform
 
 Om toegang te krijgen tot het dash board van de oplossing voor externe controle, gaat u naar http: \/ /localhost: 9000 in uw browser.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Om onnodige kosten te voor komen, kunt u, wanneer u klaar bent met testen, de Cloud Services verwijderen uit uw Azure-abonnement. Als u de services wilt verwijderen, gaat u naar de [Azure Portal](https://ms.portal.azure.com) en verwijdert u de resource groep waarin het script **Start. cmd** is gemaakt.
 

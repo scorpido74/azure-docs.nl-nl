@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85117978"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Query Cheat-werk bladen Azure Cosmos DB
@@ -28,7 +28,7 @@ Down load de [Azure Cosmos DB Cheat-pagina's van de letterlijke grootte](https:/
 ## <a name="oversized-cheat-sheets"></a>Grote cheat-bladen
 Down load de [Azure Cosmos DB Blade Cheat van A3-formaat](https://go.microsoft.com/fwlink/?linkid=870413) als u wilt afdrukken met een plotter of grootschalige printer op A3-formaat (11,7 x 16,5).
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB query Cheat Sheets: A3-formaat, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB query Cheat Sheets-letterlijke grootte, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over het schrijven van query's:

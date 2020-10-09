@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
 ms.openlocfilehash: 948ca03b5bf503c884df5df56c61951b381874a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84871699"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Diagnostische logboek registratie inschakelen in azure API voor FHIR®
@@ -37,7 +37,7 @@ In dit artikel wordt beschreven hoe u diagnostische logboek registratie inschake
 
 6. Selecteer **audit logs bevat** en alle metrische gegevens die u wilt vastleggen
 
-7. Op Opslaan klikken
+7. Klik op Opslaan
 
 > [!Note] 
 > Het kan tot vijf tien minuten duren voordat de eerste Logboeken in Log Analytics worden weer gegeven.  
@@ -47,7 +47,7 @@ Raadpleeg de documentatie van het [Azure-resource logboek](https://docs.microsof
 ## <a name="audit-log-details"></a>Details van controle logboek
 Op dit moment retourneert de Azure API voor FHIR-® service de volgende velden in het audit logboek: 
 
-|Veldnaam  |Type  |Notities  |
+|Veldnaam  |Type  |Opmerkingen  |
 |---------|---------|---------|
 |CallerIdentity|Dynamisch|Een algemene eigenschappen verzameling met identiteits gegevens
 |CallerIdentityIssuer|Tekenreeks|Verlener 
