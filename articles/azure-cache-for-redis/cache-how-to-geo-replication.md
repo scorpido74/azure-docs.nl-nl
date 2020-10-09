@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839687"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825318"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Geo-replicatie voor Azure cache instellen voor redis
 
@@ -73,7 +73,7 @@ Nadat geo-replicatie is geconfigureerd, zijn de volgende beperkingen van toepass
 
     U kunt ook de koppelings status weer geven op de Blade **overzicht** voor de primaire en secundaire caches.
 
-    ![Scherm opname van het weer geven van de koppelings status voor de primaire en secundaire caches.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    ![Cache status](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
     Zodra het replicatie proces is voltooid, verandert de status van de **koppeling** in **geslaagd**.
 

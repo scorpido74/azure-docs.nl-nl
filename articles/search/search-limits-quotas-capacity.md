@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843427"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825491"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Servicelimieten in Azure Cognitive Search
 
@@ -50,7 +50,7 @@ De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen en an
 
 <sup>1</sup> Basic-services die zijn gemaakt vóór december 2017 hebben lagere limieten (5 in plaats van 15) op indices. Basic-laag is de enige SKU met een ondergrens van 100 velden per index.
 
-<sup>2</sup> er bestaat een bovengrens voor-elementen, omdat er een groot aantal is dat de opslag die nodig is voor uw index aanzienlijk toeneemt. Een element van een complexe verzameling wordt gedefinieerd als een lid van die verzameling. Als er bijvoorbeeld een [Hotel document met een verzameling complexe verzamelingen](search-howto-complex-data-types.md#indexing-complex-types)wordt aangenomen, wordt elke ruimte in de verzameling kamers als een element beschouwd. Tijdens het indexeren kan de indexerings engine veilig Maxi maal 3000 elementen in het hele document verwerken. [Deze limiet](search-api-migration.md#upgrade-to-2019-05-06) werd geïntroduceerd in `api-version=2019-05-06` en is alleen van toepassing op complexe verzamelingen en niet op teken reeks verzamelingen of complexe velden.
+<sup>2</sup> er bestaat een bovengrens voor elementen omdat een groot aantal ze een hoog opslag gebruik veroorzaakt. Een element van een complexe verzameling wordt gedefinieerd als een lid van die verzameling. Als er bijvoorbeeld een [Hotel document met een verzameling complexe verzamelingen](search-howto-complex-data-types.md#indexing-complex-types)wordt aangenomen, wordt elke ruimte in de verzameling kamers als een element beschouwd. Tijdens het indexeren kan de indexerings engine veilig Maxi maal 3000 elementen in het hele document verwerken. [Deze limiet](search-api-migration.md#upgrade-to-2019-05-06) werd geïntroduceerd in `api-version=2019-05-06` en is alleen van toepassing op complexe verzamelingen en niet op teken reeks verzamelingen of complexe velden.
 
 <a name="document-limits"></a>
 
