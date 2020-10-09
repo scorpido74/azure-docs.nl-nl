@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776014"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825511"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Overzicht van virtuele netwerk isolatie en privacy
 
@@ -158,6 +158,12 @@ Als u de volledige studio-functionaliteit wilt inschakelen binnen een VNet, raad
 Configureer uw firewall om de toegang tot uw Azure Machine Learning werkruimte bronnen en het open bare Internet te beheren. We raden u aan Azure Firewall te kunnen gebruiken voor het beveiligen van uw netwerk. Als u vragen hebt over het toestaan van communicatie via uw firewall, raadpleegt u de documentatie voor de firewall die u gebruikt.
 
 Zie [werk ruimte gebruiken achter een firewall](how-to-access-azureml-behind-firewall.md)voor meer informatie over Firewall instellingen.
+
+## <a name="custom-dns"></a>Aangepaste DNS
+
+Als u een aangepaste DNS-oplossing voor uw virtuele netwerk wilt gebruiken, moet u host-records toevoegen voor uw werk ruimte.
+
+Zie [een werk ruimte gebruiken met een aangepaste DNS-server](how-to-custom-dns.md)voor meer informatie over de vereiste domein namen en IP-adressen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

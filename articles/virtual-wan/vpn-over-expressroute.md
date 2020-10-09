@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317630"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827994"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-versleuteling: IPsec over ExpressRoute voor virtuele WAN
 
@@ -22,7 +22,7 @@ Dit artikel laat u zien hoe u met behulp van Azure Virtual WAN een IPsec/IKE-VPN
 
 In het volgende diagram ziet u een voor beeld van VPN-connectiviteit via ExpressRoute private-peering:
 
-![VPN via ExpressRoute](./media/vpn-over-expressroute/vwan-vpn-over-er.png)
+:::image type="content" source="./media/vpn-over-expressroute/vwan-vpn-over-er.png" alt-text="VPN via ExpressRoute":::
 
 Het diagram toont een netwerk binnen het on-premises netwerk dat is verbonden met de Azure hub VPN-gateway via ExpressRoute private peering. De connectiviteits inrichting is eenvoudig:
 
@@ -76,7 +76,7 @@ De site bron is hetzelfde als de niet-ExpressRoute VPN-sites voor een virtueel W
 >
 
 1. Ga naar de Azure Portal in uw browser. 
-1. Selecteer het WAN dat u hebt gemaakt. Selecteer op de WAN-pagina onder **connectiviteit**de optie **VPN-sites**.
+1. Selecteer de hub die u hebt gemaakt. Selecteer op de pagina virtuele WAN-hub onder **connectiviteit**de optie **VPN-sites**.
 1. Selecteer op de pagina **VPN-sites** **+ site maken**.
 1. Vul de volgende velden in op de pagina **Site maken**:
    * **Abonnement**: Controleer het abonnement.
@@ -104,12 +104,17 @@ De site bron is hetzelfde als de niet-ExpressRoute VPN-sites voor een virtueel W
 Nadat u de VPN-site hebt gemaakt en verbinding maakt met de hub, gebruikt u de volgende stappen om de verbinding te configureren voor het gebruik van ExpressRoute-persoonlijke peering:
 
 1. Ga terug naar de virtuele WAN-bron pagina en selecteer de hub-resource. Of navigeer van de VPN-site naar de verbonden hub.
-1. Onder **connectiviteit**selecteert u **VPN (site-naar-site)**.
-1. Selecteer het beletsel teken (**...**) op de VPN-site via ExpressRoute en selecteer **VPN-verbinding met deze hub bewerken**.
-1. Selecteer **Ja**als **u het privé-IP-adres van Azure wilt gebruiken**. Met deze instelling configureert u de hub VPN-gateway voor het gebruik van privé-IP-adressen binnen het hub-adres bereik op de gateway voor deze verbinding, in plaats van de open bare IP-adressen. Dit zorgt ervoor dat het verkeer van het on-premises netwerk het ExpressRoute persoonlijke peering-paden passeert in plaats van het open bare Internet voor deze VPN-verbinding te gebruiken. De volgende scherm afbeelding toont de instelling.
 
-   ![Instelling voor het gebruik van een privé-IP-adres voor de VPN-verbinding](./media/vpn-over-expressroute/vpn-link-configuration.png)
-   
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="VPN via ExpressRoute":::
+1. Onder **connectiviteit**selecteert u **VPN (site-naar-site)**.
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="VPN via ExpressRoute":::
+1. Selecteer het beletsel teken (**...**) op de VPN-site via ExpressRoute en selecteer **VPN-verbinding met deze hub bewerken**.
+
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="VPN via ExpressRoute":::
+1. Selecteer **Ja**als **u het privé-IP-adres van Azure wilt gebruiken**. Met deze instelling configureert u de hub VPN-gateway voor het gebruik van privé-IP-adressen binnen het hub-adres bereik op de gateway voor deze verbinding, in plaats van de open bare IP-adressen. Dit zorgt ervoor dat het verkeer van het on-premises netwerk het ExpressRoute persoonlijke peering-paden passeert in plaats van het open bare Internet voor deze VPN-verbinding te gebruiken. In de volgende scherm afbeelding ziet u de instelling:
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN via ExpressRoute" border="false":::
 1. Selecteer **Opslaan**.
 
 Nadat u uw wijzigingen hebt opgeslagen, maakt de hub VPN-gateway gebruik van de privé-IP-adressen op de VPN-gateway om de IPsec/IKE-verbindingen met het on-premises VPN-apparaat via ExpressRoute te maken.
@@ -225,11 +230,11 @@ Als u instructies nodig hebt voor het configureren van uw apparaat, kunt u de in
 1. Op de pagina **Overzicht** vertegenwoordigt elk punt op de kaart een hub.
 1. In de sectie **hubs en verbindingen** kunt u de status van de hub, site, regio en VPN-verbinding weer geven. U kunt ook bytes weer geven in en uit.
 
-## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7. een verbinding bewaken
+## <a name="6-monitor-a-connection"></a><a name="connectmon"></a>6. een verbinding bewaken
 
 Maak een verbinding om de communicatie tussen een virtuele machine van Azure en een externe site te bewaken. Zie voor meer informatie over het instellen van een verbindingscontrole de pagina [Netwerkcommunicatie bewaken](~/articles/network-watcher/connection-monitor.md). Het Bron veld is het VM-IP-adres in Azure en het doel-IP-adres is het IP-adres van de site.
 
-## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. opschonen van resources
+## <a name="7-clean-up-resources"></a><a name="cleanup"></a>7. resources opschonen
 
 Wanneer u deze resources niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat, te verwijderen. Voer de volgende Power shell-opdracht uit en vervang door `myResourceGroup` de naam van uw resource groep:
 

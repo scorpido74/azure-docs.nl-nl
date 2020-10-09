@@ -3,12 +3,12 @@ title: Azure Service Bus-bericht bladeren
 description: Met Service Bus berichten bladeren en bekijken kunnen een Azure Service Bus-client alle berichten opsommen die zich in een wachtrij of abonnement bevinden.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341246"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827437"
 ---
 # <a name="message-browsing"></a>Berichten doorzoeken
 
@@ -30,7 +30,7 @@ Wanneer herhaaldelijk wordt aangeroepen, worden alle berichten die in de wachtri
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) haalt meerdere berichten op en retourneert deze als een opsomming. Als er geen berichten beschikbaar zijn, is het opsommings object leeg, niet null.
 
-U kunt ook een overbelasting van de methode seeden met een [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) waarop moet worden gestart. Vervolgens roept u de methode-overload zonder para meters aan om verdere inventarisatie uit te voeren. **PeekBatch** werkt gelijk aan, maar haalt een aantal berichten tegelijk op.
+U kunt ook een overbelasting van de methode gebruiken met een [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) waarop u wilt starten. Vervolgens roept u de methode-overload zonder para meters aan om verdere inventarisatie uit te voeren. **PeekBatch** werkt gelijk aan, maar haalt een aantal berichten tegelijk op.
 
 ## <a name="next-steps"></a>Volgende stappen
 

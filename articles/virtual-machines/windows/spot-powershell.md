@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 8bcf90368e8d43dce2d10fa3744024bcbc7e4b52
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 44d23710db169fa27aaba8928d421918bef93fec
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816538"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825135"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Plaats virtuele machines met behulp van Azure PowerShell
 
@@ -73,8 +73,25 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
    Select-Object Name,@{Name="maxPrice"; Expression={$_.BillingProfile.MaxPrice}}
 ```
 
+## <a name="simulate-an-eviction"></a>Een verwijdering simuleren
+
+U kunt een weghalen van een spot-VM [simuleren](/rest/api/compute/virtualmachines/simulateeviction) om te testen hoe goed uw toepassing kan worden gepaard met een plotselinge verwijdering. 
+
+Vervang het volgende door uw gegevens: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook een spot-VM maken met behulp van de [Azure cli](../linux/spot-cli.md), [Portal](spot-portal.md) of een [sjabloon](../linux/spot-template.md).
+U kunt ook een spot-VM maken met behulp van de [Azure cli](../linux/spot-cli.md), [Portal](../spot-portal.md) of een [sjabloon](../linux/spot-template.md).
+
+Zoek actuele prijs informatie met behulp van de [Azure retail-prijs-API](/rest/api/cost-management/retail-prices/azure-retail-prices) voor meer informatie over de prijzen. De `meterName` en `skuName` zijn beide opgenomen `Spot` .
 
 Als er een fout optreedt, raadpleegt u [fout codes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -1,19 +1,19 @@
 ---
-title: SD-WAN-connectiviteitsarchitectuur
+title: Architecturen voor virtuele WAN-en SD-WAN-verbindingen
 titleSuffix: Azure Virtual WAN
 description: Meer informatie over het verbinden van een privé-SD-WAN met Azure Virtual WAN
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: 87e9549419bccc36d743871755e782a71e93e5e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267462"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828050"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architectuur van de SD-WAN-verbinding met Azure Virtual WAN
 
@@ -22,6 +22,7 @@ Azure Virtual WAN is een netwerk service die veel Cloud connectiviteits-en bevei
 Hoewel Azure Virtual WAN zelf een door software gedefinieerde WAN (SD-WAN) is, is het ook ontworpen om naadloze verbinding mogelijk te maken met de op premises gebaseerde SD-WAN-technologieën en-services. Veel van deze services worden aangeboden door ons [virtuele WAN](virtual-wan-locations-partners.md) -ecosysteem en Azure Network Managed Services partners [(msp's)](../networking/networking-partners-msp.md). Ondernemingen die hun particuliere WAN transformeren naar SD-WAN, hebben opties bij het interkoppelen van hun particuliere SD-WAN met Azure Virtual WAN. Ondernemingen kunnen kiezen uit de volgende opties:
 
 * Model direct Interconnect
+* Model direct interconnect met NVA-in-VWAN-hub
 * Model voor indirecte Interconnect
 * Beheerd hybride WAN-model met behulp van hun favoriete managed service provider [MSP](../networking/networking-partners-msp.md)
 
@@ -29,7 +30,7 @@ In al deze gevallen is de interconnectie van het virtuele WAN met SD-WAN vergeli
 
 ## <a name="direct-interconnect-model"></a><a name="direct"></a>Model direct Interconnect
 
-![Model direct Interconnect](./media/sd-wan-connectivity-architecture/direct.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct.png" alt-text="Model direct Interconnect":::
 
 In dit architectuur model is de klant locatie-uitrusting van SD-WAN-Branch (CPE) rechtstreeks verbonden met virtuele WAN-hubs via IPsec-verbindingen. De vertakking CPE kan ook worden verbonden met andere branches via de particuliere SD-WAN of gebruikmaken van Virtual WAN voor vertakkings connectiviteit. Vertakkingen die toegang moeten hebben tot hun werk belastingen in azure, kunnen rechtstreeks en veilig toegang krijgen tot Azure via de IPsec-tunnel (s) die worden beëindigd in de virtuele WAN-hub (s).
 
@@ -41,9 +42,20 @@ In dit model worden bepaalde eigen verkeer optimalisaties op basis van real-time
 
 Met virtueel WAN kunnen gebruikers de selectie van Azure-paden verkrijgen. Dit is een op beleid gebaseerde Padselectie op meerdere ISP-koppelingen van het vertakkings CPE tot virtuele WAN-gateways. Met Virtual WAN kunt u meerdere koppelingen (paden) van dezelfde SD-WAN-vertakking CPE instellen. elke koppeling vertegenwoordigt een dubbele tunnel verbinding van een uniek openbaar IP-adres van het SD-WAN-netwerk tot twee verschillende exemplaren van Azure Virtual WAN VPN gateway. Leveranciers van SD-WAN kunnen het meest optimale pad naar Azure implementeren op basis van het Traffic-beleid dat is ingesteld door hun beleids engine op de CPE-koppelingen. Op het eind punt van Azure worden alle binnenkomende verbindingen op dezelfde manier behandeld.
 
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>Model direct interconnect met NVA-in-VWAN-hub
+
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="Model direct Interconnect":::
+
+Dit architectuur model ondersteunt de implementatie van een [virtueel netwerk (NVA) van een derde partij rechtstreeks naar de virtuele hub](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub). Hierdoor kunnen klanten die hun vertakkings verbinding willen maken met hetzelfde merk NVA in de virtuele hub, zodat ze profiteren van eigen end-to-end SD-WAN-mogelijkheden bij het maken van verbinding met Azure-workloads. 
+
+Verschillende virtuele WAN-partners hebben gewerkt om een ervaring te bieden waarmee de NVA automatisch worden geconfigureerd als onderdeel van het implementatie proces. Zodra de NVA is ingericht in de virtuele hub, moeten eventuele aanvullende configuraties die nodig zijn voor de NVA, worden uitgevoerd via de portal voor de NVA-partners of de beheer toepassing. Er is geen rechtstreekse toegang tot de NVA beschikbaar. De Nva's die beschikbaar zijn om rechtstreeks te worden geïmplementeerd in de virtuele WAN-hub van Azure, worden speciaal ontworpen om te worden gebruikt in de virtuele hub. Raadpleeg het artikel over [virtuele WAN-partners](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) voor partners die ondersteuning bieden voor NVA in VWAN hub en hun implementatie handleidingen.
+
+Het SD-WAN CPE blijft de plek waar het verkeer wordt geoptimaliseerd en het selecteren van het pad wordt geïmplementeerd en afgedwongen.
+In dit model wordt de leverancier van eigen verkeer op basis van real-time verkeers kenmerken ondersteund, omdat de verbinding met Virtual WAN via de SD-WAN-NVA in de hub plaatsvindt.
+
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Model voor indirecte Interconnect
 
-![Model voor indirecte Interconnect](./media/sd-wan-connectivity-architecture/indirect.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="Model direct Interconnect":::
 
 In dit architectuur model zijn SD-WAN Branch CPEs indirect verbonden met virtuele WAN-hubs. Zoals in de afbeelding wordt weer gegeven, wordt een virtuele SD-WAN-CPE geïmplementeerd in een VNet voor ondernemingen. Dit virtuele CPE is op zijn beurt verbonden met de virtuele WAN-hub (s) met behulp van IPsec. De virtuele CPE fungeert als een SD-WAN-gateway in Azure. Vertakkingen die toegang moeten hebben tot hun werk belastingen in azure, hebben toegang tot deze via de v-CPE-gateway.
 
@@ -51,7 +63,7 @@ Omdat de connectiviteit met Azure via de v-CPE-gateway (NVA) is, wordt al het ve
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>Beheerd hybride WAN-model
 
-![Beheerd hybride WAN-model](./media/sd-wan-connectivity-architecture/hybrid.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="Model direct Interconnect":::
 
 In dit architectuur model kunnen ondernemingen gebruikmaken van een beheerde SD-WAN-service die wordt aangeboden door een begeleide MSP-partner (service provider). Dit model is vergelijkbaar met de directe of indirecte modellen die hierboven worden beschreven. In dit model worden het ontwerp, de indeling en de bewerkingen van het SD-WAN echter geleverd door de SD-WAN-provider.
 

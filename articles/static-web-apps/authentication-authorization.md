@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297066"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826544"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Verificatie en autorisatie voor API-apps in Azure Static Web Apps Preview
 
@@ -39,7 +39,7 @@ Elke gebruiker die toegang heeft tot een statische web-app, maakt deel uit van e
 
 Naast de ingebouwde rollen kunt u nieuwe rollen maken, ze toewijzen aan gebruikers via uitnodigingen en hiernaar verwijzen in de _routes.jsin_ het bestand.
 
-## <a name="role-management"></a>Rollen beheer
+## <a name="role-management"></a>Rolbeheer
 
 ### <a name="add-a-user-to-a-role"></a>Een gebruiker toevoegen aan een rol
 

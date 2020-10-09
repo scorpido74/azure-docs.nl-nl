@@ -5,23 +5,23 @@ description: Ga aan de slag met Azure Cognitive Services door een resource te ma
 services: cognitive-services
 author: aahill
 manager: nitinme
-keywords: cognitieve Services, cognitieve intelligentie, cognitieve oplossingen, AI-Services
+keywords: cognitieve services, cognitieve intelligentie, cognitieve oplossingen, AI-services
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 623982826f82e44b8d031d19002d33e0a8e798bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cad20f589bb5a6d3e73481081d9fe532381ab647
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326861"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827394"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Snelstartgids: een Cognitive Services resource maken met behulp van de Azure Portal
 
 Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een cognitieve service resource hebt gemaakt in de Azure Portal, krijgt u een eind punt en een sleutel voor het verifiëren van uw toepassingen.
 
-Azure Cognitive Services bestaat uit cloudservices met REST API's en clientbibliotheek-SDK's waarmee ontwikkelaars cognitieve intelligentie in toepassingen kunnen bouwen zonder directe kennis of vaardigheden op het gebied van kunstmatige intelligentie (AI) of gegevenswetenschap. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen met cognitieve oplossingen die kunnen zien, horen, spreken en begrijpen. Er zijn zelfs al toepassingen die beginnen te redeneren.
+Azure Cognitive Services zijn Cloud Services met REST-Api's en Sdk's voor client bibliotheken die ontwikkel aars kunnen helpen bij het bouwen van cognitieve intelligentie in toepassingen zonder directe kunst matige intelligentie (AI) of vaardig heden of kennis van data wetenschappen. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen met cognitieve oplossingen die kunnen zien, horen, spreken en begrijpen. Er zijn zelfs al toepassingen die beginnen te redeneren.
 
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
@@ -56,7 +56,7 @@ Azure Cognitive Services bestaat uit cloudservices met REST API's en clientbibli
 
     Gebruik de onderstaande koppelingen om een resource te maken voor de beschik bare Cognitive Services:
 
-    | Vision                      | Speech                  | Taal                          | Besluit             | Zoeken                 |
+    | Vision                      | Speech                  | Taal                          | Besluit             | Search                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Spraak Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Insluitende lezer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaliedetectie](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Aangepaste Vision-service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Aangepaste zoekopdrachten](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
@@ -120,7 +120,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 2. Zoek de resourcegroep die de resource bevat die u wilt verwijderen
 3. Klik met de rechtermuisknop op de vermelding van de resourcegroep. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Aanvragen verifiëren bij Azure Cognitive Services](authentication.md)
 * [Wat is Azure Cognitive Services?](Welcome.md)

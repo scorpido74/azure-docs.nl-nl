@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 88cb54a7a9e20e643d9a19f57dc83d3f1ea8004d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f32783b18b5454164567910aa369739d025b8be0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761206"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826895"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -32,7 +32,7 @@ Een reken instantie is een volledig beheerd, op de cloud gebaseerd werk station 
 
 |Belangrijkste voordelen|Beschrijving|
 |----|----|
-|Productiviteit|U kunt modellen bouwen en implementeren met behulp van geïntegreerde notebooks en de volgende hulpprogram ma's in Azure Machine Learning studio:<br/>-Jupyter<br/>-Jjupyterlab<br/>-RStudio (preview-versie)<br/>Reken instantie is volledig geïntegreerd met Azure Machine Learning werk ruimte en Studio. U kunt notitie blokken en gegevens delen met andere gegevens wetenschappers in de werk ruimte. U kunt ook met [SSH](how-to-set-up-vs-code-remote.md) externe ontwikkeling met behulp van code instellen |
+|Productiviteit|U kunt modellen bouwen en implementeren met behulp van geïntegreerde notebooks en de volgende hulpprogram ma's in Azure Machine Learning studio:<br/>-Jupyter<br/>-Jjupyterlab<br/>-RStudio (preview-versie)<br/>Reken instantie is volledig geïntegreerd met Azure Machine Learning werk ruimte en Studio. U kunt notitie blokken en gegevens delen met andere gegevens wetenschappers in de werk ruimte.<br/> U kunt ook [VS code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) gebruiken met reken instanties.
 |Beheerde & beveiligd|Verminder uw beveiligings footprint en voeg naleving toe met beveiligings vereisten voor ondernemingen. Reken instanties bieden robuust beheer beleid en beveiligde netwerk configuraties zoals:<br/><br/>-Autoinrichting van Resource Manager-sjablonen of Azure Machine Learning SDK<br/>- [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [Ondersteuning voor virtuele netwerken](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH-beleid voor het inschakelen/uitschakelen van SSH-toegang<br/>TLS 1,2 ingeschakeld |
 |Vooraf geconfigureerd &nbsp; voor &nbsp; ml|Bespaar tijd bij het instellen van taken met vooraf geconfigureerde en up-to-date ML-pakketten, diepe leer frameworks, GPU-Stuur Programma's.|
 |Volledig aanpasbaar|Uitgebreide ondersteuning voor Azure VM-typen, waaronder Gpu's en persistente aanpassing op laag niveau, zoals het installeren van pakketten en stuur Programma's, maakt een koud probleem van geavanceerde scenario's. |
@@ -47,9 +47,11 @@ U kunt zelf [een reken instantie maken](how-to-create-manage-compute-instance.md
 
 Met Azure Machine Learning Compute-instantie kunt u modellen ontwerpen, trainen en implementeren in een volledig geïntegreerde laptop ervaring in uw werk ruimte.
 
+U kunt Jupyter-notebooks in [VS code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) uitvoeren met Compute instance als de externe server zonder SSH vereist. U kunt ook VS code-integratie inschakelen via [externe SSH-extensie](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/).
+
 U kunt [pakketten installeren](how-to-create-manage-compute-instance.md#install-packages) en [kernels toevoegen](how-to-create-manage-compute-instance.md#add-new-kernels) aan uw reken exemplaar.  
 
-Deze hulpprogram ma's en omgevingen zijn al geïnstalleerd op de compute-instantie: 
+De volgende hulpprogram ma's en omgevingen zijn al geïnstalleerd op de compute-instantie: 
 
 |Algemene hulpprogram ma's & omgevingen|Details|
 |----|:----:|
@@ -143,7 +145,7 @@ De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum
 ### <a name="create-on-behalf-of-preview"></a>Maken namens (preview-versie)
 
 Als beheerder kunt u een compute-instantie maken namens een gegevens wetenschapper en de instantie hieraan toewijzen met:
-* [Azure Resource Manager sjabloon](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
+* [Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
 * REST-API
 
 De gegevens wetenschapper u het reken exemplaar maakt voor heeft de volgende RBAC-machtigingen nodig: 

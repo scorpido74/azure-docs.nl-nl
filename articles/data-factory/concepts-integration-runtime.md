@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485716"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827537"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -69,7 +69,7 @@ Azure Integration Runtime biedt de systeemeigen rekenkracht om gegevens te verpl
 
 Activiteiten verzen ding is een licht gewicht bewerking voor het routeren van de activiteit naar de doel compute-service, waardoor de berekenings grootte voor dit scenario niet hoeft te worden geschaald.
 
-Voor informatie over het maken en configureren van een Azure IR, verwijzen wij u naar het maken en configureren van Azure IR onder de hand leidingen. 
+Zie [Azure Integration runtime maken en configureren](create-azure-integration-runtime.md)voor meer informatie over het maken en configureren van een Azure IR. 
 
 > [!NOTE] 
 > Azure Integration runtime heeft eigenschappen die betrekking hebben op Data flow runtime, waarmee de onderliggende Compute-infra structuur wordt gedefinieerd die wordt gebruikt om de gegevens stromen uit te voeren. 

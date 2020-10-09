@@ -1,15 +1,15 @@
 ---
 title: Ingebouwde beleids definities voor servers die geschikt zijn voor Azure-Arc
 description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Arc-servers (preview). Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 792532c407687a84a4e90c34fd7d1c69ba0fcedd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 16a2e798d0c49a898dfad8064d7e2075631280de
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967379"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826089"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Ingebouwde definities Azure Policy voor servers met Azure Arc ingeschakeld
 

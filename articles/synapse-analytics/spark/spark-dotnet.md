@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: b445787c44efca4eb6bdee3e61eb39735e5c6b14
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4b512d0817c56bc2daabff057c8bc4aa1afa1dee
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259897"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826504"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>.NET gebruiken voor Apache Spark met Azure Synapse Analytics
 
@@ -34,14 +34,29 @@ Ga naar de zelf studie voor meer informatie over het gebruik van Azure Synapse A
 
    ```dotnetcli
    cd mySparkApp
+   dotnet publish -c Release -f netcoreapp3.1 -r win-x64
+   ```
+   
+   **Op Linux:**
+
+   ```dotnetcli
+   cd mySparkApp
    dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
    ```
 
-   **Op Linux:**
+2. Geef de inhoud van de map Publish op, `publish.zip` bijvoorbeeld die is gemaakt als gevolg van stap 1. Alle assembly's moeten zich in de eerste laag van het ZIP-bestand bevinden en er mag geen tussenliggende laagmap zijn. Dit betekent dat wanneer u uitpakt `publish.zip` alle assembly's worden geëxtraheerd naar uw huidige werkmap.
 
-   ```bash
-   zip -r publish.zip
-   ```
+    **In Windows:**
+
+Gebruik een extractie programma, zoals [7-zip](https://www.7-zip.org/) of [WinZip](https://www.winzip.com/), om het bestand uit te pakken in de bin-map met alle gepubliceerde binaire bestanden.
+
+     **On Linux:**
+
+     1. Open a bash shell and cd into the bin directory with all the published binaries and run the following command.
+
+       ```bash
+       zip -r publish.zip
+       ```
 
 ## <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET voor Apache Spark in azure Synapse Analytics-notebooks 
 

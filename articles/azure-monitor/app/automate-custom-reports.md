@@ -4,12 +4,12 @@ description: Aangepaste dagelijkse/wekelijkse/maandelijkse rapporten automatiser
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f35b7cbde7b719a91b23b19481ab704c445485cb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320405"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827728"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Aangepaste rapporten automatiseren met Azure-toepassing Insights-gegevens
 
@@ -153,5 +153,5 @@ Deze stappen zijn alleen van toepassing als u nog geen SendGrid-account hebt gec
 * Meer informatie over het maken van [Analytics-query's](../log-query/get-started-queries.md).
 * Meer informatie over het [programmatisch opvragen van Application Insights gegevens](https://dev.applicationinsights.io/)
 * Meer informatie over [Logic Apps](../../logic-apps/logic-apps-overview.md).
-* Meer informatie over [Microsoft flow](https://ms.flow.microsoft.com).
+* Meer informatie over [micro soft power Automatiseer](https://ms.flow.microsoft.com).
 

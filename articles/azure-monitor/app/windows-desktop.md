@@ -3,12 +3,13 @@ title: Gebruik en prestaties bewaken voor Windows-bureaublad-apps
 description: Analyseer het gebruik en de prestaties van uw Windows-bureaublad-app met Application Insights.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323414"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827868"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Gebruik en prestaties bewaken in Klassieke Windows-bureaublad-apps
 
@@ -20,7 +21,7 @@ Toepassingen die on-premises worden gehost, in Azure, en in andere clouds, kunne
 3. Bewerk in Visual Studio de NuGet-pakketten van uw app-project en voeg Microsoft.ApplicationInsights.WindowsServer toe. (Of kies micro soft. ApplicationInsights als u alleen de basis-API wilt, zonder de standaard telemetrie-verzamelings modules.)
 4. Stel de instrumentatiesleutel in uw code in:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *uw sleutel* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*uw sleutel*`";`
    
     of in ApplicationInsights.config (als u een van de standaardtelemetriepakketten hebt geïnstalleerd):
    
@@ -53,10 +54,8 @@ using Microsoft.ApplicationInsights;
             ...
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
         {
-            e.Cancel = true;
-
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -64,9 +63,10 @@ using Microsoft.ApplicationInsights;
                 // Allow time for flushing:
                 System.Threading.Thread.Sleep(1000);
             }
-            base.OnClosing(e);
+            base.OnFormClosing(e);
         }
-
+        
+        ...
 ```
 
 ## <a name="override-storage-of-computer-name"></a>Opslag van computer naam overschrijven

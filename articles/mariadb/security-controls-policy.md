@@ -1,18 +1,18 @@
 ---
 title: Controles voor naleving van Azure Policy-regelgeving voor Azure Database for MariaDB
 description: Een overzicht van de beschikbare controles voor naleving van Azure Policy-regelgeving voor Azure Database for MariaDB. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van de naleving van uw Azure-resources.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a99a91a5d95a8e979632b9f845b96190a731e98c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 844bb7752c073155f8e8232baf358feb457d0957
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973420"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827472"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Controles voor naleving van Azure Policy-regelgeving voor Azure Database for MariaDB
 

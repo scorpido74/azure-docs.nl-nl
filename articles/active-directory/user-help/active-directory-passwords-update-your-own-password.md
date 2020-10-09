@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029542"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827762"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
 
@@ -69,7 +69,7 @@ Als u geen toegang hebt tot uw Azure Active Directory-account (Azure AD), kan di
 
     3. Typ en bevestig uw nieuwe wacht woord en selecteer vervolgens **volt ooien**.
 
-- **Stel uw wacht woord opnieuw in met behulp van een telefoon nummer.** Hiermee verzendt u een SMS-bericht naar het telefoon nummer dat u eerder hebt ingesteld in Security info. Als uw beheerder de beveiligings informatie heeft ingeschakeld, kunt u meer informatie vinden over het instellen van een telefoon nummer in het artikel [beveiligings gegevens instellen voor het gebruik van een telefoon gesprek (preview-versie)](security-info-setup-phone-number.md) . Als u nog geen beveiligings gegevens gebruikt, kunt u meer informatie vinden over het instellen van een telefoon nummer in het artikel [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md) .
+- **Stel uw wacht woord opnieuw in met behulp van een telefoon nummer.** Hiermee wordt een geautomatiseerd telefoon gesprek met het nummer dat u eerder hebt ingesteld in Security info. Als uw beheerder de beveiligings informatie heeft ingeschakeld, kunt u meer informatie vinden over het instellen van een telefoon nummer in het artikel [beveiligings gegevens instellen voor het gebruik van een telefoon gesprek (preview-versie)](security-info-setup-phone-number.md) . Als u nog geen beveiligings gegevens gebruikt, kunt u meer informatie vinden over het instellen van een telefoon nummer in het artikel [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md) .
 
     1. Selecteer **mijn mobiele telefoon bellen**, typ uw telefoon nummer en selecteer vervolgens **bellen**.
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081420"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825737"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Gegevens bronnen Azure Monitor werkmappen
 
@@ -85,7 +85,7 @@ Als u een query besturings element wilt gebruiken deze gegevens bron, gebruikt u
 
 Met de JSON-provider kunt u een query resultaat maken op basis van statische JSON-inhoud. Het wordt meestal gebruikt in para meters voor het maken van vervolg keuzelijst parameters van statische waarden. Eenvoudige JSON-matrices of-objecten worden automatisch geconverteerd naar raster rijen en-kolommen.  Voor meer specifiek gedrag kunt u het tabblad resultaten en JSONPath-instellingen gebruiken om kolommen te configureren.
 
-## <a name="alerts-preview"></a>Waarschuwingen (preview-versie)
+## <a name="alerts-preview"></a>Waarschuwingen (preview)
 
 > [!NOTE]
 > De voorgestelde manier om informatie over Azure-waarschuwingen op te vragen, is door de gegevens bron van de [Azure-resource grafiek](#azure-resource-graph) te gebruiken door een query uit te stellen op de `AlertsManagementResources` tabel.
@@ -114,4 +114,3 @@ Om te voor komen dat u automatisch aanroepen naar niet-vertrouwde hosts maakt wa
 * [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
 * De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.
 * [Tips voor het optimaliseren van query's Log Analytics](../log-query/query-optimization.md)
-* 

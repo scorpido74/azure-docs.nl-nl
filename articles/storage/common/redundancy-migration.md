@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f8d1eaa76a30e39647830b54c30cb8f7e8bb8e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613965"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827312"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslag account wordt gerepliceerd
 
@@ -76,7 +76,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
     -SkuName <sku>
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de optie voor redundantie voor uw opslag account wilt wijzigen met Azure CLI, roept u de opdracht [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan en geeft u de `--sku` para meter:
 
@@ -108,7 +108,7 @@ Als u uw opslag account wilt migreren van LRS naar ZRS in de primaire regio zond
 
 Tijdens een Livemigratie kunt u toegang krijgen tot gegevens in uw opslag account zonder verlies van duurzaamheid of Beschik baarheid. De SLA van Azure Storage wordt onderhouden tijdens het migratie proces. Er is geen gegevens verlies gekoppeld aan een Livemigratie. Service-eind punten, toegangs sleutels, hand tekeningen voor gedeelde toegang en andere account opties blijven ongewijzigd na de migratie.
 
-ZRS biedt alleen ondersteuning voor v2-accounts voor algemeen gebruik. Zorg er dus voor dat u uw opslag account bijwerkt voordat u een aanvraag voor een Livemigratie naar ZRS verzendt. Zie [een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik](storage-account-upgrade.md)voor meer informatie. Een opslag account moet gegevens bevatten die via livemigratie moeten worden gemigreerd.
+ZRS biedt alleen ondersteuning voor v2-accounts voor algemeen gebruik. Zorg er dus voor dat u uw opslag account bijwerkt voordat u een aanvraag voor een Livemigratie naar ZRS verzendt. Zie [Upgraden naar een algemeen v2-opslagaccount](storage-account-upgrade.md) voor meer informatie. Een opslag account moet gegevens bevatten die via livemigratie moeten worden gemigreerd.
 
 Livemigratie wordt alleen ondersteund voor opslag accounts die gebruikmaken van de replicatie van LRS of GRS. Als uw account gebruikmaakt van RA-GRS, moet u eerst het replicatie type van uw account wijzigen in LRS of GRS voordat u doorgaat. Deze intermediair-stap verwijdert het secundaire alleen-lezen eindpunt dat door RA-GRS vóór de migratie wordt gegeven.
 
@@ -123,8 +123,11 @@ U moet een hand matige migratie uitvoeren als:
 
 U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Selecteer in de portal het opslag account dat u wilt converteren naar ZRS.
 
-1. **Nieuwe ondersteunings aanvraag** selecteren
-2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en de resource die u wilt converteren naar ZRS.
+1. Selecteer een **nieuwe ondersteunings aanvraag**.
+2. Voltooi de **basis beginselen** op basis van uw account gegevens: 
+    - **Probleem type**: Selecteer **Technical**.
+    - **Service**: Selecteer **Mijn services** en **beheer van opslag accounts**.
+    - **Resource**: Selecteer de resource die u wilt converteren naar ZRS.
 3. Selecteer **Next**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: behoud de standaard waarde in.
@@ -174,7 +177,7 @@ Als u wilt bijwerken naar ZRS met behulp van Power shell, roept u de volgende op
 Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u een upgrade wilt uitvoeren naar ZRS met behulp van Azure CLI, roept u de volgende opdracht aan:
 
@@ -195,7 +198,7 @@ Als u uw opslag account migreert van GRS naar LRS, zijn er geen extra kosten, ma
 > [!IMPORTANT]
 > Als u uw opslag account migreert van RA-GRS naar GRS of LRS, wordt dat account gefactureerd als RA-GRS voor een extra periode van 30 dagen na de datum waarop deze is geconverteerd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Azure Storage redundantie](storage-redundancy.md)
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)

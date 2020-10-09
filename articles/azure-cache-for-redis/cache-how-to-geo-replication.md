@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461339"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825318"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Geo-replicatie voor Azure cache instellen voor redis
 
@@ -111,6 +111,7 @@ Nadat geo-replicatie is geconfigureerd, zijn de volgende beperkingen van toepass
 - [Waarom is de bewerking mislukt wanneer ik mijn gekoppelde cache probeerde te verwijderen?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [Welke regio moet ik voor mijn secundaire gekoppelde cache gebruiken?](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [Hoe werkt het uitvoeren van een failover naar de secundaire gekoppelde cache?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Kan ik Firewall configureren met geo-replicatie?](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Kan ik geo-replicatie met een Standard-of Basic-laag cache gebruiken?
 
@@ -185,7 +186,12 @@ Automatische failover tussen Azure-regio's wordt niet ondersteund voor geo-gerep
 
 Als u een door de klant geïnitieerde failover wilt starten, koppelt u de caches dan eerst. Wijzig vervolgens uw redis-client om het eind punt van de verbinding van de secundaire cache (voorheen gekoppeld) te gebruiken. Wanneer de twee caches zijn ontkoppeld, wordt de secundaire cache opnieuw een regel matige lees-/schrijftoegang en worden aanvragen rechtstreeks van redis-clients geaccepteerd.
 
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Kan ik een firewall met geo-replicatie configureren?
+
+Ja, u kunt een [firewall](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) met geo-replicatie configureren. Om geo-replicatie naast een firewall te laten werken, moet u ervoor zorgen dat het IP-adres van de secundaire cache wordt toegevoegd aan de firewall regels van de primaire cache.
+
 ## <a name="next-steps"></a>Volgende stappen
+
 Meer informatie over Azure cache voor redis-functies.
 
 * [Azure-cache voor redis-service lagen](cache-overview.md#service-tiers)

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798530"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826555"
 ---
-# <a name="tutorial-visualize-and-monitor-your-data"></a>Zelf studie: uw gegevens visualiseren en bewaken
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Zelfstudie: Uw gegevens visualiseren en bewaken
 
 
 
@@ -44,19 +44,19 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 
 1. Ga naar **werkmappen** en selecteer vervolgens **sjablonen** om de volledige lijst met ingebouwde Azure-Sentinel-werkmappen weer te geven. Om te zien welke relevant zijn voor de gegevens typen die u hebt verbonden, wordt in het veld **vereiste gegevens typen** in elke werkmap het gegevens type weer gegeven naast een groen vinkje als u al relevante gegevens streamt naar Azure Sentinel.
   ![Ga naar werkmappen](./media/tutorial-monitor-data/access-workbooks.png)
-1. Klik op **werkmap weer geven** om de sjabloon te bekijken die is ingevuld met uw gegevens.
+1. Klik op **sjabloon weer geven** om de sjabloon te bekijken die is ingevuld met uw gegevens.
   
 1. Als u de werkmap wilt bewerken, selecteert u **Opslaan**en selecteert u vervolgens de locatie waar u het JSON-bestand voor de sjabloon wilt opslaan. 
 
    > [!NOTE]
-   > Hiermee wordt een Azure-resource gemaakt op basis van de relevante sjabloon en wordt het JSON-sjabloon bestand zelf en niet de gegevens opgeslagen.
+   > Hiermee maakt u een Azure-resource op basis van de relevante sjabloon en slaat u het JSON-bestand van de werkmap en niet de gegevens op.
 
 
-1. Selecteer **werkmap weer geven**. Klik vervolgens bovenaan op de knop **bewerken** . U kunt de werkmap nu bewerken en aanpassen op basis van uw behoeften. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/platform/workbooks-overview.md)voor meer informatie over het aanpassen van de werkmap.
+1. Selecteer **opgeslagen werkmap weer geven**. Klik vervolgens bovenaan op de knop **bewerken** . U kunt de werkmap nu bewerken en aanpassen op basis van uw behoeften. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/platform/workbooks-overview.md)voor meer informatie over het aanpassen van de werkmap.
 ![werkmappen weer geven](./media/tutorial-monitor-data/workbook-graph.png)
 1. Nadat u de wijzigingen hebt aangebracht, kunt u de werkmap opslaan. 
 
-1. U kunt de werkmap ook klonen: Selecteer **bewerken** en vervolgens **Opslaan als**, en zorg ervoor dat u deze opslaat onder een andere naam, onder hetzelfde abonnement en dezelfde resource groep. Deze werkmappen worden weer gegeven op het tabblad **mijn werkmappen** .
+1. U kunt de werkmap ook klonen: Selecteer **bewerken** en vervolgens **Opslaan als**, en zorg ervoor dat u deze opslaat onder een andere naam, onder hetzelfde abonnement en dezelfde resource groep. Deze gekloonde werkmappen worden weer gegeven op het tabblad **mijn werkmappen** .
 
 
 ## <a name="create-new-workbook"></a>Nieuwe werkmap maken
@@ -66,7 +66,7 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 
 1. Als u de werkmap wilt bewerken, selecteert u **bewerken**en voegt u indien nodig tekst, query's en para meters toe. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/platform/workbooks-overview.md)voor meer informatie over het aanpassen van de werkmap. 
 
-1. Wanneer u een query bouwt, stelt u de **gegevens bron** in op **Logboeken**, wordt het **resource type** ingesteld op **log Analytics** en kiest u vervolgens de relevante werk ruimte (n). 
+1. Wanneer u een query bouwt, moet u ervoor zorgen dat de **gegevens bron** is ingesteld op **Logboeken** en dat het **Resource type** is ingesteld op **log Analytics**, en kies vervolgens de relevante werk ruimte (n). 
 
 1. Nadat u de werkmap hebt gemaakt, slaat u de werkmap op en zorgt u ervoor dat u deze opslaat onder het abonnement en de resource groep van uw Azure Sentinel-werk ruimte.
 
@@ -79,15 +79,13 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 
 ## <a name="how-to-delete-workbooks"></a>Werkmappen verwijderen
 
-U kunt werkmappen verwijderen die zijn gemaakt op basis van een Azure-Sentinel-sjabloon. 
-
-Als u een aangepaste werkmap wilt verwijderen, selecteert u op de pagina werkmappen de opgeslagen werkmap die u wilt verwijderen en selecteert u **verwijderen**. Hiermee wordt de opgeslagen werkmap verwijderd.
+Als u een opgeslagen werkmap (een opgeslagen sjabloon of een aangepaste werkmap) wilt verwijderen, selecteert u op de pagina werkmappen de opgeslagen werkmap die u wilt verwijderen en selecteert u **verwijderen**. Hiermee wordt de opgeslagen werkmap verwijderd.
 
 > [!NOTE]
-> Hiermee verwijdert u de resource en wijzigingen die u hebt aangebracht in de sjabloon. De oorspronkelijke sjabloon blijft beschikbaar.
+> Hiermee verwijdert u de werkmap resource en alle wijzigingen die u hebt aangebracht in de sjabloon. De oorspronkelijke sjabloon blijft beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u uw gegevens in azure Sentinel kunt weer geven.
+In deze zelf studie hebt u geleerd hoe u uw gegevens in azure Sentinel kunt visualiseren met behulp van Azure-werkmappen.
 
 Zie voor meer informatie over het automatiseren van uw reacties op bedreigingen [automatische bedreigings reacties instellen in azure Sentinel](tutorial-respond-threats-playbook.md).

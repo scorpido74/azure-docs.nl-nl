@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443576"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827905"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
 
@@ -94,8 +94,12 @@ Alle risico detecties worden beschreven in het artikel [Wat is risico](concept-i
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Waarom kan ik een gebruiker met een laag (of hoger) risico Score zien, zelfs als er geen Risk ante aanmeldingen of risico detecties worden weer gegeven in identiteits beveiliging?
 
-Omdat het gebruikers risico cumulatief is en niet verloopt, kan een gebruiker een risico van weinig of meer gebruikers hebben, zelfs als er geen recente Risk ante aanmeldingen of risico detecties worden weer gegeven in identiteits beveiliging. Deze situatie kan zich voordoen als de enige schadelijke activiteit van een gebruiker voorbij het tijds bestek heeft geduurd waarvoor we de details van Risk ante aanmeldingen en risico detecties opslaan. Er wordt geen gebruikers risico verstrijkt omdat er sprake is van een bekend aantal actors in de 140 omgeving van de klant. Klanten kunnen de risico tijdlijn van de gebruiker bekijken om te begrijpen waarom een gebruiker risico loopt door te gaan naar:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+Omdat het gebruikers risico cumulatief is en niet verloopt, kan een gebruiker een risico van weinig of meer gebruikers hebben, zelfs als er geen recente Risk ante aanmeldingen of risico detecties worden weer gegeven in identiteits beveiliging. Deze situatie kan zich voordoen als de enige schadelijke activiteit van een gebruiker voorbij het tijds bestek heeft geduurd waarvoor we de details van Risk ante aanmeldingen en risico detecties opslaan. Er wordt geen gebruikers risico verstrijkt omdat er sprake is van een bekend aantal actors in de 140 omgeving van de klant. Klanten kunnen de risico tijdlijn van de gebruiker bekijken om te begrijpen waarom een gebruiker risico loopt door te gaan naar: `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Waarom heeft een aanmelding een hoge score voor een ' Sign-in-risico (aggregatie) ' wanneer de detecties zijn van een laag of gemiddeld risico?
 
 De hoge cumulatieve risico Score kan worden gebaseerd op andere functies van de aanmelding of het feit dat er meer dan één detectie voor die aanmelding is geactiveerd. Het is ook mogelijk dat een aanmelding een normaal risico (aggregatie) van het medium heeft, zelfs als de detecties die zijn gekoppeld aan de aanmelding, een hoog risico opleveren. 
+
+### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>Waarom is de detectie die is gekoppeld aan een Risk ante aanmelding een ander risico niveau dan het risico niveau voor aanmelden (realtime)? 
+
+We hebben onlangs verbeteringen aangebracht in de manier waarop realtime-aanmeldings Risico's worden berekend. Het verschil tussen het niveau van risico detectie en het risico niveau van de aanmelding is een resultaat van die wijzigingen. Houd er rekening mee dat het realtime-aanmeld risico de waarde is die wordt gebruikt tijdens het afdwingen van beleid. 

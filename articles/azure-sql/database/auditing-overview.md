@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396243"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828042"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Controleren op Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -106,6 +106,7 @@ Als u het schrijven van audit logboeken naar een opslag account wilt configurere
 #### <a name="remarks"></a>Opmerkingen
 
 - Audit logboeken worden geschreven om **blobs toe te voegen** in een Azure Blob-opslag in uw Azure-abonnement
+- Audit logboeken hebben de Xel-indeling en kunnen worden geopend met behulp van [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 - Als u een onveranderbaar logboek archief wilt configureren voor de controle gebeurtenissen op de server of op database niveau, volgt u de [instructies van Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes). Zorg ervoor dat u **Extra toevoegen toestaan** selecteert wanneer u de onveranderbare Blob-opslag configureert.
 - U kunt audit logboeken schrijven naar een Azure Storage-account achter een VNet of firewall. Zie voor specifieke instructies [audit schrijven naar een opslag account achter VNet en firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Nadat u de controle-instellingen hebt geconfigureerd, kunt u de nieuwe functie voor het detecteren van bedreigingen inschakelen en e-mail berichten configureren voor het ontvangen van beveiligings waarschuwingen. Wanneer u detectie van dreigingen gebruikt, ontvangt u proactieve waarschuwingen over afwijkende database activiteiten die kunnen wijzen op mogelijke beveiligings dreigingen. Zie aan de slag [met detectie van bedreigingen](threat-detection-overview.md)voor meer informatie.
@@ -173,7 +174,7 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
 
        ![Scherm afbeelding met de opties voor het weer geven van de controle records.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
-- Gebruik de systeem functie **sys. fn_get_audit_file** (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
+- Gebruik de systeem functie **sys.fn_get_audit_file** (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
 - **Samenvoeg controle bestanden** in SQL Server Management Studio gebruiken (vanaf SSMS 17):
     1. Selecteer in het menu SSMS **File**  >  **Open**  >  **Merge audit files**.

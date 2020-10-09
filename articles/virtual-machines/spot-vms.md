@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817788"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827838"
 ---
 # <a name="use-spot-vms-in-azure"></a>Gebruik van een spot Vm's in azure
 
@@ -67,8 +67,22 @@ De volgende [aanbiedings typen](https://azure.microsoft.com/support/legal/offer-
 
 Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. 
 
+U kunt ook een query uitvoeren op prijs informatie met behulp van de [Azure retail prijs API](/rest/api/cost-management/retail-prices/azure-retail-prices) om te zoeken naar informatie over de prijzen. De `meterName` en `skuName` zijn beide opgenomen `Spot` .
 
 Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765` is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1` , wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
+
+## <a name="pricing-and-eviction-history"></a>Prijs-en verwijderings geschiedenis
+
+U kunt historische prijzen en verwijderings tarieven weer geven per grootte in een regio in de portal. Selecteer **prijs geschiedenis weer geven en vergelijk prijzen in nabijgelegen regio's** om een tabel of grafiek met prijzen voor een bepaalde grootte te bekijken.  De prijzen en verwijderings tarieven in de volgende afbeeldingen zijn alleen voor beelden. 
+
+**Grafiek**:
+
+:::image type="content" source="./media/spot-chart.png" alt-text="Scherm afbeelding van de regio opties met het verschil in prijs-en verwijderings tarieven als diagram.":::
+
+**Tabel**:
+
+:::image type="content" source="./media/spot-table.png" alt-text="Scherm afbeelding van de regio opties met het verschil in prijs-en verwijderings tarieven als diagram.":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>Veelgestelde vragen
@@ -98,7 +112,7 @@ Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars
 **A:** U kunt uw vraag met `azure-spot` op [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)plaatsen en labelen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Gebruik de [cli](./linux/spot-cli.md)-, [Portal](./windows/spot-portal.md)-, [arm-sjabloon](./linux/spot-template.md)of [Power shell](./windows/spot-powershell.md) voor het implementeren van spot-vm's.
+Gebruik de [cli](./linux/spot-cli.md)-, [Portal](spot-portal.md)-, [arm-sjabloon](./linux/spot-template.md)of [Power shell](./windows/spot-powershell.md) voor het implementeren van spot-vm's.
 
 U kunt ook een [schaalset implementeren met steun-VM-exemplaren](../virtual-machine-scale-sets/use-spot.md).
 

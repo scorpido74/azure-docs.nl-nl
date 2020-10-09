@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: c29e0f687e36eb679875ea7899aa1a0cd91bd122
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2ce0e34032d8f0d07af3a7dcd3c47558814be7bd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169490"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826820"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Twilio gebruiken voor spraak-en SMS-mogelijkheden in PHP
 In deze hand leiding wordt gedemonstreerd hoe u veelvoorkomende programmeer taken uitvoert met de Twilio API-service in Azure. De besproken scenario's zijn onder andere het maken van een telefoon oproep en het verzenden van een SMS-bericht (Short Message Service). Zie de sectie [volgende stappen](#NextSteps) voor meer informatie over Twilio en het gebruik van spraak en SMS in uw toepassingen.
@@ -98,7 +98,7 @@ Zodra u de Twilio-bibliotheek voor PHP hebt geïnstalleerd, kunt u boven aan uw 
 require_once 'Services/Twilio.php';
 ```
 
-Zie voor meer informatie [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] .
+Zie [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] voor meer informatie.
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Procedure: een uitgaande oproep doen
 Hieronder ziet u hoe u een uitgaande oproep maakt met behulp van de **Services_Twilio** -klasse. Deze code maakt ook gebruik van een Twilio-site om het TwiML-antwoord (Twilio Markup Language) te retour neren. Vervang uw waarden door **van** en **naar** telefoon nummers en zorg ervoor dat u het telefoon nummer **van** uw Twilio-account controleert voordat u de code uitvoert.
@@ -146,7 +146,7 @@ catch (Exception $e)
 
 Zoals vermeld, gebruikt deze code een Twilio-site voor het retour neren van het TwiML-antwoord. U kunt in plaats daarvan uw eigen site gebruiken om het TwiML-antwoord op te geven. Zie [TwiML-reacties op uw eigen website bieden](#howto_provide_twiml_responses)voor meer informatie.
 
-* **Opmerking**: Zie voor het oplossen van problemen met TLS/SSL-certificaat validatie[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Opmerking**: Zie voor het oplossen van problemen met TLS/SSL-certificaat validatie [https://www.twilio.com/docs/api/errors][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Procedure: een SMS-bericht verzenden
 Hieronder ziet u hoe u een SMS-bericht verzendt met behulp van de **Services_Twilio** -klasse. Het **van** -nummer wordt verzorgd door Twilio voor proef accounts om SMS-berichten te verzenden. Het **to** -nummer moet worden geverifieerd voor uw Twilio-account voordat u de code uitvoert.
@@ -210,7 +210,7 @@ print $response;
 
 Zie voor meer informatie over TwiML [https://www.twilio.com/docs/api/twiml][twiml_reference] . 
 
-Zodra u uw PHP-pagina hebt ingesteld om TwiML-reacties te geven, gebruikt u de URL van de PHP-pagina als de URL die wordt door gegeven aan de- `Services_Twilio->account->calls->create` methode. Als u bijvoorbeeld een webtoepassing met de naam **MyTwiML** hebt geïmplementeerd in een door Azure gehoste service en de naam van de PHP-pagina **MyTwiML. php**is, kan de URL worden door gegeven aan **Services_Twilio->account->-aanroepen->maken** , zoals in het volgende voor beeld wordt weer gegeven:
+Zodra u uw PHP-pagina hebt ingesteld om TwiML-reacties te geven, gebruikt u de URL van de PHP-pagina als de URL die wordt door gegeven aan de-  `Services_Twilio->account->calls->create`  methode. Als u bijvoorbeeld een webtoepassing met de naam **MyTwiML** hebt geïmplementeerd in een door Azure gehoste service en de naam van de PHP-pagina **MyTwiML. php**is, kan de URL worden door gegeven aan  **Services_Twilio->account->-aanroepen->maken**  , zoals in het volgende voor beeld wordt weer gegeven:
 
 ```php
 require_once 'Services/Twilio.php';

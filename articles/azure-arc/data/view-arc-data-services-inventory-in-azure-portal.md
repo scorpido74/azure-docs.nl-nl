@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2d68fbc1b2ae7ef92279b1e99bb77299da82b87e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3c7299ff211035f81cc08e9f191641c780ad02c4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936031"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826639"
 ---
 # <a name="view-inventory-of-your-instances-in-the-azure-portal"></a>De inventaris van uw instanties in het Azure Portal weer geven
 
-Nadat u uw [metrische gegevens, logboeken](upload-metrics-and-logs-to-azure-monitor.md)of [gebruik](view-billing-data-in-azure.md)hebt geüpload, kunt u uw exemplaar weer geven als een Azure-resource vanuit het Azure Portal. Hiertoe gaat u naar de speciale URL [https://portal.azure.com](https://portal.azure.com) en volgt u de onderstaande scherm afbeeldingen
+Nadat u uw [metrische gegevens, logboeken](upload-metrics-and-logs-to-azure-monitor.md)of [gebruik](view-billing-data-in-azure.md)hebt geüpload, kunt u uw exemplaar weer geven als een Azure-resource vanuit het Azure Portal. Als u uw resource wilt weer geven in de Azure Portal, gaat u naar de speciale URL [https://portal.azure.com](https://portal.azure.com) en voert u de volgende stappen uit:
 
-1. Ga naar alle services
-1. Zoeken naar uw type data base-exemplaren
-1. Toevoegen aan uw favorieten
-1. Klik op exemplaar type in het Linkernavigatie-navigatie venster
-1. Bekijk uw instanties in dezelfde weer gave als uw andere Azure SQL-of Azure PostgreSQL grootschalige-resources (gebruik filters om een gedetailleerde weer gave te verkrijgen)
+1. Ga naar **alle services**.
+1. Zoek naar het type data base-exemplaar.
+1. Voeg het type toe aan uw favorieten.
+1. Selecteer in het linkermenu het type exemplaar.
+1. Bekijk uw instanties in dezelfde weer gave als uw andere Azure SQL-of Azure PostgreSQL grootschalige-resources (gebruik filters voor een gedetailleerde weer gave).

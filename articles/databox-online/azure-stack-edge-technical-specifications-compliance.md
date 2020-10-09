@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883434"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826841"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Technische specificaties van Azure Stack Edge Pro
 
@@ -25,8 +25,8 @@ Het Azure Stack Edge Pro-apparaat heeft de volgende specificaties voor Compute e
 
 | Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
-| CPU    | 2 X 10 core CPU                     |
-| Geheugen              | 128 GB RAM                  |
+| CPU    | 2 X 10 core CPU Intel Xeon Silver 4114 2,2 G                    |
+| Geheugen              | 128 GB RAM (8x 16 GB RDIMM)                 |
 
 ## <a name="fpga-specifications"></a>FPGA-specificaties
 
@@ -45,7 +45,7 @@ Het Azure Stack Edge Pro-apparaat heeft twee 100-240 V-energievoedings eenheden 
 | Maximale uitvoer kracht    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Selectie van voltage bereik | Automatisch variërend: 100-240 V AC |
-| Hot pluggable           | Yes                        |
+| Hot pluggable           | Ja                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Specificaties van Azure Stack Edge Pro-stroom kabel per regio
 
@@ -60,9 +60,18 @@ The following table lists the typical power consumption data (actual values may 
 
 Uw Azure Stack Edge Pro-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
 
-| Specificatie           | Description                 |
+| Specificatie           | Beschrijving                 |
 |-------------------------|----------------------------|
 |  Netwerkinterfaces    | 2 X 1 GbE-interfaces: Eén beheerinterface, niet configureerbaar door gebruikers, gebruikt voor eerste installatie. De andere gegevensinterface kan door gebruikers worden geconfigureerd, kan worden gebruikt voor gegevensoverdracht en is standaard DHCP. <br>2 X 25 GbE-interfaces: Deze kunnen ook als 10 GbE-interfaces werken. Deze gegevensinterfaces kunnen door gebruikers worden geconfigureerd als DHCP (standaard) of statisch. <br> 2 X 25 GbE-interfaces: Deze gegevensinterfaces kunnen door gebruikers worden geconfigureerd als DHCP (standaard) of statisch.                  |
+
+De gebruikte netwerk adapters zijn: 
+
+| Specificatie           | Beschrijving                 |
+|-------------------------|----------------------------|
+|Kaart voor netwerk dochter (rNDC) |QLogic FastLinQ 41264 Dual Port 25GbE SFP +, Dual Port 1GbE, rNDC|
+|PCI-netwerk adapter |QLogic FastLinQ 41262 zwei poorten 25Gbit/s SFP28-adapter|
+
+Raadpleeg de HCL-lijst van Intel QLogic voor compatibele Gigabit-Interface Converter (GBIC). Gigabit Interface Converter (GBIC) is niet inbegrepen bij de levering van Azure Stack Edge. 
 
 ## <a name="storage-specifications"></a>Opslag specificaties
 

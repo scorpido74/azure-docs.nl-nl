@@ -3,14 +3,14 @@ title: Implementeren op specifieke host
 description: Gebruik een specifieke host om te profiteren van de echte isolatie op hostniveau voor uw Azure Container Instances-workloads
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259645"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825616"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Implementeren op toegewezen hosts
 
@@ -31,8 +31,8 @@ De toegewezen SKU is geschikt voor werkbelastingen van containers waarvoor isola
 Vanaf API-versie 2019-12-01 is er een `sku` eigenschap in de sectie eigenschappen van container groep van een implementatie sjabloon, die vereist is voor een ACI-implementatie. Op dit moment kunt u deze eigenschap gebruiken als onderdeel van een Azure Resource Manager implementatie sjabloon voor ACI. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](./container-instances-multi-container-group.md). 
 
 De `sku` eigenschap kan een van de volgende waarden hebben:
-* `Standard`-de standaard implementatie keuze van ACI, die nog steeds beveiliging op Hyper Visor niveau garandeert 
-* `Dedicated`-wordt gebruikt voor isolatie van het werkbelasting niveau met toegewezen fysieke hosts voor de container groep
+* `Standard` -de standaard implementatie keuze van ACI, die nog steeds beveiliging op Hyper Visor niveau garandeert 
+* `Dedicated` -wordt gebruikt voor isolatie van het werkbelasting niveau met toegewezen fysieke hosts voor de container groep
 
 ## <a name="modify-your-json-deployment-template"></a>De JSON-implementatie sjabloon wijzigen
 

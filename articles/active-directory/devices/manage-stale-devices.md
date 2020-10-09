@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705534"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825966"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
 
@@ -91,7 +91,7 @@ Als een apparaat onder beheer staat van Intune of een andere MDM-oplossing, stel
 
 Verwijder geen apparaten die door het systeem worden beheerd. Dit zijn doorgaans apparaten zoals auto pilot. Nadat deze apparaten zijn verwijderd, kunnen ze niet opnieuw worden ingericht. Door het systeem beheerde apparaten worden standaard uitgesloten door de nieuwe cmdlet `Get-AzureADDevice`.  
 
-### <a name="hybrid-azure-ad-joined-devices"></a>Apparaten die zijn toegevoegd aan hybride Azure AD
+### <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
 
 Apparaten die zijn gekoppeld aan hybride Azure AD moeten het beleid volgen voor het beheer van on-premises verlopen apparaten. 
 
@@ -163,9 +163,9 @@ Als dit is geconfigureerd, worden BitLocker-sleutels voor Windows 10-apparaten o
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Waarom moet ik me zorgen maken over Windows auto pilot-apparaten?
 
 Wanneer u een Azure AD-apparaat verwijdert dat is gekoppeld aan een Windows auto pilot-object, kunnen de volgende drie scenario's optreden als het apparaat in de toekomst opnieuw wordt bereden:
-- Met Windows auto pilot door gebruikers gestuurde implementaties zonder gebruik te maken van witte ondersteunt, wordt er een nieuw Azure AD-apparaat gemaakt, maar dit wordt niet gelabeld met de ZTDID.
+- Met Windows auto pilot door gebruikers gestuurde implementaties zonder vooraf inrichten te gebruiken, wordt er een nieuw Azure AD-apparaat gemaakt, maar dit wordt niet gelabeld met de ZTDID.
 - Met Windows auto pilot-implementaties in de modus voor automatische prototype mislukt deze omdat er geen Azure AD-apparaat kan worden gevonden.  (Dit is een beveiligings mechanisme om ervoor te zorgen dat er geen ' preposter '-apparaten proberen om lid te worden van Azure AD zonder referenties.) De fout geeft aan dat een ZTDID niet overeenkomt.
-- Met de ondersteunt-implementaties van Windows auto pilot kunnen ze niet worden uitgevoerd, omdat er geen gekoppeld Azure AD-apparaat kan worden gevonden. (Achter de schermen gebruiken White ondersteunt-implementaties hetzelfde proces voor automatische implementatie, zodat ze dezelfde beveiligings mechanismen afdwingen.)
+- Met de implementaties van de voor bereiding voor Windows auto pilot zullen ze mislukken omdat er geen gekoppeld Azure AD-apparaat kan worden gevonden. (Achter de schermen gebruiken implementaties vooraf inrichten hetzelfde proces voor automatische implementatie, zodat ze dezelfde beveiligings mechanismen afdwingen.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Hoe weet ik om wat voor type gekoppelde apparaten het gaat?
 

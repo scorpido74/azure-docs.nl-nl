@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629123"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826223"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Een vertrouwelijke client toepassing registreren in Azure Active Directory
 
@@ -50,7 +50,7 @@ Nu u uw toepassing hebt geregistreerd, moet u selecteren welke API-machtigingen 
 
 1. Selecteer **een machtiging toevoegen**.
 
-    Als u de Azure API voor FHIR gebruikt, voegt u een machtiging toe aan de Azure-gezondheids zorg Api's door te zoeken naar **Azure-gezondheids zorg api's** onder **api's mijn organisatie gebruikt**. 
+    Als u de Azure API voor FHIR gebruikt, voegt u een machtiging toe aan de Azure-gezondheids zorg Api's door te zoeken naar **Azure-gezondheids zorg api's** onder **api's mijn organisatie gebruikt**. U kunt dit alleen vinden als u [de Azure-API voor FHIR](fhir-paas-powershell-quickstart.md)al hebt geïmplementeerd.
 
     Als u naar een andere bron toepassing verwijst, selecteert u de [registratie van de FHIR API-resource toepassing](register-resource-azure-ad-client-app.md) die u eerder hebt gemaakt onder **mijn api's**.
 
@@ -64,7 +64,7 @@ Nu u uw toepassing hebt geregistreerd, moet u selecteren welke API-machtigingen 
 
 ## <a name="application-secret"></a>Toepassingsgeheim
 
-1. Selecteer **certificaten & geheimen**.
+1. Selecteer **Certificaten en geheimen**.
 1. Selecteer **Nieuw clientgeheim**. 
 
     ![Vertrouwelijke client. Toepassings geheim](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
@@ -75,9 +75,7 @@ Nu u uw toepassing hebt geregistreerd, moet u selecteren welke API-machtigingen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een vertrouwelijke client toepassing in Azure Active Directory kunt registreren. U bent nu klaar om de [Azure API voor FHIR](fhir-paas-powershell-quickstart.md)te implementeren.
-
-Nadat u de Azure API voor FHIR hebt geïmplementeerd, kunt u aanvullende beschik bare instellingen bekijken.
+In dit artikel hebt u geleerd hoe u een vertrouwelijke client toepassing in Azure Active Directory kunt registreren. Vervolgens krijgt u toegang tot uw FHIR-server met behulp van postman
  
 >[!div class="nextstepaction"]
->[De Azure-API voor FHIR implementeren](fhir-paas-powershell-quickstart.md)
+>[Azure API for FHIR openen met Postman](access-fhir-postman-tutorial.md)

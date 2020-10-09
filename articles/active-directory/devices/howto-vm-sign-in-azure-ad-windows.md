@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287097"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826664"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -236,7 +236,7 @@ De AADLoginForWindows-extensie moet worden geïnstalleerd om de virtuele machine
 
    > [!NOTE]
    > Als de extensie opnieuw wordt opgestart na de eerste fout, wordt het logboek met de implementatie fout opgeslagen als CommandExecution_YYYYMMDDHHMMSSSSS. log. "
-1. Open een opdracht prompt op de VM en controleer of deze query's op het IMDS-eind punt (Instance Metadata Service) dat wordt uitgevoerd op de Azure-host:
+1. Open een Power shell-opdracht prompt op de VM en controleer of deze query's op het IMDS-eind punt (Instance Metadata Service) dat wordt uitgevoerd op de Azure-host:
 
    | Opdracht die moet worden uitgevoerd | Verwachte uitvoer |
    | --- | --- |

@@ -3,14 +3,14 @@ title: Implementatiegegevens versleutelen
 description: Meer informatie over het versleutelen van gegevens die zijn opgeslagen voor de resources van de container instantie en hoe u de gegevens versleutelt met een door de klant beheerde sleutel
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 1c45999dbb354e8c2d550be82cdf37a6694d2dbb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259713"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825673"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
@@ -24,11 +24,11 @@ Gegevens in ACI worden versleuteld en ontsleuteld met 256-bits AES-versleuteling
 
 U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van de container gegevens of u kunt de versleuteling beheren met uw eigen sleutels. De volgende tabel vergelijkt deze opties: 
 
-|    |    Door micro soft beheerde sleutels     |     Door klant beheerde sleutels     |
+|    |    Door Microsoft beheerde sleutels     |     Door klant beheerde sleutels     |
 |----|----|----|
 |    **Bewerkingen voor versleuteling/ontsleuteling**    |    Azure    |    Azure    |
 |    **Sleutel opslag**    |    Micro soft-sleutel archief    |    Azure Key Vault    |
-|    **Verantwoordelijkheid voor sleutel rotatie**    |    Microsoft-peering    |    Klant    |
+|    **Verantwoordelijkheid voor sleutel rotatie**    |    Microsoft    |    Klant    |
 |    **Sleutel toegang**    |    Alleen micro soft    |    Micro soft, klant    |
 
 In de rest van het document worden de stappen beschreven die nodig zijn voor het versleutelen van uw ACI-implementatie gegevens met uw sleutel (door de klant beheerde sleutel). 

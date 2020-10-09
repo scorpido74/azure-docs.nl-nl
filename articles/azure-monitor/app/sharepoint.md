@@ -3,12 +3,12 @@ title: Een SharePoint-site met Application Insights bewaken
 description: Een nieuwe toepassing bewaken met een nieuwe instrumentatiesleutel
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: afd7a5fc8ccf7546078fa8a4ffa7a076cb05be6a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f07c317a61c91daf7a469c1f9eaf1fb80d4ecc49
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757245"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825289"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Een SharePoint-site met Application Insights bewaken
 
@@ -141,4 +141,3 @@ function onRequestFail(sender, args) {
 * [Application Insights](./app-insights-overview.md) voor andere typen app.
 
 <!--Link references-->
-

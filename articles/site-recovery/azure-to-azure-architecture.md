@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322084"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825420"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
 
-In dit artikel worden de architectuur, onderdelen en processen beschreven die worden gebruikt bij het implementeren van herstel na nood gevallen voor virtuele Azure-machines (Vm's) met behulp van de [Azure site Recovery](site-recovery-overview.md) -service. Als herstel na nood gevallen is ingesteld, repliceert Azure Vm's voortdurend van naar een andere doel regio. Als er een storing optreedt, kunt u een failover uitvoeren voor virtuele machines naar de secundaire regio en daar toegang toe krijgen. Wanneer alles normaal gesp roken opnieuw wordt uitgevoerd, kunt u een failback uitvoeren en op de primaire locatie blijven werken.
+In dit artikel worden de architectuur, onderdelen en processen beschreven die worden gebruikt bij het implementeren van herstel na nood gevallen voor virtuele Azure-machines (Vm's) met behulp van de [Azure site Recovery](site-recovery-overview.md) -service. Als herstel na nood gevallen is ingesteld, worden virtuele Azure-machines voortdurend gerepliceerd naar een andere doel regio. Als er een storing optreedt, kunt u een failover uitvoeren voor virtuele machines naar de secundaire regio en daar toegang toe krijgen. Wanneer alles normaal gesp roken opnieuw wordt uitgevoerd, kunt u een failback uitvoeren en op de primaire locatie blijven werken.
 
 
 
@@ -62,7 +62,7 @@ U kunt doel resources als volgt beheren:
 
 Wanneer u Azure VM-replicatie inschakelt, Site Recovery standaard een nieuw replicatie beleid maken met de standaard instellingen in de tabel.
 
-**Beleidsinstelling** | **Details** | **Standaard**
+**Beleidsinstelling** | **Details** | **Prijs**
 --- | --- | ---
 **Bewaarperiode van herstelpunt** | Hiermee geeft u op hoelang Site Recovery herstel punten bewaard | 24 uur
 **Frequentie van de app-consistente momentopname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke vier uur

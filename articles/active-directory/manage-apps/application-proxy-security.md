@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362143"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825893"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Beveiligings overwegingen voor het extern openen van apps met Azure AD-toepassingsproxy
 
@@ -83,7 +83,7 @@ Ter verbetering van de beveiliging van toepassingen die zijn gepubliceerd door A
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection-Service
 
-Toepassingen die zijn gepubliceerd via toepassings proxy, worden beschermd tegen DDoS-aanvallen (Distributed Denial of service). **Azure DDoS Protection** is een service die wordt aangeboden met het Azure-platform om uw Azure-resources te beschermen tegen denial-of-service-aanvallen. De **Basic** -servicelaag wordt automatisch ingeschakeld, waardoor er altijd verkeer wordt bewaakt en de realtime wordt beperkt van veelvoorkomende aanvallen op netwerk niveau. Zie [Azure DDoS Protection Standard-overzicht](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)voor meer informatie.
+Toepassingen die zijn gepubliceerd via toepassings proxy, worden beschermd tegen DDoS-aanvallen (Distributed Denial of service). Deze beveiliging wordt beheerd door micro soft en wordt automatisch ingeschakeld in al onze data centers. De Azure DDoS Protection-Service biedt altijd controle van verkeer en real-time beperking van veelvoorkomende aanvallen op netwerk niveau. 
 
 ## <a name="under-the-hood"></a>Onderhuids
 

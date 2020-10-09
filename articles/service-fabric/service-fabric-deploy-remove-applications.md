@@ -3,12 +3,12 @@ title: Azure Service Fabric-implementatie met Power shell
 description: Meer informatie over het verwijderen en implementeren van toepassingen in azure Service Fabric en het uitvoeren van deze acties in Power shell.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611449"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827424"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Toepassingen implementeren en verwijderen met behulp van Power shell
 
@@ -100,7 +100,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 ```
 
 Als het toepassings pakket groot is en/of veel bestanden heeft, kunt u [het comprimeren](service-fabric-package-apps.md#compress-a-package). De compressie vermindert de grootte en het aantal bestanden.
-Het gevolg is dat de registratie en het ongedaan maken van de registratie van het toepassings type sneller zijn. De upload tijd kan op dit moment langzamer zijn, met name als u de tijd opgeeft om het pakket te comprimeren. 
+Dit leidt tot snellere registratie en registratie van het toepassings type. De upload tijd kan op dit moment langzamer zijn, met name als u de tijd opgeeft om het pakket te comprimeren. 
 
 Als u een pakket wilt comprimeren, gebruikt u dezelfde [copy-ServiceFabricApplicationPackage-](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) opdracht. Compressie kan worden gescheiden van het uploaden, met behulp van de `SkipCopy` vlag of samen met de upload bewerking. Het Toep assen van compressie op een gecomprimeerd pakket is niet op.
 Als u een gecomprimeerd pakket wilt decomprimeren, gebruikt u dezelfde [copy-ServiceFabricApplicationPackage-](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) opdracht met de `UncompressPackage` Switch.
@@ -223,7 +223,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApp
 
 ## <a name="create-the-application"></a>De toepassing maken
 
-U kunt een toepassing instantiëren vanuit elke toepassings type versie die is geregistreerd met behulp van de cmdlet [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) . De naam van elke toepassing moet beginnen met het schema *' Fabric: '* en moet uniek zijn voor elk toepassings exemplaar. Alle standaard services die in het toepassings manifest van het type doel toepassing zijn gedefinieerd, worden ook gemaakt.
+U kunt een toepassing instantiëren vanuit elke toepassings type versie die is geregistreerd met behulp van de cmdlet [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) . De naam van elke toepassing moet beginnen met het schema *' Fabric: '* en moet uniek zijn voor elk toepassings exemplaar. Sstandaardservices gedefinieerd in het toepassingsmanifest van het doeltoepassingstype worden ook aangemaakt.
 
 ```powershell
 New-ServiceFabricApplication fabric:/MyApp MyApplicationType 1.0.0

@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447860"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827609"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -46,7 +46,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofdmap delen `operation_Id` . Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID ( `qJSXU` ) toegewezen aan de telemetrie van de afhankelijkheid en wordt de id van de pagina weergave gebruikt als `operation_ParentId` . De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId` .
 
-| Item type   | name                      | Id           | operation_ParentId | operation_Id |
+| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
@@ -74,71 +74,17 @@ Application Insights definieert ook de [uitbrei ding](https://github.com/lmolkov
 De map [W3C Trace-context](https://w3c.github.io/trace-context/) en Application Insights data models op de volgende manier:
 
 | Application Insights                   | W3C-tracering voor                                      |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `SpanKind` is server als synchroon; `SpanKind` is consument als asynchroon                    |
-| `Dependency`                           | `SpanKind` is client als synchroon; `SpanKind` is producent als asynchroon                   |
-| `Id` van `Request` en `Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `SpanId` van de bovenliggende duur van dit bereik. Als dit een basis periode is, moet dit veld leeg zijn.     |
+|------------------------------------    |-------------------------------------------------|
+| `Id` van `Request` en `Dependency`     | [bovenliggend element-id](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [Trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | [bovenliggende-id](https://w3c.github.io/trace-context/#parent-id) van de bovenliggende duur van dit bereik. Als dit een basis periode is, moet dit veld leeg zijn.     |
+
 
 Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie.
 
-### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering inschakelen voor klassieke ASP.NET-Apps
- 
-  > [!NOTE]
-  >  Vanaf `Microsoft.ApplicationInsights.Web` en `Microsoft.ApplicationInsights.DependencyCollector` is er geen configuratie nodig.
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Ondersteuning voor gedistribueerde tracering van W3C inschakelen voor .NET-Apps
 
-W3C-tracering: context ondersteuning wordt op een neerwaarts compatibele manier geïmplementeerd. Correlatie wordt verwacht te werken met toepassingen die zijn gekoppeld aan eerdere versies van de SDK (zonder W3C-ondersteuning).
-
-Als u het verouderde protocol wilt blijven gebruiken `Request-Id` , kunt u trace-context met behulp van deze configuratie uitschakelen:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-Als u een oudere versie van de SDK uitvoert, wordt u aangeraden deze bij te werken of de volgende configuratie toe te passen om tracering context in te scha kelen.
-Deze functie is beschikbaar in de `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.DependencyCollector` pakketten en vanaf versie 2.8.0-beta1.
-Het is standaard uitgeschakeld. Als u deze wilt inschakelen, brengt u de volgende wijzigingen aan `ApplicationInsights.config` :
-
-- `RequestTrackingTelemetryModule`Voeg onder het `EnableW3CHeadersExtraction` element toe en stel de waarde ervan in op `true` .
-- `DependencyTrackingTelemetryModule`Voeg onder het `EnableW3CHeadersInjection` element toe en stel de waarde ervan in op `true` .
-- `W3COperationCorrelationTelemetryInitializer`Onder toevoegen `TelemetryInitializers` . Dit ziet er ongeveer uit als in dit voor beeld:
-
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers>
-```
-
-### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering voor ASP.NET Core-Apps inschakelen
-
- > [!NOTE]
-  > Vanaf `Microsoft.ApplicationInsights.AspNetCore` versie 2.8.0 is geen configuratie nodig.
- 
-W3C-tracering: context ondersteuning wordt op een neerwaarts compatibele manier geïmplementeerd. Correlatie wordt verwacht te werken met toepassingen die zijn gekoppeld aan eerdere versies van de SDK (zonder W3C-ondersteuning).
-
-Als u het verouderde protocol wilt blijven gebruiken `Request-Id` , kunt u trace-context met behulp van deze configuratie uitschakelen:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-Als u een oudere versie van de SDK uitvoert, wordt u aangeraden deze bij te werken of de volgende configuratie toe te passen om tracering context in te scha kelen.
-
-Deze functie bevindt zich in `Microsoft.ApplicationInsights.AspNetCore` versie 2.5.0-beta1 en in `Microsoft.ApplicationInsights.DependencyCollector` versie 2.8.0-beta1.
-Het is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` u in op `true` :
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
+Op W3C tracering voor gebaseerde gedistribueerde tracering is standaard ingeschakeld in alle recente Sdk's van .NET Framework/. NET core, samen met achterwaartse compatibiliteit met verouderd aanvraag-id-protocol.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering inschakelen voor java-apps
 
@@ -304,24 +250,9 @@ U kunt de logboek gegevens exporteren met behulp van `AzureLogHandler` . Zie [di
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetrie-correlatie in .NET
 
-In de loop van de tijd heeft .NET verschillende manieren gedefinieerd voor het correleren van telemetrie-en Diagnostische logboeken:
+.NET runtime ondersteunt gedistribueerd met behulp van [activiteit](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) en [DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)
 
-- `System.Diagnostics.CorrelationManager` staat het volgen van [LogicalOperationStack en ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)toe.
-- `System.Diagnostics.Tracing.EventSource` en Event Tracing for Windows (ETW) definiëren de methode [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) .
-- `ILogger` maakt gebruik van [logboek bereiken](/aspnet/core/fundamentals/logging#log-scopes).
-- Windows Communication Foundation (WCF) en HTTP-updoorgifte van de huidige context.
-
-Deze methoden hebben echter geen automatische ondersteuning voor gedistribueerde tracering ingeschakeld. `DiagnosticSource` ondersteunt automatische correlatie tussen computers. .NET-bibliotheken ondersteunen `DiagnosticSource` en toestaan dat de correlatie context automatisch wordt door gegeven via het Trans Port, zoals http.
-
-De [Gebruikers handleiding](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor de activiteit in `DiagnosticSource` legt de basis beginselen van het bijhouden van activiteiten uit.
-
-ASP.NET Core 2,0 ondersteunt het ophalen van HTTP-headers en het starten van nieuwe activiteiten.
-
-`System.Net.Http.HttpClient`vanaf versie 4.1.0 ondersteunt automatische injectie van correlatie-HTTP-headers en het bijhouden van HTTP-aanroepen als activiteiten.
-
-Er is een nieuwe HTTP-module, [micro soft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/), voor klassieke ASP.net. Met deze module wordt de telemetrie-correlatie geïmplementeerd met `DiagnosticSource` . Er wordt een activiteit gestart op basis van binnenkomende aanvraag headers. Ook wordt de telemetrie gecorreleerd vanuit de verschillende stadia van aanvraag verwerking, zelfs wanneer elke fase van de verwerking van Internet Information Services (IIS) wordt uitgevoerd op een andere beheerde thread.
-
-De Application Insights SDK, te beginnen met versie 2.4.0-beta1, gebruikt `DiagnosticSource` en `Activity` voor het verzamelen van telemetrie en om deze te koppelen aan de huidige activiteit.
+De Application Insights .NET SDK gebruikt `DiagnosticSource` en `Activity` voor het verzamelen en correleren van telemetrie.
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Telemetrie-correlatie in Java

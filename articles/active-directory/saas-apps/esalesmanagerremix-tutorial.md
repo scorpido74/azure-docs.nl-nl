@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555386"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826746"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integreren met E Sales Manager Remix
 
@@ -56,11 +56,11 @@ Het scenario dat in deze zelf studie wordt beschreven, bestaat uit twee belang r
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>E Sales Manager Remix toevoegen vanuit de galerie
 Als u de integratie van Azure AD wilt configureren met E Sales Manager Remix, voegt u E Sales Manager Remix van de galerie toe aan uw lijst met beheerde SaaS-apps door het volgende te doen:
 
-1. Selecteer **Azure Active Directory**in het linkerdeel venster van de [Azure Portal](https://portal.azure.com). 
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**. 
 
     ![De knop Azure Active Directory][1]
 
-1. Selecteer **Enterprise applications**  >  **alle toepassingen**in bedrijfs toepassingen.
+1. Selecteer **Bedrijfstoepassingen** > **Alle toepassingen**.
 
     ![Het venster bedrijfs toepassingen][2]
     
@@ -107,7 +107,7 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
 
 1. Onder **SAML-handtekening certificaat**selecteert u **certificaat (base64)** en vervolgens slaat u het certificaat bestand op uw computer op.
 
-    ![De download koppeling voor het certificaat (base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
+    ![De link om het certificaat (Base64) te downloaden](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
 1. Schakel het selectie vakje **alle andere gebruikers kenmerken weer geven en bewerken** in en selecteer vervolgens het kenmerk **EmailAddress** .
     
@@ -121,7 +121,7 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
 
 1. Selecteer onder **e configuratie van de Sales Manager-Remix**de optie **E Sales Manager Remix configureren**.
 
-    ![E Remix-configuratie voor verkoop Manager](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![Scherm opname van de sectie ' E Sales Manager Remix Configuration ' met ' Configure E Sales Manager Remix ' geselecteerd.](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     Het venster **aanmelden configureren** wordt geopend.
 
@@ -253,9 +253,9 @@ In deze sectie schakelt u gebruiker Julia Simon in om eenmalige aanmelding van A
 
 1. Selecteer in het venster **gebruikers en groepen** in de lijst **gebruikers** de optie **Julia Simon**.
 
-1. Selecteer de knop **selecteren** .
+1. Selecteer de knop **Selecteren**.
 
-1. Selecteer in het venster **toewijzing toevoegen** de optie **toewijzen**.
+1. Selecteer **Toewijzen** in het venster **Toewijzing toevoegen**.
     
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 

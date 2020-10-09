@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977558"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825784"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
 
-Werkmappen bieden een flexibel canvas voor gegevens analyse en het maken van uitgebreide visuele rapporten in de Azure Portal. Hiermee kunt u in meerdere gegevens bronnen in azure tikken en deze combi neren in Unified Interactive-ervaringen. 
+Werkmappen bieden een flexibel canvas voor gegevensanalyse en het maken van uitgebreide visuele rapporten in Azure Portal. Hiermee kunt u in meerdere gegevens bronnen in azure tikken en deze combi neren in Unified Interactive-ervaringen. 
 
 Hier volgt een video-overzicht van het maken van werkmappen.
 
@@ -25,16 +25,16 @@ Hier volgt een video-overzicht van het maken van werkmappen.
 
 ## <a name="data-sources"></a>Gegevensbronnen
 
-Werkmappen kunnen gegevens uit meerdere bronnen in azure opvragen. Auteurs van werkmappen kunnen deze gegevens transformeren om inzicht te krijgen in de beschik baarheid, de prestaties, het gebruik en de algemene status van de onderliggende onderdelen. U kunt bijvoorbeeld prestatie logboeken analyseren van virtuele machines om een hoog CPU-of laag geheugen te identificeren en de resultaten weer te geven als een raster in een interactief rapport.
+Werkmappen kunnen gegevens uit meerdere bronnen in Azure opvragen. Auteurs van werkmappen kunnen deze gegevens transformeren om inzicht te bieden in de beschikbaarheid, de prestaties, het gebruik en de algemene status van de onderliggende onderdelen. U kunt bijvoorbeeld prestatie logboeken analyseren van virtuele machines om een hoog CPU-of laag geheugen te identificeren en de resultaten weer te geven als een raster in een interactief rapport.
   
-Maar de kracht van werkmappen is de mogelijkheid om gegevens uit verschillende bronnen in één rapport te combi neren. Dit maakt het mogelijk om samengestelde resource weergaven te maken of samen te voegen over resources, waardoor rijkere gegevens en inzichten worden ingeschakeld die anders niet mogelijk zouden zijn.
+Maar het echte voordeel van werkmappen is de mogelijkheid om gegevens uit verschillende bronnen in één rapport te combineren. Dit maakt het mogelijk om samengestelde resource weergaven te maken of samen te voegen over resources, waardoor rijkere gegevens en inzichten worden ingeschakeld die anders niet mogelijk zouden zijn.
 
-Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
+Werkmappen zijn momenteel compatibel met de volgende gegevensbronnen:
 
 * [Logboeken](workbooks-data-sources.md#logs)
 * [Metrische gegevens](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
-* [Waarschuwingen (preview)](workbooks-data-sources.md#alerts-preview)
+* [Waarschuwingen (preview-versie)](workbooks-data-sources.md#alerts-preview)
 * [Werk belasting status](workbooks-data-sources.md#workload-health)
 * [Azure Resource Health](workbooks-data-sources.md#azure-resource-health)
 * [Azure Data Explorer](workbooks-data-sources.md#azure-data-explorer)

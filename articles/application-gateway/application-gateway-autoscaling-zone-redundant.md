@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649743"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826623"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -21,7 +21,7 @@ Application Gateway is beschikbaar in een Standard_v2 SKU. Web Application firew
 
 De nieuwe v2-SKU bevat de volgende verbeteringen:
 
-- Automatische **schaling**: Application Gateway-of WAF-implementaties onder de SKU voor automatisch schalen kunnen omhoog of omlaag worden geschaald op basis van het wijzigen van de verkeers laad patronen. Automatisch schalen heft ook de vereiste op om tijdens het inrichten een implementatiegrootte of het aantal instanties te kiezen. Deze SKU biedt echte elasticiteit. In de Standard_v2 en WAF_v2 SKU kunnen Application Gateway zowel in vaste capaciteit (automatisch schalen uitgeschakeld) als in de modus voor automatisch schalen worden uitgevoerd. De modus vaste capaciteit is handig voor scenario's met consistente en voorspel bare werk belastingen. De modus voor automatisch schalen is handig voor toepassingen die verschillen in toepassings verkeer bekijken.
+- Automatisch **schalen**: Application Gateway-of WAF-implementaties in de SKU voor automatische schaling kunnen worden uitgeschaald of op basis van het wijzigen van de verkeers laad patronen. Automatisch schalen heft ook de vereiste op om tijdens het inrichten een implementatiegrootte of het aantal instanties te kiezen. Deze SKU biedt echte elasticiteit. In de Standard_v2 en WAF_v2 SKU kunnen Application Gateway zowel in vaste capaciteit (automatisch schalen uitgeschakeld) als in de modus voor automatisch schalen worden uitgevoerd. De modus vaste capaciteit is handig voor scenario's met consistente en voorspel bare werk belastingen. De modus voor automatisch schalen is handig voor toepassingen die verschillen in toepassings verkeer bekijken.
 - **Zone redundantie**: een Application Gateway-of WAF-implementatie kan meerdere Beschikbaarheidszones omvatten, waardoor de nood zaak om afzonderlijke Application Gateway instanties in elke zone met een Traffic Manager te inrichten, wordt verwijderd. U kunt kiezen uit één zone of meerdere zones waar Application Gateway instanties worden geïmplementeerd, waardoor de zone storing moeilijker wordt. De back-end-groep voor toepassingen kan net zo worden gedistribueerd over beschikbaarheids zones.
 
   Zone redundantie is alleen beschikbaar wanneer Azure-zones beschikbaar zijn. In andere regio's worden alle andere functies ondersteund. Zie [regio's en Beschikbaarheidszones in azure](../availability-zones/az-overview.md) voor meer informatie.
