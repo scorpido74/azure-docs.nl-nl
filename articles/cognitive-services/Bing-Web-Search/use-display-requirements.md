@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60499882"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Vereisten voor gebruik en weergave van Bing Zoeken-API's
@@ -27,7 +27,7 @@ Deze gebruiks-en weergave vereisten zijn van toepassing op elke implementatie va
 - Zoeken in Bing Nieuws
 - Bing Video's zoeken
 - Bing Visuele zoekopdrachten
-- Bing Webzoekopdrachten
+- Bing Web Search
 - Bing Spellingcontrole
 - Bing Automatische suggesties
 
@@ -39,7 +39,7 @@ Deze gebruiks-en weergave vereisten zijn van toepassing op elke implementatie va
 |Antwoord     | Een categorie met resultaten die in een antwoord wordt geretourneerd. Een reactie van de Bing Webzoekopdrachten-API kan bijvoorbeeld antwoorden bevatten in de categorieën resultaten van webpagina's, afbeelding, video, visueel element en nieuws. |
 |Antwoord     | Alle antwoorden en bijbehorende gegevens die zijn ontvangen als reactie op één aanroep van een zoek-API. |
 |Resultaat    | Een item met informatie in een antwoord. De set met gegevens die zijn gekoppeld aan één nieuws artikel is bijvoorbeeld een antwoord op een nieuws. |
-|Api's zoeken    | gezamenlijk, de Bing Aangepaste zoekopdrachten, Entiteiten zoeken, Afbeeldingen zoeken, Nieuws zoeken, Video's zoeken, Visual Search, lokale zakelijke zoek opdracht en Webzoekopdrachten-Api's. |
+|Search-API's    | gezamenlijk, de Bing Aangepaste zoekopdrachten, Entiteiten zoeken, Afbeeldingen zoeken, Nieuws zoeken, Video's zoeken, Visual Search, lokale zakelijke zoek opdracht en Webzoekopdrachten-Api's. |
 
 ## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Beperkingen voor Bing Spellingcontrole en Automatische suggestie-API voor Bing
 

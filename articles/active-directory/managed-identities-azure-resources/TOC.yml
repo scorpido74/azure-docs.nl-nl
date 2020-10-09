@@ -130,7 +130,7 @@
       href: /dotnet/api/overview/azure/identity-readme?view=azure-dotnet
     - name: Java
       href: /java/api/overview/azure/identity-readme?view=azure-java-stable
-    - name: Javascript
+    - name: JavaScript
       href: /javascript/api/overview/azure/identity-readme?view=azure-node-latest
     - name: Python
       href: /python/api/overview/azure/identity-readme?view=azure-python

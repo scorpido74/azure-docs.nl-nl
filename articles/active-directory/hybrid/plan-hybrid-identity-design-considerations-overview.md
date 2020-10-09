@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60381456"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Ontwerpoverwegingen voor Azure Active Directory Hybrid Identity
@@ -42,7 +42,7 @@ In het bijzonder zijn de doel stellingen voor het ontwerp van de hybride identit
 ## <a name="how-can-this-guide-help-you"></a>Hoe kan deze handleiding u helpen?
 U kunt deze hand leiding gebruiken om te begrijpen hoe u een hybride identiteits oplossing ontwerpt waarmee een op de cloud gebaseerd identiteits beheersysteem kan worden geïntegreerd met uw huidige on-premises identiteits oplossing. 
 
-In de volgende afbeelding ziet u een voor beeld van een hybride identiteits oplossing waarmee IT-beheerders hun huidige Windows Server Active Directory-oplossing op locatie kunnen integreren met Microsoft Azure Active Directory om gebruikers in staat te stellen om eenmalige aanmelding (SSO) te gebruiken voor toepassingen die zich in de Cloud en on-premises bevinden.
+In de volgende afbeelding ziet u een voor beeld van een hybride identiteits oplossing waarmee IT-beheerders hun huidige Windows Server Active Directory-oplossing op locatie kunnen integreren met Microsoft Azure Active Directory om gebruikers in staat te stellen één Sign-On (SSO) te gebruiken voor toepassingen die zich in de Cloud en on-premises bevinden.
 
 ![Voorbeeld](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 

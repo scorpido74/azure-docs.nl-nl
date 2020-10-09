@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79254753"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871810"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Uw StorSimple 8600-apparaat uitpakken, aan het rek koppelen en bekabelen
 
@@ -192,13 +192,13 @@ Uw apparaat bevindt zich in een configuratie met actief/stand-by: op elk gewenst
 Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van het apparaat bekabelen, zoals wordt weer gegeven in de volgende stappen.
 
 #### <a name="to-cable-for-network-connection"></a>Naar kabel voor netwerk verbinding
-1. Uw apparaat heeft zes netwerk interfaces op elke controller: vier 1 Gbps-en 2 10 Gbps Ethernet-poorten. Raadpleeg de volgende afbeelding om de gegevens poorten op de backplane van uw apparaat te identificeren.
+1. Uw apparaat heeft zes netwerk interfaces op elke controller: 4 1 Gbps en 2 10 Gbps Ethernet-poorten. Raadpleeg de volgende afbeelding om de gegevens poorten op de backplane van uw apparaat te identificeren.
    
      ![Backplane van 8600-apparaat](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
     **Terug op het apparaat met de gegevens poorten**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE-netwerk interfaces |
    |   2, 3 |10 GbE-netwerk interfaces |
@@ -209,7 +209,7 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
 
 **Netwerk kabels voor uw apparaat**
 
-| Label | Description |
+| Label | Beschrijving |
 | --- | --- |
 | A |LAN met Internet toegang |
 | B |Controller 0 |

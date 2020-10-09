@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390169"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Ondersteuning voor taal en regio voor Bing Spellingcontrole-API
 
-Deze talen worden ondersteund door de Bing Spellingcontrole-API (alleen in `spell` de modus).
+Deze talen worden ondersteund door de Bing Spellingcontrole-API (alleen in de `spell` modus).
 
-Houd er rekening mee dat u kunt werken met een `en-US`andere taal `mkt` dan de moet worden ingesteld `Accept-Language` en `setLang` ofwel of moet worden ingesteld zoals beschreven in [spell check-API V7-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Houd er rekening mee dat u kunt werken met een andere taal dan `en-US` de `mkt` moet worden ingesteld en ofwel `Accept-Language` of `setLang` moet worden ingesteld zoals beschreven in [spell check-API V7-referentie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Taal    | Taalcode |
 |:----------- |:-------------:|
 | Arabisch      | `ar`          |
 | Chinees (volks Republiek China)     | `zh-CN`          |
-| Chinees (Hong Kong SAR)    | `zh-HK`          |
+| Chinees (Hongkong SAR)    | `zh-HK`          |
 | Chinees (Taiwan)     | `zh-TW`          |
 | Deens      | `da`          |
 | Nederlands (België)       | `nl-BE`          |
@@ -53,7 +53,7 @@ Houd er rekening mee dat u kunt werken met een `en-US`andere taal `mkt` dan de m
 | Italiaans     | `it`          |
 | Japans    | `ja`          |
 | Koreaans      | `ko`          |
-| Norwegian   | `no`          |
+| Noors   | `no`          |
 | Pools      | `pl`          |
 | Portugees (Brazilië)   | `pt-BR`|
 | Portugees (Portugal) | `pt-PT`|

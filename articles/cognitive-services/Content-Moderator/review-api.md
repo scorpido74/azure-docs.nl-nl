@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221148"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872048"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Beoordelingen, werk stromen en taken voor content toezicht
 
@@ -35,7 +35,7 @@ Een werk stroom is een op de cloud gebaseerd gepersonaliseerd filter voor inhoud
 
 ### <a name="view-workflows"></a>Werk stromen weer geven
 
-Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen** > **werk stromen**.
+Als u uw bestaande werk stromen wilt weer geven, gaat u naar het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/) en selecteert u **instellingen**  >  **werk stromen**.
 
 ![Standaardwerk stroom](images/default-workflow-listed.PNG)
 

@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79279492"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871997"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>VPN-gateways instellen op het CloudSimple-netwerk
 
@@ -103,7 +103,7 @@ Met een punt-naar-site-VPN-gateway kunt u een beleid voor automatische toevoegin
 
     * Met de opties voor **automatisch toevoegen** wordt het globale beleid voor de gateway ingesteld. De instellingen zijn van toepassing op de huidige gateway. De instellingen kunnen worden overschreven in het gebied **selecteren** .
     * Selecteer **vlan's voor beheer/subnetten van persoonlijke Clouds toevoegen**. 
-    * Klik op door de gebruiker gedefinieerde vlan's **/subnetten toevoegen**om alle door de gebruiker gedefinieerde vlan's/subnetten toe te voegen.
+    * Klik op door de gebruiker gedefinieerde vlan's  **/subnetten toevoegen**om alle door de gebruiker gedefinieerde vlan's/subnetten toe te voegen.
     * De **selectie** -instellingen overschrijven de algemene instellingen onder **automatisch toevoegen**.
 
 7. Klik op **volgende** om de instellingen te controleren. Klik op de pictogrammen bewerken om wijzigingen aan te brengen.

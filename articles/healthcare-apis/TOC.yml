@@ -76,6 +76,8 @@
           href: configure-local-rbac.md
         - name: Database-instellingen configureren
           href: configure-database.md
+        - name: Door klant beheerde sleutels configureren
+          href: bring-your-own-key.md
         - name: CORS configureren
           href: configure-cross-origin-resource-sharing.md
         - name: Export configureren

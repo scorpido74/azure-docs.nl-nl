@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60531051"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>Release opmerkingen bij StorSimple 8000 Series update 2,2
@@ -73,7 +73,7 @@ De volgende tabel bevat een samen vatting van bekende problemen in deze release.
 | 6 |Webproxy |Als uw webproxy-configuratie HTTPS heeft als het opgegeven protocol, wordt de communicatie van uw apparaat naar service beïnvloed en wordt het apparaat offline gezet. Er worden ook ondersteunings pakketten gegenereerd in het proces, waarbij aanzienlijke bronnen op uw apparaat worden gebruikt. |Zorg ervoor dat de web proxy-URL HTTP heeft als het opgegeven protocol. Zie [Configure web proxy for your device](storsimple-configure-web-proxy.md) (Webproxy voor uw apparaat configureren) voor meer informatie. |Ja |Nee |
 | 7 |Webproxy |Als u webproxy configureert en inschakelt op een geregistreerd apparaat, moet u de actieve controller opnieuw opstarten op het apparaat. | |Ja |Nee |
 | 8 |Hoge Cloud latentie en hoge I/O-werk belasting |Wanneer uw StorSimple-apparaat een combi natie van zeer hoge Cloud latenties (volg orde van seconden) en een hoge I/O-werk belasting tegen komt, worden de volumes van het apparaat gedegradeerd en kan het I/O's mislukken met de fout ' apparaat is niet gereed '. |U moet de controllers van het apparaat hand matig opnieuw opstarten of een failover voor het apparaat uitvoeren om deze situatie te herstellen. |Ja |Nee |
-| 9 |Azure PowerShell |Wanneer u de StorSimple-cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Selecteer-object-eerste 1-wacht** met het selecteren van het eerste object, zodat u een nieuw **upopslagaccount** -object kunt maken, retourneert de cmdlet alle objecten. |Verpakken de cmdlet tussen haakjes als volgt: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; select-object-First 1-wait** |Ja |Ja |
+| 9 |Azure PowerShell |Wanneer u de StorSimple-cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object-eerste 1-wacht** met het selecteren van het eerste object, zodat u een nieuw **upopslagaccount** -object kunt maken, retourneert de cmdlet alle objecten. |Wikkel de cmdlet tussen haakjes als volgt: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object-eerste 1-wacht** |Ja |Ja |
 | 10 |Migratie |Wanneer meerdere volume containers worden door gegeven voor migratie, is de ETA voor de meest recente back-up alleen nauw keurig voor de eerste volume container. Daarnaast wordt parallelle migratie gestart nadat de eerste vier back-ups in de eerste volume container zijn gemigreerd. |U wordt aangeraden één volume container tegelijk te migreren. |Ja |Nee |
 | 11 |Migratie |Na het terugzetten worden er geen volumes meer toegevoegd aan het back-upbeleid of de virtuele-schijf groep. |Als u back-ups wilt maken, moet u deze volumes aan een back-upbeleid toevoegen. |Ja |Ja |
 | 12 |Migratie |Nadat de migratie is voltooid, mag het apparaat van de 5000/7000-serie geen toegang hebben tot de gemigreerde gegevens containers. |U wordt aangeraden de gemigreerde gegevens containers te verwijderen nadat de migratie is voltooid en doorgevoerd. |Ja |Nee |

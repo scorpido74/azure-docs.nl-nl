@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Private Link?
       href: private-link-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Een privé-eindpunt maken - Portal
       href: create-private-endpoint-portal.md
@@ -28,6 +28,8 @@
   items:
     - name: Verbinding maken met een opslagaccount
       href: tutorial-private-endpoint-storage-portal.md
+    - name: Verbinding maken met een Cosmos DB-account
+      href: tutorial-private-endpoint-cosmosdb-portal.md
 - name: Concepten
   items:
     - name: Privé-eindpunt
@@ -42,8 +44,6 @@
           href: security-baseline.md
 - name: Procedures
   items:
-    - name: Privé verbinding maken met een Cosmos DB-account
-      href: create-private-endpoint-cosmosdb-portal.md
     - name: Privéverbinding maken met een web-app
       href: create-private-endpoint-webapp-portal.md
     - name: Netwerkbeleid uitschakelen voor een privé-eindpunt
