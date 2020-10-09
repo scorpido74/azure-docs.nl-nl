@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76153782"
 ---
 # <a name="avere-cluster-dns-configuration"></a>DNS-configuratie voor Avere-cluster
@@ -21,11 +21,11 @@ Dit document bevat *geen* instructies voor het instellen en beheren van een DNS-
 
 In plaats van Round-Robin DNS te gebruiken om een vFXT-cluster in azure te verdelen, kunt u hand matige methoden gebruiken om IP-adressen gelijkmatig toe te wijzen aan clients wanneer deze zijn gekoppeld. Er worden verschillende methoden beschreven in [Koppel het avere-cluster](avere-vfxt-mount-clients.md).
 
-Houd bij het bepalen van het gebruik van een DNS-server het volgende in de hand:
+Houd rekening met het volgende bij het bepalen of u wel of geen DNS-server wilt gebruiken:
 
 * Als uw systeem alleen door NFS-clients wordt gebruikt, is het gebruik van DNS niet vereist. het is mogelijk om alle netwerk adressen op te geven met behulp van numerieke IP-adressen.
 
-* Als uw systeem ondersteuning biedt voor SMB (CIFS), is DNS vereist, omdat u een DNS-domein moet opgeven voor de Active Directory-server.
+* Als uw systeem ondersteuning biedt voor toegang via SMB (CIFS), is DNS wel vereist, omdat u een DNS-domein moet opgeven voor de Active Directory-server.
 
 * DNS is vereist als u Kerberos-verificatie wilt gebruiken.
 
@@ -35,20 +35,20 @@ Als u de algehele belasting wilt distribueren, moet u uw DNS-domein configureren
 
 ## <a name="configuration-details"></a>Configuratie Details
 
-Wanneer clients toegang hebben tot het cluster, balanceert RRDNS automatisch hun aanvragen over alle beschik bare interfaces.
+Wanneer clients toegang hebben tot het cluster, worden de aanvragen via RRDNS gelijkmatig verdeeld over alle beschikbare interfaces.
 
-Voor optimale prestaties kunt u uw DNS-server configureren voor het afhandelen van cluster adressen op de client, zoals wordt weer gegeven in het volgende diagram.
+Voor de beste prestaties moet u de DNS-server configureren voor het afhandelen van clientgerichte clusteradressen, zoals wordt weergegeven in het volgende diagram.
 
-Er wordt aan de linkerkant een cluster-vserver weer gegeven en IP-adressen worden weer gegeven in het midden en aan de rechter kant. Configureer elk client toegangs punt met een record en pointers zoals geïllustreerd.
+Een cluster-vserver wordt aan de linkerkant weergegeven, en IP-adressen worden in het midden en aan de rechterkant weergegeven. Configureer elk clienttoegangspunt met A-records en pointers zoals geïllustreerd.
 
 ![AVERE Cluster Round-Robin DNS-diagram](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
-Elk IP-adres dat aan de client is gericht, moet een unieke naam hebben voor intern gebruik door het cluster. (In dit diagram worden de IP-adressen van de client de naam VS1-client-IP-* voor duidelijkheid, maar in productie moet u waarschijnlijk een beknoptere, zoals client *) gebruiken.
+Elk clientgericht IP-adres moet een unieke naam hebben voor intern gebruik door het cluster. (In dit diagram hebben de IP-adressen van de client de naam vs1-client-IP-* voor de duidelijkheid, maar in een productieomgeving moet u waarschijnlijk een beknoptere naam gebruiken, zoals client*.)
 
-Clients koppelen het cluster met de naam vserver als server argument.
+Clients koppelen het cluster met de naam van de vserver als het serverargument.
 
-Wijzig het bestand van de DNS-server ``named.conf`` om de cyclische volg orde voor query's naar uw vserver in te stellen. Deze optie zorgt ervoor dat alle beschik bare waarden worden gerecycled. Voeg een instructie toe zoals de volgende:
+Wijzig het bestand ``named.conf`` van uw DNS-server om de cyclische volgorde voor query's naar uw vserver in te stellen. Deze optie zorgt ervoor dat alle beschikbare waarden de cyclus doorlopen. Voeg een instructie zoals deze toe:
 
 ```
 options {
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-De volgende ``nsupdate`` opdrachten bieden een voor beeld van het correct configureren van DNS:
+De volgende ``nsupdate``-opdrachten zijn voorbeelden voor het correct configureren van DNS:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -74,10 +74,10 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>DNS-instellingen van cluster
 
-Geef de DNS-server op die het vFXT-cluster gebruikt op de pagina **cluster**  >  **beheer netwerk** instellingen. De instellingen op die pagina zijn onder andere:
+Geef de DNS-server op die het vFXT-cluster gebruikt op de pagina **cluster**  >  **beheer netwerk** instellingen. Instellingen op die pagina zijn onder andere:
 
-* DNS-server adres
-* DNS-domein naam
-* DNS-Zoek domeinen
+* DNS-serveradres
+* DNS-domeinnaam
+* DNS-zoekdomeinen
 
 Lees de [DNS-instellingen](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) in de avere-cluster configuratie handleiding voor meer informatie over het gebruik van deze pagina.

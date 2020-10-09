@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894403"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge ' worden weer gegeven in Apache Spark streaming-app-logboek in HDInsight
@@ -26,7 +26,7 @@ De fout: `NativeAzureFileSystem ... RequestBodyTooLarge` wordt weer gegeven in h
 
 Het Spark-gebeurtenis logboek bestand heeft waarschijnlijk de maximale bestands lengte voor WASB.
 
-In Spark 2,3 genereert elke Spark-app één Spark-gebeurtenis logboek bestand. Het Spark-gebeurtenis logboek bestand voor een Spark-streaming-app blijft groeien terwijl de app wordt uitgevoerd. Een bestand op WASB heeft nu een limiet van 50000 MB en de standaard blok grootte is 4 Mega bytes. In de standaard configuratie is de maximale bestands grootte 195 GB. Azure Storage heeft de maximale blok grootte echter verhoogd tot 100 MB, waardoor de limiet voor de afzonderlijke bestanden effectief wordt ingesteld op 4,75 TB. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md)voor meer informatie.
+In Spark 2,3 genereert elke Spark-app één Spark-gebeurtenis logboek bestand. Het Spark-gebeurtenis logboek bestand voor een Spark-streaming-app blijft groeien terwijl de app wordt uitgevoerd. Een bestand op WASB heeft nu een limiet van 50000 MB en de standaard blok grootte is 4 Mega bytes. In de standaard configuratie is de maximale bestands grootte 195 GB. Azure Storage heeft de maximale blok grootte echter verhoogd tot 100 MB, waardoor de limiet voor de afzonderlijke bestanden effectief wordt ingesteld op 4,75 TB. Zie [Schaalbaarheids- en prestatiedoelen voor blob-opslag](../../storage/blobs/scalability-targets.md) voor meer informatie.
 
 ## <a name="resolution"></a>Oplossing
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81410217"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Gegevens uit een webtabel kopiëren met behulp van Azure Data Factory
@@ -37,7 +37,7 @@ Het verschil tussen deze web Table-connector, de [rest-connector](connector-rest
 Deze web Table-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de Web Table-Data Base kopiëren naar een ondersteunde Sink-gegevens opslag. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
@@ -92,8 +92,8 @@ Als u gegevens wilt kopiëren uit een webtabel, stelt u de eigenschap type van d
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **Webtable** | Ja |
-| path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
-| TabIndex |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
+| leertraject |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
+| index |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
 **Voorbeeld:**
 
@@ -166,7 +166,7 @@ Als u de index wilt ophalen van een tabel die u in de [Eigenschappen](#dataset-p
 
     ![Vanuit het dialoog venster Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    URL die in dit voor beeld wordt gebruikt:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    URL die in dit voor beeld wordt gebruikt: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. Als u het dialoog venster **webinhoud openen** ziet, selecteert u de juiste **URL**, **verificatie**en klikt u op **verbinding maken**.
 
    ![Het dialoog venster toegang tot webinhoud](./media/copy-data-from-web-table/AccessWebContentDialog.png)

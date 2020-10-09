@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
 ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76169516"
 ---
 # <a name="support-and-help-options"></a>Opties voor ondersteuning en hulp
@@ -37,7 +37,7 @@ Nieuws over Cognitive Services wordt verzameld in het [Cognitive Services blog](
 
 De [release opmerkingen](https://aka.ms/csspeech/whatsnew) worden bijgewerkt zodra er een nieuwe versie beschikbaar is. De opmerkingen bevatten informatie over nieuwe functies, verbeteringen en oplossingen voor problemen.
 
-## <a name="search"></a>Search
+## <a name="search"></a>Zoeken
 
 U vindt het antwoord dat u nodig hebt in de documentatie, de voor beelden of antwoorden op [stack overflow](https://www.stackoverflow.com) vragen of in de voor beelden.
 
@@ -53,10 +53,10 @@ Waar *{uw zoek termen}* de zoek woorden zijn.
 
 ## <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
 
-Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal.
+Azure-klanten kunnen ondersteuningsaanvragen maken en beheren in de Azure-portal.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-* [Azure Portal voor de Verenigde Staten overheid](https://portal.azure.us)
+* [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure-portal voor de overheid van de Verenigde Staten](https://portal.azure.us)
 
 ## <a name="create-a-github-issue"></a>Een GitHub-probleem maken
 
@@ -99,9 +99,9 @@ Welke versie van de SDK gebruikt u.
 
 ## <a name="post-a-question-to-stack-overflow"></a>Een vraag stellen aan Stack Overflow
 
-Stack Overflow is het voorkeurs kanaal voor vragen met betrekking tot ontwikkeling. Het is waar leden van de community en micro soft-team leden rechtstreeks betrokken zijn bij het helpen oplossen van uw problemen.
+Stack Overflow is het voorkeurskanaal voor vragen over ontwikkeling. Hier is waar leden van de community en Microsoft-teamleden rechtstreeks betrokken zijn bij het helpen oplossen van uw problemen.
 
-Als u via zoeken geen antwoord op uw probleem kunt vinden, kunt u een nieuwe vraag naar stack overflow verzenden met behulp van tags [ \[micro soft-\]\[\]cognitieve speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech).
+Als u via zoeken geen antwoord op uw probleem kunt vinden, kunt u een nieuwe vraag naar Stack Overflow verzenden met behulp van tags [ \[ micro soft-cognitieve \] \[ Speech \] ](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech).
 
 > [!TIP]
 > De volgende berichten van Stack Overflow bevatten tips voor het maken van vragen en het toevoegen van de bron code. Als u deze richt lijnen volgt, kunt u de kans verg Roten dat leden van de Community uw vraag snel beoordelen en erop reageren:  

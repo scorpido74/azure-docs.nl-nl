@@ -1,5 +1,5 @@
 ---
-title: De knop insluitende lezer aanpassen
+title: De knop Insluitende lezer aanpassen
 titleSuffix: Azure Cognitive Services
 description: In dit artikel wordt uitgelegd hoe u de knop kunt aanpassen waarmee de insluitende lezer wordt gestart.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75946208"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>De knop voor de insluitende lezer aanpassen
@@ -31,7 +31,7 @@ De insluitende lezer-SDK biedt standaard stijlen voor de knop waarmee de insluit
 
 ## <a name="customize-the-button-style"></a>De knop stijl aanpassen
 
-Gebruik het `data-button-style` kenmerk om de stijl van de knop in te stellen. De toegestane waarden zijn `icon`, `text`en `iconAndText`. De standaardwaarde is `icon`.
+Gebruik het `data-button-style` kenmerk om de stijl van de knop in te stellen. De toegestane waarden zijn `icon` , `text` en `iconAndText` . De standaardwaarde is `icon`.
 
 ### <a name="icon-button"></a>Pictogram knop
 
@@ -65,7 +65,7 @@ Hiermee wordt het volgende weer gegeven:
 
 ## <a name="customize-the-button-text"></a>De knop tekst aanpassen
 
-Configureer de taal en de ALT-tekst voor de knop met `data-locale` behulp van het-kenmerk. De standaardtaal is Engels.
+Configureer de taal en de ALT-tekst voor de knop met behulp van het- `data-locale` kenmerk. De standaardtaal is Engels.
 
 ```html
 <div class='immersive-reader-button' data-locale='fr-FR'></div>
@@ -73,7 +73,7 @@ Configureer de taal en de ALT-tekst voor de knop met `data-locale` behulp van he
 
 ## <a name="customize-the-size-of-the-icon"></a>De grootte van het pictogram aanpassen
 
-De grootte van het pictogram van de insluitende lezer kan worden `data-icon-px-size` geconfigureerd met behulp van het-kenmerk. Hiermee stelt u de grootte van het pictogram in pixels. De standaard grootte is 20px.
+De grootte van het pictogram van de insluitende lezer kan worden geconfigureerd met behulp van het- `data-icon-px-size` kenmerk. Hiermee stelt u de grootte van het pictogram in pixels. De standaard grootte is 20px.
 
 ```html
 <div class='immersive-reader-button' data-icon-px-size='50'></div>
@@ -81,4 +81,4 @@ De grootte van het pictogram van de insluitende lezer kan worden `data-icon-px-s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De referentie voor de [insluitende lezer-SDK](./reference.md) verkennen
+* Lees de [naslagdocumentatie voor de Immersive Reader-SDK](./reference.md).

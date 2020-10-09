@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72935937"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Toezicht taken definiëren en gebruiken (REST)
@@ -45,13 +45,13 @@ Voer de volgende waarden in om de REST-aanroep te maken:
 
 ### <a name="fill-in-the-request-body"></a>Vul de hoofd tekst van de aanvraag in
 
-De hoofd tekst van uw REST-aanroep bevat één veld, **ContentValue**. Plak de inhoud van de onbewerkte tekst als u toezicht houdt op tekst, of voer een afbeelding of video-URL in als u de afbeelding/video wilt beelementen. U kunt de volgende voorbeeld afbeeldings-URL gebruiken:[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+De hoofd tekst van uw REST-aanroep bevat één veld, **ContentValue**. Plak de inhoud van de onbewerkte tekst als u toezicht houdt op tekst, of voer een afbeelding of video-URL in als u de afbeelding/video wilt beelementen. U kunt de volgende voorbeeld afbeeldings-URL gebruiken: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
 ![Taak: console-query parameters, kopteksten en hoofd tekst van aanvraag maken](images/job-api-console-inputs.PNG)
 
-### <a name="submit-your-request"></a>Uw aanvraag verzenden
+### <a name="submit-your-request"></a>De aanvraag verzenden
 
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **reactie status** en wordt in het vak **antwoord inhoud** een id voor de taak weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **reactie status** `200 OK` en wordt in het vak **antwoord inhoud** een id voor de taak weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
 
 ![Beoordeling: inhoud van het dialoog venster voor het maken van een console-antwoord wordt weer gegeven](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ Als u de status en Details van een actieve of voltooide taak wilt ophalen, gaat 
 
 ![Taak-regio selectie ophalen](images/test-drive-region.png)
 
-Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor deze stap is **JobId** de unieke id die u hebt ontvangen tijdens het maken van de taak. Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **antwoord status** en wordt de taak in de JSON-indeling weer gegeven in het vak met de **antwoord inhoud** , zoals in het volgende voor beeld:
+Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor deze stap is **JobId** de unieke id die u hebt ontvangen tijdens het maken van de taak. Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** en wordt de `200 OK` taak in de JSON-indeling weer gegeven in het vak met de **antwoord inhoud** , zoals in het volgende voor beeld:
 
 ```json
 {  
@@ -115,7 +115,7 @@ Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor 
 
 ### <a name="examine-the-new-reviews"></a>Bekijk de nieuwe beoordeling (en)
 
-Als uw inhouds taak heeft geresulteerd in het maken van een beoordeling, kunt u deze weer geven in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com). Selecteer **Review** > **afbeeldings**/**Text**tekst/**video** bekijken (afhankelijk van de inhoud die u hebt gebruikt). De inhoud moet worden weer gegeven, gereed voor menselijke beoordeling. Nadat een menselijke moderator de automatisch toegewezen tags en Voorspellings gegevens heeft beoordeeld en een beslissing van definitieve controle indient, verzendt de taak-API al deze informatie naar het opgegeven eind punt eind punt van de aanroep.
+Als uw inhouds taak heeft geresulteerd in het maken van een beoordeling, kunt u deze weer geven in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com). Selecteer **Review**  >  **afbeeldings** / **tekst** / **video** bekijken (afhankelijk van de inhoud die u hebt gebruikt). De inhoud moet worden weer gegeven, gereed voor menselijke beoordeling. Nadat een menselijke moderator de automatisch toegewezen tags en Voorspellings gegevens heeft beoordeeld en een beslissing van definitieve controle indient, verzendt de taak-API al deze informatie naar het opgegeven eind punt eind punt van de aanroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

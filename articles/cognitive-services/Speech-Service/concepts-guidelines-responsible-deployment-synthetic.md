@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
 ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73836769"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie
@@ -55,7 +55,7 @@ Voor personen met een speech-immuunziekten die hun eigen spraak letter typen vas
 Personen met spraak immuunziekten willen updates aan hun synthetische stem aanbrengen om te voldoen aan veroudering (bijvoorbeeld een kind dat puberty heeft bereikt). Personen kunnen ook stilistische voor keuren hebben die in de loop der tijd veranderen en wellicht wijzigingen aanbrengen in de Toon hoogte, accent of andere spraak kenmerken.
 
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 * [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
 * [Overzicht van beperking](concepts-gating-overview.md)

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81413682"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Trans formatie afvlakken bij toewijzing van gegevens stroom
@@ -141,7 +141,7 @@ Raadpleeg het volgende JSON-object voor de onderstaande voor beelden van de afvl
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Syntaxis
 
 ```
 <incomingStream>

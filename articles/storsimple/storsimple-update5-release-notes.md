@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76275157"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Opmerkingen bij de release van StorSimple 8000 Series Update 5
@@ -44,9 +44,9 @@ De volgende belang rijke verbeteringen en oplossingen voor fouten zijn aangebrac
 
 De volgende tabel bevat een overzicht van problemen die zijn opgelost in Update 5.
 
-| No | Functie | Probleem | Is van toepassing op het fysieke apparaat | Is van toepassing op virtueel apparaat |
+| Nee | Functie | Probleem | Is van toepassing op het fysieke apparaat | Is van toepassing op virtueel apparaat |
 | --- | --- | --- | --- | --- |
-| 1 |Externe toegang voor Windows Power shell |In de vorige versie ontvangt een gebruiker een fout melding tijdens het tot stand brengen van een externe verbinding met de StorSimple Cloud Appliance via Windows Power shell. Dit probleem is in deze release veroorzaakt en opgelost. |Nee |Yes |
+| 1 |Externe toegang voor Windows Power shell |In de vorige versie ontvangt een gebruiker een fout melding tijdens het tot stand brengen van een externe verbinding met de StorSimple Cloud Appliance via Windows Power shell. Dit probleem is in deze release veroorzaakt en opgelost. |Nee |Ja |
 | 2 |Bandbreedte sjablonen |In eerdere versies was er een probleem met bandbreedte sjablonen dat heeft geleid tot een lagere band breedte dan waarvoor het apparaat is geconfigureerd. Dit probleem wordt opgelost in deze release. |Ja |Ja |
 | 3 |Failover |Wanneer een apparaat met een groot aantal volumes is overgeschakeld naar een ander apparaat waarop update 4 wordt uitgevoerd, mislukt het proces bij het Toep assen van de Access Control-records. Dit probleem is opgelost in deze release. |Ja |Ja |
 

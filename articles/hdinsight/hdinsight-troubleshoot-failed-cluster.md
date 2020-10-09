@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895321"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen met een trage of niet werkende taak in een HDInsight-cluster oplossen
@@ -63,7 +63,7 @@ az hdinsight list --resource-group <ResourceGroup>
 az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-Een andere optie is het gebruik van Power shell. Zie [Apache Hadoop clusters in HDInsight beheren met Azure PowerShell](hdinsight-administer-use-powershell.md)voor meer informatie.
+Een andere optie is het gebruik van Power shell. Zie  [Apache Hadoop clusters in HDInsight beheren met Azure PowerShell](hdinsight-administer-use-powershell.md)voor meer informatie.
 
 ## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Stap 2: de HDInsight-cluster omgeving valideren
 
@@ -148,7 +148,7 @@ In de volgende secties worden enkele mogelijke oorzaken voor WebHCat-outs beschr
 
 ##### <a name="webhcat-level-timeout"></a>WebHCat-out
 
-Wanneer WebHCat wordt geladen en er meer dan 10 open sockets zijn, duurt het langer om nieuwe socket verbindingen tot stand te brengen, wat kan leiden tot een time-out. Als u de netwerk verbindingen van en naar WebHCat wilt weer geven, gebruikt u `netstat` op de huidige actieve hoofd knooppunt:
+Wanneer WebHCat wordt geladen en er meer dan 10 open sockets zijn, duurt het langer om nieuwe socket verbindingen tot stand te brengen, wat kan leiden tot een time-out. Als u de netwerk verbindingen van en naar WebHCat wilt weer geven, gebruikt u `netstat`  op de huidige actieve hoofd knooppunt:
 
 ```bash
 netstat | grep 30111
@@ -202,11 +202,11 @@ U kunt deze problemen als volgt vaststellen:
 
     Er zijn mogelijk situaties waarin interacties met WebHCat zijn geslaagd, maar de taken mislukken.
 
-    Templeton verzamelt de taak console-uitvoer als `stderr` in `statusdir` , wat vaak handig is voor het oplossen van problemen. `stderr`bevat de toepassings-id van de GARENs van de werkelijke query.
+    Templeton verzamelt de taak console-uitvoer als `stderr` in `statusdir` , wat vaak handig is voor het oplossen van problemen. `stderr` bevat de toepassings-id van de GARENs van de werkelijke query.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Stap 4: de stack en versies van de omgeving controleren
 
-De pagina Ambari UI- **stack en-versie** bevat informatie over de configuratie van de Cluster Services en de geschiedenis van de service versie.  Onjuiste versies van de Hadoop-service bibliotheek kunnen een storing in de cluster veroorzaken.  Selecteer in de Ambari-gebruikers interface het menu **beheerder** en vervolgens **stacks en versies**.  Selecteer op de pagina het tabblad **versies** om informatie over de service versie weer te geven:
+De pagina Ambari UI- **stack en-versie** bevat informatie over de configuratie van de Cluster Services en de geschiedenis van de service versie.  Onjuiste versies van de Hadoop-service bibliotheek kunnen een storing in de cluster veroorzaken.  Selecteer in de Ambari-gebruikers interface het menu **beheerder** en vervolgens  **stacks en versies**.  Selecteer op de pagina het tabblad **versies** om informatie over de service versie weer te geven:
 
 ![Apache Ambari-stack en-versies](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 

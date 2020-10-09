@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73663176"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Test resultaten voor Hyper-V-replicatie naar een secundaire site
@@ -106,7 +106,7 @@ De resultaten laten duidelijk zien dat Site Recovery, gekoppeld aan Hyper-V repl
 
 ![Primaire hardwarevereisten](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| server | RAM | Model | Processor | Aantal processors | NIC | Software |
+| server | RAM | Modelleren | Processor | Aantal processors | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
 | Hyper-V-servers in het cluster: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 heeft 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Data Center 2012 R2 (x64) + Hyper-V-rol |
 | VMM-server |2 | | |2 |1 Gbps |Windows Server-Data Base 2012 R2 (x64) + VMM 2012 R2 |
@@ -118,7 +118,7 @@ De resultaten laten duidelijk zien dat Site Recovery, gekoppeld aan Hyper-V repl
 
 ![Primaire hardware-specificatie](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| server | RAM | Model | Processor | Aantal processors | NIC | Software |
+| server | RAM | Modelleren | Processor | Aantal processors | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
 | Hyper-V-servers in het cluster: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Data Center 2012 R2 (x64) + Hyper-V-rol |
 | ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Data Center 2012 R2 (x64) + Hyper-V-rol |

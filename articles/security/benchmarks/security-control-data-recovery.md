@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408600"
 ---
 # <a name="security-control-data-recovery"></a>Beveiligings beheer: gegevens herstellen
@@ -22,7 +22,7 @@ Zorg ervoor dat er regel matig een back-up wordt gemaakt van alle systeem gegeve
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 9,1 | 10.1 | Klant |
+| 9.1 | 10.1 | Klant |
 
 Schakel Azure Backup in en configureer de back-upbron (Azure Vm's, SQL Server of bestands shares), evenals de gewenste frequentie en bewaar periode.
 
@@ -32,7 +32,7 @@ Schakel Azure Backup in en configureer de back-upbron (Azure Vm's, SQL Server of
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 9,2 | 10.2 | Klant |
+| 9.2 | 10,2 | Klant |
 
 Schakel Azure Backup en doel-VM ('s) in, evenals de gewenste frequentie en retentie perioden. Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
@@ -44,7 +44,7 @@ Schakel Azure Backup en doel-VM ('s) in, evenals de gewenste frequentie en reten
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 9,3 | 10,3 | Klant |
+| 9.3 | 10,3 | Klant |
 
 Zorg ervoor dat het gegevens herstel van inhoud in Azure Backup regel matig wordt uitgevoerd. Herstel van back-ups van door de klant beheerde sleutels testen.
 
@@ -56,19 +56,19 @@ Zorg ervoor dat het gegevens herstel van inhoud in Azure Backup regel matig word
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 9.4 | 10,4 | Klant |
+| 9,4 | 10.4 | Klant |
 
 Voor on-premises back-ups wordt versleuteling in rust geboden met de wachtwoordzin die u opgeeft wanneer u een back-up maakt in Azure. Voot Azure-VM’s worden gegevens in rust versleuteld met behulp van SSE (Storage Service Encryption). Gebruik op rollen gebaseerd toegangs beheer voor het beveiligen van back-ups en door de klant beheerde sleutels.  
 
-Schakel de beveiliging voor voorlopig verwijderen en opschonen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.  Als Azure Storage wordt gebruikt voor het opslaan van back-ups, schakelt u de optie voor het tijdelijk verwijderen in om uw gegevens op te slaan en te herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. 
+Schakel Soft-Delete in en verwijder de beveiliging in Key Vault om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.  Als Azure Storage wordt gebruikt voor het opslaan van back-ups, schakelt u de optie voor het tijdelijk verwijderen in om uw gegevens op te slaan en te herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. 
 
 - [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-- [Het inschakelen van de functie voor voorlopig verwijderen en het opschonen van beveiliging in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 - [Voorlopig verwijderen voor Azure Storage-blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie het volgende beveiligings beheer: [respons op incidenten](security-control-incident-response.md)
+- Zie het volgende beveiligings beheer:  [respons op incidenten](security-control-incident-response.md)

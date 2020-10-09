@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415311"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure functions-activiteit in Azure Data Factory
@@ -54,7 +54,7 @@ Zie het schema van de sectie aanvraag lading in schema voor de lading van de [a
 
 ## <a name="routing-and-queries"></a>Route ring en query's
 
-De Azure functions-activiteit ondersteunt **route ring**. Als uw Azure-functie bijvoorbeeld het eind punt heeft `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` , is de functie `functionName` voor het gebruik in de Azure functions-activiteit `<functionName>/<value>` . U kunt deze functie para meters om de gewenste runtime te leveren `functionName` .
+De Azure functions-activiteit ondersteunt **route ring**. Als uw Azure-functie bijvoorbeeld het eind punt heeft  `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` , is de functie `functionName` voor het gebruik in de Azure functions-activiteit `<functionName>/<value>` . U kunt deze functie para meters om de gewenste runtime te leveren `functionName` .
 
 De Azure function-activiteit biedt ook ondersteuning voor **query's**. Een query moet worden opgenomen als onderdeel van de `functionName` . Als de naam van de functie bijvoorbeeld is `HttpTriggerCSharp` en de query die u wilt toevoegen `name=hello` , kunt u de `functionName` in de Azure function-activiteit als opgeven `HttpTriggerCSharp?name=hello` . Deze functie kan worden ingesteld op de para meter, zodat de waarde tijdens runtime kan worden bepaald.
 

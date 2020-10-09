@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277364"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-spuit voor Cloud Foundry systeem bewaking implementeren
@@ -193,7 +193,7 @@ De *' Cloud Foundry. omsview '* is een preview-versie van de Cloud Foundry OMS-w
 
 U kunt [de waarschuwingen maken](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)en zo nodig de query's en drempel waarden aanpassen. De volgende waarschuwingen worden aanbevolen:
 
-| Zoekquery                                                                  | Waarschuwing genereren op basis van | Description                                                                       |
+| Zoekquery                                                                  | Waarschuwing genereren op basis van | Beschrijving                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type = CF_ValueMetric_CL Origin_s = BBS Name_s = "domein. CF-apps"                   | Aantal resultaten < 1   | **BBS. Domain.cf: apps** geeft aan of het CF-Apps-domein up-to-date is. Dit betekent dat CF-app-aanvragen van de Cloud controller zijn gesynchroniseerd met BBS. LRPsDesired (Diego-gewenste AIs) voor uitvoering. Geen gegevens ontvangen betekent dat het CF-Apps-domein niet up-to-date is in het opgegeven tijd venster. |
 | Type = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d>1            | Aantal resultaten > 0   | Voor Diego-cellen betekent 0 dat ze in orde zijn, en 1 betekent een slechte status. Stel de waarschuwing in als er meerdere beschadigde Diego-cellen worden gedetecteerd in het opgegeven tijd venster. |

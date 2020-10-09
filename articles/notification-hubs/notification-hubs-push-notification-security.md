@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76263758"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs beveiliging
@@ -48,7 +48,7 @@ De sleutel met **listen** -toegang kan een client-app voor elk label registreren
 
 Net als andere entiteiten zijn notification hub-bewerkingen toegestaan voor drie beveiligings claims: **Luis teren**, **verzenden**en **beheren**.
 
-| Claim   | Description                                          | Toegestane bewerkingen |
+| Claim   | Beschrijving                                          | Toegestane bewerkingen |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Luisteren  | Enkelvoudige registraties maken/bijwerken, lezen en verwijderen | Registratie maken/bijwerken<br><br>Registratie lezen<br><br>Alle registraties voor een ingang lezen<br><br>Registratie verwijderen |
 | Verzenden    | Berichten verzenden naar de notification hub                | Bericht verzenden |

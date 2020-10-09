@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75976612"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Een IoT-hub maken met Azure Resource Manager-sjabloon (Power shell)
@@ -29,7 +29,7 @@ De Resource Manager-sjabloon die in deze Quick Start wordt gebruikt, is van [Azu
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-Met de sjabloon wordt een Azure IOT-hub gemaakt met drie eind punten (eventhub, Cloud-naar-apparaat en Messa ging) en een consumenten groep. Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van sjablonen. Het sjabloon schema voor IOT Hub vindt u [hier](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
+Met de sjabloon wordt een Azure IOT-hub gemaakt met drie eind punten (eventhub, Cloud-naar-apparaat en Messa ging) en een consumenten groep. Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van sjablonen. Het sjabloon schema voor IOT Hub vindt u  [hier](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
 
 Er zijn verschillende methoden voor het implementeren van een sjabloon.  In deze zelf studie gebruikt u Azure PowerShell.
 

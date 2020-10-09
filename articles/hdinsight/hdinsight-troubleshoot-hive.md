@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895238"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Problemen met Apache Hive oplossen met behulp van Azure HDInsight
@@ -41,7 +41,7 @@ Meer informatie over de belangrijkste vragen en hun oplossingen bij het werken m
 
 In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden op het nieuwe cluster hetzelfde zijn als de gegevens paden op het oude cluster. Als de gegevens paden verschillen, kunt u het gegenereerde bestand hand matig bewerken `alltables.sql` om eventuele wijzigingen weer te geven.
 
-### <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+### <a name="additional-reading"></a>Meer artikelen
 
 - [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -69,7 +69,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
    /var/log/hive/hiveserver2.log
    ```
 
-### <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+### <a name="additional-reading"></a>Meer artikelen
 
 - [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -95,7 +95,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
    hive -hiveconf hive.root.logger=ALL,console
    ```
 
-### <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+### <a name="additional-reading"></a>Meer artikelen
 
 - [Eigenschappen van Hive-configuratie](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
@@ -132,7 +132,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
     - **TaskConcurrencyAnalyzer**: de details van de taak gelijktijdig in een dag afdrukken
     - **VertexLevelCriticalPathAnalyzer**: het kritieke pad op het hoek punt in een dag zoeken
 
-### <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+### <a name="additional-reading"></a>Meer artikelen
 
 - [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -157,7 +157,7 @@ Er zijn twee manieren om de TEZ DAG-gegevens te verzamelen:
   3. Selecteer de DAG die u wilt weer geven.
   4. Selecteer **gegevens downloaden**.
 
-### <a name="additional-reading"></a><a name="additional-reading-end"></a>Aanvullende Lees bewerkingen
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>Meer artikelen
 
 [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 

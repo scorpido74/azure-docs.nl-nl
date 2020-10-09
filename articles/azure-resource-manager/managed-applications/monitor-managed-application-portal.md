@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75651746"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Een geïmplementeerd exemplaar van een beheerde toepassing bewaken
@@ -22,7 +22,7 @@ Nadat u een beheerde toepassing hebt geïmplementeerd voor uw Azure-abonnement, 
 
    ![Beheerde toepassing selecteren](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. Selecteer **resource Health**.
+1. Selecteer **Resource Health**.
 
    ![Resource status selecteren](./media/monitor-managed-application-portal/select-resource-health.png)
 

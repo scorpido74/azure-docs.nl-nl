@@ -1,7 +1,7 @@
 ---
 title: Afbeeldingen sneller labelen met Smart Labeler
 titleSuffix: Azure Cognitive Services
-description: In deze hand leiding leert u hoe u Smart Labeler kunt gebruiken om voorgestelde Tags voor installatie kopieën te genereren. Zo kunt u een groot aantal installatie kopieën sneller labelen bij het trainen van een Custom Vision model.
+description: In deze hand leiding leert u hoe u Smart Labeler kunt gebruiken om voorgestelde Tags voor installatie kopieën te genereren. Zo kunt u sneller een groot aantal afbeeldingen labelen bij het trainen van een Custom Vision-model.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73647755"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>Afbeeldingen sneller labelen met Smart Labeler
 
-In deze hand leiding leert u hoe u Smart Labeler kunt gebruiken om voorgestelde Tags voor installatie kopieën te genereren. Zo kunt u een groot aantal installatie kopieën sneller labelen bij het trainen van een Custom Vision model.
+In deze hand leiding leert u hoe u Smart Labeler kunt gebruiken om voorgestelde Tags voor installatie kopieën te genereren. Zo kunt u sneller een groot aantal afbeeldingen labelen bij het trainen van een Custom Vision-model.
 
 Wanneer u afbeeldingen labelt voor een Custom Vision model, gebruikt de service de laatste getrainde iteratie van het model om de labels van niet-gelabelde afbeeldingen te voors pellen. Vervolgens worden deze voor spellingen als voorgestelde Tags weer gegeven op basis van de geselecteerde betrouwbaarheids drempel en Voorspellings onzekerheid. U kunt de suggesties vervolgens bevestigen of wijzigen en het proces van het hand matig coderen van de afbeeldingen voor training versnellen.
 

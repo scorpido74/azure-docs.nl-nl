@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
 ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75933941"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Werken in het Apache Hadoop ecosysteem op HDInsight vanaf een Windows-computer
@@ -84,13 +84,13 @@ Apache Spark clusters in HDInsight zijn Apache Zeppelin-notebooks en kernels die
 
 Als u in een situatie komt waarin u een hulp programma of technologie wilt gebruiken die alleen beschikbaar is op Linux, kunt u de volgende opties overwegen:
 
-* **Bash op Ubuntu in Windows 10** biedt een Linux-subsysteem in Windows. Met bash kunt u rechtstreeks Linux-hulpprogram ma's uitvoeren zonder dat u een speciale Linux-installatie hoeft te onderhouden. Zie het [Windows-subsysteem voor Linux-installatie handleiding voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) voor installatie stappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) worden ook gebruikt.
+* **Bash op Ubuntu in Windows 10** biedt een Linux-subsysteem in Windows. Met bash kunt u rechtstreeks Linux-hulpprogram ma's uitvoeren zonder dat u een speciale Linux-installatie hoeft te onderhouden. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.
 * **Docker voor Windows** biedt toegang tot veel Linux-hulpprogram ma's en kan rechtstreeks vanuit Windows worden uitgevoerd. U kunt docker bijvoorbeeld gebruiken om de Beeline-client voor Hive rechtstreeks vanuit Windows uit te voeren. U kunt docker ook gebruiken om een lokale Jupyter-notebook uit te voeren en op afstand verbinding te maken met Spark op HDInsight. [Aan de slag met docker voor Windows](https://docs.docker.com/docker-for-windows/)
 * Met **[MobaXTerm](https://mobaxterm.mobatek.net/)** kunt u het bestands systeem van het cluster grafisch doorzoeken via een SSH-verbinding.
 
 ## <a name="cross-platform-tools"></a>Hulpprogram ma's voor meerdere platformen
 
-De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.  Zie [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)voor meer informatie.
+De Azure-opdrachtregelinterface (CLI) is de platformoverschrijdende opdrachtregelervaring voor het beheren van Azure-resources.  Zie [Azure Command-Line interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
