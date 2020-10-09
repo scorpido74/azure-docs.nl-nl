@@ -36,7 +36,7 @@
   items:
     - name: Video Indexer-API
       href: 'https://api-portal.videoindexer.ai/'
-- name: Bronnen
+- name: Resources
   items:
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'

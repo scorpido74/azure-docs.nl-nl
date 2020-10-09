@@ -21,7 +21,7 @@
           href: quickstart-input-multiple.md
     - name: Een SAS-token in plaats van een accountsleutel invoeren
       href: quickstart-input-sas.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Veelgestelde vragen
       href: frequently-asked-questions-genomics.md
@@ -29,7 +29,7 @@
       href: troubleshooting-guide-genomics.md
     - name: Een ondersteuningsaanvraag indienen
       href: file-support-ticket-genomics.md
-    - name: Releasegeschiedenis van versie
+    - name: Versiegeschiedenis van release
       href: version-release-history-genomics.md
     - name: Bedrijfscontinuïteit
       href: business-continuity-genomics.md

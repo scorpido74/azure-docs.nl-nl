@@ -21,7 +21,7 @@
               href: media-services-specifications-ms-sstr-amendment-hevc.md
             - name: Smooth Streaming-opname
               href: media-services-fmp4-live-ingest-overview.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=media'

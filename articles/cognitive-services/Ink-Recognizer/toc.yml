@@ -10,7 +10,7 @@
   items:
     - name: REST-API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
@@ -22,9 +22,9 @@
       href: concepts/send-ink-data.md
 - name: Voorbeelden
   items:
-    - name: 'C# en Universal Windows Platform (UWP)'
+    - name: C# en Universal Windows Platform (UWP)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089803'
-    - name: 'C# en Windows Presentation Foundation (WPF)'
+    - name: C# en Windows Presentation Foundation (WPF)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089804'
     - name: Webbrowser-app (Javascript)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089908'
@@ -44,7 +44,7 @@
       href: language-support.md
     - name: Regio's
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-- name: Bronnen
+- name: Resources
   items:
     - name: Prijzen en beperkingen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'

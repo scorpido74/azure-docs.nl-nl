@@ -5,7 +5,7 @@
     - name: Key Vault
       tocHref: /azure/
       topicHref: /azure/key-vault/index
-- name: Azure
+- name: Azuur
   tocHref: /java/
   topicHref: /azure/index
   items:
@@ -16,7 +16,7 @@
         - name: Spring
           tocHref: /java/azure/spring-framework/
           topicHref: /java/azure/spring-framework/
-- name: Azure
+- name: Azuur
   tocHref: /powershell/
   topicHref: /azure/index
   items:
@@ -27,7 +27,7 @@
         - name: Key Vault PowerShell-cmdlets
           tocHref: /powershell/module/az.keyvault/
           topicHref: /powershell/module/az.keyvault/
-- name: Azure
+- name: Azuur
   tocHref: /cli/
   topicHref: /azure/index
   items:
@@ -48,7 +48,7 @@
             - name: Geheimen
               tocHref: /cli/azure/keyvault/secret
               topicHref: /azure/key-vault/
-- name: Azure
+- name: Azuur
   tocHref: /sccm/
   topicHref: /azure/index
   items:

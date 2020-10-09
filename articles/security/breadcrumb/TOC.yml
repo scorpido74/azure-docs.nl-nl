@@ -5,7 +5,7 @@
     - name: Beveiliging
       tocHref: /azure/
       topicHref: /azure/security/index
-- name: Azure
+- name: Azuur
   tocHref: /azure/
   topicHref: /azure/index
   items:
