@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75609856"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Het poort nummer van een service opgeven met behulp van para meters in Service Fabric
@@ -24,7 +24,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
 1. Kies de sjabloon staatloze ASP.NET Core.
 1. Kies Web API.
 1. Open het ServiceManifest.xml-bestand.
-1. Noteer de naam van het eind punt dat is opgegeven voor uw service. De standaardwaarde is `ServiceEndpoint`.
+1. Noteer de naam van het eind punt dat is opgegeven voor uw service. De standaardinstelling is `ServiceEndpoint`.
 1. Het ApplicationManifest.xml bestand openen
 1. In het `ServiceManifestImport` element voegt u een nieuw- `RessourceOverrides` element toe met een verwijzing naar het eind punt in uw ServiceManifest.xml-bestand.
 
@@ -40,7 +40,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </ServiceManifestImport>
     ```
 
-1. In het `Endpoint` -element kunt u nu elk kenmerk overschrijven met een para meter. In dit voor beeld geeft u `Port` een parameter naam op met behulp van vier Kante haken, bijvoorbeeld`[MyWebAPI_PortNumber]`
+1. In het `Endpoint` -element kunt u nu elk kenmerk overschrijven met een para meter. In dit voor beeld geeft u `Port` een parameter naam op met behulp van vier Kante haken, bijvoorbeeld `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -62,7 +62,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </Parameters>
     ```
 
-1. En definieer een`DefaultValue`
+1. En definieer een `DefaultValue`
 
     ```xml
       <Parameters>

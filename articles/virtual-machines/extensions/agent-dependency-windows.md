@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250671"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871861"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine voor Azure Monitor afhankelijkheid voor Windows
 
@@ -71,12 +71,12 @@ De volgende JSON toont het schema voor de Azure VM dependency agent-extensie op 
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld |
+| Naam | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Micro soft. Azure. monitoring. DependencyAgent |
 | type | DependencyAgentWindows |
-| typeHandlerVersion | 9,5 |
+| typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
@@ -125,7 +125,7 @@ Wanneer u de JSON van de extensie in de hoofdmap van de sjabloon plaatst, bevat 
 }
 ```
 
-## <a name="powershell-deployment"></a>Power shell-implementatie
+## <a name="powershell-deployment"></a>PowerShell-implementatie
 
 U kunt de `Set-AzVMExtension` opdracht gebruiken om de extensie van de virtuele machine van de afhankelijkheids agent te implementeren op een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel.
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
 ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85338034"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Metrische gegevens weer geven in realtime
@@ -58,7 +58,7 @@ De percentiel berekeningen worden in grotere clusters gebruikt om uitschieter-kn
 
 Dit helpt u ook te begrijpen welke knoop punten worden gepusht naar hun limieten en of uitschalen mogelijk vereist is. Door zowel de aggregaties **Max** en **P95** te gebruiken, kunt u zien of er knoop punten in het cluster zijn met een hoog bron gebruik. Voor nader onderzoek gaat u weer naar het tabblad **knoop punten** .
 
-### <a name="node-count"></a>Aantal knoop punten
+### <a name="node-count"></a>Aantal knooppunten
 
 Deze prestatie grafiek is gekoppeld aan een equivalent van het aanroepen `kubectl get nodes` en toewijzen van de kolom **status** aan een grafiek, gegroepeerd op status typen.
 

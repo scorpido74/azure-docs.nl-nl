@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over SQLFilter-grammatica. Een SqlFilt
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341592"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter-syntaxis
@@ -49,7 +49,7 @@ Een *SqlFilter* -object is een instantie van de [klasse SqlFilter](/dotnet/api/m
   
 ## <a name="arguments"></a>Argumenten  
   
--   `<scope>`is een optionele teken reeks die het bereik van de aangeeft `<property_name>` . Geldige waarden zijn `sys` of `user` . De `sys` waarde geeft de systeem Scope aan waar de `<property_name>` naam van een open bare eigenschap van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)is. `user`Hiermee wordt het gebruikers bereik aangegeven waarbij `<property_name>` een sleutel van de [BrokeredMessage-klassen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) woordenlijst is. `user`Scope is het standaard bereik als `<scope>` niet is opgegeven.  
+-   `<scope>` is een optionele teken reeks die het bereik van de aangeeft `<property_name>` . Geldige waarden zijn `sys` of `user` . De `sys` waarde geeft de systeem Scope aan waar de `<property_name>` naam van een open bare eigenschap van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)is. `user` Hiermee wordt het gebruikers bereik aangegeven waarbij `<property_name>` een sleutel van de [BrokeredMessage-klassen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) woordenlijst is. `user` Scope is het standaard bereik als `<scope>` niet is opgegeven.  
   
 ## <a name="remarks"></a>Opmerkingen
 
@@ -69,7 +69,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ### <a name="arguments"></a>Argumenten  
 
- `<regular_identifier>`is een teken reeks die wordt vertegenwoordigd door de volgende reguliere expressie:  
+ `<regular_identifier>` is een teken reeks die wordt vertegenwoordigd door de volgende reguliere expressie:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -77,13 +77,13 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 Deze grammatica betekent dat een wille keurige teken reeks begint met een letter en wordt gevolgd door een of meer onderstrepings tekens/letter/cijfer.  
   
-`[:IsLetter:]`betekent elk Unicode-teken dat is gecategoriseerd als Unicode-letter. `System.Char.IsLetter(c)`retourneert `true` `c` een Unicode-letter.  
+`[:IsLetter:]` betekent elk Unicode-teken dat is gecategoriseerd als Unicode-letter. `System.Char.IsLetter(c)` retourneert `true` `c` een Unicode-letter.  
   
-`[:IsDigit:]`betekent elk Unicode-teken dat is gecategoriseerd als een decimaal cijfer. `System.Char.IsDigit(c)`retourneert `true` of `c` een Unicode-cijfer is.  
+`[:IsDigit:]` betekent elk Unicode-teken dat is gecategoriseerd als een decimaal cijfer. `System.Char.IsDigit(c)` retourneert `true` of `c` een Unicode-cijfer is.  
   
 Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.  
   
-`<delimited_identifier>`is een teken reeks die wordt Inge sloten met vier Kante haken links/rechts ([]). Een rechter rechte haak wordt weer gegeven als twee rechter rechte haken. Hier volgen enkele voor beelden van `<delimited_identifier>` :  
+`<delimited_identifier>` is een teken reeks die wordt Inge sloten met vier Kante haken links/rechts ([]). Een rechter rechte haak wordt weer gegeven als twee rechter rechte haken. Hier volgen enkele voor beelden van `<delimited_identifier>` :  
   
 ```  
 [Property With Space]  
@@ -91,7 +91,7 @@ Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.
   
 ```  
   
-`<quoted_identifier>`is een teken reeks die tussen dubbele aanhalings tekens is geplaatst. Een dubbel aanhalings teken in id wordt weer gegeven als twee dubbele aanhalings tekens. Het is niet raadzaam om id's van aanhalings tekens te gebruiken omdat deze eenvoudig kunnen worden verward met een teken reeks constante. Gebruik, indien mogelijk, een gescheiden id. Hier volgt een voor beeld van `<quoted_identifier>` :  
+`<quoted_identifier>` is een teken reeks die tussen dubbele aanhalings tekens is geplaatst. Een dubbel aanhalings teken in id wordt weer gegeven als twee dubbele aanhalings tekens. Het is niet raadzaam om id's van aanhalings tekens te gebruiken omdat deze eenvoudig kunnen worden verward met een teken reeks constante. Gebruik, indien mogelijk, een gescheiden id. Hier volgt een voor beeld van `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -106,7 +106,7 @@ Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.
   
 ### <a name="remarks"></a>Opmerkingen
   
-`<pattern>`moet een expressie zijn die als een teken reeks wordt geëvalueerd. Deze wordt gebruikt als een patroon voor de LIKE-operator.      De naam kan de volgende joker tekens bevatten:  
+`<pattern>` moet een expressie zijn die als een teken reeks wordt geëvalueerd. Deze wordt gebruikt als een patroon voor de LIKE-operator.      De naam kan de volgende joker tekens bevatten:  
   
 -   `%`: Een wille keurige teken reeks van nul of meer tekens.  
   
@@ -121,7 +121,7 @@ Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.
   
 ### <a name="remarks"></a>Opmerkingen  
 
-`<escape_char>`moet een expressie zijn die als een teken reeks met een lengte van 1 wordt geëvalueerd. Deze wordt gebruikt als escape-teken voor de operator LIKE.  
+`<escape_char>` moet een expressie zijn die als een teken reeks met een lengte van 1 wordt geëvalueerd. Deze wordt gebruikt als escape-teken voor de operator LIKE.  
   
  Bijvoorbeeld, `property LIKE 'ABC\%' ESCAPE '\'` komt overeen met `ABC%` een teken reeks die begint met `ABC` .  
   
@@ -134,7 +134,7 @@ Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.
   
 ### <a name="arguments"></a>Argumenten  
   
--   `<integer_constant>`is een teken reeks die niet tussen aanhalings tekens staat en geen decimale punten bevat. De waarden worden intern opgeslagen `System.Int64` en volgen hetzelfde bereik.  
+-   `<integer_constant>` is een teken reeks die niet tussen aanhalings tekens staat en geen decimale punten bevat. De waarden worden intern opgeslagen `System.Int64` en volgen hetzelfde bereik.  
   
      Dit zijn voor beelden van lange constanten:  
   
@@ -143,7 +143,7 @@ Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.
     2  
     ```  
   
--   `<decimal_constant>`is een teken reeks die niet tussen aanhalings tekens staat en een decimaal teken bevat. De waarden worden intern opgeslagen `System.Double` en volgen hetzelfde bereik/dezelfde precisie.  
+-   `<decimal_constant>` is een teken reeks die niet tussen aanhalings tekens staat en een decimaal teken bevat. De waarden worden intern opgeslagen `System.Double` en volgen hetzelfde bereik/dezelfde precisie.  
   
      In een toekomstige versie kan dit nummer worden opgeslagen in een ander gegevens type ter ondersteuning van nauw keurige semantiek, dus moet u niet vertrouwen op het feit dat het onderliggende gegevens type `System.Double` voor is `<decimal_constant>` .  
   
@@ -154,7 +154,7 @@ Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.
     2.0  
     ```  
   
--   `<approximate_number_constant>`is een getal dat is geschreven in een weten schappelijke notatie. De waarden worden intern opgeslagen `System.Double` en volgen hetzelfde bereik/dezelfde precisie. Hier volgen enkele voor beelden van constanten met een benaderende waarde:  
+-   `<approximate_number_constant>` is een getal dat is geschreven in een weten schappelijke notatie. De waarden worden intern opgeslagen `System.Double` en volgen hetzelfde bereik/dezelfde precisie. Hier volgen enkele voor beelden van constanten met een benaderende waarde:  
   
     ```  
     101.5E5  
@@ -182,7 +182,7 @@ Booleaanse constanten worden vertegenwoordigd door de tref woorden **True** of *
 
 Teken reeks constanten worden tussen enkele aanhalings tekens geplaatst en bevatten geldige Unicode-tekens. Een enkel aanhalings teken in een teken reeks constante wordt weer gegeven als twee enkele aanhalings tekens.  
   
-## <a name="function"></a>-functie  
+## <a name="function"></a>functieassembly  
   
 ```  
 <function> :=  
@@ -208,7 +208,7 @@ Houd rekening met de volgende [SqlFilter](/dotnet/api/microsoft.servicebus.messa
   
     Houd rekening met de volgende `IS [NOT] NULL` semantiek:  
   
-    -   `property IS NULL`wordt geëvalueerd alsof `true` de eigenschap niet bestaat of de waarde van de eigenschap is `null` .  
+    -   `property IS NULL` wordt geëvalueerd alsof `true` de eigenschap niet bestaat of de waarde van de eigenschap is `null` .  
   
 ### <a name="property-evaluation-semantics"></a>Semantische eigenschappen van eigenschaps evaluatie  
   

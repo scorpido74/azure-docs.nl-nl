@@ -1,13 +1,13 @@
 ---
 title: Een service uitvoeren onder systeem-en lokale beveiligings accounts
-description: Meer informatie over het uitvoeren van een Service Fabric-toepassing onder systeem-en lokale beveiligings accounts.  Maak beveiligings-principals en pas het run as-beleid toe om uw services veilig uit te voeren.
+description: Meer informatie over het uitvoeren van een Service Fabric-toepassing onder systeem-en lokale beveiligings accounts.  Maak beveiligings-principals en pas het Run-As-beleid toe om uw services veilig uit te voeren.
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75610115"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Een service uitvoeren als een lokaal gebruikers account of lokaal systeem account

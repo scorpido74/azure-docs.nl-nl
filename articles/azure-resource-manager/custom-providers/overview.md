@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80398463"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Overzicht van aangepaste Azure-resource providers
@@ -55,9 +55,9 @@ Voor beeld-eind punt:
 
 Eigenschap | Vereist | Beschrijving
 ---|---|---
-naam | *klikt* | De naam van de eindpunt definitie. Azure geeft deze naam beschikbaar via de API onder/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+naam | *klikt* | De naam van de eindpuntdefinitie. Azure geeft deze naam beschikbaar via de API onder/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
 routingType | *geen* | Bepaalt het contract type met het **eind punt**. Als u niets opgeeft, wordt het standaard ingesteld op proxy.
-endpoint | *klikt* | Het eind punt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
+endpoint | *klikt* | Het eindpunt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
 
 ### <a name="building-custom-resources"></a>Aangepaste resources bouwen
 
@@ -84,10 +84,10 @@ Api's die zijn toegevoegd aan Azure voor het bovenstaande voor beeld:
 
 HttpMethod | Voor beeld-URI | Beschrijving
 ---|---|---
-PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep voor het maken van een nieuwe resource.
-DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep voor het verwijderen van een bestaande resource.
-GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep om een bestaande resource op te halen.
-GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources? API-Version = 2018-9 -01-preview | De Azure REST API-aanroep voor het ophalen van de lijst met bestaande resources.
+PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep voor het maken van een nieuwe resource.
+DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep voor het verwijderen van een bestaande resource.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep om een bestaande resource op te halen.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources? API-Version = 2018-9 -01-preview | De Azure REST API-aanroep voor het ophalen van de lijst met bestaande resources.
 
 ### <a name="building-custom-actions"></a>Aangepaste acties bouwen
 
@@ -114,11 +114,11 @@ Api's die zijn toegevoegd aan Azure voor het bovenstaande voor beeld:
 
 HttpMethod | Voor beeld-URI | Beschrijving
 ---|---|---
-POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? API-Version = 2018-9 -01-preview | De aanroep van Azure REST API om de actie te activeren.
+POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? API-Version = 2018-9 -01-preview | De aanroep van Azure REST API om de actie te activeren.
 
-## <a name="looking-for-help"></a>Zoeken naar Help
+## <a name="looking-for-help"></a>Hulp nodig?
 
-Als u vragen hebt over de ontwikkeling van de aangepaste Azure-resource provider, kunt u de vragen stellen op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag gesteld en beantwoord, dus controleer eerst vóór het boeken. Voeg de tag toe ```azure-custom-providers``` om een snel antwoord te krijgen.
+Als u vragen hebt over de ontwikkeling van de aangepaste Azure-resource provider, kunt u de vragen stellen op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Misschien is er een soortgelijke vraag gesteld en beantwoord, dus controleer dit eerst vóór u een vraag stelt. Voeg de tag ```azure-custom-providers``` toe om snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

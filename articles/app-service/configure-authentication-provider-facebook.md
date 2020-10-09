@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80519962"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van Facebook-aanmelding
@@ -38,7 +38,7 @@ Voor het volt ooien van de procedure in dit artikel hebt u een Facebook-account 
 1. Selecteer het **dash board**  >  **Facebook-aanmelding**  >  **instellen**  >  **Web**.
 1. Selecteer in het navigatie venster links onder **Facebook-aanmelding**de optie **instellingen**.
 1. Voer in het veld **geldige OAuth omleidings-uri's** in `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` . Vergeet niet door `<app-name>` de naam van uw Azure app service-app te vervangen.
-1. Selecteer **wijzigingen opslaan**.
+1. Selecteer **Save changes**.
 1. Selecteer in het linkerdeel venster **instellingen**  >  **basis**. 
 1. In het veld **app-geheim** selecteert u **weer geven**. Kopieer de waarden van de **App-ID** en het **app-geheim**. U kunt deze later gebruiken om uw App Service-app te configureren in Azure.
 

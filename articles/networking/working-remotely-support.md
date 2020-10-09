@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80982851"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Op afstand werken met Azure-netwerk services
@@ -80,7 +80,7 @@ Micro soft kan wereld wijde connectiviteit bieden voor uw implementaties in ande
 
 In de volgende artikelen wordt beschreven hoe u verschillende Azure-netwerk functies kunt gebruiken om gebruikers te schalen die op afstand kunnen werken:
 
-| **Knowledge** | **Beschrijving** |
+| **Artikel** | **Beschrijving** |
 | --- | --- |
 | [Gebruikers in staat stellen om extern te werken](../vpn-gateway/work-remotely-support.md) | Bekijk de beschik bare opties voor het instellen van externe toegang voor gebruikers of het aanvullen van de bestaande oplossingen met aanvullende capaciteit voor uw organisatie.|
 | [Is het lastig om aan de slag te kunnen? Hier vindt u meer informatie over Azure Virtual WAN](../virtual-wan/work-remotely-support.md) | Gebruik Azure Virtual WAN om de externe connectiviteits behoeften van uw organisatie te verhelpen.|

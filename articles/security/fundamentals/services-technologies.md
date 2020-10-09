@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80549212"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Beveiligings Services en-technologieën die beschikbaar zijn op Azure
@@ -45,8 +45,8 @@ In de loop van de tijd wordt deze lijst gewijzigd en groeit, net zoals in Azure.
 |------|--------|
 | [Versleuteling van Azure &nbsp; Storage- &nbsp; service &nbsp;](/azure/storage/common/storage-service-encryption)|Een beveiligings functie waarmee uw gegevens automatisch worden versleuteld in azure Storage.   |
 |[StorSimple versleutelde hybride opslag](/azure/storsimple/storsimple-ova-overview)| Een geïntegreerde opslag oplossing voor het beheer van opslag taken tussen on-premises apparaten en Azure-Cloud opslag.|
-|[Azure-versleuteling aan de client zijde](/azure/storage/common/storage-client-side-encryption)| Een oplossing voor versleuteling aan client zijde waarmee gegevens binnen client toepassingen worden versleuteld voordat ze naar Azure Storage worden geüpload. tijdens het downloaden worden de gegevens ook ontsleuteld. |
-| [Azure Storage hand tekeningen voor gedeelde toegang](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|Een Shared Access Signature biedt gedelegeerde toegang tot resources in uw opslag account.  |
+|[Versleuteling van Azure Client-Side](/azure/storage/common/storage-client-side-encryption)| Een oplossing voor versleuteling aan client zijde waarmee gegevens binnen client toepassingen worden versleuteld voordat ze naar Azure Storage worden geüpload. tijdens het downloaden worden de gegevens ook ontsleuteld. |
+| [Azure Storage hand tekeningen voor gedeelde toegang](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|Een SAS (een handtekening voor gedeelde toegang) biedt gedelegeerde toegang tot resources in uw opslagaccount.  |
 |[Azure Storage account sleutels](/azure/storage/common/storage-create-storage-account)| Een toegangs beheer methode voor Azure Storage die wordt gebruikt voor verificatie wanneer het opslag account wordt geopend. |
 |[Azure-bestands shares met SMB 3,0-versleuteling](/azure/storage/files/storage-files-introduction)|Een netwerk beveiligings technologie die automatische netwerk versleuteling mogelijk maakt voor het SMB-protocol (Server Message Block). |
 |[Azure Opslaganalyse](/rest/api/storageservices/Storage-Analytics)| Een logboek registratie en metrische gegevens voor het genereren van uw opslag account. |

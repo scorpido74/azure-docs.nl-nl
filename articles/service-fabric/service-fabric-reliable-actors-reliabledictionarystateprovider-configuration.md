@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75609737"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors configureren--ReliableDictionaryActorStateProvider
@@ -27,10 +27,10 @@ Er zijn ook algemene instellingen die van invloed zijn op de configuratie van Re
 ## <a name="global-configuration"></a>Algemene configuratie
 De globale configuratie is opgegeven in het cluster manifest voor het cluster in de sectie KtlLogger. Hiermee kunt u de locatie en grootte van het gedeelde logboek configureren, plus de globale geheugen limieten die door de logboeken worden gebruikt. Houd er rekening mee dat wijzigingen in het cluster manifest van invloed zijn op alle services die gebruikmaken van ReliableDictionaryActorStateProvider en betrouw bare stateful Services.
 
-Het cluster manifest is een enkel XML-bestand met instellingen en configuraties die van toepassing zijn op alle knoop punten en services in het cluster. Het bestand wordt doorgaans ClusterManifest.xml genoemd. U kunt het cluster manifest voor uw cluster zien met behulp van de Power shell-opdracht Get-ServiceFabricClusterManifest.
+Het cluster manifest is een enkel XML-bestand met instellingen en configuraties die van toepassing zijn op alle knoop punten en services in het cluster. Het bestand wordt doorgaans ClusterManifest.xml genoemd. U kunt het cluster manifest voor uw cluster zien met behulp van de Get-ServiceFabricClusterManifest Power shell-opdracht.
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilo bytes |8388608 |Minimum aantal KB dat moet worden toegewezen in de kernelmodus voor de geheugen groep schrijf buffer voor logboek registratie. Deze geheugen groep wordt gebruikt voor het opslaan van de status informatie voordat naar de schijf wordt geschreven. |
 | WriteBufferMemoryPoolMaximumInKB |Kilo bytes |Geen limiet |Maximale grootte van de geheugen groep voor schrijf buffer voor logboek registratie kan worden uitgebreid. |
@@ -75,7 +75,7 @@ De standaard configuratie wordt gegenereerd door de Visual Studio-sjabloon en mo
 &lt;Actornaam &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconden |0,015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
 | ReplicatorEndpoint |N.v.t. |Geen standaard-vereiste para meter |Het IP-adres en de poort die door de primaire/secundaire Replicator worden gebruikt om te communiceren met andere replicatie Programma's in de replicaset. Dit moet verwijzen naar een TCP-bron eindpunt in het service manifest. Raadpleeg de [service manifest bronnen](service-fabric-service-manifest-resources.md) voor meer informatie over het definiëren van eindpunt resources in service manifest. |
@@ -84,7 +84,7 @@ De standaard configuratie wordt gegenereerd door de Visual Studio-sjabloon en mo
 | MaxSecondaryReplicationQueueSize |Aantal bewerkingen |16384 |Maximum aantal bewerkingen in de secundaire wachtrij. Een bewerking wordt vrijgegeven nadat de status Maxi maal beschikbaar is via persistentie. Deze waarde moet groter zijn dan 64 en een macht van 2 zijn. |
 | CheckpointThresholdInMB |MB |200 |De hoeveelheid logboek bestands ruimte waarna de status van een controle punt wordt gemaakt. |
 | MaxRecordSizeInKB |KB |1024 |Grootste record grootte die door de Replicator kan worden geschreven in het logboek. Deze waarde moet een meervoud van 4 en groter dan 16 zijn. |
-| OptimizeLogForLowerDiskUsage |Boolean-waarde |true |Indien true, wordt het logboek geconfigureerd zodat het vastgelegde logboek bestand van de replica wordt gemaakt met behulp van een NTFS sparse-bestand. Hiermee wordt het werkelijke gebruik van schijf ruimte voor het bestand verminderd. Als deze eigenschap onwaar is, wordt het bestand gemaakt met vaste toewijzingen. Dit biedt de beste schrijf prestaties. |
+| OptimizeLogForLowerDiskUsage |Booleaans |true |Indien true, wordt het logboek geconfigureerd zodat het vastgelegde logboek bestand van de replica wordt gemaakt met behulp van een NTFS sparse-bestand. Hiermee wordt het werkelijke gebruik van schijf ruimte voor het bestand verminderd. Als deze eigenschap onwaar is, wordt het bestand gemaakt met vaste toewijzingen. Dit biedt de beste schrijf prestaties. |
 | SharedLogId |guid |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het gedeelde logboek bestand dat wordt gebruikt met deze replica. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogId echter is opgegeven, moet SharedLogPath ook worden opgegeven. |
 | SharedLogPath |Fully Qualified Path name |"" |Hiermee geeft u het volledige pad op waar het gedeelde logboek bestand voor deze replica wordt gemaakt. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
 

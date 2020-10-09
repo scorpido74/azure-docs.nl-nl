@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614414"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Service Fabric-container maken met Apache Tomcat server op Linux
@@ -75,8 +75,8 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`benoemt de container, zodat u deze kunt gebruiken met een beschrijvende naam in plaats van de ID.
-   * `-p`Hiermee geeft u de poort toewijzing tussen de container en het besturings systeem van de host op. 
+   * `--name` benoemt de container, zodat u deze kunt gebruiken met een beschrijvende naam in plaats van de ID.
+   * `-p` Hiermee geeft u de poort toewijzing tussen de container en het besturings systeem van de host op. 
 
    > [!Note]
    > De poort die u met de `-p` para meter opent, moet de poort zijn waarop uw Tomcat-toepassing luistert naar aanvragen. In het huidige voor beeld is er een connector geconfigureerd in het bestand *ApacheTomcat/conf/server.xml* om te Luis teren op poort 8080 voor HTTP-aanvragen. Deze poort is toegewezen aan poort 8080 op de host. 
@@ -215,7 +215,7 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 Gebruik het uninstall-script dat is opgenomen in de sjabloon om het toepassings exemplaar te verwijderen uit het cluster en de registratie van het toepassings type op te heffen.
 
 ```bash

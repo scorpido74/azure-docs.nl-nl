@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75609771"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors configureren--KVSActorStateProvider
@@ -41,7 +41,7 @@ De standaard configuratie wordt gegenereerd door de Visual Studio-sjabloon en mo
 &lt;Actornaam &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconden |0,015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
 | ReplicatorEndpoint |N.v.t. |Geen standaard-vereiste para meter |Het IP-adres en de poort die door de primaire/secundaire Replicator worden gebruikt om te communiceren met andere replicatie Programma's in de replicaset. Dit moet verwijzen naar een TCP-bron eindpunt in het service manifest. Raadpleeg de [service manifest bronnen](service-fabric-service-manifest-resources.md) voor meer informatie over het definiëren van eindpunt resources in het service manifest. |
@@ -58,7 +58,7 @@ De standaard configuratie wordt gegenereerd door de Visual Studio-sjabloon en mo
 &lt;Actornaam &gt; ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Milliseconden |200 |Hiermee stelt u het maximale batch-interval in voor de opslag van duurzame lokale opslag. |
 | MaxVerPages |Aantal pagina's |16384 |Het maximum aantal versie pagina's in de lokale store-data base. Hiermee wordt het maximum aantal openstaande trans acties bepaald. |

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80550264"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus voor gedeeld apparaat voor Android-apparaten
@@ -90,7 +90,7 @@ De volgende verschillen zijn van toepassing, afhankelijk van het feit of uw app 
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Waarom u alleen één-account modus wilt ondersteunen
 
-Als u een app schrijft die alleen wordt gebruikt voor firstline-werk nemers met behulp van een gedeeld apparaat, wordt u aangeraden uw toepassing te schrijven zodat deze alleen ondersteuning biedt voor de modus met één account. Dit omvat de meeste toepassingen die op de taak zijn gericht, zoals medische record-apps, factuur-apps en de meeste line-of-Business-Apps. De ondersteuning voor de modus voor één account vereenvoudigt de ontwikkeling omdat u de aanvullende functies die deel uitmaken van apps met meerdere accounts niet hoeft te implementeren.
+Als u een app schrijft die alleen wordt gebruikt voor firstline-werk nemers met behulp van een gedeeld apparaat, wordt u aangeraden uw toepassing te schrijven zodat deze alleen ondersteuning biedt voor de modus met één account. Dit omvat de meeste toepassingen die zijn gericht op taken, zoals apps voor medische dossiers of voor facturen, en de meeste Line-Of-Business-apps. De ondersteuning voor de modus voor één account vereenvoudigt de ontwikkeling omdat u de aanvullende functies die deel uitmaken van apps met meerdere accounts niet hoeft te implementeren.
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>Wat er gebeurt wanneer de modus van het apparaat wordt gewijzigd
 

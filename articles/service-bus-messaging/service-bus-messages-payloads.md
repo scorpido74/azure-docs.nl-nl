@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van Azure Service Bus berichten, ne
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341677"
 ---
 # <a name="messages-payloads-and-serialization"></a>Berichten, nettoladingen en serialisatie
@@ -22,7 +22,7 @@ De vooraf gedefinieerde Broker-eigenschappen worden weer gegeven in de volgende 
  
 De equivalente namen die worden gebruikt op het niveau van het AMQP-protocol, worden tussen haakjes weer gegeven. 
 
-| Naam van eigenschap                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Naam van eigenschap                         | Beschrijving                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [Content](/dotnet/api/microsoft.azure.servicebus.message.contenttype) type (inhoudtype)           | Hiermee wordt optioneel de payload van het bericht beschreven, met een descriptor volgens de indeling RFC2045, sectie 5; bijvoorbeeld `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlatie-id)       | Hiermee kan een toepassing een context voor het bericht opgeven voor het doel van correlatie; bijvoorbeeld weer spie gelen van de **MessageId** van een bericht waarop wordt geantwoord.                                                                                                                                                                                                                                                                  |

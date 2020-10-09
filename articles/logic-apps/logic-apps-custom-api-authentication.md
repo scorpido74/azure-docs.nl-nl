@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80656239"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Verbeter de beveiliging van aanroepen naar aangepaste Api's van Azure Logic Apps
@@ -142,7 +142,7 @@ Nu moet u de client-ID en Tenant-ID vinden voor de toepassings identiteit die is
 
 4. Kopieer en sla alleen de GUID voor deel 3 op onder URL van de **Uitgever**. U kunt deze GUID ook gebruiken in de implementatie sjabloon van uw web-app of API-app, indien nodig.
 
-   Deze GUID is de GUID van uw specifieke Tenant (Tenant-ID) en moet in deze URL worden weer gegeven:`https://sts.windows.net/{GUID}`
+   Deze GUID is de GUID van uw specifieke Tenant (Tenant-ID) en moet in deze URL worden weer gegeven: `https://sts.windows.net/{GUID}`
 
 5. Sluit de pagina met **Azure Active Directory instellingen** zonder uw wijzigingen op te slaan.
 
@@ -199,11 +199,11 @@ Open de definitie van de logische app in de code weergave, ga naar de **http-** 
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| tenant | Yes | De GUID voor de Azure AD-Tenant | 
-| gericht | Yes | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
-| clientId | Yes | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
-| geheim | Yes | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
-| type | Yes | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . | 
+| tenant | Ja | De GUID voor de Azure AD-Tenant | 
+| gericht | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
+| clientId | Ja | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
+| geheim | Ja | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
+| type | Ja | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . | 
 |||| 
 
 Bijvoorbeeld:
@@ -250,9 +250,9 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 
 | Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| `type` | Yes | Het verificatie type. Voor TLS/SSL-client certificaten moet de waarde zijn `ClientCertificate` . |
-| `password` | No | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
-| `pfx` | Yes | De met base64 gecodeerde inhoud van het client certificaat (PFX-bestand) |
+| `type` | Ja | Het verificatie type. Voor TLS/SSL-client certificaten moet de waarde zijn `ClientCertificate` . |
+| `password` | Nee | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
+| `pfx` | Ja | De met base64 gecodeerde inhoud van het client certificaat (PFX-bestand) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +273,9 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| type | Yes | Het verificatie type dat u wilt gebruiken. Voor basis verificatie moet de waarde zijn `Basic` . | 
-| gebruikersnaam | Yes | De gebruikers naam die u wilt gebruiken voor verificatie | 
-| wachtwoord | Yes | Het wacht woord dat u wilt gebruiken voor verificatie | 
+| type | Ja | Het verificatie type dat u wilt gebruiken. Voor basis verificatie moet de waarde zijn `Basic` . | 
+| gebruikersnaam | Ja | De gebruikers naam die u wilt gebruiken voor verificatie | 
+| wachtwoord | Ja | Het wacht woord dat u wilt gebruiken voor verificatie | 
 |||| 
 
 <a name="azure-ad-code"></a>

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80437019"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka workloads migreren naar Azure HDInsight 4,0
@@ -85,4 +85,4 @@ Voer de volgende stappen uit om de migratie te volt ooien:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Prestaties van Apache Kafka HDInsight-clusters optimaliseren](apache-kafka-performance-tuning.md)
-* [Snelstartgids: Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal](apache-kafka-get-started.md)
+* [Quickstart: Een Apache Kafka-cluster maken in Azure HDInsight met Azure Portal](apache-kafka-get-started.md)
