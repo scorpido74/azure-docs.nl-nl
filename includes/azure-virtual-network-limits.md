@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: b963cc459094e823499e962736550dcea2345ba2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8d5f9b360e1d81bae62e34a8e20d61636e1d22ea
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854054"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859374"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netwerklimieten - Azure Resource Manager
 De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd via **Azure Resource Manager**. De beperkingen gelden per regio en per abonnement. Meer informatie over het [bekijken van uw huidige resourcegebruik op basis van uw abonnementslimieten](../articles/networking/check-usage-against-limits.md).
@@ -75,7 +75,6 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Backend-resources per load balancer <sup>1<sup> | 150                   |
 | Poorten met een hoge beschikbaarheid                 | 1 per interne frontend       |
 | Uitgaande regels per load balancer        | 600                           |
-| [Niet-actieve TCP-tijd](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 minuten/30 minuten          |
 
 <sup>1</sup>De limiet is maximaal 150 resources, bestaande uit een willekeurige combinatie van zelfstandige VM-resources, resources voor beschikbaarheidssets en plaatsingsgroepen op VM-schaal.
 
@@ -88,7 +87,7 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Regels per NIC (voor alle IP-adressen op een NIC) | 300                          |
 | Frontend-IP-configuraties              | 200                          |
 | Grootte van back-end-pool                       | 300 IP-configuraties, één beschikbaarheidsset |
-| Beschikbaarheidssets per load balancer     | 150                          |
+| Beschikbaarheidssets per load balancer     | 1                            |
 
 <a name="virtual-networking-limits-classic"></a>De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd via het **klassieke** implementatiemodel voor elk abonnement. Meer informatie over het [bekijken van uw huidige resourcegebruik op basis van uw abonnementslimieten](../articles/networking/check-usage-against-limits.md).
 
