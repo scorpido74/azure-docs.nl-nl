@@ -14,10 +14,10 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77617007"
 ---
 # <a name="onboarding-requirements"></a>Voorbereidingsvereisten
@@ -30,7 +30,7 @@ In deze lijst worden de vereisten voor het uitvoeren van SAP HANA op Azure geass
 - Micro soft Premier Support-contract. Voor specifieke informatie met betrekking tot het uitvoeren van SAP in azure raadpleegt u [SAP-ondersteunings opmerking #2015553 – SAP op Microsoft Azure: vereisten voor ondersteuning](https://launchpad.support.sap.com/#/notes/2015553). Als u gebruik maakt van HANA grote instantie-eenheden met 384 en meer Cpu's, moet u ook het Premier-ondersteunings contract uitbreiden om Azure Rapid Response toe te voegen.
 - U moet rekening houden met de HANA-Sku's voor grote instanties die u nodig hebt nadat u een schaal oefening met SAP hebt uitgevoerd.
 
-**Netwerkconnectiviteit**
+**Netwerkverbinding**
 
 - ExpressRoute tussen on-premises naar Azure: om uw on-premises Data Center te verbinden met Azure, moet u ervoor zorgen dat u Mini maal een 1 Gbps-verbinding van uw Internet provider kunt best Ellen. Connectiviteit tussen HANA grote exemplaar eenheden en Azure gebruikt ook ExpressRoute-technologie. Deze ExpressRoute-verbinding tussen de HANA grote exemplaar eenheden en Azure is inbegrepen in de prijs van de HANA grote instantie-eenheden, inclusief alle gegevens binnenkomend en uitgaand verkeer voor dit specifieke ExpressRoute-circuit. Daarom bieden u als klant geen extra kosten meer dan uw ExpressRoute-koppeling tussen on-premises en Azure.
 

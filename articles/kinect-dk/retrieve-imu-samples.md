@@ -8,10 +8,10 @@ ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: kinect, azure, configure, depth, Color, RBG, camera, sensor, SDK, IMU, bewegings sensor, Motion, gyroscope, gyro, acceleratie meter, FPS
 ms.openlocfilehash: 649dd5b9de62d43d59e74d53adff1ec7de8dfd32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277290"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>Azure Kinect IMU-voor beelden ophalen
@@ -63,7 +63,7 @@ Omdat er sprake is van een interne wachtrij met IMU-voor beelden, kunt u het vol
 3. Alle IMU-voor beelden in de wachtrij ophalen.
 4. Wacht op de volgende opname herhalen.
 
-Als u alle momenteel in de wachtrij geplaatste IMU-voor beelden wilt ophalen, kunt u [`k4a_device_get_imu_sample()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8e5913b3bb94a453c7143bbd6e399a0e.html#ga8e5913b3bb94a453c7143bbd6e399a0e) met een `timeout_in_ms` van de 0-lussen aanroepen totdat de functie wordt geretourneerd `K4A_WAIT_RESULT_TIMEOUT` . `K4A_WAIT_RESULT_TIMEOUT`geeft aan dat er geen voor beelden in de wachtrij staan en dat er geen gearriveerd is in de opgegeven time-out.
+Als u alle momenteel in de wachtrij geplaatste IMU-voor beelden wilt ophalen, kunt u [`k4a_device_get_imu_sample()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8e5913b3bb94a453c7143bbd6e399a0e.html#ga8e5913b3bb94a453c7143bbd6e399a0e) met een `timeout_in_ms` van de 0-lussen aanroepen totdat de functie wordt geretourneerd `K4A_WAIT_RESULT_TIMEOUT` . `K4A_WAIT_RESULT_TIMEOUT` geeft aan dat er geen voor beelden in de wachtrij staan en dat er geen gearriveerd is in de opgegeven time-out.
 
 ## <a name="usage-example"></a>Voor beeld van gebruik
 

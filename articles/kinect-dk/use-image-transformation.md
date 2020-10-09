@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: kinect, azure, sensor, SDK, coördinaten systeem, kalibratie, project, unproject, trans formatie, RGB-d, Point-Cloud
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277202"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Trans formaties van de Azure Kinect sensor SDK gebruiken
@@ -72,7 +72,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
 #### <a name="parameters"></a>Parameters
 
-De invoer parameters zijn de transformatie-ingang, een diepte afbeelding en een kleuren afbeelding. De resoluties van diepte-en kleuren afbeeldingen moeten overeenkomen met de depth_mode en color_resolution opgegeven bij het maken van de transformatie koppeling. De uitvoer is een getransformeerde kleuren afbeelding die door de gebruiker moet worden toegewezen via het aanroepen van [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef). De resolutie van de getransformeerde kleuren afbeelding moet overeenkomen met de depth_resolution die is opgegeven bij het maken van de transformatie koppeling. In de uitvoer afbeelding worden vier 8-bits waarden opgeslagen voor BGRA voor elke pixel. Daarom is de stride van de afbeelding ```width * 4 * sizeof(uint8_t)``` . De volg orde van de gegevens is pixel Interleaved, dat wil zeggen, blauw waarde/pixel 0, groene waarde-pixel 0, rode waarde-pixel 0, Alfa waarde-pixel 0, blauw waarde-pixel 1, enzovoort.
+De invoer parameters zijn de transformatie-ingang, een diepte afbeelding en een kleuren afbeelding. De resoluties van diepte-en kleuren afbeeldingen moeten overeenkomen met de depth_mode en color_resolution opgegeven bij het maken van de transformatie koppeling. De uitvoer is een getransformeerde kleuren afbeelding die door de gebruiker moet worden toegewezen via het aanroepen van [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef). De resolutie van de getransformeerde kleuren afbeelding moet overeenkomen met de depth_resolution die is opgegeven bij het maken van de transformatie koppeling. In de uitvoer installatie kopie worden 4 8-bits waarden opgeslagen voor BGRA voor elke pixel. Daarom is de stride van de afbeelding ```width * 4 * sizeof(uint8_t)``` . De volg orde van de gegevens is pixel Interleaved, dat wil zeggen, blauw waarde/pixel 0, groene waarde-pixel 0, rode waarde-pixel 0, Alfa waarde-pixel 0, blauw waarde-pixel 1, enzovoort.
 
 ### <a name="k4a_transformation_depth_image_to_point_cloud"></a>k4a_transformation_depth_image_to_point_cloud
 

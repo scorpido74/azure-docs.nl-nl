@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202956"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -37,8 +37,8 @@ Het **ClaimsTransformation** -element bevat de volgende kenmerken:
 
 | Kenmerk |Vereist | Beschrijving |
 | --------- |-------- | ----------- |
-| Id |Yes | Een id die wordt gebruikt om de claim transformatie uniek te identificeren. Er wordt naar de id verwezen vanuit andere XML-elementen in het beleid. |
-| TransformationMethod | Yes | De transformatie methode die in de claim transformatie moet worden gebruikt. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| Id |Ja | Een id die wordt gebruikt om de claim transformatie uniek te identificeren. Er wordt naar de id verwezen vanuit andere XML-elementen in het beleid. |
+| TransformationMethod | Ja | De transformatie methode die in de claim transformatie moet worden gebruikt. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -59,7 +59,7 @@ Het **ClaimsTransformation** -element bevat de volgende elementen:
 ```
 
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Een lijst met **input claim** -elementen waarmee claim typen worden opgegeven die worden gebruikt als invoer voor de claims-trans formatie. Elk van deze elementen bevat een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
 | Invoer parameters | 0:1 | Een lijst met **input parameter** -elementen die als invoer voor de claim transformatie worden opgegeven.
@@ -69,7 +69,7 @@ Het **ClaimsTransformation** -element bevat de volgende elementen:
 
 Het element **InputClaims** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Input claim | 1: n | Een verwachte invoer claim type. |
 
@@ -79,14 +79,14 @@ Het **input claim** -element bevat de volgende kenmerken:
 
 | Kenmerk |Vereist | Beschrijving |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |Yes | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
-| TransformationClaimType |Yes | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| ClaimTypeReferenceId |Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
+| TransformationClaimType |Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 ### <a name="inputparameters"></a>Invoer parameters
 
 Het element **Input parameters** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Parameter | 1: n | Een verwachte invoer parameter. |
 
@@ -94,15 +94,15 @@ Het element **Input parameters** bevat het volgende element:
 
 | Kenmerk | Vereist |Beschrijving |
 | --------- | ----------- |----------- |
-| Id | Yes | Een id die een verwijzing is naar een para meter van de methode voor het transformeren van claims. Elke claim transformatie methode heeft zijn eigen waarden. Zie de tabel claim transformatie voor een volledige lijst van de beschik bare waarden. |
-| DataType | Yes | Het type gegevens van de para meter, zoals teken reeks, Booleaanse waarde, int of DateTime, zoals wordt bepaald door de opsomming van het gegevens type in het XML-schema van het aangepaste beleid. Dit type wordt gebruikt om reken kundige bewerkingen correct uit te voeren. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
-| Waarde | Yes | Een waarde die Verbatim wordt door gegeven aan de trans formatie. Sommige waarden zijn wille keurig, wat u selecteert in de methode voor het transformeren van claims. |
+| Id | Ja | Een id die een verwijzing is naar een para meter van de methode voor het transformeren van claims. Elke claim transformatie methode heeft zijn eigen waarden. Zie de tabel claim transformatie voor een volledige lijst van de beschik bare waarden. |
+| DataType | Ja | Het type gegevens van de para meter, zoals teken reeks, Booleaanse waarde, int of DateTime, zoals wordt bepaald door de opsomming van het gegevens type in het XML-schema van het aangepaste beleid. Dit type wordt gebruikt om reken kundige bewerkingen correct uit te voeren. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| Waarde | Ja | Een waarde die Verbatim wordt door gegeven aan de trans formatie. Sommige waarden zijn wille keurig, wat u selecteert in de methode voor het transformeren van claims. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
 Het element **OutputClaims** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Output claim | 0: n | Een verwacht type uitvoer claim. |
 
@@ -112,8 +112,8 @@ Het **output claim** -element bevat de volgende kenmerken:
 
 | Kenmerk |Vereist | Beschrijving |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | Yes | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid.
-| TransformationClaimType | Yes | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| ClaimTypeReferenceId | Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid.
+| TransformationClaimType | Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 Als de invoer claim en de uitvoer claim van hetzelfde type (teken reeks of Booleaanse waarde) zijn, kunt u dezelfde invoer claim gebruiken als de uitvoer claim. In dit geval wijzigt de claim transformatie de invoer claim met de uitvoer waarde.
 
@@ -159,11 +159,11 @@ U kunt bijvoorbeeld de laatste versie van uw service voorwaarden opslaan die de 
 
 Voor voor beelden van claim transformaties raadpleegt u de volgende referentie pagina's:
 
-- [Boolean-waarde](boolean-transformations.md)
-- [Date](date-transformations.md)
+- [Booleaans](boolean-transformations.md)
+- [Datum](date-transformations.md)
 - [Geheel getal](integer-transformations.md)
 - [JSON](json-transformations.md)
-- [Telefoonnummer](phone-number-claims-transformations.md)
+- [Telefoon nummer](phone-number-claims-transformations.md)
 - [Algemeen](general-transformations.md)
 - [Sociaal account](social-transformations.md)
 - [Tekenreeks](string-transformations.md)

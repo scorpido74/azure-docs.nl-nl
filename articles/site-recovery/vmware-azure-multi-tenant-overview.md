@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74083996"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Overzicht van ondersteuning voor meerdere tenants voor VMware-nood herstel naar Azure met CSP
@@ -47,7 +47,7 @@ In het diagram heeft elke klant een afzonderlijke beheer server. Deze configurat
 De vereiste gegevens isolatie houdt in dat alle gevoelige infrastructuur gegevens (zoals toegangs referenties) niet worden vrijgegeven voor tenants. Daarom is het raadzaam dat alle onderdelen van de beheer server blijven gelden onder het exclusieve beheer van de partner. De onderdelen van de beheer server zijn:
 
 * Configuratieserver
-* Processerver
+* Proces server
 * Hoofddoelserver
 
 Een afzonderlijke scale-out proces server staat ook onder het besturings element van de partner.
@@ -91,7 +91,7 @@ Configureer de configuratie server met een account waaraan een speciale rol is t
 
 >| Object | Rol | Opmerkingen |
 >| --- | --- | --- |
->| vCenter | Alleen-lezen | Alleen vereist voor het toestaan van toegang tot vCenter voor het beheren van verschillende objecten. U kunt deze machtiging verwijderen als het account nooit aan een Tenant wordt door gegeven of wordt gebruikt voor beheer bewerkingen in de vCenter. |
+>| vCenter | Read-Only | Alleen vereist voor het toestaan van toegang tot vCenter voor het beheren van verschillende objecten. U kunt deze machtiging verwijderen als het account nooit aan een Tenant wordt door gegeven of wordt gebruikt voor beheer bewerkingen in de vCenter. |
 >| Datacenter | Azure_Site_Recovery |  |
 >| Host-en hostcluster | Azure_Site_Recovery | Zorg ervoor dat de toegang zich op het niveau van het object bevindt, zodat alleen toegankelijke hosts Tenant-Vm's hebben vóór failover en na failback. |
 >| Data Store-en Data Store-cluster | Azure_Site_Recovery | Hetzelfde als voor gaande. |

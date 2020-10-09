@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, sensor, SDK, depth, RGB, record, afspelen, Matroska, MKV
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277270"
 ---
 # <a name="the-azure-kinect-playback-api"></a>De Azure Kinect Play-API
@@ -134,13 +134,13 @@ Hieronder ziet u een lijst met alle standaard tags die in een opname bestand kun
 
 Als een tag niet bestaat, wordt ervan uitgegaan dat deze de standaard waarde heeft.
 
-| Tagnaam                     | Standaardwaarde      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html)Aan | Notities     |
+| Tagnaam                     | Standaardwaarde      | [`k4a_record_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__record__configuration__t.html) Aan | Opmerkingen     |
 |------------------------------|--------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | `K4A_COLOR_MODE`             | Office              | `color_format` / `color_resolution`  | Mogelijke waarden: ' OFF ', ' MJPG_1080P ', ' NV12_720P ', ' YUY2_720P ' enzovoort                                      |
 | `K4A_DEPTH_MODE`             | Office              | `depth_mode` / `depth_track_enabled` | Mogelijke waarden: "OFF," NFOV_UNBINNED "," PASSIVE_IR "enzovoort                                                |
 | `K4A_IR_MODE`                | Office              | `depth_mode` / `ir_track_enabled`    | Mogelijke waarden: "OFF", "actief", "PASSIEf"                                                                    |
 | `K4A_IMU_MODE`               | Office              | `imu_track_enabled`                  | Mogelijke waarden: aan, uit                                                                                   |
-| `K4A_CALIBRATION_FILE`       | "calibration.jsop" | N.v.t.                                  | Kijken[`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
+| `K4A_CALIBRATION_FILE`       | "calibration.jsop" | N.v.t.                                  | Zie [`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
 | `K4A_DEPTH_DELAY_NS`         | 0,3                | `depth_delay_off_color_usec`         | De waarde die is opgeslagen in nano seconden, API biedt micro seconden.                                                        |
 | `K4A_WIRED_SYNC_MODE`        | AUTONOME       | `wired_sync_mode`                    | Mogelijke waarden: ' STANDALONE ', ' MASTER ', ' slave '                                                         |
 | `K4A_SUBORDINATE_DELAY_NS`   | 0,3                | `subordinate_delay_off_master_usec`  | De waarde die is opgeslagen in nano seconden, API biedt micro seconden.                                                        |

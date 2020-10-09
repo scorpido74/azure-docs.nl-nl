@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072791"
 ---
 # <a name="custom-search"></a>Aangepast zoeken
 Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren. Uw gebruikers zien dan zoekresultaten die zijn afgestemd op de inhoud die ze interessant vinden in plaats van dat ze door pagina's met zoekresultaten moeten bladeren die niet-relevante inhoud bevatten.
 
 ## <a name="custom-search-endpoint"></a>Aangepast Zoek eindpunt
-Als u resultaten wilt ophalen met behulp van `GET` de Bing Custom Search-API, stuurt u een aanvraag naar het volgende eind punt. Gebruik de para meters headers en URL om verdere specificaties te definiëren.
+Als u resultaten wilt ophalen met behulp van de Bing Custom Search-API, stuurt `GET` u een aanvraag naar het volgende eind punt. Gebruik de para meters headers en URL om verdere specificaties te definiëren.
 
-Eind punt: retourneert Zoek suggesties als JSON-resultaten die relevant zijn voor de invoer van de `?q=""`gebruiker die is gedefinieerd door.
+Eind punt: retourneert Zoek suggesties als JSON-resultaten die relevant zijn voor de invoer van de gebruiker die is gedefinieerd door `?q=""` .
 ```  
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```

@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 066a6489e6244369453ec5d9f21d5e1e83fcd6c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201747"
 ---
 # <a name="integer-claims-transformations"></a>Geheeltallige claim transformaties
@@ -28,7 +28,7 @@ In dit artikel vindt u voor beelden van het gebruik van trans formaties met een 
 
 Converteert een lang gegevens type naar een teken reeks gegevens type.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Input claim | long | Het claim type dat moet worden geconverteerd naar een teken reeks. |
 | Output claim | Output claim | tekenreeks | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |

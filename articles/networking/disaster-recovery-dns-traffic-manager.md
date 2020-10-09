@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74483534"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Herstel na noodgevallen met Azure DNS en Traffic Manager
@@ -51,7 +51,7 @@ Zie [herstel na nood gevallen voor Azure-toepassingen](https://docs.microsoft.co
 ## <a name="planning-your-disaster-recovery-architecture"></a>De architectuur voor herstel na nood gevallen plannen
 
 Er zijn twee technische aspecten voor het instellen van uw nood herstel architectuur:
--  Een implementatie mechanisme gebruiken om instanties, gegevens en configuraties tussen primaire en stand-by-omgevingen te repliceren. Dit type herstel na nood gevallen kan systeem eigen worden uitgevoerd via Azure site-Recovery via Microsoft Azure-partner apparaten/-services zoals Veritas of NetApp. 
+-  Een implementatie mechanisme gebruiken om instanties, gegevens en configuraties tussen primaire en stand-by-omgevingen te repliceren. Dit type herstel na nood geval kan met behulp van Azure Site-Recovery worden uitgevoerd via Microsoft Azure partner-apparaten/-services zoals Veritas of NetApp. 
 - Het ontwikkelen van een oplossing voor het omleiden van netwerk-/webverkeer van de primaire site naar de stand-by-site. Dit type herstel na nood geval kan worden bereikt via Azure DNS, Azure Traffic Manager (DNS) of globale load balancers van derden.
 
 Dit artikel is beperkt tot benaderingen via netwerk-en webverkeer omleiden. Zie [Azure site Recovery-documentatie](https://docs.microsoft.com/azure/site-recovery/)voor instructies voor het instellen van Azure site Recovery.

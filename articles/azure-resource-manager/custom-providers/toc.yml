@@ -4,7 +4,7 @@
   items:
     - name: Wat zijn Azure Custom-providers?
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een aangepaste resourceprovider maken
