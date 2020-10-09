@@ -8,10 +8,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260624"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Gegevens migreren van Cassandra naar Azure Cosmos DB Cassandra-API-account met behulp van Blitzz
@@ -54,7 +54,7 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
    :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz Replicant-hulp programma downloaden":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz Replicant-bestanden":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz Replicant-hulp programma downloaden":::
 
 1. Stel in de CLI-Terminal de configuratie van de bron database in. Open het configuratie bestand met behulp van de **`vi conf/conn/cassandra.yml`** opdracht en voeg een door komma's gescheiden lijst met IP-adressen van de Cassandra-knoop punten, poort nummer, gebruikers naam, wacht woord en andere vereiste gegevens toe. Hier volgt een voor beeld van de inhoud van het configuratie bestand:
 
@@ -71,9 +71,9 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
    ```
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Cassandra-verbindings editor openen":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Blitzz Replicant-hulp programma downloaden":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Configuratie van Cassandra-verbinding":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Blitzz Replicant-hulp programma downloaden":::
 
    Sla het bestand op en sluit het als u de configuratie gegevens hebt ingevuld.
 
@@ -92,7 +92,7 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
 1. Voordat u de gegevens migreert, verhoogt u de doorvoer capaciteit van de container naar de hoeveelheid die de toepassing nodig heeft om snel te migreren. U kunt de door Voer bijvoorbeeld verhogen naar 100000 RUs. Wanneer u de door Voer hebt geschaald voordat u de migratie start, helpt u om uw gegevens in minder tijd te migreren.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Azure Cosmos-container schalen in":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Blitzz Replicant-hulp programma downloaden":::
 
    Verminder de door Voer nadat de migratie is voltooid. Op basis van de hoeveelheid opgeslagen gegevens en RUs die is vereist voor elke bewerking, kunt u een schatting maken van de door Voer die is vereist na de gegevens migratie. Zie voor meer informatie over het maken van een schatting van het RUs-vereiste [door Voer inrichten voor containers en data bases](set-throughput.md) en [een schatting van ru/s met behulp van de artikelen van de Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md) .
 
@@ -128,7 +128,7 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
    De Replicant-gebruikers interface toont de voortgang van de replicatie. Zodra de schema migratie en de momentopname bewerking zijn uitgevoerd, wordt in de voortgang 100% weer gegeven. Nadat de migratie is voltooid, kunt u de gegevens valideren in de Azure Cosmos-doel database.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Uitvoer van Cassandra-gegevens migratie":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Blitzz Replicant-hulp programma downloaden":::
 
 
 1. Omdat u de volledige modus voor migratie hebt gebruikt, kunt u bewerkingen uitvoeren zoals het invoegen, bijwerken of verwijderen van gegevens in de bron-Apache Cassandra-data base. Controleer later of ze realtime worden gerepliceerd op de doel-Azure Cosmos-data base. Na de migratie moet u de door Voer die is geconfigureerd voor de Azure Cosmos-container verlagen.

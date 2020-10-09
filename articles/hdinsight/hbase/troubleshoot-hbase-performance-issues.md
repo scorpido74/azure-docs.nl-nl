@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887152"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Prestatieproblemen van Apache Hbase in Azure HDInsight oplossen
@@ -55,9 +55,9 @@ Als u benchmarks gebruikt zoals Yahoo! Cloud met Bench Mark, JMeter of Pherf om 
 
 Als uw query's plotseling worden gestart, kunt u controleren op mogelijke fouten in uw toepassings code. Worden er plotseling grote hoeveel heden ongeldige gegevens gegenereerd? Als dat het geval is, kan dit de lees latentie verhogen.
 
-## <a name="migration-issues"></a>Migratie problemen
+## <a name="migration-issues"></a>Migratieproblemen
 
-Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie systematisch en nauw keurig wordt uitgevoerd, bij voor keur via Automation. Vermijd hand matige migratie. Vereisten:
+Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie systematisch en nauw keurig wordt uitgevoerd, bij voor keur via Automation. Vermijd hand matige migratie. Zorg voor het volgende:
 
 - Tabel kenmerken worden nauw keurig gemigreerd. Kenmerken kunnen bestaan uit als compressie, bloei filters, enzovoort.
 
@@ -110,7 +110,7 @@ Hieronder vindt u enkele van de andere specifieke para meters die we hebben afge
 
 Hieronder vindt u aanvullende para meters voor het afstemmen van het volgende:
 
-- `Hbase.rs.cacheblocksonwrite`-HDI is deze instelling standaard ingesteld op **True**.
+- `Hbase.rs.cacheblocksonwrite` -HDI is deze instelling standaard ingesteld op **True**.
 
 - Instellingen waarmee u de kleine compressie voor later kunt uitstellen.
 

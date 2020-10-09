@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73159694"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Overzicht van Kubernetes-netwerkbeleid
@@ -32,13 +32,13 @@ Netwerk beleidsregels bieden micro segmentatie voor heel wat is net als netwerk 
 Azure-netwerk beleid werkt in combi natie met de Azure-CNI die VNet-integratie voor containers biedt. Het wordt momenteel alleen ondersteund op Linux-knoop punten. De implementaties configureren Linux IP-tabel regels op basis van het gedefinieerde beleid voor het afdwingen van het filteren van verkeer.
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>Beveiliging plannen voor uw Kubernetes-cluster
-Gebruik netwerk beveiligings groepen (Nsg's) bij het implementeren van de beveiliging voor uw cluster om het Noord-Zuid verkeer te filteren, dat wil zeggen verkeer dat uw cluster subnet binnenkomt en verlaat en Kubernetes-netwerk beleid gebruikt voor Oost-West verkeer, dat wil zeggen verkeer tussen peul in uw cluster.
+Wanneer u de beveiliging voor uw cluster implementeert, gebruikt u netwerk beveiligings groepen (Nsg's) om North-South verkeer te filteren, dat wil zeggen verkeer dat uw cluster subnet binnenkomt en verlaat, en Kubernetes-netwerk beleid gebruiken voor East-West verkeer, dat wil zeggen verkeer tussen peul in uw cluster.
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Azure Kubernetes-netwerk beleid gebruiken
 Azure-netwerk beleid kan worden gebruikt op de volgende manieren om micro segmentering te bieden voor peulen.
 
 ### <a name="acs-engine"></a>ACS-engine
-ACS-engine is een hulp programma waarmee een Azure Resource Manager sjabloon wordt gegenereerd voor de implementatie van een Kubernetes-cluster in Azure. De configuratie van het cluster is opgenomen in een JSON-bestand dat aan het hulpprogramma wordt doorgegeven bij het genereren van de sjabloon. Zie Microsoft Azure Container Service Engine - Cluster Definition (Microsoft Azure Container Service Engine - Clusterdefinitie) voor de volledige lijst met ondersteunde clusterinstellingen en de bijbehorende beschrijvingen.
+ACS-Engine is een hulp programma waarmee een Azure Resource Manager sjabloon wordt gegenereerd voor de implementatie van een Kubernetes-cluster in Azure. De configuratie van het cluster is opgenomen in een JSON-bestand dat aan het hulpprogramma wordt doorgegeven bij het genereren van de sjabloon. Zie Microsoft Azure Container Service Engine - Cluster Definition (Microsoft Azure Container Service Engine - Clusterdefinitie) voor de volledige lijst met ondersteunde clusterinstellingen en de bijbehorende beschrijvingen.
 
 Als u beleids regels wilt inschakelen voor clusters die zijn geïmplementeerd met ACS-engine, geeft u de waarde van de networkPolicy-instelling in het cluster definitie bestand op "Azure".
 

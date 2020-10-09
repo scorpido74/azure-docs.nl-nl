@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263541"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Honderden terabytes aan gegevens migreren naar Azure Cosmos DB 
@@ -145,7 +145,7 @@ Nadat de migratie is voltooid, kunt u controleren of het aantal documenten in Az
 ## <a name="contact-the-azure-cosmos-db-team"></a>Contact opnemen met het Azure Cosmos DB team
 Hoewel u deze hand leiding kunt volgen om grote gegevens sets naar Azure Cosmos DB te migreren voor grootschalige migraties, is het raadzaam om het Azure Cosmos DB-product team te bereiken om de gegevens modellen en een algemene architectuur beoordeling te valideren. Op basis van uw gegevensset en werk belasting kan het product team ook andere prestaties en kosten optimalisaties Voorst Ellen die van toepassing kunnen zijn op u. Als u contact wilt opnemen met het Azure Cosmos DB team voor hulp bij grootschalige migraties, kunt u een ondersteunings ticket openen onder het probleem type ' algemeen advies ' en ' grote (TB +) migraties ', zoals hieronder wordt weer gegeven.
 
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Onderwerp over migratie ondersteuning":::
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Migratie Hulpprogramma's instellen":::
 
 
 ## <a name="next-steps"></a>Volgende stappen

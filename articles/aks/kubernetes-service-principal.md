@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85298545"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Service-principals met AKS (Azure Kubernetes Service)
@@ -23,7 +23,7 @@ Als u een service-principal voor Azure AD wilt maken, moet u beschikken over mac
 
 Als u een service-principal van een andere Azure AD-Tenant gebruikt, zijn er aanvullende overwegingen rond de beschik bare machtigingen wanneer u het cluster implementeert. Mogelijk beschikt u niet over de juiste machtigingen om mapgegevens te lezen en te schrijven. Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Directory?][azure-ad-permissions] voor meer informatie.
 
-Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatisch een service-principal maken en gebruiken
 
@@ -135,7 +135,7 @@ Houd rekening met het volgende wanneer u werkt met AKS en Azure AD-service-princ
 - De referenties van de Service-Principal zijn standaard één jaar geldig. U kunt [de referenties van de Service-Principal][update-credentials] op elk gewenst moment bijwerken of draaien.
 - Elke service-principal is gekoppeld aan een Azure AD-toepassing. De service-principal voor een Kubernetes-cluster kan worden gekoppeld aan elke geldige Azure AD-toepassings naam (bijvoorbeeld: *https://www.contoso.org/example* ). De URL van de toepassing hoeft geen echt eindpunt te zijn.
 - Gebruik bij het opgeven van de **client-id** van de service-principal de waarde van de `appId`.
-- Op het agent knooppunt Vm's in het Kubernetes-cluster worden de referenties van de Service-Principal opgeslagen in het bestand`/etc/kubernetes/azure.json`
+- Op het agent knooppunt Vm's in het Kubernetes-cluster worden de referenties van de Service-Principal opgeslagen in het bestand `/etc/kubernetes/azure.json`
 - Wanneer u de opdracht [az aks create][az-aks-create] gebruikt om de service-principal automatisch te genereren, worden de referenties voor de service-principal naar het bestand `~/.azure/aksServicePrincipal.json` geschreven op de computer die wordt gebruikt om de opdracht uit te voeren.
 - Als u een Service-Principal niet specifiek doorgeeft in extra AKS CLI-opdrachten, wordt de standaard Service-Principal `~/.azure/aksServicePrincipal.json` gebruikt.  
 - U kunt desgewenst ook de aksServicePrincipal.jsin het bestand verwijderen en AKS maakt een nieuwe service-principal.

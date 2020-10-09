@@ -7,10 +7,10 @@ ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72750426"
 ---
 # <a name="legal-notices"></a>Juridische kennisgevingen
@@ -21,7 +21,7 @@ In de documentatie genoemde Microsoft, Windows, Microsoft Azure en/of andere Mic
 De licenties voor dit project geven u niet het recht namen, logo's of handelsmerken van Microsoft te gebruiken.
 De algemene handelsmerk richtlijnen van micro soft vindt u op [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653) .
 
-Privacy-informatie vindt u op[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
+Privacy-informatie vindt u op [https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 
 Microsoft en eventuele inzenders behouden zich alle andere rechten voor, onder hun respectievelijke auteursrechten, patenten of handelsmerken, hetzij bij implicatie of volgens het estoppelbeginsel dan wel uit anderen hoofde.
 

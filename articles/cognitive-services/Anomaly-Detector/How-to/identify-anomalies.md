@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71840228"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Procedure: afwijkende detector API gebruiken op uw tijdreeks gegevens  
@@ -29,7 +29,7 @@ De anomalie detector-API biedt detectie modi: batch en streaming.
 > De volgende aanvraag-Url's moeten worden gecombineerd met het juiste eind punt voor uw abonnement. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
-### <a name="batch-detection"></a>Batch detectie
+### <a name="batch-detection"></a>Batchdetectie
 
 Als u afwijkingen wilt detecteren in een batch met gegevens punten gedurende een bepaald tijds bereik, gebruikt u de volgende aanvraag-URI met de tijdreeks gegevens: 
 
@@ -47,7 +47,7 @@ Door nieuwe gegevens punten te verzenden terwijl u ze genereert, kunt u uw gegev
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>De grenzen voor de detectie van lagere en hoogste afwijkingen aanpassen
 
-Standaard worden de boven-en ondergrenzen voor anomalie detectie berekend met `expectedValue`, `upperMargin`en. `lowerMargin` Als u andere grenzen nodig hebt, kunt u het `marginScale` beste `upperMargin` een `lowerMargin`to-of Toep assen. De grenzen worden als volgt berekend:
+Standaard worden de boven-en ondergrenzen voor anomalie detectie berekend met `expectedValue` , `upperMargin` en `lowerMargin` . Als u andere grenzen nodig hebt, kunt u het beste een to-of Toep assen `marginScale` `upperMargin` `lowerMargin` . De grenzen worden als volgt berekend:
 
 |Vormt  |Berekening  |
 |---------|---------|
@@ -71,4 +71,4 @@ In de volgende voor beelden ziet u een anomalie detectie-API-resultaat op versch
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is de Anomaly Detector-API?](../overview.md)
-* [Snelstartgids: afwijkingen in uw time series-gegevens detecteren met behulp van de anomalie detectie REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Snelstart: Anomalieën detecteren in uw tijdreeksgegevens met behulp van de Anomaly Detector-REST API](../quickstarts/detect-data-anomalies-csharp.md)

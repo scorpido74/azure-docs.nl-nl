@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 7fc46d06b68dca074da060b4866186a6242ffad2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72757380"
 ---
 # <a name="content-moderator-api-reference"></a>Naslag informatie over Content Moderator-API
@@ -42,5 +42,5 @@ De beoordelings-Api's hebben de volgende onderdelen:
 | Beschrijving | Naslaginformatie |
 | -------------------- |-------------|
 | **Taken**<br /><br /> Scan-en revisie werk stromen initiëren voor zowel afbeeldings-als tekst inhoud. Een moderator taak scant uw inhoud met behulp van de afbeeldings toezicht-API en de tekst toezicht-API. Toezicht taken maken gebruik van de gedefinieerde en standaard werk stromen om beoordelingen te genereren. <br /><br />Nadat een Human toezicht houder de automatisch toegewezen tags en Voorspellings gegevens heeft gecontroleerd en een beslissing voor inhouds toezicht heeft ingediend, verzendt de beoordelings-API alle informatie naar uw API-eind punt.<br /><br /> | [Taak verwijzing](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "Taak verwijzing")   |
-| **Beoordelingen**<br /><br />Gebruik het hulp programma voor controle om rechtstreeks afbeeldings-of tekst beoordelingen te maken voor menselijke moderators.<br /><br /> Nadat een Human toezicht houder de automatisch toegewezen tags en Voorspellings gegevens heeft gecontroleerd en een beslissing voor inhouds toezicht heeft ingediend, verzendt de beoordelings-API alle informatie naar uw API-eind punt.<br /><br /> | [Verwijzing controleren](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Verwijzing controleren")   |
+| **Reviews**<br /><br />Gebruik het hulp programma voor controle om rechtstreeks afbeeldings-of tekst beoordelingen te maken voor menselijke moderators.<br /><br /> Nadat een Human toezicht houder de automatisch toegewezen tags en Voorspellings gegevens heeft gecontroleerd en een beslissing voor inhouds toezicht heeft ingediend, verzendt de beoordelings-API alle informatie naar uw API-eind punt.<br /><br /> | [Verwijzing controleren](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "Verwijzing controleren")   |
 | **Werkstromen**<br /><br />Maak, werk en ontvang Details over de aangepaste werk stromen die uw team maakt. U definieert werk stromen met behulp van het hulp programma beoordeling. <br /> <br />Werk stromen gebruiken meestal Content Moderator, maar kunnen ook bepaalde andere Api's gebruiken die beschikbaar zijn als connectors in het beoordelings programma.<br /><br /> | [Werk stroom referentie](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "Werk stroom referentie")   |

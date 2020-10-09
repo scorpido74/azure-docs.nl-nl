@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van toegewezen Azure-Event Hubs, da
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322435"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Overzicht van Event Hubs Dedicated
@@ -36,20 +36,20 @@ Bij hoge ingangs volumes (>100 TUs) is een cluster kosten aanzienlijk minder per
 
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>Quota en limieten Event Hubs Dedicated
 
-De Event Hubs Dedicated aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De toegewezen laag biedt alle functies van het Standard-abonnement, maar met de schaal capaciteit van bedrijven en limieten voor klanten met veeleisende workloads. 
+De Event Hubs Dedicated-aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De Dedicated-laag biedt alle functies van het Standard-abonnement, maar met schaalcapaciteit voor grote bedrijven en limieten voor klanten met veeleisende werkbelastingen. 
 
 | Functie | Standard | Toegewezen |
 | --- |:---:|:---:|
-| Bandbreedte | 20 TUs (Maxi maal 40 TUs) | 20 CUs |
+| Bandbreedte | 20 TUs (Maxi maal 40 TUs) | 20 CU's |
 | Naamruimten |  1 | 50 per CU |
-| Event Hubs |  10 per naam ruimte | 1000 per naam ruimte |
-| Ingangs gebeurtenissen | Betalen per miljoen gebeurtenissen | Inbegrepen |
-| Bericht grootte | 1.000.000 bytes | 1.000.000 bytes |
+| Event Hubs |  10 per naam ruimte | 1000 per naamruimte |
+| Ingangsgebeurtenissen | Betalen per miljoen gebeurtenissen | Inbegrepen |
+| Berichtgrootte | 1.000.000 bytes | 1.000.000 bytes |
 | Partities | 32 per Event hub | 1024 per Event hub |
-| Consumergroepen | 20 per Event hub | Geen limiet per CU, 1000 per Event Hub |
-| Brokered Connections | 1.000 inbegrepen, 5.000 Maxi maal | 100 K inbegrepen en Max. |
-| Bewaar periode van het bericht | 7 dagen, 84 GB inbegrepen per di | 90 dagen, 10 TB inbegrepen per CU |
-| Capture | Betalen per uur | Inbegrepen |
+| Consumentengroepen | 20 per Event hub | Geen limiet per CU, 1000 per event hub |
+| Brokered verbindingen | 1.000 inbegrepen, 5.000 Maxi maal | 100 K inbegrepen en Max. |
+| Bewaarperiode van berichten | 7 dagen, 84 GB inbegrepen per di | 90 dagen, 10 TB inbegrepen per CU |
+| Vastleggen | Betalen per uur | Inbegrepen |
 
 ## <a name="how-to-onboard"></a>Onboarding
 

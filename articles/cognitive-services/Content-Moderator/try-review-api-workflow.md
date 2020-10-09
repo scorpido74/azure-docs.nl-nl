@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72754186"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Toezicht werk stromen definiëren en gebruiken (REST)
@@ -43,7 +43,7 @@ Voer waarden in voor **team**, **werk stroomnaam**en **OCP-APIM-Subscription-Key
 
 ### <a name="enter-a-workflow-definition"></a>Een werk stroom definitie invoeren
 
-1. Bewerk het vak **hoofd tekst** van de aanvraag om de JSON-aanvraag in te voeren met Details `Image` voor `Text`de **Beschrijving** en het **type** (of).
+1. Bewerk het vak **hoofd tekst** van de aanvraag om de JSON-aanvraag in te voeren met Details voor de **Beschrijving** en het **type** ( `Image` of `Text` ).
 2. Voor **expressie**kopieert u de standaard JSON-expressie voor de werk stroom. De uiteindelijke JSON-teken reeks moet er als volgt uitzien:
 
 ```json
@@ -78,13 +78,13 @@ Voer waarden in voor **team**, **werk stroomnaam**en **OCP-APIM-Subscription-Key
 > [!NOTE]
 > Met deze API kunt u eenvoudige, complexe en zelfs geneste expressies definiëren voor uw werk stromen. De documentatie voor het [maken of bijwerken van werk stromen](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) bevat voor beelden van complexere logica.
 
-### <a name="submit-your-request"></a>Uw aanvraag verzenden
+### <a name="submit-your-request"></a>De aanvraag verzenden
   
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **reactie status** en wordt het vak **antwoord inhoud** weer `true`gegeven.
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **reactie status** `200 OK` en wordt het vak **antwoord inhoud** weer gegeven `true` .
 
 ### <a name="examine-the-new-workflow"></a>De nieuwe werk stroom controleren
 
-In het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/)selecteert u **instellingen** > **werk stromen**. De nieuwe werk stroom wordt weer gegeven in de lijst.
+In het [hulp programma controleren](https://contentmoderator.cognitive.microsoft.com/)selecteert u **instellingen**  >  **werk stromen**. De nieuwe werk stroom wordt weer gegeven in de lijst.
 
 ![Lijst met hulpprogram ma's voor beoordeling van werk stromen](images/workflow-console-new-workflow.PNG)
 
@@ -102,7 +102,7 @@ Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Contr
 
 ![Query parameters en kopteksten ophalen](images/workflow-get-default.PNG)
 
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **reactie status** en wordt `200 OK`in het vak **reactie inhoud** de werk stroom weer gegeven in JSON-indeling, zoals in het volgende voor beeld:
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **reactie status** en wordt in `200 OK` het vak **reactie inhoud** de werk stroom weer gegeven in JSON-indeling, zoals in het volgende voor beeld:
 
 ```json
 {

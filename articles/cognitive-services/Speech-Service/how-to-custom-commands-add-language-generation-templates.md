@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85307590"
 ---
-# <a name="add-language-generation-templates-for-speech-responses"></a>Sjablonen voor het genereren van talen toevoegen voor spraak reacties
+# <a name="add-language-generation-templates-for-speech-responses"></a>Taalgeneratiesjablonen toevoegen voor spraakreacties
 
 In dit artikel leert u hoe u sjablonen voor het genereren van talen kunt gebruiken met aangepaste opdrachten. Met sjablonen voor het maken van talen kunt u de antwoorden aanpassen die worden verzonden naar de client en worden er verschillen in de antwoorden ingevoerd. Aanpassing van de taal kan worden bereikt door:
 
@@ -64,7 +64,7 @@ Wijzig de **TurnOnOff** -opdracht om een nieuwe para meter toe te voegen aan de 
 
 | Instelling            | Voorgestelde waarde       | 
 | ------------------ | --------------------- | 
-| Name               | `SubjectContext`         | 
+| Naam               | `SubjectContext`         | 
 | Is wereld wijd          | uitgeschakeld             | 
 | Vereist           | uitgeschakeld               | 
 | Type               | Tekenreeks                |
@@ -97,7 +97,7 @@ Bewerk de sectie **acties** van bestaande voltooiings regel **ConfirmationRespon
 * Invoer: kamer verlichting uitschakelen
 * Uitvoer: OK, de kamer verlichting uitschakelen
 
-## <a name="use-custom-voice"></a>Aangepaste spraak gebruiken
+## <a name="use-custom-voice"></a>Custom Voice gebruiken
 
 Een andere manier om aangepaste opdrachten te beantwoorden, is door een aangepaste uitvoer stem te selecteren. Gebruik de volgende stappen om de standaard stem naar een aangepaste stem te scha kelen.
 

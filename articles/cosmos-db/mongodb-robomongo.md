@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: 657f3cf204411bd51541437f05ff13a3f9b929c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263038"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Robo 3T gebruiken met de Azure Cosmos DB-API voor MongoDB
@@ -37,14 +37,14 @@ Voer de volgende stappen uit om uw Cosmos-account toe te voegen aan de Robo 3T g
 
 4. Kies in het venster **Verbindings instellingen** een naam. Zoek vervolgens de **host** en **poort** uit uw verbindings gegevens in stap 1 en geef deze op in respectievelijk **adres** en **poort**.
 
-    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Scherm afbeelding van de Robomongo-verbindingen beheren":::
+    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Scherm afbeelding van de Blade connection string":::
 5. Klik op het tabblad **verificatie** op **verificatie uitvoeren**. Voer vervolgens uw data base (standaard *beheerder*), **gebruikers naam** en **wacht woord**in.
 De **gebruikers naam** en het **wacht woord** kunnen worden gevonden in de verbindings gegevens in stap 1.
 
-    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Scherm afbeelding van het tabblad Robomongo-verificatie":::
+    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Scherm afbeelding van de Blade connection string":::
 6. Schakel op het tabblad **SSL** het selectie vakje **SSL-protocol gebruiken**in en wijzig de **verificatie methode** in een **zelfondertekend certificaat**.
 
-    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Scherm afbeelding van het Robomongo SSL-tabblad":::
+    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Scherm afbeelding van de Blade connection string":::
 7. Klik ten slotte op **testen** om te controleren of u verbinding kunt maken en **Sla**het op.
 
 ## <a name="next-steps"></a>Volgende stappen

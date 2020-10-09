@@ -11,10 +11,10 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73176024"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Meer informatie over Azure AD Connect 1.4. xx. x en het weer geven van apparaten
@@ -30,14 +30,14 @@ Alleen Windows 10-apparaten met een specifieke userCertificate-kenmerk waarde di
 
 Met deze versie van Azure AD Connect worden alleen Windows 10-apparaten gesynchroniseerd die correct zijn geconfigureerd voor hybride Azure AD. Windows 10-apparaatgroepen zonder de specifieke userCertificate van Azure AD worden verwijderd uit Azure AD.
 
-## <a name="down-level-windows-devices"></a>Windows-apparaten op lagere niveaus
+## <a name="down-level-windows-devices"></a>Windows-apparaten Down-Level
 Azure AD Connect moet nooit [Windows-apparaten op lagere niveaus](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)synchroniseren. Alle apparaten in azure AD die voorheen onjuist zijn gesynchroniseerd, worden nu verwijderd uit Azure AD. Als Azure AD Connect probeert [Windows-apparaten op lagere niveaus](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)te verwijderen, is het apparaat niet de versie die is gemaakt door het [micro soft-Workplace join voor niet-Windows 10-computers MSI](https://www.microsoft.com/download/details.aspx?id=53554) en kan het niet worden gebruikt door een andere Azure AD-functie.
 
 Sommige klanten moeten mogelijk opnieuw door gaan met het [plannen van uw hybrid Azure Active Directory-implementatie](../devices/hybrid-azuread-join-plan.md) om de Windows-apparaten op de juiste wijze te registreren en ervoor te zorgen dat dergelijke apparaten volledig kunnen deel nemen aan voorwaardelijke toegang op basis van een apparaat. 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Hoe kan ik controleren welke apparaten worden verwijderd met deze update?
 
-U kunt dit Power shell-script gebruiken om te controleren welke apparaten worden verwijderd:https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+U kunt dit Power shell-script gebruiken om te controleren welke apparaten worden verwijderd: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
 Met dit script wordt een rapport gegenereerd over certificaten die zijn opgeslagen in Active Directory computer objecten, met name certificaten die zijn uitgegeven door de hybride Azure AD-functie voor deelname.
 Hiermee wordt gecontroleerd of de certificaten aanwezig zijn in de eigenschap UserCertificate van een computer object in AD en, voor elk niet-verlopen certificaat, wordt gevalideerd of het certificaat is uitgegeven voor de hybride functie voor Azure AD-deelname (de onderwerpnaam komt overeen met CN = {ObjectGUID}).

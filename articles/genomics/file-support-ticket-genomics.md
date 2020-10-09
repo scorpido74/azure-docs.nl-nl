@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248596"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Contact opnemen met Microsoft Genomics voor ondersteuning
@@ -32,7 +32,7 @@ Selecteer vervolgens `New support request` .
 
 ![Nieuwe ondersteuningsaanvraag](./media/file-support-ticket/new-support-request.png "Nieuwe ondersteuningsaanvraag") 
 
-Vul de `Basics` , inclusief `Issue type` en uw in `Subscription` . Selecteer het meest relevante `Issue type` voor uw probleem. als voor beeld in de onderstaande afbeelding `Technical` is geselecteerd. Zorg ervoor dat u `Microsoft Genomics` als de relevante service selecteert.  `Microsoft Genomics`wordt vermeld onder de `Intelligence and Analytics` categorie.   Nadat u hebt geselecteerd `Microsoft Genomics` , wordt u ook gevraagd uw type op te geven `Support plan` .
+Vul de `Basics` , inclusief `Issue type` en uw in `Subscription` . Selecteer het meest relevante `Issue type` voor uw probleem. als voor beeld in de onderstaande afbeelding `Technical` is geselecteerd. Zorg ervoor dat u `Microsoft Genomics` als de relevante service selecteert.  `Microsoft Genomics` wordt vermeld onder de `Intelligence and Analytics` categorie.   Nadat u hebt geselecteerd `Microsoft Genomics` , wordt u ook gevraagd uw type op te geven `Support plan` .
 
 ![Basis beginselen van Ondersteuningsaanvraag](./media/file-support-ticket/support-request-basics.png "Basis beginselen van Ondersteuningsaanvraag")
 

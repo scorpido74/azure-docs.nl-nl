@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650459"
 ---
 # <a name="custom-resource-proxy-reference"></a>Naslag informatie voor de aangepaste resource proxy
@@ -69,7 +69,7 @@ Eigenschap | Voorbeeld | Beschrijving
 ---|---|---
 naam | '{myCustomResourceName}' | De naam van de aangepaste resource.
 type | Micro soft. CustomProviders/resourceProviders/{resourceTypeName} | De naam ruimte van het resource type.
-id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | De resource-ID.
+id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | De resource-ID.
 
 ### <a name="create-a-custom-resource"></a>Een aangepaste resource maken
 

@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887322"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Scenario: `hbase hbck` opdracht retourneert inconsistenties in azure HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>Probleem: regio bevindt zich niet in`hbase:meta`
+## <a name="issue-region-is-not-in-hbasemeta"></a>Probleem: regio bevindt zich niet in `hbase:meta`
 
 Regio xxx op HDFS, maar niet vermeld in `hbase:meta` of geïmplementeerd op een server met regio's.
 
@@ -81,7 +81,7 @@ In dit scenario moet u Regioa en RegionC samen voegen en met hetzelfde sleutel b
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>Probleem: kan niet laden`.regioninfo`
+## <a name="issue-cant-load-regioninfo"></a>Probleem: kan niet laden `.regioninfo`
 
 Kan de `.regioninfo` regio niet laden `/hbase/data/default/tablex/regiony` .
 

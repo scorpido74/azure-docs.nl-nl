@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
 ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260743"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>De door Voer of het verbruik van aanvraag eenheden van een bewerking in Azure Cosmos DB controleren
@@ -34,7 +34,7 @@ Als u ziet dat bepaalde query's meer aanvraag eenheden nemen, kunt u acties uitv
 
 ## <a name="view-the-total-request-unit-usage-metric"></a>De metrische gegevens over het totale gebruik van de aanvraag eenheid weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 
@@ -42,11 +42,11 @@ Als u ziet dat bepaalde query's meer aanvraag eenheden nemen, kunt u acties uitv
 
 1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
 
-   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Kies het Azure Cosmos DB-account om de metrische gegevens weer te geven":::
+   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
 1. Selecteer vervolgens de metrische gegevens voor de **totale aanvraag eenheden** in de lijst met beschik bare metrische gegevens. Zie het artikel [metrische gegevens per categorie](monitor-cosmos-db-reference.md) voor meer informatie over alle beschik bare metrische gegevens in deze lijst. In dit voor beeld selecteren we het **Totaal aantal aanvraag eenheden** en **Gem** als de aggregatie waarde. Naast deze details kunt u ook het **tijds bereik** en de **tijd granulatie** van de metrische gegevens selecteren. U kunt Maxi maal de metrische gegevens weer geven voor de afgelopen 30 dagen.  Nadat u het filter hebt toegepast, wordt een grafiek weer gegeven op basis van het filter. U kunt het gemiddelde aantal verbruikte aanvraag eenheden per minuut voor de geselecteerde periode bekijken.  
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Kies een waarde in het Azure Portal":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
 ## <a name="filters-for-request-unit-usage"></a>Filters voor het gebruik van de aanvraag eenheid
 
@@ -54,11 +54,11 @@ U kunt de metrische gegevens ook filteren en de grafieken ophalen die worden wee
 
 Als u het gebruik van de aanvraag eenheid van elke bewerking wilt ophalen op basis van totaal (som) of gemiddeld, selecteert u **splitsing Toep assen** en kiest u **bewerkings type** en de filter waarde, zoals weer gegeven in de volgende afbeelding:
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Cosmos DB aanvraag eenheden voor bewerkingen in azure monitor":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
 Als u het gebruik van de aanvraag eenheid per verzameling wilt zien, selecteert u **splitsen Toep assen** en kiest u de naam van de verzameling als een filter. U ziet een chat sessie, zoals het volgende, met een keuze aan verzamelingen in het dash board. U kunt vervolgens een specifieke verzamelings naam selecteren om meer details weer te geven:
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Cosmos DB aanvraag eenheden voor alle bewerkingen door de verzameling in azure monitor":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

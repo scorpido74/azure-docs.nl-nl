@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
 ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85261865"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Uw toepassing migreren van Amazon DynamoDB naar Azure Cosmos DB
@@ -28,7 +28,7 @@ Hier volgen de belangrijkste conceptuele verschillen tussen Azure Cosmos DB en D
 |  Item |  Document |
 |Kenmerk|Veld|
 |Secundaire index|Secundaire index|
-|Primaire sleutel-partitie sleutel|Partitie sleutel|
+|Primaire sleutel-partitie sleutel|Partitiesleutel|
 |Primaire sleutel – Sorteer sleutel| Niet vereist |
 |Streamen|ChangeFeed|
 |Reken eenheid schrijven|Aanvraag eenheid (flexibel, kan worden gebruikt voor lees-of schrijf bewerkingen)|

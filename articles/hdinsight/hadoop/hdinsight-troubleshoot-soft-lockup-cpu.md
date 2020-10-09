@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 701e314ad2a3762b1e8ca022ce18d9435ce2db37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894110"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scenario: fout ' watchdog: BUG: zacht Lockup-CPU ' van een Azure HDInsight-cluster
@@ -38,10 +38,10 @@ Kernel-patch Toep assen. In het onderstaande script wordt de Linux-kernel bijgew
 
     | Eigenschap | Waarde |
     | --- | --- |
-    | Script type | -Aangepast |
-    | Name |Oplossing voor een probleem met de kernel-zachte vergrendeling |
+    | Scripttype | -Aangepast |
+    | Naam |Oplossing voor een probleem met de kernel-zachte vergrendeling |
     | Bash-script-URI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
-    | Knooppunt type (n) |Werk nemer, Zookeeper |
+    | Knooppunttype(n) |Werk nemer, Zookeeper |
     | Parameters |N.v.t. |
 
     Selecteer **Deze script actie persistent maken...** als u het script wilt uitvoeren wanneer er nieuwe knoop punten worden toegevoegd.

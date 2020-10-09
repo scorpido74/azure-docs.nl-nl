@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75862557"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Probleemoplossing: Azure site-naar-site-VPN wordt herhaaldelijk verbroken
@@ -42,7 +42,7 @@ Controleer het type van de gateway van het virtuele Azure-netwerk:
 1. Zorg ervoor dat het virtuele netwerk, subnetten en, bereiken in de definitie van de **lokale netwerk gateway** in Microsoft Azure hetzelfde zijn als de configuratie op het on-PREMISES VPN-apparaat.
 2. Controleer of de instellingen van de beveiligings koppeling overeenkomen.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Stap 3 controleren op door de gebruiker gedefinieerde routes of netwerk beveiligings groepen op Gateway subnet
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Stap 3 controleren op User-Defined routes of netwerk beveiligings groepen op Gateway subnet
 
 Een door de gebruiker gedefinieerde route op het gateway-subnet kan een beperkt verkeer beperken en ander verkeer toestaan. Hierdoor lijkt het alsof de VPN-verbinding onbetrouwbaar is voor een bepaald verkeer en goed voor anderen. 
 

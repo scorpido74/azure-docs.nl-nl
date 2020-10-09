@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72757144"
 ---
 # <a name="create-human-reviews-rest"></a>Menselijke beoordelingen maken (REST)
@@ -127,19 +127,19 @@ De standaard tekst van de aanvraag bevat voor beelden van de verschillende soort
 ]
 ```
 
-### <a name="submit-your-request"></a>Uw aanvraag verzenden
+### <a name="submit-your-request"></a>De aanvraag verzenden
   
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **reactie status** en wordt in het vak **antwoord inhoud** een id voor de beoordeling weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **reactie status** `200 OK` en wordt in het vak **antwoord inhoud** een id voor de beoordeling weer gegeven. Kopieer deze ID voor gebruik in de volgende stappen.
 
 ![Beoordeling: inhoud van het dialoog venster voor het maken van een console-antwoord wordt weer gegeven](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Bekijk de nieuwe beoordeling
 
-Selecteer in [het hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.com)de optie**afbeeldings**/**tekst**/**video** **bekijken** > (afhankelijk van de inhoud die u hebt gebruikt). De inhoud die u hebt geüpload, moet worden weer gegeven, gereed voor menselijke beoordeling.
+Selecteer in het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.com)de optie **Review**  >  **afbeeldings** / **tekst** / **video** bekijken (afhankelijk van de inhoud die u hebt gebruikt). De inhoud die u hebt geüpload, moet worden weer gegeven, gereed voor menselijke beoordeling.
 
 ![De afbeelding van een voetbal bekijken](images/test-drive-review-5.PNG)
 
-## <a name="get-review-details"></a>Details van controle ophalen
+## <a name="get-review-details"></a>Beoordelingsdetails ophalen
 
 Als u details over een bestaande beoordeling wilt ophalen, gaat u naar de pagina [controleren-API-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) verwijzing en selecteert u de knop voor uw regio (de regio waarin uw sleutel wordt beheerd).
 
@@ -149,7 +149,7 @@ Voer de para meters voor REST-aanroep in, zoals in de bovenstaande sectie. Voor 
 
 ![Beoordeling: maken van resultaten van console ophalen](images/test-drive-review-3.PNG)
   
-Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **antwoord status** en in het vak met de **antwoord inhoud** de details van de controle in JSON-indeling, zoals in het volgende:
+Selecteer **Verzenden**. Als de bewerking is geslaagd, is de **antwoord status** `200 OK` en in het vak met de **antwoord inhoud** de details van de controle in JSON-indeling, zoals in het volgende:
 
 ```json
 {  
@@ -186,7 +186,7 @@ Selecteer **Verzenden**. Als de bewerking is geslaagd, is `200 OK`de **antwoord 
 
 Noteer de volgende velden in het antwoord:
 
-- **hebben**
+- **status**
 - **reviewerResultTags**: dit wordt weer gegeven als labels hand matig zijn toegevoegd door het team voor menselijke beoordeling (weer gegeven het **CreatedBy** -veld).
 - **meta gegevens**: hier ziet u de tags die in eerste instantie werden toegevoegd aan de beoordeling voordat het personeels team wijzigingen heeft aangebracht.
 

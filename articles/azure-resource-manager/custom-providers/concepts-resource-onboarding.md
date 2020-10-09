@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650407"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Overzicht van de resource voor het onboarding van Azure Custom providers
@@ -54,11 +54,11 @@ Hier volgt een voor beeld van een aangepaste Azure-provider:
 }
 ```
 
-Eigenschap | Vereist? | Description
+Eigenschap | Vereist? | Beschrijving
 ---|---|---
-naam | Yes | De naam van de eindpunt definitie. Voor het onboarden van resources moet de naam ' Associations ' zijn.
-routingType | Yes | Bepaalt het type contract met het eind punt. Voor onboarding van resources zijn de geldige **routingTypes** ' proxy, cache, extensie ' en ' webhook, cache, extensie '.
-endpoint | Yes | Het eind punt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
+naam | Ja | De naam van de eindpuntdefinitie. Voor het onboarden van resources moet de naam ' Associations ' zijn.
+routingType | Ja | Bepaalt het type contract met het eind punt. Voor onboarding van resources zijn de geldige **routingTypes** ' proxy, cache, extensie ' en ' webhook, cache, extensie '.
+endpoint | Ja | Het eindpunt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
 
 Nadat u de aangepaste provider met het resource type voor koppelingen hebt gemaakt, kunt u een target gebruiken met behulp van micro soft. CustomProviders/Associations. Micro soft. CustomProviders/Associations is een extensie resource waarmee elke andere Azure-resource kan worden uitgebreid. Wanneer een exemplaar van micro soft. CustomProviders/Associations wordt gemaakt, wordt er een eigenschap **targetResourceId**, die een geldige resource-id van micro soft. CustomProviders/ResourceProviders of micro soft. Solutions/Applications moet zijn. In deze gevallen wordt de aanvraag doorgestuurd naar het resource type van de koppeling voor het micro soft. CustomProviders/resourceProviders-exemplaar dat u hebt gemaakt.
 
@@ -76,9 +76,9 @@ Voor beeld van een Azure Custom providers-koppeling:
 }
 ```
 
-Eigenschap | Vereist? | Description
+Eigenschap | Vereist? | Beschrijving
 ---|---|---
-targetResourceId | Yes | De resource-ID van micro soft. CustomProviders/resourceProviders of micro soft. Solutions/Applications.
+targetResourceId | Ja | De resource-ID van micro soft. CustomProviders/resourceProviders of micro soft. Solutions/Applications.
 
 ## <a name="how-to-use-resource-onboarding"></a>Het gebruik van resource-onboarding
 
@@ -150,7 +150,7 @@ Het eind punt moet reageren met een toepassing/JSON `Content-Type` en een geldig
 
 ## <a name="getting-help"></a>Ondersteuning vragen
 
-Als u vragen hebt over het ontwikkelen van aangepaste Azure-resource providers, vraagt u deze op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag beantwoord, dus controleer eerst vóór het boeken. Voeg de tag toe ```azure-custom-providers``` om een snel antwoord te krijgen.
+Als u vragen hebt over het ontwikkelen van aangepaste Azure-resource providers, vraagt u deze op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Misschien is een soortgelijke vraag al eerder gesteld en beantwoord, dus controleer dit eerst vóór u een vraag stelt. Voeg de tag ```azure-custom-providers``` toe om snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

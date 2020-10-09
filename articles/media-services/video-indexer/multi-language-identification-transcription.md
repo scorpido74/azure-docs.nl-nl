@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72968744"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Meerdere talen inhoud automatisch identificeren en transcriberen (preview-versie)
@@ -23,7 +23,7 @@ Video Indexer ondersteunt automatische taal identificatie en transcriptie in inh
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Meertalige identificatie voor indexering met portal kiezen
 
-U kunt de **meertalige detectie** kiezen bij het uploaden en indexeren van uw video. U kunt ook een detectie op **meerdere talen** kiezen wanneer u de video opnieuw wilt indexeren. In de volgende stappen wordt beschreven hoe u opnieuw indexeert:
+U kunt de **meertalige detectie** kiezen bij het uploaden en indexeren van uw video. U kunt ook een detectie op **meerdere talen**  kiezen wanneer u de video opnieuw wilt indexeren. In de volgende stappen wordt beschreven hoe u opnieuw indexeert:
 
 1. Ga naar de [Video Indexer](https://vi.microsoft.com/)-website en meld u aan.
 1. Ga naar de **bibliotheek** pagina en beweeg de muis aanwijzer over de naam van de video die u opnieuw wilt indexeren. 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75651720"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Een service catalogus toepassing publiceren via Azure Portal
@@ -30,7 +30,7 @@ Het zip-bestand dat de definitie van de beheerde toepassing bevat, moet beschikb
 
 1. Zoek naar de **Service catalogus**.
 
-1. Schuif in de resultaten naar de definitie van de **beheerde toepassing voor de Service catalogus**. Selecteer deze vraag.
+1. Schuif in de resultaten naar de definitie van de **beheerde toepassing voor de Service catalogus**. Selecteer deze.
 
    ![Zoeken naar definities van beheerde toepassingen](./media/publish-portal/select-managed-apps-definition.png)
 
@@ -42,15 +42,15 @@ Het zip-bestand dat de definitie van de beheerde toepassing bevat, moet beschikb
 
    ![Waarden opgeven](./media/publish-portal/fill-application-values.png)
 
-1. Wanneer u de sectie verificatie en vergrendelings niveau krijgt, selecteert u **autorisatie toevoegen**.
+1. In de sectie Verificatie en vergrendelingsniveau selecteert u **Autorisatie toevoegen**.
 
    ![Autorisatie toevoegen](./media/publish-portal/add-authorization.png)
 
-1. Selecteer een Azure Active Directory groep om de resources te beheren en selecteer **OK**.
+1. Selecteer een Azure Active Directory-groep om resources te beheren en selecteer **OK**.
 
-   ![Autorisatie groep toevoegen](./media/publish-portal/add-auth-group.png)
+   ![Autorisatiegroep toevoegen](./media/publish-portal/add-auth-group.png)
 
-1. Wanneer u alle waarden hebt ingevoerd, selecteert u **maken**.
+1. Wanneer u alle waarden hebt ingevoerd, selecteert u **Maken**.
 
    ![Een beheerde toepassing maken](./media/publish-portal/create-app.png)
 

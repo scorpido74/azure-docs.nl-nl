@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650524"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Aangepaste resources toevoegen aan Azure REST API
@@ -81,7 +81,7 @@ Zie voor meer informatie over ' `Proxy, Cache` ' bronnen [de verwijzing naar de 
 Er zijn twee belang rijke manieren voor het maken van een aangepaste resource uit een aangepaste resource provider:
 
 - Azure CLI
-- Azure Resource Manager sjablonen
+- Azure Resource Manager-sjablonen
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -104,8 +104,8 @@ az resource create --is-full-object \
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-is-Full-object | *klikt* | Geeft aan dat het eigenschappen object andere opties bevat, zoals locatie, tags, SKU en/of plan.
-id | *klikt* | De resource-ID van de aangepaste resource. Dit moet bestaan uit de **resource provider**
+is-full-object | *klikt* | Geeft aan dat het eigenschappen object andere opties bevat, zoals locatie, tags, SKU en/of plan.
+id | *klikt* | De resource-id van de aangepaste resource. Dit moet bestaan uit de **resource provider**
 properties | *klikt* | De hoofd tekst van de aanvraag die naar het **eind punt**wordt verzonden.
 
 Een aangepaste Azure-resource verwijderen:
@@ -116,7 +116,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-id | *klikt* | De resource-ID van de aangepaste resource. Dit zou moeten bestaan uit de **resource provider**.
+id | *klikt* | De resource-id van de aangepaste resource. Dit zou moeten bestaan uit de **resource provider**.
 
 Een aangepaste Azure-resource ophalen:
 
@@ -126,7 +126,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 Parameter | Vereist | Beschrijving
 ---|---|---
-id | *klikt* | De resource-ID van de aangepaste resource. Dit moet bestaan uit de **resource provider**
+id | *klikt* | De resource-id van de aangepaste resource. Dit moet bestaan uit de **resource provider**
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
@@ -178,7 +178,7 @@ Parameter | Vereist | Beschrijving
 ---|---|---
 resourceTypeName | *klikt* | De **naam** van het **resource type** dat in de aangepaste provider is gedefinieerd.
 resourceProviderName | *klikt* | De naam van de aangepaste resource provider-instantie.
-customResourceName | *klikt* | De aangepaste resource naam.
+customResourceName | *klikt* | De naam van de aangepaste resource.
 
 ## <a name="next-steps"></a>Volgende stappen
 

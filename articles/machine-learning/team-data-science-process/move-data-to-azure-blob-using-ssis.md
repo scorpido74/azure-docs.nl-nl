@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322866"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Gegevens verplaatsen van of naar Azure Blob Storage met SSIS-connectors
@@ -81,7 +81,7 @@ De para meters die de taak gebruikt, worden hier beschreven:
 ## <a name="download-data-from-azure-blob-storage"></a>Gegevens downloaden van Azure Blob-opslag
 Als u gegevens van Azure Blob-opslag naar on-premises opslag met SSIS wilt downloaden, gebruikt u een exemplaar van de [Azure Blob-Download taak](https://msdn.microsoft.com/library/mt146779.aspx).
 
-## <a name="more-advanced-ssis-azure-scenarios"></a>Meer geavanceerde SSIS-Azure-scenario's
+## <a name="more-advanced-ssis-azure-scenarios"></a>Meer geavanceerde SSIS-Azure scenario's
 Met het SSIS Feature Pack kunnen complexere stromen worden verwerkt door taken samen te pakken. De BLOB-gegevens kunnen bijvoorbeeld rechtstreeks in een HDInsight-cluster worden gefeedd waarvan de uitvoer kan worden gedownload naar een BLOB en vervolgens naar de on-premises opslag. SSIS kan Hive-en Pig-taken uitvoeren op een HDInsight-cluster met extra SSIS-connectors:
 
 * Als u een Hive-script op een Azure HDInsight-cluster met SSIS wilt uitvoeren, gebruikt u de [component taak van Azure hdinsight](https://msdn.microsoft.com/library/mt146771.aspx).
