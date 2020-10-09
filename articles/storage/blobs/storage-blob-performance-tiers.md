@@ -9,13 +9,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74270227"
 ---
-# <a name="performance-tiers-for-block-blob-storage"></a>Prestatie lagen voor blok-blobopslag
+# <a name="performance-tiers-for-block-blob-storage"></a>Prestatielagen voor blok-blobopslag
 
 Als ondernemingen prestaties gevoelige Cloud toepassingen implementeren, is het belang rijk dat u beschikt over opties voor rendabele gegevens opslag op verschillende prestatie niveaus.
 
@@ -26,7 +26,7 @@ Azure Block Blob Storage biedt twee verschillende prestatie lagen:
 
 De volgende overwegingen zijn van toepassing op de verschillende prestatie lagen:
 
-| Onderwerp |Standaard prestaties  |Premium-prestaties  |
+| Gebied |Standaard prestaties  |Premium-prestaties  |
 |---------|---------|---------|
 |Beschikbaarheid in regio’s     |   Alle regio's      | In [regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
 |Ondersteunde [typen opslag accounts](../common/storage-account-overview.md#types-of-storage-accounts)     |     Algemeen gebruik v2, BlobStorage, algemeen gebruik v1    |    BlockBlobStorage     |
@@ -45,7 +45,7 @@ Premium-prestatie opslag is ideaal voor werk belastingen waarvoor snelle en cons
 
 - **Interactieve werk belastingen**. Voor deze werk belastingen zijn directe updates en gebruikers feedback vereist, zoals e-commerce en het toewijzen van toepassingen. Zo worden in een e-commerce-toepassing minder vaak bekeken items waarschijnlijk niet in de cache opgeslagen. Ze moeten echter direct worden weer gegeven aan de klant op aanvraag.
 
-- **Analytics**. In een IoT-scenario kunnen veel kleinere schrijf bewerkingen elke seconde worden gepusht naar de Cloud. Grote hoeveel heden gegevens kunnen worden opgenomen in, geaggregeerd voor analyse doeleinden en bijna onmiddellijk worden verwijderd. De hoge opname mogelijkheden van de Premium-blok-blobopslag maken het efficiënt voor dit type werk belasting.
+- **Analyse**. In een IoT-scenario kunnen veel kleinere schrijf bewerkingen elke seconde worden gepusht naar de Cloud. Grote hoeveel heden gegevens kunnen worden opgenomen in, geaggregeerd voor analyse doeleinden en bijna onmiddellijk worden verwijderd. De hoge opname mogelijkheden van de Premium-blok-blobopslag maken het efficiënt voor dit type werk belasting.
 
 - **Kunst matige intelligentie/machine learning (AI/ml)**. AI/ML behandelt het gebruik en de verwerking van verschillende gegevens typen, zoals visuele elementen, spraak en tekst. Dit type werk belasting met hoge prestaties wordt behandeld met grote hoeveel heden gegevens waarvoor snelle reacties en efficiënte opname tijden voor gegevens analyse zijn vereist.
 

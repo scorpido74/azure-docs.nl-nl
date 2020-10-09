@@ -12,13 +12,13 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85214006"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Richt lijnen voor het ontwerpen van gedistribueerde tabellen in Synapse SQL-pool
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Richtlijnen voor het ontwerpen van gedistribueerde tabellen in een Synapse SQL-pool
 
 Aanbevelingen voor het ontwerpen van op hash gedistribueerde en Round Robin gedistribueerde tabellen in Synapse SQL-groepen.
 
@@ -143,7 +143,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 Om te bepalen welke tabellen meer dan 10% gegevens scheef trekken:
 
 1. Maak de weer gave dbo. vTableSizes die wordt weer gegeven in het artikel [overzicht van tabellen](sql-data-warehouse-tables-overview.md#table-size-queries) .  
-2. Voer de volgende query uit:
+2. Voer de volgende query uit.
 
 ```sql
 select *

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74672420"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Voor bereiding voor het wijzigen van een inkomend IP-adres
@@ -29,7 +29,7 @@ Als u een melding hebt ontvangen dat het inkomende IP-adres van uw Azure App Ser
 
 Het nieuwe inkomende IP-adres dat wordt toegewezen aan uw app bevindt zich in de portal in het veld **virtuele IP-adres** . Dit nieuwe IP-adres en de oude zijn nu verbonden met uw app, en later wordt de verbinding met de oude verbroken.
 
-1.  Open de [Azure Portal](https://portal.azure.com).
+1.  Open [Azure Portal](https://portal.azure.com).
 
 2.  Selecteer **app Services**in het navigatie menu aan de linkerkant.
 

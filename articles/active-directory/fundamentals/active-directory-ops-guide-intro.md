@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74535312"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Naslag Gids voor Azure Active Directory bewerkingen
@@ -36,7 +36,7 @@ Enkele aanbevelingen zijn mogelijk niet van toepassing op alle klanten in de omg
 
 In elke sectie van deze hand leiding wordt geadviseerd om belanghebbenden toe te wijzen om de belangrijkste taken goed te plannen en te implementeren. De volgende tabel bevat een overzicht van alle belanghebbenden in deze hand leiding:
 
-| Belanghebbende | Description |
+| Belanghebbende | Beschrijving |
 | :- | :- |
 | IAM Operations-team | Dit team behandelt het beheer van de dagelijkse bewerkingen van het identiteits-en toegangs beheer systeem |
 | Team van productiviteit | Dit team is eigenaar van en beheert de productiviteits toepassingen zoals e-mail, het delen van bestanden en samen werking, chat berichten en vergaderingen. |

@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85210963"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW)
@@ -48,25 +48,25 @@ Bij gebruik van een ontkoppelde opslag en reken kracht kunt u met Synapse SQL po
 - Reken kracht onafhankelijk van de grootte van uw opslag behoeften.
 - De reken kracht binnen een SQL-groep (Data Warehouse) verg Roten of verkleinen zonder gegevens te verplaatsen.
 - De rekencapaciteit onderbreekt terwijl gegevens intact blijven, zodat u alleen betaalt voor opslag.
-- De rekencapaciteit hervatten tijdens werktijden.
+- De rekencapaciteit hervat tijdens werktijden.
 
 ### <a name="azure-storage"></a>Azure Storage
 
 Synapse SQL maakt gebruik van Azure Storage om uw gebruikers gegevens veilig te maken.  Omdat uw gegevens worden opgeslagen en beheerd door Azure Storage, worden er afzonderlijke kosten in rekening gebracht voor uw opslag verbruik. De gegevens worden in **distributies** Shard om de prestaties van het systeem te optimaliseren. U kunt kiezen welk sharding-patroon u wilt gebruiken om de gegevens te distribueren wanneer u de tabel definieert. Deze sharding-patronen worden ondersteund:
 
 - Hash
-- Round robin
+- Round Robin
 - Repliceren
 
 ### <a name="control-node"></a>Beheerknooppunt
 
-Het knoop punt beheer is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. De MPP-engine wordt uitgevoerd op het beheerknooppunt om de parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query verzendt, transformeert het knoop punt van de controle in query's die parallel worden uitgevoerd op elke distributie.
+Het beheerknooppunt is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. De MPP-engine wordt uitgevoerd op het beheerknooppunt om de parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query verzendt, transformeert het knoop punt van de controle in query's die parallel worden uitgevoerd op elke distributie.
 
 ### <a name="compute-nodes"></a>Rekenknooppunten
 
 De rekenknooppunten leveren de rekenkracht. Distributies worden toegewezen aan reken knooppunten voor verwerking. Wanneer u betaalt voor meer reken bronnen, worden distributies opnieuw toegewezen aan beschik bare reken knooppunten. Het aantal Compute-knoop punten ligt tussen 1 en 60, en wordt bepaald door het service niveau voor Synapse SQL.
 
-Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de naam begint met sys. pdw_nodes. Zie [MPP System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
+Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de node_id kolom in systeem weergaven waarvan de namen beginnen met sys.pdw_nodes. Zie [MPP System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor een lijst met deze systeem weergaven.
 
 ### <a name="data-movement-service"></a>Data Movement Service
 

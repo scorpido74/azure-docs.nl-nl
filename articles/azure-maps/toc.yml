@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Maps?
       href: about-azure-maps.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een webtoepassing maken

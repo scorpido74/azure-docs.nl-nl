@@ -4,10 +4,10 @@ description: Meer informatie over het testen van de eenheids Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74231228"
 ---
 # <a name="durable-functions-unit-testing"></a>Testen van Durable Functions eenheid
@@ -21,7 +21,7 @@ Eenheids tests is een belang rijk onderdeel van moderne software ontwikkelings p
 
 Voor de voor beelden in dit artikel is kennis van de volgende concepten en frameworks vereist:
 
-* Moduletests uitvoeren
+* Het testen van modules
 
 * Durable Functions
 
@@ -87,7 +87,7 @@ De volgende is gesimuleerd `CreateCheckStatusResponse` om altijd een leeg HTTP 2
         });
 ```
 
-`ILogger`wordt ook gemodeleerd:
+`ILogger` wordt ook gemodeleerd:
 
 ```csharp
     // Mock ILogger

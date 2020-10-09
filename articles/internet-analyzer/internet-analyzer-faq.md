@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74184257"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Veelgestelde vragen over Azure Internet Analyzer (preview-versie)
@@ -22,12 +22,12 @@ Dit is de veelgestelde vragen voor Azure Internet Analyzer: als u meer vragen he
 
 De preview-versie is beschikbaar om klanten te selecteren. Ga als volgt te werk als u wilt deel nemen aan de preview-versie:
 
-1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com).
 2. Navigeer naar de pagina **abonnementen** .
 3. Klik op het Azure-abonnement dat u wilt gebruiken Internet Analyzer met.
 4. Ga naar de instellingen van de **resource providers** voor het abonnement.
 5. Zoek naar **micro soft. Network** en klik op de knop **registreren** (of **opnieuw registreren**).
-![toegangs aanvraag](./media/ia-faq/request-preview-access.png)
+![toegangsaanvraag](./media/ia-faq/request-preview-access.png)
 
 6. [Goed keuring aanvragen](https://aka.ms/internetAnalyzerContact) door ons uw e-mail adres en de id van het Azure-abonnement op te geven dat is gebruikt om de toegangs aanvraag te maken.
 7. Zodra uw aanvraag is goedgekeurd, ontvangt u een e-mail bevestiging en kunt u Internet Analyzer-resources maken/bijwerken of wijzigen op basis van het zojuist toegestane Azure-abonnement.
@@ -65,16 +65,16 @@ Elke test die u in Internet Analyzer maakt, bestaat uit twee eind punten: eind p
 
 De volgende vooraf geconfigureerde eind punten zijn beschikbaar tijdens de preview-versie:
 * **Azure-regio's**
-    * Brazilië - zuid
+    * Brazil South
     * India - centraal
-    * VS - centraal
+    * Central US
     * Azië - oost
     * VS - oost
     * Japan - west
     * Europa - noord
     * Zuid-Afrika - noord
     * Azië - zuidoost
-    * UAE - noord
+    * VAE - noord
     * Verenigd Koninkrijk West  
     * Europa -west
     * VS - west

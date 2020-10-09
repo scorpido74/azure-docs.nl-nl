@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
 ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254409"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Afgebroken SQL-rijen in Data Factory gegevens stromen toewijzen
@@ -29,7 +29,7 @@ Een veelvoorkomend scenario in Data Factory bij het gebruik van toewijzings gege
 
     ![Film gegevens stroom 1](media/data-flow/error4.png)
     
-3. Het probleem is dat de titel van de film niet helemaal past binnen een Sink-kolom die Maxi maal vijf tekens kan bevatten. Wanneer u deze gegevens stroom uitvoert, treedt er een fout op, zoals deze:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+3. Het probleem is dat de titel van de film niet helemaal past binnen een Sink-kolom die Maxi maal vijf tekens kan bevatten. Wanneer u deze gegevens stroom uitvoert, treedt er een fout op, zoals deze: ```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
 
 In deze video wordt een voor beeld gegeven van het instellen van een logische rij voor het verwerken van rijen in uw gegevens stroom:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]

@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74158191"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Reageren op Azure SignalR Service-gebeurtenissen
@@ -27,9 +27,9 @@ Gebeurtenissen van de Azure signalerings service worden betrouwbaar verzonden na
 Gebeurtenissen van de Azure signalerings service zijn alleen actief wanneer client verbindingen de status serverloos hebben. In het algemeen is het zo dat als een client niet wordt doorgestuurd naar een hub-server, de status van de serverloze wordt bereikt. De klassieke modus werkt alleen wanneer de hub, waarmee client verbindingen verbinding maken, geen hub-server heeft. Serverloze modus wordt echter aanbevolen om een probleem te voor komen. Zie [Service modus kiezen](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose)voor meer informatie over de service modus.
 
 ## <a name="available-azure-signalr-service-events"></a>Beschik bare gebeurtenissen van de Azure signalerings service
-Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Gebeurtenis abonnementen van de Azure signalerings service ondersteunen twee typen gebeurtenissen:  
+Gebeurtenisraster maakt gebruik van [gebeurtenisabonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenisberichten te routen naar abonnees. Gebeurtenis abonnementen van de Azure signalerings service ondersteunen twee typen gebeurtenissen:  
 
-|Gebeurtenisnaam|Description|
+|Gebeurtenisnaam|Beschrijving|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|Deze gebeurtenis treedt op wanneer een verbinding met een client tot stand is gebracht.|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|Deze gebeurtenis treedt op wanneer de verbinding van een client verbinding wordt verbroken.|

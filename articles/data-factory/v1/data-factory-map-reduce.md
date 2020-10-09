@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74703158"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-Program Ma's aanroepen vanuit Data Factory
@@ -181,7 +181,7 @@ De pijp lijn in dit voor beeld heeft geen invoer. U geeft een uitvoer gegevensse
 ### <a name="pipeline"></a>Pijplijn
 De pijp lijn in dit voor beeld heeft maar één activiteit van het type: HDInsightMapReduce. Enkele van de belang rijke eigenschappen in de JSON zijn: 
 
-| Eigenschap | Notities |
+| Eigenschap | Opmerkingen |
 |:--- |:--- |
 | type |Het type moet zijn ingesteld op **HDInsightMapReduce**. |
 | className |De naam van de klasse is: **WordCount** |

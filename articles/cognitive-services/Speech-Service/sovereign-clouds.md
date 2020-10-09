@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
 ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78228096"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>Spraak Services met soevereine Clouds
@@ -23,11 +23,11 @@ ms.locfileid: "78228096"
 
 Alleen Amerikaanse federale, staats-, lokale en tribale-overheden en hun partners hebben toegang tot deze specifieke instantie met bewerkingen die worden beheerd door gescreende Amerikaanse staats burgers.
 - Regio's: US Gov-Virginia
-- SR in SpeechSDK:*config. FromHost ("WSS://Virginia.STT.speech.Azure.us", "\<Your-Key\>");*
-- TTS in SpeechSDK: *config. FromHost ("https[]()://Virginia.TTS.speech.Azure.us", "\<Your-Key\>");*
-- Verificatie tokens: https[]()://Virginia.API.Cognitive.Microsoft.us/STS/v1.0/issueToken
-- Azure-portal:https://portal.azure.us  
-- Custom Speech portal:https://virginia.cris.azure.us/Home/CustomSpeech
+- SR in SpeechSDK:*config. FromHost ("WSS://Virginia.STT.speech.Azure.us", " \<your-key\> ");*
+- TTS in SpeechSDK: *config. FromHost ("https []() ://Virginia.TTS.speech.Azure.us", " \<your-key\> ");*
+- Verificatie tokens: https []() ://Virginia.API.Cognitive.Microsoft.us/STS/v1.0/issueToken
+- Azure-portal: https://portal.azure.us  
+- Custom Speech portal: https://virginia.cris.azure.us/Home/CustomSpeech
 - Beschik bare Sku's: S0
 - Ondersteunde functies:
   - Spraak naar tekst
@@ -35,7 +35,7 @@ Alleen Amerikaanse federale, staats-, lokale en tribale-overheden en hun partner
   - Tekst naar spraak
   - Spraak conversie
 - Niet-ondersteunde functies
-  - Aangepaste spraak
+  - Aangepaste stem
   - Neural stemmen voor tekst naar spraak
 - Ondersteunde land instellingen: de land instellingen voor de volgende talen worden ondersteund.
   - Arabisch (AR-*)
@@ -52,11 +52,11 @@ Alleen Amerikaanse federale, staats-, lokale en tribale-overheden en hun partner
 
 In China, een Azure-Data Center met directe toegang tot China Mobile, China Telecom, China Unicom en een ander primair netwerk met vervoerder backbone, voor Chinese gebruikers om een snelle en stabiele lokale netwerk toegangs ervaring te bieden.
 - Regio's: China-oost 2 (Shanghai)
-- SR in SpeechSDK: *config. FromHost ("WSS://chinaeast2.STT.speech.Azure.cn", "\<Your-Key\>");*
-- TTS in SpeechSDK: *config. FromHost ("https[]()://chinaeast2.TTS.speech.Azure.cn", "\<Your-Key\>");*
-- Verificatie tokens: https[]()://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
-- Azure-portal:https://portal.azure.cn
-- Custom Speech portal:https://speech.azure.cn/CustomSpeech
+- SR in SpeechSDK: *config. FromHost ("WSS://chinaeast2.STT.speech.Azure.cn", " \<your-key\> ");*
+- TTS in SpeechSDK:  *config. FromHost ("https []() ://chinaeast2.TTS.speech.Azure.cn", " \<your-key\> ");*
+- Verificatie tokens: https []() ://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
+- Azure-portal: https://portal.azure.cn
+- Custom Speech portal: https://speech.azure.cn/CustomSpeech
 - Beschik bare Sku's: S0
 - Ondersteunde functies:
   - Spraak naar tekst
@@ -64,7 +64,7 @@ In China, een Azure-Data Center met directe toegang tot China Mobile, China Tele
   - Tekst naar spraak
   - Spraak conversie
 - Niet-ondersteunde functies
-  - Aangepaste spraak
+  - Aangepaste stem
   - Neural stemmen voor tekst naar spraak
 - Ondersteunde land instellingen: de land instellingen voor de volgende talen worden ondersteund.
   - Arabisch (AR-*)

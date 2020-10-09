@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74790279"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Logische Apps testen met gegevens modeleren door statische resultaten in te stellen
@@ -49,7 +49,7 @@ Als u bijvoorbeeld statische resultaten voor de e-mail actie Outlook 365-verzen 
       |----------|-------------|
       | **Status** | De status van de actie die moet worden geretourneerd |
       | **Status code** | De specifieke status code die moet worden geretourneerd |
-      | **Headers** | De inhoud van de header die moet worden geretourneerd |
+      | **Kopteksten** | De inhoud van de header die moet worden geretourneerd |
       |||
 
       ![Selecteer ' statisch resultaat inschakelen '](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
@@ -136,7 +136,7 @@ Als u statische resultaten uitschakelt, worden de waarden niet uit de laatste in
 
    ![Statische resultaten uitschakelen](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="reference"></a>Verwijzing
+## <a name="reference"></a>Naslaginformatie
 
 Zie [statische resultaten-schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md#static-results) en [runtimeConfiguration. staticResult-runtime-configuratie-instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings) voor meer informatie over deze instelling in uw onderliggende werk stroom definities.
 

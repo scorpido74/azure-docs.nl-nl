@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74792165"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML voor B2B Enterprise-integratie valideren in Azure Logic Apps met Enterprise Integration Pack
@@ -31,13 +31,13 @@ In het geval van B2B-scenario's moeten de handels partners in een overeenkomst e
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Als u een lege logische app hebt, voert u in de ontwerp functie voor logische apps in het zoekvak in `HTTP request` als uw filter en selecteert u de trigger **Wanneer een HTTP-aanvraag is ontvangen** . Als dat niet het geval is, gaat u verder met de volgende stap.
+1. Als u een lege logische app hebt, voert u in de ontwerp functie voor logische apps in het zoekvak in `HTTP request` als uw filter en selecteert u de trigger **Wanneer een HTTP-aanvraag is ontvangen** . Anders gaat u verder met de volgende stap.
 
 1. Selecteer **nieuwe stap**onder de laatste stap in de werk stroom.
 
    Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de pijl die de stappen verbindt zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak in `xml validation` als uw filter. Selecteer **XML-validatie**in de lijst acties.
+1. Selecteer onder **Kies een actie**de optie **Ingebouwd**. Voer in het zoekvak `xml validation` als uw filter in. Selecteer **XML-validatie**in de lijst acties.
 
    ![Zoek en selecteer de actie XML-validatie](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 

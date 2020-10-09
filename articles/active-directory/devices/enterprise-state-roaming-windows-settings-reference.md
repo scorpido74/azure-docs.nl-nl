@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252964"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Naslaginformatie over roaminginstellingen voor Windows 10
@@ -26,12 +26,12 @@ Hier volgt een lijst met de instellingen die worden geroamd of waarvan een back-
 
 Raadpleeg de volgende tabel voor een overzicht van de apparaten en account typen die worden ondersteund door het Framework Sync, backup en Restore in Windows 10.
 
-| Account type en-bewerking | Bureaublad | Mobiel |
+| Account type en-bewerking | Bureaublad | Mobiele telefoon |
 | --- | --- | --- |
-| Azure Active Directory: synchroniseren |Yes |No |
+| Azure Active Directory: synchroniseren |Ja |Nee |
 | Azure Active Directory: back-up/herstellen |Nee |Nee |
 | Microsoft-account: synchroniseren |Ja |Ja |
-| Microsoft-account: back-up/herstellen |No |Yes |
+| Microsoft-account: back-up/herstellen |Nee |Ja |
 
 ## <a name="what-is-backup"></a>Wat is een back-up?
 
@@ -43,7 +43,7 @@ De volgende instellingen groepen zijn beschikbaar voor eind gebruikers om synchr
 
 * Thema: bureaublad achtergrond, gebruikers tegel, taak balk positie, enzovoort 
 * Instellingen voor Internet Explorer: browse geschiedenis, getypte Url's, favorieten enzovoort 
-* Wacht woorden: Windows referentie beheer, inclusief Wi-Fi-profielen 
+* Wacht woorden: Windows referentie beheer, met inbegrip van Wi-Fi profielen 
 * Taal voorkeuren: spelling woordenlijst, systeem taal instellingen 
 * Toegankelijkheid: verteller, scherm toetsenbord, vergroot glas 
 * Andere Windows-instellingen: Zie Windows-instellingen Details
@@ -69,13 +69,13 @@ In de volgende tabel verwijzen andere vermeldingen in de kolom instellingen groe
 Interne vermeldingen in de kolom instellingen groep verwijzen naar instellingen en apps die alleen kunnen worden uitgeschakeld voor synchronisatie binnen de app zelf of door synchronisatie uit te scha kelen voor het hele apparaat met behulp van Mobile Device Management (MDM) of groepsbeleid instellingen.
 Instellingen die niet worden geroamd of gesynchroniseerd, behoren niet tot een groep.
 
-| Instellingen | Bureaublad | Mobiel | Groep |
+| Instellingen | Bureaublad | Mobiele telefoon | Groep |
 | --- | --- | --- | --- |
 | **Accounts**: account afbeelding |synchroniseren |X |Thema |
 | **Accounts**: andere account instellingen |X |X | |
-| **Geavanceerde mobiele breedband**: netwerk naam voor delen van Internet verbinding (automatische detectie van mobiele Wi-Fi-HOTS pots via Bluetooth inschakelen) |X |X |Wachtwoorden |
+| **Geavanceerde mobiele breedband**: netwerk naam voor delen van Internet verbinding (automatische detectie van mobiele Wi-Fi HOTS pots via Bluetooth inschakelen) |X |X |Wachtwoorden |
 | **App-gegevens**: individuele apps kunnen gegevens synchroniseren |back-up synchroniseren |back-up synchroniseren |binnen |
-| **App-lijst**: lijst met geïnstalleerde apps |X |Back-up |Anders |
+| **App-lijst**: lijst met geïnstalleerde apps |X |Back-up |Overige |
 | **Bluetooth**: alle Bluetooth-instellingen |X |X | |
 | **Opdracht prompt**: instellingen voor opdracht prompt "defaults" |synchroniseren |X |binnen |
 | **Referenties**: referentie kluis |synchroniseren |synchroniseren |wachtwoord |
@@ -95,7 +95,7 @@ Instellingen die niet worden geroamd of gesynchroniseerd, behoren niet tot een g
 | **Bureaublad personalisatie**: achtergrond van diavoorstelling |synchroniseren |X |Thema |
 | **Bureaublad personalisatie**: taak balk instellingen (positie, automatisch verbergen, enzovoort) |synchroniseren |X |Thema |
 | **Persoonlijke instellingen voor het bureau blad**: de indeling van het Start scherm |X |Back-up | |
-| **Apparaten**: gedeelde printers waarmee u verbinding hebt |X |X |andere |
+| **Apparaten**: gedeelde printers waarmee u verbinding hebt |X |X |other |
 | **Micro soft Edge-browser**: Lees lijst |synchroniseren |synchroniseren |binnen |
 | **Micro soft Edge-browser**: Favorieten |synchroniseren |synchroniseren |binnen |
 | **Micro soft Edge-browser**: sites op het hoogste niveau <sup> [[1]](#footnote-1)</sup> |synchroniseren |synchroniseren |binnen |
@@ -152,8 +152,8 @@ Instellingen die niet worden geroamd of gesynchroniseerd, behoren niet tot een g
 | **Vergroot glas**: bijhouden-de focus van het toetsen bord volgen |synchroniseren |X |Betere toegankelijkheid |
 | **Vergroot glas**: bijhouden-de muis aanwijzer volgen |synchroniseren |X |Betere toegankelijkheid |
 | **Vergroot glas**: starten wanneer gebruikers zich aanmelden (standaard uitgeschakeld) |synchroniseren |X |Betere toegankelijkheid |
-| **Muis**: de grootte van de muis aanwijzer wijzigen |synchroniseren |X |andere |
-| **Muis**: de kleur van de muis aanwijzer wijzigen |synchroniseren |X |andere |
+| **Muis**: de grootte van de muis aanwijzer wijzigen |synchroniseren |X |other |
+| **Muis**: de kleur van de muis aanwijzer wijzigen |synchroniseren |X |other |
 | **Muis**: alle andere instellingen |X |X | |
 | **Verteller**: snel starten |synchroniseren |X |Betere toegankelijkheid |
 | **Verteller**: gebruikers kunnen de spreek hoogte van Verteller wijzigen |synchroniseren |X |Betere toegankelijkheid |
@@ -178,7 +178,7 @@ Instellingen die niet worden geroamd of gesynchroniseerd, behoren niet tot een g
 | **Typen**: alle hoofd letters gebruiken wanneer ik op SHIFT-toets Dubbeltik |synchroniseren |Back-up |Taal |
 | **Typen**: geluiden afspelen tijdens het typen |synchroniseren |Back-up |Taal |
 | **Typen**: personalisatie gegevens voor het scherm toetsenbord |synchroniseren |Back-up |Taal |
-| **Wi-Fi**: Wi-Fi-profielen (alleen WPA) |synchroniseren |synchroniseren |Wachtwoorden |
+| **Wi-Fi**: Wi-Fi profielen (alleen WPA) |synchroniseren |synchroniseren |Wachtwoorden |
 
 ###### <a name="footnote-1"></a>Voetnoot 1
 

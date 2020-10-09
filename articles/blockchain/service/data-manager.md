@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: chroyal
 ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77209440"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Wat is Block Chain Data Manager voor Azure Blockchain Service?
@@ -21,7 +21,7 @@ Block Chain Data Manager voert drie hoofd functies uit: vastleggen, transformere
 
 ![Data Manager functies Block Chain](./media/data-manager/functions.png)
 
-## <a name="capture"></a>Capture
+## <a name="capture"></a>Vastleggen
 
 Elk block Chain-Data Manager exemplaar maakt verbinding met één micro Block Chain trans actie-knoop punt in de service. Alleen gebruikers met toegang tot het transactie knooppunt kunnen een verbinding maken die ervoor zorgt dat de klant gegevens goed toegankelijk zijn. Een Block Chain Data Manager instantie beveiligt op een betrouw bare manier alle onbewerkte blok-en ruwe transactie gegevens van het trans actie knooppunt en kan worden geschaald om de werk belasting van de onderneming
 

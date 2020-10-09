@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: zeyadr
 ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211337"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Consortium leden beheren in azure Block Chain service met Power shell
@@ -22,7 +22,7 @@ U kunt Power shell gebruiken voor het beheren van Block Chain consortium-leden v
 
 ## <a name="open-azure-cloud-shell"></a>Azure Cloud Shell openen
 
-Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de stappen in dit artikel uit te voeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account.
+Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account.
 
 U kunt Cloud Shell ook openen in een afzonderlijk browser tabblad door naar [shell.Azure.com/powershell](https://shell.azure.com/powershell)te gaan. Selecteer **kopiëren** om de blokken code te kopiëren, plak deze in Cloud shell en selecteer **Enter** om het programma uit te voeren.
 
@@ -59,7 +59,7 @@ Vervang door *\<Member account password\>* het wacht woord van het gebruikers ac
 
 Zoek de andere waarden in de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de pagina **overzicht** van de standaard Block Chain-service.
 
     ![Leden overzicht](./media/manage-consortium-powershell/member-overview.png)
@@ -85,8 +85,8 @@ Gebruik deze cmdlet om verbinding te maken met de slimme contracten van het cons
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| RootContractAddress | Hoofd contract adres van de consortium Management-slimme contracten | Yes |
-| Web3Client | Web3Client-object verkregen van New-Web3Connection | Yes |
+| RootContractAddress | Hoofd contract adres van de consortium Management-slimme contracten | Ja |
+| Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -102,8 +102,8 @@ Gebruik deze cmdlet om een object te maken voor het opslaan van de informatie vo
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| ManagedAccountAddress | Adres van Block Chain-lid | Yes |
-| ManagedAccountPassword | Account wachtwoord | Yes |
+| ManagedAccountAddress | Adres van Block Chain-lid | Ja |
+| ManagedAccountPassword | Account wachtwoord | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -119,7 +119,7 @@ Gebruik deze cmdlet om een verbinding tot stand te brengen met het RPC-eind punt
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| RemoteRPCEndpoint | Block Chain lid eindpunt adres | Yes |
+| RemoteRPCEndpoint | Block Chain lid eindpunt adres | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -139,9 +139,9 @@ Gebruik deze cmdlet om details van leden of lijst leden van het consortium op te
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| Name | De naam van het service-lid van de Block Chain waarvoor u gegevens wilt ophalen. Wanneer een naam wordt ingevoerd, worden de details van het lid geretourneerd. Wanneer een naam wordt wegge laten, wordt een lijst met alle consortium leden geretourneerd. | No |
-| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Yes |
-| Web3Client | Web3Client-object verkregen van New-Web3Connection | Yes |
+| Naam | De naam van het service-lid van de Block Chain waarvoor u gegevens wilt ophalen. Wanneer een naam wordt ingevoerd, worden de details van het lid geretourneerd. Wanneer een naam wordt wegge laten, wordt een lijst met alle consortium leden geretourneerd. | Nee |
+| Leden | Leden object verkregen van Import-ConsortiumManagementContracts | Ja |
+| Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -170,10 +170,10 @@ Gebruik deze cmdlet om een Block Chain-lid te verwijderen.
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| Name | Te verwijderen lidnaam | Yes |
-| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Yes |
-| Web3Account | Web3Account-object verkregen van import-Web3Account | Yes |
-| Web3Client | Web3Client-object verkregen van New-Web3Connection | Yes |
+| Naam | Te verwijderen lidnaam | Ja |
+| Leden | Leden object verkregen van Import-ConsortiumManagementContracts | Ja |
+| Web3Account | Web3Account-object verkregen van Import-Web3Account | Ja |
+| Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -196,12 +196,12 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| Name | Naam van het block Chain-lid | Yes |
-| DisplayName | Nieuwe weergave naam | No |
-| AccountAddress | Account adres | No |
-| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Yes |
-| Web3Account | Web3Account-object verkregen van import-Web3Account | Yes |
-| Web3Client |  Web3Client-object verkregen van New-Web3Connection| Yes |
+| Naam | Naam van het block Chain-lid | Ja |
+| DisplayName | Nieuwe weergave naam | Nee |
+| AccountAddress | Account adres | Nee |
+| Leden | Leden object verkregen van Import-ConsortiumManagementContracts | Ja |
+| Web3Account | Web3Account-object verkregen van Import-Web3Account | Ja |
+| Web3Client |  Web3Client-object verkregen van New-Web3Connection| Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -226,11 +226,11 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Yes |
-| Rol | De rol consortium. Waarden kunnen een beheerder of gebruiker zijn. BEHEERDER is de rol van beheerder van het consortium. De gebruiker is de rol van het consortium. | Yes |
-| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Yes |
-| Web3Account | Web3Account-object verkregen van import-Web3Account | Yes |
-| Web3Client | Web3Client-object verkregen van New-Web3Connection | Yes |
+| SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Ja |
+| Rol | De rol consortium. Waarden kunnen een beheerder of gebruiker zijn. BEHEERDER is de rol van beheerder van het consortium. De gebruiker is de rol van het consortium. | Ja |
+| Leden | Leden object verkregen van Import-ConsortiumManagementContracts | Ja |
+| Web3Account | Web3Account-object verkregen van Import-Web3Account | Ja |
+| Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -248,9 +248,9 @@ Gebruik deze cmdlet om de uitnodigings status van een lid van een consortium op 
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| SubscriptionId | De ID van het Azure-abonnement van het lid dat moet worden uitgenodigd. Als de abonnements-ID wordt vermeld, worden de uitnodigingen van de abonnements-ID geretourneerd. Als de abonnements-ID wordt wegge laten, wordt een lijst met alle uitnodigingen van het lid geretourneerd. | No |
-| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Yes |
-| Web3Client | Web3Client-object verkregen van New-Web3Connection | Yes |
+| SubscriptionId | De ID van het Azure-abonnement van het lid dat moet worden uitgenodigd. Als de abonnements-ID wordt vermeld, worden de uitnodigingen van de abonnements-ID geretourneerd. Als de abonnements-ID wordt wegge laten, wordt een lijst met alle uitnodigingen van het lid geretourneerd. | Nee |
+| Leden | Leden object verkregen van Import-ConsortiumManagementContracts | Ja |
+| Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -279,10 +279,10 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| SubscriptionId | ID van het Azure-abonnement van het lid dat u wilt intrekken | Yes |
-| Leden | Leden object verkregen van import-ConsortiumManagementContracts | Yes |
-| Web3Account | Web3Account-object verkregen van import-Web3Account | Yes |
-| Web3Client | Web3Client-object verkregen van New-Web3Connection | Yes |
+| SubscriptionId | ID van het Azure-abonnement van het lid dat u wilt intrekken | Ja |
+| Leden | Leden object verkregen van Import-ConsortiumManagementContracts | Ja |
+| Web3Account | Web3Account-object verkregen van Import-Web3Account | Ja |
+| Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -303,11 +303,11 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Parameter | Beschrijving | Vereist |
 |-----------|-------------|:--------:|
-| SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Yes |
-| Rol | Nieuwe consortium functie voor uitnodiging. Waarden kunnen **gebruiker** of **beheerder**zijn. | Yes |
-| Leden |  Leden object verkregen van import-ConsortiumManagementContracts | Yes |
-| Web3Account | Web3Account-object verkregen van import-Web3Account | Yes |
-| Web3Client | Web3Client-object verkregen van New-Web3Connection | Yes |
+| SubscriptionId | Azure-abonnements-ID van het lid dat moet worden uitgenodigd | Ja |
+| Rol | Nieuwe consortium functie voor uitnodiging. Waarden kunnen **gebruiker** of **beheerder**zijn. | Ja |
+| Leden |  Leden object verkregen van Import-ConsortiumManagementContracts | Ja |
+| Web3Account | Web3Account-object verkregen van Import-Web3Account | Ja |
+| Web3Client | Web3Client-object verkregen van New-Web3Connection | Ja |
 
 #### <a name="example"></a>Voorbeeld
 

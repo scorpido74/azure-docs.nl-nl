@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776619"
 ---
 # <a name="disclosure-design-patterns"></a>Ontwerppatronen van openbaarmakingen
@@ -62,7 +62,7 @@ Voordat de spraak ervaring begint, introduceert we de digitale assistent door vo
 *De synthetische stem wordt geïntroduceerd tijdens het onboarden van een nieuwe gebruiker.*
 
 Aanbevelingen
-- Beschrijf of de stem kunst matig is ( &quot;bijvoorbeeld&quot;digitaal)
+- Beschrijf of de stem kunst matig is (bijvoorbeeld &quot; digitaal &quot; )
 - Beschrijf wat de agent kan doen
 - De stem&#39;s-oorsprong expliciet aangeven
 - Een ingangs punt bieden voor meer informatie over de synthetische stem
@@ -141,7 +141,7 @@ Aanbevelingen
 - Ouders als primaire doel groep voor openbaar making
 - Ouders aanmoedigen om openbaar making naar hun kinderen te communiceren
 - Ingangs punten voor aanbiedingen voor meer informatie over de gesynthesizerde Voice
-- U kunt de ervaring het beste met een &quot;eenvoudige&quot; veiligheids vraag door geven aan ouders, zodat ze de openbaar making hebben gelezen
+- U kunt de ervaring het beste met een eenvoudige &quot; veiligheids &quot; vraag door geven aan ouders, zodat ze de openbaar making hebben gelezen
 
 ### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Mogelijkheden bieden voor meer informatie over hoe de stem is gemaakt
 
@@ -193,13 +193,13 @@ Wanneer conversaties in onverwachte paden terechtkomen, overweeg dan om standaar
 ![Onverwachte paden verwerken](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Niet-taak- &quot;of&quot; persoonlijke vragen die gericht zijn op de agent, zijn een goede tijd om gebruikers te herinneren van de synthetische aard van de agent en hen te laten instemmen om deze op de juiste wijze te laten werken of om ze om te leiden naar een echte persoon.
+Niet-taak-of &quot; persoonlijke &quot; vragen die gericht zijn op de agent, zijn een goede tijd om gebruikers te herinneren van de synthetische aard van de agent en hen te laten instemmen om deze op de juiste wijze te laten werken of om ze om te leiden naar een echte persoon.
 
 ![Taak vragen afhandelen](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
 ## <a name="when-to-disclose"></a>Wanneer te vermelden
 
-Er zijn veel mogelijkheden voor openbaar making tijdens de gebruikers traject. Ontwerp voor het eerste gebruik, het tweede gebruik, een ne gebruik..., maar ook een fout &quot;&quot; in het markeren van de transparantie, zoals wanneer het systeem een fout maakt of wanneer de gebruiker een beperking van de agent&#39;s-mogelijkheden detecteert.
+Er zijn veel mogelijkheden voor openbaar making tijdens de gebruikers traject. Ontwerp voor het eerste gebruik, het tweede gebruik, een ne gebruik..., maar ook &quot; &quot; een fout in het markeren van de transparantie, zoals wanneer het systeem een fout maakt of wanneer de gebruiker een beperking van de agent&#39;s-mogelijkheden detecteert.
 
 ![Verkoop kansen voor het hele gebruikers traject](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
@@ -245,7 +245,7 @@ Gebruik openbaar making als een kans om zonder problemen te werken.
 - [Richt lijnen voor spraak ontwerp van micro soft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
 - [Richt lijnen voor spraak opdrachten voor micro soft Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 * [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
 * [Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie](concepts-guidelines-responsible-deployment-synthetic.md)

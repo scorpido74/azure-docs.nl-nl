@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74775537"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Wat zijn de Bing Zoeken-API's?
@@ -37,7 +37,7 @@ De volgende Bing Search-Api's retour neren specifieke inhoud van het web zoals a
 | [Afbeeldingen zoeken](../Bing-Image-Search/overview.md) | Met de Bing Afbeeldingen zoeken-API kunt u zoeken naar en zoeken naar statische en bewegende afbeeldingen van hoge kwaliteit, vergelijkbaar met [Bing.com/images](https://www.Bing.com/images). U kunt Zoek opdrachten verfijnen om afbeeldingen op te nemen of uit te sluiten op basis van het kenmerk, inclusief grootte, kleur, licentie en versheid. U kunt ook zoeken naar trend afbeeldingen, afbeeldingen uploaden om inzicht te krijgen in en miniatuur weergaven weer geven. |
 | [Nieuws zoeken](../Bing-News-Search/search-the-web.md) | Met de Bing Nieuws zoeken-API kunt u nieuws artikelen vinden die vergelijkbaar zijn met [Bing.com/News](https://www.Bing.com/news). De API retourneert nieuws artikelen uit een of meer bronnen of specifieke domeinen. U kunt zoeken in verschillende categorieën om trending artikelen, belang rijke verhalen en nieuwskoppen op te halen. |
 | [Video's zoeken](../Bing-Video-Search/overview.md) | Met de Bing Video's zoeken-API kunt u Video's op het web vinden. Bekijk Video's, gerelateerde inhoud en miniatuur voorvertoningen. |
-| [Visueel zoeken](../Bing-visual-search/overview.md) | Upload een afbeelding of gebruik een URL om informatie hierover te verkrijgen, zoals visueel soort gelijke producten, afbeeldingen en gerelateerde zoek opdrachten. |
+| [Visual Search](../Bing-visual-search/overview.md) | Upload een afbeelding of gebruik een URL om informatie hierover te verkrijgen, zoals visueel soort gelijke producten, afbeeldingen en gerelateerde zoek opdrachten. |
  [Lokale zakelijke zoek opdracht](../bing-local-business-search/overview.md) | Met de Bing Local Business Search-API kunnen uw toepassingen contact gegevens en locatie-informatie vinden over lokale bedrijven op basis van zoek query's. |
 
 ## <a name="the-bing-custom-search-api"></a>De Bing Custom Search-API

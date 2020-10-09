@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85323171"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Toegang tot Azure Event Hubs autoriseren
@@ -17,7 +17,7 @@ Elke keer dat u gebeurtenissen/gegevens van een Event Hub publiceert of gebruikt
 Azure Event Hubs biedt de volgende opties voor het machtigen van toegang tot beveiligde resources:
 
 - Azure Active Directory
-- Handtekening voor gedeelde toegang
+- Shared Access Signature
 
 > [!NOTE]
 > Dit artikel is van toepassing op zowel Event Hubs als [Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) scenario's. 
@@ -30,7 +30,7 @@ Raadpleeg de volgende artikelen voor meer informatie over verificatie met Azure 
 - [Aanvragen voor Azure Event Hubs verifiëren met behulp van Azure Active Directory](authenticate-application.md)
 - [Toegang tot Event hubs resources toestaan met behulp van Azure Active Directory](authorize-access-azure-active-directory.md).
 
-## <a name="shared-access-signatures"></a>Shared Access signatures 
+## <a name="shared-access-signatures"></a>Shared Access Signatures 
 Shared Access signatures (SAS) voor Event Hubs resources bieden beperkte gedelegeerde toegang tot Event Hubs resources. Door beperkingen toe te voegen aan een tijds interval waarvoor de hand tekening geldig is of op machtigingen die door deze worden verleend, biedt het beheer van resources flexibiliteit. Zie [verifiëren met behulp van Shared Access signatures (SAS)](authenticate-shared-access-signature.md)voor meer informatie. 
 
 Het autoriseren van gebruikers of toepassingen met een OAuth 2,0-token dat wordt geretourneerd door Azure AD biedt een superieure beveiliging en gebruiks gemak over Shared Access signatures (SAS). Met Azure AD hoeft u de toegangs tokens niet op te slaan met uw code en mogelijke beveiligings problemen met Risico's. Hoewel u Shared Access signatures (SAS) kunt blijven gebruiken om nauw keurige toegang tot Event Hubs resources te verlenen, biedt Azure AD soort gelijke mogelijkheden zonder dat u SAS-tokens hoeft te beheren, of om u zorgen te maken over het intrekken van een SAS. 

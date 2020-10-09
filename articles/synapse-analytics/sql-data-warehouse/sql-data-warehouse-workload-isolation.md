@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: a9ebee68c7abd90f5fb3345eec1ee929fc30ca20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212306"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Isolatie van de werkbelasting groep voor Azure Synapse Analytics
@@ -50,14 +50,14 @@ Gebruikers moeten een beheer oplossing voor werk belastingen voor komen die 100%
 
 ## <a name="workload-containment"></a>Containment-werk belasting
 
-Insluiting van de werk belasting verwijst naar het beperken van de hoeveelheid resources die een werkbelasting groep mag verbruiken.  Het opnemen van de werk belasting wordt bereikt door de CAP_PERCENTAGE_RESOURCE-para meter in te stellen op minder dan 100 in de syntaxis voor het maken van een [WERKBELASTING groep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Denk na over het scenario waarmee gebruikers lees toegang tot het systeem nodig hebben, zodat ze een What-if-analyse kunnen uitvoeren via ad-hoc query's.  Deze typen aanvragen kunnen een negatieve invloed hebben op andere workloads die op het systeem worden uitgevoerd.  Het configureren van de insluiting zorgt ervoor dat de hoeveelheid resources beperkt is.
+Insluiting van de werk belasting verwijst naar het beperken van de hoeveelheid resources die een werkbelasting groep mag verbruiken.  Het opnemen van de werk belasting wordt bereikt door de CAP_PERCENTAGE_RESOURCE-para meter in te stellen op minder dan 100 in de syntaxis voor het maken van een [WERKBELASTING groep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  .  Denk na over het scenario waarmee gebruikers lees toegang tot het systeem nodig hebben, zodat ze een What-if-analyse kunnen uitvoeren via ad-hoc query's.  Deze typen aanvragen kunnen een negatieve invloed hebben op andere workloads die op het systeem worden uitgevoerd.  Het configureren van de insluiting zorgt ervoor dat de hoeveelheid resources beperkt is.
 
 Het configureren van een workload-containment definieert impliciet een maximum niveau van gelijktijdigheid.  Als een CAP_PERCENTAGE_RESOURCE is ingesteld op 60% en een REQUEST_MIN_RESOURCE_GRANT_PERCENT is ingesteld op 1%, is er Maxi maal 60-gelijktijdigheids niveau toegestaan voor de werkbelasting groep.  Bekijk de onderstaande methode voor het bepalen van de maximale gelijktijdigheid:
 
 [Max. gelijktijdigheids] = [ `CAP_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
-> De effectief CAP_PERCENTAGE_RESOURCE van een werkbelasting groep is 100% niet bereikt wanneer werkbelasting groepen met MIN_PERCENTAGE_RESOURCE op een hoger niveau dan nul worden gemaakt.  Zie [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectief runtime-waarden.
+> De effectief CAP_PERCENTAGE_RESOURCE van een werkbelasting groep is 100% niet bereikt wanneer werkbelasting groepen met MIN_PERCENTAGE_RESOURCE op een hoger niveau dan nul worden gemaakt.  Zie [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectief runtime-waarden.
 
 ## <a name="resources-per-request-definition"></a>Definitie van resources per aanvraag
 
@@ -71,7 +71,7 @@ Net als bij het kiezen van een resource klasse, stelt REQUEST_MIN_RESOURCE_GRANT
 Als u REQUEST_MAX_RESOURCE_GRANT_PERCENT configureert met een waarde die groter is dan REQUEST_MIN_RESOURCE_GRANT_PERCENT, kan het systeem meer resources per aanvraag toewijzen.  Bij het plannen van een aanvraag, bepaalt het systeem de werkelijke toewijzing van resources aan de aanvraag, tussen REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT, op basis van de beschik baarheid van resources in gedeelde groep en huidige belasting van het systeem.  De resources moeten aanwezig zijn in de [gedeelde groep](#shared-pool-resources) resources wanneer de query is gepland.  
 
 > [!NOTE]
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT hebben ingangs waarden die afhankelijk zijn van de juiste MIN_PERCENTAGE_RESOURCE en CAP_PERCENTAGE_RESOURCE waarden.  Zie [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectief runtime-waarden.
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT en REQUEST_MAX_RESOURCE_GRANT_PERCENT hebben ingangs waarden die afhankelijk zijn van de juiste MIN_PERCENTAGE_RESOURCE en CAP_PERCENTAGE_RESOURCE waarden.  Zie [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor effectief runtime-waarden.
 
 ## <a name="execution-rules"></a>Uitvoerings regels
 

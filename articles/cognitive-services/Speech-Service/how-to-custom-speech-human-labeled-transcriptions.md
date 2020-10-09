@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74806059"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Transcripties met menselijke labels maken
@@ -31,7 +31,7 @@ Enkele voorbeelden:
 
 | Te vermijden tekens | Substitution | Opmerkingen |
 | ------------------- | ------------ | ----- |
-| "Hallo wereld" | "Hallo wereld" | De aanhalings tekens openen en sluiten worden vervangen door de juiste ASCII-tekens. |
+| "Hallo wereld" | "Hello world" | De aanhalings tekens openen en sluiten worden vervangen door de juiste ASCII-tekens. |
 | Dag van John | Dag van John | De apostrof is vervangen door het juiste ASCII-teken. |
 | het was goed, Nee, het was geweldig! | het was goed--Nee, het was geweldig. | Het em-streepje is vervangen door twee afbreek streepjes. |
 
@@ -76,7 +76,7 @@ Hier volgen enkele voor beelden van normalisatie automatisch uitgevoerd op de tr
 | 104 Elm straat                         | 1 0 4 Elm straat            |
 | Afstemmen op 102,7                          | afstemmen op 1 0 2 punt 7    |
 | Pi is ongeveer 3,14                       | Pi is ongeveer drie punt 1 4  |
-| IT- \$kosten 3,14                        | IT-kosten 3 14           |
+| IT-kosten \$ 3,14                        | IT-kosten 3 14           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarijn Chinees (zh-CN)
 
@@ -133,7 +133,7 @@ Tekst normalisatie is de trans formatie van woorden in een consistente indeling 
 - Schrijf decimale punten als ', ' en niet '. '.
 - Schrijf tijd scheiders als ': ' en niet '. ' (bijvoorbeeld: 12:00 Uhr).
 - Afkortingen zoals ' ca. ' worden niet vervangen. U wordt aangeraden de volledige gesp roken vorm te gebruiken.
-- De vier belangrijkste reken kundige Opera tors (+ \*,-, en/) worden verwijderd. We raden u aan ze te vervangen door de geschreven vorm: "plus teken," "min," "geteilt".
+- De vier belangrijkste reken kundige Opera tors (+,-, \* en/) worden verwijderd. We raden u aan ze te vervangen door de geschreven vorm: "plus teken," "min," "geteilt".
 - Vergelijkings operatoren worden verwijderd (=, < en >). U kunt ze het beste vervangen door ' gleich ', ' kleinere als ' en ' grösser als '.
 - Schrijf breuken, zoals 3/4, in geschreven vorm (bijvoorbeeld: "Drei Viertel" in plaats van 3/4).
 - Het symbool "€" vervangen door de geschreven vorm "euro".

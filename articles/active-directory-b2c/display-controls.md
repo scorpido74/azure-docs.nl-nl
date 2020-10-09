@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202293"
 ---
 # <a name="display-controls"></a>Besturings elementen weer geven
@@ -48,12 +48,12 @@ Het element **DisplayControl** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Yes | Een id die wordt gebruikt voor het weergave besturings element. Hiernaar kan worden [verwezen](#referencing-display-controls). |
-| UserInterfaceControlType | Yes | Het type van het weergave besturings element. Momenteel wordt de [VerificationControl](display-control-verification.md) ondersteund |
+| Id | Ja | Een id die wordt gebruikt voor het weergave besturings element. Hiernaar kan worden [verwezen](#referencing-display-controls). |
+| UserInterfaceControlType | Ja | Het type van het weergave besturings element. Momenteel wordt de [VerificationControl](display-control-verification.md) ondersteund |
 
 Het element **DisplayControl** bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims** worden gebruikt om vooraf de waarde in te vullen van de claims die moeten worden verzameld van de gebruiker. |
 | DisplayClaims | 0:1 | **DisplayClaims** worden gebruikt om claims weer te geven die van de gebruiker moeten worden verzameld. |

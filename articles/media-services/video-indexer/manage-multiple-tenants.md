@@ -14,25 +14,25 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76990501"
 ---
 # <a name="manage-multiple-tenants"></a>Meerdere tenants beheren
 
 In dit artikel worden verschillende opties beschreven voor het beheren van meerdere tenants met Video Indexer. Kies een methode die het meest geschikt is voor uw scenario:
 
-* Video Indexer account per Tenant
-* Eén Video Indexer account voor alle tenants
-* Azure-abonnement per Tenant
+* Video Indexer-account per tenant
+* Eén Video Indexer-account voor alle tenants
+* Azure-abonnement per tenant
 
-## <a name="video-indexer-account-per-tenant"></a>Video Indexer account per Tenant
+## <a name="video-indexer-account-per-tenant"></a>Video Indexer-account per tenant
 
 Wanneer u deze architectuur gebruikt, wordt er voor elke Tenant een Video Indexer-account gemaakt. De tenants hebben een volledige isolatie in de permanente en Compute-laag.  
 
-![Video Indexer account per Tenant](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
+![Video Indexer-account per tenant](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Overwegingen
 
@@ -66,11 +66,11 @@ Wanneer u [Video's uploadt](https://api-portal.videoindexer.ai/docs/services/ope
 > [!TIP]
 > U kunt het kenmerk [Priority](upload-index-videos.md) gebruiken om taken voor tenants prioriteit te geven.
 
-## <a name="azure-subscription-per-tenant"></a>Azure-abonnement per Tenant 
+## <a name="azure-subscription-per-tenant"></a>Azure-abonnement per tenant 
 
 Wanneer u deze architectuur gebruikt, heeft elke Tenant hun eigen Azure-abonnement. Voor elke gebruiker maakt u een nieuw Video Indexer-account in het Tenant abonnement.
 
-![Azure-abonnement per Tenant](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
+![Azure-abonnement per tenant](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Overwegingen
 

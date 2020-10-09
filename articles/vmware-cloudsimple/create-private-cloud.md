@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77024786"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Een CloudSimple-Privécloud maken
@@ -47,7 +47,7 @@ Toegang tot de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
 ## <a name="create-a-new-private-cloud"></a>Een nieuwe Privécloud maken
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
 3. Selecteer de CloudSimple-service waarop u uw Privécloud wilt maken.
 4. Klik in **overzicht**op **privécloud maken** om een nieuw browser tabblad voor CloudSimple portal te openen. Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.
@@ -71,7 +71,7 @@ Toegang tot de [CloudSimple-Portal](access-cloudsimple-portal.md).
 
 11. Klik op **volgende: controleren en maken**.
 12. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
-13. Klik op **Create**.
+13. Klik op **Maken**.
 
 Het inrichtings proces voor de privécloud wordt gestart. Het kan tot twee uur duren voordat de Privécloud is ingericht.
 

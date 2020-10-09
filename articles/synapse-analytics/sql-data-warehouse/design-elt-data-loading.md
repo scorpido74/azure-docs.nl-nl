@@ -12,13 +12,13 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201155"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor de SQL-groep Synapse
+# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor een Synapse SQL-pool
 
 Traditionele SMP-SQL-Pools gebruiken een proces voor het laden van de gegevens extractie, transformeren en laden (ETL). Synapse SQL-pool, in azure Synapse Analytics, heeft een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources.
 
@@ -111,7 +111,7 @@ Gebruik de volgende SQL-gegevens type toewijzing bij het laden van Parquet-besta
 |                            INT32                             |            INT (8, false)            |     tinyint      |
 |                            INT32                             |            INT (16, false)             |       int        |
 |                            INT32                             |           INT (32, false)            |      bigint      |
-|                            INT32                             |                 DATE                  |       date       |
+|                            INT32                             |                 DATE                  |       datum       |
 |                            INT32                             |                KOMMA                |     decimal      |
 |                            INT32                             |            TIJD (MILLIS)             |       tijd       |
 |                            INT64                             |            INT (64, True)            |      bigint      |
