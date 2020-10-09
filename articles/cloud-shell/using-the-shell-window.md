@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70860316"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Het Azure Cloud Shell venster gebruiken
@@ -66,7 +66,7 @@ Klik op het pictogram webvoorbeeld in de linkerbovenhoek van het venster, select
 ![Web preview](media/using-the-shell-window/preview.png)  
 <br>
 ![Poort configureren](media/using-the-shell-window/preview-configure.png)  
-Klik op het pictogram webvoorbeeld in de linkerbovenhoek van het venster, selecteer ' poort voorvertonen... ' Als u een voor beeld van een open poort op een nieuw tabblad wilt bekijken, klikt u op het pictogram webvoorbeeld in de linkerbovenhoek van het venster en selecteert u poort sluiten... om de open poort te sluiten.  
+Klik op het pictogram webvoorbeeld in de linkerbovenhoek van het venster, selecteer ' poort voorvertonen... ' voor een voor beeld van een open poort op een nieuw tabblad. Klik op het pictogram webvoorbeeld in de linkerbovenhoek van het venster en selecteer poort sluiten... om de open poort te sluiten.  
 ![Poort bekijken/sluiten](media/using-the-shell-window/preview-options.png)
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>Cloud Shell venster minimaliseren & maximaliseren

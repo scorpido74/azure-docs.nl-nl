@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965021"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Ondersteunde hardware voor de 10 GbE-netwerk interfaces op uw StorSimple-apparaat
@@ -32,20 +32,20 @@ Dit artikel bevat informatie over aanvullende hardware die werkt met uw Microsof
 Micro soft heeft de volgende kleine SFP-transceivers, kabels en switches van de vorm factor getest, om ervoor te zorgen dat ze optimaal werken met apparaten. (De volgende tabellen worden bijgewerkt als nieuwe hardware wordt getest.)
 
 ### <a name="sfp-transceivers"></a>SFP + transceivers
-| Merk | Model |
+| Merk | Modelleren |
 | --- | --- |
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>Kabels
-| S. Nee. | Merk | Model |
+| S. Nee. | Merk | Modelleren |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
 | 3. |Cisco |SFP-H10GB-CU3M |
-| 4. |In-en uitchecken-Lite |N820-05M (OM3) |
+| 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>Switches
-| S. Nee. | Merk | Model |
+| S. Nee. | Merk | Modelleren |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -73,7 +73,7 @@ Mellanox heeft de volgende kleine SFP-transceivers, kabels en switches van een v
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Kabels en modules die worden ondersteund door Mellanox
 De volgende tabel geeft een lijst van de kabels en modules die door Mellanox worden ondersteund. Deze zijn niet getest door micro soft, maar werken waarschijnlijk met uw StorSimple-apparaat.
 
-| S. Nee. | Snelheid | Model | Description | Merk |
+| S. Nee. | Snelheid | Modelleren | Beschrijving | Merk |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |passieve koper kabel SFP + 10 GB/s 1M |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2 MIN. |passieve koper kabel SFP + 10 GB/s 2 min. |Arista |
@@ -114,10 +114,10 @@ De volgende tabel geeft een lijst van de kabels en modules die door Mellanox wor
 ### <a name="switches-supported-by-mellanox"></a>Switches die door Mellanox worden ondersteund
 De volgende tabel geeft een lijst van de switches die door Mellanox worden ondersteund. Deze zijn niet getest door micro soft, maar werken waarschijnlijk met uw StorSimple-apparaat.
 
-| S. Nee. | Snelheid | Model | Description | Merk |
+| S. Nee. | Snelheid | Modelleren | Beschrijving | Merk |
 | --- | --- | --- | --- | --- |
 | 1. |10GbE |516733-B21 |HP ProCurve 6120XG 10GbE Ethernet-Blade Switch |HP |
-| 2. |10GbE |538113-B21 |HP 10GbE Pass-Through-module (PTM) |HP |
+| 2. |10GbE |538113-B21 |HP 10GbE Pass-Through module (PTM) |HP |
 | 3. |10GbE |EN4093 |IBM PureFlex System Fabric EN4093 10 Gigabit-schaal bare switch module |IBM |
 | 4. |1GbE |3020 |Cisco Catalyst 3020 1GbE switch-Blade |Cisco |
 | 5. |1GbE |3020X |Cisco Catalyst 3020X 1GbE switch-Blade |Cisco |

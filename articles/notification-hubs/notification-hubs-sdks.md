@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71213026"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs Sdk's
@@ -33,7 +33,7 @@ Micro soft en derden publiceren Sdk's voor Azure Notification Hubs. De micro sof
 | [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |
 | [Java-Server](https://github.com/Azure/azure-notificationhubs-java-backend) |Microsoft |
 | [Nodejs](https://github.com/Azure/azure-sdk-for-node) | Microsoft |
-| [Systeem eigen](https://github.com/CatalystCode/react-native-azurenotificationhub) | Van derden |
+| [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) | Van derden |
 
 > [!Note]
 > Micro soft is niet verantwoordelijk voor de kwaliteit, het nut of de ondersteuning van oplossingen van derden.

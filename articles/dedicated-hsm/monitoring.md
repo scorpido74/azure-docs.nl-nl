@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881417"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Specifieke HSM-bewaking voor Azure
@@ -40,7 +40,7 @@ Een van de beschik bare technieken kan een klant toestaan problemen te identific
 
 Het wordt aanbevolen om alle belang rijke concepten van de service, zoals hoge Beschik baarheid en beveiliging, bijvoorbeeld goed te begrijpen vóór het inrichten van apparaten en het ontwerpen of implementeren van toepassingen. Meer onderwerpen over het concept niveau:
 
-* [Hoge Beschik baarheid](high-availability.md)
+* [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
 * [Netwerken](networking.md)
 * [Ondersteuning](supportability.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67659500"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Overzicht van Azure-toepassing gateway Resource Health
@@ -35,7 +35,7 @@ Een **beschik bare** status betekent dat de service geen gebeurtenissen heeft ge
 
 Een niet- **beschik bare** status betekent dat de service een voortdurende platform of niet-platform gebeurtenis heeft gedetecteerd die van invloed is op de status van de gateway.
 
-### <a name="platform-events"></a>Platform gebeurtenissen
+### <a name="platform-events"></a>Platformgebeurtenissen
 
 Platform gebeurtenissen worden geactiveerd door meerdere onderdelen van de Azure-infra structuur. Ze omvatten zowel geplande acties (bijvoorbeeld gepland onderhoud) als onverwachte incidenten (bijvoorbeeld een niet-geplande host opnieuw opstarten).
 

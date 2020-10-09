@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881018"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Exclusieve HSM-ondersteuning van Azure
@@ -47,7 +47,7 @@ Gemalto maakt beschik bare beheer-en configuratie richtlijnen via de [Portal voo
 
 ### <a name="support"></a>Ondersteuning
 
-Een probleem met het software niveau of vraag in verband met het gebruik van de Hsm's als onderdeel van de speciale HSM-service moet rechtstreeks worden geadresseerd aan Gemalto-ondersteuning. Alle software onderdelen die hierboven worden vermeld en een aangepaste HSM-configuratie die na inrichting is, worden verzorgd door Gemalto. Zie de Gemalto-portal voor [klanten ondersteuning](https://supportportal.gemalto.com/csm/)voor meer informatie.
+Een probleem met het software niveau of vraag in verband met het gebruik van de Hsm's als onderdeel van de speciale HSM-service moet rechtstreeks worden geadresseerd aan Gemalto-ondersteuning. Alle software onderdelen die hierboven worden vermeld en een aangepaste HSM-configuratie die na inrichting is, worden verzorgd door Gemalto. Zie de Gemalto-portal voor  [klanten ondersteuning](https://supportportal.gemalto.com/csm/)voor meer informatie.
 
 ### <a name="consulting-services"></a>Adviesservices
 
@@ -94,7 +94,7 @@ Raadpleeg voor Gemalto-ondersteunings service niveaus de [Gemalto-ondersteuning]
 Het is raadzaam om de belangrijkste concepten, zoals hoge Beschik baarheid en beveiliging, goed te begrijpen voor het inrichten van apparaten en het ontwerpen of implementeren van toepassingen.
 
 * [Implementatie architectuur](deployment-architecture.md)
-* [Hoge Beschik baarheid](high-availability.md)
+* [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
 * [Netwerken](networking.md)
 

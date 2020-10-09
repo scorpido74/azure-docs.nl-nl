@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77019669"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-oplossing op CloudSimple-activiteit bewaken
@@ -46,15 +46,15 @@ Als u waarschuwingen wilt bevestigen en wilt verwijderen uit de lijst, selecteer
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
 | Waarschuwings type | Categorie van de waarschuwing.|
 | Tijd | Tijdstip waarop de waarschuwing is opgetreden. |
-| Severity | Significantie van de waarschuwing.|
+| Ernst | Significantie van de waarschuwing.|
 | Resourcenaam | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
 | Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
 | Resource-id | De id van de resource. |
-| Description | Beschrijving van de trigger van de waarschuwing. |
+| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
 | Bevestigd | Indicatie of de waarschuwing wordt bevestigd. |
 
 ## <a name="events"></a>Gebeurtenissen
@@ -63,14 +63,14 @@ Gebeurtenissen tonen gebruikers-en systeem activiteiten in de CloudSimple-Portal
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
 | Tijd | De datum en tijd waarop de gebeurtenis heeft plaatsgevonden. |
 | Gebeurtenistype | Numerieke code waarmee de gebeurtenis wordt aangeduid. |
-| Severity | Ernst van gebeurtenis.|
+| Ernst | Ernst van gebeurtenis.|
 | Resourcenaam | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud. |
 | Resourcetype | Categorie van resource: Privécloud, Cloud rack. |
-| Description | Beschrijving van de trigger van de waarschuwing. |
+| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
 
 ## <a name="tasks"></a>Taken
 
@@ -78,7 +78,7 @@ Taken zijn activiteiten in particuliere Clouds waarvan wordt verwacht dat deze 3
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
 | Taak-ID | De unieke id voor de taak. |
 | Bewerking | De actie die door de taak wordt uitgevoerd. |
@@ -90,7 +90,7 @@ De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik o
 | Beëindigen | De eind tijd voor de taak. |
 | Status | Huidige taak status. |
 | Verstreken tijd | De tijd die nodig is om de taak te volt ooien (indien voltooid) of op dit moment (als deze wordt uitgevoerd). |
-| Description | Taak beschrijving. |
+| Beschrijving | Taak beschrijving. |
 
 ## <a name="audit"></a>Controleren
 
@@ -98,7 +98,7 @@ Controle logboeken houden de activiteiten van gebruikers bij. U kunt controle Lo
 
 De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
 
-| Kolom | Description |
+| Kolom | Beschrijving |
 ------------ | ------------- |
 | Tijd | Tijd van de controle vermelding. |
 | Bewerking | De actie die door de taak wordt uitgevoerd. |
@@ -108,7 +108,7 @@ De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik o
 | Resource-id | De id van de resource. |
 | Resultaat | Resultaat van de activiteit, zoals **geslaagd**. |
 | Gebruikte tijd | Tijd om de taak te volt ooien. |
-| Description | Beschrijving van de actie. |
+| Beschrijving | Beschrijving van de actie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

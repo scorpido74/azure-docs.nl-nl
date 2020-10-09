@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881026"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Exclusieve fysieke beveiliging van de HSM van Azure
@@ -55,7 +55,7 @@ Hsm's worden ingericht in een virtueel netwerk dat door de klant is gemaakt. Dit
 
 Het wordt aanbevolen om alle belang rijke concepten van de service, zoals hoge Beschik baarheid en beveiliging en ondersteuning, bijvoorbeeld goed te begrijpen vóór het inrichten van apparaten, het ontwerpen of implementeren van toepassingen.
 
-* [Hoge Beschik baarheid](high-availability.md)
+* [Hoge beschikbaarheid](high-availability.md)
 * [Netwerken](networking.md)
 * [Ondersteuning](supportability.md)
 * [Controle](monitoring.md)

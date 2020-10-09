@@ -9,10 +9,10 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77368300"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 maken en gebruiken op Application Gateway
@@ -28,7 +28,7 @@ In dit artikel ziet u een aantal voor beelden van aangepaste regels die u kunt m
 
 ## <a name="example-1"></a>Voorbeeld 1
 
-U weet dat er een bot is met de naam *evilbot* die u wilt blok keren om uw website te verkennen. In dit geval blokkeert u de *evilbot* van de gebruikers agent in de aanvraag headers.
+U weet dat er een bot is met de naam *evilbot* die u wilt blok keren om uw website te verkennen. In dit geval blokkeert u de User-Agent *evilbot* in de aanvraag headers.
 
 Logica: p
 
@@ -225,11 +225,11 @@ Hier volgt de bijbehorende JSON:
   }
 ```
 
-Overeenkomende CRS-regel:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Overeenkomende CRS-regel: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-4"></a>Voorbeeld 4
 
-Voor dit voor beeld wilt u de *evilbot*van de gebruiker en het verkeer in het bereik 192.168.5.0/24 blok keren. Als u dit wilt doen, kunt u twee afzonderlijke match-voor waarden maken en deze in dezelfde regel plaatsen. Dit zorgt ervoor dat als beide *evilbot* in de header van de gebruikers agent **en** IP-adressen uit het bereik 192.168.5.0/24 overeenkomen, de aanvraag wordt geblokkeerd.
+Voor dit voor beeld wilt u User-Agent *evilbot*blok keren en verkeer in het bereik 192.168.5.0/24. Als u dit wilt doen, kunt u twee afzonderlijke match-voor waarden maken en deze in dezelfde regel plaatsen. Dit zorgt ervoor dat als beide *evilbot* in de User-Agent header **en** IP-adressen uit het bereik 192.168.5.0/24 overeenkomen, de aanvraag wordt geblokkeerd.
 
 Logic: p **en** q
 

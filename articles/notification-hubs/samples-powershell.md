@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 720256416ca77b40ca0075f5b227212355dda040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71213323"
 ---
 # <a name="azure-powershell-samples-for-azure-notification-hubs"></a>Azure PowerShell voor beelden voor Azure Notification Hubs
@@ -27,4 +27,4 @@ De volgende tabel bevat koppelingen naar voor beelden van Azure PowerShell scrip
 
 | Beschrijving | Koppeling |
 | ----------- | ---- |
-|[Een Notification Hub maken](scripts/create-notification-hub-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script wordt een voorbeeld notification hub gemaakt. |
+|[Een notification hub maken](scripts/create-notification-hub-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script wordt een voorbeeld notification hub gemaakt. |

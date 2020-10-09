@@ -4,7 +4,7 @@
   items:
     - name: Over beheerde toepassingen
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Toepassingsdefinitie publiceren

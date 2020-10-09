@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67721622"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Aanbevolen procedures voor het gebruik van de anomalie detectie-API
@@ -72,7 +72,7 @@ Gegevens punten die worden verzonden naar de anomalie detectie-API moeten een ge
 }
 ```
 
-Als uw gegevens worden bemonsterd met een niet-standaard tijds interval, kunt u deze opgeven door het `customInterval` kenmerk toe te voegen aan uw aanvraag. Als uw reeks bijvoorbeeld elke vijf minuten steek proeft, kunt u het volgende toevoegen aan uw JSON-aanvraag:
+Als uw gegevens worden bemonsterd met een niet-standaard tijds interval, kunt u deze opgeven door het kenmerk toe te voegen aan `customInterval` uw aanvraag. Als uw reeks bijvoorbeeld elke vijf minuten steek proeft, kunt u het volgende toevoegen aan uw JSON-aanvraag:
 
 ```json
 {
@@ -93,9 +93,9 @@ De anomalie detectie-API werkt het beste op een even gedistribueerde tijd reeks.
 
 Als u weet dat uw time series-gegevens een seizoensgebonden patroon hebben (een met regel matige intervallen), kunt u de nauw keurigheid en API-reactie tijd verbeteren. 
 
-Wanneer u `period` een JSON-aanvraag maakt, kan er een afwijkende detectie latentie van maxi maal 50% worden opgegeven. Het `period` is een geheel getal dat ongeveer aangeeft hoeveel gegevens punten de tijd reeks duurt om een patroon te herhalen. Een tijd reeks met één gegevens punt per dag zou bijvoorbeeld `period` een as `7`hebben en een tijd reeks met één punt per uur (met hetzelfde wekelijkse patroon) zou een `period` van `7*24`hebben. Als u niet zeker bent van de patronen van uw gegevens, hoeft u deze para meter niet op te geven.
+`period`Wanneer u een JSON-aanvraag maakt, kan er een afwijkende detectie latentie van Maxi maal 50% worden opgegeven. Het `period` is een geheel getal dat ongeveer aangeeft hoeveel gegevens punten de tijd reeks duurt om een patroon te herhalen. Een tijd reeks met één gegevens punt per dag zou bijvoorbeeld een `period` as hebben `7` en een tijd reeks met één punt per uur (met hetzelfde wekelijkse patroon) zou een `period` van hebben  `7*24` . Als u niet zeker bent van de patronen van uw gegevens, hoeft u deze para meter niet op te geven.
 
-Voor de beste resultaten geeft u `period`4 aan gegevens punt op, plus een extra. Zo moeten gegevens per uur met een wekelijks patroon, zoals hierboven wordt beschreven, 673 gegevens punten leveren in de aanvraag tekst`7 * 24 * 4 + 1`().
+Voor de beste resultaten geeft u 4 aan `period` gegevens punt op, plus een extra. Zo moeten gegevens per uur met een wekelijks patroon, zoals hierboven wordt beschreven, 673 gegevens punten leveren in de aanvraag tekst ( `7 * 24 * 4 + 1` ).
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Bemonsterings gegevens voor realtime-bewaking
 
@@ -104,4 +104,4 @@ Als uw streaminggegevens worden bemonsterd met een kort interval (bijvoorbeeld s
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is de Anomaly Detector-API?](../overview.md)
-* [Snelstartgids: afwijkingen in uw time series-gegevens detecteren met behulp van de anomalie detectie REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Snelstart: Anomalieën detecteren in uw tijdreeksgegevens met behulp van de Anomaly Detector-REST API](../quickstarts/detect-data-anomalies-csharp.md)

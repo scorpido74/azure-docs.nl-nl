@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965293"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische specificaties en naleving voor het StorSimple-apparaat
@@ -38,7 +38,7 @@ De EBOD Enclosure maakt gebruik van een 580 W PCM en de primaire behuizing maakt
 | Specificatie | 580 W PCM (EBOD) | 764 W PCM (primair) |
 | --- | --- | --- |
 | Maximale uitvoer kracht |580 W |764 |
-| Frequentie |50/60 Hz |50/60 Hz |
+| Frequency |50/60 Hz |50/60 Hz |
 | Selectie van voltage bereik |Automatisch variërend: 90 – 264 V AC, 47/63 Hz |Automatisch variërend: 90-264 V AC, 47/63 Hz |
 | Maximum inactieve stroom |20 A |20 A |
 | Correctie van de energie factor |>95% nominale invoer spanning |>95% nominale invoer spanning |
@@ -95,7 +95,7 @@ De volgende tabel bevat de afmetingen van de behuizing in millimeters en inches.
 
 | Sluit | Millimeters | Mm |
 | --- | --- | --- |
-| Height |87,9 |3,46 |
+| Hoogte |87,9 |3,46 |
 | Breedte van de koppelings flens |483 |19,02 |
 | De breedte van de hoofd tekst van de behuizing |443 |17,44 |
 | Diepte van de voorste montage-flens tot de lengte van de hoofd tekst van de behuizing |577 |22,72 |
@@ -119,7 +119,7 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 
 | Sluit | Omgevings temperatuur bereik | Relatieve lucht vochtigheid | Maximum natte lamp |
 | --- | --- | --- | --- |
-| Functioneren |5 °C-35 °C (41 °F-95 °F) |20%-80% niet-condenserend- |28 °C (82 °F) |
+| Operationeel |5 °C-35 °C (41 °F-95 °F) |20%-80% niet-condenserend- |28 °C (82 °F) |
 | Niet-operationeel |-40 °C-70 °C (40 °F-158 °F) |5%-100% niet-condenserend |29 °C (84 °F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Lucht stroom, hoogte, schokken, trillingen, oriëntatie, veiligheid en EMC
