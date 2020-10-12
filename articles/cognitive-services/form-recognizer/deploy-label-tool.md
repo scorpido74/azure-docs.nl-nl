@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717894"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Het voorbeeldhulpprogramma voor labelen implementeren
@@ -35,7 +35,7 @@ De snelste manier om gegevens labelen te beginnen, is het hulp programma voor he
 Voordat we aan de slag gaan, is het belang rijk te weten dat er twee manieren zijn om het hulp programma voor het labelen van het voor beeld te implementeren in een Azure container instance (ACI). Beide opties worden gebruikt voor het uitvoeren van het hulp programma labelen met ACI: 
 
 * [Azure Portal gebruiken](#azure-portal)
-* [De Azure CLI gebruiken](#azure-cli)
+* [Met behulp van de Azure CLI](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -80,7 +80,7 @@ Volg deze stappen om een nieuwe resource te maken met behulp van de Azure Portal
    * Doorlopende implementatie: Stel dit in **op** aan als u automatische updates wilt ontvangen wanneer het ontwikkelings team wijzigingen in het voor beeld labeling-hulp programma aanbrengt.
    * Opstart opdracht: Stel dit in op `./run.sh eula=accept`
 
-    # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1) 
+    # <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1) 
    * Opties: **Eén container** selecteren
    * Bron van installatie kopie- **persoonlijk REGI ster** selecteren 
    * Server-URL: Stel dit in op `https://mcr.microsoft.com`
@@ -129,7 +129,7 @@ az container create \
   --memory 8 \
   --command-line "./run.sh eula=accept"
 ``` 
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
+# <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1)    
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 

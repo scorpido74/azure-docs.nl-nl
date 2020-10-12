@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949657"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-server configureren om met AD FS 2.0 te werken
@@ -45,10 +45,10 @@ Als u AD FS 2.0 wilt beveiligen met een proxy, installeert u de Multi-Factor Aut
 
    ![Venster voor IIS-verificatie van MFA-server](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. Als u de gebruikers naam, het wacht woord en de domein variabelen automatisch wilt detecteren, voert u de aanmeldings-URL (bijvoorbeeld `https://sso.contoso.com/adfs/ls` ) in het dialoog venster formulier-gebaseerde website automatisch configureren in en klikt u op **OK**.
+4. Als u de gebruikers naam, het wacht woord en de domein variabelen automatisch wilt detecteren, voert u de aanmeldings-URL (bijvoorbeeld `https://sso.contoso.com/adfs/ls` ) in het dialoog venster Form-Based website automatisch configureren in en klikt u op **OK**.
 5. Schakel het selectievakje **Overeenkomende Azure Multi-Factor Authentication-gebruiker** vereisen in als alle gebruikers zijn of moeten worden geïmporteerd in de server en aan verificatie in twee stappen onderworpen zijn. Als een groot aantal gebruikers nog niet is geïmporteerd in de Azure Multi-Factor Authentication-server en/of vrijgesteld zal zijn van verificatie in twee stappen, laat u het vakje uitgeschakeld.
 6. Als de pagina variabelen niet automatisch kunnen worden gedetecteerd, klikt u op **hand matig opgeven...** in het dialoogvenster Formulier-gebaseerde website automatisch configureren.
-7. Voer in het dialoog venster formulier-gebaseerde website toevoegen in het veld indienings-URL de URL naar de AD FS aanmeldings pagina in `https://sso.contoso.com/adfs/ls` en voer een toepassings naam in (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
+7. Voer in het dialoog venster Form-Based website toevoegen de URL naar de AD FS aanmeldings pagina in het veld indienings-URL in (zoals `https://sso.contoso.com/adfs/ls` ) en voer een toepassings naam in (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
 8. Stel de indeling van de aanvraag in op **POST of GET**.
 9. Voer de gebruikersnaamvariabele (ctl00$ContentPlaceHolder1$UsernameTextBox) en wachtwoordvariabele (ctl00$ContentPlaceHolder1$PasswordTextBox) in. Als uw formulier-gebaseerde aanmeldingspagina een tekstvak voor een domein bevat, voert u de domeinvariabele in. Ga in een webbrowser naar de aanmeldingspagina, klik met de rechtermuisknop op de pagina en selecteer **Bron weergeven** om de namen van de invoervakken op de aanmeldingspagina te vinden.
 10. Schakel het selectievakje **Overeenkomende Azure Multi-Factor Authentication-gebruiker** vereisen in als alle gebruikers zijn of moeten worden geïmporteerd in de server en aan verificatie in twee stappen onderworpen zijn. Als een groot aantal gebruikers nog niet is geïmporteerd in de Azure Multi-Factor Authentication-server en/of vrijgesteld zal zijn van verificatie in twee stappen, laat u het vakje uitgeschakeld.

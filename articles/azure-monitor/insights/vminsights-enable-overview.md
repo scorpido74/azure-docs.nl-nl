@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
 ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998404"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht Azure Monitor voor VM's inschakelen
@@ -58,7 +58,7 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 - Azië - oost
 - Azië - zuidoost
 - India - centraal
-- Japan - oost
+- Japan East
 - Australië - oost
 - Australië - zuidoost
 
@@ -67,7 +67,7 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 >
 
 Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van een van de volgende resources:
-* [Azure CLI](../learn/quick-create-workspace-cli.md)
+* [Azure-CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure-portal](../learn/quick-create-workspace.md)
 * [Azure Resource Manager](../platform/template-workspace-configuration.md)

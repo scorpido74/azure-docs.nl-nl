@@ -4,10 +4,10 @@ description: Video-opname op basis van gebeurtenissen (EVR) verwijst naar het pr
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568482"
 ---
 # <a name="event-based-video-recording"></a>Video-opname op basis van gebeurtenissen  
@@ -46,7 +46,7 @@ Met een gebeurtenis van het knoop punt bewegings detectie wordt het knoop punt v
 In dit geval kunnen signalen van een andere IoT-sensor worden gebruikt voor het activeren van de video-opname. In het onderstaande diagram ziet u een grafische weer gave van een media grafiek die deze use-case behandelt. De JSON-weer gave van de grafiek topologie van een dergelijke media grafiek vindt u [hier](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Video-opname op basis van gebeurtenissen uit andere bronnen":::
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Video-opname op basis van bewegings detectie":::
 
 In het diagram verzendt de externe sensor gebeurtenissen naar de IoT Edge hub. De gebeurtenissen worden vervolgens doorgestuurd naar het knoop punt van de Signal Gate-processor via het bron knooppunt van het [IOT hub bericht](media-graph-concept.md#iot-hub-message-source) . Het gedrag van het knoop punt van de signaal poort processor is hetzelfde als bij de vorige use-case: de live video-feed wordt geopend vanaf het RTSP-bron knooppunt naar het knoop punt voor bestands Sinks (of het knoop punt Asset Sink) wanneer het wordt geactiveerd door de externe gebeurtenis. 
 
@@ -57,7 +57,7 @@ Als u een bestand Sink-knoop punt gebruikt, wordt de video vastgelegd op het lok
 In dit geval kunt u video clips opnemen op basis van een signaal van een extern logica systeem. Een voor beeld van een dergelijke use-case is dat alleen een video clip kan worden opgenomen wanneer er een truck wordt gedetecteerd in de video feed van verkeer op een weg. In het onderstaande diagram ziet u een grafische weer gave van een media grafiek die deze use-case behandelt. De JSON-weer gave van de grafiek topologie van een dergelijke media grafiek vindt u [hier](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Video-opname op basis van een externe module voor het afnemen van interferentie":::
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Video-opname op basis van bewegings detectie":::
 
 In het diagram legt het RTSP-bron knooppunt de live video-feed van de camera vast en levert deze aan twee vertakkingen: er is een [signaal poort-processor](media-graph-concept.md#signal-gate-processor) knooppunt en de andere gebruikt een [http-extensie](media-graph-concept.md) knooppunt voor het verzenden van gegevens naar een externe Logic-module. Met het knoop punt HTTP-extensie kan de media grafiek afbeeldings frames (in JPEG-, BMP-of PNG-indeling) verzenden naar een externe service voor het afwijzen van de REST. Dit signalerings traject kan doorgaans alleen ondersteuning bieden voor lage frame snelheden (<5fps). U kunt het knoop punt filter voor de [frame frequentie](media-graph-concept.md#frame-rate-filter-processor) gebruiken om de frame frequentie te verlagen van de video die naar het http-extensie knooppunt gaat.
 

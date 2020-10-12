@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540707"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle DBMS-implementatie voor SAP-workload
@@ -416,7 +416,7 @@ U kunt Azure Backup ook gebruiken om een toepassings consistente back-up van de 
 
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
-Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na nood gevallen. Als u automatische failover in Data Guard wilt uitvoeren, moet u een snelle start failover (FSFA) gebruiken. De waarnemer (FSFA) activeert de failover. Als u FSFA niet gebruikt, kunt u alleen een hand matige failover-configuratie gebruiken.
+Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na nood gevallen. Als u automatische failover in Data Guard wilt uitvoeren, moet u Fast-Start failover (FSFA) gebruiken. De waarnemer (FSFA) activeert de failover. Als u FSFA niet gebruikt, kunt u alleen een hand matige failover-configuratie gebruiken.
 
 Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azure-omgeving](../oracle/oracle-disaster-recovery.md)voor meer informatie over herstel na nood gevallen voor Oracle-data bases in Azure.
 
@@ -511,7 +511,7 @@ Voor de functionaliteit voor back-up/herstel worden de SAP BR *-Hulpprogram Ma's
 Zie een [back-up maken van een Oracle database 12c-Data Base op een virtuele machine van Azure Linux](../oracle/oracle-backup-recovery.md)voor meer informatie over hoe u Azure backup en herstel Services kunt gebruiken voor het maken van back-ups van Oracle-data bases en het herstellen ervan.
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
-Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na nood gevallen. Als u automatische failover in Data Guard wilt uitvoeren, moet u snelle start failover (FSFA) gebruiken. De functionaliteit van de waarnemer (FSFA) activeert de failover. Als u FSFA niet gebruikt, kunt u alleen een hand matige failover-configuratie gebruiken. Zie [Oracle Data Guard implementeren op een virtuele machine van Azure Linux](../oracle/configure-oracle-dataguard.md)voor meer informatie.
+Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na nood gevallen. Als u automatische failover in Data Guard wilt uitvoeren, moet u Fast-Start failover (FSFA) gebruiken. De functionaliteit van de waarnemer (FSFA) activeert de failover. Als u FSFA niet gebruikt, kunt u alleen een hand matige failover-configuratie gebruiken. Zie [Oracle Data Guard implementeren op een virtuele machine van Azure Linux](../oracle/configure-oracle-dataguard.md)voor meer informatie.
 
 
 Nood herstel aspecten voor Oracle-data bases in Azure worden weer gegeven in het artikel [herstel na nood gevallen voor een Oracle database 12c-data base in een Azure-omgeving](../oracle/oracle-disaster-recovery.md).

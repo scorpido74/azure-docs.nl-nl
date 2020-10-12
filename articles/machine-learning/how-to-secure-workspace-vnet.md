@@ -12,10 +12,10 @@ ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776036"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Een Azure Machine Learning-werk ruimte beveiligen met virtuele netwerken
@@ -197,7 +197,7 @@ Als aan deze vereisten wordt voldaan, gebruikt u de volgende stappen om Azure Co
 
 1. Zoek de naam van de Azure Container Registry voor uw werk ruimte met behulp van een van de volgende methoden:
 
-    __Azure Portal__
+    __Azure-portal__
 
     Vanuit het gedeelte Overzicht van uw werk ruimte koppelt de __register__ waarde aan de Azure container Registry.
 

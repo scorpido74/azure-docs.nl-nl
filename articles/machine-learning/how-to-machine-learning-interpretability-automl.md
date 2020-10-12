@@ -11,10 +11,10 @@ ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
 ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91408012"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretation: model uitleg in automatische machine learning (preview)
@@ -171,7 +171,7 @@ with open("myenv.yml","r") as f:
 
 ```
 
-### <a name="deploy-the-service"></a>De service implementeren
+### <a name="deploy-the-service"></a>Implementeer de service
 
 Implementeer de service met het Conda-bestand en het Score bestand uit de vorige stappen.
 

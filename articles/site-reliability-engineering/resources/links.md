@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
 ms.openlocfilehash: becbc3e59663c1898cc4e635f61f63d54360a6f5
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086535"
 ---
 # <a name="sources-for-site-reliability-engineering-information"></a>Bronnen voor informatie over de technische betrouw baarheid van site
@@ -24,7 +24,7 @@ Hier vindt u een aantal goede lijsten met koppelingen voor SRE-en SRE-onderwerpe
 
 * [Site voor betrouwbaarheids techniek van meester](https://github.com/dastergon/awesome-sre)
 * [Bijzonder site betrouw bare technische hulp middelen](https://github.com/SquadcastHub/awesome-sre-tools)
-* [De patronen van schaal bare, betrouw bare en hoogwaardige grootschalige systemen](http://awesome-scalability.com)
+* [De patronen van schaal bare, betrouw bare en uitgevoerde Large-Scale systemen](http://awesome-scalability.com)
 * [meester-gedistribueerde systemen](https://github.com/theanalyst/awesome-distributed-systems)
 * [Meester consensus](https://github.com/dgryski/awesome-consensus)
 * [meester bewaken](https://github.com/crazy-canux/awesome-monitoring)

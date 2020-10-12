@@ -4,10 +4,10 @@ description: Dit artikel bevat de procedures voor het maken van back-ups en het 
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377995"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
@@ -84,7 +84,7 @@ Dit zijn de vereisten voor het maken van back-ups van virtuele Hyper-V-machines 
 
 5. Geef op de pagina **Methode voor gegevensbeveiliging selecteren** een naam op voor de beveiligingsgroep. Selecteer **Ik wil kortetermijnbeveiliging met schijf** en selecteer **Ik wil online beveiliging** als u back-ups wilt maken van gegevens naar Azure met de Azure Backup-dienst.
 
-6. Geef in **doel stellingen voor korte termijn doelen opgeven**  >  **op**hoe lang u schijf gegevens wilt bewaren. Geef bij **synchronisatie frequentie**op hoe vaak incrementele back-ups van de gegevens moeten worden uitgevoerd. In plaats van een interval voor incrementele back-ups kunt u ook **Net vóór een herstelpunt** inschakelen. Als deze instelling is ingeschakeld, voert MABS een snelle volledige back-up uit net vóór elk gepland herstel punt.
+6. Geef in **Short-Term**  >  **Bewaar periode**voor doelen op hoe lang u de schijf gegevens wilt bewaren. Geef bij **synchronisatie frequentie**op hoe vaak incrementele back-ups van de gegevens moeten worden uitgevoerd. In plaats van een interval voor incrementele back-ups kunt u ook **Net vóór een herstelpunt** inschakelen. Als deze instelling is ingeschakeld, voert MABS een snelle volledige back-up uit net vóór elk gepland herstel punt.
 
     > [!NOTE]
     >
@@ -132,7 +132,7 @@ Wanneer u back-ups van virtuele machines wilt herstellen, gebruikt u de wizard H
 
 3. Klik in het menu **acties** op **herstellen** om de wizard herstellen te openen.
 
-    De VM en het herstelpunt die u hebt geselecteerd, worden weergegeven in het scherm **Selectie voor herstel controleren**. Selecteer **Volgende**.
+    De VM en het herstelpunt die u hebt geselecteerd, worden weergegeven in het scherm **Selectie voor herstel controleren**. Selecteer **Next**.
 
 4. Selecteer op het scherm **type herstel bewerking selecteren** waar u de gegevens wilt herstellen en selecteer vervolgens **volgende**.
 

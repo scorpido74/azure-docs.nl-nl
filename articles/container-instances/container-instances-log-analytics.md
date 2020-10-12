@@ -4,10 +4,10 @@ description: Meer informatie over het verzenden van resource logboeken en gebeur
 ms.topic: article
 ms.date: 07/13/2020
 ms.openlocfilehash: b39cf31dc28ece7d4e4f938dae21a4fbf6a1a832
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566667"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboek registratie van container groepen en instanties met Azure Monitor-logboeken
@@ -27,7 +27,7 @@ In de volgende secties wordt beschreven hoe u een container groep met ingeschake
 
 Voor het inschakelen van logboekregistratie voor uw containerexemplaren hebt u het volgende nodig:
 
-* [Log Analytics werk ruimte](../azure-monitor/learn/quick-create-workspace.md)
+* [Log Analytics-werkruimte](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (of [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics-referenties verkrijgen

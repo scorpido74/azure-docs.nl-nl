@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
 ms.openlocfilehash: a003090fd610f2ac75895cccbf97750adbd4cfcd
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258324"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Voor delen van het gebruik van Azure NetApp Files met virtueel bureau blad van Windows 
+# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Voordelen van het gebruik van Azure NetApp Files met Windows Virtual Desktop 
 
 Dit artikel bevat best practice richt lijnen voor het implementeren van Windows virtueel bureau blad (WVD) met Azure NetApp Files.
 
@@ -35,7 +35,7 @@ In het volgende voor beeld blauw drukken wordt de integratie van virtueel bureau
 
 Voor het gegroepeerde scenario [beveelt](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations) het virtueel bureau blad-team van Windows de volgende richt lijnen aan op vCPU. Houd er rekening mee dat in deze aanbeveling geen grootte van de virtuele machine is opgegeven.
 
-|     Type werk belasting     |     Licht    |     Middelgroot    |     Zwaar    |
+|     Type werk belasting     |     Licht    |     Normaal    |     Zwaar    |
 |-----------------------|--------------|---------------|--------------|
 |     Gebruikers per vCPU    |     6        |     4         |     2        |
 

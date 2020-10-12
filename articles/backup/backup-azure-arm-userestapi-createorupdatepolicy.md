@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89179603"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Back-upbeleid voor Azure Recovery Services maken met behulp van REST API
@@ -31,7 +31,7 @@ Als u bijvoorbeeld een beleid voor Azure VM backup wilt maken, volgt u de onderd
 
 |Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
-|properties     |   Waar      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-eigenschappen        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-eigenschappen        |
 |tags     |         | Object        |  Resourcetags       |
 
 Raadpleeg het [back-upbeleid rest API document](/rest/api/backup/protectionpolicies/createorupdate)voor een volledige lijst met definities in de hoofd tekst van de aanvraag.
@@ -164,7 +164,7 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een eenvoudige *Get* -opdracht.
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation koptekst met een eenvoudige *Get* -opdracht.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13

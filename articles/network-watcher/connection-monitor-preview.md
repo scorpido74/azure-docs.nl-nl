@@ -16,10 +16,10 @@ ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
 ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91408818"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bewaking van netwerk connectiviteit met verbindings monitor (preview-versie)
@@ -199,7 +199,7 @@ U kunt een lijst filteren op basis van:
 * **Op status gebaseerde filters** : filteren op de status van de verbindings monitor, test groep of test. Zie vak 2 in de volgende afbeelding.
 * **Filter voor waarschuwing op basis van filteren** op waarschuwingen die zijn geactiveerd op de bron van de verbindings monitor. Zie vak 3 in de volgende afbeelding.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Scherm afbeelding die laat zien hoe u de weer gaven van verbindings monitors, test groepen en tests in verbindings monitor kunt filteren (preview-versie)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
 Bijvoorbeeld, om te kijken naar alle tests in verbindings monitor (preview) waarbij het bron-IP-adres 10.192.64.56 is:
 1. Wijzig de weer gave om deze te **testen**.
@@ -218,16 +218,16 @@ Alleen mislukte testen weer geven in verbindings monitor (preview) waarbij de be
 1. Voer in het zoek veld *Outlook.office365.com* in
 1. Selecteer in **bereik** in het bovenste niveau filter **bestemmingen**.
   
-  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Scherm opname van een weer gave die is gefilterd zodat alleen mislukte tests voor het Outlook.Office365.com doel worden weer gegeven" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
 Als u de oorzaak van het mislukken van een verbindings monitor of test groep wilt weten, klikt u op de kolom met de naam reason.  Dit geeft aan welke drempel waarde (mislukte controles mislukt% of RTT) is geschonden en gerelateerde diagnostische berichten
   
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="Scherm opname met de reden van een fout voor een verbindings monitor, test of test groep" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
     
 De trends in de RTT en het percentage mislukte controles voor een verbindings monitor weer geven:
 1. Selecteer de verbindings monitor die u wilt onderzoeken.
 
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="Scherm afbeelding met metrische gegevens voor een verbindings monitor, weer gegeven per test groep" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
 1. De volgende secties worden weer geven  
     1. Essentials-bron specifieke eigenschappen van de geselecteerde verbindings monitor 
@@ -237,7 +237,7 @@ De trends in de RTT en het percentage mislukte controles voor een verbindings mo
     1. Tabbladen voor test groepen, bronnen, doelen en test configuraties: een lijst met test groepen, bronnen of doelen in de verbindings monitor. Het controleren van de tests is mislukt, het verzamelen van de RTT en controles is mislukt% values.  U kunt ook teruggaan in de tijd om gegevens weer te geven. 
     1. Problemen: problemen op het niveau van de hop voor elke test in de verbindings monitor. 
 
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="Scherm opname van metrische gegevens voor een verbindings monitor, weer gegeven door test groep deel 2" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
 1. U kunt
     * Klik op alle tests weer geven-om alle tests in de verbindings monitor weer te geven
@@ -247,7 +247,7 @@ De trends in de RTT en het percentage mislukte controles voor een verbindings mo
 1. In de weer gave alle tests weer geven kunt u het volgende doen:
     * Selecteer testen en klik op vergelijken.
     
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="Scherm opname van twee testen" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
     
     * Cluster gebruiken om samengestelde bronnen uit te breiden, zoals VNET, subnetten naar de onderliggende bronnen
     * Bekijk topologie voor alle tests door te klikken op topologie.
@@ -259,7 +259,7 @@ De trends in de RTT en het percentage mislukte controles voor een test groep wee
 De trends in de RTT en het percentage mislukte controles voor een test bekijken:
 1. Selecteer de test die u wilt onderzoeken. U ziet de netwerk topologie en het end-to-end-trend diagram voor controles die zijn mislukt,% en de retour tijd. Als u de geïdentificeerde problemen wilt weer geven, selecteert u in de topologie een hop in het pad. (Deze hops zijn Azure-resources.) Deze functionaliteit is momenteel niet beschikbaar voor on-premises netwerken
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="Scherm opname van de topologie weergave van een test" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Query's in Log Analytics vastleggen
 
@@ -269,7 +269,7 @@ Gebruik Log Analytics om aangepaste weer gaven van uw bewakings gegevens te make
 
 In verbindings monitors die zijn gemaakt vóór de ervaring van de verbindings monitor (preview-versie) zijn alle vier de metrische gegevens beschikbaar:% probe failed, AverageRoundtripMs, ChecksFailedPercent (preview) en RoundTripTimeMs (preview). In verbindings monitors die zijn gemaakt in de ervaring van de verbindings monitor (preview-versie) zijn gegevens alleen beschikbaar voor de metrische waarden die zijn gelabeld met *(preview)*.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Scherm opname met metrische gegevens in de verbindings monitor (preview-versie)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Wanneer u metrische gegevens gebruikt, stelt u het resource type in als micro soft. Network/networkWatchers/connectionMonitors
 
@@ -277,8 +277,8 @@ Wanneer u metrische gegevens gebruikt, stelt u het resource type in als micro so
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Tests mislukt | Percentage | Average | Het percentage van de connectiviteits controle tests is mislukt. | Geen dimensies |
 | AverageRoundtripMs | Gem. retour tijd (MS) | Milliseconden | Average | Gemiddelde netwerk-RTT voor connectiviteits controle tests die zijn verzonden tussen de bron en de bestemming. |             Geen dimensies |
-| ChecksFailedPercent (preview-versie) | % Controles mislukt (preview-versie) | Percentage | Average | Percentage mislukte controles voor een test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs (preview-versie) | Retour tijd (MS) (preview-versie) | Milliseconden | Average | RTT voor controles die worden verzonden tussen de bron en de bestemming. Deze waarde is niet van het gemiddelde. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| ChecksFailedPercent (preview-versie) | % Controles mislukt (preview-versie) | Percentage | Average | Percentage mislukte controles voor een test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Regio |
+| RoundTripTimeMs (preview-versie) | Retour tijd (MS) (preview-versie) | Milliseconden | Average | RTT voor controles die worden verzonden tussen de bron en de bestemming. Deze waarde is niet van het gemiddelde. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Regio |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Waarschuwingen op basis van metrische gegevens voor verbindings monitor
 
@@ -300,7 +300,7 @@ U kunt metrische waarschuwingen maken op verbindings monitors met behulp van de 
     1. Geef waarschuwings Details op.
     1. De waarschuwings regel maken.
 
-  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="Scherm opname met het regel gebied maken in Azure Monitor. Het bron adres en de naam van het bron eindpunt zijn gemarkeerd" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>Problemen in uw netwerk vaststellen
 

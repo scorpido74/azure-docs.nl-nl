@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691340"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure CLI
@@ -22,7 +22,7 @@ ms.locfileid: "88691340"
 ## <a name="prerequisites"></a>Vereisten
 
 - Down load de nieuwste [versie van AzCopy V10 toevoegen](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
-- [Installeer de Azure cli](/cli/azure/install-azure-cli).
+- [Installeer de Azure CLI](/cli/azure/install-azure-cli).
 - Als u van plan bent om een VHD te uploaden van on-premises: een VHD met een vaste grootte die is [voor bereid voor Azure](../windows/prepare-for-upload-vhd-image.md), lokaal opgeslagen.
 - Of een beheerde schijf in azure, als u van plan bent om een kopieer actie uit te voeren.
 

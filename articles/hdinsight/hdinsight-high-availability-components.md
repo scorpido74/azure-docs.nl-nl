@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842577"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge Beschik baarheid die worden ondersteund door Azure HDInsight
@@ -56,7 +56,7 @@ Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel
 
 | Service | Clusterknooppunten | Cluster typen | Doel |
 |---|---|---|---|
-| Apache Ambari-server| Actieve hoofd knooppunt | Alle | Bewaakt en beheert het cluster.|
+| Apache Ambari-server| Actieve hoofd knooppunt | Alles | Bewaakt en beheert het cluster.|
 | Tijdlijn server van de toepassing voor Apache-GARENs | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt fout opsporingsgegevens over garen taken die op het cluster worden uitgevoerd.|
 | Taak geschiedenis server voor Hadoop-MapReduce | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt gegevens van fout opsporing voor MapReduce-taken.|
 | Apache Livy | Actieve hoofd knooppunt | Spark | Maakt eenvoudige interactie met een Spark-cluster mogelijk via een REST-interface |

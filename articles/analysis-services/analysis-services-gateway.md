@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438833"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway
@@ -32,10 +32,10 @@ Voor Azure Analysis Services is het voorbereiden van de installatie met de gatew
 
 
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 De gateway die u op een computer in uw organisatie installeert, wordt uitgevoerd als een Windows-service, **on-premises gegevens gateway**. Deze lokale service is geregistreerd bij de Gateway-cloudservice via Azure Service Bus. Vervolgens maakt u een on-premises gegevens gateway resource voor een Azure-abonnement. Uw Azure Analysis Services-servers worden vervolgens verbonden met uw Azure gateway-resource. Wanneer modellen op uw server verbinding moeten maken met uw on-premises gegevens bronnen voor query's of verwerking, passeren een query en gegevens stroom de gateway resource, Azure Service Bus, de lokale on-premises gegevens Gateway Service en uw gegevens bronnen. 
 
-![Hoe het werkt](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
+![Uitleg](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Query's en gegevensstroom:
 
@@ -46,7 +46,7 @@ Query's en gegevensstroom:
 5. De gateway stuurt de query voor uitvoering naar de gegevensbron.
 6. De resultaten worden vanuit de gegevensbron teruggezonden naar de gateway en vervolgens naar de cloudservice en uw server.
 
-## <a name="installing"></a>Installeren
+## <a name="installing"></a>Wordt geïnstalleerd
 
 Wanneer u voor een Azure Analysis Services omgeving installeert, is het belang rijk dat u de stappen volgt die worden beschreven in de [on-premises gegevens gateway installeren en configureren voor Azure Analysis Services](analysis-services-gateway-install.md). Dit artikel is specifiek voor Azure Analysis Services. Het bevat aanvullende stappen die vereist zijn voor het instellen van een on-premises gegevens gateway resource in Azure en het verbinden van uw Azure Analysis Services-server met de resource.
 
@@ -58,7 +58,7 @@ Het is raadzaam om uw Azure-gateway resource te maken in hetzelfde abonnement al
 
 De gateway maakt een uitgaande verbinding naar Azure Service Bus. De gateway communiceert via uitgaande poorten: TCP 443 (standaard), 5671, 5672, 9350 t/m 9354.  De gateway vereist geen inkomende poorten.
 
-Mogelijk moet u IP-adressen voor uw gegevens regio in uw firewall toevoegen. U kunt de lijst met IP-adressen van Microsoft Azure-datacenters [hier](https://www.microsoft.com/download/details.aspx?id=56519) downloaden. Deze lijst wordt wekelijks bijgewerkt. De adressen in de lijst met IP-adressen van Azure-datacenters worden vermeld in de CIDR-notatie. Zie [Klasseloze route ring tussen domeinen](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
+Mogelijk moet u IP-adressen voor uw gegevens regio in uw firewall toevoegen. U kunt de lijst met IP-adressen van Microsoft Azure-datacenters [hier](https://www.microsoft.com/download/details.aspx?id=56519) downloaden. Deze lijst wordt wekelijks bijgewerkt. De adressen in de lijst met IP-adressen van Azure-datacenters worden vermeld in de CIDR-notatie. Zie [klasseloze Inter-Domain route ring](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
 
 Hieronder vindt u een volledig gekwalificeerde domein naam die wordt gebruikt door de gateway.
 
@@ -94,7 +94,7 @@ De volgende artikelen zijn opgenomen in de on-premises gegevens gateway algemene
 * [Veelgestelde vragen over on-premises gegevensgateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
 * [Gebruik de on-premises gegevensgateway-app](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
 * [Beheer op tenantniveau](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [Proxy-instellingen configureren](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
+* [Proxyinstellingen configureren](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
 * [Communicatie-instellingen aanpassen](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
 * [Logboek bestanden configureren](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
 * [Problemen oplossen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)

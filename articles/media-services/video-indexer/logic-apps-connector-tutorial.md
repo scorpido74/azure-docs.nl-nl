@@ -7,13 +7,13 @@ ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/01/2020
-ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882884"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540401"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Zelfstudie: Video Indexer met Logic App en Power Automate gebruiken
 
@@ -21,7 +21,7 @@ De [REST-API van Video Indexer v2](https://api-portal.videoindexer.ai/docs/servi
 
 Om de integratie nog gemakkelijker te maken, bieden we ondersteuning voor [Logic Apps](https://azure.microsoft.com/services/logic-apps/) en [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) -connectoren die compatibel zijn met onze API. U kunt de connectoren gebruiken om aangepaste werkstromen in te stellen waarmee u inzichten doeltreffend kunt indexeren en extraheren uit een grote hoeveelheid video- en audio-bestanden zonder één regel code te schrijven. Daarnaast geeft het gebruik van connectoren voor uw integratie u meer inzicht in de status van uw werkstroom, en een gemakkelijke manier om fouten op te sporen.  
 
-Om u snel op weg te helpen met de Video Indexer-connectoren, overlopen we snel een voorbeeld van een Logic App- en Power Automate-oplossing die u kunt instellen. Deze zelfstudie laat zien hoe u stromen kunt instellen met behulp van Logic Apps.
+Om u snel op weg te helpen met de Video Indexer-connectoren, overlopen we snel een voorbeeld van een Logic App- en Power Automate-oplossing die u kunt instellen. Deze zelfstudie laat zien hoe u stromen kunt instellen met behulp van Logic Apps. De editors en mogelijkheden in beide oplossingen zijn echter bijna identiek, zodat de diagrammen en uitleg van toepassing zijn op zowel Logic Apps als Power Automate.
 
 Het scenario voor het automatisch uploaden en indexeren van uw video dat in deze zelfstudie wordt behandeld, bestaat uit twee verschillende stromen die met elkaar samenwerken. 
 * De eerste stroom wordt geactiveerd wanneer een blob wordt toegevoegd aan of gewijzigd in een Azure Storage-account. Het uploadt het nieuwe bestand naar Video Indexer met een callback-URL om een melding te verzenden zodra de indexering voltooid is. 
@@ -53,7 +53,12 @@ Om de eerste stroom in te stellen, moet u uw Video Indexer-API-sleutel en Azure 
 
 ![Verbindingsnaam en API-sleutel](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-Als u eenmaal verbinding kunt maken met uw Azure Storage- en Video Indexer-accounts, zoekt u kiest u de trigger 'Wanneer een blob wordt toegevoegd of gewijzigd' in de **Logic Apps-ontwerpfunctie**. Selecteer de container waarin u uw videobestanden wilt plaatsen. 
+> [!TIP]
+> Als u eerder een Azure Storage-account of Video Indexer-account hebt verbonden met een logische app, zijn uw verbindingsgegevens opgeslagen en wordt u automatisch verbonden. <br/>U kunt de verbinding bewerken door te klikken op **Verbinding wijzigen** onder aan een Azure Storage (het opslagvenster) of Video Indexer (het spelervenster).
+
+Als u eenmaal verbinding kunt maken met uw Azure Storage- en Video Indexer-accounts, zoekt u kiest u de trigger 'Wanneer een blob wordt toegevoegd of gewijzigd' in de **Logic Apps-ontwerpfunctie**.
+
+Selecteer de container waarin u uw videobestanden wilt plaatsen. 
 
 ![Schermopname van het dialoogvenster 'Wanneer een blob wordt toegevoegd of gewijzigd' waarin u een container kunt selecteren.](./media/logic-apps-connector-tutorial/container.png)
 
@@ -75,7 +80,7 @@ Laat de callback-URL voorlopig leeg. U voegt deze pas toe nadat u de tweede stro
 
 U kunt voor de andere parameters de standaardwaarde gebruiken of deze instellen zoals u dat wenst. 
 
-Klik op 'Opslaan' om de tweede stroom te configureren en de inzichten op te halen zodra het uploaden en indexeren is voltooid. 
+Klik op **Opslaan** om de tweede stroom te configureren en de inzichten op te halen zodra het uploaden en indexeren is voltooid. 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>De tweede stroom instellen: JSON-extractie  
 
@@ -115,6 +120,12 @@ Zorg ervoor dat beide stromen zijn opgeslagen en u bent klaar.
 
 Probeer uw nieuwe Logic App- of Power Automate-oplossing uit door een video toe te voegen aan uw Azure-blobcontainer, en ga een paar minuten later terug om te controleren of de inzichten verschijnen in de doelmap. 
 
+## <a name="generate-captions"></a>Ondertiteling genereren
+
+Zie het volgende blog voor de stappen die laten zien [hoe u ondertiteling kunt genereren met Video Indexer en Logic Apps](https://techcommunity.microsoft.com/t5/azure-media-services/generating-captions-with-video-indexer-and-logic-apps/ba-p/1672198). 
+
+In dit artikel wordt ook beschreven hoe u een video automatisch kunt indexeren door deze te kopiëren naar OneDrive en hoe u de ondertitels opslaat die door Video Indexer worden gegenereerd in OneDrive.
+ 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u klaar bent met deze zelfstudie, kunt u deze Logic App- of Power Automate-oplossing actief houden indien nodig. Wenst u deze niet actief te houden en niet gefactureerd te worden, schakel dan beide stromen uit als u Power Automate gebruikt. Schakel beide stromen uit als u Logic Apps gebruikt. 

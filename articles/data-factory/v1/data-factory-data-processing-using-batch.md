@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998065"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
@@ -122,7 +122,7 @@ Maak een batch-pool met ten minste twee reken knooppunten.
 
    f. Selecteer **OK** om de groep te maken.
 
-#### <a name="azure-storage-explorer"></a>Azure Opslagverkenner
+#### <a name="azure-storage-explorer"></a>Azure Storage Explorer
 U gebruikt [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) of [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (van ClumsyLeaf-software) om de gegevens in uw opslag projecten te controleren en te wijzigen. U kunt ook de gegevens in de logboeken van uw in de Cloud gehoste toepassingen controleren en wijzigen.
 
 1. Maak een container met de naam **mycontainer** met persoonlijke toegang (geen anonieme toegang).
@@ -965,7 +965,7 @@ Nadat u gegevens hebt verwerkt, kunt u deze gebruiken met online hulpprogram ma'
 * [Gegevens vernieuwen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure en Power BI: basis overzicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Inleiding tot de Data Factory-Service](data-factory-introduction.md)

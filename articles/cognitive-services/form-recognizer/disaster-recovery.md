@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718812"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Back-ups van uw formulieren Recognizer-modellen maken en herstellen
@@ -82,7 +82,7 @@ De hoofd tekst van uw aanvraag moet de volgende indeling hebben. U moet de resou
 > [!NOTE]
 > De copy-API ondersteunt de functie [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) op transparante wijze. Hiervoor is geen speciale behandeling vereist, maar houd er rekening mee dat als u tussen een niet-versleutelde resource naar een versleutelde bron kopieert, de aanvraag header moet worden toegevoegd `x-ms-forms-copy-degrade: true` . Als deze header niet is opgenomen, mislukt de Kopieer bewerking en wordt er een geretourneerd `DataProtectionTransformServiceError` .
 
-U ontvangt een `202\Accepted` antwoord met een bewerkings locatie-header. Deze waarde is de URL die u gebruikt om de voortgang van de bewerking bij te houden. Kopieer het naar een tijdelijke locatie voor de volgende stap.
+U ontvangt een `202\Accepted` antwoord met een Operation-Location-header. Deze waarde is de URL die u gebruikt om de voortgang van de bewerking bij te houden. Kopieer het naar een tijdelijke locatie voor de volgende stap.
 
 ```
 HTTP/1.1 202 Accepted
