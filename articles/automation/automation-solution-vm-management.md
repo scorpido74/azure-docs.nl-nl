@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317358"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Overzicht van VM's buiten bedrijfsuren starten/stoppen
@@ -55,30 +55,30 @@ Als u Vm's wilt inschakelen voor de functie VM's buiten bedrijfsuren starten/sto
 
 | Machtiging | Bereik|
 | --- | --- |
-| Micro soft. Automation/automationAccounts/lezen | Resourcegroep |
-| Micro soft. Automation/automationAccounts/Varia bles/-schrijven | Resourcegroep |
-| Micro soft. Automation/automationAccounts/schedules/write | Resourcegroep |
-| Micro soft. Automation/automationAccounts/runbooks/schrijven | Resourcegroep |
-| Micro soft. Automation/automationAccounts/Connections/write | Resourcegroep |
-| Micro soft. Automation/automationAccounts/certificaten/schrijven | Resourcegroep |
-| Micro soft. Automation/automationAccounts/modules/schrijven | Resourcegroep |
-| Micro soft. Automation/automationAccounts/modules/lezen | Resourcegroep |
-| Micro soft. Automation/automationAccounts/jobSchedules/write | Resourcegroep |
-| Micro soft. Automation/automationAccounts/Jobs/schrijven | Resourcegroep |
-| Micro soft. Automation/automationAccounts/Jobs/lezen | Resourcegroep |
-| Micro soft. OperationsManagement/oplossingen/schrijven | Resourcegroep |
-| Micro soft. OperationalInsights/werk ruimten/* | Resourcegroep |
-| Micro soft. Insights/diagnosticSettings/schrijven | Resourcegroep |
-| Micro soft. Insights/ActionGroups/schrijven | Resourcegroep |
-| Micro soft. Insights/ActionGroups/lezen | Resourcegroep |
-| Micro soft. resources/abonnementen/resourceGroups/lezen | Resourcegroep |
-| Micro soft. resources/implementaties/* | Resourcegroep |
+| Micro soft. Automation/automationAccounts/lezen | Resource Group |
+| Micro soft. Automation/automationAccounts/Varia bles/-schrijven | Resource Group |
+| Micro soft. Automation/automationAccounts/schedules/write | Resource Group |
+| Micro soft. Automation/automationAccounts/runbooks/schrijven | Resource Group |
+| Micro soft. Automation/automationAccounts/Connections/write | Resource Group |
+| Micro soft. Automation/automationAccounts/certificaten/schrijven | Resource Group |
+| Micro soft. Automation/automationAccounts/modules/schrijven | Resource Group |
+| Micro soft. Automation/automationAccounts/modules/lezen | Resource Group |
+| Micro soft. Automation/automationAccounts/jobSchedules/write | Resource Group |
+| Micro soft. Automation/automationAccounts/Jobs/schrijven | Resource Group |
+| Micro soft. Automation/automationAccounts/Jobs/lezen | Resource Group |
+| Micro soft. OperationsManagement/oplossingen/schrijven | Resource Group |
+| Micro soft. OperationalInsights/werk ruimten/* | Resource Group |
+| Micro soft. Insights/diagnosticSettings/schrijven | Resource Group |
+| Micro soft. Insights/ActionGroups/schrijven | Resource Group |
+| Micro soft. Insights/ActionGroups/lezen | Resource Group |
+| Micro soft. resources/abonnementen/resourceGroups/lezen | Resource Group |
+| Micro soft. resources/implementaties/* | Resource Group |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Machtigingen voor het nieuwe Automation-account en de nieuwe Log Analytics-werk ruimte
 
 U kunt Vm's voor de VM's buiten bedrijfsuren starten/stoppen-functie inschakelen met behulp van een nieuw Automation-account en Log Analytics werk ruimte. In dit geval hebt u de machtigingen die zijn gedefinieerd in de voor gaande sectie en de machtigingen die in deze sectie zijn gedefinieerd. U hebt ook de volgende rollen nodig:
 
-- Co-beheerder van het abonnement. Deze rol is vereist voor het maken van het klassieke uitvoeren als-account als u klassieke Vm's wilt beheren. [Klassieke uitvoeren als-accounts](automation-create-standalone-account.md#create-a-classic-run-as-account) worden niet meer standaard gemaakt.
+- Co-Administrator op het abonnement. Deze rol is vereist voor het maken van het klassieke uitvoeren als-account als u klassieke Vm's wilt beheren. [Klassieke uitvoeren als-accounts](automation-create-standalone-account.md#create-a-classic-run-as-account) worden niet meer standaard gemaakt.
 - Lidmaatschap van de functie voor ontwikkel aars van [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) -toepassingen. Zie [machtigingen voor het configureren van run as-accounts](manage-runas-account.md#permissions)voor meer informatie over het configureren van uitvoeren als-accounts.
 - Inzender voor het abonnement of de volgende machtigingen.
 
@@ -88,10 +88,10 @@ U kunt Vm's voor de VM's buiten bedrijfsuren starten/stoppen-functie inschakelen
 | Micro soft. Authorization/permissions/Read |Abonnement|
 | Micro soft. Authorization/roleAssignments/lezen | Abonnement |
 | Microsoft.Authorization/roleAssignments/write | Abonnement |
-| Micro soft. Authorization/roleAssignments/verwijderen | Abonnement || Micro soft. Automation/automationAccounts/Connections/Read | Resourcegroep |
-| Micro soft. Automation/automationAccounts/certificaten/lezen | Resourcegroep |
-| Micro soft. Automation/automationAccounts/schrijven | Resourcegroep |
-| Micro soft. OperationalInsights/werk ruimten/schrijven | Resourcegroep |
+| Micro soft. Authorization/roleAssignments/verwijderen | Abonnement || Micro soft. Automation/automationAccounts/Connections/Read | Resource Group |
+| Micro soft. Automation/automationAccounts/certificaten/lezen | Resource Group |
+| Micro soft. Automation/automationAccounts/schrijven | Resource Group |
+| Micro soft. OperationalInsights/werk ruimten/schrijven | Resource Group |
 
 ## <a name="components"></a>Onderdelen
 

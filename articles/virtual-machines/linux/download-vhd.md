@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
 ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87761047"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Een Linux-VHD downloaden vanuit Azure
@@ -42,7 +42,7 @@ Als u het VHD-bestand wilt downloaden, moet u een [SAS-URL (Shared Access Signat
 
 1.  Selecteer onder de gegenereerde URL **het VHD-bestand downloaden**.
 
-    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Toont de knop voor het downloaden van de VHD.":::
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Hiermee wordt de menu knop voor het stoppen van de virtuele machine weer gegeven.":::
 
 2.  Mogelijk moet u **Opslaan** in de browser selecteren om het downloaden te starten. De standaard naam voor het VHD-bestand is *ABCD*.
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039038"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Configureer bare op drempel waarden gebaseerde regels verwerken in Azure Stream Analytics
@@ -137,7 +137,7 @@ In dit voor beeld wordt gebruikgemaakt van de **metrische** invoer gegevens die 
 - Drie voorbeeld gebeurtenissen worden weer gegeven binnen de time span van 1 minuut, waarde `T14:50` . 
 - Alle drie hebben dezelfde `deviceId` waarde `978648` .
 - De waarden voor de CPU-waarde verschillen per gebeurtenis, `98` , `95` `80` respectievelijk. Alleen de eerste twee voorbeeld gebeurtenissen overschrijden de CPU-waarschuwings regel die in de regel is vastgelegd.
-- Het veld includeDim in de waarschuwings regel is sleutel nummer 2. Het bijbehorende veld sleutel 2 in de voorbeeld gebeurtenissen heet `NodeName` . De drie voorbeeld gebeurtenissen hebben `N024` respectievelijk waarden `N024` `N014` . In de uitvoer ziet u alleen het knoop punt, alleen de `N024` gegevens die overeenkomen met de waarschuwings criteria voor hoge CPU. `N014`voldoet niet aan de hoge CPU-drempel.
+- Het veld includeDim in de waarschuwings regel is sleutel nummer 2. Het bijbehorende veld sleutel 2 in de voorbeeld gebeurtenissen heet `NodeName` . De drie voorbeeld gebeurtenissen hebben `N024` respectievelijk waarden `N024` `N014` . In de uitvoer ziet u alleen het knoop punt, alleen de `N024` gegevens die overeenkomen met de waarschuwings criteria voor hoge CPU. `N014` voldoet niet aan de hoge CPU-drempel.
 - De waarschuwings regel is geconfigureerd met een `filter` enkel op sleutel nummer 2, die overeenkomt met het `cluster` veld in de voorbeeld gebeurtenissen. De drie voorbeeld gebeurtenissen hebben allemaal `C1` een waarde die overeenkomt met de filter criteria.
 
 ```json

@@ -14,17 +14,17 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.openlocfilehash: 37f305a7564382b9c6c5a031340d81a22cfedbf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120708"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Een toepassing met meerdere tenants toevoegen aan de Azure AD-toepassingsgalerie
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Wat is de Azure AD-toepassings galerie?
 
-Azure Active Directory (Azure AD) is een op de cloud gebaseerde identiteits service. De [Azure AD-toepassings galerie](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) bevindt zich in de Azure Marketplace-App Store, waar alle connectors voor toepassingen worden gepubliceerd voor eenmalige aanmelding en gebruikers inrichting. Klanten die Azure AD als id-provider gebruiken, vinden de verschillende SaaS Application connectors die hier zijn gepubliceerd. IT-beheerders kunnen Connect oren toevoegen vanuit de app-galerie en vervolgens de connectors configureren en gebruiken voor eenmalige aanmelding en inrichting. Azure AD biedt ondersteuning voor alle belang rijke Federatie protocollen, waaronder SAML 2,0, OpenID Connect Connect, OAuth en WS-insluiting voor eenmalige aanmelding. 
+Azure Active Directory (Azure AD) is een op de cloud gebaseerde identiteits service. De [Azure AD-toepassings galerie](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) bevindt zich in de Azure Marketplace-App Store, waar alle connectors voor toepassingen worden gepubliceerd voor eenmalige aanmelding en gebruikers inrichting. Klanten die Azure AD als id-provider gebruiken, vinden de verschillende SaaS Application connectors die hier zijn gepubliceerd. IT-beheerders kunnen Connect oren toevoegen vanuit de app-galerie en vervolgens de connectors configureren en gebruiken voor eenmalige aanmelding en inrichting. Azure AD biedt ondersteuning voor alle belang rijke Federatie protocollen, waaronder SAML 2,0, OpenID Connect Connect, OAuth en WS-Fed voor eenmalige aanmelding. 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Als uw toepassing SAML of OpenIDConnect ondersteunt
 Als u een multi tenant-toepassing hebt die u wilt weer geven in de Azure AD-toepassings galerie, moet u er eerst voor zorgen dat uw toepassing ondersteuning biedt voor een van de volgende technologieën voor eenmalige aanmelding:

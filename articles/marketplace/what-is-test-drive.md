@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
 ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121864"
 ---
 # <a name="what-is-a-test-drive"></a>Wat is een test drive?
@@ -24,7 +24,7 @@ Als uitgever kunt u de test drive-instellingen beheren en configureren in partne
 
 Potentiële klanten kunnen uw test drive op de commerciële Marketplace ontdekken. Ze bieden hun contact gegevens en gaan akkoord met de voor waarden en het privacybeleid van uw aanbieding en krijgen vervolgens toegang tot uw vooraf geconfigureerde omgeving om deze voor een bepaalde periode te proberen. Klanten ontvangen een praktijk gerichte, zelf-begeleide proef versie van de belangrijkste functies en voor delen van uw product en u ontvangt een waardevolle lead.
 
-## <a name="how-does-it-work"></a>Hoe werkt dit?
+## <a name="how-does-it-work"></a>Hoe werkt het?
 
 Als uitgever kunt u de test drive-instellingen beheren en configureren binnen het partner centrum. Na de installatie wordt het een beheerd exemplaar dat op aanvraag wordt geïmplementeerd voor de klant die daarom vraagt. Zodra een test drive-exemplaar is toegewezen, is het beschikbaar voor gebruik voor een bepaalde tijd en vervolgens verwijderd om ruimte te maken voor een andere klant.
 

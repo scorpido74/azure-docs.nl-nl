@@ -9,13 +9,13 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
 ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816725"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events voor Linux-Vm's
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Geplande gebeurtenissen voor Linux-VM’s
 
 Scheduled Events is een Azure-Metadata Service die uw toepassings tijd biedt voor het voorbereiden van onderhoud van virtuele machines (VM). Het bevat informatie over aanstaande onderhouds gebeurtenissen (bijvoorbeeld opnieuw opstarten), zodat uw toepassing deze kan voorbereiden en de onderbreking kan beperken. Het is beschikbaar voor alle Azure-Virtual Machines typen, waaronder PaaS en IaaS in Windows en Linux. 
 
@@ -98,7 +98,7 @@ Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis met het type `
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-### <a name="headers"></a>Kopteksten
+### <a name="headers"></a>Headers
 Wanneer u Metadata Service een query uitvoert, moet u de header opgeven `Metadata:true` om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true` header is vereist voor alle aanvragen voor geplande gebeurtenissen. Het toevoegen van de header in de aanvraag resulteert in een antwoord op een ' ongeldige aanvraag ' van Metadata Service.
 
 ### <a name="query-for-events"></a>Query's uitvoeren op gebeurtenissen

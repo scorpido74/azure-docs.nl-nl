@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het configureren van Microso
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332811"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
@@ -76,7 +76,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Methode voor gegevens beveiliging-korte termijn schijf & online Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. In het scherm doelen voor de **korte termijn opgeven** , neemt u de benodigde invoer op voor het maken van back-uppunten op schijf en selecteert u **volgende**.
+6. Neem in het scherm **Short-Term doel stellingen opgeven** de benodigde invoer op om back-uppunten te maken op schijf en selecteer **volgende**.
 
     In het voor beeld is de **Bewaar** termijn **5 dagen**, de **synchronisatie frequentie** is elke **15 minuten**, wat de back-upfrequentie is. **Snelle volledige back-up** is ingesteld op **8:00 P. M**.
 
@@ -134,7 +134,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
 14. Wanneer u de details van het beleid in het scherm **samen vatting** hebt bekeken, selecteert u **groep maken** om de werk stroom te volt ooien. U kunt **sluiten** en de voortgang van de taak in de werk ruimte bewaking bewaken selecteren.
 
-    ![Bezig met het maken van een beveiligings groep](./media/backup-azure-backup-sql/pg-summary.png)
+    ![In-Progress voor het maken van beveiligings groepen](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Back-ups op aanvraag van een SQL Server Data Base
 

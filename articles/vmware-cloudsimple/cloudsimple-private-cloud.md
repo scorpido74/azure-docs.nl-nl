@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140714"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Overzicht van CloudSimple Private Cloud
@@ -30,7 +30,7 @@ Met CloudSimple profiteert u van een model voor Cloud verbruik dat uw total cost
 CloudSimple is volledig compatibel met:
 
 * Bestaande hulpprogram ma's
-* Lacune
+* Vaardigheden
 * Processen
 
 Met deze compatibiliteit kunnen uw teams werk belastingen op de Azure-Cloud beheren zonder dat dit soort beleid wordt verstoord:

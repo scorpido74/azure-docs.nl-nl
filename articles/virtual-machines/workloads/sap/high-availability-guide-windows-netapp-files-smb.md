@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88853111"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's in Windows met Azure NetApp Files (SMB) voor SAP-toepassingen
@@ -143,7 +143,7 @@ U hebt de volgende software van SAP nodig:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar installeren op het eerste ASCS/SCS-cluster knooppunt
 
-1. Installeer een SAP ASCS/SCS-exemplaar op het eerste cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer naar: **product**  >  **DBMS** > installatie > Application Server ABAP (of Java) > systeem met maximale Beschik baarheid > ASCS/SCS-exemplaar > eerste cluster knooppunt.  
+1. Installeer een SAP ASCS/SCS-exemplaar op het eerste cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer naar: **product**  >  **DBMS** > installatie > Application Server ABAP (of Java) > High-Availability systeem > ASCS/SCS-exemplaar > eerste cluster knooppunt.  
 
 2. Selecteer **Bestands share cluster** als de configuratie van de cluster share in SWPM.  
 3. Wanneer u wordt gevraagd om stap **SAP-para meters**van het systeem, voert u de hostnaam in voor de Azure NetApp files SMB-share die u al hebt gemaakt als hostnaam van de **Bestands share**.  In dit voor beeld is de hostnaam van de SMB **-share anfsmb-9562**. 
@@ -158,7 +158,7 @@ U hebt de volgende software van SAP nodig:
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar op het tweede ASCS/SCS-cluster knooppunt installeren
 
-1. Installeer een SAP ASCS/SCS-exemplaar op het tweede cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer vervolgens naar **product**  >  **DBMS** > installatie > Application Server ABAP (of Java) > systeem met maximale Beschik baarheid > ASCS/SCS-exemplaar > extra cluster knooppunt.  
+1. Installeer een SAP ASCS/SCS-exemplaar op het tweede cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer naar **product**  >  **DBMS** > installatie > Application Server ABAP (of Java) > High-Availability systeem > ASCS/SCS-exemplaar > extra cluster knooppunt.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Een DBMS-exemplaar en SAP-toepassings servers installeren
 

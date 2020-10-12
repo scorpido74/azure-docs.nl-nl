@@ -8,10 +8,10 @@ ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
 ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397076"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
@@ -34,10 +34,10 @@ Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt onders
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
 | [Diagnostische instellingen](../platform/diagnostic-settings.md) | **Ja** | Azure metrische en logboek gegevens worden rechtstreeks door Azure naar Azure Monitor logboeken verzonden. |
-| [Azure-opslag account](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor leest de gegevens van een opslag account niet. |
-| [Windows-agents](../platform/agent-windows.md) | No | Directe Windows-agents worden niet gebruikt door Azure SQL-analyse. |
-| [Linux-agents](../learn/quick-collect-linux-computer.md) | No | Direct Linux-agents worden niet gebruikt door Azure SQL-analyse. |
-| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | No | Een directe verbinding van de Operations Manager agent naar Azure Monitor wordt niet gebruikt door Azure SQL-analyse. |
+| [Azure-opslag account](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nee | Azure Monitor leest de gegevens van een opslag account niet. |
+| [Windows-agents](../platform/agent-windows.md) | Nee | Directe Windows-agents worden niet gebruikt door Azure SQL-analyse. |
+| [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | Direct Linux-agents worden niet gebruikt door Azure SQL-analyse. |
+| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | Nee | Een directe verbinding van de Operations Manager agent naar Azure Monitor wordt niet gebruikt door Azure SQL-analyse. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL-analyse opties
 

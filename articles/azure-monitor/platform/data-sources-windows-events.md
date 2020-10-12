@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075249"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Gegevens bronnen in het Windows-gebeurtenis logboek in Azure Monitor
@@ -50,7 +50,7 @@ Windows-gebeurtenis records hebben een type **gebeurtenis** en hebben de eigensc
 | EventLevelName |De ernst van de gebeurtenis in de vorm van tekst. |
 | Geschreven |De naam van het gebeurtenis logboek waaruit de gebeurtenis is verzameld. |
 | ParameterXml |Gebeurtenis parameter waarden in XML-indeling. |
-| ManagementGroupName |De naam van de beheer groep voor System Center Operations Manager agents.  Voor andere agents is deze waarde`AOI-<workspace ID>` |
+| ManagementGroupName |De naam van de beheer groep voor System Center Operations Manager agents.  Voor andere agents is deze waarde `AOI-<workspace ID>` |
 | RenderedDescription |Gebeurtenis beschrijving met parameter waarden |
 | Bron |De bron van de gebeurtenis. |
 | SourceSystem |Type agent waaruit de gebeurtenis is verzameld. <br> OpsManager: Windows-agent, Direct Connect of Operations Manager beheerd <br> Linux: alle Linux-agents  <br> Opslag – Azure Diagnostics |

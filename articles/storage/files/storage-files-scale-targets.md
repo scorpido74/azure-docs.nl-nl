@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86496176"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Schaalbaarheids- en prestatiedoelen in Azure Files
@@ -110,7 +110,7 @@ Als algemene hand leiding voor uw implementatie moet u een aantal zaken in acht 
 - De object doorvoer wordt ongeveer proportioneel geschaald naar rato van het aantal synchronisatie groepen op de server. Het splitsen van gegevens in meerdere synchronisatie groepen op een server levert een betere door Voer, die ook wordt beperkt door de server en het netwerk.
 - De object doorvoer is omgekeerd evenredig met de MiB per tweede door voer. Voor kleinere bestanden krijgt u een hogere door Voer in termen van het aantal verwerkte objecten per seconde, maar lagere MiB per seconde door voer. Voor grotere bestanden krijgt u echter minder objecten die per seconde worden verwerkt, maar een hogere MiB per seconde door voer. De MiB per tweede door Voer wordt beperkt door de Azure Files schaal doelen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Een Azure Files-implementatie plannen](storage-files-planning.md)
-- [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)

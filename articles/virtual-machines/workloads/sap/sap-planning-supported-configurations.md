@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88648986"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-workload in scenario's met virtuele Azure-machines
@@ -102,7 +102,7 @@ Voor virtuele Azure-machines worden de volgende configuraties voor hoge Beschik 
 - SAP HANA scale-out n + m configuraties met behulp van [Azure NetApp files](https://azure.microsoft.com/services/netapp/) op SuSE en Red Hat. Meer informatie vindt u in deze artikelen:
     - [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server}](./sap-hana-scale-out-standby-netapp-files-suse.md)
     - [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- SQL Server failover-cluster op basis van scale-out bestands services van Windows. Een aanbeveling voor productie systemen is het gebruik van SQL Server altijd in plaats van clusteren. SQL Server always on biedt betere Beschik baarheid met afzonderlijke opslag. Details worden in dit artikel beschreven: 
+- SQL Server failovercluster op basis van Windows Scale-Out bestands Services. Een aanbeveling voor productie systemen is het gebruik van SQL Server altijd in plaats van clusteren. SQL Server always on biedt betere Beschik baarheid met afzonderlijke opslag. Details worden in dit artikel beschreven: 
     - [Een SQL Server-failovercluster configureren op virtuele machines van Azure](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - SQL Server always on wordt ondersteund met het Windows-besturings systeem voor SQL Server op Azure. Dit is de standaard aanbeveling voor productie-SQL Server exemplaren in Azure. Details worden beschreven in de volgende artikelen:
     - [Introductie van SQL Server AlwaysOn-beschikbaarheids groepen op virtuele machines van Azure](../../../azure-sql/virtual-machines/windows/availability-group-overview.md).

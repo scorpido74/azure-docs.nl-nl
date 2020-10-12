@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797743"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker instellen voor SUSE Linux Enterprise Server in azure
@@ -419,7 +419,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    </code></pre>
 
    >[!IMPORTANT]
-   > De geïnstalleerde versie van pakket **Fence-agents** moet ten minste **4.4.0** zijn om te profiteren van de snellere failover-tijden met de Azure Fence-agent, als een cluster knooppunt moet worden geomheiningd. Het is raadzaam om het pakket bij te werken als er een lagere versie wordt uitgevoerd.  
+   > De geïnstalleerde versie van pakket **Fence-agents** moet ten minste **4.4.0**  zijn om te profiteren van de snellere failover-tijden met de Azure Fence-agent, als een cluster knooppunt moet worden geomheiningd. Het is raadzaam om het pakket bij te werken als er een lagere versie wordt uitgevoerd.  
 
 
 1. **[A]** Azure python SDK installeren 
@@ -621,14 +621,14 @@ Gebruik de volgende inhoud voor het invoer bestand. U moet de inhoud aanpassen a
 
 Wijs de aangepaste rol Linux Fence-agent rol toe die in het laatste hoofd stuk is gemaakt voor de Service-Principal. Gebruik de rol owner niet meer.
 
-1. Ga naar[https://portal.azure.com](https://portal.azure.com)
+1. Ga naar [https://portal.azure.com](https://portal.azure.com)
 1. Open de blade Alle resources
 1. De virtuele machine van het eerste clusterknooppunt selecteren
 1. Klik op Toegangsbeheer (IAM)
 1. Klik op roltoewijzing toevoegen
 1. Selecteer de rol ' Linux Fence-agent functie '
 1. Voer de naam in van de toepassing die u hierboven hebt gemaakt
-1. Op Opslaan klikken
+1. Klik op Opslaan
 
 Herhaal de bovenstaande stappen voor het tweede cluster knooppunt.
 
@@ -679,7 +679,7 @@ sudo crm configure property maintenance-mode=false
 
    > [!NOTE]
    > Nadat u de pacemaker-resources voor Azure-Events agent hebt geconfigureerd en u het cluster in of uit de onderhouds modus plaatst, worden er mogelijk waarschuwings berichten weer gegeven als:  
-     Waarschuwing: CIB-Boots trap: options: onbekend kenmerk ' hostName_ <strong>hostName</strong>'  
+     Waarschuwing: CIB-Boots trap: options: onbekend kenmerk ' hostName_ <strong> hostName</strong>'  
      Waarschuwing: CIB-Boots trap: opties: onbekend kenmerk ' Azure-events_globalPullState '  
      Waarschuwing: CIB-Boots trap: options: onbekend kenmerk ' hostName_ <strong>hostName</strong>'  
    > Deze waarschuwings berichten kunnen worden genegeerd.

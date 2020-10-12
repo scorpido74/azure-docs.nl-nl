@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018574"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Een mini maal vereiste versie van Transport Layer Security (TLS) afdwingen voor aanvragen van een opslag account
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 De resultaten geven het aantal aanvragen weer dat is gemaakt met elke versie van TLS:
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Scherm opname van de log Analytics-query voor het retour neren van een TLS-versie":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Scherm afbeelding die laat zien hoe u een diagnostische instelling voor logboek registratie aanvragen maakt":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>Query vastgelegde aanvragen op IP-adres van beller en de header van de gebruikers agent
 
@@ -104,7 +104,7 @@ Voer de volgende stappen uit om de minimale TLS-versie voor een bestaand opslag 
 1. Selecteer de **configuratie** -instelling.
 1. Gebruik onder **minimum versie van TLS**de vervolg keuzelijst om de minimale versie van TLS te selecteren die vereist is voor toegang tot gegevens in dit opslag account, zoals wordt weer gegeven in de volgende afbeelding.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Scherm afbeelding die laat zien hoe u de minimale versie van TLS configureert in de Azure Portal":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Scherm afbeelding die laat zien hoe u een diagnostische instelling voor logboek registratie aanvragen maakt":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -307,7 +307,7 @@ Voer de volgende stappen uit om het nalevings rapport in de Azure Portal weer te
 1. Filter de resultaten voor de naam van de beleids toewijzing die u in de vorige stap hebt gemaakt. In het rapport wordt weer gegeven hoeveel resources niet voldoen aan het beleid.
 1. U kunt inzoomen op het rapport voor meer informatie, met inbegrip van een lijst met opslag accounts die niet voldoen aan het beleid.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Scherm opname van nalevings rapport voor controle beleid voor minimale TLS-versie":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Scherm afbeelding die laat zien hoe u een diagnostische instelling voor logboek registratie aanvragen maakt":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>Azure Policy gebruiken om de minimum versie van TLS af te dwingen
 
@@ -343,7 +343,7 @@ Nadat u het beleid met het effect deny hebt gemaakt en aan een bereik hebt toege
 
 In de volgende afbeelding ziet u de fout die optreedt als u probeert een opslag account te maken met de minimale TLS-versie die is ingesteld op TLS 1,0 (de standaard waarde voor een nieuw account) wanneer een beleid met een deny-effect vereist dat de minimum versie van TLS wordt ingesteld op TLS 1,2.
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Scherm opname met de fout die optreedt bij het maken van een opslag account in schending van het beleid":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Scherm afbeelding die laat zien hoe u een diagnostische instelling voor logboek registratie aanvragen maakt":::
 
 ## <a name="network-considerations"></a>Overwegingen voor het netwerk
 

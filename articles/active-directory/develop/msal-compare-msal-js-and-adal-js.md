@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120895"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Verschillen tussen MSAL JS en ADAL JS
@@ -44,7 +44,7 @@ U moet echter nog steeds ADAL.js gebruiken als uw toepassing zich moet aanmelden
 
 * De methode om tokens op de achtergrond te verkrijgen en te vernieuwen zonder dat gebruikers om toestemming te vragen worden genoemd `acquireToken` in ADAL.js. In MSAL.js is deze methode een naam `acquireTokenSilent` voor een meer beschrijvende functie van deze functionaliteit.
 
-### <a name="authority-value-common"></a>Waarde van autoriteit`common`
+### <a name="authority-value-common"></a>Waarde van autoriteit `common`
 
 In v 1.0 `https://login.microsoftonline.com/common` kunnen gebruikers zich aanmelden met een Azure ad-account (voor elke organisatie) met behulp van de-instantie.
 
