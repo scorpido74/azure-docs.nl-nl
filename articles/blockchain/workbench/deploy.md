@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: references_regions
 ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077023"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Block Chain Workbench preview implementeren
@@ -54,7 +54,7 @@ Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant waar u Azure Block Chain Workbench wilt implementeren.
-1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource maken** .
+1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
 1. Selecteer **Block Chain**  >  **Azure Block Chain workbench (preview-versie)**.
 
     ![Azure Block Chain Workbench maken](media/deploy/blockchain-workbench-settings-basic.png)
@@ -67,7 +67,7 @@ Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van 
     | Wachtwoord | Het wacht woord wordt gebruikt om verbinding te maken met Vm's. |
     | SSH | Gebruik een open bare RSA-sleutel in de indeling met één regel die begint met **ssh-rsa** of gebruik de PEM-indeling met meerdere regels. U kunt SSH-sleutels genereren met behulp `ssh-keygen` van Linux en OS X, of met behulp van puttygen in Windows. Zie [SSH-sleutels gebruiken met Windows op Azure voor](../../virtual-machines/linux/ssh-from-windows.md)meer informatie over SSH-sleutels. |
     | Data Base-en block Chain-wacht woord | Geef het wacht woord op dat moet worden gebruikt voor toegang tot de data base die is gemaakt als onderdeel van de implementatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;) |
-    | Implementatie regio | Geef op waar u Block Chain Workbench-resources wilt implementeren. Voor de beste Beschik baarheid moet dit overeenkomen met de instelling voor de **regio** locatie. Niet alle regio's zijn beschikbaar tijdens de preview-versie. Functies zijn mogelijk niet beschikbaar in sommige regio's. Azure Block Chain Data Manager is beschikbaar in de volgende Azure-regio's: VS-Oost en Europa-west.|
+    | Implementatie regio | Geef op waar u Block Chain Workbench-resources wilt implementeren. Voor de beste Beschik baarheid moet dit overeenkomen met de instelling voor de **regio** locatie. Niet alle regio's zijn beschikbaar tijdens de preview-versie. Functies zijn mogelijk niet in alle regio's beschikbaar. Azure Blockchain Data Manager is beschikbaar in de volgende Azure-regio's: VS - oost en Europa - west.|
     | Abonnement | Geef het Azure-abonnement op dat u wilt gebruiken voor uw implementatie. |
     | Resourcegroepen | Maak een nieuwe resource groep door **Nieuw maken** te selecteren en geef een unieke naam op voor de resource groep. |
     | Locatie | Geef de regio op waarvoor u het Framework wilt implementeren. |

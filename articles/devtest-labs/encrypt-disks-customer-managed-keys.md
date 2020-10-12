@@ -4,10 +4,10 @@ description: Meer informatie over het versleutelen van besturings systeem schijv
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489813"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Besturings systemen (OS)-schijven versleutelen met door de klant beheerde sleutels in Azure DevTest Labs
@@ -39,14 +39,14 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
     1. Selecteer op de pagina **schijf versleuteling instellen** de optie **toegangs beheer (IAM)** in het menu links. 
     1. Selecteer **+ toevoegen** op de werk balk en selecteer **een roltoewijzing toevoegen**.  
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Rollen beheer toevoegen-menu":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Beheerde sleutels":::
     1. Selecteer op de pagina **roltoewijzing toevoegen** de rol van **lezer** of een rol die meer toegang toestaat. 
     1. Typ de naam van het lab waarvoor de schijf versleuteling is ingesteld en selecteer de naam van het lab (door het systeem toegewezen identiteit voor het lab) in de vervolg keuzelijst. 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Door het systeem beheerde identiteit van het lab selecteren":::        
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Beheerde sleutels":::        
     1. Selecteer **Opslaan** op de werkbalk. 
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Roltoewijzing opslaan":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Beheerde sleutels":::
 3. Voeg de **systeemtoegewezen identiteit** van het test systeem toe aan de rol van **Inzender voor virtuele machines** met behulp van de **Subscription**  ->  **iam-pagina (Subscription Access Control)** . De stappen zijn vergelijkbaar met die in de vorige stappen. 
 
     
@@ -54,7 +54,7 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
     1. Klik op **Toegangsbeheer (IAM)** . 
     1. Selecteer **+ toevoegen** op de werk balk en selecteer **een roltoewijzing toevoegen**. 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="De pagina abonnement-> toegangs beheer (IAM)":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Beheerde sleutels":::
     1. Selecteer op de pagina **roltoewijzing toevoegen** de optie **Inzender voor virtuele machines** voor de rol.
     1. Typ de naam van het lab en selecteer de naam van het **Lab** (door het systeem toegewezen identiteit voor het lab) in de vervolg keuzelijst. 
     1. Selecteer **Opslaan** op de werkbalk. 
@@ -64,12 +64,12 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
 1. Selecteer op de start pagina voor uw Lab in de Azure Portal **configuratie en beleid** in het menu links. 
 1. Selecteer op de pagina **configuratie en beleid** de optie **schijven (preview)** in de sectie **versleuteling** . Het **versleutelings type** is standaard ingesteld op **versleuteling op rest met een door het platform beheerde sleutel**.
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Tabblad schijven van de pagina configuratie en beleid":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Beheerde sleutels":::
 1. Voor **versleutelings type**selecteert u **versleuteling op-rest met een door de klant beheerde sleutel uit de** vervolg keuzelijst. 
 1. Voor **schijf versleuteling**selecteert u de schijf versleutelings set die u eerder hebt gemaakt. Dit is dezelfde schijf versleutelings die door de systeem eigen identiteit van het Lab kan worden geopend.
 1. Selecteer **Opslaan** op de werkbalk. 
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Versleuteling met door de klant beheerde sleutel inschakelen":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Beheerde sleutels":::
 1. In het bericht venster met de volgende tekst: *deze instelling is van toepassing op nieuw gemaakte machines in het lab. De oude besturingssysteem schijf blijft versleuteld met de oude schijf versleutelings*. Selecteer **OK**. 
 
     Eenmaal geconfigureerd, worden Lab-besturingssysteem schijven versleuteld met de door de klant beheerde sleutel die is opgegeven met behulp van de schijf Encryption set. 
@@ -79,15 +79,15 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
 1. Ga naar een virtuele machine die is gemaakt met een lab en waarvoor schijf versleuteling is ingeschakeld met een door de klant beheerde sleutel op het lab.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="VM met ingeschakelde schijf versleuteling":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Beheerde sleutels":::
 1. Klik op de resource groep van de virtuele machine en klik op de besturingssysteem schijf.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="VM-resource groep":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Beheerde sleutels":::
 1. Ga naar versleuteling en controleer of versleuteling is ingesteld op door de klant beheerde sleutel met de schijf versleuteling die u hebt geselecteerd.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Versleuteling valideren":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Beheerde sleutels":::
   
 ## <a name="next-steps"></a>Volgende stappen
 

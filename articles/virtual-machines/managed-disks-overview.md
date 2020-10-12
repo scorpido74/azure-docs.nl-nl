@@ -9,13 +9,13 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
 ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299929"
 ---
-# <a name="introduction-to-azure-managed-disks"></a>Inleiding tot Azure Managed disks
+# <a name="introduction-to-azure-managed-disks"></a>Inleiding tot beheerde Azure-schijven
 
 Azure Managed disks zijn opslag volumes op blok niveau die worden beheerd door Azure en worden gebruikt met Azure Virtual Machines. Managed disks zijn vergelijkbaar met een fysieke schijf op een on-premises server, maar zijn gevirtualiseerd. Met Managed disks hoeft u alleen maar de schijf grootte en het schijf type op te geven en de schijf in te richten. Wanneer u de schijf hebt ingericht, wordt de rest door Azure afgehandeld.
 

@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086569"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs voor komen
 
-Anonieme open bare Lees toegang tot containers en blobs in Azure Storage is een handige manier om gegevens te delen, maar kan ook een beveiligings risico opleveren. Het is belang rijk anonieme toegang zorgvuldig te beheren en te begrijpen hoe anonieme toegang tot uw gegevens kan worden geëvalueerd. Operationele complexiteit, menselijke fout of kwaad aardige aanvallen op basis van gegevens die openbaar toegankelijk zijn, kunnen leiden tot dure gegevens inbreuken. Micro soft raadt u aan anonieme toegang alleen in te scha kelen wanneer dit nodig is voor uw toepassings scenario.
+Anonieme openbare leestoegang tot containers en blobs in Azure Storage is een handige manier om gegevens te delen, maar kan ook een beveiligingsrisico opleveren. Het is belang rijk anonieme toegang zorgvuldig te beheren en te begrijpen hoe anonieme toegang tot uw gegevens kan worden geëvalueerd. Operationele complexiteit, menselijke fout of kwaad aardige aanvallen op basis van gegevens die openbaar toegankelijk zijn, kunnen leiden tot dure gegevens inbreuken. Micro soft raadt u aan anonieme toegang alleen in te scha kelen wanneer dit nodig is voor uw toepassings scenario.
 
-Open bare toegang tot uw BLOB-gegevens is standaard altijd verboden. Met de standaard configuratie voor een opslag account kan een gebruiker met de juiste machtigingen echter de open bare toegang tot containers en blobs in een opslag account configureren. Voor een betere beveiliging kunt u niet alle open bare toegang tot het opslag account toestaan, ongeacht de instelling voor open bare toegang voor een afzonderlijke container. Door open bare toegang tot het opslag account te weigeren, voor komt u dat een gebruiker open bare toegang kan inschakelen voor een container in het account. Micro soft raadt u aan om open bare toegang tot een opslag account uit te stellen, tenzij dit vereist is voor uw scenario. Het niet toestaan van open bare toegang helpt te voor komen dat inbreuk op gegevens wordt veroorzaakt door ongewenste anonieme toegang.
+Open bare toegang tot uw BLOB-gegevens is standaard altijd verboden. Met de standaard configuratie voor een opslag account kan een gebruiker met de juiste machtigingen echter de open bare toegang tot containers en blobs in een opslag account configureren. Voor een betere beveiliging kunt u niet alle open bare toegang tot het opslag account toestaan, ongeacht de instelling voor open bare toegang voor een afzonderlijke container. Door openbare toegang tot het opslagaccount te weigeren, voorkomt u dat een gebruiker openbare toegang voor een container in het account kan inschakelen. Microsoft raadt u aan om openbare toegang tot een opslagaccount alleen toe te staan als dit vereist is voor uw scenario. Door openbare toegang niet toe te staan, voorkomt u inbreuk op gegevens ten gevolge van ongewenste anonieme toegang.
 
 Wanneer u toegang tot open bare blobs voor het opslag account niet toestaat, worden alle anonieme aanvragen voor dat account door Azure Storage geweigerd. Wanneer open bare toegang niet is toegestaan voor een account, kunnen containers in dat account niet later worden geconfigureerd voor open bare toegang. Alle containers die al zijn geconfigureerd voor open bare toegang, accepteren geen anonieme aanvragen meer. Zie [anonieme open bare Lees toegang voor containers en blobs configureren](anonymous-read-access-configure.md)voor meer informatie.
 
@@ -59,7 +59,7 @@ Volg deze stappen om een metriek te maken waarmee anonieme aanvragen worden bijg
 
 Nadat u de metrische gegevens hebt geconfigureerd, worden anonieme aanvragen weer gegeven in de grafiek. De volgende afbeelding toont anonieme aanvragen die zijn samengevoegd in de afgelopen dertig minuten.
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Scherm opname van geaggregeerde anonieme aanvragen op Blob Storage":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Scherm afbeelding die laat zien hoe u metrische gegevens kunt configureren voor het berekenen van BLOB-trans acties":::
 
 U kunt ook een waarschuwings regel configureren om u op de hoogte te stellen wanneer er een bepaald aantal anonieme aanvragen wordt gedaan voor uw opslag account. Zie [metrische waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](../../azure-monitor/platform/alerts-metric.md)voor meer informatie.
 
@@ -85,7 +85,7 @@ Als u Azure Storage gegevens wilt registreren met Azure Monitor en deze wilt ana
 1. Kies onder **categorie Details**in de sectie **logboek** welke typen aanvragen moeten worden geregistreerd. Alle anonieme aanvragen worden Lees aanvragen, dus Selecteer **StorageRead** om anonieme aanvragen vast te leggen.
 1. Selecteer onder **doel gegevens** **verzenden naar log Analytics**. Selecteer uw abonnement en de Log Analytics werk ruimte die u eerder hebt gemaakt, zoals wordt weer gegeven in de volgende afbeelding.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Scherm afbeelding die laat zien hoe u een diagnostische instelling voor logboek registratie aanvragen maakt":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Scherm afbeelding die laat zien hoe u metrische gegevens kunt configureren voor het berekenen van BLOB-trans acties":::
 
 Nadat u de diagnostische instelling hebt gemaakt, worden aanvragen voor het opslag account vervolgens geregistreerd volgens die instelling. Zie voor meer informatie [Diagnostische instelling maken om bron logboeken en metrische gegevens in azure te verzamelen](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -241,7 +241,7 @@ Voer de volgende stappen uit om het nalevings rapport in de Azure Portal weer te
 1. Filter de resultaten voor de naam van de beleids toewijzing die u in de vorige stap hebt gemaakt. In het rapport wordt weer gegeven hoeveel resources niet voldoen aan het beleid.
 1. U kunt inzoomen op het rapport voor meer informatie, met inbegrip van een lijst met opslag accounts die niet voldoen aan het beleid.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Scherm opname van nalevings rapport voor controle beleid voor open bare BLOB-toegang":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Scherm afbeelding die laat zien hoe u metrische gegevens kunt configureren voor het berekenen van BLOB-trans acties":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>Azure Policy gebruiken om gemachtigde toegang af te dwingen
 
@@ -277,7 +277,7 @@ Nadat u het beleid met het effect deny hebt gemaakt en aan een bereik hebt toege
 
 In de volgende afbeelding ziet u de fout die optreedt wanneer u probeert om een opslag account te maken dat open bare toegang (de standaard waarde voor een nieuw account) toestaat wanneer een beleid met een deny-effect vereist dat open bare toegang niet is toegestaan.
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Scherm opname met de fout die optreedt bij het maken van een opslag account in schending van het beleid":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Scherm afbeelding die laat zien hoe u metrische gegevens kunt configureren voor het berekenen van BLOB-trans acties":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

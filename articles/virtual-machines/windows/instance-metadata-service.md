@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
 ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086705"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
@@ -821,7 +821,7 @@ De service is **algemeen beschikbaar** in alle Azure-Clouds.
 
 Voor beelden van het aanroepen van meta gegevens service met verschillende talen in de virtuele machine:
 
-Taal      | Voorbeeld
+Taal      | Voorbeeld:
 --------------|----------------
 C++ (Windows) | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#            | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

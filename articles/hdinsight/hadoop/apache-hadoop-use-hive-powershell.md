@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081046"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive query's uitvoeren met Power shell
@@ -28,7 +28,7 @@ Dit document bevat een voor beeld van het gebruik van Azure PowerShell om Apache
 
 * Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/) is geïnstalleerd.
+* De [Az-module](https://docs.microsoft.com/powershell/azure/) van PowerShell geïnstalleerd.
 
 ## <a name="run-a-hive-query"></a>Een Hive-query uitvoeren
 
@@ -67,7 +67,7 @@ De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit
     2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
     ```
 
-4. Zoals eerder vermeld, `Invoke-Hive` kan worden gebruikt om een query uit te voeren en te wachten op de reactie. Gebruik het volgende script om te zien hoe invoke-Hive werkt:
+4. Zoals eerder vermeld, `Invoke-Hive` kan worden gebruikt om een query uit te voeren en te wachten op de reactie. Gebruik het volgende script om te zien hoe Invoke-Hive werkt:
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
