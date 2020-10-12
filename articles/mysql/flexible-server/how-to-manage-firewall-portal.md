@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 132319575147c2ff1075881b1f1faec8bc5029f4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936632"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Maak en beheer firewall regels voor Azure Database for MySQL-flexibele server met behulp van de Azure Portal
@@ -48,21 +48,21 @@ In dit artikel wordt de nadruk gelegd op het maken van MySQL-server met **open b
 
 3. Klik op **huidige client-IP-adres toevoegen** in de firewall regels. Hiermee wordt automatisch een firewall regel gemaakt met het open bare IP-adres van uw computer, zoals wordt waargenomen door het Azure-systeem.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Add My IP":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/2-add-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
 
 4. Controleer uw IP-adres voordat u de configuratie opslaat. In sommige gevallen wijkt het IP-adres van Azure Portal af van het IP-adres dat wordt gebruikt voor toegang tot het internet en Azure-servers. Daarom moet u mogelijk het IP-begin adres en het laatste IP-adres wijzigen om de regel te laten werken zoals verwacht.
 
    U kunt een zoek machine of een ander online programma gebruiken om uw eigen IP-adres te controleren. Zoek bijvoorbeeld naar ' wat is mijn IP '.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Bing search for What is my IP":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/3-what-is-my-ip.png" alt-text="Azure portal - click Connection Security":::-->
 
 5. Voeg extra adresbereiken toe. In de firewall regels voor de Azure Database for MySQL flexibele server kunt u één IP-adres of een bereik van adressen opgeven. Als u de regel tot één IP-adres wilt beperken, typt u hetzelfde adres in het veld voor eerste IP-adres en laatste IP-adres. Als u de firewall opent, kunnen beheerders, gebruikers en toepassingen toegang krijgen tot alle data bases op de MySQL-server waarvoor ze geldige referenties hebben.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - firewall rules":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/4-specify-addresses.png" alt-text="Azure portal - click Connection Security":::-->
 
 6. Klik op **Opslaan** op de werk balk om deze firewall regel op te slaan. Wacht tot de bevestiging is geslaagd voor de update van de firewall regels.
 
-   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Save":::-->
+   <!--:::image type="content" source="./media/howto-manage-firewall-portal/5-save-firewall-rule.png" alt-text="Azure portal - click Connection Security":::-->
 
 ## <a name="connect-from-azure"></a>Verbinding maken vanuit Azure
 

@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320763"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Een Azure Digital Apparaatdubbels-exemplaar en-authenticatie (CLI) instellen
@@ -78,7 +78,7 @@ Het resultaat van deze opdracht is een gegenereerde informatie over de roltoewij
 >
 > Gebruik de [pagina Azure portal van Azure Active Directory gebruikers](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) om het gebruikers account te selecteren en de bijbehorende gegevens te openen. De *ObjectID*van de gebruiker kopiëren:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Weer gave van de gebruikers pagina in Azure Portal markeren van de GUID in het veld object-ID" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Opdrachtvenster met het maken van een resource groep en een Azure Digital Apparaatdubbels-exemplaar" lightbox="media/includes/user-id.png":::
 >
 > Herhaal vervolgens de opdracht lijst met roltoewijzingen met de *object-id* van de gebruiker voor de `assignee` bovenstaande para meter.
 
@@ -115,7 +115,7 @@ Sla dit bestand _** op alsmanifest.jsop**_.
 
 Vervolgens uploadt u dit bestand naar Cloud Shell. Klik in het venster Cloud Shell op het pictogram bestanden uploaden/downloaden en kies uploaden.
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van de Upload optie":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Opdrachtvenster met het maken van een resource groep en een Azure Digital Apparaatdubbels-exemplaar":::
 Ga naar de *manifest.js* die u zojuist hebt gemaakt en klik op openen.
 
 Voer vervolgens de volgende opdracht uit om een app-registratie te maken met de antwoord-URL van een *open bare client/systeem eigen (mobile & bureau blad)* `http://localhost` . Vervang tijdelijke aanduidingen naar behoefte:
@@ -126,7 +126,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 Hier volgt een fragment van de uitvoer van deze opdracht, met informatie over de registratie die u hebt gemaakt:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Cloud Shell uitvoer van nieuwe Azure AD-App-registratie":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Opdrachtvenster met het maken van een resource groep en een Azure Digital Apparaatdubbels-exemplaar":::
 
 ### <a name="verify-success"></a>Controleren geslaagd
 
@@ -140,7 +140,7 @@ Controleer vervolgens of de instellingen van uw geüploade *manifest.jsop* de ju
 
 Selecteer vervolgens *overzicht* in de menu balk om de details van de app-registratie te bekijken:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Portal weergave van de belang rijke waarden voor de app-registratie":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Opdrachtvenster met het maken van een resource groep en een Azure Digital Apparaatdubbels-exemplaar":::
 
 Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. Deze waarden zijn later nodig om [een client-app te verifiëren tegen de Azure Digital apparaatdubbels-api's](how-to-authenticate-client.md). Als u niet de persoon bent die code gaat schrijven voor dergelijke toepassingen, moet u deze waarden delen met de persoon die het gaat doen.
 

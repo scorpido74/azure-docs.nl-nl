@@ -1,15 +1,15 @@
 ---
-title: Gegevens verzamelen
+title: Gegevensverzameling
 description: Meer informatie over de voorbeeld gegevens die moeten worden verzameld tijdens het ontwikkelen van uw app
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: bb00595a5d5be130bf6c1177004bf3042ef8f9f0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327184"
 ---
 # <a name="data-collection-for-your-app"></a>Gegevens verzameling voor uw app

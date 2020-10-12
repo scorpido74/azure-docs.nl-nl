@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898905"
 ---
 # <a name="apply-image-transformation"></a>Afbeeldingstransformatie toepassen 
@@ -47,20 +47,20 @@ U moet een init- [installatie kopie transformatie](init-image-transformation.md)
 
 ### <a name="module-parameters"></a>Module parameters
 
-| Name | Bereik | Type | Standaard                   | Beschrijving                              |
+| Naam | Bereik | Type | Standaard                   | Beschrijving                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
-| Modus | Elk   | Modus | (Verplicht te geven gebruiker) | Voor welk doel gebruikt u invoer transformatie. U moet wille keurige transformatie bewerkingen uitsluiten, maar ze in de training houden |
+| Modus | Alle   | Modus | (Verplicht te geven gebruiker) | Voor welk doel gebruikt u invoer transformatie. U moet wille keurige transformatie bewerkingen uitsluiten, maar ze in de training houden |
 
 ### <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam                       | Type                    | Description                       |
+| Naam                       | Type                    | Beschrijving                       |
 | -------------------------- | ----------------------- | --------------------------------- |
 | Trans formatie van invoer afbeelding | TransformationDirectory | Trans formatie van invoer afbeelding        |
 | Map met invoer afbeeldingen      | ImageDirectory          | Afbeeldings Directory die moet worden getransformeerd |
 
 ### <a name="outputs"></a>Uitvoerwaarden  
 
-| Naam                   | Type           | Description            |
+| Naam                   | Type           | Beschrijving            |
 | ---------------------- | -------------- | ---------------------- |
 | Uitvoer afbeelding map | ImageDirectory | Uitvoer afbeelding map |
 

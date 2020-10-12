@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936605"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Limieten in Azure Database for PostgreSQL flexibele server
@@ -29,7 +29,7 @@ Het maximum aantal verbindingen per prijs categorie en vCores worden hieronder w
 | **Bebreekbaar**        |        |             |                 |                      |
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4 GiB       | 100             | 97                   |
-| **Algemeen**  |        |             |                 |                      |
+| **Algemeen doel**  |        |             |                 |                      |
 | D2s_v3               | 2      | 8 GiB       | 214             | 211                  |
 | D4s_v3               | 4      | 16 GiB      | 429             | 426                  |
 | D8s_v3               | 8      | 32 GiB      | 859             | 856                  |
@@ -75,7 +75,7 @@ Een PostgreSQL-verbinding, zelfs inactief, kan ongeveer 10 MB aan geheugen in be
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
 
-- Zone-redundante HA wordt momenteel niet ondersteund voor breek bare servers.
+- Zone-Redundant HA wordt momenteel niet ondersteund voor breek bare servers.
 - Het IP-adres van de database server wordt gewijzigd wanneer een failover van de server naar de stand-by-modus wordt uitgevoerd. Zorg ervoor dat u de DNS-record gebruikt in plaats van het IP-adres van de server.
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones

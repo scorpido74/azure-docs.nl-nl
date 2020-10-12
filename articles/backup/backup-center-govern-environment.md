@@ -1,16 +1,16 @@
 ---
-title: Uw back-up regelen met behulp van Back-upcentrum
+title: Uw back-upstructuur regelen via het Backup-centrum
 description: Meer informatie over het beheren van uw Azure-omgeving om ervoor te zorgen dat al uw resources compatibel zijn met een Back-upcentrum met backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614317"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>Uw back-up regelen met behulp van Back-upcentrum
+# <a name="govern-your-backup-estate-using-backup-center"></a>Uw back-upstructuur regelen via het Backup-centrum
 
 Back-upcentrum helpt u bij het beheren van uw Azure-omgeving om ervoor te zorgen dat al uw resources compatibel zijn met een back-upperspectief. Hieronder vindt u een aantal beheer mogelijkheden van Back-upcentrum:
 

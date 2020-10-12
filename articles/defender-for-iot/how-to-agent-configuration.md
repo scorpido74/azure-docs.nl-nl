@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: c348b800e9587f13e6ff004317a2aa12efb03394
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936217"
 ---
 # <a name="tutorial-configure-security-agents"></a>Zelf studie: beveiligings agenten configureren
@@ -117,7 +117,7 @@ De volgende tabel bevat de eigenschappen van Defender voor IoT-beveiligings agen
 
 Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka.ms/iot-security-module-default).
 
-| Name| Status | Geldige waarden| Standaardwaarden| Description |
+| Naam| Status | Geldige waarden| Standaardwaarden| Beschrijving |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Vereist: onwaar |Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT7M |Het maximale tijds interval voor berichten met een hoge prioriteit worden verzonden.|
 |lowPriorityMessageFrequency |Vereist: onwaar|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT5H |Maximale tijd waarna berichten met een lage prioriteit worden verzonden.|
@@ -132,17 +132,17 @@ Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |Diagnostische gebeurtenis|eventPriorityDiagnostic| Aan| False| Aan een agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor uitgebreide logboek registratie.|
 |Configuratiefout |eventPriorityConfigurationError |Beperkt |False |Agent kan de configuratie niet parseren. Controleer de configuratie op basis van het schema.|
-|Statistieken voor verwijderde gebeurtenissen |eventPriorityDroppedEventsStatistics |Beperkt |Waar|Gerelateerde gebeurtenis statistieken voor de agent. |
-|Verbonden hardware|eventPriorityConnectedHardware |Beperkt |Waar |Moment opname van alle hardware die is aangesloten op het apparaat.|
-|Luisterende poorten|eventPriorityListeningPorts |Hoog |Waar |Moment opname van alle open luisterende poorten op het apparaat.|
+|Statistieken voor verwijderde gebeurtenissen |eventPriorityDroppedEventsStatistics |Beperkt |True|Gerelateerde gebeurtenis statistieken voor de agent. |
+|Verbonden hardware|eventPriorityConnectedHardware |Beperkt |True |Moment opname van alle hardware die is aangesloten op het apparaat.|
+|Luisterende poorten|eventPriorityListeningPorts |Hoog |True |Moment opname van alle open luisterende poorten op het apparaat.|
 |Proces maken |eventPriorityProcessCreate |Beperkt |False |Het proces voor het maken van controles op het apparaat.|
 |Proces beëindigen|eventPriorityProcessTerminate |Beperkt |False |Controleert het proces op het apparaat.|
-|Systeemgegevens |eventPrioritySystemInformation |Beperkt |Waar |Een moment opname van systeem informatie (bijvoorbeeld: besturings systeem of CPU).|
-|Lokale gebruikers| eventPriorityLocalUsers |Hoog |Waar|Een moment opname van de geregistreerde lokale gebruikers in het systeem. |
+|Systeemgegevens |eventPrioritySystemInformation |Beperkt |True |Een moment opname van systeem informatie (bijvoorbeeld: besturings systeem of CPU).|
+|Lokale gebruikers| eventPriorityLocalUsers |Hoog |True|Een moment opname van de geregistreerde lokale gebruikers in het systeem. |
 |Aanmelden|  eventPriorityLogin |Hoog|False|Controleer de aanmeldings gebeurtenissen op het apparaat (lokale en externe aanmeldingen).|
 |Verbinding maken |eventPriorityConnectionCreate|Beperkt|False|Controleert TCP-verbindingen die zijn gemaakt met en van het apparaat. |
-|Firewallconfiguratie| eventPriorityFirewallConfiguration|Beperkt|Waar|Moment opname van de firewall configuratie van het apparaat (firewall regels). |
-|Basis lijn van besturings systeem| eventPriorityOSBaseline| Beperkt|Waar|Moment opname van de basis controle van het besturings systeem van het apparaat.|
+|Firewallconfiguratie| eventPriorityFirewallConfiguration|Beperkt|True|Moment opname van de firewall configuratie van het apparaat (firewall regels). |
+|Basis lijn van besturings systeem| eventPriorityOSBaseline| Beperkt|True|Moment opname van de basis controle van het besturings systeem van het apparaat.|
 |
 
 ## <a name="next-steps"></a>Volgende stappen

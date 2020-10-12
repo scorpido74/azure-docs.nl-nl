@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326793"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Versleuteling van de gegevens in de rest van de formulier herkenning
@@ -29,5 +29,5 @@ Azure Form Recognizer versleutelt uw gegevens automatisch wanneer deze persisten
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Formulier voor het door de klant beheerde sleutel aanvraag](https://aka.ms/cogsvc-cmk)
+* [Aanvraag formulier voor formulier herkenning Customer-Managed sleutel](https://aka.ms/cogsvc-cmk)
 * [Meer informatie over Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

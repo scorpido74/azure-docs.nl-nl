@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90901544"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Infra structuur dubbele versleuteling voor Azure Database for PostgreSQL
@@ -33,15 +33,15 @@ Volg deze stappen voor het maken van een Azure Database for MySQL server met dub
 
 3. Geef de basis gegevens van de server op. Selecteer **extra instellingen** en schakel het selectie vakje **infra structuur dubbele versleuteling** in om de para meter in te stellen.
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="Azure Database for PostgreSQL selecties":::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
 4. Selecteer **Beoordelen en maken** om de server in te richten.
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="Azure Database for PostgreSQL overzicht":::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
 5. Nadat de server is gemaakt, kunt u de infra structuur voor dubbele versleuteling valideren door de status op de Blade **gegevens versleutelings** server te controleren.
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="Azure Database for MySQL validatie":::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="Azure Database for PostgreSQL in het menu":::
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Een Azure Database for PostgreSQL-server met dubbele versleuteling van de infra structuur maken-CLI
 

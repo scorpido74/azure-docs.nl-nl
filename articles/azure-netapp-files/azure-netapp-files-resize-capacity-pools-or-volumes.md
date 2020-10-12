@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325501"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Het formaat van een capaciteitspool of volume wijzigen
@@ -43,5 +43,5 @@ U kunt de grootte van een volume indien nodig wijzigen. Capaciteitsgebruik van e
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een capaciteitspool instellen](azure-netapp-files-set-up-capacity-pool.md)
-- [Een hand matige QoS-capaciteits groep beheren](manage-manual-qos-capacity-pool.md)
+- [Een handmatige QoS-capaciteitspool maken](manage-manual-qos-capacity-pool.md)
 - [Het serviceniveau van een volume dynamisch wijzigen](dynamic-change-volume-service-level.md) 

@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327728"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
@@ -159,7 +159,7 @@ Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om d
     > [!NOTE]
     > U moet lid zijn van de [rol Azure AD-toepassings beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) om dit script uit te voeren.
     
-    - Wijzig de aanroep van de Connect-AzureAD van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
+    - Wijzig de Connect-AzureAD aanroep van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
     - Wijzig de variabele van het Power shell-script $myAzureADApplicationObjectId om de object-ID van uw Azure AD-toepassing te gebruiken.
     - Voer het gewijzigde script uit.
     

@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 434a977a6d8c5b2243996063f758f409c20723fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936863"
 ---
 # <a name="introducing-azure-defender-for-iot"></a>Introductie van Azure Defender voor IoT
 
-U kunt het beveiligings beheer combi neren en end-to-end detectie van bedreigingen en analyses voor de hybride Cloud werkbelastingen en uw Azure IoT-oplossing inschakelen.
+U kunt het beveiligingsbeheer combineren en end-to-end detectie van bedreigingen en analyses inschakelen voor alle hybride cloudworkloads en uw Azure IoT-oplossing.
 
 ## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Beveilig uw volledige IoT-oplossing van IoT-apparaten naar Azure Cloud
 
@@ -36,7 +36,7 @@ Defender voor IoT vereenvoudigt de bescherming van hybride werk belastingen door
 
 ### <a name="unified-visibility-and-control"></a>Unified Visibility and Control
 
-Geniet van een uniforme weer gave van beveiliging in al uw on-premises en Cloud werkbelastingen, inclusief uw Azure IoT-oplossing. Nieuwe apparaten onboarden en beveiligings beleid Toep assen voor uw werk belastingen (Leaf-apparaten, micro soft edge-apparaten, IoT Hub) om te zorgen voor naleving van beveiligings normen en verbeterde beveiligings postuur.
+Geniet van een uniforme weer gave van beveiliging in al uw on-premises en Cloud werkbelastingen, inclusief uw Azure IoT-oplossing. Onboard nieuwe apparaten en pas beveiligingsbeleid toe voor uw workloads (Leaf-apparaten, Microsoft Edge-apparaten, IoT Hub) om te zorgen voor naleving van beveiligingsnormen en een betere beveiligingspostuur.
 
 ### <a name="adaptive-threat-prevention"></a>Adaptieve bedreigingen voor komen
 

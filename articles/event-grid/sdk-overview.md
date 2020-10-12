@@ -4,10 +4,10 @@ description: Hierin worden de Sdk's voor Azure Event Grid beschreven. Deze Sdk's
 ms.topic: reference
 ms.date: 07/07/2019
 ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322526"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid Sdk's voor beheer en publicatie
@@ -34,7 +34,7 @@ Met de Sdk's voor gegevens vlakken kunt u gebeurtenissen naar onderwerpen posten
 | .NET | Stabiele SDK: [micro soft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>Preview-SDK: [Azure. Messa ging. EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
 | Java | Stabiele SDK: [Azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>Preview-SDK: [Azure-Messa ging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
 | Python | [Azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) (Zie de laatste stabiele en voorlopige versies op de pagina **release geschiedenis** ) |
-| JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (Schakel over naar het tabblad **versies** om de nieuwste stabiele en bèta versie pakketten te bekijken). | 
+| Javascript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (Schakel over naar het tabblad **versies** om de nieuwste stabiele en bèta versie pakketten te bekijken). | 
 | Go | [Azure SDK voor Go](https://github.com/Azure/azure-sdk-for-go) | | 
 | Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
 

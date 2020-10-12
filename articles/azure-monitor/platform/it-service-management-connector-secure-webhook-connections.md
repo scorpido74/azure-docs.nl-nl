@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
 ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328850"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van beveiligde export
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u de verbinding tussen het ITSM-product of d
 
 Secure export is een bijgewerkte versie van [IT Service Management-connector (ITSMC)](./itsmc-overview.md). Met beide versies kunt u werk items maken in een ITSM-hulp programma wanneer Azure Monitor waarschuwingen verzendt. De functionaliteit omvat metrische, logboek-en activiteiten logboek waarschuwingen.
 
-ITSMC maakt gebruik van gebruikers naam en wacht woord. Beveiligd exporteren heeft sterkere verificatie omdat deze gebruikmaakt van Azure Active Directory (Azure AD). Azure AD is de cloud-gebaseerde service voor identiteits-en toegangs beheer van micro soft. Het helpt gebruikers zich aan te melden en toegang te krijgen tot interne of externe resources. Met Azure AD met ITSM kunt u Azure-waarschuwingen identificeren (via de Azure AD-toepassings-ID) die naar het externe systeem zijn verzonden.
+ITSMC maakt gebruik van gebruikers naam en wacht woord. Beveiligd exporteren heeft sterkere verificatie omdat deze gebruikmaakt van Azure Active Directory (Azure AD). Azure AD is de identiteits- en toegangsbeheerservice van Microsoft op basis van de cloud. Het helpt gebruikers zich aan te melden en toegang te krijgen tot interne of externe resources. Met Azure AD met ITSM kunt u Azure-waarschuwingen identificeren (via de Azure AD-toepassings-ID) die naar het externe systeem zijn verzonden.
 
 > [!NOTE]
 > De mogelijkheid om Azure te verbinden met ITSM-hulpprogram ma's met behulp van beveiligde export is in preview.

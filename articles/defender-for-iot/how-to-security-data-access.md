@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
 ms.openlocfilehash: e56cf54e1bf1483309cb7aac8519bb281ca2bc06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935804"
 ---
 # <a name="access-your-security-data"></a>Toegang tot uw beveiligings gegevens
@@ -64,7 +64,7 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Description                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Beschrijving                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11-18T18:10:29.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Beveiligings aanval geslaagd           | Er is een beveiligings aanval op het apparaat geslaagd        |    {"Full source Address": "[ \" 10.165.12.18: \" ]", "gebruikers namen": "[ \" \" ]", "DeviceID": "IOT-Device-Linux"}                                                                       |
 | 2018-11-19T12:40:31.000 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Hoog          | Geslaagde lokale aanmelding op het apparaat      | Er is een geslaagde lokale aanmelding voor het apparaat gedetecteerd     | {"Extern adres": "?", "externe poort": "", "lokale poort": "", "aanmeldings shell": "/bin/su", "aanmeldings proces-id": "28207", "gebruikers naam": "aanvaller", "DeviceId": "IoT-Device-Linux"} |
@@ -144,7 +144,7 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Description | RecommendationAdditionalData |
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | Beschrijving | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
 | 2019-03-22T10:21:06.060 |    /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Normaal | Actief | Er is een strikte firewall regel in de invoer keten gevonden | Er is een regel in de firewall gevonden die een gebruiks patroon bevat voor een breed scala aan IP-adressen of poorten | {"Rules": "[{ \" SourceAddress \" : \" \" , \" SourcePort \" : \" \" , \" DestinationAddress \" : \" \" , \" DestinationPort \" : \" 1337 \" }]"} |
 | 2019-03-22T10:50:27.237 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Normaal | Actief | Er is een strikte firewall regel in de invoer keten gevonden | Er is een regel in de firewall gevonden die een gebruiks patroon bevat voor een breed scala aan IP-adressen of poorten | {"Rules": "[{ \" SourceAddress \" : \" \" , \" SourcePort \" : \" \" , \" DestinationAddress \" : \" \" , \" DestinationPort \" : \" 1337 \" }]"} |

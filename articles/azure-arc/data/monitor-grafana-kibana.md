@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936328"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Logboeken en metrische gegevens weer geven met Kibana en Grafana
 
-Kibana-en Grafana-Web-Dash boards zijn beschikbaar om inzicht en duidelijkheid te bieden in de Kubernetes-naam ruimten die worden gebruikt door Azure Arc ingeschakelde Data Services.
+Kibana- en Grafana-webdashboards zijn bedoeld om inzicht en duidelijkheid te geven wat betreft de Kubernetes-naamruimten die worden gebruikt door Azure Arc-gegevensservices.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -28,7 +28,7 @@ Als u toegang wilt krijgen tot de Dash boards, moet u het IP-adres van uw cluste
 
 ### <a name="azure-virtual-machine"></a>Azure virtuele machine
 
-Gebruik de volgende opdracht om het open bare IP-adres op te halen:
+Gebruik de volgende opdracht om het openbare IP-adres op te halen:
 
 ```console
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
@@ -95,7 +95,7 @@ https://<external-ip-from-above>:30777/grafana
 https://<external-ip-from-above>:30777/kibana
 ```
 
-De relevante Dash boards zijn:
+De relevante dashboards zijn:
 
 * "Metrische gegevens van Azure SQL Managed instance"
 * "Metrische gegevens van het host-knoop punt"
@@ -110,7 +110,7 @@ https://<external-ip-from-above>:30777/grafana
 https://<external-ip-from-above>:30777/kibana
 ```
 
-De relevante Dash boards zijn:
+De relevante dashboards zijn:
 
 * "Metrische gegevens over post gres"
 * "Metrische tabel gegevens post gres"

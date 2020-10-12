@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935677"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Een Azure Database for PostgreSQL flexibele server beheren met behulp van de Azure Portal
@@ -52,7 +52,7 @@ U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Por
 2. Voer een nieuw wachtwoord in en bevestig het wachtwoord. In het tekstvak wordt u gevraagd om de vereisten voor wachtwoord complexiteit.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="uw wacht woord opnieuw instellen voor een flexibele server":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="flexibele server voor opslag schalen":::
 
 3. Selecteer **Opslaan** om het nieuwe wacht woord op te slaan.
 
@@ -63,7 +63,7 @@ U kunt uw server verwijderen als u deze niet meer nodig hebt.
 1. Selecteer uw server in de Azure Portal. Selecteer **verwijderen**in het venster **overzicht** .
 2. Typ de naam van de server in het invoervak om te bevestigen dat u de server wilt verwijderen.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="de flexibele server verwijderen":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="flexibele server voor opslag schalen":::
 
    > [!IMPORTANT]
    > Het verwijderen van een server is onomkeerbaar.

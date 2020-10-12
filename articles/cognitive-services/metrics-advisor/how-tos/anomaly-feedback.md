@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935431"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>Anomaliedetectie aanpassen met feedback
@@ -37,19 +37,19 @@ Wanneer de modus feedback aantekening is geactiveerd, klikt u op een punt om een
 
 Overweeg om op hetzelfde moment een opmerking in het tekstvak **Opmerking** te laten staan en klik op **Opslaan** om uw feedback op te slaan.
 
-:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Feedback menu.":::
+:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Modus voor feedback aantekening.":::
 
 ## <a name="give-feedback-for-multiple-continuous-points"></a>Feedback geven voor meerdere doorlopende punten
 
 U kunt feedback geven voor meerdere doorlopende punten tegelijk door te klikken op omlaag en de muis aanwijzer te slepen op de punten waar u aantekeningen mee wilt maken. U ziet hetzelfde feedback menu als hierboven. Wanneer u op **Opslaan**klikt, wordt dezelfde feedback toegepast op alle gekozen punten.
 
-:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Meerdere punten kiezen":::
+:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Modus voor feedback aantekening.":::
 
 ## <a name="how-to-view-my-feedback"></a>Mijn feedback weer geven
 
 Beweeg de muis aanwijzer over het punt om te zien of de afwijkings detectie van een punt is gewijzigd. De knop Info wordt **beïnvloed door feedback: True** als de detectie is gewijzigd. Als deze **Onwaar**wordt weer gegeven, is de feedback berekening op het punt uitgevoerd, maar het resultaat van de afwijkings detectie is niet gewijzigd.
 
-:::image type="content" source="../media/feedback/affected-point.png" alt-text="Punt beïnvloed door feedback":::
+:::image type="content" source="../media/feedback/affected-point.png" alt-text="Modus voor feedback aantekening.":::
 
 ## <a name="when-should-i-annotate-an-anomaly-as-normal"></a>Wanneer moet ik een afwijkend als ' normaal ' aanwijzen
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
 ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325686"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
@@ -161,7 +161,7 @@ Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume.
 
     ![Herstellen naar nieuw volume](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Klik op **beoordeling + maken**.  Klik op **Create**.   
+4. Klik op **beoordeling + maken**.  Klik op **Maken**.   
     Het nieuwe volume gebruikt hetzelfde protocol dat door de moment opname wordt gebruikt.   
     Het nieuwe volume waarnaar de moment opname wordt teruggezet, wordt weer gegeven op de Blade volumes.
 
@@ -221,6 +221,6 @@ Als u het selectie vakje pad naar moment opname verbergen hebt geselecteerd tijd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Problemen met het momentopname beleid oplossen](troubleshoot-snapshot-policies.md)
+* [Problemen met momentopnamebeleid oplossen](troubleshoot-snapshot-policies.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Video over Azure NetApp Files-moment opnamen 101](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
