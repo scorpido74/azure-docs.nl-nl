@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: d55e53ba455a4b91b4f57ea08b250320a5467c2b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398441"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azure-beveiligings basislijn voor Virtual Machine Scale Sets
@@ -598,7 +598,7 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
 
-**Hulp**: virtuele schijven op virtual machines (VM) worden versleuteld met behulp van versleuteling aan server zijde of Azure Disk Encryption (ADE). Azure Disk Encryption maakt gebruik van de DM-cryptografie functie van Linux om beheerde schijven te versleutelen met door de klant beheerde sleutels in de gast-VM. Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
+**Hulp**: virtuele schijven op virtual machines (VM) worden versleuteld met behulp van versleuteling aan server zijde of Azure Disk Encryption (ADE). Azure Disk Encryption maakt gebruik van de DM-Crypt-functie van Linux om beheerde schijven te versleutelen met door de klant beheerde sleutels in de gast-VM. Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
 
 * [Azure Disk Encryption voor Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-overview)
 
@@ -1096,7 +1096,7 @@ Als u gebruikmaakt van Azure Disk Encryption, kunt u de schaal sets van virtuele
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Richt lijnen**: Verwijder beveiliging voor beheerde schijven met behulp van vergren delingen. Schakel de beveiliging voor voorlopig verwijderen en opschonen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Richt lijnen**: Verwijder beveiliging voor beheerde schijven met behulp van vergren delingen. Schakel Soft-Delete in en verwijder de beveiliging in Key Vault om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 * [Resources vergrendelen om onverwachte wijzigingen te voorkomen](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)
 

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531024"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Expressies bouwen in gegevens stroom toewijzen
@@ -46,7 +46,7 @@ In het toewijzen van gegevens stromen kunnen expressies bestaan uit kolom waarde
 
 ![Expressie-elementen](media/data-flow/expression-elements.png "Expressie-elementen")
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Functies
 
 Het toewijzen van gegevens stromen heeft ingebouwde functies en Opera tors die kunnen worden gebruikt in expressies. Voor een lijst met beschik bare functies raadpleegt u de [referentie gegevens stroom taal toewijzen](data-flow-expression-functions.md).
 

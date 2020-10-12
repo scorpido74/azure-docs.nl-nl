@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710555"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Ondersteuning van talen en regio's voor de Bing Nieuws zoeken-API
@@ -35,7 +35,7 @@ Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opg
 |---------------------|--------------|-----------------|
 |Denemarken|Deens|da-DK|
 |Oostenrijk|Duits|de-AT|
-|Zwitserland|Duits|Dech|
+|Zwitserland|Duits|de-CH|
 |Duitsland|Duits|de-DE|
 |Australië|Engels|en-AU|
 |Canada|Engels|en-CA|
@@ -59,9 +59,9 @@ Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opg
 |Spaans|algemeen|es-XL|
 |Finland|Fins|fi-FI|  
 |Frankrijk|Frans|fr-worden|
-|Canada|Frans|FR-CA|
+|Canada|Frans|fr-CA|
 |België|Nederlands|nl-worden|
-|Zwitserland|Frans|FR-CH|
+|Zwitserland|Frans|fr-CH|
 |Frankrijk|Frans|fr-FR|  
 |Italië|Italiaans|it-IT|
 |Hongkong SAR|Traditioneel Chinees|zh-HK|  
@@ -92,7 +92,7 @@ Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opg
 |Mexico|Spaans|es-MX|
 |Verenigde Staten|Spaans|es-Verenigde Staten|
 |Finland|Fins|fi-FI|  
-|Canada|Frans|FR-CA|
+|Canada|Frans|fr-CA|
 |Frankrijk|Frans|fr-FR|  
 |Italië|Italiaans|it-IT|
 |Brazilië|Portugees|pt-BR|
@@ -112,7 +112,7 @@ Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opg
 |Canada|Engels|en-CA|
 |India|Engels|en-IN|
 |Frankrijk|Frans|fr-FR|
-|Canada|Frans|FR-CA|
+|Canada|Frans|fr-CA|
 |Brazilië|Portugees|pt-BR|
 |Volksrepubliek China|Chinees|zh-CN|
 

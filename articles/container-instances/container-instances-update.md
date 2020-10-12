@@ -4,10 +4,10 @@ description: Meer informatie over het bijwerken van actieve containers in uw Azu
 ms.topic: article
 ms.date: 04/17/2020
 ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82928717"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Containers in Azure Container Instances bijwerken
@@ -72,7 +72,7 @@ Voor wijzigingen in deze eigenschappen moet de container groep worden verwijderd
 * Type besturings systeem
 * CPU-, geheugen-of GPU-resources
 * Beleid voor opnieuw starten
-* Netwerk profiel
+* Netwerkprofiel
 
 Wanneer u een container groep verwijdert en opnieuw maakt, wordt deze niet opnieuw geïmplementeerd, maar is er nieuwe gemaakt. Alle afbeeldings lagen worden vernieuwd uit het REGI ster, niet uit de caches van een vorige implementatie. Het IP-adres van de container kan ook worden gewijzigd omdat deze is geïmplementeerd op een andere onderliggende host.
 

@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84700362"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Problemen met Apache Storm oplossen met behulp van Azure HDInsight
@@ -165,7 +165,7 @@ De configuratie van de Super Visor Log4J wordt gelezen `/usr/hdp/\<HDP version>/
 
 Het configuratie bestand van de worker-Log4J wordt gelezen `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` .
 
-Vindt`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+Vindt `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
 ---
@@ -174,7 +174,7 @@ Vindt`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 
 Bij het verzenden van een topologie kan een fout bericht van de gebruiker worden weer gegeven die er ongeveer als volgt uitziet: `Topology submission exception, cause not a leader, the current leader is NimbusInfo` .
 
-Om dit probleem op te lossen moet de gebruiker mogelijk een ticket indienen om de knoop punten opnieuw te starten of opnieuw op te starten. Zie voor meer informatie [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) .
+Om dit probleem op te lossen moet de gebruiker mogelijk een ticket indienen om de knoop punten opnieuw te starten of opnieuw op te starten. Zie [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) voor meer informatie.
 
 ---
 

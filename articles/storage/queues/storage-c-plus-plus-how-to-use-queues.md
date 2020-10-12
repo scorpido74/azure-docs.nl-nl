@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 6a4f8b99be564779b350bff2ab5b37f3c7ccc6f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87020968"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Queue Storage gebruiken met C++
@@ -39,8 +39,8 @@ Hiervoor moet u de Azure-opslagclientbibliotheek voor C++ installeren en een Azu
 
 Voor het installeren van de Azure-opslagclientbibliotheek voor C++ kunt u de volgende methoden gebruiken:
 
-* **Linux:** Volg de instructies in de [Azure Storage-client bibliotheek voor C++ Leesmij: aan de slag op de Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) -pagina.
-* **Windows:** Gebruik [vcpkg](https://github.com/microsoft/vcpkg) in Windows als afhankelijkheids beheer. Volg de [Quick](https://github.com/microsoft/vcpkg#quick-start) start om vcpkg te initialiseren. Gebruik vervolgens de volgende opdracht om de bibliotheek te installeren:
+* **Linux:** Volg de instructies op de pagina met het [Leesmij-bestand voor de Azure Storage-clientbibliotheek voor C++: Aan de slag met de Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux).
+* **Windows:** In Windows gebruikt u [vcpkg](https://github.com/microsoft/vcpkg) als afhankelijkheidsbeheerder. Volg de [Quick](https://github.com/microsoft/vcpkg#quick-start) start om vcpkg te initialiseren. Voer vervolgens de volgende opdracht uit om de bibliotheek te installeren:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp

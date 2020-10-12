@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509855"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
@@ -80,7 +80,7 @@ Het SAS-token is een teken reeks die u aan de client zijde genereert, bijvoorbee
 
 Wanneer een client toepassing een SAS-URI levert Azure Storage als onderdeel van een aanvraag, controleert de service de SAS-para meters en-hand tekening om te controleren of deze geldig is voor het machtigen van de aanvraag. Als de service controleert of de hand tekening geldig is, wordt de aanvraag geautoriseerd. Anders wordt de aanvraag geweigerd met fout code 403 (verboden).
 
-Hier volgt een voor beeld van een SAS-URI van de service, waarin de bron-URI en het SAS-token worden weer gegeven:
+Hier ziet u een voorbeeld van een SAS-URI van de service, met de bron-URI en het SAS-token:
 
 ![Onderdelen van een SAS-URI (Service)](./media/storage-sas-overview/sas-storage-uri.png)
 

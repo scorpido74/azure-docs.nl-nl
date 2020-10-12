@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u een groot aantal virtuele VMware-mach
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171913"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Een groot aantal virtuele VMware-machines beoordelen voor migratie naar Azure
@@ -37,7 +37,7 @@ Bij het plannen van de beoordeling van een groot aantal virtuele VMware-machines
 - **Accounts voor detectie plannen**: het Azure migrate-apparaat maakt gebruik van een account met toegang tot VCenter server om vm's te ontdekken voor evaluatie en migratie. Als u meer dan 10.000 Vm's detecteert, moet u meerdere accounts instellen, omdat er geen overlap ping is tussen virtuele machines die zijn gedetecteerd op twee apparaten in een project. 
 
 > [!NOTE]
-> Als u meerdere apparaten instelt, zorg er dan voor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap ping is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in dubbele waarden in detectie en in problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
+> Als u meerdere apparaten instelt, zorg er dan voor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in dubbele waarden in detectie en in problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
 
 ## <a name="planning-limits"></a>Plannings limieten
  
@@ -56,9 +56,9 @@ Hieronder volgen enkele voor beelden van implementaties:
 **vCenter-Server** | **Vm's op server** | **Aanbeveling** | **Actie**
 ---|---|---|---
 Eén | < 10.000 | Eén Azure Migrate-project.<br/> Eén apparaat.<br/> Een vCenter-account voor detectie. | Apparaat instellen, verbinding maken met vCenter Server met een account.
-Eén | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Stel het apparaat in voor elke 10.000 Vm's.<br/><br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten. <br/> <br/> Zorg ervoor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap ping is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in een duplicaat van de detectie en problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
+Eén | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Stel het apparaat in voor elke 10.000 Vm's.<br/><br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten. <br/> <br/> Zorg ervoor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in een duplicaat van de detectie en problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
 Meerdere | < 10.000 |  Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Een vCenter-account voor detectie. | Toestellen instellen, verbinding maken met vCenter Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten.
-Meerdere | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Als vCenter Server detectie < 10.000 Vm's, moet u voor elke vCenter Server een apparaat instellen.<br/><br/> Als vCenter Server detectie > 10.000 Vm's, stelt u een apparaat in voor elke 10.000 Vm's.<br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten. <br/><br/> Zorg ervoor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap ping is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in een duplicaat van de detectie en problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
+Meerdere | > 10.000 | Eén Azure Migrate-project.<br/> Meerdere apparaten.<br/> Meerdere vCenter-accounts. | Als vCenter Server detectie < 10.000 Vm's, moet u voor elke vCenter Server een apparaat instellen.<br/><br/> Als vCenter Server detectie > 10.000 Vm's, stelt u een apparaat in voor elke 10.000 Vm's.<br/> Stel vCenter-accounts in en Splits de inventaris om de toegang voor een account te beperken tot Maxi maal 10.000 Vm's.<br/> Elk apparaat verbinden met een vCenter-Server met een account.<br/> U kunt afhankelijkheden analyseren tussen computers die worden gedetecteerd met verschillende apparaten. <br/><br/> Zorg ervoor dat er geen overlap is tussen de virtuele machines op de aangegeven vCenter-accounts. Een detectie met een dergelijke overlap is een niet-ondersteund scenario. Als een virtuele machine wordt gedetecteerd door meer dan één apparaat, resulteert dit in een duplicaat van de detectie en problemen tijdens het inschakelen van replicatie voor de virtuele machine met behulp van de Azure Portal in server migratie.
 
 
 

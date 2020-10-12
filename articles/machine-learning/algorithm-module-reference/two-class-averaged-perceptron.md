@@ -1,7 +1,7 @@
 ---
-title: 'Gemiddelde Perceptron van twee klassen: module verwijzing'
+title: 'Two-Class gemiddelde Perceptron: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de Perceptron-module met twee klassen in Azure Machine Learning om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.
+description: Meer informatie over het gebruik van de Two-Class Gem Perceptron module in Azure Machine Learning om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907754"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>Gemiddelde Perceptron-module met twee klassen
+# <a name="two-class-averaged-perceptron-module"></a>Two-Class gemiddelde Perceptron-module
 
 In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
@@ -30,7 +30,7 @@ De *methode gemiddeld Perceptron* is een vroege en eenvoudige versie van een Neu
 
 De eenvoudiger Perceptron modellen zijn geschikt voor het leren van lineaire opvallende patronen, terwijl Neural netwerken (met name Neural Networks) een complexere klassen grenzen kunnen vormen. Perceptrons zijn echter sneller en omdat de cases serieel worden verwerkt, kan Perceptrons worden gebruikt met doorlopende training.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>Gemiddelde Perceptron configureren voor twee klassen
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Two-Class gemiddelde Perceptron configureren
 
 1.  Voeg de **gemiddelde Perceptron-module met twee klassen** toe aan de pijp lijn.  
 

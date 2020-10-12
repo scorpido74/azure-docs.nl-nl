@@ -16,10 +16,10 @@ ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650690"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
@@ -135,7 +135,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
             - Oracle Linux 7,5. Als u de RHCKL-kernel gebruikt, is release 3.10.0-862.13.1. EL7 vereist. Als u de Oracle UEK-kernel gebruikt, is release 5 vereist.
         - Test en evalueer de netwerk latentie tussen de virtuele machines van de SAP-toepassingslaag en de DBMS-Vm's op basis van SAP-ondersteunings opmerkingen [#500235](https://launchpad.support.sap.com/#/notes/500235) en [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Controleer de resultaten op basis van de richt lijnen voor netwerk latentie in [SAP-ondersteunings opmerking #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). De netwerk latentie moet in het gemiddelde of het goede bereik liggen. Uitzonde ringen zijn van toepassing op verkeer tussen Vm's en HANA grote instantie-eenheden, zoals beschreven in [dit artikel](./hana-network-architecture.md#networking-architecture-for-hana-large-instance).
         - Zorg ervoor dat ILB-implementaties zijn ingesteld om direct server return te gebruiken. Met deze instelling wordt de latentie verminderd wanneer Azure ILBs wordt gebruikt voor configuraties met hoge Beschik baarheid op de DBMS-laag.
-        - Als u Azure Load Balancer samen met Linux-gast besturingssystemen gebruikt, controleert u of de Linux-netwerk parameter **net. IPv4. tcp_timestamps** is ingesteld op **0**. Deze aanbeveling is in conflict met aanbevelingen in oudere versies van [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). De SAP-notitie wordt nu bijgewerkt met de status dat deze para meter moet worden ingesteld op **0** om te kunnen werken met Azure load balancers.
+        - Als u Azure Load Balancer samen met Linux-gast besturingssystemen gebruikt, controleert u of de para meter van het Linux-netwerk **net.IPv4.tcp_timestamps** is ingesteld op **0**. Deze aanbeveling is in conflict met aanbevelingen in oudere versies van [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). De SAP-notitie wordt nu bijgewerkt met de status dat deze para meter moet worden ingesteld op **0** om te kunnen werken met Azure load balancers.
         - Overweeg het gebruik van [Azure proximity placement groups](../../linux/co-location.md) om een optimale netwerk latentie te verkrijgen. Zie voor meer informatie [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
    4. Hoge Beschik baarheid en implementaties voor herstel na nood gevallen.
         - Als u de SAP-toepassingslaag implementeert zonder een specifieke Azure-beschikbaarheids zone te definiëren, moet u ervoor zorgen dat alle virtuele machines waarop SAP-dialoog instanties of middleware-exemplaren van één SAP-systeem worden uitgevoerd, worden geïmplementeerd in een [beschikbaarheidsset](../../windows/manage-availability.md).
@@ -161,7 +161,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
             -   [SAP-ondersteunings Opmerking #2753418: mogelijke prestatie vermindering door timer terugval](https://launchpad.support.sap.com/#/notes/2753418)
             -   [SAP-ondersteunings Opmerking #2791572 prestatie vermindering vanwege ontbrekende VDSO-ondersteuning voor Hyper-V in azure](https://launchpad.support.sap.com/#/notes/2791572)
             -   [SAP-ondersteunings Opmerking #2382421-optimalisatie van de netwerk configuratie op HANA-en OS-niveau](https://launchpad.support.sap.com/#/notes/2382421)
-            -   [SAP-ondersteunings Opmerking #2694118-Red Hat Enterprise Linux HA-invoeg toepassing in azure](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP-ondersteuning: #2694118 Red Hat Enterprise Linux HA Add-On op Azure](https://launchpad.support.sap.com/#/notes/2694118)
             -   [SAP-ondersteuning Opmerking #1984787-SUSE LINUX Enter prise Server 12: installatie notities](https://launchpad.support.sap.com/#/notes/1984787)
             -   [SAP-ondersteunings Opmerking #2002167-Red Hat Enterprise Linux 7. x: installatie en upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [SAP-ondersteunings Opmerking #2292690-SAP HANA DB: aanbevolen besturingssysteem instellingen voor RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690)

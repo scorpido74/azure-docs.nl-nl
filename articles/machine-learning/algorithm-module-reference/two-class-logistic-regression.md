@@ -1,7 +1,7 @@
 ---
-title: 'Logistiek regressie met twee klassen: Naslag informatie over de module'
+title: 'Two-Class logistiek regressie: module verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module logistiek-regressie voor twee klassen in Azure Machine Learning voor het maken van een logistiek regressie model dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen.
+description: Meer informatie over het gebruik van de Two-Class logistiek-regressie module in Azure Machine Learning voor het maken van een logistiek regressie model dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907706"
 ---
-# <a name="two-class-logistic-regression-module"></a>Logistiek regressie module met twee klassen
+# <a name="two-class-logistic-regression-module"></a>Module logistiek regressie Two-Class
 
 In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 

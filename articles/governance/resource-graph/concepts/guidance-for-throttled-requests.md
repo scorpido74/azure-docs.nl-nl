@@ -5,10 +5,10 @@ ms.date: 08/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006003"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
@@ -118,7 +118,7 @@ Het groeperen van query's op het abonnement, de resource groep of de afzonderlij
 
 ## <a name="staggering-queries"></a>Query's spreiden
 
-Vanwege de manier waarop het beperken van beperkingen wordt afgedwongen, wordt aangeraden query's te spreiden. Dat wil zeggen, in plaats van 60 query's tegelijkertijd te verzenden naar vier 5-Second Windows-vensters:
+Vanwege de manier waarop het beperken van beperkingen wordt afgedwongen, wordt aangeraden query's te spreiden. Dat wil zeggen, in plaats van 60 query's tegelijkertijd te verzenden naar 4 5-Second-Vensters:
 
 - Niet-gespreide query planning
 

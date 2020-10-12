@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
 ms.openlocfilehash: a13a2a081815f2a3b668caf9b4e78c2208601cb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84702981"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>Een IPv6-toepassing met dubbele stack implementeren in azure-Power shell
@@ -212,7 +212,7 @@ $rule2 = New-AzNetworkSecurityRuleConfig `
 ```
 #### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Maak een netwerkbeveiligingsgroep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+Maak een netwerk beveiligings groep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `

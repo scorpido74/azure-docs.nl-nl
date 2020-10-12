@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132837"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
-Cognitive Services biedt machine learning mogelijkheden om algemene problemen op te lossen, zoals het analyseren van tekst voor emotioneel sentiment of het analyseren van installatie kopieën om objecten of gezichten te herkennen. U hebt geen speciale machine learning of kennis van data wetenschappen nodig om deze services te kunnen gebruiken. 
+Cognitive Services biedt machine learning mogelijkheden om algemene problemen op te lossen, zoals het analyseren van tekst voor emotioneel sentiment of het analyseren van installatie kopieën om objecten of gezichten te herkennen. U hebt geen speciale machine learning- of data science-kennis nodig om deze services te kunnen gebruiken. 
 
 [Cognitive Services](welcome.md) is een groep services die elk verschillende gegeneraliseerde Voorspellings mogelijkheden ondersteunt. De services zijn onderverdeeld in verschillende categorieën om u te helpen de juiste service te vinden. 
 
 |Service categorie|Doel|
 |--|--|
 |[Besluit](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.|
-|[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf ontwikkelde scripts, evalueer sentiment en leer herkennen wat gebruikers willen.|
-|[Zoeken](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Voeg Bing Search-API's toe aan uw apps en benut de mogelijkheid om miljarden webpagina's, afbeeldingen, video's en nieuwsitems met één API-aanroep te doorzoeken.|
+|[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf gemaakte scripts, sentiment evalueren en leren herkennen wat gebruikers willen.|
+|[Zoeken](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Voeg Bing Search-API's toe aan uw apps en maak het mogelijk om miljarden webpagina's, afbeeldingen, video's en nieuwsartikelen met één API-aanroep te doorzoeken.|
 |[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Converteer spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.|
 |[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Herken, identificeer, indexeer en wijzig uw afbeeldingen, video's en digitale inkt en voorzie deze van ondertitels.|
 ||||

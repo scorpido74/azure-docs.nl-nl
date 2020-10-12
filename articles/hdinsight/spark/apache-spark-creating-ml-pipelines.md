@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075447"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Een machine learning-pijplijn in Apache Spark maken
 
-Met de schaal bare machine learning-bibliotheek van Apache Spark (MLlib) worden model functies naar een gedistribueerde omgeving gebracht. Het Spark-pakket [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) is een set api's op hoog niveau die is gebouwd op DataFrames. Met deze Api's kunt u praktische pijp lijnen voor machine learning maken en afstemmen.  *Spark machine learning* verwijst naar deze MLlib data frame-API, niet op de oudere rdd-API voor pijp lijnen.
+Met de schaal bare machine learning-bibliotheek van Apache Spark (MLlib) worden model functies naar een gedistribueerde omgeving gebracht. Het Spark-pakket [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) is een set api's op hoog niveau die is gebouwd op DataFrames. Met deze Api's kunt u praktische pijp lijnen voor machine learning maken en afstemmen.  *Spark machine learning*  verwijst naar deze MLlib data frame-API, niet op de oudere rdd-API voor pijp lijnen.
 
 Een machine learning (ML) pijp lijn is een volledige werk stroom waarmee meerdere machine learning algoritmen samen worden gecombineerd. Er kunnen veel stappen worden uitgevoerd voor het verwerken en leren van gegevens, waardoor een reeks algoritmen vereist is. Met pijp lijnen worden de fasen en de volg orde van een machine learning proces gedefinieerd. In MLlib worden fasen van een pijp lijn vertegenwoordigd door een specifieke reeks PipelineStages, waarbij een transformator en een Estimator elke taak uitvoeren.
 
@@ -29,7 +29,7 @@ Elk stateless exemplaar van een transformator of een Estimator heeft een eigen u
 
 ## <a name="pipeline-example"></a>Voor beeld van pijp lijn
 
-Om een praktisch gebruik van een ML-pijp lijn te demonstreren, gebruikt dit voor beeld het voorbeeld `HVAC.csv` gegevensbestand dat vooraf is geladen in de standaard opslag voor uw HDInsight-cluster, hetzij Azure Storage als data Lake Storage. Als u de inhoud van het bestand wilt bekijken, gaat u naar de `/HdiSamples/HdiSamples/SensorSampleData/hvac` map. `HVAC.csv`bevat een set keer met zowel doel-als werkelijke Tempe raturen voor systemen voor airco (*Verwarming, ventilatie en airconditioning*) in verschillende gebouwen. Het doel is om het model op de gegevens te trainen en een prognose temperatuur te maken voor een bepaald gebouw.
+Om een praktisch gebruik van een ML-pijp lijn te demonstreren, gebruikt dit voor beeld het voorbeeld `HVAC.csv` gegevensbestand dat vooraf is geladen in de standaard opslag voor uw HDInsight-cluster, hetzij Azure Storage als data Lake Storage. Als u de inhoud van het bestand wilt bekijken, gaat u naar de `/HdiSamples/HdiSamples/SensorSampleData/hvac` map. `HVAC.csv` bevat een set keer met zowel doel-als werkelijke Tempe raturen voor systemen voor airco (*Verwarming, ventilatie en airconditioning*) in verschillende gebouwen. Het doel is om het model op de gegevens te trainen en een prognose temperatuur te maken voor een bepaald gebouw.
 
 De volgende code:
 
@@ -81,7 +81,7 @@ training = documents.toDF()
 Deze voorbeeld pijplijn heeft drie fasen: `Tokenizer` en `HashingTF` (beide trans formats) en `Logistic Regression` (een Estimator).  De geëxtraheerde en geparseerde gegevens in de `training` Data frame stromen via de pijp lijn wanneer deze `pipeline.fit(training)` wordt aangeroepen.
 
 1. De eerste fase, `Tokenizer` , splitst de `SystemInfo` invoer kolom (die bestaat uit de systeem-id en de leeftijds waarden) in een `words` uitvoer kolom. Deze nieuwe `words` kolom wordt toegevoegd aan de data frame. 
-2. De tweede fase, `HashingTF` , converteert de nieuwe `words` kolom naar functie vectoren. Deze nieuwe `features` kolom wordt toegevoegd aan de data frame. Deze eerste twee fasen zijn trans formats. 
+2. De tweede fase, `HashingTF` , converteert de nieuwe `words` kolom naar functie vectoren. Deze nieuwe  `features` kolom wordt toegevoegd aan de data frame. Deze eerste twee fasen zijn trans formats. 
 3. De derde fase, `LogisticRegression` , is een Estimator, en de pijp lijn roept de `LogisticRegression.fit()` methode voor het maken van een aan `LogisticRegressionModel` . 
 
 ```python
@@ -132,6 +132,6 @@ only showing top 20 rows
 
 Het `model` object kan nu worden gebruikt voor het maken van voor spellingen. Zie voor het volledige voor beeld van deze machine learning-toepassing en stapsgewijze instructies voor het uitvoeren van het programma [Apache Spark machine learning-toepassingen in azure HDInsight bouwen](apache-spark-ipython-notebook-machine-learning.md).
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Data Science met scala en Apache Spark op Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecab82e43bff6c0d1d83c9c1cdc38cafd809e277
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236661"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Problemen oplossen voor hybride implementaties van FIDO2-beveiligings sleutels in azure AD (preview)
@@ -46,7 +46,7 @@ Om aan de slag te gaan met FIDO2-beveiligings sleutels en hybride toegang tot on
 
 Windows hello Face is de beoogde beste ervaring voor een apparaat waarop een gebruiker is inge schreven. FIDO2-beveiligings sleutels zijn bedoeld voor gebruik op gedeelde apparaten of waar de registratie van Windows hello voor bedrijven een barrière vormt.
 
-Als Windows hello gezicht verhindert dat de gebruikers het aanmeldings scenario voor de FIDO2-beveiligings sleutel proberen uit te voeren, kunnen gebruikers zich aanmelden met Hello gezicht uitschakelen door gezichts inschrijving te verwijderen in **instellingen > aanmeldings opties**.
+Als Windows hello gezicht verhindert dat de gebruikers het aanmeldings scenario voor de FIDO2-beveiligings sleutel proberen uit te voeren, kunnen gebruikers zich aanmelden met Hello gezicht uitschakelen door gezichts inschrijving te verwijderen in **instellingen > Sign-In opties**.
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>Gebruikers kunnen FIDO2-beveiligings sleutels niet direct gebruiken nadat ze een hybride, aan Azure AD gekoppelde computer hebben gemaakt
 
@@ -86,9 +86,9 @@ De volgende gebeurtenis logboeken en informatie over register sleutels worden ve
 
 **Registersleutels**
 
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\PasswordForWork \* [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Policies\PasswordForWork \* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PasswordForWork\* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Policies\PasswordForWork\* [ \* ]*
 
 **Diagnostische gegevens**
 

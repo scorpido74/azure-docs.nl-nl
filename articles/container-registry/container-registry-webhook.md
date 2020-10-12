@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van webhooks om gebeurtenissen te 
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253391"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry-webhooks gebruiken
@@ -23,7 +23,7 @@ Zie [Azure container Registry webhook-schema verwijzing](container-registry-webh
 
 ## <a name="create-webhook---azure-portal"></a>Webhook-Azure Portal maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Navigeer naar het container register waarin u een webhook wilt maken.
 1. Onder **Services**selecteert u **webhooks**.
 1. Selecteer **toevoegen** op de werk balk van de webhook.

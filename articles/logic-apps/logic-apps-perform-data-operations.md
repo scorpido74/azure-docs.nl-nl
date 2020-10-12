@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710368"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevens bewerkingen uitvoeren in Azure Logic Apps
@@ -92,7 +92,7 @@ Volg deze stappen met behulp van de ontwerp functie voor logische apps als u een
 
    * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer onder **Kies een actie**in het zoekvak in `compose` als uw filter. Selecteer in de lijst acties de actie **opstellen** .
+1. Voer in het zoekvak onder **Kies een actie** `compose` in als uw filter. Selecteer in de lijst acties de actie **opstellen** .
 
    ![Actie ' opstellen ' selecteren](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -150,7 +150,7 @@ Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het m
 
    * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer onder **Kies een actie**in het zoekvak in `create csv table` als uw filter. Selecteer in de lijst acties de actie **CSV-tabel maken** .
+1. Voer in het zoekvak onder **Kies een actie** `create csv table` in als uw filter. Selecteer in de lijst acties de actie **CSV-tabel maken** .
 
    ![Selecteer de actie CSV-tabel maken](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -194,7 +194,7 @@ In de actie moet u de kolom **koptekst** leeg laten. Op elke rij in de kolom **w
 
 1. Klik onder **waarde**op elke gewenste rij, in het invoervak zodat de lijst met dynamische inhoud wordt weer gegeven.
 
-1. Selecteer **expressie**in de lijst met dynamische inhoud.
+1. Selecteer in de lijst met dynamische inhoud de optie **Expressie**.
 
 1. Voer in de expressie-Editor deze expressie in die de waarde van de eigenschap matrix opgeeft en selecteer **OK**.
 
@@ -301,7 +301,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
    * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer onder **Kies een actie**in het zoekvak in `create html table` als uw filter. Selecteer in de lijst acties de actie **HTML-tabel maken** .
+1. Voer in het zoekvak onder **Kies een actie** `create html table` in als uw filter. Selecteer in de lijst acties de actie **HTML-tabel maken** .
 
    ![Selecteer een actie voor het maken van een HTML-tabel](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -345,7 +345,7 @@ In de actie moet u de kolom **koptekst** leeg laten. Op elke rij in de kolom **w
 
 1. Klik onder **waarde**op elke gewenste rij, in het invoervak zodat de lijst met dynamische inhoud wordt weer gegeven.
 
-1. Selecteer **expressie**in de lijst met dynamische inhoud.
+1. Selecteer in de lijst met dynamische inhoud de optie **Expressie**.
 
 1. Voer in de expressie-Editor deze expressie in die de waarde van de eigenschap matrix opgeeft en selecteer **OK**.
 
@@ -466,7 +466,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u de voorbeeld *
 
    * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak in `filter array` als uw filter. Selecteer in de lijst acties de actie **matrix filteren** .
+1. Voer in het zoekvak `filter array` als uw filter in. Selecteer in de lijst acties de actie **matrix filteren** .
 
    ![Selecteer de actie filter matrix](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -528,7 +528,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
    * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak in `join` als uw filter. Selecteer in de lijst acties deze actie: **koppelen**
+1. Voer in het zoekvak `join` als uw filter in. Selecteer in de lijst acties deze actie: **koppelen**
 
    ![Selecteer actie samen voegen](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
@@ -588,7 +588,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
    * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer in het zoekvak in `parse json` als uw filter. Selecteer in de lijst acties de actie **JSON parseren** .
+1. Voer in het zoekvak `parse json` als uw filter in. Selecteer in de lijst acties de actie **JSON parseren** .
 
    ![Selecteer de actie JSON parseren](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -663,7 +663,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
    * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak in `select` als uw filter. Selecteer in de lijst acties de actie **selecteren** .
+1. Selecteer onder **Kies een actie**de optie **Ingebouwd**. Voer in het zoekvak `select` als uw filter in. Selecteer in de lijst acties de actie **selecteren** .
 
    ![Selecteer de actie ' selecteren '](./media/logic-apps-perform-data-operations/select-select-action.png)
 

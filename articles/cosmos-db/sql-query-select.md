@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005958"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT-component in Azure Cosmos DB
@@ -59,7 +59,7 @@ SELECT <select_specification>
 
 ## <a name="remarks"></a>Opmerkingen
 
-De `SELECT *` syntaxis is alleen geldig als from-component precies één alias heeft gedeclareerd. `SELECT *`biedt een identiteits projectie. Dit kan nuttig zijn als er geen projectie nodig is. SELECT * is alleen geldig als de component FROM is opgegeven en slechts één invoer bron heeft geïntroduceerd.  
+De `SELECT *` syntaxis is alleen geldig als from-component precies één alias heeft gedeclareerd. `SELECT *` biedt een identiteits projectie. Dit kan nuttig zijn als er geen projectie nodig is. SELECT * is alleen geldig als de component FROM is opgegeven en slechts één invoer bron heeft geïntroduceerd.  
   
 Beide `SELECT <select_list>` en `SELECT *` zijn ' syntactische ' en kunnen ook worden aangegeven met behulp van eenvoudige SELECT-instructies, zoals hieronder wordt weer gegeven.  
   

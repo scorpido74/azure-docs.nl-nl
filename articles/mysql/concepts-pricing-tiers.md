@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171015"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL prijs Categorieën
 
 U kunt een Azure Database for MySQL-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MySQL-server. Een server kan een of meer data bases bevatten.
 
-| Kenmerk   | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Kenmerk   | **Basic** | **Algemeen doel** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -30,8 +30,8 @@ Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs
 | Prijscategorie | Beoogde workloads |
 |:-------------|:-----------------|
 | Basic | Werk belastingen waarvoor lichte reken kracht en I/O-prestaties zijn vereist. Voor beelden zijn servers die worden gebruikt voor ontwikkeling of testen of kleinschalige, niet-veelgebruikte toepassingen. |
-| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
-| Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voor beelden zijn servers voor het verwerken van real-time gegevens en transactionele of analytische toepassingen met hoge prestaties.|
+| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voorbeelden zijn onder meer servers voor het hosten van web- en mobiele apps en andere zakelijke toepassingen.|
+| Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voorbeelden zijn onder meer servers voor het verwerken van realtime gegevens en transactionele of analytische toepassingen met hoge prestaties.|
 
 Nadat u een server hebt gemaakt, kunt u binnen enkele seconden het aantal vCores, de generatie van de hardware en de prijs categorie (met uitzonde ring van en van basis) wijzigen. U kunt ook onafhankelijk de hoeveelheid opslag ruimte en de Bewaar periode voor back-ups op afstand aanpassen zonder uitval tijd van de toepassing. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Zie de sectie [resources schalen](#scale-resources) voor meer informatie.
 

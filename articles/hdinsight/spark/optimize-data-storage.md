@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperfq1
 ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88757809"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Optimalisatie van gegevens opslag voor Apache Spark
@@ -57,10 +57,10 @@ Wanneer u een nieuw Spark-cluster maakt, kunt u Azure Blob Storage of Azure Data
 
 | Winkeltype | Bestandssysteem | Snelheid | Wijk | Gebruiksscenario's |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Ja | Tijdelijk cluster |
-| Azure Blob Storage (beveiligd) | **wasbs:**//URL/ | **Standard** | Ja | Tijdelijk cluster |
+| Azure Blob Storage | **wasb:**//URL/ | **Standaard** | Ja | Tijdelijk cluster |
+| Azure Blob Storage (beveiligd) | **wasbs:**//URL/ | **Standaard** | Ja | Tijdelijk cluster |
 | Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gereed** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage gen 1| **ADL:**//URL/ | **Gereed** | Ja | Tijdelijk cluster |
+| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Gereed** | Ja | Tijdelijk cluster |
 | Lokale HDFS | **hdfs:**//URL/ | **Snelste** | Nee | Interactive 24/7-cluster |
 
 Zie [opslag opties vergelijken voor gebruik met Azure HDInsight-clusters](../hdinsight-hadoop-compare-storage-options.md)voor een volledige beschrijving van opslag opties.

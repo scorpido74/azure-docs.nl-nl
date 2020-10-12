@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80244729"
 ---
 # <a name="detect-color-schemes-in-images"></a>Kleuren schema's in afbeeldingen detecteren
@@ -75,12 +75,12 @@ In de volgende tabel ziet u de zwarte en witte evaluatie van Computer Vision in 
 
 | Installatiekopie | Zwart & wit? |
 |-------|----------------|
-|![Een zwarte en witte afbeelding van gebouwen in Manhattan](./Images/bw_buildings.png) | waar |
-|![Een blauw huis en de voor tuin](./Images/house_yard.png) | false |
+|![Een zwarte en witte afbeelding van gebouwen in Manhattan](./Images/bw_buildings.png) | true |
+|![Een blauw huis en de voor tuin](./Images/house_yard.png) | onjuist |
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-De functie voor het detecteren van het kleuren schema maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `Color` in de query parameter **visualFeatures** op. Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud `"color"` van de sectie.
+De functie voor het detecteren van het kleuren schema maakt deel uit van de API voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . U kunt deze API aanroepen via een systeem eigen SDK of via REST-aanroepen. Neem `Color` in de query parameter **visualFeatures** op. Wanneer u vervolgens het volledige JSON-antwoord krijgt, parseert u de teken reeks voor de inhoud van de `"color"` sectie.
 
 * [Snelstartgids: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [Quick Start: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

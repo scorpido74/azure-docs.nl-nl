@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9016d26384827279a5a89afecff59f572d7ce273
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502032"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Onderwerpen beheren en gebeurtenissen publiceren met behulp van gebeurtenis domeinen
@@ -17,7 +17,7 @@ In dit artikel wordt beschreven hoe u:
 
 * Een Event Grid domein maken
 * Onderwerpen over het abonneren op Event grid
-* Lijst met sleutels
+* Sleutels vermelden
 * Gebeurtenissen publiceren naar een domein
 
 Zie voor meer informatie over gebeurtenis domeinen [begrijpen gebeurtenis domeinen voor het beheren van Event grid onderwerpen](event-domains.md).

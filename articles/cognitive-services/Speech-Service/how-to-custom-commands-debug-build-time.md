@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86023122"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Fouten opsporen tijdens het ontwerpen van een toepassing voor aangepaste opdrachten
@@ -48,13 +48,13 @@ U mag geen para meter verwijderen als deze wordt gebruikt. Verwijder alle verwij
 U mag geen web-eind punt verwijderen wanneer het wordt gebruikt. Verwijder de actie **Webeindpunt** van de oproep die gebruikmaakt van dit webeindpunt voordat u een webeindpunt verwijdert.
 
 ## <a name="errors-when-training-an-application"></a>Fouten bij het trainen van een toepassing
-### <a name="built-in-intents"></a>Ingebouwde intenties
+### <a name="built-in-intents"></a>Built-In-intentie
 LUIS heeft ingebouwde Ja/geen intenties. Als er voorbeeld zinnen met alleen ' ja ' en ' nee ' worden toegevoegd, mislukt de training. 
 
 | Zoek | Variaties | 
 | ------- | --------- | 
-| Yes | Zeker, OK |
-| No | Klopt, niet | 
+| Ja | Zeker, OK |
+| Nee | Klopt, niet | 
 
 ### <a name="common-sample-sentences"></a>Algemene voorbeeld zinnen
 Aangepaste opdrachten staan geen veelvoorkomende voorbeeld zinnen toe die worden gedeeld tussen verschillende opdrachten. De training van een toepassing kan mislukken als sommige voorbeeld zinnen in één opdracht al zijn gedefinieerd in een andere opdracht. 

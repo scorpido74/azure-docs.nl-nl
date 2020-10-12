@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 7/17/2020
 ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015646"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een persoonlijk Azure Kubernetes service-cluster maken
@@ -86,7 +86,7 @@ Zoals gezegd, is peering in virtuele netwerken een manier om toegang te krijgen 
 6. Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk bevindt zich in de vorm *AKS-vnet- \* *.  
 7. Selecteer **peerings**in het linkerdeel venster.  
 8. Selecteer **toevoegen**, voeg het virtuele netwerk van de VM toe en maak de peering.  
-9. Ga naar het virtuele netwerk waar u de virtuele machine hebt, selecteer **peerings**, selecteer het virtuele netwerk AKS en maak de peering. Als de adresbereiken in het virtuele netwerk van AKS en het virtuele netwerk van de VM conflicteren, mislukt de peering. Zie [peering van virtuele netwerken][virtual-network-peering]voor meer informatie.
+9. Ga naar het virtuele netwerk waar u de virtuele machine hebt, selecteer **peerings**, selecteer het virtuele netwerk AKS en maak de peering. Als de adresbereiken in het virtuele netwerk van AKS en het virtuele netwerk van de VM conflicteren, mislukt de peering. Zie  [peering van virtuele netwerken][virtual-network-peering]voor meer informatie.
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Hub en spoke met aangepaste DNS
 

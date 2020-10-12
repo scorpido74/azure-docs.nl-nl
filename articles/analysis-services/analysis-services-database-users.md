@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015269"
 ---
 # <a name="manage-database-roles-and-users"></a>Database rollen en-gebruikers beheren
@@ -119,7 +119,7 @@ In dit voor beeld worden een B2B externe gebruiker en een groep toegevoegd aan d
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Rollen en gebruikers toevoegen met behulp van Power shell
 
-De [sqlserver](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -module biedt taak-specifieke data base management-cmdlets en de cmdlet invoke-ASCmd voor algemeen gebruik die een TMSL-query (Tabellair model scripting language) of script accepteert. De volgende cmdlets worden gebruikt voor het beheren van database rollen en-gebruikers.
+De [sqlserver](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -module biedt gebruikersspecifieke data base management-cmdlets en de Invoke-ASCmd cmdlet voor algemeen gebruik die een TMSL-query (Tabellair model scripting language) of script accepteert. De volgende cmdlets worden gebruikt voor het beheren van database rollen en-gebruikers.
   
 |Cmdlet|Beschrijving|
 |------------|-----------------| 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3aa33efa9aa416ad1dfefd2fe957ce04b2b14432
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027457"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Overzicht van data Science met behulp van Spark in azure HDInsight
@@ -29,7 +29,7 @@ In deze suite met onderwerpen wordt uitgelegd hoe u HDInsight Spark kunt gebruik
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) is de door Azure gehoste aanbieding van open-source Spark. Het biedt ook ondersteuning voor **Jupyter PySpark-notebooks** op het Spark-cluster, waarmee Spark SQL Interactive-query's kunnen worden uitgevoerd voor het transformeren, filteren en visualiseren van gegevens die zijn opgeslagen in azure-blobs (WASB). PySpark is de python-API voor Spark. De code fragmenten die de oplossingen bieden en de relevante grafieken weer geven om de gegevens te visualiseren die hier worden uitgevoerd in Jupyter-notebooks die zijn ge√Ønstalleerd op de Spark-clusters. De stappen voor model lering in deze onderwerpen bevatten code die laat zien hoe u elk type model kunt trainen, evalueren, opslaan en gebruiken.
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Instellen: Spark-clusters en Jupyter-notebooks
-Setup-stappen en-code zijn opgenomen in dit overzicht voor het gebruik van een HDInsight Spark 1,6. Maar er zijn Jupyter-notebooks voor zowel HDInsight Spark 1,6-als Spark 2,0-clusters. Er wordt een beschrijving van de notitie blokken en koppelingen naar deze notebooks gegeven in de [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslag plaats waarin deze zijn opgenomen. Bovendien zijn de code hier en in de gekoppelde notitie blokken Gene riek en moeten ze werken op een Spark-cluster. Als u geen gebruik maakt van HDInsight Spark, kunnen de stappen voor het instellen en beheren van het cluster enigszins afwijken van wat hier wordt weer gegeven. Hier volgen de koppelingen naar de Jupyter-notebooks voor Spark 1,6 (om te worden uitgevoerd in de pySpark-kernel van de Jupyter Notebook-server) en Spark 2,0 (wordt uitgevoerd in de pySpark3-kernel van de Jupyter Notebook-server):
+In dit overzicht vindt u instructies en code voor gebruik van een HDInsight Spark 1.6-cluster. Er zijn echter ook Jupyter-notebooks voor zowel HDInsight Spark 1.6- als Spark 2.0-clusters. Ga naar de [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslagplaats met de notebooks voor een beschrijving van de notebooks en koppelingen ernaartoe. De code in dit overzicht en in de gekoppelde notebooks is bovendien generiek en moet op ieder Spark-cluster werken. Als u geen gebruikmaakt van HDInsight Spark, kunnen de stappen voor het instellen en beheren van het cluster enigszins afwijken van wat hier wordt beschreven. Hier volgen de koppelingen naar de Jupyter-notebooks voor Spark 1,6 (om te worden uitgevoerd in de pySpark-kernel van de Jupyter Notebook-server) en Spark 2,0 (wordt uitgevoerd in de pySpark3-kernel van de Jupyter Notebook-server):
 
 ### <a name="spark-16-notebooks"></a>Spark 1,6-notebooks
 Deze notitie blokken moeten worden uitgevoerd in de pySpark-kernel van Jupyter notebook server.
@@ -50,9 +50,9 @@ Deze notitie blokken moeten worden uitgevoerd in de pySpark3-kernel van Jupyter 
 > [!NOTE]
 > De gegevensset van de luchtvaart maatschappij is toegevoegd aan de Spark 2,0-notebooks om het gebruik van classificatie algoritmen beter te illustreren. Raadpleeg de volgende koppelingen voor informatie over de intime-gegevensset voor de verzen ding van de luchtvaart maatschappij en weer gegevensset:
 > 
-> - Gegevens van de luchtvaart maatschappij op tijd:[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Gegevens van de luchtvaart maatschappij op tijd: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Weer gegevens van lucht haven:[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+> - Weer gegevens van lucht haven: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
@@ -192,5 +192,5 @@ Nu u een HDInsight Spark-cluster hebt ingesteld en de Jupyter-notebooks hebt ge√
 
 **Model verbruik:** Zie voor meer informatie over het beoordelen van de classificatie en regressie modellen die in dit onderwerp zijn gemaakt, de [Score en evalueren van met Spark ontwikkelde machine learning modellen](spark-model-consumption.md).
 
-**Kruis validatie en afstemming verruimen**: Zie [geavanceerde gegevens verkennen en model leren met Spark](spark-advanced-data-exploration-modeling.md) over hoe modellen kunnen worden getraind met kruis validatie en Hyper-para meters opruimen
+**Kruisvalidatie en sweeping van hyperparameters**: Zie [Advanced data exploration and modeling with Spark](spark-advanced-data-exploration-modeling.md) (Geavanceerde gegevensverkenning en -modellering met Spark) over de manier waarop modellen kunnen worden getraind met behulp van kruisvalidatie en sweeping van hyperparameters.
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045498"
 ---
 # <a name="plan-virtual-networks"></a>Virtuele netwerken plannen
@@ -115,4 +115,4 @@ Beleids regels worden toegepast op de volgende hiërarchie: beheer groep, abonne
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over alle taken, instellingen en opties voor een [virtueel netwerk](manage-virtual-network.md), [subnet-en service-eind punt](virtual-network-manage-subnet.md), [netwerk interface](virtual-network-network-interface.md), [peering](virtual-network-manage-peering.md), [netwerk-en toepassings beveiligings groep](manage-network-security-group.md)of [route tabel](manage-route-table.md).
+Meer informatie over alle taken, instellingen en opties voor een [virtueel netwerk](manage-virtual-network.md), [subnet-en service-eind punt](virtual-network-manage-subnet.md), [netwerk interface](virtual-network-network-interface.md), [peering](virtual-network-manage-peering.md),  [netwerk-en toepassings beveiligings groep](manage-network-security-group.md)of [route tabel](manage-route-table.md).
