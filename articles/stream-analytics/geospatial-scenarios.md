@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045260"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Geoomheining en georuimtelijke aggregatie scenario's met Azure Stream Analytics
@@ -70,7 +70,7 @@ Het apparaat ' C ' bevindt zich in de gebouw-ID 2, maar dit is niet toegestaan v
 
 ### <a name="site-with-multiple-allowed-devices"></a>Site met meerdere toegestane apparaten
 
-Als een site meerdere apparaten toestaat, kan een matrix met apparaat-Id's worden gedefinieerd in `AllowedDeviceID` en een door de gebruiker gedefinieerde functie kan worden gebruikt in de `WHERE` component om te controleren of de apparaat-id van de stream overeenkomt met een apparaat-id in die lijst. Raadpleeg voor meer informatie de [Java script UDF](stream-analytics-javascript-user-defined-functions.md) -zelf studie voor Cloud taken en de C#-zelf studie over de [UDF](stream-analytics-edge-csharp-udf.md) voor Edge-taken.
+Als een site meerdere apparaten toestaat, kan een matrix met apparaat-Id's worden gedefinieerd in `AllowedDeviceID` en een User-Defined-functie kan worden gebruikt in de `WHERE` component om te controleren of de apparaat-id van de stream overeenkomt met een apparaat-id in die lijst. Raadpleeg voor meer informatie de [Java script UDF](stream-analytics-javascript-user-defined-functions.md) -zelf studie voor Cloud taken en de C#-zelf studie over de [UDF](stream-analytics-edge-csharp-udf.md) voor Edge-taken.
 
 ## <a name="geospatial-aggregation"></a>Georuimtelijke aggregatie
 

@@ -1,5 +1,5 @@
 ---
-title: Log Analytics werkruimte configureren voor Azure Monitor voor VM's
+title: Log Analytics-werkruimte voor Azure Monitor voor VM's configureren
 description: Hierin wordt beschreven hoe u de Log Analytics werkruimte maakt en configureert die wordt gebruikt door Azure Monitor voor VM's.
 ms.subservice: ''
 ms.topic: conceptual
@@ -8,13 +8,13 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 40ff7bfe713f401a23dea0b3660be1b7728a1380
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828554"
 ---
-# <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Log Analytics werkruimte configureren voor Azure Monitor voor VM's
+# <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Log Analytics-werkruimte voor Azure Monitor voor VM's configureren
 Azure Monitor voor VM's verzamelt gegevens uit een of meer Log Analytics-werk ruimten in Azure Monitor. Voordat u agents voorbereidt, moet u een werk ruimte maken en configureren. In dit artikel worden de vereisten van de werk ruimte beschreven en om deze voor Azure Monitor voor VM's te configureren.
 
 ## <a name="overview"></a>Overzicht
@@ -86,7 +86,7 @@ Als u één werk ruimte wilt configureren, selecteert u de **andere opties voor 
 
 Als u meerdere werk ruimten wilt configureren, selecteert u het tabblad **werkruimte configuratie** in het menu **virtual machines** van het menu **monitor** in de Azure Portal. De filter waarden instellen om een lijst met bestaande werk ruimten weer te geven. Schakel het selectie vakje in naast elke werk ruimte die u wilt inschakelen en klik vervolgens op **geselecteerde items configureren** .
 
-[![Werkruimte configuratie](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
+[![Werkruimteconfiguratie](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
 Wanneer u Azure Monitor voor VM's op één virtuele machine of VMMS inschakelt met behulp van de Azure Portal, krijgt u de optie om een bestaande werk ruimte te selecteren of een nieuwe te maken. Als dit nog niet is gebeurd, wordt de *VMInsights* -oplossing in deze werk ruimte geïnstalleerd. U kunt deze werk ruimte vervolgens gebruiken voor andere agents.

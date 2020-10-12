@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 171aaeb624bfedb9aa7408a736c11faca316b392
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322632"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider voor .NET core ILogger-logboeken
@@ -203,14 +203,14 @@ public class Startup
 Micro soft. ApplicationInsights. AspNet SDK-versies voordat 2.7.1 een logboek registratie provider ondersteunt die nu verouderd is. Deze provider is ingeschakeld via de uitbreidings methode **AddApplicationInsights ()** van ILoggerFactory. We raden u aan om te migreren naar de nieuwe provider. Dit omvat twee stappen:
 
 1. Verwijder de aanroep *ILoggerFactory. AddApplicationInsights ()* van de methode **Startup.Configureren ()** om dubbele logboek registratie te voor komen.
-2. Filter regels in code opnieuw Toep assen, omdat deze niet worden geëerbiedigd door de nieuwe provider. Overloads van *ILoggerFactory. AddApplicationInsights ()* hebben mini maal loglevel-of filter functies nodig. Met de nieuwe provider wordt filteren onderdeel van het Framework voor logboek registratie. Het wordt niet gedaan door de Application Insights provider. Filters die worden verschaft via *ILoggerFactory. AddApplicationInsights ()* , moeten dus worden verwijderd. En er moeten filter regels worden gegeven door de instructies voor het vastleggen van het [registratie niveau](#control-logging-level) . Als uappsettings.jsgebruikt voor het filteren *van* logboek registratie, blijft het werken met de nieuwe provider, omdat beide dezelfde provider alias gebruiken, *ApplicationInsights*.
+2. Filter regels in code opnieuw Toep assen, omdat deze niet worden geëerbiedigd door de nieuwe provider. Overloads van *ILoggerFactory. AddApplicationInsights ()* hebben mini maal loglevel-of filter functies nodig. Met de nieuwe provider wordt filteren onderdeel van het Framework voor logboek registratie. Het wordt niet gedaan door de Application Insights provider. Filters die worden verschaft via *ILoggerFactory. AddApplicationInsights ()* , moeten dus worden verwijderd. En er moeten filter regels worden gegeven door de instructies voor het vastleggen van het [registratie niveau](#control-logging-level) . Als uappsettings.jsgebruikt voor het filteren * van* logboek registratie, blijft het werken met de nieuwe provider, omdat beide dezelfde provider alias gebruiken, *ApplicationInsights*.
 
 U kunt nog steeds de oude provider gebruiken. (Deze wordt alleen verwijderd in een primaire versie wijziging op 3. *xx*.) maar we raden u aan om de volgende redenen te migreren naar de nieuwe provider:
 
 - De vorige provider heeft geen ondersteuning voor [logboek bereik](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). In de nieuwe provider worden eigenschappen van bereik automatisch toegevoegd als aangepaste eigenschappen aan de verzamelde telemetrie.
 - Logboeken kunnen nu veel eerder in de opstart pijplijn van de toepassing worden vastgelegd. Logboeken van het **programma** en de **opstart** klassen kunnen nu worden vastgelegd.
 - Met de nieuwe provider wordt filteren uitgevoerd op het niveau van het Framework zelf. U kunt Logboeken filteren op de Application Insights provider op dezelfde manier als voor andere providers, waaronder ingebouwde providers zoals console, debug, enzovoort. U kunt ook dezelfde filters toep assen op meerdere providers.
-- In ASP.NET Core (2,0 en hoger), de aanbevolen manier om [logboek registratie providers in te scha kelen](https://github.com/aspnet/Announcements/issues/255) , is door gebruik te maken van uitbreidings methoden op ILoggingBuilder in **Program.cs** zelf.
+- In ASP.NET Core (2,0 en hoger), de aanbevolen manier om  [logboek registratie providers in te scha kelen](https://github.com/aspnet/Announcements/issues/255) , is door gebruik te maken van uitbreidings methoden op ILoggingBuilder in **Program.cs** zelf.
 
 > [!Note]
 > De nieuwe provider is beschikbaar voor toepassingen die zijn gericht op netstandard 2.0 of hoger. Van [micro soft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) -versie 2.14.0 de nieuwe provider is ook beschikbaar voor toepassingen die gericht zijn op .NET Framework NET461 of hoger. Als uw toepassing oudere .NET Core-versies, zoals .NET Core 1,1, bedoelt, of als deze de .NET Framework van minder dan NET46, kunt u de oude provider blijven gebruiken.
@@ -378,7 +378,7 @@ Duplicatie kan optreden als u de oudere (nu verouderde) versie van ApplicationIn
  }
 ```
 
-Als er dubbele logboek registratie wordt weer gegeven wanneer u fouten opspoort in Visual Studio, stelt u `EnableDebugLogger` in op *Onwaar* in de code waarmee Application Insights wordt ingeschakeld, zoals hieronder wordt weer gegeven. Deze duplicatie en correctie zijn alleen relevant wanneer u fout opsporing voor de toepassing uitvoert.
+Als er dubbele logboek registratie wordt weer gegeven wanneer u fouten opspoort in Visual Studio, stelt u `EnableDebugLogger` in op  *Onwaar* in de code waarmee Application Insights wordt ingeschakeld, zoals hieronder wordt weer gegeven. Deze duplicatie en correctie zijn alleen relevant wanneer u fout opsporing voor de toepassing uitvoert.
 
 ```csharp
  public void ConfigureServices(IServiceCollection services)
@@ -444,7 +444,7 @@ public class MyController : ApiController
 
 ApplicationInsightsLoggerProvider legt ILogger-logboeken vast en maakt daar TraceTelemetry van. Als er een uitzonderings object wordt door gegeven aan de methode **log ()** op ILogger, wordt *ExceptionTelemetry* gemaakt in plaats van TraceTelemetry. Deze telemetrie-items kunnen op dezelfde plaatsen worden gevonden als andere TraceTelemetry of ExceptionTelemetry voor Application Insights, waaronder het portal, het analyse programma of het lokale fout opsporingsprogramma van Visual Studio.
 
-Als u liever altijd TraceTelemetry wilt verzenden, gebruikt u dit fragment:```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
+Als u liever altijd TraceTelemetry wilt verzenden, gebruikt u dit fragment: ```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
 
 ### <a name="i-dont-have-the-sdk-installed-and-i-use-the-azure-web-apps-extension-to-enable-application-insights-for-my-aspnet-core-applications-how-do-i-use-the-new-provider"></a>Ik heb de SDK niet geïnstalleerd en ik gebruik de Azure Web Apps-extensie om Application Insights in te scha kelen voor mijn ASP.NET Core toepassingen. De nieuwe provider Hoe kan ik gebruiken? 
 

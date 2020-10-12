@@ -17,15 +17,15 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764584"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hoge Beschik baarheid en taak verdeling van de connectors en toepassingen van uw toepassings proxy
 
-In dit artikel wordt uitgelegd hoe verkeer distributie werkt met de implementatie van uw toepassings proxy. We bespreken:
+In dit artikel wordt uitgelegd hoe verkeer distributie werkt met de implementatie van uw toepassings proxy. We besteden aandacht aan:
 
 - Hoe verkeer wordt verdeeld over gebruikers en connectors, samen met tips voor het optimaliseren van de prestaties van de connector
 

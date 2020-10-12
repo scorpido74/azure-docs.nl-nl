@@ -7,13 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854496"
 ---
-# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Ondersteunings levenscyclus voor Azure Red Hat open Shift 4
+# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Levenscyclusondersteuning voor Azure Red Hat OpenShift 4
 
 Red Hat geeft in ongeveer elke drie maanden een secundaire versie van het Red Hat open Shift container platform (OCP). Deze releases bevatten nieuwe functies en verbeteringen. Patch releases zijn vaker (meestal wekelijks) en zijn alleen bedoeld voor essentiële probleem oplossingen binnen een secundaire versie. Deze patches kunnen oplossingen bevatten voor beveiligings problemen of grote fouten.
 
@@ -100,7 +100,7 @@ Raadpleeg de volgende hand leiding voor de [release geschiedenis van de eerdere 
 |4.3|Februari 2020|Mei 2020|Augustus 2020|
 |4.4|Mei 2020|Augustus 2020|4,6 GA|
 |4.5|Juli 2020|Oktober 2020|4,7 GA
-|4,6|* Vroege Q4, 2020|* Latere Q4, 2020|4,8 GA|
+|4.6|* Vroege Q4, 2020|* Latere Q4, 2020|4,8 GA|
 
 \*_Bevestiging van release datum van de upstream in behandeling._
 

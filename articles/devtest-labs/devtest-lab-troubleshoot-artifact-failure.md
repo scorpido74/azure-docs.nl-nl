@@ -4,16 +4,16 @@ description: DevTest Labs biedt informatie die u kunt gebruiken om een artefact 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480810"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Storingen in artefacten in het lab diagnosticeren 
 Nadat u een artefact hebt gemaakt, kunt u controleren of deze is geslaagd of mislukt. Artefact Logboeken in Azure DevTest Labs bevatten informatie die u kunt gebruiken om een artefact fout vast te stellen. U hebt een aantal opties voor het weer geven van de artefact logboek gegevens voor een Windows-VM:
 
-* In de Azure Portal
+* In Azure Portal
 * In de VM
 
 > [!NOTE]

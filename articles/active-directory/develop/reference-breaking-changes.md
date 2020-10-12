@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115030"
 ---
 # <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie?
@@ -69,7 +69,7 @@ Gebruikers met wacht woorden die langer zijn dan 256 tekens die zich rechtstreek
 
 De fout in de aanmeldings Logboeken wordt AADSTS 50052: InvalidPasswordExceedsMaxLength
 
-Bericht:`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+Bericht: `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
 
 Herstel
 
@@ -127,7 +127,7 @@ U kunt dit probleem oplossen door de beheerder toestemming te geven om de servic
 
 #### <a name="example-request"></a>Voorbeeldaanvraag
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`In dit voor beeld is de resource Tenant (instantie) contoso.com, de resource-app is een app met één Tenant die is aangeroepen `gateway.contoso.com/api` voor de contoso-Tenant en de client-app `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Als de client-app een Service-Principal in Contoso.com heeft, kan deze aanvraag door gaan.  Als dit echter niet het geval is, mislukt de aanvraag met de bovenstaande fout.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` In dit voor beeld is de resource Tenant (instantie) contoso.com, de resource-app is een app met één Tenant die is aangeroepen `gateway.contoso.com/api` voor de contoso-Tenant en de client-app `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Als de client-app een Service-Principal in Contoso.com heeft, kan deze aanvraag door gaan.  Als dit echter niet het geval is, mislukt de aanvraag met de bovenstaande fout.
 
 Als de contoso gateway-app echter een multi tenant toepassing is, wordt de aanvraag wel door gaan, ongeacht de client-app met een Service-Principal in Contoso.com.
 

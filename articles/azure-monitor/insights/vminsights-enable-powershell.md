@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor voor VM's inschakelen met behulp van Power shell
+title: Azure Monitor voor VM's inschakelen met behulp van PowerShell
 description: Hierin wordt beschreven hoe u Azure Monitor voor VM's voor virtuele machines of virtuele-machine schaal sets in azure inschakelt met behulp van Azure PowerShell.
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,13 +7,13 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87824576"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>Azure Monitor voor VM's inschakelen met behulp van Power shell
+# <a name="enable-azure-monitor-for-vms-using-powershell"></a>Azure Monitor voor VM's inschakelen met behulp van PowerShell
 In dit artikel wordt beschreven hoe u Azure Monitor voor VM's op virtuele Azure-machines inschakelt met behulp van Power shell. Deze procedure kan worden gebruikt voor het volgende:
 
 - Azure virtuele machine

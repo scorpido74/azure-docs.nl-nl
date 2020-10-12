@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
 ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87832243"
 ---
 # <a name="resize-a-windows-vm"></a>Het formaat van een Windows-VM wijzigen
@@ -25,7 +25,7 @@ Als uw virtuele machine gebruikmaakt van Premium Storage, moet u ervoor zorgen d
 
 ## <a name="use-the-portal"></a>Gebruik de portal
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 1. Open de pagina voor de virtuele machine.
 1. Selecteer in het menu links **grootte**.
 1. Kies een nieuwe grootte in de lijst met beschik bare grootten en selecteer vervolgens **formaat wijzigen**.

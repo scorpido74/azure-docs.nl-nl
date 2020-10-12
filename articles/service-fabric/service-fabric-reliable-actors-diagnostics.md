@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258461"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnose- en prestatiecontrole voor betrouwbare actoren
@@ -85,8 +85,8 @@ De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking to
 
 | Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |Verbose |0x2 |Actors-runtime staat op het punt een actor-methode aan te roepen. |
-| ActorMethodStop |8 |Verbose |0x2 |Het uitvoeren van een actor-methode is voltooid. Dat wil zeggen dat de asynchrone aanroep van de runtime naar de actor methode heeft geretourneerd en dat de taak die door de actor-methode is geretourneerd, is voltooid. |
+| ActorMethodStart |7 |Uitgebreid |0x2 |Actors-runtime staat op het punt een actor-methode aan te roepen. |
+| ActorMethodStop |8 |Uitgebreid |0x2 |Het uitvoeren van een actor-methode is voltooid. Dat wil zeggen dat de asynchrone aanroep van de runtime naar de actor methode heeft geretourneerd en dat de taak die door de actor-methode is geretourneerd, is voltooid. |
 | ActorMethodThrewException |9 |Waarschuwing |0x3 |Er is een uitzonde ring opgetreden tijdens het uitvoeren van een actor-methode, hetzij tijdens de asynchrone aanroep van de runtime naar de actor-methode of tijdens de uitvoering van de taak die door de actor-methode is geretourneerd. Deze gebeurtenis geeft aan dat er een fout is opgetreden in de actor code die moet worden onderzocht. |
 
 De Reliable Actors runtime publiceert de volgende prestatie meter items die betrekking hebben op de uitvoering van actor-methoden.
@@ -102,7 +102,7 @@ De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking to
 
 | Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |Verbose |0x8 |Deze gebeurtenis is geschreven aan het begin van elke nieuwe functie voor het inschakelen van een actor. Het bevat het aantal in behandeling zijnde actor-aanroepen dat wacht om de vergren deling per actor te verkrijgen waarmee gelijktijdigheid op basis van een bocht wordt afgedwongen. |
+| ActorMethodCallsWaitingForLock |12 |Uitgebreid |0x8 |Deze gebeurtenis is geschreven aan het begin van elke nieuwe functie voor het inschakelen van een actor. Het bevat het aantal in behandeling zijnde actor-aanroepen dat wacht om de vergren deling per actor te verkrijgen waarmee gelijktijdigheid op basis van een bocht wordt afgedwongen. |
 
 De Reliable Actors runtime publiceert de volgende prestatie meters die betrekking hebben op gelijktijdigheid.
 
@@ -117,8 +117,8 @@ De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking to
 
 | Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |Verbose |0x4 |Actors-runtime staat op het punt de actor status op te slaan. |
-| ActorSaveStateStop |11 |Verbose |0x4 |Actors-runtime heeft het opslaan van de actor status voltooid. |
+| ActorSaveStateStart |10 |Uitgebreid |0x4 |Actors-runtime staat op het punt de actor status op te slaan. |
+| ActorSaveStateStop |11 |Uitgebreid |0x4 |Actors-runtime heeft het opslaan van de actor status voltooid. |
 
 Met de Reliable Actors runtime worden de volgende prestatie meter items gepubliceerd die betrekking hebben op het beheer van actor status.
 
@@ -162,5 +162,5 @@ Wanneer een client een methode aanroept via een actor-proxy object, resulteert d
 ## <a name="next-steps"></a>Volgende stappen
 * [Hoe Reliable Actors het Service Fabric platform gebruiken?](service-fabric-reliable-actors-platform.md)
 * [Referentie documentatie voor actor-API](/previous-versions/azure/dn971626(v=azure.100))
-* [Voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Event source-providers in PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

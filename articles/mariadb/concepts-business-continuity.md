@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86252263"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Inzicht in de bedrijfs continuïteit in Azure Database for MariaDB
@@ -23,7 +23,7 @@ Azure Database for MariaDB biedt functies voor bedrijfs continuïteit, waaronder
 
 De volgende tabel vergelijkt de ERT en RPO voor de beschik bare functies:
 
-| **Mogelijkheid** | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| **Mogelijkheid** | **Basic** | **Algemeen doel** | **Geoptimaliseerd geheugen** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Herstel naar een bepaald tijdstip vanuit back-up | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode |
 | Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | ERT < 12 uur<br/>RPO < 1 uur | ERT < 12 uur<br/>RPO < 1 uur |

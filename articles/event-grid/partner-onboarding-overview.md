@@ -4,10 +4,10 @@ description: Onboarding als een type Azure Event Grid partner onderwerp. Meer in
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826786"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als een Azure Event Grid partner
@@ -59,7 +59,7 @@ Met partner onderwerpen kunt u gebeurtenissen publiceren naar Azure Event Grid v
 Het volgende resource model is voor onderwerpen over partners.
 
 ### <a name="partner-registrations"></a>Partner registraties
-* Resource`partnerRegistrations`
+* Resource: `partnerRegistrations`
 * Gebruikt door: partners
 * Beschrijving: Hiermee worden de algemene meta gegevens van de SaaS-partner (Software as a Service) vastgelegd (bijvoorbeeld naam, weergave naam, beschrijving, configuratie-URI).
     
@@ -75,13 +75,13 @@ Het volgende resource model is voor onderwerpen over partners.
 * Bereik: levens duur in het abonnement van de partner.
 
 ### <a name="event-channel"></a>Gebeurtenis kanaal
-* Resource`partnerNamespaces/eventChannels`
+* Resource: `partnerNamespaces/eventChannels`
 * Gebruikt door: partners
 * Beschrijving: de gebeurtenis tunnels zijn een mirror van het partner onderwerp van de klant. Door een gebeurtenis tunnel te maken en het Azure-abonnement en de resource groep van de klant op te geven in de meta gegevens, geeft u aan Event Grid een partner onderwerp voor de klant te maken. Event Grid een ARM-aanroep voor het maken van een bijbehorende partnerTopic in het abonnement van de klant. Het partner onderwerp wordt gemaakt met de status in behandeling. Er is een een-op-een-koppeling tussen elk gebeurtenis tunnel en het onderwerp van de partner.
 * Bereik: levens duur in het abonnement van de partner.
 
 ### <a name="partner-topics"></a>Partneronderwerpen
-* Resource`partnerTopics`
+* Resource: `partnerTopics`
 * Gebruikt door: klanten
 * Beschrijving: partner onderwerpen zijn vergelijkbaar met aangepaste onderwerpen en systeem onderwerpen in Event Grid. Elk partner onderwerp is gekoppeld aan een specifieke bron (bijvoorbeeld `Contoso:myaccount` ) en een specifiek type partner onderwerp (bijvoorbeeld Contoso). Klanten maken gebeurtenis abonnementen op het partner onderwerp voor het door sturen van gebeurtenissen naar verschillende gebeurtenis-handlers.
 
@@ -89,9 +89,9 @@ Het volgende resource model is voor onderwerpen over partners.
 * Bereik: in het abonnement van de klant.
 
 ### <a name="partner-topic-types"></a>Typen partner onderwerpen
-* Resource`partnerTopicTypes`
+* Resource: `partnerTopicTypes`
 * Gebruikt door: klanten
-* Beschrijving: typen partners voor de hele Tenant zijn bron typen voor het gehele netwerk waarmee klanten de lijst met goedgekeurde partner typen kunnen detecteren. De URL ziet eruit alshttps://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Beschrijving: typen partners voor de hele Tenant zijn bron typen voor het gehele netwerk waarmee klanten de lijst met goedgekeurde partner typen kunnen detecteren. De URL ziet eruit als https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Bereik: globaal
 
 ## <a name="publish-events-to-event-grid"></a>Gebeurtenissen publiceren naar Event Grid
@@ -142,7 +142,7 @@ Gebeurtenissen publiceren naar Azure Event Grid met behulp van het CloudEvents 1
 
 Nadat u naar het partnerNamespace-eind punt hebt gepost, ontvangt u een antwoord. Het antwoord is een standaard-HTTP-antwoord code. Enkele veelvoorkomende reacties zijn:
 
-| Resultaat                             | Reactie              |
+| Resultaat                             | Antwoord              |
 |------------------------------------|-----------------------|
 | Geslaagd                            | 200 OK                |
 | De gebeurtenis gegevens hebben een onjuiste indeling    | 400 Ongeldige aanvraag       |
@@ -150,7 +150,7 @@ Nadat u naar het partnerNamespace-eind punt hebt gepost, ontvangt u een antwoord
 | Onjuist eind punt                 | 404 Niet gevonden         |
 | Matrix of gebeurtenis overschrijdt grootte limieten | 413 Payload is te groot |
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sjabloon](/azure/templates/microsoft.eventgrid/allversions)

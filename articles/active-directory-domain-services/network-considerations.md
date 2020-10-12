@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91396328"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure Active Directory Domain Services
@@ -108,11 +108,11 @@ Een [netwerk beveiligings groep (NSG)](../virtual-network/security-overview.md) 
 
 De volgende regels voor de netwerk beveiligings groep zijn vereist voor het beheerde domein voor het leveren van verificatie-en beheer Services. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 
-| Poortnummer | Protocol | Bron                             | Doel | Actie | Vereist | Functie |
+| Poortnummer | Protocol | Bron                             | Doel | Bewerking | Vereist | Doel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Yes      | Synchronisatie met uw Azure AD-Tenant. |
-| 3389        | TCP      | CorpNetSaw                         | Alle         | Toestaan  | Yes      | Beheer van uw domein. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Yes      | Beheer van uw domein. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Ja      | Synchronisatie met uw Azure AD-Tenant. |
+| 3389        | TCP      | CorpNetSaw                         | Alle         | Toestaan  | Ja      | Beheer van uw domein. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Ja      | Beheer van uw domein. |
 
 Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein. Verwijder deze netwerk beveiligings groep niet. De load balancer werkt niet zonder problemen.
 

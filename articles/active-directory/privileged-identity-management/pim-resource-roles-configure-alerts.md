@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84743759"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure-resource rollen in Privileged Identity Management
@@ -28,7 +28,7 @@ Privileged Identity Management (PIM) genereert waarschuwingen wanneer er verdach
 
 ![Azure-resources-waarschuwingen pagina vermelding, risico niveau en aantal](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
-## <a name="review-alerts"></a>Waarschuwingen controleren
+## <a name="review-alerts"></a>Waarschuwingen weergeven
 
 Selecteer een waarschuwing om een rapport weer te geven met een lijst met de gebruikers of rollen die de waarschuwing hebben geactiveerd, samen met richt lijnen voor herstel.
 
@@ -36,13 +36,13 @@ Selecteer een waarschuwing om een rapport weer te geven met een lijst met de geb
 
 ## <a name="alerts"></a>Waarschuwingen
 
-| Waarschuwing | Severity | Trigger | Aanbeveling |
+| Waarschuwing | Ernst | Trigger | Aanbeveling |
 | --- | --- | --- | --- |
 | **Te veel eigen aren toegewezen aan een resource** |Normaal |Te veel gebruikers hebben de rol van eigenaar. |Controleer de gebruikers in de lijst en wijs een aantal toe aan minder privilegede rollen. |
 | **Er zijn te veel permanente eigen aren toegewezen aan een resource** |Normaal |Te veel gebruikers zijn permanent toegewezen aan een rol. |Controleer de gebruikers in de lijst en wijs een aantal opnieuw toe om te activeren voor het gebruik van rollen. |
 | **Dubbele rol gemaakt** |Normaal |Meerdere rollen hebben hetzelfde criterium. |Gebruik slechts één van deze rollen. |
 
-### <a name="severity"></a>Severity
+### <a name="severity"></a>Ernst
 
 - **Hoog**: vereist direct actie vanwege een beleids schending. 
 - **Medium**: vereist geen onmiddellijke actie, maar signaleert een mogelijke beleids schending.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087840"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel verbinden met Apache Hadoop in Azure HDIsight met behulp van het Hive ODBC-stuurprogramma van Microsoft
@@ -27,54 +27,54 @@ U kunt de gegevens die zijn gekoppeld aan een HDInsight-cluster via Excel verbin
 
 Voordat u met dit artikel begint, moet u beschikken over de volgende items:
 
-* An HDInsight Hadoop-cluster. Zie aan de [slag met Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)om een account te maken.
+* An HDInsight Hadoop-cluster. Zie [Aan de slag met Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md) om er een te maken.
 * Een werk station met Office 2010 Professional Plus of hoger of Excel 2010 of hoger.
 
-## <a name="install-microsoft-hive-odbc-driver"></a>Micro soft Hive ODBC-stuur programma installeren
+## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC-stuurprogramma installeren
 
 Down load en installeer het [micro soft Hive ODBC-stuur programma](https://www.microsoft.com/download/details.aspx?id=40886). Kies de versie die overeenkomt met de versie van de toepassing waarin u het ODBC-stuur programma gaat gebruiken.  Voor dit artikel wordt het stuur programma gebruikt voor Office Excel.
 
-## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC-gegevens bron maken
+## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC-gegevensbron maken
 
 De volgende stappen laten zien hoe u een Hive-ODBC-gegevens bron maakt.
 
 1. Ga vanuit Windows naar **Start > Windows-beheer programma's > ODBC-gegevens bronnen (32-bits)/(64-bits)**.  Met deze actie wordt het venster **ODBC-gegevens bron beheer** geopend.
 
-    ![OBDC-gegevens bron beheerder](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Een DSN configureren met behulp van ODBC-gegevens bron beheer")
+    ![ODBC-gegevensbronbeheerder](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Een DSN configureren met behulp van ODBC-gegevensbronbeheerder")
 
-1. Klik op het tabblad **gebruikers-DSN** op **toevoegen** om het venster **nieuwe gegevens bron maken** te openen.
+1. Op het tabblad **gebruikers-DSN** selecteert u **Toevoegen** om het venster **Nieuwe gegevensbron maken** te openen.
 
-1. Selecteer **micro soft Hive ODBC-stuur programma**en selecteer vervolgens **volt ooien** om het venster **micro soft Hive ODBC-stuur programma voor DSN-instellingen** te openen.
+1. Selecteer **Microsoft Hive ODBC-stuurprogramma** en selecteer vervolgens **Voltooien** om het venster **DSN-installatie van Microsoft Hive ODBC-stuurprogramma** te openen.
 
 1. Typ of selecteer de volgende waarden:
 
-   | Eigenschap | Description |
+   | Eigenschap | Beschrijving |
    | --- | --- |
    |  Naam van de gegevensbron |Geef uw gegevensbron een naam |
-   |  Host (s) |Voer `HDInsightClusterName.azurehdinsight.net` in. Bijvoorbeeld `myHDICluster.azurehdinsight.net`. Opmerking: `HDInsightClusterName-int.azurehdinsight.net` wordt ondersteund zolang de client-VM is gekoppeld aan hetzelfde virtuele netwerk. |
+   |  Host(s) |Voer `HDInsightClusterName.azurehdinsight.net` in. Bijvoorbeeld `myHDICluster.azurehdinsight.net`. Opmerking: `HDInsightClusterName-int.azurehdinsight.net` wordt ondersteund zolang de client-VM is gekoppeld aan hetzelfde virtuele netwerk. |
    |  Poort |Gebruik **443**. (Deze poort is gewijzigd van 563 in 443.) |
-   |  Database |**Standaard instelling**gebruiken. |
-   |  Mechanisme |Selecteer de **Windows Azure HDInsight-service** |
-   |  Gebruikersnaam |Voer de gebruikers naam van het HDInsight-cluster in. De standaardgebruikersnaam **admin**. |
-   |  Wachtwoord |Voer het gebruikers wachtwoord voor het HDInsight-cluster in. Schakel het selectie vakje **wacht woord opslaan (versleuteld)** in.|
+   |  Database |Gebruik **standaard**. |
+   |  Mechanisme |Selecteer **Windows Azure HDInsight Service** |
+   |  Gebruikersnaam |Voer de gebruikersnaam van de HTTP-gebruiker van het HDInsight-cluster in. De standaardgebruikersnaam **admin**. |
+   |  Wachtwoord |Voer het gebruikerswachtwoord voor het HDInsight-cluster in. Schakel het selectievakje **Wachtwoord opslaan (versleuteld)** in.|
 
 1. Optioneel: Selecteer **Geavanceerde opties...**  
 
    | Parameter | Beschrijving |
    | --- | --- |
-   |  Systeem eigen query gebruiken |Wanneer deze is geselecteerd, probeert het ODBC-stuur programma geen TSQL te converteren naar HiveQL. U dient deze alleen te gebruiken als u 100% zeker weet dat u HiveQL-instructies verzendt. Wanneer u verbinding maakt met SQL Server of Azure SQL Database, moet u het selectie vakje uitgeschakeld laten. |
-   |  Opgehaalde rijen per blok |Bij het ophalen van een groot aantal records is het mogelijk dat deze para meter moet worden afgestemd om optimale prestaties te garanderen. |
-   |  Standaard lengte van een teken reeks kolom, binaire kolom lengte, decimale kolom schaal |De lengten en nauw keurigheid van het gegevens type kunnen van invloed zijn op hoe gegevens worden geretourneerd. Ze leiden ertoe dat onjuiste gegevens worden geretourneerd vanwege verlies van nauw keurigheid en, of afkap ping. |
+   |  Systeemeigen query gebruiken |Wanneer het ODBC-stuurprogramma is geselecteerd, probeert het NIET TSQL te converteren naar HiveQL. U dient deze alleen te gebruiken als u 100% zeker weet dat u HiveQL-instructies verzendt. Wanneer u verbinding maakt met SQL Server of Azure SQL Database, moet u het selectievakje uitgeschakeld laten. |
+   |  Opgehaalde rijen per blok |Bij het ophalen van een groot aantal records is het afstemmen van deze parameter mogelijk vereist om te zorgen voor optimale prestaties. |
+   |  Standaardlengte van een tekenreekskolom, binaire kolomlengte, decimale kolomschaal |De lengten en precisie van het gegevenstype kunnen van invloed zijn op hoe gegevens worden geretourneerd. Ze leiden ertoe dat onjuiste gegevens worden geretourneerd vanwege verlies van nauw keurigheid en, of afkap ping. |
 
-    ![Geavanceerde configuratie opties voor DSN](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Geavanceerde configuratie opties voor DSN")
+    ![Geavanceerde DSN-configuratieopties](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Geavanceerde DSN-configuratieopties")
 
-1. Selecteer **testen** om de gegevens bron te testen. Wanneer de gegevens bron op de juiste wijze is geconfigureerd, toont het test resultaat de uitkomst **.**
+1. Selecteer **Testen** om de gegevensbron te testen. Wanneer de gegevens bron op de juiste wijze is geconfigureerd, toont het test resultaat de uitkomst **.**
 
-1. Selecteer **OK** om het test venster te sluiten.  
+1. Selecteer **OK** om het testvenster te sluiten.  
 
-1. Selecteer **OK** om het venster **micro soft Hive ODBC-stuur programma DSN-instellingen** te sluiten.  
+1. Selecteer **OK** om het venster **DSN-installatie van Microsoft Hive ODBC-stuurprogramma** te sluiten.  
 
-1. Selecteer **OK** om het venster **ODBC-gegevens bron beheer** te sluiten.  
+1. Selecteer **OK** om het venster **ODBC-gegevensbronbeheerder** te sluiten.  
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>Gegevens in Excel importeren vanuit HDInsight
 

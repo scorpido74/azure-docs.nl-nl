@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827279"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
-Als beheerder kan het nodig zijn om een ​​abonnement, resourcegroep of resource te vergrendelen om te voorkomen dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen. U kunt de vergrendeling instellen op **CanNotDelete** of **ReadOnly**. In de portal worden de vergren delingen respectievelijk **verwijderen** en **alleen-lezen** genoemd.
+Als beheerder moet u een ​​abonnement, resourcegroep of resource mogelijk vergrendelen om te voorkomen dat andere gebruikers in uw organisatie per ongeluk kritieke resources verwijderen of wijzigen. U kunt de vergrendeling instellen op **CanNotDelete** of **ReadOnly**. In de portal worden de vergren delingen respectievelijk **verwijderen** en **alleen-lezen** genoemd.
 
 * **CanNotDelete** betekent dat geautoriseerde gebruikers nog steeds een resource kunnen lezen en wijzigen, maar de resource niet kan verwijderen.
 * **Alleen-lezen** houdt in dat gemachtigde gebruikers een resource kunnen lezen, maar de resource niet kunnen verwijderen of bijwerken. Het Toep assen van deze vergren deling is vergelijkbaar met het beperken van alle gemachtigde gebruikers tot de machtigingen die door de rol van **lezer** worden verleend.
@@ -76,13 +76,13 @@ Wanneer u een resource manager-sjabloon gebruikt om een vergren deling te implem
 
 Bij het Toep assen van een vergren deling op een **resource**gebruikt u de volgende indelingen:
 
-* naam`{resourceName}/Microsoft.Authorization/{lockName}`
-* voert`{resourceProviderNamespace}/{resourceType}/providers/locks`
+* naam `{resourceName}/Microsoft.Authorization/{lockName}`
+* voert `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
 Bij het Toep assen van een vergren deling op een **resource groep** of- **abonnement**, gebruikt u de volgende indelingen:
 
-* naam`{lockName}`
-* voert`Microsoft.Authorization/locks`
+* naam `{lockName}`
+* voert `Microsoft.Authorization/locks`
 
 In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, een website en een vergren deling op de website maakt. Het bron type van de vergren deling is het resource type van de resource die u wilt vergren delen en **/providers/Locks**. De naam van de vergren deling wordt gemaakt door de resource naam met **/Microsoft.Authorization/** en de naam van de vergren deling samen te voegen.
 
