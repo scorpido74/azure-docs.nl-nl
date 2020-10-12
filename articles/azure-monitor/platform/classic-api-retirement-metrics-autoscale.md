@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317379"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
@@ -31,13 +31,13 @@ Dit artikel is van toepassing op het gebruik van de volgende onderdelen:
 
 - **Klassiek automatisch schalen** : als u de [klassieke instellingen voor automatisch schalen](/previous-versions/azure/reference/mt348562(v=azure.100)) aanroept vanuit uw aangepaste hulpprogram ma's of met behulp van de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), moet u overschakelen naar het [Azure monitor rest API van Resource Manager](/rest/api/monitor/autoscalesettings).
 
-- **Klassieke metrische gegevens** : als u metrische gegevens gebruikt met behulp van de [klassieke rest-api's](/previous-versions/azure/reference/dn510374(v=azure.100)) of de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) van aangepaste hulpprogram ma's, moet u overschakelen naar het Azure monitor van [Resource Manager rest API](/rest/api/monitor/autoscalesettings). 
+- **Klassieke metrische gegevens** : als u metrische gegevens gebruikt met behulp van de [klassieke rest-api's](/previous-versions/azure/reference/dn510374(v=azure.100)) of de  [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) van aangepaste hulpprogram ma's, moet u overschakelen naar het Azure monitor van [Resource Manager rest API](/rest/api/monitor/autoscalesettings). 
 
 Als u niet zeker weet of uw code of aangepaste hulp middelen de klassieke Api's aanroepen, bekijkt u het volgende:
 
 - Controleer de URI waarnaar wordt verwezen in de code of het hulp programma. De klassieke Api's gebruiken de URI https://management.core.windows.net . U moet de nieuwere URI gebruiken voor de op Resource Manager gebaseerde Api's, te beginnen met `https://management.azure.com/` .
 
-- Vergelijk de naam van de assembly op uw computer. De oudere klassieke assembly bevindt zich op https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
+- Vergelijk de naam van de assembly op uw computer. De oudere klassieke assembly bevindt zich op  https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Als u verificatie via certificaat gebruikt voor toegang tot metrische gegevens of Api's voor automatisch schalen, gebruikt u een klassiek eind punt en een bibliotheek. De nieuwere Resource Manager-Api's vereisen Azure Active Directory authenticatie via een service-principal of User Principal.
 
@@ -53,7 +53,7 @@ Als u niet zeker weet of uw code of aangepaste hulp middelen de klassieke Api's 
 
 De bestaande mogelijkheden voor automatisch schalen en metrische gegevens blijven werken via de nieuwe Api's.  
 
-Migratie naar nieuwere Api's wordt geleverd met mogelijkheden op basis van Resource Manager, zoals ondersteuning voor consistente op rollen gebaseerde Access Control (RBAC) in al uw bewakings Services. U krijgt ook extra functionaliteit voor metrische gegevens: 
+Migratie naar nieuwere Api's wordt geleverd met mogelijkheden op basis van Resource Manager, zoals ondersteuning voor consistente Role-Based Access Control (RBAC) in al uw bewakings Services. U krijgt ook extra functionaliteit voor metrische gegevens: 
 
 - ondersteuning voor dimensies
 - consistente nauw keurigheid van metrische gegevens over 1 minuut voor alle services 
@@ -85,7 +85,7 @@ Er is een pensioen melding verzonden naar e-mail adressen voor de volgende accou
 
 Als u vragen hebt, kunt u contact met ons opnemen via MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 - [Nieuwere REST-Api's voor Azure Monitor](/rest/api/monitor/) 
 - [Nieuwere Azure Monitor-SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

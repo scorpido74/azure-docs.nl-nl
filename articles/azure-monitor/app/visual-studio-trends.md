@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318161"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trends analyseren in Visual Studio
@@ -69,7 +69,7 @@ U kunt als volgt tussen de bellen in de visualisatie navigeren:
 > 
 > 
 
-## <a name="filter"></a>Filteren
+## <a name="filter"></a>Filter
 Ontdek meer specifieke trends met de filterbesturingselementen aan de onderkant van het venster. Als u een filter wilt toepassen, klikt u op de naam ervan. U kunt snel schakelen tussen verschillende filters voor het detecteren van trends die in een dimensie van uw telemetrie kunnen worden verborgen. Als u een filter in één dimensie toepast, zoals een uitzonderings type, blijven filters in andere dimensies klikken, zelfs als ze grijs worden weer gegeven. Klik opnieuw op een filter om het ongedaan te maken. Ctrl-klik om meerdere filters in dezelfde dimensie selecteren.
 
 ![Trendfilters](./media/visual-studio-trends/TrendsFiltering-750.png)

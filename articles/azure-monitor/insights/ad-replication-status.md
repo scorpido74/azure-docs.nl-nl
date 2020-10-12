@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318076"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replicatie status controleren met Azure Monitor
@@ -41,7 +41,7 @@ Als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers 
 
 1. Controleer of de computer lid is van het domein dat u wilt bewaken met behulp van de AD-replicatiestatus-oplossing.
 2. [Verbind de Windows-computer met Azure monitor](../platform/om-agents.md) of [Maak verbinding met uw bestaande Operations Manager omgeving om Azure monitor](../platform/om-agents.md)als deze nog niet is verbonden.
-3. Stel op die computer de volgende register sleutel in:<br>Sleutel: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management groups \<ManagementGroupName> \Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
+3. Stel op die computer de volgende register sleutel in:<br>Sleutel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName> \Solutions\ADReplication**<br>Waarde: **IsTarget**<br>Waardegegevens: **True**
 
    > [!NOTE]
    > Deze wijzigingen worden pas van kracht nadat u de micro soft Monitoring Agent-service (HealthService.exe) opnieuw hebt gestart.
@@ -52,9 +52,7 @@ Als u niet rechtstreeks verbinding wilt maken met een van uw domein controllers 
 ## <a name="ad-replication-status-data-collection-details"></a>Details van het verzamelen van AD-replicatiestatus gegevens
 De volgende tabel toont methoden voor gegevens verzameling en andere informatie over hoe gegevens worden verzameld voor AD-replicatiestatus.
 
-| 
-    platform
-   | Directe agent | SCOM-agent | Azure Storage | SCOM vereist? | SCOM-agent gegevens die via een beheer groep zijn verzonden | verzamelings frequentie |
+| platform | Directe agent | SCOM-agent | Azure Storage | SCOM vereist? | SCOM-agent gegevens die via een beheer groep zijn verzonden | verzamelings frequentie |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |elke vijf dagen |
 

@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273597"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
@@ -158,7 +158,7 @@ Wanneer u een upgrade uitvoert van de ene versie van Azure AD Connect naar een n
 >Vanaf build 1.1.484 heeft Azure AD Connect een regressie fout geïntroduceerd waarvoor sysadmin-machtigingen zijn vereist om de SQL database bij te werken.  Deze fout is gecorrigeerd in Build 1.1.647.  Als u een upgrade naar deze versie uitvoert, hebt u sysadmin-machtigingen nodig.  Dbo-machtigingen zijn niet voldoende.  Als u probeert een upgrade uit te voeren van Azure AD Connect zonder sysadmin-machtigingen, mislukt de upgrade en wordt Azure AD Connect niet meer correct uitgevoerd.  Micro soft is hiervan op de hoogte en werkt ermee om dit te corrigeren.
 
 
-| Principaal | Vereiste machtigingen | Gebruikt voor |
+| Principaal | Machtigingen vereist | Gebruikt voor |
 | --- | --- | --- |
 | Gebruiker die de installatie wizard uitvoert |Beheerder van de lokale server |Binaire bestanden bijwerken. |
 | Gebruiker die de installatie wizard uitvoert |Lid van ADSyncAdmins |Wijzigingen aanbrengen in synchronisatie regels en andere configuratie. |

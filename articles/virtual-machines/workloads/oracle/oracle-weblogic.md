@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
 ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274364"
 ---
-# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Wat zijn oplossingen voor het uitvoeren van Oracle WebLogic Server op Azure Virtual Machines?
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Wat zijn oplossingen om Oracle WebLogic Server uit te voeren in Azure-VM's?
 
 Op deze pagina worden de oplossingen beschreven voor het uitvoeren van een WebLogic-WLS-server op Azure virtual machines. Deze oplossingen zijn gezamenlijk ontwikkeld door Oracle en micro soft.
 
@@ -56,7 +56,7 @@ Met deze aanbieding maakt u een Maxi maal beschik bare en schaalbaar dynamisch c
 
 Met de oplossingen wordt een breed scala aan productie-Kante implementatie architecturen met relatief gemak ingeschakeld. U kunt op de meest productieve manier voldoen aan de meeste migratie aanvragen door de ontwikkeling van zakelijke toepassingen te richten.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Er zijn complexe WebLogic-Server implementaties ingeschakeld in azure":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="U kunt de Azure Portal gebruiken om WebLogic Server te implementeren op Azure":::
 
 Behalve wat automatisch door de oplossingen wordt ingericht, hebben klanten volledige flexibiliteit om hun implementaties verder aan te passen. De configuratie van de implementatie van toepassingen wordt waarschijnlijk uitgebreid met de implementaties van andere Azure-resources. Klanten wordt aangeraden feedback te geven over het verbeteren van de oplossingen.
 

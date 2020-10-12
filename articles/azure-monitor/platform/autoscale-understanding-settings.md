@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317464"
 ---
 # <a name="understand-autoscale-settings"></a>Inzicht in instellingen voor automatisch schalen
@@ -88,11 +88,11 @@ Ter illustratie van het instellings schema voor automatisch schalen wordt de vol
 | Sectie | Elementnaam | Beschrijving |
 | --- | --- | --- |
 | Instelling | Id | De resource-ID van de instelling voor automatisch schalen. Instellingen voor automatisch schalen zijn een Azure Resource Manager resource. |
-| Instelling | name | De naam van de instelling voor automatisch schalen. |
+| Instelling | naam | De naam van de instelling voor automatisch schalen. |
 | Instelling | location | De locatie van de instelling voor automatisch schalen. Deze locatie kan afwijken van de locatie van de resource die wordt geschaald. |
 | properties | targetResourceUri | De resource-ID van de resource die wordt geschaald. U kunt slechts één instelling voor automatisch schalen per resource hebben. |
 | properties | profielen | Een instelling voor automatisch schalen bestaat uit een of meer profielen. Telkens wanneer de engine voor automatisch schalen wordt uitgevoerd, wordt er één profiel uitgevoerd. |
-| profiel | name | De naam van het profiel. U kunt een wille keurige naam kiezen die u helpt bij het identificeren van het profiel. |
+| profiel | naam | De naam van het profiel. U kunt een wille keurige naam kiezen die u helpt bij het identificeren van het profiel. |
 | profiel | Capaciteit. maximum | De Maxi maal toegestane capaciteit. Het zorgt ervoor dat automatisch schalen tijdens het uitvoeren van dit profiel uw resource boven dit nummer niet kan schalen. |
 | profiel | Capaciteit. minimum | De toegestane minimum capaciteit. Het zorgt ervoor dat automatisch schalen tijdens het uitvoeren van dit profiel de resource onder dit nummer niet kan schalen. |
 | profiel | Capaciteit. standaard | Als er een probleem is opgetreden bij het lezen van de bron metriek (in dit geval de CPU van ' vmss1 ') en de huidige capaciteit lager is dan de standaard waarde, schaalt automatisch schalen naar de standaard waarde. Hiermee wordt de beschik baarheid van de resource gegarandeerd. Als de huidige capaciteit al hoger is dan de standaard capaciteit, wordt automatisch schalen niet geschaald in. |
@@ -103,7 +103,7 @@ Ter illustratie van het instellings schema voor automatisch schalen wordt de vol
 | metricTrigger | timeGrain | De metrische sampling duur. **TimeGrain = "PT1M"** betekent bijvoorbeeld dat de metrische gegevens elke 1 minuut moeten worden geaggregeerd met behulp van de aggregatie methode die is opgegeven in het statistische element. |
 | metricTrigger | statistiek | De aggregatie methode binnen de timeGrain-periode. Bijvoorbeeld **Statistiek = "gemiddelde"** en **TIMEGRAIN = "PT1M"** betekent dat de metrische gegevens elke 1 minuut moeten worden geaggregeerd door het gemiddelde te nemen. Deze eigenschap bepaalt hoe de metrische gegevens worden gesampled. |
 | metricTrigger | timeWindow | De tijd die moet worden weer gegeven voor metrische gegevens. Zo betekent **timeWindow = "PT10M"** dat elke keer dat automatisch schalen wordt uitgevoerd, de metrische gegevens voor de afgelopen 10 minuten worden opgevraagd. In het tijd venster kunnen uw metrische gegevens worden genormaliseerd en wordt voor komen dat er tijdelijke pieken worden gecommuniceerd. |
-| metricTrigger | timeAggregation | De aggregatie methode die wordt gebruikt om de metrische gegevens van de steek proef samen te voegen. Voor beeld: **TimeAggregation = "Average"** moet de steekproef waarden worden geaggregeerd door het gemiddelde te nemen. In het vorige geval neemt u de tien minuten voor beelden van 1 minuut en berekent u het gemiddelde. |
+| metricTrigger | timeAggregation | De aggregatie methode die wordt gebruikt om de metrische gegevens van de steek proef samen te voegen. Voor beeld: **TimeAggregation = "Average"** moet de steekproef waarden worden geaggregeerd door het gemiddelde te nemen. In het vorige geval neemt u de voor beelden van 10 1 minuten en berekent u het gemiddelde. |
 | budgetoverboekingsregel | scaleAction | De actie die moet worden uitgevoerd wanneer de metricTrigger van de regel wordt geactiveerd. |
 | scaleAction | richting | "Verg Roten" om uit te schalen of "verkleinen" om in te schalen.|
 | scaleAction | waarde | Hoeveel u de capaciteit van de resource wilt verg Roten of verkleinen. |

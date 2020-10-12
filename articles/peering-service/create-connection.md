@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
-ms.openlocfilehash: f04ae0d2e541be0a7984e944298fa8d7b47fd126
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "84870572"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530211"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>Zelfstudie: Een Peering Service-verbinding maken
 
@@ -43,13 +43,13 @@ In deze zelfstudie wordt uitgelegd hoe u een Peering Service-resource maakt en e
 
 1. Selecteer **Voorvoegselsleutel** en voeg de voorvoegselsleutel toe die u hebt ontvangen van uw provider (ISP of IXP). Met deze sleutel kan MS het voorvoegsel en de provider valideren die uw IP-voorvoegsel hebben toegewezen.
 
-    ![Configuratietabblad Peering Service registreren](./media/peering-service-portal/peering-serviceconfiguration.png)
+    ![Schermopname van het tabblad Configuratie van de pagina Een Peering Service-verbinding maken waar u de voorvoegselsleutel kunt invoeren.](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. Selecteer linksonder op de pagina de knop **Beoordelen en maken**. De pagina **Beoordelen en maken** wordt weergegeven en de configuratie wordt gevalideerd in Azure.
 
  1. Als u het bericht **Validatie geslaagd** ziet zoals weergegeven, selecteert u **Maken**.
 
-> ![Configuratietabblad Peering Service registreren](./media/peering-service-portal/peering-service-prefix.png)
+> ![Schermopname van het tabblad Beoordelen en maken van de pagina Een Peering Service-verbinding maken.](./media/peering-service-portal/peering-service-prefix.png)
 
 1. Nadat u een Peering Service-verbinding hebt geregistreerd, wordt aanvullende validatie uitgevoerd voor de meegeleverde voorvoegsels. U kunt de validatiestatus bekijken in de sectie **Voorvoegsels** van de resourcenaam. Als de validatie mislukt, wordt een van de volgende foutberichten weergegeven:
 

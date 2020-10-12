@@ -4,10 +4,10 @@ description: Registreer en analyseer bron logboek gebeurtenissen voor Azure Cont
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553373"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logboeken voor diagnostische evaluatie en controle
@@ -37,7 +37,7 @@ De volgende gebeurtenissen op opslagplaats niveau voor installatie kopieën en a
 
 Bron logboeken bevatten gegevens die worden verzonden door Azure-resources die hun interne bewerking beschrijven. Voor een Azure container Registry bevatten de logboeken verificatie en gebeurtenissen op opslagplaats niveau die in de volgende tabellen zijn opgeslagen. 
 
-* **ContainerRegistryLoginEvents** -register verificatie gebeurtenissen en status, met inbegrip van de binnenkomende identiteit en het IP-adres
+* **ContainerRegistryLoginEvents**  -register verificatie gebeurtenissen en status, met inbegrip van de binnenkomende identiteit en het IP-adres
 * **ContainerRegistryRepositoryEvents** : bewerkingen zoals pushen en pullen voor installatie kopieën en andere artefacten in register opslagplaatsen
 * **AzureMetrics**  -  [Metrische gegevens van container register](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , zoals geaggregeerde push-en pull-aantallen.
 

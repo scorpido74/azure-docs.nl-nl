@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119212"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-Api's aanroept-een Token ophalen
@@ -202,7 +202,7 @@ Zie de documentatie over het [micro soft-identiteits platform en de OAuth 2,0-cl
 
 ## <a name="application-token-cache"></a>Toepassings token cache
 
-In MSAL.NET `AcquireTokenForClient` wordt de toepassings token cache gebruikt. (Alle andere AcquireToken*xx* -methoden gebruiken de token cache van de gebruiker.) Roep niet `AcquireTokenSilent` aan voordat u belt `AcquireTokenForClient` , omdat `AcquireTokenSilent` de cache van de *gebruikers* token wordt gebruikt. `AcquireTokenForClient`Hiermee wordt de cache van het *toepassings* token zelf gecontroleerd en bijgewerkt.
+In MSAL.NET `AcquireTokenForClient` wordt de toepassings token cache gebruikt. (Alle andere AcquireToken*xx* -methoden gebruiken de token cache van de gebruiker.) Roep niet `AcquireTokenSilent` aan voordat u belt `AcquireTokenForClient` , omdat `AcquireTokenSilent` de cache van de *gebruikers* token wordt gebruikt. `AcquireTokenForClient` Hiermee wordt de cache van het *toepassings* token zelf gecontroleerd en bijgewerkt.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

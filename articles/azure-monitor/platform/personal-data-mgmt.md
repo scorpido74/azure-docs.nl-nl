@@ -7,13 +7,13 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318314"
 ---
-# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
+# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richtlijnen voor persoonsgegevens die zijn opgeslagen in Logboekanalyse en Application Insights
 
 Log Analytics is een gegevens archief waar persoons gegevens waarschijnlijk worden gevonden. Application Insights worden de gegevens opgeslagen in een Log Analytics partitie. In dit artikel wordt beschreven waar in Log Analytics en Application Insights dergelijke gegevens doorgaans worden gevonden, evenals de mogelijkheden die beschikbaar zijn voor het afhandelen van dergelijke gegevens.
 
@@ -78,7 +78,7 @@ Zoals vermeld in de sectie [strategie voor het afhandelen van persoonlijke gegev
 
 ### <a name="view-and-export"></a>Weer geven en exporteren
 
-Voor beide gegevens aanvragen weer geven en exporteren moet de [log Analytics query-API](https://dev.loganalytics.io/) of de [Application INSIGHTS query-API](https://dev.applicationinsights.io/quickstart) worden gebruikt. Logica voor het converteren van de vorm van de gegevens naar een geschikte shape om aan uw gebruikers te leveren, is aan u toe te passen. [Azure functions](https://azure.microsoft.com/services/functions/) is een goede plaats om deze logica te hosten.
+Voor beide gegevens aanvragen weer geven en exporteren moet de [log Analytics query-API](https://dev.loganalytics.io/) of de  [Application INSIGHTS query-API](https://dev.applicationinsights.io/quickstart) worden gebruikt. Logica voor het converteren van de vorm van de gegevens naar een geschikte shape om aan uw gebruikers te leveren, is aan u toe te passen. [Azure functions](https://azure.microsoft.com/services/functions/) is een goede plaats om deze logica te hosten.
 
 > [!IMPORTANT]
 >  Hoewel het meren deel van de opschoon bewerkingen veel sneller kan worden uitgevoerd dan de SLA, **wordt de formele sla voor het volt ooien van de opschoon bewerking 30 dagen ingesteld** als gevolg van de zware impact van het gebruikte gegevens platform. Dit is een geautomatiseerd proces. u kunt niet aanvragen dat een bewerking sneller wordt verwerkt.

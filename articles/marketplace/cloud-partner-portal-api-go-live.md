@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292935"
 ---
 # <a name="go-live"></a>Live gaan
@@ -28,12 +28,12 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 
 |  **Naam**      |   **Beschrijving**                                                           | **Gegevenstype** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | De uitgevers-id van de aanbieding die u wilt ophalen, bijvoorbeeld`contoso`       |  Tekenreeks       |
+| publisherId    | De uitgevers-id van de aanbieding die u wilt ophalen, bijvoorbeeld `contoso`       |  Tekenreeks       |
 | offerId        | Id van de aanbieding die moet worden opgehaald                                   |  Tekenreeks       |
 | api-versie    | Nieuwste versie van de API                                                   |  Date         |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 ------
 
 |  **Naam**       |     **Waarde**       |
@@ -44,7 +44,7 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 
 ## <a name="body-example"></a>Voor beeld van tekst
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 #### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 
@@ -65,7 +65,7 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 
 | **Code** |  **Beschrijving**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted`-De aanvraag is geaccepteerd. Het antwoord bevat een locatie voor het bijhouden van de bewerkings status. |
-|  400     | `Bad/Malformed request`-Er zijn aanvullende fout gegevens gevonden in de hoofd tekst van het antwoord. |
-|  404     |  `Not found`-De opgegeven entiteit bestaat niet.                                       |
+|  202     | `Accepted` -De aanvraag is geaccepteerd. Het antwoord bevat een locatie voor het bijhouden van de bewerkings status. |
+|  400     | `Bad/Malformed request` -Er zijn aanvullende fout gegevens gevonden in de hoofd tekst van het antwoord. |
+|  404     |  `Not found` -De opgegeven entiteit bestaat niet.                                       |
 |  |  |

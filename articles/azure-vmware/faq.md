@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
 ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530473"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
@@ -65,7 +65,7 @@ Micro soft en Red Hat delen een geïntegreerd ondersteunings team met co-locatie
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Is VMware HCX Enter prise Edition beschikbaar, en zo ja, hoeveel kost het?
 
-VMware HCX Enter prise Edition (EE) is beschikbaar met de Azure VMware-oplossing als een *Preview* -functie/-service. Hoewel VMware HCX EE voor de Azure VMware-oplossing in preview is, is het een gratis functie/service en onderhevig aan de voor waarden van de preview-versie van de service. Zodra de service VMware HCX EE GA wordt weer gegeven, krijgt u een melding van 30 dagen dat facturering wordt overgeschakeld. U hebt ook de mogelijkheid om de service uit te scha kelen of af te melden.
+VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor Azure VMware Solution zich in preview bevindt, is het een gratis functie/service en onderhevig aan de servicevoorwaarden van de preview-versie. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U hebt ook de mogelijkheid om de service uit te schakelen of u ervan af te melden.
 
 ## <a name="compute-network-storage-and-backup"></a>Berekenings-, netwerk-, opslag-en back-ups
 

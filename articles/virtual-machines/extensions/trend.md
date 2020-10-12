@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288512"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro diepe Security als een service op een Windows-VM installeren en configureren
@@ -82,7 +82,7 @@ Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnsta
 * Een voor beeld van een [Windows Power shell-script](https://go.microsoft.com/fwlink/?LinkId=404100) voor het configureren van de virtuele machine
 * [Instructies](https://go.microsoft.com/fwlink/?LinkId=404099) voor het voor beeld
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 [Aanmelden bij een virtuele machine met Windows Server]
 
 [Azure VM-extensies en-functies]

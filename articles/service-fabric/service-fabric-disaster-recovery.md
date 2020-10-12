@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257511"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Herstel na nood geval in azure Service Fabric
@@ -151,7 +151,7 @@ Als u merkt dat de resterende replica's onvoldoende zijn om door te gaan in een 
 > [!NOTE]
 > Systeem services kunnen ook quorum verlies lijden. De impact is specifiek voor de betreffende service. Quorum verlies in de naamgevings service is bijvoorbeeld van invloed op naam omzetting, terwijl quorum verlies in de Failover Manager-service het maken van nieuwe services en failovers blokkeert. 
 > 
-> De Service Fabric-systeem services volgen hetzelfde patroon als uw services voor status beheer, maar we raden u niet aan om ze te verplaatsen uit het quorum verlies en naar potentieel gegevens verlies. In plaats daarvan raden we u aan [ondersteuning](service-fabric-support.md) te zoeken om een oplossing te vinden die is gericht op uw situatie. Normaal gesp roken moet u gewoon wachten tot de down keer dat er replica's worden geretourneerd.
+> De Service Fabric-systeem services volgen hetzelfde patroon als uw services voor status beheer, maar we raden u niet aan om ze te verplaatsen uit het quorum verlies en naar potentieel gegevens verlies. In plaats daarvan raden we u aan  [ondersteuning](service-fabric-support.md) te zoeken om een oplossing te vinden die is gericht op uw situatie. Normaal gesp roken moet u gewoon wachten tot de down keer dat er replica's worden geretourneerd.
 >
 
 #### <a name="troubleshooting-quorum-loss"></a>Problemen met quorum verlies oplossen

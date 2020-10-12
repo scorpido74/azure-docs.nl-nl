@@ -4,10 +4,10 @@ description: In dit artikel worden de stappen beschreven die u helpen bij het im
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90887236"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
@@ -24,7 +24,7 @@ In dit artikel worden de stappen beschreven die u helpen bij het implementeren v
 * Azure-abonnement waarvoor u [eigenaars bevoegdheden](../../role-based-access-control/built-in-roles.md#owner) hebt
 * [IoT Hub maken en instellen](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge-apparaat registreren](../../iot-edge/how-to-register-device.md)
-* [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [Installeer de Azure IoT Edge runtime op op Debian gebaseerde Linux-systemen](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Een Azure Media Services-account maken](../latest/create-account-howto.md)
 
     * Gebruik een van deze regio's: VS-Oost 2, VS-West, VS-midden, VS-West, Japan-Oost, VS-West, VS-West 2, westelijk-Centraal VS, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
@@ -40,7 +40,7 @@ Zie [aangepaste Azure Resource Manager rol maken](create-custom-azure-resource-m
 
 Als u live video Analytics wilt gebruiken om video continu in de Cloud op te nemen en vervolgens [query-api's](playback-recordings-how-to.md#query-api) te gebruiken voordat u deze weer afspeelt, wordt u aangeraden uw media service bij te werken voor het gebruik van een Premium- [streaming-eind punt](../latest/streaming-endpoint-concept.md#types).  
 
-Dit is een optionele stap. U kunt hiervoor de volgende Azure CLI-opdracht gebruiken:
+Dit is een optionele taak. U kunt hiervoor de volgende Azure CLI-opdracht gebruiken:
 
 ```azurecli
 az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --scale-units 1

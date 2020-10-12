@@ -4,10 +4,10 @@ description: Eigen aren en gebruikers toevoegen in Azure DevTest Labs met behulp
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 40173589c4798a8b00d940bca2a71f4d61f2c199
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533322"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Eigen aren en gebruikers toevoegen in Azure DevTest Labs
@@ -29,7 +29,7 @@ In de volgende tabel ziet u de acties die kunnen worden uitgevoerd door gebruike
 | **Acties die gebruikers in deze rol kunnen uitvoeren** | **DevTest Labs-gebruiker** | **Eigenaar** | **Inzender** |
 | --- | --- | --- | --- |
 | **Lab-taken** | | | |
-| Gebruikers toevoegen aan een Lab |Nee |Yes |Nee |
+| Gebruikers toevoegen aan een Lab |Nee |Ja |Nee |
 | Instellingen voor update kosten |Nee |Ja |Ja |
 | **VM-basis taken** | | | |
 | Aangepaste installatie kopieën toevoegen en verwijderen |Nee |Ja |Ja |
@@ -53,7 +53,7 @@ In de volgende tabel ziet u de acties die kunnen worden uitgevoerd door gebruike
 U kunt eigen aren en gebruikers toevoegen op het niveau van de test omgeving via de Azure Portal. Een gebruiker kan een externe gebruiker met een geldig [Microsoft-account (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)zijn.
 De volgende stappen leiden u door het proces van het toevoegen van een eigenaar of gebruiker aan een lab in Azure DevTest Labs:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.
 4. Selecteer op de Blade van het lab de optie **configuratie en beleid**. 
@@ -110,7 +110,7 @@ U kunt extra eigen aren toevoegen aan een lab via de Blade van het lab in de [Az
 
 Voer de volgende stappen uit om een eigenaar aan een Azure-abonnement toe te voegen:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **alle services**en selecteer vervolgens **abonnementen** in de lijst.
 3. Selecteer het gewenste abonnement.
 4. Selecteer het pictogram **toegang** . 

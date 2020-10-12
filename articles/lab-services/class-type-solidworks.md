@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87290737"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Een Lab voor technische klassen instellen met behulp van SOLIDWORKS
@@ -76,7 +76,7 @@ De stappen in deze sectie laten zien hoe u de virtuele machine van uw sjabloon k
     > [!NOTE]
     > In het dialoog venster **server toevoegen** wordt u gevraagd om het **poort nummer** dat wordt gebruikt voor uw licentie server en de naam of het IP-adres van de licentie server.
 
-## <a name="cost"></a>Kosten
+## <a name="cost"></a>Cost
 
 Laten we een mogelijke schatting van de kosten voor deze klasse beslaan. Deze schatting omvat niet de kosten voor het uitvoeren van de licentie server. We gebruiken een klasse van 25 studenten. Er zijn 20 uur geplande tijd voor de klasse. Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten een geplande klasse tijd. De grootte van de virtuele machine die u hebt gekozen, is een **kleine GPU (visualisatie)**. dit zijn 160 Lab-eenheden.
 

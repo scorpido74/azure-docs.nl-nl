@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542973"
 ---
 # <a name="azure-database-security-checklist"></a>Controle lijst voor Azure data base-beveiliging
@@ -41,7 +41,7 @@ Deze omvatten:
 Cloud Computing vereist nieuwe beveiligings modellen die niet bekend zijn bij veel toepassings gebruikers, database beheerders en programmeurs. Als gevolg hiervan zijn sommige organisaties cloudhoster voor het implementeren van een Cloud infrastructuur voor gegevens beheer vanwege waargenomen beveiligings Risico's. Veel van deze bezorgdheid kan echter worden verkleind door een beter inzicht te krijgen in de beveiligings functies die zijn ingebouwd in Microsoft Azure en Microsoft Azure SQL Database.
 
 ## <a name="checklist"></a>Controlelijst
-We raden u aan het artikel over de [Best practices van Azure data base Security](database-best-practices.md) te lezen voordat u deze controle lijst controleert. U kunt deze controle lijst optimaal benutten wanneer u de aanbevolen procedures begrijpt. U kunt deze controle lijst vervolgens gebruiken om ervoor te zorgen dat u de belang rijke problemen in azure data base Security hebt opgelost.
+We raden u aan het artikel over de [Best practices van Azure data base Security](database-best-practices.md)  te lezen voordat u deze controle lijst controleert. U kunt deze controle lijst optimaal benutten wanneer u de aanbevolen procedures begrijpt. U kunt deze controle lijst vervolgens gebruiken om ervoor te zorgen dat u de belang rijke problemen in azure data base Security hebt opgelost.
 
 
 |Controlelijst categorie| Beschrijving|
@@ -57,7 +57,7 @@ We raden u aan het artikel over de [Best practices van Azure data base Security]
 |<br>Azure Security Center| <ul><li>[Gegevens bewaking](../../security-center/security-center-enable-auditing-on-sql-databases.md) Gebruik Azure Security Center als een gecentraliseerde oplossing voor beveiligings bewaking voor SQL en andere Azure-Services.</li></ul>|        
 
 ## <a name="conclusion"></a>Conclusie
-Azure data base is een robuust database platform met een volledig scala aan beveiligings functies die voldoen aan de vereisten voor de organisatorische en reglementaire naleving. U kunt gegevens eenvoudig beveiligen door de fysieke toegang tot uw gegevens te beheren en verschillende opties te gebruiken voor gegevens beveiliging op bestands-, kolom-of rijniveau met Transparent Data Encryption, versleuteling op cel-niveau of beveiliging op rijniveau. Always Encrypted schakelt ook bewerkingen uit op versleutelde gegevens, waardoor het proces van toepassings updates wordt vereenvoudigd. Op zijn beurt krijgt u toegang tot de controle logboeken van SQL Database-activiteiten met de informatie die u nodig hebt, zodat u weet hoe en wanneer gegevens worden geopend.
+Azure data base is een robuust database platform met een volledig scala aan beveiligings functies die voldoen aan de vereisten voor de organisatorische en reglementaire naleving. U kunt gegevens eenvoudig beveiligen door de fysieke toegang tot uw gegevens te beheren en verschillende opties te gebruiken voor gegevens beveiliging op bestands-, kolom-of rijniveau met Transparent Data Encryption, Cell-Level versleuteling of Row-Level beveiliging. Always Encrypted schakelt ook bewerkingen uit op versleutelde gegevens, waardoor het proces van toepassings updates wordt vereenvoudigd. Op zijn beurt krijgt u toegang tot de controle logboeken van SQL Database-activiteiten met de informatie die u nodig hebt, zodat u weet hoe en wanneer gegevens worden geopend.
 
 ## <a name="next-steps"></a>Volgende stappen
 U hoeft slechts een paar eenvoudige stappen uit te voeren om de beveiliging van uw database tegen kwaadwillende gebruikers of onbevoegde toegang te verbeteren. In deze zelfstudie leert u het volgende:

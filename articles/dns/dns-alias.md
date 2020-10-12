@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82926227"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Overzicht van Azure DNS-aliasrecords
@@ -77,6 +77,6 @@ Zoals eerder beschreven, worden CNAME-records niet ondersteund op de zone Apex. 
 
 Raadpleeg de volgende artikelen voor meer informatie over alias records:
 
-- [Zelf studie: een alias record configureren om te verwijzen naar een openbaar IP-adres van Azure](tutorial-alias-pip.md)
+- [Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst](tutorial-alias-pip.md)
 - [Zelfstudie: een Azure DNS-aliasrecord configureren om het gebruik van hoofddomeinnaam met Traffic Manager te ondersteunen](tutorial-alias-tm.md)
 - [Veelgestelde vragen over DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

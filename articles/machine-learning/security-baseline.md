@@ -8,10 +8,10 @@ ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461016"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-beveiligings basislijn voor Azure Machine Learning
@@ -819,7 +819,7 @@ Azure Machine Learning biedt volledige ondersteuning voor git-opslag plaatsen vo
 
 - [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
+- [Aanbevelingen voor beveiliging: een naslaggids](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -833,7 +833,7 @@ Azure Machine Learning heeft verschillende ondersteuning voor verschillende reke
 
 - [Azure Security Center aanbevelingen bewaken](../security-center/security-center-recommendations.md)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
+- [Aanbevelingen voor beveiliging: een naslaggids](../security-center/recommendations-reference.md)
 
 - [Overzicht van Azure Automation status configuratie](../automation/automation-dsc-overview.md)
 

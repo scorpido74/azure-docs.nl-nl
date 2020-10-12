@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
 ms.openlocfilehash: 83b6e6be8764a86c41bd9156cc96f8a594dbe1e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294308"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Versleuteling van data-at-rest met aangepaste opdrachten
@@ -25,7 +25,7 @@ Met aangepaste opdrachten worden uw gegevens automatisch versleuteld wanneer dez
 > Met de service voor aangepaste opdrachten wordt versleuteling niet automatisch ingeschakeld voor de LUIS-resources die zijn gekoppeld aan uw toepassing. Indien nodig moet u de versleuteling van uw LUIS-resource inschakelen [.](./../LUIS/luis-encryption-of-data-at-rest.md)
 
 ## <a name="about-cognitive-services-encryption"></a>Over Cognitive Services versleuteling
-Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om te kunnen profiteren van versleuteling.
+Gegevens worden versleuteld en ontsleuteld met behulp van [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-compatibele 256-bits AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) versleuteling. Versleuteling en ontsleuteling zijn transparant, wat betekent dat versleuteling en toegang voor u worden beheerd. Uw gegevens zijn standaard beveiligd en u hoeft uw code of toepassingen niet te wijzigen om van versleuteling te kunnen profiteren.
 
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
@@ -33,13 +33,13 @@ Wanneer u aangepaste opdrachten gebruikt, slaat de spraak service de volgende ge
 * Configuratie-JSON achter de toepassing voor aangepaste opdrachten
 * LUIS-ontwerp en Voorspellings sleutel
 
-Uw abonnement maakt standaard gebruik van door micro soft beheerde versleutelings sleutels. U kunt uw abonnement echter ook beheren met uw eigen coderings sleutels. Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
+Uw abonnement maakt standaard gebruik van door Microsoft beheerde versleutelingssleutels. U kunt uw abonnement echter ook beheren met uw eigen versleutelingssleutels. Door de klant beheerde sleutels (CMK), ook wel bekend als BYOK (Bring Your Own Key), bieden meer flexibiliteit bij het maken, roteren, uitschakelen en intrekken van toegangsbeheer. U kunt ook de versleutelingssleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
 
 > [!IMPORTANT]
 > Door de klant beheerde sleutels zijn alleen beschik bare resources die zijn gemaakt na 27 juni 2020. Als u CMK met spraak Services wilt gebruiken, moet u een nieuwe spraak resource maken. Zodra de resource is gemaakt, kunt u Azure Key Vault gebruiken om uw beheerde identiteit in te stellen.
 
-Als u de mogelijkheid wilt om door de klant beheerde sleutels te gebruiken, vult u het aanvraag formulier voor door de klant beheerde sleutel in. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van CMK met spraak Services, moet u een nieuwe spraak resource maken op basis van de Azure Portal.
+Om de mogelijkheid om door de klant beheerde sleutels te gebruiken, in te vullen en Customer-Managed aanvraag formulier in te dienen. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van CMK met spraak Services, moet u een nieuwe spraak resource maken op basis van de Azure Portal.
    > [!NOTE]
    > **Door de klant beheerde sleutels (CMK) worden alleen ondersteund voor aangepaste opdrachten.**
    >
@@ -151,7 +151,7 @@ Wanneer u door de klant beheerde sleutels uitschakelt, wordt uw spraak bron verv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Spraak formulier voor door de klant beheerde sleutel aanvragen](https://aka.ms/cogsvc-cmk)
+* [Aanvraag formulier voor spraak Customer-Managed](https://aka.ms/cogsvc-cmk)
 * [Meer informatie over Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Wat zijn beheerde identiteiten?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 

@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318977"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-agent (voorheen met de naam Status Monitor v2): gedetailleerde instructies
@@ -181,9 +181,9 @@ Zie [een Power shell-module installeren](/powershell/scripting/developer/module/
     Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
     ```
 
-#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Nupkg uitpakken met Expand-Archive (v 1.1.0.0)
+#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Nupkg uitpakken met behulp van Expand-Archive (v 1.1.0.0)
 
-- Beschrijving: gebruik een huidige versie van het Expand-archief om nupkg-bestanden uit te pakken zonder de extensie te wijzigen.
+- Beschrijving: gebruik een huidige versie van Expand-Archive om nupkg-bestanden uit te pakken zonder de extensie te wijzigen.
 - Naslag informatie: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) en [micro soft. Power shell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Cmd
 

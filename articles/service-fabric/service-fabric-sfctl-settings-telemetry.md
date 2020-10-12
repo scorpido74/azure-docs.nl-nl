@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: ef720a14617b4131474d50875701d0ef27df4151
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245501"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
@@ -37,8 +37,8 @@ Telemetrie in-of uitschakelen.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |

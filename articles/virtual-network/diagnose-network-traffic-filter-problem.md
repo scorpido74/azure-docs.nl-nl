@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704944"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Een probleem met het netwerk verkeer van een virtuele machine vaststellen
@@ -170,14 +170,14 @@ Of u de Azure- [Portal](#diagnose-using-azure-portal), [Power shell](#diagnose-u
 
 | Eigenschap                | Waarde                                                                              |
 |---------                |---------                                                                           |
-| Bron                  | Alle                                                                                |
+| Bron                  | Elk                                                                                |
 | Poortbereiken van bron      | Alle                                                                                |
 | Doel             | Het IP-adres van de virtuele machine, een bereik van IP-adressen of alle adressen in het subnet. |
 | Poortbereiken van doel | 80                                                                                 |
 | Protocol                | TCP                                                                                |
 | Bewerking                  | Toestaan                                                                              |
 | Prioriteit                | 100                                                                                |
-| Name                    | Allow-HTTP-all                                                                     |
+| Naam                    | Allow-HTTP-all                                                                     |
 
 Nadat u de regel hebt gemaakt, wordt poort 80 inkomende van Internet toegestaan, omdat de prioriteit van de regel hoger is dan de standaard beveiligings regel met de naam *DenyAllInBound*, die het verkeer weigert. Meer informatie over het [maken van een beveiligings regel](manage-network-security-group.md#create-a-security-rule). Als verschillende Nsg's zijn gekoppeld aan de netwerk interface en het subnet, moet u dezelfde regel maken in beide Nsg's.
 

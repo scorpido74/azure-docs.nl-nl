@@ -5,10 +5,10 @@ services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532880"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay metrische gegevens in Azure Monitor 
@@ -50,12 +50,12 @@ Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzo
 
 | Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| ListenerConnections-geslaagd  | Het aantal geslaagde listener-verbindingen dat gedurende een opgegeven periode is gemaakt aan Azure Relay. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|ListenerConnections-client error |Het aantal client fouten op listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|ListenerConnections-server error |Het aantal server fouten op de listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|SenderConnections-geslaagd |Het aantal geslaagde verzender verbindingen dat gedurende een opgegeven periode is gemaakt.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|SenderConnections-client error |Het aantal client fouten op de verbindingen van de afzender gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|SenderConnections-server error |Het aantal server fouten op de verzender verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+| ListenerConnections-Success  | Het aantal geslaagde listener-verbindingen dat gedurende een opgegeven periode is gemaakt aan Azure Relay. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|ListenerConnections-ClientError |Het aantal client fouten op listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|ListenerConnections-ServerError |Het aantal server fouten op de listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|SenderConnections-Success |Het aantal geslaagde verzender verbindingen dat gedurende een opgegeven periode is gemaakt.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|SenderConnections-ClientError |Het aantal client fouten op de verbindingen van de afzender gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|SenderConnections-ServerError |Het aantal server fouten op de verzender verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |ListenerConnections-TotalRequests |Het totale aantal listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |SenderConnections-TotalRequests |De verbindings aanvragen van de afzenders gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |ActiveConnections |Het aantal actieve verbindingen. Deze waarde is een waarde voor een bepaald tijd punt.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|

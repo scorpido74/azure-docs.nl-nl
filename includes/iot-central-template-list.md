@@ -9,10 +9,10 @@ ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377283"
 ---
 **Toepassingssjablonen**
@@ -26,7 +26,7 @@ ms.locfileid: "91377283"
 | IOTC-inventaris           | Intelligent inventaris beheer | Hiermee maakt u een toepassing voor het automatiseren van de ontvangst, het verplaatsen van producten, het tellen van cycli en het bijhouden van wijzigingen. |
 | IOTC-logistiek           | Verbonden logistiek | Hiermee maakt u een toepassing voor het bijhouden van uw verzen dingen in realtime in de lucht, het water en de grond met locatie-en voorwaarde bewaking. |
 | IOTC meter               | Slimme meter analyse | Hiermee maakt u een toepassing voor het bewaken van het energie verbruik, de netwerk status en het identificeren van trends om klant ondersteuning en intelligent meter beheer te verbeteren.  |
-| IOTC-MFC                 | Micro fulfillment Center | Hiermee maakt u een toepassing voor het digitaal verbinden en beheren van een volledig geautomatiseerd fulfillment Center. |
+| IOTC-MFC                 | Micro-uitvoeringscentrum | Hiermee maakt u een toepassing voor het digitaal verbinden en beheren van een volledig geautomatiseerd fulfillment Center. |
 | IOTC-video-analyse-om  | Videoanalyse: object- en bewegingsdetectie | Gebruik camera's als sensor in intelligente video analyse oplossingen die worden aangedreven door Azure IoT Edge, AI en Azure Media Services. |
 | IOTC-patiënt             | Voortdurende controle van patiënten | Maakt een toepassing voor het verlengen van patiënten, het verminderen van de invoer en het beheren van ziekten. |
 | IOTC-energie               | Zonne-energie bewaking | Hiermee maakt u een toepassing voor het bewaken van de status van een zonne paneel en trends in de energie generatie. |
