@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
 ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071156"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
@@ -145,7 +145,7 @@ De volgende algemene para meters worden ook ondersteund:
 
 Zie [about CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)(Engelstalig) voor meer informatie.
 
-#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding-voor beeld: HTTP-antwoorden
+#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding voor beeld: HTTP-antwoorden
 
 Een HTTP-trigger retourneert een antwoord met behulp van een uitvoer binding met de naam `response` . In het volgende voor beeld heeft de uitvoer binding van de `response` waarde "uitvoer #1":
 
@@ -174,7 +174,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding-voor beeld: wachtrij-uitvoer binding
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding voor beeld: wachtrij-uitvoer binding
 
 `Push-OutputBinding` wordt gebruikt voor het verzenden van gegevens naar uitvoer bindingen, zoals een [Azure Queue Storage-uitvoer binding](functions-bindings-storage-queue-output.md). In het volgende voor beeld heeft het bericht dat naar de wachtrij is geschreven de waarde "uitvoer #1":
 
@@ -388,7 +388,7 @@ In de volgende tabel ziet u de Power shell-versies die beschikbaar zijn voor elk
 
 | Functie versie | Power shell-versie                               | .NET-versie  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (aanbevolen) | Power shell 7 (aanbevolen)<br/>Power shell Core 6 | .NET Core 3,1<br/>.NET Core 2.1 |
+| 3. x (aanbevolen) | Power shell 7 (aanbevolen)<br/>Power shell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2.x               | Power shell Core 6                                | .NET Core 2.2 |
 
 U kunt de huidige versie bekijken door af te drukken `$PSVersionTable` vanuit een functie.

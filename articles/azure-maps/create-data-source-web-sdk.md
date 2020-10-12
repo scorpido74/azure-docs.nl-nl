@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 75d2833a5b270fcfdcffa668ec0e308399edab8a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311447"
 ---
 # <a name="create-a-data-source"></a>Een gegevensbron maken
@@ -233,10 +233,10 @@ Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan 
 > [Gegevensgestuurde stijlexpressies gebruiken](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Een symboollaag toevoegen](map-add-pin.md)
+> [Een symbool laag toevoegen](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Een bubbellaag toevoegen](map-add-bubble-layer.md)
+> [Een Bubble laag toevoegen](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
 > [Een lijnlaag toevoegen](map-add-line-layer.md)

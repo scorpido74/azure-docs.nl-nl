@@ -9,13 +9,13 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74168359"
 ---
-# <a name="add-an-email-action"></a>Een e-mail actie toevoegen
+# <a name="add-an-email-action"></a>Een e-mailactie maken
 
 Met e-mail acties kunt u ervoor zorgen dat u nooit meldingen mist. U kunt een e-mail actie toevoegen aan een bestaande regel of wanneer u een nieuwe regel maakt.
 
@@ -81,7 +81,7 @@ Volg deze stappen om een e-mail actie toe te voegen wanneer u een nieuwe regel m
 
 Uw regel met een e-mail actie is nu ingeschakeld. Telkens wanneer de actie wordt geactiveerd, wordt er een nieuw e-mail bericht naar de ontvangers verzonden.
 
-## <a name="sign-in-to-outlook"></a>Aanmelden bij Outlook<a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Aanmelden bij Outlook <a name="outlook"></a>
 
 De eerste keer dat u een e-mail actie in uw oplossings versneller inschakelt, moet u zich aanmelden bij Outlook. Met deze actie wordt het e-mail account ingesteld waarmee de e-mail meldingen worden verzonden.
 
@@ -138,7 +138,7 @@ Met de volgende stappen kunt u zich aanmelden en e-mail acties instellen:
 
    ![Geslaagde aanmelding bij Outlook](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## <a name="customize-the-email-html"></a>De HTML-e-mail aanpassen<a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>De HTML-e-mail aanpassen <a name="htmledit"></a>
 
 Out-of-the-box biedt de oplossings versneller voor externe controle een eenvoudige HTML-sjabloon voor actie-e-mails. De e-mail sjabloon gebruikt waarden uit de instellingen voor de e-mail actie. Hier volgt een voor beeld van een e-mail bericht:
 
@@ -156,9 +156,9 @@ De volgende stappen laten zien hoe u de HTML-e-mail sjabloon kunt bewerken. U ku
 
 1. U kunt de para meters in deze sjabloon toevoegen of verwijderen om het bericht aan te passen. U kunt indien nodig ook aanroepen toevoegen, verwijderen of vervangen:
 
-    Bijvoorbeeld in de .NET-code:`emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
+    Bijvoorbeeld in de .NET-code:  `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
 
-    Bijvoorbeeld in de Java-code:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
+    Bijvoorbeeld in de Java-code:  `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
 1. De para meters in de sjabloon hebben de vorm van `${...}` . Als u een para meter wilt verwijderen, moet u de vereiste regel verwijderen. Als u een para meter wilt toevoegen, voegt u een regel toe met de waarde die u wilt invoegen.
 

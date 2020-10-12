@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135794"
 ---
-# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines die met Azure Disk Encryption zijn ingeschakeld repliceren naar een andere Azure-regio
+# <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines met Azure Disk Encryption-functionaliteit repliceren naar een andere Azure-regio
 
 In dit artikel wordt beschreven hoe u virtuele Azure-machines repliceert Azure Disk Encryption met behulp van de ene Azure-regio naar de andere.
 
 >[!NOTE]
-> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD) voor virtuele machines waarop Windows-besturings systemen worden uitgevoerd. Voor Linux-besturings systemen ondersteunen we alleen ADE zonder AAD. Daarnaast moeten de virtuele machines met behulp van beheerde schijven voor computers met ADE 1,1 (zonder AAD). Vm's met niet-beheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0,1 (met AAD) naar 1,1, moet u replicatie uitschakelen en replicatie inschakelen voor een VM na het inschakelen van 1,1.
+> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD), voor virtuele machines waarop Windows-besturingssystemen worden uitgevoerd. Voor Linux-besturingssystemen wordt alleen ADE zonder AAD ondersteund. Daarnaast moeten op computers waarop ADE 1.1 (zonder AAD) wordt uitgevoerd, de virtuele machines gebruikmaken van beheerde schijven. VM's met niet-beheerde schijven worden niet ondersteund. Als u overstapt van ADE 0.1 (met AAD) naar 1.1, moet u voor een VM replicatie uitschakelen en weer inschakelen nadat u 1.1 hebt ingeschakeld.
 
 
-## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Vereiste gebruikers machtigingen
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> Vereiste gebruikers machtigingen
 Site Recovery vereist dat de gebruiker gemachtigd is om de sleutel kluis te maken in de doel regio en sleutels te kopiëren van de sleutel kluis van het bron gebied naar de sleutel kluis met de doel regio.
 
 De gebruiker heeft de volgende machtigingen nodig voor de **bron-en doel regio** sleutel kluizen om replicatie van virtuele machines met schijf versleuteling in te scha kelen vanaf de Azure Portal.
@@ -91,7 +91,7 @@ Voor dit voor beeld is de primaire Azure-regio Azië-oost en is de secundaire re
 4. In **instellingen**kunt u de volgende instellingen voor de doel site configureren.
 
     - **Doel locatie**: de locatie waar de gegevens van de virtuele bron machine worden gerepliceerd. Site Recovery biedt een lijst met geschikte doel regio's op basis van de locatie van de geselecteerde machine. U wordt aangeraden dezelfde locatie te gebruiken als de locatie van de Recovery Services kluis.
-    - **Doel abonnement**: het doel abonnement dat wordt gebruikt voor herstel na nood gevallen. Het doel abonnement is standaard hetzelfde als het bron abonnement.
+    - **Doel abonnement**: het doel abonnement dat wordt gebruikt voor herstel na nood gevallen. Standaard is het doelabonnement hetzelfde als het bronabonnement.
     - **Doel resource groep**: de resource groep waarvan al uw gerepliceerde virtuele machines deel uitmaken. Site Recovery maakt standaard een nieuwe resource groep in de doel regio. Met de naam wordt het achtervoegsel ' ASR ' opgehaald. Als er al een resource groep bestaat die is gemaakt door Azure Site Recovery, wordt deze opnieuw gebruikt. U kunt er ook voor kiezen om deze aan te passen, zoals wordt weer gegeven in de volgende sectie. De locatie van de doel resource groep kan een wille keurige Azure-regio zijn, behalve de regio waarin de virtuele bron machines worden gehost.
     - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio. Met de naam wordt het achtervoegsel ' ASR ' opgehaald. Het wordt toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](./azure-to-azure-network-mapping.md) over netwerk toewijzing.
     - **Doel opslag accounts (als uw bron-VM geen Managed disks gebruikt)**: standaard maakt site Recovery een nieuw doel opslag account door de mimicking van de bron-VM te configureren. Als er al een opslag account bestaat, wordt dit opnieuw gebruikt.
@@ -99,7 +99,7 @@ Voor dit voor beeld is de primaire Azure-regio Azië-oost en is de secundaire re
     - **Cache opslag accounts**: voor site Recovery is een extra opslag account met de naam *cache opslag* in de bron regio vereist. Alle wijzigingen op de bron-Vm's worden bijgehouden en verzonden naar het cache-opslag account. Ze worden vervolgens gerepliceerd naar de doel locatie.
     - **Beschikbaarheidsset**: standaard maakt site Recovery een nieuwe beschikbaarheidsset in de doel regio. De naam heeft het achtervoegsel ' ASR '. Als een beschikbaarheidsset die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
     - **Sleutel kluizen voor schijf versleuteling**: standaard maakt site Recovery een nieuwe sleutel kluis in de doel regio. Het bevat een "ASR"-achtervoegsel dat is gebaseerd op de versleutelings sleutels van de bron-VM-schijf. Als een sleutel kluis die is gemaakt door Azure Site Recovery al bestaat, wordt deze opnieuw gebruikt.
-    - Key **Encryption Key-kluizen**: standaard maakt site Recovery een nieuwe sleutel kluis in de doel regio. De naam heeft een ' ASR '-achtervoegsel dat is gebaseerd op de versleutelings sleutels van de bron-VM. Als een sleutel kluis die is gemaakt door Azure Site Recovery al bestaat, wordt deze opnieuw gebruikt.
+    - **Sleutelkluizen voor versleutelingssleutel**: Site Recovery maakt standaard een nieuwe sleutelkluis in de doelregio. De naam heeft een ' ASR '-achtervoegsel dat is gebaseerd op de versleutelings sleutels van de bron-VM. Als een sleutel kluis die is gemaakt door Azure Site Recovery al bestaat, wordt deze opnieuw gebruikt.
     - **Replicatie beleid**: definieert de instellingen voor de Bewaar geschiedenis van het herstel punt en de frequentie van de app-consistente moment opname. Site Recovery maakt standaard een nieuw replicatie beleid met standaard instellingen van *24 uur* voor de Bewaar periode van het herstel punt en *60 minuten* voor de frequentie van de app-consistente moment opname.
 
 ## <a name="customize-target-resources"></a>Doel resources aanpassen
@@ -122,7 +122,7 @@ Volg deze stappen om de Site Recovery standaard doel instellingen te wijzigen.
 4. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de virtuele machines controleren onder **gerepliceerde items**.
 
 >[!NOTE]
->Tijdens de eerste replicatie kan het enige tijd duren voordat de status is vernieuwd, zonder dat de voortgang wordt verduidelijkt. Klik op **vernieuwen** om de meest recente status op te halen.
+>Tijdens de eerste replicatie kan het enige tijd duren voordat de status is vernieuwd, zonder dat de voortgang wordt verduidelijkt. Klik op **vernieuwen**  om de meest recente status op te halen.
 
 ## <a name="update-target-vm-encryption-settings"></a>Versleutelings instellingen voor de doel-VM bijwerken
 In de volgende scenario's moet u de versleutelings instellingen voor de doel-VM bijwerken:

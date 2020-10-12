@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
 ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885173"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
@@ -228,15 +228,15 @@ Wijs alleen de benodigde [machtigingen](https://docs.microsoft.com/sql/relationa
 - In SQL-data bases:
   - Gedetailleerde machtigingen en door de gebruiker gedefinieerde database rollen (of Server-rollen in beheerde instantie) gebruiken:
     1. De vereiste rollen maken
-       - [ROL MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
+       - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
        - [SERVERROL MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-server-role-transact-sql)
     1. Vereiste gebruikers maken
        - [GEBRUIKER MAKEN](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
     1. Gebruikers als leden toevoegen aan rollen
-       - [ROL WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
+       - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
        - [SERVER FUNCTIE WIJZIGEN](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
     1. Wijs vervolgens machtigingen toe aan rollen.
-       - [Geef](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql)
+       - [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql)
   - Zorg ervoor dat u geen gebruikers toewijst aan overbodige rollen.
 
 - In Azure Resource Manager:
@@ -376,7 +376,7 @@ Schei ding van taken is niet beperkt tot de gegevens in een Data Base, maar beva
 
 - Zorg ervoor dat u alle bron code-wijzigingen kent. Code kan zich in T-SQL-scripts bevindt. Dit kan ad-hoc opdrachten zijn om uit te voeren of te worden geïmplementeerd in formulieren van weer gaven, functies, triggers en opgeslagen procedures. Het kan een onderdeel zijn van SQL Agent-taak definities (stappen). Het kan ook worden uitgevoerd vanuit SSIS-pakketten, Azure Data Factory en andere services.
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 Gegevens beveiliging is een reeks mogelijkheden voor het beveiligen van belang rijke informatie tegen inbreuk door versleuteling of het afwijzen van een schijf.
 
@@ -461,7 +461,7 @@ Wanneer u CLE gebruikt:
 
 - Beveilig symmetrische sleutels met asymmetrische sleutels/certificaten (geen wacht woorden) om te voor komen dat 3DES wordt gebruikt.
 
-- Wees voorzichtig bij het migreren van een Data Base met behulp van versleuteling op basis van een cel-niveau via exporteren/importeren (Bacpac-bestanden).
+- Wees voorzichtig bij het migreren van een Data Base met Cell-Level versleuteling via exporteren/importeren (Bacpac-bestanden).
   - Zie het artikel [aanbevelingen voor het gebruik van versleuteling op basis van een mapniveau in Azure SQL database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) over het voor komen van het verlies van sleutels bij het migreren van gegevens en voor andere best practice richt lijnen.
 
 Houd er rekening mee dat Always Encrypted voornamelijk is ontworpen voor het beveiligen van gevoelige gegevens die worden gebruikt door gebruikers met een hoge bevoegdheid van Azure SQL Database (Cloud operators, Dba's). Zie [gevoelige gegevens beveiligen in gebruik van met hoge bevoegdheden onbevoegde gebruikers](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Houd rekening met de volgende uitdagingen wanneer u Always Encrypted gebruikt voor het beveiligen van gegevens van toepassings gebruikers:

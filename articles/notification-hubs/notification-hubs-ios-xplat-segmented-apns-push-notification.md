@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86530029"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar specifieke iOS-apparaten met behulp van Azure Notification Hubs
@@ -145,7 +145,7 @@ De eerste stap is het toevoegen van de UI-elementen aan uw bestaande Story Board
     ```
 
 8. Voeg in de `didFinishLaunchingWithOptions` methode in de `AppDelegate.m` code toe om het meldings exemplaar aan het begin van de methode te initialiseren.  
-    `HUBNAME`en `HUBLISTENACCESS` (gedefinieerd in `hubinfo.h` ) moeten al de `<hub name>` en `<connection string with listen access>` tijdelijke aanduidingen vervangen door de naam van de notification hub en de Connection String voor *DefaultListenSharedAccessSignature* die u eerder hebt verkregen
+    `HUBNAME` en `HUBLISTENACCESS` (gedefinieerd in `hubinfo.h` ) moeten al de `<hub name>` en `<connection string with listen access>` tijdelijke aanduidingen vervangen door de naam van de notification hub en de Connection String voor *DefaultListenSharedAccessSignature* die u eerder hebt verkregen
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];

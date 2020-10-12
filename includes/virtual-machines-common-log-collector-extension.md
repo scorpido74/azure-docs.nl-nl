@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085234"
 ---
 Voor het vaststellen van problemen met een Microsoft Azure-Cloud service moet u de logboek bestanden van de service verzamelen op virtuele machines terwijl de problemen optreden. U kunt de AzureLogCollector-extensie op aanvraag gebruiken voor het uitvoeren van een eenmalige verzameling logboeken van een of meer virtuele machines in de Cloud service (van beide webrollen en werk rollen) en het overdragen van de verzamelde bestanden naar een Azure-opslag account. dit gebeurt zonder dat u zich op afstand hoeft aan te melden bij een van de virtuele machines.
 
 > [!NOTE]
-> Beschrijvingen voor de meeste geregistreerde gegevens vindt u ophttps://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
+> Beschrijvingen voor de meeste geregistreerde gegevens vindt u op https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
@@ -139,7 +139,7 @@ U kunt een van de volgende twee stappen volgen om de AzureLogCollector toe te vo
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. Roep de SetAzureServiceLogCollector.ps1 (opgenomen aan het einde van het artikel) als volgt om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+5. Roep de SetAzureServiceLogCollector.ps1 (opgenomen aan het einde van het artikel) als volgt om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -231,7 +231,7 @@ Volg de instructies om Azure PowerShell verbinding te maken met uw abonnement.
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. Roep de SetAzureVMLogCollector.ps1 (opgenomen aan het einde van het artikel) als volgt om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder`https://YourStorageAccountName.blob.core.windows.net/vmlogs`
+3. Roep de SetAzureVMLogCollector.ps1 (opgenomen aan het einde van het artikel) als volgt om de AzureLogCollector-extensie voor een Cloud service in te scha kelen. Zodra de uitvoering is voltooid, kunt u het geüploade bestand vinden onder `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
 Hier volgt de definitie van de para meters die worden door gegeven aan het script. (Deze worden hieronder ook gekopieerd.)
 

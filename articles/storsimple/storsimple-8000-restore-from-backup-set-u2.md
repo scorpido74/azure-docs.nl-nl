@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527826"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Een StorSimple-volume herstellen op basis van een back-upset
@@ -59,9 +59,9 @@ De volgende voor behoud zijn van toepassing op heatmap herstel:
 
 In update 4 kunnen Windows Power shell-cmdlets worden gebruikt om een query uit te voeren op rehydratatie-taken, een rehydratatie-taak te annuleren en de status van de rehydratatie-taak op te halen.
 
-* `Get-HcsRehydrationJob`-Met deze cmdlet wordt de status van de rehydratatie-taak opgehaald. Eén rehydratatie-taak wordt geactiveerd voor één volume.
+* `Get-HcsRehydrationJob` -Met deze cmdlet wordt de status van de rehydratatie-taak opgehaald. Eén rehydratatie-taak wordt geactiveerd voor één volume.
 
-* `Set-HcsRehydrationJob`-Met deze cmdlet kunt u de rehydratatie-taak onderbreken, stoppen en hervatten wanneer de rehydratatie wordt uitgevoerd.
+* `Set-HcsRehydrationJob` -Met deze cmdlet kunt u de rehydratatie-taak onderbreken, stoppen en hervatten wanneer de rehydratatie wordt uitgevoerd.
 
 Voor meer informatie over rehydratatie-cmdlets gaat u naar [Windows Power shell cmdlet Reference voor StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 

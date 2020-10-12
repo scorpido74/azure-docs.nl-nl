@@ -4,10 +4,10 @@ description: Referentie documentatie voor de Azure Functions app-instellingen of
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589297"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
@@ -44,7 +44,7 @@ Standaard gebruiken [functies proxy's](functions-proxies.md) een snelkoppeling v
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app, worden niet rechtstreeks naar de functie verzonden. In plaats daarvan worden de aanvragen teruggestuurd naar de HTTP-frontend voor de functie-app.|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app, worden direct naar de functie doorgestuurd. Dit is de standaardwaarde. |
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|onjuist|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app, worden direct naar de functie doorgestuurd. Dit is de standaardwaarde. |
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
@@ -53,7 +53,7 @@ Met deze instelling bepaalt u of de tekens `%2F` worden gedecodeerd als slashes 
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Routerings parameters met gecodeerde slashes worden gedecodeerd. |
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Alle route parameters worden ongewijzigd door gegeven, wat het standaard gedrag is. |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|onjuist|Alle route parameters worden ongewijzigd door gegeven, wat het standaard gedrag is. |
 
 Denk bijvoorbeeld na over het proxies.jsbestand voor een functie-app in het `myfunction.com` domein.
 
@@ -87,7 +87,7 @@ Optioneel opslag account connection string voor het opslaan van Logboeken en wee
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = <name> ; AccountKey =<key>|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
 > [!NOTE]
 > Voor betere prestaties en ervaring gebruiken runtime versie 2. x en latere versies APPINSIGHTS_INSTRUMENTATIONKEY en app Insights voor bewaking in plaats van `AzureWebJobsDashboard` .

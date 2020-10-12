@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b610a5537d110a4046bd42ac86f5c938aeafe953
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89072946"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Opslag beheren in de onafhankelijke Azure-Clouds met behulp van Power shell
@@ -23,7 +23,7 @@ De meeste mensen gebruiken de open bare Azure-Cloud voor hun wereld wijde Azure-
 
 * [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
 * [Azure China 21Vianet-Cloud die wordt beheerd door 21Vianet in China](http://www.windowsazure.cn/)
-* [Azure Duitse Cloud](../../germany/germany-welcome.md)
+* [Cloud van Azure Duitsland](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

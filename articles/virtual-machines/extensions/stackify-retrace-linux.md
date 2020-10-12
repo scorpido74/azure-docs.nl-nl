@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088849"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify-extensie voor Linux-agent opnieuw traceren
@@ -148,7 +148,7 @@ Bij het plaatsen van de JSON van de extensie in de hoofdmap van de sjabloon, bev
 ```
 
 
-## <a name="powershell-deployment"></a>Power shell-implementatie
+## <a name="powershell-deployment"></a>PowerShell-implementatie
 
 De `Set-AzVMExtension` opdracht kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel.
 

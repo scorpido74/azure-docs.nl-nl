@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670301"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Aggregaties in Azure Monitor-logboek query's
@@ -22,7 +22,7 @@ ms.locfileid: "77670301"
 
 In dit artikel worden aggregatie functies in Azure Monitor-logboek query's beschreven die handige manieren bieden om uw gegevens te analyseren. Deze functies werken allemaal met de `summarize` operator die een tabel produceert met geaggregeerde resultaten van de invoer tabel.
 
-## <a name="counts"></a>VERVANGENB
+## <a name="counts"></a>Counts
 
 ### <a name="count"></a>count
 Het aantal rijen in de resultatenset tellen nadat filters zijn toegepast. In het volgende voor beeld wordt het totale aantal rijen in de _prestatie_ tabel van de laatste 30 minuten geretourneerd. Het resultaat wordt geretourneerd in een kolom met de naam *count_* tenzij u een specifieke naam toewijst:

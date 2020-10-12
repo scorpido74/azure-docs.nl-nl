@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, open Shift, aquasec, twistlock, Red Hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78271365"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
@@ -169,7 +169,7 @@ Voer vervolgens de volgende handelingen uit:
 oc create -f twistlock_route.yaml
 ```
 
-Met deze opdracht kunt u de URL ophalen die is toegewezen aan de Twistlock-console:`oc get route twistlock-console -n twistlock`
+Met deze opdracht kunt u de URL ophalen die is toegewezen aan de Twistlock-console: `oc get route twistlock-console -n twistlock`
 
 ### <a name="configure-console"></a>Console configureren
 

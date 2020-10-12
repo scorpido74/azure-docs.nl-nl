@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met de Azure Metrics Explorer
-description: Meer informatie over het maken van uw eerste metrieke grafiek met Azure Metrics Explorer.
+description: Meer informatie over het maken van uw eerste grafiek met metrische gegevens met Metrics Explorer in Azure.
 author: vgorbenko
 services: azure-monitor
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590180"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Aan de slag met Azure Metrics Explorer
@@ -33,42 +33,42 @@ Als u een metrische grafiek wilt maken, vanuit uw resource, resource groep, abon
 
     > ![Een resource selecteren](./media/metrics-getting-started/resource-picker.png)
 
-2. Voor sommige resources moet u een naam ruimte kiezen. De naam ruimte is een manier om metrische gegevens te organiseren, zodat u ze gemakkelijk kunt vinden. Zo hebben opslag accounts afzonderlijke naam ruimten voor het opslaan van bestanden, tabellen, blobs en wacht rijen. Veel resource typen hebben slechts één naam ruimte.
+2. Voor sommige resources moet u een naam ruimte kiezen. De naamruimte is slechts een manier om metrische gegevens te organiseren, zodat u ze gemakkelijk kunt vinden. Zo hebben opslagaccounts afzonderlijke naamruimten voor het opslaan van bestanden, tabellen, blobs en wachtrijen. Veel resourcetypen hebben slechts één naamruimte.
 
 3. Selecteer een metrische waarde in een lijst met beschik bare metrische gegevens.
 
-    > ![Een metriek selecteren](./media/metrics-getting-started/metric-picker.png)
+    > ![Een metrische waarde selecteren](./media/metrics-getting-started/metric-picker.png)
 
 4. U kunt desgewenst [de metrische aggregatie wijzigen](metrics-charts.md#changing-aggregation). U kunt bijvoorbeeld aangeven dat de grafiek minimum-, maximum-of gemiddelde waarden van de metriek moet weer geven.
 
 > [!TIP]
-> Gebruik de knop **metriek toevoegen** en herhaal deze stappen als u meerdere metrische gegevens wilt zien die in dezelfde grafiek zijn getekend. Voor meerdere grafieken in één weer gave selecteert u de knop **grafiek toevoegen** bovenaan.
+> Gebruik de knop **Metrische waarde toevoegen** en herhaal deze stappen als u meerdere metrische waarden wilt zien die in dezelfde grafiek zijn getekend. Voor meerdere grafieken in één weer gave selecteert u de knop **grafiek toevoegen** bovenaan.
 
 ## <a name="select-a-time-range"></a>Een tijds bereik selecteren
 
 > [!WARNING]
 > [De meeste metrische gegevens in Azure worden gedurende 93 dagen opgeslagen](data-platform-metrics.md#retention-of-metrics). U kunt echter niet meer dan 30 dagen aan gegevens in één grafiek opvragen. Deze beperking geldt niet voor [metrische gegevens op basis van een logboek](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
-In de grafiek worden standaard de meest recente 24 uur aan metrische gegevens weer gegeven. Gebruik het deel venster **tijd kiezer** om het tijds bereik te wijzigen, in te zoomen of uit te zoomen op de grafiek. 
+In de grafiek worden standaard de meest recente 24 uur aan metrische gegevens weergegeven. Gebruik het deel venster **tijd kiezer** om het tijds bereik te wijzigen, in te zoomen of uit te zoomen op de grafiek. 
 
-![Deel venster tijds bereik wijzigen](./media/metrics-getting-started/time-picker.png)
+![Venster voor het wijzigen van het tijdsbereik](./media/metrics-getting-started/time-picker.png)
 
 > [!TIP]
-> Gebruik het **tijd penseel** om een interessant gebied van de grafiek (Prikker of een DIP) te onderzoeken. Plaats de muis aanwijzer aan het begin van het gebied, klik op de linkermuisknop en houd de muis knop ingedrukt, sleep naar de andere kant van het gebied en laat de knop los. De grafiek wordt in dat tijds bereik ingezoomd. 
+> Gebruik het **tijd penseel** om een interessant gebied van de grafiek (Prikker of een DIP) te onderzoeken. Plaats de muis aanwijzer aan het begin van het gebied, klik op de linkermuisknop en houd de muis knop ingedrukt, sleep naar de andere kant van het gebied en laat de knop los. In de grafiek wordt ingezoomd op dat tijdsbereik. 
 
-## <a name="apply-dimension-filters-and-splitting"></a>Dimensie filters toep assen en splitsen
+## <a name="apply-dimension-filters-and-splitting"></a>Dimensies filteren en splitsen
 
 [Filteren](metrics-charts.md#apply-filters-to-charts) en [splitsen](metrics-charts.md#apply-splitting-to-a-chart) zijn krachtige diagnostische hulpprogram ma's voor metrische gegevens die dimensies hebben. Deze functies laten zien hoe diverse metrische gegevens segmenten ("dimensie waarden") van invloed zijn op de algemene waarde van de metrische gegevens en waarmee u mogelijke uitbijtingen kunt identificeren.
 
-- Met **filters** kunt u kiezen welke dimensie waarden in de grafiek worden opgenomen. U kunt bijvoorbeeld geslaagde aanvragen weer geven bij het grafieken van de waarde voor de *reactie tijd* van de server. U moet het filter Toep assen op het *succes van de aanvraag* dimensie. 
+- Met **Filteren** kunt u kiezen welke dimensiewaarden in de grafiek worden opgenomen. U kunt bijvoorbeeld geslaagde aanvragen weer geven bij het grafieken van de waarde voor de *reactie tijd* van de server. U moet het filter Toep assen op het *succes van de aanvraag* dimensie. 
 
-- **Splitsen** bepaalt of het diagram afzonderlijke regels voor elke waarde van een dimensie weergeeft of de waarden in één regel samenvoegt. U kunt bijvoorbeeld één regel weer geven voor een gemiddelde reactie tijd voor alle Server exemplaren, of afzonderlijke regels voor elke server weer geven. U moet splitsen Toep assen op de dimensie van het *Server exemplaar* om afzonderlijke regels te bekijken.
+- Met **Splitsen ** bepaalt u of in het diagram elke waarde van een dimensie wordt weergegeven op een afzonderlijke regel of dat de waarden worden geaggregeerd op één regel. U kunt bijvoorbeeld één regel weer geven voor een gemiddelde reactie tijd voor alle Server exemplaren, of afzonderlijke regels voor elke server weer geven. U moet splitsen Toep assen op de dimensie van het *Server exemplaar* om afzonderlijke regels te bekijken.
 
-Bekijk [voor beelden van de grafieken](metric-chart-samples.md) waarop filters en splitsingen zijn toegepast. In het artikel worden de stappen beschreven die zijn gebruikt om de grafieken te configureren.
+Zie [voorbeelden van grafieken](metric-chart-samples.md) waarin een filter of splitsing is toegepast. In het artikel worden de stappen beschreven die zijn gebruikt om de grafieken te configureren.
 
 ## <a name="advanced-chart-settings"></a>Geavanceerde instellingen voor grafieken
 
-U kunt de instellingen voor grafiek stijl, titel en geavanceerde grafiek aanpassen. Wanneer u klaar bent met aanpassing, kunt u deze vastmaken aan een dash board om uw werk op te slaan. U kunt ook waarschuwingen voor metrische gegevens configureren. Volg de [product documentatie](metrics-charts.md) voor meer informatie over deze en andere geavanceerde functies van Azure monitor Metrics Explorer.
+U kunt de stijl, titel en geavanceerde instellingen van de grafiek aanpassen. Wanneer u klaar bent met uw aanpassingen, kunt u deze vastmaken aan een dashboard om uw werk op te slaan. U kunt ook waarschuwingen voor metrische gegevens configureren. Volg de [product documentatie](metrics-charts.md) voor meer informatie over deze en andere geavanceerde functies van Azure monitor Metrics Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

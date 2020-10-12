@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135452"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Capaciteit en schaling plannen voor nood herstel van VMware naar Azure
@@ -29,14 +29,14 @@ Site Recovery Deployment Planner biedt een rapport met volledige informatie over
 Onderdeel | Details
 --- | ---
 **Replicatie** | **Maximum dagelijkse wijzigings frequentie**: een beveiligde machine kan slechts één proces server gebruiken. Eén processerver kan een hoeveelheid dagelijkse wijzigingen afhandelen tot maximaal 2 TB. 2 TB is dus het maximale aantal dagelijkse gegevens wijzigingen dat wordt ondersteund voor een beveiligde machine.<br /><br /> **Maximale door Voer**: een gerepliceerde machine kan deel uitmaken van één opslag account in Azure. Een standaard Azure Storage account kan Maxi maal 20.000 aanvragen per seconde verwerken. We raden u aan om het aantal invoer/uitvoer-bewerkingen per seconde (IOPS) op een bron machine te beperken tot 20.000. Als u bijvoorbeeld een bron machine hebt die vijf schijven heeft en elke schijf 120 IOPS (8 KB groot) op de bron machine genereert, bevindt de bron machine zich in de limiet voor IOPS per schijf van 500. (Het vereiste aantal opslag accounts is gelijk aan de totale IOPS van de bron machine gedeeld door 20.000.)
-**Configuratie server** | De configuratie server moet kunnen omgaan met de dagelijkse wijzigings frequentie voor alle workloads die worden uitgevoerd op beveiligde computers. De configuratie computer moet voldoende band breedte hebben om voortdurend gegevens te repliceren naar Azure Storage.<br /><br /> Een best practice is om de configuratie server op hetzelfde netwerk en LAN-segment te plaatsen als de computers die u wilt beveiligen. U kunt de configuratie server op een ander netwerk plaatsen, maar de computers die u wilt beveiligen moeten de laag 3-netwerk zichtbaarheid hebben.<br /><br /> De aanbevolen grootte voor de configuratie server wordt in de volgende sectie in de tabel samenvatten.
-**Processerver** | De eerste proces server wordt standaard geïnstalleerd op de configuratie server. U kunt extra proces servers implementeren om uw omgeving te schalen. <br /><br /> De proces server ontvangt replicatie gegevens van beveiligde computers. De proces server optimaliseert de gegevens met behulp van caching, compressie en versleuteling. Vervolgens verzendt de proces server de gegevens naar Azure. De proces Server computer moet voldoende resources hebben om deze taken uit te voeren.<br /><br /> De proces server maakt gebruik van een schijf cache. Gebruik een afzonderlijke cache schijf van 600 GB of meer voor het afhandelen van gegevens wijzigingen die worden opgeslagen als er een netwerk knelpunt of-storing optreedt.
+**Configuratieserver** | De configuratie server moet kunnen omgaan met de dagelijkse wijzigings frequentie voor alle workloads die worden uitgevoerd op beveiligde computers. De configuratie computer moet voldoende band breedte hebben om voortdurend gegevens te repliceren naar Azure Storage.<br /><br /> Een best practice is om de configuratie server op hetzelfde netwerk en LAN-segment te plaatsen als de computers die u wilt beveiligen. U kunt de configuratie server op een ander netwerk plaatsen, maar de computers die u wilt beveiligen moeten de laag 3-netwerk zichtbaarheid hebben.<br /><br /> De aanbevolen grootte voor de configuratie server wordt in de volgende sectie in de tabel samenvatten.
+**Proces server** | De eerste proces server wordt standaard geïnstalleerd op de configuratie server. U kunt extra proces servers implementeren om uw omgeving te schalen. <br /><br /> De proces server ontvangt replicatie gegevens van beveiligde computers. De proces server optimaliseert de gegevens met behulp van caching, compressie en versleuteling. Vervolgens verzendt de proces server de gegevens naar Azure. De proces Server computer moet voldoende resources hebben om deze taken uit te voeren.<br /><br /> De proces server maakt gebruik van een schijf cache. Gebruik een afzonderlijke cache schijf van 600 GB of meer voor het afhandelen van gegevens wijzigingen die worden opgeslagen als er een netwerk knelpunt of-storing optreedt.
 
 ## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Aanbevelingen voor de grootte van de configuratie server en de ingebouwde proces server
 
 Een configuratie server die gebruikmaakt van een inbouw proces server om de werk belasting te beveiligen, kan tot 200 virtuele machines afhandelen op basis van de volgende configuraties:
 
-CPU | Geheugen | Schijf grootte van cache | Gegevens wijzigings frequentie | Beveiligde machines
+CPU | Geheugen | Schijf grootte van cache | Frequentie van gegevenswijzigingen | Beveiligde machines
 --- | --- | --- | --- | ---
 8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | Gebruik om minder dan 100 machines te repliceren.
 12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | Gebruik om 100 te repliceren naar 150 machines.
@@ -62,7 +62,7 @@ In de volgende tabel wordt dit scenario beschreven:
 * U hebt beveiligde virtuele machines geconfigureerd voor het gebruik van de scale-out proces server.
 * Elke beveiligde bron machine heeft elk drie schijven van 100 GB.
 
-Aanvullende proces server | Schijf grootte van cache | Gegevens wijzigings frequentie | Beveiligde machines
+Aanvullende proces server | Schijf grootte van cache | Frequentie van gegevenswijzigingen | Beveiligde machines
 --- | --- | --- | ---
 4 Vcpu's (2 sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen | 300 GB | 250 GB of minder | Gebruik om 85 of minder computers te repliceren.
 8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen | 600 GB | 251 GB tot 1 TB | Gebruik om 86 te repliceren naar 150 machines.
@@ -79,8 +79,8 @@ Nadat u [Site Recovery Deployment planner](site-recovery-deployment-planner.md) 
 
 * **Bandbreedte beperking**: VMware-verkeer dat wordt gerepliceerd naar Azure gaat via een specifieke proces server. U kunt de band breedte beperken op de computers die als proces servers worden uitgevoerd.
 * **Invloed op band breedte**: u kunt invloed hebben op de band breedte die voor replicatie wordt gebruikt met behulp van een aantal register sleutels:
-  * Met de register waarde **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\UploadThreadsPerVM** geeft u het aantal threads op dat wordt gebruikt voor gegevens overdracht (initiële of Delta replicatie) van een schijf. Een hogere waarde verhoogt de netwerk bandbreedte die wordt gebruikt voor replicatie.
-  * Met de register waarde **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** wordt het aantal threads aangegeven dat wordt gebruikt voor gegevens overdracht tijdens het failback.
+  * Met de register waarde **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** geeft u het aantal threads op dat wordt gebruikt voor gegevens overdracht (initiële of Delta replicatie) van een schijf. Een hogere waarde verhoogt de netwerk bandbreedte die wordt gebruikt voor replicatie.
+  * Met de register waarde **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** geeft u het aantal threads op dat wordt gebruikt voor gegevens overdracht tijdens het failback.
 
 ### <a name="throttle-bandwidth"></a>Bandbreedte beperken
 
@@ -104,7 +104,7 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>De netwerk bandbreedte voor een virtuele machine wijzigen
 
-1. Ga in het REGI ster van de virtuele machine naar **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication**.
+1. Ga in het REGI ster van de virtuele machine naar **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
    * Als u het bandbreedte verkeer op een replicerende schijf wilt wijzigen, wijzigt u de waarde van **UploadThreadsPerVM**. Maak de sleutel als deze niet bestaat.
    * Als u de band breedte voor failback-verkeer vanuit Azure wilt wijzigen, wijzigt u de waarde van **DownloadThreadsPerVM**.
 2. De standaard waarde voor elke sleutel is **4**. In netwerken met overprovisioning moeten deze registersleutels zodanig worden gewijzigd dat niet de standaardwaarden worden gebruikt. De maximum waarde die u kunt gebruiken, is **32**. Houd het verkeer in de gaten om de waarde te optimaliseren.

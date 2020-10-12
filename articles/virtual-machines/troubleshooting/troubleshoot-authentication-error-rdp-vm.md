@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088560"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Verificatiefouten oplossen als u RDP gebruikt om verbinding te maken met Azure-VM's
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 Als de communicatie tussen de domein controller en de VM goed is, maar de domein controller niet in orde is om een RDP-sessie te openen, kunt u proberen om de domein controller opnieuw op te starten.
 
-Als de voor gaande opdrachten het communicatie probleem met het domein niet hebben opgelost, kunt u deze VM opnieuw toevoegen aan het domein. Voer hiervoor de volgende stappen uit:
+Als de voor gaande opdrachten het communicatie probleem met het domein niet hebben opgelost, kunt u deze VM opnieuw toevoegen aan het domein. Volg hiervoor de volgende stappen:
 
 1. Maak een script met de naam Unjoin.ps1 met behulp van de volgende inhoud en implementeer vervolgens het script als een aangepaste script extensie op de Azure Portal:
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > De SSH/TLS-versie x. x ophalen uit het gast besturingssysteem Logboeken in de SCHANNEL-fouten.
 
-#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a>FIPs-compatibele algoritme-verbindingen controleren
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> FIPs-compatibele algoritme-verbindingen controleren
 
 Extern bureau blad kan worden afgedwongen om alleen FIPs-compatibele algoritme verbindingen te gebruiken. Dit kan worden ingesteld met behulp van een register sleutel. Hiervoor opent u een opdracht prompt venster met verhoogde bevoegdheid en voert u een query uit op de volgende sleutels:
 

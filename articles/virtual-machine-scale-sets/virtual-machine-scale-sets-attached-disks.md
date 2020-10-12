@@ -10,10 +10,10 @@ ms.date: 4/25/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 9e4bdf868d3f8ddf3a049509ead30a4b1ba341b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527435"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Virtuele-machineschaalsets in Azure en gekoppelde gegevensschijven
@@ -26,7 +26,7 @@ Voor het uitbreiden van uw beschikbare opslag bieden [virtuele-machineschaalsets
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>Schijven in een schaalset maken en beheren
 Zie een van de volgende zelfstudies voor gedetailleerde informatie over het maken van een schaalset met gekoppelde gegevensschijven, het voorbereiden en formatteren of toevoegen en verwijderen van gegevensschijven:
 
-- [Azure CLI](tutorial-use-disks-cli.md)
+- [Azure-CLI](tutorial-use-disks-cli.md)
 - [Azure PowerShell](tutorial-use-disks-powershell.md)
 
 De rest van dit artikel bevat een overzicht van de specifieke gebruiksvoorbeelden zoals Service Fabric-clusters die gegevensschijven vereisen of het koppelen van bestaande gegevensschijven met inhoud aan een schaalset.

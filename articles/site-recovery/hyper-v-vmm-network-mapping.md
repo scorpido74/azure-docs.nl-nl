@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74082562"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Netwerk toewijzing voorbereiden voor herstel na nood geval voor Hyper-V-VM naar Azure
@@ -63,7 +63,7 @@ Chicago | VMM-Chicago| VMNetwork1-Chicago | Toegewezen aan VMNetwork1-NewYork
 In dit voorbeeld geldt het volgende:
 
 - Wanneer een replica-VM wordt gemaakt voor een virtuele machine die is verbonden met VMNetwork1-NewYork, wordt deze verbonden met VMNetwork1-Chicago.
-- Wanneer een replica-VM is gemaakt voor VMNetwork2-NewYork of VMNetwork2-Chicago, wordt deze niet verbonden met een netwerk.
+- Wanneer een replica-VM wordt gemaakt voor VMNetwork2-NewYork of VMNetwork2-Chicago, wordt deze niet verbonden met een netwerk.
 
 Hier ziet u hoe VMM-Clouds worden ingesteld in de voor beeld-organisatie en welke logische netwerken aan de Clouds zijn gekoppeld.
 
@@ -106,17 +106,17 @@ Als u wilt zien wat er gebeurt in het geval van een failback (omgekeerde replica
 
 **VM** | **Verbonden met het VM-netwerk**
 ---|---
-VM1 | VMNetwork1-netwerk
+VM1 | VMNetwork1-Network
 VM2 (replica van VM1) | VMNetwork1-Chicago
 
 Met deze instellingen gaan we kijken wat er gebeurt in een aantal mogelijke scenario's.
 
-**Scenario** | **Resultaat**
+**Scenario** | **Daarvan**
 ---|---
 Geen wijziging in de netwerk eigenschappen van VM-2 na een failover. | VM-1 blijft verbonden met het bron netwerk.
 De netwerk eigenschappen van VM-2 worden na de failover gewijzigd en de verbinding is verbroken. | De verbinding met VM-1 is verbroken.
 De netwerk eigenschappen van VM-2 worden na een failover gewijzigd en zijn verbonden met VMNetwork2-Chicago. | Als VMNetwork2-Chicago niet is toegewezen, wordt de verbinding met VM-1 verbroken.
-De netwerk toewijzing van VMNetwork1-Chicago wordt gewijzigd. | VM-1 wordt nu verbonden met het netwerk toegewezen aan VMNetwork1-Chicago.
+De netwerk toewijzing van VMNetwork1-Chicago is gewijzigd. | VM-1 wordt nu verbonden met het netwerk toegewezen aan VMNetwork1-Chicago.
 
 
 

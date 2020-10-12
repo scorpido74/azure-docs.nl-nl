@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670199"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Samen voegen in Azure Monitor-logboek query's
@@ -39,7 +39,7 @@ SecurityEvent
 
 In dit voor beeld worden de eerste gegevensset filters voor alle aanmeldings gebeurtenissen. Deze is gekoppeld aan een tweede gegevensset die voor alle afmeldings gebeurtenissen filtert. De geprojecteerde kolommen zijn _computer_, _account_, _TargetLogonId_en _TimeGenerated_. De gegevens sets worden gecorreleerd door een gedeelde kolom _TargetLogonId_. De uitvoer is één record per correlatie, die zowel de aanmeld-als de afmeldings tijd heeft.
 
-Als beide gegevens sets kolommen met dezelfde naam hebben, krijgen de kolommen van de gegevensset aan de rechter kant een index nummer, dus in dit voor beeld worden de resultaten _TargetLogonId_ weer gegeven met waarden uit de tabel aan de linkerkant en _TargetLogonId1_ met waarden uit de rechter tabel. In dit geval is de tweede kolom _TargetLogonId1_ verwijderd met behulp van de `project-away` operator.
+Als beide gegevens sets kolommen met dezelfde naam hebben, krijgen de kolommen van de gegevensset aan de rechter kant een index nummer, dus in dit voor beeld worden de resultaten _TargetLogonId_ weer gegeven met waarden uit de tabel aan de linkerkant en _TargetLogonId1_  met waarden uit de rechter tabel. In dit geval is de tweede kolom _TargetLogonId1_ verwijderd met behulp van de `project-away` operator.
 
 > [!NOTE]
 > U kunt de prestaties verbeteren door alleen de relevante kolommen van de gekoppelde gegevens sets te gebruiken met behulp van de `project` operator.
@@ -79,7 +79,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Typen samen voegen
 Geef het type samen voeging met het argument _kind_ op. Elk type voert een andere overeenkomst uit tussen de records van de opgegeven tabellen, zoals beschreven in de volgende tabel.
 
-| Relatietype | Description |
+| Relatietype | Beschrijving |
 |:---|:---|
 | innerunique | Dit is de standaard modus voor samen voegen. Eerst worden de waarden van de overeenkomende kolom in de linkertabel gevonden en worden dubbele waarden verwijderd.  Vervolgens wordt de reeks unieke waarden vergeleken met de rechter tabel. |
 | wend | Alleen overeenkomende records in beide tabellen zijn opgenomen in de resultaten. |

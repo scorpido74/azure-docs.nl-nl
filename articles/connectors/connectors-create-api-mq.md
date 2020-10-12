@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
 ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85609500"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Verbinding maken met een IBM MQ-server vanaf Azure Logic Apps
@@ -71,7 +71,7 @@ Als u nog geen MQ-verbinding hebt wanneer u een MQ-actie toevoegt, wordt u gevra
 
    1. Selecteer de Azure-gateway resource die u wilt gebruiken in de lijst met **gateways voor verbindingen** .
 
-1. Selecteer **Maken** als u klaar bent.
+1. Als u gereed bent, selecteert u **Maken**.
 
 <a name="connection-problems"></a>
 
@@ -112,10 +112,10 @@ Wanneer uw logische app verbinding probeert te maken met uw on-premises MQ-serve
 
    | Eigenschap | Beschrijving |
    |----------|-------------|
-   | **Wachtrij** | Als dit afwijkt van de wachtrij die in de verbinding is opgegeven, geeft u die wachtrij op. |
+   | **Queue** | Als dit afwijkt van de wachtrij die in de verbinding is opgegeven, geeft u die wachtrij op. |
    | **MessageId**, **CorrelationId**, **GroupId**en andere eigenschappen | Bladeren naar een bericht dat is gebaseerd op de verschillende MQ-bericht eigenschappen |
    | **IncludeInfo** | Als u aanvullende bericht informatie in de uitvoer wilt toevoegen, selecteert u **waar**. Als u aanvullende bericht informatie in de uitvoer wilt weglaten, selecteert u **Onwaar**. |
-   | **Time-out** | Voer een waarde in om te bepalen hoe lang moet worden gewacht tot een bericht in een lege wachtrij arriveert. Als niets wordt ingevoerd, wordt het eerste bericht in de wachtrij opgehaald en wordt er geen tijd besteed aan het wachten op het verschijnen van een bericht. |
+   | **Out** | Voer een waarde in om te bepalen hoe lang moet worden gewacht tot een bericht in een lege wachtrij arriveert. Als niets wordt ingevoerd, wordt het eerste bericht in de wachtrij opgehaald en wordt er geen tijd besteed aan het wachten op het verschijnen van een bericht. |
    |||
 
    Bijvoorbeeld:

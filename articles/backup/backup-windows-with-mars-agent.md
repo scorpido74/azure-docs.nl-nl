@@ -4,10 +4,10 @@ description: Gebruik de Microsoft Azure Recovery Services (MARS)-agent om een ba
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052219"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Back-ups maken van Windows Server-bestanden en-mappen naar Azure

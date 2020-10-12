@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78184245"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph bewerkingen die beschikbaar zijn voor Azure AD B2C
@@ -49,7 +49,7 @@ De id-providers beheren die beschikbaar zijn voor uw gebruikers stromen in uw Az
 Vooraf gemaakte beleids regels configureren voor aanmelding, aanmelden, gecombineerde registratie en aanmelding, wacht woord opnieuw instellen en profiel update.
 
 - [Gebruikers stromen weer geven](https://docs.microsoft.com/graph/api/identityuserflow-list)
-- [Een gebruikers stroom maken](https://docs.microsoft.com/graph/api/identityuserflow-post-userflows)
+- [Een gebruikersstroom maken](https://docs.microsoft.com/graph/api/identityuserflow-post-userflows)
 - [Een gebruikers stroom ophalen](https://docs.microsoft.com/graph/api/identityuserflow-get)
 - [Een gebruikers stroom verwijderen](https://docs.microsoft.com/graph/api/identityuserflow-delete)
 
@@ -63,7 +63,7 @@ Met de volgende bewerkingen kunt u uw Azure AD B2C Trust Framework-beleid behere
 - [Het vertrouwens raamwerk beleid bijwerken of maken.](https://docs.microsoft.com/graph/api/trustframework-put-trustframeworkpolicy)
 - [Een bestaand vertrouwens raamwerk beleid verwijderen](https://docs.microsoft.com/graph/api/trustframeworkpolicy-delete)
 
-## <a name="policy-keys"></a>Beleids sleutels
+## <a name="policy-keys"></a>Beleidssleutels
 
 In het Framework voor identiteits ervaring worden de geheimen opgeslagen waarnaar wordt verwezen in een aangepast beleid om de vertrouwens relatie tussen onderdelen tot stand te brengen. Deze geheimen kunnen symmetrische of asymmetrische sleutels/waarden zijn. In de Azure Portal worden deze entiteiten als **beleids sleutels**weer gegeven.
 
@@ -88,7 +88,7 @@ De resource op het hoogste niveau voor beleids sleutels in de Microsoft Graph-AP
 ## <a name="applications"></a>Toepassingen
 
 - [Toepassingen weergeven](https://docs.microsoft.com/graph/api/application-list)
-- [Een toepassing maken](https://docs.microsoft.com/graph/api/resources/application)
+- [Een app maken](https://docs.microsoft.com/graph/api/resources/application)
 - [Toepassing bijwerken](https://docs.microsoft.com/graph/api/application-update)
 - [ServicePrincipal maken](https://docs.microsoft.com/graph/api/resources/serviceprincipal)
 - [Oauth2Permission-toekenning maken](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant)

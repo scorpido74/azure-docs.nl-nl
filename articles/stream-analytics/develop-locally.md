@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 797577ce976f71f41ece0d103bd0145775d48b56
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885581"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics taken lokaal ontwikkelen en fouten opsporen
@@ -23,7 +23,7 @@ De manier waarop u Stream Analytics taken op uw lokale computer ontwikkelt, is a
 
 De omgevingen in de volgende tabel ondersteunen lokale ontwikkeling:
 
-|Omgeving                              |Description    |
+|Omgeving                              |Beschrijving    |
 |-----------------------------------------|------------|
 |[Visual Studio Code](visual-studio-code-explore-jobs.md)| Met de [uitbrei ding voor de Azure stream Analytics-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) voor Visual Studio code kunt u uw stream Analytics-taak zowel lokaal als in de Cloud ontwerpen, beheren en testen met uitgebreide IntelliSense en systeem eigen broncode beheer. Ondersteunt de ontwikkeling van Linux, MacOS en Windows. Zie [een Azure stream Analytics-taak maken in Visual Studio code](quick-create-visual-studio-code.md)voor meer informatie. De uitbrei ding biedt ook ondersteuning voor [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) . Dit is een in de Cloud gehoste ontwikkel omgeving.|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |Stream Analytics-Hulpprogram Ma's maken deel uit van de werk belastingen voor ontwikkeling en gegevens opslag en-verwerking van Azure in Visual Studio. U kunt Visual Studio gebruiken om aangepaste door de gebruiker gedefinieerde C#-functies en-deserials te schrijven. Zie [een Azure stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)voor meer informatie.|

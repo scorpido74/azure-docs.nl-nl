@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973090"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
@@ -36,15 +36,15 @@ Uw nieuwe functie-app is klaar voor gebruik. Vervolgens maakt u een functie in d
 
 1. Selecteer in de functie-app **functies**en selecteer vervolgens **+ toevoegen** 
 
-   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="Een functie toevoegen in de Azure Portal." border="true":::
+   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="De functie-app is gemaakt." border="true":::
 
 1. Selecteer de **trigger** sjabloon voor timer. 
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="Selecteer de trigger timer in het Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="De functie-app is gemaakt." border="true":::
 
 1. Configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding en selecteer vervolgens **functie maken**.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Scherm afbeelding toont de nieuwe functie pagina waarop de timer trigger sjabloon is geselecteerd." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="De functie-app is gemaakt." border="true":::
     
     | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
@@ -55,11 +55,11 @@ Uw nieuwe functie-app is klaar voor gebruik. Vervolgens maakt u een functie in d
 
 1. Selecteer in uw functie **code + test** en vouw de logboeken uit.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="Test de timer trigger in het Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="De functie-app is gemaakt." border="true":::
 
 1. Controleer de uitvoering door de informatie weer te geven die naar de logboeken wordt geschreven.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="Bekijk de trigger timer in de Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="De functie-app is gemaakt." border="true":::
 
 U kunt het schema van de functie nu wijzigen zodat deze één keer per uur wordt uitgevoerd in plaats van elke minuut.
 
@@ -69,11 +69,11 @@ U kunt het schema van de functie nu wijzigen zodat deze één keer per uur wordt
 
 1. Selecteer **Timer (myTimer)**.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="Werk de timer planning bij in de Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="De functie-app is gemaakt." border="true":::
 
 1. Werk de **plannings** waarde bij naar `0 0 */1 * * *` en selecteer vervolgens **Opslaan**.  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="Het timerschema voor het bijwerken van functies in Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="De functie-app is gemaakt." border="true":::
 
 U hebt nu een functie die één keer per uur wordt uitgevoerd, op het uur.
 

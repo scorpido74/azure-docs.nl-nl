@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77594308"
 ---
 # <a name="about-service-meshes"></a>Over service netten
@@ -38,7 +38,7 @@ Het **gegevens vlak** bestaat doorgaans uit een proxy die transparant is geïnje
 
 ![Typische architectuur voor Service-Mesh](media/servicemesh/typical-architecture.png)
 
-## <a name="capabilities"></a>Functies
+## <a name="capabilities"></a>Functionaliteit
 
 Elk van de service netten hebben een natuurlijke en focus op het ondersteunen van specifieke scenario's, maar u zult doorgaans ontdekken dat er een aantal van de volgende mogelijkheden wordt geïmplementeerd.
 
@@ -56,7 +56,7 @@ Elk van de service netten hebben een natuurlijke en focus op het ondersteunen va
 - **Sterke identiteit** – SPIFFE of vergelijkbaar
 - **Verificatie:** authenticatie, autorisatie
 
-### <a name="observability"></a>Waarneem bare
+### <a name="observability"></a>Waarneembaarheid
 
 - **Metrische** gegevens: gouden metrische gegevens, Prometheus, grafana
 - **Tracering** -traceringen over workloads

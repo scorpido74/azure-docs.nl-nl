@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884430"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabel co-locatie in Azure Database for PostgreSQL – grootschalige (Citus)
@@ -47,7 +47,7 @@ CREATE TABLE page (
 
 Nu willen we query's beantwoorden die kunnen worden uitgegeven door een klant gericht dash board. Een voorbeeld query is ' het aantal bezoeken in de afgelopen week retour neren voor alle pagina's die beginnen met '/blog ' in de Tenant zes. '
 
-Als de gegevens in de implementatie optie voor één server werden gebruikt, kunnen we onze query eenvoudig met behulp van de uitgebreide set relationele bewerkingen die worden aangeboden door SQL:
+Als de gegevens in de Single-Server-implementatie optie waren, kunnen we onze query eenvoudig met behulp van de uitgebreide set relationele bewerkingen die worden aangeboden door SQL:
 
 ```sql
 SELECT page_id, count(event_id)
@@ -96,7 +96,7 @@ Daarna moeten de resultaten van de twee stappen worden gecombineerd door de toep
 
 Het uitvoeren van de query's moet gegevens raadplegen in Shards verspreid over verschillende knoop punten.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Inefficiënte query's":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Shards":::
 
 In dit geval maakt de gegevens distributie aanzienlijke nadelen:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Vanwege het filter en de samen voeging van tenant_id, weet grootschalige (Citus) dat de volledige query kan worden beantwoord met behulp van de set met Shards die de gegevens voor die specifieke Tenant bevatten. Een enkel PostgreSQL-knoop punt kan de query in één stap beantwoorden.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Betere query":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Shards":::
 
 In sommige gevallen moeten query's en tabel schema's worden gewijzigd om de Tenant-ID op te nemen in unieke beperkingen en voor waarden voor samen voegen. Deze wijziging is doorgaans eenvoudig.
 

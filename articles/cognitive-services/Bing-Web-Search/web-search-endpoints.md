@@ -1,7 +1,7 @@
 ---
 title: Eind punt voor zoeken op Internet
 titleSuffix: Azure Cognitive Services
-description: Als u zoek resultaten voor het web wilt `GET` ophalen, verzendt u een aanvraag naar het volgende eind punt. De para meters headers en URL definiëren verdere specificaties.
+description: Als u zoek resultaten voor het web wilt ophalen, verzendt `GET` u een aanvraag naar het volgende eind punt. De para meters headers en URL definiëren verdere specificaties.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74111332"
 ---
 # <a name="web-search-endpoint"></a>Webzoekopdrachten-eind punt
@@ -23,9 +23,9 @@ De **webzoekopdrachten-API** retourneert webpagina's, nieuws, afbeeldingen, Vide
 
 ## <a name="endpoint"></a>Eindpunt
 
-Als u zoek resultaten wilt ophalen met behulp van de Bing `GET` API, verzendt u een aanvraag naar het volgende eind punt. De para meters headers en URL definiëren verdere specificaties.
+Als u zoek resultaten wilt ophalen met behulp van de Bing API, verzendt `GET` u een aanvraag naar het volgende eind punt. De para meters headers en URL definiëren verdere specificaties.
 
-**Eind punt**: retourneert Webresultaten die relevant zijn voor de zoek query van de gebruiker `?q=""`die is gedefinieerd door.
+**Eind punt**: retourneert Webresultaten die relevant zijn voor de zoek query van de gebruiker die is gedefinieerd door `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search

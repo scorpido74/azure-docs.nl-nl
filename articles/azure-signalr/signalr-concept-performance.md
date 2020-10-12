@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74157663"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Prestatierichtlijnen voor Azure SignalR Service
@@ -70,7 +70,7 @@ Theoretisch is de capaciteit van de Azure signalerings service beperkt door de r
 
 Het transport type is een andere factor die van invloed is op de prestaties. De drie typen zijn [Websockets](https://en.wikipedia.org/wiki/WebSocket), door de [server verzonden gebeurtenissen](https://en.wikipedia.org/wiki/Server-sent_events)en [lange polling](https://en.wikipedia.org/wiki/Push_technology). 
 
-WebSocket is een bidirectionele en full-duplex communicatie protocol via één TCP-verbinding. Server-sent-event is een onwaar-protocol om berichten van de server naar de client te pushen. Voor lange polling moeten clients periodiek gegevens van de server via een HTTP-aanvraag pollen. Voor dezelfde API onder dezelfde voor waarden biedt WebSocket de beste prestaties, de door de server verzonden gebeurtenis is langzamer en lange polling is het langzaamst. De Azure signalerings service beveelt standaard WebSocket aan.
+WebSocket is een bidirectionele en full-duplex communicatie protocol via één TCP-verbinding. Server-sent-event is een onwaar-protocol om berichten van de server naar de client te pushen. Long-Polling moeten clients periodiek gegevens van de server laten pollen via een HTTP-aanvraag. Voor dezelfde API onder dezelfde voor waarden biedt WebSocket de beste prestaties, de door de server verzonden gebeurtenis is langzamer en Long-Polling het langzaamst. De Azure signalerings service beveelt standaard WebSocket aan.
 
 De kosten voor bericht routering beperken ook de prestaties. De Azure signalerings service speelt een rol af als een Message router, waarmee het bericht wordt gerouteerd van een set clients of servers naar andere clients of servers. Een ander scenario of API vereist een ander routerings beleid. 
 

@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 775aa44043e9c8900bd0c040ab603736314ea34e
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89469980"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Een Azure AD-Tenant maken voor Azure Red Hat open Shift
@@ -28,7 +28,7 @@ Een Tenant maken:
 3. Geef een **naam**op voor de organisatie.
 4. Geef een **initiële domein naam**op. Er wordt een *onmicrosoft.com* aan toegevoegd. U kunt de waarde voor *organisatie naam* hier opnieuw gebruiken.
 5. Kies een land of regio waar de Tenant wordt gemaakt.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 7. Nadat uw Azure AD-Tenant is gemaakt, selecteert **u de koppeling Klik hier om uw nieuwe directory te beheren** . De naam van uw nieuwe Tenant wordt weer gegeven in de rechter bovenhoek van de Azure Portal:  
 
     ![Scherm afbeelding van de portal met de naam van de Tenant in de rechter bovenhoek][tenantcallout]  

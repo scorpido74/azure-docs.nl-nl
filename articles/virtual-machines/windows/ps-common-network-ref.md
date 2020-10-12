@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088373"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Algemene Power shell-opdrachten voor virtuele Azure-netwerken
@@ -29,7 +29,7 @@ Sommige variabelen kunnen nuttig zijn wanneer u meer dan een van de opdrachten i
 
 | Taak | Opdracht |
 | ---- | ------- |
-| Subnetconfiguraties maken |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -name "mySubnet1"-AddressPrefix xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Een typisch netwerk heeft mogelijk een subnet voor een [Internet gerichte Load Balancer](../../load-balancer/load-balancer-overview.md) en een afzonderlijk subnet voor een [interne Load Balancer](../../load-balancer/load-balancer-overview.md). |
+| Subnetconfiguraties maken |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -name "mySubnet1"-AddressPrefix xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig naam mySubnet2-AddressPrefix XX. X. X. X/XX<BR><BR>Een typisch netwerk heeft mogelijk een subnet voor een [Internet gerichte Load Balancer](../../load-balancer/load-balancer-overview.md) en een afzonderlijk subnet voor een [interne Load Balancer](../../load-balancer/load-balancer-overview.md). |
 | Een virtueel netwerk maken |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -name "myVNet"-ResourceGroupName $MyResourceGroup-location $location-AddressPrefix xx. X. X. X/XX-subnet $subnet 1, $subnet 2 |
 | Testen op een unieke domein naam |[Test-AzDnsAvailability](/powershell/module/az.network/test-azdnsavailability) -domeinnaam label "myDNS"-locatie $location<BR><BR>U kunt een DNS-domein naam opgeven voor een [open bare IP-resource](../../virtual-network/public-ip-addresses.md), waarmee een toewijzing voor domainname.location.cloudapp.Azure.com wordt gemaakt aan het open bare IP-adres op de door Azure beheerde DNS-servers. De naam mag alleen letters, cijfers en afbreekstreepjes bevatten. Het eerste en laatste teken moeten een letter of cijfer zijn en de domein naam moet uniek zijn binnen de Azure-locatie. Als **waar** wordt geretourneerd, is de voorgestelde naam wereld wijd uniek. |
 | Een openbaar IP-adres maken |$pip = [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) -name "myPublicIp"-ResourceGroupName $MyResourceGroup-domeinnaam label "myDNS"-location $location-AllocationMethod Dynamic<BR><BR>Het open bare IP-adres gebruikt de domein naam die u eerder hebt getest en wordt gebruikt door de front-end-configuratie van de load balancer. |
@@ -46,13 +46,13 @@ Sommige variabelen kunnen nuttig zijn wanneer u meer dan een van de opdrachten i
 | Taak | Opdracht |
 | ---- | ------- |
 | Virtuele netwerken weer geven |[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) -ResourceGroupName $myResourceGroup<BR><BR>Een lijst met alle virtuele netwerken in de resource groep. |
-| Informatie over een virtueel netwerk ophalen |Get-AzVirtualNetwork-name "myVNet"-ResourceGroupName $myResourceGroup |
-| Subnetten in een virtueel netwerk weer geven |Get-AzVirtualNetwork-name "myVNet"-ResourceGroupName $myResourceGroup &#124; subnetten selecteren |
+| Informatie over een virtueel netwerk ophalen |Get-AzVirtualNetwork naam myVNet-ResourceGroupName $myResourceGroup |
+| Subnetten in een virtueel netwerk weer geven |Get-AzVirtualNetwork naam ' myVNet '-ResourceGroupName $myResourceGroup &#124; Selecteer subnetten |
 | Informatie over een subnet ophalen |[Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) -name "mySubnet1"-VirtualNetwork $vnet<BR><BR>Hiermee haalt u informatie op over het subnet in het opgegeven virtuele netwerk. De $vnet waarde vertegenwoordigt het object dat door Get-AzVirtualNetwork wordt geretourneerd. |
 | IP-adressen weer geven |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) -ResourceGroupName $myResourceGroup<BR><BR>Een lijst met de open bare IP-adressen in de resource groep. |
 | Load balancers weer geven |[Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) -ResourceGroupName $myResourceGroup<BR><BR>Een lijst met alle load balancers in de resource groep. |
 | Netwerk interfaces weer geven |[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) -ResourceGroupName $myResourceGroup<BR><BR>Een lijst met alle netwerk interfaces in de resource groep. |
-| Informatie over een netwerk interface ophalen |Get-AzNetworkInterface-name "myNIC"-ResourceGroupName $myResourceGroup<BR><BR>Hiermee haalt u informatie op over een specifieke netwerk interface. |
+| Informatie over een netwerk interface ophalen |Get-AzNetworkInterface naam myNIC-ResourceGroupName $myResourceGroup<BR><BR>Hiermee haalt u informatie op over een specifieke netwerk interface. |
 | De IP-configuratie van een netwerk interface ophalen |[Get-AzNetworkInterfaceIPConfig](/powershell/module/az.network/get-aznetworkinterfaceipconfig) -name "myNICIP"-Network Interface $NIC<BR><BR>Hiermee haalt u informatie op over de IP-configuratie van de opgegeven netwerk interface. De $nic waarde vertegenwoordigt het object dat door Get-AzNetworkInterface wordt geretourneerd. |
 
 ## <a name="manage-network-resources"></a>Netwerkresources beheren

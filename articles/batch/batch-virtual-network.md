@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86142766"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch groep maken in een virtueel netwerk
@@ -25,7 +25,7 @@ Als u wilt toestaan dat reken knooppunten veilig communiceren met andere virtuel
 
 - **Verificatie**. Het gebruik van een Azure VNet vereist dat de Batch-client-API gebruikmaakt van Azure Active Directory-verificatie (AD). Azure Batch-ondersteuning voor Azure AD wordt beschreven in [Oplossingen van Batch-service verifiëren met Active Directory](batch-aad-auth.md).
 
-- **Een Azure-VNet**. Raadpleeg de volgende sectie voor VNet-vereisten en-configuratie. Als u een VNet met een of meer subnetten vooraf wilt voorbereiden, kunt u de Azure Portal, Azure PowerShell, de Azure-opdracht regel interface (CLI) of een andere methode gebruiken.
+- **Een Azure-VNet**. Raadpleeg de volgende sectie voor VNet-vereisten en-configuratie. Als u een VNet met een of meer subnetten vooraf wilt voorbereiden, kunt u de Azure Portal, Azure PowerShell, de Azure Command-Line-interface (CLI) of een andere methode gebruiken.
   - Zie [een virtueel netwerk maken](../virtual-network/manage-virtual-network.md#create-a-virtual-network)voor het maken van een op Azure Resource Manager gebaseerde VNet. Een VNet op basis van Resource Manager wordt aanbevolen voor nieuwe implementaties en wordt alleen ondersteund op Pools die gebruikmaken van de configuratie van virtuele machines.
   - Zie [een virtueel netwerk (klassiek) met meerdere subnetten maken](/previous-versions/azure/virtual-network/create-virtual-network-classic)om een klassiek VNet te maken. Een klassiek VNet wordt alleen ondersteund voor Pools die gebruikmaken van Cloud Services configuratie.
 
@@ -62,7 +62,7 @@ Wanneer u een UDR toevoegt, definieert u de route voor elk gerelateerde IP-adres
 ![Door de gebruiker gedefinieerde route](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Als u storingen wilt voor komen door een wijziging in het IP-adres, maakt u een proces voor het automatisch vernieuwen van de IP-adressen van de batch-service en blijft u deze actueel in uw route tabel.
+> De IP-adressen van de Batch-service kunnen na verloop van tijd worden gewijzigd. Als u storingen wilt voor komen door een wijziging in het IP-adres, maakt u een proces voor het automatisch vernieuwen van de IP-adressen van de batch-service en blijft u deze actueel in uw route tabel.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81402516"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Wat is een conversatie transcriptie in vergaderingen (preview-versie)?
@@ -44,7 +44,7 @@ Als u vergaderingen voor iedereen wilt maken, zoals deel nemers die doof en slec
 
 Deel nemers aan het vergaderen kunnen zich richten op de vergadering en moeten notities maken op het gesprek transcriptie. Deel nemers kunnen actief gebruikmaken van de vergadering en snel opvolgen tijdens de volgende stappen, waarbij de transcriptie wordt gebruikt in plaats van notities te maken en mogelijk iets te missen tijdens de vergadering.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Dit is een overzicht op hoog niveau van de werking van de conversatie transcriptie.
 

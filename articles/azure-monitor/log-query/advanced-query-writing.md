@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670284"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Geavanceerde query's schrijven in Azure Monitor
@@ -69,7 +69,7 @@ Event
 ```
 
 ## <a name="print"></a>Afdrukken
-`print`retourneert een tabel met één kolom en één rij, waarin het resultaat van een berekening wordt weer gegeven. Dit wordt vaak gebruikt in gevallen waarin u een eenvoudige berekening nodig hebt. Bijvoorbeeld om de huidige tijd in PST te zoeken en een kolom toe te voegen met EST:
+`print` retourneert een tabel met één kolom en één rij, waarin het resultaat van een berekening wordt weer gegeven. Dit wordt vaak gebruikt in gevallen waarin u een eenvoudige berekening nodig hebt. Bijvoorbeeld om de huidige tijd in PST te zoeken en een kolom toe te voegen met EST:
 
 ```Kusto
 print nowPst = now()-8h
@@ -77,7 +77,7 @@ print nowPst = now()-8h
 ```
 
 ## <a name="datatable"></a>DataTable
-`datatable`Hiermee kunt u een set gegevens definiëren. U geeft een schema en een set waarden op en vervolgens de tabel in alle andere query-elementen. U kunt bijvoorbeeld een tabel met RAM-gebruik maken en de gemiddelde waarde per uur berekenen:
+`datatable` Hiermee kunt u een set gegevens definiëren. U geeft een schema en een set waarden op en vervolgens de tabel in alle andere query-elementen. U kunt bijvoorbeeld een tabel met RAM-gebruik maken en de gemiddelde waarde per uur berekenen:
 
 ```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)

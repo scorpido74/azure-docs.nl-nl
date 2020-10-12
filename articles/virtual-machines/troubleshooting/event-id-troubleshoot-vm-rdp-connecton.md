@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088594"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Problemen met Azure VM RDP-verbinding oplossen op basis van gebeurtenis-id 
@@ -57,7 +57,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Logboek naam:**      Opgehaald <br />
 **Bron:**        Micro soft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *tijd* <br />
-**Gebeurtenis-id:** 1058 <br />
+**Gebeurtenis-id:**      1058 <br />
 **Taak categorie:** Geen <br />
 **Niveau:**         Optreedt <br />
 **Tref woorden:**      Klassieke <br />
@@ -68,7 +68,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Logboek naam:**      Opgehaald <br />
 **Bron:**        Micro soft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *tijd* <br />
-**Gebeurtenis-id:** 1058 <br />
+**Gebeurtenis-id:**      1058 <br />
 **Taak categorie:** Geen <br />
 **Niveau:**         Optreedt <br />
 **Tref woorden:**      Klassieke <br />
@@ -79,7 +79,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Logboek naam:**      Opgehaald <br />
 **Bron:**        Micro soft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *tijd* <br />
-**Gebeurtenis-id:** 1057 <br />
+**Gebeurtenis-id:**      1057 <br />
 **Taak categorie:** Geen <br />
 **Niveau:**         Optreedt <br />
 **Tref woorden:**      Klassieke <br />
@@ -96,8 +96,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Logboek naam:**      Opgehaald <br />
 **Bron:**        Veilige <br />
-**Datum:** — <br />
-**Gebeurtenis-id:** 36870 <br />
+**Datum:**          — <br />
+**Gebeurtenis-id:**      36870 <br />
 **Taak categorie:** Geen <br />
 **Niveau:**         Optreedt <br />
 **Woord**       <br />
@@ -218,8 +218,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Logboek naam:**      Opgehaald <br />
 **Bron:**        Veilige <br />
-**Datum:** — <br />
-**Gebeurtenis-id:** 36871 <br />
+**Datum:**          — <br />
+**Gebeurtenis-id:**      36871 <br />
 **Taak categorie:** Geen <br />
 **Niveau:**         Optreedt <br />
 **Woord**       <br />
@@ -249,7 +249,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **Logboek naam:**      Micro soft-Windows-TerminalServices-SessionBroker/operationeel <br />
 **Bron:**        Micro soft-Windows-TerminalServices-SessionBroker <br />
 **Datum:**          *tijd* <br />
-**Gebeurtenis-id:** 2056 <br />
+**Gebeurtenis-id:**      2056 <br />
 **Taak categorie:** (109) <br />
 **Niveau:**         Optreedt <br />
 **Woord**       <br />
@@ -265,7 +265,7 @@ Aanmelden bij de data base is mislukt.
 **Logboek naam:**      Micro soft-Windows-TerminalServices-SessionBroker-client/operationeel <br />
 **Bron:**        Micro soft-Windows-TerminalServices-SessionBroker-client <br />
 **Datum:**          *tijd* <br />
-**Gebeurtenis-id:** 1296 <br />
+**Gebeurtenis-id:**      1296 <br />
 **Taak categorie:** (104) <br />
 **Niveau:**         Optreedt <br />
 **Woord**       <br />
@@ -274,8 +274,8 @@ Aanmelden bij de data base is mislukt.
 **Beschrijving:** De beschrijving voor gebeurtenis-ID 1296 van de bron micro soft-Windows-TerminalServices-SessionBroker-client is niet gevonden. Het onderdeel dat deze gebeurtenis activeert, is niet geïnstalleerd op de lokale computer of de installatie is beschadigd. U kunt het onderdeel op de lokale computer installeren of herstellen.
 Als de gebeurtenis afkomstig is van een andere computer, moest de weer gave-informatie worden opgeslagen met de gebeurtenis.
 De volgende informatie is opgenomen in de gebeurtenis:  <br />
-*tekst* <br />
-*tekst* <br />
+*SMS* <br />
+*SMS* <br />
 Extern bureaublad Connection Broker is niet gereed voor RPC-communicatie.
 
 ### <a name="cause"></a>Oorzaak
