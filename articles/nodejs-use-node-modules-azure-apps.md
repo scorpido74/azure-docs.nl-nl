@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077115"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Node.js-modules gebruiken met Azure-toepassingen
@@ -55,7 +55,7 @@ Azure App Service biedt geen ondersteuning voor alle systeem eigen modules en ka
 
 ### <a name="using-a-packagejson-file"></a>Een package.jsgebruiken voor een bestand
 
-De **package.jsop** bestand is een manier om de afhankelijkheden op het hoogste niveau op te geven die nodig zijn voor de toepassing, zodat het hosting platform de afhankelijkheden kan installeren, in plaats van de map met **knooppunt \_ modules** als onderdeel van de implementatie te hoeven opnemen. Nadat de toepassing is geïmplementeerd, wordt de **NPM-installatie** opdracht gebruikt voor het parseren **van depackage.jsin** het bestand en het installeren van alle afhankelijkheden die worden vermeld.
+De **package.jsop** bestand is een manier om de afhankelijkheden op het hoogste niveau op te geven die nodig zijn voor de toepassing, zodat het hosting platform de afhankelijkheden kan installeren, in plaats van de map met **knooppunt \_ modules** als onderdeel van de implementatie te hoeven opnemen. Nadat de toepassing is geïmplementeerd, wordt de **NPM-installatie** opdracht gebruikt voor het parseren ** van depackage.jsin** het bestand en het installeren van alle afhankelijkheden die worden vermeld.
 
 Tijdens de ontwikkeling kunt u de para meters **--Opslaan**, **--Save-dev**of **---Save-optional** gebruiken bij het installeren van modules om automatisch een vermelding voor de module toe te voegen aan uw **package.js** voor het bestand. Zie [NPM-install (](https://docs.npmjs.com/cli/install)Engelstalig) voor meer informatie.
 
@@ -64,7 +64,7 @@ Een mogelijk probleem met de **package.jsop** bestand is dat alleen de versie va
 > [!NOTE]
 > Als uw <b>package.jsin</b> het bestand verwijst naar Azure app service, ziet u mogelijk een fout die vergelijkbaar is met het volgende voor beeld bij het publiceren van de toepassing met behulp van git:
 >
-> NPM fout. module-name@0.6.0installeren: ' node-Gyp-build configureren '
+> NPM fout. module-name@0.6.0 installeren: ' node-Gyp-build configureren '
 >
 > NPM fout. cmd "/c" "node-Gyp configureren build" "is mislukt met 1
 >
@@ -73,19 +73,19 @@ Een mogelijk probleem met de **package.jsop** bestand is dat alleen de versie va
 ### <a name="using-a-npm-shrinkwrapjson-file"></a>Een npm-shrinkwrap.jsgebruiken voor een bestand
 De **npm-shrinkwrap.jsin** het bestand is een poging om de beperkingen van de module versie van de **package.jsvoor** het bestand op te lossen. Hoewel de **package.jsin** het bestand alleen versies bevat voor de modules op het hoogste niveau, bevatten de **npm-shrinkwrap.jsin** het bestand de versie vereisten voor de volledige module afhankelijkheids keten.
 
-Wanneer uw toepassing gereed is voor productie, kunt u de versie vereisten vergren delen en een **npm-shrinkwrap.jsin** het bestand maken met behulp van de opdracht **NPM Shrinkwrap** . Met deze opdracht worden de versies gebruikt die momenteel zijn geïnstalleerd in de map **node \_ modules** en worden deze versies opgenomen in de **npm-shrinkwrap.jsin** het bestand. Nadat de toepassing is geïmplementeerd in de hostomgeving, wordt de **NPM-installatie** opdracht gebruikt voor het parseren **van denpm-shrinkwrap.jsin** het bestand en het installeren van alle afhankelijkheden die worden weer gegeven. Zie [NPM-Shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)voor meer informatie.
+Wanneer uw toepassing gereed is voor productie, kunt u de versie vereisten vergren delen en een **npm-shrinkwrap.jsin** het bestand maken met behulp van de opdracht **NPM Shrinkwrap** . Met deze opdracht worden de versies gebruikt die momenteel zijn geïnstalleerd in de map **node \_ modules** en worden deze versies opgenomen in de **npm-shrinkwrap.jsin** het bestand. Nadat de toepassing is geïmplementeerd in de hostomgeving, wordt de **NPM-installatie** opdracht gebruikt voor het parseren ** van denpm-shrinkwrap.jsin** het bestand en het installeren van alle afhankelijkheden die worden weer gegeven. Zie [NPM-Shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)voor meer informatie.
 
 > [!NOTE]
 > Als uw <b>npm-shrinkwrap.jsin</b> het bestand verwijst naar Azure app service, ziet u mogelijk een fout die vergelijkbaar is met het volgende voor beeld bij het publiceren van de toepassing met behulp van git:
 >
-> NPM fout. module-name@0.6.0installeren: ' node-Gyp-build configureren '
+> NPM fout. module-name@0.6.0 installeren: ' node-Gyp-build configureren '
 >
 > NPM fout. cmd "/c" "node-Gyp configureren build" "is mislukt met 1
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u begrijpt hoe u Node.js modules kunt gebruiken met Azure, leert u hoe u [de Node.js versie kunt opgeven](https://github.com/squillace/nodejs-microservice), [een Node.js-Web-App kunt maken en implementeren](app-service/quickstart-nodejs.md)en [hoe u de Azure-opdracht regel interface voor Mac en Linux gebruikt](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Nu u begrijpt hoe u Node.js modules kunt gebruiken met Azure, leert u hoe u [de Node.js versie kunt opgeven](https://github.com/squillace/nodejs-microservice), [een Node.js-Web-App kunt maken en implementeren](app-service/quickstart-nodejs.md)en [hoe u de Azure Command-Line-interface voor Mac en Linux gebruikt](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Zie het [Node.js-ontwikkelaarscentrum](/azure/developer/javascript/) voor meer informatie.
 

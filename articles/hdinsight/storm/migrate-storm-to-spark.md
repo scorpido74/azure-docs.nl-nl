@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
 ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081193"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3,6 Apache Storm migreren naar HDInsight 4,0 Apache Spark
@@ -33,7 +33,7 @@ Dit document bevat een hand leiding voor het migreren van Apache Storm naar Spar
 
 ## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Vergelijking tussen Apache Storm en Spark-streaming, met Spark gestructureerde streaming
 
-Apache Storm kan verschillende niveaus van gegarandeerde berichtverwerking bieden. Een eenvoudige Storm-toepassing kan bijvoorbeeld een verwerkings snelheid van ten minste één keer garanderen en [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) kan gegarandeerd precies één keer worden verwerkt. Spark streaming en Spark Structured streaming garanderen dat elke invoer gebeurtenis precies één keer wordt verwerkt, zelfs als er een storing in een knoop punt optreedt. Storm heeft een model dat elke gebeurtenis verwerkt, en u kunt ook het micro batch-model gebruiken met Trident. Spark streaming en Spark Structured streaming bieden micro batch verwerkings modellen.
+Apache Storm kan verschillende niveaus van gegarandeerde berichtverwerking bieden. Een eenvoudige Storm-toepassing kan bijvoorbeeld een verwerkings snelheid van ten minste één keer garanderen en [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) kan gegarandeerd precies één keer worden verwerkt. Spark streaming en Spark Structured streaming garanderen dat elke invoer gebeurtenis precies één keer wordt verwerkt, zelfs als er een storing in een knoop punt optreedt. Storm heeft een model dat elke gebeurtenis verwerkt, en u kunt ook het micro batch-model gebruiken met Trident. Spark streaming en Spark Structured streaming bieden Micro-Batch verwerkings model.
 
 |  |Storm |Spark-streaming | Spark Structured streaming|
 |---|---|---|---|
@@ -46,7 +46,7 @@ Apache Storm kan verschillende niveaus van gegarandeerde berichtverwerking biede
 
 Spark Structured streaming vervangt Spark-streaming (DStreams). Structured streaming blijft uitbrei dingen en onderhoud ontvangen, terwijl DStreams alleen in de onderhouds modus wordt uitgevoerd. **Opmerking: er zijn koppelingen nodig om dit punt te benadrukken**. Structured streaming heeft niet zo veel functies als DStreams voor de bronnen en sinks die deze niet ondersteunt. Controleer daarom uw vereisten om de juiste optie voor de verwerking van Spark-stream te kiezen.
 
-## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Streaming-verwerking (één gebeurtenis) versus micro batch-verwerking
+## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Streaming-verwerking (één gebeurtenis) versus Micro-Batch verwerking
 
 Storm biedt een model waarmee elke gebeurtenis wordt verwerkt. Dit betekent dat alle inkomende records worden verwerkt zodra ze binnenkomen. Toepassingen met Spark-streaming moeten een fractie van een seconde wachten op het verzamelen van elke micro batch gebeurtenissen voordat deze batch wordt verzonden voor verwerking. Daarentegen wordt elke gebeurtenis direct verwerkt door een gebeurtenis gerichte toepassing. De latentie van Spark-streaming is doorgaans een paar seconden. De voor delen van de micro batch-benadering zijn een efficiëntere verwerking van gegevens en complexe berekeningen.
 
@@ -57,7 +57,7 @@ Storm biedt een model waarmee elke gebeurtenis wordt verwerkt. Dit betekent dat 
 
 Storm-topologieën bestaan uit meerdere onderdelen die zijn gerangschikt in een Directed Acyclic Graph (DAG). Gegevens stromen tussen de onderdelen in de grafiek. Elk onderdeel verbruikt een of meer gegevensstromen en kan eventueel een of meer stromen genereren.
 
-|Onderdeel |Description |
+|Onderdeel |Beschrijving |
 |---|---|
 |Spout|Haalt gegevens op in een topologie. Deze onderdelen introduceren een of meer stromen in de topologie.|
 |Montagekit|Verbruikt stromen die zijn verzonden vanuit spouts of andere schichten. Bolts kunnen eventueel nieuwe stromen in de topologie introduceren. Bolts zijn ook verantwoordelijk voor het wegschrijven van gegevens naar externe services of opslag, zoals HDFS, Kafka of HBase.|
@@ -67,7 +67,7 @@ Storm-topologieën bestaan uit meerdere onderdelen die zijn gerangschikt in een 
 
 Storm bestaat uit de volgende drie daemons, waarmee het Storm-cluster goed werkt.
 
-|Daemon |Description |
+|Daemon |Beschrijving |
 |---|---|
 |Nimbus|Net als bij Hadoop JobTracker is het verantwoordelijk voor het distribueren van code rond het cluster en het toewijzen van taken aan machines en het bewaken van fouten.|
 |Zookeeper|Wordt gebruikt voor de coördinatie van het cluster.|
@@ -151,5 +151,5 @@ Ga als volgt te werk om uw toepassing te migreren van Storm naar een van de Spar
 
 Raadpleeg de volgende documenten voor meer informatie over Storm, Spark streaming en Spark Structured streaming:
 
-* [Overzicht van Apache Spark streaming](../spark/apache-spark-streaming-overview.md)
-* [Overzicht van Apache Spark Structured streaming](../spark/apache-spark-structured-streaming-overview.md)
+* [Overzicht van Apache Spark-streaming](../spark/apache-spark-streaming-overview.md)
+* [Overzicht van Gestructureerde streaming van Apache Spark](../spark/apache-spark-structured-streaming-overview.md)

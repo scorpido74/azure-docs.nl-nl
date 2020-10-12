@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511506"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>Lokaal vastgemaakte volumes StorSimple: veelgestelde vragen (FAQ)
@@ -178,7 +178,7 @@ Meer informatie over het [converteren van een gelaagd volume naar een lokaal vas
 
 **Nils.** Kan ik een lokaal vastgemaakt volume klonen?
 
-**Één.** Ja, dat is mogelijk. Het lokaal vastgemaakte volume wordt echter standaard gekloond als een gelaagd volume. Meer informatie over het [klonen van een lokaal vastgemaakt volume](storsimple-8000-clone-volume-u2.md)
+**Één.** Ja, dat kunt u. Het lokaal vastgemaakte volume wordt echter standaard gekloond als een gelaagd volume. Meer informatie over het [klonen van een lokaal vastgemaakt volume](storsimple-8000-clone-volume-u2.md)
 
 ## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Vragen over het mislukken van een lokaal vastgemaakt volume
 **Nils.** Ik moet een failover van mijn apparaat naar een ander fysiek apparaat uitvoeren. Worden er via mijn lokaal vastgemaakte volumes een failover uitgevoerd als lokaal vastgemaakt of gelaagd?
@@ -201,5 +201,5 @@ Meer informatie over [failover en Dr van lokaal vastgemaakte volumes in versies]
 
 **Nils.** Kan ik een failover uitvoeren voor een volume container met lokaal vastgemaakte volumes aan het Cloud apparaat?
 
-**Één.** Ja, dat is mogelijk. De lokaal vastgemaakte volumes worden failover als gelaagde volumes. Meer informatie over [failover en Dr van lokaal vastgemaakte volumes in versies](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
+**Één.** Ja, dat kunt u. De lokaal vastgemaakte volumes worden failover als gelaagde volumes. Meer informatie over [failover en Dr van lokaal vastgemaakte volumes in versies](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
 

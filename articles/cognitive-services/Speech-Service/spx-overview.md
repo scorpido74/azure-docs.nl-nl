@@ -12,10 +12,10 @@ ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067423"
 ---
 # <a name="what-is-the-speech-cli"></a>Wat is de Speech-CLI?
@@ -48,5 +48,5 @@ Zie het [artikel basis beginselen](spx-basics.md)om aan de slag te gaan met de s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Basisbeginselen van de Speech CLI](spx-basics.md)
+- [Basis beginselen van spraak-CLI](spx-basics.md)
 - Als uw gebruiks voorbeeld complexer is, kunt u [de spraak-SDK downloaden](speech-sdk.md)

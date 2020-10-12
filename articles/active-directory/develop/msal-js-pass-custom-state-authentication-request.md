@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477580"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Aangepaste status in verificatie aanvragen door geven met behulp van MSAL.js
@@ -46,7 +46,7 @@ export type AuthenticationParameters = {
 
 > [!Note]
 > Als u een token in de cache wilt overs Laan en naar de server wilt gaan, geeft u de Booleaanse waarde door aan `forceRefresh` het AuthenticationParameters-object dat wordt gebruikt om een aanmeldings-of Token aanvraag te maken.
-> `forceRefresh`mag niet standaard worden gebruikt vanwege de invloed op de prestaties van uw toepassing.
+> `forceRefresh` mag niet standaard worden gebruikt vanwege de invloed op de prestaties van uw toepassing.
 > Afhankelijk van de cache krijgt uw gebruikers een betere ervaring.
 > Het overs laan van de cache mag alleen worden gebruikt in scenario's waarin u weet dat de gegevens die momenteel in de cache zijn opgeslagen, geen actuele informatie bevatten.
 > Zoals een beheer hulpprogramma waarmee rollen worden toegevoegd aan een gebruiker die een nieuw token moet verkrijgen met bijgewerkte rollen.

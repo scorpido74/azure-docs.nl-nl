@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012072"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
@@ -181,7 +181,7 @@ Als u een SAS-token voor een afzender of client hebt, heeft deze de sleutel niet
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>De Shared Access Signature gebruiken (op AMQP niveau)
 
-In de vorige sectie hebt u gezien hoe u het SAS-token gebruikt met een HTTP POST-aanvraag voor het verzenden van gegevens naar de Service Bus. Zoals u weet, hebt u toegang tot Service Bus met behulp van de Advanced Message Queueing Protocol (AMQP) die het voorkeurs protocol voor prestatie redenen is, in veel scenario's. Het gebruik van SAS-tokens met AMQP wordt beschreven in de document [AMQP op claims gebaseerde beveiligings versie 1,0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) die sinds 2013 werkt, maar wordt nu ondersteund door Azure.
+In de vorige sectie hebt u gezien hoe u het SAS-token gebruikt met een HTTP POST-aanvraag voor het verzenden van gegevens naar de Service Bus. Zoals u weet, hebt u toegang tot Service Bus met behulp van de Advanced Message Queueing Protocol (AMQP) die het voorkeurs protocol voor prestatie redenen is, in veel scenario's. Het gebruik van SAS-tokens met AMQP wordt beschreven in het document [AMQP Claim-Based Security versie 1,0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) . Dit is een werkend concept sinds 2013, maar wordt nu wel ondersteund door Azure.
 
 Voordat u begint met het verzenden van gegevens naar Service Bus, moet de uitgever het SAS-token in een AMQP-bericht verzenden naar een goed gedefinieerd AMQP-knoop punt met de naam **$CBS** (dit kan worden weer gegeven als een ' speciale ' wachtrij die door de service wordt gebruikt om alle SAS-tokens te verkrijgen en te valideren). De uitgever moet het **ReplyTo** -veld in het AMQP-bericht opgeven. Dit is het knoop punt waarin de service antwoordt op de uitgever met het resultaat van de token validatie (een eenvoudig patroon van aanvraag/antwoord tussen Publisher en service). Dit antwoord knooppunt wordt ' op de hoogte ' gemaakt, zoals beschreven in de AMQP 1,0-specificatie. Nadat u hebt gecontroleerd of het SAS-token geldig is, kan de uitgever door gaan en gegevens verzenden naar de service.
 
@@ -277,7 +277,7 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 | De status ophalen die is gekoppeld aan een berichten wachtrij sessie |Luisteren |Een geldig wachtrij adres |
 | De status van een berichten wachtrij sessie instellen |Luisteren |Een geldig wachtrij adres |
 | Een bericht plannen voor latere levering; bijvoorbeeld, [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Luisteren | Een geldig wachtrij adres
-| **Thematische** | | |
+| **Onderwerp** | | |
 | Een onderwerp maken |Beheren |Elk naam ruimte adres |
 | Een onderwerp verwijderen |Beheren |Een geldig onderwerp-adres |
 | Onderwerpen opsommen |Beheren |/$Resources/topics |

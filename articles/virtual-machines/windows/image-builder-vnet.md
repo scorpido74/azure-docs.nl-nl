@@ -9,10 +9,10 @@ ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: 07339ea6c53b2abe959e8e0f164412e502bb06b5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068126"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Azure Image Builder voor Windows-Vm's gebruiken om toegang te krijgen tot een bestaand Azure VNET
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Nu de build is voltooid, kunt u een VM maken op basis van de installatie kopie. Gebruik de voor beelden uit de [Power shell New-AzVM-documentatie](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description).
+Nu de build is voltooid, kunt u een VM maken op basis van de installatie kopie. Gebruik de voor beelden van de [Power shell-New-AzVM documentatie](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description).
 
 ## <a name="clean-up"></a>Opschonen
 

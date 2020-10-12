@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780369"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Toewijzingsgegevensstromen parameteriseren
@@ -67,7 +67,7 @@ Wanneer u een para meter voor een pijplijn expressie van het type teken reeks to
 Als de para meter data flow `stringParam` verwijst naar een pijplijn parameter met een waarde `upper(column1)` . 
 
 - Als expressie is ingeschakeld, `$stringParam` evalueert de waarde van Kolom1 alle hoofd letters.
-- Als expressie niet is ingeschakeld (standaard gedrag), `$stringParam` evalueert naar`'upper(column1)'`
+- Als expressie niet is ingeschakeld (standaard gedrag),  `$stringParam` evalueert naar `'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>Door geven van tijds tempels
 
@@ -84,7 +84,7 @@ Stel dat u een integer-para meter hebt `intParam` die verwijst naar een pijplijn
 
 ![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-2.png "Een para meter voor een gegevens stroom instellen")
 
-`@pipeline.parameters.pipelineParam`wordt tijdens runtime een waarde van toegewezen `abs(1)` .
+`@pipeline.parameters.pipelineParam` wordt tijdens runtime een waarde van toegewezen `abs(1)` .
 
 ![Een para meter voor een gegevens stroom instellen](media/data-flow/parameter-pipeline-4.png "Een para meter voor een gegevens stroom instellen")
 

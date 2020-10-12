@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040992"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition-functies
@@ -36,7 +36,7 @@ Waar van toepassing kunt u verwijzen naar eigenschappen van de uitvoer van een f
 "[func().prop1]"
 ```
 
-## <a name="collection-functions"></a>Verzamelings functies
+## <a name="collection-functions"></a>Verzamelingsfuncties
 
 Deze functies kunnen worden gebruikt in combi natie met verzamelingen, zoals JSON-teken reeksen, matrices en objecten.
 
@@ -45,13 +45,13 @@ Deze functies kunnen worden gebruikt in combi natie met verzamelingen, zoals JSO
 * [Filterwebonderdelen](create-ui-definition-collection-functions.md#filter)
 * [instantie](create-ui-definition-collection-functions.md#first)
 * [duren](create-ui-definition-collection-functions.md#last)
-* [lange](create-ui-definition-collection-functions.md#length)
-* [diagram](create-ui-definition-collection-functions.md#map)
+* [length](create-ui-definition-collection-functions.md#length)
+* [map](create-ui-definition-collection-functions.md#map)
 * [verdergaan](create-ui-definition-collection-functions.md#skip)
 * [delen](create-ui-definition-collection-functions.md#split)
 * [take](create-ui-definition-collection-functions.md#take)
 
-## <a name="conversion-functions"></a>Conversie functies
+## <a name="conversion-functions"></a>Conversiefuncties
 
 Deze functies kunnen worden gebruikt om waarden te converteren tussen JSON-gegevens typen en-code ringen.
 
@@ -76,7 +76,7 @@ Deze functies kunnen worden gebruikt om waarden te converteren tussen JSON-gegev
 
 Deze functies kunnen worden gebruikt in voor waarden. Sommige functies bieden mogelijk geen ondersteuning voor alle JSON-gegevens typen.
 
-* [en](create-ui-definition-logical-functions.md#and)
+* [and](create-ui-definition-logical-functions.md#and)
 * [Voeg](create-ui-definition-logical-functions.md#coalesce)
 * [gelijk is aan](create-ui-definition-logical-functions.md#equals)
 * [groter](create-ui-definition-logical-functions.md#greater)
@@ -89,7 +89,7 @@ Deze functies kunnen worden gebruikt in voor waarden. Sommige functies bieden mo
 
 ## <a name="math-functions"></a>Wiskundige functies
 
-* [toe](create-ui-definition-math-functions.md#add)
+* [add](create-ui-definition-math-functions.md#add)
 * [ceil](create-ui-definition-math-functions.md#ceil)
 * [div](create-ui-definition-math-functions.md#div)
 * [Floor](create-ui-definition-math-functions.md#floor)
@@ -104,7 +104,7 @@ Deze functies kunnen worden gebruikt in voor waarden. Sommige functies bieden mo
 ## <a name="referencing-functions"></a>Verwijzende functies
 
 * [bewerkingen](create-ui-definition-referencing-functions.md#basics)
-* [locatie](create-ui-definition-referencing-functions.md#location)
+* [location](create-ui-definition-referencing-functions.md#location)
 * [resourceGroup](create-ui-definition-referencing-functions.md#resourcegroup)
 * [stappen](create-ui-definition-referencing-functions.md#steps)
 * [abonnees](create-ui-definition-referencing-functions.md#subscription)

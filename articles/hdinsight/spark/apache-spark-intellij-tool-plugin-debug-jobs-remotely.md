@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
 ms.openlocfilehash: 7ec49ee4f07aff6e9b9f9d6fc43e37742d7e163a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085120"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure-toolkit voor IntelliJ gebruiken om fout opsporing uit te Apache Spark toepassingen op afstand in HDInsight via VPN
@@ -100,7 +100,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     a. Selecteer **hdinsight**  >  **Spark in hdinsight (scala)**.
 
-    b. Selecteer **Volgende**.
+    b. Selecteer **Next**.
 1. Voer in het dialoog venster volgende **Nieuw project** de volgende handelingen uit en selecteer vervolgens **volt ooien**:
 
     - Geef een projectnaam en locatie op.
@@ -285,7 +285,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     ![IntelliJ debug-add-Watch-variabele](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
-    In dit voor beeld wordt de toepassing gerepareerd voordat de variabele `rdd1` is gemaakt. Met deze controle kunnen we de eerste vijf rijen in de variabele zien `rdd` . Selecteer **Enter**.
+    In dit voor beeld wordt de toepassing gerepareerd voordat de variabele `rdd1` is gemaakt. Met deze controle kunnen we de eerste vijf rijen in de variabele zien `rdd` . Druk op **Enter**.
 
     ![IntelliJ het programma uitvoeren in de foutopsporingsmodus](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 

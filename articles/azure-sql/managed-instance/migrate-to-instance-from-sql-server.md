@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
 ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90887650"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migratie van SQL Server-exemplaren naar Azure SQL Managed instance
@@ -70,7 +70,7 @@ Enkele van de para meters die u moet meten op uw SQL Server-exemplaar zijn:
 
 - [Controleer het CPU-gebruik op uw SQL Server-exemplaar](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) en noteer het gemiddelde en maximum CPU-gebruik.
 - [Controleer het geheugen gebruik op uw SQL Server-exemplaar](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) en bepaal de hoeveelheid geheugen die wordt gebruikt door verschillende onderdelen, zoals de buffer groep, de plannings cache, de column-Store-groep, [in-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017), enzovoort. Bovendien moet u de gemiddelde en piek waarden voor het prestatie meter item pagina-levens verwachting geheugen vinden.
-- Controleer het gebruik van de schijf-i/o op de bron SQL Server instantie met [sys. dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) -weer gave of [prestatie meter items](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
+- Controleer het gebruik van de schijf-i/o op het bron SQL Server exemplaar met behulp van [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) weergave of [prestatie meter items](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
 - Controleer de werk belasting-en query prestaties of uw SQL Server-exemplaar door dynamische beheer weergaven of query Store te controleren als u migreert van een SQL Server 2016 + versie. Bepaal de gemiddelde duur en het CPU-gebruik van de belangrijkste query's in uw workload om ze te vergelijken met de query's die worden uitgevoerd op het beheerde exemplaar.
 
 > [!Note]
@@ -139,7 +139,7 @@ De volgende tabel bevat meer informatie over de methoden die u kunt gebruiken, a
 
 > [!IMPORTANT]
 >
-> - Wanneer u een door [transparent Data Encryption](../database/transparent-data-encryption-tde-overview.md) beveiligde data base migreert naar een beheerd exemplaar met behulp van de systeem eigen terugzet optie, moet het bijbehorende certificaat van de on-premises of Azure VM-SQL Server worden gemigreerd voordat de data base wordt hersteld. Zie [een TDe-certificaat migreren naar een beheerd exemplaar](tde-certificate-migrate.md)voor gedetailleerde stappen.
+> - Wanneer u een door [transparent Data Encryption](../database/transparent-data-encryption-tde-overview.md) beveiligde data base migreert naar een beheerd exemplaar met behulp van de systeem eigen terugzet optie, moet het bijbehorende certificaat van de on-premises of Azure VM-SQL Server worden gemigreerd voordat de data base wordt hersteld. Zie [Een TDE-certificaat migreren naar een beheerd exemplaar](tde-certificate-migrate.md) voor gedetailleerde stappen.
 > - Het herstellen van systeem databases wordt niet ondersteund. Als u objecten op exemplaar niveau wilt migreren (opgeslagen in Master-of msdb-data bases), raden we u aan ze uit te voeren en T-SQL-scripts op het doel exemplaar uitvoeren.
 
 Zie [herstellen van een back-up naar een beheerd exemplaar](restore-sample-database-quickstart.md)voor een Snelstartgids waarin wordt getoond hoe u een back-up van een Data Base herstelt naar een beheerd exemplaar met behulp van een SAS-referentie.

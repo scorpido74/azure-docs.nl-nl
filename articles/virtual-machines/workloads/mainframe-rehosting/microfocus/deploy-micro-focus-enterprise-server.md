@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87042542"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Micro Focus Enter prise Server 5,0 implementeren naar AKS
@@ -35,7 +35,7 @@ Dit is een proces dat uit drie stappen bestaat. U moet het volgende doen:
 
 Zo kunt u uw mainframe-moderniserings werkbelastingen uitschalen (en omlaag schalen) in azure, zodat u het Cloud platform kunt profiteren van waar voor deel.
 
-Voortzetten? Laten we aan de slag.
+Voortzetten? Laten we aan de slag gaan!
 
 ## <a name="create-the-azure-container-registry"></a>De Azure Container Registry maken
 
@@ -73,7 +73,7 @@ Nadat u bent aangemeld, opent u een opdracht prompt en initieert u de volgende d
 
 -   **docker-aanmeldings acrmf50.azurecr.io** : de juiste indeling is *docker login \<registry name\> *. Vervang elke naam die u hebt gebruikt bij het maken van het REGI ster.
 
-    -   U hebt de **gebruikers naam** en het **wacht woord** nodig die u van de Azure Portal hebt gekopieerd. U ziet een item zoals in de volgende afbeelding.
+    -   U hebt de **gebruikers naam** en het **wacht woord** nodig die u van de Azure Portal hebt gekopieerd. Er verschijnt een tekst die er ongeveer uitziet als in de volgende afbeelding.
 
     ![Scherm opname van een Administrator opdracht prompt](media/deploy-image-2.png)
 
@@ -119,4 +119,4 @@ Als een actief pod moet u es-acctdemo zien, zoals in de volgende afbeelding.
 
 ![Scherm afbeelding es-acctdemo als een actief pod](media/deploy-image-9.png)
 
-Gefeliciteerd. U voert nu de Enter prise-server uit in de Azure Kubernetes-service. In het volgende artikel wordt uitgelegd hoe u toegang krijgt tot de beheer console van de Enter prise-server en hoe u Kubernetes kunt gebruiken om uw implementatie uit te breiden.
+Gefeliciteerd! U voert nu de Enter prise-server uit in de Azure Kubernetes-service. In het volgende artikel wordt uitgelegd hoe u toegang krijgt tot de beheer console van de Enter prise-server en hoe u Kubernetes kunt gebruiken om uw implementatie uit te breiden.

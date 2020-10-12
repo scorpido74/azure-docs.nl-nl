@@ -4,10 +4,10 @@ description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure 
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275537"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
@@ -36,7 +36,7 @@ Azure Migrate: met het hulp programma voor server migratie worden UEFI-machines 
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | J                                                                                                                                         | J                              | J                                                          |
 | RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | J<br>                 _RHEL 8. x vereist [hand matige voor bereiding](https://go.microsoft.com/fwlink/?linkid=2143939)_   | J                              | J                                                          |
 | Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | J<br>_Cent OS 8. x vereist [hand matige voor bereiding](https://go.microsoft.com/fwlink/?linkid=2143939)_ | J                              | J                                                          |
-| Oracle Linux 7,7, 7,7-CI                                |  J                                                                                                                                        | J                              | J                                                          |
+| Oracle Linux 7.7, 7.7CI                                |  J                                                                                                                                        | J                              | J                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Kan ik de Recovery Services-kluis gebruiken die is gemaakt door Azure Migrate voor scenario's voor herstel na nood gevallen?
 Het is niet raadzaam om de Recovery Services-kluis te gebruiken die is gemaakt door Azure Migrate voor scenario's voor herstel na nood gevallen. Dit kan leiden tot problemen met de replicatie in Azure Migrate. 
@@ -135,7 +135,7 @@ U kunt dit beperken met behulp van NetQosPolicy. Bijvoorbeeld:
 
 De AppNamePrefix die in de NetQosPolicy moet worden gebruikt, is "GatewayWindowsService.exe". U kunt een beleid maken op het Azure Migrate apparaat om het replicatie verkeer van het apparaat te beperken door een beleid te maken, bijvoorbeeld:
 
-New-NetQosPolicy-name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1 MB
+New-NetQosPolicy naam ' ThrottleReplication '-AppPathNameMatchCondition ' GatewayWindowsService.exe '-ThrottleRateActionBitsPerSecond 1 MB
 
 ## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>Hoe worden de gegevens verzonden vanuit een on-premises omgeving naar Azure? Versleuteld vóór verzen ding?
 

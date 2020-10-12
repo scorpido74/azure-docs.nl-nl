@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 08/14/2020
 ms.author: jmprieur
 ms.openlocfilehash: 42102f38959911388cefcc141d949e59f24a2c31
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436461"
 ---
 ## <a name="add-a-client-secret-or-certificate"></a>Een client geheim of-certificaat toevoegen
@@ -29,7 +29,7 @@ U kunt referenties toevoegen aan de registratie van uw client-app met behulp van
 
 Als u referenties wilt toevoegen aan de app-registratie van uw vertrouwelijke client toepassing, volgt u de stappen in [Quick Start: een toepassing registreren met het micro soft-identiteits platform](../articles/active-directory/develop/quickstart-register-app.md) voor het type referentie dat u wilt toevoegen:
 
-* [Een client geheim toevoegen](../articles/active-directory/develop/quickstart-register-app.md#add-a-client-secret)
+* [Een clientgeheim toevoegen](../articles/active-directory/develop/quickstart-register-app.md#add-a-client-secret)
 * [Een certificaat toevoegen](../articles/active-directory/develop/quickstart-register-app.md#add-a-certificate)
 
 ### <a name="add-client-credentials-by-using-powershell"></a>Client Referenties toevoegen met behulp van Power shell

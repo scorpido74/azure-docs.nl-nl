@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80258291"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>De oplossings versneller voor externe controle implementeren met behulp van de CLI
@@ -68,7 +68,7 @@ De basis implementatie is gericht op het presen teren van de oplossing. Om de ko
 
 Bij een basis implementatie worden de volgende services in uw Azure-abonnement gemaakt:
 
-| Count | Resource                       | Type         | Gebruikt voor |
+| Aantal | Resource                       | Type         | Gebruikt voor |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Virtuele Linux-machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Micro services hosten |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard-laag | Apparaatbeheer en communicatie |
@@ -89,7 +89,7 @@ Een standaard implementatie is een implementatie die gereed is voor productie en
 
 Bij een standaard implementatie worden de volgende services in uw Azure-abonnement gemaakt:
 
-| Count | Resource                                     | SKU/grootte      | Gebruikt voor |
+| Aantal | Resource                                     | SKU/grootte      | Gebruikt voor |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Een volledig beheerde Kubernetes-container Orchestrator-service gebruiken, standaard ingesteld op 3 agents|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard-laag | Apparaatbeheer, opdracht en controle |

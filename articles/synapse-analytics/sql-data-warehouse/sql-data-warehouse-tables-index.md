@@ -11,11 +11,11 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5ac32c41bd6b30c3edce68d67adc376e066d0bf5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797595"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Tabellen indexeren in Synapse SQL-pool
@@ -142,9 +142,6 @@ GROUP BY
 ,       t.[name]
 ;
 ```
-
->[!TIP]
-> Voor betere prestaties van Synapse SQL kunt u het gebruik van **sys. pdw_permanent_table_mappings** in plaats van **sys. pdw_table_mappings** op permanente gebruikers tabellen. Zie **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** voor meer informatie.
 
 Nu u de weer gave hebt gemaakt, voert u deze query uit om tabellen te identificeren met Rijg roepen die minder dan 100.000 rijen bevatten. Natuurlijk kunt u de drempel waarde van 100.000 verhogen als u op zoek bent naar een optimale segment kwaliteit.
 

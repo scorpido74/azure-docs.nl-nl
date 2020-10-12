@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084712"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels voor Jupyter notebook in Apache Spark-clusters in azure HDInsight
@@ -52,7 +52,7 @@ Een Apache Spark cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure
 
 Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter notebook in Spark HDInsight-clusters.
 
-- **Vooraf ingestelde contexten**. Met **PySpark**, **PySpark3**of **Spark** -kernels hoeft u de Spark-of Hive-contexten niet expliciet in te stellen voordat u met uw toepassingen begint te werken. Deze contexten zijn standaard beschikbaar. Deze contexten zijn:
+- **Vooraf ingestelde contexten**. Met  **PySpark**, **PySpark3**of **Spark** -kernels hoeft u de Spark-of Hive-contexten niet expliciet in te stellen voordat u met uw toepassingen begint te werken. Deze contexten zijn standaard beschikbaar. Het betreft deze contexten:
 
   - **sc** -voor Spark-context
   - **sqlContext** -voor Hive-context
@@ -70,9 +70,9 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
 
     De volgende tabel geeft een lijst van de verschillende magics die beschikbaar zijn via de kernels.
 
-   | Magische | Voorbeeld | Description |
+   | Magische | Voorbeeld | Beschrijving |
    | --- | --- | --- |
-   | Help |`%%help` |Hiermee wordt een tabel met alle beschik bare magics gegenereerd met voor beeld en beschrijving |
+   | help |`%%help` |Hiermee wordt een tabel met alle beschik bare magics gegenereerd met voor beeld en beschrijving |
    | Info |`%%info` |Hiermee worden sessie gegevens voor het huidige livy-eind punt uitgevoerd |
    | configureren |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De Force Flag ( `-f` ) is verplicht als er al een sessie is gemaakt. deze zorgt ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query uit op basis van de sqlContext. Als de `-o` para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een [Panda](https://pandas.pydata.org/) data frame. |
@@ -90,7 +90,7 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
 
 Het `%%sql` Magic ondersteunt verschillende para meters die u kunt gebruiken om het soort uitvoer te bepalen dat u ontvangt wanneer u query's uitvoert. De volgende tabel bevat de uitvoer.
 
-| Parameter | Voorbeeld | Description |
+| Parameter | Voorbeeld | Beschrijving |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Gebruik deze para meter om het resultaat van de query op te slaan in de context%% Local python als een [Panda](https://pandas.pydata.org/) data frame. De naam van de variabele data frame is de naam van de variabele die u opgeeft. |
 | -q |`-q` |Gebruik deze para meter om visualisaties voor de cel uit te scha kelen. Als u de inhoud van een cel niet wilt visualiseren en u deze gewoon wilt vastleggen als een data frame, gebruikt u `-q -o <VARIABLE>` . Als u visualisaties wilt uitschakelen zonder de resultaten vast te leggen (bijvoorbeeld voor het uitvoeren van een SQL-query, zoals een `CREATE TABLE` instructie), gebruikt u `-q` zonder een argument op te geven `-o` . |

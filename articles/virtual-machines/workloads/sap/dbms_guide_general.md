@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331349"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
@@ -115,7 +115,7 @@ Als u dit hoofd stuk wilt volgen, leest en begrijpt u de informatie die wordt we
 - [Welke SAP-software wordt ondersteund voor Azure-implementaties](./sap-supported-product-on-azure.md)
 - [SAP-workload in scenario's met virtuele Azure-machines](./sap-planning-supported-configurations.md) 
 
-Voordat u dit hoofd stuk leest, moet u weten wat de verschillende VM-series zijn en wat de verschillen zijn tussen Standard en Premium Storage. 
+U moet inzicht hebben in de verschillende VM-Series en de verschillen tussen de standaard-en Premium-opslag voordat u dit hoofd stuk leest. 
 
 Voor Azure Block Storage wordt het gebruik van Azure Managed disks nadrukkelijk aanbevolen. Lees het artikel [Introduction to Managed disks for Azure vm's](../../managed-disks-overview.md)voor meer informatie over Azure Managed disks.
 
@@ -261,7 +261,7 @@ Zie [inzicht in het tijdelijke station op Windows-vm's in azure](/archive/blogs/
 ### <a name="microsoft-azure-storage-resiliency"></a><a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage tolerantie
 Microsoft Azure Storage slaat de basis-VHD, met besturings systeem en gekoppelde schijven of blobs, op ten minste drie afzonderlijke opslag knooppunten. Dit type opslag wordt lokaal redundante opslag (LRS) genoemd. LRS is de standaard waarde voor alle typen opslag in Azure.
 
-Er zijn andere redundantie methoden. Zie [Azure storage-replicatie](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie.
+Er zijn andere redundantie methoden. Zie [Azure Storage-replicatie](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) voor meer informatie.
 
 > [!NOTE]
 > Azure Premium Storage, Ultra disk en Azure NetApp Files (uitsluitend voor SAP HANA) zijn het aanbevolen type opslag voor DBMS-Vm's en schijven die data bases opslaan en bestanden vastleggen en opnieuw uitvoeren. De enige beschik bare redundantie methode voor deze opslag typen is LRS. Als gevolg hiervan moet u database methoden configureren om database gegevens replicatie in te scha kelen in een andere Azure-regio of beschikbaarheids zone. Database methoden bevatten SQL Server always on, Oracle Data Guard en HANA System Replication.
@@ -309,7 +309,7 @@ Deze aanbevolen procedures zijn het resultaat van honderden implementaties van k
 > Andere scenario's waarin virtuele netwerk apparaten niet worden ondersteund, zijn in:
 >
 > * Communicatie paden tussen Azure-Vm's die Linux pacemaker-cluster knooppunten en SBD-apparaten vertegenwoordigen, zoals wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md).
-> * Communicatie paden tussen Azure Vm's en Windows Server Scale-out bestandsserver (SOFS) die zijn ingesteld zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een bestands share in azure](./sap-high-availability-guide-wsfc-file-share.md). 
+> * Communicatie paden tussen virtuele machines van Azure en Windows Server Scale-Out Bestands server (SOFS) die zijn ingesteld zoals beschreven in [cluster a SAP ASCS/SCS-exemplaar op een Windows-failovercluster met behulp van een bestands share in azure](./sap-high-availability-guide-wsfc-file-share.md). 
 >
 > Virtuele netwerk apparaten in communicatie paden kunnen eenvoudig de netwerk latentie tussen twee communicatie partners verdubbelen. Ze kunnen de door Voer ook beperken in kritieke paden tussen de SAP-toepassingslaag en de DBMS-laag. In sommige klant scenario's kunnen virtuele netwerk apparaten ervoor zorgen dat pacemaker Linux-clusters mislukken. Dit zijn gevallen waarin communicatie tussen de Linux pacemaker-cluster knooppunten via een virtueel netwerk apparaat communiceert met hun SBD-apparaat.
 >

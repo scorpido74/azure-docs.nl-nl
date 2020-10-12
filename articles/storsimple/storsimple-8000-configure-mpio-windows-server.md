@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514333"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Multipath I/O voor uw StorSimple-apparaat configureren
@@ -66,7 +66,7 @@ Voer de volgende procedure uit om deze functie te installeren op uw Windows Serv
    5. Selecteer op de pagina **onderdelen selecteren** de optie **Multipath I/O**en klik op **volgende**.
    
        ![Wizard functies en onderdelen toevoegen 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. Bevestig de selectie op de pagina **installatie selecties bevestigen** en selecteer vervolgens **de doel server automatisch opnieuw opstarten indien nodig**, zoals hieronder wordt weer gegeven. Klik op **Installeren**.
+   6. Bevestig de selectie op de pagina **installatie selecties bevestigen** en selecteer vervolgens **de doel server automatisch opnieuw opstarten indien nodig**, zoals hieronder wordt weer gegeven. Klik op **Install**.
    
        ![Wizard functies en onderdelen toevoegen 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. U ontvangt een melding wanneer de installatie is voltooid. Klik op **Sluiten** om de wizard te sluiten.

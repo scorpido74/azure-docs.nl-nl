@@ -4,10 +4,10 @@ description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveili
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975526"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
@@ -95,7 +95,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als u nog geen Recovery Services kluis hebt geopend, maar wel in de Azure Portal, klikt u op **Bladeren**in het hoofd menu.
 
    * Typ in de lijst met resources **Recovery Services**.
@@ -210,7 +210,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de volledig
    >
    >
 
-    ![Opt-in Microsoft Update](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Update Opt-In](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. Bekijk het *samen vatting van instellingen* en selecteer **installeren**.
 
     ![Samen vatting van instellingen](./media/backup-azure-microsoft-azure-backup/summary-screen.png)

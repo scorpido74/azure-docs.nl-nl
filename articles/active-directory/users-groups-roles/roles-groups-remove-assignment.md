@@ -1,6 +1,6 @@
 ---
 title: Roltoewijzingen uit een groep in Azure Active Directory verwijderen | Microsoft Docs
-description: Preview van aangepaste Azure AD-rollen voor het delegeren van identiteits beheer. Azure-rollen beheren in de Azure Portal, Power shell of Graph API.
+description: Bekijk een voorbeeld van aangepaste Azure AD-rollen voor het delegeren van identiteitsbeheer. Beheer Azure-rollen in Azure Portal, PowerShell of Graph API.
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15312159bc0487f7d03c06fa947f69b1f6f9600c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513397"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Roltoewijzingen uit een groep in Azure Active Directory verwijderen
@@ -108,4 +108,4 @@ DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Cloud groepen gebruiken om roltoewijzingen te beheren](roles-groups-concept.md)
-- [Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen](roles-groups-faq-troubleshooting.md)
+- [Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen](roles-groups-faq-troubleshooting.md)

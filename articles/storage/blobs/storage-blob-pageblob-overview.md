@@ -11,21 +11,21 @@ ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018838"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Overzicht van Azure-pagina-blobs
 
 Azure Storage biedt drie typen Blob Storage: blok-blobs, toevoeg-blobs en pagina-blobs. Blok-blobs bestaan uit blokken en zijn ideaal voor het opslaan van tekst of binaire bestanden, en voor het efficiënt uploaden van grote bestanden. Toevoeg-blobs bestaan ook uit blokken, maar ze zijn geoptimaliseerd voor toevoeg bewerkingen, waardoor ze ideaal zijn voor logboek scenario's. Pagina-blobs bestaan uit 512-byte pagina's tot 8 TB in totale grootte en zijn ontworpen voor frequente, wille keurige Lees-en schrijf bewerkingen. Pagina-blobs zijn de basis van Azure IaaS-schijven. Dit artikel richt zich op de uitleg van de functies en voor delen van pagina-blobs.
 
-Pagina-blobs zijn een verzameling van 512-byte pagina's, die de mogelijkheid bieden om wille keurig bereik van bytes te lezen/schrijven. Pagina-blobs zijn daarom ideaal voor het opslaan van op index gebaseerde en sparse gegevens structuren zoals besturings systeem-en gegevens schijven voor Virtual Machines en data bases. Azure SQL DB maakt bijvoorbeeld gebruik van pagina-blobs als de onderliggende permanente opslag voor de data bases. Daarnaast worden pagina-blobs ook vaak gebruikt voor bestanden met updates op basis van een bereik.  
+Pagina-blobs zijn een verzameling van 512-byte pagina's, die de mogelijkheid bieden om wille keurig bereik van bytes te lezen/schrijven. Pagina-blobs zijn daarom ideaal voor het opslaan van op index gebaseerde en sparse gegevens structuren zoals besturings systeem-en gegevens schijven voor Virtual Machines en data bases. Azure SQL DB maakt bijvoorbeeld gebruik van pagina-blobs als de onderliggende permanente opslag voor de data bases. Daarnaast worden pagina-blobs ook vaak gebruikt voor bestanden met Range-Based-updates.  
 
 De belangrijkste functies van Azure page-blobs zijn de REST interface, de duurzaamheid van de onderliggende opslag en de naadloze migratie mogelijkheden naar Azure. Deze functies worden gedetailleerd beschreven in de volgende sectie. Daarnaast worden Azure page-blobs momenteel ondersteund op twee soorten opslag: Premium Storage en standaard opslag. Premium Storage is speciaal ontworpen voor werk belastingen die consistente hoge prestaties en lage latentie nodig hebben om Premium-pagina-blobs te maken die ideaal zijn voor opslag scenario's met hoge prestaties. Standaard opslag accounts zijn rendabeler voor het uitvoeren van latentie gevoelige werk belastingen.
 
-## <a name="sample-use-cases"></a>Voorbeeld Cases gebruiken
+## <a name="sample-use-cases"></a>Voorbeelden van toepassingsscenario’s
 
 We bespreken enkele gebruiks voorbeelden voor pagina-blobs die beginnen met Azure IaaS-schijven. Azure-pagina-blobs zijn de ruggen graat van het platform voor virtuele schijven voor Azure IaaS. Zowel Azure-besturings systemen als-gegevens schijven worden geïmplementeerd als virtuele schijven waar gegevens blijvend worden opgeslagen in het Azure Storage-platform en vervolgens worden geleverd aan de virtuele machines voor maximale prestaties. Azure-schijven worden bewaard in de Hyper-V [VHD-indeling](https://technet.microsoft.com/library/dd979539.aspx) en opgeslagen als een pagina- [BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) in azure Storage. Naast het gebruik van virtuele schijven voor Azure IaaS Vm's, kunnen pagina-blobs ook PaaS-en DBaaS-scenario's, zoals Azure SQL DB-Service, die momenteel gebruikmaken van pagina-blobs voor het opslaan van SQL-gegevens en snelle, wille keurige Lees bewerkingen voor de data base inschakelen. Een ander voor beeld is dat als u een PaaS-service voor gedeelde media toegang hebt voor toepassingen voor gezamenlijke video bewerking, de pagina-blobs snelle toegang tot wille keurige locaties in de media bieden. Het biedt ook snelle en efficiënte bewerking en samen voeging van hetzelfde medium door meerdere gebruikers. 
 

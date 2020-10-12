@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007635"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Azure-resources verplaatsen tussen regio's
@@ -22,23 +22,23 @@ Azure-geografi,-regio's en-beschikbaarheids zones vormen de basis van de wereld 
 Na het implementeren van resources in een specifieke Azure-regio, zijn er een aantal redenen waarom u resources naar een andere regio wilt verplaatsen.
 
 - **Uitlijnen met een regio start**: Verplaats uw resources naar een nieuw geïntroduceerde Azure-regio die voorheen niet beschikbaar was.
-- **Uitlijnen voor Services/onderdelen**: resources verplaatsen om te kunnen profiteren van services of functies die beschikbaar zijn in een bepaalde regio.
-- **Reageer op bedrijfs ontwikkelingen**: Verplaats resources naar een regio in antwoord op bedrijfs wijzigingen, zoals fusies of acquisities.
-- **Uitlijnen voor nabijheid**: resources verplaatsen naar een regio die lokaal is voor uw bedrijf.
+- **Afstemming op services/functies**: Verplaats resources om te profiteren van services of functies die in een bepaalde regio beschikbaar zijn.
+- **Reageren op bedrijfsontwikkelingen**: Verplaats resources naar een regio als reactie op bedrijfswijzigingen, zoals fusies of overnames.
+- **Afstemming op nabijheid**: Verplaats resources naar een regio die lokaal is voor uw bedrijf.
 - **Voldoen aan de vereisten voor gegevens**: Verplaats resources om uit te lijnen met vereisten voor gegevens locatie of gegevens classificatie behoeften. [Meer informatie](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
-- **Reageren op implementatie vereisten**: Verplaats resources die zijn geïmplementeerd, of verplaats als reactie op capaciteits behoeften. 
+- **Reageren op implementatievereisten**: Verplaats resources die foutief zijn geïmplementeerd of verplaats als reactie op capaciteitsbehoeften. 
 - **Reageren op buiten gebruik stellen**: resources verplaatsen vanwege het buiten gebruik stellen van regio's.
 
 ## <a name="move-resources-with-resource-mover"></a>Resources verplaatsen met resource-overdrijfing
 
-U kunt resources verplaatsen naar een andere regio met [Azure resource](../../resource-mover/overview.md)-overzetten. Resource-overdrijfing biedt:
+U kunt resources verplaatsen naar een andere regio met [Azure resource](../../resource-mover/overview.md)-overzetten. Resource Mover biedt:
 
-- Eén hub voor het verplaatsen van resources tussen regio's.
-- Verkort de verplaatsings tijd en complexiteit. Alles wat u nodig hebt, bevindt zich op één locatie.
+- Eén hub voor het verplaatsen van resources binnen regio's.
+- Beperkte verplaatsingstijd en complexiteit. Alles wat u nodig hebt, bevindt zich op één locatie.
 - Een eenvoudige en consistente ervaring voor het verplaatsen van verschillende typen Azure-resources.
-- Een eenvoudige manier om afhankelijkheden te identificeren tussen resources die u wilt verplaatsen. Zo kunt u de gerelateerde resources samen verplaatsen, zodat alles naar verwachting in de doel regio werkt, na de verplaatsing.
-- Automatisch opschonen van resources in de bron regio, als u deze na de verplaatsing wilt verwijderen.
-- Testen. U kunt een verhuizing uitproberen en deze vervolgens verwijderen als u niet volledig wilt verplaatsen.
+- Een eenvoudige manier om afhankelijkheden te identificeren binnen resources die u wilt verplaatsen. Dit helpt om gerelateerde resources samen te verplaatsen zodat alles na de verplaatsing naar verwachting werkt in de doelregio.
+- Automatische opschoning van resources in de bronregio, als u deze na de verplaatsing wilt verwijderen.
+- Testen. U kunt een verplaatsing uitproberen en deze vervolgens verwijderen als u geen volledige verplaatsing wilt uitvoeren.
 
 U kunt resources naar een andere regio verplaatsen met behulp van een aantal verschillende methoden:
 
@@ -50,14 +50,14 @@ U kunt resources naar een andere regio verplaatsen met behulp van een aantal ver
 
 U kunt resource-overstap momenteel gebruiken om deze resources te verplaatsen naar een andere regio:
 
-- Azure-Vm's en gekoppelde schijven
+- Azure-VM's en gekoppelde schijven
 - NIC’s
 - Beschikbaarheidssets
-- Virtuele netwerken van Azure
+- Virtuele netwerken van Azure.
 - Openbare IP-adressen
 - Netwerkbeveiligingsgroepen (NSG's)
-- Interne en open bare load balancers
-- Azure SQL-data bases en elastische Pools
+- Interne en openbare load balancers
+- Azure SQL-databases en elastische pools
 
 ## <a name="region-move-process"></a>Regio verplaatsings proces
 

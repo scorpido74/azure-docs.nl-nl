@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513284"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privé-eind punten voor Azure Storage gebruiken
@@ -141,5 +141,5 @@ Op dit moment kunt u geen NSG-regels ( [netwerk beveiligings groep](../../virtua
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage firewalls en virtuele netwerken configureren](storage-network-security.md)
+- [Azure Storage-firewalls en virtuele netwerken configureren](storage-network-security.md)
 - [Beveiligings aanbevelingen voor Blob Storage](../blobs/security-recommendations.md)

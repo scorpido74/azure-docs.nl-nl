@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u een aangepaste installatie ko
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482068"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Een aangepaste installatie kopie maken in de fabriek in Azure DevTest Labs
@@ -18,7 +18,7 @@ Een image Factory is een oplossing voor configuratie-as-code waarmee installatie
 
 De belang rijke Accelerator om een ontwikkelaars Desktop te krijgen in DevTest Labs maakt gebruik van aangepaste installatie kopieën. Het nadeel van aangepaste installatie kopieën is dat er iets extra is om te onderhouden in het lab. Proef versies van producten verlopen bijvoorbeeld na verloop van tijd (of) nieuwe beveiligings updates worden niet toegepast, waardoor we de aangepaste installatie kopie periodiek kunnen vernieuwen. Met een image Factory hebt u een definitie van de installatie kopie die is ingecheckt bij broncode beheer en hebt u een geautomatiseerd proces om aangepaste installatie kopieën te maken op basis van de definitie.
 
-De oplossing maakt het mogelijk om virtuele machines te maken op basis van aangepaste installatie kopieën, terwijl extra onderhouds kosten worden geëlimineerd. Met deze oplossing kunt u automatisch aangepaste installatie kopieën maken, deze naar andere DevTest Labs distribueren en de oude installatie kopieën buiten gebruik stellen. In de volgende video vindt u informatie over de installatie kopie-Factory en hoe deze wordt geïmplementeerd met DevTest Labs.  Alle Azure Power shell-scripts zijn vrij beschikbaar en bevinden zich hier: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
+De oplossing maakt het mogelijk om virtuele machines te maken op basis van aangepaste installatie kopieën, terwijl extra onderhouds kosten worden geëlimineerd. Met deze oplossing kunt u automatisch aangepaste installatie kopieën maken, deze naar andere DevTest Labs distribueren en de oude installatie kopieën buiten gebruik stellen. In de volgende video vindt u informatie over de installatie kopie-Factory en hoe deze wordt geïmplementeerd met DevTest Labs.  Alle Azure Power shell-scripts zijn vrij beschikbaar en bevinden zich hier:  [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
 
 <br/>
 

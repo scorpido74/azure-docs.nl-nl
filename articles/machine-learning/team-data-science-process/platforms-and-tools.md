@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439994"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogram ma's voor data Science-projecten
@@ -83,7 +83,7 @@ Apache Hive is een Data Warehouse systeem voor Hadoop, waarmee gegevens overzich
 
 Met hive kunt u de structuur projecteren op grotendeels ongestructureerde gegevens. Nadat u de structuur hebt gedefinieerd, kunt u Hive gebruiken om de gegevens in een Hadoop-cluster op te vragen zonder dat u dit hoeft te doen, of zelfs met een Java-of MapReduce. Met HiveQL (de Hive-query taal) kunt u query's schrijven met instructies die vergelijkbaar zijn met T-SQL.
 
-Voor gegevens wetenschappers kan Hive python door de gebruiker gedefinieerde functies (Udf's) uitvoeren in Hive-query's om records te verwerken. Deze mogelijkheid breidt de mogelijkheden van Hive-query's in gegevens analyse aanzienlijk uit. Met name de IT-afdeling maakt het mogelijk dat gegevens wetenschappers schaal bare functies gebruiken in talen die ze voornamelijk kennen: de SQL-achtige HiveQL en python. 
+Voor gegevens wetenschappers kan Hive python User-Defined functions (UDFs) uitvoeren in Hive-query's om records te verwerken. Deze mogelijkheid breidt de mogelijkheden van Hive-query's in gegevens analyse aanzienlijk uit. Met name de IT-afdeling maakt het mogelijk dat gegevens wetenschappers schaal bare functies gebruiken in talen die ze voornamelijk kennen: de SQL-achtige HiveQL en python. 
 
 Zie [Hive en HiveQL gebruiken met Hadoop in HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md)voor meer informatie over Azure HDInsight-Hive-clusters. Zie voor meer informatie over het bouwen van een schaal bare end-to-end data Science-oplossing met Azure HDInsight Hive-clusters [het team data Science process in actie: HDInsight Hadoop-clusters gebruiken](hive-walkthrough.md).
 
