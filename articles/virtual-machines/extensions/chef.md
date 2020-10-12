@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082610"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-extensie voor Linux en Windows
@@ -67,26 +67,26 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 
 ### <a name="core-property-values"></a>Kern eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype
+| Name | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | teken reeks (datum) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | tekenreeks |
-| type | `LinuxChefClient`(Linux), `ChefClient` (Windows) | tekenreeks |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | tekenreeks |
 | typeHandlerVersion | `1210.13` | teken reeks (dubbel) |
 
 ### <a name="settings"></a>Instellingen
 
-| Naam | Waarde/voor beeld | Gegevenstype | Vereist?
+| Name | Waarde/voor beeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ----
-| instellingen/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | teken reeks (URL) | Y |
-| instellingen/bootstrap_options/validation_client_name | `myorg-validator` | tekenreeks | Y |
-| instellingen/runlist | `recipe[mycookbook::default]` | tekenreeks | Y |
+| instellingen/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | teken reeks (URL) | J |
+| instellingen/bootstrap_options/validation_client_name | `myorg-validator` | tekenreeks | J |
+| instellingen/runlist | `recipe[mycookbook::default]` | tekenreeks | J |
 
 ### <a name="protected-settings"></a>Beveiligde instellingen
 
-| Naam | Voorbeeld | Gegevenstype | Vereist?
+| Name | Voorbeeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | tekenreeks | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | tekenreeks | J |
 
 <!--
 ### Linux-specific settings

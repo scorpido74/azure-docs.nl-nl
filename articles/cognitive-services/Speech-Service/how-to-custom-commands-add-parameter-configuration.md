@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
 ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284180"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>Configuraties toevoegen aan opdrachtparameters
@@ -43,7 +43,7 @@ Als u dit wilt doen, moet u eerst een nieuw webeind punt toevoegen. Ga naar de s
 
 | Instelling | Voorgestelde waarde |
 |----|----|
-| Naam | `getDevices` |
+| Name | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | Methode | GET |
 
@@ -75,7 +75,7 @@ Ga vervolgens naar de pagina **SubjectDevice** para meter Settings en wijzig de 
 
 | Instelling | Voorgestelde waarde |
 | ----| ---- |
-| Configuration | Vooraf gedefinieerde invoer accepteren van externe catalogus |                               
+| Configuratie | Vooraf gedefinieerde invoer accepteren van externe catalogus |                               
 | Eind punt van catalogus | getDevices |
 | Methode | GET |
 
@@ -84,7 +84,7 @@ Selecteer vervolgens **Opslaan**.
 > [!IMPORTANT]
 > U ziet geen optie voor het configureren van een para meter voor het accepteren van invoer uit een externe catalogus, tenzij u het webeindpunt hebt ingesteld in het gedeelte **Web endpoint** in het linkerdeel venster.
 
-### <a name="try-it-out"></a>Probeer het eens
+### <a name="try-it-out"></a>Uitproberen
 
 Selecteer **trainen** en wacht op voltooiing van de training. Zodra de training is voltooid, selecteert u **testen** en voert u enkele interacties uit.
 
@@ -103,7 +103,7 @@ Selecteer **trainen** en wacht op voltooiing van de training. Zodra de training 
 Test de validaties met behulp van de **SetTemperature** -opdracht. Voer de volgende stappen uit om een validatie voor de para meter **Tempe ratuur** toe te voegen.
 
 1. Selecteer de opdracht **SetTemperature** in het linkerdeel venster.
-1. Selecteer **Tempe ratuur** in het middelste deel venster.
+1. Selecteer  **Tempe ratuur** in het middelste deel venster.
 1. Selecteer **een validatie toevoegen** die aanwezig is in het rechterdeel venster.
 1. Configureer in het venster **nieuwe validatie** de optie validatie als volgt en selecteer **maken**.
 
@@ -112,12 +112,12 @@ Test de validaties met behulp van de **SetTemperature** -opdracht. Voer de volge
     | ---- | ---- | ---- |
     | Minimumwaarde | `60` | Voor numerieke para meters kan de minimum waarde van deze para meter aannemen |
     | Maximumwaarde | `80` | Voor numerieke para meters kan de maximum waarde van deze para meter aannemen |
-    | Fout bericht |  Eenvoudige editor > eerste variatie >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Vragen om een nieuwe waarde te vragen als de validatie is mislukt |
+    | Fout bericht |  Eenvoudige editor > eerste variatie > `Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Vragen om een nieuwe waarde te vragen als de validatie is mislukt |
 
     > [!div class="mx-imgBorder"]
     > ![Validatie van een bereik toevoegen](media/custom-commands/add-validations-temperature.png)
 
-### <a name="try-it-out"></a>Probeer het eens
+### <a name="try-it-out"></a>Uitproberen
 
 1. Selecteer een **trein** pictogram boven in het rechterdeel venster.
 

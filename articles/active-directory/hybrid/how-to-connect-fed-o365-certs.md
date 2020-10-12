@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661456"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Federatie certificaten voor Microsoft 365 en Azure Active Directory vernieuwen
@@ -69,13 +69,13 @@ Get-Adfsproperties
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
 >[!NOTE] 
->Als u AD FS 2,0 gebruikt, moet u eerst add-Pssnapin micro soft. ADFS. Power shell uitvoeren.
+>Als u AD FS 2,0 gebruikt, moet u eerst Add-Pssnapin Microsoft. ADFS. Power shell uitvoeren.
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Stap 2: controleren of AD FS en Azure AD zijn gesynchroniseerd
 Open de MSOnline Power shell-prompt op uw AD FS-server en maak verbinding met Azure AD.
 
 > [!NOTE]
-> MSOL-cmdlets maken deel uit van de MSOnline Power shell-module.
+> MSOL-Cmdlets maakt deel uit van de MSOnline Power shell-module.
 > U kunt de MSOnline Power shell-module rechtstreeks vanuit de PowerShell Gallery downloaden.
 > 
 >
@@ -102,13 +102,13 @@ Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCe
 Als de vinger afdrukken in beide uitvoer overeenkomen, worden uw certificaten gesynchroniseerd met Azure AD.
 
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Stap 3: controleren of uw certificaat bijna is verlopen
-In de uitvoer van Get-MsolFederationProperty of Get-AdfsCertificate controleert u op de datum onder niet na. Als de datum minder dan 30 dagen vrij is, moet u actie ondernemen.
+Controleer in de uitvoer van Get-MsolFederationProperty of Get-AdfsCertificate voor de datum onder ' niet na '. Als de datum minder dan 30 dagen vrij is, moet u actie ondernemen.
 
-| AutoCertificateRollover | Certificaten die zijn gesynchroniseerd met Azure AD | Federatieve meta gegevens zijn openbaar toegankelijk | Controleert | Actie |
+| AutoCertificateRollover | Certificaten die zijn gesynchroniseerd met Azure AD | Federatieve meta gegevens zijn openbaar toegankelijk | Controleert | Bewerking |
 |:---:|:---:|:---:|:---:|:---:|
 | Ja |Ja |Ja |- |Geen actie nodig. Zie [token handtekening certificaat automatisch vernieuwen](#autorenew). |
 | Ja |Nee |- |Minder dan 15 dagen |Vernieuw direct. Zie [token handtekening certificaat hand matig vernieuwen](#manualrenew). |
-| No |- |- |Minder dan 30 dagen |Vernieuw direct. Zie [token handtekening certificaat hand matig vernieuwen](#manualrenew). |
+| Nee |- |- |Minder dan 30 dagen |Vernieuw direct. Zie [token handtekening certificaat hand matig vernieuwen](#manualrenew). |
 
 \[-] Is niet van belang
 
@@ -152,7 +152,7 @@ Als **AutoCertificateRollover** echter is ingesteld op **True**, maar uw federat
     PS C: \> Get-ADFSCertificate – CertificateType token-ondertekening
 
    > [!NOTE]
-   > Als u AD FS 2,0 gebruikt, moet u eerst add-Pssnapin micro soft. ADFS. Power shell uitvoeren.
+   > Als u AD FS 2,0 gebruikt, moet u eerst Add-Pssnapin Microsoft. ADFS. Power shell uitvoeren.
    >
    >
 3. Bekijk de uitvoer van de opdracht op alle certificaten die worden weer gegeven. Als AD FS een nieuw certificaat hebt gegenereerd, ziet u in de uitvoer twee certificaten: een waarvoor de **IsPrimary** -waarde **waar** is en de **NotAfter** -datum ligt binnen 5 dagen en een waarvoor **IsPrimary** **Onwaar** is en **NotAfter** ongeveer een jaar in de toekomst ligt.
@@ -167,8 +167,8 @@ Werk Microsoft 365 met de nieuwe token handtekening certificaten die voor de ver
 
 1. Open de Microsoft Azure Active Directory-module voor Windows PowerShell.
 2. Voer $cred = Get-Credential. Wanneer u met deze cmdlet om referenties wordt gevraagd, typt u de referenties van uw account voor de Cloud service beheerder.
-3. Voer Connect-MsolService – Credential $cred. Met deze cmdlet maakt u verbinding met de Cloud service. Het maken van een context waarmee u verbinding maakt met de Cloud service is vereist voor het uitvoeren van een van de extra cmdlets die door het hulp programma worden geïnstalleerd.
-4. Als u deze opdrachten uitvoert op een computer die niet de AD FS primaire Federatie server is, voert u set-MSOLAdfscontext-computer &lt; AD FS Primary server uit &gt; , waarbij &lt; AD FS primaire server &gt; de interne FQDN-naam van de primaire AD FS server is. Met deze cmdlet wordt een context gemaakt waarmee u verbinding maakt met AD FS.
+3. Voer Connect-MsolService – referentie $cred. Met deze cmdlet maakt u verbinding met de Cloud service. Het maken van een context waarmee u verbinding maakt met de Cloud service is vereist voor het uitvoeren van een van de extra cmdlets die door het hulp programma worden geïnstalleerd.
+4. Als u deze opdrachten uitvoert op een computer die niet de AD FS primaire Federatie server is, voert u de Set-MSOLAdfscontext-computer &lt; AD FS primaire server uit &gt; , waarbij &lt; AD FS primaire server &gt; de interne FQDN-naam van de primaire AD FS server is. Met deze cmdlet wordt een context gemaakt waarmee u verbinding maakt met AD FS.
 5. Voer Update-MSOLFederatedDomain – DomainName &lt; domein &gt; . Met deze cmdlet worden de instellingen van AD FS in de Cloud service bijgewerkt en wordt de vertrouwens relatie tussen de twee geconfigureerd.
 
 > [!NOTE]

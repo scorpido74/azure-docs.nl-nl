@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d1019c31b10801a12c960dd5dadd8836fd9b7cd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936140"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure Database for PostgreSQL-flexibele server firewall regels maken en beheren met de Azure CLI
@@ -86,7 +86,7 @@ Raadpleeg de naslag documentatie voor Azure CLI <!--FIXME --> voor de volledige 
 ## <a name="create-and-manage-firewall-rule-after-server-create"></a>Een firewall regel maken en beheren nadat de server is gemaakt
 De opdracht **AZ post gres Flexible-Server firewall-Rule** wordt gebruikt vanuit de Azure CLI om firewall regels te maken, verwijderen, weer te geven en bij te werken.
 
-Opdrachten
+Opdrachten:
 - **maken**: een flexibele server firewall regel maken.
 - **lijst**: de flexibele server firewall regels weer geven.
 - **Update**: een flexibele server firewall regel bijwerken.

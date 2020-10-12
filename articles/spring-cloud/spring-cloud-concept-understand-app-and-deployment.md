@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323634"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Meer informatie over app en implementatie in azure lente Cloud
@@ -55,7 +55,7 @@ De volgende functies/eigenschappen worden gedefinieerd op implementatie niveau e
 
 * **Een app moet één productie-implementatie hebben**: het verwijderen van een productie-implementatie wordt geblokkeerd door de API. Deze moet worden omgewisseld naar staging voordat ze worden verwijderd.
 * **Een app kan Maxi maal twee implementaties hebben**: het maken van meer dan twee implementaties wordt geblokkeerd door de API. Implementeer uw nieuwe binaire bestand naar de bestaande productie-of faserings implementatie.
-* **Implementatie beheer is niet beschikbaar in de Basic-laag**: gebruik de Standard-laag voor de implementatie van blauw en groen.
+* **Implementatie beheer is niet beschikbaar in de Basic-laag**: gebruik de laag standaard voor Blue-Green implementatie mogelijkheden.
 
 ## <a name="see-also"></a>Zie ook
 * [Een faserings omgeving instellen in azure lente-Cloud](spring-cloud-howto-staging-environment.md)

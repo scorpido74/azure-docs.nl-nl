@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404715"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945784"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>De indeling ORC in Azure Data Factory
 
@@ -59,7 +59,7 @@ Hieronder ziet u een voor beeld van een ORC-gegevensset op Azure Blob Storage:
 
 Houd rekening met de volgende punten:
 
-* Complexe gegevens typen worden niet ondersteund (STRUCT, kaart, lijst, samen VOEGing).
+* Complexe gegevens typen (zoals kaart, lijst, STRUCT) worden momenteel alleen ondersteund in gegevens stromen, niet in de Kopieer activiteit. Als u complexe typen in gegevens stromen wilt gebruiken, moet u het bestands schema niet importeren in de gegevensset, waardoor het schema leeg blijft in de gegevensset. Importeer vervolgens in de bron transformatie de projectie.
 * Spaties in kolom naam wordt niet ondersteund.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit

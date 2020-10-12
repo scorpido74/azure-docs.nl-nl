@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326810"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
@@ -197,7 +197,7 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>Klanten-lockbox
 
-[Klanten-lockbox voor Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) biedt klanten een interface om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen. Dit wordt gebruikt in gevallen waarin een micro soft-Engineer toegang heeft tot klant gegevens tijdens een ondersteunings aanvraag. Zie [klanten-lockbox](../security/fundamentals/customer-lockbox-overview.md)voor informatie over hoe klanten-lockbox aanvragen worden gestart, bijgehouden en opgeslagen voor latere beoordelingen en controles. 
+[Klanten-lockbox voor Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) biedt klanten een interface om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen. Dit wordt gebruikt in gevallen waarin een Microsoft-engineer toegang heeft tot klant gegevens tijdens een ondersteuningsaanvraag. Zie [klanten-lockbox](../security/fundamentals/customer-lockbox-overview.md)voor informatie over hoe klanten-lockbox aanvragen worden gestart, bijgehouden en opgeslagen voor latere beoordelingen en controles. 
 
 Klanten-lockbox is beschikbaar voor deze cognitieve service:
 

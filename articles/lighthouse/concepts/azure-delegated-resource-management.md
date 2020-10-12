@@ -1,16 +1,16 @@
 ---
-title: Azure gedelegeerd resourcebeheer
+title: Meer informatie over gedelegeerd resourcebeheer
 description: Azure delegated resource management is een belang rijk onderdeel van Azure Lighthouse, zodat service providers gedelegeerde resources op schaal kunnen beheren met flexibiliteit en precisie.
 ms.date: 08/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9a499ceda546b7ea5c71cd8c770f1a4b99001b08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163523"
 ---
-# <a name="azure-delegated-resource-management"></a>Azure gedelegeerd resourcebeheer
+# <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
 Azure delegated resource management is een van de belangrijkste onderdelen van [Azure Lighthouse](../overview.md). Met Azure delegated resource management kunnen service providers de klant betrokkenheid en de onboarding-ervaring vereenvoudigen, terwijl gedelegeerde resources op schaal worden beheerd met flexibiliteit en precisie.
 

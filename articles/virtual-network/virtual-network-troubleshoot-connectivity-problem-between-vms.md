@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87286084"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Problemen met de connectiviteit tussen virtuele Azure-machines oplossen
@@ -41,7 +41,7 @@ Een Azure-VM kan geen verbinding maken met een andere virtuele machine van Azure
 6. [Controleren of het verkeer wordt geblokkeerd door Acl's voor de klassieke VM](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
 7. [Controleer of het eind punt is gemaakt voor de klassieke virtuele machine](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
 8. [Probeer verbinding te maken met een VM-netwerk share](#step-8-try-to-connect-to-a-vm-network-share)
-9. [Inter-Vnet-connectiviteit controleren](#step-9-check-inter-vnet-connectivity)
+9. [Inter-Vnet connectiviteit controleren](#step-9-check-inter-vnet-connectivity)
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 
@@ -67,7 +67,7 @@ Zie [netwerk interfaces toevoegen aan of verwijderen uit virtuele machines](virt
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Stap 2: controleren of het netwerk verkeer wordt geblokkeerd door NSG of UDR
 
-Gebruik [Network Watcher IP-stroom controle](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG flow logboek registratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een netwerk beveiligings groep (NSG) of een door de gebruiker gedefinieerde route (UDR) is die de verkeers stroom verstoort.
+Gebruik [Network Watcher IP-stroom controle](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG stroom logboek registratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een netwerk beveiligings groep (NSG) of User-Defined route (UDR) is die de verkeers stroom verstoort.
 
 ### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>Stap 3: controleren of het netwerk verkeer wordt geblokkeerd door de VM-firewall
 
@@ -109,9 +109,9 @@ Alle Vm's die u in azure maakt met behulp van het klassieke implementatie model 
 
 Als u geen verbinding kunt maken met een VM-netwerk share, kan het probleem worden veroorzaakt door niet-beschik bare Nic's in de VM. Als u de niet-beschik bare Nic's wilt verwijderen, raadpleegt [u de niet-beschik bare nic's verwijderen](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
-### <a name="step-9-check-inter-vnet-connectivity"></a>Stap 9: Inter-Vnet-connectiviteit controleren
+### <a name="step-9-check-inter-vnet-connectivity"></a>Stap 9: Inter-Vnet connectiviteit controleren
 
-Gebruik [Network Watcher IP-stroom controle](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG flow logboek registratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een NSG of UDR is die de verkeers stroom verstoort. U kunt [hier](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)ook uw intersite-Vnet-configuratie controleren.
+Gebruik [Network Watcher IP-stroom controle](../network-watcher/network-watcher-ip-flow-verify-overview.md) en [NSG flow logboek registratie](../network-watcher/network-watcher-nsg-flow-logging-overview.md) om te bepalen of er een NSG of UDR is die de verkeers stroom verstoort. U kunt uw Inter-Vnet configuratie [hier](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)ook controleren.
 
 ### <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

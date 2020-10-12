@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163183"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
@@ -42,7 +42,7 @@ ms.locfileid: "88163183"
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
 1. Kies voor **Opties** `Generate` .
-1. Voer bij **naam**in `TokenSigningKeyContainer` . Het voor voegsel `B2C_1A_` kan automatisch worden toegevoegd.
+1. Voer bij **Naam** `TokenSigningKeyContainer` in. Het voor voegsel `B2C_1A_` kan automatisch worden toegevoegd.
 1. Selecteer voor **sleutel type** **RSA**.
 1. Selecteer voor **sleutel gebruik** **hand tekening**.
 1. Selecteer **Maken**.
@@ -51,7 +51,7 @@ ms.locfileid: "88163183"
 
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
 1. Kies voor **Opties** `Generate` .
-1. Voer bij **naam**in `TokenEncryptionKeyContainer` . Het voor voegsel `B2C_1A` _ kan automatisch worden toegevoegd.
+1. Voer bij **Naam** `TokenEncryptionKeyContainer` in. Het voor voegsel `B2C_1A` _ kan automatisch worden toegevoegd.
 1. Selecteer voor **sleutel type** **RSA**.
 1. Voor **sleutel gebruik**selecteert u **versleuteling**.
 1. Selecteer **Maken**.
@@ -90,9 +90,9 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 1. Selecteer in het linkermenu onder **beheren** **een API zichtbaar**maken.
 1. Selecteer **een bereik toevoegen**en selecteer vervolgens **opslaan en ga door met** het accepteren van de standaard toepassings-id-URI.
 1. Voer de volgende waarden in om een bereik te maken waarmee aangepaste beleids regels kunnen worden uitgevoerd in uw Azure AD B2C-Tenant:
-    * **Scope naam**:`user_impersonation`
-    * **Weergave naam van beheerders toestemming**:`Access IdentityExperienceFramework`
-    * **Beschrijving van beheerders toestemming**:`Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+    * **Naam van bereik**: `user_impersonation`
+    * **Weergavenaam van beheerderstoestemming**: `Access IdentityExperienceFramework`
+    * **Beschrijving van beheerderstoestemming**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
 1. Selecteer **Bereik toevoegen**
 
 * * *

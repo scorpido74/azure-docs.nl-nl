@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88164237"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)
@@ -21,13 +21,13 @@ Het proces voor het up-to-date houden van Windows Server-knoop punten is iets an
 Dit artikel laat u zien hoe u de open-source- [kured (KUbernetes REboot daemon)][kured] kunt gebruiken om te kijken naar Linux-knoop punten die opnieuw moeten worden opgestart. vervolgens wordt de herplanning van het uitvoeren van het proces van peulen en het opnieuw opstarten van het knoop punt automatisch verwerkt.
 
 > [!NOTE]
-> `Kured`is een open-source project door Weaveworks. Ondersteuning voor dit project in AKS wordt op de beste manier geboden. Aanvullende ondersteuning vindt u in het #weave-communautaire vertragings kanaal.
+> `Kured` is een open-source project door Weaveworks. Ondersteuning voor dit project in AKS wordt op de beste manier geboden. Aanvullende ondersteuning vindt u in het #weave-communautaire vertragings kanaal.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
-Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Meer informatie over de update-ervaring van het AKS-knoop punt
 
@@ -78,7 +78,7 @@ Linux-knoop punten in AKS controleren standaard elke avond op updates. Als u nie
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-Als er updates zijn toegepast waarvoor het opnieuw opstarten van een knoop punt is vereist, wordt een bestand naar */var/run/reboot-required*geschreven. `Kured`Hiermee wordt gecontroleerd op knoop punten die standaard elke 60 minuten opnieuw moeten worden opgestart.
+Als er updates zijn toegepast waarvoor het opnieuw opstarten van een knoop punt is vereist, wordt een bestand naar */var/run/reboot-required*geschreven. `Kured` Hiermee wordt gecontroleerd op knoop punten die standaard elke 60 minuten opnieuw moeten worden opgestart.
 
 ## <a name="monitor-and-review-reboot-process"></a>Het proces voor het opnieuw opstarten controleren en controleren
 

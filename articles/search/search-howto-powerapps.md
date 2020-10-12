@@ -10,10 +10,10 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530689"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Zelfstudie: Een query uitvoeren op een Cognitive Search-index via Power Apps
@@ -49,7 +49,7 @@ Een connector in Power Apps is een gegevensbronverbinding. In deze stap maakt u 
 
 1. Selecteer **+ Nieuwe aangepaste connector** en selecteer vervolgens **Leeg item maken**.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Maken op basis van een leeg menu" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Geef uw aangepaste connector een naam (bijvoorbeeld *AzureSearchQuery*) en klik vervolgens op **Doorgaan**.
 
@@ -60,15 +60,15 @@ Een connector in Power Apps is een gegevensbronverbinding. In deze stap maakt u 
    * Bij Host moet u de zoekservice-URL opgeven (zoals `<yourservicename>.search.windows.net`)
    * Als Basis-URL voert u simpelweg '/' in
 
-    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Het dialoogvenster Algemene informatie" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Stel op de pagina Beveiliging *API-sleutel* als het **Verificatietype** en stel zowel het parameterlabel als de parameternaam in op *api-key*. Als **Parameterlocatie** selecteert u *Header* (zie onderstaande afbeelding).
 
-    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Verificatietype-optie" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Op de pagina Definities selecteert u **+ Nieuwe actie** om een actie te maken waarmee een query op de index wordt uitgevoerd. Voer de waarde Query in voor de samenvatting en de naam van de bewerkings-id. Voer een beschrijving in, zoals *Voert een query op de zoekindex uit*.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Nieuwe actieopties" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Schuif omlaag. Bij Aanvragen selecteert u de knop **+ Importeren uit voorbeeld** om een queryaanvraag op uw zoekservice te configureren:
 
@@ -80,23 +80,23 @@ Een connector in Power Apps is een gegevensbronverbinding. In deze stap maakt u 
 
      Voor **Power Apps** wordt de syntaxis gebruikt om parameters uit de query te extraheren. Het zoekveld is expliciet gedefinieerd. 
 
-       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Importeren vanuit voorbeeld" border="true":::
+       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Klik op **Importeren** om de aanvraag automatisch in te vullen. Voltooi het instellen van de parametermetagegevens door op het symbool **...** naast elke parameter te klikken. Klik op **Terug** om na elke parameterupdate terug te keren naar de pagina Aanvraag.
 
-   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Het dialoogvenster Importeren uit voorbeeld" border="true":::
+   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Voor *zoeken*: Stel `*` in als de **standaardwaarde**, stel **vereist** in op *False* en stel **zichtbaarheid** in op *geen*. 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Metagegevens van zoekparameter" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Voor *selecteren*: Stel `HotelName,Description,Address/City` in als de **standaardwaarde**, stel **vereist** in op *False* en stel **zichtbaarheid** in op *geen*.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Metagegevens van selectieparameter" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Voor *api-version*: Stel `2020-06-30` in als de **standaardwaarde**, stel **vereist** in op *True* en stel **zichtbaarheid** in op *intern*.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Metagegevens van de versieparameter" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Voor *Content-Type*: Ingesteld op `application/json`.
 
@@ -158,7 +158,7 @@ Voor deze taak hebt u een [API-sleutel voor query's](search-security-api-keys.md
 
 1. Selecteer de connector, vouw de lijst met acties uit en selecteer **Eigenschappen weergeven**.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Eigenschappen weergeven" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Selecteer rechtsboven de optie **Bewerken**.
 
@@ -170,7 +170,7 @@ Voor deze taak hebt u een [API-sleutel voor query's](search-security-api-keys.md
 
 1. Klik bij Bewerkingen op de knop **Testbewerking**. Als dit is gelukt, ziet u de status 200, en in de hoofdtekst van het antwoord ziet u als het goed is de JSON waarmee de zoekresultaten worden beschreven.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="JSON-antwoord" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 ## <a name="3---visualize-results"></a>3\. Resultaten visualiseren
 
@@ -178,7 +178,7 @@ In deze stap maakt u een Power App met een zoekvak, een zoekknop en een weergave
 
 1. Vouw aan de linkerkant **Apps** >  **+ Nieuwe app** > **Canvas** uit.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Een canvas-app maken" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Selecteer het type toepassing. Maak voor deze zelfstudie een **Lege app** met de **Telefoonindeling**. De **Power Apps Studio** wordt weergegeven.
 
@@ -186,13 +186,13 @@ In deze stap maakt u een Power App met een zoekvak, een zoekknop en een weergave
 
    Voer de API-sleutel voor query's in.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="connector verbinden" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="Het menu Aangepaste connector" border="true":::
 
     Nu is *AzureSearchQuery* een gegevensbron die beschikbaar is voor gebruik vanuit uw toepassing.
 
 1. Voeg op het tabblad **Invoegen**een aantal besturingselementen toe aan het canvas.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Besturingselementen invoegen" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Voeg de volgende elementen in:
 
@@ -203,7 +203,7 @@ In deze stap maakt u een Power App met een zoekvak, een zoekknop en een weergave
 
     Het canvas ziet er ongeveer als volgt uit:
 
-    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Indeling van besturingselementen" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Het menu Aangepaste connector" border="true":::
 
 1. Als u ervoor wilt zorgen dat een query wordt gestart via de **zoekknop**, plakt u de volgende actie in **OnSelect**:
 
@@ -214,7 +214,7 @@ In deze stap maakt u een Power App met een zoekvak, een zoekknop en een weergave
 
    In de volgende schermopname ziet u de formulebalk voor de actie **OnSelect**.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="De knop OnSelect" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Het menu Aangepaste connector" border="true":::
 
    Met deze actie wordt een nieuwe verzameling met de naam *azResult* bijgewerkt met het resultaat van de zoekquery als er op de knop wordt gedrukt, met behulp van de tekst in het tekstvak *txtQuery* als de queryterm.
 
@@ -236,17 +236,17 @@ In deze stap maakt u een Power App met een zoekvak, een zoekknop en een weergave
 
     Omdat we een voorbeeldresultaat hebben gegeven toen we de connector hebben gedefinieerd, is de app zich bewust van de velden die in uw index beschikbaar zijn.
     
-    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Galerievelden" border="true":::   
+    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Het menu Aangepaste connector" border="true":::   
  
 1. Druk op **F5** om een voorbeeld van de app weer te geven.  
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Uiteindelijke app" border="true":::    
+    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Het menu Aangepaste connector" border="true":::    
 
 <!--     Remember that the fields can be set to calculated values.
 
     For the example, setting using the *"Image, Title and Subtitle"* layout and specifying the *Image* function as the concatenation of the root path for the data and the file name (for instance, `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`) will produce the result below.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Final app" border="true":::         -->
+    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Het menu Aangepaste connector" border="true":::         -->
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

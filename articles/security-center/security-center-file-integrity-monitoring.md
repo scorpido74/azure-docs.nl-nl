@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541166"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Controle van bestands integriteit in Azure Security Center
@@ -28,10 +28,10 @@ Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azu
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
 |Vereiste rollen en machtigingen:|**Eigenaar van de werk ruimte** kan FIM inschakelen/uitschakelen (Zie [Azure-rollen voor log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) voor meer informatie.<br>**Lezer** kan resultaten weer geven.|
-|Clouds|![Ja ](./media/icons/yes-icon.png) commerciële Clouds<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Geen ](./media/icons/no-icon.png) China gov, andere gov<br>Wordt alleen ondersteund in regio's waar de oplossing voor het bijhouden van wijzigingen van Azure Automation beschikbaar is.<br>Zie [ondersteunde regio's voor gekoppelde log Analytics-werk ruimte](../automation/how-to/region-mappings.md).<br>[Meer informatie over het bijhouden van wijzigingen](../automation/change-tracking.md) |
+|Clouds:|![Ja ](./media/icons/yes-icon.png) commerciële Clouds<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Geen ](./media/icons/no-icon.png) China gov, andere gov<br>Wordt alleen ondersteund in regio's waar de oplossing voor het bijhouden van wijzigingen van Azure Automation beschikbaar is.<br>Zie [ondersteunde regio's voor gekoppelde log Analytics-werk ruimte](../automation/how-to/region-mappings.md).<br>[Meer informatie over het bijhouden van wijzigingen](../automation/change-tracking.md) |
 |||
 
 
@@ -39,7 +39,7 @@ Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azu
 
 
 ## <a name="what-is-fim-in-security-center"></a>Wat is FIM in Security Center?
-Met de File Integrity Monitoring (FIM), ook wel bekend als wijzigings controle, worden bestanden en registers van het besturings systeem, toepassings software en anderen onderzocht op wijzigingen die mogelijk duiden op een aanval. Een vergelijkings methode wordt gebruikt om te bepalen of de huidige status van het bestand afwijkt van de laatste scan van het bestand. U kunt deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
+Met de File Integrity Monitoring (FIM), ook wel bekend als wijzigings controle, worden bestanden en registers van het besturings systeem, toepassings software en anderen onderzocht op wijzigingen die mogelijk duiden op een aanval. Er wordt een vergelijkingsmethode gebruikt om te bepalen of de huidige toestand van het bestand anders is dan bij de laatste scan van het bestand. U kunt deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
 
 De bestands integriteits controle van Security Center valideert de integriteit van Windows-bestanden, Windows-REGI ster en Linux-bestanden. U selecteert de bestanden die u wilt controleren door FIM in te scha kelen. Security Center bewaakt bestanden met FIM ingeschakeld voor activiteit, zoals:
 
@@ -187,7 +187,7 @@ Op het tabblad **wijzigingen** (zie hieronder) worden alle wijzigingen voor de w
 
    **Werkruimte configuratie** wordt geopend met de weer gave van drie tabbladen: **Windows-REGI ster**, **Windows-bestanden**en Linux- **bestanden**. Elk tabblad bevat de entiteiten die u in die categorie kunt bewerken. Voor elke entiteit die wordt vermeld, geeft Security Center aan of FIM is ingeschakeld (true) of niet is ingeschakeld (false).  Als u de entiteit bewerkt, kunt u FIM in-of uitschakelen.
 
-   ![Werkruimte configuratie][12]
+   ![Werkruimteconfiguratie][12]
 
 2. Selecteer een identiteits beveiliging. In dit voor beeld hebben we een item geselecteerd onder het Windows-REGI ster. **Bewerken voor wijzigingen bijhouden** wordt geopend.
 
@@ -252,7 +252,7 @@ U kunt FIM uitschakelen. FIM maakt gebruik van de Azure Wijzigingen bijhouden-op
 4. Selecteer **verwijderen** om uit te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u de File Integrity Monitoring (FIM) in Security Center kunt gebruiken. Voor meer informatie over Security Center raadpleegt u de volgende pagina's:
+In dit artikel hebt u geleerd hoe u de File Integrity Monitoring (FIM) in Security Center kunt gebruiken. Zie de volgende pagina's voor meer informatie over het Security Center:
 
 * [Beveiligings beleid instellen](tutorial-security-policy.md) : informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
 * [Aanbevelingen voor beveiliging beheren](security-center-recommendations.md) : meer informatie over hoe aanbevelingen u helpen uw Azure-resources te beveiligen.

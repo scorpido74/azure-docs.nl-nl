@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934971"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Concepten met hoge Beschik baarheid in Azure Database for MySQL flexibele server (preview-versie)
@@ -18,7 +18,7 @@ ms.locfileid: "90934971"
 > [!IMPORTANT] 
 > Azure Database for MySQL - Flexible Server is momenteel beschikbaar als openbare preview.
 
-Met Azure Database for MySQL flexibele server (preview) kunt u hoge Beschik baarheid configureren met automatische failover met behulp van **zone redundante** maximale Beschik baarheid. Wanneer in een zone redundante configuratie wordt geïmplementeerd, wordt door de flexibele server automatisch een stand-by replica in een andere beschikbaarheids zone ingericht en beheerd. Met behulp van replicatie op opslag niveau worden de gegevens **synchroon gerepliceerd** naar de stand-by-server in de secundaire zone om gegevens verlies na een failover mogelijk te maken. De failover is volledig transparant van de client toepassing en vereist geen gebruikers acties. De stand-by-server is niet beschikbaar voor lees-of schrijf bewerkingen, maar is een passieve stand-by om snelle failover mogelijk te maken. De failover-tijden variëren doorgaans van 60-120 seconden.
+Met Azure Database for MySQL flexibele server (preview) kunt u hoge Beschik baarheid configureren met automatische failover met behulp van **zone redundante** maximale Beschik baarheid. Bij een implementatie in een zone-redundante configuratie wordt door de flexibele server automatisch een stand-byreplica in een andere beschikbaarheidszone ingericht en beheerd. Met behulp van replicatie op opslag niveau worden de gegevens **synchroon gerepliceerd** naar de stand-by-server in de secundaire zone om gegevens verlies na een failover mogelijk te maken. De failover is volledig transparant van de client toepassing en vereist geen gebruikers acties. De stand-by-server is niet beschikbaar voor lees-of schrijf bewerkingen, maar is een passieve stand-by om snelle failover mogelijk te maken. De failover-tijden variëren doorgaans van 60-120 seconden.
 
 De configuratie van de redundante hoge Beschik baarheid van een zone maakt automatische failover mogelijk tijdens geplande gebeurtenissen, zoals door de gebruiker geïnitieerde schaal reken bewerkingen, en niet-geplande gebeurtenissen, zoals onderliggende hardware-en software fouten, netwerk fouten en zelfs problemen met de beschikbaarheids zone.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
 ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236685"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall gebruiken om verkeer te controleren dat is bestemd voor een persoonlijk eind punt
@@ -55,7 +55,7 @@ Zie de sectie Veelgestelde vragen van de pagina met [prijzen](https://azure.micr
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Scenario 2: een hub-en spoke-architectuur-gedeeld virtueel netwerk voor persoonlijke eind punten en virtuele machines
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Persoonlijke eind punten en Virtual Machines in dezelfde Virtual Network" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Toegewezen Virtual Network voor privé-eind punten" border="true":::
 
 Dit scenario wordt geïmplementeerd wanneer:
 
@@ -78,7 +78,7 @@ Zie de sectie Veelgestelde vragen van de pagina met [prijzen](https://azure.micr
 
 ## <a name="scenario-3-single-virtual-network"></a>Scenario 3: Eén virtueel netwerk
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Eén virtueel netwerk" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Toegewezen Virtual Network voor privé-eind punten" border="true":::
 
 Er zijn enkele beperkingen ten aanzien van de implementatie: een migratie naar een hub-en-spoke-architectuur is niet mogelijk. Dezelfde overwegingen als in scenario 2 zijn van toepassing. In dit scenario zijn de kosten voor peering voor virtuele netwerken niet van toepassing.
 
@@ -87,7 +87,7 @@ Er zijn enkele beperkingen ten aanzien van de implementatie: een migratie naar e
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Scenario 4: on-premises verkeer naar privé-eind punten
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="On-premises verkeer naar privé-eind punten" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Toegewezen Virtual Network voor privé-eind punten" border="true":::
 
 Deze architectuur kan worden geïmplementeerd als u verbinding met uw on-premises netwerk hebt geconfigureerd met behulp van: 
 
@@ -317,7 +317,7 @@ In deze sectie maakt u een persoonlijk eind punt voor de Azure-SQL database in d
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Verbindingsmethode | Selecteer **verbinding maken met een Azure-resource in mijn Directory**. |
+    | Verbindingsmethode | Selecteer **Verbinding maken met een Azure-resource in mijn directory**. |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcetype | Selecteer **Microsoft.Sql/servers**. |
     | Resource | Selecteer **mydbserver** of de naam van de server die u in de vorige stap hebt gemaakt.
@@ -332,7 +332,7 @@ In deze sectie maakt u een persoonlijk eind punt voor de Azure-SQL database in d
     | **Netwerken** | |
     | Virtueel netwerk | Selecteer **myPEVnet**. |
     | Subnet | Selecteer **PrivateEndpointSubnet**. |
-    | **Integratie van Privé-DNS** | |
+    | **Privé-DNS-integratie** | |
     | Integreren met privé-DNS-zone | Selecteer **Ja**. |
     | Abonnement | Selecteer uw abonnement. |
     | Privé-DNS zones | De standaard **privatelink.database.Windows.net**behouden. |
@@ -374,7 +374,7 @@ In deze sectie worden virtuele netwerken **myVMVNet** en **myPEVNet** met **myAz
     | Doorgestuurd verkeer van extern virtueel netwerk naar myAzFwVNet toestaan    | Selecteer **Ingeschakeld**. |
     | Doorgestuurd verkeer van myAzFwVNet naar extern virtueel netwerk toestaan | Selecteer **Ingeschakeld**. |
     | **Instellingen voor gateway-door Voer configureren** | |
-    | Gateway doorvoer toestaan | Uitgeschakeld laten |
+    | Gateway doorvoer toestaan | Schakel dit selectievakje niet in |
     |||
 
 4. Selecteer **OK**.
@@ -400,7 +400,7 @@ In deze sectie worden virtuele netwerken **myVMVNet** en **myPEVNet** met **myAz
     | Doorgestuurd verkeer van extern virtueel netwerk naar myAzFwVNet toestaan    | Selecteer **Ingeschakeld**. |
     | Doorgestuurd verkeer van myAzFwVNet naar extern virtueel netwerk toestaan | Selecteer **Ingeschakeld**. |
     | **Instellingen voor gateway-door Voer configureren** | |
-    | Gateway doorvoer toestaan | Uitgeschakeld laten |
+    | Gateway doorvoer toestaan | Schakel dit selectievakje niet in |
 
 7. Selecteer **OK**.
 
@@ -458,7 +458,7 @@ Deze regel staat communicatie toe via de firewall die we in de vorige stappen he
     | ------- | ----- |
     | Naam | Voer **SQLPrivateEndpoint**in. |
     | Prioriteit | Voer **100** in. |
-    | Actie | Voer **toestaan**in. |
+    | Bewerking | Voer **toestaan**in. |
     | **Regels** |  |
     | **FQDN-tags** | |
     | Naam  | Leeg laten.  |
@@ -483,7 +483,7 @@ In deze sectie maakt u een route tabel met een aangepaste route.
 
 De route verzendt verkeer van het **myVM** -subnet naar de adres ruimte van het virtuele netwerk **myPEVNet**, via de Azure firewall.
 
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
+1. Selecteer in het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
 
 2. Typ **route tabel** in het zoekvak en druk op **Enter**.
 

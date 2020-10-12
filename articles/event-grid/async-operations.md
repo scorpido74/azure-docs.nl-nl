@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89011681"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Event Grid asynchrone bewerkingen van Azure bijhouden
@@ -31,10 +31,10 @@ Raadpleeg de [documentatie van rest API](/rest/api/) voor een overzicht van de a
 De asynchrone REST-bewerkingen retour neren koptekst waarden, die u gebruikt om de status van de bewerking te bepalen. Er zijn mogelijk drie header-waarden om te onderzoeken:
 
 * `Azure-AsyncOperation` -URL voor het controleren van de doorlopende status van de bewerking. Als uw bewerking deze waarde retourneert, moet u deze altijd gebruiken (in plaats van locatie) om de status van de bewerking bij te houden.
-* `Location` -URL om te bepalen wanneer een bewerking is voltooid. Gebruik deze waarde alleen als Azure-AsyncOperation niet wordt geretourneerd.
+* `Location` -URL om te bepalen wanneer een bewerking is voltooid. Gebruik deze waarde alleen wanneer Azure-AsyncOperation niet wordt geretourneerd.
 * `Retry-After` -Het aantal seconden dat moet worden gewacht voordat de status van de asynchrone bewerking wordt gecontroleerd.
 
-Niet elke asynchrone bewerking retourneert echter al deze waarden. U moet bijvoorbeeld de waarde van de Azure-AsyncOperation-header voor één bewerking en de waarde van de locatie header voor een andere bewerking evalueren. 
+Niet elke asynchrone bewerking retourneert echter al deze waarden. Het is bijvoorbeeld mogelijk dat u de waarde voor de Azure-AsyncOperation-header voor één bewerking moet evalueren en de waarde van de locatie-header voor een andere bewerking. 
 
 U haalt de waarden van de header op zoals u een header waarde voor een aanvraag zou ophalen. In C# haalt u bijvoorbeeld de waarde header op van een `HttpWebResponse` object `response` met de naam met de volgende code:
 
@@ -42,9 +42,9 @@ U haalt de waarden van de header op zoals u een header waarde voor een aanvraag 
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ```
 
-## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation-aanvraag en-antwoord
+## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation aanvraag en-antwoord
 
-Als u de status van de asynchrone bewerking wilt ophalen, verzendt u een GET-aanvraag naar de URL in de waarde van de Azure-AsyncOperation-header.
+Als u de status van de asynchrone bewerking wilt ophalen, verzendt u een GET-aanvraag naar de URL in Azure-AsyncOperation header-waarde.
 
 De hoofd tekst van het antwoord van deze bewerking bevat informatie over de bewerking. In het volgende voor beeld ziet u de mogelijke waarden die zijn geretourneerd door de bewerking:
 

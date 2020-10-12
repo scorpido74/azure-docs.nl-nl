@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854906"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Configuratie bestand voor micro soft-verificatie bibliotheek voor Android
@@ -106,7 +106,7 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
 | `type` | Tekenreeks | Ja | Komt overeen met de doel groep of het account type van uw app-doelen. Mogelijke waarden: `AAD` , `B2C` |
 | `audience` | Object | Nee | Alleen van toepassing als type = `AAD` . Hiermee geeft u de identiteit op van uw app-doelen. De waarde van de app-registratie gebruiken |
 | `authority_url` | Tekenreeks | Ja | Alleen vereist als type = `B2C` . Hiermee geeft u de CA-URL of het beleid dat door uw app moet worden gebruikt  |
-| `default` | boolean | Ja | Eén `"default":true` is vereist wanneer een of meer instanties zijn opgegeven. |
+| `default` | booleaans | Ja | Eén `"default":true` is vereist wanneer een of meer instanties zijn opgegeven. |
 
 #### <a name="audience-properties"></a>Eigenschappen van doel groep
 
@@ -149,9 +149,9 @@ De volgende algemene instellingen zijn voor logboek registratie:
 
 | Eigenschap | Gegevenstype  | Vereist | Notities |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | Nee | Of persoons gegevens moeten worden geverzendd |
+| `pii_enabled`  | booleaans | Nee | Of persoons gegevens moeten worden geverzendd |
 | `log_level`   | tekenreeks | No | De logboek berichten die moeten worden uitgevoerd. De ondersteunde logboek niveaus zijn onder andere `ERROR` , `WARNING` , en `INFO` `VERBOSE` . |
-| `logcat_enabled` | boolean | Nee | Of er moet worden uitgevoerd naar log kat naast de interface voor logboek registratie |
+| `logcat_enabled` | booleaans | Nee | Of er moet worden uitgevoerd naar log kat naast de interface voor logboek registratie |
 
 ### <a name="account_mode"></a>account_mode
 
