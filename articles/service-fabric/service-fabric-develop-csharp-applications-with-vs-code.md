@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614520"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>C#-Service Fabric toepassingen ontwikkelen met Visual Studio code
@@ -85,7 +85,7 @@ Bij het opsporen van fouten in toepassingen in VS code moet de toepassing worden
 
 Voer de volgende stappen uit om een onderbrekings punt en fout opsporing in te stellen:
 1. Open het */src/CounterServiceApplication/CounterService/CounterService.cs* -bestand in Verkenner en stel een onderbrekings punt in op regel 62 in de `RunAsync` methode.
-3. Klik op het pictogram fout opsporing op de **activiteiten balk** om de weer gave fout opsporing in VS code te openen. Klik boven aan de weer gave van het fout opsporingsprogramma op het tandwiel pictogram en selecteer **.net core** in het menu van de vervolg keuzelijst omgeving. De launch.jsin het bestand wordt geopend. U kunt dit bestand sluiten. U ziet nu configuratie opties in het menu Debug Configuration naast de knop uitvoeren (groene pijl).
+3. Klik op het pictogram fout opsporing op de **activiteiten balk** om de weer gave fout opsporing in VS code te openen. Klik boven aan de weer gave van het fout opsporingsprogramma op het tandwiel pictogram en selecteer **.net core** in het menu van de vervolg keuzelijst omgeving. De launch.jsin het bestand wordt geopend. U kunt het bestand sluiten. U ziet nu configuratie opties in het menu Debug Configuration naast de knop uitvoeren (groene pijl).
 
    ![Pictogram fout opsporing in VS code-werk ruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 

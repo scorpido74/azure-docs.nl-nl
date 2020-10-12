@@ -1,17 +1,17 @@
 ---
-title: Azure Functions ontwikkelen met Visual Studio code
+title: Azure Functions ontwikkelen met Visual Studio Code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206737"
 ---
-# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
+# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio Code
 
 Met de [extensie Azure functions voor Visual Studio code] kunt u op een lokale manier functies ontwikkelen en implementeren in Azure. Als deze ervaring uw eerste met Azure Functions is, kunt u meer te weten komen over [een inleiding tot Azure functions](functions-overview.md).
 
@@ -175,7 +175,7 @@ Voor deze code moet u de volgende `using` instructie toevoegen:
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
 
-De `msg` para meter is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
+De parameter `msg` is een type `ICollector<T>` die een verzameling berichten vertegenwoordigt die worden geschreven naar een uitvoerbinding wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
 
 Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue-output.md) voor meer informatie.
 
@@ -189,10 +189,10 @@ Hieronder volgen enkele voor beelden van prompts voor het definiëren van een ni
 
 | Vraag | Waarde | Beschrijving |
 | -------- | ----- | ----------- |
-| **Bindings richting selecteren** | `out` | De binding is een uitvoer binding. |
-| **Binding met richting selecteren** | `Azure Queue Storage` | De binding is een Azure Storage wachtrij binding. |
-| **De naam die wordt gebruikt om deze binding in uw code aan te duiden** | `msg` | Naam die de bindings parameter identificeert waarnaar in uw code wordt verwezen. |
-| **De wachtrij waarnaar het bericht wordt verzonden** | `outqueue` | De naam van de wachtrij waarnaar de binding wordt geschreven. Wanneer de *wachtrij* naam niet bestaat, wordt deze door de binding gemaakt bij het eerste gebruik. |
+| **Bindingsrichting selecteren** | `out` | De binding is een uitvoerbinding. |
+| **Binding met richting selecteren** | `Azure Queue Storage` | De binding is een Azure Storage-wachtrijbinding. |
+| **De naam voor het identificeren van deze binding in uw code** | `msg` | Naam die de bindingsparameter identificeert waar in uw code naar wordt verwezen. |
+| **De wachtrij waarnaar het bericht wordt verzonden** | `outqueue` | De naam van de wachtrij waarnaar de binding schrijft. Wanneer de *queueName* niet bestaat, wordt deze bij het eerste gebruik door de binding gemaakt. |
 | **Selecteer een instelling in het local.settings.js** | `MyStorageConnection` | De naam van een toepassings instelling die de connection string voor het opslag account bevat. De `AzureWebJobsStorage` instelling bevat de Connection String voor het opslag account dat u hebt gemaakt met de functie-app. |
 
 In dit voor beeld wordt de volgende binding toegevoegd aan de `bindings` matrix in uw function.jsin het bestand:
@@ -261,7 +261,7 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
     | Selecteer een opslagaccount | Nieuw opslagaccount maken | Typ bij de volgende prompt een wereld wijd unieke naam voor het nieuwe opslag account dat wordt gebruikt door de functie-app en selecteer vervolgens ENTER. Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account selecteren. |
     | Selecteer een locatie voor nieuwe resources | regio | Selecteer een locatie in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of in de buurt van andere services die door uw functies worden geopend. |
 
-    Er wordt een melding weer gegeven nadat de functie-app is gemaakt en het implementatie pakket is toegepast. Selecteer **uitvoer weer geven** in deze melding om de resultaten voor het maken en implementeren weer te geven, inclusief de Azure-resources die u hebt gemaakt.
+    Er wordt een melding weer gegeven nadat de functie-app is gemaakt en het implementatie pakket is toegepast. Selecteer in deze melding de optie **Uitvoer weergeven** om de resultaten van het maken en implementeren te bekijken, inclusief de Azure-resources die u hebt gemaakt.
 
 ## <a name="republish-project-files"></a>Project bestanden opnieuw publiceren
 

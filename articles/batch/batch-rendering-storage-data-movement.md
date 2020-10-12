@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147308"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opties voor opslag en gegevens verplaatsing voor het weer geven van Asset-en uitvoer bestanden
@@ -132,6 +132,6 @@ Azure Files worden ondersteund door alle belangrijkste Api's en hulpprogram ma's
 
 Zie de gedetailleerde documentatie voor meer informatie over de opslag opties:
 
-* [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md)
+* [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)
 * [Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)
 * [Azure Files](../storage/files/storage-files-introduction.md)

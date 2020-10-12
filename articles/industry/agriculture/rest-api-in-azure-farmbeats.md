@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536569"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats-Api's
@@ -31,7 +31,7 @@ De volgende tabel bevat een overzicht van alle objecten en resources in FarmBeat
 
 | Objecten en bronnen | Beschrijving
 --- | ---|
-Voorzien | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID. |
+Landbouwbedrijf | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID. |
 Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm. Elk apparaat heeft een unieke apparaat-ID. Een apparaat wordt doorgaans ingericht in een farm met een farm-ID.
 DeviceModel  | DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel de gateway ofwel het knoop punt.
 Sensoren  | Sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
@@ -39,7 +39,7 @@ SensorModel  | SensorModel komt overeen met de meta gegevens van de sensor, zoal
 Telemetrie  | Telemetrie biedt de mogelijkheid om telemetrie-berichten te lezen voor een bepaalde sensor en tijds bereik.
 Taak  | De taak komt overeen met elke werk stroom van activiteiten die in het FarmBeats-systeem worden uitgevoerd om een gewenste uitvoer te krijgen. Elke taak is gekoppeld aan een taak-ID en taak type.
 Taak type  | Taak type komt overeen met verschillende taak typen die door het systeem worden ondersteund. Er zijn door het systeem gedefinieerde en door de gebruiker gedefinieerde taak typen opgenomen.
-Extended type  | Extended type komt overeen met de lijst met systeem-en door de gebruiker gedefinieerde typen in het systeem. Extended type helpt bij het instellen van een nieuw sensor-, scène-of scène bestands type in het FarmBeats-systeem.
+ExtendedType  | Extended type komt overeen met de lijst met systeem-en door de gebruiker gedefinieerde typen in het systeem. Extended type helpt bij het instellen van een nieuw sensor-, scène-of scène bestands type in het FarmBeats-systeem.
 Partner  | De partner komt overeen met de sensor-en image-integratie partner voor FarmBeats.
 Scène  | Scène komt overeen met een gegenereerde uitvoer in de context van een farm. Aan elke scène zijn een scène-ID, scène bron, scène type en Farm-ID gekoppeld. Aan elke scène-ID kunnen meerdere scène bestanden zijn gekoppeld.
 SceneFile |SceneFile komt overeen met alle bestanden die voor één scène worden gegenereerd. Er kunnen meerdere SceneFile-Id's aan één scène-ID zijn gekoppeld.
@@ -68,10 +68,10 @@ headers = {"Authorization": "Bearer " + **access_token**}
 Hier volgen de meest voorkomende aanvraag headers die u moet opgeven wanneer u een API-aanroep maakt naar Azure FarmBeats Datahub.
 
 
-**Header** | **Beschrijving en voor beeld**
+**Journaalkop** | **Beschrijving en voor beeld**
 --- | ---
 Content-Type  | De aanvraag indeling (content-type: Application/ <format> ). Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
-Autorisatie  | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-token>
+Autorisatie  | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-Token>
 Accepteren | De antwoord indeling. Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
 
 ### <a name="api-requests"></a>API-aanvragen
@@ -109,7 +109,7 @@ Azure FarmBeats Datahub Api's retour neren de standaard HTTP-fouten. De meest vo
 
  |Foutcode             | Beschrijving |
  |---                    | --- |
- |200                    | Success |
+ |200                    | Geslaagd |
  |201                    | Maken (post) geslaagd |
  |400                    | Ongeldige aanvraag. Er is een fout opgetreden in de aanvraag. |
  |401                    | Gasten. De aanroeper van de API is niet gemachtigd om toegang te krijgen tot de resource. |

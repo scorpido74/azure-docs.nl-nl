@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372821"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opties voor DNS-naam omzetting voor virtuele Linux-machines in azure
@@ -29,13 +29,13 @@ In de volgende tabel ziet u scenario's en bijbehorende oplossingen voor naam omz
 | Naam omzetting tussen rolinstanties of virtuele machines in verschillende virtuele netwerken |Door de klant beheerde DNS-servers die query's door sturen tussen virtuele netwerken voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-using-your-own-dns-server). |Alleen FQDN |
 | Omzetting van on-premises computers en service namen van rolinstanties of virtuele machines in azure |Door de klant beheerde DNS-servers (bijvoorbeeld on-premises domein controller, lokale alleen-lezen domein controller of een secundaire DNS-server die is gesynchroniseerd met zone overdracht). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-using-your-own-dns-server). |Alleen FQDN |
 | Omzetting van Azure hostnamen van on-premises computers |Query's door sturen naar een door de klant beheerde DNS-proxy server in het bijbehorende virtuele netwerk. De proxy server stuurt query's naar Azure door voor het oplossen van problemen. Zie [naam omzetting met uw eigen DNS-server](#name-resolution-using-your-own-dns-server). |Alleen FQDN |
-| Omgekeerde DNS voor interne Ip's |[Naam omzetting met uw eigen DNS-server](#name-resolution-using-your-own-dns-server) |N.v.t. |
+| Omgekeerde DNS voor interne Ip's |[Naam omzetting met uw eigen DNS-server](#name-resolution-using-your-own-dns-server) |n.v.t. |
 
 ## <a name="name-resolution-that-azure-provides"></a>Naam omzetting die Azure biedt
 Naast de resolutie van open bare DNS-namen biedt Azure interne naam omzetting voor virtuele machines en rolinstanties die zich in hetzelfde virtuele netwerk bevinden. In virtuele netwerken die zijn gebaseerd op Azure Resource Manager, is het DNS-achtervoegsel consistent in het virtuele netwerk. de FQDN is niet nodig. DNS-namen kunnen worden toegewezen aan zowel netwerk interface kaarten (Nic's) als virtuele machines. Hoewel voor de naam omzetting die Azure biedt geen configuratie vereist is, is het niet de juiste keuze voor alle implementatie scenario's, zoals wordt weer gegeven in de voor gaande tabel.
 
 ### <a name="features-and-considerations"></a>Functies en overwegingen
-**Functies:**
+**Functies**
 
 * Er is geen configuratie vereist voor het gebruik van naam omzetting die Azure biedt.
 * De service voor naam omzetting die Azure biedt, is Maxi maal beschikbaar. U hoeft geen clusters van uw eigen DNS-servers te maken en te beheren.

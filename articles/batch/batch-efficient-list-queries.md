@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933511"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Query's maken om batch resources efficiënt weer te geven
@@ -55,7 +55,7 @@ Als in dit voorbeeld scenario duizenden taken in de taak zijn, worden de resulta
 
 De [batch .net](/dotnet/api/microsoft.azure.batch) -en [batch](/rest/api/batchservice/) -api's bieden de mogelijkheid om zowel het aantal geretourneerde items in een lijst te verminderen als de hoeveelheid gegevens die voor elk item wordt geretourneerd. U doet dit door **filter**-, **Select**-en **expand-teken reeksen** op te geven bij het uitvoeren van lijst query's.
 
-### <a name="filter"></a>Filteren
+### <a name="filter"></a>Filter
 
 De filter teken reeks is een expressie waarmee het aantal geretourneerde items wordt verminderd. U kunt bijvoorbeeld alleen de actieve taken voor een taak weer geven of alleen reken knooppunten weer geven die gereed zijn om taken uit te voeren.
 

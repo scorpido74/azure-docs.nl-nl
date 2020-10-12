@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087251"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage-verbindingsreeksen configureren
@@ -31,10 +31,10 @@ Zie [toegangs sleutels voor opslag accounts beheren](storage-account-keys-manage
 
 ## <a name="store-a-connection-string"></a>Een connection string opslaan
 
-Uw toepassing moet tijdens runtime toegang hebben tot de connection string om aanvragen voor Azure Storage te autoriseren. U hebt verschillende mogelijkheden om uw connection string op te slaan:
+Uw toepassing moet tijdens runtime toegang hebben tot de connection string om aanvragen voor Azure Storage te autoriseren. U hebt verschillende mogelijkheden om uw verbindingsreeks op te slaan:
 
 * U kunt uw connection string opslaan in een omgevings variabele.
-* Een toepassing die wordt uitgevoerd op het bureau blad of op een apparaat kan de connection string in een **app.config** of **web.config** bestand opslaan. Voeg de connection string toe aan de sectie **AppSettings** in deze bestanden.
+* Een toepassing die wordt uitgevoerd op het bureaublad of op een apparaat kan de verbindingsreeks opslaan in een bestand **app.config** of **web.config**. Voeg de verbindingsreeks toe aan de sectie **AppSettings** in deze bestanden.
 * Een toepassing die wordt uitgevoerd in een Azure-Cloud service kan de connection string opslaan in het [Azure service configuration schema-bestand (. cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Voeg de connection string toe aan de sectie **ConfigurationSettings** van het service configuratie bestand.
 
 Het opslaan van uw connection string in een configuratie bestand maakt het eenvoudig om de connection string bij te werken om te scha kelen tussen de [Azurite-opslag emulator](../common/storage-use-azurite.md) en een Azure-opslag account in de Cloud. U hoeft alleen de connection string te bewerken om naar uw doel omgeving te verwijzen.

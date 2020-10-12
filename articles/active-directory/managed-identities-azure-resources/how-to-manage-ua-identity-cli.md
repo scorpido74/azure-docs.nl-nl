@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 29a1a991ab79c38dad1a89533091d80406615d35
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969478"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van de Azure CLI
@@ -34,9 +34,9 @@ In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identitei
 
 - Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de sectie [Overzicht](overview.md). **Let op dat u nagaat wat het [verschil is tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Als u de voorbeeld scripts wilt uitvoeren, hebt u twee opties:
-    - Gebruik de [Azure Cloud shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **try it** in de rechter bovenhoek van code blokken.
-    - Voer scripts lokaal uit door de nieuwste versie van de [Azure cli](/cli/azure/install-azure-cli)te installeren en meld u vervolgens aan bij Azure met [AZ login](/cli/azure/reference-index#az-login). Gebruik een account dat is gekoppeld aan het Azure-abonnement waarin u resources wilt maken.   
+- Als u de voorbeeldscripts wilt uitvoeren, hebt u twee opties:
+    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **Probeer het nu** in de rechterbovenhoek van Code::Blocks.
+    - Voer scripts lokaal uit door de nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli) te installeren en u vervolgens aan te melden bij Azure met [az login](/cli/azure/reference-index#az-login). Gebruik een account dat is gekoppeld aan het Azure-abonnement waarin u resources wilt maken.   
 
 > [!NOTE]
 > Als u de gebruikers machtigingen wilt wijzigen wanneer u een app Service-Principal gebruikt met CLI, moet u de Service-Principal extra machtigingen opgeven in azure AD Graph API als delen van CLI GET-aanvragen uitvoeren voor de Graph API. Als dat niet het geval is, kunt u het bericht ' onvoldoende bevoegdheden om de bewerking te volt ooien ' ontvangen. Als u dit wilt doen, gaat u naar de registratie van de app in Azure Active Directory, selecteert u uw app, klikt u op API-machtigingen, schuift u omlaag en selecteert u Azure Active Directory Graph. Van daaruit selecteert u toepassings machtigingen en voegt u vervolgens de juiste machtigingen toe. 

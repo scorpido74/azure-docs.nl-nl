@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272953"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Verkeers gegevens op de kaart weer geven met behulp van Azure Maps Android SDK
@@ -57,7 +57,7 @@ Gebruik het volgende code fragment om gegevens over de verkeers stroom in te ste
 | :-- | :-- |
 | Verkeers stroom. NONE | Verkeers gegevens worden niet weer gegeven op de kaart |
 | Verkeers stroom. RELATIVE | Geeft verkeers gegevens weer die relatief zijn ten opzichte van de vrije stroom snelheid van de weg |
-| Verkeers stroom. RELATIVE_DELAY | Hiermee worden gebieden weer gegeven die langzamer zijn dan de gemiddelde verwachte vertraging |
+| TrafficFlow.RELATIVE_DELAY | Hiermee worden gebieden weer gegeven die langzamer zijn dan de gemiddelde verwachte vertraging |
 | Verkeers stroom. ABSOLUTE | Toont de absolute snelheid van alle Voer tuigen op de weg |
 
 ```java
@@ -234,7 +234,7 @@ U kunt de volgende code gebruiken om de incidenten voor een specifieke functie t
 Bekijk de volgende hand leidingen voor meer informatie over het toevoegen van meer gegevens aan uw kaart:
 
 > [!div class="nextstepaction"]
-> [Een symboollaag toevoegen](how-to-add-symbol-to-android-map.md)
+> [Een symbool laag toevoegen](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Een titellaag toevoegen](how-to-add-tile-layer-android-map.md)

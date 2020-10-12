@@ -1,6 +1,6 @@
 ---
-title: Failover-cluster exemplaren
-description: Meer informatie over Failoverclusterinstanties (failover cluster instances) met SQL Server op Azure Virtual Machines.
+title: Exemplaren van failoverclusters
+description: Lees hier meer over exemplaren van failoverclusters (FCI's) met SQL Server op virtuele Azure-machines (VM's).
 services: virtual-machines
 documentationCenter: na
 author: MashaMSFT
@@ -13,162 +13,162 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272509"
 ---
-# <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failover-cluster exemplaren met SQL Server op Azure Virtual Machines
+# <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines (VM's).
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In dit artikel worden de verschillen in functies beschreven wanneer u werkt met FCI (failover cluster instances) voor SQL Server op Azure Virtual Machines (Vm's). 
+In dit artikel worden de verschillen in functies beschreven wanneer u werkt met exemplaren van failoverclusters (FCI's) voor SQL Server op virtuele Azure-machines (VM's). 
 
 ## <a name="overview"></a>Overzicht
 
-SQL Server op virtuele machines van Azure maakt gebruik van de WSFC-functionaliteit (Windows Server failover clustering) om lokale hoge Beschik baarheid te bieden via redundantie op het niveau van de server-instantie: een exemplaar van een failovercluster. Een FCI is één exemplaar van SQL Server dat is geïnstalleerd op een WSFC-knoop punt (of gewoon de cluster) en, mogelijk via meerdere subnetten. In het netwerk lijkt een FCI een exemplaar van SQL Server op een enkele computer uit te voeren. Maar de FCI biedt failover van het ene WSFC-knoop punt naar het andere als het huidige knoop punt niet beschikbaar is.
+SQL Server op Azure-VM's maakt gebruik van de WSFC-functionaliteit (Windows Server Failover Clustering) om lokaal hoge beschikbaarheid te bieden via redundantie op het niveau van het serverexemplaar: een exemplaar van een failovercluster. Een FCI is één exemplaar van SQL Server dat is geïnstalleerd op WSFC-knooppunten (het cluster) en, mogelijk, in verschillende subnetten. In het netwerk wordt een FCI weergegeven als een exemplaar van SQL Server dat op één computer wordt uitgevoerd. Maar de FCI biedt failover van het ene WSFC-knooppunt naar een ander als het huidige knooppunt niet meer beschikbaar is.
 
-De rest van het artikel richt zich op de verschillen voor failoverclusters wanneer ze worden gebruikt met SQL Server op virtuele Azure-machines. Voor meer informatie over de failover clustering-technologie raadpleegt u: 
+De rest van het artikel richt zich op de verschillen voor exemplaren van failoverclusters wanneer deze worden gebruikt met SQL Server Azure-VM's. Lees deze artikelen voor meer informatie over de technologie achter failoverclustering: 
 
-- [Windows-cluster technologieën](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [Failover-cluster exemplaren SQL Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-clustertechnologieën](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Instanties van een SQL Server-failovercluster](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Quorum
 
-Failover-cluster exemplaren met SQL Server op Azure Virtual Machines ondersteunen met behulp van een schijfwitness, een Cloud-Witness of een bestandssharewitness voor het cluster quorum.
+Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines ondersteunen het gebruik van een schijf-witness, een cloud-witness of een bestandsshare-witness voor clusterquorum.
 
-Zie voor meer informatie [quorum aanbevolen procedures met SQL Server vm's in azure](hadr-cluster-best-practices.md#quorum). 
+Zie [Cluster configuration best practices (SQL Server on Azure VMs)](hadr-cluster-best-practices.md#quorum) (Best practices voor clusterconfiguratie (SQL Server op Azure-VM's)) voor meer informatie. 
 
 
 ## <a name="storage"></a>Storage
 
-In traditionele on-premises geclusterde omgevingen gebruikt een Windows-failovercluster een Storage Area Network (SAN) dat door beide knoop punten als de gedeelde opslag toegankelijk is. SQL Server-bestanden worden gehost op de gedeelde opslag, en alleen het actieve knoop punt heeft toegang tot de bestanden in één keer. 
+In traditionele on-premises geclusterde omgevingen gebruikt een Windows-failovercluster een SAN (Storage Area Network) dat door beide knooppunten als gedeelde opslag toegankelijk is. SQL Server-bestanden worden gehost in de gedeelde opslag, en alleen het actieve knooppunt heeft op enig moment toegang tot de bestanden. 
 
-SQL Server op virtuele machines van Azure biedt verschillende opties als een gedeelde opslag oplossing voor een implementatie van SQL Server failoverclusterknooppunten: 
+SQL Server op Azure-VM's biedt verschillende opties als een oplossing voor gedeelde opslag voor een implementatie van exemplaren van failoverclusters met SQL Server: 
 
-||[Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md)|[Premiumbestandsshares](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Opslagruimten Direct (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md)|[Premiumbestandsshares](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[S2D (Storage Spaces Direct)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**Minimale versie van het besturingssysteem**| Alles |Windows Server 2012|Windows Server 2016|
-|**Minimale SQL Server versie**|Alles|SQL Server 2012|SQL Server 2016|
-|**Ondersteunde VM-Beschik baarheid** |Beschikbaarheids sets met proximity-plaatsings groepen |Beschikbaarheids sets en beschikbaarheids zones|Beschikbaarheidssets |
+|**Minimale versie van SQL Server**|Alles|SQL Server 2012|SQL Server 2016|
+|**Ondersteunde VM-beschikbaarheid** |Beschikbaarheidssets met nabijheidsplaatsingsgroepen |Beschikbaarheidssets en beschikbaarheidszones|Beschikbaarheidssets |
 |**Ondersteunt FileStream**|Ja|Nee|Ja |
-|**Azure Blob-cache**|Nee|Nee|Ja|
+|**Azure blob-cache**|Nee|Nee|Ja|
 
-In de rest van deze sectie vindt u een overzicht van de voor delen en beperkingen van elke opslag optie die beschikbaar is voor SQL Server op Azure-Vm's. 
+In de rest van deze sectie vindt u een overzicht van de voordelen en beperkingen van elke opslagoptie die beschikbaar is voor SQL Server op Azure-VM's. 
 
 ### <a name="azure-shared-disks"></a>Gedeelde Azure-schijven
 
-[Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md) zijn een functie van [Azure Managed disks](../../../virtual-machines/managed-disks-overview.md). Windows Server failover clustering ondersteunt het gebruik van gedeelde Azure-schijven met een failover-cluster exemplaar. 
+[Gedeelde Azure-schijven](../../../virtual-machines/windows/disks-shared.md) is een functie van [Azure Managed Disks](../../../virtual-machines/managed-disks-overview.md). Windows Server Failover Clustering ondersteunt het gebruik van gedeelde Azure-schijven met een exemplaar van een failovercluster. 
 
-**Ondersteund besturings systeem**: alle   
-**Ondersteunde SQL-versie**: alle     
+**Ondersteund besturingssysteem**: Alle   
+**Ondersteunde SQL-versie**: Alle     
 
-**Voor delen**: 
-- Dit is handig voor toepassingen die op zoek zijn naar Azure, terwijl hun architectuur met hoge Beschik baarheid en herstel na nood gevallen (HADR) behouden blijft. 
-- Kunnen geclusterde toepassingen naar Azure worden gemigreerd als gevolg van SCSI-ondersteuning voor permanente reserve ringen. 
-- Biedt ondersteuning voor gedeelde Azure Premium-SSD en Azure Ultra Disk-opslag.
-- Kan één gedeelde schijf gebruiken of meerdere gedeelde schijven verwijderen om een gedeelde opslag groep te maken. 
+**Voordelen**: 
+- Handig voor toepassingen die moeten worden gemigreerd naar Azure, met behoud van hun architectuur voor hoge beschikbaarheid en herstel na noodgevallen (HADR). 
+- Geclusterde toepassingen kunnen ongewijzigd naar Azure worden gemigreerd door de ondersteuning voor SCSI PR (SCSI Persistent Reservations). 
+- Biedt ondersteuning voor opslag met Azure Premium SSD en Azure Ultra Disk-opslag.
+- Met behulp van één gedeelde schijf of meerdere gedeelde schijven met striping kan een gedeelde opslaggroep worden gemaakt. 
 - Ondersteunt FileStream.
 
 
 **Beperkingen**: 
-- Virtuele machines moeten worden geplaatst in dezelfde beschikbaarheidsset en proximity-plaatsings groep.
-- Beschikbaarheids zones worden niet ondersteund.
-- Premium-SSD schijf cache gebruik wordt niet ondersteund.
+- Virtuele machines moeten in dezelfde beschikbaarheidsset en dezelfde nabijheidsplaatsingsgroep worden geplaatst.
+- Beschikbaarheidszones worden niet ondersteund.
+- Caching op Premium SSD-schijven wordt niet ondersteund.
  
-Zie [SQL Server failover-cluster exemplaar met gedeelde Azure-schijven](failover-cluster-instance-azure-shared-disks-manually-configure.md)om aan de slag te gaan. 
+Zie [Create an FCI with Azure shared disks (SQL Server on Azure VMs)](failover-cluster-instance-azure-shared-disks-manually-configure.md) (Een FCI maken met gedeelde Azure-schijven (SQL Server op Azure-VM's)) om aan de slag te gaan. 
 
 ### <a name="storage-spaces-direct"></a>Opslagruimten direct
 
-[Opslagruimten direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) is een Windows Server-functie die wordt ondersteund door Failover Clustering in azure virtual machines. Het biedt een virtueel SAN op basis van software.
+[Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) is een Windows Server-functie die wordt ondersteund met failoverclustering op virtuele Azure-machines. De functie biedt een virtueel SAN op basis van software.
 
-**Ondersteund besturings systeem**: Windows Server 2016 en hoger   
+**Ondersteund besturingssysteem**: Windows Server 2016 en hoger   
 **Ondersteunde SQL-versie**: SQL Server 2016 en hoger   
 
 
-**Verleend** 
-- Voldoende netwerk bandbreedte biedt een robuuste en zeer krachtige, gedeelde opslag oplossing. 
-- Biedt ondersteuning voor Azure Blob-cache, zodat Lees bewerkingen lokaal vanuit de cache kunnen worden uitgevoerd. (Updates worden gelijktijdig gerepliceerd naar beide knoop punten.) 
+**Voordelen:** 
+- Voldoende netwerkbandbreedte zorgt voor een stabiele en goed presterende oplossing voor gedeelde opslag. 
+- Biedt ondersteuning voor Azure blob-cache, zodat leesbewerkingen lokaal vanuit de cache kunnen worden verwerkt. (Updates worden gelijktijdig gerepliceerd naar beide knooppunten.) 
 - Ondersteunt FileStream. 
 
-**Hardwarebeperkingen**
+**Beperkingen:**
 - Alleen beschikbaar voor Windows Server 2016 en hoger. 
-- Beschikbaarheids zones worden niet ondersteund.
-- Vereist dat dezelfde schijf capaciteit is gekoppeld aan beide virtuele machines. 
-- Hoge netwerk bandbreedte is vereist voor hoge prestaties vanwege de continue replicatie van de schijf. 
-- Vereist een grotere VM-grootte en dubbele betaling voor opslag, omdat opslag is gekoppeld aan elke virtuele machine. 
+- Beschikbaarheidszones worden niet ondersteund.
+- Vereist dat aan beide virtuele machines dezelfde schijfcapaciteit is gekoppeld. 
+- Hoge netwerkbandbreedte is vereist voor hoge prestaties vanwege de continue replicatie van de schijf. 
+- Vereist een grotere VM-grootte en dubbele betaling voor opslag, omdat opslag is gekoppeld aan elke VM. 
 
-Zie [SQL Server failover-cluster exemplaar met opslagruimten direct](failover-cluster-instance-storage-spaces-direct-manually-configure.md)om aan de slag te gaan. 
+Zie [Create an FCI with Storage Spaces Direct (SQL Server on Azure VMs)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) (Een FCI maken met Storage Spaces Direct (SQL Server op Azure-VM's)) om aan de slag te gaan. 
 
-### <a name="premium-file-share"></a>Premium-bestands share
+### <a name="premium-file-share"></a>Premium-bestandsshare
 
-[Premium-bestands shares](../../../storage/files/storage-how-to-create-premium-fileshare.md) zijn een functie van [Azure files](../../../storage/files/index.yml). Premium-bestands shares zijn een SSD-back-up en hebben een consistente lage latentie. Ze worden volledig ondersteund voor gebruik met failover-cluster exemplaren voor SQL Server 2012 of hoger op Windows Server 2012 of hoger. Premium-bestands shares bieden meer flexibiliteit, omdat u een bestands share zonder uitval tijd kunt verg Roten of verkleinen en schalen.
+[Premium-bestandsshares](../../../storage/files/storage-how-to-create-premium-fileshare.md) zijn een functie van [Azure Files](../../../storage/files/index.yml). Premium-bestandsshares worden opgeslagen op een SSD en hebben een consistent lage latentie. Ze worden volledig ondersteund voor gebruik met exemplaren van failoverclusters voor SQL Server 2012 of hoger met Windows Server 2012 of hoger. Premium-bestandsshares bieden meer flexibiliteit, omdat u een bestandsshare zonder downtime kunt vergroten of verkleinen en schalen.
 
-**Ondersteund besturings systeem**: Windows Server 2012 en hoger   
+**Ondersteund besturingssysteem**: Windows Server 2012 en hoger   
 **Ondersteunde SQL-versie**: SQL Server 2012 en hoger   
 
-**Verleend** 
-- Alleen gedeelde opslag oplossing voor virtuele machines verspreid over meerdere beschikbaarheids zones. 
-- Volledig beheerd bestands systeem met wacht tijden van één cijfer en bursteer I/O-prestaties. 
+**Voordelen:** 
+- Oplossing voor uitsluitend gedeelde opslag voor virtuele machines verspreid over meerdere beschikbaarheidszones. 
+- Volledig beheerd bestandssysteem met zeer lage latentie en goede I/O-prestaties met burstmogelijkheden. 
 
-**Hardwarebeperkingen**
+**Beperkingen:**
 - Alleen beschikbaar voor Windows Server 2012 en hoger. 
 - FileStream wordt niet ondersteund. 
 
 
-Zie [SQL Server failover-cluster exemplaar met Premium-bestands share](failover-cluster-instance-premium-file-share-manually-configure.md)om aan de slag te gaan. 
+Zie [Create an FCI with a premium file share (SQL Server on Azure VMs)](failover-cluster-instance-premium-file-share-manually-configure.md) (Een FCI maken met een Premium-bestandsshare (SQL Server op Azure-VM's)) om aan de slag te gaan. 
 
 ### <a name="partner"></a>Partner
 
-Er zijn oplossingen voor partner clusters met ondersteunde opslag. 
+Er zijn oplossingen voor clustering met ondersteunde partneropslag. 
 
-**Ondersteund besturings systeem**: alle   
-**Ondersteunde SQL-versie**: alle   
+**Ondersteund besturingssysteem**: Alle   
+**Ondersteunde SQL-versie**: Alle   
 
-In een voor beeld wordt SIOS data keeper als opslag gebruikt. Zie voor meer informatie het blog bericht [failover clustering en SIOS data keeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).
+Een voorbeeld is om SIOS DataKeeper als opslag te gebruiken. Zie voor meer informatie het blogbericht [Failover clustering and SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).
 
 ### <a name="iscsi-and-expressroute"></a>iSCSI en ExpressRoute
 
-U kunt ook een gedeelde blok opslag voor iSCSI-doel beschikbaar maken via Azure ExpressRoute. 
+U kunt ook gedeelde blokopslag op een iSCSI-doel beschikbaar maken via Azure ExpressRoute. 
 
-**Ondersteund besturings systeem**: alle   
-**Ondersteunde SQL-versie**: alle   
+**Ondersteund besturingssysteem**: Alle   
+**Ondersteunde SQL-versie**: Alle   
 
-NetApp Private Storage (NPS) biedt bijvoorbeeld een iSCSI-doel via ExpressRoute met Equinix voor Azure-Vm's.
+NetApp Private Storage (NPS) biedt bijvoorbeeld een iSCSI-doel aan voor Azure-VM's via ExpressRoute met Equinix.
 
-Neem contact op met de leverancier voor de oplossingen met betrekking tot gedeelde opslag en gegevens replicatie van micro soft-partners voor problemen met de toegang tot gegevens in de failover.
+In het geval van oplossingen van Microsoft-partners voor gedeelde opslag en gegevensreplicatie neemt u contact op met de leverancier als er problemen zijn met de toegang tot gegevens bij failover.
 
 ## <a name="connectivity"></a>Connectiviteit
 
-Failover-cluster exemplaren met SQL Server op Azure Virtual Machines gebruiken een [gedistribueerde netwerk naam (DNN)](hadr-distributed-network-name-dnn-configure.md) of een [virtuele netwerk naam (VNN) met Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) om verkeer door te sturen naar het SQL Server-exemplaar, ongeacht welk knoop punt momenteel eigenaar is van de geclusterde resources. Er zijn aanvullende overwegingen bij het gebruik van bepaalde functies en de DNN met een SQL Server FCI. Zie [DNN interoperabiliteit met SQL Server FCI](failover-cluster-instance-dnn-interoperability.md) voor meer informatie. 
+Exemplaren van failoverclusters met SQL Server op virtuele Azure-machines gebruiken een [DNN (naam van gedistribueerd netwerk)](hadr-distributed-network-name-dnn-configure.md) of een [VNN (naam van een virtueel netwerk) met Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) om verkeer door te sturen naar het SQL Server exemplaar, ongeacht welk knooppunt momenteel eigenaar is van de geclusterde resources. Er zijn aanvullende overwegingen bij het gebruik van bepaalde functies en de DNN met een FCI met SQL Server. Zie [Feature interoperability with SQL Server FCI & DNN](failover-cluster-instance-dnn-interoperability.md) (Interoperabiliteit van functies met FCI met SQL Server en DNN) voor meer informatie. 
 
-Zie [HADR-verbindingen naar SQL Server op Azure-Vm's routeren](hadr-cluster-best-practices.md#connectivity)voor meer informatie over opties voor cluster connectiviteit. 
+Raadpleeg [HADR-verbindingen routeren naar SQL Server in Azure-VM's](hadr-cluster-best-practices.md#connectivity) voor meer informatie over opties voor clusterconnectiviteit. 
 
 ## <a name="limitations"></a>Beperkingen
 
-Houd rekening met de volgende beperkingen voor failover-cluster exemplaren met SQL Server op Azure Virtual Machines. 
+Houd rekening met de volgende beperkingen voor exemplaren van failoverclusters met SQL Server op virtuele Azure-machines. 
 
-### <a name="lightweight-resource-provider"></a>Licht gewicht resource provider   
-Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund met de [licht gewicht beheer modus](sql-vm-resource-provider-register.md#management-modes) van de [SQL Server IaaS agent-extensie](sql-server-iaas-agent-extension-automate-management.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende vm's en registreert u deze vervolgens bij de resource provider van de SQL-vm in de Lightweight-modus. Wanneer u de bron van de **virtuele SQL-machine** verwijdert met behulp van de Azure Portal, schakelt u het selectie vakje naast de juiste virtuele machine uit. 
+### <a name="lightweight-resource-provider"></a>Lichtgewicht resourceprovider   
+Op dit moment worden exemplaren van failoverclusters met SQL Server op virtuele Azure-machines alleen ondersteund met de [beheermodus Lichtgewicht](sql-vm-resource-provider-register.md#management-modes) van de [SQL Server IaaS Agent-extensie](sql-server-iaas-agent-extension-automate-management.md). Als u wilt overschakelen van de volledige extensiemodus naar lichtgewicht, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende VM's en registreert u deze vervolgens in de lichtgewicht modus bij de resourceprovider van de SQL-VM. Wanneer u de resource van de **virtuele SQL-machine** verwijdert met behulp van de Azure-portal, schakelt u het selectievakje naast de juiste virtuele machine uit. 
 
-De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL Server Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
+De volledige extensie ondersteunt functies zoals automatische back-ups en patches, en geavanceerd portalbeheer. Deze functies werken niet voor VM's met SQL Server nadat de agent opnieuw is geïnstalleerd in de modus voor lichtgewicht beheer.
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines ondersteunt micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op SQL Server-vm's die gebruikmaken van gedeelde Azure-schijven. 
+Virtuele Azure-machines bieden ondersteuning voor MSDTC (Microsoft Distributed Transaction Coordinator) in Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) of op VM's met SQL Server die gebruikmaken van gedeelde Azure-schijven. 
 
-In azure Virtual Machines wordt MSDTC niet ondersteund voor Windows Server 2016 of eerder met geclusterde gedeelde volumes, omdat:
+MSDTC wordt vanwege deze redenen niet ondersteund op virtuele Azure-machines voor Windows Server 2016 of eerder met geclusterde gedeelde volumes:
 
-- De geclusterde MSDTC-bron kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u in Windows Server 2016 een MSDTC-bron maakt, wordt er geen gedeelde opslag weer gegeven die beschikbaar is voor gebruik, zelfs als de opslag ruimte beschikbaar is. Dit probleem is opgelost in Windows Server 2019.
-- Met de basis load balancer worden geen RPC-poorten afgehandeld.
+- De geclusterde MSDTC-resource kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u in Windows Server 2016 een MSDTC-resource maakt, wordt er geen gedeelde opslag weergegeven die beschikbaar is voor gebruik, zelfs als dat wel het geval is. Dit probleem is opgelost in Windows Server 2019.
+- De standaard load balancer biedt geen ondersteuning voor RPC-poorten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk [Aanbevolen procedures voor cluster configuraties](hadr-cluster-best-practices.md)en u kunt [uw SQL Server-VM voorbereiden voor FCI](failover-cluster-instance-prepare-vm.md). 
+Bekijk de [best practices voor clusterconfiguraties](hadr-cluster-best-practices.md), zodat u daarna [uw VM met SQL Server kunt voorbereiden voor FCI](failover-cluster-instance-prepare-vm.md). 
 
 Zie voor meer informatie: 
 
-- [Windows-cluster technologieën](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Failover-cluster exemplaren SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows-clustertechnologieën](/windows-server/failover-clustering/failover-clustering-overview)   
+- [Instanties van een SQL Server-failovercluster](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
 ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87873463"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Verbinding maken met Apache Kafka in HDInsight via een virtueel Azure-netwerk
@@ -58,7 +58,7 @@ HDInsight staat geen directe verbinding met Kafka toe via het open bare Internet
 
 Zie [een virtueel netwerk voor Azure HDInsight-clusters plannen](../hdinsight-plan-virtual-network-deployment.md)voor meer informatie over het gebruik van HDInsight in een virtueel netwerk.
 
-## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a>Verbinding maken met Apache Kafka vanuit een on-premises netwerk
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> Verbinding maken met Apache Kafka vanuit een on-premises netwerk
 
 Als u een Kafka-cluster wilt maken dat communiceert met uw on-premises netwerk, volgt u de stappen in het [Connect HDInsight to your on-premises Network](./../connect-on-premises-network.md) document.
 
@@ -74,7 +74,7 @@ Met deze stappen maakt u de volgende configuratie:
 
 Als u wilt controleren of een Kafka-client vanuit on-premises verbinding kan maken met het cluster, gebruikt u de stappen in het gedeelte [voor beeld: python-client](#python-client) .
 
-## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a>Verbinding maken met Apache Kafka met een VPN-client
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a> Verbinding maken met Apache Kafka met een VPN-client
 
 Gebruik de stappen in deze sectie om de volgende configuratie te maken:
 
@@ -290,7 +290,7 @@ Standaard retourneert Apache Zookeeper de domein naam van de Kafka-Brokers naar 
 
 Als u verbinding wilt maken met de VPN-gateway, gebruikt u de sectie __verbinding maken met Azure__ van het document [een punt-naar-site-verbinding configureren](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) .
 
-## <a name="example-python-client"></a><a id="python-client"></a>Voor beeld: python-client
+## <a name="example-python-client"></a><a id="python-client"></a> Voor beeld: python-client
 
 Gebruik de volgende stappen om een python-producent en-consument te maken en uit te voeren om de connectiviteit met Kafka te valideren:
 

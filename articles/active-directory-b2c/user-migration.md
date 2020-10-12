@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383968"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Gebruikers migreren naar Azure AD B2C
@@ -38,7 +38,7 @@ Zie [Azure AD B2C gebruikers accounts beheren met Microsoft Graph](manage-user-a
 
 ## <a name="seamless-migration"></a>Naadloze migratie
 
-Gebruik de naadloze migratie stroom als niet-gecodeerde wacht woorden in de oude ID-provider niet toegankelijk zijn. Bijvoorbeeld wanneer:
+Gebruik de naadloze migratie stroom als niet-gecodeerde wacht woorden in de oude ID-provider niet toegankelijk zijn. Dit kan bijvoorbeeld nodig zijn in de volgende situaties:
 
 - Het wacht woord wordt opgeslagen in een eenrichtings gecodeerde indeling, zoals met een hash-functie.
 - Het wacht woord wordt opgeslagen door de verouderde ID-provider op een manier die u niet kunt openen. Bijvoorbeeld wanneer de ID-provider referenties valideert door een webservice aan te roepen.

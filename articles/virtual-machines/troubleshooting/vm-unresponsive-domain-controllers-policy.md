@@ -1,5 +1,5 @@
 ---
-title: De VM reageert niet tijdens het Toep assen van het standaard beleid voor domein controllers
+title: VM is niet responsief wanneer een beleid voor domeincontrollers wordt toegepast
 titlesuffix: Azure Virtual Machines
 description: Dit artikel bevat stappen voor het oplossen van problemen waarbij het standaard beleid voor domein controllers het opstarten van een virtuele machine van Azure voor komt.
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
 ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90039074"
 ---
-# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>De VM reageert niet tijdens het Toep assen van het standaard beleid voor domein controllers
+# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>VM is niet responsief wanneer een beleid voor domeincontrollers wordt toegepast
 
 Dit artikel bevat stappen voor het oplossen van problemen waarbij het standaard beleid voor domein controllers het opstarten van een virtuele machine (VM) van Azure voor komt.
 

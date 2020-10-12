@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
 ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087540"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Firewall-regels configureren
@@ -49,7 +49,7 @@ De verbinding met google.com is toegestaan vanwege een overeenkomende netwerk re
 - Actie: Toestaan
 
 
-|name  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
+|naam  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
 |Toestaan-Web     |TCP|Het IP-adres|*|Het IP-adres|*|80.443
 
@@ -57,7 +57,7 @@ De verbinding met google.com is toegestaan vanwege een overeenkomende netwerk re
 
 - Actie: Weigeren
 
-|name  |Brontype  |Bron  |Protocol: poort|Doel-FQDN-naam|
+|naam  |Brontype  |Bron  |Protocol: poort|Doel-FQDN-naam|
 |---------|---------|---------|---------|----------|----------|
 |Weigeren: Google     |Het IP-adres|*|http: 80, https: 443|google.com
 
@@ -75,7 +75,7 @@ SSH-verkeer wordt geweigerd omdat de verzameling netwerk regels voor *weigeren* 
 - Prioriteit: 200
 - Actie: Toestaan
 
-|name  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
+|naam  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
 |Toestaan-SSH     |TCP|Het IP-adres|*|Het IP-adres|*|22
 
@@ -85,7 +85,7 @@ SSH-verkeer wordt geweigerd omdat de verzameling netwerk regels voor *weigeren* 
 - Prioriteit: 100
 - Actie: Weigeren
 
-|name  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
+|naam  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
 |Weigeren-SSH     |TCP|Het IP-adres|*|Het IP-adres|*|22
 

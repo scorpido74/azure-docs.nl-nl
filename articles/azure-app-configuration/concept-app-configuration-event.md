@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590027"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reageren op Azure-app configuratie gebeurtenissen
@@ -27,7 +27,7 @@ Bekijk de [Route Azure-app configuratie gebeurtenissen naar een aangepast webein
 ![Event Grid model](./media/event-grid-functional-model.png)
 
 ## <a name="available-azure-app-configuration-events"></a>Beschik bare Azure-app configuratie gebeurtenissen
-Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Azure-app configuratie gebeurtenis abonnementen kunnen twee typen gebeurtenissen bevatten:  
+Gebeurtenisraster maakt gebruik van [gebeurtenisabonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenisberichten te routen naar abonnees. Azure-app configuratie gebeurtenis abonnementen kunnen twee typen gebeurtenissen bevatten:  
 
 > |Gebeurtenisnaam|Beschrijving|
 > |----------|-----------|
@@ -40,9 +40,9 @@ Azure-app configuratie gebeurtenissen bevatten alle informatie die u nodig hebt 
 > |Eigenschap|Type|Beschrijving|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |onderwerp|tekenreeks|Volledige Azure Resource Manager-id van de app-configuratie waarmee de gebeurtenis wordt verzonden.|
-> |onderwerp|tekenreeks|De URI van de sleutel waarde die het onderwerp van de gebeurtenis is.|
+> |Onderwerp|tekenreeks|De URI van de sleutel waarde die het onderwerp van de gebeurtenis is.|
 > |eventTime|tekenreeks|De datum/tijd waarop de gebeurtenis is gegenereerd, in ISO 8601-indeling.|
-> |eventType|tekenreeks|"Micro soft. AppConfiguration. KeyValueModified" of "micro soft. AppConfiguration. KeyValueDeleted".|
+> |Type|tekenreeks|"Micro soft. AppConfiguration. KeyValueModified" of "micro soft. AppConfiguration. KeyValueDeleted".|
 > |Id|tekenreeks|Een unieke id van deze gebeurtenis.|
 > |dataVersion|tekenreeks|De schemaversie van het gegevensobject.|
 > |metadataVersion|tekenreeks|De schema versie van de eigenschappen op het hoogste niveau.|

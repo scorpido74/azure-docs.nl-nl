@@ -7,10 +7,10 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
 ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373314"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Maak uw eerste functie met Java en eclips 
@@ -35,7 +35,7 @@ Als u een functions-app met Java en intereclips wilt ontwikkelen, moet u het vol
 
 Het is raadzaam om ook [Azure functions core tools, versie 2](functions-run-local.md#v2), te installeren die een lokale omgeving bieden voor het uitvoeren en opsporen van fouten in azure functions. 
 
-## <a name="create-a-functions-project"></a>Een functions-project maken
+## <a name="create-a-functions-project"></a>Een Functions-project maken
 
 1. In eclips selecteert u het menu **bestand** en selecteert u vervolgens **New- &gt; Maven project**. 
 1. Accepteer de standaard instellingen in het dialoog venster **Nieuw Maven-project** en selecteer **volgende**.
@@ -54,7 +54,7 @@ Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_. De g
 1. Voer in het dialoog venster **configuratie bewerken** `package` in de velden **doel stelling** en **naam** in en selecteer vervolgens **uitvoeren**. Hiermee wordt de functie code gemaakt en verpakt.
 1. Zodra de build is voltooid, maakt u een nieuwe uitvoerings configuratie zoals hierboven, met `azure-functions:run` als doel en naam. Selecteer **uitvoeren** om de functie in de IDE uit te voeren.
 
-Beëindig de runtime in het console venster wanneer u klaar bent met het testen van de functie. Er kan slechts één functie-host actief zijn en lokaal worden uitgevoerd.
+Beëindig de runtime in het console venster wanneer u klaar bent met het testen van de functie. Er kan slechts één functiehost actief zijn en lokaal worden uitgevoerd.
 
 ### <a name="debug-the-function-in-eclipse"></a>Fout opsporing voor de functie in eclips
 
@@ -64,7 +64,7 @@ Selecteer het menu **uitvoeren** en open **configuratie van fout opsporing**. Ki
 
 ![Functies voor fout opsporing in eclips](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
-Stel onderbrekings punten in en Inspecteer objecten in uw functie met behulp van de IDE. Wanneer u klaar bent, stopt u het fout opsporingsprogramma en de actieve functie-host. Er kan slechts één functie-host actief zijn en lokaal worden uitgevoerd.
+Stel onderbrekings punten in en Inspecteer objecten in uw functie met behulp van de IDE. Wanneer u klaar bent, stopt u het fout opsporingsprogramma en de actieve functie-host. Er kan slechts één functiehost actief zijn en lokaal worden uitgevoerd.
 
 ## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
 

@@ -4,10 +4,10 @@ description: Meer informatie over hoe u Herhaal bare processen snel kunt automat
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970860"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights processen automatiseren met behulp van Logic Apps
@@ -26,7 +26,7 @@ U kunt ook extra acties toevoegen. De functie Logic Apps van Azure App Service m
 In deze zelf studie leert u hoe u een logische app maakt die gebruikmaakt van het algoritme van de analyse van de analytische methode voor het groeperen van kenmerken in de gegevens voor een webtoepassing. De stroom verzendt de resultaten automatisch per e-mail, maar één voor beeld van hoe u Application Insights Analytics en Logic Apps samen kunt gebruiken. 
 
 ### <a name="step-1-create-a-logic-app"></a>Stap 1: een logische app maken
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Klik op **een resource maken**, selecteer **Web en mobiel**en selecteer vervolgens **logische app**.
 
     ![Venster nieuwe logische app](./media/automate-with-logic-apps/1createlogicapp.png)

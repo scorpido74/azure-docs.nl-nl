@@ -1,5 +1,5 @@
 ---
-title: SAP HANA scale-out HSR-pacemaker met SLES op Azure Vm's Troubleshooting | Microsoft Docs
+title: SAP HANA scale-out HSR-Pacemaker met SLES op Azure Vm's Troubleshooting | Microsoft Docs
 description: Gids voor het controleren en oplossen van problemen met een complexe SAP HANA scale-out configuratie met hoge Beschik baarheid op basis van SAP HANA System Replication (HSR) en pacemaker op SLES 12 SP3 dat wordt uitgevoerd op Azure virtual machines
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088305"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Controleren en problemen oplossen SAP HANA scale-out instellingen voor hoge Beschik baarheid in SLES 12 SP3 
@@ -40,7 +40,7 @@ Dit artikel helpt u bij het controleren van de pacemaker-cluster configuratie vo
 
 ## <a name="important-notes"></a>Belangrijke opmerkingen
 
-Alle tests voor SAP HANA scale-out in combi natie met SAP HANA systeem replicatie en pacemaker zijn alleen uitgevoerd met SAP HANA 2,0. De versie van het besturings systeem is SUSE Linux Enterprise Server 12 SP3 voor SAP-toepassingen. Het nieuwste RPM-pakket, SAPHanaSR-Uitschalen van SUSE, is gebruikt voor het instellen van het pacemaker-cluster.
+Alle tests voor SAP HANA scale-out in combi natie met SAP HANA systeem replicatie en pacemaker zijn alleen uitgevoerd met SAP HANA 2,0. De versie van het besturings systeem is SUSE Linux Enterprise Server 12 SP3 voor SAP-toepassingen. Het nieuwste RPM-pakket, SAPHanaSR-ScaleOut van SUSE, is gebruikt om het pacemaker-cluster in te stellen.
 SUSE heeft een [gedetailleerde beschrijving gepubliceerd van deze instellingen die zijn geoptimaliseerd voor de prestaties][sles-hana-scale-out-ha-paper].
 
 Voor virtuele-machine typen die worden ondersteund voor SAP HANA scale-out, controleert u de [SAP Hana Certified IaaS Directory][sap-hana-iaas-list].

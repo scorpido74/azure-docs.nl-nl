@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087421"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Gegevens voor Azure Machine Learning verplaatsen naar een Azure SQL-database
@@ -43,13 +43,13 @@ Voor de procedures die hier worden beschreven, is het volgende vereist:
 
 U kunt de procedures die hier worden beschreven, aanpassen aan een set met uw eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload).
 
-## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Gegevens verplaatsen van een bron met een plat bestand naar een Azure SQL Database
+## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> Gegevens verplaatsen van een bron met een plat bestand naar een Azure SQL Database
 Gegevens in platte bestanden (CSV of TSV) kunnen worden verplaatst naar een Azure SQL Database met behulp van een Bulk Insert SQL-query.
 
-### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>SQL-query bulksgewijs invoegen
+### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> SQL-query bulksgewijs invoegen
 De stappen voor de procedure met behulp van de bulksgewijze insert SQL-query zijn vergelijkbaar met de instructies voor het verplaatsen van gegevens van een platte bestands bron naar SQL Server op een virtuele machine van Azure. Zie [BULKSGEWIJZE SQL-query invoegen](move-sql-server-virtual-machine.md#insert-tables-bulkquery)voor meer informatie.
 
-## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Gegevens verplaatsen van SQL Server naar een Azure SQL Database
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> Gegevens verplaatsen van SQL Server naar een Azure SQL Database
 Als de bron gegevens zijn opgeslagen in SQL Server, zijn er verschillende mogelijkheden om de gegevens naar een Azure SQL Database te verplaatsen:
 
 1. [Exporteren naar plat bestand](#export-flat-file)

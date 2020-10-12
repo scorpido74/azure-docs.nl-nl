@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over de client-Sdk's voor Azure Event 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9f4eec603245f1e4ea6fa4d97b843ca6a770f2ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88930873"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs-client-Sdk's
@@ -31,7 +31,7 @@ In de volgende tabel worden alle momenteel beschik bare Azure Event Hubs runtime
 |      | [Azure-Event hubs](https://search.maven.org/search?q=a:azure-eventhubs) **(verouderd)** | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/microsoft-azure-eventhubs)</li><li>[Zelfstudie](event-hubs-java-get-started-send.md)</li></ul> |
 | Python |  [Azure-eventhub](https://pypi.org/project/azure-eventhub/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub)</li><li>[Zelfstudie](event-hubs-python-get-started-send.md)</li></ul> |
 |        | [Azure-eventhub-checkpointstoreblob-AIO](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[Zelfstudie](event-hubs-python-get-started-send.md)</li></ul> |
-| JavaScript | [Azure/Event-hubs](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Zelfstudie](event-hubs-node-get-started-send.md)</li></ul> |
+| Javascript | [Azure/Event-hubs](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Zelfstudie](event-hubs-node-get-started-send.md)</li></ul> |
 |            | [Azure-Event hubs-checkpointstore-BLOB](https://www.npmjs.com/package/@azure/eventhubs-checkpointstore-blob) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/eventhubs-checkpointstore-blob)</li><li>[Zelfstudie](event-hubs-node-get-started-send.md)</li></ul> |
 | Go | [Azure-Event-hubs-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-go)</li><li>[Zelfstudie](event-hubs-go-get-started-send.md)</li></ul> |
 | C | [Azure-Event-hubs-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-c)</li><li>[Zelfstudie](event-hubs-c-getstarted-send.md)</li></ul> |

@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85562825"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Wiskundige functies (Azure Cosmos DB)  
@@ -30,31 +30,31 @@ Het resultaat is:
     [4]
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 De volgende ingebouwde wiskundige functies voeren een berekening uit, meestal op basis van invoer argumenten, en retour neren een numerieke expressie:
  
-* [AFWEZIGHEID](sql-query-abs.md)
-* [RESULTEERT](sql-query-acos.md)
-* [BOOGSIN](sql-query-asin.md)
-* [BOOGTAN](sql-query-atan.md)
+* [ABS](sql-query-abs.md)
+* [ACOS](sql-query-acos.md)
+* [ASIN](sql-query-asin.md)
+* [ATAN](sql-query-atan.md)
 * [ATN2](sql-query-atn2.md)
-* [MAXIMUM](sql-query-ceiling.md)
-* [WISSEN](sql-query-cos.md)
+* [CEILING](sql-query-ceiling.md)
+* [COS](sql-query-cos.md)
 * [COT](sql-query-cot.md)
-* [VRIJHEID](sql-query-degrees.md)
-* [GELDIG](sql-query-exp.md)
+* [DEGREES](sql-query-degrees.md)
+* [EXP](sql-query-exp.md)
 * [FLOOR](sql-query-floor.md)
-* [LOGBESTAND](sql-query-log.md)
-* [ANDERS](sql-query-log10.md)
-* [IP](sql-query-pi.md)
+* [LOG](sql-query-log.md)
+* [LOG10](sql-query-log10.md)
+* [PI](sql-query-pi.md)
 * [POWER](sql-query-power.md)
-* [RADIALEN](sql-query-radians.md)
-* [ASELECT](sql-query-rand.md)
+* [RADIANS](sql-query-radians.md)
+* [RAND](sql-query-rand.md)
 * [ROUND](sql-query-round.md)
-* [AANMELDEN](sql-query-sign.md)
+* [SIGN](sql-query-sign.md)
 * [SIN](sql-query-sin.md)
-* [WORTEL](sql-query-sqrt.md)
+* [SQRT](sql-query-sqrt.md)
 * [SQUARE](sql-query-square.md)
 * [TAN](sql-query-tan.md)
 * [TRUNC](sql-query-trunc.md)
@@ -67,4 +67,4 @@ Alle wiskundige functies, met uitzonde ring van ASELECT, zijn deterministische f
 - [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)
 - [Door de gebruiker gedefinieerde functies](sql-query-udfs.md)
-- [Aggregaties](sql-query-aggregates.md)
+- [Statistische functies](sql-query-aggregates.md)

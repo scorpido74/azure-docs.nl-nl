@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274296"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-implementatie voor SAP net-Weaver
@@ -404,7 +404,7 @@ U hebt verschillende mogelijkheden om hand matig back-ups uit te voeren:
 
 1. Conventioneel SQL Server back-ups uitvoeren op direct gekoppelde Azure-schijven. Deze methode heeft het voor deel dat u de back-ups snel beschikbaar hebt voor het vernieuwings proces van het systeem en nieuwe systemen kunt bouwen als kopieën van bestaande SAP-systemen
 2.  SQL Server 2012 CU4 en hoger kunnen back-ups maken van data bases naar een Azure Storage-URL.
-3.  Back-ups van bestands momentopnamen voor database bestanden in Azure Blob Storage. Deze methode werkt alleen als uw SQL Server gegevens-en logboek bestanden zich in Azure Blob Storage bevinden
+3.  File-Snapshot back-ups voor database bestanden in Azure Blob Storage. Deze methode werkt alleen als uw SQL Server gegevens-en logboek bestanden zich in Azure Blob Storage bevinden
 
 De eerste methode is goed bekend en wordt ook in veel gevallen in de on-premises wereld toegepast. Niettemin verlaat het de taak om de back-uplocatie voor langere termijn op te lossen. Omdat u uw back-ups gedurende 30 of meer dagen niet wilt bewaren in de lokaal gekoppelde Azure Storage, moet u Azure Backup Services of een ander hulp programma voor back-up/herstel van derden gebruiken, waaronder het beheer en de retentie van uw back-ups. Of u bouwt een grote Bestands server in azure met behulp van Windows-opslag ruimten.
 
@@ -464,7 +464,7 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 
 Als het resultaat afwijkt, stopt u het implementeren van SAP en onderzoekt u waarom de installatie opdracht niet werkt zoals verwacht. De implementatie van SAP NetWeaver-toepassingen op SQL Server-exemplaar met verschillende SQL Server code tabellen die hierboven worden vermeld, wordt **niet** ondersteund.
 
-## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server hoge Beschik baarheid voor SAP in azure
+## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server High-Availability voor SAP in azure
 Als u SQL Server gebruikt in azure IaaS-implementaties voor SAP, hebt u verschillende mogelijkheden om toe te voegen om de DBMS-laag Maxi maal beschikbaar te maken. Zoals beschreven in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) , biedt Azure verschillende eenmalige service overeenkomsten voor één virtuele machine en een combi natie van vm's die zijn geïmplementeerd in een Azure-beschikbaarheidsset. Hypo these is dat u zich aanmeldt voor de up-time-SLA voor uw productie-implementaties waarvoor de implementatie in azure-beschikbaarheids sets is vereist. In dat geval moet u Mini maal twee Vm's implementeren in een dergelijke Beschikbaarheidsset. Met één virtuele machine wordt het actieve SQL Server-exemplaar uitgevoerd. Het passieve exemplaar wordt uitgevoerd op de andere VM
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>SQL Server clustering met behulp van scale-out Bestands server of gedeelde Azure-schijf
@@ -484,7 +484,7 @@ De functie voor het verzenden van SQL Server-Logboeken is in azure nauwelijks ge
 ### <a name="database-mirroring"></a>Databasespiegeling
 Het spie gelen van data bases zoals ondersteund door SAP (Zie SAP Note [965908]) is afhankelijk van het definiëren van een failover-partner in de SAP-Connection String. Voor de cross-premises-cases wordt ervan uitgegaan dat de twee virtuele machines zich in hetzelfde domein bevinden en dat de gebruikers context dat de twee SQL Server exemplaren worden uitgevoerd onder een domein gebruiker en voldoende bevoegdheden hebben in de twee SQL Server-instanties betrokken. Daarom verschilt de installatie van het spie gelen van data bases in azure niet tussen een typische on-premises installatie/configuratie.
 
-Net als bij implementaties in de Cloud, is de eenvoudigste methode om een andere domein instelling in azure te hebben om deze DBMS-Vm's (en idea-specifieke SAP-Vm's) binnen één domein te hebben.
+Vanaf Cloud-Only implementaties is de eenvoudigste methode om een andere domein instelling in azure te hebben om deze DBMS-Vm's (en in het ideale geval specifieke SAP-Vm's) binnen één domein te hebben.
 
 Als een domein niet mogelijk is, kan één ook certificaten voor de data base mirroring-eind punten gebruiken zoals hier wordt beschreven: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 

@@ -4,10 +4,10 @@ description: Krijg persoonlijke meldingen over service status gebeurtenissen aan
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86529094"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met OpsGenie met behulp van webhooks
@@ -86,4 +86,4 @@ Dit artikel laat u zien hoe u Azure service Health-waarschuwingen kunt instellen
 - Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md).
 - Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek. 
 - Meer informatie over [service status meldingen](./service-notifications.md).
-- Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).
+- Meer informatie over [actiegroepen](../azure-monitor/platform/action-groups.md).

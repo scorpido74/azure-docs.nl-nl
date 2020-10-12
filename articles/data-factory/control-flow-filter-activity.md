@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417209"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory filteren
 U kunt een filter activiteit in een pijp lijn gebruiken om een filter expressie toe te passen op een invoer matrix. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 ```json
 {
@@ -41,8 +41,8 @@ Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
 naam | De naam van de `Filter` activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op **filter**. | Tekenreeks | Ja
-regeling | De voor waarde die moet worden gebruikt voor het filteren van de invoer. | Expression | Ja
-vermeldingen | Invoer matrix waarop het filter moet worden toegepast. | Expression | Ja
+regeling | De voor waarde die moet worden gebruikt voor het filteren van de invoer. | Expressie | Ja
+vermeldingen | Invoer matrix waarop het filter moet worden toegepast. | Expressie | Ja
 
 ## <a name="example"></a>Voorbeeld
 

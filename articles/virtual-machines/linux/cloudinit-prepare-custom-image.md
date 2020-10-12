@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: danis
 ms.openlocfilehash: 6785bb1f5ebde4f746dc8aa1ea9f586f406f8431
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373671"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Een bestaande installatie kopie van een virtuele Linux Azure-machine voorbereiden voor gebruik met Cloud-init

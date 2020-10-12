@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
 ms.openlocfilehash: 3b22105486aabe8d79848d7ac621b9543815d106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85366982"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Windows-extensie voor VM-moment opname voor Azure Backup
@@ -59,9 +59,9 @@ De volgende JSON toont het schema voor de extensie van de VM-moment opname. Voor
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | tekenreeks |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | tekenreeks |
 | landinstelling | nl-nl | tekenreeks |

@@ -8,17 +8,17 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870527"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Systeem functies (Azure Cosmos DB)
 
  Cosmos DB biedt veel ingebouwde SQL-functies. De categorieën ingebouwde functies worden hieronder weer gegeven.  
   
-|Functiegroep|Description|Bewerkingen|  
+|Functiegroep|Beschrijving|Bewerkingen|  
 |--------------|-----------------|-----------------| 
 |[Matrixfuncties](sql-query-array-functions.md)|De matrix functies voeren een bewerking uit op een invoer waarde van een matrix en retour neren numerieke, Booleaanse of matrix waarde. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md), [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Datum-en tijd functies](sql-query-date-time-functions.md)|Met de functies datum en tijd kunt u de huidige UTC-datum en-tijd in twee vormen ophalen. een numerieke tijds tempel waarvan de waarde de UNIX-epoche is in milliseconden of als een teken reeks die voldoet aan de ISO 8601-indeling. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
@@ -45,4 +45,4 @@ Het belangrijkste verschil tussen Cosmos DB functies en ANSI SQL-functies is dat
 - [Tekenreeksfuncties](sql-query-string-functions.md)
 - [Functies voor controle van het type](sql-query-type-checking-functions.md)
 - [Door de gebruiker gedefinieerde functies](sql-query-udfs.md)
-- [Aggregaties](sql-query-aggregates.md)
+- [Statistische functies](sql-query-aggregates.md)

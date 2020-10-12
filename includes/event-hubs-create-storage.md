@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75692525"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Een opslagaccount voor Event Processor Host maken
@@ -20,37 +20,37 @@ De Event Processor Host is een intelligente agent die het ontvangen van gebeurte
 
 1. Selecteer **Een resource maken** in het menu van de Azure-portal.
 
-    ![Een menu opdracht voor een resource maken, Microsoft Azure-portal](./media/event-hubs-create-storage/create-resource.png)
+    ![Een menuopdracht voor een resource maken, Microsoft Azure Portal](./media/event-hubs-create-storage/create-resource.png)
 
-2. Selecteer **opslag**  >  **opslag account**.
+2. Selecteer **Opslag** > **Opslagaccount**.
    
-    ![Selecteer een opslag account, Microsoft Azure-portal](./media/event-hubs-create-storage/select-storage-account.png)
+    ![Selecteer Opslagaccount, Microsoft Azure Portal](./media/event-hubs-create-storage/select-storage-account.png)
 
 3. Voer op de pagina **Opslagaccount maken** de volgende stappen uit: 
 
-   1. Voer de **naam van het opslag account**in.
-   2. Kies een Azure- **abonnement** dat de Event hub bevat.
-   3. Kies of maak de **resource groep** die de Event hub heeft.
-   4. Kies een **locatie** om de resource te maken. 
+   1. Voer de **naam van het opslagaccount** in.
+   2. Kies een Azure-**abonnement** dat de Event Hub bevat.
+   3. Kies of maak de **resourcegroep** waar de Event Hub deel van uitmaakt.
+   4. Selecteer een **Locatie** waar u de resource wilt maken. 
    5. Selecteer **Controleren + maken**.
    
-        ![Controleren + maken, opslag account maken, Microsoft Azure-portal](./media/event-hubs-create-storage/review-create.png)
+        ![Controleren + maken, Opslagaccount maken, Microsoft Azure Portal](./media/event-hubs-create-storage/review-create.png)
 
 4. Op de pagina **Controleren + maken** controleert u de waarden en selecteert u **Maken**. 
 
-    ![Controleer de instellingen voor het opslag account en maak, Microsoft Azure-portal](./media/event-hubs-create-storage/create-storage-account.png)
-5. Nadat u het bericht **implementaties voltooid** in uw meldingen hebt weer gegeven, selecteert u **naar resource gaan** om de pagina opslag account te openen. U kunt ook **implementatie gegevens** uitvouwen en vervolgens uw nieuwe resource selecteren in de lijst met resources.  
+    ![Opslagaccountinstellingen controleren en maken, Microsoft Azure Portal](./media/event-hubs-create-storage/create-storage-account.png)
+5. Nadat u bij uw meldingen het bericht ziet dat de **implementaties zijn geslaagd**, selecteert u **Naar de resource gaan** om de pagina Opslagaccount te openen. Als alternatief kunt u ook **Implementatiedetails** uitvouwen en vervolgens uw nieuwe resource selecteren in de lijst met resources.  
 
-    ![Ga naar resource, implementatie van het opslag account, Microsoft Azure-portal](./media/event-hubs-create-storage/go-to-resource.png) 
-6. Selecteer **containers**.
+    ![Naar de resource gaan, implementatie van opslagaccount, Microsoft Azure Portal](./media/event-hubs-create-storage/go-to-resource.png) 
+6. Selecteer **Containers**.
 
-    ![Selecteer de blobs-container service, opslag accounts, Microsoft Azure-portal](./media/event-hubs-create-storage/select-blob-container-service.png)
-7. Selecteer **+ container** bovenaan, voer een **naam** in voor de container en selecteer **OK**. 
+    ![De Blobs-containerservice, opslagaccounts selecteren, Microsoft Azure Portal](./media/event-hubs-create-storage/select-blob-container-service.png)
+7. Selecteer bovenaan **+ Container**, voer een **naam** in voor de container en selecteer **OK**. 
 
-    ![Een nieuwe BLOB-container maken, opslag accounts Microsoft Azure-portal](./media/event-hubs-create-storage/create-new-blob-container.png)
-8. Kies **toegangs sleutels** in het menu van het pagina voor het **opslag account** en kopieer de waarde van **key1**.
+    ![Een nieuwe blobcontainer maken, opslagaccounts, Microsoft Azure Portal](./media/event-hubs-create-storage/create-new-blob-container.png)
+8. Kies **Toegangssleutels** in het menu op de pagina **Opslagaccount** en kopieer de waarde van **key1**.
 
-    Sla de volgende waarden op in Klad blok of een andere tijdelijke locatie.
-    - De naam van het opslag account
-    - Toegangs sleutel voor het opslag account
+    Sla de volgende waarden op in Kladblok of op een andere tijdelijke locatie.
+    - Naam van het opslagaccount
+    - De toegangssleutel voor het opslagaccount
     - Naam van de container

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75494927"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Prestaties van Apache Kafka HDInsight-clusters optimaliseren
@@ -50,7 +50,7 @@ De door de producent vereiste `acks` configuratie bepaalt het aantal bevestiging
 
 Een Kafka-producer kan worden geconfigureerd om berichten te comprimeren voordat ze naar Brokers worden verzonden. De `compression.type` instelling geeft aan welke compressie-codec moet worden gebruikt. Ondersteunde compressie-codecs zijn ' gzip ', ' Snappy ' en ' LZ4 '. Compressie is nuttig en moet worden overwogen als er sprake is van een limiet voor de schijf capaciteit.
 
-Een van de twee veelgebruikte compressie-codecs `gzip` en `snappy` `gzip` heeft een hogere compressie ratio, wat resulteert in een lager schijf gebruik bij de kosten van een hogere CPU-belasting. De `snappy` codec biedt minder compressie met minder CPU-overhead. U kunt bepalen welke codec moet worden gebruikt op basis van de limieten van de Broker-schijf of de CPU van de producent. `gzip`kan gegevens comprimeren met een snelheid van vijf keer hoger dan `snappy` .
+Een van de twee veelgebruikte compressie-codecs `gzip` en `snappy` `gzip` heeft een hogere compressie ratio, wat resulteert in een lager schijf gebruik bij de kosten van een hogere CPU-belasting. De `snappy` codec biedt minder compressie met minder CPU-overhead. U kunt bepalen welke codec moet worden gebruikt op basis van de limieten van de Broker-schijf of de CPU van de producent. `gzip` kan gegevens comprimeren met een snelheid van vijf keer hoger dan `snappy` .
 
 Als u gegevens compressie gebruikt, wordt het aantal records dat op een schijf kan worden opgeslagen, verg root. Het kan ook CPU-overhead verhogen wanneer er niet overeenkomt tussen de compressie-indelingen die door de producent en de Broker worden gebruikt. Als de gegevens moeten worden gecomprimeerd voordat ze worden verzonden en gedecomprimeerd voordat ze worden verwerkt.
 

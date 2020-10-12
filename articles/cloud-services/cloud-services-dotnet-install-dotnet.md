@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932233"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>.NET installeren op Azure Cloud Services-rollen
@@ -223,7 +223,7 @@ Met deze XML worden diagnostische gegevens geconfigureerd voor het overdragen va
 ## <a name="deploy-your-cloud-service"></a>Uw Cloud service implementeren
 Wanneer u uw Cloud service implementeert, installeren de opstart taken de .NET Framework als deze nog niet is geïnstalleerd. De Cloud service rollen zijn in de status *bezet* terwijl het Framework wordt geïnstalleerd. Als de Framework-installatie opnieuw moet worden gestart, kunnen de service rollen ook opnieuw worden gestart. 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 * [De .NET Framework installeren][Installing the .NET Framework]
 * [Bepalen welke .NET Framework versies worden geïnstalleerd][How to: Determine Which .NET Framework Versions Are Installed]
 * [Problemen met .NET Framework-installaties oplossen][Troubleshooting .NET Framework Installations]

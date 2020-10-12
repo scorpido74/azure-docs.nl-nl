@@ -9,10 +9,10 @@ ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75772908"
 ---
 Deze fout kan optreden wanneer de Azure File Sync-service niet toegankelijk is vanaf de server. U kunt deze fout oplossen door de volgende stappen te doorlopen:
@@ -31,6 +31,6 @@ Deze fout kan optreden wanneer de Azure File Sync-service niet toegankelijk is v
     Import-Module "$agentPath\StorageSync.Management.ServerCmdlets.dll"
     Get-StorageSyncProxyConfiguration
     ```
-4. Gebruik de cmdlet test-StorageSyncNetworkConnectivity om de netwerk verbinding met de service-eind punten te controleren. Zie [netwerk connectiviteit testen op service-eind punten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)voor meer informatie.    
+4. Gebruik de cmdlet Test-StorageSyncNetworkConnectivity om de netwerk verbinding met de service-eind punten te controleren. Zie [netwerk connectiviteit testen op service-eind punten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints)voor meer informatie.    
 
 5. Neem contact op met de netwerk beheerder voor aanvullende hulp bij het oplossen van problemen met de netwerk verbinding.

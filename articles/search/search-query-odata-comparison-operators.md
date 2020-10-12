@@ -20,22 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934868"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-vergelijkings operatoren in azure Cognitive Search-,,,, en `eq` `ne` `gt` `lt` `ge``le`
 
-De meest eenvoudige bewerking in een [OData-filter expressie](query-odata-filter-orderby-syntax.md) in azure Cognitive Search is het vergelijken van een veld met een bepaalde waarde. Er zijn twee soorten vergelijking mogelijk: gelijkheids vergelijking en bereik vergelijking. U kunt de volgende opera toren gebruiken om een veld te vergelijken met een constante waarde:
+De meest eenvoudige bewerking in een [OData-filter expressie](query-odata-filter-orderby-syntax.md) in azure Cognitive Search is het vergelijken van een veld met een bepaalde waarde. Er zijn twee soorten vergelijking mogelijk: gelijkheids vergelijking en bereik vergelijking. U kunt de volgende operators gebruiken om een veld te vergelijken met een constante waarde:
 
-Gelijkheids operatoren:
+Gelijkheidsoperators:
 
 - `eq`: Test of een veld **gelijk is aan** een constante waarde
 - `ne`: Testen of een veld **niet gelijk is aan** een constante waarde
 
-Bereik operatoren:
+Bereikoperators:
 
 - `gt`: Testen of een veld **groter is dan** een constante waarde
 - `lt`: Testen of een veld **kleiner is dan** een constante waarde
@@ -49,7 +49,7 @@ U kunt de bereik operatoren in combi natie met de [logische Opera tors](search-q
 
 ## <a name="syntax"></a>Syntax
 
-De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van de vergelijkings operators.
+De volgende EBNF ([uitgebreid Backus-Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van de vergelijkings operators.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -81,13 +81,13 @@ De gegevens typen aan beide zijden van een vergelijkings operator moeten compati
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | De vergelijking is onderhevig aan [speciale `NaN` regels voor](#special-case-nan) |
 | `Edm.Double` | `Edm.Int64` | Constante wordt geconverteerd naar `Edm.Double` , wat resulteert in een precisie verlies voor waarden van grote grootte |
-| `Edm.Double` | `Edm.Int32` | N.v.t. |
+| `Edm.Double` | `Edm.Int32` | n.v.t. |
 | `Edm.Int64` | `Edm.Double` | Vergelijkingen naar `NaN` , `-INF` of `INF` zijn niet toegestaan |
-| `Edm.Int64` | `Edm.Int64` | N.v.t. |
+| `Edm.Int64` | `Edm.Int64` | n.v.t. |
 | `Edm.Int64` | `Edm.Int32` | Constante wordt geconverteerd naar `Edm.Int64` vóór vergelijking |
 | `Edm.Int32` | `Edm.Double` | Vergelijkingen naar `NaN` , `-INF` of `INF` zijn niet toegestaan |
-| `Edm.Int32` | `Edm.Int64` | N.v.t. |
-| `Edm.Int32` | `Edm.Int32` | N.v.t. |
+| `Edm.Int32` | `Edm.Int64` | n.v.t. |
+| `Edm.Int32` | `Edm.Int32` | n.v.t. |
 
 Voor vergelijkingen die niet zijn toegestaan, zoals het vergelijken van een veld van `Edm.Int64` het type naar `NaN` , retourneert de Azure Cognitive Search rest API de fout ' http 400: onjuiste aanvraag '.
 

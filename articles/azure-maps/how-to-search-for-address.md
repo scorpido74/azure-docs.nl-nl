@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310982"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
@@ -46,7 +46,7 @@ In dit voor beeld gebruiken we de Azure Maps [Zoek adres-API ophalen](https://do
 
 3. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. In deze aanvraag zoeken we naar een specifiek adres: `400 Braod St, Seattle, WA 98109` .
 
-    Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet er ongeveer uitzien als de volgende URL:
+    Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -78,7 +78,7 @@ In dit voor beeld gebruiken we fuzzy Search om te zoeken naar de hele wereld voo
 
 1. Open de Postman-app, klik op **Nieuw**en selecteer **aanvraag**. Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u hebt gemaakt in de vorige sectie of maak een nieuwe, en selecteer vervolgens **Opslaan**.
 
-2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet er ongeveer uitzien als de volgende URL:
+2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
@@ -95,7 +95,7 @@ In dit voor beeld gebruiken we fuzzy Search om te zoeken naar de hele wereld voo
 
 4. Het standaard gedrag is om de hele wereld te doorzoeken, waardoor mogelijk onnodige resultaten worden geretourneerd. We zoeken nu alleen naar Pizza van de Verenigde Staten. Voeg de `countrySet` sleutel toe aan de sectie **params** en stel de waarde in op `US` . Als de `countrySet` sleutel wordt ingesteld op `US` , worden de resultaten gebonden aan de Verenigde Staten.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Zoeken naar pizza in de Verenigde Staten":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Adres zoeken":::
 
     De resultaten worden nu begrensd door de land code en de query retourneert pizza restaurants in de Verenigde Staten.
 
@@ -126,7 +126,7 @@ In dit voor beeld maken we omgekeerde Zoek opdrachten met enkele van de optionel
 
 1. Klik in de app postman op **Nieuw**en selecteer **aanvraag**. Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de eerste sectie hebt gemaakt of maak een nieuwe, en selecteer vervolgens **Opslaan**.
 
-2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet er ongeveer uitzien als de volgende URL:
+2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
 
     ```http
     https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
@@ -143,13 +143,13 @@ In dit voor beeld maken we omgekeerde Zoek opdrachten met enkele van de optionel
     | returnRoadUse | true | Hiermee wordt het gebruik van typen weg op het adres geretourneerd. Voor alle mogelijke typen weg gebruik, Zie [typen voor gebruik](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)van de weg.|
     | returnMatchType | true| Hiermee wordt het type overeenkomst geretourneerd. Zie [omgekeerde adres Zoek resultaten](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult) voor alle mogelijke waarden
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Zoeken in omgekeerde volg orde.":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Adres zoeken":::
 
 5. Klik op **verzenden**en controleer de tekst van het antwoord.
 
 6. Vervolgens voegt u de sleutel toe `entityType` en stelt u de waarde in op `Municipality` . De `entityType` sleutel wordt vervangen door de `returnMatchType` sleutel in de vorige stap. We moeten ook proberen om `returnSpeedLimit` `returnRoadUse` informatie over de gemeente te verwijderen.  Zie [entiteits typen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype)voor alle mogelijke entiteits typen.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Achterwaartse-entityType zoeken.":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Adres zoeken":::
 
 7. Klik op **Verzenden**. Vergelijk de resultaten met de resultaten die u in stap 5 hebt geretourneerd.  Omdat het aangevraagde entiteit type nu is `municipality` , bevat het antwoord geen adres informatie. De geretourneerde `geometryId` kan ook worden gebruikt om grens veelhoek aan te vragen via Azure Maps [Zoek VEELHOEK-API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)ophalen.
 
@@ -162,13 +162,13 @@ In dit voor beeld zoeken we naar een cross-straat op basis van de coördinaten v
 
 1. Klik in de app postman op **Nieuw**en selecteer **aanvraag**. Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de eerste sectie hebt gemaakt of maak een nieuwe, en selecteer vervolgens **Opslaan**.
 
-2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet er ongeveer uitzien als de volgende URL:
+2. Selecteer de methode http **ophalen** op het tabblad Builder en voer de volgende URL in. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt u `{Azure-Maps-Primary-Subscription-key}` door uw primaire abonnementssleutel. De aanvraag moet lijken op de volgende URL:
   
     ```http
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Zoeken in Kruis adres.":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Adres zoeken":::
   
 3. Klik op **verzenden**en controleer de tekst van het antwoord. U ziet dat het antwoord een waarde bevat `crossStreet` van `Occidental Avenue South` .
 

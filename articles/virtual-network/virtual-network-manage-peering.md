@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89290171"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Een peering op een virtueel netwerk maken, wijzigen of verwijderen
@@ -136,7 +136,7 @@ Als u wilt dat virtuele netwerken soms communiceren, maar niet altijd, in plaats
 - Resources in gekoppelde virtuele netwerken in dezelfde regio kunnen met elkaar communiceren met dezelfde band breedte en latentie alsof ze zich in hetzelfde virtuele netwerk bevinden. De grootte van elke virtuele machine heeft echter een eigen maximale netwerk bandbreedte. Zie grootten van virtuele machines voor [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over de maximale netwerk bandbreedte voor verschillende groottes van virtuele machines.
 - Een virtueel netwerk kan worden gekoppeld aan een ander virtueel netwerk en ook worden verbonden met een ander virtueel netwerk met een virtuele Azure-netwerk gateway. Wanneer virtuele netwerken zijn verbonden via peering en een gateway, loopt verkeer tussen de virtuele netwerken via de peering-configuratie, in plaats van de gateway.
 - Punt-naar-site-VPN-clients moeten opnieuw worden gedownload nadat de peering van het virtuele netwerk is geconfigureerd om ervoor te zorgen dat de nieuwe routes naar de client worden gedownload.
-- Er wordt een nominaal bedrag in rekening gebracht voor inkomend en uitgaand verkeer dat gebruikmaakt van een virtueel netwerk-peering. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/virtual-network)voor meer informatie.
+- Er wordt een nominaal bedrag in rekening gebracht voor inkomend en uitgaand verkeer dat gebruikmaakt van een virtueel netwerk-peering. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/virtual-network) voor meer informatie.
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -147,7 +147,7 @@ De accounts die u gebruikt om te werken met de peering van het virtuele netwerk 
 
 Als uw account niet is toegewezen aan een van de vorige rollen, moet dit worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Actie                                                          | Naam |
+| Bewerking                                                          | Naam |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vereist voor het maken van een peering van een virtueel netwerk A naar een virtueel netwerk B. virtueel netwerk A moet een virtueel netwerk zijn (Resource Manager)          |
 | Micro soft. Network/virtualNetworks/peer/Action                   | Vereist voor het maken van een peering van een virtueel netwerk B (Resource Manager) naar een virtueel netwerk                                                       |

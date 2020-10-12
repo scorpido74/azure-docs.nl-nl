@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207802"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent
@@ -31,7 +31,7 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
 
 Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
-Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 > [!NOTE]  
 > Als u de klassieke waarschuwings regels wilt migreren en een bestaande virtuele Linux-machine wilt gebruiken, moet u ervoor zorgen dat aan de virtueel-machine een **door**het systeem toegewezen identiteit is ingesteld op on.
@@ -58,7 +58,7 @@ Een nieuwe virtuele Linux-machine maken:
 
 1. De VM wordt aan het dashboard van de Azure Portal vastgemaakt. Nadat de implementatie is voltooid, wordt de samen vatting van de VM automatisch geopend. 
 
-1. Ga in het deel venster VM naar het tabblad **identiteit** . Controleer of er een door het systeem toegewezen identiteit is ingesteld op **aan op**de VM. 
+1. Ga in het deel venster VM naar het tabblad **identiteit** . Zorg ervoor dat op de virtuele machine een door het systeem toegewezen identiteit is ingesteld op **aan**. 
  
     ![Voor beeld van telegrafie VM-identiteit](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  

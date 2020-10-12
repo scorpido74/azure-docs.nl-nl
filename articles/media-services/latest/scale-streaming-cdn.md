@@ -1,7 +1,7 @@
 ---
 title: Inhoud streamen met CDN-integratie
 titleSuffix: Azure Media Services
-description: Meer informatie over het streamen van inhoud met CDN-integratie en het vooraf ophalen en verkrijgen van CDN-prefetch.
+description: Meer informatie over het streamen van inhoud met CDN-integratie en het vooraf ophalen en Origin-Assist CDN-prefetch.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291276"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Inhoud streamen met CDN-integratie
@@ -67,7 +67,7 @@ Azure Media Services integratie met Azure CDN is geïmplementeerd op **Azure CDN
 
 U kunt bepalen of de DNS-wijziging is doorgevoerd in een streaming-eind punt (het verkeer wordt omgeleid naar de Azure CDN) met behulp van <https://www.digwebinterface.com> . Als u azureedge.net-domein namen in de resultaten ziet, wordt het verkeer nu naar het CDN gewijsd.
 
-## <a name="origin-assist-cdn-prefetch"></a>Oorsprong-door CDN-prefetch
+## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
 
 CDN-caching is een reactief proces. Als CDN kan voors pellen wat het volgende object zal worden aangevraagd, kan CDN het volgende object proactief aanvragen en in de cache opslaan. Met dit proces kunt u een cache-treffer voor alle (of de meeste) objecten bereiken, waardoor de prestaties verbeteren.
 
@@ -125,11 +125,11 @@ De `Origin-Assist CDN-Prefetch` functie ondersteunt de volgende streaming-protoc
 
     Nee, CDN-prefetch wordt pas uitgevoerd na een aanvraag/antwoord dat door de client is gestart. CDN-prefetch wordt nooit geactiveerd door een prefetch, om een prefetch-lus te voor komen.
 
-* Is oorsprong: de functie voor het vooraf gebruiken van CDN-prefetch is altijd ingeschakeld? Hoe kan deze worden in-of uitgeschakeld?
+* Is Origin-Assist CDN-Prefetch functie altijd ingeschakeld? Hoe kan deze worden in-of uitgeschakeld?
 
     Deze functie is standaard uitgeschakeld. Klanten moeten deze inschakelen via Akamai API.
 
-* Wat gebeurt er met live streamen als het volgende segment of fragment nog niet beschikbaar is?
+* Wat gebeurt er Origin-Assist met live streamen wanneer het volgende segment of fragment nog niet beschikbaar is?
 
     In dit geval bieden de Media Services oorsprong `CDN-Origin-Assist-Prefetch-Path` geen header en kan CDN-prefetch niet worden uitgevoerd.
 

@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u de Azure Monitor voor contain
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971367"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Scraping van metrische gegevens voor Prometheus configureren met Azure Monitor voor containers
@@ -49,8 +49,8 @@ Wanneer een URL is opgegeven, wordt het eind punt alleen door Azure Monitor voor
 | Cluster-breed | | | | Geef een van de volgende drie methoden op om eind punten voor metrische gegevens af te vallen. |
 | | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifiek Azure Monitor voor de para meter containers en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
 | | `kubernetes_services` | Tekenreeks | Door komma's gescheiden matrix | Een matrix met Kubernetes-Services voor het opwaarderen van metrische gegevens uit uitvoeren. Bijvoorbeeld `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boolean-waarde | waar of onwaar | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean-waarde | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods` moet worden ingesteld op `true` . |
+| | `monitor_kubernetes_pods` | Booleaans | waar of onwaar | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Booleaans | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods` moet worden ingesteld op `true` . |
 | | `prometheus.io/scheme` | Tekenreeks | http of https | De standaard instelling is het uitvallen van HTTP. Stel, indien nodig, in op `https` . | 
 | | `prometheus.io/path` | Tekenreeks | Door komma's gescheiden matrix | Het HTTP-bronpad waarvan de metrische gegevens moeten worden opgehaald. Als het pad naar metrische gegevens niet is `/metrics` , definieert u dit met deze aantekening. |
 | | `prometheus.io/port` | Tekenreeks | 9102 | Geef een poort op waarvan u wilt uitvallen. Als poort niet is ingesteld, wordt de standaard waarde van 9102. |

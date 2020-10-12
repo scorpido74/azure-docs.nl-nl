@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135392"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Herstel na nood geval instellen voor een share point-toepassing met meerdere lagen voor herstel na nood geval met behulp van Azure Site Recovery
 
-In dit artikel wordt gedetailleerde informatie gegeven over het beveiligen van een share point-toepassing met behulp van [Azure site Recovery](site-recovery-overview.md).
+In dit artikel wordt gedetailleerde informatie gegeven over het beveiligen van een share point-toepassing met behulp van  [Azure site Recovery](site-recovery-overview.md).
 
 
 ## <a name="overview"></a>Overzicht
@@ -65,7 +65,7 @@ Site Recovery is neutraal van toepassingen en moet werken met elke versie van sh
 **Hyper-V** | Ja | Ja
 **VMware** | Ja | Ja
 **Fysieke server** | Ja | Ja
-**Azure** | NA | Yes
+**Azure** | N.v.t. | Ja
 
 
 ### <a name="things-to-keep-in-mind"></a>Zaken om rekening mee te houden
@@ -84,7 +84,7 @@ Volg [deze richt lijnen](./vmware-azure-tutorial.md) om te beginnen met het repl
 
 * Raadpleeg SQL Server-document [beveiligen](site-recovery-sql.md) voor meer informatie over het beveiligen van de database tier die op SQL Server wordt uitgevoerd.
 
-## <a name="networking-configuration"></a>Netwerk configuratie
+## <a name="networking-configuration"></a>Netwerkconfiguratie
 
 ### <a name="network-properties"></a>Netwerk eigenschappen
 
@@ -102,7 +102,7 @@ Volg [deze richt lijnen](./vmware-azure-tutorial.md) om te beginnen met het repl
 Voor Internet gerichte sites [maakt u een Traffic Manager profiel van het type Priority](../traffic-manager/quickstart-create-traffic-manager-profile.md) in het Azure-abonnement. En configureer uw DNS-en Traffic Manager profiel op de volgende manier.
 
 
-| **Waar** | **Bron** | **Doel**|
+| **Positie** | **Bron** | **Doel**|
 | --- | --- | --- |
 | Openbare DNS | Open bare DNS voor share point-sites <br/><br/> Bijvoorbeeld: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | Openbaar IP-adres op de on-premises Farm |

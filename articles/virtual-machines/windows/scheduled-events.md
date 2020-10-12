@@ -10,10 +10,10 @@ ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 41e8f6f3e3562654edcc4ba347abe57e300af511
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89074222"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events voor Windows-Vm's
@@ -74,12 +74,12 @@ Er is een versie van de Scheduled Events-service. Versies zijn verplicht. de hui
 
 | Versie | Release type | Regio's | Releaseopmerkingen | 
 | - | - | - | - | 
-| 2019-08-01 | Algemene Beschik baarheid | Alle | <li> Ondersteuning toegevoegd voor Event source |
-| 2019-04-01 | Algemene Beschik baarheid | Alle | <li> Er is ondersteuning toegevoegd voor de beschrijving van de gebeurtenis |
-| 2019-01-01 | Algemene Beschik baarheid | Alle | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' Terminate ' voor de virtuele-machine schaal sets |
-| 2017-11-01 | Algemene Beschik baarheid | Alle | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering van de publicatie<br> | 
-| 2017-08-01 | Algemene Beschik baarheid | Alle | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
-| 2017-03-01 | Preview | Alle | <li>Eerste release |
+| 2019-08-01 | Algemene Beschik baarheid | Alles | <li> Ondersteuning toegevoegd voor Event source |
+| 2019-04-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de beschrijving van de gebeurtenis |
+| 2019-01-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' Terminate ' voor de virtuele-machine schaal sets |
+| 2017-11-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de gebeurtenis ' preempt ' voor VM-verwijdering van de publicatie<br> | 
+| 2017-08-01 | Algemene Beschik baarheid | Alles | <li> Achterliggend onderstrepings teken verwijderd uit resource namen voor IaaS-Vm's<br><li>Er is een vereiste voor de meta gegevens header afgedwongen voor alle aanvragen | 
+| 2017-03-01 | Preview | Alles | <li>Eerste release |
 
 
 > [!NOTE] 

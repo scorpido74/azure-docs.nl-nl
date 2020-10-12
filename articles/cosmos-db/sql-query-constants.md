@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74873417"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-query constanten  
@@ -23,13 +23,13 @@ ms.locfileid: "74873417"
 |-|-|  
 |**Undefined**|Enkele waarde: niet **gedefinieerd**|  
 |**Null**|Enkele waarde: **Null**|  
-|**Boolean-waarde**|Waarden: **False**, **True**.|  
+|**Booleaans**|Waarden: **False**, **True**.|  
 |**Number**|Een drijvende-komma getal met dubbele precisie, IEEE 754-standaard.|  
 |**Tekenreeks**|Een reeks van nul of meer Unicode-tekens. Teken reeksen moeten tussen enkele of dubbele aanhalings tekens worden geplaatst.|  
-|**Matrix**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
+|**Array**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
 |**Object**|Een niet-geordende set met nul of meer naam/waarde-paren. Naam is een Unicode-teken reeks, waarde kan van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntaxis
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "74873417"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>Opmerkingen
+##  <a name="arguments"></a><a name="bk_arguments"></a> Opmerkingen
   
 * `<undefined_constant>; Undefined`  
   
