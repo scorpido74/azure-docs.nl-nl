@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087359"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight
@@ -65,7 +65,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     |Resourcegroep | Locatie |
     |---|---|
-    | Kafka-primair-RG | VS - centraal |
+    | Kafka-primair-RG | Central US |
     | Kafka-secundair-RG | VS - noord-centraal |
 
 1. Maak een nieuw virtueel netwerk **Kafka-primair-vnet** in **Kafka-Primary-RG**. Behoud de standaard instellingen.
@@ -73,7 +73,7 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
 1. Twee nieuwe Kafka-clusters maken:
 
-    | Clusternaam | Resourcegroep | Virtual Network | Opslagaccount |
+    | Clusternaam | Resource Group | Virtual Network | Opslagaccount |
     |---|---|---|---|
     | Kafka-primair-cluster | Kafka-primair-RG | Kafka-primair-vnet | kafkaprimarystorage |
     | Kafka-secundair-cluster | Kafka-secundair-RG | Kafka-secundair-vnet | kafkasecondarystorage |

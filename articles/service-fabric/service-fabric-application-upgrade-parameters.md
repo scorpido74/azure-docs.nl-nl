@@ -4,10 +4,10 @@ description: Beschrijft para meters met betrekking tot het bijwerken van een Ser
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247962"
 ---
 # <a name="application-upgrade-parameters"></a>Parameters toepassingsupgrade
@@ -52,7 +52,7 @@ De para meters voor de status evaluatie zijn optioneel. Als de criteria voor de 
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Hiermee geeft u de onderdrukkingen voor toepassings parameters op.<br>Power shell-toepassings parameters zijn opgegeven als hash-naam/waarde-paren. Bijvoorbeeld: @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Visual Studio-toepassings parameters kunnen worden opgegeven in het dialoog venster Service Fabric toepassing publiceren in het veld **toepassings parameters bestand** .
 > | Bevestigen |PS| Toegestane waarden zijn **waar** en **Onwaar**. Vraagt om bevestiging voordat de cmdlet wordt uitgevoerd. |
-> | ConsiderWarningAsError |PS, VS |Toegestane waarden zijn **waar** en **Onwaar**. De standaardwaarde is **False**. Behandel de waarschuwingen voor de status van de toepassing als fouten bij het evalueren van de status van de toepassing tijdens de upgrade. Service Fabric worden standaard status gebeurtenissen niet geëvalueerd als fouten (fouten), zodat de upgrade kan worden voortgezet, zelfs als er sprake is van waarschuwings gebeurtenissen. |
+> | ConsiderWarningAsError |PS, VS |Toegestane waarden zijn **waar** en **Onwaar**. De standaard waarde is **False**. Behandel de waarschuwingen voor de status van de toepassing als fouten bij het evalueren van de status van de toepassing tijdens de upgrade. Service Fabric worden standaard status gebeurtenissen niet geëvalueerd als fouten (fouten), zodat de upgrade kan worden voortgezet, zelfs als er sprake is van waarschuwings gebeurtenissen. |
 > | DefaultServiceTypeHealthPolicy | PS, VS |Hiermee geeft u het status beleid op voor het standaard service type dat moet worden gebruikt voor de bewaakte upgrade in de indeling MaxPercentUnhealthyPartitionsPerService, MaxPercentUnhealthyReplicasPerPartition, MaxPercentUnhealthyServices. Bijvoorbeeld, 5, 10, 15 geeft de volgende waarden aan: MaxPercentUnhealthyPartitionsPerService = 5, MaxPercentUnhealthyReplicasPerPartition = 10, MaxPercentUnhealthyServices = 15. |
 > | Force | PS, VS | Toegestane waarden zijn **waar** en **Onwaar**. Geeft aan dat het upgrade proces het waarschuwings bericht overs laat en de upgrade afdwingt, zelfs wanneer het versie nummer niet is gewijzigd. Dit is nuttig voor lokale tests, maar wordt niet aanbevolen voor gebruik in een productie omgeving, omdat de bestaande implementatie moet worden verwijderd waardoor er minder tijd en mogelijk gegevens verloren gaan. |
 > | ForceRestart |PS, VS |Als u een configuratie of gegevens pakket bijwerkt zonder de service code bij te werken, wordt de service alleen opnieuw opgestart als de eigenschap ForceRestart is ingesteld op **True**. Wanneer de update is voltooid, wordt door Service Fabric een melding verzonden naar de service dat er een nieuw configuratie pakket of gegevens pakket beschikbaar is. De service is verantwoordelijk voor het Toep assen van de wijzigingen. Als dat nodig is, kan de service zichzelf opnieuw opstarten. |
@@ -101,7 +101,7 @@ service-status-beleid | JSON-gecodeerde toewijzing met status beleid van Service
 timeout | Hiermee geeft u de time-outperiode in seconden voor de bewerking. Standaard: 60. |
 upgrade-domein-time-out | De hoeveelheid tijd die elk upgrade domein moet volt ooien voordat *FailureAction* wordt uitgevoerd. Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. De standaard waarde is nooit (oneindig) en moet op de juiste wijze worden aangepast voor uw toepassing. Standaard: P10675199DT02H48M 05.4775807 S. |
 upgrade-time-out | De hoeveelheid tijd die elk upgrade domein moet volt ooien voordat *FailureAction* wordt uitgevoerd. Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. De standaard waarde is nooit (oneindig) en moet op de juiste wijze worden aangepast voor uw toepassing. Standaard: P10675199DT02H48M 05.4775807 S.|
-waarschuwing-als-fout | Toegestane waarden zijn **waar** en **Onwaar**. De standaardwaarde is **False**. Kan worden door gegeven als een vlag. Behandel de waarschuwingen voor de status van de toepassing als fouten bij het evalueren van de status van de toepassing tijdens de upgrade. Service Fabric worden standaard status gebeurtenissen niet geëvalueerd als fouten (fouten), zodat de upgrade kan worden voortgezet, zelfs als er sprake is van waarschuwings gebeurtenissen. |
+waarschuwing-als-fout | Toegestane waarden zijn **waar** en **Onwaar**. De standaard waarde is **False**. Kan worden door gegeven als een vlag. Behandel de waarschuwingen voor de status van de toepassing als fouten bij het evalueren van de status van de toepassing tijdens de upgrade. Service Fabric worden standaard status gebeurtenissen niet geëvalueerd als fouten (fouten), zodat de upgrade kan worden voortgezet, zelfs als er sprake is van waarschuwings gebeurtenissen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.

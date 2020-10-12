@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329258"
 ---
 # <a name="public-ip-addresses"></a>Openbare IP-adressen
@@ -153,7 +153,7 @@ Zie [Standaard-SKU's van Azure Load Balancer](../load-balancer/load-balancer-sta
 
 [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verbindt een virtueel Azure-netwerk met:
 
-* Virtuele netwerken van Azure
+* Virtuele netwerken van Azure.
 * On-premises netwerk (en). 
 
 Er wordt een openbaar IP-adres toegewezen aan de VPN Gateway om communicatie met het externe netwerk mogelijk te maken. U kunt alleen een *dynamisch* openbaar IP-adres uit de Basic-SKU toewijzen aan een VPN-gateway.

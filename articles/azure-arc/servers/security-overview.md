@@ -4,10 +4,10 @@ description: Beveiligings informatie over servers met Azure Arc ingeschakeld.
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329037"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Overzicht van Azure Arc for servers-beveiliging

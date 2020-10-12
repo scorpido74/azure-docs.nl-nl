@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: c68bedb37722fb6a8b7ad9dccdeaaaa4fab9d020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264127"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Media Services bijwerken na gebruik toegangssleutels voor opslag
@@ -47,7 +47,7 @@ Media Services is afhankelijk van een opslag sleutel die hieraan is gegeven. Met
 ## <a name="steps-to-rotate-storage-keys"></a>Stappen voor het draaien van opslag sleutels 
  
  1. Wijzig de primaire sleutel voor het opslag account via de Power shell-cmdlet of [Azure](https://portal.azure.com/) Portal.
- 2. Roep Sync-AzMediaServiceStorageKeys cmdlet aan met de juiste para meters om media account af te dwingen sleutels van het opslag account op te halen
+ 2. Roep Sync-AzMediaServiceStorageKeys cmdlet aan met de juiste para meters om media account te dwingen om sleutels voor het opslag account op te halen
  
     In het volgende voor beeld ziet u hoe u sleutels synchroniseert met opslag accounts.
   

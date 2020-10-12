@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: gwallace
 ms.openlocfilehash: 7f3c3e072a3a2e4f7723f84b2c70ba0d0ddb9d03
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258841"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Algemene uitzonderingen en fouten bij het werken met de FabricClient-API's
@@ -27,7 +27,7 @@ Er zijn veel verschillende typen bewerkingen die kunnen worden uitgevoerd met be
 
 Enkele veelvoorkomende [FabricErrorCode](/dotnet/api/system.fabric.fabricerrorcode) -fouten die kunnen worden geretourneerd in een [FabricException](/dotnet/api/system.fabric.fabricexception):
 
-| Fout | Voorwaarde |
+| Fout | Conditie |
 | --- |:--- |
 | CommunicationError |Er is een communicatie fout opgetreden waardoor de bewerking is mislukt. Voer de bewerking opnieuw uit. |
 | InvalidCredentialType |Het referentie type is ongeldig. |

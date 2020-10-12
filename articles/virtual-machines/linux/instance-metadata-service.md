@@ -12,10 +12,10 @@ ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
 ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974141"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
@@ -238,13 +238,13 @@ API | Beschrijving | Geïntroduceerde versie
 
 Met instance API worden de belang rijke meta gegevens voor de VM-exemplaren weer gegeven, met inbegrip van de VM, het netwerk en de opslag. U kunt toegang krijgen tot de volgende categorieën via instance/Compute:
 
-Gegevens | Description | Geïntroduceerde versie
+Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
 azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 2018-10-01
 customData | Deze functie is momenteel uitgeschakeld. Deze documentatie wordt bijgewerkt wanneer deze beschikbaar wordt | 2019-02-01
 isHostCompatibilityLayerVm | Hiermee wordt aangegeven of de virtuele machine wordt uitgevoerd op de compatibiliteit slaag van de host | 2020-06-01
 location | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
-name | Naam van de virtuele machine | 2017-04-02
+naam | Naam van de virtuele machine | 2017-04-02
 offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
 osType | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
@@ -432,7 +432,7 @@ De Cloud en de waarden van de Azure-omgeving worden hieronder weer gegeven.
 
 De meta gegevens van het netwerk maken deel uit van de exemplaar-API. De volgende netwerk categorieën zijn beschikbaar via het eind punt van het exemplaar/netwerk.
 
-Gegevens | Description | Geïntroduceerde versie
+Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
 IPv4-privateIpAddress | Lokaal IPv4-adres van de virtuele machine | 2017-04-02
 IPv4-publicIpAddress | Openbaar IPv4-adres van de virtuele machine | 2017-04-02
@@ -510,7 +510,7 @@ versie | Versie van de installatie kopie van het platform of de Marketplace
 
 Het object van de besturingssysteem schijf bevat de volgende informatie over de besturingssysteem schijf die wordt gebruikt door de virtuele machine:
 
-Gegevens    | Description
+Gegevens    | Beschrijving
 --------|-----------------
 in | Cache vereisten
 createOption | Informatie over de manier waarop de virtuele machine is gemaakt
@@ -519,13 +519,13 @@ diskSizeGB | Grootte van de schijf in GB
 image   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 LUN     | Nummer van de logische eenheid van de schijf
 managedDisk | Beheerde schijf parameters
-name    | Schijf naam
+naam    | Schijf naam
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
 
 De matrix gegevens schijven bevat een lijst met gegevens schijven die zijn gekoppeld aan de VM. Elk gegevens schijf object bevat de volgende informatie:
 
-Gegevens    | Description
+Gegevens    | Beschrijving
 --------|-----------------
 in | Cache vereisten
 createOption | Informatie over de manier waarop de virtuele machine is gemaakt
@@ -534,7 +534,7 @@ diskSizeGB | Grootte van de schijf in GB
 encryptionSettings | Versleutelings instellingen voor de schijf
 image   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 managedDisk | Beheerde schijf parameters
-name    | Schijf naam
+naam    | Schijf naam
 osType  | Type besturings systeem dat is opgenomen in de schijf
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
@@ -687,7 +687,7 @@ Nonce is een optionele teken reeks van tien cijfers. Als u dit niet opgeeft, ret
 De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met bepaalde specifieke details van de virtuele machine. Voor ARM-Vm's geldt het volgende: vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure Marketplace. Voor klassieke virtuele machines (zonder ARM) is alleen de vmId gegarandeerd. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 Het document bevat de volgende velden:
 
-Gegevens | Description
+Gegevens | Beschrijving
 -----|------------
 nonce | Een teken reeks die optioneel kan worden meegeleverd met de aanvraag. Als er geen nonce is opgegeven, wordt de huidige UTC-tijds tempel gebruikt
 plannen | Het [abonnement op de Azure Marketplace-installatie kopie](/rest/api/compute/virtualmachines/createorupdate#plan). Bevat de plan-id (naam), product afbeelding of aanbieding (product) en uitgever-ID (uitgever).
@@ -805,7 +805,7 @@ De service is **algemeen beschikbaar** in alle Azure-Clouds.
 
 Voor beelden van het aanroepen van meta gegevens service met verschillende talen in de virtuele machine:
 
-Taal      | Voorbeeld
+Taal      | Voorbeeld:
 --------------|----------------
 Bash          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 C#            | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

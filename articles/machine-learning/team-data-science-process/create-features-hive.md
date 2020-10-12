@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085375"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Functies maken voor gegevens in een Hadoop-cluster met behulp van Hive-query's
-In dit document wordt beschreven hoe u functies maakt voor gegevens die zijn opgeslagen in een Azure HDInsight Hadoop cluster met behulp van Hive-query's. Deze Hive-query's gebruiken Inge sloten Hive door de gebruiker gedefinieerde functies (Udf's), de scripts waarvoor worden opgegeven.
+In dit document wordt beschreven hoe u functies maakt voor gegevens die zijn opgeslagen in een Azure HDInsight Hadoop cluster met behulp van Hive-query's. Deze Hive-query's maken gebruik van Inge sloten Hive User-Defined functions (UDFs), de scripts waarvoor wordt voorzien.
 
 De bewerkingen die nodig zijn om functies te maken, kunnen geheugen intensief zijn. De prestaties van Hive-query's worden kritieker in dergelijke gevallen en kunnen worden verbeterd door bepaalde para meters af te stemmen. De afstemming van deze para meters wordt beschreven in de laatste sectie.
 
@@ -150,7 +150,7 @@ De wiskundige vergelijkingen waarmee de afstand tussen twee GPS-coördinaten wor
 
 Een volledige lijst met Inge sloten Hive-Udf's vindt u in de sectie **ingebouwde functies** op de <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">wiki Apache Hive</a>.  
 
-## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>Geavanceerde onderwerpen: Hive-para meters afstemmen om de query snelheid te verbeteren
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Geavanceerde onderwerpen: Hive-para meters afstemmen om de query snelheid te verbeteren
 De standaard parameter instellingen van het Hive-cluster zijn mogelijk niet geschikt voor de Hive-query's en de gegevens die door de query's worden verwerkt. In deze sectie worden enkele para meters beschreven die gebruikers kunnen afstemmen om de prestaties van Hive-query's te verbeteren. Gebruikers moeten de para meters voor het afstemmen van query's toevoegen vóór de query's voor het verwerken van gegevens.
 
 1. **Java-heapruimte**: voor query's waarbij grote gegevens sets worden samengevoegd of waarmee lange **records worden verwerkt, is een** van de meest voorkomende fouten opgetreden. Deze fout kan worden vermeden door het instellen van de para meters *MapReduce. map. java. kiest* en *MapReduce. Task. io.* . Hier volgt een voorbeeld:

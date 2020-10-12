@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605436"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Zelf studie: bedreigingen-out-of-Box detecteren
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Zelfstudie: Bedreigingen standaard detecteren
 
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ De volgende sjabloon typen zijn beschikbaar:
 
 1. Als u een ingebouwde sjabloon wilt gebruiken, klikt u op de naam van de sjabloon en klikt u vervolgens op de knop **regel maken** in het detail venster om een nieuwe actieve regel te maken op basis van deze sjabloon. Elke sjabloon bevat een lijst met vereiste gegevens bronnen. Wanneer u de sjabloon opent, worden de gegevens bronnen automatisch gecontroleerd op Beschik baarheid. Als er een beschikbaarheids probleem is, kan de knop **regel maken** worden uitgeschakeld of wordt er een waarschuwing weer gegeven.
   
-    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Paneel voor beeld van detectie regel":::
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel":::
  
 1. Als u op de knop **regel maken** klikt, wordt de wizard regel maken geopend op basis van de geselecteerde sjabloon. Alle details worden aangevuld en met de **geplande** of **micro soft-beveiligings** sjablonen kunt u de logica en andere regel instellingen aanpassen aan uw specifieke behoeften. U kunt dit proces herhalen om extra regels te maken op basis van de ingebouwde sjabloon. Nadat u de stappen in de wizard voor het maken van de regel hebt uitgevoerd, hebt u een regel gemaakt op basis van de sjabloon. De nieuwe regels worden weer gegeven op het tabblad **actieve regels** .
 

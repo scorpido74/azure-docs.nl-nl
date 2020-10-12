@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017112"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
@@ -96,7 +96,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 ## <a name="create-a-container"></a>Een container maken
 
-Een container fungeert als bestands systeem voor uw bestanden. U kunt er een maken door de methode **FileSystemDataLakeServiceClient. create_file_system** aan te roepen.
+Een container fungeert als bestands systeem voor uw bestanden. U kunt er een maken door de **FileSystemDataLakeServiceClient.create_file_system** -methode aan te roepen.
 
 In dit voor beeld wordt een container gemaakt met de naam `my-file-system` .
 
@@ -114,7 +114,7 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>Een map maken
 
-Maak een verwijzing naar een directory door de methode **FileSystemClient. create_directory** aan te roepen.
+Maak een verwijzing naar een directory door de methode **FileSystemClient.create_directory** aan te roepen.
 
 In dit voor beeld wordt een map met de naam toegevoegd `my-directory` aan een container. 
 
@@ -129,7 +129,7 @@ def create_directory():
 
 ## <a name="rename-or-move-a-directory"></a>Een map een andere naam geven of verplaatsen
 
-Wijzig de naam of verplaats een map door de methode **DataLakeDirectoryClient. rename_directory** aan te roepen. Geef een para meter door aan het pad van de gewenste map. 
+Wijzig de naam of verplaats een map door de **DataLakeDirectoryClient.rename_directory** methode aan te roepen. Geef een para meter door aan het pad van de gewenste map. 
 
 In dit voor beeld wordt de naam van een submap gewijzigd in de naam `my-subdirectory-renamed` .
 
@@ -149,7 +149,7 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>Een map verwijderen
 
-Verwijder een directory door de methode **DataLakeDirectoryClient. delete_directory** aan te roepen.
+Verwijder een directory door de **DataLakeDirectoryClient.delete_directory** methode aan te roepen.
 
 In dit voor beeld wordt een map met de naam verwijderd `my-directory` .  
 
@@ -166,7 +166,7 @@ def delete_directory():
 
 ## <a name="manage-directory-permissions"></a>Mapmachtigingen beheren
 
-Haal de toegangs beheer lijst (ACL) van een directory op door de methode **DataLakeDirectoryClient. get_access_control** aan te roepen en de ACL in te stellen door de methode **DataLakeDirectoryClient. set_access_control** aan te roepen.
+Haal de toegangs beheer lijst (ACL) van een directory op door de **DataLakeDirectoryClient.get_access_control** -methode aan te roepen en de ACL in te stellen door de **DataLakeDirectoryClient.set_access_control** -methode aan te roepen.
 
 > [!NOTE]
 > Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -196,11 +196,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, roept u de methode **FileSystemClient. _get_root_directory_client** aan.
+U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, roept u de **FileSystemClient._get_root_directory_client** -methode aan.
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map 
 
-Maak eerst een bestands verwijzing in de doel directory door een instantie van de klasse **DataLakeFileClient** te maken. Upload een bestand door de methode **DataLakeFileClient. append_data** aan te roepen. Zorg ervoor dat u de upload voltooit door de methode **DataLakeFileClient. flush_data** aan te roepen.
+Maak eerst een bestands verwijzing in de doel directory door een instantie van de klasse **DataLakeFileClient** te maken. Upload een bestand door de **DataLakeFileClient.append_data** methode aan te roepen. Zorg ervoor dat u het uploaden voltooit door de **DataLakeFileClient.flush_data** methode aan te roepen.
 
 In dit voor beeld wordt een tekst bestand geüpload naar een map met de naam `my-directory` .   
 
@@ -226,11 +226,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> Als de bestands grootte groot is, moet uw code meerdere aanroepen naar de methode **DataLakeFileClient. append_data** . U kunt in plaats daarvan de methode **DataLakeFileClient. upload_data** gebruiken. Op die manier kunt u het volledige bestand in één aanroep uploaden. 
+> Als de bestands grootte groot is, moet uw code meerdere aanroepen naar de **DataLakeFileClient.append_data** methode. U kunt in plaats daarvan de **DataLakeFileClient.upload_data** -methode gebruiken. Op die manier kunt u het volledige bestand in één aanroep uploaden. 
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Een groot bestand uploaden naar een map
 
-Gebruik de methode **DataLakeFileClient. upload_data** om grote bestanden te uploaden zonder meerdere aanroepen naar de methode **DataLakeFileClient. append_data** te hoeven maken.
+Gebruik de methode **DataLakeFileClient.upload_data** om grote bestanden te uploaden zonder meerdere aanroepen naar de methode **DataLakeFileClient.append_data** te hoeven maken.
 
 ```python
 def upload_file_to_directory_bulk():
@@ -254,7 +254,7 @@ def upload_file_to_directory_bulk():
 
 ## <a name="manage-file-permissions"></a>Bestands machtigingen beheren
 
-Haal de toegangs beheer lijst (ACL) van een bestand op door de methode **DataLakeFileClient. get_access_control** aan te roepen en de ACL in te stellen door de methode **DataLakeFileClient. set_access_control** aan te roepen.
+Haal de toegangs beheer lijst (ACL) van een bestand op door de **DataLakeFileClient.get_access_control** -methode aan te roepen en de ACL in te stellen door de **DataLakeFileClient.set_access_control** -methode aan te roepen.
 
 > [!NOTE]
 > Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -288,7 +288,7 @@ def manage_file_permissions():
 
 ## <a name="download-from-a-directory"></a>Downloaden uit een directory 
 
-Open een lokaal bestand om te schrijven. Maak vervolgens een **DataLakeFileClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Roep de **DataLakeFileClient. read_file** aan om bytes uit het bestand te lezen en schrijf vervolgens die bytes naar het lokale bestand. 
+Open een lokaal bestand om te schrijven. Maak vervolgens een **DataLakeFileClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Roep de **DataLakeFileClient.read_file** om bytes te lezen uit het bestand en schrijf vervolgens die bytes naar het lokale bestand. 
 
 ```python
 def download_file_from_directory():
@@ -314,7 +314,7 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
-Mapinhoud weer geven door de methode **FileSystemClient. get_paths** aan te roepen en vervolgens de resultaten te inventariseren.
+Mapinhoud weer geven door de **FileSystemClient.get_paths** methode aan te roepen en vervolgens de resultaten te inventariseren.
 
 In dit voor beeld wordt het pad afgedrukt van elke submap en elk bestand dat zich in een map met de naam bevindt `my-directory` .
 

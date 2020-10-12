@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.openlocfilehash: 0387b4363a438ac48142d97b2a829faf38f1895d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87036655"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Stream Analytics-taken bewaken en beheren met Azure PowerShell-cmdlets
@@ -484,7 +484,7 @@ Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US
 
 Met deze Power shell-opdracht start u de taak StreamingJob met een aangepaste start tijd voor uitvoer ingesteld op 12 december 2012, 12:12:12 UTC.
 
-### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stoppen-AzureStreamAnalyticsJob | Stoppen-AzStreamAnalyticsJob
+### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
 Hiermee wordt een Stream Analytics taak asynchroon gestopt in Microsoft Azure en worden de resources die worden gebruikt, opnieuw toegewezen. De taak definitie en meta gegevens blijven beschikbaar in uw abonnement via de Api's voor Azure Portal en beheer, zodat de taak kan worden bewerkt en opnieuw wordt gestart. Er worden geen kosten in rekening gebracht voor een taak met de status gestopt.
 
 **Voorbeeld 1**

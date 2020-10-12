@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087419"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes-service gebruiken met Apache Kafka op HDInsight
@@ -26,7 +26,7 @@ Meer informatie over het gebruik van Azure Kubernetes service (AKS) met [Apache 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Een Azure-abonnement
 
 In dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van de volgende Azure-Services:
@@ -94,7 +94,7 @@ Als u nog geen AKS-cluster hebt, gebruikt u een van de volgende documenten voor 
     |---|---|
     |De naam van de peering van \<this VN> naar het externe virtuele netwerk|Voer een unieke naam in voor deze peering-configuratie.|
     |Virtueel netwerk|Selecteer het virtuele netwerk voor het **AKS-cluster**.|
-    |De naam van de peering van \<AKS VN> naar\<this VN>|Voer een unieke naam in.|
+    |De naam van de peering van \<AKS VN> naar \<this VN>|Voer een unieke naam in.|
 
     Zorg ervoor dat alle andere velden op de standaard waarde staan en selecteer __OK__ om de peering te configureren.
 
@@ -190,7 +190,7 @@ Op dit moment zijn de Kafka-en Azure Kubernetes-service in communicatie via de g
     docker tag kafka-aks-test <acrLoginServer>/kafka-aks-test:v1
     ```
 
-7. Push de installatie kopie naar het REGI ster:
+7. Push de installatiekopie naar het register:
 
     ```bash
     docker push <acrLoginServer>/kafka-aks-test:v1

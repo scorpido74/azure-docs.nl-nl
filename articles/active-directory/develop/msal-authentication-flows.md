@@ -13,10 +13,10 @@ ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437867"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
@@ -136,7 +136,7 @@ Met de impliciete toewijzings stroom [OAuth 2](v2-oauth2-implicit-grant-flow.md)
 
 Veel moderne webtoepassingen zijn gebouwd als client-side, single page-Applications (SPA) die zijn geschreven in Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, Vue.js en React.js. Deze toepassingen worden uitgevoerd in een webbrowser en hebben verschillende verificatie kenmerken dan traditionele webtoepassingen aan de server zijde. Met het micro soft Identity-platform kunnen toepassingen met één pagina worden aangemeld en tokens worden verkregen voor toegang tot back-end-services of Web-Api's met behulp van de impliciete toekennings stroom. Met de impliciete stroom kan de toepassing ID-tokens ophalen om de geverifieerde gebruiker te vertegenwoordigen, en kunnen ook toegangs tokens worden verkregen die nodig zijn om beveiligde Api's aan te roepen.
 
-Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van platformoverschrijdende java script frameworks zoals elektro assen of reageren op systeem eigen omdat ze verdere mogelijkheden nodig hebben voor interactie met de systeem eigen platformen.
+Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van platformoverschrijdende java script frameworks zoals elektro-en React-Native, omdat ze verdere mogelijkheden nodig hebben voor interactie met de systeem eigen platformen.
 
 Tokens die via de modus impliciete stroom zijn uitgegeven, hebben een **beperkte lengte** , omdat ze worden geretourneerd naar de browser met behulp van een URL (waarbij `response_mode` `query` of `fragment` ). Sommige browsers beperken de lengte van de URL in de browser balk en mislukken wanneer deze te lang is. Deze impliciete stroom tokens bevatten daarom geen `groups` of `wids` claims.
 
