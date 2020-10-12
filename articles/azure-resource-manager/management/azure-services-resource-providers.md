@@ -4,10 +4,10 @@ description: Een lijst met alle naam ruimten van de resource provider voor Azure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330822"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resource providers for Azure services (Resourceproviders voor Azure-services)
@@ -45,7 +45,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. BotService | [Azure Bot Service](/azure/bot-service/) |
 | Microsoft.Cache | [Azure Cache voor Redis](../../azure-cache-for-redis/index.yml) |
 | Micro soft. capacity | baan |
-| Micro soft. CDN | [CDN (Content Delivery Network)](../../cdn/index.yml) |
+| Micro soft. CDN | [Content Delivery Network](../../cdn/index.yml) |
 | Microsoft.CertificateRegistration | [App Service certificaten](../../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Micro soft. ChangeAnalysis | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.ClassicCompute | Klassieke implementatie model virtuele machine |
@@ -82,7 +82,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Micro soft. DevOps | [Azure DevOps](/azure/devops/) |
 | Micro soft. DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
-| Microsoft.DevTestLab | [Azure Lab-Services](../../lab-services/index.yml) |
+| Microsoft.DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
 | Micro soft. DigitalTwins | [Azure Digital Twins](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Micro soft. DomainRegistration | [App Service](../../app-service/index.yml) |
@@ -96,7 +96,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Micro soft. HealthcareApis | [Azure-API voor FHIR](../../healthcare-apis/index.yml) |
-| Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
+| Microsoft.HybridCompute | [Azure-boog](../../azure-arc/index.yml) |
 | Micro soft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Micro soft. HybridNetwork  | [Zones met persoonlijke randen](../../networking/edge-zones-overview.md) |
 | Microsoft.ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
@@ -108,7 +108,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Micro soft. KubernetesConfiguration | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
-| Micro soft. LabServices | [Azure Lab-Services](../../lab-services/index.yml) |
+| Micro soft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
 | Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
@@ -158,7 +158,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Micro soft. ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
 | Micro soft. Services | baan |
-| Micro soft. SignalRService | [Azure SignalR Service](../../azure-signalr/index.yml) |
+| Micro soft. SignalRService | [Azure SignalR-service](../../azure-signalr/index.yml) |
 | Micro soft. SoftwarePlan | Licentie |
 | Micro soft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Azure SQL Managed Instance](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |

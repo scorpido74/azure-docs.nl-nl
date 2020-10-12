@@ -11,10 +11,10 @@ ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: bd3917c42859d4240fbb3a75f951ff38a548e204
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330805"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Elastische Pools beheren in Azure SQL Database
@@ -40,7 +40,7 @@ Hier kunt u een combi natie van de volgende wijzigingen maken en deze allemaal i
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Gebruik de volgende Power shell-cmdlets om SQL Database elastische Pools en gegroepeerde Data bases te maken en te beheren met Azure PowerShell. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [servers maken en beheren](logical-servers.md)voor meer informatie over het maken en beheren van de servers voor een elastische pool. Zie [firewall regels maken en beheren met Power shell](firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules)voor meer informatie over het maken en beheren van firewall regels.
 
@@ -93,8 +93,8 @@ Gebruik de volgende T-SQL-opdrachten om data bases te maken en te verplaatsen bi
 |[DATA base maken (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Hiermee maakt u een nieuwe data base in een bestaande groep of als één data base. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER data base (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Een Data Base verplaatsen naar, uit of tussen elastische Pools.|
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
-|[sys. elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Retourneert statistieken over het resource gebruik voor alle elastische Pools op een server. Voor elke elastische pool is er één rij voor elk venster van 15 seconden (vier rijen per minuut). Dit omvat CPU, IO, logboek, opslag verbruik en gelijktijdige aanvraag/sessie gebruik door alle data bases in de pool.|
-|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een data base in SQL Database of Azure Synapse Analytics (voorheen SQL Data Warehouse). Als u bent aangemeld bij de hoofd database op een server, wordt er informatie weer gegeven over alle data bases. Voor Azure Synapse Analytics moet u verbinding hebben met de hoofd database.|
+|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Retourneert statistieken over het resource gebruik voor alle elastische Pools op een server. Voor elke elastische pool is er één rij voor elk venster van 15 seconden (vier rijen per minuut). Dit omvat CPU, IO, logboek, opslag verbruik en gelijktijdige aanvraag/sessie gebruik door alle data bases in de pool.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een data base in SQL Database of Azure Synapse Analytics (voorheen SQL Data Warehouse). Als u bent aangemeld bij de hoofd database op een server, wordt er informatie weer gegeven over alle data bases. Voor Azure Synapse Analytics moet u verbinding hebben met de hoofd database.|
 
 ## <a name="rest-api"></a>REST-API
 

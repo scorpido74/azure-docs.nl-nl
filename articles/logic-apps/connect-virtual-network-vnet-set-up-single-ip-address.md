@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87066398"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Stel één IP-adres in voor een of meer integratie service omgevingen in Azure Logic Apps
@@ -52,7 +52,7 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Routenaam** | <*unieke route naam*> | Een unieke naam voor de route in de route tabel |
-   | **Adresvoorvoegsel** | <*doel adres*> | Het adres voorvoegsel voor het doel systeem waar u uitgaand verkeer wilt doen. Zorg ervoor dat u [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. In dit voor beeld is dit adres voorvoegsel voor een SFTP-server, die wordt beschreven in de sectie [netwerk regel instellen](#set-up-network-rule). |
+   | **Adresvoorvoegsel** | <*doel adres*> | Het adres voorvoegsel voor het doel systeem waar u uitgaand verkeer wilt doen. Zorg ervoor dat u de [CIDR-notatie (klasseloze Inter-Domain route ring)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. In dit voor beeld is dit adres voorvoegsel voor een SFTP-server, die wordt beschreven in de sectie [netwerk regel instellen](#set-up-network-rule). |
    | **Volgend hoptype** | **Virtueel apparaat** | Het [type hop](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) dat wordt gebruikt door uitgaand verkeer |
    | **Adres van de volgende hop** | <*Firewall-persoonlijk IP-adres*> | Het privé-IP-adres voor uw firewall |
    |||
@@ -88,7 +88,7 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    | **Protocol** | <*verbinding-protocollen*> | De verbindings protocollen die moeten worden gebruikt. Als u bijvoorbeeld NSG-regels gebruikt, selecteert u zowel **TCP** als **UDP**, niet alleen **TCP**. |
    | **Bron adressen** | <*ISE-subnet-adressen*> | Het subnet-IP-adres waar uw ISE wordt uitgevoerd en waar verkeer van uw logische app afkomstig is |
    | **Doel adressen** | <*doel-IP-adres*> | Het IP-adres van het doel systeem waar u uitgaand verkeer wilt. In dit voor beeld is dit IP-adres voor de SFTP-server. |
-   | **Doel poorten** | <*doel poorten*> | Poorten die het doel systeem gebruikt voor binnenkomende communicatie |
+   | **Doelpoorten** | <*doel poorten*> | Poorten die het doel systeem gebruikt voor binnenkomende communicatie |
    |||
 
    Zie de volgende artikelen voor meer informatie over netwerk regels:

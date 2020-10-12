@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763207"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Certificaten beheren voor federatieve eenmalige aanmelding in Azure Active Directory
@@ -59,12 +59,12 @@ Maak eerst een nieuw certificaat met een andere verval datum en sla dit op:
 1. Selecteer de betreffende toepassing. Er wordt een overzichts pagina voor de toepassing weer gegeven.
 1. Selecteer **eenmalige aanmelding**in het linkerdeel venster van de overzichts pagina van de toepassing.
 1. Als de pagina **Eén aanmeldings methode selecteren** wordt weer gegeven, selecteert u **SAML**.
-1. Ga in de pagina **eenmalige aanmelding met SAML-preview instellen** naar de kop **SAML-handtekening certificaat** en selecteer het **bewerkings** pictogram (een potlood). De pagina **SAML-handtekening certificaat** wordt weer gegeven, waarin de status (**actief** of **inactief**), de verval datum en de vinger afdruk (een hash-teken reeks) van elk certificaat worden weer gegeven.
+1. Zoek in de pagina **eén Sign-On met SAML-preview instellen** op de kop **SAML-handtekening certificaat** en selecteer het **bewerkings** pictogram (een potlood). De pagina **SAML-handtekening certificaat** wordt weer gegeven, waarin de status (**actief** of **inactief**), de verval datum en de vinger afdruk (een hash-teken reeks) van elk certificaat worden weer gegeven.
 1. Selecteer **Nieuw certificaat**. Er wordt een nieuwe rij onder de lijst met certificaten weer gegeven, waarbij de verval datum standaard precies drie jaar na de huidige datum is. (Uw wijzigingen zijn nog niet opgeslagen, zodat u de verval datum nog steeds kunt wijzigen.)
 1. Beweeg de muis aanwijzer over de kolom verval datum in de rij nieuw certificaat en selecteer vervolgens het pictogram **datum selecteren** (een kalender). Er wordt een kalender besturings element weer gegeven waarin de dagen van de maand van de huidige verval datum van de nieuwe rij worden weer gegeven.
 1. Gebruik het besturings element kalender om een nieuwe datum in te stellen. U kunt elke datum tussen de huidige datum en drie jaar na de huidige datum instellen.
 1. Selecteer **Opslaan**. Het nieuwe certificaat wordt nu weer gegeven met de status **inactief**, de verval datum die u hebt gekozen en een vinger afdruk.
-1. Selecteer de **X** om terug te keren naar de pagina **eenmalige aanmelding met SAML-preview instellen** .
+1. Selecteer de **X** om terug te keren naar de pagina **Eén Sign-On met SAML-preview instellen** .
 
 ### <a name="upload-and-activate-a-certificate"></a>Een certificaat uploaden en activeren
 

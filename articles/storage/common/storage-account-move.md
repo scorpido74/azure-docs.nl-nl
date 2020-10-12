@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515014"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Een Azure Storage-account naar een andere regio verplaatsen
@@ -111,7 +111,7 @@ De sjabloon implementeren met behulp van Azure Portal:
 
 4. Selecteer **Maken**.
 
-5. Selecteer **uw eigen sjabloon bouwen in de editor**.
+5. Selecteer **Bouw uw eigen sjabloon in de editor**.
 
 6. Selecteer **bestand laden**en volg de instructies voor het laden van de **template.jsin** het bestand dat u in de laatste sectie hebt gedownload.
 
@@ -232,7 +232,7 @@ De volgende tabel bevat een overzicht van deze functies en richtlijnen voor het 
 
 ### <a name="move-data-to-the-new-storage-account"></a>Gegevens verplaatsen naar het nieuwe opslagaccount
 
-AzCopy is het voorkeurs programma waarmee u uw gegevens kunt verplaatsen. Deze is geoptimaliseerd voor prestaties.  Een van de manieren waarop het sneller gaat, is gegevens rechtstreeks tussen opslagservers kopiëren, zodat AzCopy niet de netwerkbandbreedte van uw computer gebruikt. Gebruik AzCopy bij de opdrachtregel of als onderdeel van een aangepast script. Zie [aan de slag met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy is het voorkeurs programma waarmee u uw gegevens kunt verplaatsen. Deze is geoptimaliseerd voor prestaties.  Een van de manieren waarop het sneller gaat, is gegevens rechtstreeks tussen opslagservers kopiëren, zodat AzCopy niet de netwerkbandbreedte van uw computer gebruikt. Gebruik AzCopy bij de opdrachtregel of als onderdeel van een aangepast script. Raadpleeg [Aan de slag met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 U kunt Azure Data Factory ook gebruiken om uw gegevens te verplaatsen. Het biedt een intuïtieve gebruikers interface. Als u Azure Data Factory wilt gebruiken, raadpleegt u een van de volgende koppelingen:. 
 

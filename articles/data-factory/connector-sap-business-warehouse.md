@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534376"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Gegevens van SAP Business Warehouse kopiëren met behulp van Azure Data Factory
@@ -69,13 +69,13 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service SAP Busi
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapBw** | Yes |
-| server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | Yes |
-| systemNumber | Systeem nummer van het SAP BW systeem.<br/>Toegestane waarde: decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Yes |
-| clientId | Client-ID van de client in het SAP W-systeem.<br/>Toegestane waarde: decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Yes |
-| userName | De naam van de gebruiker die toegang heeft tot de SAP-server. | Yes |
-| wachtwoord | Het wachtwoord voor de gebruiker. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Yes |
+| type | De eigenschap type moet worden ingesteld op: **SapBw** | Ja |
+| server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | Ja |
+| systemNumber | Systeem nummer van het SAP BW systeem.<br/>Toegestane waarde: decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Ja |
+| clientId | Client-ID van de client in het SAP W-systeem.<br/>Toegestane waarde: decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Ja |
+| userName | De naam van de gebruiker die toegang heeft tot de SAP-server. | Ja |
+| wachtwoord | Het wachtwoord voor de gebruiker. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
 **Voorbeeld:**
 
@@ -137,8 +137,8 @@ Als u gegevens wilt kopiëren uit SAP BW, worden de volgende eigenschappen onder
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SapBwSource** | Yes |
-| query | Hiermee geeft u de MDX-query op die gegevens uit het SAP BW exemplaar moet lezen. | Yes |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SapBwSource** | Ja |
+| query | Hiermee geeft u de MDX-query op die gegevens uit het SAP BW exemplaar moet lezen. | Ja |
 
 **Voorbeeld:**
 
@@ -183,9 +183,9 @@ Bij het kopiëren van gegevens uit SAP BW worden de volgende toewijzingen gebrui
 | ACCP | Int |
 | CHAR | Tekenreeks |
 | CLNT | Tekenreeks |
-| LOPEN | Decimal |
+| LOPEN | Decimaal |
 | CUKY | Tekenreeks |
-| DEC | Decimal |
+| DEC | Decimaal |
 | FLTP | Dubbel |
 | INT1 | Byte |
 | INT2 | Int16 |
@@ -194,7 +194,7 @@ Bij het kopiëren van gegevens uit SAP BW worden de volgende toewijzingen gebrui
 | LCHR | Tekenreeks |
 | LRAW | Byte [] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | Decimaal |
 | UITGANG | Byte [] |
 | RAWSTRING | Byte [] |
 | TEKENREEKSEXPRESSIE | Tekenreeks |

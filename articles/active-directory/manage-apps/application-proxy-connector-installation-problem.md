@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764686"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probleem bij het installeren van de connector voor de toepassingsproxyagent
@@ -61,7 +61,7 @@ Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal ee
 
 **Controleer de vereiste vereisten:**
 
-1.  Controleren of de computer TLS 1.2 ondersteunt: alle Windows-versies na 2012 R2 moeten TLS 1,2 ondersteunen. Als uw connector computer van een versie van 2012 R2 of eerder is, controleert u of de volgende Kb's zijn geïnstalleerd op de computer:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Controleren of de computer TLS 1.2 ondersteunt: alle Windows-versies na 2012 R2 moeten TLS 1,2 ondersteunen. Als uw connector computer van een versie van 2012 R2 of eerder is, controleert u of de volgende Kb's zijn geïnstalleerd op de computer: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
 2.  Neem contact op met uw netwerk beheerder en vraag om te controleren of de back-end-proxy en firewall SHA512 gebruikt niet blok keren voor uitgaand verkeer.
 
@@ -81,7 +81,7 @@ Controleer de vinger afdruk van het huidige client certificaat. Het certificaat 
 
 Hier volgen de mogelijke waarden voor **IsInUserStore** en betekenissen:
 
-- **Onwaar** : het client certificaat is gemaakt tijdens de installatie of registratie geïnitieerd door de opdracht REGI ster-AppProxyConnector. Het wordt opgeslagen in de persoonlijke container in het certificaat archief van de lokale computer. 
+- **Onwaar** : het client certificaat is gemaakt tijdens de installatie of de registratie die is gestart door Register-AppProxyConnector opdracht. Het wordt opgeslagen in de persoonlijke container in het certificaat archief van de lokale computer. 
 
 Volg de stappen om het certificaat te verifiëren:
 
@@ -103,7 +103,7 @@ Volg de stappen om het certificaat te verifiëren:
 
 Als een connector gedurende enkele maanden niet is verbonden met de service, zijn de certificaten mogelijk verouderd. Fout bij het vernieuwen van het certificaat leidt naar een verlopen certificaat. Hierdoor werkt de connector service niet meer. De gebeurtenis 1000 wordt vastgelegd in het beheer logboek van de connector:
 
-Het opnieuw registreren van de connector is mislukt: het vertrouwens certificaat van de connector is verlopen. Voer de Power shell-cmdlet REGI ster-AppProxyConnector uit op de computer waarop de connector wordt uitgevoerd om de connector opnieuw te registreren. "
+Het opnieuw registreren van de connector is mislukt: het vertrouwens certificaat van de connector is verlopen. Voer de Power shell-cmdlet uit Register-AppProxyConnector op de computer waarop de connector wordt uitgevoerd om de connector opnieuw te registreren.
 
 In dit geval moet u de connector verwijderen en opnieuw installeren om de registratie te activeren of u kunt de volgende Power shell-opdrachten uitvoeren:
 
@@ -112,7 +112,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-Voor meer informatie over de opdracht REGI ster-AppProxyConnector raadpleegt u [een script voor installatie zonder toezicht maken voor de Azure AD-toepassingsproxy-connector](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)
+Zie [een script voor installatie zonder toezicht maken voor de Azure AD-toepassingsproxy-connector voor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell) meer informatie over de Register-AppProxyConnector opdracht.
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Controleren of beheerder wordt gebruikt voor het installeren van de connector
 

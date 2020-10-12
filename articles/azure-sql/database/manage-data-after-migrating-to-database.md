@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439772"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nieuwe DBA in de Cloud: Azure SQL Database na migratie beheren
@@ -139,7 +139,7 @@ Uw data base is standaard geconfigureerd voor toegang tot de server met Azure-Se
 
 Met Service-eind punten (SE) kunt u uw kritieke Azure-resources alleen beschikbaar maken voor uw eigen particuliere virtuele netwerk in Azure. Door dit te doen, kunt u de open bare toegang tot uw resources in wezen elimineren. Het verkeer tussen uw virtuele netwerk en Azure blijft in het Azure-backbone-netwerk. Zonder SE krijgt u pakket routering met geforceerde tunneling. Met uw virtuele netwerk wordt het Internet verkeer naar uw organisatie en het verkeer van de Azure-service afgedwongen om over dezelfde route te gaan. Met Service-eind punten kunt u dit optimaliseren omdat de pakketten direct van het virtuele netwerk naar de service in het backbone-netwerk van Azure worden getransporteerd.
 
-![VNet-service-eind punten](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
+![VNeT-service-eindpunten](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Gereserveerde IP-adressen
 
@@ -172,7 +172,7 @@ Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database
 |**Kenmerken**|**Altijd versleuteld**|**Transparante gegevensversleuteling**|
 |---|---|---|
 |**Versleutelings bereik**|End-to-end|At-rest-gegevens|
-|**De server kan toegang krijgen tot gevoelige gegevens**|No|Ja, omdat versleuteling voor de Data-at-rest is|
+|**De server kan toegang krijgen tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de Data-at-rest is|
 |**Toegestane T-SQL-bewerkingen**|Gelijkheids vergelijking|Alle T-SQL-surface area is beschikbaar|
 |**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Zeer mini maal|
 |**Granulatie van versleuteling**|Kolom niveau|databaseniveau|
@@ -273,7 +273,7 @@ Vanuit deze grafiek kunt u ook waarschuwingen per resource configureren. Met dez
 
 #### <a name="dynamic-management-views"></a>Dynamische beheerweergaven
 
-U kunt een query uitvoeren op de weer gave [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Dynamic Management om de geschiedenis van de gegevens over het verbruik van de resource te retour neren van het afgelopen uur en de [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -catalogus weergave om de afgelopen 14 dagen geschiedenis te retour neren.
+U kunt een query uitvoeren op de [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamische beheer weergave om de geschiedenis van het resource verbruiks statistieken te retour neren van het afgelopen uur en de [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) systeem catalogus weergave om de laatste 14 dagen geschiedenis te retour neren.
 
 #### <a name="query-performance-insight"></a>Inzicht in queryprestaties
 
@@ -293,7 +293,7 @@ Uw aanpak voor het oplossen van problemen met prestaties kan aanzienlijk profite
 
 Bij het oplossen van problemen is het belang rijk om te bepalen of het nu alleen de toepassing of de data base is die er een back-up van maakt, wat invloed heeft op de prestaties van uw toepassing. Vaak ligt het prestatie probleem in de toepassingslaag. Dit kan de architectuur of het gegevens toegangs patroon zijn. Stel dat u een intensieve-toepassing hebt die gevoelig is voor netwerk latentie. In dit geval gaat uw toepassing in, omdat er veel korte aanvragen worden teruggestuurd tussen de toepassing en de server en op een gelaste netwerk. deze retours worden snel opgeteld. U kunt in dit geval [batch query's](performance-guidance.md#batch-queries)gebruiken om de prestaties te verbeteren. Door batches te gebruiken, kunt u op een enorme manier uw aanvragen verwerken in een batch. Zo kunt u de retour latentie verminderen en de prestaties van uw toepassingen verbeteren.
 
-Daarnaast kunt u, als u een degradatie van de algehele prestaties van uw data base ziet, u de dynamische beheer weergaven [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) bewaken om inzicht te krijgen in het CPU-, i/o-en geheugen gebruik. Uw prestaties zijn mogelijk van invloed op uw data base geen resources. Het kan zijn dat u de berekenings grootte en/of de servicelaag moet wijzigen op basis van de groeiende en verkleinde belasting vereisten.
+Daarnaast kunt u, als u een degradatie van de algehele prestaties van uw data base ziet, de [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dynamische beheer weergaven bewaken om inzicht te krijgen in het CPU-, i/o-en geheugen gebruik. Uw prestaties zijn mogelijk van invloed op uw data base geen resources. Het kan zijn dat u de berekenings grootte en/of de servicelaag moet wijzigen op basis van de groeiende en verkleinde belasting vereisten.
 
 Zie voor een uitgebreide set aanbevelingen voor het afstemmen van prestatie problemen: [uw data base afstemmen](performance-guidance.md#tune-your-database).
 
@@ -304,7 +304,7 @@ SQL Database biedt diverse service lagen Basic, Standard en Premium. Elke servic
 |**Servicelaag**|**Algemene use-case Scenario's**|
 |---|---|
 |**Basic**|Toepassingen met een gekente gebruiker en een Data Base die geen hoge gelijktijdigheids-, schaal-en prestatie vereisten hebben. |
-|**Standard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
+|**Standaard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
 |**Premium**|Toepassingen met veel gelijktijdige gebruikers, hoge CPU/geheugen en hoge IO-vereisten. Met hoge gelijktijdigheid, hoge door Voer en latentie gevoelige apps kunt u gebruikmaken van het Premium-niveau. |
 |||
 

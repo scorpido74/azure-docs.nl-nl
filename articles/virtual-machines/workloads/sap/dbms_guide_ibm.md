@@ -14,10 +14,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331264"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
@@ -126,7 +126,7 @@ Hieronder volgt een basislijn configuratie voor verschillende grootten en het ge
 |vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30.000  |1,000  |8,192  |30.000  |1,000  |256 kB |ReadOnly |
 |RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4.600  |300  |1,024  |7.000  |340  |128 kB ||
 | |/DB2/ <SID> /log_dir |P30 |4 |20.000  |800  |4,096  |20.000  |800  |64 kB |Write Accelerator |
-| |/DB2/ <SID> /offline_log_dir |P30 |1 |5.000  |200  |1,024  |5.000  |200  || |
+| |/DB2/ <SID> /offline_log_dir |P30 |1 |5\.000  |200  |1,024  |5\.000  |200  || |
 
 
 ### <a name="backuprestore"></a>Back-up en herstellen
@@ -162,7 +162,7 @@ Micro soft Cluster Server (MSCS) wordt niet ondersteund.
 
 Er wordt ondersteuning geboden voor een nood herstel met hoge Beschik baarheid van Db2 (HADR). Als de virtuele machines van de HA-configuratie werk naam omzetting hebben, is de installatie in azure niet van toepassing op de installatie die on-premises wordt uitgevoerd. Het is niet raadzaam om alleen te vertrouwen op de IP-omzetting.
 
-Gebruik geen geo-replicatie voor de opslag accounts waarin de database schijven worden opgeslagen. Zie de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md)voor meer informatie. 
+Gebruik Geo-Replication niet voor de opslag accounts waarin de database schijven zijn opgeslagen. Zie de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md)voor meer informatie. 
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
 Voor Db2-implementaties in Windows wordt u ten zeerste aangeraden de functionaliteit van Azure te gebruiken voor versneld netwerken, zoals beschreven in het document [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met aanbevelingen die zijn gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
