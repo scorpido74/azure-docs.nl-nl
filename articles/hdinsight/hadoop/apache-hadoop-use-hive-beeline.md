@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: contperfq1
 ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88755089"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
@@ -107,9 +107,9 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
 
     Deze instructies doen de volgende acties:
 
-    |Rekeningen |Beschrijving |
+    |Instructie |Beschrijving |
     |---|---|
-    |TABEL NEERZETTEN|Als de tabel bestaat, wordt deze verwijderd.|
+    |DROP TABLE|Als de tabel bestaat, wordt deze verwijderd.|
     |CREATE EXTERNAL TABLE|Hiermee maakt u een **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie.|
     |RIJ-INDELING|Hoe de gegevens worden ingedeeld. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
     |OPGESLAGEN ALS TEXTFILE-LOCATIE|Waar de gegevens worden opgeslagen en in welke bestands indeling.|
@@ -172,7 +172,7 @@ Dit voor beeld is een voortzetting van het vorige voor beeld. Gebruik de volgend
 
     Deze instructies doen de volgende acties:
 
-    |Rekeningen |Beschrijving |
+    |Instructie |Beschrijving |
     |---|---|
     |CREATE TABLE ALS DEZE NIET BESTAAT|Als de tabel nog niet bestaat, wordt deze gemaakt. Omdat het **externe** tref woord niet wordt gebruikt, maakt deze instructie een interne tabel. Interne tabellen worden opgeslagen in het Hive-Data Warehouse en worden volledig beheerd door Hive.|
     |OPGESLAGEN ALS ORC|Hiermee worden de gegevens opgeslagen in de ORC-indeling (Optimized Row in kolommen). De ORC-indeling is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.|

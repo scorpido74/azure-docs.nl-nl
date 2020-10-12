@@ -12,10 +12,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344332"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Azure Databricks ML experimenten bijhouden met MLflow en Azure Machine Learning (preview)
@@ -172,7 +172,7 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 
 Wanneer u klaar bent voor het maken van een eind punt voor uw ML-modellen. U kunt implementeren als, 
 
-* Een Azure Machine Learning aanvraag-antwoord-webservice voor interactieve scores. Met deze implementatie kunt u het Azure Machine Learning model beheer en de mogelijkheden voor het detecteren van gegevens drift Toep assen op uw productie modellen. 
+* Een Azure Machine Learning Request-Response webservice voor interactieve scores. Met deze implementatie kunt u het Azure Machine Learning model beheer en de mogelijkheden voor het detecteren van gegevens drift Toep assen op uw productie modellen. 
 
 * MLFlow-model objecten, die kunnen worden gebruikt in streams of batch pijplijnen als Python-functies of Panda-UDFs in Azure Databricks werk ruimte.
 

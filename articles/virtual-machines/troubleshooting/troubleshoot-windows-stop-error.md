@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005902"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows-stopfout - Status geen geheugen
@@ -143,7 +143,7 @@ Voordat u een van de stappen neemt, moet u een kopie van de map **\Windows\Syste
    1. Navigeer naar **HKEY_LOCAL_MACHINE >> BROKENSYSTEM >> Select**.
    1. In de vermelde sleutels noteert u de gegevens waarde actueel. Als deze waarde bijvoorbeeld **1** of **0x00000001 (1)** is, wordt het besturings element ingesteld op ControlSet001.
 1. Controleer de locatie waar het wissel bestand is gemaakt.
-   1. Vouw in HKEY_LOCAL_MACHINE \BROKENSYSTEM de Directory uit die overeenkomt met het ControlSet-nummer dat u in stap 4 hebt opgegeven, zoals **ControlSet001**.
+   1. Vouw in HKEY_LOCAL_MACHINE\BROKENSYSTEM de Directory uit die overeenkomt met het ControlSet-nummer dat u in stap 4 hebt opgegeven, zoals **ControlSet001**.
    1. Ga naar **beheer >> Session Manager >> geheugen beheer** en noteer de locatie van de **ExistingPageFiles** -sleutel.
    1. Deze sleutel moet zich in de standaard locatie van Azure van het tijdelijke station bezien. Als dit niet het geval is en zich op een VHD op een andere locatie bevindt, zoals het gegevens schijf station of het station van het besturings systeem, moet het worden verwijderd.
    1. Blader naar die locatie in Verkenner en verwijder vervolgens het **pagefile.sys** bestand.

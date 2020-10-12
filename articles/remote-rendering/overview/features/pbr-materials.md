@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613676"
 ---
 # <a name="pbr-materials"></a>PBR-materialen
@@ -76,7 +76,7 @@ Het belangrijkste idee van het samen stellen van fysiek gebaseerd is het gebruik
 
 ## <a name="technical-details"></a>Technische details
 
-Azure remote rendering maakt gebruik van de Torrance micro facet BRDF met GGX NDF, Schlick Fresnel en een GGX Smith gecorreleerde zichtbaarheids termijn met een Lambert diffuse term. Dit model is op dit moment de meest facto industrie norm. Raadpleeg dit artikel: [fysieke rendering-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx) voor meer gedetailleerde informatie.
+Azure remote rendering maakt gebruik van de Cook-Torrance micro facet BRDF met GGX NDF, Schlick Fresnel en een GGX Smith gecorreleerde zichtbaarheids termijn met een Lambert diffuse term. Dit model is op dit moment de meest facto industrie norm. Raadpleeg dit artikel: [fysieke rendering-Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx) voor meer gedetailleerde informatie.
 
  Een alternatief voor het in azure externe rendering geplaatste PBR *-* model is het *onspiegelde Glossiness PBR-* model. Dit model kan een breder scala aan materialen vertegenwoordigen. Het is echter duurder en werkt normaal gesp roken niet goed voor real-time cases.
 Het is niet altijd mogelijk om van *reflecterende Glossiness* te converteren *naar een* onscherpheid als er paren zijn *(diffuus, reflecterend)* die niet kunnen worden geconverteerd naar *(BaseColor, metaaling)*. De conversie in de andere richting is eenvoudiger en nauw keuriger, omdat alle paren *(BaseColor, metaaling)* overeenkomen met de goed gedefinieerde paren *(diffuus, reflecterend)* .

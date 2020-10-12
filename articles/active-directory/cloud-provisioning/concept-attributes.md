@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226927"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Het Azure AD-schema begrijpen
@@ -58,7 +58,7 @@ De volgende tabel bevat algemene kenmerken en hoe deze worden gesynchroniseerd m
 
 |On-premises Active Directory|Toewijzings type|Azure AD|
 |-----|-----|-----|
-|genoemd|Direct|commonName
+|cn|Direct|commonName
 |countryCode|Direct|countryCode|
 |displayName|Direct|displayName|
 |givenName|Expression|givenName|

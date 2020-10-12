@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005596"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Een aangepast antwoord configureren voor de firewall van Azure Web Application (WAF)
@@ -27,9 +27,7 @@ U kunt een aangepaste antwoord status code en hoofd tekst onder beleids instelli
 
 In het bovenstaande voor beeld hebben we de antwoord code als 403 bewaard en een kort bericht van ' Neem contact met ons opgenomen ', zoals wordt weer gegeven in de onderstaande afbeelding:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Voor beeld van aangepaste antwoorden":::
-
-"{{Azure-Ref}}" voegt de unieke referentie teken reeks in de hoofd tekst van het antwoord in. De waarde komt overeen met het veld TrackingReference in de `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` Logboeken en.
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="WAF-beleids instellingen" voegt de unieke referentie teken reeks in de hoofd tekst van het antwoord in. De waarde komt overeen met het veld TrackingReference in de `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` Logboeken en.
 
 ## <a name="configure-custom-response-status-code-and-message-use-powershell"></a>De status code en het bericht voor de aangepaste reactie configureren met Power shell
 

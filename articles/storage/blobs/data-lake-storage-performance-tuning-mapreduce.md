@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030517"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: MapReduce, HDInsight & Azure Data Lake Storage Gen2
@@ -65,7 +65,7 @@ Als u een leeg cluster gebruikt, kan het geheugen de totale hoeveelheid garen va
 
 GAREN-containers bepalen de hoeveelheid gelijktijdige Beschik baarheid voor de taak.  Profiteer van het totale aantal garen geheugen en splits dit door MapReduce. map. Memory.  
 
-\#van GARENs = totaal aantal GARENs Memory/MapReduce. kaart. Memory
+\# van GARENs = totaal aantal GARENs Memory/MapReduce. kaart. Memory
 
 **Stap 5: Stel MapReduce. job. Mapss/MapReduce. job. reduceert**
 
@@ -93,7 +93,7 @@ Het totale geheugen van het cluster is 8 knoop punten * 96GB van garen geheugen 
 
 **Stap 4: aantal GARENs**
 
-\#van garen-containers = 768GB beschik bare geheugen/3 GB geheugen = 256
+\# van garen-containers = 768GB beschik bare geheugen/3 GB geheugen = 256
 
 **Stap 5: Stel MapReduce. job. Mapss/MapReduce. job. reduceert**
 

@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
 ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85979914"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Controleren op groeps-en knooppunt fouten
@@ -70,9 +70,9 @@ U kunt desgewenst een optionele [begin taak](/rest/api/batchservice/pool/add#sta
 
 Wat gebeurt er als u het knoop punt hebt geconfigureerd om te wachten op voltooiing van de voltooide begin taak, maar de begin taak mislukt? In dat geval kan het knoop punt niet worden gebruikt, maar worden er nog steeds kosten in rekening gebracht.
 
-U kunt problemen met de begin taak detecteren met behulp van de eigenschappen [Result](/rest/api/batchservice/computenode/get#taskexecutionresult) en [FailureInfo](/rest/api/batchservice/computenode/get#taskfailureinformation) van de [startTaskInfo](/rest/api/batchservice/computenode/get#starttaskinformation) node-eigenschap op het hoogste niveau.
+U kunt problemen met de begin taak detecteren met behulp van de eigenschappen [Result](/rest/api/batchservice/computenode/get#taskexecutionresult) en  [FailureInfo](/rest/api/batchservice/computenode/get#taskfailureinformation) van de [startTaskInfo](/rest/api/batchservice/computenode/get#starttaskinformation) node-eigenschap op het hoogste niveau.
 
-Een mislukte begin taak zorgt er ook voor dat de [status](/rest/api/batchservice/computenode/get#computenodestate) van het knoop punt door batch wordt ingesteld op **starttaskfailed** als **waitForSuccess** is ingesteld op **True**.
+Een mislukte begin taak zorgt er ook voor dat de [status](/rest/api/batchservice/computenode/get#computenodestate) van het knoop punt door batch wordt ingesteld op **starttaskfailed** als  **waitForSuccess** is ingesteld op **True**.
 
 Net als bij elke taak kunnen er veel oorzaken zijn voor het mislukken van de begin taak.  Als u problemen wilt oplossen, controleert u de stdout, stderr en eventuele verdere taak-specifieke logboek bestanden.
 

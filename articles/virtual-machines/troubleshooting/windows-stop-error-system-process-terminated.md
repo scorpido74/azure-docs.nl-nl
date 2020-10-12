@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
 ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344818"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows-Stop fout: 0xC000021A status systeem proces beëindigd
@@ -37,7 +37,7 @@ Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azu
 
 Fout 0xC000021A betekent dat **STATUS_SYSTEM_PROCESS_TERMINATED**.
 
-Deze fout treedt op wanneer een kritiek proces, zoals WinLogon (winlogon.exe) of het client server run-time Subsystem (csrss.exe) mislukt. Zodra de kernel detecteert dat een van deze services is gestopt, wordt de fout **Stop 0xc000021a** gegenereerd. Deze fout kan verschillende oorzaken hebben, zoals:
+Deze fout treedt op wanneer een kritiek proces, zoals WinLogon (winlogon.exe) of het Run-Time subsysteem (csrss.exe) van de client server, niet kan worden uitgevoerd. Zodra de kernel detecteert dat een van deze services is gestopt, wordt de fout **Stop 0xc000021a** gegenereerd. Deze fout kan verschillende oorzaken hebben, zoals:
 
 - Er zijn niet-overeenkomende systeem bestanden geïnstalleerd.
 - Een installatie van een service pack of KB-update is mislukt.

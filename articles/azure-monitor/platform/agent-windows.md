@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
 ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003368"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Log Analytics-agent installeren op Windows-computers
@@ -49,7 +49,7 @@ Zie [overzicht van log Analytics agent](log-analytics-agent.md#network-requireme
 ## <a name="configure-agent-to-use-tls-12"></a>Agent configureren voor het gebruik van TLS 1,2
 [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) -protocol waarborgt de beveiliging van gegevens die onderweg zijn voor communicatie tussen de Windows-agent en de log Analytics service. Als u op een [besturings systeem installeert zonder dat tls 1,2 standaard is ingeschakeld](data-security.md#sending-data-securely-using-tls-12), moet u TLS 1,2 configureren aan de hand van de onderstaande stappen.
 
-1. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE \system\currentcontrolset\control\securityproviders\schannel\protocols**
+1. Zoek de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Een subsleutel maken onder **protocollen** voor TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
 3. Maak een subsleutel van de **client** onder de subsleutel TLS 1,2-Protocol versie die u eerder hebt gemaakt. Bijvoorbeeld **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client**.
 4. Maak de volgende DWORD-waarden onder **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client**:
@@ -59,9 +59,9 @@ Zie [overzicht van log Analytics agent](log-analytics-agent.md#network-requireme
 
 Configureer .NET Framework 4,6 of hoger voor de ondersteuning van beveiligde crypto grafie, omdat deze standaard is uitgeschakeld. De [sterke crypto grafie](/dotnet/framework/network-programming/tls#schusestrongcrypto) maakt gebruik van veiliger netwerk protocollen zoals TLS 1,2 en blokkeert protocollen die niet beveiligd zijn. 
 
-1. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE \Software\Microsoft \\ . NETFramework\v4.0.30319**.  
+1. Zoek de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\ . NETFramework\v4.0.30319**.  
 2. Maak de DWORD-waarde **schusestrongcrypto toe** onder deze subsleutel met de waarde **1**.  
-3. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft \\ . NETFramework\v4.0.30319**.  
+3. Zoek de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\ . NETFramework\v4.0.30319**.  
 4. Maak de DWORD-waarde **schusestrongcrypto toe** onder deze subsleutel met de waarde **1**. 
 5. Start het systeem opnieuw op om de instellingen van kracht te laten worden. 
 
@@ -75,7 +75,7 @@ Met de volgende stappen wordt de Log Analytics agent in Azure en Azure Governmen
 4. Op de pagina **Doelmap** wijzigt u desgewenst de standaardinstallatiemap en klikt u op **Volgende**.
 5. Op de pagina **Installatieopties voor agent** kiest u ervoor de agent verbinding te laten maken met Azure Log Analytics en klikt u op **Volgende**.   
 6. Ga op de pagina **Azure Log Analytics** als volgt te werk:
-   1. Plak de **Werkruimte-id** en **Werkruimtesleutel (primaire sleutel)** die u eerder hebt gekopieerd.  Als u de computer wilt laten rapporteren bij een Log Analytics-werkruimte in de Azure Government-cloud, selecteert u **Azure US Government** in de vervolgkeuzelijst **Azure Cloud**.  
+   1. Plak de **Werkruimte-id** en **Werkruimtesleutel (primaire sleutel)** die u eerder hebt gekopieerd.  Als de computer moet rapporteren aan een Log Analytics-werk ruimte in Azure Government Cloud, selecteert u **Azure US Government** in de vervolg keuzelijst van de **Azure-Cloud** .  
    2. Als de computer met de Log Analytics-service moet communiceren via een proxyserver, klikt u op **Geavanceerd** en geeft u de URL en het poortnummer van de proxyserver op.  Als er voor uw proxyserver verificatie is vereist, voert u de gebruikersnaam en het wachtwoord in voor verificatie met de proxyserver. Klik vervolgens op **Volgende**.  
 7. Klik op **Volgende** als u de vereiste configuratie-instellingen hebt voltooid.<br><br> ![Werkruimte-id en primaire sleutel plakken](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. Controleer op de pagina **Gereed om te installeren** uw keuzes en klik op **Installeren**.
@@ -91,7 +91,7 @@ Het gedownloade bestand voor de agent is een op zichzelf staand installatie pakk
 
 De volgende tabel bevat de specifieke para meters die worden ondersteund door de installatie voor de agent, waaronder wanneer geïmplementeerd met Automation DSC.
 
-|MMA-specifieke opties                   |Opmerkingen         |
+|MMA-specifieke opties                   |Notities         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | Optionele parameter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = de agent configureren om te rapporteren aan een werk ruimte                |
@@ -202,7 +202,7 @@ In de zoek resultaten worden de heartbeat-records weer gegeven voor de computer 
 
 Gegevens van de Log Analytics-agent worden in de cache opgeslagen op de lokale computer met de *status C:\Program Files\Microsoft monitoring Agent\Agent\Health service* voordat deze wordt verzonden naar Azure monitor. De agent probeert om de 20 seconden te uploaden. Als dit mislukt, wordt een exponentieel toenemende duur gewacht totdat deze slaagt. Het wacht 30 seconden vóór de tweede poging, 60 seconden vóór de volgende 120 seconden, enzovoort tot een maximum van 8,5 uur tussen de pogingen tot de verbinding tot stand is gebracht. Deze wacht tijd wordt enigszins wille keurig geaselect om te voor komen dat alle agents gelijktijdig verbinding proberen te kunnen. De oudste gegevens worden verwijderd wanneer de maximum buffer wordt bereikt.
 
-De standaard cache grootte is 50 MB, maar kan worden geconfigureerd tussen mini maal 5 MB en Maxi maal 1,5 GB. Deze wordt opgeslagen in de register sleutel *HKEY_LOCAL_MACHINE cache-maximum van \system\currentcontrolset\services\healthservice\parameters\persistence*. De waarde vertegenwoordigt het aantal pagina's, met 8 KB per pagina.
+De standaard cache grootte is 50 MB, maar kan worden geconfigureerd tussen mini maal 5 MB en Maxi maal 1,5 GB. Deze wordt opgeslagen in de register sleutel *HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Persistence Cache Maximum*. De waarde vertegenwoordigt het aantal pagina's, met 8 KB per pagina.
 
 
 ## <a name="next-steps"></a>Volgende stappen

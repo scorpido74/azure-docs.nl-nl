@@ -4,10 +4,10 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677811"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Implementatie functies voor ARM-sjablonen
@@ -15,7 +15,7 @@ ms.locfileid: "84677811"
 Resource Manager biedt de volgende functies voor het ophalen van waarden die betrekking hebben op de huidige implementatie van uw Azure Resource Manager ARM-sjabloon:
 
 * [inhoudsdistributiepad](#deployment)
-* [variabelen](#environment)
+* [omgeving](#environment)
 * [instellen](#parameters)
 * [variabelen](#variables)
 
@@ -264,9 +264,9 @@ Retourneert een parameter waarde. De opgegeven parameter naam moet worden gedefi
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -369,7 +369,7 @@ Retourneert de waarde van variable. De opgegeven naam van de variabele moet word
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |Tekenreeks |De naam van de variabele die moet worden geretourneerd. |
 

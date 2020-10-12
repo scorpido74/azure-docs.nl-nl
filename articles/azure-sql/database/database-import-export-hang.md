@@ -11,10 +11,10 @@ ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
 ms.openlocfilehash: f98cfcd49806061a969a9227f9ade05f70ce79ff
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85982307"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Het importeren of exporteren van een Data Base duurt lang Azure SQL Database en Managed instance import/export-service
@@ -42,7 +42,7 @@ Als uw data base-exports alleen worden gebruikt voor herstel na onbedoeld verwij
 
 * [Exporteren naar een BACPAC-bestand met behulp van het SQLPackage-hulp programma](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility).
 * [Exporteren naar een BACPAC-bestand met behulp van SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms).
-* Voer de BACPAC-import-of export bewerking rechtstreeks uit in uw code met behulp van de API van Microsoft SQL Server Data-Tier Application Framework (DacFx). Zie voor meer informatie:
+* Voer de BACPAC-import-of export bewerking rechtstreeks uit in uw code met behulp van de API voor Microsoft SQL Server Data-Tier Application Framework (DacFx). Zie voor meer informatie:
   * [Een gegevenslaag toepassing exporteren](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
   * [Micro soft. SqlServer. DAC-naam ruimte](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
   * [DACFx downloaden](https://www.microsoft.com/download/details.aspx?id=55713)

@@ -4,10 +4,10 @@ description: U kunt de informatie die u nodig hebt, ophalen uit de privécloud v
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752237"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Hulp krijgen bij implementatie van Azure VMware-oplossing of het inrichten van fouten
@@ -37,7 +37,7 @@ Als de fout optreedt in de voorafgaande validatie fasen voordat een privécloud 
 
 De details van fouten kunnen ook nuttig zijn bij het oplossen van uw probleem. Selecteer in het voor gaande scherm **op hier klikken voor details** (gemarkeerd) en een samen vatting van fouten wordt geopend, zoals wordt weer gegeven in de volgende scherm afbeelding.
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Samen vatting van fouten.":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="De implementatie van de privécloud met de correlatie-ID is mislukt.":::
 
 Kopieer en sla deze samen vatting opnieuw op voor opname in de SR.
  
@@ -45,15 +45,15 @@ Kopieer en sla deze samen vatting opnieuw op voor opname in de SR.
 
 U kunt eerdere implementaties, waaronder mislukte, ophalen door te zoeken in het activiteiten logboek van de implementatie waartoe u toegang wilt krijgen door het pictogram meldingen te selecteren.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Open meldingen.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="De implementatie van de privécloud met de correlatie-ID is mislukt.":::
 
 Selecteer in meldingen **meer gebeurtenissen in het activiteiten logboek**.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Koppeling: meer gebeurtenissen in het activiteiten logboek.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="De implementatie van de privécloud met de correlatie-ID is mislukt.":::
 
 Zoek vervolgens naar de naam van de resource of op een andere unieke informatie die u hebt gebruikt bij het maken van de resource om de mislukte implementatie en de correlatie-ID te vinden. In het volgende voor beeld worden Zoek resultaten weer gegeven voor een privécloud (pc03).
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Eerdere mislukte implementaties van Azure VMware-oplossingen zoeken.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="De implementatie van de privécloud met de correlatie-ID is mislukt.":::
  
 Als u de bewerkings naam van de mislukte implementatie selecteert, wordt er een venster met details geopend. Selecteer het tabblad JSON en zoek naar correlationId. Kopieer en neem deze op in de SR. 
  
@@ -63,7 +63,7 @@ Mogelijk hebt u al een privécloud en is er een fout opgetreden bij het schalen 
 
 Wanneer u een privécloud in de portal bekijkt, selecteert u **connectiviteit > ExpressRoute** en kopieert u de **ExpressRoute-id** naar het klem bord.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Kopieer de ExpressRoute-ID naar het klem bord."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="De implementatie van de privécloud met de correlatie-ID is mislukt."::: 
  
 Plak de ExpressRoute-ID in het juiste veld in de nieuwe ondersteunings aanvraag. Voor meer informatie, zie de volgende sectie, [uw ondersteunings aanvraag maken](#create-your-support-request).
  
@@ -78,7 +78,7 @@ Hier vindt u aanvullende richt lijnen die specifiek zijn voor het maken van een 
 
 1. Selecteer het **Help** -pictogram en vervolgens **+ nieuwe ondersteunings aanvraag**.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Een ExpressRoute-ID voor uw SR verzamelen.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="De implementatie van de privécloud met de correlatie-ID is mislukt.":::
 
 2. Vul alle vereiste velden in en op het tabblad **basis beginselen** :
 

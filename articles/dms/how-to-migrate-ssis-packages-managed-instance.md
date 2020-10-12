@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: 7f7bc16658733a7200d29fae22d96a2157b73065
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292129"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services-pakketten migreren naar een beheerd exemplaar van Azure SQL
@@ -37,8 +37,8 @@ In dit artikel leert u het volgende:
 
 Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
-* Als u een Microsoft Azure Virtual Network voor de Azure Database Migration Service wilt maken met behulp van het Azure Resource Manager implementatie model, dat een site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Zie het artikel [netwerktopologieën voor SQL Managed instance-migraties met Azure database Migration service]( https://aka.ms/dmsnetworkformi)voor meer informatie. Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
-* Om ervoor te zorgen dat de regels voor de netwerk beveiligings groep van het virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren om te Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
+* Als u een Microsoft Azure Virtual Network voor de Azure Database Migration Service wilt maken met behulp van het Azure Resource Manager implementatie model, dat een site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Zie het artikel [netwerktopologieën voor SQL Managed instance-migraties met Azure database Migration service]( https://aka.ms/dmsnetworkformi)voor meer informatie. Voor meer informatie over het maken van een virtueel netwerk raadpleegt u de [Documentatie over virtuele netwerken](https://docs.microsoft.com/azure/virtual-network/) en dan met name de quickstart-artikelen met stapsgewijze informatie.
+* Om ervoor te zorgen dat de regels voor de netwerk beveiligings groep van het virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren om te Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) voor meer informatie over verkeer filteren van verkeer via de netwerkbeveiligingsgroep voor virtuele netwerken.
 * De Windows Firewall configureren [voor toegang tot de bron database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
 * Als u uw Windows Firewall wilt openen om de Azure Database Migration Service toegang te geven tot de bron SQL Server, die standaard TCP-poort 1433 is.
 * Als u meerdere benoemde SQL Server-exemplaren uitvoert met behulp van dynamische poorten, kunt u desgewenst de SQL Browser Service inschakelen en toegang tot de UDP-poort 1434 via uw firewalls toestaan, zodat de Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bronserver.
@@ -67,7 +67,7 @@ Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Een Azure Database Migration Service-exemplaar maken
 
-1. Selecteer in de Azure Portal + **een resource maken**, zoek naar **Azure database Migration service**en selecteer vervolgens **Azure database Migration service** in de vervolg keuzelijst.
+1. Selecteer in de Azure-portal + **Een resource maken**, zoek naar **Azure Database Migration Service** en selecteer vervolgens **Azure Database Migration Service** in de vervolgkeuzelijst.
 
      ![Azure Marketplace](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
 
@@ -79,11 +79,11 @@ Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base
 
 4. Selecteer de locatie waarop u het exemplaar van DMS wilt maken.
 
-5. Selecteer een bestaand virtueel netwerk of maak een.
+5. Selecteer een bestaand virtueel netwerk of maak er een.
 
     Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron SQL Server en het doel exemplaar van Azure SQL Managed instance.
 
-    Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in azure Portal.
+    Zie het artikel [Een virtueel netwerk maken met de Azure-portal](https://aka.ms/DMSVnet) voor meer informatie over het maken van een virtueel netwerk in de Azure-portal.
 
     Zie het artikel [netwerk topologieën voor Azure SQL Managed instance-migraties met behulp van de Azure database Migration service](https://aka.ms/dmsnetworkformi)voor meer informatie.
 
@@ -122,7 +122,7 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
     Wanneer er geen vertrouwd certificaat is geïnstalleerd, genereert SQL Server een zelfondertekend certificaat wanneer het exemplaar wordt gestart. Dit certificaat wordt gebruikt voor het versleutelen van de referenties voor clientverbindingen.
 
     > [!CAUTION]
-    > TLS-verbindingen die zijn versleuteld met een zelfondertekend certificaat, bieden geen sterke beveiliging. Ze zijn vatbaar voor man-in-the-middle-aanvallen. U moet niet vertrouwen op TLS met zelfondertekende certificaten in een productie omgeving of op servers die zijn verbonden met internet.
+    > TLS-verbindingen die worden versleuteld met behulp van een zelfondertekend certificaat bieden geen sterke beveiliging. Ze zijn vatbaar voor man-in-the-middle-aanvallen. U moet niet vertrouwen op TLS met behulp van zelfondertekende certificaten in een productieomgeving of op servers die zijn verbonden met internet.
 
    ![Brondetails](media/how-to-migrate-ssis-packages-mi/dms-source-details1.png)
 

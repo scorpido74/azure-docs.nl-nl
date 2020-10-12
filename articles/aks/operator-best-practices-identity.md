@@ -8,10 +8,10 @@ ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 0e11f345bfed287be3170df38a909ed24149b754
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010256"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor verificatie en autorisatie in azure Kubernetes service (AKS)
@@ -39,7 +39,7 @@ Met Azure AD-geïntegreerde clusters in AKS maakt u *rollen* of *ClusterRoles* d
 
 1. Ontwikkel aars worden geverifieerd met Azure AD.
 1. Het Azure AD-token uitgifte-eind punt geeft het toegangs token uit.
-1. De ontwikkelaar voert een actie uit met behulp van het Azure AD-token, zoals`kubectl create pod`
+1. De ontwikkelaar voert een actie uit met behulp van het Azure AD-token, zoals `kubectl create pod`
 1. Kubernetes valideert het token met Azure Active Directory en haalt de groepslid maatschappen van de ontwikkelaar op.
 1. Kubernetes op rollen gebaseerd toegangs beheer (RBAC) en cluster beleid worden toegepast.
 1. De aanvraag van de ontwikkelaar is geslaagd of niet gebaseerd op de vorige validatie van Azure AD-groepslid maatschap en Kubernetes RBAC en beleid.
