@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329343"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
@@ -58,21 +58,21 @@ De Azure Portal biedt u een script dat u kunt gebruiken om uw bestands share rec
 
 Dit script ophalen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Navigeer naar het opslag account dat de bestands share bevat die u wilt koppelen.
 1. Selecteer **Bestandsshares**.
 1. Selecteer de bestands share die u wilt koppelen.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Hierbij":::
 
-1. Selecteer **Verbinden**.
+1. Selecteer **Verbinding maken**.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Scherm afbeelding van het verbindings pictogram voor de bestands share.":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Hierbij":::
 
 1. Selecteer de stationsletter waaraan u de share wilt koppelen.
 1. Kopieer het meegeleverde script.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Voorbeeld tekst":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Hierbij":::
 
 1. Plak het script in een shell op de host waaraan u de bestands share wilt koppelen en voer dit uit.
 
@@ -201,6 +201,6 @@ Nadat u deze registersleutel hebt gemaakt, moet u uw server opnieuw opstarten om
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
-- [Een Azure Files-implementatie plannen](storage-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
 - [Veelgestelde vragen](../storage-files-faq.md)
 - [Problemen oplossen in Windows](storage-troubleshoot-windows-file-connection-problems.md)      

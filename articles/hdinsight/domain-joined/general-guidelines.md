@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87530262"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Algemene informatie over Enter prise Security en richt lijnen in azure HDInsight
@@ -95,7 +95,7 @@ Gebruik een nieuwe resource groep voor elk cluster, zodat u onderscheid kunt mak
 
 * Schakel het beleid voor voorwaardelijke toegang uit met het op IP-adres gebaseerde beleid. Hiervoor moeten service-eind punten zijn ingeschakeld op de VNETs waar de clusters worden geïmplementeerd. Als u een externe service voor MFA gebruikt (iets anders dan AAD), werkt het beleid op basis van IP-adres niet
 
-* `AllowCloudPasswordValidation`het beleid is vereist voor federatieve gebruikers. Aangezien HDInsight de gebruikers naam/het wacht woord rechtstreeks gebruikt om tokens van Azure AD op te halen, moet dit beleid worden ingeschakeld voor alle federatieve gebruikers.
+* `AllowCloudPasswordValidation` het beleid is vereist voor federatieve gebruikers. Aangezien HDInsight de gebruikers naam/het wacht woord rechtstreeks gebruikt om tokens van Azure AD op te halen, moet dit beleid worden ingeschakeld voor alle federatieve gebruikers.
 
 * Schakel service-eind punten in als u overs laan van voorwaardelijke toegang met behulp van vertrouwde IP-adressen.
 

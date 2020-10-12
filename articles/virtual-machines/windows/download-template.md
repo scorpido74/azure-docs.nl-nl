@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 5b7e50ebe6f09de2555af03a47641ef6ca92e92a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288291"
 ---
 # <a name="download-the-template-for-a-vm"></a>De sjabloon voor een VM downloaden
@@ -22,7 +22,7 @@ Wanneer u een virtuele machine in azure maakt met behulp van de portal of Power 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer in het linkermenu **virtual machines**.
 3. Selecteer de virtuele machine in de lijst.
-4. Selecteer **sjabloon exporteren**.
+4. Selecteer **Sjabloon exporteren**.
 5. Selecteer **downloaden** in het menu bovenaan en sla het zip-bestand op uw lokale computer op.
 6. Open het zip-bestand en pak de bestanden uit naar een map. Het zip-bestand bevat:
    

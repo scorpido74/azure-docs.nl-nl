@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83587728"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Peering-problemen van virtueel netwerk oplossen
@@ -127,7 +127,7 @@ U kunt dit probleem als volgt oplossen:
    1. Start een netwerk tracering op de doel-VM. Voor Windows kunt u **netsh**gebruiken. Gebruik **TCPDump**voor Linux.
    2. Voer **TcpPing** of **PsPing** uit van de bron naar het doel-IP.
 
-      Dit is een voor beeld van een **TcpPing** -opdracht:`tcping64.exe -t <destination VM address> 3389`
+      Dit is een voor beeld van een **TcpPing** -opdracht: `tcping64.exe -t <destination VM address> 3389`
 
    3. Stop de netwerk tracering op de bestemming nadat de **TcpPing** is voltooid.
    4. Als pakketten van de bron arriveren, is er geen netwerk probleem. Controleer zowel de VM-firewall als de toepassing die op die poort luistert om het configuratie probleem te vinden.
@@ -218,7 +218,7 @@ U kunt dit probleem als volgt oplossen:
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-* [Uw app integreren met een virtueel Azure-netwerk](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+* [Een app integreren met een virtueel Azure-netwerk](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Over point-to-site-VPN-routering](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Problemen met een configuratie fout bericht voor peering in virtuele netwerken oplossen 

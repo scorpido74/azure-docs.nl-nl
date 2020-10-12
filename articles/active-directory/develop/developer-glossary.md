@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705993"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Woorden lijst voor ontwikkel aars van micro soft Identity platform
@@ -54,7 +54,7 @@ Zie [Application and Service Principal Objects][AAD-App-SP-Objects](Engelstalig)
 
 Als u wilt toestaan dat een toepassing kan worden geïntegreerd met de functies voor het beheren van identiteits-en toegangs beheer in azure AD, moet deze zijn geregistreerd bij een Azure AD- [Tenant](#tenant). Wanneer u uw toepassing registreert bij Azure AD, geeft u een identiteits configuratie voor uw toepassing op, zodat deze kan worden geïntegreerd met Azure AD en gebruikmaakt van functies zoals:
 
-* Robuust beheer van eenmalige aanmelding met Azure AD Identity Management en [OpenID Connect Connect][OpenIDConnect] protocol-implementatie
+* Robuust beheer van één Sign-On met behulp van Azure AD Identity Management en [OpenID Connect Connect][OpenIDConnect] protocol-implementatie
 * Brokered toegang tot [beveiligde bronnen](#resource-server) door [client toepassingen](#client-application)via OAuth 2,0- [autorisatie server](#authorization-server)
 * [Toestemming raamwerk](#consent) voor het beheren van client toegang tot beveiligde bronnen, op basis van autorisatie van de resource-eigenaar.
 

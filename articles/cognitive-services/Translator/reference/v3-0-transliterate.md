@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 8b811c57eb163931c39a311418ac9f1513e9393a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592250"
 ---
 # <a name="translator-30-transliterate"></a>Translator 3,0: trans-transcribatie
@@ -60,20 +60,20 @@ Aanvraag headers zijn onder andere:
   <th width="20%">Kopteksten</th>
   <th>Beschrijving</th>
   <tr>
-    <td>Verificatie header (s)</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>.</td>
+    <td>Verificatieheader(s)</td>
+    <td><em>Vereiste aanvraagheader</em>.<br/>Zie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Beschikbare opties voor verificatie</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>De *vereiste aanvraag header*.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json` .</td>
+    <td>*Vereiste aanvraagheader*.<br/>Hiermee geeft u het inhoudstype van de payload op. Mogelijke waarden zijn: `application/json` .</td>
   </tr>
   <tr>
-    <td>Content-length</td>
-    <td>De *vereiste aanvraag header*.<br/>De lengte van de aanvraag tekst.</td>
+    <td>Content-Length</td>
+    <td>*Vereiste aanvraagheader*.<br/>De lengte van de aanvraagtekst.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de trace-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId` .</td>
+    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag op unieke wijze te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de trace-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId` .</td>
   </tr>
 </table> 
 

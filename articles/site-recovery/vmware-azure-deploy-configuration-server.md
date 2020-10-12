@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287733"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
@@ -53,10 +53,10 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 
 ## <a name="download-the-template"></a>De sjabloon downloaden
 
-1. Ga in de kluis naar bron voor **bereiding van de infra structuur**  >  **Source**.
+1. Ga in de kluis naar **Infrastructuur voorbereiden** > **Bron**.
 2. Selecteer **+Configuratieserver** in **Bron voorbereiden**.
 3. Controleer in **Server toevoegen** of **Configuratieserver voor VMware** wordt weergegeven in **Servertype**.
-4. Down load de eicellen-sjabloon voor de configuratie server.
+4. Download de OVA-sjabloon voor de configuratieserver.
 
    > [!TIP]
    >U kunt de nieuwste versie van de configuratie Server sjabloon ook rechtstreeks downloaden vanuit het [micro soft Download centrum](https://aka.ms/asrconfigurationserver).
@@ -74,7 +74,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 3. Voer in **Bron selecteren** de locatie van de gedownloade OVF in.
 4. Selecteer **Volgende** in **Beoordelingsdetails**.
 5. Accepteer de standaardinstellingen in **Naam en map selecteren** en **Configuratie selecteren**.
-6. Selecteer in **Opslag selecteren****Thick Provision Eager Zeroed** in **Indeling virtuele schijf selecteren**. Het gebruik van de optie Thin Provisioning kan van invloed zijn op de prestaties van de configuratie server.
+6. Selecteer in **Opslag selecteren** **Thick Provision Eager Zeroed** in **Indeling virtuele schijf selecteren**. Het gebruik van de optie Thin Provisioning kan van invloed zijn op de prestaties van de configuratie server.
 7. Accepteer de standaardinstellingen in de rest van de wizardpagina's.
 8. In **Klaar om te voltooien** doet u het volgende:
 
@@ -89,7 +89,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 > [!NOTE]
 > Er zijn twee Nic's vereist als u van plan bent om de IP-adressen van de bron machines in de failover te bewaren en later terug te vallen op on-premises. Er is één NIC verbonden met de bron machines en de andere NIC wordt gebruikt voor Azure-connectiviteit.
 
-Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe voordat u de server in de kluis registreert. Het toevoegen van extra adapters wordt niet ondersteund na registratie.
+Als u een extra NIC aan de configuratieserver wilt toevoegen, moet u dit doen voordat u de server in de kluis registreert. Het toevoegen van extra adapters wordt niet ondersteund na registratie.
 
 1. Klik in de vSphere Client-inventaris met de rechtermuisknop op de VM en selecteer **Instellingen bewerken**.
 2. Selecteer **Toevoegen** > **Ethernet-adapter** bij **Hardware**. Selecteer vervolgens **Volgende**.
@@ -98,7 +98,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>De configuratie server registreren bij Azure Site Recovery Services
 
-1. Ga naar de VMware vSphere-client console en schakel de virtuele machine in.
+1. Schakel de VM in vanuit de VMware vSphere Client-console.
 2. De VM wordt opgestart in een Windows Server 2016-installatie-ervaring. Accepteer de gebruiksrechtovereenkomst en voer een Administrator-wachtwoord in.
 3. Meld u nadat de installatie is voltooid bij de virtuele machine aan als de administrator.
 4. De eerste keer dat u zich aanmeldt, wordt het Azure Site Recovery-configuratie hulpprogramma binnen een paar seconden gestart.
@@ -111,7 +111,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 ### <a name="configure-settings"></a>Instellingen configureren
 
-1. Selecteer in de wizard Configuratie Server beheer de optie **connectiviteit instellen**. Selecteer in de vervolg keuzelijsten eerst de NIC die de ingebouwde proces server gebruikt voor detectie en push installatie van Mobility service op bron machines. Selecteer vervolgens de NIC die door de configuratie server wordt gebruikt voor de connectiviteit met Azure. Selecteer **Opslaan**. U kunt deze instelling niet wijzigen nadat deze is geconfigureerd. Wijzig het IP-adres van een configuratie server niet. Zorg ervoor dat het IP-adres dat is toegewezen aan de configuratie server een statisch IP-adres is en niet een IP-adres.
+1. Selecteer in de wizard voor het beheer van de configuratieserver **Connectiviteit instellen**. Selecteer in de vervolg keuzelijsten eerst de NIC die de ingebouwde proces server gebruikt voor detectie en push installatie van Mobility service op bron machines. Selecteer vervolgens de NIC die door de configuratie server wordt gebruikt voor de connectiviteit met Azure. Selecteer **Opslaan**. U kunt deze instelling niet wijzigen nadat deze is geconfigureerd. Wijzig het IP-adres van een configuratie server niet. Zorg ervoor dat het IP-adres dat is toegewezen aan de configuratie server een statisch IP-adres is en niet een IP-adres.
 2. Meld u bij **Recovery Services kluis selecteren**aan Microsoft Azure met de referenties die u in stap 6 van [de configuratie server bij Azure site Recovery Services registreert](#register-the-configuration-server-with-azure-site-recovery-services).
 3. Nadat u zich hebt aangemeld, selecteert u uw Azure-abonnement en de relevante resource groep en kluis.
 
@@ -121,7 +121,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 4. Bij **Software van derden installeren**:
 
-    |Scenario   |Stappen om te volgen  |
+    |Scenario   |Te volgen stappen  |
     |---------|---------|
     |Kan ik MySQL hand matig downloaden en installeren?     |  Ja. Down load de MySQL-toepassing, plaats deze in de map **C:\Temp\ASRSetup**en installeer hand matig. Nadat u de voor waarden hebt geaccepteerd en **downloaden en installeren**selecteert, is de portal *al geïnstalleerd*. U kunt door gaan met de volgende stap.       |
     |Kan ik voor komen dat MySQL online worden gedownload?     |   Ja. Plaats uw MySQL-installatie toepassing in de map **C:\Temp\ASRSetup**. Accepteer de voor waarden, selecteer **downloaden en installeren**en de portal gebruikt het installatie programma dat u hebt toegevoegd om de toepassing te installeren. Nadat de installatie is voltooid, gaat u verder met de volgende stap.    |
@@ -132,7 +132,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 7. Voer referenties in die door de configuratieserver moeten worden gebruikt voor verbinding met de VMware-server. Site Recovery gebruikt deze referenties voor het automatisch detecteren van VMware-VM’s die beschikbaar zijn voor replicatie. Selecteer **Toevoegen** > **Doorgaan**. De referenties die u hier opgeeft, worden lokaal opgeslagen.
 8. Voer bij **referenties voor virtuele machine configureren**de gebruikers naam en het wacht woord van de virtuele machines in om de Mobility-service automatisch te installeren tijdens de replicatie. Voor **Windows** -computers heeft het account lokale beheerders rechten nodig voor de computers die u wilt repliceren. Voor **Linux**geeft u Details voor het hoofd account op.
 9. Selecteer **Configuratie voltooien** om de registratie te voltooien.
-10. Nadat de registratie is voltooid, opent u de Azure Portal en controleert u of de configuratie server en de VMware-Server worden vermeld op **Recovery Services kluis**  >  **Manage**  >  **site Recovery infrastructuur**  >  **configuratie servers**beheren.
+10. Nadat de registratie is voltooid, opent u Azure Portal en controleert u of de configuratieserver en de VMware-server worden weergegeven op **Recovery Services-kluis** > **Beheer** > **Site Recovery-infrastructuur** > **Configuratieservers**.
 
 ## <a name="upgrade-the-configuration-server"></a>De configuratie Server upgraden
 

@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
 ms.openlocfilehash: 15f9387aac909c0245d25b3a208ed24444b2b343
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329387"
 ---
 # <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
@@ -87,7 +87,7 @@ De overige instellingen die beschikbaar zijn op het tabblad Geavanceerd (veroude
 #### <a name="tags"></a>Tags
 Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en een geconsolideerde factuur kunt weer geven door hetzelfde label op meerdere resources en resource groepen toe te passen. Deze zijn optioneel en kunnen worden toegepast nadat het maken van een opslag account is gemaakt.
 
-#### <a name="review--create"></a>Beoordelen en maken
+#### <a name="review--create"></a>Controleren en maken
 De laatste stap voor het maken van het opslag account is door de knop **maken** te selecteren op het tabblad **controleren + maken** . Deze knop is niet beschikbaar als alle vereiste velden voor een opslag account niet zijn gevuld.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -124,7 +124,7 @@ $storAcct = New-AzStorageAccount `
     -Kind FileStorage 
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 Als u een opslag account wilt maken met behulp van de Azure CLI, gebruikt u de opdracht AZ Storage account create. Deze opdracht heeft veel opties; alleen de vereiste opties worden weer gegeven. Zie de [ `az storage account create` opdracht documentatie](/cli/azure/storage/account)voor meer informatie over de geavanceerde opties.
 
 Om het maken van het opslag account en de volgende bestands share te vereenvoudigen, worden in variabelen verschillende para meters opgeslagen. U kunt de variabele inhoud vervangen door de waarden die u wilt, maar houd er rekening mee dat de naam van het opslag account globaal uniek moet zijn.
@@ -166,7 +166,7 @@ Wanneer u uw opslag account hebt gemaakt, hoeft u alleen nog maar uw bestands sh
 Standaard bestands shares kunnen worden geïmplementeerd in een van de volgende standaard lagen: trans actie geoptimaliseerd (standaard), Hot of cool. Dit is een per bestands share-laag die niet wordt beïnvloed door de **BLOB Access-laag** van het opslag account (deze eigenschap is alleen gekoppeld aan Azure Blob Storage, maar heeft geen betrekking op Azure files). U kunt de laag van de share op elk gewenst moment wijzigen nadat deze is geïmplementeerd. Premium-bestands shares kunnen niet rechtstreeks worden geconverteerd naar standaard bestands shares in een Standard-laag.
 
 > [!Important]  
-> U kunt bestands shares verplaatsen tussen lagen in GPv2-opslag account typen (trans actie geoptimaliseerd, warm en cool). Door de share tussen lagen worden er trans acties gemaakt: wanneer u overstapt van een Hotter-laag naar een koele laag, worden de schrijf transacties van de koele laag voor elk bestand in de share in rekening gebracht, terwijl een verplaatsing van een koele laag naar een Hotter-laag leidt tot de Lees transactie kosten voor de coole laag voor elk bestand op de share.
+> U kunt bestandsshares verplaatsen tussen lagen binnen GPv2-opslagaccounttypen (geoptimaliseerd voor transacties, dynamisch en statisch). Als u shares tussen lagen verplaatst, worden er kosten in rekening gebracht: als u van een dynamischere laag verplaatst naar een statischere laag, worden er schrijfkosten in rekeningen gebracht in de statische laag voor elk bestand in de share, terwijl er van de statischere laag naar de dynamischere laag leeskosten in rekening worden gebracht voor de statische laag voor elk bestand in de share.
 
 De eigenschap **quota** houdt in dat iets verschilt tussen Premium-en standaard bestands shares:
 
@@ -225,7 +225,7 @@ New-AzRmStorageShare `
 > [!Note]  
 > De mogelijkheid om lagen in te stellen en te wijzigen via Power shell, vindt u in de preview AZ. Storage Power shell-module. Deze cmdlets of hun uitvoer kunnen worden gewijzigd voordat ze worden vrijgegeven in de algemeen beschik bare AZ. Storage Power shell-module. u kunt hiervoor ook scripts maken.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 U kunt een Azure-bestands share maken met behulp van de [`az storage share-rm create`](https://docs.microsoft.com/cli/azure/storage/share-rm?view=azure-cli-latest&preserve-view=true#az_storage_share_rm_create) opdracht. Bij de volgende Azure CLI-opdrachten wordt ervan uitgegaan dat u de variabelen `$resourceGroupName` en `$storageAccountName` zoals hierboven gedefinieerd hebt ingesteld in de sectie een opslag account maken met Azure cli.
 
 De functionaliteit voor het maken of verplaatsen van een bestands share naar een specifieke laag is beschikbaar in de meest recente update voor Azure CLI. Het bijwerken van Azure CLI is specifiek voor het besturings systeem/Linux-distributie dat u gebruikt. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)voor instructies over het bijwerken van Azure CLI op uw systeem.
@@ -282,7 +282,7 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 De volgende Azure CLI-opdracht gaat ervan uit dat u de `$resourceGroupName` -, `$storageAccountName` -en-variabelen hebt ingesteld `$shareName` zoals beschreven in de vorige secties van dit document.
 
 ```bash

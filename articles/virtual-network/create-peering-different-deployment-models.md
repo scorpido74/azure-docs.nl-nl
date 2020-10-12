@@ -17,10 +17,10 @@ ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 148d57da549e8364620c8417cbd61d975cea1498
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046101"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Een peering voor een virtueel netwerk maken-verschillende implementatie modellen, hetzelfde abonnement
@@ -232,7 +232,7 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
     azure network vnet delete --vnet myVnet2 --quiet
     ```
 
-### <a name="powershell"></a><a name="delete-powershell"></a>Zo
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. Voer de volgende opdracht in om het virtuele netwerk (Resource Manager) te verwijderen:
 

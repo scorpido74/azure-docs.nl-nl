@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504334"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Oplossingen voor periodieke gegevensoverdracht
@@ -58,9 +58,9 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 | Hardware                                      | Uw Hyper Visor            | Geleverd door micro soft    | NA                                                            |
 | Initiële installatie-inspanning                          | Laag (<30 minuten)            | Gemiddeld (~ paar uur) | Groot (~ dagen)                                                 |
 | Gegevensindeling                                   | Azure-blobs, Azure Files   | Azure-blobs, Azure Files | [Ondersteunt 70 en data connectors voor gegevens archieven en-indelingen](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| Vooraf verwerkte gegevens                           | No                         | Ja, via Edge compute    | Yes                                                           |
-| Lokale cache<br>(voor het opslaan van on-premises gegevens)    | Ja                        | Ja                      | No                                                            |
-| Overdracht van andere Clouds                    | Nee                         | Nee                       | Yes                                                           |
+| Vooraf verwerkte gegevens                           | Nee                         | Ja, via Edge compute    | Ja                                                           |
+| Lokale cache<br>(voor het opslaan van on-premises gegevens)    | Ja                        | Ja                      | Nee                                                            |
+| Overdracht van andere Clouds                    | Nee                         | Nee                       | Ja                                                           |
 | Prijzen                                       | [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Prijzen](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -68,6 +68,6 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 - [Gegevens overdragen met AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 - [Meer informatie over gegevens overdracht met rest-api's voor opslag](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet).
 - Meer informatie over:
-    - [Gegevens overdragen met data Box gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
+    - [Gegevens overdragen met Data Box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
     - [Transformeer gegevens met data Box Edge voordat ze naar Azure worden verzonden](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).
 - [Meer informatie over het overdragen van gegevens met Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-bulk-copy-portal).

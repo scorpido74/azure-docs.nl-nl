@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
 ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065859"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrische waarschuwing maken, bekijken en beheren met Azure Monitor
@@ -74,7 +74,7 @@ U kunt metrische waarschuwings regels weer geven en beheren met behulp van de Bl
 
 2. Klik op **waarschuwingen** en **beheer regels**
 
-3. Op de Blade **regels beheren** kunt u al uw waarschuwings regels weer geven in abonnementen. U kunt de regels verder filteren met **resource groep**, **resource type**en **resource**. Als u alleen metrische waarschuwingen wilt weer geven, selecteert u **signaal type** als metrische gegevens.
+3. Op de Blade **regels beheren** kunt u al uw waarschuwings regels weer geven in abonnementen. U kunt de regels verder filteren met  **resource groep**, **resource type**en **resource**. Als u alleen metrische waarschuwingen wilt weer geven, selecteert u **signaal type** als metrische gegevens.
 
     > [!TIP]
     > Op de Blade **regels beheren** kunt u meerdere waarschuwings regels selecteren en deze inschakelen/uitschakelen. Dit kan handig zijn wanneer bepaalde doel resources onder onderhoud moeten worden geplaatst.

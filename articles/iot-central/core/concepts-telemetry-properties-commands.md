@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291605"
 ---
-# <a name="telemetry-property-and-command-payloads"></a>Telemetrie, eigenschap en opdracht-nettoladingen
+# <a name="telemetry-property-and-command-payloads"></a>Payloads van telemetrie, eigenschappen en opdrachten
 
 _Dit artikel is bedoeld voor ontwikkelaars van apparaten._
 
@@ -37,7 +37,7 @@ Het JSON-bestand dat de DCM definieert, maakt gebruik van de [Digital-taal (DTDL
 
 Zie de [client toepassing maken en verbinden met uw azure IOT Central-toepassing (Node.js)](tutorial-connect-device-nodejs.md) en [een client toepassing maken en verbinden met uw python-zelf studies (Azure IOT Central Application)](tutorial-connect-device-python.md) voor een voor beeld van een apparaatcode dat enkele van deze nettoladingen bevat die in gebruik zijn.
 
-## <a name="view-raw-data"></a>Onbewerkte gegevens weer geven
+## <a name="view-raw-data"></a>Onbewerkte gegevens weergeven
 
 Met IoT Central kunt u de onbewerkte gegevens weer geven die een apparaat naar een toepassing verzendt. Deze weer gave is handig voor het oplossen van problemen met de payload die van een apparaat is verzonden. De onbewerkte gegevens weer geven die een apparaat verzendt:
 
@@ -45,9 +45,9 @@ Met IoT Central kunt u de onbewerkte gegevens weer geven die een apparaat naar e
 
 1. Selecteer het tabblad **onbewerkte gegevens** :
 
-    :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="Onbewerkte gegevens weergave":::
+    :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="Weergave Onbewerkte gegevens":::
 
-    In deze weer gave kunt u de kolommen selecteren die u wilt weer geven en een tijds bereik instellen om weer te geven. In de kolom niet- **gemodelleerde gegevens** worden gegevens van het apparaat weer gegeven die niet overeenkomen met een eigenschap of telemetrie in de sjabloon voor het apparaat.
+    In deze weergave kunt u de kolommen selecteren die u wilt weergeven en een tijdsbereik instellen. In de kolom **Niet-gemodelleerde gegevens** ziet u gegevens van het apparaat die niet overeenkomen met een van de eigenschaps- of telemetriedefinities in de apparaatsjabloon.
 
 ## <a name="telemetry"></a>Telemetrie
 
@@ -347,7 +347,7 @@ Het volgende code fragment van een DCM toont de definitie van een `Object` type 
 }
 ```
 
-Een apparaatclient moet de telemetrie als JSON verzenden die eruitziet als in het volgende voor beeld. `DateTime`typen moeten compatibel zijn met ISO 8061. Mogelijke waarden voor `Property3` zijn `0` , `1` en die worden weer gegeven in IOT Central als `Item1` , `Item2` , en `Item3` :
+Een apparaatclient moet de telemetrie als JSON verzenden die eruitziet als in het volgende voor beeld. `DateTime` typen moeten compatibel zijn met ISO 8061. Mogelijke waarden voor `Property3` zijn `0` , `1` en die worden weer gegeven in IOT Central als `Item1` , `Item2` , en `Item3` :
 
 ```json
 {
@@ -531,7 +531,7 @@ Het volgende code fragment vanuit een DCM toont de definitie van een `date` eige
 }
 ```
 
-Een apparaatclient moet een JSON-nettolading verzenden die lijkt op het volgende voor beeld als een gerapporteerde eigenschap in het dubbele apparaat. `Date`typen moeten compatibel zijn met ISO 8061:
+Een apparaatclient moet een JSON-nettolading verzenden die lijkt op het volgende voor beeld als een gerapporteerde eigenschap in het dubbele apparaat. `Date` typen moeten compatibel zijn met ISO 8061:
 
 ```json
 { "DateProperty": "2020-05-17" }
@@ -766,18 +766,18 @@ In deze sectie vindt u voor beelden van Beschrijf bare eigenschaps typen die een
 
 IoT Central verwacht een reactie van het apparaat naar updates van schrijf bare eigenschappen. Het antwoord bericht moet de `ac` velden en bevatten `av` . Het veld `ad` is optioneel. Raadpleeg de volgende fragmenten voor voor beelden.
 
-`ac`is een numeriek veld dat gebruikmaakt van de waarden in de volgende tabel:
+`ac` is een numeriek veld dat gebruikmaakt van de waarden in de volgende tabel:
 
 | Waarde | Label | Beschrijving |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Voltooid | De bewerking voor het wijzigen van de eigenschap is voltooid. |
-| `'ac': 202`of`'ac': 201` | In behandeling | De bewerking voor het wijzigen van de eigenschap is in behandeling of wordt uitgevoerd |
+| `'ac': 202`  of `'ac': 201` | In behandeling | De bewerking voor het wijzigen van de eigenschap is in behandeling of wordt uitgevoerd |
 | `'ac': 4xx` | Fout | De aangevraagde wijziging van de eigenschap is ongeldig of er is een fout opgetreden |
 | `'ac': 5xx` | Fout | Het apparaat heeft een onverwachte fout aangetroffen bij het verwerken van de aangevraagde wijziging. |
 
-`av`is het versie nummer dat naar het apparaat wordt verzonden.
+`av` is het versie nummer dat naar het apparaat wordt verzonden.
 
-`ad`is een beschrijving van een optie teken reeks.
+`ad` is een beschrijving van een optie teken reeks.
 
 Het volgende code fragment van een DCM toont de definitie van een Beschrijf bare `string` eigenschaps type:
 

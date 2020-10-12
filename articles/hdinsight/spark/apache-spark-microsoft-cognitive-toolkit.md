@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
 ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084491"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit diepe leer model gebruiken met Azure HDInsight Spark cluster
@@ -60,7 +60,7 @@ Zie [HDInsight-clusters aanpassen met script actie](../hdinsight-hadoop-customiz
 
 |Eigenschap |Waarde |
 |---|---|
-|Script type|-Aangepast|
+|Scripttype|- Aangepast|
 |Name| MCT installeren|
 |Bash-script-URI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Knooppunt type (n):|Hoofd, werk nemer|
@@ -72,7 +72,7 @@ Als u de Microsoft Cognitive Toolkit met het Azure HDInsight Spark cluster wilt 
 
 1. Downloaden en uitpakken [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Selecteer in de Jupyter-notebook **uploaden** in de rechter bovenhoek en navigeer vervolgens naar het bestand downloaden en selecteren `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
@@ -82,7 +82,7 @@ Als u de Microsoft Cognitive Toolkit met het Azure HDInsight Spark cluster wilt 
 
 1. Nadat het notitie blok is geüpload, klikt u op de naam van het notitie blok en volgt u de instructies in het notitie blok zelf voor het laden van de gegevensset en het uitvoeren van het artikel.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 

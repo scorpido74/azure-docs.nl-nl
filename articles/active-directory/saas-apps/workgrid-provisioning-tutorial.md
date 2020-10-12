@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312224"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Zelf studie: Workgrid configureren voor automatische gebruikers inrichting
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Workgrid om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Workgrid, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Workgrid, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="set-up-workgrid-for-provisioning"></a>Workgrid instellen voor inrichting
 
@@ -136,7 +136,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 12. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Workgrid in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Workgrid voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Scherm afbeelding van de sectie kenmerk toewijzingen waarbij drie toewijzingen worden weer gegeven.](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met drie toewijzingen weergegeven.](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
 13. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

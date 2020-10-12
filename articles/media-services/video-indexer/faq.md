@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
 ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046966"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Veelgestelde vragen over Video Indexer
@@ -205,7 +205,7 @@ Wanneer u uw e-mail account met een id-provider hebt geregistreerd, kunt u dit e
 
 ### <a name="how-much-does-video-indexer-cost"></a>Hoeveel kost het Video Indexer?
 
-Video Indexer maakt gebruik van een eenvoudig prijs model voor betalen per gebruik op basis van de duur van de inhouds invoer die u indexeert. Er kunnen extra kosten in rekening worden gebracht voor het coderen, streamen, opslaan, netwerk gebruik en gereserveerde media-eenheden. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) voor meer informatie.
+Video Indexer maakt gebruik van een eenvoudig prijs model voor betalen per gebruik op basis van de duur van de inhouds invoer die u indexeert. Er kunnen extra kosten in rekening worden gebracht voor het coderen, streamen, opslaan, netwerk gebruik en gereserveerde media-eenheden. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) voor meer informatie.
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Wanneer ben ik gefactureerd voor het gebruik van Video Indexer?
 

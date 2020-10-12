@@ -4,10 +4,10 @@ description: Een overzicht van Recovery Services kluizen.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975145"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
@@ -54,7 +54,7 @@ Azure Advisor voorziet in elk uur [aanbevelingen](../advisor/advisor-high-availa
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Door de kluis ondersteunde en niet-ondersteunde scenario's](backup-support-matrix.md#vault-support)
 - [Veelgestelde vragen over de kluis](backup-azure-backup-faq.md)

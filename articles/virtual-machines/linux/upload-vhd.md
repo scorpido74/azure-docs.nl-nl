@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289758"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine maken op basis van een aangepaste schijf met de Azure CLI
@@ -69,7 +69,7 @@ Azure ondersteunt diverse Linux-distributies (Zie [goedgekeurde distributies](en
 Zie ook de [installatie notities van Linux](create-upload-generic.md#general-linux-installation-notes) voor meer algemene tips over het voorbereiden van Linux-installatie kopieën voor Azure.
 
 > [!NOTE]
-> De [Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/) van het Azure-platform is alleen van toepassing op Vm's waarop Linux wordt uitgevoerd wanneer een van de getekende distributies wordt gebruikt met de configuratie gegevens zoals opgegeven onder ondersteunde versies in [Linux op door Azure goedgekeurde distributies](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> De [Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/) van het Azure-platform is alleen van toepassing op Vm's waarop Linux wordt uitgevoerd wanneer een van de getekende distributies wordt gebruikt met de configuratie details zoals opgegeven onder ondersteunde versies in [Linux op Azure-Endorsed distributies](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 

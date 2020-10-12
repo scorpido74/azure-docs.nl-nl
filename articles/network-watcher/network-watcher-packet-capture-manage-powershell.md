@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737917"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Pakket opnames beheren met Azure Network Watcher met behulp van Power shell
@@ -97,7 +97,7 @@ Om ervoor te zorgen dat de agent is geïnstalleerd, voert u de `Get-AzVMExtensio
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Het volgende voor beeld is een voor beeld van het resultaat van het uitvoeren van`Get-AzVMExtension`
+Het volgende voor beeld is een voor beeld van het resultaat van het uitvoeren van `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -266,7 +266,7 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 
 ## <a name="download-a-packet-capture"></a>Pakket opname downloaden
 
-Zodra de pakket opname sessie is voltooid, kan het opname bestand worden geüpload naar de Blob-opslag of naar een lokaal bestand op de virtuele machine. De opslag locatie van de pakket opname wordt gedefinieerd tijdens het maken van de sessie. Een handig hulp middel om toegang te krijgen tot deze opname bestanden die zijn opgeslagen in een opslag account, is Microsoft Azure Storage Explorer, dat hier kan worden gedownload:https://storageexplorer.com/
+Zodra de pakket opname sessie is voltooid, kan het opname bestand worden geüpload naar de Blob-opslag of naar een lokaal bestand op de virtuele machine. De opslag locatie van de pakket opname wordt gedefinieerd tijdens het maken van de sessie. Een handig hulp middel om toegang te krijgen tot deze opname bestanden die zijn opgeslagen in een opslag account, is Microsoft Azure Storage Explorer, dat hier kan worden gedownload:  https://storageexplorer.com/
 
 Als er een opslag account is opgegeven, worden pakket opname bestanden opgeslagen in een opslag account op de volgende locatie:
 

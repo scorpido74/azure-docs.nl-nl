@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588595"
 ---
 # <a name="translator-30-languages"></a>Translator 3,0: talen
@@ -57,7 +57,7 @@ Aanvraag headers zijn:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optionele aanvraag header*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren.</td>
+    <td>*Optionele aanvraag header*.<br/>Een door de client gegenereerde GUID om de aanvraag op unieke wijze te identificeren.</td>
   </tr>
 </table> 
 
@@ -67,11 +67,11 @@ Verificatie is niet vereist om taal bronnen op te halen.
 
 Een client gebruikt de `scope` query parameter voor het definiëren van de groepen van de talen waarin het is geïnteresseerd.
 
-* `scope=translation`biedt talen ondersteuning voor het vertalen van tekst van de ene taal naar een andere taal.
+* `scope=translation` biedt talen ondersteuning voor het vertalen van tekst van de ene taal naar een andere taal.
 
-* `scope=transliteration`biedt mogelijkheden voor het converteren van tekst in één taal van het ene script naar een ander script;
+* `scope=transliteration` biedt mogelijkheden voor het converteren van tekst in één taal van het ene script naar een ander script;
 
-* `scope=dictionary`biedt taal paren waarvoor `Dictionary` bewerkingen gegevens retour neren.
+* `scope=dictionary` biedt taal paren waarvoor `Dictionary` bewerkingen gegevens retour neren.
 
 Een client kan meerdere groepen tegelijkertijd ophalen door een door komma's gescheiden lijst met namen op te geven. `scope=translation,transliteration,dictionary`Retourneert bijvoorbeeld ondersteunde talen voor alle groepen.
 
@@ -93,7 +93,7 @@ Een geslaagde reactie is een JSON-object met één eigenschap voor elke aangevra
 
 De waarde voor elke eigenschap is als volgt.
 
-* `translation`eigenschap
+* `translation` eigenschap
 
   De waarde van de `translation` eigenschap is een woorden lijst van paren (sleutel, waarde). Elke sleutel is een BCP 47-taal code. Een sleutel geeft een taal aan waarvoor tekst kan worden vertaald of vertaald. De waarde die is gekoppeld aan de sleutel is een JSON-object met eigenschappen die de taal beschrijven:
 
@@ -119,7 +119,7 @@ De waarde voor elke eigenschap is als volgt.
   }
   ```
 
-* `transliteration`eigenschap
+* `transliteration` eigenschap
 
   De waarde van de `transliteration` eigenschap is een woorden lijst van paren (sleutel, waarde). Elke sleutel is een BCP 47-taal code. Een sleutel geeft een taal aan waarvoor tekst kan worden geconverteerd van een script naar een ander script. De waarde die is gekoppeld aan de sleutel is een JSON-object met eigenschappen die de taal en de ondersteunde scripts beschrijven:
 
@@ -184,7 +184,7 @@ De waarde voor elke eigenschap is als volgt.
   }
   ```
 
-* `dictionary`eigenschap
+* `dictionary` eigenschap
 
   De waarde van de `dictionary` eigenschap is een woorden lijst van paren (sleutel, waarde). Elke sleutel is een BCP 47-taal code. De sleutel geeft een taal aan waarvoor alternatieve vertalingen en back-vertalingen beschikbaar zijn. De waarde is een JSON-object dat de bron taal en de doel talen beschrijft met beschik bare vertalingen:
 

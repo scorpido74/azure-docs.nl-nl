@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
 ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274432"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentie architecturen voor Oracle Database Enterprise Edition op Azure
@@ -71,7 +71,7 @@ Wanneer u Oracle Data Guard gebruikt, kunt u de secundaire data base ook openen 
 > Actieve Data Guard vereist extra licenties. Deze licentie is ook vereist voor het gebruik van de Far Sync-functie. Neem contact op met uw Oracle-vertegenwoordiger om de implicaties van de licenties te bespreken.
 
 #### <a name="oracle-data-guard-with-fsfo"></a>Oracle Data Guard met FSFO
-Oracle Data Guard met Fast-Start failover (FSFO) kan extra tolerantie bieden door de broker in te stellen op een afzonderlijke machine. De Data Guard Broker en de secundaire data base voeren de waarnemer uit en bekijken de primaire Data Base voor uitval tijd. Hierdoor kunt u ook de installatie van uw Data Guard observeren. 
+Oracle Data Guard met Fast-Start failover (FSFO) kan extra flexibiliteit bieden door de broker in te stellen op een afzonderlijke machine. De Data Guard Broker en de secundaire data base voeren de waarnemer uit en bekijken de primaire Data Base voor uitval tijd. Hierdoor kunt u ook de installatie van uw Data Guard observeren. 
 
 Met Oracle Database versie 12,2 en hoger is het ook mogelijk meerdere waarnemers te configureren met één Oracle Data Guard Broker-configuratie. Deze installatie biedt extra Beschik baarheid, in het geval van één waarnemer en de secundaire data base Ervaar tijd. Data Guard Broker is licht gewicht en kan worden gehost op een relatief kleine virtuele machine. Raadpleeg de [Oracle-documentatie](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) in dit onderwerp voor meer informatie over Data Guard Broker en de voor delen ervan.
 
@@ -152,7 +152,7 @@ Oracle sharding bestaat voornamelijk uit de volgende onderdelen. Meer informatie
 
 - **Globale service** : de wereld wijde service is vergelijkbaar met de normale database service. Naast alle eigenschappen van een database service heeft een globale service eigenschappen voor Shard-data bases, zoals regio affiniteit tussen clients en Shard en tolerantie voor replicatie vertraging. Er moet slechts één globale service worden gemaakt om gegevens van/naar een Shard-data base te lezen/schrijven. Bij het gebruik van Active Data Guard en het instellen van alleen-lezen replica's van de Shards, kunt u een andere gGobal-service maken voor alleen-lezen workloads. De client kan deze globale Services gebruiken om verbinding te maken met de data base.
 
-- **Shard-data** bases-Shard-data bases zijn uw Oracle-data bases. Elke Data Base wordt met behulp van Oracle Data Guard gerepliceerd in een Broker-configuratie met snelle start failover (FSFO) ingeschakeld. U hoeft geen Data Guard-failover en replicatie in te stellen op elke Shard. Dit wordt automatisch geconfigureerd en geïmplementeerd wanneer de gedeelde data base wordt gemaakt. Als een bepaalde Shard mislukt, wordt het delen van Oracle automatisch uitgevoerd via database verbindingen van de primaire naar de stand-by.
+- **Shard-data** bases-Shard-data bases zijn uw Oracle-data bases. Elke Data Base wordt met behulp van Oracle Data Guard gerepliceerd in een Broker-configuratie waarvoor Fast-Start failover (FSFO) is ingeschakeld. U hoeft geen Data Guard-failover en replicatie in te stellen op elke Shard. Dit wordt automatisch geconfigureerd en geïmplementeerd wanneer de gedeelde data base wordt gemaakt. Als een bepaalde Shard mislukt, wordt het delen van Oracle automatisch uitgevoerd via database verbindingen van de primaire naar de stand-by.
 
 U kunt Oracle Shard-data bases met twee interfaces implementeren en beheren: Oracle Enter prise Manager-interface voor Cloud beheer en/of het `GDSCTL` opdracht regel programma. U kunt de verschillende Shards zelfs controleren op Beschik baarheid en prestaties met behulp van Cloud beheer. `GDSCTL DEPLOY`Met deze opdracht worden automatisch de Shards en hun respectieve listeners gemaakt. Bovendien implementeert deze opdracht automatisch de replicatie Configuratie die wordt gebruikt voor Shard hoge Beschik baarheid die is opgegeven door de beheerder.
 
@@ -232,6 +232,6 @@ Bekijk de volgende Oracle-referentie artikelen die van toepassing zijn op uw sce
 
 - [Inleiding tot Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Concepten van Oracle Data Guard Broker](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [Oracle-Golden Gate configureren voor een actieve en actieve hoge Beschik baarheid](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Oracle Golden Gate configureren voor Active-Active hoge Beschik baarheid](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Overzicht van Oracle sharding](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Far Sync van Oracle Active Data Guard heeft geen gegevens verlies op elke afstand](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

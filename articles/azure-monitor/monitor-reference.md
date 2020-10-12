@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
 ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89435402"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
@@ -111,7 +111,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |ExpressRoute | Ja | Ja | Nee |  |
 |Firewall | Ja | Ja | Nee |  |
 |Front Door | Ja | Ja | Nee |  |
-|Functions | Ja | Ja | Nee |  |
+|Functies | Ja | Ja | Nee |  |
 |HDInsight | Nee | Ja | Nee |  |
 |HPC Cache | Nee | Nee | Nee |  |
 |Information Protection | Nee | Ja | Nee |  |
@@ -131,7 +131,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Microsoft PowerApps | Nee | Nee | Nee |  |
 |Microsoft Social Engagement | Nee | Nee | Nee |  |
 |Microsoft Stream | Ja | Ja | Nee |  |
-|Migreren | Nee | Nee | Nee |  |
+|Migrate | Nee | Nee | Nee |  |
 |Multi-Factor Authentication | Nee | Ja | Nee |  |
 |Network Watcher | Ja | Ja | Nee |  |
 |Notification Hubs | Ja | Nee | Nee |  |
@@ -145,7 +145,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Resource Graph | Nee | Nee | Nee |  |
 |Resource Manager | Nee | Nee | Nee |  |
 |Retail-zoek opdracht: door Bing | Nee | Nee | Nee |  |
-|Search | Ja | Ja | Nee |  |
+|Zoeken | Ja | Ja | Nee |  |
 |Service Bus | Ja | Ja | Nee |  |
 |Service Fabric | Nee | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
@@ -163,8 +163,8 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |TINA | Nee | Nee | Nee |  |
 |Traffic Manager | Ja | Ja | Nee |  |
 |Universeel afdrukken | Nee | Nee | Nee |  |
-|Virtual Machine Scale Sets | Nee | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtuele machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtuele-machineschaalsets | Nee | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtual Machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network-NSG-stroom logboeken | Nee | Ja | Nee |  |
 |VPN Gateway | Ja | Ja | Nee |  |

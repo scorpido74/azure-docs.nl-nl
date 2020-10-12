@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 64e7f0eae10f590ffd268b43b63a5d8cb0987c57
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683144"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372354"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -26,7 +26,7 @@ Een _Bereik_ is een knooppunt in de Azure-resourcehiërarchie waar Azure Active 
 - Factureringsgegevens, zoals betalingen en facturen
 - Cloud Services, zoals kosten en beleidsbeheer
 
-Bereiken zijn de plekken waar u factureringsgegevens beheert, over rollen beschikt die specifiek zijn voor betalingen, facturen beheert en algemeen accountbeheer uitvoert. Facturerings- en accountrollen worden afzonderlijk beheerd met rollen die worden gebruikt voor resourcebeheer, die gebruikmaken van [Azure RBAC](../../role-based-access-control/overview.md). Om de intentie van de afzonderlijke bereiken duidelijk te onderscheiden, met inbegrip van de verschillen in toegangsbeheer, worden ze respectievelijk _factureringsbereiken_ en _RBAC-bereiken_ genoemd.
+Bereiken zijn de plekken waar u factureringsgegevens beheert, over rollen beschikt die specifiek zijn voor betalingen, facturen beheert en algemeen accountbeheer uitvoert. Facturerings- en accountrollen worden afzonderlijk beheerd met rollen die worden gebruikt voor resourcebeheer, die gebruikmaken van [Azure RBAC](../../role-based-access-control/overview.md). Om de intentie van de afzonderlijke bereiken duidelijk te onderscheiden, met inbegrip van de verschillen in toegangsbeheer, worden ze respectievelijk _factureringsbereiken_ en _Azure RBAC-bereiken_ genoemd.
 
 Bekijk de video [Hiërarchieën instellen met Cost Management](https://www.youtube.com/watch?v=n3TLRaYJ1NY) voor meer informatie over bereiken. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
@@ -34,7 +34,7 @@ Bekijk de video [Hiërarchieën instellen met Cost Management](https://www.youtu
 
 ## <a name="how-cost-management-uses-scopes"></a>Hoe Cost Management bereiken gebruikt
 
-Cost Management werkt in alle bereiken boven de resources om organisaties in staat te stellen kosten te beheren op het niveau waarop ze toegang hebben, ongeacht of dat nu de hele factureringsrekening of één resourcegroep is. Hoewel de factureringsbereiken verschillen op basis van uw Microsoft-overeenkomst (type abonnement), geldt dit niet voor de RBAC-bereiken.
+Cost Management werkt in alle bereiken boven de resources om organisaties in staat te stellen kosten te beheren op het niveau waarop ze toegang hebben, ongeacht of dat nu de hele factureringsrekening of één resourcegroep is. Hoewel de factureringsbereiken verschillen op basis van uw Microsoft-overeenkomst (type abonnement), geldt dit niet voor de Azure RBAC-bereiken.
 
 ## <a name="azure-rbac-scopes"></a>Azure RBAC-bereiken
 
@@ -98,7 +98,7 @@ EA-factureringsbereiken ondersteunen de volgende rollen:
 - **Enterprise alleen-lezen gebruiker** – Kan instellingen voor de factureringsrekening, kostengegevens en kostenconfiguratie bekijken. Bijvoorbeeld budgetten en exports. In functie is het EA-factureringsbereik hetzelfde als de [Azure-rol Cost Management-lezer](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Afdelingsbeheerder** – Kan afdelingsinstellingen, zoals kostencentrum, beheren en alle kosten bekijken en de kostenconfiguratie beheren. Bijvoorbeeld budgetten en exports.  De instellingen van de **DA kosten bekijken**-factureringsrekening moeten zijn ingeschakeld voor afdelingsbeheerders en alleen-lezen gebruikers om de kosten te bekijken. Als de optie **DA kosten bekijken** is uitgeschakeld, kunnen de afdelingsgebruikers geen kosten op elk niveau zien, zelfs niet als ze een account of abonnementseigenaar zijn.
 - **Enterprise alleen-lezen gebruiker** – Kan afdelingsinstellingen, kostengegevens en kostenconfiguratie bekijken. Bijvoorbeeld budgetten en exports. Als de optie **DA kosten bekijken** is uitgeschakeld, kunnen de afdelingsgebruikers geen kosten op elk niveau zien, zelfs niet als ze een account of abonnementseigenaar zijn.
-- **Accounteigenaar** – Kan instellingen voor het inschrijvingsaccount beheren (zoals het kostencentrum), alle kosten bekijken en de kostenconfiguratie (zoals budgetten en exporten) voor het inschrijvingsaccount beheren. De instellingen van de **DA kosten bekijken**-factureringsrekening moeten zijn ingeschakeld voor afdelingsbeheerders en RBAC-gebruikers om de kosten te bekijken.
+- **Accounteigenaar** – Kan instellingen voor het inschrijvingsaccount beheren (zoals het kostencentrum), alle kosten bekijken en de kostenconfiguratie (zoals budgetten en exporten) voor het inschrijvingsaccount beheren. De instellingen van de **DA kosten bekijken**-factureringsrekening moeten zijn ingeschakeld voor afdelingsbeheerders en Azure RBAC-gebruikers om de kosten te bekijken.
 
 EA-factureringsrekening-gebruikers hebben geen directe toegang tot facturen. Facturen zijn verkrijgbaar via een extern volume-licentiesysteem.
 

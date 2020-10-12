@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738750"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnose van on-premises connectiviteit via VPN-gateways
@@ -44,7 +44,7 @@ Een van de kritieke configuratie stappen is het configureren van de IPsec-commun
 
 ### <a name="ike-phase-1-setup"></a>Setup van IKE fase 1
 
-| **Eigenschap** | **PolicyBased** | **RouteBased en Standard of VPN-gateway met hoge prestaties** |
+| **Eigenschap** | **PolicyBased** | **RouteBased en Standard-of High-Performance VPN-gateway** |
 | --- | --- | --- |
 | IKE-versie |IKEv1 |IKEv2 |
 | Diffie-Hellman-groep |Groep 2 (1024 bits) |Groep 2 (1024 bits) |
@@ -82,33 +82,33 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Yes|
-| GatewayNotFound | De gateway of gateway is niet gevonden. |No|
-| PlannedMaintenance |  Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |No|
-| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | No |
-| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Dit gebeurt wanneer de status test mislukt. | No |
-| PlatformInActive | Er is een probleem met het platform. | No|
-| ServiceNotRunning | De onderliggende service is niet actief. | No|
-| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Dit is slechts een waarschuwing.| No|
-| ConnectionsNotConnected | Geen van de verbindingen is verbonden. Dit is slechts een waarschuwing.| Yes|
-| GatewayCPUUsageExceeded | Het huidige CPU-gebruik van de gateway is > 95%. | Yes |
+| NoFault | Als er geen fout is gedetecteerd. |Ja|
+| GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
+| PlannedMaintenance |  Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
+| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | Nee |
+| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Dit gebeurt wanneer de status test mislukt. | Nee |
+| PlatformInActive | Er is een probleem met het platform. | Nee|
+| ServiceNotRunning | De onderliggende service is niet actief. | Nee|
+| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Dit is slechts een waarschuwing.| Nee|
+| ConnectionsNotConnected | Geen van de verbindingen is verbonden. Dit is slechts een waarschuwing.| Ja|
+| GatewayCPUUsageExceeded | Het huidige CPU-gebruik van de gateway is > 95%. | Ja |
 
 ### <a name="connection"></a>Verbinding
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Yes|
-| GatewayNotFound | De gateway of gateway is niet gevonden. |No|
-| PlannedMaintenance | Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |No|
-| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | No |
-| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Deze fout treedt op wanneer de status test mislukt. | No |
-| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt. | No |
-| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |No|
-| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Yes |
-| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Yes|
-| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Yes|
-| PeerReachability | De peer gateway is niet bereikbaar. | Yes|
-| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Yes|
+| NoFault | Als er geen fout is gedetecteerd. |Ja|
+| GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
+| PlannedMaintenance | Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
+| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | Nee |
+| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Deze fout treedt op wanneer de status test mislukt. | Nee |
+| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt. | Nee |
+| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
+| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
+| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
+| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
+| PeerReachability | De peer gateway is niet bereikbaar. | Ja|
+| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
 | WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
 ## <a name="next-steps"></a>Volgende stappen

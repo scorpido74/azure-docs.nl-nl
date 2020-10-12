@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84753606"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Resource logboeken voor Azure Web Application firewall
@@ -100,7 +100,7 @@ Het toegangs logboek wordt alleen gegenereerd als u het hebt ingeschakeld op elk
 |httpVersion     | HTTP-versie van de aanvraag.        |
 |receivedBytes     | Grootte van ontvangen pakket, in bytes.        |
 |sentBytes| Grootte van het verzonden pakket, in bytes.|
-|timeTaken| De tijds duur (in milliseconden) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld voor de duur doorgaans de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
+|timeTaken| De tijds duur (in milliseconden) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld Time-Taken meestal de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
 |sslEnabled| Of communicatie met de back-endservers gebruikte TLS/SSL. Geldige waarden zijn in-en uitgeschakeld.|
 |host| De hostnaam waarmee de aanvraag is verzonden naar de back-endserver. Als de hostnaam van de back-end wordt overschreven, wordt deze naam weer gegeven.|
 |originalHost| De hostnaam waarmee de aanvraag is ontvangen door de Application Gateway van de client.|
@@ -143,7 +143,7 @@ Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informati
 |httpVersion     | HTTP-versie van de aanvraag.        |
 |receivedBytes     | Grootte van ontvangen pakket, in bytes.        |
 |sentBytes| Grootte van het verzonden pakket, in bytes.|
-|timeTaken| De tijds duur (in milliseconden) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld voor de duur doorgaans de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
+|timeTaken| De tijds duur (in milliseconden) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld Time-Taken meestal de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
 |sslEnabled| Hiermee wordt aangegeven of communicatie met de back-endservers die TLS gebruiken. Geldige waarden zijn in-en uitgeschakeld.|
 |sslCipher| Coderings suite wordt gebruikt voor TLS-communicatie (als TLS is ingeschakeld).|
 |sslProtocol| Gebruikt TLS-protocol (als TLS is ingeschakeld).|
@@ -191,7 +191,7 @@ Het prestatie logboek wordt alleen gegenereerd als u het hebt ingeschakeld op el
 |healthyHostCount     | Aantal gezonde hosts in de back-end-pool.        |
 |unHealthyHostCount     | Aantal beschadigde hosts in de back-end-pool.        |
 |requestCount     | Aantal geleverde aanvragen.        |
-|periode | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
+|latentie | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
 |failedRequestCount| Aantal mislukte aanvragen.|
 |doorvoer| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
 
@@ -232,7 +232,7 @@ Het firewall logboek wordt alleen gegenereerd als u het hebt ingeschakeld voor e
 |ruleSetVersion     | Gebruikte versie van regel instellingen. Beschik bare waarden zijn 2.2.9 en 3,0.     |
 |ruleId     | De regel-ID van de trigger gebeurtenis.        |
 |message     | Gebruikers vriendelijk bericht voor de activerings gebeurtenis. Meer informatie vindt u in de sectie Details.        |
-|action     |  De actie die voor de aanvraag is uitgevoerd. Beschik bare waarden zijn geblokkeerd en toegestaan.      |
+|actie     |  De actie die voor de aanvraag is uitgevoerd. Beschik bare waarden zijn geblokkeerd en toegestaan.      |
 |site     | De site waarvoor het logboek is gegenereerd. Momenteel wordt alleen globaal weer gegeven omdat regels globaal zijn.|
 |nadere     | Details van de trigger gebeurtenis.        |
 |Details. bericht     | Beschrijving van de regel.        |

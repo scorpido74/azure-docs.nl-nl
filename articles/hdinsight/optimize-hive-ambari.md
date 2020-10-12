@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084355"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Apache Hive optimaliseren met Apache Ambari in azure HDInsight
@@ -134,10 +134,10 @@ De beschik bare compressie typen zijn:
 
 | Indeling | Hulpprogramma | Algoritme | Bestands extensie | Splitsbaar? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | DEFLATE | `.gz` | No |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
+| Gzip | Gzip | DEFLATE | `.gz` | Nee |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Ja |
 | LZO | `Lzop` | LZO | `.lzo` | Ja, indien geïndexeerd |
-| Snappy | N.v.t. | Snappy | Snappy | No |
+| Snappy | N.v.t. | Snappy | Snappy | Nee |
 
 Een algemene regel is dat de compressie methode splitsbaar belang rijk is, anders worden enkele toewijzingen gemaakt. Als de invoer gegevens tekst is, `bzip2` is de beste optie. Voor de indeling ORC is Snappy de snelste compressie optie.
 
@@ -223,7 +223,7 @@ In de volgende secties worden extra optimalisaties voor onderdelen beschreven di
 
 Het standaard type voor samen voegen in Hive is een *wille keurige samen voeging*. In Hive leest speciale mappers de invoer en wordt een koppelings sleutel/-waardepaar naar een tussenliggend bestand verzenden. Hadoop sorteert en voegt deze paren samen in een wille keurige fase. Deze fase in wille keurige volg orde is duur. Het selecteren van de juiste koppeling op basis van uw gegevens kan de prestaties aanzienlijk verbeteren.
 
-| Type samen voeging | Als | Procedure | Hive-instellingen | Opmerkingen |
+| Type samen voeging | Wanneer | Hoe | Hive-instellingen | Opmerkingen |
 | --- | --- | --- | --- | --- |
 | In wille keurige volg orde | <ul><li>Standaard keuze</li><li>Werkt altijd</li></ul> | <ul><li>Lees bewerkingen van een deel van een van de tabellen</li><li>Buckets en sorteren op koppelings sleutel</li><li>Hiermee wordt één Bucket naar elke reductie verzonden</li><li>De deelname aan de minder kant wordt uitgevoerd</li></ul> | Er is geen belang rijke Hive-instelling vereist | Werkt elke keer |
 | Kaart toevoegen | <ul><li>Een tabel kan in het geheugen passen</li></ul> | <ul><li>Hiermee wordt een kleine tabel in de hash-tabel van het geheugen gelezen</li><li>Streamt via een deel van het grote bestand</li><li>Koppelt elke record uit een hash-tabel</li><li>Samen voegingen zijn alleen door de Mapper</li></ul> | `hive.auto.confvert.join=true` | Snel, maar beperkt |
@@ -235,7 +235,7 @@ Aanvullende aanbevelingen voor het optimaliseren van de engine voor het uitvoere
 
 | Instelling | Aanbevolen | Standaard HDInsight |
 | --- | --- | --- |
-| `hive.mapjoin.hybridgrace.hashtable` | Waar = veiliger, langzamer; ONWAAR = sneller | false |
+| `hive.mapjoin.hybridgrace.hashtable` | Waar = veiliger, langzamer; ONWAAR = sneller | onjuist |
 | `tez.am.resource.memory.mb` | 4-GB bovengrens voor de meeste | Automatisch afgestemd |
 | `tez.session.am.dag.submit.timeout.secs` | 300 + | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000 + | 10.000 |

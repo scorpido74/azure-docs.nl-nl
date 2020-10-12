@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289418"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Een spraakassistent maken met aangepaste opdrachten
@@ -66,7 +66,7 @@ Op dit moment ondersteunt aangepaste opdrachten spraak abonnementen die in deze 
     > [!div class="mx-imgBorder"]
     > ![Een project maken](media/custom-commands/import-project.png)
 
-1.  Selecteer in de lijst **Luis authoring resource** een authoring resource. Als er geen geldige ontwerp resources zijn, maakt u er een door **nieuwe Luis maken**te selecteren.
+1.  Selecteer in de lijst **Luis authoring resource** een authoring resource. Als er geen geldige ontwerp resources zijn, maakt u er een door  **nieuwe Luis maken**te selecteren.
 
     > [!div class="mx-imgBorder"]
     > ![Een resource maken](media/custom-commands/create-new-luis-resource.png)
@@ -101,7 +101,7 @@ Voordat u toegang tot deze toepassing kunt krijgen vanuit een andere locatie dan
 ### <a name="update-prediction-luis-resource"></a>LUIS-resource voor voor spelling bijwerken
 
 
-1. Selecteer **instellingen** in het linkerdeel venster en selecteer **Luis resources** in het middelste deel venster.
+1. Selecteer **instellingen** in het linkerdeel venster en selecteer  **Luis resources** in het middelste deel venster.
 1. Selecteer een Voorspellings bron of maak een resource door **nieuwe resource maken**te selecteren.
 1. Selecteer **Opslaan**.
     
@@ -113,7 +113,7 @@ Voordat u toegang tot deze toepassing kunt krijgen vanuit een andere locatie dan
 
 ### <a name="publish-the-application"></a>De toepassing publiceren
 
-Selecteer **publiceren** boven in het rechterdeel venster. Zodra het publiceren is voltooid, wordt er een nieuw venster weer gegeven. Noteer de waarde van de **toepassings-id** en de **spraak bron sleutel** . U hebt deze twee waarden nodig om toegang te krijgen tot de toepassing vanuit de buitenste speech Studio.
+Selecteer  **publiceren** boven in het rechterdeel venster. Zodra het publiceren is voltooid, wordt er een nieuw venster weer gegeven. Noteer de waarde van de **toepassings-id** en de **spraak bron sleutel** . U hebt deze twee waarden nodig om toegang te krijgen tot de toepassing vanuit de buitenste speech Studio.
 
 U kunt deze waarden ook ophalen door **instellingen**  >  **Algemeen** te selecteren.
 

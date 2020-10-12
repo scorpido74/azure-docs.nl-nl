@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885969"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Logboek registratie inschakelen in Azure Machine Learning Designer-pijp lijnen
@@ -59,7 +59,7 @@ In het volgende voor beeld ziet u hoe u de gemiddelde fout van twee getrainde mo
         return dataframe1,
     ```
     
-Deze code maakt gebruik van de Azure Machine Learning python SDK om waarden te registreren. Er wordt gebruikgemaakt van run. get_context () om de context van de huidige uitvoering op te halen. Vervolgens worden waarden in deze context geregistreerd met de methode Run. Parent. log (). Het gebruikt `parent` om waarden te registreren voor de bovenliggende pijplijn uitvoering in plaats van dat de module wordt uitgevoerd.
+Deze code maakt gebruik van de Azure Machine Learning python SDK om waarden te registreren. Er wordt gebruikgemaakt van Run.get_context () om de context van de huidige uitvoering te verkrijgen. Vervolgens worden waarden in deze context geregistreerd met de methode Run. Parent. log (). Het gebruikt `parent` om waarden te registreren voor de bovenliggende pijplijn uitvoering in plaats van dat de module wordt uitgevoerd.
 
 Zie voor meer informatie over het gebruik van de python-SDK voor het vastleggen van waarden [logboek registratie inschakelen in training van Azure ml](how-to-track-experiments.md).
 

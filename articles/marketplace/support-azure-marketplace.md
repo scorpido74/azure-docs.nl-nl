@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
 ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329751"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Ondersteuning voor micro soft Commercial Marketplace
@@ -22,7 +22,7 @@ Hebt u vragen over hoe u aan de slag kunt met micro soft Commercial Marketplace 
 
 Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https://aka.ms/marketplacepublishersupport) voor problemen met onboarding en aan de slag.
 
-## <a name="partner-center"></a>Partner centrum
+## <a name="partner-center"></a>Partnercentrum
 
 | Ondersteuningskanaal | Beschrijving | Beschikbaarheid |  
 |:--- |:--- |:--- |  

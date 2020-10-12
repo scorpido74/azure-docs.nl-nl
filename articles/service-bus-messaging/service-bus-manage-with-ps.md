@@ -4,10 +4,10 @@ description: In dit artikel wordt uitgelegd hoe u met behulp van Azure PowerShel
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065740"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Power shell gebruiken voor het beheren van Service Bus resources
@@ -34,11 +34,11 @@ De eerste stap is het gebruik van Power shell om u aan te melden bij uw Azure-ac
 
 Bij het werken met Service Bus naam ruimten kunt u de cmdlets [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)en [set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) gebruiken.
 
-In dit voor beeld worden een aantal lokale variabelen in het script gemaakt. `$Namespace`en `$Location` .
+In dit voor beeld worden een aantal lokale variabelen in het script gemaakt. `$Namespace` en `$Location` .
 
-* `$Namespace`is de naam van de naam ruimte van Service Bus waarmee we willen werken.
-* `$Location`Hiermee wordt het Data Center geïdentificeerd waarin de naam ruimte wordt ingericht.
-* `$CurrentNamespace`slaat de referentie naam ruimte op die we ophalen (of maken).
+* `$Namespace` is de naam van de naam ruimte van Service Bus waarmee we willen werken.
+* `$Location` Hiermee wordt het Data Center geïdentificeerd waarin de naam ruimte wordt ingericht.
+* `$CurrentNamespace` slaat de referentie naam ruimte op die we ophalen (of maken).
 
 In een werkelijk script `$Namespace` en `$Location` kunnen worden door gegeven als para meters.
 

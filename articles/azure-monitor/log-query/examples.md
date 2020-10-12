@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045517"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Voor beelden van Azure Monitor-logboek query
@@ -200,7 +200,7 @@ Perf
 ## <a name="protection-status"></a>Beveiligingsstatus
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Computers met een status duur van niet-rapportage beveiliging
-In dit voor beeld worden computers weer gegeven die de beveiligings status _niet rapporteren_ hebben en de duur die ze in deze status hadden.
+In dit voor beeld worden computers weer gegeven die de beveiligings status _niet rapporteren_  hebben en de duur die ze in deze status hadden.
 
 ```Kusto
 ProtectionStatus
