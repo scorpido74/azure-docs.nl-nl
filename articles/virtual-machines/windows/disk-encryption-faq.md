@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 0b910e3b119167fb4c6de55289d92b9d538c8ddb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284554"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
@@ -124,7 +124,7 @@ Azure Disk Encryption selecteert de versleutelings methode in BitLocker op basis
 | Windows Server 2012, Windows 8, 8,1, 10 | < 1511 |AES 256 bits *              |
 | Windows Server-2008R2            |        |AES 256-bit met diffusor |
 
-\*AES 256 bits met diffuser wordt niet ondersteund in Windows 2012 en hoger.
+\* AES 256 bits met diffuser wordt niet ondersteund in Windows 2012 en hoger.
 
 Als u de versie van het Windows-besturings systeem wilt bepalen, voert u het hulp programma winver uit in de virtuele machine.
 

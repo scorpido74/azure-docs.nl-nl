@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642415"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plan een implementatie voor de Azure AD-toepassingsproxy
@@ -128,7 +128,7 @@ Hier volgen enkele gebieden waarvoor u de zakelijke vereisten van uw organisatie
 
 * De prestaties van de toepassing worden niet verminderd ten opzichte van de toegang tot de toepassing vanuit het interne netwerk.
 
-**Gebruikers ervaring**
+**Gebruikerservaring**
 
 * Gebruikers weten hoe ze toegang krijgen tot hun toepassingen met behulp van vertrouwde bedrijfs-Url's op elk platform.
 
@@ -241,7 +241,7 @@ Controleer of uw toepassing toegankelijk is via een toepassings proxy via de ext
 
 Als verificatie vooraf is ingeschakeld, worden gebruikers eerst door Azure AD aangevraagd voor verificatie en als eenmalige aanmelding is geconfigureerd, controleert de back-end-toepassing ook de gebruiker voordat toegang tot de toepassing wordt verleend. Als u de modus vooraf-verificatie van passthrough naar Azure AD wijzigt, wordt ook de externe URL met HTTPS geconfigureerd, zodat alle toepassingen die in eerste instantie zijn geconfigureerd voor HTTP, nu worden beveiligd met HTTPS.
 
-### <a name="enable-single-sign-on"></a>Eenmalige aanmelding inschakelen
+### <a name="enable-single-sign-on"></a>Eén Sign-On inschakelen
 
 SSO biedt de best mogelijke gebruikers ervaring en beveiliging omdat gebruikers zich slechts eenmaal hoeven aan te melden bij het openen van Azure AD. Zodra een gebruiker vooraf is geverifieerd, wordt SSO uitgevoerd door de Application proxy-connector die namens de gebruiker is geverifieerd bij de on-premises toepassing. De back-end-toepassing verwerkt de aanmelding alsof deze de gebruiker zelf is.
 

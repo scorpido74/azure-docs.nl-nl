@@ -9,10 +9,10 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716670"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>JSON en XML transformeren met behulp van liquide sjablonen als Maps in Azure Logic Apps
@@ -88,7 +88,7 @@ In dit artikel wordt beschreven hoe u deze taken uitvoert:
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Name** | `JsonToJsonTemplate` | De naam voor uw kaart, in dit voor beeld ' JsonToJsonTemplate ' |
+   | **Naam** | `JsonToJsonTemplate` | De naam voor uw kaart, in dit voor beeld ' JsonToJsonTemplate ' |
    | **Toewijzings type** | **Liquid** | Het type voor uw kaart. Voor JSON naar JSON-trans formatie moet u **liquide middelen**selecteren. |
    | **Diagram** | `SimpleJsonToJsonTemplate.liquid` | In dit voor beeld wordt een bestaande vloeistof sjabloon of kaart bestand gebruikt voor trans formatie, dat "SimpleJsonToJsonTemplate. liquide" is. U kunt dit bestand vinden met behulp van de bestands kiezer. Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)voor limieten voor kaart grootte. |
    |||

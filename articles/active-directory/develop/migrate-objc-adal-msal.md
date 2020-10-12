@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119926"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Toepassingen migreren naar MSAL voor iOS en macOS
@@ -53,7 +53,7 @@ De MSAL open bare API weerspiegelt enkele belang rijke verschillen tussen Azure 
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>MSALPublicClientApplication in plaats van ADAuthenticationContext
 
-`ADAuthenticationContext`is het eerste object dat een ADAL-app maakt. Dit vertegenwoordigt een exemplaar van ADAL. Apps maken een nieuw exemplaar van `ADAuthenticationContext` voor elke combi natie van Azure Active Directory Cloud en Tenant (Authority). Dit `ADAuthenticationContext` kan ook worden gebruikt voor het ophalen van tokens voor meerdere open bare client toepassingen.
+`ADAuthenticationContext` is het eerste object dat een ADAL-app maakt. Dit vertegenwoordigt een exemplaar van ADAL. Apps maken een nieuw exemplaar van `ADAuthenticationContext` voor elke combi natie van Azure Active Directory Cloud en Tenant (Authority). Dit `ADAuthenticationContext` kan ook worden gebruikt voor het ophalen van tokens voor meerdere open bare client toepassingen.
 
 In MSAL is de belangrijkste interactie via een `MSALPublicClientApplication` object, dat is gemodelleerd na een [OAuth 2,0 open bare client](https://tools.ietf.org/html/rfc6749#section-2.1). Eén exemplaar van `MSALPublicClientApplication` kan worden gebruikt om te communiceren met meerdere Aad-Clouds en tenants, zonder dat er voor elke instantie een nieuw exemplaar hoeft te worden gemaakt. Voor de meeste apps `MSALPublicClientApplication` is één instantie voldoende.
 
@@ -83,7 +83,7 @@ U kunt [hier](./v2-permissions-and-consent.md#the-default-scope) meer informatie
 
 ADAL biedt alleen ondersteuning voor UIWebView/WKWebView voor iOS en de webweergave voor macOS. MSAL voor iOS ondersteunt meer opties voor het weer geven van webinhoud wanneer u een autorisatie code aanvraagt en niet langer ondersteunt `UIWebView` ; waarmee de gebruikers ervaring en beveiliging kunnen worden verbeterd.
 
-MSAL op iOS maakt standaard gebruik van [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc), het webonderdeel Apple raadt voor verificatie op Ios 12 +-apparaten. Het biedt voor delen van eenmalige aanmelding (SSO) via het delen van cookies tussen apps en de Safari-browser.
+MSAL op iOS maakt standaard gebruik van [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc), het webonderdeel Apple raadt voor verificatie op Ios 12 +-apparaten. Het biedt de voor delen van single Sign-On (SSO) via het delen van cookies tussen apps en de Safari-browser.
 
 U kunt ervoor kiezen om een ander webonderdeel te gebruiken, afhankelijk van de app-vereisten en de ervaring van de eind gebruiker die u wilt. Zie [ondersteunde webweergave typen](customize-webviews.md) voor meer opties.
 

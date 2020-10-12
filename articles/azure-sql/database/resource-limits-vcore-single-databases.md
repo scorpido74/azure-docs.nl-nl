@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/21/2020
 ms.openlocfilehash: 1d9fc9f50ac21e2ea621e26ad2b1fe0f146116de
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618485"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resourcelimieten voor individuele databases met gebruikmaking van het vCore-aankoopmodel
@@ -225,7 +225,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 \* Behalve lokale SSD IO gebruiken werk belastingen externe pagina- [Server](service-tier-hyperscale.md#page-server) -io. Effectief IOPS is afhankelijk van de werk belasting. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)en [Data io in statistieken voor bron gebruik](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)voor meer informatie.
 
-#### <a name="notes"></a>Opmerkingen
+#### <a name="notes"></a>Notities
 
 **Opmerking 1**: grootschalige is een architectuur met meerdere lagen met afzonderlijke Compute-en opslag onderdelen: [grootschalige service tier-architectuur](service-tier-hyperscale.md#distributed-functions-architecture)
 

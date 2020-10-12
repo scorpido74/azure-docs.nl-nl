@@ -12,10 +12,10 @@ ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617873"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
@@ -84,7 +84,7 @@ Zie [back-up](/sql/t-sql/statements/backup-transact-sql)voor informatie over bac
 
 ## <a name="security"></a>Beveiliging
 
-### <a name="auditing"></a>Controle
+### <a name="auditing"></a>Controleren
 
 De belangrijkste verschillen tussen controles in Microsoft Azure SQL en in SQL Server zijn:
 
@@ -165,7 +165,7 @@ SQL Managed instance heeft geen toegang tot bestanden, zodat er geen cryptografi
     - Exporteer een Data Base van een SQL Managed instance en importeer deze in SQL Database binnen hetzelfde Azure AD-domein. 
     - Een Data Base exporteren uit SQL Database en importeren in een SQL Managed instance binnen hetzelfde Azure AD-domein.
     - Een Data Base exporteren uit SQL Managed instance en importeren in SQL Server (versie 2012 of hoger).
-      - In deze configuratie worden alle Azure AD-gebruikers gemaakt als SQL Server Data Base-principals (gebruikers) zonder aanmeldingen. Het type gebruikers wordt weer gegeven als `SQL` en is zichtbaar als `SQL_USER` in sys. database_principals). De machtigingen en rollen blijven aanwezig in de meta gegevens van de data base van SQL Server en kunnen worden gebruikt voor imitatie. Ze kunnen echter niet worden gebruikt voor toegang tot en aanmelding bij de SQL Server met behulp van hun referenties.
+      - In deze configuratie worden alle Azure AD-gebruikers gemaakt als SQL Server Data Base-principals (gebruikers) zonder aanmeldingen. Het type gebruikers wordt weer gegeven als `SQL` en is zichtbaar als `SQL_USER` in sys.database_principals). De machtigingen en rollen blijven aanwezig in de meta gegevens van de data base van SQL Server en kunnen worden gebruikt voor imitatie. Ze kunnen echter niet worden gebruikt voor toegang tot en aanmelding bij de SQL Server met behulp van hun referenties.
 
 - Alleen de principal-aanmelding op server niveau, die wordt gemaakt door de SQL Managed instance Provisioning proces, leden van de server functies, zoals `securityadmin` of `sysadmin` , of andere aanmeldingen met wijziging van de machtiging Aanmelden op server niveau, kunnen Azure ad server-principals (aanmeldingen) maken in de hoofd database voor SQL Managed instance.
 - Als de aanmelding een SQL-principal is, kunnen alleen aanmeldingen die deel uitmaken van de rol `sysadmin` de opdracht create gebruiken om aanmeldingen te maken voor een Azure AD-account.
@@ -174,11 +174,11 @@ SQL Managed instance heeft geen toegang tot bestanden, zodat er geen cryptografi
 - Het is niet toegestaan Azure AD-server-principals (aanmeldingen) te overlappen met een Azure AD-beheerders account. Azure AD server-principals (aanmeldingen) hebben voor rang op de Azure AD-beheerder wanneer u de principal verhelpt en machtigingen toepast op een SQL Managed instance.
 - Tijdens de verificatie wordt de volgende reeks toegepast om de verificatie-principal op te lossen:
 
-    1. Als het Azure AD-account is gekoppeld aan de principal van de Azure AD-server (aanmelden), dat aanwezig is in sys. server_principals als type "E," toegang verlenen en machtigingen Toep assen van de Azure AD server-principal (aanmelden).
-    2. Als het Azure AD-account lid is van een Azure AD-groep die is toegewezen aan de Azure AD-server principal (login), die aanwezig is in sys. server_principals als type X, toegang verlenen en machtigingen Toep assen van de aanmelding van de Azure AD-groep.
+    1. Als het Azure AD-account is gekoppeld aan de principal van de Azure AD-server (aanmelden), dat aanwezig is in sys.server_principals als type ' E ', toegang verlenen en machtigingen Toep assen van de Azure AD server-principal (aanmelden).
+    2. Als het Azure AD-account lid is van een Azure AD-groep die is toegewezen aan de Azure AD-server principal (login), die aanwezig is in sys.server_principals als type X, toegang verlenen en machtigingen Toep assen van de aanmelding van de Azure AD-groep.
     3. Als het Azure AD-account een speciaal door de portal geconfigureerde Azure AD-beheerder voor SQL Managed instance is, dat zich niet in SQL Managed instance System views bevindt, moet u speciale vaste machtigingen Toep assen van de Azure AD-beheerder voor SQL Managed instance (legacy-modus).
-    4. Als het Azure AD-account is gekoppeld aan een Azure AD-gebruiker in een Data Base die aanwezig is in sys. database_principals als type "E," toegang verlenen en machtigingen Toep assen van de gebruiker van de Azure AD-data base.
-    5. Als het Azure AD-account lid is van een Azure AD-groep die is toegewezen aan een Azure AD-gebruiker in een Data Base, die aanwezig is in sys. database_principals als type X, toegang verlenen en machtigingen Toep assen van de aanmelding van de Azure AD-groep.
+    4. Als het Azure AD-account is gekoppeld aan een Azure AD-gebruiker in een Data Base, die aanwezig is in sys.database_principals als type E, toegang verlenen en machtigingen Toep assen van de gebruiker van de Azure AD-data base.
+    5. Als het Azure AD-account lid is van een Azure AD-groep die is toegewezen aan een Azure AD-gebruiker in een Data Base, die aanwezig is in sys.database_principals als type X, toegang verlenen en machtigingen Toep assen van de Azure AD-groeps aanmelding.
     6. Als er een Azure AD-aanmelding is toegewezen aan een Azure AD-gebruikers account of een Azure AD-groeps account, die wordt omgezet naar de gebruiker die de verificatie uitvoert, worden alle machtigingen van deze Azure AD-aanmelding toegepast.
 
 ### <a name="service-key-and-service-master-key"></a>Service sleutel en service hoofd sleutel
@@ -433,7 +433,7 @@ Zie de volgende zelf studies voor meer informatie over het configureren van tran
   - `FROM DISK`/`TAPE`/Backup-apparaat wordt niet ondersteund.
   - Back-upsets worden niet ondersteund.
 - `WITH` opties worden niet ondersteund. Herstel pogingen `WITH` , zoals zoals `DIFFERENTIAL` , `STATS` , `REPLACE` , enzovoort, mislukken.
-- `ASYNC RESTORE`: Het herstellen gaat verder, zelfs als de client verbinding is verbroken. Als de verbinding wordt verbroken, kunt u de `sys.dm_operation_status` weer gave voor de status van een herstel bewerking controleren en voor een Data Base maken en verwijderen. Zie [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: Het herstellen gaat verder, zelfs als de client verbinding is verbroken. Als de verbinding wordt verbroken, kunt u de `sys.dm_operation_status` weer gave voor de status van een herstel bewerking controleren en voor een Data Base maken en verwijderen. Zie [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 De volgende database opties zijn ingesteld of worden overschreven en kunnen later niet meer worden gewijzigd: 
 

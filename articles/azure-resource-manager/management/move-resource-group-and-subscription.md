@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319551"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement
@@ -178,11 +178,11 @@ Wanneer u de resource groep bekijkt, is de optie verplaatsen uitgeschakeld.
 
 Als u de optie verplaatsen wilt inschakelen, selecteert u de resources die u wilt verplaatsen. Als u alle resources wilt selecteren, schakelt u het selectie vakje boven aan de lijst in. U kunt ook afzonderlijke resources selecteren. Na het selecteren van resources is de optie verplaatsen ingeschakeld.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="resources selecteren":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="optie voor verplaatsen is uitgeschakeld":::
 
 Selecteer de knop **verplaatsen** .
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="opties verplaatsen":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="optie voor verplaatsen is uitgeschakeld":::
 
 Deze knop biedt u drie opties:
 
@@ -194,11 +194,11 @@ Selecteer of u de resources verplaatst naar een nieuwe resource groep of een nie
 
 Selecteer de doel resource groep. Bevestig dat u scripts voor deze resources moet bijwerken en selecteer **OK**. Als u hebt geselecteerd om naar een nieuw abonnement te gaan, moet u ook het doel abonnement selecteren.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="doel selecteren":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="optie voor verplaatsen is uitgeschakeld":::
 
 Nadat u hebt gecontroleerd of de resources kunnen worden verplaatst, ziet u een melding dat de verplaatsings bewerking wordt uitgevoerd.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="melding":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="optie voor verplaatsen is uitgeschakeld":::
 
 Wanneer deze is voltooid, ontvangt u een melding van het resultaat.
 

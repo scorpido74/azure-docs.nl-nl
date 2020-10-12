@@ -7,13 +7,13 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710198"
 ---
-# <a name="retain-ip-addresses-during-failover"></a>IP-adressen behouden tijdens failover
+# <a name="retain-ip-addresses-during-failover"></a>IP-adressen behouden tijdens een failover
 
 [Azure site Recovery](site-recovery-overview.md) kunt herstel na nood gevallen voor Azure-vm's uitvoeren door vm's te repliceren naar een andere Azure-regio, als er een failover optreedt als er zich een storing voordoet en de primaire regio niet meer wordt weer gegeven wanneer de items weer normaal zijn.
 

@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566072"
 ---
 # <a name="troubleshooting-network-performance"></a>Problemen met netwerk prestaties oplossen
@@ -80,7 +80,7 @@ Er zijn drie basis stappen voor het gebruik van deze Toolkit voor het testen van
 
 3. De prestatie test uitvoeren
 
-    Eerst moet u op de externe host iPerf installeren en uitvoeren in de server modus. Zorg er ook voor dat de externe host op 3389 (RDP voor Windows) of 22 (SSH voor Linux) luistert en verkeer op poort 5201 voor iPerf toestaat. Als de externe host Windows is, installeert u de AzureCT en voert u de opdracht install-LinkPerformance uit om iPerf in te stellen en de firewall regels die nodig zijn om iPerf in de server modus te kunnen starten. 
+    Eerst moet u op de externe host iPerf installeren en uitvoeren in de server modus. Zorg er ook voor dat de externe host op 3389 (RDP voor Windows) of 22 (SSH voor Linux) luistert en verkeer op poort 5201 voor iPerf toestaat. Als de externe host Windows is, installeert u de AzureCT en voert u de Install-LinkPerformance opdracht uit voor het instellen van iPerf en de firewall regels die nodig zijn om iPerf in de server modus te starten. 
     
     Zodra de externe computer klaar is, opent u Power shell op de lokale computer en start u de test:
     ```powershell
@@ -128,8 +128,8 @@ Als u niet zeker weet waar de rand van de Cloud zich daad werkelijk bevindt, kan
 Als twee VNets (VNets A en B in het diagram) zijn verbonden met **hetzelfde** ExpressRoute-circuit, kunt u een reeks tests uitvoeren om het probleem in azure te isoleren (of bewijzen dat het zich niet in azure bevindt)
  
 ### <a name="test-plan"></a>Test plan
-1. Voer de Get-LinkPerformance-test uit tussen VM1 en VM2. Deze test geeft inzicht in het geval dat het probleem lokaal is of niet. Als deze test acceptabele latentie en bandbreedte resultaten produceert, kunt u het lokale VNet-netwerk markeren als goed.
-2. Ervan uitgaande dat het lokale VNet-verkeer goed is, voert u de Get-LinkPerformance-test tussen VM1 en VM3 uit. Met deze test wordt de verbinding via het micro soft-netwerk tot stand gebracht met de MSEE en weer in Azure. Als deze test acceptabele latentie en bandbreedte resultaten produceert, kunt u het Azure-netwerk markeren als goed.
+1. Voer de Get-LinkPerformance test uit tussen VM1 en VM2. Deze test geeft inzicht in het geval dat het probleem lokaal is of niet. Als deze test acceptabele latentie en bandbreedte resultaten produceert, kunt u het lokale VNet-netwerk markeren als goed.
+2. Ervan uitgaande dat het lokale VNet-verkeer goed is, voert u de Get-LinkPerformance test uit tussen VM1 en VM3. Met deze test wordt de verbinding via het micro soft-netwerk tot stand gebracht met de MSEE en weer in Azure. Als deze test acceptabele latentie en bandbreedte resultaten produceert, kunt u het Azure-netwerk markeren als goed.
 3. Als Azure wordt uitgesloten, kunt u een vergelijk bare reeks testen op uw bedrijfs netwerk uitvoeren. Als dat ook goed wordt getest, is het tijd om samen te werken met uw service provider of provider om uw WAN-verbinding te diagnosticeren. Voor beeld: Voer deze test uit tussen twee filialen of tussen uw bureau en een Data Center-Server. Afhankelijk van wat u wilt testen, zoekt u eind punten (servers, Pc's, enzovoort) die dit pad kunnen uitoefenen.
 
 >[!IMPORTANT]
@@ -160,7 +160,7 @@ Setup testen:
  - Een 10 Gbps Premium ExpressRoute-circuit in de locatie die is geïdentificeerd met persoonlijke peering ingeschakeld.
  - Een Azure VNet met een Ultra Performance-gateway in de opgegeven regio.
  - Een DS5v2-VM met Windows Server 2016 op het VNet. De virtuele machine is toegevoegd aan een ander domein, gebouwd op basis van de standaard installatie kopie van Azure (geen optimalisatie of aanpassing) met AzureCT geïnstalleerd.
- - Alle tests hebben de opdracht AzureCT Get-LinkPerformance gebruikt met een belasting test van 5 minuten voor elk van de zes test uitvoeringen. Bijvoorbeeld:
+ - Alle tests hebben de AzureCT-Get-LinkPerformance opdracht met een belasting test van 5 minuten voor elk van de zes test uitvoeringen. Bijvoorbeeld:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
@@ -179,14 +179,14 @@ Setup testen:
 
 | ExpressRoute<br/>Locatie|Azure<br/>Regio | Bepaald<br/>Afstand (km) | Latentie|1 sessie<br/>Bandbreedte | Maximum<br/>Bandbreedte |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
-| Seattle | VS - west 2        |    191 km |   5 MS | 262,0 Mbit per seconde |  3,74 Gbits per seconde |
+| Seattle | West US 2        |    191 km |   5 MS | 262,0 Mbit per seconde |  3,74 Gbits per seconde |
 | Seattle | VS - west          |  1.094 km |  18 MS |  82,3 Mbit per seconde |  3,70 Gbits per seconde |
-| Seattle | VS - centraal       |  2.357 km |  40 MS |  38,8 Mbit per seconde |  2,55 Gbits per seconde |
-| Seattle | VS - zuid-centraal |  2.877 km |  51 MS |  30,6 Mbit per seconde |  2,49 Gbits per seconde |
+| Seattle | Central US       |  2.357 km |  40 MS |  38,8 Mbit per seconde |  2,55 Gbits per seconde |
+| Seattle | South Central US |  2.877 km |  51 MS |  30,6 Mbit per seconde |  2,49 Gbits per seconde |
 | Seattle | VS - noord-centraal |  2.792 km |  55 MS |  27,7 Mbit per seconde |  2,19 Gbits per seconde |
 | Seattle | VS - oost 2        |  3.769 km |  73 MS |  21,3 Mbit per seconde |  1,79 Gbits per seconde |
 | Seattle | VS - oost          |  3.699 km |  74 MS |  21,1 Mbit per seconde |  1,78 Gbits per seconde |
-| Seattle | Japan - oost       |  7.705 km | 106 MS |  14,6 Mbit per seconde |  1,22 Gbits per seconde |
+| Seattle | Japan East       |  7.705 km | 106 MS |  14,6 Mbit per seconde |  1,22 Gbits per seconde |
 | Seattle | Verenigd Koninkrijk Zuid         |  7.708 km | 146 MS |  10,6 Mbit per seconde |   896 Mbit per seconde |
 | Seattle | Europa -west      |  7.834 km | 153 MS |  10,2 Mbit per seconde |   761 Mbit per seconde |
 | Seattle | Australië - oost   | 12.484 km | 165 MS |   9,4 Mbit per seconde |   794 Mbit per seconde |

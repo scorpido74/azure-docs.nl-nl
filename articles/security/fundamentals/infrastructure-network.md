@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 3b047489f9cfa3623c11e324cf58114b707c10b7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567861"
 ---
 # <a name="azure-network-architecture"></a>Azure-netwerk architectuur
@@ -61,7 +61,7 @@ De bovenstaande netwerk onderdelen zijn ontworpen om maximale Beschik baarheid t
 ## <a name="datacenter-network-resiliency"></a>Tolerantie van datacenter netwerk
 Laten we het ontwerp principe voor tolerantie illustreren met behulp van het Data Center-netwerk.
 
-Het Data Center Network is een gewijzigde versie van een [Clos-netwerk](https://en.wikipedia.org/wiki/Clos_network)dat hoge band breedte voor de bi-afdeling biedt voor schaal bare Cloud verkeer. Het netwerk is gemaakt met behulp van een groot aantal basisproduct apparaten om de impact die wordt veroorzaakt door individuele hardwarestoringen te verminderen. Deze apparaten bevinden zich strategisch op verschillende fysieke locaties met een afzonderlijk energie-en koele domein om de impact van een omgevings gebeurtenis te verminderen.  Op het besturings vlak worden alle netwerk apparaten uitgevoerd als OSI model Layer 3-routerings modus, waardoor het historische probleem van de verkeers vertraging wordt voor komen. Alle paden tussen de verschillende lagen zijn actief om hoge redundantie en band breedte te bieden met behulp van een ECMP-route ring met een gelijke kosten voor meerdere paden.
+Het Data Center Network is een gewijzigde versie van een [Clos-netwerk](https://en.wikipedia.org/wiki/Clos_network)dat hoge band breedte voor de bi-afdeling biedt voor schaal bare Cloud verkeer. Het netwerk is gemaakt met behulp van een groot aantal basisproduct apparaten om de impact die wordt veroorzaakt door individuele hardwarestoringen te verminderen. Deze apparaten bevinden zich strategisch op verschillende fysieke locaties met een afzonderlijk energie-en koele domein om de impact van een omgevings gebeurtenis te verminderen.  Op het besturings vlak worden alle netwerk apparaten uitgevoerd als OSI model Layer 3-routerings modus, waardoor het historische probleem van de verkeers vertraging wordt voor komen. Alle paden tussen de verschillende lagen zijn actief om hoge redundantie en band breedte te bieden met behulp van Equal-Cost Multi-Path-route ring (ECMP).
 
 In het volgende diagram ziet u dat het datacenter netwerk is gemaakt door verschillende lagen van netwerk apparaten. De balken in het diagram vertegenwoordigen groepen netwerk apparaten die de connectiviteit van redundantie en hoge band breedte bieden.
 

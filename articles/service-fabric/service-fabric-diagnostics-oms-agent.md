@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258682"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Prestatie bewaking met Azure Monitor-logboeken
 
-In dit artikel worden de stappen beschreven voor het toevoegen van de Log Analytics agent als een extensie voor virtuele-machine schaal sets aan uw cluster en om deze te verbinden met uw bestaande Azure Log Analytics-werk ruimte. Hierdoor kunt u Diagnostische gegevens over containers, toepassingen en prestatie bewaking verzamelen. Door het toe te voegen als een uitbrei ding van de bron van de schaalset voor virtuele machines, zorgt Azure Resource Manager ervoor dat deze wordt geïnstalleerd op elk knoop punt, zelfs wanneer het cluster wordt geschaald.
+In dit artikel worden de stappen beschreven voor het toevoegen van de Log Analytics agent als een extensie voor virtuele-machine schaal sets aan uw cluster en om deze te verbinden met uw bestaande Azure Log Analytics-werk ruimte. Hierdoor kunt u diagnostische gegevens over containers, toepassingen en prestatiebewaking verzamelen. Door de uitbreiding toe te voegen aan de virtuele-machineschaalset, zorgt Azure Resource Manager ervoor dat deze op elk knooppunt wordt geïnstalleerd, zelfs wanneer het cluster wordt geschaald.
 
 > [!NOTE]
 > In dit artikel wordt ervan uitgegaan dat u al een Azure Log Analytics-werk ruimte hebt ingesteld. Als u dit niet doet, moet u [Azure monitor-logboeken instellen](service-fabric-diagnostics-oms-setup.md)

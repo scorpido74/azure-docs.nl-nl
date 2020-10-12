@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119892"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokens verkrijgen en in de cache opslaan met behulp van de micro soft Authentication Library (MSAL)
@@ -42,8 +42,8 @@ Wanneer uw toepassing een toegangs token moet aanvragen met specifieke machtigin
 
 Enkele voor beelden van bereik waarden voor verschillende resources:
 
-- Microsoft Graph-API:`https://graph.microsoft.com/User.Read`
-- Aangepaste web-API:`api://11111111-1111-1111-1111-111111111111/api.read`
+- Microsoft Graph-API: `https://graph.microsoft.com/User.Read`
+- Aangepaste web-API: `api://11111111-1111-1111-1111-111111111111/api.read`
 
 De indeling van de bereik waarde varieert, afhankelijk van de bron (de API) die het toegangs token ontvangt en de `aud` claim waarden die worden geaccepteerd.
 

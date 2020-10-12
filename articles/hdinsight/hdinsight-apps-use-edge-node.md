@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086480"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Lege Edge-knoop punten op Apache Hadoop clusters in HDInsight gebruiken
@@ -86,7 +86,7 @@ In deze sectie gebruikt u een resource manager-sjabloon om een Edge-knoop punt t
     |Locatie|Selecteer de locatie van het bestaande HDInsight-cluster.|
     |Clusternaam|Voer de naam van een bestaand HDInsight-cluster in.|
 
-1. Ga **akkoord met de bovenstaande voor waarden**en selecteer vervolgens **aanschaffen** om het Edge-knoop punt te maken.
+1. Ga **akkoord met de bovenstaande voor waarden**en selecteer vervolgens  **aanschaffen** om het Edge-knoop punt te maken.
 
 > [!IMPORTANT]  
 > Zorg ervoor dat u de Azure-resource groep voor het bestaande HDInsight-cluster selecteert.  Anders wordt het volgende fout bericht weer gegeven: kan de aangevraagde bewerking niet uitvoeren op een geneste bron. De bovenliggende resource &lt; clustername> is niet gevonden.
@@ -111,13 +111,13 @@ In deze sectie gebruikt u een resource manager-sjabloon om een HDInsight-cluster
     |Clusternaam|Voer een naam in voor het nieuwe cluster dat u wilt maken.|
     |Gebruikersnaam voor clusteraanmelding|Voer de Hadoop HTTP-gebruikers naam in.  De standaardnaam is **admin**.|
     |Wachtwoord voor clusteraanmelding|Voer het Hadoop HTTP-gebruikers wachtwoord in.|
-    |SSH-gebruikers naam|Voer de SSH-gebruikers naam in. De standaard naam is **sshuser**.|
-    |SSH-wacht woord|Voer het wacht woord voor SSH-gebruikers in.|
+    |Ssh-gebruikersnaam|Voer de SSH-gebruikers naam in. De standaard naam is **sshuser**.|
+    |Ssh-wachtwoord|Voer het wacht woord voor SSH-gebruikers in.|
     |Script actie installeren|Behoud de standaard waarde voor dit artikel.|
 
     Sommige eigenschappen zijn vastgelegd in de sjabloon: cluster type, aantal cluster worker-knoop punten, grootte van Edge-knoop punt en rand knooppunt naam.
 
-1. Ga **akkoord met de bovenstaande voor waarden**en selecteer vervolgens **aankoop** om het cluster met het Edge-knoop punt te maken.
+1. Ga **akkoord met de bovenstaande voor waarden**en selecteer vervolgens  **aankoop** om het cluster met het Edge-knoop punt te maken.
 
 ## <a name="add-multiple-edge-nodes"></a>Meerdere Edge-knoop punten toevoegen
 
@@ -164,7 +164,7 @@ U kunt een Edge-knoop punt verwijderen uit het Azure Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een Edge-knoop punt kunt toevoegen en hoe u toegang krijgt tot het Edge-knoop punt. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u geleerd hoe u een Edge-knoop punt kunt toevoegen en hoe u toegang krijgt tot het Edge-knoop punt. Lees de volgende artikelen voor meer informatie:
 
 * [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md): informatie over het installeren van een HDInsight-toepassing op uw clusters.
 * [Aangepaste hdinsight-toepassingen installeren](hdinsight-apps-install-custom-applications.md): meer informatie over het implementeren van een niet-gepubliceerde hdinsight-toepassing op hdinsight.

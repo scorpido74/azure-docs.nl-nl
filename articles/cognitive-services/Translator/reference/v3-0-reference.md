@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
 ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121014"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
@@ -156,7 +156,7 @@ U kunt het aangepaste eind punt vinden nadat u een [Translator-resource](https:/
 |Kopteksten|Beschrijving|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| De waarde is de geheime Azure-sleutel voor uw abonnement op Translator.|
-|OCP-APIM-abonnement-regio| De waarde is de regio van de Translator-resource. Deze waarde is optioneel als de resource is`global`|
+|OCP-APIM-abonnement-regio| De waarde is de regio van de Translator-resource. Deze waarde is optioneel als de resource is `global`|
 
 Hier volgt een voorbeeld aanvraag voor het aanroepen van het conversie programma met behulp van het aangepaste eind punt
 
