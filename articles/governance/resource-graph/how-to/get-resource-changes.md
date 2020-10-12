@@ -4,10 +4,10 @@ description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewi
 ms.date: 08/10/2020
 ms.topic: how-to
 ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056564"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
@@ -287,5 +287,5 @@ Als u de resultaten wilt vergelijken, gebruikt u de eigenschap **Changes** in **
 
 - Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
 - Zie [Geavanceerde query's](../samples/advanced.md) voor geavanceerde gebruikswijzen.
-- Lees meer over het [verkennen van resources](../concepts/explore-resources.md).
+- Meer informatie over het [verkennen van resources](../concepts/explore-resources.md).
 - Zie [richt lijnen voor beperkte aanvragen](../concepts/guidance-for-throttled-requests.md)voor meer informatie over het werken met query's met een hoge frequentie.

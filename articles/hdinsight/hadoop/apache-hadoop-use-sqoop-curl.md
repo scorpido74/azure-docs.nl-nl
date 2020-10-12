@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
 ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076263"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Apache Sqoop-taken in HDInsight uitvoeren met krul
@@ -77,7 +77,7 @@ De REST API is beveiligd via [basisverificatie](https://en.wikipedia.org/wiki/Ba
 
     In deze opdracht worden de volgende parameters gebruikt:
 
-   * **-d** -omdat `-G` niet wordt gebruikt, wordt de standaard waarde van de aanvraag ingesteld op de methode post. `-d`Hiermee geeft u de gegevens waarden op die met de aanvraag worden verzonden.
+   * **-d** -omdat `-G` niet wordt gebruikt, wordt de standaard waarde van de aanvraag ingesteld op de methode post. `-d` Hiermee geeft u de gegevens waarden op die met de aanvraag worden verzonden.
 
        * **User.name** : de gebruiker die de opdracht uitvoert.
 

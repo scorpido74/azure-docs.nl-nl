@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015967"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Niet-micro soft-accounts toevoegen aan de app Microsoft Authenticator
@@ -186,12 +186,12 @@ Voeg uw Amazon-account toe door twee ledige verificatie in te scha kelen en het 
 
 10. Typ op de pagina **een verificatie methode voor back-ups toevoegen** op uw computer de 6-cijferige verificatie code van uw back-upverificatie methode voor uw Amazon-account en selecteer vervolgens **code verifiëren en door gaan**.
 
-11. Bepaal op de pagina **bijna klaar** of u uw computer een vertrouwd apparaat moet maken en selecteer vervolgens **ontvangen. Schakel verificatie in twee stappen in**.
+11. Bepaal op de pagina **bijna klaar** of u uw computer een vertrouwd apparaat moet maken en selecteer vervolgens **ontvangen. Schakel Two-Step verificatie in**.
 
     De pagina **Geavanceerde beveiligings instellingen** wordt weer gegeven, met daarin de bijgewerkte gegevens over twee ledige verificatie.
 
     >[!NOTE]
-    >Zie [over verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) en [Aanmelden met verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)voor meer informatie over twee ledige verificatie en uw Amazon-account.
+    >Zie [over Two-Step verificatie](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) en [Aanmelden met Two-Step-verificatie](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)voor meer informatie over twee ledige verificatie en uw Amazon-account.
 
 ## <a name="next-steps"></a>Volgende stappen
 

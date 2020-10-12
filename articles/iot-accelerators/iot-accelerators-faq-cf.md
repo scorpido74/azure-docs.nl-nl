@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82792374"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Veelgestelde vragen over de oplossings versneller Connected Factory
@@ -68,7 +68,7 @@ Als u de oplossing van www.azureiotsolutions.com hebt geïmplementeerd, kunt u z
 1. De gebruikers naam die moet worden gebruikt is: `docker` .
 1. Het wacht woord dat moet worden gebruikt, is afhankelijk van de versie die u hebt gebruikt om te implementeren:
     * Voor oplossingen die zijn geïmplementeerd met behulp van het build.ps1-script vóór 1 juni 2017, is het wacht woord: `Passw0rd` .
-    * Voor oplossingen die zijn geïmplementeerd met behulp van het build.ps1-script na 1 juni 2017, kunt u het wacht woord in het `<name of your deployment>.config.user` bestand vinden. Het wacht woord wordt opgeslagen in de **VmAdminPassword** -instelling. Het wacht woord wordt wille keurig gegenereerd tijdens de implementatie, tenzij u het opgeeft met de `build.ps1` para meter script`-VmAdminPassword`
+    * Voor oplossingen die zijn geïmplementeerd met behulp van het build.ps1-script na 1 juni 2017, kunt u het wacht woord in het `<name of your deployment>.config.user` bestand vinden. Het wacht woord wordt opgeslagen in de **VmAdminPassword** -instelling. Het wacht woord wordt wille keurig gegenereerd tijdens de implementatie, tenzij u het opgeeft met de `build.ps1` para meter script `-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hoe kan ik alle docker-processen in de simulatie-VM stoppen en starten?
 
@@ -186,7 +186,7 @@ Telemetriegegevens van niet-OPC UA-apparaten verzenden naar een verbonden Factor
     ]
     ```
 
-1. De indeling van `<timestamp>` is:`2017-12-08T19:24:51.886753Z`
+1. De indeling van `<timestamp>` is: `2017-12-08T19:24:51.886753Z`
 
 1. Start de verbonden Factory-App Service opnieuw op.
 

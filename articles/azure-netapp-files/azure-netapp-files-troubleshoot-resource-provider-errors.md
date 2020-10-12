@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
 ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483462"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Problemen met Azure NetApp Files-resourceproviders oplossen 
@@ -126,7 +126,7 @@ U kunt een onderstrepings teken vervangen door een koppel teken of een hoofd let
 Deze fout treedt op wanneer u probeert te wijzigen `FileSystemId` .  Wijzigen `FileSystemdId` is geen ondersteunde bewerking. 
 
 * Oorzaak:   
-De ID van het bestands systeem wordt ingesteld wanneer het volume wordt gemaakt. `FileSystemId`kan later niet worden gewijzigd.
+De ID van het bestands systeem wordt ingesteld wanneer het volume wordt gemaakt. `FileSystemId` kan later niet worden gewijzigd.
 * Oplossing:   
 Neem niets `FileSystemId` op in een patch-en update-aanvraag (put).  U kunt er ook voor zorgen dat `FileSystemId` hetzelfde is in de aanvraag.
 
@@ -439,7 +439,7 @@ Geen.  Zie de bovenstaande oplossing.
 
 ***SubnetId kan niet worden gewijzigd.***
 
-Deze fout treedt op wanneer u probeert het volume te wijzigen `subnetId` nadat het is gemaakt.  `SubnetId`moet worden ingesteld wanneer het volume wordt gemaakt en kan later niet meer worden gewijzigd.
+Deze fout treedt op wanneer u probeert het volume te wijzigen `subnetId` nadat het is gemaakt.  `SubnetId` moet worden ingesteld wanneer het volume wordt gemaakt en kan later niet meer worden gewijzigd.
 
 * Oorzaak:   
 U probeert het te wijzigen `subnetId` nadat het volume is gemaakt. Dit is een niet-ondersteunde bewerking. 

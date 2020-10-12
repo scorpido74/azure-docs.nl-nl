@@ -4,10 +4,10 @@ description: Meer informatie over hoe u een virtuele machine opnieuw implementee
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530315"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Een virtuele machine opnieuw implementeren in een lab in Azure DevTest Labs
@@ -16,7 +16,7 @@ Als u geen verbinding kunt maken met een virtuele machine (VM) in een lab via ee
 ## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Stappen voor het opnieuw implementeren van een virtuele machine in een Lab 
 Voer de volgende stappen uit om een virtuele machine in een lab in Azure DevTest Labs opnieuw te implementeren: 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het lab dat de VM bevat die u opnieuw wilt implementeren.  
 4. Selecteer in het linkerdeel venster **mijn virtual machines**. 

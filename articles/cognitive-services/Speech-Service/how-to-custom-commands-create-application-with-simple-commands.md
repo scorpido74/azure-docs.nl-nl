@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284163"
 ---
 # <a name="create-application-with-simple-commands"></a>Toepassing met eenvoudige opdrachten maken
@@ -48,7 +48,7 @@ In de lege aangepaste opdrachten voor het maken van **Smart room-Lite-** toepass
 
 In het middelste deel venster worden de verschillende eigenschappen van de opdracht weer gegeven. U configureert de volgende eigenschappen van de opdracht. Ga naar [verwijzingen](./custom-commands-references.md)voor uitleg van alle configuratie-eigenschappen van een opdracht.
 
-| Configuration            | Beschrijving                                                                                                                 |
+| Configuratie            | Beschrijving                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Voorbeeld zinnen** | Voor beeld van uitingen de gebruiker kan zeggen dat deze opdracht wordt geactiveerd                                                                 |
 | **Parameters**       | Gegevens die nodig zijn om de opdracht te volt ooien                                                                                |
@@ -83,9 +83,9 @@ Vervolgens moet de opdracht een voltooiings regel hebben. Deze regel geeft aan d
     
     | Instelling    | Voorgestelde waarde                          | Beschrijving                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
-    | **Name**       | ConfirmationResponse                  | Een naam die het doel van de regel beschrijft          |
+    | **Naam**       | ConfirmationResponse                  | Een naam die het doel van de regel beschrijft          |
     | **Voorwaarden** | Geen                                     | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
-    | **Acties**    | Spraak antwoord verzenden > eenvoudige editor > eerste variatie >`Ok, turning the tv on` | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
+    | **Acties**    | Spraak antwoord verzenden > eenvoudige editor > eerste variatie > `Ok, turning the tv on` | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
     
 
 
@@ -100,7 +100,7 @@ Vervolgens moet de opdracht een voltooiings regel hebben. Deze regel geeft aan d
     > [!NOTE]
     > Het is niet nodig om de standaard voltooiings regel te gebruiken die bij de opdracht wordt geleverd. Indien nodig kunt u de bestaande standaard voltooiings regel verwijderen en uw eigen regel toevoegen.
 
-### <a name="try-it-out"></a>Probeer het eens
+### <a name="try-it-out"></a>Uitproberen
 
 Het gedrag testen met het deel venster testen van chat
 1. Selecteer een **trein** pictogram boven in het rechterdeel venster.
@@ -125,9 +125,9 @@ Bewerk vervolgens **de bestaande regels** voor het volt ooien van voltooiing als
 
 | Instelling    | Voorgestelde waarde                          |
 | ---------- | ---------------------------------------- |
-| Naam  | ConfirmationResponse                  |
+| Name  | ConfirmationResponse                  |
 | Voorwaarden | Geen                                     |
-| Acties    | Spraak antwoord verzenden > eenvoudige editor > eerste variatie >`Ok, setting temperature to 40 degrees` |
+| Acties    | Spraak antwoord verzenden > eenvoudige editor > eerste variatie > `Ok, setting temperature to 40 degrees` |
 
 Selecteer **Opslaan** om alle wijzigingen in de opdracht op te slaan.
 
@@ -142,7 +142,7 @@ Maak een nieuwe opdracht **SetAlarm** met behulp van de voorbeeld zin '**een wek
 
 Selecteer **Opslaan** om alle wijzigingen in de opdracht op te slaan.
 
-## <a name="try-it-out"></a>Probeer het eens
+## <a name="try-it-out"></a>Uitproberen
 
 Het gedrag testen met het deel venster testen van chat
 1. Selecteer **Trainen**. Nadat de training is voltooid, selecteert u **testen** en try-out:

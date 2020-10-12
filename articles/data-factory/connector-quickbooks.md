@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529259"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Gegevens kopiëren van QuickBooks Online met behulp van Azure Data Factory (preview)
@@ -50,15 +50,15 @@ De volgende eigenschappen worden ondersteund voor gekoppelde QuickBooks-Services
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet zijn ingesteld op: **QuickBooks** | Yes |
-| connectionProperties | Een groep eigenschappen die definieert hoe verbinding moet worden gemaakt met QuickBooks. | Yes |
+| type | De eigenschap type moet zijn ingesteld op: **QuickBooks** | Ja |
+| connectionProperties | Een groep eigenschappen die definieert hoe verbinding moet worden gemaakt met QuickBooks. | Ja |
 | ***Onder `connectionProperties` :*** | | |
-| endpoint | Het eind punt van de QuickBooks Online-server. (dat wil zeggen, quickbooks.api.intuit.com)  | Yes |
-| companyId | De bedrijfs-ID van het QuickBooks-bedrijf dat moet worden geautoriseerd. Zie [Hoe kan ik mijn bedrijfs-id zoeken](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)voor informatie over het vinden van de bedrijfs-id. | Yes |
-| consumerKey | De consument sleutel voor OAuth 2,0-verificatie. | Yes |
-| consumerSecret | Het consument geheim voor OAuth 2,0-verificatie. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| refreshToken | Het OAuth 2,0-vernieuwings token dat is gekoppeld aan de QuickBooks-toepassing. Meer informatie [vindt u hier](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Het token voor het vernieuwen van opmerkingen is na 180 dagen verlopen. De klant moet het vernieuwings token regel matig bijwerken. <br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md).| Yes |
-| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | No |
+| endpoint | Het eind punt van de QuickBooks Online-server. (dat wil zeggen, quickbooks.api.intuit.com)  | Ja |
+| companyId | De bedrijfs-ID van het QuickBooks-bedrijf dat moet worden geautoriseerd. Zie [Hoe kan ik mijn bedrijfs-id zoeken](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)voor informatie over het vinden van de bedrijfs-id. | Ja |
+| consumerKey | De consument sleutel voor OAuth 2,0-verificatie. | Ja |
+| consumerSecret | Het consument geheim voor OAuth 2,0-verificatie. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| refreshToken | Het OAuth 2,0-vernieuwings token dat is gekoppeld aan de QuickBooks-toepassing. Meer informatie [vindt u hier](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Het token voor het vernieuwen van opmerkingen is na 180 dagen verlopen. De klant moet het vernieuwings token regel matig bijwerken. <br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md).| Ja |
+| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
 
 **Voorbeeld:**
 
@@ -95,7 +95,7 @@ Als u gegevens wilt kopiëren vanuit QuickBooks Online, stelt u de eigenschap ty
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **QuickBooksObject** | Yes |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **QuickBooksObject** | Ja |
 | tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
@@ -125,7 +125,7 @@ Als u gegevens wilt kopiëren vanuit QuickBooks Online, stelt u het bron type in
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **QuickBooksSource** | Yes |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **QuickBooksSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
 **Voorbeeld:**

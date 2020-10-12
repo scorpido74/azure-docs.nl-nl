@@ -10,13 +10,13 @@ ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: b5f3305fc5d2595c8b7b08d78ff20edea01c195e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229834"
 ---
-# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Upgrade van Azure virtual machine-schaal sets automatische installatie kopieën van besturings systemen
+# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Upgrade van Azure virtual machine-schaalsets automatische installatiekopieën van besturingssystemen
 
 Door automatische installatie kopieën van besturings systemen in te scha kelen in uw schaalset kunt u het update beheer vereenvoudigen door de besturingssysteem schijf veilig en automatisch bij te werken voor alle exemplaren in de schaalset.
 
@@ -50,7 +50,7 @@ Er worden momenteel alleen bepaalde installatie kopieën van besturings systemen
 
 De volgende platform-Sku's worden momenteel ondersteund (en worden regel matig toegevoegd):
 
-| Uitgever               | OS-aanbieding      |  Sku               |
+| Publisher               | OS-aanbieding      |  Sku               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
@@ -60,7 +60,7 @@ De volgende platform-Sku's worden momenteel ondersteund (en worden regel matig t
 | Microsoft Corporation   | WindowsServer | 2016-Data Center    |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center-met-containers |
-| Microsoft Corporation   | WindowsServer | 2019-Data Center |
+| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2019-Data Center-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2019-Data Center-met-containers |
 | Microsoft Corporation   | WindowsServer | Data Center-core-1903-with-containers-smalldisk |
@@ -101,7 +101,7 @@ Automatische upgrade van besturings systeem installatie kopie wordt ondersteund 
 ## <a name="configure-automatic-os-image-upgrade"></a>Automatische upgrade van installatie kopie van besturings systeem configureren
 Als u de automatische upgrade van de installatie kopie van het besturings systeem wilt configureren, controleert u of de eigenschap *automaticOSUpgradePolicy. enableAutomaticOSUpgrade* is ingesteld op *True* in de model definitie van de schaalset.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 In het volgende voor beeld wordt beschreven hoe u automatische besturingssysteem upgrades instelt voor een schaalset-model:
 
 ```
@@ -183,7 +183,7 @@ Er zijn meerdere manieren om de toepassings status extensie te implementeren op 
 ## <a name="get-the-history-of-automatic-os-image-upgrades"></a>De geschiedenis van automatische upgrades van installatie kopieën van besturings systemen ophalen
 U kunt de geschiedenis controleren van de meest recente upgrade van het besturings systeem dat is uitgevoerd op uw schaalset met Azure PowerShell, Azure CLI 2,0 of de REST-Api's. U kunt in de afgelopen twee maanden geschiedenis ontvangen voor de laatste vijf besturingssysteem upgrade pogingen.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 In het volgende voor beeld wordt [rest API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) gebruikt om de status te controleren voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
 
 ```
@@ -268,7 +268,7 @@ Voor specifieke gevallen waarin u niet wilt wachten totdat de Orchestrator de me
 > [!NOTE]
 > De hand matige trigger van upgrades van installatie kopieën biedt geen automatische terugdraai mogelijkheden. Als een exemplaar de status niet herstelt na een upgrade bewerking, kan de vorige besturingssysteem schijf niet worden hersteld.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 Gebruik de aanroep van de [OS upgrade](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) -API starten om een rolling upgrade te starten om alle exemplaren van virtuele-machine schaal sets te verplaatsen naar de meest recente versie van het besturings systeem van de installatie kopie. Exemplaren die al de meest recente beschik bare versie van het besturings systeem uitvoeren, worden niet beïnvloed. In het volgende voor beeld wordt beschreven hoe u een rolling upgrade van een besturings systeem kunt starten op een schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
 
 ```

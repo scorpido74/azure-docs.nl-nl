@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: a4c04033f3fb5ff523f0d80bb6c978955f4c9ec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737509"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Netwerk beleid voor privé-eind punten uitschakelen
 
-Netwerk beleid zoals netwerk beveiligings groepen (NSG) wordt niet ondersteund voor privé-eind punten. Voor het implementeren van een persoonlijk eind punt op een bepaald subnet is een expliciete instelling uitschakelen vereist voor dat subnet. Deze instelling is alleen van toepassing op het persoonlijke eind punt. Voor andere bronnen in het subnet wordt de toegang beheerd op basis van de definitie van beveiligings regels voor netwerk beveiligings groepen (NSG). 
+Netwerkbeleid zoals netwerkbeveiligingsgroepen (NSG) wordt niet ondersteund voor privé-eindpunten. Voor het implementeren van een privé-eindpunt op een bepaald subnet is een expliciete instelling uitschakelen vereist voor dat subnet. Deze instelling is alleen van toepassing op het persoonlijke eind punt. Voor andere bronnen in het subnet wordt de toegang beheerd op basis van de definitie van beveiligings regels voor netwerk beveiligings groepen (NSG). 
  
 Wanneer u de portal gebruikt voor het maken van een persoonlijk eind punt, wordt deze instelling automatisch uitgeschakeld als onderdeel van het proces maken. Voor de implementatie met behulp van andere clients is een extra stap vereist om deze instelling te wijzigen. U kunt de instelling uitschakelen met Cloud shell vanuit de Azure Portal, of lokale installaties van Azure PowerShell, Azure CLI of Azure Resource Manager-sjablonen gebruiken.  
  

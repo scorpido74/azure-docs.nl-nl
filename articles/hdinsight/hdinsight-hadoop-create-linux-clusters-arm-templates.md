@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/07/2020
 ms.openlocfilehash: 533fe0f391779a5bbe53bf7f2a136c3e9fb19017
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86080615"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen
@@ -73,7 +73,7 @@ Zie [Vereisten voor toegangsbeheer](hdinsight-hadoop-customize-cluster-linux.md#
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te maken. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te maken. Lees de volgende artikelen voor meer informatie:
 
 * Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?term=hdinsight)start-sjablonen voor meer aan HDInsight gerelateerde sjablonen.
 * Zie [resources implementeren met behulp van .net-bibliotheken en een sjabloon](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor een voor beeld van het implementeren van resources via de .net-client bibliotheek.

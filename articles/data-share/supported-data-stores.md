@@ -1,5 +1,5 @@
 ---
-title: Ondersteunde gegevens archieven in azure data share
+title: Ondersteunde gegevensarchieven in Azure Data Share
 description: Meer informatie over de gegevens archieven die worden ondersteund voor het gebruik van Azure data share.
 ms.service: data-share
 author: jifems
@@ -7,13 +7,13 @@ ms.author: jife
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259010"
 ---
-# <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevens archieven in azure data share
+# <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevensarchieven in Azure Data Share
 
 Azure data share biedt open en flexibel delen van gegevens, met inbegrip van de mogelijkheid om te delen vanuit en naar verschillende gegevens archieven. Gegevens providers kunnen gegevens delen van het ene type gegevens archief en hun gegevens gebruikers kunnen kiezen met welke gegevens opslag gegevens moeten worden ontvangen. 
 
@@ -28,8 +28,8 @@ De onderstaande tabel bevat een overzicht van de ondersteunde gegevens bronnen v
 | Azure Blob Storage |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |Open bare preview | |
-| Azure Synapse Analytics (voorheen Azure SQL DW) |Open bare preview | |
+| Azure SQL Database |Openbare preview | |
+| Azure Synapse Analytics (voorheen Azure SQL DW) |Openbare preview | |
 | Azure Data Explorer | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Ondersteunings matrix voor gegevens opslag

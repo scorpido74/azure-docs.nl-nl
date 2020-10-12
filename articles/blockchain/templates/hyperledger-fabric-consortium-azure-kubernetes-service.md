@@ -5,10 +5,10 @@ ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651565"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Hyperledger Fabric consortium implementeren op Azure Kubernetes service
@@ -26,7 +26,7 @@ Wanneer u dit artikel hebt gelezen:
 
 Voordat u een oplossings sjabloon gaat gebruiken, moet u uw scenario vergelijken met de algemene use cases van de beschik bare Azure Block Chain-opties:
 
-Optie | Service model | Algemene use-case
+Optie | Service model | Algemeen scenario
 -------|---------------|-----------------
 Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een Block chain-netwerk type. Er worden oplossings sjablonen gegeven zonder een service overeenkomst. Gebruik de [pagina micro soft Q&A](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 [Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik de Azure Block Chain-Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties is vereist.

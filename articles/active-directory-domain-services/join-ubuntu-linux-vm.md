@@ -13,10 +13,10 @@ ms.date: 07/13/2020
 ms.author: iainfou
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283143"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Een Ubuntu Linux virtuele machine toevoegen aan een Azure Active Directory Domain Services beheerd domein
@@ -77,7 +77,7 @@ Als u klaar bent, slaat u het *hosts* -bestand op en sluit u het af met de `:wq`
 
 ## <a name="install-required-packages"></a>De vereiste pakketten installeren
 
-De VM moet enkele extra pakketten hebben om de virtuele machine toe te voegen aan het beheerde domein. Als u deze pakketten wilt installeren en configureren, moet u de hulpprogram ma's voor domein deelname bijwerken en installeren met`apt-get`
+De VM moet enkele extra pakketten hebben om de virtuele machine toe te voegen aan het beheerde domein. Als u deze pakketten wilt installeren en configureren, moet u de hulpprogram ma's voor domein deelname bijwerken en installeren met `apt-get`
 
 Tijdens de installatie van Kerberos vraagt het *krb5-gebruikers* pakket voor de realm-naam in alle hoofd letters. Als de naam van uw beheerde domein bijvoorbeeld *aaddscontoso.com*is, voert u *AADDSCONTOSO.com* in als de realm. De installatie schrijft de `[realm]` `[domain_realm]` secties en in het configuratie bestand */etc/krb5.conf* . Zorg ervoor dat u de realm een hoofd letter opgeeft:
 

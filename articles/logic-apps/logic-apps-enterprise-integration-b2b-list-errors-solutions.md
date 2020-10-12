@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 6400cfe7e524dcc16e08c2bba7dfba4a62d00b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232556"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-fouten en oplossingen voor Azure Logic Apps
@@ -31,7 +31,7 @@ Dit artikel helpt u bij het oplossen van fouten die zich in Logische apps B2B sc
 
 **Fout beschrijving**: er is geen overeenkomst gevonden met identiteiten: ' AS2Identity ':: ' Partner1 ' and'AS2Identity ':: ' Partner3 '
 
-**Gebruikers actie**: ongeldige AS2-from of AS2-to configured for Agreement. Corrigeer de AS2-bericht ' AS2-from ' of ' AS2-to '-headers of de overeenkomst om te voldoen aan de AS2-Id's in de AS2-bericht koppen met overeenkomst configuraties.
+**Gebruikers actie**: ongeldige AS2-From of AS2-To geconfigureerd voor de overeenkomst. Corrigeer de AS2-bericht ' AS2-from ' of ' AS2-to '-headers of de overeenkomst om te voldoen aan de AS2-Id's in de AS2-bericht koppen met overeenkomst configuraties.
 
 ## <a name="as2"></a>AS2
 
@@ -39,7 +39,7 @@ Dit artikel helpt u bij het oplossen van fouten die zich in Logische apps B2B sc
 
 **Fout beschrijving**: ongeldige AS2-headers. Een van de headers "AS2-to" of "AS2-from" is leeg.
 
-**Gebruikers actie**: er is een AS2-bericht ontvangen dat niet de AS2-from of AS2-to of beide-headers bevat. Controleer AS2-bericht AS2-from-en AS2-to-headers en corrigeer deze op basis van de configuratie van de overeenkomst.
+**Gebruikers actie**: er is een AS2-bericht ontvangen dat niet de AS2-From of AS2-To of beide headers bevat. Controleer het AS2-bericht AS2-From en AS2-To kopteksten en corrigeer ze op basis van de overeenkomst configuratie.
 
 ### <a name="missing-as2-message-body-and-headers"></a>Ontbrekende AS2 bericht tekst en kopteksten    
 

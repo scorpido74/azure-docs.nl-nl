@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 162ad87f79109cf38d3d0013608812155c6988a7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86252246"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Overzicht van Reliable Services levenscyclus
@@ -37,7 +37,7 @@ De levens cyclus van een stateless service is eenvoudig. Dit is de volg orde van
 
 1. De service is gebouwd.
 2. Twee dingen gebeuren vervolgens parallel:
-    - `StatelessService.CreateServiceInstanceListeners()`wordt aangeroepen en alle geretourneerde listeners worden geopend. `ICommunicationListener.OpenAsync()`wordt aangeroepen voor elke listener.
+    - `StatelessService.CreateServiceInstanceListeners()` wordt aangeroepen en alle geretourneerde listeners worden geopend. `ICommunicationListener.OpenAsync()` wordt aangeroepen voor elke listener.
     - De methode van de service `StatelessService.RunAsync()` wordt aangeroepen.
 3. Indien aanwezig, wordt de methode van de service `StatelessService.OnOpenAsync()` aangeroepen. Deze aanroep is een ongebruikelijke onderdrukking, maar is wel beschikbaar. Uitgebreide service-initialisatie taken kunnen op dit moment worden gestart.
 
@@ -53,7 +53,7 @@ Denk eraan dat er geen volg orde is tussen de aanroepen om de listeners en **Run
 Voor het afsluiten van een stateless service wordt hetzelfde patroon gevolgd, net zo omgekeerd:
 
 1. Parallel:
-    - Alle geopende listeners worden gesloten. `ICommunicationListener.CloseAsync()`wordt aangeroepen voor elke listener.
+    - Alle geopende listeners worden gesloten. `ICommunicationListener.CloseAsync()` wordt aangeroepen voor elke listener.
     - Het annulerings token dat is door gegeven aan `RunAsync()` , is geannuleerd. Een controle van de eigenschap van het annulerings token `IsCancellationRequested` retourneert True en als de token methode wordt aangeroepen, wordt `ThrowIfCancellationRequested` een gegenereerd `OperationCanceledException` .
 2. Na `CloseAsync()` voltooiing van elke listener, `RunAsync()` wordt de methode van de service `StatelessService.OnCloseAsync()` aangeroepen, indien aanwezig.  OnCloseAsync wordt aangeroepen wanneer de stateless service-instantie zonder problemen wordt afgesloten. Dit kan gebeuren wanneer de code van de service wordt bijgewerkt, het service-exemplaar wordt verplaatst vanwege taak verdeling of als er een tijdelijke fout wordt gedetecteerd. Het is ongebruikelijk dat ze `StatelessService.OnCloseAsync()` worden overschreven, maar dit kan worden gebruikt om resources veilig te sluiten, de achtergrond verwerking te stoppen, de externe status op te slaan of bestaande verbindingen te sluiten.
 3. Na `StatelessService.OnCloseAsync()` voltooiing wordt het Service object afgestructd.
@@ -62,10 +62,10 @@ Voor het afsluiten van een stateless service wordt hetzelfde patroon gevolgd, ne
 Stateful Services hebben een vergelijkbaar patroon voor stateless Services, met een paar wijzigingen. Voor het starten van een stateful service is de volg orde van gebeurtenissen als volgt:
 
 1. De service is gebouwd.
-2. `StatefulServiceBase.OnOpenAsync()`wordt aangeroepen. Deze aanroep wordt niet vaak overschreven in de service.
+2. `StatefulServiceBase.OnOpenAsync()` wordt aangeroepen. Deze aanroep wordt niet vaak overschreven in de service.
 3. De volgende acties worden parallel uitgevoerd:
-    - `StatefulServiceBase.CreateServiceReplicaListeners()`is aangeroepen. 
-      - Als de service een primaire service is, worden alle geretourneerde listeners geopend. `ICommunicationListener.OpenAsync()`wordt aangeroepen voor elke listener.
+    - `StatefulServiceBase.CreateServiceReplicaListeners()` is aangeroepen. 
+      - Als de service een primaire service is, worden alle geretourneerde listeners geopend. `ICommunicationListener.OpenAsync()` wordt aangeroepen voor elke listener.
       - Als de service een secundaire service is, worden alleen de listeners die zijn gemarkeerd als `ListenOnSecondary = true` geopend. Luister aars die open zijn op de secundaire zones, zijn minder gangbaar.
     - Als de service momenteel een primair is, wordt de methode van de service `StatefulServiceBase.RunAsync()` aangeroepen.
 4. Nadat alle aanroepen van de replica-listener zijn `OpenAsync()` voltooid en `RunAsync()` wordt aangeroepen, `StatefulServiceBase.OnChangeRoleAsync()` wordt aangeroepen. Deze aanroep wordt niet vaak overschreven in de service.
@@ -79,7 +79,7 @@ Net als stateless Services is er geen coördinatie tussen de volg orde waarin de
 Net als stateless Services zijn de levenscyclus gebeurtenissen tijdens het afsluiten hetzelfde als tijdens het opstarten, maar omgekeerd. Wanneer een stateful service wordt afgesloten, treden de volgende gebeurtenissen op:
 
 1. Parallel:
-    - Alle geopende listeners worden gesloten. `ICommunicationListener.CloseAsync()`wordt aangeroepen voor elke listener.
+    - Alle geopende listeners worden gesloten. `ICommunicationListener.CloseAsync()` wordt aangeroepen voor elke listener.
     - Het annulerings token dat is door gegeven aan `RunAsync()` , is geannuleerd. Een controle van de eigenschap van het annulerings token `IsCancellationRequested` retourneert True en als de token methode wordt aangeroepen, wordt `ThrowIfCancellationRequested` een gegenereerd `OperationCanceledException` .
 2. Nadat `CloseAsync()` de service is voltooid op elke listener `RunAsync()` , wordt deze ook `StatefulServiceBase.OnChangeRoleAsync()` wel voltooid. Deze aanroep wordt niet vaak overschreven in de service.
 
@@ -96,7 +96,7 @@ Terwijl een stateful service wordt uitgevoerd, hebben alleen de primaire replica
 Voor de primaire replica die wordt gedegradeerd, heeft Service Fabric deze replica nodig om de verwerking van berichten te stoppen en het op de achtergrond uitgevoerde werk af te sluiten. Als gevolg hiervan lijkt deze stap op het moment dat de service wordt afgesloten. Een verschil is dat de service niet is gestructd of gesloten omdat deze als een secundaire server blijft. De volgende Api's worden aangeroepen:
 
 1. Parallel:
-    - Alle geopende listeners worden gesloten. `ICommunicationListener.CloseAsync()`wordt aangeroepen voor elke listener.
+    - Alle geopende listeners worden gesloten. `ICommunicationListener.CloseAsync()` wordt aangeroepen voor elke listener.
     - Het annulerings token dat is door gegeven aan `RunAsync()` , is geannuleerd. Een controle van de eigenschap van het annulerings token `IsCancellationRequested` retourneert True en als de token methode wordt aangeroepen, wordt `ThrowIfCancellationRequested` een gegenereerd `OperationCanceledException` .
 2. Nadat `CloseAsync()` de service is voltooid op elke listener `RunAsync()` , wordt deze ook `StatefulServiceBase.OnChangeRoleAsync()` wel voltooid. Deze aanroep wordt niet vaak overschreven in de service.
 
@@ -104,7 +104,7 @@ Voor de primaire replica die wordt gedegradeerd, heeft Service Fabric deze repli
 Op dezelfde manier moet Service Fabric de secundaire replica die wordt bevorderd, worden gepromoveerd om te Luis teren naar berichten op de kabel en alle achtergrond taken te starten die moeten worden voltooid. Als gevolg hiervan lijkt dit proces op het moment dat de service wordt gemaakt, behalve dat de replica zelf al bestaat. De volgende Api's worden aangeroepen:
 
 1. Parallel:
-    - `StatefulServiceBase.CreateServiceReplicaListeners()`wordt aangeroepen en alle geretourneerde listeners worden geopend. `ICommunicationListener.OpenAsync()`wordt aangeroepen voor elke listener.
+    - `StatefulServiceBase.CreateServiceReplicaListeners()` wordt aangeroepen en alle geretourneerde listeners worden geopend. `ICommunicationListener.OpenAsync()` wordt aangeroepen voor elke listener.
     - De methode van de service `StatefulServiceBase.RunAsync()` wordt aangeroepen.
 2. Nadat alle aanroepen van de replica-listener zijn `OpenAsync()` voltooid en `RunAsync()` wordt aangeroepen, `StatefulServiceBase.OnChangeRoleAsync()` wordt aangeroepen. Deze aanroep wordt niet vaak overschreven in de service.
 
@@ -124,7 +124,7 @@ Het afhandelen van de uitzonde ringen die afkomstig zijn van het gebruik van de 
   - Als een service wordt afgesloten `RunAsync()` door een onverwachte uitzonde ring te genereren, vormt dit een fout. Het Service object is afgesloten en er wordt een status fout gerapporteerd.
   - Hoewel er geen tijds limiet is voor het retour neren van deze methoden, verliest u onmiddellijk de mogelijkheid om te schrijven naar betrouw bare verzamelingen en kunnen daarom geen echte werkzaamheden worden uitgevoerd. Het wordt aanbevolen dat u zo snel mogelijk terugkeert wanneer u de annulerings aanvraag ontvangt. Als uw service niet binnen een redelijke hoeveelheid tijd reageert op deze API-aanroepen, kan Service Fabric uw service geforceerd beëindigen. Dit gebeurt gewoonlijk alleen tijdens het bijwerken van de toepassing of wanneer een service wordt verwijderd. Deze time-out is standaard 15 minuten.
   - Storingen in het `OnCloseAsync()` pad resulteren in het `OnAbort()` aanroepen van de service, wat een laatste mogelijkheid is om de services op te schonen die ze hebben geclaimd. Dit wordt meestal opgeroepen wanneer een permanente fout op het knoop punt wordt gedetecteerd of wanneer Service Fabric de levens cyclus van het service-exemplaar niet betrouwbaar kunt beheren als gevolg van interne storingen.
-  - `OnChangeRoleAsync()`wordt aangeroepen wanneer de stateful service replica een andere rol heeft, bijvoorbeeld primair of secundair. Primaire replica's krijgen een schrijf status (mogen geen betrouw bare verzamelingen maken en ernaar schrijven). Secundaire replica's krijgen de status lezen (kan alleen lezen van bestaande betrouw bare verzamelingen). De meeste werk in een stateful service wordt uitgevoerd op de primaire replica. Secundaire replica's kunnen alleen-lezen validatie, rapporten genereren, gegevens analyse of andere alleen-lezen taken uitvoeren.
+  - `OnChangeRoleAsync()` wordt aangeroepen wanneer de stateful service replica een andere rol heeft, bijvoorbeeld primair of secundair. Primaire replica's krijgen een schrijf status (mogen geen betrouw bare verzamelingen maken en ernaar schrijven). Secundaire replica's krijgen de status lezen (kan alleen lezen van bestaande betrouw bare verzamelingen). De meeste werk in een stateful service wordt uitgevoerd op de primaire replica. Secundaire replica's kunnen alleen-lezen validatie, rapporten genereren, gegevens analyse of andere alleen-lezen taken uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Inleiding tot Reliable Services](service-fabric-reliable-services-introduction.md)

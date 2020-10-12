@@ -8,13 +8,13 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82838498"
 ---
-# <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Veelgestelde vragen over Analysis Services-netwerk verbinding
+# <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Veelgestelde vragen over de netwerkverbinding van Analysis Services
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van verbinding met opslag accounts, gegevens bronnen, firewalls en IP-adressen.
 
@@ -48,4 +48,4 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van verb
 
 [Een on-premises gegevens gateway installeren en configureren](analysis-services-gateway-install.md)   
 [Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway](analysis-services-gateway.md)   
-[Gateway gebruiken voor gegevens bronnen op een Azure Virtual Network (VNet)](analysis-services-vnet-gateway.md)
+[Gateway gebruiken voor gegevensbronnen in een virtueel Azure-netwerk (VNet)](analysis-services-vnet-gateway.md)

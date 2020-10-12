@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van DPM/Azure Backup Server-beveili
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254428"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Een back-up maken van een share point-Farm naar Azure met DPM
@@ -69,9 +69,9 @@ Zie [share point-gegevens herstellen](/system-center/dpm/back-up-sharepoint#rest
     ![DPM share point-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Volg op dit punt de herstel stappen eerder in dit artikel om een share point-inhouds database van schijf te herstellen.
 
-## <a name="switching-the-front-end-web-server"></a>Scha kelen tussen de front-end-webserver
+## <a name="switching-the-front-end-web-server"></a>Scha kelen tussen de Front-End webserver
 
-Als u meer dan één front-endwebserver hebt en u wilt overschakelen van de server die door DPM wordt gebruikt om de farm te beveiligen, volgt u de instructies in [overschakelen van de front-end-webserver](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server).
+Als u meer dan één front-endwebserver hebt en u wilt overschakelen van de server die door DPM wordt gebruikt om de farm te beveiligen, volgt u de instructies in [overschakelen van de Front-End-webserver](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server).
 
 ## <a name="next-steps"></a>Volgende stappen
 

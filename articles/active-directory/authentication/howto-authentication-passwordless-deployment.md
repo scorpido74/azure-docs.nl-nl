@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90527000"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een authenticatie-implementatie met een wacht woord plannen in Azure Active Directory
@@ -100,7 +100,7 @@ De volgende tabel bevat een overzicht van de use cases die tijdens dit project m
 | **Beheer** | De levens cyclus van gebruikers toewijzingen aan de juiste verificatie methode en de bijbehorende groepen wordt gedefinieerd en bewaakt. |
 | **Beveiliging** | Toegang tot de juiste verificatie methode wordt geregeld via gebruikers-en groeps toewijzingen. <br> Alleen geautoriseerde gebruikers kunnen aanmelden zonder wacht woord gebruiken. |
 | **Prestaties** | De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. <br> Aanmeldings tijden worden gemeten voor gebruiks gemak. |
-| **Gebruikers ervaring** | Gebruikers zijn op de hoogte van Mobile-compatibiliteit. <br> Gebruikers kunnen het aanmeldings wachtwoord voor de verificator-app configureren. |
+| **Gebruikerservaring** | Gebruikers zijn op de hoogte van Mobile-compatibiliteit. <br> Gebruikers kunnen het aanmeldings wachtwoord voor de verificator-app configureren. |
 | **Ondersteuning** | Gebruikers weten hoe ze ondersteuning kunnen vinden voor aanmeld problemen met een wacht woord. |
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
@@ -118,7 +118,7 @@ Uw mede delingen aan eind gebruikers moeten de volgende informatie bevatten:
 - [Registreren in de Microsoft Authenticator-app](howto-authentication-passwordless-phone.md)
 - [Aanmelden met uw telefoon](../user-help/user-help-auth-app-sign-in.md)
 
-Micro soft biedt multi-factor Authentication- [communicatie sjablonen](https://aka.ms/mfatemplates), self-service voor het opnieuw instellen van wacht woorden ( [SSPR) en](https://www.microsoft.com/download/details.aspx?id=56768) [documentatie voor eind gebruikers](../user-help/security-info-setup-signin.md) om uw communicatie te ontwerpen. U kunt gebruikers verzenden naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) om rechtstreeks te registreren door de koppelingen voor **beveiligings gegevens** op die pagina te selecteren.
+Micro soft voorziet in multi-factor Authentication- [communicatie sjablonen](https://aka.ms/mfatemplates), Self-Service voor het opnieuw instellen van wacht woorden ( [SSPR) en](https://www.microsoft.com/download/details.aspx?id=56768) [documentatie voor eind gebruikers](../user-help/security-info-setup-signin.md) om uw communicatie te ontwerpen. U kunt gebruikers verzenden naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) om rechtstreeks te registreren door de koppelingen voor **beveiligings gegevens** op die pagina te selecteren.
 
 ### <a name="plan-to-pilot"></a>Een pilot plannen
 

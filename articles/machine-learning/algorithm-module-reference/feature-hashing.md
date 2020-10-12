@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907921"
 ---
 # <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
@@ -111,7 +111,7 @@ Nadat de verwerking is voltooid, voert de module een getransformeerde gegevensse
 
 Nadat u de getransformeerde gegevensset hebt gemaakt, kunt u deze gebruiken als invoer voor de module Train model.
  
-## <a name="best-practices"></a>Best practices
+## <a name="best-practices"></a>Aanbevolen procedures
 
 Met de volgende aanbevolen procedures kunt u optimaal profiteren van de functie hashing module:
 

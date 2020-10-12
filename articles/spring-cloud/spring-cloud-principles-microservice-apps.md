@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906861"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java- en Base-besturingssysteem voor Spring Microservice-apps
 
-**Dit artikel is van toepassing op:** ✔️ java
+**Dit artikel is van toepassing op:** ✔️ Java
 
 Hieronder vindt u de principes voor het onderhouden van een gezonde Java-en basis besturingssysteem voor lente-micro service-apps.
 ## <a name="principles-for-healthy-java-and-base-os"></a>Principes voor een gezonde Java-en basis besturingssysteem

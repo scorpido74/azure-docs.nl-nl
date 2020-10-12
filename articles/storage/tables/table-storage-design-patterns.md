@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006343"
 ---
 # <a name="table-design-patterns"></a>Tabelontwerppatronen
@@ -742,8 +742,8 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -762,8 +762,8 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -799,8 +799,8 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -835,8 +835,8 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -857,8 +857,8 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -898,8 +898,8 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
