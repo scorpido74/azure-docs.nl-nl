@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 6a75b0c5b30f60afe51eebc395d21b7c05e8af7f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212752"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB uitvoer binding voor Azure Functions 2. x en hoger
@@ -113,7 +113,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Deze sectie bevat de volgende voor beelden:
 
@@ -162,7 +162,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
     #r "Newtonsoft.Json"
@@ -230,7 +230,7 @@ Dit is de function.jsvoor het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System;
@@ -287,7 +287,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
     module.exports = function (context) {
@@ -542,17 +542,17 @@ De constructor van het kenmerk neemt de naam van de data base en de verzameling.
     }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -562,12 +562,12 @@ De `CosmosDBOutput` aantekening is beschikbaar voor het schrijven van gegevens n
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDB` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `CosmosDB`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
-|**direction**     | N.v.t. | Moet worden ingesteld op `out` .         |
+|**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB`.        |
+|**direction**     | N.v.t. | Moet worden ingesteld op `out`.         |
 |**name**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** | **DatabaseName**|De data base met de verzameling waarin het document is gemaakt.     |
 |**collectionName** |**NaamVerzameling**  | De naam van de verzameling waar het document wordt gemaakt. |
@@ -589,7 +589,7 @@ Wanneer u in uw functie naar de uitvoer parameter schrijft, wordt er standaard e
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Verwijzing |
+| Binding | Naslaginformatie |
 |---|---|
 | Cosmos DB | [CosmosDB-fout codes](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
@@ -618,7 +618,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 |---------|---------|---------|
 |GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en `Gateway`|
 |Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
+|leasePrefix|n.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

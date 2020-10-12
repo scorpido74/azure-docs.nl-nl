@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092742"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
@@ -28,7 +28,7 @@ In dit artikel vindt u veelgestelde vragen over configuratie-en beheer problemen
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-**Certificaten**
+**Bewijzen**
 
 - [Waarom is de certificaat keten van mijn Cloud service TLS/SSL-certificaat onvolledig?](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [Wat is het doel van het versleutelings certificaat voor Windows Azure-Hulpprogram Ma's voor uitbrei dingen?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
@@ -60,7 +60,7 @@ In dit artikel vindt u veelgestelde vragen over configuratie-en beheer problemen
 - [Ik kan niet meer dan X exemplaren schalen](#i-cannot-scale-beyond-x-instances)
 - [Hoe kan ik automatisch schalen op basis van geheugen metrieken configureren?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
 
-**Encarta**
+**Algemeen**
 
 - [Kunt u ' all sniff ' toevoegen aan mijn website? Hoe kan ik](#how-do-i-add-nosniff-to-my-website)
 - [Hoe kan ik IIS aanpassen voor een webrol?](#how-do-i-customize-iis-for-a-web-role)
@@ -192,7 +192,7 @@ Micro soft bewaakt voortdurend servers, netwerken en toepassingen om bedreiginge
 Windows 10 en Windows Server 2016 worden geleverd met ondersteuning voor HTTP/2 op client-en server zijde. Als uw client (browser) verbinding maakt met de IIS-server via TLS die HTTP/2 via TLS-uitbrei dingen onderhandelt, hoeft u geen wijzigingen aan te brengen aan de server zijde. Dit komt doordat via TLS de H2-14-header die het gebruik van HTTP/2 opgeeft, standaard wordt verzonden. Als uw client op de andere kant een upgrade-header verzendt om een upgrade naar HTTP/2 uit te voeren, moet u de wijziging hieronder aan de server zijde door nemen om ervoor te zorgen dat de upgrade werkt en dat er een HTTP/2-verbinding wordt gemaakt. 
 
 1. Voer regedit.exe uit.
-2. Blader naar de register sleutel: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Blader naar de register sleutel: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Maak een nieuwe DWORD-waarde met de naam **DuoEnabled**.
 4. Stel de waarde in op 1.
 5. Start de server opnieuw op.
@@ -231,7 +231,7 @@ Micro soft volgt een strikt proces dat interne technici niet in staat stelt om e
 Deze fout kan optreden als u het RDP-bestand gebruikt van een computer die is toegevoegd aan Azure Active Directory. Volg deze stappen om dit probleem op te lossen:
 
 1. Klik met de rechter muisknop op het RDP-bestand dat u hebt gedownload en selecteer vervolgens **bewerken**.
-2. Voeg &#92; toe als voor voegsel voor de gebruikers naam. Gebruik bijvoorbeeld **.\username** in plaats van **gebruikers naam**.
+2. Voeg &#92; toe als voor voegsel voor de gebruikers naam. Gebruik bijvoorbeeld **.\username** in plaats van  **gebruikers naam**.
 
 ## <a name="scaling"></a>Schalen
 

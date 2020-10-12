@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
 ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143840"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Overzicht van het beleid voor Azure Web Application firewall (WAF)
@@ -33,9 +33,9 @@ Als u één beleid wilt Toep assen op alle sites, kunt u het beleid koppelen aan
 
 ## <a name="per-site-waf-policy"></a>WAF-beleid per site
 
-Met WAF-beleid per site kunt u meerdere sites beveiligen met verschillende beveiligings behoeften achter één WAF met behulp van beleid per site. Als er bijvoorbeeld vijf sites achter uw WAF zijn, kunt u vijf afzonderlijke WAF-beleids regels (één voor elke listener) hebben om de uitsluitingen, aangepaste regels, beheerde regel sets en alle andere WAF-instellingen voor elke site aan te passen.
+Met per-site beleidsregels van WAF kunt u meerdere sites met verschillende beveiligingseisen beveiligen achter één WAF door gebruik te maken van per-site beleid. Als er zich bijvoorbeeld vijf sites achter uw WAF bevinden, kunt u vijf afzonderlijke WAF-beleidsregels (één voor elke listener) opstellen om de uitsluitingen, aangepaste regels, beheerde regelsets en alle andere WAF-instellingen per site aan te passen.
 
-Stel dat er op uw toepassings gateway een globaal beleid is toegepast. Vervolgens past u een ander beleid toe op een listener op die toepassings gateway. Het beleid van de listener wordt nu alleen van kracht voor die listener. Het globale beleid van de toepassings gateway is nog steeds van toepassing op alle andere listeners en op pad gebaseerde regels waaraan geen specifiek beleid is toegewezen.
+Stel dat er op uw toepassingsgateway een globaal beleid is toegepast. Vervolgens past u een ander beleid toe op een listener op die toepassingsgateway. Het beleid van de listener is dan alleen van kracht voor die listener. Het globale beleid van de toepassingsgateway is nog steeds van toepassing op alle andere listeners en op pad gebaseerde regels waaraan geen specifiek beleid is toegewezen.
 
 ## <a name="per-uri-policy"></a>Beleid per URI
 

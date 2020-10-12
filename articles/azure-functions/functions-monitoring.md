@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212994"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
@@ -151,7 +151,7 @@ Logboek niveau `None` wordt uitgelegd in de volgende sectie.
 
 Met de [host.jsin] bestand configureert u hoeveel logboek registratie van een functie-app naar Application Insights verzendt. Voor elke categorie geeft u het minimale logboek niveau op dat moet worden verzonden. Er zijn twee voor beelden: in het eerste voor beeld is [versie 2. x en hoger](functions-versions.md#version-2x) van de functions runtime (met .net core) en het tweede voor beeld voor de versie 1. x runtime.
 
-### <a name="version-2x-and-higher"></a>Versie 2. x en hoger
+### <a name="version-2x-and-higher"></a>Versie 2.x en hoger
 
 Versie v2. x en latere versies van de functions runtime gebruiken de [.net core logging filter-hiërarchie](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
 
@@ -169,7 +169,7 @@ Versie v2. x en latere versies van de functions runtime gebruiken de [.net core 
 }
 ```
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 ```json
 {
@@ -212,7 +212,7 @@ Als [host.jsop] meerdere categorieën bevat die met dezelfde teken reeks beginne
 }
 ```
 
-### <a name="version-1x"></a>Versie 1. x 
+### <a name="version-1x"></a>Versie 1.x 
 
 ```json
 {
@@ -266,7 +266,7 @@ Application Insights heeft een [bemonsterings](../azure-monitor/app/sampling.md)
 
 In versie 2. x kunt u bepaalde soorten telemetrie uitsluiten van steek proeven. In het bovenstaande voor beeld worden gegevens van het type `Request` uitgesloten van steek proeven. Dit zorgt ervoor dat *alle* functie-uitvoeringen (aanvragen) worden geregistreerd, terwijl andere typen telemetrie aan de steek proef onderworpen blijven.
 
-### <a name="version-1x"></a>Versie 1. x 
+### <a name="version-1x"></a>Versie 1.x 
 
 ```json
 {
@@ -450,7 +450,7 @@ namespace functionapp0915
 
 [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) is de momenteel aanbevolen API voor het maken van een metriek.
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 ```cs
 using System;
@@ -563,7 +563,7 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="version-1x"></a>Versie 1. x
+### <a name="version-1x"></a>Versie 1.x
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -595,7 +595,7 @@ Met functies v2 worden automatisch afhankelijkheden verzameld voor HTTP-aanvrage
 
 U kunt aangepaste code schrijven om de afhankelijkheden weer te geven. Zie de voorbeeld code in het [gedeelte aangepaste telemetrie van C#](#log-custom-telemetry-in-c-functions)voor voor beelden. De voorbeeld code resulteert in een *toepassings toewijzing* in Application Insights die eruitziet als de volgende afbeelding:
 
-![Toepassingsoverzicht](./media/functions-monitoring/app-map.png)
+![Overzicht van de toepassing](./media/functions-monitoring/app-map.png)
 
 > [!NOTE]
 > Afhankelijkheden worden geschreven op informatie niveau. Als u filtert op waarschuwing of hoger, worden deze gegevens niet weer gegeven. Het automatisch verzamelen van afhankelijkheden gebeurt ook bij een niet-gebruikers bereik. Zorg er dus voor dat het niveau is ingesteld op ten minste **informatie** buiten het bereik van de gebruiker in uw host.jsop (d.w.z. buiten de functie. <YOUR_FUNCTION_NAME>. Gebruikers sleutel) als u wilt dat deze afhankelijkheden worden vastgelegd.
@@ -627,7 +627,7 @@ Vroege versies van functies gebruiken ingebouwde bewaking. dit wordt niet meer a
 
 Als u een probleem wilt melden met Application Insights integratie in functions, of als u een suggestie of aanvraag wilt doen, [maakt u een probleem in github](https://github.com/Azure/Azure-Functions/issues/new).
 
-## <a name="streaming-logs"></a>Streaming-logboeken
+## <a name="streaming-logs"></a>Streaminglogboeken
 
 Tijdens het ontwikkelen van een toepassing wilt u vaak zien wat er in de buurt van real-time naar de logboeken wordt geschreven wanneer u in azure uitvoert.
 
@@ -724,7 +724,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
-## <a name="disable-built-in-logging"></a>Ingebouwde logboek registratie uitschakelen
+## <a name="disable-built-in-logging"></a>Ingebouwde logboekregistratie uitschakelen
 
 Als u Application Insights inschakelt, schakelt u de ingebouwde logboek registratie uit die gebruikmaakt van Azure Storage. De ingebouwde logboek registratie is handig voor het testen met lichte werk belastingen, maar is niet bedoeld voor productie gebruik met een hoge belasting. Voor productie bewaking wordt aangeraden Application Insights. Als ingebouwde logboek registratie in productie wordt gebruikt, is de registratie record mogelijk onvolledig vanwege beperking op Azure Storage.
 

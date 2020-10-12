@@ -8,10 +8,10 @@ ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
 ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82981218"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Beheerde identiteiten gebruiken voor Azure-app configuratie
@@ -27,7 +27,7 @@ Aan uw toepassing kunnen twee typen identiteiten worden verleend:
 
 Het maken van een app-configuratie archief met een door het systeem toegewezen identiteit vereist een extra eigenschap die moet worden ingesteld in de Store.
 
-### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
 
 Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, gebruikt u de opdracht [AZ appconfig Identity Assign] voor een bestaande configuratie opslag. Er zijn drie opties voor het uitvoeren van de voor beelden in deze sectie:
 
@@ -60,7 +60,7 @@ De volgende stappen helpen u bij het maken van een app-configuratie archief en h
 
 Het maken van een app-configuratie archief met een door de gebruiker toegewezen identiteit vereist dat u de identiteit maakt en vervolgens de resource-id aan uw Store toewijst.
 
-### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
+### <a name="using-the-azure-cli"></a>Met behulp van de Azure CLI
 
 Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, gebruikt u de opdracht [AZ appconfig Identity Assign] voor een bestaande configuratie opslag. Er zijn drie opties voor het uitvoeren van de voor beelden in deze sectie:
 

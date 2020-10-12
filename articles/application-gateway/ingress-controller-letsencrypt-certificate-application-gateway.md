@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807034"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Certificaten gebruiken met LetsEncrypt.org in Application Gateway voor AKS-clusters
@@ -58,7 +58,7 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
 
     Een `ClusterIssuer` resource maken. Dit is vereist `cert-manager` om de `Lets Encrypt` certificerings instantie te vertegenwoordigen waar de ondertekende certificaten worden verkregen.
 
-    Met behulp van de niet-naam ruimte `ClusterIssuer` bron, geeft CERT-Manager certificaten uit die kunnen worden gebruikt vanuit meerdere naam ruimten. `Let’s Encrypt`gebruikt het ACME-protocol om te controleren of u een bepaalde domein naam beheert en u een certificaat uitgeeft. Meer informatie over het configureren van `ClusterIssuer` eigenschappen [vindt u hier](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`geeft `cert-manager` een instructie om certificaten uit te geven met behulp `Lets Encrypt` van de faserings omgeving die wordt gebruikt voor het testen (het basis certificaat is niet aanwezig in de browsers/client vertrouwensrelatie archieven).
+    Met behulp van de niet-naam ruimte `ClusterIssuer` bron, geeft CERT-Manager certificaten uit die kunnen worden gebruikt vanuit meerdere naam ruimten. `Let’s Encrypt` gebruikt het ACME-protocol om te controleren of u een bepaalde domein naam beheert en u een certificaat uitgeeft. Meer informatie over het configureren van `ClusterIssuer` eigenschappen [vindt u hier](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer` geeft `cert-manager` een instructie om certificaten uit te geven met behulp `Lets Encrypt` van de faserings omgeving die wordt gebruikt voor het testen (het basis certificaat is niet aanwezig in de browsers/client vertrouwensrelatie archieven).
 
     Het standaard type Challenge in de onderstaande YAML is `http01` . Andere uitdagingen worden beschreven in [letsencrypt.org-vraag typen](https://letsencrypt.org/docs/challenge-types/)
 
@@ -133,8 +133,8 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
 4. Productie certificaat
 
     Zodra het faserings certificaat is geïnstalleerd, kunt u overschakelen naar een productie server:
-    1. Vervang de tijdelijke aantekening van uw ingangs resource door:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Verwijder de bestaande staging die `ClusterIssuer` u in de vorige stap hebt gemaakt en maak een nieuwe door de Acme-server te vervangen door de CLUSTERISSUER yaml hierboven met`https://acme-v02.api.letsencrypt.org/directory`
+    1. Vervang de tijdelijke aantekening van uw ingangs resource door: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
+    1. Verwijder de bestaande staging die `ClusterIssuer` u in de vorige stap hebt gemaakt en maak een nieuwe door de Acme-server te vervangen door de CLUSTERISSUER yaml hierboven met `https://acme-v02.api.letsencrypt.org/directory`
 
 5. Verlopen en verlengen van certificaten
 

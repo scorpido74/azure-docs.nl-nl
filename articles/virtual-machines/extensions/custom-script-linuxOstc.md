@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085704"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 1 van Azure met virtuele Linux-machines
@@ -70,7 +70,7 @@ Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extr
 * Er is 90 minuten om het script uit te voeren, wat langer resulteert in een mislukte inrichting van de uitbrei ding.
 * Start de computer niet opnieuw op in het script, waardoor er problemen zijn met andere uitbrei dingen die worden geïnstalleerd en na het opnieuw opstarten. de uitbrei ding wordt na het opnieuw opstarten niet voortgezet. 
 * Als u een script hebt dat ertoe leidt dat de computer opnieuw wordt opgestart, installeert u toepassingen en voert u scripts, enz. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
-* De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](../linux/using-cloud-init.md) gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
+* De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](../linux/using-cloud-init.md)  gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
 * Als u wilt plannen wanneer een script wordt uitgevoerd, moet u de extensie gebruiken om een cron-taak te maken.
 * Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer frequente status updates van een actief script wilt, moet u uw eigen oplossing maken.
 * Aangepaste script extensie biedt geen systeem eigen ondersteuning voor proxy servers, maar u kunt wel een hulp programma voor bestands overdracht gebruiken dat proxy servers in uw script ondersteunt, zoals *krul*.
@@ -118,15 +118,15 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | publisher | Micro soft. OSTCExtensions | tekenreeks |
 | type | CustomScriptForLinux | tekenreeks |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (bijvoorbeeld) | python-MyPythonScript.py\<my-param1\> | tekenreeks |
-| enableInternalDNSCheck | true | boolean |
+| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | matrix |
+| commandToExecute (bijvoorbeeld) | python-MyPythonScript.py \<my-param1\> | tekenreeks |
+| enableInternalDNSCheck | true | booleaans |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
 | storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | tekenreeks |
 
@@ -295,7 +295,7 @@ Enkele punten om te noteren:
 
 1. Wanneer de opdracht wordt uitgevoerd, wordt ingeschakeld.
 1. Down load is gekoppeld aan het downloaden van het CustomScript-extensie pakket van Azure, niet de script bestanden die zijn opgegeven in fileUris.
-1. U kunt ook zien naar welk logboek bestand deze wordt geschreven`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. U kunt ook zien naar welk logboek bestand deze wordt geschreven `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Ga vervolgens als volgt te werk om het logboek bestand te controleren:
 

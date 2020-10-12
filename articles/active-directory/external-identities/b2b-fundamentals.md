@@ -13,10 +13,10 @@ ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5721ef606b6ea916f5a00031c58f5e2adeb0e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908759"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Best practices voor Azure Active Directory B2B
@@ -28,7 +28,7 @@ Dit artikel bevat aanbevelingen en aanbevolen procedures voor B2B-samen werking 
 ## <a name="b2b-recommendations"></a>B2B-aanbevelingen
 | Aanbeveling | Opmerkingen |
 | --- | --- |
-| Voor een optimale aanmeldings ervaring met id-providers | Als dat mogelijk is, moet u rechtstreeks met id-providers communiceren zodat gebruikers die worden uitgenodigd om zich aan te melden bij uw gedeelde apps en bronnen zonder dat ze micro soft-accounts (Msa's) of Azure AD-accounts hoeven te maken. U kunt de [Google Federation-functie](google-federation.md) gebruiken om B2B-gast gebruikers toe te staan zich aan te melden met hun Google-account. U kunt ook de [functie direct Federation (preview)](direct-federation.md) gebruiken om directe Federatie in te stellen met elke organisatie waarvan de ID-provider (IDP) ondersteuning biedt voor het SAML 2,0-of WS-inschakel protocol. |
+| Voor een optimale aanmeldings ervaring met id-providers | Als dat mogelijk is, moet u rechtstreeks met id-providers communiceren zodat gebruikers die worden uitgenodigd om zich aan te melden bij uw gedeelde apps en bronnen zonder dat ze micro soft-accounts (Msa's) of Azure AD-accounts hoeven te maken. U kunt de [Google Federation-functie](google-federation.md) gebruiken om B2B-gast gebruikers toe te staan zich aan te melden met hun Google-account. U kunt ook de [functie direct Federation (preview)](direct-federation.md) gebruiken om directe Federatie in te stellen met een organisatie waarvan de ID-provider (IDP) het SAML 2,0-of WS-Fed-protocol ondersteunt. |
 | Gebruik de functie voor eenmalige e-mail wachtwoord code (preview) voor B2B-gasten die niet op een andere manier kunnen verifiëren | Met de functie [voor eenmalige e-mail wachtwoord code (preview)](one-time-passcode.md) worden B2B-gast gebruikers geverifieerd wanneer ze niet kunnen worden geverifieerd via andere manieren, zoals Azure AD, een Microsoft-account (MSA) of Google Federatie. Wanneer de gast gebruiker een uitnodiging heeft ingewisseld of een gedeelde resource opent, kunnen ze een tijdelijke code aanvragen, die wordt verzonden naar hun e-mail adres. Vervolgens voeren ze deze code in om door te gaan met aanmelden. |
 | Huisstijl toevoegen aan uw aanmeldingspagina | U kunt uw aanmeldings pagina aanpassen zodat deze intuïtief is voor uw B2B-gast gebruikers. Zie [bedrijfs huisstijl toevoegen om u aan te melden en de pagina's van het toegangs venster](../fundamentals/customize-branding.md). |
 | Uw privacyverklaring toevoegen aan de B2B-gebruiker voor het inwisselen van gast gebruikers | U kunt de URL van de privacyverklaring van uw organisatie toevoegen aan de eerste keer dat een uitgenodigde gebruiker toestemming moet geven om door te gaan met uw privacy-voor waarden. Zie [How to: de privacygegevens van uw organisatie toevoegen in azure Active Directory](https://aka.ms/adprivacystatement). |

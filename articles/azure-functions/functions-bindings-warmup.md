@@ -11,10 +11,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
 ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206583"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
@@ -74,7 +74,7 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 
 In het volgende voor beeld ziet u een opwarm-trigger in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app.
@@ -128,7 +128,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 
 In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, warmupContext) {
@@ -158,7 +158,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 
 In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import logging
@@ -205,17 +205,17 @@ Houd er rekening mee dat de functie moet worden aangeroepen ```Warmup``` en dat 
 
 Zie voor een volledig voor beeld het [voor beeld](#trigger---example)van de trigger.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -225,9 +225,9 @@ De trigger opwarm wordt niet ondersteund in Java als een kenmerk.
 
 ## <a name="trigger---configuration"></a>Trigger-configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `WarmupTrigger` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `WarmupTrigger`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
 | **type** | N.v.t.| Vereist: moet worden ingesteld op `warmupTrigger` . |
 | **direction** | N.v.t.| Vereist: moet worden ingesteld op `in` . |

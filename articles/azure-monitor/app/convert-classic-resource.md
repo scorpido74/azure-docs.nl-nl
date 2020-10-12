@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333338"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migreren naar op werk ruimte gebaseerde Application Insights resources
 
 In deze hand leiding wordt stapsgewijs uitgelegd hoe u een klassieke Application Insights resource migreert naar een resource op basis van een werk ruimte. Resources op basis van een werk ruimte ondersteunen volledige integratie tussen Application Insights en Log Analytics. Resources op basis van een werk ruimte verzenden Application Insights telemetrie naar een algemene Log Analytics-werk ruimte, waarmee u toegang krijgt tot [de nieuwste functies van Azure monitor](#new-capabilities) terwijl logboeken voor de toepassings-, infra structuur en het platform op één geconsolideerde locatie worden bewaard.
 
-Op werk ruimte gebaseerde resources maken algemene op rollen gebaseerde Access Control (RBAC) mogelijk voor uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
+Met resources op basis van een werk ruimte kunt u algemene Role-Based Access Control (RBAC) voor uw resources maken en de nood zaak van query's tussen apps en werk ruimten voor komen.
 
 **Op werk ruimte gebaseerde resources zijn momenteel beschikbaar in alle commerciële regio's en de Amerikaanse overheid van Azure**
 

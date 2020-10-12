@@ -13,16 +13,16 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908554"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Verificatie met eenmalige e-mail code voor e-mail (preview-versie)
 
 > [!NOTE]
-> De e-mail wachtwoord voor eenmalige e-mail is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+> De e-mail wachtwoord voor eenmalige e-mail is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit artikel wordt beschreven hoe u eenmalige verificatie via E-mail voor B2B-gast gebruikers inschakelt. Met de functie voor eenmalige e-mail code worden B2B-gast gebruikers geverifieerd wanneer ze niet kunnen worden geverifieerd via andere manieren, zoals Azure AD, een Microsoft-account (MSA) of Google Federatie. Met authenticatie op basis van eenmalige wachtwoord code hoeft u geen Microsoft-account te maken. Wanneer de gast gebruiker een uitnodiging heeft ingewisseld of een gedeelde resource opent, kunnen ze een tijdelijke code aanvragen, die wordt verzonden naar hun e-mail adres. Vervolgens voeren ze deze code in om door te gaan met aanmelden.
 
@@ -69,9 +69,9 @@ Het kan enkele minuten duren voordat de opt-in-actie van kracht wordt. Daarna ge
 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Aanmelden met de Azure AD-Portal
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
-2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
+2.  Selecteer in het navigatiedeelvenster de service **Azure Active Directory**.
 3.  Externe **identiteiten**  >  **externe instellingen voor samen werking**selecteren.
-5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Ja**.
+5.  Selecteer onder **e-mail One-Time wachtwoord code voor gasten inschakelen (preview)** de optie **Ja**.
  
 ### <a name="to-opt-in-using-powershell"></a>Aanmelden met Power shell
 
@@ -135,9 +135,9 @@ Het kan enkele minuten duren voordat de opt-out-actie van kracht wordt. Als u de
 
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>De preview-versie uitschakelen met behulp van de Azure AD-Portal
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
-2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
+2.  Selecteer in het navigatiedeelvenster de service **Azure Active Directory**.
 3.  Externe **identiteiten**  >  **externe instellingen voor samen werking**selecteren.
-5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Nee**.
+5.  Selecteer onder **e-mail One-Time wachtwoord code voor gasten inschakelen (preview)** de optie **Nee**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>De preview-versie uitschakelen met Power shell
 Installeer de meest recente AzureADPreview-module als u deze nog niet hebt (Zie [vereisten: Installeer de meest recente AzureADPreview-module](#prerequisite-install-the-latest-azureadpreview-module) ). Controleer vervolgens of het beleid voor de eenmalige wachtwoord code al bestaat door het volgende uit te voeren:

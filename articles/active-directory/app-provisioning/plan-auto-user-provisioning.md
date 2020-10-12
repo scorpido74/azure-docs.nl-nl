@@ -12,10 +12,10 @@ ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235694"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) automatische gebruikers inrichting vereenvoudi
 
 Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md) om meer inzicht te krijgen in de functionaliteit.
 
-## <a name="learn"></a>Leren
+## <a name="learn"></a>Learn
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur en verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
@@ -75,7 +75,7 @@ In dit artikel worden de volgende termen gebruikt:
 | Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
 | Veelgestelde vragen| [Veelgestelde vragen](../app-provisioning/user-provisioning.md) over het automatisch inrichten van gebruikers |
 
-### <a name="solution-architectures"></a>Oplossings architecturen
+### <a name="solution-architectures"></a>Oplossingsarchitecturen
 
 De Azure AD-inrichtings service voorziet gebruikers van SaaS-apps en andere systemen door verbinding te maken met gebruikers beheer-API-eind punten die door elke leverancier van de toepassing worden geleverd. Met deze gebruikers beheer-API-eind punten kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen.
 
@@ -83,7 +83,7 @@ De Azure AD-inrichtings service voorziet gebruikers van SaaS-apps en andere syst
 
 In dit voor beeld worden gebruikers en of groepen gemaakt in een HR-data base die is verbonden met een on-premises Directory. De Azure AD-inrichtings service beheert het automatisch inrichten van gebruikers aan de doel-SaaS-toepassingen.
 
- ![Gebruikers inrichten](./media/plan-auto-user-provisioning/hybridprovisioning.png)
+ ![inrichten van gebruikers](./media/plan-auto-user-provisioning/hybridprovisioning.png)
 
 **Beschrijving van werk stroom:**
 
@@ -207,7 +207,7 @@ Als u het automatisch inrichten van gebruikers wilt implementeren, moet u de geb
 
 Azure AD ondersteunt door directe toewijzing van kenmerk naar kenmerk, voor het leveren van constante waarden of het [schrijven van expressies voor kenmerk toewijzingen](../app-provisioning/functions-for-customizing-application-data.md). Met deze flexibiliteit kunt u precies bepalen wat er wordt ingevuld in het kenmerk van het doel systeem. U kunt [Microsoft Graph-API](../app-provisioning/export-import-provisioning-configuration.md) en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD.
 
-Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen in azure Active Directory aanpassen](../app-provisioning/customize-application-attributes.md).
+Zie voor meer informatie [Gebruikers inrichten aanpassen Attribute-Mappings voor SaaS-toepassingen in azure Active Directory](../app-provisioning/customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Speciale overwegingen voor het inrichten van gebruikers
 

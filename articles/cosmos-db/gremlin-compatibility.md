@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092504"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Gremlin-compatibiliteit Azure Cosmos DB
@@ -33,7 +33,7 @@ Azure Cosmos DB Graph engine voldoet aan de specificaties van [Apache TinkerPop]
 
 * ***Sorteren op matrix eigenschappen*** `order().by(<array property>)` wordt niet ondersteund. Alleen sorteren op primitieve typen wordt ondersteund.
 
-* ***Niet-PRIMITIEVE JSON-typen*** worden niet ondersteund. Gebruik `string` , `number` of `true` / `false` typen. `null`waarden worden niet ondersteund. 
+* ***Niet-PRIMITIEVE JSON-typen*** worden niet ondersteund. Gebruik `string` , `number` of `true` / `false` typen. `null` waarden worden niet ondersteund. 
 
 * De ***GraphSONv3*** -serialisatiefunctie wordt momenteel niet ondersteund. Gebruik `GraphSONv2` de klassen serializer, Reader en writer in de configuratie van de verbinding. De resultaten die door de Azure Cosmos DB Gremlin API worden geretourneerd, hebben niet dezelfde indeling als de GraphSON-indeling. 
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
 ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319104"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-gegevens controleren
@@ -35,7 +35,7 @@ Volg deze instructies om een test te maken:
 3. Klik op **test toevoegen**.
 4. Selecteer **kwaliteit controleren (alleen audio gegevens)**. Geef de test een naam, beschrijving en selecteer uw audio gegevensset.
 5. Selecteer Maxi maal twee modellen die u wilt testen.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 Nadat een test is gemaakt, kunt u zien hoe een model de door u opgegeven audio gegevensset transcribeert of resultaten vergelijken van twee modellen naast elkaar.
 

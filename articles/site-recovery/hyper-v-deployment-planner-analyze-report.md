@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653576"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Het Azure Site Recovery Deployment Planner rapport analyseren
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Het rapport van de Azure Site Recovery Deployment Planner analyseren
 In dit artikel worden de werkbladen in het Excel-rapport behandeld dat door de Azure Site Recovery-implementatieplanner voor Hyper-V naar Azure is gegenereerd.
 
 ## <a name="on-premises-summary"></a>Samenvatting on-premises
@@ -99,7 +99,7 @@ Bekijk [On-premises opslagvereiste](#why-do-i-need-free-space-on-the-hyper-v-ser
 ### <a name="maximum-copy-frequency"></a>Maximale kopieerfrequentie
 De aanbevolen maximale kopieerfrequentie moet voor de replicatie worden ingesteld om de gewenste RPO te bereiken. De standaard is vijf minuten. U kunt de kopieerfrequentie instellen op 30 seconden voor een betere RPO.
 
-### <a name="what-if-analysis"></a>Wat als-analyse
+### <a name="what-if-analysis"></a>Wat-als-analyses
 ![Wat als-analyse](media/hyper-v-deployment-planner-analyze-report/what-if-analysis-h2a.png) Deze analyse beschrijft hoeveel schendingen zich kunnen voordoen tijdens de profileringsperiode wanneer u een lagere bandbreedte instelt om 90 procent van de tijd aan de RPO te voldoen. Op elke dag kunnen er een of meer RPO-schendingen optreden. De grafiek toont de piek-RPO van de dag. Op basis van deze analyse kunt u besluiten of het aantal RPO-schendingen voor alle dagen en de hoogste RPO per dag acceptabel zijn in combinatie met de opgegeven lagere bandbreedte. U kunt, indien gewenst, een lagere bandbreedte toewijzen voor de replicatie. Als dit niet gewenst is, wijst u zoals voorgesteld een grotere bandbreedte toe om altijd de RPO te halen. 
 
 ### <a name="recommendation-for-successful-initial-replication"></a>Aanbeveling voor een geslaagde initiële replicatie
