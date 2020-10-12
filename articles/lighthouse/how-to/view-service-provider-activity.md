@@ -4,10 +4,10 @@ description: Klanten kunnen vastgelegde activiteiten weer geven om acties te bek
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131452"
 ---
 # <a name="view-service-provider-activity"></a>Activiteit van serviceprovider bekijken
@@ -17,7 +17,7 @@ Klanten met gedelegeerde abonnementen voor [Azure Lighthouse](../overview.md) ku
 > [!TIP]
 > We bieden ook een Azure Policy ingebouwde beleids definitie voor het controleren van de overdracht van scopes naar een beheer Tenant. Zie [audit delegaties in uw omgeving](view-manage-service-providers.md#audit-delegations-in-your-environment)voor meer informatie.
 
-## <a name="view-activity-log-data"></a>Gegevens van activiteiten logboek weer geven
+## <a name="view-activity-log-data"></a>Gegevens van activiteitenlogboek weergeven
 
 U kunt [het activiteiten logboek bekijken](../../azure-monitor/platform/activity-log.md#view-the-activity-log) via het menu **Monitor** in de Azure Portal. Als u de resultaten wilt beperken tot een specifiek abonnement, gebruikt u de filters om een specifiek abonnement te selecteren. U kunt [activiteiten logboek gebeurtenissen ook programmatisch weer geven en ophalen](../../azure-monitor/platform/activity-log.md#view-the-activity-log) .
 

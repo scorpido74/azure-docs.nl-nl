@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968594"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Snel oplossen van herstel voor Advisor
@@ -26,7 +26,7 @@ De functie is alleen beschikbaar voor bepaalde aanbevelingen via Azure Portal.
 
 2. Op de pagina aanbeveling details ziet u een lijst met resources waarvoor u deze aanbeveling hebt. Selecteer alle resources die u wilt herstellen voor de aanbeveling.
 
-   :::image type="content" source="./media/quick-fix-2.png" alt-text="Scherm opname van het venster betrokken resources met lijst items en de knop snel herstellen gemarkeerd.":::
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Scherm opname van Azure Advisor weer geven van labels voor snel oplossen in de aanbevelingen.}":::
    
    *De prijzen in de afbeelding zijn alleen bedoeld als voor beeld*
 

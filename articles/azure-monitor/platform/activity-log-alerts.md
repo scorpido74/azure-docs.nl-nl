@@ -5,10 +5,10 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86516121"
 ---
 # <a name="alerts-on-activity-log"></a>Meldingen over activiteitenlogboek
@@ -40,7 +40,7 @@ Waarschuwingen voor activiteiten logboeken bevatten enkele algemene opties:
     - Abonnements niveau: bijvoorbeeld alle virtuele machines in een abonnement (of) alle resources in een abonnement
 - **Resource groep**: standaard wordt de waarschuwings regel opgeslagen in dezelfde resource groep als die van het doel dat in bereik is gedefinieerd. De gebruiker kan ook de resource groep definiëren waarin de waarschuwings regel moet worden opgeslagen.
 - **Resource type**: in Resource Manager gedefinieerde naam ruimte voor het doel van de waarschuwing.
-- **Bewerkings naam**: de naam van de [Azure Resource Manager bewerking](../../role-based-access-control/resource-provider-operations.md) die wordt gebruikt voor op rollen gebaseerd Access Control. Bewerkingen die niet zijn geregistreerd met Azure Resource Manager kunnen niet worden gebruikt in een waarschuwings regel voor het activiteiten logboek.
+- **Bewerkings naam**: de naam van de [Azure Resource Manager bewerking](../../role-based-access-control/resource-provider-operations.md) die wordt gebruikt voor Role-Based Access Control. Bewerkingen die niet zijn geregistreerd met Azure Resource Manager kunnen niet worden gebruikt in een waarschuwings regel voor het activiteiten logboek.
 - **Niveau**: het Ernst niveau van de gebeurtenis (informatief, waarschuwing, fout of kritiek).
 - **Status**: de status van de gebeurtenis, meestal gestart, mislukt of geslaagd.
 - **Gebeurtenis gestart door**: ook wel bekend als de aanroeper. Het e-mail adres of de Azure Active Directory id van de gebruiker die de bewerking heeft uitgevoerd.

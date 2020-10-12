@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89068912"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Het rapport aanmeldingen gebruiken om Azure Multi-Factor Authentication-gebeurtenissen te controleren
@@ -127,7 +127,7 @@ De volgende tabel kan helpen bij het oplossen van gebeurtenissen die gebruikmake
 |SUCCESS_NO_PIN_BUT_TIMEOUT | Geen telefoon invoer-time-out | De oproep is beantwoord, maar er is geen reactie. Dit geeft meestal aan dat de oproep is opgehaald via voice mail. |
 | SUCCESS_PIN_EXPIRED | De pincode is verlopen en niet gewijzigd | De pincode van de gebruiker is verlopen en er wordt gevraagd om deze te wijzigen, maar de wijziging van de pincode is niet voltooid. |
 | SUCCESS_USED_CACHE | Gebruikte cache | De authenticatie is geslaagd zonder Multi-Factor Authentication aanroep, omdat een eerdere geslaagde verificatie voor dezelfde gebruikers naam is opgetreden binnen de geconfigureerde tijds duur van de cache. |
-| SUCCESS_BYPASSED_AUTH | Verificatie overs Laan | De verificatie is geslaagd met een eenmalige bypass die is geïnitieerd voor de gebruiker. Bekijk het rapport geschiedenis van overgeslagen gebruikers voor meer informatie over de bypass. |
+| SUCCESS_BYPASSED_AUTH | Verificatie overs Laan | De verificatie is geslaagd met behulp van een One-Time overs laan die voor de gebruiker wordt gestart. Bekijk het rapport geschiedenis van overgeslagen gebruikers voor meer informatie over de bypass. |
 | SUCCESS_USED_IP_BASED_CACHE | Gebruikte IP-cache | De verificatie is geslaagd zonder een Multi-Factor Authentication aanroep sinds een eerdere geslaagde verificatie voor dezelfde gebruikers naam, hetzelfde verificatie type, toepassings naam en IP-adres binnen de geconfigureerde tijds duur van de cache. |
 | SUCCESS_USED_APP_BASED_CACHE | Gebruikte cache op basis van apps | De verificatie is geslaagd zonder Multi-Factor Authentication aanroep sinds een eerdere geslaagde authenticatie voor dezelfde gebruikers naam, hetzelfde authenticatie type en toepassings naam binnen de geconfigureerde tijds duur van de cache. |
 | SUCCESS_INVALID_INPUT | Ongeldige telefoon invoer | Het antwoord dat is verzonden vanaf de telefoon, is ongeldig. Dit kan afkomstig zijn van een faxapparaat of modem of de gebruiker heeft * opgegeven als onderdeel van de pincode. |

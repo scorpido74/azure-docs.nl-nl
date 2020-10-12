@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89289168"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Verbinding maken met een kennis archief met Power BI
@@ -73,7 +73,7 @@ Klik op **Power bi sjabloon ophalen** op de pagina **cognitieve vaardig heden to
 1. Wijzig het gegevens type voor de volgende kolommen door te klikken op het pictogram ABC-123 linksboven in de kolom.
 
    + Voor *content. Latitude* en *content. lengte graad*, selecteert u **decimaal getal**.
-   + Voor *content. reviews_date* en *content. Reviews_dateAdded*selecteert u **datum en tijd**.
+   + Selecteer voor *content.reviews_date* en *content.reviews_dateAdded* **datum/tijd**.
 
    ![Gegevens typen wijzigen](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Gegevens typen wijzigen")
 

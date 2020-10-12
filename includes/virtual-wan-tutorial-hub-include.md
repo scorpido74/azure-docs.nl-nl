@@ -9,10 +9,10 @@ ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0a81d8c97b916fd15e7be5fde05e9ea25ba1151d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175937"
 ---
 Een hub bevat de gateway. Zodra de hub is gemaakt, worden u kosten in rekening gebracht voor de hub, zelfs als u geen sites hebt toegevoegd. Het duurt 30 minuten om de hub en gateway te maken.
@@ -22,7 +22,7 @@ Een hub bevat de gateway. Zodra de hub is gemaakt, worden u kosten in rekening g
 3. Vul op de pagina **virtuele hub maken** de volgende velden in:
 
    * Locatie
-   * Name
+   * Naam
    * Privé-adresruimte van hub
 
 Klik op **Bevestigen** om de hub te maken. Klik op **vernieuwen** om de hub weer te geven op de pagina **hubs** .

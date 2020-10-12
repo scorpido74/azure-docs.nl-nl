@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85554919"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
@@ -29,9 +29,9 @@ Organisaties met een on-premises footprint zijn doorgaans afhankelijk van de Ima
 
 Als uw omgeving een on-premises AD-voetafdruk heeft en u ook wilt profiteren van de mogelijkheden die Azure Active Directory biedt, kunt u hybride Azure AD-gekoppelde apparaten implementeren. Deze apparaten, zijn apparaten die zijn gekoppeld aan uw on-premises Active Directory en zijn geregistreerd bij uw Azure Active Directory.
 
-| Hybride Azure AD-deelname | Description |
+| Hybride Azure AD-deelname | Beschrijving |
 | --- | --- |
-| **Beschrijving** | Lid van on-premises AD en Azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
+| **Definitie** | Lid van on-premises AD en Azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
 | **Primaire doel groep** | Geschikt voor hybride organisaties met een bestaande on-premises AD-infra structuur |
 |   | Van toepassing op alle gebruikers in een organisatie |
 | **Apparaateigendom** | Organisatie |
@@ -65,5 +65,5 @@ Gebruik Azure AD Hybrid joind devices als:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw implementatie van hybride Azure AD-deelname plannen](hybrid-azuread-join-plan.md)
-- [Apparaat-id's beheren met de Azure Portal](device-management-azure-portal.md)
-- [Verlopen apparaten beheren in Azure Active Directory](manage-stale-devices.md)
+- [Apparaat-id's beheren in Azure Portal](device-management-azure-portal.md)
+- [Langdurig inactieve apparaten beheren in Azure AD](manage-stale-devices.md)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175990"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>Een DNS-label configureren voor het openbare IP-adres
@@ -44,6 +44,6 @@ Als u een DNS-label wilt maken, selecteert u eerst **Virtuele machines** in de p
 
 1. Typ in het vak **Wachtwoord** het wachtwoord van de aanmelding.
 
-1. Klik op **Verbinden**.
+1. Klik op **Verbinding maken**.
 
     ![ssms verbinden](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)

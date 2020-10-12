@@ -13,10 +13,10 @@ ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 02937c22cbc16defb0b7672ac7ebc56c2ae2beb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89068776"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Logboeken controleren en bekijken voor on-premises Azure AD-wachtwoord beveiligings omgevingen
@@ -99,7 +99,7 @@ Het bereik van de rapportage van de cmdlet kan worden beïnvloed met behulp van 
 
 De `Get-AzureADPasswordProtectionSummaryReport` cmdlet werkt met behulp van een query naar het gebeurtenis logboek van de DC-agent beheerder en telt vervolgens het totale aantal gebeurtenissen dat overeenkomt met elke weer gegeven resultaat categorie. De volgende tabel bevat de toewijzingen tussen de resultaten en de bijbehorende gebeurtenis-ID:
 
-|Get-AzureADPasswordProtectionSummaryReport-eigenschap |Bijbehorende gebeurtenis-ID|
+|Get-AzureADPasswordProtectionSummaryReport eigenschap |Bijbehorende gebeurtenis-ID|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|

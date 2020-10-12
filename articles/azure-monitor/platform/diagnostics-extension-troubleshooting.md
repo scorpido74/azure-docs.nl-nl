@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515492"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Probleemoplossing met Azure Diagnostics
@@ -49,7 +49,7 @@ Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We 
 | **Pad naar het hulp programma voor logboek verzameling** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **MonAgentHost-logboek bestand** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
-## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrische gegevens worden niet weer gegeven in de Azure Portal
+## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrische gegevens worden niet weergegeven in de Azure-portal
 Azure Diagnostics geeft metrische gegevens die kunnen worden weer gegeven in de Azure Portal. Als u problemen ondervindt bij het bekijken van de gegevens in de portal, controleert u de \* tabel WADMetrics in het opslag account van Azure Diagnostics om te zien of de bijbehorende metrische records aanwezig zijn en ervoor te zorgen dat de [resource provider](../../azure-resource-manager/management/resource-providers-and-types.md) micro soft. Insights wordt geregistreerd.
 
 Hier is de **PartitionKey** van de tabel de resource-id, virtuele machine of virtuele-machine schaalset. **RowKey** is de metrische naam (ook wel de naam van het prestatie meter item genoemd).
@@ -79,7 +79,7 @@ Als er geen gegevens zijn voor de specifieke metriek, controleert u de **Diagnos
 Als de configuratie correct is ingesteld, maar u de metrische gegevens nog steeds niet kunt zien, kunt u de volgende richt lijnen gebruiken om u te helpen bij het oplossen van problemen.
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics wordt niet gestart
+## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics start niet
 Zie de bestanden **DiagnosticsPluginLauncher. log** en **DiagnosticsPlugin. log** op de locatie van de logboek bestanden die eerder is gegeven voor informatie over waarom Azure Diagnostics niet kan worden gestart.
 
 Als deze logboeken aangeven `Monitoring Agent not reporting success after launch` , betekent dit dat er een fout is opgetreden bij het starten van MonAgentHost.exe. Bekijk de logboeken op de locatie die wordt vermeld `MonAgentHost log file` in de vorige sectie.
@@ -91,7 +91,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 ```
 Als u een **negatieve** afsluit code vindt, raadpleegt u de [tabel afsluit code](#azure-diagnostics-plugin-exit-codes) in het [gedeelte verwijzingen](#references).
 
-## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnostische gegevens zijn niet geregistreerd voor Azure Storage
+## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnostische gegevens worden niet geregistreerd in Azure Storage
 Vaststellen of er geen gegevens worden weer gegeven of dat een deel van de gegevens wordt weer gegeven.
 
 ### <a name="diagnostics-infrastructure-logs"></a>Logboeken met diagnostische infra structuur
@@ -151,7 +151,7 @@ Als u hebt gecontroleerd of de gegevens lokaal worden vastgelegd, maar u deze no
 ### <a name="capturing-and-archiving-logs"></a>Logboeken vastleggen en archiveren
 Als u contact opneemt met de ondersteuning, wordt u mogelijk gevraagd om de logboeken van uw computer te verzamelen. U kunt tijd besparen door dat zelf te doen. Voer het `CollectGuestLogs.exe` hulp programma uit op het pad van het hulp programma voor logboek verzameling. Er wordt een zip-bestand gegenereerd met alle relevante Azure-Logboeken in dezelfde map.
 
-## <a name="diagnostics-data-tables-not-found"></a>Er zijn geen diagnostische gegevens tabellen gevonden
+## <a name="diagnostics-data-tables-not-found"></a>Er zijn geen diagnostische gegevenstabellen gevonden
 De tabellen in azure Storage die ETW-gebeurtenissen bevatten, worden aangeduid met de volgende code:
 
 ```csharp
@@ -212,7 +212,7 @@ Deze code genereert vier tabellen:
 | provider = "PROv1" &lt; DefaultEvents/&gt; |WADDefault + MD5 ("PROv1") |
 | provider = "prov2" &lt; DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Referenties
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>De configuratie van de extensie voor diagnostische gegevens controleren
 De eenvoudigste manier om de configuratie van de extensie te controleren, is door naar [Azure resource Explorer](https://resources.azure.com)te gaan en vervolgens naar de virtuele machine of Cloud service te gaan waar de Azure Diagnostics extensie (IaaSDiagnostics/PaaDiagnostics) is.

@@ -11,10 +11,10 @@ ms.date: 07/14/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88925178"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Containers voor formulier herkenning installeren en uitvoeren (preview-versie)
@@ -46,9 +46,9 @@ Voordat u de formulieren Recognizer-containers gebruikt, moet aan de volgende ve
 > [!NOTE]
 > De naam van de Computer Vision resource moet één woord zijn, zonder een koppel teken `-` of andere speciale tekens. Deze beperking is van kracht om de compatibiliteit van formulieren en Tekst herkennen container te garanderen.
 
-## <a name="gathering-required-parameters"></a>Vereiste para meters verzamelen
+## <a name="gathering-required-parameters"></a>Vereiste parameters verzamelen
 
-Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (EULA) moet aanwezig zijn met een waarde van `accept` . Daarnaast zijn zowel een eind punt-URL als een API-sleutel nodig.
+Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (EULA) moet aanwezig zijn met een waarde van `accept` . Bovendien zijn er een eindpunt-URL en API-sleutel nodig.
 
 ### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Eind punt-URI `{COMPUTER_VISION_ENDPOINT_URI}` en `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
@@ -63,7 +63,7 @@ Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de p
 ![Een van de twee sleutels ophalen voor later gebruik](../containers/media/keys-copy-api-key.png)
 
 > [!IMPORTANT]
-> Deze abonnements sleutels worden gebruikt om toegang te krijgen tot uw API voor de cognitieve service. Deel uw sleutels niet. Sla ze veilig op, bijvoorbeeld met behulp van Azure Key Vault. We raden u ook aan deze sleutels regel matig opnieuw te genereren. Er is slechts één sleutel nodig om een API-aanroep te maken. Wanneer u de eerste sleutel opnieuw genereert, kunt u de tweede sleutel gebruiken voor verdere toegang tot de service.
+> Deze abonnementssleutels worden gebruikt om toegang te krijgen tot de API van Cognitive Services. Deel uw sleutels niet. Sla ze veilig op, bijvoorbeeld met behulp van Azure Key Vault. We raden u ook aan om deze sleutels regelmatig opnieuw te genereren. Er is slechts één sleutel nodig om een API-aanroep te maken. Wanneer u de eerste sleutel opnieuw genereert, kunt u de tweede sleutel gebruiken voor verdere toegang tot de service.
 
 ## <a name="the-host-computer"></a>De hostcomputer
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130202"
 ---
-# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>De configuratie server instellen voor herstel na nood gevallen van fysieke servers naar Azure
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>De configuratieserver instellen voor herstel na noodgeval van fysieke servers naar Azure
 
 In dit artikel wordt beschreven hoe u uw on-premises omgeving instelt om fysieke servers met Windows of Linux te repliceren naar Azure.
 
@@ -49,7 +49,7 @@ De volgende tabel bevat de minimale hardware-, software-en netwerk vereisten voo
 
    ![Bron instellen](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. Controleer op de Blade **server toevoegen** of de **Configuratie server** wordt weer gegeven bij **server type**.
-4. Down load het installatie bestand voor de Site Recovery Unified Setup.
+4. Download het installatiebestand voor de Geïntegreerde Setup van Site Recovery.
 5. Download de registratiesleutel voor de kluis. U hebt de registratie sleutel nodig wanneer u Unified Setup uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
     ![Bron instellen](./media/physical-azure-set-up-source/set-source2.png)

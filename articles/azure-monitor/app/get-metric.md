@@ -1,5 +1,5 @@
 ---
-title: Get-metric in Azure Monitor Application Insights
+title: Get-Metric in Azure Monitor Application Insights
 description: Meer informatie over het effectief gebruiken van de GetMetric ()-aanroep voor het vastleggen van lokale vooraf samengestelde metrische gegevens voor .NET-en .NET core-toepassingen met Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,19 +8,19 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517141"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Aangepaste metrische verzameling in .NET en .NET core
 
-De Azure Monitor Application Insights .NET en .NET core Sdk's hebben twee verschillende methoden voor het verzamelen van aangepaste metrische gegevens, `TrackMetric()` en `GetMetric()` . Het belangrijkste verschil tussen deze twee methoden is lokale aggregatie. `TrackMetric()`Er ontbreken vooraf aggregatie met `GetMetric()` vooraf aggregatie. De aanbevolen aanpak is het gebruik van aggregatie, dus `TrackMetric()` is niet langer de voorkeurs methode voor het verzamelen van aangepaste metrische gegevens. Dit artikel begeleidt u stapsgewijs door het gebruik van de methode GetMetric () en een deel van de motivering achter de werking ervan.
+De Azure Monitor Application Insights .NET en .NET core Sdk's hebben twee verschillende methoden voor het verzamelen van aangepaste metrische gegevens, `TrackMetric()` en `GetMetric()` . Het belangrijkste verschil tussen deze twee methoden is lokale aggregatie. `TrackMetric()` Er ontbreken vooraf aggregatie met `GetMetric()` vooraf aggregatie. De aanbevolen aanpak is het gebruik van aggregatie, dus `TrackMetric()` is niet langer de voorkeurs methode voor het verzamelen van aangepaste metrische gegevens. Dit artikel begeleidt u stapsgewijs door het gebruik van de methode GetMetric () en een deel van de motivering achter de werking ervan.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus GetMetric
 
-`TrackMetric()`Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()`is ook inefficiënt in termen van prestaties, omdat elke keer `TrackMetric(item)` de volledige SDK-pijp lijn van de telemetrie-initialisatie functies en-processors doorloopt. In tegens telling tot `TrackMetric()` , worden `GetMetric()` lokale vooraf aggregatie voor u verwerkt en wordt vervolgens alleen een statistische samenvattings waarde verzonden met een vast interval van één minuut. Als u dus een aantal aangepaste metrische gegevens wilt bewaken op het tweede of zelfs milliseconde niveau, kunt u dit doen, waarbij alleen de kosten voor opslag en netwerk verkeer van elke minuut worden bewaakt. Dit vermindert ook aanzienlijk het risico van beperking, omdat het totale aantal telemetriegegevens dat voor een geaggregeerde metriek moet worden verzonden, sterk wordt verminderd.
+`TrackMetric()` Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()` is ook inefficiënt in termen van prestaties, omdat elke keer `TrackMetric(item)` de volledige SDK-pijp lijn van de telemetrie-initialisatie functies en-processors doorloopt. In tegens telling tot `TrackMetric()` , worden `GetMetric()` lokale vooraf aggregatie voor u verwerkt en wordt vervolgens alleen een statistische samenvattings waarde verzonden met een vast interval van één minuut. Als u dus een aantal aangepaste metrische gegevens wilt bewaken op het tweede of zelfs milliseconde niveau, kunt u dit doen, waarbij alleen de kosten voor opslag en netwerk verkeer van elke minuut worden bewaakt. Dit vermindert ook aanzienlijk het risico van beperking, omdat het totale aantal telemetriegegevens dat voor een geaggregeerde metriek moet worden verzonden, sterk wordt verminderd.
 
 In Application Insights worden aangepaste metrische gegevens verzameld via `TrackMetric()` en `GetMetric()` niet onderhevig aan [steek proeven](./sampling.md). Het bemonsteren van belang rijke metrische gegevens kan leiden tot scenario's waarbij waarschuwingen die u mogelijk hebt gemaakt om deze metrische gegevens onbetrouwbaar te raken. Door nooit uw aangepaste metrische gegevens te bemonsteren, kunt u er in het algemeen zeker van zijn dat wanneer uw waarschuwings drempels worden geschonden, een waarschuwing wordt geactiveerd.  Maar omdat aangepaste metrische gegevens niet worden bemonsterd, zijn er mogelijke problemen.
 
@@ -285,9 +285,9 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`is het maximum aantal gegevens tijd reeksen dat een metrieke waarde kan bevatten. Wanneer deze limiet is bereikt, wordt het aangeroepen `TrackValue()` .
-* `valuesPerDimensionLimit`beperkt het aantal afzonderlijke waarden per dimensie op een vergelijk bare manier.
-* `restrictToUInt32Values`Hiermee wordt bepaald of alleen niet-negatieve gehele waarden moeten worden bijgehouden.
+* `seriesCountLimit` is het maximum aantal gegevens tijd reeksen dat een metrieke waarde kan bevatten. Wanneer deze limiet is bereikt, wordt het aangeroepen `TrackValue()` .
+* `valuesPerDimensionLimit` beperkt het aantal afzonderlijke waarden per dimensie op een vergelijk bare manier.
+* `restrictToUInt32Values` Hiermee wordt bepaald of alleen niet-negatieve gehele waarden moeten worden bijgehouden.
 
 Hier volgt een voor beeld van hoe u een bericht verzendt om te weten te komen of limieten voor Cap worden overschreden:
 

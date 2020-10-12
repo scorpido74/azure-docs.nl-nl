@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
 ms.openlocfilehash: 1d88379726cfb6c4218c38b9ccc87005609a9aba
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460742"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Meer informatie over de prijzen voor Azure-toepassing gateway en Web Application firewall
@@ -57,7 +57,7 @@ In de volgende tabel ziet u voor beelden van prijzen op basis van een moment opn
 |              Application Gateway type             |  Kosten ($/uur)  |
 | ------------------------------------------------- | ---------------|
 |                     Klein                         |    $0,025      |
-|                     Middelgroot                        |    $0,07       |
+|                     Normaal                        |    $0,07       |
 |                     Groot                         |    $0,32       |
 
 Maandelijkse prijs schattingen zijn gebaseerd op 730 gebruiks uren per maand.
@@ -83,7 +83,7 @@ In de volgende tabel ziet u voor beelden van prijzen op basis van een moment opn
 |              Application Gateway type             |  Kosten ($/uur)  |
 | ------------------------------------------------- | ---------------|
 |                     Klein                         |       NA       |
-|                     Middelgroot                        |     $0,126     |
+|                     Normaal                        |     $0,126     |
 |                     Groot                         |     $0,448     |
 
 Maandelijkse prijs schattingen zijn gebaseerd op 730 gebruiks uren per maand.

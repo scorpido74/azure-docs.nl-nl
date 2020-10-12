@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85556155"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Ondersteuning van meerdere naam ruimten in een AKS-cluster met Application Gateway ingangs controller inschakelen
@@ -29,11 +29,11 @@ Ondersteuning voor meerdere naam ruimten inschakelen:
    - de `watchNamespace` sleutel volledig verwijderen uit [helm-config. yaml](#sample-helm-config-file) -AGIC worden alle naam ruimten
    - ingesteld `watchNamespace` op een lege teken reeks-AGIC krijgt alle naam ruimten
    - meerdere naam ruimten toevoegen, gescheiden door een komma ( `watchNamespace: default,secondNamespace` )-AGIC worden deze naam ruimten uitsluitend in rekening gebracht
-2. wijzigingen in de helm-sjabloon Toep assen met:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+2. wijzigingen in de helm-sjabloon Toep assen met: `helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Wanneer de implementatie is geïmplementeerd met de mogelijkheid om meerdere naam ruimten te bekijken, AGIC:
   - lijst met binnenkomende resources van alle toegankelijke naam ruimten
-  - filteren op ingangs resources die aantekeningen hebben met`kubernetes.io/ingress.class: azure/application-gateway`
+  - filteren op ingangs resources die aantekeningen hebben met `kubernetes.io/ingress.class: azure/application-gateway`
   - gecombineerde [Application Gateway configuratie](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) opstellen
   - de configuratie Toep assen op de gekoppelde Application Gateway via [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
 
@@ -84,11 +84,11 @@ spec:
 
 Ondanks de twee bronnen voor `www.contoso.com` binnenkomend verkeer om te worden doorgestuurd naar de respectieve Kubernetes-naam ruimten, kan slechts één back-end het verkeer afleiden. Met AGIC wordt een configuratie gemaakt op basis van de eerste keer dat deze wordt geleverd voor een van de bronnen. Als er tegelijkertijd twee ingresses-resources worden gemaakt, heeft de eerdere versie van het alfabet prioriteit. In het bovenstaande voor beeld kunnen we alleen instellingen voor de `production` ingang maken. Application Gateway wordt geconfigureerd met de volgende resources:
 
-  - Listener`fl-www.contoso.com-80`
-  - Routerings regel:`rr-www.contoso.com-80`
-  - Back-end-groep:`pool-production-contoso-web-service-80-bp-80`
-  - HTTP-instellingen:`bp-production-contoso-web-service-80-80-websocket-ingress`
-  - Status test:`pb-production-contoso-web-service-80-websocket-ingress`
+  - Listener `fl-www.contoso.com-80`
+  - Routerings regel: `rr-www.contoso.com-80`
+  - Back-end-groep: `pool-production-contoso-web-service-80-bp-80`
+  - HTTP-instellingen: `bp-production-contoso-web-service-80-80-websocket-ingress`
+  - Status test: `pb-production-contoso-web-service-80-websocket-ingress`
 
 Houd er rekening mee dat de Application Gateway resources die zijn gemaakt, de naam ruimte () waarvoor ze zijn gemaakt, bevatten, met uitzonde ring van *listener* en *routerings regel* `production` .
 
