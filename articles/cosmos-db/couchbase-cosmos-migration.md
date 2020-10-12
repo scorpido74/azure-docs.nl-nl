@@ -8,10 +8,10 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87366718"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van Couch Base naar Azure Cosmos DB SQL-API
@@ -187,7 +187,7 @@ N1QL query's zijn de manier om query's te definiëren in de Couch base.
 
 |N1QL-query | Azure CosmosDB-query|
 |-------------------|-------------------|
-|Selecteer META ( `TravelDocument` ). id als id, `TravelDocument` . * from `TravelDocument` WHERE `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" en Country = "India" en alle m in visa voldoen aan m. type = = ' multi-entry ' en m. land in [' India ', Bhutan '] sorteren op ` Validity` DESC limiet 25 offset 0   | Selecteer c. id, c van c koppelen m in c. Country = ' India ' WHERE c. _type = ' com. xx. xx. xx. xxx. xxx. xxxx ' en c. Country = ' India ' en m. type = ' multi-entry ' en m. country IN (' India ', ' Bhutan ') ORDER BY c. geldigheid DESC OFFSET 0 LIMIT 25 |
+|Selecteer META ( `TravelDocument` ). id als id, `TravelDocument` . * from `TravelDocument` WHERE `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" en Country = "India" en alle m in visa voldoen aan m. type = = ' multi-entry ' en m. land in [' India ', Bhutan '] sorteren op ` Validity` DESC limiet 25 offset 0   | Selecteer c. id, c van c lid m in c. Country = ' India ' waarbij c._type = ' com. xx. xx. xx. xxx. xxx. xxxx ' en c. Country = ' India ' en m. type = ' multi-entry ' en m. country IN (' India ', ' Bhutan ') ORDER BY c. geldigheid DESC OFFSET 0 limiet 25 |
 
 U kunt de volgende wijzigingen in uw N1QL-query's waarnemen:
 
@@ -311,7 +311,7 @@ Dit is een eenvoudig type werk belasting waarin u zoek acties kunt uitvoeren in 
 
 1. Overweeg '/ID ' als primaire sleutel. Dit zorgt ervoor dat u de opzoek bewerking rechtstreeks kunt uitvoeren in de specifieke partitie. Maak een verzameling en geef '/ID ' op als partitie sleutel.
 
-1. Schakel het indexeren volledig uit. Omdat u opzoek bewerkingen wilt uitvoeren, is er geen punt om de overhead van indexeren te belasten. Als u indexeren wilt uitschakelen, meldt u zich aan bij Azure Portal, ga naar Azure Cosmos DB account. Open de **Data Explorer**, selecteer uw **Data Base** en de **container**. Open het tabblad **schaal & instellingen** en selecteer het **indexerings beleid**. Momenteel ziet het indexerings beleid er als volgt uit:
+1. Schakel het indexeren volledig uit. Omdat u opzoek bewerkingen wilt uitvoeren, is er geen punt om de overhead van indexeren te belasten. Als u indexeren wilt uitschakelen, meldt u zich aan bij Azure Portal, ga naar Azure Cosmos DB account. Open de **Data Explorer**, selecteer uw **Data Base** en de **container**. Open het tabblad **schaal & instellingen** en selecteer het  **indexerings beleid**. Momenteel ziet het indexerings beleid er als volgt uit:
     
    ```json
    {

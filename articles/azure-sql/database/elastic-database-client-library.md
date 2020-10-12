@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: bfe5dc00ba0255520c04ea85157f0b8bdc71b590
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84050224"
 ---
 # <a name="building-scalable-cloud-databases"></a>Schaalbare clouddatabases bouwen
@@ -41,7 +41,7 @@ Downloaden:
 9. [Client bibliotheek-apps bijwerken](elastic-scale-upgrade-client-library.md) 
 10. [Overzicht van elastische query's](elastic-query-overview.md)
 11. [Woorden lijst voor Elastic Database-hulpprogram ma's](elastic-scale-glossary.md)
-12. [Client bibliotheek Elastic Database met Entity Framework](elastic-scale-use-entity-framework-applications-visual-studio.md)
+12. [Clientbibliotheek van elastische database met Entity Framework](elastic-scale-use-entity-framework-applications-visual-studio.md)
 13. [Client bibliotheek Elastic Database met dapper](elastic-scale-working-with-dapper.md)
 14. [Hulp programma voor splitsen en samen voegen](elastic-scale-overview-split-and-merge.md)
 15. [Prestatiemeteritems voor shard-toewijzingsbeheer](elastic-database-client-library.md) 

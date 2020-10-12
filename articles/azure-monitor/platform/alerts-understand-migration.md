@@ -7,10 +7,10 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852392"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Meer informatie over migratie opties voor nieuwere waarschuwingen
@@ -171,16 +171,16 @@ Voor Application Insights zijn equivalente gegevens zoals hieronder weer gegeven
 | clientPerformance. receiveRequest. Value | browserTimings/receiveDuration| De oorspronkelijke drempel waarde vermenigvuldigen met 1000 als eenheden voor de klassieke meet waarden worden in seconden uitgedrukt en voor een nieuwe in milliSeconden.  |
 | clientPerformance. sendRequest. Value | browserTimings/sendDuration| De oorspronkelijke drempel waarde vermenigvuldigen met 1000 als eenheden voor de klassieke meet waarden worden in seconden uitgedrukt en voor een nieuwe in milliSeconden.  |
 | clientPerformance. Total. Value | browserTimings/totalDuration| De oorspronkelijke drempel waarde vermenigvuldigen met 1000 als eenheden voor de klassieke meet waarden worden in seconden uitgedrukt en voor een nieuwe in milliSeconden.  |
-| Performance Counter. available_bytes. waarde | Performance Counters/memoryAvailableBytes|   |
-| Performance Counter. io_data_bytes_per_sec. waarde | Performance Counters/processIOBytesPerSecond|   |
-| Performance Counter. number_of_exceps_thrown_per_sec. waarde | Performance Counters/exceptionsPerSecond|   |
-| Performance Counter. percentage_processor_time_normalized. waarde | Performance Counters/processCpuPercentage|   |
-| Performance Counter. percentage_processor_time. waarde | Performance Counters/processCpuPercentage| De drempel waarde moet op de juiste manier worden gewijzigd, aangezien de oorspronkelijke metriek over alle kernen is en er nieuwe metrische gegevens worden genormaliseerd op één kern. De drempel waarden worden niet gewijzigd in het hulp programma voor migratie.  |
-| Performance Counter. percentage_processor_total. waarde | Performance Counters/processorCpuPercentage|   |
-| Performance Counter. process_private_bytes. waarde | Performance Counters/processPrivateBytes|   |
-| Performance Counter. request_execution_time. waarde | Performance Counters/requestExecutionTime|   |
-| Performance Counter. requests_in_application_queue. waarde | Performance Counters/requestsInQueue|   |
-| Performance Counter. requests_per_sec. waarde | Performance Counters/requestsPerSecond|   |
+| performanceCounter.available_bytes. waarde | Performance Counters/memoryAvailableBytes|   |
+| performanceCounter.io_data_bytes_per_sec. waarde | Performance Counters/processIOBytesPerSecond|   |
+| performanceCounter.number_of_exceps_thrown_per_sec. waarde | Performance Counters/exceptionsPerSecond|   |
+| performanceCounter.percentage_processor_time_normalized. waarde | Performance Counters/processCpuPercentage|   |
+| performanceCounter.percentage_processor_time. waarde | Performance Counters/processCpuPercentage| De drempel waarde moet op de juiste manier worden gewijzigd, aangezien de oorspronkelijke metriek over alle kernen is en er nieuwe metrische gegevens worden genormaliseerd op één kern. De drempel waarden worden niet gewijzigd in het hulp programma voor migratie.  |
+| performanceCounter.percentage_processor_total. waarde | Performance Counters/processorCpuPercentage|   |
+| performanceCounter.process_private_bytes. waarde | Performance Counters/processPrivateBytes|   |
+| performanceCounter.request_execution_time. waarde | Performance Counters/requestExecutionTime|   |
+| performanceCounter.requests_in_application_queue. waarde | Performance Counters/requestsInQueue|   |
+| performanceCounter.requests_per_sec. waarde | Performance Counters/requestsPerSecond|   |
 | aanvraag. duur | aanvragen/duur| De oorspronkelijke drempel waarde vermenigvuldigen met 1000 als eenheden voor de klassieke meet waarden worden in seconden uitgedrukt en voor een nieuwe in milliSeconden.  |
 | aanvraag. rate | aanvragen/frequentie|   |
 | requestFailed. Count | aanvragen/mislukt| Gebruik `aggregationType` ' count ' in plaats van ' sum '.   |

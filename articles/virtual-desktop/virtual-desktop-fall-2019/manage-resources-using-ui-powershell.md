@@ -8,16 +8,16 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069014"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Een beheer hulpprogramma voor virtueel bureau blad (klassiek) van Windows implementeren met Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 In dit artikel wordt uitgelegd hoe u het beheer programma implementeert met behulp van Power shell.
 
@@ -60,7 +60,7 @@ Ga aan de slag door u aan te melden bij zowel de AZ-als Azure AD Power shell-mod
     Connect-AzureAD
     ```
 
-4. Daarna gaat u naar de map waar u de twee Power shell-scripts van de RDS-sjablonen GitHub opslag plaats hebt opgeslagen.
+4. Daarna gaat u naar de map waar u de twee Power shell-scripts van de RDS-Templates GitHub opslag plaats hebt opgeslagen.
 
 Houd het Power shell-venster dat u hebt gebruikt om u aan te melden, om extra Power shell-cmdlets uit te voeren terwijl u bent aangemeld.
 

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86525038"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back-ups maken van werkbelasting Vm's op CloudSimple Privécloud met Veeam B&R
@@ -54,7 +54,7 @@ Voor omgevingen met minder dan 30 TB om een back-up te maken, raadt CloudSimple 
 
 * Veeam backup-server en proxy server zijn geïnstalleerd op dezelfde VM in de Privécloud.
 * Een op Linux gebaseerde primaire back-upopslagplaats in azure die is geconfigureerd als een doel voor back-uptaken.
-* `azcopy`wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
+* `azcopy` wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
 
 ![Basis implementatie scenario's](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ Voor omgevingen met meer dan 30 TB om een back-up te maken, raadt CloudSimple de
 * Een proxy server per knoop punt in het vSAN-cluster, zoals aanbevolen door Veeam.
 * Op Windows gebaseerde primaire back-upopslagplaats in de Privécloud om vijf dagen aan gegevens in de cache te plaatsen voor snelle herstel bewerkingen.
 * Linux backup-opslag plaats in azure als doel voor het maken van back-uptaken voor een langere retentie van de duur. Deze opslag plaats moet worden geconfigureerd als een scale-out back-upopslagplaats.
-* `azcopy`wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
+* `azcopy` wordt gebruikt om de gegevens van de primaire back-upopslagplaats te kopiëren naar een Azure-Blob-container die wordt gerepliceerd naar een andere regio.
 
 ![Basis implementatie scenario's](media/veeam-advanceddeployment.png)
 
@@ -260,7 +260,7 @@ Maak een firewall regel met om de Veeam-back-upserver toe te staan een uitgaande
 
 Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Referenties
 
 ### <a name="cloudsimple-references"></a>CloudSimple-verwijzingen
 

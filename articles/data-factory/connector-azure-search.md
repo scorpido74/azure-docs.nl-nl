@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418232"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Cognitive Search-index met behulp van Azure Data Factory
@@ -175,7 +175,7 @@ In de volgende tabel wordt aangegeven of een Azure Cognitive Search-gegevens typ
 | Int32 | J |
 | Int64 | J |
 | Dubbel | J |
-| Boolean-waarde | J |
+| Booleaans | J |
 | DataTimeOffset | J |
 | Teken reeks matrix | N |
 | GeographyPoint | N |

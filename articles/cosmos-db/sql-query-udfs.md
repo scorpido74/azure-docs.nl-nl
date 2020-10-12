@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.custom: devx-track-js
 ms.openlocfilehash: c17fcbb7f6cd2d7f4948defad49e8319a013eb86
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262056"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Door de gebruiker gedefinieerde functies (Udf's) in Azure Cosmos DB
@@ -142,4 +142,4 @@ Zoals in de voor gaande voor beelden wordt weer gegeven, integreert UDFs de krac
 
 - [Inleiding tot Azure Cosmos DB](introduction.md)
 - [Systeemfuncties](sql-query-system-functions.md)
-- [Aggregaties](sql-query-aggregates.md)
+- [Statistische functies](sql-query-aggregates.md)

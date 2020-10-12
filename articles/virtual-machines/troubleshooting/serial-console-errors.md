@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526432"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Veelvoorkomende fouten in de Azure seriële console
@@ -34,7 +34,7 @@ Fout                             |   Oplossing
 Er is een ' verboden ' antwoord aangetroffen bij het openen van het opslag account voor diagnostische gegevens over opstarten van deze virtuele machine. | Zorg ervoor dat diagnostische gegevens over opstarten geen account firewall hebben. Er is een toegankelijke opslag account voor diagnostische gegevens over opstarten nodig om de seriële console te laten functioneren. Seriële console per ontwerp kan niet werken met firewalls voor opslag accounts die zijn ingeschakeld in het opslag account voor diagnostische gegevens over opstarten.
 U beschikt niet over de vereiste machtigingen om deze virtuele machine met de seriële console te gebruiken. Zorg ervoor dat u ten minste machtigingen voor de rol Inzender voor virtuele machines hebt.| Voor toegang tot de seriële console hebt u toegang op Inzender niveau of hoger nodig op uw VM of virtuele-machine schaalset. Zie de [pagina overzicht](serial-console-overview.md)voor meer informatie.
 Het opslag account dat wordt gebruikt voor diagnostische gegevens over opstarten op deze VM is niet gevonden. Controleer of de diagnostische gegevens over opstarten zijn ingeschakeld voor deze VM. dit opslag account is niet verwijderd en u hebt toegang tot dit opslag account. | Controleer of u het opslag account voor diagnostische gegevens over opstarten niet hebt verwijderd voor uw VM of virtuele-machine schaalset
-Er is een fout opgetreden tijdens de verbinding met de seriële console met de virtuele machine: ' ongeldige aanvraag ' (400) | Dit kan gebeuren als de URI van de opstart diagnose onjuist is. Zo is bijvoorbeeld ' http://' gebruikt in plaats van ' https://'. De diagnostische URI voor opstarten kan worden opgelost met deze opdracht:`az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
+Er is een fout opgetreden tijdens de verbinding met de seriële console met de virtuele machine: ' ongeldige aanvraag ' (400) | Dit kan gebeuren als de URI van de opstart diagnose onjuist is. Zo is bijvoorbeeld ' http://' gebruikt in plaats van ' https://'. De diagnostische URI voor opstarten kan worden opgelost met deze opdracht: `az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 U beschikt niet over de vereiste machtigingen om te schrijven naar het opslag account voor diagnostische gegevens over opstarten voor deze VM. Zorg ervoor dat u ten minste beschikt over de machtigingen voor de VM-bijdrage | Voor Seriële console toegang is toegang op Inzender niveau vereist voor het opslag account voor diagnostische gegevens over opstarten. Zie de [pagina overzicht](serial-console-overview.md)voor meer informatie.
 Kan de resource groep voor het opslag account voor diagnostische gegevens over opstarten niet bepalen * &lt; STORAGEACCOUNTNAME &gt; *. Controleer of de diagnostische gegevens over opstarten zijn ingeschakeld voor deze VM en of u toegang tot dit opslag account hebt. | Voor Seriële console toegang is toegang op Inzender niveau vereist voor het opslag account voor diagnostische gegevens over opstarten. Zie de [pagina overzicht](serial-console-overview.md)voor meer informatie.
 Het inrichten voor deze VM is nog niet voltooid. Controleer of de virtuele machine volledig is geïmplementeerd en voer de verbinding met de seriële console opnieuw uit. | Uw VM of schaalset voor virtuele machines kan nog steeds worden ingericht. Wacht enige tijd en probeer het opnieuw.

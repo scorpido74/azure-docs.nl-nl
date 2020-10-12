@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523975"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Migratie van Translator v2 naar v3
@@ -30,7 +30,7 @@ Het einde van dit document bevat nuttige koppelingen voor meer informatie.
 
 ## <a name="summary-of-features"></a>Overzicht van functies
 
-* Geen tracering in v3 zonder tracering is van toepassing op alle prijs categorieën in de Azure Portal. Deze functie houdt in dat er geen tekst wordt verzonden naar de V3 API, die wordt opgeslagen door micro soft.
+* Er is geen traceer-in v3 No-Trace van toepassing op alle prijs categorieën in de Azure Portal. Deze functie houdt in dat er geen tekst wordt verzonden naar de V3 API, die wordt opgeslagen door micro soft.
 * JSON-XML wordt vervangen door JSON. Alle gegevens die naar de service worden verzonden en die zijn ontvangen van de service, zijn in JSON-indeling.
 * Meerdere doel talen in één aanvraag: de Vertaal methode accepteert meerdere ' aan ' talen voor vertaling in één aanvraag. Een enkele aanvraag kan bijvoorbeeld ' van ' Engels en ' naar ' Duits, Spaans en Japans of een andere groep talen zijn.
 * Tweetalige woorden lijst-er is een tweetalige woordenlijst methode toegevoegd aan de API. Deze methode bevat ' Lookup ' en ' voor beelden '.
@@ -49,8 +49,8 @@ In de volgende lijst met v2-en V3-methoden worden de V3-methoden en Api's geïde
 | `GetLanguagesForTranslate`     | [Talen](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Waarneem](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Waarneem](reference/v3-0-detect.md)         |
+| `Detect`     | [Detecteren](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Detecteren](reference/v3-0-detect.md)         |
 | `AddTranslation`     | De functie wordt niet meer ondersteund       |
 | `AddTranslationArray`    | De functie wordt niet meer ondersteund          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |

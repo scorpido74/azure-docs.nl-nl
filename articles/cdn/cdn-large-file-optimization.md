@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192643"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalisatie van grote bestanden downloaden met Azure CDN
@@ -122,9 +122,9 @@ Wanneer er een time-out optreedt voor een verbinding, probeert het CDN een aanta
 
 De volgende tabel geeft een lijst van criteria waaraan moet worden voldaan voor grote bestands optimalisatie:
 
-Voorwaarde | Waarden 
+Conditie | Waarden 
 --- | --- 
-Ondersteunde bestandstypen | 3g2, 3GP, ASF, AVI, bz2, dmg, exe, F4V, FLV, <br> gz, HDP, ISO, jxr, M4V, MKV, MOV, MP4, <br> MPEG, MPG, MTS, pak, Qt, RM, SWF, tar, <br> tgz, WDP, WEBM, webp, WMA, WMV, zip  
+Ondersteunde bestands typen | 3g2, 3GP, ASF, AVI, bz2, dmg, exe, F4V, FLV, <br> gz, HDP, ISO, jxr, M4V, MKV, MOV, MP4, <br> MPEG, MPG, MTS, pak, Qt, RM, SWF, tar, <br> tgz, WDP, WEBM, webp, WMA, WMV, zip  
 Minimale bestands grootte | 10 MB 
 Maximale bestandsgrootte | 150 GB 
 Kenmerken van de oorspronkelijke server | Moet aanvragen voor byte bereik ondersteunen 

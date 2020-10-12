@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417960"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systeem variabelen die door Azure Data Factory worden ondersteund
@@ -34,7 +34,7 @@ Naar deze systeem variabelen kan ergens worden verwezen in de JSON van de pijp l
 | @pipeline(). Trigger type | Type trigger waarmee de pijp lijn is aangeroepen (hand matig, Scheduler) |
 | @pipeline(). TriggerId| ID van de trigger die de pijp lijn aanroept |
 | @pipeline(). TriggerName| De naam van de trigger die de pijp lijn aanroept |
-| @pipeline(). TriggerTime| Tijd waarop de trigger de pijp lijn heeft aangeroepen. De trigger tijd is de werkelijke tijd die wordt geactiveerd, niet de geplande tijd. Bijvoorbeeld, `13:20:08.0149599Z` wordt geretourneerd in plaats van`13:20:00.00Z` |
+| @pipeline(). TriggerTime| Tijd waarop de trigger de pijp lijn heeft aangeroepen. De trigger tijd is de werkelijke tijd die wordt geactiveerd, niet de geplande tijd. Bijvoorbeeld, `13:20:08.0149599Z` wordt geretourneerd in plaats van `13:20:00.00Z` |
 
 ## <a name="schedule-trigger-scope"></a>Trigger bereik plannen
 Naar deze systeem variabelen kan overal in de JSON van de trigger worden verwezen als de trigger van het volgende type is: "ScheduleTrigger."

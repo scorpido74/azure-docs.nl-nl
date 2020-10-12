@@ -9,10 +9,10 @@ ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708692"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Problemen met Azure NFS-bestands shares oplossen
@@ -90,7 +90,7 @@ In het volgende diagram ziet u de connectiviteit met behulp van open bare eind p
     - Virtual Network-peering met virtuele netwerken die worden gehost in het persoonlijke eind punt bieden NFS-share toegang tot de clients in gekoppelde virtuele netwerken.
     - Privé-eind punten kunnen worden gebruikt in combi natie met ExpressRoute, punt-naar-site-en site-naar-site-Vpn's.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram van connectiviteit van privé-eind punten." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram van connectiviteit van open bare eind punten." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>Oorzaak 2: beveiligde overdracht vereist is ingeschakeld
 
@@ -100,7 +100,7 @@ Dubbele versleuteling wordt nog niet ondersteund voor NFS-shares. Azure biedt ee
 
 Schakel beveiligde overdracht uit op de Blade configuratie van uw opslag account.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Scherm opname van de Blade configuratie van opslag account, veilige overdracht uitschakelen vereist.":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Diagram van connectiviteit van open bare eind punten.":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Oorzaak 3: gemeen schappelijk NFS-pakket is niet geïnstalleerd
 Voordat u de koppelings opdracht uitvoert, installeert u het pakket door de distributie-specifieke opdracht uit te voeren.

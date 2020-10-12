@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
 ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90032381"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
@@ -30,7 +30,7 @@ In dit artikel leert u het volgende:
 
 In de volgende tabel ziet u de publicatie opties voor aanbiedings typen in Microsoft AppSource en Azure Marketplace.
 
-|   | **Lijst (contact)**  | **Lijst (proef versie)**  | **Gratis** | **BYOL** | **Transact**|
+|   | **Lijst (contact)**  | **Lijst (proef versie)**  | **Gratis** | **BYOL (Bring Your Own License)** | **Transact**|
 | :--------- | :----------- | :------------ | :----------- | :---------- |:---------- |
 | **Virtuele machine** |  |  |  | Azure Marketplace |  Azure Marketplace |
 | **Azure-apps (meerdere VM'S)** |  |  | Azure Marketplace | Azure Marketplace | Azure Marketplace  |
@@ -55,7 +55,7 @@ De beschik bare aanbiedings opties bieden een gedifferentieerde klant betrokkenh
 | :------------------- | :-------------------|
 | **List** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen verbinding te maken met de klant via de aanbiedings opties voor **contact opnemen** . |
 | **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanbiedings opties die worden gebruikt voor de optie voor het publiceren van de proef versie zijn een **gratis proef versie** of een **test station**. |
-| **BYOL** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De optie aanbieding is **nu downloaden**.
+| **BYOL (Bring Your Own License)** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De optie aanbieding is **nu downloaden**.
 | **Transact** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De optie aanbieding is **nu downloaden**.|
 
 > [!Note]

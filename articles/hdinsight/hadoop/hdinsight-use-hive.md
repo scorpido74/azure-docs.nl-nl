@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462272"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Wat is Apache Hive en HiveQL in azure HDInsight?
@@ -131,9 +131,9 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 In het vorige voor beeld voeren de HiveQL-instructies de volgende acties uit:
 
-|Rekeningen |Beschrijving |
+|Instructie |Beschrijving |
 |---|---|
-|TABEL NEERZETTEN|Als de tabel al bestaat, verwijdert u deze.|
+|DROP TABLE|Als de tabel al bestaat, verwijdert u deze.|
 |CREATE EXTERNAL TABLE|Hiermee maakt u een nieuwe **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie en in de oorspronkelijke indeling.|
 |RIJ-INDELING|Hiermee wordt aangegeven hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
 |OPGESLAGEN ALS TEXTFILE-LOCATIE|Hiermee wordt de component aangegeven waarin de gegevens worden opgeslagen (de `example/data` map) en opgeslagen als tekst. De gegevens kunnen zich in één bestand bevindt of zich verspreiden over meerdere bestanden in de map.|
@@ -164,7 +164,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Met deze instructies worden de volgende acties uitgevoerd:
 
-|Rekeningen |Beschrijving |
+|Instructie |Beschrijving |
 |---|---|
 |CREATE TABLE ALS DEZE NIET BESTAAT|Als de tabel niet bestaat, maakt u deze. Omdat het **externe** sleutel woord niet wordt gebruikt, maakt deze instructie een interne tabel. De tabel wordt opgeslagen in het Hive-Data Warehouse en wordt volledig beheerd door Hive.|
 |OPGESLAGEN ALS ORC|Hiermee worden de gegevens opgeslagen in de ORC-indeling (Optimized Row in kolommen). ORC is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.|

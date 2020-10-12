@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 429ffcab147142ae2e96de13b7c9e1e5ee1ac7ba
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133219"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Proxy-instellingen voor de Mobility-service configureren voor Azure voor herstel na nood gevallen
@@ -54,5 +54,5 @@ In dit geval biedt de klant aangepaste instellingen voor toepassings proxy in he
 ProxyInfo. conf bevat de volgende sjabloon [proxy] address = http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, login. microsoftonline. com, blob. core. Windows. net. De BypassList biedt geen ondersteuning voor joker tekens zoals *. windows.net, maar het geven van windows.net is goed genoeg om over te slaan. 
 
 ## <a name="next-steps"></a>Volgende stappen:
-- Lees de [netwerk richtlijnen](./azure-to-azure-about-networking.md) voor het repliceren van virtuele Azure-machines.
+- Lees de [netwerk richtlijnen](./azure-to-azure-about-networking.md)  voor het repliceren van virtuele Azure-machines.
 - Implementeer herstel na nood gevallen door [Azure vm's te repliceren](./azure-to-azure-quickstart.md).

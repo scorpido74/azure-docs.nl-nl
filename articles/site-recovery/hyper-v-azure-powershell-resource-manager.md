@@ -7,13 +7,13 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132517"
 ---
-# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager
+# <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Herstel na noodgeval instellen naar Azure voor Hyper-V-VM's met behulp van PowerShell en Azure Resource Manager
 
 [Azure site Recovery](site-recovery-overview.md) draagt bij aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) door de replicatie, failover en het herstel van virtuele machines van Azure (vm's) en on-premises vm's en fysieke servers te organiseren.
 
@@ -128,7 +128,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    $server = Get-AzRecoveryServicesAsrFabric -Name $siteName | Get-AzRecoveryServicesAsrServicesProvider -FriendlyName $server-friendlyname
    ```
 
-Als u een Hyper-V-kern server gebruikt, downloadt u het installatie bestand en voert u de volgende stappen uit:
+Als u een Hyper-V-kernserver gebruikt, downloadt u het installatiebestand en voert u de volgende stappen uit:
 
 1. Pak de bestanden uit _AzureSiteRecoveryProvider.exe_ naar een lokale map door deze opdracht uit te voeren:
 

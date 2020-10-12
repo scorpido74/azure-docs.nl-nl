@@ -12,17 +12,17 @@ ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: d5e06d0a6f7693ca9cc69f05f6b2318d6b60b5e3
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89070799"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools Power shell-referentie
 
 De volgende documentatie bevat referentie-informatie voor de Power shell-module ADConnectivityTools. psm1, die deel uitmaakt van Azure AD Connect.
 
-## <a name="confirm-dnsconnectivity"></a>Bevestigen-DnsConnectivity
+## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
 ### <a name="synopsis"></a>SAMENVATTING
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-forestexists"></a>Bevestigen-ForestExists
+## <a name="confirm-forestexists"></a>Confirm-ForestExists
 
 ### <a name="synopsis"></a>SAMENVATTING
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-functionallevel"></a>Bevestigen-FunctionalLevel
+## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
 ### <a name="synopsis"></a>SAMENVATTING
 
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-networkconnectivity"></a>Bevestigen-NetworkConnectivity
+## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
 ### <a name="synopsis"></a>SAMENVATTING
 
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 Als de gebruiker geen DNS-services van de AD-site/aanmeldings domein controller gebruikt, kan het zijn dat u poort 53 wilt overs Laan.
-De gebruiker moet nog wel _. LDAP. _tcp kunnen omzetten.\<forestfqdn\>
+De gebruiker moet de _.ldap._tcp nog steeds kunnen omzetten.\<forestfqdn\>
 de configuratie van de Active Directory-Connector slaagt alleen als deze is voltooid.
 
 ```yml
@@ -348,7 +348,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-targetsarereachable"></a>Bevestigen-TargetsAreReachable
+## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
 ### <a name="synopsis"></a>SAMENVATTING
 
@@ -417,7 +417,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-validdomains"></a>Bevestigen-ValidDomains
+## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
 ### <a name="synopsis"></a>SAMENVATTING
 
@@ -517,7 +517,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Bevestigen-ValidEnterpriseAdminCredentials
+## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>SAMENVATTING
 
@@ -641,7 +641,7 @@ Accept wildcard characters: False
 
 #### <a name="-returnexceptiononerror"></a>-ReturnExceptionOnError
 
-Para meter die wordt gebruikt door de functie start-NetworkConnectivityDiagnosisTools
+Hulp parameter die wordt gebruikt door de functie Start-NetworkConnectivityDiagnosisTools
 
 ```yml
 Type: SwitchParameter

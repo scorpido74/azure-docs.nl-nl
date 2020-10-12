@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929432"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>SSH-sleutels in de Azure Portal genereren en opslaan
@@ -48,7 +48,7 @@ Zie [SSH-sleutels gebruiken voor verbinding met virtuele Linux-machines](./linux
 
 1. Vervolgens wordt er een pop-upvenster weer gegeven, selecteert u **persoonlijke sleutel downloaden en resource maken**. Hiermee wordt de SSH-sleutel gedownload als een. pem-bestand.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="De persoonlijke sleutel downloaden als een. pem-bestand":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Een nieuwe resource groep maken en een SSH-sleutel paar genereren":::
 
 1. Zodra het. pem-bestand is gedownload, wilt u het mogelijk ergens op uw computer plaatsen waar het eenvoudig van kan verwijzen naar van uw SSH-client.
 
@@ -74,7 +74,7 @@ U kunt ook een open bare SSH-sleutel uploaden om op te slaan in Azure. Zie [SSH-
 
 1. Op de pagina **SSH-sleutel** selecteert u **maken**.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Een open bare SSH-sleutel uploaden om te worden opgeslagen in azure":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Een nieuwe resource groep maken en een SSH-sleutel paar genereren":::
 
 1. Selecteer in **resource groep** de optie **nieuwe maken** om een nieuwe resource groep te maken om uw sleutels op te slaan. Typ een naam voor de resource groep en selecteer **OK**.
 
@@ -90,7 +90,7 @@ U kunt ook een open bare SSH-sleutel uploaden om op te slaan in Azure. Zie [SSH-
 
 Zodra de sleutel is geüpload, kunt u deze gebruiken wanneer u een VM maakt.
 
-## <a name="list-keys"></a>Lijst met sleutels
+## <a name="list-keys"></a>Sleutels vermelden
 
 SSH-sleutels die zijn gemaakt in de portal worden opgeslagen als resources, zodat u de weer gave van resources kunt filteren om deze allemaal weer te geven.
 
@@ -98,7 +98,7 @@ SSH-sleutels die zijn gemaakt in de portal worden opgeslagen als resources, zoda
 1. Selecteer in de filters **type**, hef de selectie van de optie **Alles selecteren** op om de lijst te wissen.
 1. Typ **SSH** in het filter en selecteer **SSH-sleutel**.
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Scherm opname van het filteren van de lijst om al uw SSH-sleutels weer te geven.":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Een nieuwe resource groep maken en een SSH-sleutel paar genereren":::
 
 ## <a name="get-the-public-key"></a>De open bare sleutel ophalen
 

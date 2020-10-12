@@ -13,13 +13,13 @@ ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: ff92f66d4d7b96660fe83b79273f65ca50eb22f9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89292891"
 ---
-# <a name="authentication-flows-and-application-scenarios"></a>Verificatiestromen en app-scenario's
+# <a name="authentication-flows-and-application-scenarios"></a>Verificatie stromen en toepassings scenario's
 
 Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor verschillende soorten architectuur van moderne toepassingen. Alle architecturen zijn gebaseerd op de industrie standaard protocollen [OAuth 2,0 en OpenID Connect Connect](active-directory-v2-protocols.md). Met behulp van de [verificatie bibliotheken voor het micro soft-identiteits platform](reference-v2-libraries.md)verifiëren toepassingen identiteiten en verkrijgen tokens voor toegang tot beveiligde api's.
 

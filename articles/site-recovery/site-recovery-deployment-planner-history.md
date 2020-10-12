@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
 ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133797"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Geschiedenis van Azure Site Recovery Deployment Planner-versie
@@ -87,7 +87,7 @@ In dit artikel vindt u een overzicht van alle versies van Azure Site Recovery De
   - De compressie factor voor de initiële replicatie (IR) en de Delta replicatie (DR) is bijgewerkt.
   - Er is beperkte ondersteuning toegevoegd voor SMB-opslag.
 
-## <a name="version-21"></a>Versie 2,1
+## <a name="version-21"></a>Versie 2.1
 
 **Release datum: 3 januari 2018**
 

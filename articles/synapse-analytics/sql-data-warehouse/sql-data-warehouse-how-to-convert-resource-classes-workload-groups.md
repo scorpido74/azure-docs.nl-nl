@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461371"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Resource klassen omzetten in werkbelasting groepen
@@ -27,7 +27,7 @@ Werkbelasting groepen bieden een mechanisme om systeem bronnen te isoleren en te
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Informatie over de configuratie van de bestaande resource klasse
 
-Voor werkbelasting groepen is een para meter met de naam vereist, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` waarmee het percentage van de totale systeem resources die per aanvraag worden toegewezen.  Resource toewijzing wordt uitgevoerd voor [resource klassen](resource-classes-for-workload-management.md#what-are-resource-classes) door gelijktijdigheids sleuven toe te wijzen.  Als u wilt bepalen welke waarde moet worden opgegeven `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , gebruikt u de sys. dm_workload_management_workload_groups_stats <link tbd> dmv.  De onderstaande query query retourneert bijvoorbeeld een waarde die kan worden gebruikt voor de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` para meter om een werkbelasting groep te maken die lijkt op staticrc40.
+Voor werkbelasting groepen is een para meter met de naam vereist, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` waarmee het percentage van de totale systeem resources die per aanvraag worden toegewezen.  Resource toewijzing wordt uitgevoerd voor [resource klassen](resource-classes-for-workload-management.md#what-are-resource-classes) door gelijktijdigheids sleuven toe te wijzen.  Als u wilt bepalen welke waarde moet worden opgegeven `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , gebruikt u de sys.dm_workload_management_workload_groups_stats <link tbd> dmv.  De onderstaande query query retourneert bijvoorbeeld een waarde die kan worden gebruikt voor de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` para meter om een werkbelasting groep te maken die lijkt op staticrc40.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
