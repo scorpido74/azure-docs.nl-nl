@@ -1,6 +1,6 @@
 ---
-title: Gratis Marketplace-aanbieding van open Shift container platform 3,11 implementeren in azure
-description: Implementeer een zelf beheerd Marketplace-aanbod van open Shift container platform 3,11 in Azure.
+title: Open Shift container platform 3,11 Self-Managed Marketplace-aanbieding implementeren in azure
+description: Implementeer het Self-Managed Marketplace-aanbod van open Shift container platform 3,11 in Azure.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374096"
 ---
 # <a name="configure-prerequisites"></a>Vereisten configureren
@@ -64,7 +64,7 @@ Voer waarden in voor de invoer parameters en klik op **OK**.
 | Gebruikers naam voor de VM-beheerder | De gebruikers beheerder die moet worden gemaakt op alle VM-exemplaren |
 | Open bare SSH-sleutel voor gebruiker met beheerders rechten | Open bare SSH-sleutel die wordt gebruikt voor aanmelding bij de virtuele machine-mag geen wachtwoordzin hebben |
 | Abonnement | Azure-abonnement voor het implementeren van het cluster in |
-| Resourcegroep | Maak een nieuwe resource groep of selecteer een bestaande lege resource groep voor cluster resources |
+| Resource Group | Maak een nieuwe resource groep of selecteer een bestaande lege resource groep voor cluster resources |
 | Locatie | Azure-regio voor het implementeren van het cluster in |
 
    ![Blade basis beginselen aanbieding](media/openshift-marketplace-self-managed/ocp-basics.png)  

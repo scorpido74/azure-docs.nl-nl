@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212164"
 ---
 # <a name="using-the-azure-function-return-value"></a>De functie retour waarde van Azure gebruiken
@@ -53,7 +53,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Dit is de uitvoer binding in de *function.jsvoor* het volgende bestand:
 
@@ -143,7 +143,7 @@ Dit is de uitvoer binding in de *function.jsvoor* het volgende bestand:
     "path": "output-container/{id}"
 }
 ```
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:

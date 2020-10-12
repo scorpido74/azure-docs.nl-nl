@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88612466"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Taken na configuratie voor hybride Azure AD-koppeling
@@ -72,7 +72,7 @@ Als u Windows-apparaten op een lager niveau wilt registreren, moet u ervoor zorg
 * Meld u aan bij uw account in de Azure Portal.
 * Ga naar: Azure Active Directory > apparaten > Apparaatinstellingen
 * Stel ' gebruikers kunnen hun apparaten registreren bij Azure AD '.
-* Op Opslaan klikken
+* Klik op Opslaan
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Azure AD-eind punt toevoegen aan Windows-apparaten op lager niveau
 

@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83701489"
 ---
 # <a name="setup-diagnostic-logging"></a>Registratie in diagnoselogboek instellen
@@ -40,8 +40,8 @@ Selecteren **engine** Logboeken alle [xEvents](https://docs.microsoft.com/analys
 |Voortgangs rapporten     |   Huidige voortgangs rapport      |
 |Query's     |  Start van query       |
 |Query's     |   Einde van query      |
-|Opdrachten     |  Begin opdracht       |
-|Opdrachten     |  Einde van opdracht       |
+|Opdracht     |  Begin opdracht       |
+|Opdracht     |  Einde van opdracht       |
 |Waarschuwingen voor fouten &     |   Fout      |
 |Ontdekken     |   End ontdekken      |
 |Melding     |    Melding     |
@@ -154,7 +154,7 @@ Logboeken zijn doorgaans beschikbaar binnen een paar uur na het instellen van lo
 
 Metrische gegevens en server gebeurtenissen zijn geïntegreerd met xEvents in uw Log Analytics werkruimte resource voor de analyse van de side-by-side. Log Analytics-werk ruimte kan ook worden geconfigureerd voor het ontvangen van gebeurtenissen van andere Azure-Services met een holistische weer gave van gegevens van diagnostische logboek registratie in uw architectuur.
 
-Als u uw diagnostische gegevens wilt weer geven, opent u in Log Analytics werk ruimte **Logboeken** vanuit het linkermenu.
+Als u uw diagnostische gegevens wilt weer geven, opent u in Log Analytics werk ruimte **Logboeken**  vanuit het linkermenu.
 
 ![Opties voor logboek zoeken in het Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
@@ -213,7 +213,7 @@ Er zijn honderden query's die u kunt gebruiken. Zie aan de [slag met Azure monit
 
 ## <a name="turn-on-logging-by-using-powershell"></a>Logboek registratie inschakelen met behulp van Power shell
 
-In deze snelle zelf studie maakt u een opslag account in hetzelfde abonnement en dezelfde resource groep als uw Analysis Service-server. Vervolgens gebruikt u set-AzDiagnosticSetting om diagnostische logboek registratie in te scha kelen en de uitvoer naar het nieuwe opslag account te verzenden.
+In deze snelle zelf studie maakt u een opslag account in hetzelfde abonnement en dezelfde resource groep als uw Analysis Service-server. Vervolgens gebruikt u Set-AzDiagnosticSetting om diagnostische logboek registratie in te scha kelen en de uitvoer naar het nieuwe opslag account te verzenden.
 
 ### <a name="prerequisites"></a>Vereisten
 Voor het volt ooien van deze zelf studie hebt u de volgende resources nodig:

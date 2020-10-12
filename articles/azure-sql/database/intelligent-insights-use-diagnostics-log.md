@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
 ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334970"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Het Intelligent Insights prestatie diagnose logboek van Azure SQL Database en prestatie problemen met Azure SQL Managed instance gebruiken
@@ -93,7 +93,7 @@ Afhankelijk van het prestatie probleem dat is gedetecteerd, verschillen de detai
 | TempDB-conflicten | <li>Query's uitvoeren op hashes van query's die conflicten veroorzaken</li><li>Query-toewijzing aan de totale wacht tijd van de pagelatch-inhoudsatie voor de data base [%]</li> |
 | DTU-tekort elastische groep | <li>Elastische pool</li><li>Meest gebruikte Data Base voor DTU-verbruik</li><li>Percentage van groeps-DTU dat wordt gebruikt door de belangrijkste gebruiker</li> |
 | Regressie plannen | <li>Query's uitvoeren op hashes</li><li>Goede plan-Id's</li><li>Ongeldige plan-Id's</li> |
-| Wijziging in database bereik configuratie waarde | <li>Wijzigingen in de database bereik configuratie ten opzichte van de standaard waarden</li> |
+| Wijziging in de configuratie waarde Database-Scoped | <li>Wijzigingen in de database bereik configuratie ten opzichte van de standaard waarden</li> |
 | Trage client | <li>Query's uitvoeren op hashes</li><li>Wacht tijden</li> |
 | Prijs categorie downgrade | <li>Tekst melding</li> |
 

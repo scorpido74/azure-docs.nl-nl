@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212589"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Binding van de signaal service-trigger voor Azure Functions
@@ -66,7 +66,7 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
@@ -120,7 +120,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, invocation) {
@@ -149,7 +149,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import logging
@@ -167,12 +167,12 @@ def main(invocation) -> None:
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `SignalRTrigger` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `SignalRTrigger`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**| N.v.t. | Moet worden ingesteld op `SignalRTrigger` .|
-|**direction**| N.v.t. | Moet worden ingesteld op `in` .|
+|**type**| N.v.t. | Moet worden ingesteld op `SignalRTrigger`.|
+|**direction**| N.v.t. | Moet worden ingesteld op `in`.|
 |**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het aanroep context object voor de trigger. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub voor de functie die moet worden geactiveerd.|
 |**category**|**Categorie**| Deze waarde moet worden ingesteld als de berichten categorie voor de functie die moet worden geactiveerd. De categorie kan een van de volgende waarden hebben: <ul><li>**verbindingen**: inclusief *verbonden* en *verbroken* gebeurtenissen</li><li>**berichten**: inclusief alle andere gebeurtenissen behalve die in de categorie *verbindingen*</li></ul> |

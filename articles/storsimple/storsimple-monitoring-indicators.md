@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85512971"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple-bewakings indicatoren gebruiken om uw apparaat te beheren
@@ -56,12 +56,12 @@ Gebruik de volgende tabel om de status te identificeren die wordt aangegeven doo
 | Systeem energie | Module fout | Logische fout | Waarschuwingen | Status |
 | --- | --- | --- | --- | --- |
 | Rood-geel |UIT |UIT |N.v.t. |Netstroom is verloren, werkt op een back-upstroom of op netstroom en de controller modules zijn verwijderd. |
-| Groen |AAN |AAN |N.v.t. |Test status van het OPS-paneel (5s) |
-| Groen |UIT |UIT |N.v.t. |Inschakelen, alle functies goed |
-| Groen |AAN |N.v.t. |PCM-fout-led's, ventilator fout-Led's |Een PCM-fout, een ventilator fout, meer dan of onder een Tempe ratuur |
-| Groen |AAN |N.v.t. |Led's voor de I/O-module |Er is een fout opgetreden in de controller module |
-| Groen |AAN |N.v.t. |N.v.t. |Logische fout in behuizing |
-| Groen |Flits |N.v.t. |Status van module-LED voor controller module. PCM-fout-led's, ventilator fout-Led's |Onbekende controller module type geïnstalleerd, I2C-bus fout, fout in de configuratie van vitale product gegevens (VPD) van de controller module |
+| Green |AAN |AAN |N.v.t. |Test status van het OPS-paneel (5s) |
+| Green |UIT |UIT |N.v.t. |Inschakelen, alle functies goed |
+| Green |AAN |N.v.t. |PCM-fout-led's, ventilator fout-Led's |Een PCM-fout, een ventilator fout, meer dan of onder een Tempe ratuur |
+| Green |AAN |N.v.t. |Led's voor de I/O-module |Er is een fout opgetreden in de controller module |
+| Green |AAN |N.v.t. |N.v.t. |Logische fout in behuizing |
+| Green |Flits |N.v.t. |Status van module-LED voor controller module. PCM-fout-led's, ventilator fout-Led's |Onbekende controller module type geïnstalleerd, I2C-bus fout, fout in de configuratie van vitale product gegevens (VPD) van de controller module |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Led's voor de indicator energie-koel module (PCM)
 De Led's van de indicator voor elektrische koeling module (PCM) zijn te vinden op de achtergrond van de primaire behuizing of EBOD behuizing van elke PCM-module. In dit onderwerp wordt beschreven hoe u de volgende Led's kunt gebruiken om de status van uw StorSimple-apparaat te controleren.  
@@ -136,7 +136,7 @@ De volgende afbeelding helpt u bij het identificeren van de Led's op de primaire
 Gebruik de volgende tabel om te bepalen of de controller module goed werkt.  
 
 ### <a name="controller-indicator-leds"></a>Led's voor controller indicator
-| GELEID | Description |
+| GELEID | Beschrijving |
 | --- | --- |
 | LED voor ID (blauw) |Geeft aan dat de module wordt geïdentificeerd. Als de blauwe LED knippert op een actieve controller, is de controller de actieve controller en de andere is de standby-controller. Zie [de actieve controller op het apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)voor meer informatie. |
 | LED voor fout (geel) |Duidt op een fout in de controller. |
@@ -225,7 +225,7 @@ In de volgende tabel worden de verschillende alarm omstandigheden beschreven.
 | PCM-waarschuwing: het verlies van gelijkstroom voeding van één PCM |Fout – verlies van redundantie |S1 |Module fout |
 | PCM-ventilator mislukt |Fout – verlies van redundantie |S1 |Module fout |
 | PCM-fout in SBB-module gedetecteerd |Slat |S1 |Module fout |
-| PCM verwijderd |Configuratie fout |Geen |Module fout |
+| PCM verwijderd |Configuratiefout |Geen |Module fout |
 | Fout in de configuratie van de behuizing |Fout – kritiek |S1 |Module fout |
 | Waarschuwing voor een lage waarschuwings temperatuur |Waarschuwing |S1 |Module fout |
 | Waarschuwing voor een hoge waarschuwings temperatuur |Waarschuwing |S1 |Module fout |

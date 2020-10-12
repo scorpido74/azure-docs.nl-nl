@@ -7,10 +7,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
 ms.openlocfilehash: ca1c63f042bd06c19f232c2ff8170d23741e73f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936432"
 ---
 # <a name="dependency-auto-collection"></a>Afhankelijkheden automatisch verzamelen
@@ -81,7 +81,7 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
 | [Winston](https://www.npmjs.com/package/winston) | 2. x-3. x |
 
-## <a name="javascript"></a>JavaScript
+## <a name="javascript"></a>Javascript
 
 | Communicatie bibliotheken | Versies |
 | ------------------------|----------|

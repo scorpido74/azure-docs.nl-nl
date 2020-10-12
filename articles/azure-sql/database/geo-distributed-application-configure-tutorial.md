@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: 8e64e1a63b01e900988c999321423dfe92df00c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335055"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Zelf studie: een geografisch gedistribueerde data base implementeren (Azure SQL Database)
@@ -36,7 +36,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Als u de zelf studie wilt volt ooien, moet u ervoor zorgen dat u de volgende items hebt geïnstalleerd:
 
@@ -58,7 +58,7 @@ Als u de zelf studie wilt volt ooien, moet u ervoor zorgen dat u de volgende ite
 
 ## <a name="create-a-failover-group"></a>Een failovergroep maken
 
-Gebruik Azure PowerShell om [failover-groepen](auto-failover-group-overview.md) te maken tussen een bestaande server en een nieuwe server in een andere regio. Voeg vervolgens de voorbeeld database toe aan de failovergroep.
+Gebruik Azure PowerShell om [failover-groepen](auto-failover-group-overview.md) te maken tussen een bestaande server en een nieuwe server in een andere regio. Vervolgens voegt u de voorbeelddatabase toe aan de failovergroep.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -337,7 +337,7 @@ Een failover testen:
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 
-1. Herstel de failovergroep terug naar de primaire server:
+1. Herstel de failovergroep weer naar de primaire server:
 
    ```powershell
    Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
@@ -360,7 +360,7 @@ Een failover testen:
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
    ```
 
-1. Herstel de failovergroep terug naar de primaire server:
+1. Herstel de failovergroep weer naar de primaire server:
 
    ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server

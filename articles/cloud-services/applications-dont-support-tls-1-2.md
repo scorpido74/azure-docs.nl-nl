@@ -13,10 +13,10 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83683787"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problemen oplossen met toepassingen die TLS 1,2 niet ondersteunen
@@ -342,7 +342,7 @@ Hier volgt een voor beeld waarin zowel de werk rollen als de webrol worden weer 
 ## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>Stap 4: de scripts toevoegen aan uw Cloud service 
 
 1) Klik in Visual Studio met de rechter muisknop op uw webfunctie-of WorkerRole
-2) Selecteer **toevoegen**
+2) Selecteer **Toevoegen**
 3) **Bestaand item** selecteren
 4) Ga in Verkenner naar het bureau blad waar u de **TLSsettings.ps1** -en **RunTLSSettings. cmd** -bestanden hebt opgeslagen. 
 5) Selecteer de twee bestanden om deze aan uw Cloud Services project toe te voegen

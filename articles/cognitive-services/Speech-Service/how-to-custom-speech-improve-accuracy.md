@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-demjoh
 ms.openlocfilehash: bb904482f3cb5900b724803816269f1b10ab3720
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83727876"
 ---
-# <a name="improve-custom-speech-accuracy"></a>Custom Speech nauw keurigheid verbeteren
+# <a name="improve-custom-speech-accuracy"></a>Nauwkeurigheid van Custom Speech verbeteren
 
 In dit artikel leert u hoe u de kwaliteit van uw aangepaste model kunt verbeteren door audio, transcripten met menselijke labels en gerelateerde tekst toe te voegen.
 
@@ -37,9 +37,9 @@ In verschillende scenario's worden verschillende kwaliteits resultaten gegeneree
 | Scenario | Kwaliteit van spraak herkenning | Invoeg fouten | Verwijderings fouten | Vervangings fouten |
 |----------|----------------------------|------------------|-----------------|---------------------|
 | Callcenter | Gemiddeld (< 30% WER) | Laag, behalve wanneer anderen op de achtergrond praten | Kan hoog zijn. Call centers kunnen ruis opdoen en overlappende luid sprekers kunnen het model verwarren | Gemiddeld. De namen van producten en personen kunnen deze fouten veroorzaken |
-| Spraakassistent | Hoog (kan worden < 10% WER) | Laag | Laag | Gemiddeld, vanwege de titels van het nummer, product namen of locaties |
-| Dicteren | Hoog (kan worden < 10% WER) | Laag | Laag | Hoog |
-| Video closed captioning | Is afhankelijk van het video type (kan < 50% WER) | Laag | Kan hoog zijn als gevolg van muziek, ruis, microfoon kwaliteit | Jargon kan deze fouten veroorzaken |
+| Spraakassistent | Hoog (kan worden < 10% WER) | Beperkt | Beperkt | Gemiddeld, vanwege de titels van het nummer, product namen of locaties |
+| Dicteren | Hoog (kan worden < 10% WER) | Beperkt | Beperkt | Hoog |
+| Video closed captioning | Is afhankelijk van het video type (kan < 50% WER) | Beperkt | Kan hoog zijn als gevolg van muziek, ruis, microfoon kwaliteit | Jargon kan deze fouten veroorzaken |
 
 Door de onderdelen van de WER te bepalen (aantal invoeg-, verwijderings-en vervangings fouten) kunt u bepalen welk soort gegevens u wilt toevoegen om het model te verbeteren. Gebruik de [Custom speech Portal](https://speech.microsoft.com/customspeech) om de kwaliteit van een basis model weer te geven. De portal rapporteert Invoeg-, vervangings-en verwijderings fout tarieven die worden gecombineerd in het WER-kwaliteits tarief.
 
@@ -91,7 +91,7 @@ De volgende tabel geeft een overzicht van de scenario's voor spraak herkenning e
 
 - [Uw model trainen](how-to-custom-speech-train-model.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
 - [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)

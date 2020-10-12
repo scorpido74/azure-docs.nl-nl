@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: naadloze eenmalige aanmelding met de werking | Microsoft Docs'
-description: In dit artikel wordt beschreven hoe de Azure Active Directory naadloze functie voor eenmalige aanmelding werkt.
+title: 'Azure AD Connect: naadloze single Sign-On-hoe het werkt | Microsoft Docs'
+description: In dit artikel wordt beschreven hoe de Azure Active Directory naadloze single Sign-On-functie werkt.
 services: active-directory
 keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
 documentationcenter: ''
@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86144699"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory naadloze eenmalige aanmelding: technische grondige kennis
 
-In dit artikel vindt u technische details over de manier waarop de Azure Active Directory naadloze SSO-functie (eenmalige aanmelding) werkt.
+In dit artikel vindt u technische details over de manier waarop de Azure Active Directory naadloze SSO-functie (single Sign-On) werkt.
 
 ## <a name="how-does-seamless-sso-work"></a>Hoe werkt naadloze SSO?
 
@@ -82,8 +82,8 @@ De aanmeldings stroom op een systeem eigen client is als volgt:
 
 1. De gebruiker probeert toegang te krijgen tot een systeem eigen toepassing (bijvoorbeeld de Outlook-client) vanuit een bedrijfs apparaat dat lid is van een domein in uw bedrijfs netwerk.
 2. Als de gebruiker nog niet is aangemeld, haalt de systeem eigen toepassing de gebruikers naam van de gebruiker op uit de Windows-sessie van het apparaat.
-3. De app verzendt de gebruikers naam naar Azure AD en haalt het WS-Trust-eind punt van uw Tenant op. Dit WS-Trust-eind punt wordt uitsluitend gebruikt door de functie naadloze SSO en is geen algemene implementatie van het WS-Trust-protocol op Azure AD.
-4. De app voert vervolgens een query uit op het WS-Trust MEX-eind punt om te zien of een geïntegreerd verificatie-eind punt beschikbaar is. Het geïntegreerde verificatie-eind punt wordt uitsluitend gebruikt door de functie naadloze SSO.
+3. De app verzendt de gebruikers naam naar Azure AD en haalt het WS-Trust MEX-eind punt van uw Tenant op. Dit WS-Trust-eind punt wordt uitsluitend gebruikt door de functie naadloze SSO en is geen algemene implementatie van het WS-Trust-protocol op Azure AD.
+4. De app stuurt vervolgens een query naar het WS-Trust MEX-eind punt om te zien of er een geïntegreerd verificatie-eind punt beschikbaar is. Het geïntegreerde verificatie-eind punt wordt uitsluitend gebruikt door de functie naadloze SSO.
 5. Als stap 4 slaagt, wordt er een Kerberos-vraag gegeven.
 6. Als de app het Kerberos-ticket kan ophalen, wordt deze doorgestuurd naar het geïntegreerde verificatie-eind punt van Azure AD.
 7. Het Kerberos-ticket wordt door Azure AD ontsleuteld en gevalideerd.

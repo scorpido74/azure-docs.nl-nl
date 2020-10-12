@@ -12,10 +12,10 @@ ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210868"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-toepassingsproxy: release geschiedenis van versie
@@ -83,7 +83,7 @@ Downloaden van Azure AD-toepassingsproxy-connector |  [Down load de nieuwste con
 - De ondersteuning voor websockets voor de QlikSense-toepassing is toegevoegd. Zie dit [overzicht](application-proxy-qlik.md)voor meer informatie over het integreren van QlikSense met toepassings proxy. 
 - De installatie wizard is verbeterd om het configureren van een uitgaande proxy eenvoudiger te maken. 
 - Stel TLS 1,2 in als het standaard protocol voor connectors. 
-- Er is een nieuwe gebruiksrecht overeenkomst voor eind gebruikers toegevoegd.  
+- Er is een nieuwe End-User gebruiksrecht overeenkomst (EULA) toegevoegd.  
 
 ### <a name="fixed-issues"></a>Opgeloste problemen
 

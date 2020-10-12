@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88211309"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Veelgestelde vragen over Azure cache voor redis-ontwikkeling
@@ -34,7 +34,7 @@ In deze sectie worden de volgende veelgestelde vragen behandeld:
 Er zijn verschillende manieren om aan de slag te gaan met Azure cache voor redis.
 
 * U kunt een van de zelf studies bekijken die beschikbaar zijn voor [.net](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.net](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md)en [python](cache-python-get-started.md).
-* U kunt bekijken [hoe u krachtige apps bouwt met Microsoft Azure cache voor redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
+* U kunt bekijken [hoe u High-Performance-apps bouwt met Microsoft Azure cache voor redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
 * U kunt de client documentatie raadplegen voor de clients die overeenkomen met de ontwikkelings taal van uw project om te zien hoe u redis kunt gebruiken. Er zijn veel redis-clients die kunnen worden gebruikt met Azure cache voor redis. Zie voor een lijst met redis-clients [https://redis.io/clients](https://redis.io/clients) .
 
 Als u nog geen Azure-account hebt, kunt u het volgende doen:

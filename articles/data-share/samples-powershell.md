@@ -7,17 +7,17 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/06/2019
 ms.openlocfilehash: cd7604e33a9f98d9104eecabb20369fe2fcee8a7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119630"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure PowerShell voor beelden voor Azure-gegevens share
 
 De volgende tabel bevat koppelingen naar voor beelden Azure PowerShell scripts voor Azure data share.
 
-|Power shell-voor beelden|Description|
+|Power shell-voor beelden|Beschrijving|
 |---|---|
 |[Een nieuw gegevens share-account maken](scripts/powershell/create-new-share-account-powershell.md)| Met dit Power shell-script maakt u een nieuw gegevens share-account. |
 |[Een nieuwe gegevens share maken](scripts/powershell/create-new-share-powershell.md)| Met dit Power shell-script maakt u een nieuwe gegevens share. |
