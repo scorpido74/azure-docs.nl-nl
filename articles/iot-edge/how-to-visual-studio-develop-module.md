@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297042"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
@@ -232,7 +232,7 @@ In dit snelstartartikel voor het instellen van uw IoT Edge-apparaat hebt u een m
 
 ## <a name="view-generated-data"></a>Gegenereerde gegevens weergeven
 
-1. Als u het D2C-bericht voor een specifiek IoT-edge-apparaat wilt bewaken, selecteert u dit in uw IoT-hub in **Cloud Explorer** en klikt u vervolgens op **bewaking van ingebouwd gebeurtenis-eind punt starten** in het **actie** venster.
+1. Als u het D2C-bericht voor een specifiek IoT-Edge apparaat wilt bewaken, selecteert u het in uw IoT-hub in **Cloud Explorer** en klikt u vervolgens op **bewaking van ingebouwd gebeurtenis-eind punt starten** in het **actie** venster.
 
 1. Als u de bewaking van gegevens wilt stoppen, selecteert u het **ingebouwde gebeurtenis eindpunt controle stoppen** in het venster **actie** .
 

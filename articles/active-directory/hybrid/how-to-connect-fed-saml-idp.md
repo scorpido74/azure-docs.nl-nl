@@ -15,20 +15,20 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295035"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Een SAML 2.0-id-provider (IdP) gebruiken voor eenmalige aanmelding
 
-Dit document bevat informatie over het gebruik van een id-provider die voldoet aan de SAML 2,0-standaard die voldoet aan de voor keur voor de provider van de voorkeurs beveiligings token service (STS). Dit scenario is handig als u al een gebruikers lijst en een wacht woord hebt opgeslagen op locatie die toegankelijk zijn via SAML 2,0. Deze bestaande gebruikers lijst kan worden gebruikt voor aanmelding bij Microsoft 365 en andere met Azure AD beveiligde bronnen. Het SAML 2,0 SP-Lite-profiel is gebaseerd op de algemeen gebruikte Security Assertion Markup Language (SAML) federatieve identiteits norm om een aanmeldings-en kenmerk uitwisselings raamwerk te bieden.
+Dit document bevat informatie over het gebruik van een SAML 2,0-compatibele id-provider die volSP-Lite doet aan de voor keur voor de gewenste beveiligings token service (STS) of ID-provider. Dit scenario is handig als u al een gebruikers lijst en een wacht woord hebt opgeslagen op locatie die toegankelijk zijn via SAML 2,0. Deze bestaande gebruikers lijst kan worden gebruikt voor aanmelding bij Microsoft 365 en andere met Azure AD beveiligde bronnen. Het SAML 2,0-SP-Lite profiel is gebaseerd op de algemeen gebruikte Security Assertion Markup Language (SAML) federatieve identiteits norm om een aanmeldings-en kenmerk uitwisselings raamwerk te bieden.
 
 >[!NOTE]
 >Zie de [lijst met compatibiliteits problemen met Azure AD Federation](how-to-connect-fed-compatibility.md) voor een lijst met id van derden die zijn getest voor gebruik met Azure AD.
 
-Micro soft biedt ondersteuning voor deze aanmeldings ervaring als de integratie van een micro soft-Cloud service, zoals Microsoft 365, met uw op de juiste manier geconfigureerde SAML 2,0-IdP. SAML 2,0-id-providers zijn producten van derden en daarom biedt micro soft geen ondersteuning voor de aanbevolen procedures voor implementatie, configuratie en probleem oplossing. Als de app is geconfigureerd, kan de integratie met de SAML 2,0-ID-provider worden getest op de juiste configuratie met behulp van het hulp programma micro soft Connectivity Analyzer. dit wordt hieronder nader beschreven. Vraag de organisatie die deze heeft geleverd voor meer informatie over uw SAML 2,0 SP-Lite-ID-provider.
+Micro soft biedt ondersteuning voor deze aanmeldings ervaring als de integratie van een micro soft-Cloud service, zoals Microsoft 365, met uw op de juiste manier geconfigureerde SAML 2,0-IdP. SAML 2,0-id-providers zijn producten van derden en daarom biedt micro soft geen ondersteuning voor de aanbevolen procedures voor implementatie, configuratie en probleem oplossing. Als de app is geconfigureerd, kan de integratie met de SAML 2,0-ID-provider worden getest op de juiste configuratie met behulp van het hulp programma micro soft Connectivity Analyzer. dit wordt hieronder nader beschreven. Vraag de organisatie die deze heeft geleverd voor meer informatie over uw SAML 2,0-SP-Lite op profiel gebaseerde ID-provider.
 
 > [!IMPORTANT]
 > Er is slechts een beperkt aantal clients beschikbaar in dit aanmeldings scenario met SAML 2,0-id-providers, waaronder:
@@ -276,7 +276,7 @@ Voor meer informatie over de afhandeling van ' New-MsolUser ', [/previous-versio
 >De waarde ' UserPrinciplName ' moet overeenkomen met de waarde die u wilt verzenden voor ' IDPEmail ' in uw SAML 2,0-claim en de waarde ' ImmutableID ' moet overeenkomen met de waarde die is verzonden in de bevestiging ' NameID '.
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Eenmalige aanmelding controleren met uw SAML 2,0 IDP
-Lees, voordat u eenmalige aanmelding verifieert en beheert (ook wel identiteits Federatie genoemd), de informatie en voer de stappen in de volgende artikelen uit om eenmalige aanmelding in te stellen met uw ID-provider op basis van SAML 2,0 SP-Lite:
+Lees, voordat u eenmalige aanmelding verifieert en beheert (ook identiteits Federatie genoemd), de informatie en voer de stappen uit in de volgende artikelen om eenmalige aanmelding in te stellen met uw SAML 2,0 SP-Lite gebaseerde ID-provider:
 
 
 1.  U hebt de vereisten voor het Azure AD SAML 2,0-protocol beoordeeld
@@ -286,7 +286,7 @@ Lees, voordat u eenmalige aanmelding verifieert en beheert (ook wel identiteits 
 5.  Een bekende test gebruiker-principal is ingericht voor Azure Active Directory (Microsoft 365) via Windows Power shell of Azure AD Connect.
 6.  Configureer adreslijst synchronisatie met behulp van [Azure AD Connect](whatis-hybrid-identity.md).
 
-Na het instellen van eenmalige aanmelding met uw ID-provider op basis van SAML 2,0 SP-lite, moet u controleren of deze goed werkt.
+Na het instellen van eenmalige aanmelding met uw SAML 2,0 SP-Lite-ID-provider, moet u controleren of deze goed werkt.
 
 >[!NOTE]
 >Als u een domein hebt geconverteerd, in plaats van het toe te voegen, kan het tot 24 uur duren om eenmalige aanmelding in te stellen.

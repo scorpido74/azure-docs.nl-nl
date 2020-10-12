@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
 ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409762"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
@@ -105,7 +105,7 @@ Het gebruik van beschrijvende relatielabels kan de efficiëntie van Edge-resolut
 * Gebruik niet-algemene voor waarden om een relatie te labelen.
 * Koppel het label van het bron hoekpunt aan het label van het doel hoekpunt met de naam van de relatie.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Voor beelden van relatie labelen." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Entiteits model met hoek punten voor eigenschappen." border="false":::
 
 Hoe meer specifiek het label wordt gebruikt voor het filteren van de randen, hoe beter. Deze beslissing kan ook een grote invloed hebben op de query kosten. U kunt de query kosten op elk gewenst moment evalueren [met behulp van de executionProfile-stap](graph-execution-profile.md).
 

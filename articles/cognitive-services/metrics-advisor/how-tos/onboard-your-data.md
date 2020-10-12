@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936496"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Instructies: uw metrische gegevens opwaarderen naar metrische Advisor
@@ -188,7 +188,7 @@ Details van opname fout controleren:
 2. Klik op **status** en vervolgens op **mislukt** of **fout**.
 3. Beweeg de muis aanwijzer over een mislukte opname en Bekijk het detail bericht dat wordt weer gegeven.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Mislukte opname controleren":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Voortgangs balk opname":::
 
 Een *mislukte* status geeft aan dat de opname van deze gegevens bron later opnieuw wordt uitgevoerd.
 Een *fout* status geeft aan dat de gegevens bron niet opnieuw wordt geprobeerd door Advisor. Als u gegevens opnieuw wilt laden, moet u een backfill/opnieuw laden hand matig activeren.

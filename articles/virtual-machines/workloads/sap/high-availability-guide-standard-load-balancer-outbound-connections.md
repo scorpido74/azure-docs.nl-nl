@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
 ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836119"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
@@ -89,9 +89,9 @@ De configuratie zou er als volgt uitzien:
 
 ### <a name="deployment-steps"></a>Implementatiestappen
 
-1. Load Balancer maken  
+1. Load balancer maken  
    1. Klik in de [Azure Portal](https://portal.azure.com) op alle resources, toevoegen en zoek naar **Load Balancer**  
-   1. Klik op **Maken** 
+   1. Klik op **Maken**. 
    1. Load Balancer naam **MyPublicILB**  
    1. Selecteer **openbaar** als type, **standaard** als SKU  
    1. Selecteer **openbaar IP-adres maken** en opgeven als een naam **MyPublicILBFrondEndIP**  
@@ -176,7 +176,7 @@ U kunt proxy gebruiken om pacemaker-aanroepen naar de open bare Azure Management
 ### <a name="important-considerations"></a>Belangrijke overwegingen
 
   - Als er al een bedrijfs proxy aanwezig is, kunt u uitgaande oproepen naar open bare eind punten routeren. Uitgaande aanroepen naar open bare eind punten gaan door naar het bedrijfs controlepunt.  
-  - Zorg ervoor dat de proxy configuratie uitgaande connectiviteit met de Azure-beheer-API toestaat: `https://management.azure.com` en`https://login.microsoftonline.com`  
+  - Zorg ervoor dat de proxy configuratie uitgaande connectiviteit met de Azure-beheer-API toestaat: `https://management.azure.com` en `https://login.microsoftonline.com`  
   - Zorg ervoor dat er een route van de virtuele machines naar de proxy is  
   - De proxy verwerkt alleen HTTP/HTTPS-aanroepen. Als er extra behoefte is aan het maken van uitgaande oproepen naar het open bare eind punt via verschillende protocollen (zoals RFC), is alternatieve oplossing vereist  
   - De proxy oplossing moet Maxi maal beschikbaar zijn om instabiliteit in het pacemaker-cluster te voor komen  
@@ -224,7 +224,7 @@ Voer de volgende stappen uit op alle cluster knooppunten om pacemaker toe te sta
 
 Als uitgaand verkeer wordt gerouteerd via firewall van derden:
 
-- Als u Azure Fence agent gebruikt, moet u ervoor zorgen dat de firewall configuratie uitgaande verbindingen met de Azure Management API toestaat: `https://management.azure.com` en`https://login.microsoftonline.com`   
+- Als u Azure Fence agent gebruikt, moet u ervoor zorgen dat de firewall configuratie uitgaande verbindingen met de Azure Management API toestaat: `https://management.azure.com` en `https://login.microsoftonline.com`   
 - Als u de infra structuur van de Azure Public Cloud update van SUSE gebruikt voor het Toep assen van updates en patches, raadpleegt u [Azure Public Cloud update-101 infra structuur](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>Volgende stappen

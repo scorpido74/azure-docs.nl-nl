@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258673"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
@@ -493,7 +493,7 @@ Wanneer u de gegevens hebt verzameld, raadpleegt u de volgende bronnen:
 
 * [Aanmeld problemen met voorwaardelijke toegang](troubleshoot-conditional-access.md) : inzicht in onverwachte aanmeldings resultaten die betrekking hebben op voorwaardelijke toegang met behulp van fout berichten en logboeken van Azure AD-aanmeldingen.
 
-* [Met het hulp programma What-if](troubleshoot-conditional-access-what-if.md) -begrijpt u waarom een beleid is of niet werd toegepast op een gebruiker in een specifieke omstandigheid of als een beleid van toepassing zou zijn op een bekende status.
+* [Gebruik het What-If-hulp programma](troubleshoot-conditional-access-what-if.md) om te begrijpen waarom een beleid is of niet is toegepast op een gebruiker in een specifieke omstandigheid of als een beleid van toepassing zou zijn op een bekende status.
 
 ## <a name="next-steps"></a>Volgende stappen
 

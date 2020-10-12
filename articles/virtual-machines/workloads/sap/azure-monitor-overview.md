@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 8d97c713dfec574a8ef7f3f0dde4701ddea0e98b
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669005"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure monitor voor SAP-oplossingen (preview-versie)
@@ -114,5 +114,5 @@ Azure Monitor voor SAP-oplossingen is een gratis product (geen licentie kosten).
 
 Meer informatie over providers en het maken van uw eerste Azure Monitor voor SAP-oplossingen resource.
  - Meer informatie over [providers](./azure-monitor-providers.md)
- - [Azure Monitor implementeren voor SAP-oplossingen met Azure PowerShell](azure-monitor-sap-quickstart-powershell.md)
+ - [Azure Monitor for SAP Solutions implementeren met Azure PowerShell](azure-monitor-sap-quickstart-powershell.md)
  - Hebt u vragen over Azure Monitor voor SAP-oplossingen? Raadpleeg de sectie [Veelgestelde vragen](./azure-monitor-faq.md)

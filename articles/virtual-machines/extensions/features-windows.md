@@ -16,10 +16,10 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829081"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
@@ -254,7 +254,7 @@ Als u de opdracht verplaatst naar de eigenschap **Execute** naar de **beveiligde
 
 Op een Azure IaaS-VM die gebruikmaakt van extensies, ziet u in de console certificaten mogelijk certificaten met het onderwerp **_Windows Azure CRP Certificate Generator_**. Op een klassieke RDFE-VM hebben deze certificaten de object naam **_Windows Azure Service Management voor uitbrei dingen_**.
 
-Deze certificaten beveiligen de communicatie tussen de virtuele machine en de host tijdens de overdracht van beveiligde instellingen (wacht woord, andere referenties) die worden gebruikt door uitbrei dingen. De certificaten worden gebouwd door de Azure Fabric-controller en door gegeven aan de VM-agent. Als u de VM elke dag stopt en start, wordt er mogelijk een nieuw certificaat gemaakt door de infrastructuur controller. Het certificaat wordt opgeslagen in het persoonlijke certificaat archief van de computer. Deze certificaten kunnen worden verwijderd. De VM-agent maakt de certificaten zo nodig opnieuw.
+Deze certificaten beveiligen de communicatie tussen de virtuele machine en de host tijdens de overdracht van beveiligde instellingen (wachtwoord, andere aanmeldingsgegevens) die worden gebruikt door extensies. De certificaten worden gebouwd door de Azure-infrastructuurcontroller en doorgegeven aan de VM-agent. Als u de VM elke dag stopt en start, wordt er mogelijk een nieuw certificaat gemaakt door de infrastructuurcontroller. Het certificaat wordt opgeslagen in het persoonlijke certificaatarchief van de computer. Deze certificaten kunnen worden verwijderd. De VM-agent maakt de certificaten zo nodig opnieuw.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Hoe worden agents en uitbrei dingen bijgewerkt?
 

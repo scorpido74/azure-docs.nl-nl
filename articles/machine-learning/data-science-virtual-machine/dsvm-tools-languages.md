@@ -12,10 +12,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87843263"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen die worden ondersteund op de Data Science Virtual Machine 
@@ -72,7 +72,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 | ------------- | ------------- |
 | Ondersteunde taal versies | Python 2,7 en 3,5 |
 | Ondersteunde DSVM-edities      | Linux   |
-| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Er worden twee wereld wijde `conda` omgevingen gemaakt: <br /> * `root`de omgeving die zich bevindt in `/anaconda/` is Python 2,7. <br/> * `py35`de omgeving die zich bevindt in `/anaconda/envs/py35` is Python 3,5.       |
+| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Er worden twee wereld wijde `conda` omgevingen gemaakt: <br /> * `root` de omgeving die zich bevindt in `/anaconda/` is Python 2,7. <br/> * `py35` de omgeving die zich bevindt in `/anaconda/envs/py35` is Python 3,5.       |
 | Koppelingen naar voor beelden      | Er zijn voor beelden van Jupyter-notebooks voor python opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | PySpark, R, Julia      |
 
@@ -111,7 +111,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 | ------------- | ------------- |
 | Ondersteunde taal versies | Micro soft R open 3. x (100% compatibel met KRANen-R)<br /> Microsoft R Server 9. x Developer Edition (een schaalbaar platform dat geschikt is voor bedrijven)|
 | Ondersteunde DSVM-edities      | Linux, Windows     |
-| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Windows`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Spreek`/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Windows `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Spreek `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Koppelingen naar voor beelden      | Er zijn voor beelden van Jupyter-notebooks voor R opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | Spark, Python, Julia      |
 
@@ -160,7 +160,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 | ------------- | ------------- |
 | Ondersteunde taal versies | 0,6 |
 | Ondersteunde DSVM-edities      | Linux, Windows     |
-| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Windows: geïnstalleerd op`C:\JuliaPro-VERSION`<br /> Linux: geïnstalleerd op`/opt/JuliaPro-VERSION`    |
+| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Windows: geïnstalleerd op `C:\JuliaPro-VERSION`<br /> Linux: geïnstalleerd op `/opt/JuliaPro-VERSION`    |
 | Koppelingen naar voor beelden      | Voor beelden van Jupyter-notebooks voor Julia zijn opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | Python, R      |
 

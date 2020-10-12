@@ -11,10 +11,10 @@ ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-js
 ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327524"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Een Node.js Chat-toepassing bouwen met Socket.IO in een Azure-Cloud service
@@ -124,7 +124,7 @@ Nadat u de wijzigingen in **server.js**hebt opgeslagen, voert u de volgende stap
     ```
 
    > [!NOTE]
-   > Als u problemen ondervindt met het starten van de emulator, bijvoorbeeld: start-AzureEmulator: er is een onverwachte fout opgetreden.  Details: er is een onverwachte fout opgetreden. het communicatie object, System. service model. channels. ServiceChannel, kan niet worden gebruikt voor communicatie omdat het de status faulted heeft.
+   > Als u problemen ondervindt met het starten van de emulator, bijvoorbeeld: Start-AzureEmulator: er is een onverwachte fout opgetreden.  Details: er is een onverwachte fout opgetreden. het communicatie object, System. service model. channels. ServiceChannel, kan niet worden gebruikt voor communicatie omdat het de status faulted heeft.
    >
    > Installeer AzureAuthoringTools v 2.7.1 en AzureComputeEmulator v 2,7 opnieuw, Controleer of de versie overeenkomt.
 

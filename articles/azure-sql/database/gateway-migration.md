@@ -11,10 +11,10 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
 ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004269"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
@@ -85,17 +85,17 @@ Nieuwe SQL-gateways worden toegevoegd aan de volgende regio's:
 Deze SQL-gateways beginnen het accepteren van klant verkeer op 10 augustus 2020. 
 
 ### <a name="october-2019"></a>Oktober 2019
-- Brazilië - zuid
+- Brazil South
 - VS - west
 - Europa -west
 - VS - oost
-- VS - centraal
+- Central US
 - Azië - zuidoost
-- VS - zuid-centraal
+- South Central US
 - Europa - noord
 - VS - noord-centraal
 - Japan - west
-- Japan - oost
+- Japan East
 - VS - oost 2
 - Azië - oost
 

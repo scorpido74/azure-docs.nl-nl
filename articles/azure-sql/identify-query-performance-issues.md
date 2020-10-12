@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
 ms.openlocfilehash: afc142ec9de0e275d505276d959cfac3e652c55d
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619760"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Detecteerbare typen queryprestatieknelpunten in Azure SQL Database
@@ -153,8 +153,8 @@ Trage query prestaties die geen betrekking hebben op suboptimale query plannen e
 - Bron limieten detecteren met behulp van [intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits)
 - Problemen met bronnen detecteren met [dmv's](database/monitoring-with-dmvs.md):
 
-  - De [sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert CPU, I/O en geheugen verbruik voor de data base. Er bestaat één rij voor elk interval van 15 seconden, zelfs als er geen activiteit in de data base is. Historische gegevens worden één uur bewaard.
-  - De [sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert het CPU-gebruik en de opslag gegevens voor Azure SQL database. De gegevens worden verzameld en samengevoegd in intervallen van vijf minuten.
+  - De [sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert CPU, I/O en geheugen verbruik voor de data base. Er bestaat één rij voor elk interval van 15 seconden, zelfs als er geen activiteit in de data base is. Historische gegevens worden één uur bewaard.
+  - De [sys.resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert het CPU-gebruik en de opslag gegevens voor Azure SQL database. De gegevens worden verzameld en samengevoegd in intervallen van vijf minuten.
   - [Veel afzonderlijke query's die cumulatief hoge CPU verbruiken](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
 Als u het probleem identificeert als onvoldoende resource, kunt u resources upgraden om de capaciteit van uw data base te verg Roten om de CPU-vereisten te absorberen. Zie voor meer informatie bronnen voor het [schalen van één data base in Azure SQL database](database/single-database-scale.md) en het [schalen van elastische pool resources in Azure SQL database](database/elastic-pool-scale.md). Zie [resource limieten voor service lagen](managed-instance/resource-limits.md#service-tier-characteristics) voor meer informatie over het schalen van een beheerd exemplaar
@@ -203,16 +203,16 @@ Wanneer u een suboptimaal plan hebt geëlimineerd en te *wachten* op problemen d
 Deze methoden worden vaak gebruikt om de hoogste categorieën van wacht typen weer te geven:
 
 - Intelligent Insights gebruiken om query's te identificeren die de prestaties verslechteren als gevolg van [verhoogde wacht tijden](database/intelligent-insights-troubleshoot-performance.md#increased-wait-statistic)
-- Gebruik [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) om gedurende een bepaalde periode wacht statistieken voor elke query te vinden. In query Store worden wachtende typen gecombineerd in wachtende categorieën. U kunt de toewijzing van wachtende Categorieën vinden door te wachten op typen in [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- Gebruik [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) om informatie te retour neren over alle wacht tijden die worden aangetroffen door threads die worden uitgevoerd tijdens een query bewerking. U kunt deze geaggregeerde weer gave gebruiken om prestatie problemen vast te stellen met Azure SQL Database en ook met specifieke query's en batches. Query's kunnen wachten op resources, wachten op wacht rijen of externe wacht tijden.
-- Gebruik [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) om informatie te retour neren over de wachtrij met taken die op een bepaalde resource wachten.
+- Gebruik [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) om gedurende een bepaalde periode wacht statistieken voor elke query te vinden. In query Store worden wachtende typen gecombineerd in wachtende categorieën. U kunt de toewijzing van wachtende Categorieën vinden door te wachten op typen in [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
+- Gebruik [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) om informatie te retour neren over alle wacht tijden die worden aangetroffen door threads die worden uitgevoerd tijdens een query bewerking. U kunt deze geaggregeerde weer gave gebruiken om prestatie problemen vast te stellen met Azure SQL Database en ook met specifieke query's en batches. Query's kunnen wachten op resources, wachten op wacht rijen of externe wacht tijden.
+- Gebruik [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) om informatie te retour neren over de wachtrij met taken die op een bepaalde resource wachten.
 
 In scenario's met een hoge CPU worden in de query Store-en wait-statistieken mogelijk geen CPU-gebruik weer gegeven als:
 
 - Query's met een hoog CPU-verbruik worden nog steeds uitgevoerd.
 - De query's met een hoog CPU-verbruik worden uitgevoerd tijdens een failover.
 
-Dmv's die query Store bijhouden en wachten op statistieken tonen alleen resultaten voor voltooide en time-out query's. Er worden geen gegevens weer gegeven voor de instructies die momenteel worden uitgevoerd tot de instructies zijn voltooid. Gebruik de dynamische beheer weergave [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) voor het bijhouden van query's die momenteel worden uitgevoerd en de bijbehorende werk tijd.
+Dmv's die query Store bijhouden en wachten op statistieken tonen alleen resultaten voor voltooide en time-out query's. Er worden geen gegevens weer gegeven voor de instructies die momenteel worden uitgevoerd tot de instructies zijn voltooid. Gebruik de weer gave dynamisch beheer [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) voor het bijhouden van query's die momenteel worden uitgevoerd en de bijbehorende werk tijd.
 
 > [!TIP]
 > Aanvullende hulpprogram ma's:

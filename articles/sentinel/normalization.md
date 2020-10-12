@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936389"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalisatie in azure Sentinel
@@ -97,7 +97,7 @@ De beschik bare parsers van de query tijd zijn beschikbaar in de Azure Sentinel 
 
     1. **Categorie**: u kunt een bestaande categorie selecteren of een nieuwe categorie maken (zoals *NormalizedNetworkSessionsParsers*)
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="De parser opslaan":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Een nieuwe parser installeren":::
 
 Als u de parsers correct wilt gebruiken, moet u ook de lege Network schema-parser installeren (die een lege tabellaire weer gave van alle velden van het netwerk sessie schema maakt) en de meta-parser van het netwerk (waarmee alle ingeschakelde parsers worden samengevoegd om één weer gave van gegevens te maken van verschillende bronnen in het netwerk schema). De installatie van deze twee parsers geschiedt op een vergelijk bare manier met de bovengenoemde stappen.
 
@@ -107,15 +107,15 @@ Bij het opslaan van een query functie kan het nodig zijn om de query Verkenner t
 
 Wanneer deze functie is ingeschakeld, kunt u de meta-parser gebruiken om een query uit te geven op een gecombineerde weer gave op alle momenteel ingeschakelde parsers. Als u dit wilt doen, gaat u naar de pagina verklikker logboeken en voert u een query uit op de meta-parser:
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="Query uitvoeren op de parser":::
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="Een nieuwe parser installeren":::
  
 U kunt ook toegang krijgen tot de meta-parser of de afzonderlijke parsers met behulp van query Explorer op de pagina verklikker logboeken door te klikken op query Explorer:
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Queryverkenner":::
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Een nieuwe parser installeren":::
 
 Vouw in het deel venster aan de rechter kant het gedeelte ' opgeslagen query's ' uit en zoek de map ' NormalizedNetworkParsers ' (of de naam van de categorie die u hebt gekozen bij het maken van de parsers):
 
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="Uw parser zoeken":::
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="Een nieuwe parser installeren":::
 
 U kunt op elke afzonderlijke parser klikken en de onderliggende functie zien die wordt gebruikt, en deze uitvoeren (of rechtstreeks toegang krijgen tot de bijbehorende alias, zoals hierboven wordt beschreven). Houd er rekening mee dat sommige parsers de oorspronkelijke velden naast elkaar kunnen bewaren in de genormaliseerde velden voor het gemak. Dit kan eenvoudig worden bewerkt in de query van de parser.
 
@@ -124,11 +124,11 @@ U kunt op elke afzonderlijke parser klikken en de onderliggende functie zien die
 U kunt de bovenstaande stappen herhalen (Zoek de parser in query Explorer), klikt u op de relevante parser en bekijkt u de functie-implementatie.
 U kunt bijvoorbeeld besluiten om de meta-parser te bewerken om afzonderlijke parsers toe te voegen of te verwijderen.
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Uw parser aanpassen":::
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Een nieuwe parser installeren":::
  
 Zodra de functie is gewijzigd, klikt u nogmaals op opslaan en gebruikt u dezelfde naam, alias en categorie. Er wordt een dialoog venster voor onderdrukking geopend: druk op OK:
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Weet je het zeker":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Een nieuwe parser installeren":::
 
 #### <a name="additional-information"></a>Aanvullende informatie
 

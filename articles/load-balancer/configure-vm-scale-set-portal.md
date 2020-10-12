@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439527"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure Portal
@@ -49,7 +49,7 @@ In deze sectie maakt u een schaalset voor virtuele machines in de Azure Portal m
     | Resourcegroep                 | Selecteer Nieuw maken, Voer **myResourceGroup**in en selecteer OK of selecteer een bestaande resource groep. |
     | **Details van schaal sets**          |                                                                                                       |
     | Naam van virtuele-machineschaalset | **MyVMSS** invoeren                                                                                      |
-    | Region                         | Selecteer **VS Oost 2**                                                                                    |
+    | Regio                         | Selecteer **VS Oost 2**                                                                                    |
     | Beschikbaarheidszone              | Selecteer **Geen**                                                                                       |
     | **Exemplaardetails**           |                                                                                                       |
     | Installatiekopie                          | Selecteer **Ubuntu Server 18,04 LTS**                                                                    |

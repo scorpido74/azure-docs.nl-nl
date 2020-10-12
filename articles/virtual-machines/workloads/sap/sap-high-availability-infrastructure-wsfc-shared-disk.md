@@ -17,10 +17,10 @@ ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871513"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor SAP ASCS/SCS
@@ -192,9 +192,9 @@ De namen van de hosts en de IP-adressen voor het weer gegeven scenario zijn:
 | --- | --- | --- |---| ---|
 | ASCS/SCS-cluster van 1e cluster node |PR1-ascs-10 |10.0.0.4 |PR1-ascs-avset |PR1PPG |
 | 2e cluster knooppunt ASCS/SCS-cluster |PR1-ascs-11 |10.0.0.5 |PR1-ascs-avset |PR1PPG |
-| Cluster netwerk naam | pr1clust |10.0.0.42 (**alleen** voor het Win 2016-cluster) | N.v.t. | N.v.t. |
-| ASCS-cluster netwerk naam | pr1-ascscl |10.0.0.43 | N.v.t. | N.v.t. |
-| ERS-cluster netwerk naam (**alleen** voor ERS2) | pr1-erscl |10.0.0.44 | N.v.t. | N.v.t. |
+| Naam van het clusternetwerk | pr1clust |10.0.0.42 (**alleen** voor het Win 2016-cluster) | n.v.t. | n.v.t. |
+| ASCS-cluster netwerk naam | pr1-ascscl |10.0.0.43 | n.v.t. | n.v.t. |
+| ERS-cluster netwerk naam (**alleen** voor ERS2) | pr1-erscl |10.0.0.44 | n.v.t. | n.v.t. |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Interne Azure-load balancer maken

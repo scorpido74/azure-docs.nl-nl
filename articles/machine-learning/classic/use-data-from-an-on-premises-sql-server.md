@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357485"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Analyses uitvoeren met Azure Machine Learning Studio (klassiek) met behulp van een SQL Server-Data Base
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Bedrijven die werken met on-premises gegevens, willen vaak profiteren van de schaal en flexibiliteit van de Cloud voor hun machine learning werk belastingen. Maar ze willen hun huidige bedrijfs processen en werk stromen niet verstoren door hun on-premises gegevens naar de cloud te verplaatsen. Azure Machine Learning Studio (klassiek) biedt nu ondersteuning voor het lezen van uw gegevens uit een SQL Server-Data Base en vervolgens de training en het scoren van een model met deze gegevens. U hoeft de gegevens niet meer hand matig te kopiëren en te synchroniseren tussen de Cloud en uw on-premises server. In plaats daarvan kan de module **gegevens importeren** in azure machine learning Studio (klassiek) nu rechtstreeks worden gelezen vanuit uw SQL Server-Data Base voor uw trainings-en Score taken.
@@ -40,9 +40,9 @@ Als u toegang wilt krijgen tot een SQL Server-data base in Azure Machine Learnin
 
 U kunt ook de IR van tevoren installeren door het MSI-installatie pakket te downloaden en uit te voeren vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=39717). Het MSI-bestand kan ook worden gebruikt om een bestaande IR te upgraden naar de nieuwste versie, waarbij alle instellingen behouden blijven.
 
-Het Data Factory zelf-Hostende Integration Runtime heeft de volgende vereisten:
+De Data Factory Self-Hosted Integration Runtime heeft de volgende vereisten:
 
-* De Data Factory zelf-Hostende integratie vereist een 64-bits besturings systeem met .NET Framework 4.6.1 of hoger.
+* Voor de integratie van Data Factory Self-Hosted is een 64-bits besturings systeem met .NET Framework 4.6.1 of hoger vereist.
 * De ondersteunde versies van het Windows-besturings systeem zijn Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * De aanbevolen configuratie voor de IR-computer is ten minste 2 GHz, 4-core CPU, 8 GB RAM-geheugen en 80 GB schijf ruimte.
 * Als de hostmachine in de slaap stand wordt gezet, reageert de IR niet op gegevens aanvragen. Configureer daarom een passend energiebeheer schema op de computer voordat u de IR installeert. Als de computer is geconfigureerd voor de slaap stand, wordt een bericht weer gegeven in de IR-installatie.
