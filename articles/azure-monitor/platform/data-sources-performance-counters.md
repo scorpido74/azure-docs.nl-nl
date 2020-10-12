@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85955485"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-en Linux-prestatie gegevens bronnen in Azure Monitor
@@ -25,9 +25,9 @@ Wanneer u voor het eerst Windows-of Linux-prestatie meter items voor een nieuwe 
 
 Voor Windows-prestatie meter items kunt u een specifiek exemplaar voor elk prestatie meter item kiezen. Voor Linux-prestatie meter items geldt het exemplaar van elk item dat u kiest, van toepassing op alle onderliggende items van het bovenliggende item. In de volgende tabel ziet u de algemene instanties die beschikbaar zijn voor de prestatie meter items Linux en Windows.
 
-| Exemplaarnaam | Description |
+| Exemplaarnaam | Beschrijving |
 | --- | --- |
-| \_Totaal |Totaal van alle exemplaren |
+| \_Eind |Totaal van alle exemplaren |
 | \* |Alle instanties |
 | (/&#124;/var) |Komt overeen met instanties met de naam:/of/var |
 
@@ -75,11 +75,11 @@ Elk object, of elke categorie, van prestatie gegevens die moeten worden verzamel
 
 De para meters in dit element worden in de volgende tabel beschreven.
 
-| Parameters | Description |
+| Parameters | Beschrijving |
 |:--|:--|
 | object \_ naam | Object naam voor de verzameling. |
 | regex-exemplaar \_ |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` Hiermee geeft u alle exemplaren op. Als u metrische gegevens van de processor alleen voor het \_ totale exemplaar wilt verzamelen, kunt u opgeven `_Total` . Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, kunt u het volgende opgeven: `(crond\|sshd)` . |
-| \_regex-naam van teller \_ | Een *reguliere expressie* waarmee wordt gedefinieerd welke items (voor het object) moeten worden verzameld. Als u alle tellers voor het object wilt verzamelen, geeft u het volgende op: `.*` . Als u alleen tellers voor wissel ruimte voor het object memory wilt verzamelen, kunt u bijvoorbeeld het volgende opgeven:`.+Swap.+` |
+| \_regex-naam van teller \_ | Een *reguliere expressie* waarmee wordt gedefinieerd welke items (voor het object) moeten worden verzameld. Als u alle tellers voor het object wilt verzamelen, geeft u het volgende op: `.*` . Als u alleen tellers voor wissel ruimte voor het object memory wilt verzamelen, kunt u bijvoorbeeld het volgende opgeven: `.+Swap.+` |
 | interval | De frequentie waarmee de tellers van het object worden verzameld. |
 
 
@@ -138,7 +138,7 @@ De volgende tabel bevat de objecten en prestatie meter items die u in het config
 | Systeem | Vrij virtueel geheugen |
 | Systeem | Processen |
 | Systeem | Grootte opgeslagen in Wissel bestanden |
-| Systeem | Systeem |
+| Systeem | Uptime |
 | Systeem | Gebruikers |
 
 
@@ -203,7 +203,7 @@ Prestatie records hebben het type **perf** en hebben de eigenschappen in de volg
 ## <a name="log-queries-with-performance-records"></a>Query's vastleggen met prestatie records
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee prestatie records worden opgehaald.
 
-| Query’s uitvoeren | Description |
+| Query’s uitvoeren | Beschrijving |
 |:--- |:--- |
 | Prestaties |Alle prestatie gegevens |
 | Perf &#124; waarbij computer = "mijn systeem" |Alle prestatie gegevens van een bepaalde computer |

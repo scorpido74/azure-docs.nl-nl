@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319908"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
@@ -131,7 +131,7 @@ De volgende stappen kunnen worden gebruikt om de limiet voor lidmaatschappen te 
  
  ![Synch regel bewerken](media/how-to-connect-sync-endpoint-api-v2/endpoint5.png)
 
-9. Op Opslaan klikken 
+9. Klik op Opslaan 
 10. Power shell-prompt voor beheerders openen 
 11. De synchronisatie planner opnieuw inschakelen 
  

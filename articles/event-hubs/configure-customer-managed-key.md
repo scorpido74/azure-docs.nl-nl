@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over het configureren van uw eigen sle
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537255"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
@@ -26,7 +26,7 @@ U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het control
 In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van de Azure Portal. Voor informatie over het maken van een sleutel kluis met behulp van de Azure Portal, raadpleegt u [Quick Start: een geheim instellen en ophalen van Azure Key Vault met behulp van de Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Voor het gebruik van door de klant beheerde sleutels met Azure Event Hubs moet de sleutel kluis twee vereiste eigenschappen hebben geconfigureerd. Dit zijn: **voorlopig verwijderen** en **niet opschonen**. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutel kluis maakt in de Azure Portal. Als u deze eigenschappen echter wilt inschakelen voor een bestaande sleutel kluis, moet u Power shell of Azure CLI gebruiken.
+> Voor het gebruik van door de klant beheerde sleutels met Azure Event Hubs moet de sleutel kluis twee vereiste eigenschappen hebben geconfigureerd. Dit zijn:  **voorlopig verwijderen** en **niet opschonen**. Deze eigenschappen zijn standaard ingeschakeld wanneer u een nieuwe sleutel kluis maakt in de Azure Portal. Als u deze eigenschappen echter wilt inschakelen voor een bestaande sleutel kluis, moet u Power shell of Azure CLI gebruiken.
 
 ## <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen in de Azure Portal:
@@ -103,7 +103,7 @@ Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notatio
 | keyVault | Volledige naam van de sleutel kluis. |
 | sleutel | De naam van de sleutel die wordt gebruikt voor het versleutelen van de Event Hubs naam ruimte. |
 | versie | De versie van de sleutel die wordt gebruikt. |
-| schijf | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |
+| bewerking | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |
 | code | De code die aan de bewerking is gekoppeld. Voor beeld: fout code, 404 betekent dat de sleutel niet is gevonden. |
 | message | Elk fout bericht dat is gekoppeld aan de bewerking |
 
@@ -223,9 +223,9 @@ In deze sectie wordt beschreven hoe u een Azure Event Hubs-naam ruimte met een b
 
     > [!NOTE]
     > Vervang de volgende waarden: 
-    > - `<EventHubsClusterName>`-De naam van uw Event Hubs cluster    
-    > - `<EventHubsNamespaceName>`-Naam van de naam ruimte van uw Event Hubs
-    > - `<Location>`-Locatie van uw Event Hubs naam ruimte
+    > - `<EventHubsClusterName>` -De naam van uw Event Hubs cluster    
+    > - `<EventHubsNamespaceName>` -Naam van de naam ruimte van uw Event Hubs
+    > - `<Location>` -Locatie van uw Event Hubs naam ruimte
 
     ```json
     {
@@ -360,11 +360,11 @@ In deze stap werkt u de Event Hubs naam ruimte bij met sleutel kluis gegevens.
 
     > [!NOTE]
     > Vervang de volgende waarden: 
-    > - `<EventHubsClusterName>`-De naam van uw Event Hubs cluster.        
-    > - `<EventHubsNamespaceName>`-Naam van de naam ruimte van uw Event Hubs
-    > - `<Location>`-Locatie van uw Event Hubs naam ruimte
-    > - `<KeyVaultName>`-Naam van uw sleutel kluis
-    > - `<KeyName>`-De naam van de sleutel in de sleutel kluis
+    > - `<EventHubsClusterName>` -De naam van uw Event Hubs cluster.        
+    > - `<EventHubsNamespaceName>` -Naam van de naam ruimte van uw Event Hubs
+    > - `<Location>` -Locatie van uw Event Hubs naam ruimte
+    > - `<KeyVaultName>` -Naam van uw sleutel kluis
+    > - `<KeyName>` -De naam van de sleutel in de sleutel kluis
 
     ```json
     {
@@ -400,7 +400,7 @@ Schakel als best practice altijd Logboeken in, zoals wordt weer gegeven in de vo
 
 Hieronder vindt u de algemene fout codes die u moet zoeken wanneer BYOK-versleuteling is ingeschakeld.
 
-| Actie | Foutcode | Resulterende status van gegevens |
+| Bewerking | Foutcode | Resulterende status van gegevens |
 | ------ | ---------- | ----------------------- | 
 | De machtiging voor het verpakken/uitpakken van een sleutel kluis verwijderen | 403 |    Niet toegankelijk |
 | Het lidmaatschap van AAD-rollen verwijderen uit een AAD-principal die de machtiging voor terugloop/uitpakken heeft gekregen | 403 |  Niet toegankelijk |

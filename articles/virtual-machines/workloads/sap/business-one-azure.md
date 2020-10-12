@@ -16,10 +16,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654647"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in virtuele Azure-machines
@@ -58,7 +58,7 @@ Afgezien van de Azure-documentatie moet u zich bewust zijn van de belangrijkste 
 - [2483583-centrale notitie voor SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483583)
 - [2483615-release-updates opmerking voor SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483615)
 - [2483595-collectieve notitie voor SAP Business One 9,3 algemene problemen](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458-collectieve Consulting opmerking voor SAP HANA-gerelateerde onderwerpen van SAP Business One, versie voor SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
+- [2027458-collectieve Consulting opmerking voor SAP HANA-Related-onderwerpen van SAP Business One, versie voor SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
 
 
 ## <a name="business-one-architecture"></a>Bedrijf met één architectuur

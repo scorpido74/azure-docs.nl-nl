@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85920067"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Veelvoorkomende opstart taken voor de Cloud service
@@ -377,7 +377,7 @@ EXIT /B 0
 Hier volgen enkele aanbevolen procedures voor het configureren van de taak voor uw web-of worker-rol.
 
 ### <a name="always-log-startup-activities"></a>Opstart activiteiten altijd vastleggen in logboek
-Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt vastleggen in het StartupLog.txt bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings variabele, voegt u de tekst toe `>>  "%TEMP%\\StartupLog.txt" 2>&1` aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld setup.exe wilt uitvoeren in de map **% PathToApp1Install%** :`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
+Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt vastleggen in het StartupLog.txt bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings variabele, voegt u de tekst toe `>>  "%TEMP%\\StartupLog.txt" 2>&1` aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld setup.exe wilt uitvoeren in de map **% PathToApp1Install%** : `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Als u uw XML wilt vereenvoudigen, kunt u een wrapper- *cmd* -bestand maken dat alle opstart taken samen met logboek registratie aanroept en zorgt ervoor dat alle onderliggende taken dezelfde omgevings variabelen delen.
 
@@ -506,7 +506,7 @@ Meer informatie over hoe [taken](cloud-services-startup-tasks.md) werken.
 [Variabele]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Eind punten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Eindpunten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

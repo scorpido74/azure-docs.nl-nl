@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386041"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management-service gebruiken met een intern virtueel netwerk
@@ -131,7 +131,7 @@ Als u een aangepaste DNS-server in een virtueel netwerk gebruikt, kunt u ook een
 * De IP-adressen die zijn toegewezen voor open bare en persoonlijke toegang, kunnen worden gewijzigd als de service wordt verwijderd uit en vervolgens weer wordt toegevoegd aan het virtuele netwerk. Als dit gebeurt, kan het nodig zijn om DNS-registraties, routerings regels en IP-beperkings lijsten in het virtuele netwerk bij te werken.
 
 ## <a name="related-content"></a><a name="related-content"> </a>Gerelateerde inhoud
-Raadpleeg de volgende artikelen voor meer informatie:
+Lees de volgende artikelen voor meer informatie:
 * [Veelvoorkomende problemen met de netwerk configuratie tijdens het instellen van Azure-API Management in een virtueel netwerk][Common network configuration problems]
 * [Veelgestelde vragen over virtuele netwerken](../virtual-network/virtual-networks-faq.md)
 * [Een record maken in DNS](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))

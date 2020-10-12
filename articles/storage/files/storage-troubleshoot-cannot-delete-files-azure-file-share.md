@@ -11,10 +11,10 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511972"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure-bestandsshare: verwijderen van bestanden uit de Azure-bestandsshare is mislukt
@@ -92,4 +92,4 @@ Als u een open ingang wilt sluiten, gebruikt u de volgende opdracht:
 
 * [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)
 * [Problemen met Azure Files in Linux oplossen](storage-troubleshoot-linux-file-connection-problems.md)
-* [Problemen met Azure Files Sync oplossen](storage-sync-files-troubleshoot.md)
+* [Problemen oplossen met Azure File Sync](storage-sync-files-troubleshoot.md)

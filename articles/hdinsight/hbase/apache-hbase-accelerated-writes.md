@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
 ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654851"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Versnelde schrijfbewerkingen van Azure HDInsight voor Apache HBase
@@ -32,7 +32,7 @@ Als een **RegionServer** vastloopt of niet meer beschikbaar is voordat de geheug
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>De functie voor versnelde schrijf bewerkingen in azure HDInsight voor Apache HBase
 
-Met de functie voor versnelde schrijf bewerkingen wordt het probleem opgelost dat wordt veroorzaakt door het gebruik van schrijf voorschrijvende Logboeken in de Cloud opslag.  De functie voor versnelde schrijf bewerkingen voor HDInsight Apache HBase-clusters, koppelt Premium SSD-Managed disks aan elke RegionServer (worker-knoop punt). Naar voren geschreven logboeken worden vervolgens naar het Hadoop-bestands systeem (HDFS) genoteerd dat is gekoppeld aan deze Premium beheerde schijven in plaats van in de Cloud opslag.  Premium Managed disks gebruiken Ssd's (Solid-State Disks) en bieden uitstekende I/O-prestaties met fout tolerantie.  In tegens telling tot niet-beheerde schijven, is het niet van invloed op andere opslag eenheden in dezelfde beschikbaarheidsset als de ene opslag eenheid uitvalt.  Als gevolg hiervan bieden beheerde schijven een lage schrijf latentie en een betere tolerantie voor uw toepassingen. Zie [Introduction to Azure Managed disks](../../virtual-machines/managed-disks-overview.md)(Engelstalig) voor meer informatie over Azure Managed disks.
+Met de functie voor versnelde schrijf bewerkingen wordt het probleem opgelost dat wordt veroorzaakt door het gebruik van schrijf voorschrijvende Logboeken in de Cloud opslag.  De functie voor versnelde schrijf bewerkingen voor HDInsight Apache HBase-clusters, koppelt Premium SSD-Managed disks aan elke RegionServer (worker-knoop punt). Naar voren geschreven logboeken worden vervolgens naar het Hadoop-bestands systeem (HDFS) genoteerd dat is gekoppeld aan deze Premium beheerde schijven in plaats van in de Cloud opslag.  Premium beheerde schijven gebruiken Solid-State schijven (Ssd's) en bieden uitstekende I/O-prestaties met fout tolerantie.  In tegens telling tot niet-beheerde schijven, is het niet van invloed op andere opslag eenheden in dezelfde beschikbaarheidsset als de ene opslag eenheid uitvalt.  Als gevolg hiervan bieden beheerde schijven een lage schrijf latentie en een betere tolerantie voor uw toepassingen. Zie [Introduction to Azure Managed disks](../../virtual-machines/managed-disks-overview.md)(Engelstalig) voor meer informatie over Azure Managed disks.
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Versnelde schrijf bewerkingen inschakelen voor HBase in HDInsight
 

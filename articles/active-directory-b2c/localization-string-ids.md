@@ -11,10 +11,10 @@ ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87428117"
 ---
 # <a name="localization-string-ids"></a>Id's van lokalisatiereeksen
@@ -37,7 +37,7 @@ De volgende Id's worden gebruikt voor een inhouds definitie met de ID `api.signu
 | **local_intro_username** | Meld u aan met uw gebruikers naam |
 | **logonIdentifier_username** | Gebruikersnaam |
 | **requiredField_username** | Voer uw gebruikers naam in |
-| **wachtwoord** | Wachtwoord |
+| **password** | Wachtwoord |
 | **requiredField_password** | Voer uw wacht woord in |
 | **invalid_password** | Het wacht woord dat u hebt opgegeven, heeft niet de verwachte indeling. |
 | **forgotpassword_link** | Bent u uw wachtwoord vergeten? |
@@ -54,7 +54,7 @@ In het volgende voor beeld ziet u het gebruik van een aantal van de elementen va
 
 ![UX-elementen voor registratie of aanmeldings pagina](./media/localization-string-ids/localization-susi.png)
 
-De id's van de ID-providers worden geconfigureerd in het **ClaimsExchange** -element van de gebruikers reis. Als u de naam van de ID-provider wilt lokaliseren, wordt het **element type** ingesteld op `ClaimsProvider` , terwijl de **StringId** is ingesteld op de id van de `ClaimsExchange` .
+De id's van de ID-providers worden geconfigureerd in het  **ClaimsExchange** -element van de gebruikers reis. Als u de naam van de ID-provider wilt lokaliseren, wordt het **element type** ingesteld op `ClaimsProvider` , terwijl de **StringId** is ingesteld op de id van de `ClaimsExchange` .
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -110,7 +110,7 @@ Hier volgen de Id's voor een inhouds definitie met een ID van `api.localaccounts
 | **ver_fail_no_retry** | U hebt te veel onjuiste pogingen gedaan. Probeert u het later nog eens. |
 | **blijft** | Maand |
 | **ver_success_msg** | E-mail adres geverifieerd. U kunt nu door gaan. |
-| **months** | Januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december |
+| **maanden** | Januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december |
 | **ver_fail_server** | Er zijn problemen met het controleren van uw e-mail adres. Geef een geldig e-mail adres op en probeer het opnieuw. |
 | **error_requiredFieldMissing** | Een vereist veld ontbreekt. Vul alle vereiste velden in en probeer het opnieuw. |
 | **initial_intro** | Geef de volgende details op. |
@@ -137,11 +137,11 @@ Hier volgen de Id's voor een inhouds definitie met een ID van `api.localaccounts
 | Id | Standaardwaarde |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Er bestaat al een gebruiker met de opgegeven ID. Kies een andere naam. |
-| **UserMessageIfClaimNotVerified** | Claim niet geverifieerd:{0} |
-| **UserMessageIfIncorrectPattern** | Onjuist patroon voor:{0} |
-| **UserMessageIfMissingRequiredElement** | Vereist element ontbreekt:{0} |
-| **UserMessageIfValidationError** | Fout in validatie door:{0} |
-| **UserMessageIfInvalidInput** | {0}heeft ongeldige invoer. |
+| **UserMessageIfClaimNotVerified** | Claim niet geverifieerd: {0} |
+| **UserMessageIfIncorrectPattern** | Onjuist patroon voor: {0} |
+| **UserMessageIfMissingRequiredElement** | Vereist element ontbreekt: {0} |
+| **UserMessageIfValidationError** | Fout in validatie door: {0} |
+| **UserMessageIfInvalidInput** | {0} heeft ongeldige invoer. |
 | **ServiceThrottled** | Er zijn op dit moment te veel aanvragen. Wacht enige tijd en probeer het opnieuw. |
 
 In het volgende voor beeld ziet u het gebruik van enkele van de elementen van de gebruikers interface op de registratie pagina:
@@ -239,10 +239,10 @@ Hier volgen de Id's voor het [ondersteunings fout bericht van het onderhouds ser
 
 | Id | Standaardwaarde |
 | -- | ------------- |
-|DefaultUserMessageIfRequestFailed | Kan geen verbinding maken met een onderliggend service-eind punt. URL van de rest-service:{0} |
-|UserMessageIfCircuitOpen | {0}URL van de rest-service:{1} |
-|UserMessageIfDnsResolutionFailed | Het omzetten van de hostnaam van het rest-service-eind punt is mislukt. URL van de rest-service:{0} |
-|UserMessageIfRequestTimeout | Kan geen verbinding tot stand brengen met een onderliggend service-eind punt binnen een time-outlimiet van {0} seconden. URL van de rest-service:{1} |
+|DefaultUserMessageIfRequestFailed | Kan geen verbinding maken met een onderliggend service-eind punt. URL van de rest-service: {0} |
+|UserMessageIfCircuitOpen | {0} URL van de rest-service: {1} |
+|UserMessageIfDnsResolutionFailed | Het omzetten van de hostnaam van het rest-service-eind punt is mislukt. URL van de rest-service: {0} |
+|UserMessageIfRequestTimeout | Kan geen verbinding tot stand brengen met een onderliggend service-eind punt binnen een time-outlimiet van {0} seconden. URL van de rest-service: {1} |
 
 
 ### <a name="example"></a>Voorbeeld

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927554"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Veelgestelde vragen over Windows Server-knooppunt groepen in AKS
@@ -58,7 +58,7 @@ AKS-clusters met Windows-knooppunt Pools moeten het netwerk model van Azure CNI 
 
 Op dit moment wordt het [IP-behoud van client bronnen][client-source-ip] niet ondersteund met Windows-knoop punten.
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik de maximale waarde wijzigen. aantal peulen per knoop punt?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik het maximum aantal van het aantal peulen per knoop punt wijzigen?
 
 Ja. Zie [maximum aantal peulen][maximum-number-of-pods]voor de implicaties en opties die beschikbaar zijn.
 

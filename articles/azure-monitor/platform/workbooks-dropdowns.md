@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965032"
 ---
 # <a name="workbook-drop-down-parameters"></a>Para meters voor werkmap vervolg keuzelijst
@@ -28,11 +28,11 @@ De eenvoudigste manier om een vervolg keuzelijst op te geven, is door een statis
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`Environment`
-    2. Parameter type:`Drop down`
-    3. Vereist:`checked`
-    4. Toestaan `multiple selection` :`unchecked`
-    5. Gegevens ophalen uit:`JSON`
+    1. Parameter naam: `Environment`
+    2. Parameter type: `Drop down`
+    3. Vereist: `checked`
+    4. Toestaan `multiple selection` : `unchecked`
+    5. Gegevens ophalen uit: `JSON`
 5. Plaats in het JSON-invoer tekst blok dit JSON-fragment:
     ```json
     [
@@ -70,11 +70,11 @@ Als uw query resultaat/JSON een groeps veld bevat, worden in de vervolg keuzelij
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`RequestName`
-    2. Parameter type:`Drop down`
-    3. Vereist:`checked`
-    4. Toestaan `multiple selection` :`unchecked`
-    5. Gegevens ophalen uit:`Query`
+    1. Parameter naam: `RequestName`
+    2. Parameter type: `Drop down`
+    3. Vereist: `checked`
+    4. Toestaan `multiple selection` : `unchecked`
+    5. Gegevens ophalen uit: `Query`
 5. Plaats in het JSON-invoer tekst blok dit JSON-fragment:
 
     ```kusto

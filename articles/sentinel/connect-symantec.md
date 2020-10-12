@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564918"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Verbinding maken met uw Symantec ICDx-apparaat 
@@ -50,7 +50,7 @@ Symantec ICDx kan Logboeken rechtstreeks integreren en exporteren naar Azure Sen
       > [!NOTE]
       > ICDx ontvanger-archieven worden afzonderlijk vermeld op naam. 
  
-    - **Filter**: een filter toevoegen waarmee de subset gebeurtenissen worden opgegeven die moeten worden doorgestuurd. Doe een van de volgende dingen:
+    - **Filter**: een filter toevoegen waarmee de subset gebeurtenissen worden opgegeven die moeten worden doorgestuurd. Voer een van de volgende handelingen uit:
         - Als u een filter voorwaarde wilt selecteren, klikt u op een type, kenmerk, operator en waarde. 
         - Controleer de filter voorwaarde in het veld Filter. U kunt deze rechtstreeks in het veld bewerken of verwijderen als dat nodig is.
         - Klik op en of of om toe te voegen aan uw filter voorwaarde.

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.subservice: tables
 ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236502"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Schaalbare en beter bruikbare tabellen ontwerpen
@@ -49,8 +49,8 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -69,8 +69,8 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -106,8 +106,8 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Ouderdom</th>
-<th>Email</th>
+<th>Leeftijd</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -137,7 +137,7 @@ Zie het artikel [Microsoft Azure Storage: een Maxi maal beschik bare Cloud opsla
 ## <a name="entity-group-transactions"></a>Trans acties van entiteits groep
 In de Table service zijn EGTs (trans acties voor entiteits groepen) het enige ingebouwde mechanisme voor het uitvoeren van atomische updates op meerdere entiteiten. EGTs worden soms ook wel batch- *trans acties*genoemd. EGTs kan alleen worden gebruikt voor entiteiten die zijn opgeslagen in dezelfde partitie (dat wil zeggen, delen dezelfde partitie sleutel in een bepaalde tabel). U moet er dus altijd voor zorgen dat deze entiteiten zich in dezelfde partitie bevinden, zodat u een Atomic-transactioneel gedrag voor meerdere entiteiten nodig hebt. Dit is vaak een reden om meerdere entiteits typen in dezelfde tabel (en partitie) te bewaren en niet meerdere tabellen te gebruiken voor verschillende entiteits typen. Eén EGT kan aan Maxi maal 100 entiteiten worden gebruikt.  Als u meerdere gelijktijdige EGTs voor verwerking verzendt, is het belang rijk om ervoor te zorgen dat deze EGTs niet worden uitgevoerd op entiteiten die gemeen schappelijk zijn voor EGTs; anders kan de verwerking worden vertraagd.
 
-Met EGTs kunt u ook een mogelijke trans actie in uw ontwerp introduceren. Dat wil zeggen dat het gebruik van meer partities de schaal baarheid van uw toepassing verg root, omdat Azure meer mogelijkheden heeft voor taak verdeling van aanvragen op verschillende knoop punten. Maar het gebruik van meer partities kan de mogelijkheid van uw toepassing beperken tot het uitvoeren van atomische trans acties en het behouden van sterke consistentie voor uw gegevens. Daarnaast zijn er specifieke schaalbaarheids doelen op het niveau van een partitie die de door Voer van trans acties die u voor één knoop punt kan verwachten, kunnen beperken. Zie [schaalbaarheids doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md)voor meer informatie over de schaalbaarheids doelen voor Azure Standard-opslag accounts. Zie [schaalbaarheids-en prestatie doelen voor Table Storage](scalability-targets.md)voor meer informatie over de schaalbaarheids doelen voor de Table service.
+Met EGTs kunt u ook een mogelijke trans actie in uw ontwerp introduceren. Dat wil zeggen dat het gebruik van meer partities de schaal baarheid van uw toepassing verg root, omdat Azure meer mogelijkheden heeft voor taak verdeling van aanvragen op verschillende knoop punten. Maar het gebruik van meer partities kan de mogelijkheid van uw toepassing beperken tot het uitvoeren van atomische trans acties en het behouden van sterke consistentie voor uw gegevens. Daarnaast zijn er specifieke schaalbaarheids doelen op het niveau van een partitie die de door Voer van trans acties die u voor één knoop punt kan verwachten, kunnen beperken. Zie [schaalbaarheids doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md)voor meer informatie over de schaalbaarheids doelen voor Azure Standard-opslag accounts. Zie [Schaalbaarheids- en prestatiedoelen voor de Table service](scalability-targets.md) voor meer informatie over de schaalbaarheidsdoelen voor Table-opslag.
 
 ## <a name="capacity-considerations"></a>Overwegingen bij capaciteitsbepaling
 

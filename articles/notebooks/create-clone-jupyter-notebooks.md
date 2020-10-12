@@ -4,10 +4,10 @@ description: Azure Notebooks preview-projecten een verzameling van notitie blokk
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86181490"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projecten maken en klonen in Azure Notebooks preview
@@ -35,7 +35,7 @@ Wat u op het dash board kunt doen, is afhankelijk van het feit of u bent aangeme
 | **Terminal** | Eigenaar | Hiermee wordt de Project Server gestart en vervolgens wordt er een nieuw browser venster geopend met de bash-terminal voor die server. |
 | **+ Nieuw project** | Eigenaar | Hiermee maakt u een nieuw project. Zie [een nieuw project maken](#create-a-new-project). |
 | **GitHub opslag plaats uploaden** | Eigenaar | Hiermee wordt een project uit GitHub geïmporteerd. [Importeer een project uit github](#import-a-project-from-github). |
-| **Kopiëren** | Iedereen | Hiermee wordt een geselecteerd project naar uw eigen account gekopieerd. Hiermee wordt u gevraagd om u aan te melden als dat nog niet het geval is. Zie [een project klonen](#clone-a-project). |
+| **Klonen** | Iedereen | Hiermee wordt een geselecteerd project naar uw eigen account gekopieerd. Hiermee wordt u gevraagd om u aan te melden als dat nog niet het geval is. Zie [een project klonen](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Een Launch badge verkrijgen
 
@@ -75,17 +75,17 @@ De volgende gereserveerde woorden kunnen niet worden gebruikt door zichzelf als 
 - blog
 - leslokaal
 - inhoud
-- dashboard
+- Dashboard
 - verkennen
 - FAQ
-- Help
+- help
 - html
 - startpagina
 - importeren
-- tagbibliotheek
+- bibliotheek
 - beheer
 - nieuw
-- notitieblok
+- notebook
 - notebooks
 - pdf
 - preview
@@ -133,9 +133,9 @@ Een project klonen:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Voorbeelden van notebooks verkennen](azure-notebooks-samples.md)
-- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Procedure: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
 - [Procedure: pakketten installeren vanuit een notitie blok](install-packages-jupyter-notebook.md)
 - [Procedure: een diavoorstelling presen teren](present-jupyter-notebooks-slideshow.md)
-- [Procedure: werken met gegevens bestanden](work-with-project-data-files.md)
-- [Informatie over toegang tot gegevens bronnen](access-data-resources-jupyter-notebooks.md)
+- [Procedure: Werken met gegevensbestanden](work-with-project-data-files.md)
+- [Procedure: Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
 - [Procedure: Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)

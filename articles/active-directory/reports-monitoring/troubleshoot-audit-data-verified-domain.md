@@ -16,10 +16,10 @@ ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117428"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>Problemen oplossen: gegevens over geverifieerde domein wijzigingen controleren 
@@ -39,7 +39,7 @@ Ik controleer de audit logboeken van Azure AD en Bekijk meerdere gebruikers upda
 
 #### <a name="what-does-userprincipalname-consistency-mean"></a>Wat betekent de consistentie van UserPrincipalName? 
 
-Voor Cloud gebruikers betekent consistentie dat de **userPrincipalName** is ingesteld op een geverifieerd domein achtervoegsel. Wanneer een inconsistente **userPrincipalName** wordt verwerkt, wordt deze door **ProxyCalc** geconverteerd naar het standaard onmicrosoft.com-achtervoegsel, bijvoorbeeld:username@Contoso.onmicrosoft.com 
+Voor Cloud gebruikers betekent consistentie dat de **userPrincipalName** is ingesteld op een geverifieerd domein achtervoegsel. Wanneer een inconsistente **userPrincipalName** wordt verwerkt, wordt deze door **ProxyCalc** geconverteerd naar het standaard onmicrosoft.com-achtervoegsel, bijvoorbeeld: username@Contoso.onmicrosoft.com 
 
 Voor gesynchroniseerde gebruikers betekent consistentie dat de **userPrincipalName** is ingesteld op een geverifieerd domein achtervoegsel en overeenkomt met de on-premises **userPrincipalName** -waarde (ShadowUserPrincipalName). Wanneer een inconsistente **userPrincipalName** wordt verwerkt, wordt **ProxyCalc** teruggezet naar dezelfde waarde als de **ShadowUserPrincipalName** , of als het domein achtervoegsel is verwijderd uit de Tenant, wordt dit geconverteerd naar het standaard domein achtervoegsel *. onmicrosoft.com. 
 
@@ -47,7 +47,7 @@ Voor gesynchroniseerde gebruikers betekent consistentie dat de **userPrincipalNa
 
 #### <a name="what-does-proxy-address-consistency-mean"></a>Wat betekenen de consistentie van proxy adressen? 
 
-Voor Cloud gebruikers betekent consistentie dat de proxy adressen overeenkomen met een geverifieerd domein achtervoegsel. Wanneer een inconsistent proxy-adres wordt verwerkt, wordt het door **ProxyCalc** geconverteerd naar het standaard domein achtervoegsel *. onmicrosoft.com, bijvoorbeeld:SMTP:username@Contoso.onmicrosoft.com 
+Voor Cloud gebruikers betekent consistentie dat de proxy adressen overeenkomen met een geverifieerd domein achtervoegsel. Wanneer een inconsistent proxy-adres wordt verwerkt, wordt het door **ProxyCalc** geconverteerd naar het standaard domein achtervoegsel *. onmicrosoft.com, bijvoorbeeld: SMTP:username@Contoso.onmicrosoft.com 
 
 Voor gesynchroniseerde gebruikers betekent consistentie dat de proxy adressen overeenkomen met de on-premises proxy adres (sen)-waarde (n) (dat wil zeggen ShadowProxyAddresses). **ProxyAddresses** worden naar verwachting gesynchroniseerd met **ShadowProxyAddresses**. Als aan de gesynchroniseerde gebruiker een Exchange-licentie is toegewezen, moeten de proxy adressen overeenkomen met de waarde (n) van de on-premises proxy en moeten ze ook overeenkomen met een gecontroleerd domein achtervoegsel. In dit scenario wordt het inconsistente proxy adres met een niet-geverifieerd domein achtervoegsel opgeheven met **ProxyCalc** en verwijderd uit het object in azure AD. Als dat niet-geverifieerde domein later wordt geverifieerd, wordt de **ProxyCalc** opnieuw berekend en wordt het proxy adres van **ShadowProxyAddresses** weer toegevoegd aan het object in azure AD.  
 

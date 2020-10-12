@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 7ff8f3d18564140b4654b1591eec5c0e1f40b7cf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077905"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
@@ -52,7 +52,7 @@ U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om b
 Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
-> * Bestand uploaden
+> * Een bestand uploaden
 > * Een map uploaden
 > * De inhoud van een map uploaden 
 > * Specifieke bestanden uploaden
@@ -67,7 +67,7 @@ Deze sectie bevat de volgende voor beelden:
 > 
 > Zie [Opties](storage-ref-azcopy-copy.md#options)voor een volledige lijst.
 
-### <a name="upload-a-file"></a>Bestand uploaden
+### <a name="upload-a-file"></a>Een bestand uploaden
 
 |    |     |
 |--------|-----------|
@@ -160,7 +160,7 @@ U kunt de azcopy-opdracht [kopiëren](storage-ref-azcopy-copy.md) gebruiken om b
 Deze sectie bevat de volgende voor beelden:
 
 > [!div class="checklist"]
-> * Bestand downloaden
+> * Een bestand downloaden
 > * Een directory downloaden
 > * De inhoud van een map downloaden
 > * Specifieke bestanden downloaden
@@ -179,7 +179,7 @@ Deze sectie bevat de volgende voor beelden:
 > [!NOTE]
 > Als de `Content-md5` eigenschaps waarde van een BLOB een hash bevat, wordt in AzCopy een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5-hash die is opgeslagen in de eigenschap van de BLOB `Content-md5` overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de down load tenzij u dit gedrag overschrijft door toe te voegen `--check-md5=NoCheck` of `--check-md5=LogOnly` aan de Kopieer opdracht.
 
-### <a name="download-a-file"></a>Bestand downloaden
+### <a name="download-a-file"></a>Een bestand downloaden
 
 |    |     |
 |--------|-----------|

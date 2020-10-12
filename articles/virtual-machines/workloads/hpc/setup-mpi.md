@@ -14,10 +14,10 @@ ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
 ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926515"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Bericht interface voor het door geven van HPC instellen
@@ -241,6 +241,6 @@ De bovenstaande syntaxis gaat ervan uit dat een gedeelde basismap, else. ssh-map
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de met [InfiniBand ingeschakelde](../../sizes-hpc.md#rdma-capable-instances) [H-Series](../../sizes-hpc.md) en [N-Series](../../sizes-gpu.md) vm's
-- Bekijk het [overzicht van de HB-serie](hb-series-overview.md) en het [HC-serie-overzicht](hc-series-overview.md) voor meer informatie over het optimaal configureren van workloads voor prestaties en schaal baarheid.
-- Meer informatie over de laatste aankondigingen en enkele HPC-voor beelden en-resultaten vindt u in de blogs van de [technische community van Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
-- Zie [High Performance Computing (HPC) in azure](/azure/architecture/topics/high-performance-computing/)voor een architectuur weergave op een hoger niveau voor het uitvoeren van HPC-workloads.
+- Bekijk [Overzicht HB-serie](hb-series-overview.md) en [Overzicht HC-serie](hc-series-overview.md) voor meer informatie over het optimaal configureren van workloads ten behoeve van de prestaties en schaalbaarheid.
+- Lees over de laatste aankondigingen en enkele HPC-voorbeelden en -resultaten in de [Azure Compute Tech Community-blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Zie [High Performance Computing (HPC) op Azure](/azure/architecture/topics/high-performance-computing/) voor een gedetailleerdere architectuurweergave van HPC-workloads die worden uitgevoerd.

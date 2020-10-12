@@ -6,10 +6,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 4b4946da9f63299c7ba2b383d6c153673595a1ab
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450115"
 ---
 # <a name="remove-update-management-from-automation-account"></a>Updatebeheer verwijderen uit Automation-account
@@ -65,7 +65,7 @@ Tijdens de poging om het Automation-account te ontkoppelen, kunt u de voortgang 
 Als Updatebeheer is geconfigureerd ter ondersteuning van eerdere versies van Azure SQL-bewaking, heeft de installatie van de functie mogelijk Automation-assets gemaakt die u moet verwijderen. Voor Updatebeheer wilt u mogelijk de volgende items verwijderen die niet meer nodig zijn:
 
    * Update schema's: elk is een naam die overeenkomt met de update-implementatie die u hebt gemaakt.
-   * Hybrid worker-groepen die zijn gemaakt voor Updatebeheer-elk heeft de naam op dezelfde manier als *machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8)*.
+   * Hybrid worker-groepen die zijn gemaakt voor Updatebeheer-elk heeft de naam op dezelfde manier als *machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8)*.
 
 ## <a name="next-steps"></a>Volgende stappen
 

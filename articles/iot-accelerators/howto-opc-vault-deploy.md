@@ -9,16 +9,16 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282020"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC kluis Certificate Management-service bouwen en implementeren
 
 > [!IMPORTANT]
-> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
+> Zie [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
 
 In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service in azure implementeert.
 
@@ -97,7 +97,7 @@ Dit doet u als volgt:
 2. Ga naar de resource groep waarin de service is geïmplementeerd.
 3. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 4. Na enkele ogen blikken worden alle geïmplementeerde service onderdelen verwijderd.
-5. Ga naar **Azure Active Directory**  >  **app-registraties**.
+5. Ga naar **Azure Active Directory** > **App-registraties**.
 6. Er moeten drie registraties worden vermeld voor elke geïmplementeerde resource groep. De registraties hebben de volgende namen: `resourcegroup-client` , `resourcegroup-module` , `resourcegroup-service` . Verwijder elke registratie afzonderlijk.
 
 Nu worden alle geïmplementeerde onderdelen verwijderd.

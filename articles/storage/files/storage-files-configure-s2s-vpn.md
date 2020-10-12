@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515334"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Een site-naar-site-VPN configureren voor gebruik met Azure Files
@@ -54,7 +54,7 @@ Voor de implementatie van een Azure VPN Gateway moet u de volgende velden invull
 - **VPN-type**: u kunt kiezen voor op *route gebaseerd** of **op basis van beleid** , afhankelijk van uw VPN-apparaat. Op route gebaseerde Vpn's ondersteunen IKEv2, terwijl op beleid gebaseerde Vpn's alleen IKEv1 ondersteunen. Zie [informatie over op beleid gebaseerde en op route gebaseerde VPN-gateways](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) voor meer informatie over de twee typen VPN-gateways
 - **SKU**: de SKU bepaalt het aantal toegestane site-naar-site tunnels en de gewenste prestaties van de VPN. Als u de juiste SKU voor uw use-case wilt selecteren, raadpleegt u de lijst met [Gateway-sku's](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) . De SKU van de VPN Gateway kan indien nodig later worden gewijzigd.
 - **Virtueel netwerk**: het virtuele netwerk dat u in de vorige stap hebt gemaakt.
-- **Openbaar IP-adres**: het IP-adres van VPN gateway dat wordt blootgesteld aan Internet. Waarschijnlijk moet u een nieuw IP-adres maken, maar u kunt ook een bestaand ongebruikt IP-adres gebruiken, indien van toepassing. Als u selecteert om **nieuwe te maken**, wordt er een nieuw IP-adres Azure-resource gemaakt in dezelfde resource groep als de VPN gateway en is de naam van het **open bare IP-adres** de naam van het nieuwe IP-adres. Als u **bestaande gebruiken**selecteert, moet u het bestaande ongebruikte IP-adres selecteren.
+- **Openbaar IP-adres**: het IP-adres van VPN gateway dat wordt blootgesteld aan Internet. Waarschijnlijk moet u een nieuw IP-adres maken, maar u kunt ook een bestaand ongebruikt IP-adres gebruiken, indien van toepassing. Als u selecteert om **nieuwe te maken**, wordt er een nieuw IP-adres Azure-resource gemaakt in dezelfde resource groep als de VPN gateway en is de naam van het  **open bare IP-adres** de naam van het nieuwe IP-adres. Als u **bestaande gebruiken**selecteert, moet u het bestaande ongebruikte IP-adres selecteren.
 - **Modus actief-actief inschakelen**: Selecteer **ingeschakeld** als u een configuratie voor Active-Active-gateway maakt, anders **uitgeschakeld laten uitschakelen** geselecteerd. Zie voor meer informatie over de modus actief-actief [Maxi maal beschik bare cross-premises en vnet-naar-vnet-connectiviteit](../../vpn-gateway/vpn-gateway-highlyavailable.md).
 - **BGP ASN configureren**: Selecteer **ingeschakeld** als deze instelling specifiek is vereist voor uw configuratie. Zie [over BGP met Azure VPN gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)voor meer informatie over deze instelling.
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985545"
 ---
 # <a name="core-reports-from-verizon"></a>Kernrapporten van Verizon
@@ -100,7 +100,7 @@ Als u verlopen cache treffers wilt verkleinen, stelt `max-age` u een activum in 
 * TCP_MISS: deze status geeft aan dat een in de cache opgeslagen versie van het aangevraagde activum niet is gevonden op de POP die het dichtst bij de client ligt. De Asset wordt aangevraagd vanuit een originele server of een originele afschermings server. Als de bron server of de oorspronkelijke schild server een Asset retourneert, wordt deze aan de client geleverd en in de cache geplaatst op de client en de Edge-server. Anders wordt een niet-200-status code (bijvoorbeeld 403 verboden of 404 niet gevonden) geretourneerd.
 * TCP_EXPIRED_HIT: deze status wordt gerapporteerd wanneer een aanvraag die gericht is op een Asset met een verlopen TTL, rechtstreeks vanuit de POP naar de client wordt verzonden. Bijvoorbeeld wanneer de maximale leeftijd van het activum is verlopen. 
   
-   Een verlopen aanvraag resulteert doorgaans in een aanvraag voor een hervalidatie naar de oorspronkelijke server. De oorspronkelijke server moet aangeven dat er geen nieuwere versie van de Asset bestaat om een TCP_EXPIRED_HIT status te vinden. Deze situatie resulteert doorgaans in een update van de header Cache-Control en Expires van het Asset.
+   Een verlopen aanvraag resulteert doorgaans in een aanvraag voor een hervalidatie naar de oorspronkelijke server. De oorspronkelijke server moet aangeven dat er geen nieuwere versie van de Asset bestaat om een TCP_EXPIRED_HIT status te vinden. Deze situatie resulteert doorgaans in een update van de Cache-Control van de Asset en verlopen kopteksten.
 * TCP_EXPIRED_MISS: deze status wordt gerapporteerd wanneer een nieuwere versie van een verlopen asset in de cache wordt aangeboden vanuit de POP naar de client. Deze status treedt op wanneer de TTL voor een activum in de cache is verlopen (bijvoorbeeld verlopen Max-Age) en de oorspronkelijke server een nieuwere versie van die Asset retourneert. Deze nieuwe versie van de Asset wordt aan de client geleverd in plaats van de versie in de cache. Daarnaast wordt deze in de cache op de Edge-Server en de-client opgeslagen.
 * CONFIG_NOCACHE: deze status geeft aan dat de klantspecifieke configuratie heeft voor komen dat het activum in de cache wordt opgeslagen.
 * GEEN: deze status geeft aan dat er geen cache voor de vernieuwing van inhoud is uitgevoerd.

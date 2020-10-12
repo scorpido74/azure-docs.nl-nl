@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: mayg
 ms.openlocfilehash: 2dc7bbd060d77b8f90d16e2a336edc1eb6dbf651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528992"
 ---
-# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Computers repliceren met door de klant beheerde sleutels (CMK) ingeschakelde schijven
+# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Machines repliceren met schijven met door de klant beheerde sleutels
 
-In dit artikel wordt beschreven hoe u Azure-Vm's met door de klant beheerde sleutels (CMK) ingeschakelde beheerde schijven van de ene Azure-regio naar de andere repliceert.
+In dit artikel wordt beschreven hoe u virtuele Azure-machines met Customer-Managed-CMK (Managed Keys) repliceert van de ene Azure-regio naar de andere.
 
 ## <a name="prerequisite"></a>Vereiste
 U moet de schijf versleutelings (en) in de doel regio voor het doel abonnement maken voordat u replicatie inschakelt voor uw virtuele machines met CMK Managed disks.
@@ -38,7 +38,7 @@ Voor dit voor beeld is de primaire Azure-regio Azië-oost en is de secundaire re
 4. In **instellingen**kunt u de volgende instellingen voor de doel site configureren.
 
     - **Doel locatie**: de locatie waar de gegevens van de virtuele bron machine worden gerepliceerd. Site Recovery biedt een lijst met geschikte doel regio's op basis van de locatie van de geselecteerde machine. U wordt aangeraden dezelfde locatie te gebruiken als de locatie van de Recovery Services kluis.
-    - **Doel abonnement**: het doel abonnement dat wordt gebruikt voor herstel na nood gevallen. Het doel abonnement is standaard hetzelfde als het bron abonnement.
+    - **Doel abonnement**: het doel abonnement dat wordt gebruikt voor herstel na nood gevallen. Standaard is het doelabonnement hetzelfde als het bronabonnement.
     - **Doel resource groep**: de resource groep waarvan al uw gerepliceerde virtuele machines deel uitmaken. Site Recovery maakt standaard een nieuwe resource groep in de doel regio. De naam haalt het `asr` achtervoegsel op. Als er al een resource groep bestaat die is gemaakt door Azure Site Recovery, wordt deze opnieuw gebruikt. U kunt er ook voor kiezen om deze aan te passen, zoals wordt weer gegeven in de volgende sectie. De locatie van de doel resource groep kan een wille keurige Azure-regio zijn, behalve de regio waarin de virtuele bron machines worden gehost.
     - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio. De naam haalt het `asr` achtervoegsel op. Het wordt toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](./azure-to-azure-network-mapping.md) over netwerk toewijzing.
     - **Doel opslag accounts (als uw bron-VM geen Managed disks gebruikt)**: standaard maakt site Recovery een nieuw doel opslag account door de mimicking van de bron-VM te configureren. Als er al een opslag account bestaat, wordt dit opnieuw gebruikt.
@@ -70,7 +70,7 @@ Volg deze stappen om de Site Recovery standaard doel instellingen te wijzigen.
 ![Replicatie inschakelen voor de computer met CMK ingeschakelde schijven](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-customize-target-disk-properties.png)
 
 >[!NOTE]
->Tijdens de eerste replicatie kan het enige tijd duren voordat de status is vernieuwd, zonder dat de voortgang wordt verduidelijkt. Klik op **vernieuwen** om de meest recente status op te halen.
+>Tijdens de eerste replicatie kan het enige tijd duren voordat de status is vernieuwd, zonder dat de voortgang wordt verduidelijkt. Klik op **vernieuwen**  om de meest recente status op te halen.
 
 ## <a name="faqs"></a>Veelgestelde vragen
 

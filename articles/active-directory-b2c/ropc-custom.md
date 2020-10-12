@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bf8fe68c28457fd01704762e537fe259a96a6bce
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116227"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
@@ -249,7 +249,7 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Vervang door `<tenant-name>` de naam van uw Azure AD B2C-Tenant.
+- Vervang `<tenant-name>` door de naam van uw Azure AD B2C-tenant.
 - Vervang door `B2C_1A_ROPC_Auth` de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Waarde |
@@ -294,7 +294,7 @@ Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in d
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Vervang door `<tenant-name>` de naam van uw Azure AD B2C-Tenant.
+- Vervang `<tenant-name>` door de naam van uw Azure AD B2C-tenant.
 - Vervang door `B2C_1A_ROPC_Auth` de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
 
 | Sleutel | Waarde |
@@ -326,7 +326,7 @@ Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 }
 ```
 
-## <a name="use-a-native-sdk-or-app-auth"></a>Een systeem eigen SDK of app-auth gebruiken
+## <a name="use-a-native-sdk-or-app-auth"></a>Gebruik een systeem eigen SDK of App-Auth
 
 Azure AD B2C voldoet aan de OAuth 2,0-standaarden voor de referenties van het eigenaars wachtwoord voor open bare client bronnen en moet compatibel zijn met de meeste client-Sdk's. Zie voor de meest recente informatie [systeem eigen app SDK voor OAuth 2,0 en OpenID Connect Connect implementeren moderne Best practices](https://appauth.io/).
 

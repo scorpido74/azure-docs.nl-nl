@@ -4,7 +4,7 @@
   items:
     - name: Wat is Translator?
       href: translator-info-overview.md
-    - name: Snelstart
+    - name: Snelstartgids
       href: quickstart-translator.md
     - name: Taalondersteuning
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'

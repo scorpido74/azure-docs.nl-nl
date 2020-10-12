@@ -8,10 +8,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87126479"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake-hulpprogramma's voor Visual Studio Code gebruiken
@@ -86,12 +86,12 @@ Open het opdracht palet (CTRL + SHIFT + P) en voer **ADL: voorbeeld script opene
 
 ### <a name="to-compile-a-u-sql-script"></a>Een U-SQL-script compileren
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL in: script compileren**. De compilatie resultaten worden weer gegeven in het **uitvoer** venster. U kunt ook met de rechter muisknop op een script bestand klikken en vervolgens **ADL: compilatie script** selecteren om een U-SQL-taak te compileren. Het compilatie resultaat wordt weer gegeven in het deel venster **uitvoer** .
 
 ### <a name="to-submit-a-u-sql-script"></a>Een U-SQL-script verzenden
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL: taak verzenden**in. U kunt ook met de rechter muisknop op een script bestand klikken en vervolgens **ADL: taak verzenden**selecteren.
 
 Nadat u een U-SQL-taak hebt verzonden, worden de inzendings logboeken weer gegeven in het **uitvoer** venster in VS code. De taak weergave wordt weer gegeven in het rechterdeel venster. Als de verzen ding is gelukt, wordt de taak-URL ook weer gegeven. U kunt de taak-URL in een webbrowser openen om de real-time taak status bij te houden.
@@ -106,7 +106,7 @@ Op het tabblad **samen vatting** van de taak weergave ziet u de taak Details. Ho
 
 U kunt de standaard context instellen om deze instelling toe te passen op alle script bestanden als u geen para meters voor bestanden afzonderlijk hebt ingesteld.
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL in: Stel de standaard context**in. Of klik met de rechter muisknop op de script editor en selecteer **ADL: standaard context instellen**.
 3. Kies het account, de data base en het schema dat u wilt. De instelling wordt opgeslagen in de xxx_settings.jsvan het configuratie bestand.
 
@@ -114,7 +114,7 @@ U kunt de standaard context instellen om deze instelling toe te passen op alle s
 
 ### <a name="to-set-script-parameters"></a>Script parameters instellen
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL in: script parameters instellen**.
 3. De xxx_settings.jsin het bestand wordt geopend met de volgende eigenschappen:
 
@@ -132,7 +132,7 @@ U kunt de standaard context instellen om deze instelling toe te passen op alle s
 
 ### <a name="to-set-git-ignore"></a>Git-negeren instellen
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL in: Git instellen negeren**.
 
    - Als u nog geen **. gitIgnore** -bestand in de map VS code hebt, wordt een bestand met de naam **. gitIgnore** in uw map gemaakt. In het bestand worden standaard vier items (**usqlCodeBehindReference**, **usqlCodeBehindGenerated**, **. cache**, **obj**) toegevoegd. U kunt zo nodig meer updates maken.
@@ -156,7 +156,7 @@ U kunt de assembly registreren via de **ADL: REGI ster-assembly** of **ADL: regi
 
 ### <a name="to-register-through-the-adl-register-assembly-command"></a>Registreren via de ADL: opdracht assembly registreren
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL: assembly registreren**in.
 3. Geef het pad van de lokale assembly op.
 4. Selecteer een Data Lake Analytics-account.
@@ -168,7 +168,7 @@ Een handigere manier om de **ADL: registratie van de assembly** te activeren, is
 
 ### <a name="to-register-through-the-adl-register-assembly-advanced-command"></a>Registreren via de opdracht ADL: assembly registreren (Geavanceerd)
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL in: registratie van assembly (Geavanceerd)**.
 3. Geef het pad van de lokale assembly op.
 4. Het JSON-bestand wordt weer gegeven. Controleer en bewerk zo nodig de assembly-afhankelijkheden en resource parameters. De instructies worden weer gegeven in het **uitvoer** venster. Als u wilt door gaan met de assembly-registratie, slaat u het JSON-bestand op (CTRL + S).
@@ -231,7 +231,7 @@ Voordat u U-SQL-scripts in Data Lake Analytics kunt compileren en uitvoeren, moe
 
 ### <a name="to-connect-to-azure-by-using-a-command"></a>Verbinding maken met Azure met behulp van een opdracht
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 
 2. Voer **ADL: Login**. De aanmeldings gegevens worden rechtsonder weer gegeven.
 
@@ -289,7 +289,7 @@ U hebt toegang tot Azure Data Lake Analytics resources om accounts weer te geven
 
 ### <a name="to-list-the-azure-data-lake-analytics-accounts-under-your-azure-subscription"></a>De Azure Data Lake Analytics accounts onder uw Azure-abonnement weer geven
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **ADL in: List accounts**. De accounts worden weer gegeven in het deel venster **uitvoer** .
 
 ### <a name="to-access-azure-data-lake-analytics-metadata"></a>Toegang tot Azure Data Lake Analytics meta gegevens
@@ -365,7 +365,7 @@ Een andere manier om bestanden te uploaden naar de opslag ruimte is via het snel
 
 U kunt [de upload status bewaken](#check-storage-tasks-status).
 
-### <a name="download-a-file"></a>Bestand downloaden
+### <a name="download-a-file"></a>Een bestand downloaden
 
 U kunt een bestand downloaden met behulp van de opdracht **ADL: down load file** of **ADL: down load file (Advanced)**.
 
@@ -460,7 +460,7 @@ Bladeren naar Blob Storage:
 
 ## <a name="open-the-data-lake-explorer-in-the-portal"></a>Open de Data Lake Verkenner in de portal
 
-1. Selecteer CTRL + SHIFT + P om het opdracht palet te openen.
+1. Selecteer Ctrl+Shift+P om het opdrachtenpalet te openen.
 2. Voer **open web Azure Storage Explorer** in of klik met de rechter muisknop op een relatief pad of het volledige pad in de script editor en selecteer vervolgens **Web openen Azure Storage Explorer**.
 3. Selecteer een Data Lake Analytics-account.
 
