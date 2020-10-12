@@ -4,10 +4,10 @@ description: Een stapsgewijze zelf studie waarin wordt uitgelegd hoe u een funct
 ms.topic: article
 ms.date: 4/23/2020
 ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387520"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Zelfstudie: Azure Functions integreren met een virtueel Azure-netwerk
@@ -59,7 +59,7 @@ Maak vervolgens een vooraf geconfigureerde virtuele machine die WordPress in een
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe resources zijn gemaakt. | 
     | **[Resourcegroep](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Kies `myResourceGroup` of de resource groep die u hebt gemaakt met uw functie-app. Als u dezelfde resource groep gebruikt voor de functie-app, WordPress VM en hosting plan, is het eenvoudiger om resources te verwijderen wanneer u klaar bent met deze zelf studie. |
-    | **Naam van virtuele machine** | VNET-WordPress | De VM-naam moet uniek zijn in de resourcegroep |
+    | **Naam van virtuele machine** | VNET-Wordpress | De VM-naam moet uniek zijn in de resourcegroep |
     | **[Regio](https://azure.microsoft.com/regions/)** | Europa Europa - west | Kies een regio bij u in de buurt of in de buurt van de functies die toegang hebben tot de virtuele machine. |
     | **Grootte** | B1s | Kies **grootte wijzigen** en selecteer vervolgens de B1s standaard installatie kopie met 1 vCPU en 1 GB aan geheugen. |
     | **Verificatietype** | Wachtwoord | Als u wachtwoord verificatie wilt gebruiken, moet u ook een **gebruikers naam**, een veilig **wacht woord**opgeven en vervolgens het **wacht woord bevestigen**. Voor deze zelf studie hoeft u zich niet aan te melden bij de VM, tenzij u problemen moet oplossen. |
@@ -74,7 +74,7 @@ Maak vervolgens een vooraf geconfigureerde virtuele machine die WordPress in een
     | ------------ | ---------------- | ---------------- |
     | **Naam** | myResourceGroup-vnet | U kunt de standaardnaam gebruiken die voor het virtuele netwerk is gegenereerd. |
     | **Adresbereik** | 10.10.0.0/16 | Gebruik één adresbereik voor het virtuele netwerk. |
-    | **Subnetnaam** | Zelf studie-net | Naam van het subnet. |
+    | **Subnetnaam** | Tutorial-Net | Naam van het subnet. |
     | **Adresbereik** (subnet) | 10.10.1.0/24   | De subnetgrootte bepaalt hoeveel interfaces aan het subnet kunnen worden toegevoegd. Dit subnet wordt gebruikt door de WordPress-site.  Een `/24` subnet biedt 254 hostadressen. |
 
 1. Selecteer **OK** om het virtuele netwerk te maken.
@@ -105,7 +105,7 @@ Met een WordPress-site die wordt uitgevoerd op een virtuele machine in een virtu
 
 1. Selecteer **VNET toevoegen**op de pagina **VNET-integratie** .
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="De preview-versie van het VNet-integratie toevoegen":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Kies netwerken in de functie-app":::
 
 1. In de status van de **netwerk functie**gebruikt u de instellingen in de tabel onder de installatie kopie:
 
@@ -115,7 +115,7 @@ Met een WordPress-site die wordt uitgevoerd op een virtuele machine in een virtu
     | ------------ | ---------------- | ---------------- |
     | **Virtual Network** | MyResourceGroup-vnet | Dit virtuele netwerk is de versie die u eerder hebt gemaakt. |
     | **Subnet** | Nieuw subnet maken | Maak een subnet in het virtuele netwerk voor de functie-app die u wilt gebruiken. VNet-integratie moet worden geconfigureerd voor het gebruik van een leeg subnet. Het maakt niet uit of uw functies een ander subnet dan uw VM gebruiken. Het virtuele netwerk routeert automatisch verkeer tussen de twee subnetten. |
-    | **Subnetnaam** | Function-net | Naam van het nieuwe subnet. |
+    | **Subnetnaam** | Function-Net | Naam van het nieuwe subnet. |
     | **Adres blok van virtueel netwerk** | 10.10.0.0/16 | Kies hetzelfde adres blok dat wordt gebruikt door de WordPress-site. Er mag slechts één adres blok zijn gedefinieerd. |
     | **Adresbereik** | 10.10.2.0/24   | De grootte van het subnet beperkt het totale aantal exemplaren dat kan worden uitgeschaald door uw Premium-plan functie-app. In dit voor beeld wordt een `/24` subnet met 254 beschik bare host-adressen gebruikt. Dit subnet is te veel ingericht, maar kan eenvoudig worden berekend. |
 
@@ -127,9 +127,9 @@ De functie-app heeft nu toegang tot het virtuele netwerk waarin de WordPress-sit
 
 Als VNet-integratie is ingeschakeld, kunt u een proxy in uw functie-app maken om aanvragen door te sturen naar de virtuele machine die in het virtueel netwerk wordt uitgevoerd.
 
-1. Selecteer in de functie-app **proxy's** in het menu links en selecteer vervolgens **toevoegen**. Gebruik de proxy instellingen in de tabel onder de installatie kopie:
+1. Selecteer in de functie-app  **proxy's** in het menu links en selecteer vervolgens **toevoegen**. Gebruik de proxy instellingen in de tabel onder de installatie kopie:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definieer de proxyinstellingen":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Kies netwerken in de functie-app":::
 
     | Instelling  | Voorgestelde waarde  | Beschrijving      |
     | -------- | ---------------- | ---------------- |
@@ -139,7 +139,7 @@ Als VNet-integratie is ingeschakeld, kunt u een proxy in uw functie-app maken om
 
 1. Selecteer **maken** om de proxy toe te voegen aan uw functie-app.
 
-## <a name="try-it-out"></a>Probeer het eens
+## <a name="try-it-out"></a>Uitproberen
 
 1. Probeer in uw browser toegang te krijgen tot de URL die u hebt gebruikt als de **back-end-URL**. Zoals verwacht, is er een time-out voor de aanvraag. Er treedt een time-out op omdat uw WordPress-site alleen is verbonden met uw virtuele netwerk en niet via internet.
 

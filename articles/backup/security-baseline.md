@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: a05c7a6f9c3752507705e1c4242becfe1d65ffd6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334834"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
@@ -486,7 +486,7 @@ Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen vo
 
 - [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
-- [Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren](./backup-rbac-rs-vault.md)
+- [Role-Based Access Control gebruiken om Azure Backup herstel punten te beheren](./backup-rbac-rs-vault.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 

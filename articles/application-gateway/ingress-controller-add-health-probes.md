@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807996"
 ---
 # <a name="add-health-probes-to-your-service"></a>Status tests toevoegen aan uw service
 Standaard wordt door ingangs controller een HTTP GET-test voor het weer gegeven peul ingericht.
 De eigenschappen van de test kunnen worden aangepast door een [gereedheid of een gereedheids test](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) toe te voegen aan de `deployment` / `pod` specificatie.
 
-## <a name="with-readinessprobe-or-livenessprobe"></a>Met `readinessProbe` of`livenessProbe`
+## <a name="with-readinessprobe-or-livenessprobe"></a>Met `readinessProbe` of `livenessProbe`
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -50,11 +50,11 @@ Kubernetes API-referentie:
 * [HttpGet-actie](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * `readinessProbe`en `livenessProbe` worden ondersteund bij het configureren van `httpGet` .
+> * `readinessProbe` en `livenessProbe` worden ondersteund bij het configureren van `httpGet` .
 > * Het zoeken naar een andere poort dan die die wordt weer gegeven op de Pod wordt momenteel niet ondersteund.
 > * `HttpHeaders`, `InitialDelaySeconds` , `SuccessThreshold` worden niet ondersteund.
 
-##  <a name="without-readinessprobe-or-livenessprobe"></a>Zonder `readinessProbe` of`livenessProbe`
+##  <a name="without-readinessprobe-or-livenessprobe"></a>Zonder `readinessProbe` of `livenessProbe`
 Als de bovenstaande tests niet zijn opgegeven, maakt de ingangs controller een hypo these dat de service bereikbaar is op `Path` opgegeven voor `backend-path-prefix` aantekening of de `path` opgegeven in de `ingress` definitie voor de service.
 
 ## <a name="default-values-for-health-probe"></a>Standaard waarden voor de status test

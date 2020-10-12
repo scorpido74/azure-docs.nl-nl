@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072791"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
@@ -101,7 +101,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Configuratie van hoofd knooppunt|m/y, CPU, schijf, etc.|
 |Configuratie van gegevens knooppunten|m/y, CPU, schijf, etc.|
 |Configuratie van Edge-knoop punten|m/y, CPU, schijf, etc.|
-|HDFS-versleuteling?|Yes|
+|HDFS-versleuteling?|Ja|
 |Hoge beschikbaarheid|HDFS HA, meta Store HA|
 |Herstel na nood geval/back-up|Back-upcluster?|  
 |Systemen die afhankelijk zijn van het cluster|SQL Server, Teradata, Power BI, MongoDB|
@@ -111,7 +111,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Autorisatie voor cluster verificatie &|Active Directory, Ambari, Cloudera Manager, geen verificatie|
 |HDFS Access Control|  Hand matig, SSH-gebruikers|
 |Autorisatie van Hive-verificatie &|Sentry, LDAP, AD met Kerberos, zwerver|
-|Controle|Ambari, Cloudera Navigator, zwerver|
+|Controleren|Ambari, Cloudera Navigator, zwerver|
 |Bewaking|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
 |Waarschuwingen|Kapacitor, Prometheus, Datadog|
 |Duur van gegevens retentie| 3 jaar, 5 jaar|
@@ -155,7 +155,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Aantal beheerders|2||
 |Aantal ontwikkel aars|10||
 |Aantal eind gebruikers|100||
-|Lacune|Hadoop, Spark||
+|Vaardigheden|Hadoop, Spark||
 |Aantal beschik bare resources voor migratie taken|2||
 |**Onderwerp**: **beperkingen**|||
 |Huidige beperkingen|Latentie is hoog||
@@ -167,35 +167,35 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |---|---|---|
 |**Onderwerp**: **infra structuur** |||
 | Voorkeurs regio|US - oost||
-|Voor keur voor VNet?|Yes||
-|HA/DR nodig?|Yes||
+|Voor keur voor VNet?|Ja||
+|HA/DR nodig?|Ja||
 |Integratie met andere Cloud Services?|ADF, CosmosDB||
-|**Onderwerp**: **gegevens verplaatsing**  |||
+|**Onderwerp**:   **gegevens verplaatsing**  |||
 |Initiële laad voorkeur|DistCp, data box, ADF, WANDisco||
 |Delta voor gegevens overdracht|DistCp, AzCopy||
 |Voortdurende incrementele gegevens overdracht|DistCp, Sqoop||
-|**Onderwerp**: **bewaking & waarschuwingen** |||
+|**Onderwerp**:   **bewaking & waarschuwingen** |||
 |Azure monitoring &-waarschuwingen gebruiken versus bewaking van derden integreren|Azure monitoring &-waarschuwingen gebruiken||
-|**Onderwerp**: **beveiligings voorkeuren** |||
-|Persoonlijke en beveiligde gegevens pijplijn?|Yes||
-|Aan het domein toegevoegd cluster (ESP)?|     Yes||
-|On-premises AD Sync naar de Cloud?|     Yes||
+|**Onderwerp**:   **beveiligings voorkeuren** |||
+|Persoonlijke en beveiligde gegevens pijplijn?|Ja||
+|Aan het domein toegevoegd cluster (ESP)?|     Ja||
+|On-premises AD Sync naar de Cloud?|     Ja||
 |Aantal AD-gebruikers dat moet worden gesynchroniseerd?|          100||
-|Wilt u wacht woorden synchroniseren met de Cloud?|    Yes||
-|Alleen gebruikers in de Cloud?|                 Yes||
-|MFA vereist?|                       No|| 
-|Vereisten voor gegevens autorisatie?|  Yes||
-|Access Control op basis van rollen?|        Yes||
-|Controle vereist?|                  Yes||
-|Gegevens versleuteling in rust?|          Yes||
-|Gegevens versleuteling in transit?|       Yes||
-|**Onderwerp**: **voor keuren voor opnieuw bearchitectuur** |||
+|Wilt u wacht woorden synchroniseren met de Cloud?|    Ja||
+|Alleen gebruikers in de Cloud?|                 Ja||
+|MFA vereist?|                       Nee|| 
+|Vereisten voor gegevens autorisatie?|  Ja||
+|Role-Based Access Control?|        Ja||
+|Controle vereist?|                  Ja||
+|Gegevens versleuteling in rust?|          Ja||
+|Gegevens versleuteling in transit?|       Ja||
+|**Onderwerp**:   **voor keuren voor opnieuw bearchitectuur** |||
 |Eén cluster versus specifieke cluster typen|Specifieke cluster typen||
 |Opgeslagen opslag versus externe opslag?|Externe opslag||
 |Kleinere cluster grootte naarmate gegevens extern worden opgeslagen?|Kleinere cluster grootte||
 |Gebruikt u meerdere kleinere clusters in plaats van één groot cluster?|Meerdere kleinere clusters gebruiken||
-|Een externe meta Store gebruiken?|Yes||
-|Wilt u de meta Stores delen tussen verschillende clusters?|Yes||
+|Een externe meta Store gebruiken?|Ja||
+|Wilt u de meta Stores delen tussen verschillende clusters?|Ja||
 |Werk belastingen ontconstrueren?|Hive-taken vervangen door Spark-taken||
 |ADF gebruiken voor gegevens indeling?|Nee||
 

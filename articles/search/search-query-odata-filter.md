@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934851"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-$filter syntaxis in azure Cognitive Search
@@ -32,7 +32,7 @@ In azure Cognitive Search worden [OData-filter expressies](query-odata-filter-or
 
 ## <a name="syntax"></a>Syntax
 
-Een filter in de OData-taal is een booleaanse expressie die op zijn beurt een van de verschillende typen expressies kan zijn, zoals wordt weer gegeven in de volgende EBNF ([uitgebreid Backus-Naur-formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
+Een filter in de OData-taal is een booleaanse expressie die op zijn beurt een van de verschillende typen expressies kan zijn, zoals wordt weer gegeven in de volgende EBNF ([uitgebreid Backus-Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -78,7 +78,7 @@ Als u een filter expressie zonder haakjes schrijft rond de bijbehorende subexpre
 | Groep | Operator (s) |
 | --- | --- |
 | Logische operators | `not` |
-| Vergelijkingsoperatoren | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
+| Vergelijkingsoperators | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
 | Logische operators | `and` |
 | Logische operators | `or` |
 

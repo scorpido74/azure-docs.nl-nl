@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.openlocfilehash: 8fd42169ab6ccb144215e1b6ad2ece09ff55c07f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072830"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Apache Pig gebruiken met Apache Hadoop op HDInsight
@@ -42,7 +42,7 @@ Pig-Latijns biedt ook ondersteuning voor door de gebruiker gedefinieerde functie
 
 Zie voor meer informatie over Pig-Latijns de hand [leiding voor varkens Latijns naslag handleiding 1](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) en de [referentie hand leiding voor varkens Latijns 2](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
 
-## <a name="example-data"></a><a id="data"></a>Voorbeeldgegevens
+## <a name="example-data"></a><a id="data"></a>Voorbeeld gegevens
 
 HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen in de `/example/data` `/HdiSamples` mappen en. Deze directory's bevinden zich in de standaard opslag voor uw cluster. Het Pig-voor beeld in dit document maakt gebruik van het *log4j* -bestand van `/example/data/sample.log` .
 

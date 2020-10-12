@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002283"
 ---
 # <a name="security-best-practices"></a>Aanbevolen beveiligingsprocedures
@@ -34,7 +34,7 @@ Hier vindt u de beveiligings behoeften die u nodig hebt voor de implementatie va
 |App-beveiliging|Ja|
 |Session Host-besturings systeem|Ja|
 |Implementatie configuratie|Ja|
-|Beveiliging op netwerkniveau|Ja|
+|Netwerk besturings elementen|Ja|
 |Besturings vlak voor virtualisatie|Nee|
 |Fysieke hosts|Nee|
 |Fysiek netwerk|Nee|
@@ -42,7 +42,7 @@ Hier vindt u de beveiligings behoeften die u nodig hebt voor de implementatie va
 
 De beveiligings behoeften die de klant niet verantwoordelijk is voor worden verwerkt door micro soft.
 
-## <a name="azure-security-best-practices"></a>Aanbevolen procedures voor Azure-beveiliging
+## <a name="azure-security-best-practices"></a>Best practices voor Azure-beveiliging
 
 Virtueel bureau blad van Windows is een service onder Azure. Als u de beveiliging van uw Windows-implementatie voor virtueel bureau blad wilt maximaliseren, moet u er ook voor zorgen dat u de omliggende Azure-infra structuur en het beheer vlak beveiligt. Als u uw infra structuur wilt beveiligen, moet u rekening houden met de manier waarop Windows virtueel bureau blad aansluit op uw grotere Azure-ecosysteem. Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](../security/fundamentals/best-practices-and-patterns.md)voor meer informatie over het Azure-ecosysteem.
 
@@ -80,7 +80,7 @@ Als u [voorwaardelijke toegang](../active-directory/conditional-access/best-prac
 
 Als u controle logboek verzameling inschakelt, kunt u de activiteiten van gebruikers en beheerders met betrekking tot het virtuele bureau blad van Windows bekijken. Enkele voor beelden van belang rijke audit logboeken:
 
--   [Azure-activiteitenlogboek](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure-activiteiten logboek](../azure-monitor/platform/activity-log-collect.md)
 -   [Azure Active Directory activiteiten logboek](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Sessie-hosts](../azure-monitor/platform/agent-windows.md)

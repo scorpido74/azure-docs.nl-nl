@@ -4,10 +4,10 @@ description: U kunt live video Analytics op IoT Edge gebruiken voor continue vid
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84261077"
 ---
 # <a name="playback-of-recordings"></a>Opnamen afspelen 
@@ -209,8 +209,8 @@ GET https://hostname/locatorId/content.ism/availableMedia?precision=day&startTim
 
 Zoals hierboven vermeld, kunt u met deze filters delen van uw opname selecteren (bijvoorbeeld van 9:00 tot 11:00 op nieuwe jaren) voor afspelen. Wanneer streaming via HLS, ziet de streaming-URL eruit `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl).m3u8` . Als u een deel van de opname wilt selecteren, voegt u een para meter startTime en endTime toe, zoals: `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00Z,endTime=2019-12-21T10:00:00Z).m3u8` . De tijds bereik filters zijn dus URL-wijzigingen die worden gebruikt om het deel van de tijd lijn van de opname te beschrijven die is opgenomen in het streaming-manifest:
 
-* `starttime`is een ISO 8601 DateTime-stempel waarmee de gewenste begin tijd van de video tijdlijn in het geretourneerde manifest wordt beschreven.
-* `endtime`is een ISO 8601 DateTime-stempel waarmee de gewenste eind tijd van de video tijdlijn wordt beschreven die in het manifest wordt geretourneerd.
+* `starttime` is een ISO 8601 DateTime-stempel waarmee de gewenste begin tijd van de video tijdlijn in het geretourneerde manifest wordt beschreven.
+* `endtime` is een ISO 8601 DateTime-stempel waarmee de gewenste eind tijd van de video tijdlijn wordt beschreven die in het manifest wordt geretourneerd.
 
 De maximale lengte (in tijd) van een dergelijk manifest mag niet langer zijn dan 24 uur.
 
@@ -294,7 +294,7 @@ Met een dergelijke registratie:
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T14:01:00.000Z,endTime=2019-12-21T03:00:00.000Z).m3u8`
 * Als u een manifest aanvraagt waarbij startTime en endTime zich in het midden bevonden, zegt u van 8 A.M. tot 10AM UTC, werkt de service op dezelfde manier alsof een activum filter zou resulteren in een leeg resultaat.
 
-    [Dit is een aanvraag waarbij een leeg antwoord wordt ontvangen]`GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
+    [Dit is een aanvraag waarbij een leeg antwoord wordt ontvangen] `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
 * Als u een manifest aanvraagt waarbij slechts één van de startTime of endTime binnen het gat ligt, zou het geretourneerde manifest alleen een gedeelte van die time span bevatten. De waarde startTime of endTime wordt op de dichtstbijzijnde geldige grens uitgelijnd. Als u bijvoorbeeld hebt gevraagd om een 3-HR-stroom van 10AM naar 1PM, zou het antwoord 1-uur media bevatten gedurende 12 12:00 uur tot 1PM
 
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T10:00:00.000Z,endTime=2019-12-21T13:00:00.000Z).m3u8`
@@ -303,7 +303,7 @@ Met een dergelijke registratie:
 
 ## <a name="recording-and-playback-latencies"></a>Latentie van vastleggen en afspelen
 
-Wanneer u live video Analytics gebruikt op IoT Edge om te registreren bij een Asset, geeft u een segmentLength-eigenschap op waarmee de module de minimale duur van de video (in seconden) kan samen voegen voordat deze in de Cloud wordt vastgelegd. Als segmentLength bijvoorbeeld is ingesteld op 300, wordt in de module 5 minuten aan video verzameld voordat er een ' chunk ' van 5 minuten wordt geüpload, waarna de volgende 5 minuten weer in de accumulatie modus wordt geuploadd. Het verhogen van de segmentLength heeft het voor deel van het verlagen van uw Azure Storage transactie kosten, omdat het aantal lees-en schrijf bewerkingen niet vaker dan eenmaal per segmentLength seconden zal duren.
+Wanneer u live video Analytics gebruikt op IoT Edge om te registreren bij een Asset, geeft u een segmentLength-eigenschap op waarmee de module de minimale duur van de video (in seconden) kan samen voegen voordat deze in de Cloud wordt vastgelegd. Als segmentLength bijvoorbeeld is ingesteld op 300, wordt in de module 5 minuten aan video verzameld vóór het uploaden van 1 5 minuten ' chunk ', waarna u de volgende vijf minuten kunt teruggaan naar de accumulatie modus. Het verhogen van de segmentLength heeft het voor deel van het verlagen van uw Azure Storage transactie kosten, omdat het aantal lees-en schrijf bewerkingen niet vaker dan eenmaal per segmentLength seconden zal duren.
 
 Als gevolg hiervan wordt het streamen van de video van Media Services minstens zoveel tijd vertraagd. 
 

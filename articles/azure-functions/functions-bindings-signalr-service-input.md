@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 326115a2a6cf29fcf211cdbd918edd0994fe45ed
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212122"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Invoer binding van de signalerings service voor Azure Functions
@@ -37,7 +37,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een invoer binding voor een signaal verbinding in eenfunction.jsin een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt *van* de binding om de verbindings gegevens te retour neren.
 
@@ -85,7 +85,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -111,7 +111,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -167,7 +167,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}` .
 
@@ -215,7 +215,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -242,7 +242,7 @@ Voor beeld function.jsop:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:

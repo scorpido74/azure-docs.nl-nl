@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
 ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984868"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure SQL Managed instance met SQL Server Integration Services (SSIS) gebruiken in Azure Data Factory
@@ -163,7 +163,7 @@ Zie [een Azure SSIS Integration runtime in azure Data Factory maken](create-azur
 
 ## <a name="clean-up-ssisdb-logs"></a>SSISDB-logboeken opschonen
 
-Het Bewaar beleid voor SSISDB-Logboeken wordt gedefinieerd door de onderstaande eigenschappen in de [catalogus. catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15):
+Het Bewaar beleid voor SSISDB-Logboeken wordt door onderstaande eigenschappen in [Catalog.catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15)gedefinieerd:
 
 - OPERATION_CLEANUP_ENABLED
 

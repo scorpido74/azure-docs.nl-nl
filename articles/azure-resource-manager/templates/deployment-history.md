@@ -5,10 +5,10 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91284615"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Implementatie geschiedenis met Azure Resource Manager weer geven
@@ -59,7 +59,7 @@ Als u de correlatie-ID wilt ophalen, gebruikt u:
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment).CorrelationId
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de implementatie van een resource groep wilt weer geven, gebruikt u de [lijst AZ Deployment Group](/cli/azure/group/deployment#az-deployment-group-list).
 
@@ -145,7 +145,7 @@ Als u het status bericht van mislukte bewerkingen wilt ophalen, gebruikt u de vo
 ((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de implementatie bewerkingen voor implementatie naar een resource groep wilt weer geven, gebruikt u de opdracht [AZ Deployment Operations Group List](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) . U moet beschikken over Azure CLI 2.6.0 of hoger.
 

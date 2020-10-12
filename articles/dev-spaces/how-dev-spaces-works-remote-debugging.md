@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Beschrijft de processen voor externe fout opsporing op de Azure Kubernetes-service met Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213386"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Hoe kan ik de code op afstand opsporen met Azure dev Spaces?
@@ -30,7 +30,7 @@ De afbeelding van het fout opsporingsprogramma wordt automatisch bepaald door he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](how-dev-spaces-works.md)

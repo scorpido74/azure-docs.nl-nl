@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84791908"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>Azure deny-toewijzingen weer geven met behulp van de REST API
@@ -33,7 +33,7 @@ Met [Azure deny-toewijzingen](deny-assignments.md) kunnen gebruikers specifieke 
 
 Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende nodig:
 
-- `Microsoft.Authorization/denyAssignments/read`toestemming, die deel uitmaakt van de meeste [ingebouwde rollen van Azure](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read` toestemming, die deel uitmaakt van de meeste [ingebouwde rollen van Azure](built-in-roles.md).
 
 ## <a name="list-a-single-deny-assignment"></a>Een enkele weigerings toewijzing weer geven
 
@@ -80,7 +80,7 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
 1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met geweigerde toewijzingen te filteren.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Description |
+    > | Filter | Beschrijving |
     > | --- | --- |
     > | (geen filter) | Een lijst met alle weigerings toewijzingen op, boven en onder het opgegeven bereik. |
     > | `$filter=atScope()` | Een lijst met weigerings toewijzingen voor het opgegeven bereik en hierboven. Omvat niet de weigerings toewijzingen in subbereiken. |
@@ -102,7 +102,7 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
 1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de lijst met geweigerde toewijzingen te filteren. U moet een filter opgeven.
 
     > [!div class="mx-tableFixed"]
-    > | Filteren | Description |
+    > | Filter | Beschrijving |
     > | --- | --- |
     > | `$filter=atScope()` | Lijst weigeren alleen toewijzingen voor het hoofd bereik. Omvat niet de weigerings toewijzingen in subbereiken. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Weiger toewijzingen met de opgegeven naam. |
@@ -113,4 +113,4 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
 
 - [Meer informatie over Azure deny-toewijzingen](deny-assignments.md)
 - [Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren](elevate-access-global-admin.md)
-- [Naslag informatie over Azure REST API](/rest/api/azure/)
+- [Azure REST API-naslaginformatie](/rest/api/azure/)

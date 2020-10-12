@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89503989"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Een Apache HBase-cluster migreren naar een nieuwe versie
@@ -32,8 +32,8 @@ Hier volgt een voorbeeld matrix voor de compatibiliteits versie. Y duidt op comp
 
 | Compatibiliteits type | Primaire versie| Secundaire versie | Patch |
 | --- | --- | --- | --- |
-| Compatibiliteit tussen client en server | N | J | J |
-| Server-server compatibiliteit | N | J | J |
+| Compatibiliteit met Client-Server bedrading | N | J | J |
+| Server-Server compatibiliteit | N | J | J |
 | Compatibiliteit van bestands indelingen | N | J | J |
 | Compatibiliteit van client-API | N | J | J |
 | Binaire client compatibiliteit | N | N | J |
@@ -201,7 +201,7 @@ Voer de volgende stappen uit om uw Apache HBase-cluster in azure HDInsight bij t
     1. Start HBase opnieuw.
 
 1. Als u een upgrade uitvoert naar een andere HDInsight-versie dan 4,0, voert u de volgende stappen uit:
-    1. Sla de wijzigingen op.
+    1. Sla uw wijzigingen op.
     1. Start alle vereiste services opnieuw op zoals aangegeven door Ambari.
 
 1. Wijs uw toepassing naar het nieuwe cluster.

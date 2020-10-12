@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
 ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88261885"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Levens cyclus en statussen van virtuele machines
@@ -424,7 +424,7 @@ Azure resource Explorer biedt een eenvoudige gebruikers interface voor het weer 
 
 De inrichtings statussen zijn zichtbaar in de VM-eigenschappen en de weer gave van exemplaren. Energie statussen zijn beschikbaar in de instantie weergave van de virtuele machine.
 
-Als u de energie status van alle virtuele machines in uw abonnement wilt ophalen, gebruikt u de [virtual machines lijst alle api's](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) waarvoor para meter **statusOnly** is ingesteld op *True*.
+Als u de energiestatus van alle VM's in uw abonnement wilt ophalen, gebruikt u de API [Virtual Machines - List All](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall), waarbij u de parameter **statusOnly** instelt op *true*.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 0da8a4fc1b59976c50cd96f2155715a4cb178cc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072768"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Gegevens verplaatsen naar Azure Blob-opslag
@@ -42,7 +42,7 @@ Gedetailleerde informatie is opgenomen in de avere CLFSLoad-distributie, die bes
 Een algemeen overzicht van het proces:
 
 1. Bereid een Linux-systeem (VM of fysiek) voor met python versie 3,6 of hoger. Python 3,7 wordt aanbevolen voor betere prestaties.
-1. Installeer de avere-CLFSLoad-software op het Linux-systeem.
+1. Installeer de Avere-CLFSLoad-software op het Linux-systeem.
 1. Voer de overdracht uit vanaf de Linux-opdracht regel.
 
 Het hulp programma avere CLFSLoad heeft de volgende informatie nodig:

@@ -1,5 +1,5 @@
 ---
-title: Azure-cache bewaken voor redis
+title: Azure Cache voor Redis bewaken
 description: Meer informatie over het controleren van de status en prestaties van uw Azure-cache voor redis-instanties
 author: yegu-ms
 ms.author: yegu
@@ -7,13 +7,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004846"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Azure-cache bewaken voor redis
+# <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache voor Redis bewaken
 
 Azure cache voor redis maakt gebruik van [Azure monitor](../azure-monitor/index.yml) om verschillende opties te bieden voor het bewaken van uw cache-exemplaren. U kunt metrische gegevens weer geven, metrische grafieken vastmaken aan het start Board, het datum-en tijds bereik van bewakings grafieken aanpassen, metrische gegevens aan de grafieken toevoegen en verwijderen, en waarschuwingen instellen wanneer aan bepaalde voor waarden wordt voldaan. Met deze hulpprogram ma's kunt u de status van uw Azure-cache bewaken voor redis-instanties en helpt u bij het beheren van uw cache toepassingen.
 

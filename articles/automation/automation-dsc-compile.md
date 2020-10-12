@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186534"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in de configuratie van de Azure Automation status
@@ -47,7 +47,7 @@ U kunt [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/st
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzAutomationDscCompilationJob`retourneert een compilatie taak object dat u kunt gebruiken om de taak status bij te houden. U kunt dit compilatie taak object vervolgens gebruiken met [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) om de status van de compilatie taak te bepalen, en [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) om de streams weer te geven (uitvoer). In het volgende voor beeld wordt de compilatie van de SampleConfig-configuratie gestart, wordt gewacht tot deze is voltooid en worden vervolgens de streams weer gegeven.
+`Start-AzAutomationDscCompilationJob` retourneert een compilatie taak object dat u kunt gebruiken om de taak status bij te houden. U kunt dit compilatie taak object vervolgens gebruiken met [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) om de status van de compilatie taak te bepalen, en [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) om de streams weer te geven (uitvoer). In het volgende voor beeld wordt de compilatie van de SampleConfig-configuratie gestart, wordt gewacht tot deze is voltooid en worden vervolgens de streams weer gegeven.
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -127,7 +127,7 @@ Met de functie **samengestelde resources** kunt u DSC-configuraties gebruiken al
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData beheren bij het compileren van configuraties in Azure Automation
 
-`ConfigurationData`is een ingebouwde DSC-para meter waarmee u de structurele configuratie kunt scheiden van elke omgevings-specifieke configuratie terwijl u Power shell DSC gebruikt. Zie [' What ' van ' where ' in Power shell DSC scheiden](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)voor meer informatie.
+`ConfigurationData` is een ingebouwde DSC-para meter waarmee u de structurele configuratie kunt scheiden van elke omgevings-specifieke configuratie terwijl u Power shell DSC gebruikt. Zie [' What ' van ' where ' in Power shell DSC scheiden](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)voor meer informatie.
 
 > [!NOTE]
 > Bij het compileren in Azure Automation status configuratie kunt u gebruiken `ConfigurationData` in azure PowerShell, maar niet in de Azure Portal.
@@ -184,7 +184,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 Activa verwijzingen zijn hetzelfde in de Azure Automation status configuratie en runbooks. Raadpleeg de volgende artikelen voor meer informatie:
 
-- [Certificaten](./shared-resources/certificates.md)
+- [Bewijzen](./shared-resources/certificates.md)
 - [Verbindingen](automation-connections.md)
 - [Referenties](./shared-resources/credentials.md)
 - [Variabelen](./shared-resources/variables.md)

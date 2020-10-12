@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: dc759bb9af852fab5313686ebaffefda9220f45a
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614237"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Maak een set referentie gegevens voor uw Azure Time Series Insights gen1-omgeving met behulp van de Azure Portal
 
 > [!CAUTION]
-> Dit is een gen1-artikel.
+> Dit is een Gen1-artikel.
 
 In dit artikel wordt beschreven hoe u een set met referentie gegevens toevoegt aan uw Azure Time Series Insights omgeving. Referentie gegevens zijn handig om samen te voegen met de bron gegevens om de waarden te verbeteren.
 

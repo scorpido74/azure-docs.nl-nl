@@ -1,5 +1,5 @@
 ---
-title: Een tunnel voor altijd-op-VPN configureren
+title: Een Always-On VPN-tunnel configureren
 titleSuffix: Azure Virtual WAN
 description: Stappen voor het configureren van de tunnel voor altijd op VPN-apparaten voor virtuele WAN
 services: virtual-wan
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e814487cb4dab9c8c19daab2ea3bb81391d4a98f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983680"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Een tunnel voor altijd op VPN-apparaat configureren voor virtuele WAN
@@ -34,7 +34,7 @@ U moet een punt-naar-site-configuratie maken en de toewijzing van de virtuele hu
 
 Als u het profiel wilt verwijderen, voert u de volgende opdracht uit:
 
-![Scherm afbeelding toont een Power shell-venster waarin de opdracht Remove-VpnConnection-name MachineCertTest wordt uitgevoerd.](./media/howto-always-on-device-tunnel/cleanup.png)
+![Scherm afbeelding toont een Power shell-venster met de opdracht Remove-VpnConnection naam MachineCertTest.](./media/howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

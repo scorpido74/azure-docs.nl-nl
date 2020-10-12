@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: dd4a02ffdc062ed1940d35ca64e02a5e0a88a248
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333321"
 ---
 # <a name="read-and-write-spatial-data"></a>Ruimtelijke gegevens lezen en schrijven
@@ -29,7 +29,7 @@ In de volgende tabel ziet u de indeling van ruimtelijke bestanden die worden ond
 | KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | Ruimtelijke CSV       | ✓  |  ✓  |
-| Bekende tekst   | ✓  |  ✓  |
+| Well-Known tekst   | ✓  |  ✓  |
 
 In deze volgende secties vindt u een overzicht van de verschillende hulpprogram ma's voor het lezen en schrijven van ruimtelijke gegevens met behulp van de ruimtelijke IO-module.
 
@@ -123,26 +123,26 @@ atlas.io.read(data, {
 );
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>Well-bekende tekst lezen en schrijven (WKT)
+## <a name="read-and-write-well-known-text-wkt"></a>Well-Known tekst lezen en schrijven (WKT)
 
 [Bekende tekst](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) is een Open Geospatial Consortium-standaard (OGC) voor het vertegenwoordigen van ruimtelijke geometrie als tekst. Veel georuimtelijke systemen bieden ondersteuning voor WKT, zoals Azure SQL en Azure PostgreSQL met behulp van de PostGIS-invoeg toepassing. Net als bij de meeste OGC-standaarden zijn coördinaten ingedeeld als ' lengte graad breedte ' om te worden uitgelijnd met het ' x y-' Conventie. Een voor beeld: een punt op de lengte graad-110 en Latitude 45 kan worden geschreven als `POINT(-110 45)` gebruik van de WKT-indeling.
 
 Bekende tekst kan worden gelezen met behulp van de `atlas.io.ogc.WKT.read` functie en geschreven met behulp van de `atlas.io.ogc.WKT.write` functie.
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Voor beelden van bekende tekst met lees-en schrijf bewerkingen (WKT)
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Voor beelden van het lezen en schrijven van Well-Known tekst (WKT)
 
 De volgende code laat zien hoe u de bekende teken reeks kunt lezen `POINT(-122.34009 47.60995)` en deze op de kaart kunt weer geven met behulp van een Bubble laag.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Bekende tekst lezen' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Raadpleeg de pen <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Lees bekende tekst</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Well-Known tekst lezen' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known tekst lezen</a> op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 De volgende code toont de lees-en schrijf bewerkingen van bekende tekst heen en weer.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Bekende tekst lezen en schrijven' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Lees en schrijf bekende tekst</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Well-Known tekst lezen en schrijven' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Ga naar de pen <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Well-Known tekst lezen en schrijven</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> op <a href='https://codepen.io'>CodePen</a>() op de Azure Maps.
 </iframe>
 
 ## <a name="read-and-write-gml"></a>GML lezen en schrijven

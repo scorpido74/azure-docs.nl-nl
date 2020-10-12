@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948127"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Rollover van de handtekening sleutel in het micro soft Identity-platform
@@ -37,7 +37,7 @@ Hoe uw toepassing de sleutel rollover afhandelt, is afhankelijk van variabelen z
 * [Systeem eigen client toepassingen die bronnen gebruiken](#nativeclient)
 * [Webtoepassingen/Api's die bronnen gebruiken](#webclient)
 * [Webtoepassingen/Api's die resources beveiligen en gebouwd met behulp van Azure-app Services](#appservices)
-* [Webtoepassingen/Api's die resources beveiligen met behulp van .NET OWIN OpenID Connect Connect, WS-InPort of WindowsAzureActiveDirectoryBearerAuthentication middleware](#owin)
+* [Webtoepassingen/Api's die resources beveiligen met behulp van .NET OWIN OpenID Connect Connect, WS-Fed of WindowsAzureActiveDirectoryBearerAuthentication middleware](#owin)
 * [Webtoepassingen/Api's die resources beveiligen met behulp van .NET core OpenID Connect Connect of JwtBearerAuthentication middleware](#owincore)
 * [Webtoepassingen/Api's die resources beveiligen met behulp van Node.js Pass Port-Azure-ad-module](#passport)
 * [Webtoepassingen/Api's die resources beveiligen en zijn gemaakt met Visual Studio 2015 of hoger](#vs2015)
@@ -65,8 +65,8 @@ Webtoepassingen en Web-Api's die gebruikmaken van de app-only-stroom (client ref
 ### <a name="web-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Webtoepassingen/Api's die resources beveiligen en gebouwd met behulp van Azure-app Services
 De functie voor verificatie/autorisatie van Azure-app Services (EasyAuth) heeft al de benodigde logica voor het automatisch verwerken van de sleutel rollover.
 
-### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webtoepassingen/Api's die resources beveiligen met behulp van .NET OWIN OpenID Connect Connect, WS-InPort of WindowsAzureActiveDirectoryBearerAuthentication middleware
-Als uw toepassing gebruikmaakt van de .NET OWIN OpenID Connect Connect, WS-insluiting of WindowsAzureActiveDirectoryBearerAuthentication middleware, beschikt deze al over de benodigde logica om de sleutel rollover automatisch te verwerken.
+### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webtoepassingen/Api's die resources beveiligen met behulp van .NET OWIN OpenID Connect Connect, WS-Fed of WindowsAzureActiveDirectoryBearerAuthentication middleware
+Als uw toepassing gebruikmaakt van de .NET OWIN OpenID Connect Connect, WS-Fed of WindowsAzureActiveDirectoryBearerAuthentication middleware, beschikt deze al over de benodigde logica om de sleutel rollover automatisch te verwerken.
 
 U kunt controleren of uw toepassing een van deze gebruikt door te zoeken naar een van de volgende fragmenten in de Startup.cs of Startup.Auth.cs van uw toepassing
 
@@ -284,7 +284,7 @@ Volg de onderstaande stappen om te controleren of de sleutel rollover logica wer
           </keys>
    ```
 2. Wijzig in de **\<add thumbprint="">** instelling de waarde van de vinger afdruk door een teken te vervangen door een andere. Sla het **Web.config** bestand op.
-3. Bouw de toepassing en voer deze uit. Als u het aanmeld proces kunt volt ooien, wordt de sleutel door uw toepassing bijgewerkt door de vereiste informatie te downloaden uit het federatieve meta gegevens document van uw Directory. Als u problemen ondervindt bij het aanmelden, moet u ervoor zorgen dat de wijzigingen in uw toepassing correct zijn door het [toevoegen van een aanmelding aan uw webtoepassing met micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) -artikel of het downloaden en inspecteren van het volgende code voorbeeld: [multi tenant-Cloud toepassing voor Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Bouw de toepassing en voer deze uit. Als u het aanmeld proces kunt volt ooien, wordt de sleutel door uw toepassing bijgewerkt door de vereiste informatie te downloaden uit het federatieve meta gegevens document van uw Directory. Als u problemen ondervindt bij het aanmelden, moet u controleren of de wijzigingen in uw toepassing juist zijn door het artikel [Sign-On toevoegen aan uw webtoepassing met micro soft Identity platform te](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) lezen of het volgende code voorbeeld te downloaden en te controleren: [multi tenant-Cloud toepassing voor Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Webtoepassingen die bronnen beveiligen en zijn gemaakt met Visual Studio 2008 of 2010 en Windows Identity Foundation (WIF) v 1.0 voor .NET 3,5
 Als u een toepassing op WIF v 1.0 hebt gemaakt, is er geen mechanisme voor het automatisch vernieuwen van de configuratie van uw toepassing om een nieuwe sleutel te gebruiken.

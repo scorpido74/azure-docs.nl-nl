@@ -9,10 +9,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187367"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modules beheren in Azure Automation
@@ -144,7 +144,7 @@ U kunt de AZ-modules in de Azure Portal importeren. Vergeet niet om alleen de AZ
 
     ![Scherm opname van het importeren van modules in uw Automation-account](../media/modules/import-module.png)
 
-U kunt deze import bewerking ook uitvoeren via de [PowerShell Gallery](https://www.powershellgallery.com)door te zoeken naar de module die u wilt importeren. Wanneer u de module hebt gevonden, selecteert u deze en klikt u op het tabblad **Azure Automation** . selecteer **naar Azure Automation implementeren**.
+U kunt deze import bewerking ook uitvoeren via de [PowerShell Gallery](https://www.powershellgallery.com)door te zoeken naar de module die u wilt importeren. Wanneer u de module hebt gevonden, selecteert u deze en kiest u het tabblad **Azure Automation** . Selecteer **implementeren in azure Automation**.
 
 ![Scherm afbeelding van het rechtstreeks importeren van modules vanuit PowerShell Gallery](../media/modules/import-gallery.png)
 
@@ -217,7 +217,7 @@ Neem een samen vatting, beschrijving en Help-URI op voor elke cmdlet in uw modul
 
   ![Scherm afbeelding van de Help voor integratie modules](../media/modules/module-activity-description.png)
 
-### <a name="connection-type"></a>Verbindingstype
+### <a name="connection-type"></a>Type verbinding
 
 Als de module verbinding maakt met een externe service, definieert u een verbindings type met behulp van een [aangepaste integratie module](#custom-modules). Elke cmdlet in de module moet een exemplaar van dat verbindings type (verbindings object) accepteren als een para meter. Gebruikers wijzen alle para meters van de verbindings Asset toe aan de bijbehorende para meters telkens wanneer ze een cmdlet aanroepen. 
 
@@ -242,7 +242,7 @@ Een eenvoudiger en betere manier om dit gedrag te benaderen, is door het verbind
   }
   ```
 
-U kunt hetzelfde gedrag voor uw cmdlets inschakelen door ze in staat te stellen een verbindings object rechtstreeks als para meter te accepteren, in plaats van alleen verbindings velden voor para meters. Doorgaans wilt u voor elke para meter instellen, zodat een gebruiker die Automation niet gebruikt, uw cmdlets kan aanroepen zonder een hashtabel te maken die als verbindings object moet fungeren. De parameterset `UserAccount` wordt gebruikt om de eigenschappen van het verbindings veld door te geven. `ConnectionObject`Hiermee kunt u de verbinding direct door geven.
+U kunt hetzelfde gedrag voor uw cmdlets inschakelen door ze in staat te stellen een verbindings object rechtstreeks als para meter te accepteren, in plaats van alleen verbindings velden voor para meters. Doorgaans wilt u voor elke para meter instellen, zodat een gebruiker die Automation niet gebruikt, uw cmdlets kan aanroepen zonder een hashtabel te maken die als verbindings object moet fungeren. De parameterset `UserAccount` wordt gebruikt om de eigenschappen van het verbindings veld door te geven. `ConnectionObject` Hiermee kunt u de verbinding direct door geven.
 
 ### <a name="output-type"></a>Uitvoertype
 

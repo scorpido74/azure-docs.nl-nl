@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006293"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual array implementeren: ingesteld als bestands server via Azure Portal
@@ -124,7 +124,7 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
 Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om de vereiste apparaatinstellingen te volt ooien.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Het apparaat als bestands server configureren
-1. Ga naar de StorSimple-Apparaatbeheer service en ga vervolgens naar **beheer > apparaten**. Selecteer op de Blade **apparaten** het apparaat dat u zojuist hebt gemaakt. Dit apparaat wordt weer gegeven als **gereed voor configuratie**.
+1. Ga naar de StorSimple-Apparaatbeheer service en ga vervolgens naar  **beheer > apparaten**. Selecteer op de Blade **apparaten** het apparaat dat u zojuist hebt gemaakt. Dit apparaat wordt weer gegeven als **gereed voor configuratie**.
    
    ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Klik op het apparaat. er wordt een banner bericht weer gegeven dat aangeeft dat het apparaat gereed is voor installatie.
@@ -155,7 +155,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://portal.azure.com/) om 
    
         ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. Zodra de referenties van het opslag account zijn gemaakt, wordt de Blade **configureren** bijgewerkt om de opgegeven referenties voor het opslag account weer te geven. Klik op **configureren**.
+5. Zodra de referenties van het opslag account zijn gemaakt, wordt de Blade **configureren** bijgewerkt om de opgegeven referenties voor het opslag account weer te geven. Klik op **Configureren**
    
    ![Een bestands server configureren](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    

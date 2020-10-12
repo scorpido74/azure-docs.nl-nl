@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 42932d712d6c4a94cad28aec924b88fbc126662b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212793"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x en hoger
@@ -358,7 +358,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Deze sectie bevat de volgende voor beelden:
 
@@ -404,7 +404,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 ```
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
     using System;
@@ -440,7 +440,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```csharp
     public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -498,7 +498,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System.Net;
@@ -562,7 +562,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System.Net;
@@ -624,7 +624,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 using System.Net;
@@ -681,7 +681,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -763,7 +763,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
     // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
@@ -815,7 +815,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -875,7 +875,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -917,7 +917,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
     module.exports = function (context, input) {
@@ -972,7 +972,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import azure.functions as func
@@ -1026,7 +1026,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import logging
@@ -1086,7 +1086,7 @@ Dit is de *function.jsvoor* het volgende bestand:
 }
 ```
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import logging
@@ -1126,7 +1126,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import azure.functions as func
@@ -1215,7 +1215,7 @@ public class DocByIdFromQueryString {
 }
  ```
 
-Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBInput` annotatie voor functie parameters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBInput` annotatie voor functie parameters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeemeigen Java-typen, POJO's of nullbare waarden met `Optional<T>`.
 
 <a id="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>
 
@@ -1410,17 +1410,17 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [C
 
 De constructor van het kenmerk neemt de naam van de data base en de verzameling. Zie [de volgende configuratie sectie](#configuration)voor informatie over de instellingen en andere eigenschappen die u kunt configureren.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1430,12 +1430,12 @@ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/f
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDB` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `CosmosDB`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
-|**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |
+|**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB`.        |
+|**direction**     | N.v.t. | Moet worden ingesteld op `in`.         |
 |**name**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** |**DatabaseName** |De data base met het document.        |
 |**collectionName** |**NaamVerzameling** | De naam van de verzameling die het document bevat. |
@@ -1453,7 +1453,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 Wanneer de functie is afgesloten, worden alle wijzigingen die zijn aangebracht in het invoer document via benoemde invoer parameters automatisch behouden.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 Wanneer de functie is afgesloten, worden alle wijzigingen die zijn aangebracht in het invoer document via benoemde invoer parameters automatisch behouden.
 
@@ -1467,7 +1467,7 @@ Gegevens worden via een para meter beschikbaar gemaakt voor de functie `Document
 
 # <a name="java"></a>[Java](#tab/java)
 
-Met de aantekening in de [runtime bibliotheek van Java functions](/java/api/overview/azure/functions/runtime) [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) worden Cosmos DB gegevens aan de functie toegevoegd. Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
+Met de aantekening in de [runtime bibliotheek van Java functions](/java/api/overview/azure/functions/runtime) [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) worden Cosmos DB gegevens aan de functie toegevoegd. Deze aantekening kan worden gebruikt met systeemeigen Java-typen, POJO's of nullbare waarden met `Optional<T>`.
 
 ---
 
