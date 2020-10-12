@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776286"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van runbooks in Azure Automation
@@ -43,7 +43,7 @@ U kunt ook een [Hybrid Runbook worker](automation-hybrid-runbook-worker.md) gebr
 
 De volgende tabel bevat een aantal uitvoerings taken voor runbook met de aanbevolen uitvoerings omgeving die voor elk wordt vermeld.
 
-|Taak|Aanbeveling|Opmerkingen|
+|Taak|Aanbeveling|Notities|
 |---|---|---|
 |Integreren met Azure-resources|Azure sandbox|Verificatie is eenvoudiger in Azure. Als u een Hybrid Runbook Worker op een virtuele Azure-machine gebruikt, kunt u [Runbook-verificatie gebruiken met beheerde identiteiten](automation-hrw-run-runbooks.md#runbook-auth-managed-identities).|
 |Optimale prestaties verkrijgen om Azure-resources te beheren|Azure sandbox|Script wordt uitgevoerd in dezelfde omgeving, met minder latentie.|
@@ -218,7 +218,7 @@ Runbooks die worden uitgevoerd in azure-sandboxes bieden geen ondersteuning voor
 
 ## <a name="device-and-application-characteristics"></a>Kenmerken van apparaten en toepassingen
 
-Runbook-taken in azure-sandboxes hebben geen toegang tot de kenmerken van apparaten of toepassingen. De meest voorkomende API die wordt gebruikt om de metrische gegevens over prestaties in Windows op te vragen, is WMI, met een aantal algemene metrische gegevens die geheugen en CPU-gebruik zijn. Het maakt echter niet uit welke API wordt gebruikt, omdat taken die in de cloud worden uitgevoerd, geen toegang hebben tot de micro soft-implementatie van Web-Based Enterprise Management (WBEM). Dit platform is gebaseerd op de Common Information Model (CIM) en biedt de industrie normen voor het definiëren van kenmerken van apparaten en toepassingen.
+Runbook-taken in azure-sandboxes hebben geen toegang tot de kenmerken van apparaten of toepassingen. De meest voorkomende API die wordt gebruikt om de metrische gegevens over prestaties in Windows op te vragen, is WMI, met een aantal algemene metrische gegevens die geheugen en CPU-gebruik zijn. Het maakt echter niet uit welke API wordt gebruikt, omdat taken die in de cloud worden uitgevoerd, geen toegang hebben tot de micro soft-implementatie van Web-Based Enter prise Management (WBEM). Dit platform is gebaseerd op de Common Information Model (CIM) en biedt de industrie normen voor het definiëren van kenmerken van apparaten en toepassingen.
 
 ## <a name="webhooks"></a>Webhooks
 

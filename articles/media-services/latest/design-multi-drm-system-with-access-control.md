@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89298195"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer
@@ -192,11 +192,11 @@ De implementatie omvat de volgende stappen:
 
 7. Maak een ASP.NET MVC-app om uw video speler te hosten. Deze ASP.NET-app wordt beveiligd met de gebruikers verificatie voor de Azure AD-Tenant. De juiste claims zijn opgenomen in de toegangs tokens die zijn verkregen na de verificatie van de gebruiker. U kunt OpenID Connect Connect API voor deze stap aanbevelen. Installeer de volgende NuGet-pakketten:
 
-   * Installeer-package micro soft. Azure. ActiveDirectory. GraphClient
-   * Installeer-package micro soft. Owin. Security. OpenIdConnect
-   * Installeer-package micro soft. Owin. Security. cookies
-   * Installeren-package Microsoft.Owin.Host.SystemWeb
-   * Installeer-package micro soft. Identity model. clients. ActiveDirectory
+   * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
+   * Install-Package micro soft. Owin. Security. OpenIdConnect
+   * Install-Package micro soft. Owin. Security. cookies
+   * Install-Package Microsoft.Owin.Host.SystemWeb
+   * Install-Package micro soft. Identity model. clients. ActiveDirectory
 
 8. Een speler maken met behulp van de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) om op te geven welke DRM-technologie op verschillende DRM-platforms moet worden gebruikt.
 

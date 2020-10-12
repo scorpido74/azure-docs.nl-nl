@@ -15,13 +15,13 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984173"
 ---
-# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Aangepaste Azure-rollen maken of bijwerken met Azure CLI
+# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van Azure CLI
 
 > [!IMPORTANT]
 > Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
@@ -242,6 +242,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure CLI](tutorial-custom-role-cli.md)
+- [Zelfstudie: Een aangepaste Azure-rol maken met Azure CLI](tutorial-custom-role-cli.md)
 - [Aangepaste Azure-rollen](custom-roles.md)
-- [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)
+- [Bewerkingen voor Azure Resource Manager-resourceproviders](resource-provider-operations.md)

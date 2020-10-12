@@ -4,7 +4,7 @@
   items:
     - name: Over Virtual Network
       href: virtual-networks-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Een virtueel netwerk maken - Portal
       href: quick-create-portal.md

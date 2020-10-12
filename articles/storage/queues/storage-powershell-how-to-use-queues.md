@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 8f45a4de2e13f936556f8dd99aa107110edc6e91
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077922"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
@@ -164,7 +164,7 @@ $queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Resul
 
 ## <a name="delete-a-queue"></a>Een wachtrij verwijderen
 
-Als u een wachtrij en alle berichten erin wilt verwijderen, roept u de cmdlet Remove-AzStorageQueue aan. In het volgende voor beeld ziet u hoe u de specifieke wachtrij die in deze oefening wordt gebruikt, verwijdert met behulp van de cmdlet Remove-AzStorageQueue.
+Als u een wachtrij en alle berichten erin wilt verwijderen, roept u de cmdlet Remove-AzStorageQueue aan. In het volgende voor beeld ziet u hoe u de specifieke wachtrij verwijdert die in deze oefening wordt gebruikt met behulp van de cmdlet Remove-AzStorageQueue.
 
 ```powershell
 # Delete the queue

@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: f000251009bda730b15458f3ab4d8b7d6ca1db6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87030297"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Notification hubs implementeren en beheren met Power shell
@@ -78,7 +78,7 @@ catch [System.Exception]
 
 Als u Notification Hubs wilt inrichten, maakt u een instantie van de [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) -klasse van de SDK.
 
-U kunt met behulp van de cmdlet [Get-AzureSBAuthorizationRule] die deel uitmaakt van Azure PowerShell, een autorisatie regel ophalen die wordt gebruikt om een Connection String op te geven. Een verwijzing naar het `NamespaceManager` exemplaar wordt opgeslagen in de `$NamespaceManager` variabele. `$NamespaceManager`wordt gebruikt om een notification hub in te richten.
+U kunt met behulp van de cmdlet [Get-AzureSBAuthorizationRule] die deel uitmaakt van Azure PowerShell, een autorisatie regel ophalen die wordt gebruikt om een Connection String op te geven. Een verwijzing naar het `NamespaceManager` exemplaar wordt opgeslagen in de `$NamespaceManager` variabele. `$NamespaceManager` wordt gebruikt om een notification hub in te richten.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -158,7 +158,7 @@ Sommige kant-en-klare scripts zijn ook beschikbaar om te worden gedownload:
 
 [Aankoop opties]: https://azure.microsoft.com/pricing/purchase-options/
 [Aanbiedingen voor leden]: https://azure.microsoft.com/pricing/member-offers/
-[Gratis proef versie]: https://azure.microsoft.com/pricing/free-trial/
+[Gratis proefversie]: https://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell installeren en configureren]: /powershell/azure/
 [.NET-API voor Notification Hubs]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure.service/get-azuresbnamespace

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86544799"
 ---
 Als u de cmdlets wilt uitvoeren, kunt u Azure Cloud Shell gebruiken, een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Selecteer **kopiëren** om de code te kopiëren en plak deze in Cloud shell. Selecteer vervolgens **Enter** om het uit te voeren. Er zijn enkele manieren om Cloud Shell te starten:

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704307"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Verbindings bibliotheken voor Azure Database for PostgreSQL-één server
@@ -26,7 +26,7 @@ De meeste taal-client bibliotheken die worden gebruikt om verbinding te maken me
 | Node.js | [PG NPM-pakket](https://www.npmjs.com/package/pg) | Zuivere Java script-client die niet wordt geblokkeerd | [Installeren](https://www.npmjs.com/package/pg) |
 | Java | [JDBC](https://jdbc.postgresql.org/) | Type 4 JDBC-stuur programma | [Downloaden](https://jdbc.postgresql.org/download.html)  |
 | Ruby | [Pagina Gem](https://deveiate.org/code/pg/) | Ruby-interface | [Downloaden](https://rubygems.org/downloads/pg-0.20.0.gem) |
-| Aan de slag | [Pakket pq](https://godoc.org/github.com/lib/pq) | Puur go post gres-stuur programma | [Installeren](https://github.com/lib/pq/blob/master/README.md) |
+| Go | [Pakket pq](https://godoc.org/github.com/lib/pq) | Puur go post gres-stuur programma | [Installeren](https://github.com/lib/pq/blob/master/README.md) |
 | C \# /.net | [Npgsql](https://www.npgsql.org/) | ADO.NET-gegevens provider | [Downloaden](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | ODBC-stuurprogramma | [Downloaden](https://www.postgresql.org/ftp/odbc/versions/) |
 | C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | Primaire C-taal interface | Inbegrepen |

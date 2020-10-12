@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.openlocfilehash: b5b8c014a7150ad83875b9fd361c3538d865d153
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064121"
 ---
 # <a name="safely-manage-jar-dependencies"></a>Jar-afhankelijkheden veilig beheren
@@ -27,7 +27,7 @@ Arcering biedt een manier om afhankelijkheden in te voegen en de naam ervan te w
 ## <a name="how-to-shade-a-package"></a>Hoe kan ik een pakket arceren?
 
 ### <a name="use-uber-jar"></a>Gebruik uber-jar
-Uber-jar is een enkel jar-bestand dat zowel de toepassing jar als de bijbehorende afhankelijkheden bevat. De afhankelijkheden in uber-jar zijn standaard niet gearceerd. In sommige gevallen kan dit leiden tot een versie conflict als andere onderdelen of toepassingen verwijzen naar een andere versie van die bibliotheken. Om dit te voor komen, kunt u een uber-bestand maken met enkele (of alle) van de gearceerde afhankelijkheden.
+Uber-jar is een enkel jar-bestand dat zowel de toepassing jar als de bijbehorende afhankelijkheden bevat. De afhankelijkheden in uber-jar zijn standaard niet gearceerd. In sommige gevallen kan dit leiden tot een versie conflict als andere onderdelen of toepassingen verwijzen naar een andere versie van die bibliotheken. Als u dit wilt voor komen, kunt u een Uber-Jar bestand bouwen met enkele (of alle) van de gearceerde afhankelijkheden.
 
 ### <a name="shade-package-using-maven"></a>Schaduw pakket met behulp van Maven
 Maven kan toepassingen bouwen die zijn geschreven in Java en scala. Met maven-Shade-invoeg toepassing kunt u eenvoudig een gekleurd uber-jar maken.

@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776150"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
@@ -183,10 +183,10 @@ Hier volgt een voor beeld van hoe u de IOPS en de door Voer/band breedte kunt be
 
 | Toepassings vereiste | I/O-grootte | IOPS | Door Voer/band breedte |
 | --- | --- | --- | --- |
-| Max. IOPS |8 kB |5.000 |40 MB per seconde |
+| Max. IOPS |8 kB |5\.000 |40 MB per seconde |
 | Maximale door Voer |1024 KB |200 |200 MB per seconde |
 | Maximale door Voer + hoge IOPS |64 kB |3.200 |200 MB per seconde |
-| Maximale IOPS + hoge door Voer |32 kB |5.000 |160 MB per seconde |
+| Maximale IOPS + hoge door Voer |32 kB |5\.000 |160 MB per seconde |
 
 Als u IOPS en band breedte wilt ophalen die hoger is dan de maximum waarde van één Premium-opslag schijf, gebruikt u meerdere Premium-schijven die met elkaar zijn gesegmenteerd. U kunt bijvoorbeeld twee P30-schijven opstrepen om een gecombineerde IOPS van 10.000 IOPS te verkrijgen of een gecombineerde door Voer van 400 MB per seconde. Zoals uitgelegd in de volgende sectie, moet u een VM-grootte gebruiken die ondersteuning biedt voor de gecombineerde schijf-IOPS en-door voer.
 
@@ -197,7 +197,7 @@ Als u de gevolgen van de i/o-grootte voor de prestaties van de toepassing wilt W
 
 ## <a name="high-scale-vm-sizes"></a>VM-grootten hoog schalen
 
-Wanneer u begint met het ontwerpen van een toepassing, selecteert u een virtuele machine om uw toepassing te hosten. Premium Storage wordt geleverd met grootschalige VM-grootten die toepassingen kunnen uitvoeren die een hogere reken kracht vereisen en een hoge I/O-prestaties van de lokale schijf. Deze Vm's bieden snellere processors, een hogere geheugen-naar-kern-verhouding en een SSD (Solid-State Drive) voor de lokale schijf. Voor beelden van virtuele machines met een hoge schaal ondersteuning die Premium Storage zijn de virtuele machines uit de DS-en GS-serie.
+Wanneer u begint met het ontwerpen van een toepassing, selecteert u een virtuele machine om uw toepassing te hosten. Premium Storage wordt geleverd met grootschalige VM-grootten die toepassingen kunnen uitvoeren die een hogere reken kracht vereisen en een hoge I/O-prestaties van de lokale schijf. Deze Vm's bieden snellere processors, een hogere geheugen-naar-kern-verhouding en een Solid-State station (SSD) voor de lokale schijf. Voor beelden van virtuele machines met een hoge schaal ondersteuning die Premium Storage zijn de virtuele machines uit de DS-en GS-serie.
 
 Virtuele machines met een hoge schaal zijn beschikbaar in verschillende groottes met een verschillend aantal CPU-kernen, geheugen, besturings systeem en tijdelijke schijf grootte. Elke VM-grootte heeft ook een maximum aantal gegevens schijven dat u kunt koppelen aan de virtuele machine. Daarom is de gekozen VM-grootte van invloed op de hoeveelheid verwerking, het geheugen en de opslag capaciteit die beschikbaar is voor uw toepassing. Dit is ook van invloed op de reken-en opslag kosten. Hieronder ziet u bijvoorbeeld de specificaties van de grootste VM-grootte in een DS-reeks en een GS-serie:
 
@@ -222,7 +222,7 @@ Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een klei
 
 Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario voor Standard en Premium Storage.
 
-| &nbsp; | **Standard** | **Premium** |
+| &nbsp; | **Standaard** | **Premium** |
 | --- | --- | --- |
 | **Kosten van VM per maand** |$1.570,58 (standaard \_ D14) |$1.003,66 (standaard \_ DS13) |
 | **Kosten van schijven per maand** |$1.638,40 (32 x 1 TB schijven) |$544,34 (4 x P30 schijven) |
