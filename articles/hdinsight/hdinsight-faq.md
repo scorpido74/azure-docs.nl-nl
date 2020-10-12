@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84022211"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
@@ -190,7 +190,7 @@ Voor controle vereisten raadt micro soft aan Azure Monitor Logboeken in te scha 
 
 ### <a name="can-i-disable-clamscan-on-my-cluster"></a>Kan ik uitschakelen `Clamscan` op mijn cluster?
 
-`Clamscan`is de antivirus software die wordt uitgevoerd op het HDInsight-cluster en wordt gebruikt door Azure Security (azsecd) om uw clusters te beschermen tegen virus aanvallen. Micro soft raadt u ten zeerste aan dat gebruikers geen wijzigingen aanbrengen in de standaard `Clamscan` configuratie.
+`Clamscan` is de antivirus software die wordt uitgevoerd op het HDInsight-cluster en wordt gebruikt door Azure Security (azsecd) om uw clusters te beschermen tegen virus aanvallen. Micro soft raadt u ten zeerste aan dat gebruikers geen wijzigingen aanbrengen in de standaard `Clamscan` configuratie.
 
 Dit proces heeft geen invloed op de conflicten met of het uitvoeren van andere processen. Er wordt altijd naar een ander proces geoogst. CPU-pieken van `Clamscan` moeten alleen worden gezien wanneer het systeem niet actief is.  
 

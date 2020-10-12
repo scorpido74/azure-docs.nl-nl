@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368146"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Open Shift container platform 3,11 implementeren in azure
@@ -274,16 +274,16 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `keyVaultSubscriptionId` | De abonnements-ID van het abonnement dat de Key Vault bevat |  |  |
 | `keyVaultResourceGroup` | De naam van de resource groep die de Key Vault bevat |  |  |
 | `keyVaultName` | De naam van de Key Vault die u hebt gemaakt |  |  |
-| `enableAzure` | Azure Cloud provider inschakelen | waar <br> onjuist | waar |
+| `enableAzure` | Azure Cloud provider inschakelen | waar <br> onjuist | true |
 | `aadClientId` | Azure Active Directory client-ID ook bekend als toepassings-ID voor Service-Principal |  |  |
 | `domainName` | De naam van de aangepaste domein naam die moet worden gebruikt (indien van toepassing). Ingesteld op ' geen ' als er geen volledig particulier cluster wordt geïmplementeerd |  | geen |
 | `masterClusterDnsType` | Domein type voor open Shift-webconsole. ' default ' maakt gebruik van het DNS-label van het Master-infra structuur openbaar IP-adres. met aangepast kunt u uw eigen naam definiëren | standaardinstelling <br> aangepast | standaardinstelling |
-| `masterClusterDns` | De aangepaste DNS-naam die moet worden gebruikt voor toegang tot de open Shift-webconsole als u aangepast hebt geselecteerd voor`masterClusterDnsType` |  | console.contoso.com |
+| `masterClusterDns` | De aangepaste DNS-naam die moet worden gebruikt voor toegang tot de open Shift-webconsole als u aangepast hebt geselecteerd voor `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Als deze is ingesteld op ' nipio ', `routingSubDomain` gebruikt NIP.io.  Gebruik aangepast als u uw eigen domein hebt dat u wilt gebruiken voor route ring | nipio <br> aangepast | nipio |
-| `routingSubDomain` | De DNS-naam voor joker tekens die u wilt gebruiken voor route ring als u aangepast hebt geselecteerd voor`routingSubDomainType` |  | apps.contoso.com |
+| `routingSubDomain` | De DNS-naam voor joker tekens die u wilt gebruiken voor route ring als u aangepast hebt geselecteerd voor `routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Selecteer of u een bestaande Virtual Network wilt gebruiken of een nieuwe Virtual Network wilt maken | bestaand <br> nieuw | nieuw |
-| `virtualNetworkResourceGroupName` | De naam van de resource groep voor het nieuwe Virtual Network als u ' nieuw ' hebt geselecteerd voor`virtualNetworkNewOrExisting` |  | resourceGroup (). naam |
-| `virtualNetworkName` | De naam van de nieuwe Virtual Network die moet worden gemaakt als u nieuw hebt geselecteerd voor`virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `virtualNetworkResourceGroupName` | De naam van de resource groep voor het nieuwe Virtual Network als u ' nieuw ' hebt geselecteerd voor `virtualNetworkNewOrExisting` |  | resourceGroup (). naam |
+| `virtualNetworkName` | De naam van de nieuwe Virtual Network die moet worden gemaakt als u nieuw hebt geselecteerd voor `virtualNetworkNewOrExisting` |  | openshiftvnet |
 | `addressPrefixes` | Adres voorvoegsel van het nieuwe virtuele netwerk |  | 10.0.0.0/14 |
 | `masterSubnetName` | De naam van het hoofd-subnet |  | mastersubnet |
 | `masterSubnetPrefix` | CIDR die wordt gebruikt voor het hoofd-subnet: moet een subset zijn van de addressPrefix |  | 10.1.0.0/16 |
@@ -295,9 +295,9 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `existingInfraSubnetReference` | Volledige verwijzing naar het bestaande subnet voor infra structuur knooppunten. Niet nodig bij het maken van een nieuw vNet/subnet |  |  |
 | `existingCnsSubnetReference` | Volledige verwijzing naar het bestaande subnet voor de CNS-knoop punten. Niet nodig bij het maken van een nieuw vNet/subnet |  |  |
 | `existingNodeSubnetReference` | Volledige verwijzing naar het bestaande subnet voor reken knooppunten. Niet nodig bij het maken van een nieuw vNet/subnet |  |  |
-| `masterClusterType` | Geef op of het cluster particuliere of open bare hoofd knooppunten gebruikt. Als privé is gekozen, worden de hoofd knooppunten niet blootgesteld aan Internet via een openbaar IP-adres. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de`masterPrivateClusterIp` | Open <br> eigen | Open |
+| `masterClusterType` | Geef op of het cluster particuliere of open bare hoofd knooppunten gebruikt. Als privé is gekozen, worden de hoofd knooppunten niet blootgesteld aan Internet via een openbaar IP-adres. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de `masterPrivateClusterIp` | Open <br> eigen | Open |
 | `masterPrivateClusterIp` | Als er knoop punten van een persoonlijke Master zijn geselecteerd, moet u een privé-IP-adres opgeven voor gebruik door de interne load balancer voor hoofd knooppunten. Dit statische IP-adres moet zich in het CIDR-blok bevinden voor het hoofd-subnet en wordt niet al gebruikt. Als er open bare hoofd knooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze wel worden opgegeven |  | 10.1.0.200 |
-| `routerClusterType` | Geef op of het cluster particuliere of open bare infra structuur knooppunten gebruikt. Als privé is gekozen, worden de infra structuur niet via een openbaar IP-adres blootgesteld aan Internet. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de`routerPrivateClusterIp` | Open <br> eigen | Open |
+| `routerClusterType` | Geef op of het cluster particuliere of open bare infra structuur knooppunten gebruikt. Als privé is gekozen, worden de infra structuur niet via een openbaar IP-adres blootgesteld aan Internet. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de `routerPrivateClusterIp` | Open <br> eigen | Open |
 | `routerPrivateClusterIp` | Als er particuliere infra structuur knooppunten zijn geselecteerd, moet er een privé-IP-adres worden opgegeven voor gebruik door de interne load balancer voor infra structuur knooppunten. Dit statische IP-adres moet zich in het CIDR-blok bevinden voor het infra structuur-subnet en niet al in gebruik. Als open bare-infra structuur knooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze wel worden opgegeven |  | 10.2.0.200 |
 | `routingCertType` | Aangepast certificaat voor routerings domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> aangepast | selfsigned |
 | `masterCertType` | Aangepast certificaat voor hoofd domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> aangepast | selfsigned |

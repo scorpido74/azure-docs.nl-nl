@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75464697"
 ---
 # <a name="performance-metrics"></a>Metrische gegevens voor prestaties
@@ -31,7 +31,7 @@ Voor de computers in uw cluster kunt u de volgende prestatie meter items verzame
 | Fysieke schijf (per schijf) | Gelezen bytes per seconde |
 | Fysieke schijf (per schijf) | Schrijf bewerkingen per seconde |
 | Fysieke schijf (per schijf) | Geschreven bytes per seconde |
-| Geheugen | Beschik bare Mbytes |
+| Geheugen | Beschikbare megabytes |
 | PagingFile | Percentage gebruik |
 | Processor (totaal) | Percentage processortijd |
 | Proces (per service) | Percentage processortijd |

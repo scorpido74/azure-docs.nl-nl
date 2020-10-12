@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
 ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461235"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Een Azure-cache voor redis maken met behulp van een resource manager-sjabloon
@@ -59,7 +59,7 @@ Zie [Azure Quick](https://azure.microsoft.com/documentation/templates/) start-sj
     * **Resourcegroep**: selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken of een bestaande resourcegroep te selecteren.
     * **Locatie**: selecteer een locatie voor de resourcegroep. Het opslag account en de redis-cache moeten zich in dezelfde regio bevinden. De redis-cache maakt standaard gebruik van dezelfde locatie als de resource groep. Geef dus dezelfde locatie op als het opslag account.
     * **Redis cache naam**: Voer een naam in voor de redis-cache.
-    * **Bestaand opslag account voor diagnostische gegevens**: Voer de resource-id in van een opslag account. De syntaxis is de **/Subscriptions/ &lt; -abonnements-id> naam van de/ResourceGroups/- &lt; resource groep> de naam van het/providers/Microsoft.Storage/STORAGEACCOUNTS/- &lt; opslag account>**.
+    * **Bestaand opslag account voor diagnostische gegevens**: Voer de resource-id in van een opslag account. De syntaxis is de **/Subscriptions/ &lt; -abonnements-id>naam van de/ResourceGroups/- &lt; resource groep>de naam van het/providers/Microsoft.Storage/STORAGEACCOUNTS/- &lt; opslag account>**.
 
     Gebruik de standaardwaarde voor de overige instellingen.
 1. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**.

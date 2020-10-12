@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 9f90125edeee453dc9e8b8b80f8eb09d9fc6e84c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971522"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Een Indexeer functie verbinding instellen met Azure SQL Database met behulp van een beheerde identiteit
@@ -53,7 +53,7 @@ Volg de onderstaande stappen om de machtiging Search service toe te wijzen om de
 
 2. Verifiëren met uw Azure AD-account
 
-    ![Verifieer](./media/search-managed-identities/visual-studio-authentication.png "Verifiëren")
+    ![Verifiëren](./media/search-managed-identities/visual-studio-authentication.png "Verifiëren")
 
 3. Voer de volgende opdrachten uit:
 

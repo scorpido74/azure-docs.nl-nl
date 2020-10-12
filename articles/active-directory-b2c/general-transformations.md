@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202217"
 ---
 # <a name="general-claims-transformations"></a>Algemene claim transformaties
@@ -28,7 +28,7 @@ In dit artikel vindt u voor beelden van het gebruik van algemene claim transform
 
 Kopieer de waarde van een claim naar een andere. Beide claims moeten van hetzelfde type zijn.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Input claim | teken reeks, int | Het claim type dat moet worden gekopieerd. |
 | Output claim | Output claim | teken reeks, int | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
@@ -49,15 +49,15 @@ Gebruik deze claim transformatie om een waarde van een teken reeks of numerieke 
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-    - **input claim**:bob@contoso.com
+    - **input claim**: bob@contoso.com
 - Uitvoer claims:
-    - **output claim**:bob@contoso.com
+    - **output claim**: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
 Controleert of de **input claim** bestaat of niet en stelt **output claim** in op waar of onwaar dienovereenkomstig.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Input claim |Alle | De invoer claim waarvan het bestaan moet worden geverifieerd. |
 | Output claim | Output claim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
@@ -78,7 +78,7 @@ Gebruik deze claim transformatie om te controleren of een claim bestaat of een w
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **input claim**:someone@contoso.com
+  - **input claim**: someone@contoso.com
 - Uitvoer claims:
   - **output claim**: True
 
@@ -86,7 +86,7 @@ Gebruik deze claim transformatie om te controleren of een claim bestaat of een w
 
 Hash de meegeleverde tekst zonder opmaak met het zout en een geheim. Het hash-algoritme dat wordt gebruikt, is SHA-256.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | sleutel | tekenreeks | De invoer claim die moet worden versleuteld |
 | Input claim | Salt | tekenreeks | De Salt-para meter. U kunt een wille keurige waarde maken met behulp van `CreateRandomString` claims trans formatie. |
@@ -111,7 +111,7 @@ Hash de meegeleverde tekst zonder opmaak met het zout en een geheim. Het hash-al
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **Lees bare tekst**:MyPass@word1
+  - **Lees bare tekst**: MyPass@word1
   - **Salt**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - Uitvoer claims:

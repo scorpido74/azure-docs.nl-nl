@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 12/07/2017
 ms.author: mikhegn
 ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75645681"
 ---
 # <a name="service-fabric-environment-variables"></a>Omgevings variabelen Service Fabric
@@ -26,7 +26,7 @@ Service Fabric heeft ingebouwde omgevings variabelen ingesteld voor elk service-
 | Fabric_Folder_App_Temp                       | De map Temp                                                            | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ temp     |
 | Fabric_Folder_App_Work                       | Werkmap                                                            | C: \\ \\ gegevens \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ werk     |
 | Fabric_Folder_Application                    | De basismap van de toepassing                                           | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12             |
-| Fabric_IsContainerHost                       | Een Boole-waarde die aangeeft of het proces een container is                   | false                                                                |
+| Fabric_IsContainerHost                       | Een Boole-waarde die aangeeft of het proces een container is                   | onjuist                                                                |
 | Fabric_NodeId                                | De knoop punt-ID van het knoop punt waarop het proces wordt uitgevoerd                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | Het IP-adres of de FQDN-naam van het knoop punt, zoals opgegeven in het manifest bestand van het cluster. | localhost of 10.0.0.1                                                |
 | Fabric_NodeName                              | De knooppunt naam van het knoop punt waarop het proces wordt uitgevoerd                          | _Node_0                                                              |

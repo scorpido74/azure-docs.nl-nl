@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85558559"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Problemen oplossen die verband houden met Azure Data Box Blob-opslag
@@ -26,7 +26,7 @@ In deze sectie vindt u een aantal problemen met het gebruik van Azure Storage Ex
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
 |Kan geen onderliggende resources ophalen. De waarde voor een van de HTTP-headers heeft niet de juiste indeling.|Selecteer in het menu **bewerken** de optie **doel-Azure stack-api's**. <br>Start Azure Storage Explorer opnieuw.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op dit pad: <li>`C:\Windows\System32\drivers\etc\hosts`in Windows of </li><li> `/etc/hosts`op Linux.</li>|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op dit pad: <li>`C:\Windows\System32\drivers\etc\hosts` in Windows of </li><li> `/etc/hosts` op Linux.</li>|
 |Kan geen onderliggende resources ophalen. <br>Details: zelfondertekend certificaat |Importeer het TLS/SSL-certificaat voor uw apparaat in Azure Storage Explorer: <li>Down load het certificaat van de Azure Portal. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.</li><li>Selecteer in het menu **bewerken** de optie **SSL-certificaten** en selecteer vervolgens **certificaten importeren**.</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>Fouten die worden weer gegeven in AzCopy voor Windows
@@ -35,7 +35,7 @@ In deze sectie vindt u een aantal problemen met het gebruik van AzCopy voor Wind
 
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
-|De AzCopy-opdracht lijkt niet meer te reageren gedurende een minuut voordat deze fout wordt weer gegeven: <br>Kan de map https://niet inventariseren... De externe naam kan niet worden omgezet`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `C:\Windows\System32\drivers\etc\hosts` .|
+|De AzCopy-opdracht lijkt niet meer te reageren gedurende een minuut voordat deze fout wordt weer gegeven: <br>Kan de map https://niet inventariseren... De externe naam kan niet worden omgezet `<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `C:\Windows\System32\drivers\etc\hosts` .|
 |De AzCopy-opdracht lijkt niet meer te reageren gedurende een minuut voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie. De onderliggende verbinding is gesloten: er kan geen vertrouwens relatie tot stand worden gebracht voor het beveiligde SSL/TLS-kanaal.|Importeer het TLS/SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.|
 
 

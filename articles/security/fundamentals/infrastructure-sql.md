@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021854"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database beveiligings functies    
@@ -40,14 +40,14 @@ De firewall van de gateway kan adressen beperken, waardoor klanten nauw keurig k
 Klanten kunnen de firewall configureren met behulp van een beheer portal of programmatisch met behulp van de Azure SQL Database beheer REST API. De Azure SQL Database gateway firewall voor komt standaard dat de TDS-toegang van klanten tot Azure SQL Database. Klanten moeten toegang configureren met behulp van toegangs beheer lijsten (Acl's) voor het toestaan van Azure SQL Database verbindingen op basis van bron-en doel-Internet adressen,-protocollen en-poort nummers.
 
 ### <a name="dosguard"></a>DoSGuard
-DoS-aanvallen (Denial of service) worden gereduceerd door een SQL Database Gateway Service met de naam DoSGuard. DoSGuard traceert actief mislukte aanmeldingen van IP-adressen. Als er binnen een bepaalde periode meerdere mislukte aanmeldingen vanaf een specifiek IP-adres zijn, heeft het IP-adres geen toegang tot resources in de service voor een vooraf gedefinieerde tijds periode.
+Het aantal DoS-aanvallen (Denial of service) wordt teruggebracht door een SQL Database-gatewayservice met de naam DoSGuard. DoSGuard traceert actief mislukte aanmeldingen van IP-adressen. Als er binnen een bepaalde periode meerdere mislukte aanmeldingen vanaf een specifiek IP-adres zijn, heeft het IP-adres geen toegang tot resources in de service voor een vooraf gedefinieerde tijds periode.
 
 Daarnaast voert de Azure SQL Database-gateway de volgende handelingen uit:
 
 - Mogelijkheden voor het beveiligen van kanalen voor het implementeren van met TDS FIPS 140-2 gevalideerde versleutelde verbindingen wanneer verbinding wordt gemaakt met de database servers.
 - Stateful TDS-pakket inspectie terwijl het verbindingen van clients accepteert. De gateway valideert de verbindings gegevens en geeft de TDS-pakketten door aan de juiste fysieke server op basis van de database naam die is opgegeven in de connection string.
 
-Het overkoepelend-principe voor netwerk beveiliging van de Azure SQL Database-aanbieding is het toestaan van alleen de verbinding en communicatie die nodig is om de service te laten uitvoeren. Alle andere poorten, protocollen en verbindingen worden standaard geblokkeerd. Virtual Local Area Networks (VLAN'S) en Acl's worden gebruikt om netwerk communicatie te beperken op basis van de bron-en doel netwerken, protocollen en poort nummers.
+Het overkoepelend principe voor netwerkbeveiliging van de Azure SQL Database-service is dat alleen de verbinding en communicatie die nodig zijn om de service uit te voeren, worden toegestaan. Alle andere poorten, protocollen en verbindingen worden standaard geblokkeerd. Virtual Local Area Networks (VLAN'S) en Acl's worden gebruikt om netwerk communicatie te beperken op basis van de bron-en doel netwerken, protocollen en poort nummers.
 
 Mechanismen die zijn goedgekeurd voor het implementeren van op het netwerk gebaseerde Acl's, bevatten Acl's op routers en load balancers. Deze mechanismen worden beheerd door Azure-netwerken, firewalls voor gast-VM'S en Azure SQL Database gateway-firewall regels, die door de klant worden geconfigureerd.
 

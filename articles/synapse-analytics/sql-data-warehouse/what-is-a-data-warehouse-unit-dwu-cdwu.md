@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461983"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse-eenheden (Dwu's)
@@ -24,7 +24,7 @@ Aanbevelingen voor het kiezen van het ideale aantal Data Warehouse Units (DWU's)
 
 ## <a name="what-are-data-warehouse-units"></a>Wat zijn Data Warehouse Units?
 
-Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische resources worden gedefinieerd als een combi natie van CPU, geheugen en i/o.
+Een [Synapse SQL-pool](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische resources worden gedefinieerd als een combinatie van CPU, geheugen en IO.
 
 Deze drie resources worden gebundeld in rekenschaaleenheden, ook wel Data Warehouse Units (DWU's) genoemd. Een DWU vertegenwoordigt een abstracte, genormaliseerde meting van rekenresources en prestaties.
 
@@ -51,7 +51,7 @@ De Service Level Objective (SLO) is de schaalbaarheidsinstelling waarmee de kost
 De serviceniveau doelstelling (SLO) is de schaal baarheid-instelling waarmee de kosten en het prestatie niveau van uw SQL-groep worden bepaald. De serviceniveaus voor SQL-pool Gen2 worden gemeten in Data Warehouse Units (DWU), bijvoorbeeld DW2000c.
 
 > [!NOTE]
-> Azure Synapse Analytics Gen2 heeft onlangs extra schaal mogelijkheden toegevoegd om reken lagen te ondersteunen als 100 cDWU. Bestaande datawarehouses met Gen1 waarvoor de lagere rekenlagen zijn vereist, kunnen nu kosteloos worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [Upgrade naar Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
+> In Azure Synapse Analytics Gen2 zijn onlangs extra schaalmogelijkheden toegevoegd ter ondersteuning van rekenlagen van 100 cDWU. Bestaande datawarehouses met Gen1 waarvoor de lagere rekenlagen zijn vereist, kunnen nu kosteloos worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [Upgrade naar Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 
 In T-SQL bepaalt de instelling SERVICE_OBJECTIVE het serviceniveau en de prestatielaag voor uw SQL-pool.
 
@@ -141,7 +141,7 @@ Als u de DWU's wilt wijzigen, gebruikt u de PowerShell-cmdlet [Set-AzSqlDatabase
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Zie [Power shell-cmdlets voor Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
+Zie [PowerShell-cmdlets voor Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie.
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Zie [rest api's voor Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer rest API-voor beelden.
+Zie [REST-API’s voor Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer voorbeelden van REST-API’s.
 
 ## <a name="check-status-of-dwu-changes"></a>Status van DWU-wijzigingen controleren
 

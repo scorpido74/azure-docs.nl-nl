@@ -3,11 +3,11 @@ title: Opslag wachtrij als gebeurtenis-handler voor Azure Event Grid gebeurtenis
 description: Hierin wordt beschreven hoe u Azure Storage-wacht rijen kunt gebruiken als gebeurtenis-handlers voor Azure Event Grid-gebeurtenissen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: fdbc292f066a3eb06f17fd144d26d484d2a25f21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270182"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Opslag wachtrij als gebeurtenis-handler voor Azure Event Grid gebeurtenissen
@@ -136,9 +136,6 @@ Raadpleeg de volgende zelf studie voor een voor beeld van het gebruik van wachtr
     }
 }
 ```
-
-> [!NOTE]
-> Het leveren van gebeurtenissen aan een Azure Storage wachtrij in een **andere Tenant** wordt niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het artikel over [gebeurtenis-handlers](event-handlers.md) voor een lijst met ondersteunde gebeurtenis-handlers. 

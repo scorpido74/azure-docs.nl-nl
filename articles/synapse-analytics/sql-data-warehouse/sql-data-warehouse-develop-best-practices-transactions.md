@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: ddb6dbde941d5a2f399aba55eec415c879e74384
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461202"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Trans acties in Synapse SQL optimaliseren
@@ -51,7 +51,7 @@ De volgende bewerkingen kunnen mini maal worden geregistreerd:
 * ALTER INDEX REBUILD
 * DROP INDEX
 * TRUNCATE TABLE
-* TABEL NEERZETTEN
+* DROP TABLE
 * ALTER TABLE SWITCH-PARTITIE
 
 <!--
@@ -69,7 +69,7 @@ CTAS en invoegen... Selecteer beide bewerkingen voor bulksgewijs laden. Beide wo
 
 | Primaire index | Scenario voor laden | Modus logboek registratie |
 | --- | --- | --- |
-| Heap |Elk |**Minimaal** |
+| Heap |Alle |**Minimaal** |
 | Geclusterde index |Lege doel tabel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen niet met bestaande pagina's in het doel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen met bestaande pagina's in het doel |Volledig |

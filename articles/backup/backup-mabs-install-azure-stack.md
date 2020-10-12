@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het gebruik van Azure Backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970231"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
@@ -255,7 +255,7 @@ Azure Backup Server deelt code met Data Protection Manager. U ziet verwijzingen 
    > U kunt het beste Windows Update omleiden naar Microsoft Update, waarmee beveiligings-en belang rijke updates voor Windows en andere producten zoals Microsoft Azure Backup Server worden geboden.
    >
 
-    ![Aanmeldings scherm Microsoft Update](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Opt-In scherm Microsoft Update](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
 8. Bekijk het *samen vatting van instellingen* en selecteer **installeren**.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
 ms.openlocfilehash: ac6fad8995d409c14008b8345e9e576b2403c799
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131701"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>WinRM-toegang instellen voor Virtual Machines in Azure Resource Manager
@@ -93,7 +93,7 @@ $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name
 ```
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Stap 5: verwijzen naar uw zelfondertekende certificaten URL tijdens het maken van een VM
-#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager sjablonen
+#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 Tijdens het maken van een VM via sjablonen, wordt in het gedeelte geheimen naar het certificaat verwezen en wordt de sectie winRM als hieronder beschreven:
 
 ```json
@@ -153,7 +153,7 @@ Enable-PSRemoting -Force
 ```
 
 > [!NOTE]
-> U moet er mogelijk voor zorgen dat de WinRM-service wordt uitgevoerd als de bovenstaande niet werkt. U kunt dit doen met`Get-Service WinRM`
+> U moet er mogelijk voor zorgen dat de WinRM-service wordt uitgevoerd als de bovenstaande niet werkt. U kunt dit doen met `Get-Service WinRM`
 > 
 > 
 

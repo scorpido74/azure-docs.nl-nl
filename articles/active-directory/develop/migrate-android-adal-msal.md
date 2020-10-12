@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77084051"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Migratie handleiding voor ADAL naar MSAL voor Android
@@ -46,8 +46,8 @@ De open bare API MSAL introduceert belang rijke wijzigingen, waaronder:
   - Instanties worden niet meer gevalideerd tijdens runtime. In plaats daarvan declareert de ontwikkelaar tijdens de ontwikkeling een lijst met bekende instanties.
 - Wijzigingen in token-API:
   - In ADAL `AcquireToken()` maakt u eerst een Silent-aanvraag. Als dat niet het geval is, wordt er een interactieve aanvraag gemaakt. Dit gedrag heeft tot gevolg dat sommige ontwikkel aars alleen vertrouwen op `AcquireToken` , waardoor de gebruiker onverwacht om referenties wordt gevraagd op tijdstippen. MSAL vereist dat ontwikkel aars opzettelijk zijn wanneer de gebruiker een prompt van de gebruikers interface ontvangt.
-    - `AcquireTokenSilent`resulteert altijd in een Silent-aanvraag die slaagt of mislukt.
-    - `AcquireToken`resulteert altijd in een aanvraag die de gebruiker via de gebruikers interface vraagt.
+    - `AcquireTokenSilent` resulteert altijd in een Silent-aanvraag die slaagt of mislukt.
+    - `AcquireToken` resulteert altijd in een aanvraag die de gebruiker via de gebruikers interface vraagt.
 - MSAL ondersteunt aanmelden vanuit een standaard browser of een Inge sloten webweergave:
   - Standaard wordt de standaard browser op het apparaat gebruikt. Hiermee kan MSAL verificatie status (cookies) gebruiken die mogelijk al aanwezig is voor een of meer accounts die zijn aangemeld. Als er geen authenticatie status aanwezig is, wordt verificatie tijdens autorisatie via MSAL tot gevolg dat er voor het voor deel van andere webtoepassingen die in dezelfde browser zullen worden gebruikt, authenticatie status (cookies) wordt gemaakt.
 - Nieuw uitzonderings model:
@@ -150,7 +150,7 @@ Als het micro soft Identity-platform verschilt van een financiële instelling, i
 
 Sam werkt voor Contoso.com maar beheert virtuele Azure-machines die deel uitmaken van Fabrikam.com. Voor Sam voor het beheren van de virtuele machines van Fabrikam moet hij gemachtigd zijn om deze te openen. Deze toegang kan worden verleend door Sam-account toe te voegen aan Fabrikam.com en zijn account een rol te geven waarmee hij met de virtuele machines kan werken. Dit wordt gedaan met de Azure Portal.
 
-Het toevoegen van het Contoso.com-account van Sam als lid van Fabrikam.com zou leiden tot het maken van een nieuwe record in fabrikam. com-Azure Active Directory voor Sam. De record van Sam in Azure Active Directory wordt een gebruikers object genoemd. In dit geval wijst dat gebruikers object terug naar het gebruikers object van Sam in Contoso.com. Het fabrikam-gebruikers object van Sam is de lokale weer gave van Sam, en wordt gebruikt voor het opslaan van informatie over het account dat is gekoppeld aan Sam in de context van Fabrikam.com. In Contoso.com is de titel van Sam Senior DevOps consultant. In Fabrikam is de titel van de SAM contractant-Virtual Machines. In Contoso.com is Sam niet verantwoordelijk voor het beheer van virtuele machines. In Fabrikam.com is dat zijn enige taak functie. Sam heeft nog steeds slechts één set referenties om bij te houden. Dit zijn de referenties die zijn uitgegeven door Contoso.com.
+Het toevoegen van het Contoso.com-account van Sam als lid van Fabrikam.com zou leiden tot het maken van een nieuwe record in fabrikam. com-Azure Active Directory voor Sam. De record van Sam in Azure Active Directory wordt een gebruikers object genoemd. In dit geval wijst dat gebruikers object terug naar het gebruikers object van Sam in Contoso.com. Het fabrikam-gebruikers object van Sam is de lokale weer gave van Sam, en wordt gebruikt voor het opslaan van informatie over het account dat is gekoppeld aan Sam in de context van Fabrikam.com. In Contoso.com is de titel van Sam Senior DevOps consultant. In Fabrikam is de titel van de SAM Contractor-Virtual machines. In Contoso.com is Sam niet verantwoordelijk voor het beheer van virtuele machines. In Fabrikam.com is dat zijn enige taak functie. Sam heeft nog steeds slechts één set referenties om bij te houden. Dit zijn de referenties die zijn uitgegeven door Contoso.com.
 
 Zodra een geslaagde `acquireToken` aanroep is uitgevoerd, ziet u een verwijzing naar een `IAccount` object dat in latere aanvragen kan worden gebruikt `acquireTokenSilent` .
 
@@ -240,7 +240,7 @@ In MSAL is er een hiërarchie met uitzonde ringen en elke groep heeft een eigen 
 
 Lijst met MSAL-uitzonde ringen
 
-|Uitzondering  | Description  |
+|Uitzondering  | Beschrijving  |
 |---------|---------|
 | `MsalException`     | Standaard ingeschakelde uitzonde ring veroorzaakt door MSAL.  |
 | `MsalClientException`     | Wordt gegenereerd als de fout aan de kant van de client is. |

@@ -4,10 +4,10 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86513503"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
@@ -77,7 +77,7 @@ Momenteel beschikken we niet over de mogelijkheid om de oplossing alleen voor ee
 
 Momenteel heeft Azure Backup niet de mogelijkheid om een HSR-configuratie te begrijpen. Dit betekent dat de primaire en secundaire knoop punten van de HSR worden behandeld als twee afzonderlijke, niet-gerelateerde Vm's. U moet eerst een back-up configureren op het primaire knoop punt. Wanneer een failover optreedt, moet de back-up worden geconfigureerd op het secundaire knoop punt (dit wordt nu het primaire knoop punt). Er is geen automatische failover van een back-up naar het andere knoop punt.
 
-Als u op een bepaald moment een back-up wilt maken van gegevens van het actieve knoop punt (primair), kunt u de **beveiliging overschakelen** naar het secundaire knoop punt, dat nu wordt ingesteld als primair na een failover.
+Als u op een bepaald moment een back-up wilt maken van gegevens van het actieve knoop punt (primair), kunt u de **beveiliging overschakelen**  naar het secundaire knoop punt, dat nu wordt ingesteld als primair na een failover.
 
 Voer de volgende stappen uit om deze **Switch beveiliging**uit te voeren:
 

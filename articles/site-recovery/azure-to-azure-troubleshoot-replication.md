@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130405"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Problemen met replicatie in nood herstel voor Azure VM oplossen
@@ -35,7 +35,7 @@ U ziet de **wijzigings frequentie voor gebeurtenis gegevens die groter is dan de
 
 Als u de gebeurtenis selecteert, ziet u de exacte schijf gegevens:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Pagina waarop de details van de gegevens wijzigings frequentie worden weer gegeven.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Azure Site Recovery pagina met een hoge wijzigings frequentie voor gegevens die te hoog is.":::
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery-limieten
 
@@ -56,7 +56,7 @@ Premium P20 of P30 of P40 of P50 schijf | 16 kB of meer |20 MB/s | 1684 GB per s
 
 Azure Site Recovery heeft limieten voor de wijzigings snelheid van gegevens, afhankelijk van het type schijf. Als u wilt zien of dit probleem terugkerend of tijdelijk is, zoekt u de gegevens wijzigings frequentie van de betreffende virtuele machine. Ga naar de virtuele bron machine, zoek de metrische gegevens onder **bewaking**en voeg de metrische gegevens toe zoals in deze scherm opname wordt weer gegeven:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Pagina met het proces met drie stappen voor het zoeken van de gegevens wijzigings frequentie.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Azure Site Recovery pagina met een hoge wijzigings frequentie voor gegevens die te hoog is.":::
 
 1. Selecteer **metrische gegevens toevoegen**en voeg de **besturingssysteem schijf toe geschreven bytes per seconde** en **geschreven bytes per seconde voor de gegevens schijf**.
 1. De piek bewaken, zoals weer gegeven in de scherm opname.
@@ -65,7 +65,7 @@ Azure Site Recovery heeft limieten voor de wijzigings snelheid van gegevens, afh
 Een piek in de gegevens wijzigings verhouding kan afkomstig zijn van een incidentele gegevens burst. Als de waarde voor het wijzigen van de gegevens groter is dan 10 MB/s (voor Premium) of 2 MB/s (voor Standard) en is uitgeschakeld, wordt de replicatie weer gegeven. Als het verloop consistent is naast de ondersteunde limiet, kunt u een van de volgende opties overwegen:
 
 - Sluit de schijf uit die een hoge mate van gegevens wijziging veroorzaakt: Schakel eerst de replicatie uit. Vervolgens kunt u de schijf uitsluiten met behulp van [Power shell](azure-to-azure-exclude-disks.md).
-- De laag van de opslag schijf voor nood herstel wijzigen: deze optie kan alleen worden uitgevoerd als het verloop van de schijf gegevens lager is dan 20 MB/s. Een virtuele machine met een P10-schijf heeft bijvoorbeeld een gegevens verloop van meer dan 8 MB/s, maar minder dan 10 MB/s. Als de klant een P30-schijf kan gebruiken voor doel opslag tijdens de beveiliging, kan het probleem worden opgelost. Deze oplossing is alleen mogelijk voor machines die gebruikmaken van Premium-Managed Disks. Volg deze stappen:
+- De laag van de opslag schijf voor nood herstel wijzigen: deze optie kan alleen worden uitgevoerd als het verloop van de schijf gegevens lager is dan 20 MB/s. Een virtuele machine met een P10-schijf heeft bijvoorbeeld een gegevens verloop van meer dan 8 MB/s, maar minder dan 10 MB/s. Als de klant een P30-schijf kan gebruiken voor doel opslag tijdens de beveiliging, kan het probleem worden opgelost. Deze oplossing is alleen mogelijk voor machines die Premium-Managed schijven gebruiken. Volg deze stappen:
 
   1. Ga naar **schijven** van de betreffende gerepliceerde machine en kopieer de naam van de replica schijf.
   1. Ga naar deze replica van de beheerde schijf.
@@ -82,7 +82,7 @@ Gebruik [AzCopy](../storage/common/storage-use-azcopy-v10.md)om te controleren o
 
 U kunt het beste een netwerk service-eind punt in uw virtuele netwerk maken voor ' opslag ', zodat het replicatie verkeer niet naar de NVA gaat. Zie [configuratie van virtueel netwerk apparaat](azure-to-azure-about-networking.md#network-virtual-appliance-configuration)voor meer informatie.
 
-### <a name="network-connectivity"></a>Netwerkconnectiviteit
+### <a name="network-connectivity"></a>Netwerkverbinding
 
 Site Recovery replicatie werkt alleen als de virtuele machine een uitgaande verbinding met specifieke Url's of IP-adresbereiken heeft. Mogelijk hebt u uw virtuele machine achter een firewall of gebruikt u NSG-regels (netwerk beveiligings groep) om de uitgaande verbinding te beheren. Als dat het geval is, kunnen er problemen optreden. Zie [uitgaande connectiviteit voor url's](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)om ervoor te zorgen dat alle url's zijn verbonden.
 

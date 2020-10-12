@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883707"
 ---
 # <a name="connect-windows-security-events"></a>Verbinding maken met Windows-beveiligingsgebeurtenissen 
@@ -79,7 +79,7 @@ Uw Windows-beveiligings gebeurtenissen in azure-Sentinel verzamelen:
 
 1. Selecteer welke gebeurtenissenset ([alles, algemeen of mini maal](#event-sets)) u wilt streamen.
 
-1. Klik op **Bijwerken**.
+1. Klik op **Update**.
 
 1. Als u het relevante schema in Log Analytics voor Windows-beveiligings gebeurtenissen wilt gebruiken, typt u `SecurityEvent` in het query venster.
 

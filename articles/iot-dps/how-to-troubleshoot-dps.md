@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75646469"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Problemen oplossen met Azure IoT Hub Device Provisioning Service
@@ -23,7 +23,7 @@ Connectiviteits problemen voor IoT-apparaten kunnen lastig zijn om problemen op 
 
 In de volgende procedure wordt beschreven hoe u een waarschuwing kunt weer geven en instellen voor IoT Hub Device Provisioning Service metriek. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT Hub Device Provisioning Service.
 
@@ -32,7 +32,7 @@ In de volgende procedure wordt beschreven hoe u een waarschuwing kunt weer geven
 4. Selecteer de gewenste waarde. 
    <br />Er zijn momenteel drie metrische gegevens voor DPS:
 
-    | Naam meetwaarde | Description |
+    | Naam meetwaarde | Beschrijving |
     |-------|------------|
     | Attestation-pogingen | Aantal apparaten dat is geprobeerd te verifiëren met Device Provisioning Service|
     | Registratie pogingen | Aantal apparaten dat is geprobeerd bij IoT Hub te registreren na een geslaagde verificatie|
@@ -48,7 +48,7 @@ Zie [Wat zijn klassieke waarschuwingen in Microsoft Azure?](../azure-monitor/pla
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Logboek analyse gebruiken om fouten weer te geven en op te lossen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
@@ -58,7 +58,7 @@ Zie [Wat zijn klassieke waarschuwingen in Microsoft Azure?](../azure-monitor/pla
 
 5. De gewenste logboeken kunnen worden verzameld.
 
-    | Logboeknaam | Description |
+    | Logboeknaam | Beschrijving |
     |-------|------------|
     | DeviceOperations | Logboeken met betrekking tot verbindings gebeurtenissen voor apparaten |
     | ServiceOperations | Gebeurtenis logboeken met betrekking tot het gebruik van Service SDK (bijvoorbeeld voor het maken of bijwerken van inschrijvings groepen)|
@@ -75,10 +75,10 @@ Zie [Wat zijn klassieke waarschuwingen in Microsoft Azure?](../azure-monitor/pla
 ## <a name="common-error-codes"></a>Veelvoorkomende foutcodes
 Gebruik deze tabel om veelvoorkomende fouten te begrijpen en op te lossen.
 
-| Foutcode| Description | HTTP-status code |
+| Foutcode| Beschrijving | HTTP-status code |
 |-------|------------|------------|
 | 400 | De hoofd tekst van de aanvraag is ongeldig. het kan bijvoorbeeld niet worden geparseerd of het object kan niet worden gevalideerd.| 400 onjuiste indeling |
-| 401 | Het autorisatie token kan niet worden gevalideerd; het is bijvoorbeeld verlopen of is niet van toepassing op de URI van de aanvraag. Deze fout code wordt ook geretourneerd naar apparaten als onderdeel van de TPM-attest stroom. | 401 niet gemachtigd|
+| 401 | Het autorisatie token kan niet worden gevalideerd; het is bijvoorbeeld verlopen of is niet van toepassing op de URI van de aanvraag. Deze fout code wordt ook geretourneerd naar apparaten als onderdeel van de TPM-attest stroom. | 401 Onbevoegd|
 | 404 | Het Device Provisioning service-exemplaar of een bron (bijvoorbeeld een inschrijving) bestaat niet. |404 Niet gevonden |
 | 412 | De ETag in de aanvraag komt niet overeen met de ETag van de bestaande resource, conform RFC7232. | 412-voor waarde is mislukt |
 | 429 | Bewerkingen worden beperkt door de service. Zie [IOT hub Device Provisioning Service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)voor specifieke service limieten. | 429 te veel aanvragen |

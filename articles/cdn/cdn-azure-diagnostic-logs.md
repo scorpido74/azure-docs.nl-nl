@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191273"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnostische logboeken-Azure Content Delivery Network
@@ -42,7 +42,7 @@ Een Azure CDN profiel is vereist voor de volgende stappen. Raadpleeg [een Azure 
 
 Voer de volgende stappen uit om logboek registratie in te scha kelen voor uw Azure CDN-eind punt:
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
 2. Ga in het Azure Portal naar **alle resources**  ->  **uw-CDN-profiel**
 
@@ -52,7 +52,7 @@ Voer de volgende stappen uit om logboek registratie in te scha kelen voor uw Azu
 
 3. Selecteer **Diagnostische logboeken** in het gedeelte **bewaking** :
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Selecteer Diagnostische logboeken." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Selecteer het CDN-eind punt." border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Logboek registratie inschakelen met Azure Storage
 
@@ -69,7 +69,7 @@ Als u een opslag account wilt gebruiken om de logboeken op te slaan, voert u de 
 
 4. Selecteer het abonnement en het opslag account voor de logboeken.
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Diagnostische logboeken: opslag." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Selecteer het CDN-eind punt." border="true":::
 
 3. Selecteer **Opslaan**.
 
@@ -86,7 +86,7 @@ Voer de volgende stappen uit om Log Analytics te gebruiken voor de logboeken:
 
 3. Selecteer het abonnement en de Log Analytics werk ruimte voor de logboeken.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Diagnostische logboeken-Log Analytics." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Selecteer het CDN-eind punt." border="true":::
 
 4. Selecteer **Opslaan**.
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om een Event Hub te gebruiken voor de logboeken:
 
 3. Selecteer het abonnement en de naam ruimte van de Event Hub voor de logboeken.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Diagnostische logboeken-Event hub." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Selecteer het CDN-eind punt." border="true":::
 
 4. Selecteer **Opslaan**.
 
@@ -207,7 +207,7 @@ Kern analyse logboeken worden elk uur gegenereerd en de gegevens worden verzamel
 |Waarde|Beschrijving|
 |-------|---------|
 |Abonnements-id    |ID van het Azure-abonnement in GUID-indeling.|
-|Naam van resource groep |De naam van de resource groep waarvan de CDN-bronnen deel uitmaken.|
+|Naam resourcegroep |De naam van de resource groep waarvan de CDN-bronnen deel uitmaken.|
 |Profile Name (Profielnaam) |Naam van het CDN-profiel|
 |Naam van eind punt |Naam van het CDN-eind punt|
 |Jaar|  Weer gave van vier cijfers van het jaar, bijvoorbeeld 2017|
@@ -265,7 +265,7 @@ Niet alle metrische gegevens zijn beschikbaar voor alle providers, hoewel deze v
 | RequestCountCacheHit | Het aantal aanvragen dat heeft geleid tot een cache-treffer. De Asset werd rechtstreeks vanuit de POP naar de client geleverd. | Ja | Ja | Nee  |
 | RequestCountCacheMiss | Het aantal aanvragen dat heeft geleid tot een Missing in de cache. Een cache-Misser betekent dat het activum niet is gevonden op de POP die het dichtst bij de client ligt en is opgehaald van de oorsprong. | Ja | Ja | Nee |
 | RequestCountCacheNoCache | Het aantal aanvragen voor een Asset dat niet in de cache kan worden opgeslagen vanwege een gebruikers configuratie aan de rand. | Ja | Ja | Nee |
-| RequestCountCacheUncacheable | Het aantal aanvragen voor activa dat voor komt dat het in de cache wordt opgeslagen door de headers Cache-Control en Expires van het Asset. Dit aantal geeft aan dat het niet in de cache moet worden opgeslagen in een POP of de HTTP-client. | Ja | Ja | Nee |
+| RequestCountCacheUncacheable | Het aantal aanvragen voor assets dat wordt voor komen dat in de cache wordt opgeslagen door de Cache-Control van de Asset en verlopen kopteksten. Dit aantal geeft aan dat het niet in de cache moet worden opgeslagen in een POP of de HTTP-client. | Ja | Ja | Nee |
 | RequestCountCacheOthers | Aantal aanvragen met een cache status die niet onder bovenstaande vallen. | Nee | Ja | Nee  |
 | EgressTotal | Uitgaande gegevens overdracht in GB | Ja |Ja |Ja |
 | EgressHttpStatus2xx | Uitgaande gegevens overdracht * voor antwoorden met 2xx HTTP-status codes in GB. | Ja | Ja | Nee  |
@@ -276,7 +276,7 @@ Niet alle metrische gegevens zijn beschikbaar voor alle providers, hoewel deze v
 | EgressCacheHit | Uitgaande gegevens overdracht voor antwoorden die rechtstreeks vanuit de CDN-cache op de CDN Pop's/randen zijn geleverd. | Ja | Ja | Nee |
 | EgressCacheMiss. | Uitgaande gegevens overdracht voor antwoorden die niet zijn gevonden op de dichtstbijzijnde POP-server en die is opgehaald van de oorspronkelijke server. | Ja | Ja | Nee |
 | EgressCacheNoCache | Uitgaande gegevens overdracht voor activa die niet in de cache worden opgeslagen vanwege een gebruikers configuratie aan de rand. | Ja | Ja | Nee |
-| EgressCacheUncacheable | Uitgaande gegevens overdracht voor activa die niet in de cache worden opgeslagen door de cache-Control en of expires van de Asset. Geeft aan dat deze niet in de cache moet worden opgeslagen in een POP of de HTTP-client. | Ja | Ja | Nee |
+| EgressCacheUncacheable | Uitgaande gegevens overdracht voor activa die voor komen dat deze in de cache worden opgeslagen door de Cache-Control van de Asset en of verlopen kopteksten. Geeft aan dat deze niet in de cache moet worden opgeslagen in een POP of de HTTP-client. | Ja | Ja | Nee |
 | EgressCacheOthers | Uitgaande gegevens overdracht voor andere cache scenario's. | Nee | Ja | Nee |
 
 * Uitgaande gegevens overdracht verwijst naar verkeer dat van CDN POP-servers naar de client wordt geleverd.

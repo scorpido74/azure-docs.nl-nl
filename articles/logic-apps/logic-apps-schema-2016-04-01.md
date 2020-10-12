@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86520712"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schema-updates voor Azure Logic Apps van 1 juni 2016
@@ -21,7 +21,7 @@ De [bijgewerkte schema](https://schema.management.azure.com/schemas/2016-06-01/M
 
 * Met [bereiken](#scopes) kunt u acties groeperen of nesten als een verzameling acties.
 * [Voor waarden en lussen](#conditions-loops) zijn nu acties voor de eerste klasse.
-* Nauw keurige volg orde voor het uitvoeren van acties met de `runAfter` eigenschap, vervangen`dependsOn`
+* Nauw keurige volg orde voor het uitvoeren van acties met de `runAfter` eigenschap, vervangen `dependsOn`
 
 Als u uw Logic apps van het voorbeeld schema van 1 augustus 2015 wilt bijwerken naar het schema van 1 juni 2016, [raadpleegt u de sectie upgrades](#upgrade-your-schema).
 

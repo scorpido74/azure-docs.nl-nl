@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2ed141847f923a847443d2293e850519357cdae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175926"
 ---
 Vanaf 1 juli 2018 is ondersteuning voor TLS 1.0 en 1.1 uit Azure VPN Gateway verwijderd. VPN Gateway ondersteunt alleen TLS 1.2. Alleen Point-to-site-verbindingen worden beïnvloed. site-naar-site-verbindingen worden niet beïnvloed. Als u TLS gebruikt voor punt-naar-site-Vpn's op Windows 10-clients, hoeft u geen actie te ondernemen. Als u TLS gebruikt voor punt-naar-site-verbindingen op Windows 7-en Windows 8-clients, raadpleegt u de [Veelgestelde vragen over VPN gateway](../articles/vpn-gateway/vpn-gateway-vpn-faq.md#P2S) voor update-instructies.

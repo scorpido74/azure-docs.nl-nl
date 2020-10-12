@@ -12,10 +12,10 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201273"
 ---
 # <a name="boolean-claims-transformations"></a>Booleaanse claim transformaties
@@ -28,7 +28,7 @@ In dit artikel vindt u voor beelden van het gebruik van de Boole-claim transform
 
 Voert een en-bewerking uit van twee Booleaanse inputClaims en stelt de output claim in met het resultaat van de bewerking.
 
-| Item  | TransformationClaimType  | Gegevenstype  | Notities |
+| Item  | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 |-------| ------------------------ | ---------- | ----- |
 | Input claim | inputClaim1 | booleaans | Het eerste claim type dat moet worden geëvalueerd. |
 | Input claim | inputClaim2  | booleaans | Het tweede claim type dat moet worden geëvalueerd. |
@@ -61,7 +61,7 @@ De volgende claims-trans formatie demonstreert hoe en hoe en met de ClaimTypes: 
 
 Controleert of Boole-waarden van twee claims gelijk zijn en genereert een uitzonde ring als dat niet het geval is.
 
-| Item | TransformationClaimType  | Gegevenstype  | Notities |
+| Item | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 | ---- | ------------------------ | ---------- | ----- |
 | Input claim | Input claim | booleaans | Het claim type dat moet worden bevestigd. |
 | Parameter |valueToCompareTo | booleaans | De waarde die moet worden vergeleken (waar of onwaar). |
@@ -119,7 +119,7 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
 
 Controleert of de Booleaanse waarde van een claim gelijk is aan `true` of `false` en retourneert het resultaat van de compressie.
 
-| Item | TransformationClaimType  | Gegevenstype  | Notities |
+| Item | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 | ---- | ------------------------ | ---------- | ----- |
 | Input claim | Input claim | booleaans | Het claim type dat moet worden bevestigd. |
 | Parameter |valueToCompareTo | booleaans | De waarde die moet worden vergeleken (waar of onwaar). |
@@ -154,7 +154,7 @@ De volgende claims transformatie laat zien hoe u de waarde van een Booleaanse cl
 
 Hiermee wordt een niet-bewerking uitgevoerd van de Booleaanse input claim en wordt de output claim ingesteld met het resultaat van de bewerking.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Input claim | booleaans | De claim die moet worden gebruikt. |
 | Output claim | Output claim | booleaans | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen (True of false). |
@@ -183,7 +183,7 @@ Gebruik deze claim transformatie om logische ontkenning op een claim uit te voer
 
 Hiermee worden een of twee Booleaanse inputClaims berekend en wordt de output claim ingesteld met het resultaat van de bewerking.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | inputClaim1 | booleaans | Het eerste claim type dat moet worden geëvalueerd. |
 | Input claim | inputClaim2 | booleaans | Het tweede claim type dat moet worden geëvalueerd. |

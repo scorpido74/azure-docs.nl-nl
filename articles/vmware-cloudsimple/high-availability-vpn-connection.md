@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77025262"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Een verbinding met hoge Beschik baarheid van on-premises naar CloudSimple VPN-gateway configureren
@@ -44,7 +44,7 @@ Als u phase 1 (IKEv1) wilt inschakelen voor de buiten-interface, voert u de volg
 
 ### <a name="2-create-an-ikev1-policy"></a>2. een IKEv1-beleid maken
 
-Maak een IKEv1-beleid waarmee de algoritmen en methoden worden gedefinieerd die moeten worden gebruikt voor hashing, authenticatie, Diffie-Hellman-groep, levens duur en versleuteling.
+Maak een IKEv1-beleid waarmee de algoritmen en methoden worden gedefinieerd die moeten worden gebruikt voor hashing, authenticatie, Diffie-Hellman groep, levens duur en versleuteling.
 
 ```
 crypto ikev1 policy 1
@@ -141,7 +141,7 @@ Uitvoer fase 2:
 
 ## <a name="configure-on-premises-palo-alto-networks-firewall"></a>On-premises Palo Alto Network Firewall configureren
 
-De instructies in deze sectie zijn van toepassing op Palo Alto Networks versie 7,1 en hoger. In dit configuratie voorbeeld wordt de software versie 8.1.0 van de VM-serie Palo Alto Networks geïmplementeerd en geconfigureerd in de modus IKEv1.
+De instructies in deze sectie zijn van toepassing op Palo Alto Networks versie 7,1 en hoger. In dit configuratie voorbeeld worden Palo Alto-netwerken VM-Series software versie 8.1.0 geïmplementeerd en geconfigureerd in de modus IKEv1.
 
 Voor een goede werking van het site-naar-site-VPN moet u UDP 500/4500 en ESP (IP-protocol 50) van de CloudSimple Primary en secundair open bare IP (peer-IP) toestaan op de buitenste interface van de on-premises Palo Alto Networks gateway.
 

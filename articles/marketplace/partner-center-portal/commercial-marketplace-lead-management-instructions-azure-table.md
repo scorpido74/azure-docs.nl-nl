@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
 ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030794"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure-tabel opslag gebruiken om leads voor commerciële Marketplace te beheren
@@ -38,7 +38,7 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
 1. Selecteer op de **Start** pagina van de Azure Portal **alle resources weer geven** om toegang te krijgen tot uw opslag account. U kunt ook **alle resources** selecteren in de linkermenu van de Azure Portal.
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Toegang tot uw Azure Storage-account.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Stappen voor het maken van een Azure-opslag account.":::
 
 1. Selecteer in het deel venster opslag account de optie **toegangs sleutels** en kopieer de **verbindings reeks** waarde voor de sleutel. Sla deze waarde op omdat het de waarde voor de **verbindings reeks voor het opslag account** is die u moet opgeven in de portal voor publiceren om leads voor uw Azure Marketplace-aanbieding te ontvangen.
 
@@ -48,7 +48,7 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure-opslag sleutel.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Stappen voor het maken van een Azure-opslag account.":::
 
 
 1. Selecteer in het deel venster opslag account de optie **tabellen**en selecteer **+ tabel** om een tabel te maken. Voer een naam in voor de tabel en selecteer **OK**. Sla deze waarde op omdat u deze nodig hebt als u een stroom wilt configureren voor het ontvangen van e-mail meldingen wanneer leads worden ontvangen.
@@ -185,7 +185,7 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 1. Selecteer in het gedeelte **klant leads** de optie **verbinding maken**.
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Leads van klanten":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Stappen voor het maken van een Azure-opslag account.":::
 
 1. Selecteer in het pop-upvenster **verbindings Details** de optie **Azure-tabel** voor de **doel locatie**van de lead. 
      ![Lead beheer, verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
