@@ -12,10 +12,10 @@ ms.date: 09/20/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: 5a109f1a06e7ee8aff3e455c009217ff670d2781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84782208"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Er wordt een verkeerde set gebruikers ingericht voor een Azure AD-galerie toepassing
@@ -108,4 +108,4 @@ Als inrichten is geconfigureerd en al wordt uitgevoerd voor een app, moeten nieu
 Als inrichtings groepen is ingeschakeld, moet u de kenmerk toewijzingen controleren om ervoor te zorgen dat er een geschikt veld wordt gebruikt voor de ' overeenkomende ID '. Deze overeenkomende ID kan de weergave naam of e-mail alias zijn. De groep en de bijbehorende leden worden niet ingericht als de overeenkomende eigenschap leeg is of niet is ingevuld voor een groep in azure AD.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)
+[Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory automatiseren](user-provisioning.md)

@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116390"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Waarom bijwerken naar Microsoft Identity Platform (v2.0)?
@@ -61,7 +61,7 @@ Toestemming van de beheerder die namens een organisatie wordt uitgevoerd, vereis
 
 Voor apps die gebruikmaken van het v 1.0-eind punt kan een app zich gedragen als een **resource**of een ontvanger van tokens. Een resource kan een aantal **bereiken** of **oAuth2Permissions** definiëren die het begrijpt, zodat client-apps tokens van die bron kunnen aanvragen voor een bepaalde reeks bereiken. Denk eens aan de Microsoft Graph-API als voor beeld van een resource:
 
-* Resource-id of `AppID URI` :`https://graph.microsoft.com/`
+* Resource-id of `AppID URI` : `https://graph.microsoft.com/`
 * Bereiken, of `oAuth2Permissions` : `Directory.Read` ,, enzovoort `Directory.Write` .
 
 Dit geldt voor het micro soft Identity platform-eind punt. Een app kan zich nog steeds gedragen als een resource, scopes definiëren en worden geïdentificeerd met een URI. Client-apps kunnen nog steeds toegang tot deze bereiken aanvragen. De manier waarop een client die machtigingen aanvraagt, is echter gewijzigd.

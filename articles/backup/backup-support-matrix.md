@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
 ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332709"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
@@ -78,11 +78,11 @@ Dit wordt what's ondersteund als u een back-up wilt maken van Linux-machines:
 
 **Back-uptype** | **Linux (goedgekeurd door Azure)**
 --- | ---
-**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Wordt niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
+**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
 **Agent-extensie gebruiken om een back-up te maken van Azure VM waarop Linux wordt uitgevoerd** | App-consistente back-up met [aangepaste scripts](backup-azure-linux-app-consistent.md).<br/><br/> Herstel op bestandsniveau.<br/><br/> Herstellen door het maken van een VM vanaf een herstelpunt of schijf.
 **DPM gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMware.<br/><br/> VM-herstel van Hyper-V-en VMware Linux-gast-Vm's.
 **MABS gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMware.<br/><br/> VM-herstel van Hyper-V-en VMware Linux-gast-Vm's.
-**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Wordt niet ondersteund.
+**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Niet ondersteund.
 
 ## <a name="daylight-saving-time-support"></a>Ondersteuning voor zomer tijd
 
@@ -151,9 +151,9 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | Alle open bare Azure-regio's en soevereine Clouds.  |
-| SQL-/SAP HANA | Yes                                                          | VS-West 2 (WUS2), West-Centraal VS (WCUS), Canada-centraal (CNC), Canada-oost (CNE), VS-Oost (EUS), VS-West (WUS), Japan-Oost (JPE), Japan-Oost (JPE) |
-| MARS-agent/on-premises  | No                                                           | N.v.t.               |
-| AFS (Azure-bestands shares)                 | No                                                           | N.v.t.               |
+| SQL-/SAP HANA | Ja                                                          | VS-West 2 (WUS2), West-Centraal VS (WCUS), Canada-centraal (CNC), Canada-oost (CNE), VS-Oost (EUS), VS-West (WUS), Japan-Oost (JPE), Japan-Oost (JPE) |
+| MARS-agent/on-premises  | Nee                                                           | N.v.t.               |
+| AFS (Azure-bestands shares)                 | Nee                                                           | N.v.t.               |
 
 ## <a name="next-steps"></a>Volgende stappen
 

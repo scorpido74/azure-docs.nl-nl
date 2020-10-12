@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274789"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden-Gate implementeren op een Azure Linux-VM 
@@ -384,7 +384,7 @@ Voer de volgende stappen uit om de Oracle Golden-Gate-software te downloaden en 
    ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>De client en VM voorbereiden voor het uitvoeren van X11 (alleen voor Windows-clients)
-Dit is een optionele stap. U kunt deze stap overs Laan als u een Linux-client gebruikt of als u al een X11-installatie hebt.
+Dit is een optionele taak. U kunt deze stap overs Laan als u een Linux-client gebruikt of als u al een X11-installatie hebt.
 
 1. PuTTy-en Xming downloaden naar uw Windows-computer:
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317173"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
@@ -451,7 +451,7 @@ In de volgende tabel ziet u de huidige ondersteunde Node.js versies voor elke ho
 
 | Functie versie | Knooppunt versie (Windows) | Knooppunt versie (Linux) |
 |---|---| --- |
-| 1.x | 6.11.2 (vergrendeld door de runtime) | N.v.t. |
+| 1.x | 6.11.2 (vergrendeld door de runtime) | n.v.t. |
 | 2.x  | ~ 8<br/>~ 10 (aanbevolen)<br/>~ 12<sup>*</sup> | ~ 8 (aanbevolen)<br/>~ 10  |
 | 3.x | ~ 10<br/>~ 12 (aanbevolen)  | ~ 10<br/>~ 12 (aanbevolen) |
 

@@ -9,10 +9,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18
 ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85799391"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Verbinding maken met een Azure Cosmos-account met Studio 3T gebruiken
@@ -32,89 +32,42 @@ Gebruik de volgende stappen om uw Azure Cosmos-account toe te voegen aan de Stud
 
 2. Klik op **verbinding maken** om verbindings beheer te openen en klik vervolgens op **nieuwe verbinding**
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Scherm afbeelding van de Studio 3T gebruiken-verbindings beheer":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Scherm afbeelding van de connection string pagina":::
 3. Voer in het venster **nieuwe verbinding** , op het tabblad **Server** , de host (FQDN) van het Azure Cosmos-account en de poort in.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="Scherm afbeelding van het tabblad Server van Studio 3T gebruiken-verbindings beheer":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="Scherm afbeelding van de connection string pagina":::
 4. Kies in het venster **nieuwe verbinding** op het tabblad **verificatie** de optie verificatie modus **Basic (MONGODB-CR of SCARM-SHA-1)** en voer de gebruikers naam en het wacht woord in.  Accepteer de standaard verificatie database (beheerder) of geef uw eigen waarde op.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="Scherm afbeelding van het tabblad Verificatie van Studio 3T gebruiken-verbindings beheer":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="Scherm afbeelding van de connection string pagina":::
 5. Schakel in het venster **nieuwe verbinding** , op het tabblad **SSL** , het selectie vakje **SSL-protocol gebruiken om verbinding te maken** in en het keuze rondje **Server zelfondertekende SSL-certificaten accepteren** .
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Scherm afbeelding van het tabblad SSL 3T gebruiken-verbindings beheer van Studio":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Scherm afbeelding van de connection string pagina":::
 6. Klik op de knop **verbinding testen** om de verbindings gegevens te valideren, klik op **OK** om terug te keren naar het venster nieuwe verbinding en klik vervolgens op **Opslaan**.
 
-    :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Scherm afbeelding van het venster Studio 3T gebruiken test-verbinding":::
+    :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Scherm afbeelding van de connection string pagina":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Studio 3T gebruiken gebruiken om een Data Base, verzameling en documenten te maken
 Voer de volgende stappen uit om een Data Base, verzameling en documenten te maken met behulp van Studio 3T gebruiken:
 
 1. Markeer in **verbindings beheer**de verbinding en klik op **verbinding maken**.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Scherm afbeelding van de Studio 3T gebruiken-verbindings beheer":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Scherm afbeelding van de connection string pagina":::
 2. Klik met de rechter muisknop op de host en kies **Data Base toevoegen**.  Geef een database naam op en klik op **OK**.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Scherm afbeelding van de optie Studio 3T gebruiken add data base":::
+    :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Scherm afbeelding van de connection string pagina":::
 3. Klik met de rechter muisknop op de data base en kies **verzameling toevoegen**.  Geef een naam voor de verzameling op en klik op **maken**.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Scherm afbeelding van de optie voor het toevoegen van de Studio 3T gebruiken-verzameling":::
+    :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Scherm afbeelding van de connection string pagina":::
 4. Klik op het menu-item **verzameling** en klik vervolgens op **document toevoegen**.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Scherm afbeelding van het menu-item Studio 3T gebruiken add document":::
-5. Plak het volgende in het dialoog venster document toevoegen en klik vervolgens op **document toevoegen**.
-
-    ```json
-    {
-        "_id": "AndersenFamily",
-        "lastName": "Andersen",
-        "parents": [
-            { "firstName": "Thomas" },
-            { "firstName": "Mary Kay"}
-        ],
-        "children": [
-            {
-                "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-                "pets": [{ "givenName": "Fluffy" }]
-            }
-        ],
-        "address": { "state": "WA", "county": "King", "city": "seattle" },
-        "isRegistered": true
-    }
-    ```
-    
-6. Voeg nog een document toe met de volgende inhoud:
-
-    ```json
-    {
-        "_id": "WakefieldFamily",
-        "parents": [
-            { "familyName": "Wakefield", "givenName": "Robin" },
-            { "familyName": "Miller", "givenName": "Ben" }
-        ],
-        "children": [
-            {
-                "familyName": "Merriam",
-                "givenName": "Jesse",
-                "gender": "female", "grade": 1,
-                "pets": [
-                    { "givenName": "Goofy" },
-                    { "givenName": "Shadow" }
-                ]
-            },
-            {
-                "familyName": "Miller",
-                "givenName": "Lisa",
-                "gender": "female",
-                "grade": 8 }
-        ],
-        "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
+    :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Scherm afbeelding van de connection string pagina" },
         "isRegistered": false
     }
     ```
 
 7. Een voorbeeld query uitvoeren. Zoek bijvoorbeeld naar families met de achternaam ' Splinter ' en retour neer de velden ouders en provincie.
 
-    :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Scherm opname van Mongo chef-query resultaten":::
+    :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Scherm afbeelding van de connection string pagina":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

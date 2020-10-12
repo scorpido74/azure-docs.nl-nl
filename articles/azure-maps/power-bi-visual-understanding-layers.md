@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261717"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>Wat zijn lagen in de Azure Maps Power BI Visual?
@@ -84,10 +84,10 @@ De sectie algemene laag van het deel venster **indeling** zijn algemene instelli
 Wijzigen hoe uw gegevens op de kaart worden weer gegeven:
 
 > [!div class="nextstepaction"]
-> [Een bubbellaag toevoegen](power-bi-visual-add-bubble-layer.md)
+> [Een Bubble laag toevoegen](power-bi-visual-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Een laag met een staaf diagram toevoegen](power-bi-visual-add-bar-chart-layer.md)
+> [Een laag met een staafdiagram toevoegen](power-bi-visual-add-bar-chart-layer.md)
 
 Meer context toevoegen aan de kaart:
 
@@ -98,4 +98,4 @@ Meer context toevoegen aan de kaart:
 > [Een titellaag toevoegen](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Realtime verkeer weer geven](power-bi-visual-show-real-time-traffic.md)
+> [Realtime verkeer weergeven](power-bi-visual-show-real-time-traffic.md)

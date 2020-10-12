@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764890"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-instellingen voor toegang tot on-premises toepassingen in Azure Active Directory
@@ -27,9 +27,9 @@ Azure Active Directory (Azure AD) heeft toegang en sessie cookies voor toegang t
 
 [Toepassings proxy](application-proxy.md) gebruikt de volgende instellingen voor toegang en sessie cookies.
 
-| Cookie-instelling | Standaard | Description | Aanbevelingen |
+| Cookie-instelling | Standaard | Beschrijving | Aanbevelingen |
 | -------------- | ------- | ----------- | --------------- |
-| Alleen-HTTP-cookies gebruiken | **Nee** | Met **Ja** kan toepassings proxy de vlag HTTPOnly in http-antwoord headers bevatten. Deze vlag biedt bijvoorbeeld extra beveiligings voordelen, waardoor het voor komt dat de cookies worden gekopieerd of gewijzigd door client scripts.<br></br><br></br>Voordat we de instelling alleen HTTP-instellingen hebben ondersteund, versleutelde en verzonden toepassings proxy-cookies via een beveiligd TLS-kanaal om tegen wijzigingen te beveiligen. | Gebruik **Ja** vanwege de extra beveiligings voordelen.<br></br><br></br>Gebruik **Nee** voor clients of gebruikers agenten waarvoor toegang tot de sessie cookie is vereist. Gebruik bijvoorbeeld **Nee** voor een RDP-of MTSC-client die via toepassings proxy verbinding maakt met een extern bureaublad-gateway server.|
+| Alleen-HTTP-cookies gebruiken | **Nee** | Met **Ja** kan toepassings proxy de vlag HTTPOnly in http-antwoord headers bevatten. Deze vlag biedt bijvoorbeeld extra beveiligings voordelen, waardoor het voor komt dat de cookies worden gekopieerd of gewijzigd door client scripts.<br></br><br></br>Voordat we de HTTP-Only-instelling hebben ondersteund, versleutelde en verzonden toepassings proxy-cookies via een beveiligd TLS-kanaal om tegen wijzigingen te beveiligen. | Gebruik **Ja** vanwege de extra beveiligings voordelen.<br></br><br></br>Gebruik **Nee** voor clients of gebruikers agenten waarvoor toegang tot de sessie cookie is vereist. Gebruik bijvoorbeeld **Nee** voor een RDP-of MTSC-client die via toepassings proxy verbinding maakt met een extern bureaublad-gateway server.|
 | Beveiligde cookies gebruiken | **Nee** | Met **Ja** kan toepassings proxy de beveiligde vlag in http-antwoord headers bevatten. Beveiligde cookies verbeteren de beveiliging door het verzenden van cookies via een TLS-kanaal, zoals HTTPS. Zo wordt voor komen dat cookies door onbevoegden worden waargenomen als gevolg van het verzenden van de cookie als Lees bare tekst. | Gebruik **Ja** vanwege de extra beveiligings voordelen.|
 | Permanente cookies gebruiken | **Nee** | Met **Ja** kan de toepassings proxy de toegangs cookies instellen op niet verlopen wanneer de webbrowser is gesloten. De persistentie loopt door totdat het toegangs token is verlopen of totdat de gebruiker de permanente cookies hand matig verwijdert. | Gebruik **Nee** als gevolg van het beveiligings risico dat is gekoppeld aan het houden van geverifieerde gebruikers.<br></br><br></br>We raden u aan alleen **Ja** te gebruiken voor oudere toepassingen die geen cookies tussen processen kunnen delen. Het is beter om uw toepassing bij te werken voor het afhandelen van het delen van cookies tussen processen in plaats van permanente cookies te gebruiken. Zo hebt u mogelijk permanente cookies nodig om een gebruiker toe te staan Office-documenten in de Verkenner-weer gave te openen vanaf een share point-site. Zonder permanente cookies kan deze bewerking mislukken als de toegangs cookies niet worden gedeeld tussen de browser, het Explorer-proces en het Office-proces. |
 
@@ -41,7 +41,7 @@ Vanaf versie Chrome 80 en uiteindelijk in browsers die gebruikmaken van chroom, 
 
 Deze wijzigingen in toepassings proxy cookies worden in de loop van de volgende weken vóór de release datum van het Chrome 80 geïmplementeerd.
 
-Als uw back-endtoepassing cookies heeft die beschikbaar moeten zijn in een context van derden, moet u er ook voor kiezen om uw toepassing expliciet in te stellen op het gebruik van SameSite = none voor deze cookies. Toepassings proxy vertaalt de set-cookie header naar de bijbehorende URL'S en respecteert de instellingen voor deze cookies die worden ingesteld door de back-end-toepassing.
+Als uw back-endtoepassing cookies heeft die beschikbaar moeten zijn in een context van derden, moet u er ook voor kiezen om uw toepassing expliciet in te stellen op het gebruik van SameSite = none voor deze cookies. Toepassings proxy vertaalt de Set-Cookie-header naar de bijbehorende URL'S en respecteert de instellingen voor deze cookies die door de back-endtoepassing zijn ingesteld.
 
 
 

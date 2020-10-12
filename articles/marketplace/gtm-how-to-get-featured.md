@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
 ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103565"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>De aanbevolen procedure voor het gebruik van AppSource en Azure Marketplace
@@ -30,8 +30,8 @@ U kunt de volgende actie punten ondernemen om uw score te verbeteren:
 1. *Zorg ervoor dat uw app of service op de juiste wijze is gecategoriseerd*: Kies drie categorieën die de mogelijkheden van uw app of service vertegenwoordigen.
 2. *Azure Marketplace-apps: verg root uw Azure-verbruik per maand.* Als u gedurende 1.000 uur aan Azure-gebruik per maand kunt profiteren, verhoogt u de kans dat deze wordt aanbevolen.
 3. *AppSource-apps: Verhoog de aanschaf van uw aanbieding.* Als u 10 verwervingen per maand kunt bezorgen, verhoogt u de kans dat deze wordt aanbevolen. 
-4. Behaal de status van de *kant-en-klare mede koop*: Voltooi de vereisten voor het samen verkopen van het bedrijf.
-5. *Verbeter de kwaliteit van uw aanbieding*: Zie [richt lijnen voor inhouds vermelding](marketplace-criteria-content-validation.md) voor informatie over het wijzigen van uw aanbieding
+4. *Behaal de status van Co-Sell Ready*: Voltooi de vereisten voor het samen verkopen van de voor bereiding.
+5. *Verbeter de kwaliteit van uw aanbieding*: Zie  [richt lijnen voor inhouds vermelding](marketplace-criteria-content-validation.md) voor informatie over het wijzigen van uw aanbieding
 6. Meerdere aanbiedingen publiceren in Marketplace: zijn al uw kern-apps en-services opgenomen? Hebt u een proef ervaring?
 7. Stimuleer uw klanten om beoordelingen te schrijven.
 

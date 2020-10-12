@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
 ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317052"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights met AI gebruiken om database prestaties te controleren en op te lossen (preview-versie)
@@ -158,7 +158,7 @@ De gegenereerde inzichten bevatten het aantal time-outaanvragen en het aantal ti
 
 ## <a name="excessive-wait-times"></a>Buitensporige wacht tijden
 
-Het model voor buitensporige wacht tijden bewaakt afzonderlijke database query's. Er worden ongebruikelijk hoge query-wacht statistieken gedetecteerd die de door het systeem beheerde absolute drempel waarden overschrijden. De volgende query met buitensporige wacht tijden meet waarden worden gemeten met behulp van, [query Store wait-statistieken (sys. query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql):
+Het model voor buitensporige wacht tijden bewaakt afzonderlijke database query's. Er worden ongebruikelijk hoge query-wacht statistieken gedetecteerd die de door het systeem beheerde absolute drempel waarden overschrijden. De volgende query met buitensporige wacht tijden meet waarden worden gemeten met behulp van, [query Store wait-statistieken (sys.query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql):
 
 - Bron limieten bereiken
 - Resource limieten voor elastische Pools bereiken

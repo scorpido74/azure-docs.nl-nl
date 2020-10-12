@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563548"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory bewaken en waarschuwen door gebruik te maken van Azure Monitor
@@ -170,7 +170,7 @@ Meld u aan bij de Azure Portal en selecteer **monitor**  >  **waarschuwingen** o
 
 1. Selecteer **+ nieuwe waarschuwings regel** om een nieuwe waarschuwing te maken.
 
-    ![Nieuwe waarschuwings regel](media/monitor-using-azure-monitor/alerts_image4.png)
+    ![Nieuwe waarschuwingsregel](media/monitor-using-azure-monitor/alerts_image4.png)
 
 1. Definieer de waarschuwings voorwaarde.
 
@@ -221,7 +221,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Kopteksten
+##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.
@@ -282,7 +282,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **retentionPolicy**| Complex type| Hierin wordt het Bewaar beleid voor een metrische of logboek categorie beschreven. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 |**resterende**| Int| Het aantal dagen dat de metrische gegevens of logboeken moeten worden bewaard. Als de waarde van de eigenschap 0 is, worden de logboeken permanent bewaard. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 
-##### <a name="response"></a>Reactie
+##### <a name="response"></a>Antwoord
 
 200 OK.
 
@@ -341,14 +341,14 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Kopteksten
+##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.
 * Stel de `Content-Type` koptekst in op `application/json` .
 * Stel de autorisatie-header in op een JSON-webtoken dat u hebt ontvangen van Azure AD. Zie [verificatie aanvragen](../active-directory/develop/authentication-scenarios.md)voor meer informatie.
 
-##### <a name="response"></a>Reactie
+##### <a name="response"></a>Antwoord
 
 200 OK.
 
@@ -501,7 +501,7 @@ Zie [Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/dia
 |**pipelineName**| Tekenreeks | De naam van de pijp lijn. | `MyPipeline` |
 |**starten**| Tekenreeks | De begin tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. | `2017-06-26T20:55:29.5007959Z`. |
 |**endsystemen**| Tekenreeks | De eind tijd van de activiteit wordt uitgevoerd met de UTC-notatie time span. Als in het diagnostische logboek wordt aangegeven dat een activiteit is gestart, maar nog niet is beëindigd, is de waarde van de eigenschap `1601-01-01T00:00:00Z` .  | `2017-06-26T20:55:29.5007959Z` |
-|**hebben**| Tekenreeks | De laatste status van de pijplijn uitvoering. Mogelijke eigenschaps waarden zijn `Succeeded` en `Failed` . | `Succeeded`|
+|**status**| Tekenreeks | De laatste status van de pijplijn uitvoering. Mogelijke eigenschaps waarden zijn `Succeeded` en `Failed` . | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>Logboek kenmerken van de trigger-uitvoer
 
@@ -545,7 +545,7 @@ Zie [Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/dia
 |**Trigger type**| Tekenreeks | Het type van de trigger. Mogelijke eigenschaps waarden zijn `Manual Trigger` en `Schedule Trigger` . | `ScheduleTrigger` |
 |**triggerEvent**| Tekenreeks | Het gebeurtenis van de trigger. | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**starten**| Tekenreeks | De begin tijd van de trigger die wordt geactiveerd in timeas UTC-notatie. | `2017-06-26T20:55:29.5007959Z`|
-|**hebben**| Tekenreeks | De uiteindelijke status die aangeeft of de trigger is geactiveerd. Mogelijke eigenschaps waarden zijn `Succeeded` en `Failed` . | `Succeeded`|
+|**status**| Tekenreeks | De uiteindelijke status die aangeeft of de trigger is geactiveerd. Mogelijke eigenschaps waarden zijn `Succeeded` en `Failed` . | `Succeeded`|
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>Kenmerken van SSIS Integration runtime-logboeken
 
@@ -570,7 +570,7 @@ Hier vindt u de logboek kenmerken van SSIS IR start/stop/onderhouds bewerkingen.
 
 | Eigenschap                   | Type   | Beschrijving                                                   | Voorbeeld                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling:`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Tekenreeks | De naam van uw SSIS-IR-bewerking                            | `Start/Stop/Maintenance` |
 | **category**               | Tekenreeks | De categorie Diagnostische logboeken                               | `SSISIntegrationRuntimeLogs` |
 | **correlationId**          | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
@@ -610,15 +610,15 @@ Hier vindt u de logboek kenmerken van voor waarden met betrekking tot gebeurteni
 
 | Eigenschap                   | Type   | Beschrijving                                                          | Voorbeeld                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling:`YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Tekenreeks | Dit is ingesteld op`YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
+| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Tekenreeks | Dit is ingesteld op `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
 | **category**               | Tekenreeks | De categorie Diagnostische logboeken                                      | `SSISPackageEventMessageContext` |
 | **correlationId**          | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                                 | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                             | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                         | `Informational` |
-| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB          | `1`(1 betekent bewerkingen met betrekking tot pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
-| **contextDepth**           | Tekenreeks | De diepte van de context van uw gebeurtenis bericht                              | `0`(0 geeft de context aan voordat de uitvoering van het pakket wordt gestart, 1 geeft de context aan als er een fout optreedt, en neemt toe naarmate de context verder van de fout is) |
+| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB          | `1` (1 betekent bewerkingen met betrekking tot pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
+| **contextDepth**           | Tekenreeks | De diepte van de context van uw gebeurtenis bericht                              | `0` (0 geeft de context aan voordat de uitvoering van het pakket wordt gestart, 1 geeft de context aan als er een fout optreedt, en neemt toe naarmate de context verder van de fout is) |
 | **packagePath**            | Tekenreeks | Het pad van het pakket object als de context bron van uw gebeurtenis bericht      | `\Package` |
 | **contextType**            | Tekenreeks | Het type pakket object als de context bron van het gebeurtenis bericht      | `60`(Zie [meer context typen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
 | **contextSourceName**      | Tekenreeks | De naam van het pakket object als de context bron van het gebeurtenis bericht      | `MyPackage` |
@@ -660,14 +660,14 @@ Hier vindt u de logboek kenmerken van gebeurtenis berichten die door SSIS-pakket
 
 | Eigenschap                   | Type   | Beschrijving                                                        | Voorbeeld                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Tekenreeks | Dit is ingesteld op`YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
+| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Tekenreeks | Dit is ingesteld op `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
 | **category**               | Tekenreeks | De categorie Diagnostische logboeken                                    | `SSISPackageEventMessages` |
 | **correlationId**          | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                               | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                           | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                       | `Informational` |
-| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB        | `1`(1 betekent bewerkingen met betrekking tot pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
+| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB        | `1` (1 betekent bewerkingen met betrekking tot pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **messageTime**            | Tekenreeks | Het tijdstip waarop uw gebeurtenis bericht is gemaakt in UTC-indeling          | `2017-06-28T21:00:27.3534352Z` |
 | **Message type**            | Tekenreeks | Het type gebeurtenis bericht                                     | `70`( [meer bericht typen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)weer geven) |
 | **messageSourceType**      | Tekenreeks | Het type van de bron van het gebeurtenis bericht                              | `20`(Zie [meer bron typen van berichten](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
@@ -678,7 +678,7 @@ Hier vindt u de logboek kenmerken van gebeurtenis berichten die door SSIS-pakket
 | **messageSourceId**        | Tekenreeks | De unieke ID van het pakket onderdeel als bron van het gebeurtenis bericht    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 | **subonderdeelnaam**       | Tekenreeks | De naam van de gegevens stroom component als bron van het gebeurtenis bericht       | `SSIS.Pipeline` |
 | **packagePath**            | Tekenreeks | Het pad van het pakket object als bron van het gebeurtenis bericht            | `\Package\Data Flow Task` |
-| **executionPath**          | Tekenreeks | Het volledige pad van het bovenliggende pakket naar het uitgevoerde onderdeel            | `\Transformation\Data Flow Task`(In dit pad worden ook onderdeel herhalingen vastgelegd) |
+| **executionPath**          | Tekenreeks | Het volledige pad van het bovenliggende pakket naar het uitgevoerde onderdeel            | `\Transformation\Data Flow Task` (In dit pad worden ook onderdeel herhalingen vastgelegd) |
 | **Thread**               | Tekenreeks | De unieke ID van de thread die wordt uitgevoerd wanneer uw gebeurtenis bericht wordt geregistreerd | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>Logboek kenmerken van de SSIS-uitvoer bare statistieken
@@ -709,19 +709,19 @@ Dit zijn de logboek kenmerken van uitvoer bare gegevens die worden gegenereerd d
 
 | Eigenschap                   | Type   | Beschrijving                                                      | Voorbeeld                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling:`YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Tekenreeks | Dit is ingesteld op`YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
+| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Tekenreeks | Dit is ingesteld op `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
 | **category**               | Tekenreeks | De categorie Diagnostische logboeken                                  | `SSISPackageExecutableStatistics` |
 | **correlationId**          | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                             | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                         | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                     | `Informational` |
-| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB      | `1`(1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
-| **executionPath**          | Tekenreeks | Het volledige pad van het bovenliggende pakket naar het uitgevoerde onderdeel          | `\Transformation\Data Flow Task`(In dit pad worden ook onderdeel herhalingen vastgelegd) |
+| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB      | `1` (1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
+| **executionPath**          | Tekenreeks | Het volledige pad van het bovenliggende pakket naar het uitgevoerde onderdeel          | `\Transformation\Data Flow Task` (In dit pad worden ook onderdeel herhalingen vastgelegd) |
 | **startTime**              | Tekenreeks | Het tijdstip waarop het uitvoer bare fase vooraf wordt uitgevoerd in de UTC-indeling  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | Tekenreeks | Het tijdstip waarop het uitvoer bare post-Execute-fase in UTC-indeling wordt ingevoerd | `2017-06-28T21:00:27.3534352Z` |
 | **executionDuration**      | Tekenreeks | De uitvoerings tijd van het uitvoer bare bestand in milliseconden                   | `1,125` |
-| **executionResult**        | Tekenreeks | Het resultaat van het uitvoeren van een uitvoerbaar bestand                                 | `0`(0 betekent geslaagd, 1 geeft aan dat er een fout is opgetreden, 2 geeft aan dat de waarde is voltooid en 3 betekent dat de annulering wordt geannuleerd) |
+| **executionResult**        | Tekenreeks | Het resultaat van het uitvoeren van een uitvoerbaar bestand                                 | `0` (0 betekent geslaagd, 1 geeft aan dat er een fout is opgetreden, 2 geeft aan dat de waarde is voltooid en 3 betekent dat de annulering wordt geannuleerd) |
 | **executionValue**         | Tekenreeks | De door de gebruiker gedefinieerde waarde die door het uitvoeren van het uitvoer bare bestand is geretourneerd            | `1` |
 | **resourceId**             | Tekenreeks | De unieke ID van de ADF-resource                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
@@ -754,14 +754,14 @@ Hier vindt u de logboek kenmerken van runtime-statistieken voor gegevens stroom 
 
 | Eigenschap                   | Type   | Beschrijving                                                         | Voorbeeld                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling:`YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Tekenreeks | Dit is ingesteld op`YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
+| **time**                   | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Tekenreeks | Dit is ingesteld op `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
 | **category**               | Tekenreeks | De categorie Diagnostische logboeken                                     | `SSISPackageExecutionComponentPhases` |
 | **correlationId**          | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                                | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                            | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                        | `Informational` |
-| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB         | `1`(1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
+| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB         | `1` (1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **packageName**            | Tekenreeks | De naam van het uitgevoerde pakket bestand                              | `MyPackage.dtsx` |
 | **taskName**               | Tekenreeks | De naam van de uitgevoerde gegevens stroom taak                                 | `Data Flow Task` |
 | **subonderdeelnaam**       | Tekenreeks | De naam van het gegevens stroom onderdeel                                     | `Derived Column` |
@@ -802,14 +802,14 @@ Dit zijn de logboek kenmerken van gegevens verplaatsing via elke leg van gegeven
 
 | Eigenschap                     | Type   | Beschrijving                                                        | Voorbeeld                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                     | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**            | Tekenreeks | Dit is ingesteld op`YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
+| **time**                     | Tekenreeks | De tijd van de gebeurtenis in UTC-indeling: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**            | Tekenreeks | Dit is ingesteld op `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
 | **category**                 | Tekenreeks | De categorie Diagnostische logboeken                                    | `SSISPackageExecutionDataStatistics` |
 | **correlationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**          | Tekenreeks | De naam van de ADF                                               | `MyADFv2` |
 | **integrationRuntimeName**   | Tekenreeks | De naam van uw SSIS IR                                           | `MySSISIR` |
 | **niveau**                    | Tekenreeks | Het niveau van Diagnostische logboeken                                       | `Informational` |
-| **Executionid is vereist**              | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB        | `1`(1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
+| **Executionid is vereist**              | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB        | `1` (1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **packageName**              | Tekenreeks | De naam van het uitgevoerde pakket bestand                             | `MyPackage.dtsx` |
 | **taskName**                 | Tekenreeks | De naam van de uitgevoerde gegevens stroom taak                                | `Data Flow Task` |
 | **dataflowPathIdString**     | Tekenreeks | De unieke ID voor het pad naar de tracerings gegevensstroom                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
