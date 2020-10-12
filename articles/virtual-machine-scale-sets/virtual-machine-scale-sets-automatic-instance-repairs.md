@@ -10,10 +10,10 @@ ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527418"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische exemplaarreparaties voor virtuele-machineschaalsets van Azure
@@ -287,7 +287,7 @@ Get-AzVmss `
     -InstanceView
 ```
 
-Gebruik de cmdlet Set-AzVmssOrchestrationServiceState om de *service State* bij te werken voor automatische exemplaar reparaties. Als de schaalset wordt gekozen voor de functie voor automatisch herstellen, kunt u deze cmdlet gebruiken om automatisch herstellen voor schaal sets te onderbreken of hervatten.
+Gebruik Set-AzVmssOrchestrationServiceState cmdlet om de *service State* voor automatische exemplaar reparaties bij te werken. Als de schaalset wordt gekozen voor de functie voor automatisch herstellen, kunt u deze cmdlet gebruiken om automatisch herstellen voor schaal sets te onderbreken of hervatten.
 
 ```azurepowershell-interactive
 Set-AzVmssOrchestrationServiceState `

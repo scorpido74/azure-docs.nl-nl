@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297192"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-eind punten (oorsprong) in Azure Media Services
@@ -53,7 +53,7 @@ In de tabel worden de typen beschreven:
 
 |Type|Schaaleenheden|Beschrijving|
 |--------|--------|--------|  
-|**Standard**|0|Het standaard streaming-eind punt is een **standaard** type. Dit kan worden gewijzigd in het Premium-type door de aanpassing `scaleUnits` .|
+|**Standaard**|0|Het standaard streaming-eind punt is een **standaard** type. Dit kan worden gewijzigd in het Premium-type door de aanpassing `scaleUnits` .|
 |**Premium**|>0|**Premium** Streaming-eind punten zijn geschikt voor geavanceerde workloads en bieden specifieke en schaal bare bandbreedte capaciteit. U gaat naar een **Premium** -type door aanpassing `scaleUnits` (streaming units). `scaleUnits` Geef een specifieke uitvoerige capaciteit die kan worden aangeschaft in stappen van 200 Mbps. Wanneer u het **Premium** -type gebruikt, biedt elke ingeschakelde eenheid extra bandbreedte capaciteit voor de app. |
 
 > [!NOTE]

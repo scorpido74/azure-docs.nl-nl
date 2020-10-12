@@ -4,10 +4,10 @@ description: Meer informatie over failover en fouten in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089529"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Over on-premises nood herstel failover/failback
@@ -43,7 +43,7 @@ Failover is een activiteit in twee fasen:
 
 Er zijn een aantal vereisten om verbinding te maken met de virtuele Azure-machines die na een failover zijn gemaakt met behulp van RDP/SSH.
 
-**Failover** | **Locatie** | **Acties**
+**Cluster** | **Locatie** | **Acties**
 --- | --- | ---
 **Azure VM (Windows (** | Op de on-premises computer vóór een failover | **Toegang via internet**: Schakel RDP in. Zorg ervoor dat de TCP-en UDP-regels zijn toegevoegd voor **openbaar**en dat RDP is toegestaan voor alle profielen in **Windows Firewall**  >  **toegestane apps**.<br/><br/> **Toegang via site-naar-site-VPN**: Schakel RDP in op de machine. Controleer of RDP is toegestaan in de **Windows Firewall**  ->  **toegestane apps en functies**voor **domein-en particuliere** netwerken.<br/><br/>  Zorg ervoor dat het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).<br/><br/> Zorg ervoor dat er geen Windows-updates in behandeling zijn op de virtuele machine wanneer u een failover triggert. Windows Update kan worden gestart wanneer er een failover wordt uitgevoerd, en u kunt zich pas aanmelden bij de VM als er updates zijn uitgevoerd.
 **Virtuele Azure-machine met Windows** | Na een failover op de Azure-VM |  [Voeg een openbaar IP-adres toe](https://aka.ms/addpublicip) voor de VM.<br/><br/> De regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd (en het Azure-subnet waarmee deze is verbonden) moeten binnenkomende verbindingen met de RDP-poort toestaan.<br/><br/> Controleer de **Diagnostische gegevens over opstarten** om een scherm opname van de virtuele machine te controleren. Als u geen verbinding kunt maken, controleert u of de virtuele machine wordt uitgevoerd en raadpleegt u tips voor het [oplossen van problemen](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
@@ -54,7 +54,7 @@ Er zijn een aantal vereisten om verbinding te maken met de virtuele Azure-machin
 
 Site Recovery biedt verschillende opties voor failover.
 
-**Failover** | **Details** | **Herstel** | **Werkstroom**
+**Cluster** | **Details** | **Herstel** | **Werkstroom**
 --- | --- | --- | ---
 **Testfailover** | Wordt gebruikt voor het uitvoeren van een analyse die uw BCDR-strategie valideert, zonder gegevens verlies of downtime.| Hiermee maakt u een kopie van de virtuele machine in azure, zonder dat dit van invloed is op de continue replicatie of in uw productie omgeving. | 1. Voer een testfailover uit op één virtuele machine of op meerdere Vm's in een herstel plan.<br/><br/> 2. Selecteer een herstel punt dat u wilt gebruiken voor de testfailover.<br/><br/> 3. Selecteer een Azure-netwerk waarin de virtuele machine van Azure wordt geplaatst wanneer deze wordt gemaakt na een failover. Het netwerk wordt alleen gebruikt voor de testfailover.<br/><br/> 4. Controleer of de boren naar verwachting werkt. Met Site Recovery worden virtuele machines die in azure zijn gemaakt, automatisch opgeschoond tijdens de analyse.
 **Geplande failover-Hyper-V**  | Meestal gebruikt voor geplande uitval tijd.<br/><br/> De bron-Vm's worden afgesloten. De meest recente gegevens worden gesynchroniseerd voordat de failover wordt gestart. | Geen gegevens verlies voor de geplande werk stroom. | 1. het onderhouds venster voor uitval tijd plannen en gebruikers op de hoogte stellen.<br/><br/> 2. gebruikers gerichte apps offline halen.<br/><br/> 3. Start een geplande failover met het laatste herstel punt. De failover wordt niet uitgevoerd als de computer niet wordt afgesloten of als er fouten optreden.<br/><br/> 4. Controleer na de failover of de replica-VM van Azure actief is in Azure.<br/><br/> 5. Voer de failover door om te volt ooien. Met de actie door voeren worden alle herstel punten verwijderd.

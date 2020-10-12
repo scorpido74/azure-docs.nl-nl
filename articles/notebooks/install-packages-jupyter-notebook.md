@@ -4,10 +4,10 @@ description: 'Meer informatie over het installeren van python-, R-en F #-pakkett
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85831213"
 ---
 # <a name="install-packages-from-within-azure-notebooks-preview"></a>Pakketten installeren vanuit Azure Notebooks preview
@@ -75,5 +75,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Procedure: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
 - [Procedure: een diavoorstelling presen teren](present-jupyter-notebooks-slideshow.md)

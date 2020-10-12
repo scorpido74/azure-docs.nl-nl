@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846850"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Sjablonen uitgeven in azure API Management
@@ -34,7 +34,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="issue-list"></a><a name="IssueList"></a>Lijst met problemen  
+##  <a name="issue-list"></a><a name="IssueList"></a> Lijst met problemen  
  Met de sjabloon **probleem lijst** kunt u de hoofd tekst van de pagina probleem lijst in de ontwikkelaars portal aanpassen.  
   
  ![Ontwikkelaars Portal probleem lijst](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "Ontwikkelaars portal voor APIM issue List")  
@@ -98,7 +98,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Issues`|Verzameling van [uitgifte](api-management-template-data-model-reference.md#Issue) -entiteiten.|De problemen die zichtbaar zijn voor de huidige gebruiker.|  
 |`Paging`|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling toepassingen.|  

@@ -4,10 +4,10 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85962064"
 ---
 # <a name="string-functions-for-arm-templates"></a>Teken reeks functies voor ARM-sjablonen
@@ -29,7 +29,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen in
 * [indexOf](#indexof)
 * [duren](#last)
 * [lastIndexOf](#lastindexof)
-* [lange](#length)
+* [length](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [vervangen](#replace)
@@ -38,7 +38,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen in
 * [startsWith](#startswith)
 * [tekenreeks](#string)
 * [subtekenreeks](#substring)
-* [Houd](#take)
+* [take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [interne](#trim)
@@ -55,9 +55,9 @@ Retourneert de base64-weer gave van de invoer teken reeks.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| inputString |Yes |tekenreeks |De waarde die als een base64-weer gave moet worden geretourneerd. |
+| inputString |Ja |tekenreeks |De waarde die als een base64-weer gave moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -120,9 +120,9 @@ Converteert een base64-weer gave naar een JSON-object.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |tekenreeks |De base64-weer gave die moet worden geconverteerd naar een JSON-object. |
+| base64Value |Ja |tekenreeks |De base64-weer gave die moet worden geconverteerd naar een JSON-object. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -185,9 +185,9 @@ Converteert een base64-weer gave naar een teken reeks.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |tekenreeks |De base64-weer gave die moet worden geconverteerd naar een teken reeks. |
+| base64Value |Ja |tekenreeks |De base64-weer gave die moet worden geconverteerd naar een teken reeks. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -250,10 +250,10 @@ Combineert meerdere teken reeks waarden en retourneert de aaneengeschakelde teke
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |teken reeks of matrix |De eerste teken reeks of matrix voor samen voeging. |
-| aanvullende argumenten |No |teken reeks of matrix |Extra teken reeksen of matrices in sequentiële volg orde voor samen voeging. |
+| Arg1 |Ja |teken reeks of matrix |De eerste teken reeks of matrix voor samen voeging. |
+| aanvullende argumenten |Nee |teken reeks of matrix |Extra teken reeksen of matrices in sequentiële volg orde voor samen voeging. |
 
 Deze functie kan elk wille keurig aantal argumenten hebben en kan teken reeksen of matrices voor de para meters accepteren. U kunt echter geen matrixen en teken reeksen opgeven voor para meters. Teken reeksen worden alleen samengevoegd met andere teken reeksen.
 
@@ -332,7 +332,7 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 | ---- | ---- | ----- |
 | terugkeren | Matrix | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>bevat
+## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
@@ -340,10 +340,10 @@ Controleert of een matrix een waarde bevat, een object bevat een sleutel of een 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| container |Yes |matrix, object of teken reeks |De waarde die de te zoeken waarde bevat. |
-| itemToFind |Yes |teken reeks of int |De waarde die moet worden gevonden. |
+| container |Ja |matrix, object of teken reeks |De waarde die de te zoeken waarde bevat. |
+| itemToFind |Ja |teken reeks of int |De waarde die moet worden gevonden. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -421,9 +421,9 @@ Converteert een waarde naar een gegevens-URI.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Yes |tekenreeks |De waarde die moet worden geconverteerd naar een gegevens-URI. |
+| stringToConvert |Ja |tekenreeks |De waarde die moet worden geconverteerd naar een gegevens-URI. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -476,9 +476,9 @@ Converteert een waarde in de indeling van een gegevens-URI naar een teken reeks.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Yes |tekenreeks |De gegevens-URI-waarde die moet worden geconverteerd. |
+| dataUriToConvert |Ja |tekenreeks |De gegevens-URI-waarde die moet worden geconverteerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -531,9 +531,9 @@ Bepaalt of een matrix, een object of een teken reeks leeg is.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |matrix, object of teken reeks |De waarde die moet worden gecontroleerd of deze leeg is. |
+| itemToTest |Ja |matrix, object of teken reeks |De waarde die moet worden gecontroleerd of deze leeg is. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -596,10 +596,10 @@ Hiermee wordt bepaald of een teken reeks eindigt met een waarde. De vergelijking
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
-| stringToFind |Yes |tekenreeks |De waarde die moet worden gevonden. |
+| stringToSearch |Ja |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
+| stringToFind |Ja |tekenreeks |De waarde die moet worden gevonden. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -662,9 +662,9 @@ Retourneert het eerste teken van de teken reeks of het eerste element van de mat
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |matrix of teken reeks |De waarde voor het ophalen van het eerste element of teken. |
+| Arg1 |Ja |matrix of teken reeks |De waarde voor het ophalen van het eerste element of teken. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -714,11 +714,11 @@ Hiermee maakt u een ingedeelde teken reeks van invoer waarden.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| formatString | Yes | tekenreeks | De samengestelde indelings teken reeks. |
-| Arg1 | Yes | teken reeks, geheel getal of Booleaanse waarde | De waarde die moet worden meegenomen in de opgemaakte teken reeks. |
-| aanvullende argumenten | No | teken reeks, geheel getal of Booleaanse waarde | Aanvullende waarden die moeten worden meegenomen in de opgemaakte teken reeks. |
+| formatString | Ja | tekenreeks | De samengestelde indelings teken reeks. |
+| Arg1 | Ja | teken reeks, geheel getal of Booleaanse waarde | De waarde die moet worden meegenomen in de opgemaakte teken reeks. |
+| aanvullende argumenten | Nee | teken reeks, geheel getal of Booleaanse waarde | Aanvullende waarden die moeten worden meegenomen in de opgemaakte teken reeks. |
 
 ### <a name="remarks"></a>Opmerkingen
 
@@ -771,10 +771,10 @@ Hiermee maakt u een waarde in de notatie van een Globally Unique Identifier op b
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |tekenreeks |De waarde die wordt gebruikt in de hash-functie om de GUID te maken. |
-| aanvullende para meters indien nodig |No |tekenreeks |U kunt zoveel teken reeksen toevoegen als u nodig hebt om de waarde te maken waarmee het niveau van uniekheid wordt opgegeven. |
+| baseString |Ja |tekenreeks |De waarde die wordt gebruikt in de hash-functie om de GUID te maken. |
+| aanvullende para meters indien nodig |Nee |tekenreeks |U kunt zoveel teken reeksen toevoegen als u nodig hebt om de waarde te maken waarmee het niveau van uniekheid wordt opgegeven. |
 
 ### <a name="remarks"></a>Opmerkingen
 
@@ -842,10 +842,10 @@ Retourneert de eerste positie van een waarde binnen een teken reeks. De vergelij
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
-| stringToFind |Yes |tekenreeks |De waarde die moet worden gevonden. |
+| stringToSearch |Ja |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
+| stringToFind |Ja |tekenreeks |De waarde die moet worden gevonden. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -903,9 +903,9 @@ Retourneert het laatste teken van de teken reeks of het laatste element van de m
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |matrix of teken reeks |De waarde voor het ophalen van het laatste element of teken. |
+| Arg1 |Ja |matrix of teken reeks |De waarde voor het ophalen van het laatste element of teken. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -955,10 +955,10 @@ Retourneert de laatste positie van een waarde binnen een teken reeks. De vergeli
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
-| stringToFind |Yes |tekenreeks |De waarde die moet worden gevonden. |
+| stringToSearch |Ja |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
+| stringToFind |Ja |tekenreeks |De waarde die moet worden gevonden. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1016,9 +1016,9 @@ Retourneert het aantal tekens in een teken reeks, elementen in een matrix of hoo
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Yes |matrix, teken reeks of object |De matrix die moet worden gebruikt voor het ophalen van het aantal elementen, de teken reeks die moet worden gebruikt voor het ophalen van het aantal tekens of het object dat moet worden gebruikt voor het ophalen van het aantal eigenschappen op hoofd niveau. |
+| Arg1 |Ja |matrix, teken reeks of object |De matrix die moet worden gebruikt voor het ophalen van het aantal elementen, de teken reeks die moet worden gebruikt voor het ophalen van het aantal tekens of het object dat moet worden gebruikt voor het ophalen van het aantal eigenschappen op hoofd niveau. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1191,11 +1191,11 @@ Retourneert een rechts uitgelijnde teken reeks door tekens aan de linkerkant toe
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Yes |teken reeks of int |De waarde die rechts moet worden uitgelijnd. |
-| totalLength |Yes |int |Het totale aantal tekens in de geretourneerde teken reeks. |
-| paddingCharacter |No |Eén teken |Het teken dat moet worden gebruikt voor de linker opvulling totdat de totale lengte wordt bereikt. De standaard waarde is een spatie. |
+| valueToPad |Ja |teken reeks of int |De waarde die rechts moet worden uitgelijnd. |
+| totalLength |Ja |int |Het totale aantal tekens in de geretourneerde teken reeks. |
+| paddingCharacter |Nee |Eén teken |Het teken dat moet worden gebruikt voor de linker opvulling totdat de totale lengte wordt bereikt. De standaard waarde is een spatie. |
 
 Als de oorspronkelijke teken reeks langer is dan het aantal tekens dat u wilt aanvullen, worden er geen tekens toegevoegd.
 
@@ -1241,11 +1241,11 @@ Retourneert een nieuwe teken reeks waarbij alle exemplaren van een teken reeks z
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| originalString |Yes |tekenreeks |De waarde met alle exemplaren van één teken reeks die is vervangen door een andere teken reeks. |
-| Olds Tring |Yes |tekenreeks |De teken reeks die moet worden verwijderd uit de oorspronkelijke teken reeks. |
-| newString |Yes |tekenreeks |De teken reeks die moet worden toegevoegd in plaats van de verwijderde teken reeks. |
+| originalString |Ja |tekenreeks |De waarde met alle exemplaren van één teken reeks die is vervangen door een andere teken reeks. |
+| Olds Tring |Ja |tekenreeks |De teken reeks die moet worden verwijderd uit de oorspronkelijke teken reeks. |
+| newString |Ja |tekenreeks |De teken reeks die moet worden toegevoegd in plaats van de verwijderde teken reeks. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1294,10 +1294,10 @@ Retourneert een teken reeks met alle tekens na het opgegeven aantal tekens of ee
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |matrix of teken reeks |De matrix of teken reeks die moet worden gebruikt voor het overs Laan. |
-| numberToSkip |Yes |int |Het aantal elementen of tekens dat moet worden overgeslagen. Als deze waarde 0 of kleiner is, worden alle elementen of tekens in de waarde geretourneerd. Als het groter is dan de lengte van de matrix of teken reeks, wordt een lege matrix of teken reeks geretourneerd. |
+| originalValue |Ja |matrix of teken reeks |De matrix of teken reeks die moet worden gebruikt voor het overs Laan. |
+| numberToSkip |Ja |int |Het aantal elementen of tekens dat moet worden overgeslagen. Als deze waarde 0 of kleiner is, worden alle elementen of tekens in de waarde geretourneerd. Als het groter is dan de lengte van de matrix of teken reeks, wordt een lege matrix of teken reeks geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1362,10 +1362,10 @@ Retourneert een matrix met teken reeksen die de subtekenreeksen bevat van de inv
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| inputString |Yes |tekenreeks |De teken reeks die moet worden gesplitst. |
-| scheidingsteken |Yes |teken reeks of matrix met teken reeksen |Het scheidings teken dat moet worden gebruikt voor het splitsen van de teken reeks. |
+| inputString |Ja |tekenreeks |De teken reeks die moet worden gesplitst. |
+| scheidingsteken |Ja |teken reeks of matrix met teken reeksen |Het scheidings teken dat moet worden gebruikt voor het splitsen van de teken reeks. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1421,10 +1421,10 @@ Hiermee wordt bepaald of een teken reeks begint met een waarde. De vergelijking 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
-| stringToFind |Yes |tekenreeks |De waarde die moet worden gevonden. |
+| stringToSearch |Ja |tekenreeks |De waarde die het item bevat dat moet worden gevonden. |
+| stringToFind |Ja |tekenreeks |De waarde die moet worden gevonden. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1487,9 +1487,9 @@ Hiermee wordt de opgegeven waarde geconverteerd naar een teken reeks.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes | Alle |De waarde die moet worden geconverteerd naar een teken reeks. Elk type waarde kan worden geconverteerd, inclusief objecten en matrices. |
+| valueToConvert |Ja | Alle |De waarde die moet worden geconverteerd naar een teken reeks. Elk type waarde kan worden geconverteerd, inclusief objecten en matrices. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1558,11 +1558,11 @@ Retourneert een subtekenreeks die begint bij de opgegeven teken positie en het o
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Yes |tekenreeks |De oorspronkelijke teken reeks waaruit de subtekenreeks wordt opgehaald. |
-| Start index |No |int |De op nul gebaseerde positie van het begin teken voor de subtekenreeks. |
-| lengte |No |int |Het aantal tekens voor de subtekenreeks. Moet verwijzen naar een locatie binnen de teken reeks. Moet nul of groter zijn. |
+| stringToParse |Ja |tekenreeks |De oorspronkelijke teken reeks waaruit de subtekenreeks wordt opgehaald. |
+| Start index |Nee |int |De op nul gebaseerde positie van het begin teken voor de subtekenreeks. |
+| lengte |Nee |int |Het aantal tekens voor de subtekenreeks. Moet verwijzen naar een locatie binnen de teken reeks. Moet nul of groter zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1611,7 +1611,7 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 | ---- | ---- | ----- |
 | substringOutput | Tekenreeks | twee |
 
-## <a name="take"></a>Houd
+## <a name="take"></a>take
 
 `take(originalValue, numberToTake)`
 
@@ -1619,10 +1619,10 @@ Retourneert een teken reeks met het opgegeven aantal tekens vanaf het begin van 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |matrix of teken reeks |De matrix of teken reeks waaruit de elementen moeten worden afgeleid. |
-| numberToTake |Yes |int |Het aantal elementen of tekens dat moet worden uitgevoerd. Als deze waarde 0 of kleiner is, wordt een lege matrix of teken reeks geretourneerd. Als het groter is dan de lengte van de opgegeven matrix of teken reeks, worden alle elementen in de matrix of teken reeks geretourneerd. |
+| originalValue |Ja |matrix of teken reeks |De matrix of teken reeks waaruit de elementen moeten worden afgeleid. |
+| numberToTake |Ja |int |Het aantal elementen of tekens dat moet worden uitgevoerd. Als deze waarde 0 of kleiner is, wordt een lege matrix of teken reeks geretourneerd. Als het groter is dan de lengte van de opgegeven matrix of teken reeks, worden alle elementen in de matrix of teken reeks geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1687,9 +1687,9 @@ Hiermee wordt de opgegeven teken reeks geconverteerd naar kleine letters.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |tekenreeks |De waarde die moet worden omgezet in kleine letters. |
+| stringToChange |Ja |tekenreeks |De waarde die moet worden omgezet in kleine letters. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1738,9 +1738,9 @@ Hiermee wordt de opgegeven teken reeks geconverteerd naar hoofd letters.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |tekenreeks |De waarde die moet worden omgezet in hoofd letters. |
+| stringToChange |Ja |tekenreeks |De waarde die moet worden omgezet in hoofd letters. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1789,9 +1789,9 @@ Verwijdert alle voor loop-en volg spaties uit de opgegeven teken reeks.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Yes |tekenreeks |De waarde die moet worden bijgesneden. |
+| stringToTrim |Ja |tekenreeks |De waarde die moet worden bijgesneden. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -1835,10 +1835,10 @@ Hiermee maakt u een deterministische hash-teken reeks op basis van de waarden di
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |tekenreeks |De waarde die wordt gebruikt in de hash-functie om een unieke teken reeks te maken. |
-| aanvullende para meters indien nodig |No |tekenreeks |U kunt zoveel teken reeksen toevoegen als u nodig hebt om de waarde te maken waarmee het niveau van uniekheid wordt opgegeven. |
+| baseString |Ja |tekenreeks |De waarde die wordt gebruikt in de hash-functie om een unieke teken reeks te maken. |
+| aanvullende para meters indien nodig |Nee |tekenreeks |U kunt zoveel teken reeksen toevoegen als u nodig hebt om de waarde te maken waarmee het niveau van uniekheid wordt opgegeven. |
 
 ### <a name="remarks"></a>Opmerkingen
 
@@ -1913,10 +1913,10 @@ Hiermee maakt u een absolute URI door het combi neren van de baseUri en de relat
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| baseUri |Yes |tekenreeks |De basis-URI-teken reeks. Let op het gedrag van het afhandelen van de afsluitende slash ('/'), zoals wordt beschreven in de volgende tabel.  |
-| relativeUri |Yes |tekenreeks |De relatieve Uri-teken reeks die moet worden toegevoegd aan de basis-URI-teken reeks. |
+| baseUri |Ja |tekenreeks |De basis-URI-teken reeks. Let op het gedrag van het afhandelen van de afsluitende slash ('/'), zoals wordt beschreven in de volgende tabel.  |
+| relativeUri |Ja |tekenreeks |De relatieve Uri-teken reeks die moet worden toegevoegd aan de basis-URI-teken reeks. |
 
 * Als **baseUri** eindigt op een afsluitende slash, wordt het resultaat gewoon **BaseUri** gevolgd door **relativeUri**.
 
@@ -1993,9 +1993,9 @@ Codeert een URI.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Yes |tekenreeks |De waarde die moet worden gecodeerd. |
+| stringToEncode |Ja |tekenreeks |De waarde die moet worden gecodeerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -2048,9 +2048,9 @@ Retourneert een teken reeks van een gecodeerde URI-waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Yes |tekenreeks |De gecodeerde URI-waarde die moet worden geconverteerd naar een teken reeks. |
+| uriEncodedString |Ja |tekenreeks |De gecodeerde URI-waarde die moet worden geconverteerd naar een teken reeks. |
 
 ### <a name="return-value"></a>Retourwaarde
 

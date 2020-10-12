@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367730"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Joker tekens voor toepassingen in de Azure Active Directory toepassings proxy
@@ -68,7 +68,7 @@ Uit veiligheids overwegingen is dit een hard vereiste en worden geen joker teken
 
 ### <a name="dns-updates"></a>DNS-updates
 
-Wanneer u aangepaste domeinen gebruikt, moet u een DNS-vermelding maken met een CNAME-record voor de externe URL (bijvoorbeeld `*.adventure-works.com` ) die verwijst naar de externe URL van het eind punt van de toepassings proxy. Voor Joker teken toepassingen moet de CNAME-record verwijzen naar de relevante externe Url's:
+Wanneer u aangepaste domeinen gebruikt, moet u een DNS-vermelding maken met een CNAME-record voor de externe URL (bijvoorbeeld  `*.adventure-works.com` ) die verwijst naar de externe URL van het eind punt van de toepassings proxy. Voor Joker teken toepassingen moet de CNAME-record verwijzen naar de relevante externe Url's:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
@@ -84,7 +84,7 @@ Voor Joker teken toepassingen moet de **interne URL** worden opgemaakt als `http
 
 ![Gebruik voor interne URL de notatie http (s)://*. \< domein>](./media/application-proxy-wildcard/22.png)
 
-Wanneer u een **externe URL**configureert, moet u de volgende indeling gebruiken:`https://*.<custom domain>`
+Wanneer u een **externe URL**configureert, moet u de volgende indeling gebruiken: `https://*.<custom domain>`
 
 ![Gebruik voor externe URL de notatie https://*. \< aangepast domein>](./media/application-proxy-wildcard/21.png)
 
@@ -132,7 +132,7 @@ Alle drie de toepassingen:
 
 U kunt de toepassing voor joker tekens publiceren met behulp van de stappen die worden beschreven in [toepassingen publiceren met behulp van Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md). In dit scenario wordt ervan uitgegaan:
 
-- Een Tenant met de volgende ID:`000aa000-11b1-2ccc-d333-4444eee4444e`
+- Een Tenant met de volgende ID: `000aa000-11b1-2ccc-d333-4444eee4444e`
 - Er is een geverifieerd domein met de naam `adventure-works.com` geconfigureerd.
 - Een **CNAME** -vermelding waarnaar wordt verwezen, `*.adventure-works.com` `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` is gemaakt.
 
@@ -156,9 +156,9 @@ De configuratie implementeert de volgende structuur:
 
 ![Toont de structuur die door de voorbeeld configuratie is geïmplementeerd](./media/application-proxy-wildcard/05.png)
 
-| Kleur | Description |
+| Kleur | Beschrijving |
 | ---   | ---         |
-| Blauw  | Toepassingen worden expliciet gepubliceerd en zichtbaar in de Azure Portal. |
+| Blue  | Toepassingen worden expliciet gepubliceerd en zichtbaar in de Azure Portal. |
 | Grijs  | Toepassingen die u via de bovenliggende toepassing kunt openen. |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scenario 2: algemene Joker toepassing met uitzonde ring

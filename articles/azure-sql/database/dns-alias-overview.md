@@ -12,10 +12,10 @@ ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
 ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86145659"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-alias voor Azure SQL Database
@@ -61,7 +61,7 @@ De volgende eigenschappen zijn van toepassing op elke DNS-alias voor uw server:
   - Wanneer u een server verwijdert, worden ook alle DNS-aliassen die naar de server verwijzen, door het Azure-systeem verwijderd.
 - *Niet gebonden aan een regio:* DNS-aliassen zijn niet gebonden aan een regio. DNS-aliassen kunnen worden bijgewerkt om te verwijzen naar een server die zich in een geografische regio bevindt.
   - Wanneer u echter een alias bijwerkt om te verwijzen naar een andere server, moeten beide servers aanwezig zijn in hetzelfde Azure- *abonnement*.
-- *Machtigingen:* Voor het beheren van een DNS-alias moet de gebruiker machtigingen voor *Server Inzender* of hoger hebben. Zie [aan de slag met Access Control op basis van rollen in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie.
+- *Machtigingen:* Voor het beheren van een DNS-alias moet de gebruiker machtigingen voor *Server Inzender* of hoger hebben. Zie [aan de slag met Role-Based Access Control in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie.
 
 ## <a name="manage-your-dns-aliases"></a>Uw DNS-aliassen beheren
 
@@ -83,7 +83,7 @@ Ook kunnen de REST Api's worden weer gegeven in GitHub op:
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Power shell-cmdlets zijn beschikbaar die de REST-Api's aanroepen.
 

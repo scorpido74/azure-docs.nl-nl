@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415279"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>De activiteit van de pijp lijn uitvoeren in Azure Data Factory
@@ -26,7 +26,7 @@ De activiteit Execute Pipeline stelt een Data Factory-pijplijn in staat om een a
 
 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
 
 ```json
 {
@@ -70,7 +70,7 @@ naam | De naam van de activiteit voor het uitvoeren van de pijp lijn. | Tekenree
 type | Moet worden ingesteld op: **ExecutePipeline**. | Tekenreeks | Ja
 pijp lijn | Pijplijn verwijzing naar de afhankelijke pijp lijn die deze pijp lijn aanroept. Een pijplijn referentie object heeft twee eigenschappen: **referentie** naam en **type**. De eigenschap refernaam geeft de naam van de referentie pijplijn aan. De eigenschap type moet worden ingesteld op PipelineReference. | PipelineReference | Ja
 parameters | De para meters die moeten worden door gegeven aan de aangeroepen pijp lijn | Een JSON-object waarmee parameter namen worden toegewezen aan argument waarden | Nee
-waitOnCompletion | Hiermee definieert u of de uitvoering van de activiteit wacht totdat de afhankelijke uitvoering van de pijp lijn is voltooid. De standaardinstelling is onwaar. | Boolean-waarde | Nee
+waitOnCompletion | Hiermee definieert u of de uitvoering van de activiteit wacht totdat de afhankelijke uitvoering van de pijp lijn is voltooid. De standaardinstelling is onwaar. | Booleaans | Nee
 
 ## <a name="sample"></a>Voorbeeld
 Dit scenario heeft twee pijp lijnen:

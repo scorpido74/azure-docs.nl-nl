@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850972"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig Power shell-referentie
@@ -134,7 +134,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncBasicReadPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
+Met de functie Set-ADSyncBasicReadPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
 1.
 Lees de eigenschap toegang voor alle kenmerken voor alle onderliggende computer objecten
 2.
@@ -307,7 +307,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncExchangeHybridPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
+Met de functie Set-ADSyncExchangeHybridPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
 1.
 Lezen/schrijven-eigenschaps toegang voor alle kenmerken voor alle onderliggende gebruikers objecten
 2.
@@ -475,7 +475,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncExchangeMailPublicFolderPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
+Met de functie Set-ADSyncExchangeMailPublicFolderPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
 1.
 Lees de eigenschap toegang voor alle kenmerken voor alle onderliggende publicfolder-objecten
 
@@ -636,7 +636,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncMsDsConsistencyGuidPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
+Met de functie Set-ADSyncMsDsConsistencyGuidPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
 1.
 Toegang tot eigenschap lezen/schrijven voor het mS-DS-ConsistencyGuid-kenmerk voor alle onderliggende gebruikers objecten
 
@@ -796,7 +796,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncPasswordHashSyncPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
+Met de functie Set-ADSyncPasswordHashSyncPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
 1.
 Directory wijzigingen repliceren
 2.
@@ -918,7 +918,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncPasswordWritebackPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
+Met de functie Set-ADSyncPasswordWritebackPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
 1.
 Wacht woord opnieuw instellen voor onderliggende gebruikers objecten
 2.
@@ -1078,14 +1078,14 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncRestrictedPermissions worden de machtigingen voor het opgegeven account uitgebreid.
+Met de functie Set-ADSyncRestrictedPermissions worden machtigingen uitgebreid met het gegeven account.
 Het verhogen van de machtigingen bestaat uit de volgende stappen:
 1. Overname uitschakelen voor het opgegeven object
 2. Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn.
 We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 3. Wijs deze specifieke machtigingen toe:
 
-   | Type | Name | Access | Van toepassing op |
+   | Type | Naam | Access | Van toepassing op |
    |------|------|--------|------------|
    | Toestaan | SYSTEEM | Volledig beheer | Dit object |
    | Toestaan | Ondernemingsadministrators | Volledig beheer | Dit object |
@@ -1205,7 +1205,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Met de functie set-ADSyncUnifiedGroupWritebackPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
+Met de functie Set-ADSyncUnifiedGroupWritebackPermissions krijgt u de vereiste machtigingen voor het AD-synchronisatie account, waaronder de volgende:
 1.
 Algemene voor lezen/schrijven, verwijderen, verwijderen van structuur en Create\Delete onderliggend item voor alle object typen en subobjecten voor groepen
 

@@ -4,10 +4,10 @@ description: Richt lijnen voor de omgevings variabele van de taak runtime en nas
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85960908"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Omgevings variabelen Azure Batch-runtime
@@ -36,7 +36,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-| Naam van de variabele                     | Description                                                              | Beschikbaarheid | Voorbeeld |
+| Naam van de variabele                     | Beschrijving                                                              | Beschikbaarheid | Voorbeeld |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | De naam van het batch-account waartoe de taak behoort.                  | Alle taken.   | mybatchaccount gemaakt |
 | AZ_BATCH_ACCOUNT_URL            | De URL van het batch-account. | Alle taken. | `https://myaccount.westus.batch.azure.com` |
@@ -52,7 +52,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 | AZ_BATCH_NODE_ID                | De ID van het knoop punt waaraan de taak is toegewezen. | Alle taken. | TVM-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Als `true` het huidige knoop punt een toegewezen knoop punt is. Als `false` is het een [knoop punt met een lage prioriteit](batch-low-pri-vms.md). | Alle taken. | `true` |
 | AZ_BATCH_NODE_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de indeling `nodeIP;nodeIP` . | Primaire en subtaken voor meerdere instanties. | `10.0.0.4;10.0.0.5` |
-| AZ_BATCH_NODE_MOUNTS_DIR        | Het volledige pad van de [bestandssysteem koppelings](virtual-file-mount.md) locatie op knooppunt niveau waar alle koppelings directory's zich bevinden. Windows-bestands shares maken gebruik van een stationsletter, dus voor Windows is het koppel station onderdeel van apparaten en stations.  |  Alle taken met inbegrip van een begin taak hebben toegang tot de gebruiker, op voor hand dat de gebruiker op de hoogte is van de koppelings machtigingen voor de gekoppelde map. | In Ubuntu is de locatie bijvoorbeeld:`/mnt/batch/tasks/fsmounts` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | Het volledige pad van de [bestandssysteem koppelings](virtual-file-mount.md) locatie op knooppunt niveau waar alle koppelings directory's zich bevinden. Windows-bestands shares maken gebruik van een stationsletter, dus voor Windows is het koppel station onderdeel van apparaten en stations.  |  Alle taken met inbegrip van een begin taak hebben toegang tot de gebruiker, op voor hand dat de gebruiker op de hoogte is van de koppelings machtigingen voor de gekoppelde map. | In Ubuntu is de locatie bijvoorbeeld: `/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | Het volledige pad naar de hoofdmap van alle [batch-mappen][files_dirs] op het knoop punt. | Alle taken. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | Het volledige pad naar de [gedeelde map][files_dirs] in het knoop punt. Alle taken die worden uitgevoerd op een knoop punt hebben lees-en schrijf toegang tot deze map. Taken die op andere knoop punten worden uitgevoerd, hebben geen externe toegang tot deze map (dit is geen gedeelde netwerkmap). | Alle taken. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | Het volledige pad van de [map][files_dirs] voor het starten van de taak in het knoop punt. | Alle taken. | C:\user\tasks\startup |
@@ -61,7 +61,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 | AZ_BATCH_TASK_ID                | De id van de huidige taak. | Alle taken behalve taak starten. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Een mappad dat identiek is voor de primaire taak en elke subtaak van een [taak met meerdere exemplaren][multi_instance]. Het pad bestaat op elk knoop punt waarop de taak met meerdere exemplaren wordt uitgevoerd en is lezen/schrijven toegankelijk voor de taak opdrachten die worden uitgevoerd op dat knoop punt (zowel de [coördinatie opdracht][coord_cmd] als de [toepassing opdracht][app_cmd]). Subtaken of een primaire taak die op andere knoop punten wordt uitgevoerd, hebben geen externe toegang tot deze map (dit is geen gedeelde netwerkmap). | Primaire en subtaken voor meerdere instanties. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Het volledige pad naar de [werkmap][files_dirs] van de taak op het knoop punt. De taak die momenteel wordt uitgevoerd, heeft lees-en schrijf toegang tot deze map. | Alle taken. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
-| CCP_NODES                       | De lijst met knoop punten en het aantal kernen per knoop punt dat is toegewezen aan een [taak met meerdere exemplaren][multi_instance]. Knoop punten en kernen worden weer gegeven in de indeling`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, waarbij het aantal knoop punten wordt gevolgd door een of meer IP-adressen van knoop punten en het aantal kern geheugens voor beide. |  Primaire en subtaken voor meerdere instanties. |`2 10.0.0.4 1 10.0.0.5 1` |
+| CCP_NODES                       | De lijst met knoop punten en het aantal kernen per knoop punt dat is toegewezen aan een [taak met meerdere exemplaren][multi_instance]. Knoop punten en kernen worden weer gegeven in de indeling `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, waarbij het aantal knoop punten wordt gevolgd door een of meer IP-adressen van knoop punten en het aantal kern geheugens voor beide. |  Primaire en subtaken voor meerdere instanties. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 [files_dirs]: ./files-and-directories.md
 [multi_instance]: ./batch-mpi.md

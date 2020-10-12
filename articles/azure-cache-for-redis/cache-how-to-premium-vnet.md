@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205559"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
@@ -109,7 +109,7 @@ Er zijn negen uitgaande poort vereisten. Uitgaande aanvragen in deze bereiken zi
 | 10221-10231 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
 | 20226 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 | 13000-13999 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
-| 15000-15999 |Uitgaand |TCP |Interne communicatie voor redis en geo-replicatie | (Redis-subnet) |(Redis-subnet) (Geo-replica peer-subnet) |
+| 15000-15999 |Uitgaand |TCP |Interne communicatie voor redis en Geo-Replication | (Redis-subnet) |(Redis-subnet) (Geo-replica peer-subnet) |
 | 6379-6380 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 
 <sup>1</sup> u kunt de service label ' AzureKeyVault ' gebruiken met netwerk beveiligings groepen van Resource Manager.
@@ -133,7 +133,7 @@ Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aa
 | 8500 |Inkomend |TCP/UDP |Azure-taakverdeling | (Redis-subnet) |Azure Load Balancer |
 | 10221-10231 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis subnet), Azure Load Balancer |
 | 13000-13999 |Inkomend |TCP |Client communicatie met redis-clusters, Azure-taak verdeling | (Redis-subnet) |Virtual Network, Azure Load Balancer |
-| 15000-15999 |Inkomend |TCP |Client communicatie met redis-clusters, Azure-taak verdeling en geo-replicatie | (Redis-subnet) |Virtual Network, Azure Load Balancer, (geo-replica peer-subnet) |
+| 15000-15999 |Inkomend |TCP |Client communicatie met redis-clusters, Azure-taak verdeling en Geo-Replication | (Redis-subnet) |Virtual Network, Azure Load Balancer, (geo-replica peer-subnet) |
 | 16001 |Inkomend |TCP/UDP |Azure-taakverdeling | (Redis-subnet) |Azure Load Balancer |
 | 20226 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 

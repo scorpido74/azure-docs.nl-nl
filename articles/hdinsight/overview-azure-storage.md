@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851380"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Azure Storage overzicht in HDInsight
@@ -33,7 +33,7 @@ HDInsight biedt toegang tot het Distributed File System dat lokaal wordt gekoppe
 
 `hdfs://<namenodehost>/<path>`
 
-Via HDInsight kunt u ook toegang krijgen tot gegevens in Azure Storage. De syntaxis ziet er als volgt uit:
+Via HDInsight kunt u ook toegang krijgen tot gegevens in Azure Storage. De syntaxis is als volgt:
 
 `wasb://<containername>@<accountname>.blob.core.windows.net/<path>`
 
@@ -77,6 +77,6 @@ Bepaalde MapReduce-taken en-pakketten kunnen tussenliggende resultaten maken die
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Inleiding in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
+* [Inleiding tot Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
 * [Kennismaking met Azure Storage](../storage/common/storage-introduction.md)
 * [Azure Data Lake Storage Gen1-overzicht](./overview-data-lake-storage-gen1.md)

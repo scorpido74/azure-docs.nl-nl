@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800088"
 ---
 # <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
@@ -32,7 +32,7 @@ Het antwoord van de service bevat de volgende informatie:
 - Oorspronkelijke tekst
 - Taal
 
-## <a name="profanity"></a>Grof taalgebruik
+## <a name="profanity"></a>Aanstootgevend taalgebruik
 
 Als de API in een van de [ondersteunde talen](Text-Moderation-API-Languages.md)ongepaste termen detecteert, worden deze termen opgenomen in het antwoord. Het antwoord bevat ook hun locatie ( `Index` ) in de oorspronkelijke tekst. De `ListId` in de volgende voor beeld-JSON verwijst naar termen die zijn gevonden in de [lijst met aangepaste termen](try-terms-list-api.md) , indien beschikbaar.
 
@@ -74,11 +74,11 @@ In de volgende extractie in de JSON-analyse wordt een voorbeeld uitvoer weer geg
 
 ### <a name="explanation"></a>Uitleg
 
-- `Category1`verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
-- `Category2`verwijst naar de mogelijke aanwezigheid van een taal die in bepaalde situaties kan worden beschouwd als expliciet of verouderd.
-- `Category3`verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als aanstootgevend kan worden beschouwd.
-- `Score`ligt tussen 0 en 1. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Deze functie is afhankelijk van een statistisch model in plaats van hand matig gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
-- `ReviewRecommended`is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
+- `Category1` verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
+- `Category2` verwijst naar de mogelijke aanwezigheid van een taal die in bepaalde situaties kan worden beschouwd als expliciet of verouderd.
+- `Category3` verwijst naar de mogelijke aanwezigheid van taal die in bepaalde situaties als aanstootgevend kan worden beschouwd.
+- `Score` ligt tussen 0 en 1. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Deze functie is afhankelijk van een statistisch model in plaats van hand matig gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
+- `ReviewRecommended` is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
 
 ## <a name="personal-data"></a>Persoonsgegevens
 

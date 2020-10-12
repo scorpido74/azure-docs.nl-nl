@@ -5,17 +5,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921896"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Wat is er nieuw in de Azure Block Chain-Service?
 
 > Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us` in uw RSS feed reader- [ ![ pictogram voor RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Blockchain+Service%22&locale=en-us)-feed.
 
-De Azure Block Chain-service ontvangt verbeteringen doorlopend. Dit artikel bevat informatie over het volgende om op de hoogte te blijven van de meest recente ontwikkelingen:
+De Azure Block Chain-service ontvangt verbeteringen doorlopend. Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
 
 - Nieuwe mogelijkheden
 - Versie-upgrades
@@ -79,13 +79,13 @@ Als het block chain-netwerk in de Azure Block Chain-service niet vier validatie 
 
 Als oplossing moet het Azure Block Chain Service-team het knoop punt opnieuw opstarten. Klanten moeten een ondersteunings aanvraag openen om het knoop punt opnieuw op te starten. Het Azure Block Chain Service-team werkt samen met het automatisch detecteren en herstellen van analyse problemen.
 
-Gebruik de *Standard*-laag voor implementaties van productiekwaliteit. Gebruik de *Basic*-laag voor ontwikkeling, tests en concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
+Gebruik de categorie *Standard* voor implementaties van productiekwaliteit. Gebruik de categorie *Basic* voor ontwikkeling, tests en het testen van concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
 
 ### <a name="blockchain-data-manager-requires-standard-tier-node"></a>Voor Block Chain Data Manager is een Standard-laag knooppunt vereist
 
 Gebruik de laag *standaard* als u block chain-Data Manager gebruikt. De laag *Basic* heeft alleen 4 GB geheugen. Dit kan daarom niet worden geschaald naar het gebruik dat is vereist voor Block Chain Data Manager en andere services die erop worden uitgevoerd.
 
-Gebruik de *Basic*-laag voor ontwikkeling, tests en concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
+Gebruik de categorie *Basic* voor ontwikkeling, tests en het testen van concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
 
 ### <a name="large-volume-of-unlock-account-calls-causes-geth-to-crash"></a>Grote volume van Unlock-account aanroepen zorgt ervoor dat Geth vastloopt
 
@@ -113,7 +113,7 @@ U kunt de crash van de Tessera detecteren door de logboeken van de Block Chain-t
 
 De Azure Block Chain-service start Tessera opnieuw op wanneer er een crash is. Opnieuw opstarten duurt ongeveer een minuut.
 
-Gebruik de laag *standaard* als u een groot aantal privé transacties verzendt. Gebruik de *Basic*-laag voor ontwikkeling, tests en concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
+Gebruik de laag *standaard* als u een groot aantal privé transacties verzendt. Gebruik de categorie *Basic* voor ontwikkeling, tests en het testen van concepten. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
 
 ### <a name="calling-ethestimategas-function-reduces-performance"></a>De functie Eth. estimateGas aanroepen vermindert de prestaties
 

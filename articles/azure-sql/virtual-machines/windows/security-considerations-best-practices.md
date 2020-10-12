@@ -15,13 +15,13 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272392"
 ---
-# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Beveiligings overwegingen voor SQL Server op Azure Virtual Machines
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Veiligheidsoverwegingen voor SQL Server in virtuele Azure-machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Dit onderwerp bevat algemene beveiligings richtlijnen die u helpen bij het opzetten van beveiligde toegang tot SQL Server exemplaren in een virtuele Azure-machine (VM).
@@ -59,7 +59,7 @@ Ten slotte kunt u versleutelde verbindingen inschakelen voor het exemplaar van d
 
 ## <a name="encryption"></a>Versleuteling
 
-Beheerde schijven bieden versleuteling aan de server zijde en Azure Disk Encryption. [Versleuteling aan de server zijde](/azure/virtual-machines/windows/disk-encryption) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) maakt gebruik van een BitLocker-of DM-cryptografie technologie en integreert met Azure Key Vault om zowel het besturings systeem als de gegevens schijven te versleutelen. 
+Managed disks biedt Server-Side versleuteling en Azure Disk Encryption. [Versleuteling aan de server zijde](/azure/virtual-machines/windows/disk-encryption) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) gebruikt BitLocker-of DM-Crypt-technologie en integreert met Azure Key Vault om zowel het besturings systeem als de gegevens schijven te versleutelen. 
 
 ## <a name="use-a-non-default-port"></a>Een niet-standaard poort gebruiken
 

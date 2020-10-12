@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85610639"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>DNS-instellingen Azure Firewall (preview-versie)
@@ -66,7 +66,7 @@ Als u een DNS-proxy wilt configureren, moet u de instelling van de DNS-servers v
 4. Controleer de configuratie van de **DNS-servers** om ervoor te zorgen dat de instellingen geschikt zijn voor uw omgeving.
 5. Selecteer **Opslaan**.
 
-:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS-proxy":::
+:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS-servers":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

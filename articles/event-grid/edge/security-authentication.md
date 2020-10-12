@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 42f6107ff79d6262cdc0a35cf972cf65d3a9a802
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171377"
 ---
 # <a name="security-and-authentication"></a>Verificatie en beveiliging
@@ -35,7 +35,7 @@ In de volgende secties wordt beschreven hoe deze instellingen worden beveiligd e
 
 Event Grid-module fungeert zowel HTTP-als HTTPS-eind punten. Aan elke IoT Edge-module is een server certificaat toegewezen door de beveiligings-daemon van de IoT Edge. We gebruiken het server certificaat om het eind punt te beveiligen. Na verloop van tijd wordt de module automatisch vernieuwd met een nieuw certificaat van de IoT Edge Security daemon.
 
-Standaard is alleen HTTPS-communicatie toegestaan. U kunt dit gedrag negeren via **inbound__serverAuth__tlsPolicy** configuratie. In de volgende tabel worden de mogelijke waarden van deze eigenschap vastgelegd.
+Standaard is alleen HTTPS-communicatie toegestaan. U kunt dit gedrag negeren via  **inbound__serverAuth__tlsPolicy** configuratie. In de volgende tabel worden de mogelijke waarden van deze eigenschap vastgelegd.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ---------------- | ------------ |
@@ -61,7 +61,7 @@ Verificatie op basis van certificaten is standaard ingeschakeld. U kunt ervoor k
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
 | true | Standaard. Vereist dat alle aanvragen in de module Event Grid een client certificaat presen teren. Daarnaast moet u **inbound__clientAuth__clientCert__source**configureren.
-| false | Laat een client niet afdwingen dat het certificaat wordt weer gegeven.
+| onjuist | Laat een client niet afdwingen dat het certificaat wordt weer gegeven.
 
 In de volgende tabel worden mogelijke waarden voor **inbound__clientAuth__clientCert__source** vastgelegd
 
@@ -74,7 +74,7 @@ Als een client een zelfondertekende presenteert, worden deze aanvragen standaard
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------|
 | true | Standaard. Toestaan dat zelfondertekende certificaten correct worden weer gegeven.
-| false | Mislukt als er zelfondertekende certificaten worden weer gegeven.
+| onjuist | Mislukt als er zelfondertekende certificaten worden weer gegeven.
 
 >[!IMPORTANT]
 >In productie scenario's kunt u **inbound__clientAuth__clientCert__allowUnknownCA** instellen op **Onwaar**.
@@ -88,7 +88,7 @@ De configuratie voor het beheren van SAS-sleutel verificatie is **inbound__clien
 | Mogelijke waarde(n) | Beschrijving  |
 | ----------------  | ------------ |
 | true | Hiermee staat u verificatie op basis van SAS-sleutel toe. Vereist **inbound__clientAuth__sasKeys__key1** of **inbound__clientAuth__sasKeys__key2**
-| false | Standaard. Verificatie op basis van SAS-sleutel is uitgeschakeld.
+| onjuist | Standaard. Verificatie op basis van SAS-sleutel is uitgeschakeld.
 
  **inbound__clientAuth__sasKeys__key1** en **inbound__clientAuth__sasKeys__key2** zijn sleutels waarmee u de Event grid module kunt controleren op inkomende aanvragen. Ten minste één van de sleutels moet worden geconfigureerd. Client die de aanvraag maakt, moet de sleutel als onderdeel van de aanvraag header '**AEG-SAS-Key**' presen teren. Als beide sleutels zijn geconfigureerd, kan de client een van de sleutels bevatten.
 
@@ -106,7 +106,7 @@ De configuratie voor het beheren van de uitgaande client verificatie is **outbou
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
 | true | Standaard. Vereist dat alle uitgaande aanvragen van de module Event Grid een certificaat presen teren. **Outbound__clientAuth__clientCert__source**moet worden geconfigureerd.
-| false | Event Grid-module niet vereist om het certificaat weer te geven.
+| onjuist | Event Grid-module niet vereist om het certificaat weer te geven.
 
 De configuratie voor het beheren van de bron voor het certificaat is **outbound__clientAuth__clientCert__source**.
 
@@ -123,21 +123,21 @@ De configuratie voor het beheren van het webhook-doel beleid **outbound__webhook
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
 | true | Standaard. Alleen abonnees met een HTTPS-eind punt zijn toegestaan.
-| false | Hiermee kunnen abonnees een HTTP-of HTTPS-eind punt hebben.
+| onjuist | Hiermee kunnen abonnees een HTTP-of HTTPS-eind punt hebben.
 
 Event Grid-module valideert standaard het server certificaat van de abonnee. U kunt de validatie overs Laan door **outbound__webhook__skipServerCertValidation**te overschrijven. Mogelijke waarden zijn:
 
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
 | true | Valideer het server certificaat van de abonnee niet.
-| false | Standaard. Het server certificaat van de abonnee valideren.
+| onjuist | Standaard. Het server certificaat van de abonnee valideren.
 
 Als het certificaat van de abonnee zelf is ondertekend, worden deze abonnees door standaard Event Grid-module geweigerd. Als u een zelfondertekend certificaat wilt toestaan, kunt u **outbound__webhook__allowUnknownCA**onderdrukken. In de volgende tabel worden de mogelijke waarden vastgelegd.
 
 | Mogelijke waarde(n) | Beschrijving |
 | ----------------  | ------------ |
 | true | Standaard. Toestaan dat zelfondertekende certificaten correct worden weer gegeven.
-| false | Mislukt als er zelfondertekende certificaten worden weer gegeven.
+| onjuist | Mislukt als er zelfondertekende certificaten worden weer gegeven.
 
 >[!IMPORTANT]
 >In productie scenario's moet u **outbound__webhook__allowUnknownCA** instellen op **Onwaar**.

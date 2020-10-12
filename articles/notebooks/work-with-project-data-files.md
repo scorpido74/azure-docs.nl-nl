@@ -4,10 +4,10 @@ description: Meer informatie over het inbrengen van gegevens in een Azure Notebo
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85834111"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Werken met gegevens bestanden in Azure Notebooks preview-projecten
@@ -40,7 +40,7 @@ U kunt bestanden vanuit het project-dash board of in een actief notitie blok naa
 
    - **Van computer**: Sleep en zet bestanden neer in de pop-up, of selecteer **bestanden kiezen**, blader naar en selecteer de gegevens bestanden die u wilt importeren. U kunt een wille keurig aantal bestanden neerzetten of kiezen, van elk type en elke indeling, omdat het tot de code in het notitie blok gaat om het bestand te openen en de gegevens te parseren.
 
-     ![Van de computer uploaden](media/quickstarts/upload-from-computer-popup.png)
+     ![Uploaden vanaf een pop-up op de computer](media/quickstarts/upload-from-computer-popup.png)
 
 1. Nadat de bestanden zijn geïmporteerd, worden deze weer gegeven op het project dashboard en kunnen ze in de notitieblok code worden geopend met relatieve padnamen naar de bovenliggende map.
 
@@ -114,4 +114,4 @@ U kunt ook een bestand selecteren en de **down load** opdracht (sneltoets: d) op
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang tot cloudgegevens in een notebook](access-data-resources-jupyter-notebooks.md)
+- [Toegang tot Cloud gegevens in een notitie blok](access-data-resources-jupyter-notebooks.md)

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171564"
 ---
 # <a name="event-schemas"></a>Gebeurtenisschema's
@@ -56,7 +56,7 @@ Alle gebeurtenissen hebben de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |-----------
 | onderwerp | tekenreeks | No | Moet overeenkomen met het onderwerp waarop het wordt gepubliceerd. Event Grid vult het met de naam van het onderwerp dat wordt gepubliceerd als niet opgegeven. |
 | Onderwerp | tekenreeks | Ja | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Ja | Gebeurtenis type voor deze gebeurtenis bron, bijvoorbeeld BlobCreated. |
+| Type | tekenreeks | Ja | Gebeurtenis type voor deze gebeurtenis bron, bijvoorbeeld BlobCreated. |
 | eventTime | tekenreeks | Ja | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | Id | tekenreeks | No | De unieke id voor de gebeurtenis. |
 | gegevens | object | Nee | Wordt gebruikt om gebeurtenis gegevens vast te leggen die specifiek zijn voor de publicatie-entiteit. |

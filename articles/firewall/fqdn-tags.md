@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85610605"
 ---
 # <a name="fqdn-tags-overview"></a>Overzicht van FQDN-labels
@@ -28,12 +28,12 @@ In de volgende tabel ziet u de huidige FQDN-Tags die u kunt gebruiken. Micro sof
 
 ## <a name="current-fqdn-tags"></a>Huidige FQDN-Tags
 
-|FQDN-label  |Description  |
+|FQDN-label  |Beschrijving  |
 |---------|---------|
 |Windows Update     |Uitgaande toegang tot Microsoft Update toestaan, zoals beschreven in [een firewall configureren voor software-updates](https://technet.microsoft.com/library/bb693717.aspx).|
 |Windows Diagnostische gegevens|Uitgaande toegang tot alle [Windows diagnostische eind punten](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)toestaan.|
 |Microsoft Active Protection Service (kaarten)|Uitgaande toegang tot [kaarten](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)toestaan.|
-|App Service Environment (ASE)|Hiermee staat u uitgaande toegang tot ASE-platform verkeer toe. Dit label geldt niet voor klantspecifieke opslag-en SQL-eind punten die zijn gemaakt door ASE. Deze moeten worden ingeschakeld via [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of hand matig worden toegevoegd.<br><br>Zie [een app service Environment vergren delen](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)voor meer informatie over het integreren van Azure Firewall met ASE.|
+|App Service Environment (ASE)|Hiermee wordt uitgaande toegang tot ASE-platformverkeer toegestaan. Dit label geldt niet voor klantspecifieke opslag-en SQL-eind punten die zijn gemaakt door ASE. Deze moeten worden ingeschakeld via [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of hand matig worden toegevoegd.<br><br>Zie [een app service Environment vergren delen](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)voor meer informatie over het integreren van Azure Firewall met ASE.|
 |Azure Backup|Hiermee wordt uitgaande toegang tot de Azure Backup Services toegestaan.|
 |Azure HDInsight|Hiermee staat u uitgaande toegang toe voor verkeer van HDInsight-platform. Dit label geldt niet voor klantspecifieke opslag of SQL-verkeer van HDInsight. Schakel deze optie in met [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of voeg ze hand matig toe.|
 |WindowsVirtualDesktop (WVD)|Hiermee staat u het verkeer van een virtueel Windows-bureaublad platform toe. Dit label geldt niet voor implementatie-specifieke opslag en Service Bus eind punten die zijn gemaakt door WVD. Daarnaast zijn er regels voor DNS-en KMS-netwerken vereist. Voor meer informatie over het integreren van Azure Firewall met WVD raadpleegt [u Azure firewall gebruiken voor het beveiligen van Windows-implementaties van virtuele Bureau bladen](protect-windows-virtual-desktop.md).|

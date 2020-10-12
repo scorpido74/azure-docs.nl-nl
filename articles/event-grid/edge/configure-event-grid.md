@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171666"
 ---
 # <a name="event-grid-configuration"></a>Event Grid configuratie
@@ -65,7 +65,7 @@ Zie voor meer informatie over deze functie in het algemeen [levering en opnieuw 
 | Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Het maximum aantal pogingen om een gebeurtenis te leveren. De standaardwaarde is 30.
-| `broker__defaultEventTimeToLiveInSeconds` | Time-to-Live (TTL) in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. De standaard waarde is **7200** seconden
+| `broker__defaultEventTimeToLiveInSeconds` | Time-to-Live (TTL) in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. De standaard waarde is  **7200** seconden
 
 ## <a name="output-batching"></a>Batchverwerking van uitvoer
 
@@ -73,10 +73,10 @@ Zie [levering en uitvoer batch verwerking](delivery-output-batching.md)voor meer
 
 | Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
-| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | De toegestane maximum waarde voor de `ApproxBatchSizeInBytes` knop. De standaard waarde is `1_058_576` .
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor de `MaxEventsPerBatch` knop. De standaard waarde is `50` .
-| `broker__defaultMaxBatchSizeInBytes` | Maximale grootte van leverings aanvraag wanneer alleen `MaxEventsPerBatch` is opgegeven. De standaard waarde is `1_058_576` .
-| `broker__defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd als alleen `MaxBatchSizeInBytes` wordt opgegeven. De standaard waarde is `10` .
+| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | De toegestane maximum waarde voor de `ApproxBatchSizeInBytes` knop. De standaardwaarde is `1_058_576`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor de `MaxEventsPerBatch` knop. De standaardwaarde is `50`.
+| `broker__defaultMaxBatchSizeInBytes` | Maximale grootte van leverings aanvraag wanneer alleen `MaxEventsPerBatch` is opgegeven. De standaardwaarde is `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd als alleen `MaxBatchSizeInBytes` wordt opgegeven. De standaardwaarde is `10`.
 
 ## <a name="metrics"></a>Metrische gegevens
 

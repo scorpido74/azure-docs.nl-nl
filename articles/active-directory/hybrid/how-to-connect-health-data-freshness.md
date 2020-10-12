@@ -16,10 +16,10 @@ ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85359225"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>De Health Service-gegevens zijn niet up-to-date-waarschuwing
@@ -41,14 +41,14 @@ In de Blade **waarschuwings Details** wordt weer gegeven wanneer de waarschuwing
  
 De volgende tabel wijst service types toe aan de bijbehorende vereiste gegevens typen:
 
-| Servicetype | Agent (Windows-service naam) | Functie | Gegenereerd gegevens type  |
+| Servicetype | Agent (Windows-service naam) | Doel | Gegenereerd gegevens type  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (synchronisatie) | Azure AD Connect Health Sync Insights-service | AAD Connect-specifieke informatie verzamelen (connectors, synchronisatie regels, enz.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService-connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
+| Azure AD Connect (synchronisatie) | Azure AD Connect Health Sync Insights-service | AAD Connect-specifieke informatie verzamelen (connectors, synchronisatie regels, enz.) | -AadSyncService-SynchronizationRules <br />  -AadSyncService-Connectors <br /> -AadSyncService-GlobalConfigurations  <br />  -AadSyncService-RunProfileResults <br /> -AadSyncService-ServiceConfigurations <br /> -AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Sync Monitoring-service | AAD Connect-specifieke prestatie meter items, ETW-traceringen, bestanden verzamelen | Prestatie meter item |
 | AD DS | Azure AD Connect Health AD DS Insights-service | Synthetische tests uitvoeren, topologie gegevens verzamelen, meta gegevens voor replicatie |  -Toevoegen-TopologyInfo-JSON <br /> -Common-TestData-JSON (maakt de test resultaten)   | 
 |  | Azure AD Connect Health AD DS Monitoring-service | Verzamelen voegt specifieke prestatie meter items, ETW-traceringen, bestanden | -Prestatie meter item  <br /> -Common-TestData-JSON (uploadt de test resultaten)  |
 | AD FS | Azure AD Connect Health AD FS Diagnostics-service | Synthetische tests uitvoeren | TestResult (Hiermee worden de test resultaten gemaakt) | 
-| | Azure AD Connect Health AD FS Insights-service  | Metrische gegevens over ADFS-gebruik verzamelen | ADFS-UsageMetrics |
+| | Azure AD Connect Health AD FS Insights-service  | Metrische gegevens over ADFS-gebruik verzamelen | Adfs-UsageMetrics |
 | | Azure AD Connect Health AD FS Monitoring-service | AD FS-specifieke prestatie meter items, ETW-traceringen, bestanden verzamelen | TestResult (uploadt de test resultaten) |
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing 
@@ -58,8 +58,8 @@ De stappen die nodig zijn om de oorzaak van het probleem vast te stellen, worden
 > [!IMPORTANT] 
 > Deze waarschuwing volgt het [Bewaar beleid](reference-connect-health-user-privacy.md#data-retention-policy) voor verbindings status gegevens
 
-* Zorg ervoor dat de nieuwste versies van de agents zijn geïnstalleerd. [Release geschiedenis](reference-connect-health-version-history.md)weer geven. 
-* Zorg ervoor dat de services van Azure AD Connect Health Agents op de computer worden **uitgevoerd** . Connect Health voor AD FS moet bijvoorbeeld drie services hebben.
+* Controleer of de nieuwste versies van de agents zijn geïnstalleerd. Bekijk de [releasegeschiedenis](reference-connect-health-version-history.md). 
+* Zorg ervoor dat de agents van de Azure AD Connect Health-service worden **uitgevoerd** op de computer. Connect Health voor AD FS moet bijvoorbeeld drie services hebben.
   ![Azure AD Connect Health verifiëren](./media/how-to-connect-health-agent-install/install5.png)
 
 * Zorg ervoor dat u voldoet aan de [sectie vereisten](how-to-connect-health-agent-install.md#requirements).

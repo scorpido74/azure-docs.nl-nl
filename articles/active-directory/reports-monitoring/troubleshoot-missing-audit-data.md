@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85608106"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problemen met ontbrekende gegevens in de activiteitenlogboeken van Azure Active Directory oplossen 
@@ -32,7 +32,7 @@ ms.locfileid: "85608106"
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/01.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Oorzaak
 
@@ -53,7 +53,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/02.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Oorzaak
 
@@ -72,9 +72,9 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 ### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe kan dat? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Oorzaak
 
