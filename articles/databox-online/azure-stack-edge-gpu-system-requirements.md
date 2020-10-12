@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320724"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Systeem vereisten voor Azure Stack Edge Pro met GPU 
@@ -73,7 +73,7 @@ Gebruik de volgende tabel voor poort configuratie voor de servers die als host f
 
 | Poort nummer | In of uit | Poort bereik | Vereist | Hulp |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Uit       | WAN        | Yes      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist wanneer u hand matige scripts of een Azure IoT Device Provisioning Service (DPS) gebruikt.|
+| TCP 443 (HTTPS)| Uit       | WAN        | Ja      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist wanneer u hand matige scripts of een Azure IoT Device Provisioning Service (DPS) gebruikt.|
 
 Voor volledige informatie gaat u naar de [firewall-en poort configuratie regels voor IOT Edge-implementatie](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u een gebeurtenis op een aangep
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108240"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Bericht plaatsen op aangepast onderwerp voor Azure Event Grid
@@ -99,8 +99,8 @@ Nadat u naar het onderwerp-eind punt hebt gepost, ontvangt u een antwoord. Het a
 |Resultaat  |Antwoord  |
 |---------|---------|
 |Geslaagd  | 200 OK  |
-|De gebeurtenis gegevens hebben een onjuiste indeling | 400 ongeldige aanvraag |
-|Ongeldige toegangs sleutel | 401 niet gemachtigd |
+|De gebeurtenis gegevens hebben een onjuiste indeling | 400 Ongeldige aanvraag |
+|Ongeldige toegangs sleutel | 401 Onbevoegd |
 |Onjuist eind punt | 404 Niet gevonden |
 |Matrix of gebeurtenis overschrijdt grootte limieten | 413 Payload is te groot |
 

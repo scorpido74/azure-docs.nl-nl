@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
 ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90901344"
 ---
 # <a name="security-alerts-schemas"></a>Schema's voor beveiligings waarschuwingen
@@ -68,7 +68,7 @@ Raadpleeg [de documentatie](https://docs.microsoft.com/azure/sentinel/)voor meer
 
 
 
-### <a name="azure-activity-log"></a>[Azure-activiteitenlogboek](#tab/schema-activitylog)
+### <a name="azure-activity-log"></a>[Azure-activiteiten logboek](#tab/schema-activitylog)
 
 Azure Security Center controles gegenereerd beveiligings waarschuwingen als gebeurtenissen in azure-activiteiten logboek.
 
@@ -140,7 +140,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 
 ### <a name="the-data-model-of-the-schema"></a>Het gegevens model van het schema
 
-|Veld|Description|
+|Veld|Beschrijving|
 |----|----|
 |**detailhandelkanalen**|Constante, ' bewerking '|
 |**correlationId**|De meldings-ID Azure Security Center|

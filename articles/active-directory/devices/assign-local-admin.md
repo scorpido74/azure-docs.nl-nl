@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419815"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
@@ -24,7 +24,7 @@ Als u een Windows-apparaat wilt beheren, moet u lid zijn van de lokale groep Adm
 
 In dit artikel wordt uitgelegd hoe de update van het lokale beheerders lidmaatschap werkt en hoe u deze kunt aanpassen tijdens een Azure AD-deelname. De inhoud van dit artikel is niet van toepassing op een **hybride Azure AD gekoppelde** apparaten.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer u een Windows-apparaat met Azure AD verbindt met een Azure AD-deelname, voegt Azure AD de volgende beveiligings-principals toe aan de lokale groep Administrators op het apparaat:
 
@@ -48,7 +48,7 @@ Zie voor het weer geven en bijwerken van het lidmaatschap van de rol globale beh
 In de Azure Portal, kunt u de rol van Apparaatbeheer op de pagina **apparaten** beheren. De pagina **apparaten** openen:
 
 1. Meld u aan bij uw [Azure Portal](https://portal.azure.com) als globale beheerder.
-1. Zoek naar *Azure Active Directory* en selecteer deze optie.
+1. Zoek en selecteer de optie *Azure Active Directory*.
 1. Klik in de sectie **beheren** op **apparaten**.
 1. Klik op de pagina **apparaten** op **Apparaatinstellingen**.
 
@@ -98,7 +98,7 @@ Vanaf de **Windows 10 1709** -release kunt u deze taak uitvoeren vanuit **instel
 Daarnaast kunt u ook gebruikers toevoegen met behulp van de opdracht prompt:
 
 - Als uw Tenant gebruikers zijn gesynchroniseerd vanuit een on-premises Active Directory, gebruikt u `net localgroup administrators /add "Contoso\username"` .
-- Als uw Tenant gebruikers zijn gemaakt in azure AD, gebruikt u`net localgroup administrators /add "AzureAD\UserUpn"`
+- Als uw Tenant gebruikers zijn gemaakt in azure AD, gebruikt u `net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Overwegingen 
 

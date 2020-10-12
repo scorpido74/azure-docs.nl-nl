@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078747"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgrade uitvoeren voor interne Load Balancer van Azure-uitgaande verbinding vereist
@@ -42,7 +42,7 @@ Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
 ## <a name="download-the-script"></a>Het script downloaden
 
-Down load het migratie script van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
+Down load het migratie script van de  [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
 ## <a name="use-the-script"></a>Het script gebruiken
 
 Er zijn twee opties voor u afhankelijk van de instellingen en voor keuren van uw lokale Power shell-omgeving:
@@ -52,7 +52,7 @@ Er zijn twee opties voor u afhankelijk van de instellingen en voor keuren van uw
 
 Als u wilt weten of u de Azure AZ-modules hebt geïnstalleerd, voert u uit `Get-InstalledModule -Name az` . Als er geen geïnstalleerde AZ-modules worden weer geven, kunt u de- `Install-Script` methode gebruiken.
 
-### <a name="install-using-the-install-script-method"></a>Installeren met behulp van de methode install-script
+### <a name="install-using-the-install-script-method"></a>Installeren met behulp van de Install-Script methode
 
 Als u deze optie wilt gebruiken, moet u de Azure AZ-modules niet op uw computer installeren. Als ze zijn geïnstalleerd, wordt een fout weer gegeven in de volgende opdracht. U kunt de Azure AZ-modules verwijderen of de andere optie gebruiken om het script hand matig te downloaden en uit te voeren.
   
@@ -100,7 +100,7 @@ Hier volgen enkele scenario's voor het toevoegen van Vm's aan back-endservers va
  
     1. Selecteer **alle resources** in het menu links en selecteer vervolgens de **nieuw gemaakte Standard Load Balancer** in de lijst met resources.
    
-    1. Selecteer **back-Pools**onder **instellingen**.
+    1. Selecteer **Back-endgroepen** in **Instellingen**.
    
     1. Selecteer de back-end-groep die overeenkomt met de back-end-groep van de basis Load Balancer en selecteer de volgende waarde: 
       - **Virtuele machine**: vervolg keuzelijst en selecteer de virtuele machines uit de bijbehorende back-end-groep van de basis Load Balancer.

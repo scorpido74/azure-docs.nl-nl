@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900047"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Services-containers (FAQ)
@@ -37,14 +37,14 @@ ms.locfileid: "90900047"
 
 **A:** We willen meer Cognitive Services beschikbaar maken als container aanbod. Neem contact op met uw lokale Microsoft-account manager om updates te ontvangen over nieuwe container releases en andere Cognitive Services aankondigingen.
 
-**V: wat is de Service Level Agreement (SLA) voor Cognitive Services containers?**
+**V: wat is de Service-Level overeenkomst (SLA) voor Cognitive Services containers?**
 
 **A:** Cognitive Services containers hebben geen SLA.
 
 Cognitive Services container configuraties van bronnen worden beheerd door klanten, zodat micro soft geen SLA biedt voor algemene Beschik baarheid (GA). Klanten kunnen on-premises containers implementeren en daarom kunnen ze de host-omgevingen definiëren.
 
 > [!IMPORTANT]
-> [Bezoek onze Sla-pagina](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)voor meer informatie over Cognitive Services Service Level Agreements.
+> Ga voor meer informatie over Cognitive Services Service-Level-overeenkomsten [naar onze pagina met sla](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
 
 **V: zijn deze containers beschikbaar in soevereine Clouds?**
 

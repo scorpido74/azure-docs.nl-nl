@@ -4,10 +4,10 @@ description: Beschrijft veelvoorkomende netwerk patronen voor Service Fabric en 
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87421464"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric netwerk patronen
@@ -34,7 +34,7 @@ Als poort 19080 niet toegankelijk is vanuit de Service Fabric resource provider,
 Alle Service Fabric sjablonen bevinden zich in [github](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). U moet de sjablonen net zo kunnen implementeren met behulp van de volgende Power shell-opdrachten. Als u de bestaande Azure Virtual Network-sjabloon of het statische open bare IP-sjabloon implementeert, lees dan eerst de sectie [eerste installatie](#initialsetup) in dit artikel.
 
 <a id="initialsetup"></a>
-## <a name="initial-setup"></a>Eerste installatie
+## <a name="initial-setup"></a>Eerste configuratie
 
 ### <a name="existing-virtual-network"></a>Bestaand virtueel netwerk
 
@@ -342,7 +342,7 @@ In dit scenario worden de externe load balancer in de standaard sjabloon vervang
                 ],
     ```
 
-5. Wijzig de instelling van de load balancer `frontendIPConfigurations` van met behulp van een `publicIPAddress` , met behulp van een subnet en `privateIPAddress` . `privateIPAddress`maakt gebruik van een vooraf gedefinieerd statisch intern IP-adres. Als u een dynamisch IP-adres wilt gebruiken, verwijdert u het `privateIPAddress` element en wijzigt `privateIPAllocationMethod` u vervolgens in **dynamisch**.
+5. Wijzig de instelling van de load balancer `frontendIPConfigurations` van met behulp van een `publicIPAddress` , met behulp van een subnet en `privateIPAddress` . `privateIPAddress` maakt gebruik van een vooraf gedefinieerd statisch intern IP-adres. Als u een dynamisch IP-adres wilt gebruiken, verwijdert u het `privateIPAddress` element en wijzigt `privateIPAllocationMethod` u vervolgens in **dynamisch**.
 
     ```json
                 "frontendIPConfigurations": [

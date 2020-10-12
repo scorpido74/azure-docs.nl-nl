@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen beschreven die worden gegeven voor M
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105928"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services als Event Grid bron
@@ -22,7 +22,7 @@ U kunt zich registreren voor alle gebeurtenissen door u te abonneren op de JobSt
 
 ### <a name="monitoring-job-state-changes"></a>Taak status wijzigingen bewaken
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. media. JobStateChange| Een gebeurtenis ophalen voor alle taak status wijzigingen. |
 | Micro soft. media. JobScheduled| Een gebeurtenis ophalen wanneer taak overgang naar een geplande status heeft. |
@@ -42,7 +42,7 @@ Elke **taak** gaat op een hoger niveau dan **JobOutput**. Daarom worden taak uit
 
 De fout berichten in `JobFinished` , `JobCanceled` , `JobError` uitvoer de cumulatieve resultaten voor elke taak uitvoer, wanneer deze allemaal zijn voltooid. Overwegende dat de uitvoer gebeurtenissen van de taak worden gestart terwijl elke taak is voltooid. Als u bijvoorbeeld een uitvoer code ring hebt, gevolgd door een video Analytics-uitvoer, worden er twee gebeurtenissen weer gegeven die worden gestart als taak uitvoer gebeurtenissen voordat de laatste JobFinished-gebeurtenis wordt geactiveerd met de geaggregeerde gegevens.
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. media. JobOutputStateChange| Een gebeurtenis ophalen voor alle wijzigingen in de status van de taak uitvoer. |
 | Micro soft. media. JobOutputScheduled| Een gebeurtenis ophalen wanneer de taak uitvoer overschakelt naar de geplande status. |
@@ -56,7 +56,7 @@ Zie [schema voorbeelden](#event-schema-examples) die volgen.
 
 ### <a name="monitoring-job-output-progress"></a>Voortgang van taak uitvoer bewaken
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. media. JobOutputProgress| Deze gebeurtenis weerspiegelt de voortgang van de taak verwerking, van 0% tot 100%. De service probeert een gebeurtenis te verzenden als er 5% of hoger een toename van de voortgangs waarde heeft of meer dan 30 seconden sinds de laatste gebeurtenis (heartbeat). De voortgangs waarde is niet gegarandeerd om 0% te beginnen, of om 100% te bereiken, noch is het gegarandeerd om een constant percentage te verhogen gedurende een bepaalde periode. Deze gebeurtenis mag niet worden gebruikt om te bepalen dat de verwerking is voltooid: gebruik in plaats daarvan de status wijzigings gebeurtenissen.|
 
@@ -70,7 +70,7 @@ Media Services ook de **Live** gebeurtenis typen die hieronder worden beschreven
 
 Gebeurtenissen op stroom niveau worden gegenereerd per stroom of verbinding. Elke gebeurtenis heeft een `StreamId` para meter waarmee de verbinding of stroom wordt geïdentificeerd. Elke stroom of verbinding heeft een of meer sporen van verschillende typen. Eén verbinding van een coderings programma kan bijvoorbeeld één audio track en vier video sporen hebben. De stroom gebeurtenis typen zijn:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. media. LiveEventConnectionRejected | De verbindings poging van het coderings programma wordt geweigerd. |
 | Micro soft. media. LiveEventEncoderConnected | Encoder maakt verbinding met live event. |
@@ -87,7 +87,7 @@ Gebeurtenissen op spoor niveau worden verhoogd per spoor.
 
 De gebeurtenis typen op spoor niveau zijn:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. media. LiveEventIncomingDataChunkDropped | Media server daalt gegevens segment omdat het te laat is of een overlappende tijds tempel heeft (tijds tempel van nieuw gegevens segment is kleiner dan de eind tijd van het vorige gegevens segment). |
 | Micro soft. media. LiveEventIncomingStreamReceived | Media server ontvangt eerste gegevens segment voor elk spoor in de stroom of verbinding. |
@@ -124,10 +124,10 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **JobStateChange
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | previousState | tekenreeks | De status van de taak vóór de gebeurtenis. |
-| state | tekenreeks | De nieuwe status van de taak die wordt gewaarschuwd bij deze gebeurtenis. Bijvoorbeeld ' gepland: de taak is gereed om te beginnen ' of ' voltooid: de taak is voltooid '.|
+| staat | tekenreeks | De nieuwe status van de taak die wordt gewaarschuwd bij deze gebeurtenis. Bijvoorbeeld ' gepland: de taak is gereed om te beginnen ' of ' voltooid: de taak is voltooid '.|
 
 Waarbij de taak status kan een van de volgende waarden zijn *: in de wachtrij geplaatst*, *gepland*, *verwerkt*, *voltooid*, *fout*, *geannuleerd*, *Annuleren*
 
@@ -194,7 +194,7 @@ Voor elke definitieve wijziging van de taak status (zoals JobFinished, JobCancel
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | uitvoer | Matrix | Hiermee haalt u de taak uitvoer op.|
 
@@ -310,7 +310,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventConne
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | streamId | tekenreeks | De id van de stroom of de verbinding. Encoder of klant is verantwoordelijk voor het toevoegen van deze ID in de opname-URL. |  
 | ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |  
@@ -346,7 +346,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventEncod
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | streamId | tekenreeks | De id van de stroom of de verbinding. Encoder of klant is verantwoordelijk voor het opgeven van deze ID in de opname-URL. |
 | ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |
@@ -380,7 +380,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventEncod
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | streamId | tekenreeks | De id van de stroom of de verbinding. Encoder of klant is verantwoordelijk voor het toevoegen van deze ID in de opname-URL. |  
 | ingestUrl | tekenreeks | De opname-URL die wordt verschaft door de live gebeurtenis. |  
@@ -392,7 +392,7 @@ U kunt de fout codes vinden in [fouten met fout codes voor Live-gebeurtenissen](
 
 De resultaten van de gevolgde verbrekings verbinding zijn:
 
-| Resultaatcode | Description |
+| Resultaatcode | Beschrijving |
 | ----------- | ----------- |
 | S_OK | Het coderings programma is verbroken. |
 | MPE_CLIENT_TERMINATED_SESSION | Het coderings programma is verbroken (RTMP). |
@@ -430,7 +430,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncom
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor. |
@@ -470,7 +470,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncom
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
@@ -509,7 +509,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncom
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | minLastTimestamp | tekenreeks | Mini maal aantal laatste tijds tempels tussen alle sporen (audio of video). |
 | typeOfTrackWithMinLastTimestamp | tekenreeks | Het type van het spoor (audio of video) met de minimale laatste tijds tempel. |
@@ -545,7 +545,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventIncom
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | firstTimestamp | tekenreeks | Er is een tijds tempel ontvangen voor een van de typen video tracks/kwaliteit. |
 | firstDuration | tekenreeks | De duur van het gegevens segment met de eerste time stamp. |
@@ -587,7 +587,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventInges
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
@@ -599,7 +599,7 @@ Het gegevens object heeft de volgende eigenschappen:
 | discontinuityCount | geheel getal | Aantal in de afgelopen 20 seconden waargenomen handelingen. |
 | nonIncreasingCount | geheel getal | Het aantal gegevens segmenten met tijds tempels in het verleden zijn in de afgelopen 20 seconden ontvangen. |
 | unexpectedBitrate | booleaans | Als de verwachte en werkelijke bitsnelheid per seconde in de afgelopen 20 seconden verschillen van de toegestane limiet. Het is waar en alleen als, incomingBitrate >= 2 * bitrate of incomingBitrate <= bitrate/2 of IncomingBitrate = 0. |
-| state | tekenreeks | De status van de live-gebeurtenis. |
+| staat | tekenreeks | De status van de live-gebeurtenis. |
 | blijft | booleaans | Hiermee wordt aangegeven of opname in orde is op basis van de aantallen en vlaggen. In orde is waar als overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -631,7 +631,7 @@ In het volgende voor beeld ziet u het schema van de gebeurtenis **LiveEventTrack
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | trackType | tekenreeks | Het type van het spoor (audio/video). |
 | nummer bijhouden | tekenreeks | De naam van het spoor (dat wordt gegeven door de encoder of, in het geval van RTMP, wordt door de server gegenereerd in *TrackType_Bitrate* -indeling). |
@@ -645,7 +645,7 @@ Het gegevens object heeft de volgende eigenschappen:
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Het onderwerp EventGrid. Deze eigenschap heeft de resource-ID voor het Media Services-account. |
 | Onderwerp | tekenreeks | Het bronpad voor het Media Services kanaal onder het Media Services-account. Als u het onderwerp en onderwerp samenvoegt, geeft u de resource-ID voor de taak. |

@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054701"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Als beheerder in Azure Active Directory een niet-beheerde directory overnemen
@@ -140,7 +140,7 @@ cmdlet | Gebruik
    ```powershell
    Get-MsolDomain
    ```
-3. Voer de cmdlet Get-MsolDomainVerificationDns uit om een uitdaging te maken:
+3. Voer de Get-MsolDomainVerificationDns-cmdlet uit om een uitdaging te maken:
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
@@ -154,7 +154,7 @@ cmdlet | Gebruik
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Maak in uw open bare DNS-naam ruimte een DNS TXT-record die de waarde bevat die u in de vorige stap hebt gekopieerd. De naam voor deze record is de naam van het bovenliggende domein, dus als u deze bron record maakt met behulp van de DNS-functie van Windows Server, laat u de record naam leeg en plakt u alleen de waarde in het tekstvak.
-6. Voer de cmdlet confirm-MsolDomain uit om de uitdaging te controleren:
+6. Voer de Confirm-MsolDomain-cmdlet uit om de uitdaging te controleren:
   
    ```powershell
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force

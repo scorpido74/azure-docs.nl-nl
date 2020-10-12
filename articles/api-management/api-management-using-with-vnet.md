@@ -14,10 +14,10 @@ ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
 ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539194"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
@@ -227,7 +227,7 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Openbare Azure-peering| Zuid-Afrika - noord| 102.133.130.197|
 | Openbare Azure-peering| Canada - midden| 52.139.20.34|
 | Openbare Azure-peering| Korea - zuid| 40.80.232.185|
-| Openbare Azure-peering| Central India| 13.71.49.1|
+| Openbare Azure-peering| India - centraal| 13.71.49.1|
 | Openbare Azure-peering| VS - west| 13.64.39.16|
 | Openbare Azure-peering| Australia Southeast| 20.40.160.107|
 | Openbare Azure-peering| Australië - centraal| 20.37.52.67|

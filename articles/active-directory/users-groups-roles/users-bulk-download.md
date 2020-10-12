@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb119ef0ffd4da4dc524c9d3c0a88b94e2251142
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423555"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Een lijst met gebruikers in Azure Active Directory portal downloaden
@@ -46,18 +46,18 @@ Als u de lijst met gebruikers wilt downloaden vanuit het Azure AD-beheer centrum
    - surname
    - mail
    - givenName
-   - Id
-   - User type
+   - objectId
+   - userType
    - jobTitle
    - department
    - accountEnabled
    - usageLocation
    - streetAddress
-   - state
+   - staat
    - country
    - physicalDeliveryOfficeName
    - city
-   - Code
+   - postalCode
    - telephoneNumber
    - mobiel
    - authenticationPhoneNumber

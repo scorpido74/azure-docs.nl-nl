@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84300202"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Privé-eind punten gebruiken voor de Azure signalerings service
@@ -89,7 +89,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het configureren van u
 
 ### <a name="create-a-private-endpoint-along-with-a-new-azure-signalr-service-in-the-azure-portal"></a>Maak een persoonlijk eind punt samen met een nieuwe Azure signalerings service in de Azure Portal
 
-1. Wanneer u een nieuwe Azure signalerings service maakt, selecteert u het tabblad **netwerken** . Kies **persoonlijk eind punt** als verbindings methode.
+1. Wanneer u een nieuwe Azure signalerings service maakt, selecteert u het tabblad **netwerken** . Kies een **persoonlijk eind punt** als connectiviteits methode.
 
     ![Een Azure signalerings service maken-tabblad netwerken](media/howto-private-endpoints/portal-create-blade-networking-tab.png)
 

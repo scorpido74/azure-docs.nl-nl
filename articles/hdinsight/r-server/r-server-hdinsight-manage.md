@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
 ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087636"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Een cluster van ML Services beheren in azure HDInsight
@@ -201,7 +201,7 @@ Als u R-pakketten wilt installeren op de worker-knoop punten van het cluster, mo
 
    * Geef bij **naam**een naam op voor de script actie.
 
-     * Voer voor **bash-script-URI**in `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Dit is het script waarmee extra R-pakketten worden geïnstalleerd op het worker-knoop punt
+     * Voer voor **bash-script-URI**in  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Dit is het script waarmee extra R-pakketten worden geïnstalleerd op het worker-knoop punt
 
    * Schakel het selectie vakje voor de **werk nemer**alleen in.
 
