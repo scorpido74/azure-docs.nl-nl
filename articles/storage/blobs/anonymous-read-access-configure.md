@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087351"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs configureren
@@ -207,7 +207,7 @@ Voer de volgende stappen uit om het niveau van de open bare toegang voor een of 
 
 Wanneer open bare toegang niet is toegestaan voor het opslag account, kan het open bare toegangs niveau van een container niet worden ingesteld. Als u het open bare toegangs niveau van de container probeert in te stellen, ziet u dat de instelling is uitgeschakeld, omdat open bare toegang niet is toegestaan voor het account.
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Scherm opname waarin wordt getoond dat het open bare toegangs niveau van de container wordt geblokkeerd wanneer open bare toegang niet is toegestaan":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Scherm opname van het toestaan of weigeren van open bare BLOB-toegang voor het account":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

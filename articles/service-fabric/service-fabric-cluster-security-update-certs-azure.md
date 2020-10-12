@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u nieuwe certificaten, rollover certifi
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869742"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Certificaten voor een Service Fabric-cluster in Azure toevoegen of verwijderen
@@ -197,7 +197,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-Implementeer de sjabloon in uw resource groep. Gebruik dezelfde resource groep als waarin uw cluster momenteel is geïmplementeerd. Voer de opdracht New-AzResourceGroupDeployment uit. U hoeft de modus niet op te geven, omdat de standaard waarde **Incrementeel**is.
+Implementeer de sjabloon in uw resource groep. Gebruik dezelfde resource groep als waarin uw cluster momenteel is geïmplementeerd. Voer de New-AzResourceGroupDeployment opdracht uit. U hoeft de modus niet op te geven, omdat de standaard waarde **Incrementeel**is.
 
 > [!NOTE]
 > Als u de modus instelt op voltooid, kunt u per ongeluk resources verwijderen die zich niet in uw sjabloon bevinden. In dit scenario gebruikt u dit dus niet.
@@ -263,7 +263,7 @@ U kunt twee soorten client certificaten toevoegen: beheerder of alleen-lezen. De
 U kunt een wille keurig aantal client certificaten opgeven. Elke toevoeging/verwijdering resulteert in een configuratie-update voor het Service Fabric cluster.
 
 
-### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Client certificaten toevoegen-beheerder of alleen-lezen via Portal
+### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Client certificaten toevoegen-beheerder of Read-Only via Portal
 
 1. Ga naar de sectie Beveiliging en selecteer de knop + verificatie boven in het gedeelte Beveiliging.
 2. Kies in de sectie verificatie toevoegen de optie verificatie type-' alleen-lezen client ' of ' admin-client '.
@@ -271,7 +271,7 @@ U kunt een wille keurig aantal client certificaten opgeven. Elke toevoeging/verw
 
 ![Client certificaat toevoegen][Add_Client_Cert]
 
-### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Client certificaten verwijderen: beheerder of alleen-lezen via de portal
+### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Client certificaten verwijderen: beheerder of Read-Only met behulp van de portal
 
 Als u een secundair certificaat wilt verwijderen dat wordt gebruikt voor cluster beveiliging, gaat u naar de sectie Beveiliging en selecteert u de optie verwijderen in het context menu van het specifieke certificaat.
 

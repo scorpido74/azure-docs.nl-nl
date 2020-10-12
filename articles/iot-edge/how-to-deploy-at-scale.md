@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855382"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Implementeer IoT Edge modules op schaal met behulp van de Azure Portal
@@ -183,7 +183,7 @@ Wanneer u een implementatie wijzigt, worden de wijzigingen onmiddellijk gereplic
 
 1. Selecteer **IOT Edge** in het linkerdeel venster van uw IOT-hub.
 1. Selecteer het tabblad **IOT Edge implementaties** en selecteer vervolgens de implementatie die u wilt configureren.
-1. Selecteer het tabblad **doel voorwaarde** . Wijzig de **doel voorwaarde zodat deze voldoet** aan de beoogde apparaten. U kunt de **prioriteit**ook aanpassen.  Selecteer **Opslaan**.
+1. Selecteer het tabblad **doel voorwaarde** . Wijzig de **doel voorwaarde** zodat deze op de gewenste apparaten is gericht. U kunt de **prioriteit**ook aanpassen.  Selecteer **Opslaan**.
 
     Als u de doel voorwaarde bijwerkt, worden de volgende updates uitgevoerd:
 

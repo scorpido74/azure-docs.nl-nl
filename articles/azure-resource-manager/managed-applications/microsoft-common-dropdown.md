@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474339"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Micro soft. common. vervolg keuzelijst UI-element
@@ -26,19 +26,19 @@ Als er slechts één item is toegestaan voor selectie, wordt het besturings elem
 
 Wanneer beschrijvingen zijn opgenomen, wordt het besturings element weer gegeven als:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Micro soft. common. vervolg keuzelijst met één selectie met beschrijvingen":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Micro soft. common. DropDown, enkelvoudige selectie":::
 
 Als meervoudige selectie is ingeschakeld, voegt het besturings element de optie **alle selecteren** en selectie vakjes toe voor het selecteren van meer dan één item:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Micro soft. common. DropDown multi-select":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Micro soft. common. DropDown, enkelvoudige selectie":::
 
 Beschrijvingen kunnen worden opgenomen in meervoudige selectie ingeschakeld.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Micro soft. common. DropDown multi-select met beschrijvingen":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Micro soft. common. DropDown, enkelvoudige selectie":::
 
 Wanneer filteren is ingeschakeld, bevat het besturings element een tekstvak voor het toevoegen van de filter waarde.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Micro soft. common. DropDown multi-select met beschrijvingen":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Micro soft. common. DropDown, enkelvoudige selectie":::
 
 ## <a name="schema"></a>Schema
 
@@ -88,7 +88,7 @@ Wanneer filteren is ingeschakeld, bevat het besturings element een tekstvak voor
 - Met deze `filter` eigenschap kunnen gebruikers zoeken in een lange lijst met opties.
 - Het label voor `constraints.allowedValues` is de weergave tekst voor een item en de waarde is de uitvoer waarde van het element wanneer dit is geselecteerd.
 - Indien opgegeven, moet de standaard waarde een label zijn in `constraints.allowedValues` . Als u niets opgeeft, wordt het eerste item in `constraints.allowedValues` geselecteerd. De standaard waarde is **Null**.
-- `constraints.allowedValues`moet ten minste één item bevatten.
+- `constraints.allowedValues` moet ten minste één item bevatten.
 - Als u een waarde wilt emuleren die niet vereist is, voegt u een item met een label en waarde van `""` (lege teken reeks) toe aan `constraints.allowedValues` .
 - De `defaultDescription` eigenschap wordt gebruikt voor items die geen beschrijving hebben.
 - De `placeholder` eigenschap is Help-tekst die verdwijnt wanneer de gebruiker begint met het bewerken van. Als de `placeholder` en `defaultValue` beide zijn gedefinieerd, `defaultValue` krijgt de prioriteit en wordt weer gegeven.

@@ -4,10 +4,10 @@ description: Advisor-Score gebruiken om optimaal te profiteren van Azure
 ms.topic: article
 ms.date: 09/09/2020
 ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335616"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Azure-workloads optimaliseren met Advisor-Score
@@ -17,11 +17,11 @@ ms.locfileid: "91335616"
 Azure Advisor biedt best practice aanbevelingen voor uw workloads. Deze aanbevelingen zijn persoonlijk en kunnen actie ondernemen om u te helpen:
 * Verbeter de postuur van uw workloads en Optimaliseer uw Azure-implementaties
 * Proactief voor komen van belangrijkste problemen door aanbevolen procedures te volgen
-* Evalueer uw Azure-workloads met de vijf pijlers van het [Microsoft Azure goed ontworpen Framework](https://docs.microsoft.com/azure/architecture/framework/)
+* Evalueer uw Azure-workloads met de vijf pijlers van het [Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)
 
 Als kern functie van Advisor wordt de **Advisor-Score** ontwikkeld om u te helpen deze doel stellingen effectief en efficiënt te bereiken. 
 
-Om optimaal te profiteren van Azure, is het belang rijk om te begrijpen waar u zich bevindt in de optimalisatie van uw workload, welke services/resources goed worden verbruikt en wat niet. Daarnaast wilt u weten hoe u uw acties op basis van aanbevelingen kunt priori teren om het resultaat te maximaliseren. Het is ook belang rijk om de voortgang bij te houden en te rapporteren die u in deze optimalisatie reis gaat maken. Met **Advisor Score**kunt u eenvoudig al deze dingen doen met onze nieuwe gamificatietoepassing-ervaring. Als uw persoonlijke Cloud consultant Azure Advisor uw telemetrie van het gebruik en de resource configuratie doorlopend beoordelen om te controleren op best practices voor de branche. Advisor integreert de bevindingen vervolgens in één enkele score, zodat u in één oogopslag kunt zien of u de benodigde stappen neemt om betrouw bare, veilige en kostenbesparende oplossingen te bouwen. De Advisor-Score bestaat uit een algemene score die verder kan worden opgesplitst in vijf categorie scores, één voor elke categorie van Azure Advisor die de vijf pijlers van het goed ontworpen kader vertegenwoordigt. U kunt de voortgang volgen die u in de loop van de tijd maakt door uw totale score en categorie score te bekijken met dagelijkse, wekelijkse en maandelijkse trend, en u kunt benchmarks instellen om u te helpen bij het bereiken van uw doel stellingen. 
+Om optimaal te profiteren van Azure, is het belang rijk om te begrijpen waar u zich bevindt in de optimalisatie van uw workload, welke services/resources goed worden verbruikt en wat niet. Daarnaast wilt u weten hoe u uw acties op basis van aanbevelingen kunt priori teren om het resultaat te maximaliseren. Het is ook belang rijk om de voortgang bij te houden en te rapporteren die u in deze optimalisatie reis gaat maken. Met **Advisor Score**kunt u eenvoudig al deze dingen doen met onze nieuwe gamificatietoepassing-ervaring. Als uw persoonlijke Cloud consultant Azure Advisor uw telemetrie van het gebruik en de resource configuratie doorlopend beoordelen om te controleren op best practices voor de branche. Advisor integreert de bevindingen vervolgens in één enkele score, zodat u in één oogopslag kunt zien of u de benodigde stappen neemt om betrouw bare, veilige en kostenbesparende oplossingen te bouwen. De Advisor-Score bestaat uit een algemene score die verder kan worden opgesplitst in vijf categorie scores, één voor elke categorie van Azure Advisor die de vijf pijlers van het Well-Architected Framework vertegenwoordigt. U kunt de voortgang volgen die u in de loop van de tijd maakt door uw totale score en categorie score te bekijken met dagelijkse, wekelijkse en maandelijkse trend, en u kunt benchmarks instellen om u te helpen bij het bereiken van uw doel stellingen. 
 
  ![Advisor-Score ervaring](./media/advisor-score-1.png)
 

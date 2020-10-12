@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007910"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure Cache voor Redis 
@@ -81,7 +81,7 @@ Als u wilt testen hoe uw code werkt onder fout voorwaarden, kunt u overwegen de 
      > [!NOTE]
      > Onze waargenomen prestatie resultaten worden [hier](cache-planning-faq.md#azure-cache-for-redis-performance) voor uw referentie gepubliceerd.   Houd er ook rekening mee dat SSL/TLS enige overhead toevoegt, waardoor u mogelijk verschillende vertragingen en/of door Voer kunt krijgen als u transport versleuteling gebruikt.
  
-### <a name="redis-benchmark-examples"></a>Voor beelden van redis-benchmarks
+### <a name="redis-benchmark-examples"></a>Redis-Benchmark-voor beelden
 **Installatie vooraf testen**: bereid het cache-exemplaar voor met de gegevens die zijn vereist voor de onderstaande opdrachten voor latentie en door voer.
 > redis-Bench Mark-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 

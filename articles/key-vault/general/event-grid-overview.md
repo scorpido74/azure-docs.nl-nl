@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 1ee38196f0b1a6e00d385dc0d2c88d45a4291d3b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087433"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid"></a>Key Vault bewaken met Azure Event Grid
@@ -24,7 +24,7 @@ Toepassingen kunnen reageren op deze gebeurtenissen met moderne serverloze archi
 
 ## <a name="key-vault-events-and-schemas"></a>Key Vault gebeurtenissen en schema's
 
-Event grid gebruikt [gebeurtenis abonnementen](../../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Key Vault gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in uw gegevens. U kunt een Key Vault gebeurtenis identificeren omdat de eigenschap Event type met ' micro soft.-sleutel kluis ' begint.
+Gebeurtenisraster maakt gebruik van [gebeurtenisabonnementen](../../event-grid/concepts.md#event-subscriptions) om gebeurtenisberichten te routen naar abonnees. Key Vault gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in uw gegevens. U kunt een Key Vault gebeurtenis identificeren omdat de eigenschap Event type met ' micro soft.-sleutel kluis ' begint.
 
 Zie het [Key Vault-gebeurtenis schema](../../event-grid/event-schema-key-vault.md)voor meer informatie.
 
@@ -42,9 +42,9 @@ Toepassingen die Key Vault gebeurtenissen verwerken, moeten een aantal aanbevole
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Key Vault](overview.md)
+- [Azure Key Vault-overzicht](overview.md)
 - [Overzicht van Azure Event Grid](../../event-grid/overview.md)
 - Procedure: [Key Vault-gebeurtenissen omleiden naar Automation-Runbook](event-grid-tutorial.md).
 - Procedure: [E-mail ontvangen wanneer een sleutelkluisgeheim verandert](event-grid-logicapps.md)
-- [Azure Event Grid-gebeurtenis schema voor Azure Key Vault](../../event-grid/event-schema-key-vault.md)
+- [Azure Event Grid-gebeurtenisschema voor Azure Key Vault](../../event-grid/event-schema-key-vault.md)
 - [Overzicht van Azure Automation](../../automation/index.yml)

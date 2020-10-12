@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 76e2b9542d20b5788a2875dec89d447ce38276a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122020"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>Hoe kan ik X. 509-certificaat voor apparaten in IoT Central toepassing
@@ -30,7 +30,7 @@ U kunt uw eigen X. 509-certificaten maken met een hulp programma zoals OpenSSL. 
 
 Als u een groeps registratie wilt bijwerken in reactie op een schending van de beveiliging, moet u de volgende aanpak gebruiken waarmee het huidige certificaat direct wordt bijgewerkt:
 
-1. Ga in het linkerdeel venster naar **beheer** en klik op **verbinding met apparaat**.
+1. Ga in het linkerdeel venster naar **beheer**  en klik op **verbinding met apparaat**.
 
 2. Klik op **registratie groepen**en klik op de groeps naam in de lijst.
 
@@ -52,7 +52,7 @@ Als u een groeps registratie wilt bijwerken in reactie op een schending van de b
 
 Als u certificaten doorloopt voor het afhandelen van certificaat verloop, gebruikt u de volgende aanpak om het huidige certificaat direct bij te werken:
 
-1. Ga in het linkerdeel venster naar **beheer** en klik op **verbinding met apparaat**. 
+1. Ga in het linkerdeel venster naar **beheer**  en klik op **verbinding met apparaat**. 
 
 2. Klik op **registratie groepen**en klik op de groeps naam in de lijst.
 

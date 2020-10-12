@@ -14,17 +14,17 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087006"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Factoren die invloed hebben op de prestaties van Azure AD Connect
 
 Azure AD Connect uw Active Directory synchroniseert met Azure AD. Deze server is een essentieel onderdeel van het verplaatsen van uw gebruikers identiteiten naar de Cloud. De belangrijkste factoren die van invloed zijn op de prestaties van een Azure AD Connect zijn:
 
-| **Ontwerp factor**| **Beschrijving** |
+| **Ontwerp factor**| **Definitie** |
 |:-|-|
 | Topologie| De distributie van de eind punten en onderdelen Azure AD Connect moet worden beheerd in het netwerk. |
 | Schalen| Het aantal objecten zoals de gebruikers, groepen en organisatie-eenheden die worden beheerd door Azure AD Connect. |

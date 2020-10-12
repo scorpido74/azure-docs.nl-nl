@@ -1,80 +1,86 @@
 ---
-title: Azure Security Center waarschuwingen en aanbevelingen exporteren naar Siem's | Microsoft Docs
-description: In dit artikel wordt uitgelegd hoe u continue export van beveiligings waarschuwingen en aanbevelingen instelt voor Siem's
+title: Continue export kan waarschuwingen en aanbevelingen van Azure Security Center verzenden naar Log Analytics werk ruimten of Azure Event Hubs
+description: Meer informatie over het configureren van continue export van beveiligings waarschuwingen en aanbevelingen voor Log Analytics werk ruimten of Azure Event Hubs
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: d0ada1b615d4673f696c6f1b003288f3e7aa02e4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449161"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945269"
 ---
-# <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
+# <a name="continuously-export-security-alerts-and-recommendations"></a>Voortdurend beveiligings waarschuwingen en aanbevelingen exporteren
 
-Azure Security Center genereert gedetailleerde beveiligings waarschuwingen en aanbevelingen. U kunt deze weer geven in de portal of via programmatische hulpprogram ma's. Mogelijk moet u deze informatie ook exporteren of verzenden naar andere controle hulpprogramma's in uw omgeving. 
+Azure Security Center genereert gedetailleerde beveiligings waarschuwingen en aanbevelingen. U kunt deze weer geven in de portal of via programmatische hulpprogram ma's. Mogelijk moet u ook enkele of al deze gegevens exporteren voor het bijhouden met andere controle hulpprogramma's in uw omgeving. 
 
-In dit artikel wordt de set hulpprogram ma's beschreven waarmee u waarschuwingen en aanbevelingen hand matig of op doorlopende wijze kunt exporteren.
+Met **doorlopend exporteren** kunt u volledig aanpassen *wat* wordt geëxporteerd en *waar* het gaat. U kunt deze bijvoorbeeld zodanig configureren dat:
 
-Met deze hulpprogram ma's kunt u het volgende doen:
+- Alle waarschuwingen met hoge urgentie worden verzonden naar een Azure Event hub
+- Alle problemen met de ernst van gemiddeld of op het hoogste niveau van de scan van beveiligings lekken van uw SQL-servers worden verzonden naar een specifieke Log Analytics-werk ruimte
+- Specifieke aanbevelingen worden naar een event hub of Log Analytics werk ruimte bezorgd wanneer ze worden gegenereerd 
 
-* Doorlopend exporteren naar Log Analytics-werk ruimten
-* Doorlopend exporteren naar Azure Event Hubs (voor integratie met Siem's van derden)
-* Exporteren naar CSV (één keer)
+In dit artikel wordt beschreven hoe u doorlopend exporteren naar Log Analytics werk ruimten of Azure Event Hubs kunt configureren.
 
+> [!NOTE]
+> Als u Security Center wilt integreren met een SIEM, raadpleegt u de [waarschuwingen voor streams naar een Siem](export-to-siem.md) voor uw opties.
+
+> [!TIP]
+> Security Center biedt ook de mogelijkheid om een eenmalig hand matige export naar CSV uit te voeren. Meer informatie vindt u in [hand matig eenmalige export van waarschuwingen en aanbevelingen](#manual-one-time-export-of-alerts-and-recommendations).
 
 
 ## <a name="availability"></a>Beschikbaarheid
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|Gratis|
-|Vereiste rollen en machtigingen:|**Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)<br>Moet ook schrijf machtigingen hebben voor de doel resource|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China gov (naar Event hub), andere gov|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|Gratis|
+|Vereiste rollen en machtigingen:|<ul><li>**Beveiligings beheerder** of- **eigenaar** voor de resource groep</li><li>Schrijf machtigingen voor de doel resource</li><li>Als u het Azure Policy beleid ' DeployIfNotExist ' gebruikt dat hieronder wordt beschreven, hebt u ook machtigingen nodig voor het toewijzen van beleid</li></ul>|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China gov (naar Event hub), andere gov|
 |||
 
 
 
-## <a name="set-up-a-continuous-export"></a>Een continue export instellen
+
+
+## <a name="set-up-a-continuous-export"></a>Een continue export instellen 
+
+U kunt continue export configureren vanaf de Security Center pagina's in Azure Portal, via het Security Center REST API of op schaal met behulp van de meegeleverde Azure Policy sjablonen. Selecteer het juiste tabblad hieronder voor meer informatie.
+
+### <a name="use-the-azure-portal"></a>[**Azure Portal gebruiken**](#tab/azure-portal)
+
+### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Continue export configureren vanaf de Security Center pagina's in Azure Portal
 
 De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics werk ruimte of Azure Event Hubs in te stellen.
 
 1. Selecteer op de zijbalk van Security Center de **& instellingen voor prijzen**.
-
 1. Selecteer het specifieke abonnement waarvoor u de gegevens export wilt configureren.
-    
 1. Selecteer in de zijbalk van de pagina instellingen voor dat abonnement **doorlopend exporteren**.
-
     [ ![ Export opties in azure Security Center](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) hier ziet u de export opties. Er is een tabblad voor elk beschik bare export doel. 
-
 1. Selecteer het gegevens type dat u wilt exporteren en kies uit de filters voor elk type (bijvoorbeeld alleen waarschuwingen met hoge Ernst exporteren).
-
 1. Als uw selectie een van deze vier aanbevelingen bevat, kunt u desgewenst de evaluaties van beveiligings problemen samen voegen:
-
     - De conclusies van de evaluatie van beveiligings problemen voor uw SQL-data bases moeten worden hersteld
     - De resultaten van evaluatie van beveiligings problemen op uw SQL-servers op computers moeten worden hersteld (preview-versie)
-    - Beveiligings problemen in Azure Container Registry installatie kopieën moeten worden hersteld (aangedreven door Qualys)
-    - Beveiligings problemen in uw virtuele machines moeten worden hersteld
+    - Beveiligingsproblemen met installatiekopieën in Azure Container Registry moeten worden hersteld (mogelijk gemaakt door Qualys)
+    - Beveiligingsproblemen op uw virtuele machines moeten worden hersteld
 
     Schakel de optie **beveiligings resultaten bevatten** in om de resultaten op te vragen met deze aanbevelingen.
 
-    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Beveiligings resultaten toevoegen in-/uitschakelen configuratie voor continue export" :::
-
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export" :::
 
 1. Kies in het gebied export doel de locatie waar u de gegevens wilt opslaan. Gegevens kunnen worden opgeslagen in een doel voor een ander abonnement (bijvoorbeeld op een centraal Event hub-exemplaar of een centrale Log Analytics-werk ruimte).
-
 1. Selecteer **Opslaan**.
 
+### <a name="use-the-rest-api"></a>[**REST-API gebruiken**](#tab/rest-api)
 
-## <a name="set-up-continuous-export-via-the-rest-api"></a>Continue export instellen via de REST API
+### <a name="configure-continuous-export-using-the-rest-api"></a>Continue export configureren met behulp van de REST API
 
-De functie continue export kan worden geconfigureerd en beheerd via de API voor Azure Security Center [Automation](https://docs.microsoft.com/rest/api/securitycenter/automations). Gebruik deze API om Automation voor het exporteren naar een van de volgende mogelijke bestemmingen te maken of bij te werken:
+Continue export kan worden geconfigureerd en beheerd via de API voor Azure Security Center [Automation](https://docs.microsoft.com/rest/api/securitycenter/automations). Gebruik deze API om regels te maken of bij te werken voor het exporteren naar een van de volgende mogelijke bestemmingen:
 
 - Azure Event Hub
 - Log Analytics-werkruimte
@@ -95,47 +101,67 @@ Meer informatie over de automatiserings-API vindt u in de [documentatie van rest
 
 
 
-## <a name="configure-siem-integration-via-azure-event-hubs"></a>SIEM-integratie configureren via Azure Event Hubs
-
-Azure Event Hubs is een geweldige oplossing voor het programmatisch gebruiken van streaming-gegevens. Voor Azure Security Center waarschuwingen en aanbevelingen is het de aanbevolen manier om te integreren met een SIEM van derden.
-
-> [!NOTE]
-> De meest efficiënte methode voor het streamen van bewakings gegevens naar externe hulpprogram ma's is in de meeste gevallen het gebruik van Azure Event Hubs. In [dit artikel](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs) vindt u een korte beschrijving van de manier waarop u bewakings gegevens uit verschillende bronnen kunt streamen naar een event hub en koppelingen naar gedetailleerde richt lijnen.
-
-> [!NOTE]
-> Als u eerder Security Center waarschuwingen naar een SIEM hebt geëxporteerd met behulp van Azure-activiteiten logboek, vervangt de onderstaande procedure die methodologie.
-
-Als u de gebeurtenis schema's van de geëxporteerde gegevens typen wilt weer geven, gaat u naar event [hub Event schemas](https://aka.ms/ASCAutomationSchemas).
 
 
-### <a name="to-integrate-with-a-siem"></a>Integreren met een SIEM 
+### <a name="deploy-at-scale-with-azure-policy"></a>[**Implementeren op schaal met Azure Policy**](#tab/azure-policy)
 
-Nadat u continue export van uw gekozen Security Center gegevens naar Azure Event Hubs hebt geconfigureerd, kunt u de juiste connector instellen voor uw SIEM:
+### <a name="configure-continuous-export-at-scale-using-the-supplied-policies"></a>Continue export op schaal configureren met de geleverde beleids regels
 
-* **Azure-Sentinel** : gebruik de systeem eigen Azure Security Center Alerts [Data Connector](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center) is daar beschikbaar.
-* **Splunk** : gebruik de [Azure monitor-invoeg toepassing voor Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md)
-* **IBM QRadar** : [een hand matig geconfigureerde logboek bron](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/t_dsm_guide_microsoft_azure_enable_event_hubs.html) gebruiken
-* **ArcSight** : gebruik [SmartConnector](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)
+Het automatiseren van de processen voor bewaking en reageren op incidenten van uw organisatie kan de tijd die nodig is om beveiligingsincidenten te onderzoeken en te verhelpen aanzienlijk verbeteren.
 
-Als u de voortdurend geëxporteerde gegevens automatisch van uw geconfigureerde Event hub naar Azure Data Explorer wilt verplaatsen, gebruikt u de instructies in [opname gegevens van Event hub naar azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub).
+Als u uw continue export configuraties in uw organisatie wilt implementeren, gebruikt u het opgegeven Azure Policy beleid ' DeployIfNotExist ' dat hieronder wordt beschreven om doorlopende export procedures te maken en te configureren.
 
+**Deze beleids regels implementeren**
 
+1. Selecteer in de onderstaande tabel het beleid dat u wilt Toep assen:
 
-## <a name="continuous-export-to-a-log-analytics-workspace"></a>Doorlopend exporteren naar een Log Analytics-werk ruimte
+    |Doel  |Beleid  |Beleids-id  |
+    |---------|---------|---------|
+    |Continue export naar Event Hub|[Export implementeren in Event Hub voor Azure Security Center-waarschuwingen en -aanbevelingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Continue export naar Log Analytics-werkruimte|[Export implementeren in Log Analytics-werkruimte voor Azure Security Center-waarschuwingen en -aanbevelingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    ||||
 
-Als u Azure Security Center gegevens in een Log Analytics werk ruimte wilt analyseren of als u Azure-waarschuwingen wilt gebruiken in combi natie met Security Center, stelt u continue export in op uw Log Analytics-werk ruimte.
+    > [!TIP]
+    > U kunt deze ook vinden door te zoeken naar Azure Policy:
+    > 1. Open Azure Policy.
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export":::
+    > 2. Selecteer in het menu Azure Policy **definities** en zoek ze op naam. 
 
-Als u wilt exporteren naar een Log Analytics-werk ruimte, moet u de Log Analytics oplossingen van Security Center op uw werk ruimte hebben ingeschakeld. Als u de Azure Portal gebruikt, wordt de gratis oplossing van Security Center automatisch ingeschakeld wanneer u doorlopend exporteren inschakelt. Als u echter de instellingen voor continue export programmatisch configureert, moet u Azure Defender hand matig in-of uitschakelen via de pagina met **prijs & instellingen** .
+1. Selecteer op de pagina relevante Azure Policy **toewijzen**.
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export":::
+
+1. Open elk tabblad en stel de para meters naar wens in:
+    1. Stel op het tabblad **basis beginselen** het bereik voor het beleid in. Als u gecentraliseerd beheer wilt gebruiken, wijst u het beleid toe aan de beheer groep met de abonnementen die continue export configuratie zullen gebruiken. 
+    1. Stel op het tabblad **para meters** de gegevens van de resource groep en het gegevens type in. 
+        > [!TIP]
+        > Elke para meter heeft een knop info met uitleg over de beschik bare opties.
+        >
+        > Het tabblad para meters van Azure Policy (1) biedt toegang tot vergelijk bare configuratie opties als de pagina doorlopend exporteren van Security Center (2).
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="De schakeloptie Beveiligingsresultaten insluiten in de configuratie voor continue export" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+    1. Als u deze toewijzing wilt Toep assen op bestaande abonnementen, opent u het tabblad **herstel** en selecteert u de optie voor het maken van een herstel taak.
+1. Controleer de pagina samen vatting en selecteer **maken**.
+
+--- 
+
+## <a name="information-about-exporting-to-a-log-analytics-workspace"></a>Informatie over het exporteren naar een Log Analytics-werk ruimte
+
+Als u Azure Security Center gegevens in een Log Analytics werk ruimte wilt analyseren of als u Azure-waarschuwingen wilt gebruiken in combi natie met Security Center waarschuwingen, stelt u doorlopend exporteren naar uw Log Analytics-werk ruimte in.
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabellen en schema's
 
-Beveiligings waarschuwingen en aanbevelingen worden respectievelijk opgeslagen in de *SecurityAlert* -en *SecurityRecommendations* -tabellen. De naam van de Log Analytics oplossing die deze tabellen bevat, is afhankelijk van of u Azure Defender hebt ingeschakeld: Security (Beveiliging en audit) of SecurityCenterFree.
+Beveiligings waarschuwingen en aanbevelingen worden respectievelijk opgeslagen in de *SecurityAlert* -en *SecurityRecommendations* -tabellen. 
+
+De naam van de Log Analytics oplossing die deze tabellen bevat, is afhankelijk van of u Azure Defender hebt ingeschakeld: Security (Beveiliging en audit) of SecurityCenterFree. 
+
+> [!TIP]
+> Als u de gegevens in de doel werkruimte wilt zien, moet u een van deze oplossingen inschakelen **beveiliging en audit** of **SecurityCenterFree**.
 
 ![De * SecurityAlert *-tabel in Log Analytics](./media/continuous-export/log-analytics-securityalert-solution.png)
 
 Als u de gebeurtenis schema's van de geëxporteerde gegevens typen wilt weer geven, gaat u naar de [log Analytics-tabel schema's](https://aka.ms/ASCAutomationSchemas).
 
-###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>Geëxporteerde beveiligings waarschuwingen en aanbevelingen in Azure Monitor weer geven
+
+##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Geëxporteerde waarschuwingen en aanbevelingen in Azure Monitor weer geven
 
 In sommige gevallen kunt u ervoor kiezen om de geëxporteerde beveiligings waarschuwingen en/of aanbevelingen in [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)weer te geven. 
 
@@ -156,9 +182,9 @@ Als u waarschuwingen en aanbevelingen van Security Center in Azure Monitor wilt 
     * U kunt desgewenst de [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) configureren die u wilt activeren. Actie groepen kunnen e-mail verzenden, ITSM tickets, webhooks en meer activeren.
     ![Waarschuwings regel Azure Monitor](./media/continuous-export/azure-monitor-alert-rule.png)
 
-U ziet nu nieuwe Azure Security Center waarschuwingen of aanbevelingen (afhankelijk van uw configuratie) in Azure Monitor-waarschuwingen, waarbij automatisch een actie groep wordt geactiveerd (indien gegeven).
+U ziet nu nieuwe Azure Security Center waarschuwingen of aanbevelingen (afhankelijk van de geconfigureerde regels voor continue export en de voor waarde die u in uw Azure Monitor waarschuwings regel hebt opgegeven) in Azure Monitor waarschuwingen, waarbij automatisch een actie groep wordt geactiveerd (indien opgegeven).
 
-## <a name="manual-one-time-export-of-security-alerts"></a>Hand matige eenmalige export van beveiligings waarschuwingen
+## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>Hand matige eenmalige export van waarschuwingen en aanbevelingen
 
 Als u een CSV-rapport voor waarschuwingen of aanbevelingen wilt downloaden, opent u de pagina **beveiligings waarschuwingen** of **aanbevelingen** en selecteert u de knop **CSV-rapport downloaden** .
 
@@ -166,7 +192,6 @@ Als u een CSV-rapport voor waarschuwingen of aanbevelingen wilt downloaden, open
 
 > [!NOTE]
 > Deze rapporten bevatten waarschuwingen en aanbevelingen voor resources van de momenteel geselecteerde abonnementen.
-
 
 
 ## <a name="faq---continuous-export"></a>Veelgestelde vragen-continue export
@@ -180,13 +205,16 @@ Meer informatie over de [prijzen van log Analytics werk ruimte](https://azure.mi
 Meer informatie over de [prijzen van Azure Event hub](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel hebt u geleerd hoe u continue export van uw aanbevelingen en waarschuwingen kunt configureren. U hebt ook geleerd hoe u uw waarschuwings gegevens kunt downloaden als een CSV-bestand. 
 
 Raadpleeg de volgende documentatie voor gerelateerde materialen: 
 
+- Meer informatie over [werk stroom automatiserings sjablonen](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 - [Documentatie over Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Documentatie voor Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Monitor-documentatie](https://docs.microsoft.com/azure/azure-monitor/)
-- [Schema's voor werk stroom automatisering en doorlopend exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)
+- [Schema's voor het exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)

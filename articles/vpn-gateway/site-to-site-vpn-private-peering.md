@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776558"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>Een site-naar-site-VPN-verbinding configureren via ExpressRoute private peering (preview-versie)
@@ -32,7 +32,7 @@ Controleer of u aan de volgende vereisten voldoet om deze configuratie te volt o
 
 * U kunt via het ExpressRoute-circuit bronnen bereiken via RFC1918 (privé) in het VNet.
 
-## <a name="routing"></a><a name="routing"></a>Routering
+## <a name="routing"></a><a name="routing"></a>Code
 
 In **afbeelding 1** ziet u een voor beeld van VPN-verbinding via ExpressRoute private-peering. In dit voor beeld ziet u een netwerk in het on-premises netwerk dat is verbonden met de Azure hub VPN-gateway via ExpressRoute private peering. Een belang rijk aspect van deze configuratie is de route ring tussen de on-premises netwerken en Azure via de ExpressRoute-en VPN-paden.
 
