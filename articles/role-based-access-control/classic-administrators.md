@@ -1,6 +1,6 @@
 ---
 title: Klassieke abonnementsbeheerders van Azure
-description: Hierin wordt beschreven hoe u de rollen Azure mede beheerder en service beheerder toevoegt of wijzigt, en hoe u de account beheerder kunt weer geven.
+description: Hierin wordt beschreven hoe u de rollen Azure Co-Administrator en service beheerder toevoegt of wijzigt, en hoe u de account beheerder kunt weer geven.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,30 +15,30 @@ ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076449"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klassieke abonnementsbeheerders van Azure
 
 Micro soft raadt u aan om de toegang tot Azure-resources te beheren met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Als u nog steeds gebruikmaakt van het klassieke implementatie model, moet u echter een klassieke rol voor abonnements beheerders gebruiken: Service beheerder en mede beheerder. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie.
 
-In dit artikel wordt beschreven hoe u de rollen mede beheerder en service beheerder kunt toevoegen of wijzigen, en hoe u de account beheerder kunt weer geven.
+In dit artikel wordt beschreven hoe u de Co-Administrator-en service beheerders rollen toevoegt of wijzigt, en hoe u de account beheerder kunt weer geven.
 
 ## <a name="add-a-co-administrator"></a>Een co-beheerder toevoegen
 
 > [!TIP]
-> U hoeft alleen een mede beheerder toe te voegen als de gebruiker klassieke Azure-implementaties moet beheren met behulp van de [Azure Service Management Power shell-module](/powershell/module/servicemanagement/azure.service). Als de gebruiker alleen de Azure Portal gebruikt voor het beheren van de klassieke resources, hoeft u de klassieke beheerder niet toe te voegen aan de gebruiker.
+> U hoeft alleen een Co-Administrator toe te voegen als de gebruiker klassieke Azure-implementaties moet beheren met behulp van de [Azure Service Management Power shell-module](/powershell/module/servicemanagement/azure.service). Als de gebruiker alleen de Azure Portal gebruikt voor het beheren van de klassieke resources, hoeft u de klassieke beheerder niet toe te voegen aan de gebruiker.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als service beheerder of mede beheerder.
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
-    Mede beheerders kunnen alleen worden toegewezen bij het abonnements bereik.
+    Co-Administrators kan alleen worden toegewezen aan het abonnements bereik.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **klassieke beheerders** .
 
@@ -52,7 +52,7 @@ In dit artikel wordt beschreven hoe u de rollen mede beheerder en service beheer
 
     ![Scherm afbeelding waarmee co-beheerder wordt toegevoegd](./media/classic-administrators/add-coadmin.png)
 
-## <a name="add-a-guest-user-as-a-co-administrator"></a>Een gast gebruiker als co-beheerder toevoegen
+## <a name="add-a-guest-user-as-a-co-administrator"></a>Een gast gebruiker als Co-Administrator toevoegen
 
 Als u een gast gebruiker wilt toevoegen als co-beheerder, voert u dezelfde stappen uit als in het vorige gedeelte [een mede beheerder toevoegen](#add-a-co-administrator) . De gast gebruiker moet voldoen aan de volgende criteria:
 
@@ -62,11 +62,11 @@ Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure P
 
 ### <a name="differences-for-guest-users"></a>Verschillen voor gast gebruikers
 
-Gast gebruikers aan wie de rol mede beheerder is toegewezen, kunnen enkele verschillen zien ten opzichte van gebruikers die lid zijn van de rol mede beheerder. Denkt u zich het volgende scenario eens in:
+Gast gebruikers aan wie de rol Co-Administrator is toegewezen, kunnen enkele verschillen zien ten opzichte van gebruikers die lid zijn van de Co-Administrator rol. Denkt u zich het volgende scenario eens in:
 
 - Gebruiker A met een Azure AD-account (werk-of school account) is een service beheerder voor een Azure-abonnement.
 - Gebruiker B heeft een Microsoft-account.
-- Gebruiker A wijst de rol mede beheerder toe aan gebruiker B.
+- Gebruiker A wijst de Co-Administrator rol toe aan gebruiker B.
 - Gebruiker B kan vrijwel alles doen, maar kan geen toepassingen registreren of gebruikers opzoeken in de Azure AD-adres lijst.
 
 U verwacht dat gebruiker B alles kan beheren. De reden hiervoor is dat de Microsoft-account wordt toegevoegd aan het abonnement als gast gebruiker in plaats van een lid van een gebruiker. Gast gebruikers hebben een andere standaard machtiging in azure AD, vergeleken met gebruikers van leden. Gebruikers kunnen bijvoorbeeld andere gebruikers in azure AD en gast gebruikers lezen. Gebruikers van leden kunnen nieuwe service-principals in azure AD en gast gebruikers registreren.
@@ -77,17 +77,17 @@ Houd er rekening mee dat de [ingebouwde rollen van Azure](../role-based-access-c
 
 Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)voor informatie waarmee leden van gebruikers en gast gebruikers worden vergeleken.
 
-## <a name="remove-a-co-administrator"></a>Een mede beheerder verwijderen
+## <a name="remove-a-co-administrator"></a>Een Co-Administrator verwijderen
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als service beheerder of mede beheerder.
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **klassieke beheerders** .
 
-1. Voeg een vinkje toe naast de co-beheerder die u wilt verwijderen.
+1. Voeg een vinkje toe naast de Co-Administrator die u wilt verwijderen.
 
 1. Klik op **Verwijderen**.
 
@@ -125,8 +125,8 @@ Er kan slechts één service beheerder per Azure-abonnement zijn. Het wijzigen v
 
 | Account beheerders account | Kan de service beheerder wijzigen in een andere Microsoft-account? | Kan de service beheerder wijzigen in een Azure AD-account in dezelfde map? | Kan de service beheerder wijzigen in een Azure AD-account in een andere adres lijst? |
 | --- | --- | --- | --- |
-| Microsoft-account | Yes | Nee | Nee |
-| Azure AD-account | Ja | Ja | No |
+| Microsoft-account | Ja | Nee | Nee |
+| Microsoft Azure Active Directory-account | Ja | Ja | Nee |
 
 Als de account beheerder een Azure AD-account is, kunt u de service beheerder wijzigen in een Azure AD-account in dezelfde map, maar niet in een andere map. Bijvoorbeeld, abby@contoso.com kan de service beheerder wijzigen in bob@contoso.com , maar kan de service beheerder niet wijzigen in, john@notcontoso.com tenzij john@notcontoso.com er een aanwezigheid is in de contoso.com-map.
 
@@ -151,5 +151,5 @@ Volg deze stappen om de account beheerder weer te geven.
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inzicht in de verschillende rollen](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../role-based-access-control/role-assignments-portal.md)
 * [Azure-abonnementsbeheerders toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md)

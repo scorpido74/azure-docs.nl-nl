@@ -4,10 +4,10 @@ description: Meer informatie over hoe u Azure Data Box kunt gebruiken om grote i
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180929"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline back-up Azure Backup met behulp van Azure Data Box
@@ -195,7 +195,7 @@ Om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem kunt koppelen 
 
     ![Data Box-taken voor abonnements-ID ophalen](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. Selecteer de juiste Data Box order waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Volgende**.
+1. Selecteer de juiste Data Box order waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Next**.
 
     ![Data Box orders selecteren](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -247,7 +247,7 @@ In deze sectie worden de stappen beschreven die u moet uitvoeren nadat de back-u
 
 - Nadat de MARS-agent een herstel punt heeft gemaakt dat overeenkomt met de eerste back-up, kunt u het opslag account of de specifieke inhoud verwijderen die aan de Azure Data Box-taak is gekoppeld.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Met de Microsoft Azure Recovery Services-agent (MARS) wordt een Azure Active Directory-toepassing (Azure AD) voor u gemaakt in uw Tenant. Voor deze toepassing is een certificaat vereist voor verificatie dat wordt gemaakt en geüpload wanneer u een offline seeding-beleid configureert. We gebruiken Azure PowerShell om het certificaat te maken en te uploaden naar de Azure AD-toepassing.
 
@@ -302,7 +302,7 @@ Voer de volgende acties uit vanaf de-server die u wilt configureren voor offline
 
 4. Open het REGI ster in de-server door in het venster uitvoeren **regedit** in te voeren.
 
-5. Ga naar de register *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klik met de rechter muisknop op **CloudBackupProvider**en voeg een nieuwe teken reeks waarde toe met de naam `AzureADAppCertThumbprint_<Azure User Id>` .
+5. Ga naar het REGI ster *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider.* Klik met de rechter muisknop op **CloudBackupProvider**en voeg een nieuwe teken reeks waarde toe met de naam `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Voer een van de volgende acties uit om de gebruikers-ID van Azure op te halen:

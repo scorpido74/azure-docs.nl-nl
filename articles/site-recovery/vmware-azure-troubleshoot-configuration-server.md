@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113068"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Problemen met de configuratieserver oplossen
@@ -28,8 +28,8 @@ De bron machine wordt geregistreerd bij de configuratie server wanneer u de Mobi
    1. Controleer of de aangevraagde host-ID hetzelfde is als de host-ID van de bron machine.
    2. Controleer of er ten minste één IP-adres aan de fysieke NIC is toegewezen aan de bron machine. Voor agent registratie met de configuratie server moet ten minste één geldig IP v4-adres aan de fysieke NIC zijn toegewezen.
    3. Voer een van de volgende opdrachten uit op de bron computer om alle IP-adressen van de bron computer op te halen:
-      - Voor Windows:`> ipconfig /all`
-      - Voor Linux:`# ifconfig -a`
+      - Voor Windows: `> ipconfig /all`
+      - Voor Linux: `# ifconfig -a`
 
 3. Als de teken reeks **geen geldig IP-adres** gevonden is, zoekt u naar de teken reeks **reden =>null**. Deze fout treedt op als de bron machine een lege host gebruikt voor registratie bij de configuratie server. Als de teken reeks wordt gevonden:
     - Nadat u de problemen hebt opgelost, volgt u de richt lijnen in [REGI Steren van de bron machine bij de configuratie server](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) om de registratie hand matig opnieuw uit te voeren.
@@ -234,7 +234,7 @@ Deze fout kan optreden als er meerdere UUID-items van een configuratie server (C
 
 Het probleem oplossen:
 
-1. Verwijder de verouderde/oude CS-VM uit de vCenter. Zie [servers verwijderen en beveiliging uitschakelen](site-recovery-manage-registration-and-protection.md)voor meer informatie.
+1. Verwijder de verouderde/oude CS-VM uit de vCenter. Zie  [servers verwijderen en beveiliging uitschakelen](site-recovery-manage-registration-and-protection.md)voor meer informatie.
 2. Meld u aan bij de configuratie Server-VM en maak verbinding met de MySQL svsdb1-data base. 
 3. Voer de volgende query uit:
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
 ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082100"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuele netwerken van verschillende implementatie modellen verbinden met behulp van de portal
@@ -134,7 +134,7 @@ In deze sectie maakt u de gateway van het virtuele netwerk en de lokale netwerk 
 
 ### <a name="1-create-a-virtual-network"></a>1. een virtueel netwerk maken
 
-**Voorbeeldwaarden:**
+**Voorbeeld waarden:**
 
 * VNet-naam = RMVNet <br>
 * Adres ruimte = 192.168.0.0/16 <br>
@@ -151,7 +151,7 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-**Voorbeeldwaarden:**
+**Voorbeeld waarden:**
 
 * Naam van de virtuele netwerk gateway = RMGateway <br>
 * Gateway type = VPN <br>

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285380"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Uw Azure-PostgreSQL grootschalige-Server groep uitschalen door meer worker-knoop punten toe te voegen
@@ -152,7 +152,7 @@ azdata arc postgres server edit -n <server group name> -w <target number of work
 ```
 
 > [!CAUTION]
-> De preview-versie biedt geen ondersteuning voor opnieuw schalen. Het is bijvoorbeeld niet mogelijk om het aantal worker-knoop punten te verminderen. Als u dit wilt doen, moet u de gegevens extra heren/maken, de Server groep verwijderen, een nieuwe server groep maken met minder werk knooppunten en vervolgens de gegevens importeren.
+> De preview-versie biedt geen ondersteuning voor weer omlaag schalen. Het is bijvoorbeeld niet mogelijk om het aantal werkknooppunten te verminderen. Als u dit wilt doen, moet u de gegevens extraheren/er een back-up van maken, de servergroep verwijderen, een nieuwe servergroep maken met minder werkknooppunten en de gegevens vervolgens importeren.
 
 In dit voor beeld verhogen we het aantal worker-knoop punten van 2 tot 4 door de volgende opdracht uit te voeren:
 
