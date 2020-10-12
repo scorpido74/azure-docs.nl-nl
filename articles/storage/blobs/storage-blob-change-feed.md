@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568231"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage
@@ -27,11 +27,11 @@ U kunt deze logboeken asynchroon, incrementeel of volledig verwerken. Een wille 
 
 De ondersteuning voor het wijzigen van feeds is heel geschikt voor scenario's waarin gegevens worden verwerkt op basis van objecten die zijn gewijzigd. Toepassingen kunnen bijvoorbeeld:
 
-  - Een secundaire index bijwerken, synchroniseren met een cache, zoek machine of andere scenario's voor inhouds beheer.
+  - Een secundaire index bijwerken, synchroniseren met een cache, zoekmachine of andere scenario's voor inhoudsbeheer.
   
-  - De inzichten en metrische gegevens van Business Analytics extra heren, op basis van wijzigingen die plaatsvinden in uw objecten, hetzij in een streaming-of in batch modus.
+  - Inzichten en metrische gegevens van bedrijfsanalyses extraheren, op basis van wijzigingen die plaatsvinden in uw objecten, hetzij via streaming of in een batchmodus.
   
-  - Bewaar, audit en analyseer wijzigingen in uw objecten, gedurende een bepaalde periode, voor beveiliging, naleving of intelligentie voor ondernemings gegevens beheer.
+  - Wijzigingen in uw objecten opslaan, controleren en analyseren, gedurende een bepaalde periode, voor beveiliging, naleving of informatie voor het beheer van ondernemingsgegevens.
 
   - Ontwikkel oplossingen voor het maken van een back-up, Mirror of replicatie van object status in uw account voor nood beheer of naleving.
 

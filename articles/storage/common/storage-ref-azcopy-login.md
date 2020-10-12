@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87285268"
 ---
 # <a name="azcopy-login"></a>azcopy login
@@ -38,7 +38,7 @@ azcopy login [flags]
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
 - [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
@@ -95,7 +95,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert --applicati
 
 Behandelen `/path/to/my/cert` als een pad naar een PEM-of pkcs12/pfx-profiel-bestand. AzCopy is niet bereikbaar in het systeem certificaat archief om uw certificaat te verkrijgen.
 
-`--certificate-path`is verplicht bij het uitvoeren van de Service-Principal auth op basis van certificaten.
+`--certificate-path` is verplicht bij het uitvoeren van de Service-Principal auth op basis van certificaten.
 
 ## <a name="options"></a>Opties
 
@@ -105,7 +105,7 @@ Behandelen `/path/to/my/cert` als een pad naar een PEM-of pkcs12/pfx-profiel-bes
 
 **--** pad naar het pad naar het certificaat voor SPN-verificatie. Vereist voor verificatie op basis van een service-principal voor certificaten.
 
-**--Help** voor de `azcopy login` opdracht.
+**--Help**   voor de `azcopy login` opdracht.
 
 **--identiteit**   Meld u aan met de identiteit van de virtuele machine, ook wel Managed Service Identity (MSI) genoemd.
 

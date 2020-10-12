@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.author: apimpm
 ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460997"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Gebruikers registratie en product abonnement delegeren
@@ -72,7 +72,7 @@ U moet nu het **eind punt voor delegering**maken. Het moet een aantal acties uit
    * [een SSO-token (single sign-on) aanvragen] via de API Management rest API
    * Voeg een returnUrl-query parameter toe aan de SSO-URL die u hebt ontvangen van de bovenstaande API-aanroep:
      
-     > bijvoorbeeld:`https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
+     > bijvoorbeeld: `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
      > 
      > 
    * de gebruiker omleiden naar de bovenstaande geproduceerde URL

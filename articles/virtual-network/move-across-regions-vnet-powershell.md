@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711456"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Een virtueel Azure-netwerk verplaatsen naar een andere regio met behulp van Azure PowerShell
@@ -28,7 +28,7 @@ U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het 
 
 - Peerings voor virtuele netwerken worden niet opnieuw gemaakt en mislukken als ze nog steeds in de sjabloon aanwezig zijn. Voordat u de sjabloon exporteert, moet u alle virtuele netwerk peers verwijderen. U kunt ze vervolgens opnieuw instellen nadat het virtuele netwerk is verplaatst.
     
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's.
+- Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's.
 
 - Controleer of u met uw Azure-abonnement virtuele netwerken in de doel regio kunt maken. Neem contact op met de ondersteuning om het vereiste quotum in te scha kelen.
 
@@ -231,7 +231,7 @@ Gebruik [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Ga op een van de volgende manieren te werk om uw wijzigingen door te voeren en de virtuele netwerk verplaatsing te volt ooien:
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128553"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Een kaartLaag toevoegen vanuit de Open Geospatial Consortium (OGC)
@@ -23,7 +23,7 @@ De volgende secties bevatten een overzicht van de functies van de web map-servic
 
 **Web map-service (WMS)**
 
-- Ondersteunde versies: `1.0.0` , `1.1.0` , `1.1.1` en`1.3.0`
+- Ondersteunde versies: `1.0.0` , `1.1.0` , `1.1.1` en `1.3.0`
 - De service moet het `EPSG:3857` projectie systeem ondersteunen of reprojecties verwerken.
 - GetFeatureInfo vereist dat de service `EPSG:4326` herprojecties ondersteunt of verwerkt. 
 - Ondersteunde bewerkingen:
@@ -36,9 +36,9 @@ De volgende secties bevatten een overzicht van de functies van de web map-servic
 
 **Websitemap-tegel service (WMTS)**
 
-- Ondersteunde versies:`1.0.0`
+- Ondersteunde versies: `1.0.0`
 - Tegels moeten een vier kant zijn, dat wil zeggen `TileWidth == TileHeight` .
-- CRS ondersteund: `EPSG:3857` of`GoogleMapsCompatible` 
+- CRS ondersteund: `EPSG:3857` of `GoogleMapsCompatible` 
 - De TileMatrix-id moet een geheel getal zijn dat overeenkomt met een zoom niveau op de kaart. Op een Azure-kaart is het zoom niveau een waarde tussen `"0"` en `"22"` . Dit wordt dus wel `"0"` ondersteund, maar wordt `"00"` niet ondersteund.
 - Ondersteunde bewerkingen:
 

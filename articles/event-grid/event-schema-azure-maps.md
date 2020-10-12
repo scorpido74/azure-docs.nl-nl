@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen en schema's beschreven die voor Azur
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 4203bdf5222278b698d656835afebd9769557303
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461983"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps als Event Grid bron
@@ -100,11 +100,11 @@ In het volgende voor beeld wordt schema voor **GeofenceResult** weer gegeven
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | gegevens | object | Gegevens van geoomheinings gebeurtenis. |
@@ -113,7 +113,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | apiCategory | tekenreeks | De API-categorie van de gebeurtenis. |
 | apiName | tekenreeks | De API-naam van de gebeurtenis. |
@@ -123,13 +123,13 @@ Het gegevens object heeft de volgende eigenschappen:
 
 Het fout object wordt geretourneerd als er een fout optreedt in de Maps-API. Het object Error heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | fout | ErrorDetails |Dit object wordt geretourneerd als er een fout optreedt in de Maps-API  |
 
 Het error Details-object wordt geretourneerd als er een fout optreedt in de Maps-API. De error Details of het object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | code | tekenreeks | De HTTP-status code. |
 | message | tekenreeks | Indien beschikbaar, een door de mens lees bare beschrijving van de fout. |
@@ -137,13 +137,13 @@ Het error Details-object wordt geretourneerd als er een fout optreedt in de Maps
 
 De InnerError is een object dat informatie over de servicespecifieke bevat over de fout. Het object InnerError heeft de volgende eigenschappen: 
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | code | tekenreeks | Het fout bericht. |
 
 Het object geometrische elementen bevat een lijst met geometrie-Id's van de geofences die zijn verlopen ten opzichte van de gebruikers tijd in de aanvraag. Het object geometrische elementen heeft geometrie-items met de volgende eigenschappen: 
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 |:-------- |:---- |:----------- |
 | DeviceID | tekenreeks | ID van het apparaat. |
 | afstand | tekenreeks | <p>Afstand van de coördinaat tot de dichtstbijzijnde rand van de geofence. Positief betekent dat de coördinaat zich buiten de geofence bevindt. Als de coördinaat zich buiten de geofence bevindt, maar meer dan de waarde van searchBuffer verwijderd van de dichtstbijzijnde geofence-rand, is de waarde 999. Negatief betekent dat de coördinaat zich binnen de geofence bevindt. Als de coördinaat zich binnen de veelhoek bevindt, maar meer dan de waarde van searchBuffer verwijderd van de dichtstbijzijnde rand van de geoomheining, is de waarde-999. Een waarde van 999 betekent dat het vertrouwen van de coördinaten goed buiten de geofence ligt. Een waarde van-999 betekent dat het vertrouwen van de coördinaten goed is binnen de geofence.<p> |
@@ -154,12 +154,12 @@ Het object geometrische elementen bevat een lijst met geometrie-Id's van de geof
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | teken reeks [] | Lijsten van de geometrie-ID van de geofence die is verlopen ten opzichte van de gebruikers tijd in de aanvraag. |
 | geoelementen | geometrieën [] |Hiermee wordt een lijst weer gegeven met geometrieën die de coördinaten positie bevatten of de searchBuffer rond de positie overlappen. |
 | invalidPeriodGeofenceGeometryId | teken reeks []  | Lijsten van de geometrie-ID van de geofence die zich in een ongeldige periode bevindt ten opzichte van de gebruikers tijd in de aanvraag. |
-| isEventPublished | boolean | Waar als ten minste één gebeurtenis is gepubliceerd naar de abonnee van de Azure Maps-gebeurtenis, False als er geen gebeurtenis is gepubliceerd naar de abonnee van de Azure Maps-gebeurtenis. |
+| isEventPublished | booleaans | Waar als ten minste één gebeurtenis is gepubliceerd naar de abonnee van de Azure Maps-gebeurtenis, False als er geen gebeurtenis is gepubliceerd naar de abonnee van de Azure Maps-gebeurtenis. |
 
 ## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
 |Titel  |Beschrijving  |
@@ -169,5 +169,5 @@ Het gegevens object heeft de volgende eigenschappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

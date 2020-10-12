@@ -3,12 +3,12 @@ title: Back-ups maken van Azure VMware-oplossing Vm's met Azure Backup Server
 description: Configureer uw Azure VMware-oplossings omgeving voor het maken van back-ups van virtuele machines met behulp van Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: a62bccb729cfa6aec89a3ce6de7283f5d9412428
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579901"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893013"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Back-ups maken van Azure VMware-oplossing Vm's met Azure Backup Server
 
@@ -105,36 +105,6 @@ Voor VMware 6,7 werd TLS ingeschakeld als communicatie protocol.
 
 1. Klik met de rechter muisknop op de TLS. REG-bestand en selecteer **samen voegen** of **openen** om de instellingen toe te voegen aan het REGI ster.
 
-## <a name="add-the-provisioning-ip-address"></a>Het IP-adres van de inrichting toevoegen 
-
-Tijdens de preview-versie van de Azure VMware-oplossing wordt de ESX-host niet omgezet van de virtuele machine die in het virtuele netwerk is geïmplementeerd. U moet extra stappen uitvoeren om de vermelding van het hostbestand toe te voegen aan de virtuele machine van Azure Backup Server.
-
-### <a name="identify-the-ip-address-for-esxi-hosts"></a>Het IP-adres voor ESXi-hosts identificeren
-
-1. Open de browser en meld u aan bij de vCenter-Url's. 
-
-   > [!TIP]
-   > U kunt de Url's vinden in [verbinding maken met de lokale vCenter van uw privécloud](tutorial-access-private-cloud.md#connect-to-the-local-vcenter-of-your-private-cloud).
-
-1. Selecteer in de vSphere-client het cluster waarvoor u een back-up wilt inschakelen.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vsphere-client-select-host.png" alt-text="vSphere-webclient":::
-
-1. Selecteer **Configure**  >  **netwerk**  >  **VMKernel-adapters**configureren. In de lijst met apparaten identificeert u de netwerk adapter waarvoor de **inrichtings** functie is ingeschakeld. Noteer het **IP-adres** en de ESXi-hostnaam.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vmkernel-adapters-provisioning-enabled.png" alt-text="vSphere-webclient":::
-
-1. Herhaal de vorige stap voor elke ESXi-host onder elk cluster waarvoor u een back-up wilt inschakelen.
-
-### <a name="update-the-host-file-on-azure-backup-server"></a>Werk het hostbestand op Azure Backup Server
-
-1. Open Klad blok als beheerder.
-
-1. Selecteer **bestand**  >  **openen**en zoek naar c:\Windows\System32\Drivers\etc\hosts.
-
-1. Voeg de vermelding voor elke ESXi-host toe, samen met het IP-adres dat u in de vorige sectie hebt geïdentificeerd.
-
-1. Sla de wijzigingen op en sluit Klad blok.
 
 ## <a name="add-the-account-on-azure-backup-server"></a>Het account toevoegen op Azure Backup Server
 

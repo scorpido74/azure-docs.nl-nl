@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717843"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Uw Extern bureaublad-gateway-infra structuur integreren met behulp van de Network Policy Server (NPS)-extensie en Azure AD
@@ -51,12 +51,12 @@ Een RD-gateway kan worden geconfigureerd voor het gebruik van een centraal belei
 
 Wanneer de NPS-extensie voor Azure is geïntegreerd met de NPS en Extern bureaublad-gateway, is de geslaagde verificatie stroom als volgt:
 
-1. De Extern bureaublad-gateway-server ontvangt een verificatie aanvraag van een extern-bureaublad gebruiker om verbinding te maken met een bron, zoals een Extern bureaublad-sessie. De Extern bureaublad-gateway-server fungeert als een RADIUS-client en converteert de aanvraag naar een RADIUS Access-Request-bericht en verzendt het bericht naar de RADIUS-server (NPS) waarop de NPS-extensie is geïnstalleerd.
+1. De Extern bureaublad-gateway-server ontvangt een verificatie aanvraag van een extern-bureaublad gebruiker om verbinding te maken met een bron, zoals een Extern bureaublad-sessie. De Extern bureaublad-gateway-server fungeert als een RADIUS-client en converteert de aanvraag naar een RADIUS-Access-Request bericht en verzendt het bericht naar de RADIUS-server (NPS) waarop de NPS-extensie is geïnstalleerd.
 1. De combi natie van gebruikers naam en wacht woord wordt in Active Directory gecontroleerd en de gebruiker is geverifieerd.
 1. Als aan alle voor waarden die zijn opgegeven in de NPS-verbindings aanvraag en aan het netwerk beleid wordt voldaan (bijvoorbeeld het tijdstip van de dag of het lidmaatschap van groepslid maatschappen), activeert de NPS-extensie een aanvraag voor secundaire verificatie met Azure MFA.
 1. Azure MFA communiceert met Azure AD, haalt de details van de gebruiker op en voert de secundaire verificatie uit met ondersteunde methoden.
 1. Wanneer de MFA-Challenge is geslaagd, communiceert Azure MFA het resultaat naar de NPS-extensie.
-1. De NPS-server, waar de uitbrei ding is geïnstalleerd, verzendt een RADIUS-toegangs bericht voor het RD CAP-beleid naar de Extern bureaublad-gateway-server.
+1. De NPS-server, waar de uitbrei ding is geïnstalleerd, verzendt een RADIUS-Access-Accept bericht voor het RD CAP-beleid naar de Extern bureaublad-gateway-server.
 1. De gebruiker krijgt toegang tot de aangevraagde netwerk bron via de RD-gateway.
 
 ## <a name="prerequisites"></a>Vereisten

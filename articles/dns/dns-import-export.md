@@ -9,10 +9,10 @@ ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
 ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424219"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Een DNS-zonebestand importeren en exporteren met de Azure CLI
@@ -69,9 +69,9 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Waarden:
 
-* `<resource group>`is de naam van de resource groep voor de zone in Azure DNS.
-* `<zone name>`is de naam van de zone.
-* `<zone file name>`is het pad of de naam van het zone bestand dat moet worden geïmporteerd.
+* `<resource group>` is de naam van de resource groep voor de zone in Azure DNS.
+* `<zone name>` is de naam van de zone.
+* `<zone file name>` is het pad of de naam van het zone bestand dat moet worden geïmporteerd.
 
 Als er geen zone met deze naam bestaat in de resource groep, wordt deze voor u gemaakt. Als de zone al bestaat, worden de geïmporteerde record sets samengevoegd met bestaande record sets. 
 
@@ -163,9 +163,9 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 Waarden:
 
-* `<resource group>`is de naam van de resource groep voor de zone in Azure DNS.
-* `<zone name>`is de naam van de zone.
-* `<zone file name>`is het pad of de naam van het zone bestand dat moet worden geëxporteerd.
+* `<resource group>` is de naam van de resource groep voor de zone in Azure DNS.
+* `<zone name>` is de naam van de zone.
+* `<zone file name>` is het pad of de naam van het zone bestand dat moet worden geëxporteerd.
 
 Net als bij het importeren van de zone moet u zich eerst aanmelden, uw abonnement kiezen en de Azure CLI configureren voor het gebruik van de Resource Manager-modus.
 
