@@ -12,10 +12,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202565"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sessie beheer voor eenmalige aanmelding in Azure Active Directory B2C
@@ -123,7 +123,7 @@ Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukke
 
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | No | Momenteel niet gebruikt, kan worden genegeerd. |
+| AlwaysFetchClaimsFromProvider | Nee | Momenteel niet gebruikt, kan worden genegeerd. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -165,8 +165,8 @@ Het volgende `SM-Saml-issuer` technische profiel wordt gebruikt door een [SAML-U
 
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
-| IncludeSessionIndex | No | Momenteel niet gebruikt, kan worden genegeerd.|
-| RegisterServiceProviders | No | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false` .|
+| IncludeSessionIndex | Nee | Momenteel niet gebruikt, kan worden genegeerd.|
+| RegisterServiceProviders | Nee | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false` .|
 
 
 ## <a name="next-steps"></a>Volgende stappen

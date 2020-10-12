@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373399"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Maak een virtuele Linux-machine die gebruikmaakt van SSH-verificatie met de REST API
@@ -54,10 +54,10 @@ Voor algemene informatie over het werken met REST API-aanvragen raadpleegt u [on
 
 De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag tekst:
 
-| Naam                       | Vereist | Type                                                                                | Description  |
+| Name                       | Vereist | Type                                                                                | Beschrijving  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | tekenreeks                                                                              | Resource locatie. |
-| name                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
+| naam                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
 | Eigenschappen. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Hiermee geeft u de hardware-instellingen voor de virtuele machine op. |
 | Eigenschappen. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Hiermee geeft u de opslag instellingen voor de schijven van de virtuele machine. |
 | Eigenschappen. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Hiermee geeft u de instellingen van het besturings systeem voor de virtuele machine. |
@@ -128,7 +128,7 @@ U kunt de client van uw voor keur gebruiken voor het verzenden van deze HTTP-aan
 
 Er zijn twee geslaagde reacties voor de bewerking om een virtuele machine te maken of bij te werken:
 
-| Naam        | Type                                                                              | Description |
+| Naam        | Type                                                                              | Beschrijving |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 gemaakt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Gemaakt     |

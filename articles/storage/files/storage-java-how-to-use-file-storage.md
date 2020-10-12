@@ -9,10 +9,10 @@ ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2c80d741ca1cf0b4d66bc18488af8ef1da44fd14
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462595"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Ontwikkelen voor Azure Files met Java
@@ -166,7 +166,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Bestand uploaden
+## <a name="upload-a-file"></a>Een bestand uploaden
 In deze sectie leert u hoe u een bestand van de lokale opslag uploadt naar de hoofdmap van een share.
 
 De eerste stap bij het uploaden van een bestand is het verkrijgen van een verwijzing naar de map waar deze zich moet bevinden. U doet dit door de methode **getRootDirectoryReference** van het object share aan te roepen.
@@ -186,7 +186,7 @@ Nu u een verwijzing naar de hoofdmap van de share hebt, kunt u een bestand uploa
         cloudFile.uploadFromFile(filePath);
 ```
 
-## <a name="download-a-file"></a>Bestand downloaden
+## <a name="download-a-file"></a>Een bestand downloaden
 Een van de frequentere bewerkingen die u kunt uitvoeren op Azure Files is het downloaden van bestanden. In het volgende voor beeld wordt SampleFile.txt door de code gedownload en wordt de inhoud ervan weer gegeven.
 
 ```java
@@ -231,5 +231,5 @@ Als u meer wilt weten over andere Azure Storage-Api's, volgt u deze koppelingen.
 * [Azure Storage Client SDK-referentie](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog van het Azure Storage-team](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
-* [Gegevens overdragen met het AzCopy-opdracht regel programma](../common/storage-use-azcopy.md)
+* [Gegevens overdragen met het AzCopy-hulp programma van Command-Line](../common/storage-use-azcopy.md)
 * [Problemen met betrekking tot Azure Files oplossen - Windows](storage-troubleshoot-windows-file-connection-problems.md)

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261581"
 ---
-# <a name="record-voice-samples-to-create-a-custom-voice"></a>Spraak voorbeelden vastleggen om een aangepaste spraak te maken
+# <a name="record-voice-samples-to-create-a-custom-voice"></a>Stemvoorbeelden vastleggen om een aangepaste stem te maken
 
 Het maken van een volledig nieuwe, aangepaste stem op de productie is geen informele onderneming. Het centrale onderdeel van een aangepaste stem is een grote verzameling audio voorbeelden van menselijke spraak. Het is essentieel dat deze audio-opnames van hoge kwaliteit zijn. Kies een voicemail talen interface die ervaring heeft met het maken van dit type opnamen en die ze hebben vastgelegd door een bevoegde opname technicus met behulp van professionele apparatuur.
 
@@ -108,7 +108,7 @@ Gelukkig is het mogelijk om deze problemen volledig te voor komen. Er zijn veel 
 |-|-|
 |[CMU Arctic verzameling](http://festvox.org/cmu_arctic/)|Ongeveer 1100 zinnen die u hebt geselecteerd in auteurs rechtelijk beschermde werken speciaal voor gebruik in spraak-synthese projecten. Een uitstekend uitgangs punt.|
 |Werkt niet meer<br>onder copyright|Werkt normaal gesp roken vóór 1923. Voor het Engels biedt [Project Gutenberg](https://www.gutenberg.org/) tien duizenden van deze werken. Mogelijk wilt u zich richten op nieuwere werken, omdat de taal dichter bij het moderne Engels ligt.|
-|Overheids&nbsp;werkzaamheden|De door de Verenigde Staten overheid gemaakte werkzaamheden worden niet in het Verenigde Staten auteurs rechtelijk beschermd, hoewel de overheid copyright kan doen in andere landen/regio's.|
+|Overheids &nbsp; werkzaamheden|De door de Verenigde Staten overheid gemaakte werkzaamheden worden niet in het Verenigde Staten auteurs rechtelijk beschermd, hoewel de overheid copyright kan doen in andere landen/regio's.|
 |Openbaar domein|Er wordt gewerkt waarvoor copyright expliciet is vrijgemaakt of die zijn toegewezen aan het open bare domein. Het is niet mogelijk om auteurs volledig in sommige jurisdicties te ontzeggen.|
 |Permissively-gelicentieerde werken|Gedistribueerd onder een licentie zoals Creative Commons of de versie van de GNU gratis documentatie (GFDL). Wikipedia maakt gebruik van de GFDL. Sommige licenties kunnen echter beperkingen opleggen aan de prestaties van de Gelicentieerde inhoud die van invloed kan zijn op het maken van een aangepast spraak model. Lees de licentie daarom aandachtig door.|
 

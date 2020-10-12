@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3ded5f6186d8ccdae0f42ecb9942c70e09f2dd9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310880"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Open bare doorvoer gegevens aanvragen met behulp van de Azure Maps Mobility-service
@@ -38,7 +38,7 @@ In deze zelfstudie wordt gebruikgemaakt van de [Postman](https://www.postman.com
 
 Als u gedetailleerde informatie over de door Voer-instanties en ondersteunde typen voor een bepaalde stedelijke ruimte wilt aanvragen, hebt u dit `metroId` gebied nodig. Met de API voor het ophalen van een [metro gebied](https://aka.ms/AzureMapsMobilityMetro) kunt u metro gebieden aanvragen waarin de Azure Maps Mobility-service beschikbaar is. Het antwoord bevat details zoals de `metroId` , `metroName` en de weer gave van de geometrie van het metro gebied in geojson-indeling.
 
-We gaan een aanvraag indienen om het metro gebied voor de Tacoma van het metro gebied van Seattle te verkrijgen. Voer de volgende stappen uit om de ID voor een metro gebied aan te vragen:
+Laten we een aanvraag indienen om het metro gebied voor de Seattle-Tacoma metro gebied-ID op te halen. Voer de volgende stappen uit om de ID voor een metro gebied aan te vragen:
 
 1. Open de Postman-app, zodat u een verzameling kunt maken om de aanvragen op te slaan. Selecteer **New** (Nieuw) bovenaan de Postman-app. Selecteer **Collection** (Verzameling) in het venster **Create New** (Nieuwe maken).  Geef de verzameling een naam en selecteer de knop **Create** (Maken).
 

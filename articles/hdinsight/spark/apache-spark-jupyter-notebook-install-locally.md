@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87873888"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook op uw computer installeren en verbinding maken met Apache Spark op HDInsight
@@ -44,7 +44,7 @@ Down load het [Anaconda-installatie programma](https://www.anaconda.com/download
 
 1. Voer een van de volgende opdrachten in om Spark Magic te installeren. Zie ook [sparkmagic-documentatie](https://github.com/jupyter-incubator/sparkmagic#installation).
 
-    |Cluster versie | Installatie opdracht |
+    |Clusterversie | Installatie opdracht |
     |---|---|
     |v 3.6 en v 3.5 |`pip install sparkmagic==0.13.1`|
     |v 3.4|`pip install sparkmagic==0.2.3`|

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86522904"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Verificatie van de gegevens consistentie in de Kopieer activiteit (preview-versie)
@@ -38,7 +38,7 @@ Wanneer u gegevens van de bron naar het doel archief verplaatst, biedt Azure Dat
 -   Bij het kopiëren van een tabel in één Kopieer activiteit met gegevens consistentie verificatie is ingeschakeld, mislukt de Kopieer activiteit als het aantal rijen dat uit de bron is gelezen, afwijkt van het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen.
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 In het volgende voor beeld wordt een JSON-definitie geboden om de verificatie van gegevens consistentie in de Kopieer activiteit in te scha kelen: 
 
 ```json
@@ -72,8 +72,8 @@ In het volgende voor beeld wordt een JSON-definitie geboden om de verificatie va
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | Als u waar voor deze eigenschap instelt, worden bij het kopiëren van binaire bestanden de bestands grootte, de lastModifiedDate en de MD5-controlesom van de bron naar het doel archief gecontroleerd om de gegevens consistentie tussen het bron-en doel archief te controleren. Bij het kopiëren van tabellaire gegevens wordt het totale aantal rijen gecontroleerd nadat de taak is voltooid om ervoor te zorgen dat het totale aantal van de bron opgehaalde rij gelijk is aan het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | Waar<br/>False (standaard) | Nee
-dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente bestanden wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente bestanden over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken nadat het inconsistente bestand is gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u binaire bestanden kopieert en stel validateDataConsistency in op True.  | Waar<br/>False (standaard) | Nee
+validateDataConsistency | Als u waar voor deze eigenschap instelt, worden bij het kopiëren van binaire bestanden de bestands grootte, de lastModifiedDate en de MD5-controlesom van de bron naar het doel archief gecontroleerd om de gegevens consistentie tussen het bron-en doel archief te controleren. Bij het kopiëren van tabellaire gegevens wordt het totale aantal rijen gecontroleerd nadat de taak is voltooid om ervoor te zorgen dat het totale aantal van de bron opgehaalde rij gelijk is aan het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | True<br/>False (standaard) | Nee
+dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente bestanden wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente bestanden over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken nadat het inconsistente bestand is gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u binaire bestanden kopieert en stel validateDataConsistency in op True.  | True<br/>False (standaard) | Nee
 logStorageSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het registreren van bestanden die zijn overgeslagen. | | Nee
 linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van een `AzureBlobStorage` of meer `AzureBlobFS` gekoppelde service, die verwijst naar het exemplaar dat u gebruikt om de logboek bestanden op te slaan. | Nee
 leertraject | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek bestanden wilt opslaan. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
@@ -124,7 +124,7 @@ Het schema van een logboek bestand is als volgt:
 
 Kolom | Beschrijving 
 -------- | -----------  
-Timestamp | De tijds tempel wanneer ADF de inconsistente bestanden overs laat.
+Tijdstempel | De tijds tempel wanneer ADF de inconsistente bestanden overs laat.
 Niveau | Het logboek niveau van dit item. Het wordt weer gegeven in het waarschuwings niveau voor het item met het overs laan van bestanden.
 OperationName | Operationeel gedrag van de ADF-Kopieer activiteit op elk bestand. Het wordt ' FileSkip ' om het bestand op te geven dat moet worden overgeslagen.
 OperationItem | De naam van het bestand dat moet worden overgeslagen.
@@ -142,7 +142,7 @@ In het bovenstaande logboek bestand ziet u dat sample1.csv is overgeslagen, omda
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 - [Fout tolerantie van Kopieer activiteit](copy-activity-fault-tolerance.md)
 
 

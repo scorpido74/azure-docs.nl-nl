@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087285"
 ---
 # <a name="azure-media-player-localization"></a>Lokalisatie van Azure Media Player #
@@ -28,23 +28,23 @@ Azure Media Player ondersteunt momenteel de volgende talen met de bijbehorende t
 
 | Taal            | Code | Taal                | Code   | Taal                | Code         |
 |---------------------|------|-------------------------|--------|-------------------------|--------------|
-| Engels {standaard}   | nl   | Kroatisch                | uur     | Roemeens                | Roll           |
-| Arabisch              | p.a.   | Hongaars               | hu     | Slowaaks                  | SK           |
-| Bulgaars           | bg   | Indonesisch              | id     | Slovene                 | lineaire           |
-| Catalaans             | certificering   | IJslands               | is     | Servisch - Cyrillisch      | SR-Cyrl-CS   |
-| Tsjechisch               | Support   | Italiaans                 | it     | Servisch - Latijn         | sr-latn-rs   |
+| Engels {standaard}   | en   | Kroatisch                | uur     | Roemeens                | ro           |
+| Arabisch              | ar   | Hongaars               | hu     | Slowaaks                  | sk           |
+| Bulgaars           | bg   | Indonesisch              | id     | Slovene                 | sl           |
+| Catalaans             | ca   | IJslands               | is     | Servisch - Cyrillisch      | SR-Cyrl-CS   |
+| Tsjechisch               | cs   | Italiaans                 | it     | Servisch - Latijn         | sr-latn-rs   |
 | Deens              | da   | Japans                | ja     | Russisch                 | ru           |
 | Duits              | de   | Kazachs                  | kk     | Zweeds                 | sv           |
-| Grieks               | ei   | Koreaans                  | ko     | Thai                    | e           |
-| Spaans             | Ja   | Litouws              | lt     | Tagalog                 | 't           |
-| Ests            | et   | Lets                 | LV     | Turks                 | formulieren           |
-| Baskisch              | EU   | Maleisische               | Mevrouw     | Oekraïens               | rijk           |
-| Iraans               | volgt   | Noors-BokmÃ ¥ l     | NB     | Urdu                    | zelf           |
-| Fins             | fi   | Nederlands                   | nl     | Vietnamees              | beschreven           |
+| Grieks               | el   | Koreaans                  | ko     | Thai                    | th           |
+| Spaans             | es   | Litouws              | lt     | Tagalog                 | 't           |
+| Ests            | et   | Lets                 | lv     | Turks                 | tr           |
+| Baskisch              | eu   | Maleisische               | ms     | Oekraïens               | uk           |
+| Iraans               | fa   | Noors-BokmÃ ¥ l     | nb     | Urdu                    | ur           |
+| Fins             | fi   | Nederlands                   | nl     | Vietnamees              | vi           |
 | Frans              | fr   | Noors-Nynorsk     | nn     | Chinees-vereenvoudigd    | zh-Hans      |
-| Galicisch            | boekhoud   | Pools                  | pl     | Chinees-traditioneel   | zh-hant      |
-| Hebreeuws              | Hij   | Portuguese - Brazil     | pt-br  |                         |              |
-| Hindi               | Hallo   | Portugees - Portugal   | pt-pt  |                         |              |
+| Galicisch            | gl   | Pools                  | pl     | Chinees-traditioneel   | zh-hant      |
+| Hebreeuws              | he   | Portuguese - Brazil     | pt-br  |                         |              |
+| Hindi               | hi   | Portugees - Portugal   | pt-pt  |                         |              |
 
 
 > [!NOTE]

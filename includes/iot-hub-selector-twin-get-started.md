@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 08/20/2019
 ms.openlocfilehash: c412f7f3e20e4d04083e457bfb245b850b65e126
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70050389"
 ---
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Daarnaast kan de back-end van de oplossing het apparaat apparaatdubbels opvragen
 Zie voor meer informatie over device apparaatdubbels inzicht in de [apparaatdubbels](../articles/iot-hub/iot-hub-devguide-device-twins.md)van het apparaat. Zie [IOT hub query language (Engelstalig](../articles/iot-hub/iot-hub-devguide-query-language.md)) voor meer informatie over het uitvoeren van query's.
 
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 * Maak een back-end-app waarmee Tags worden toegevoegd aan een apparaat, en een gesimuleerde apparaat-app die het verbindings kanaal rapporteert als een gerapporteerde eigenschap op het apparaat dubbele.
 

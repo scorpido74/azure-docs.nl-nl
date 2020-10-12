@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3bb944badfbdffd703672f9e78619c70a148aae2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293350"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Beveiligings frame: invoer validatie | Oplossingen 
@@ -73,7 +73,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Beveiligings deel van IE8 V: uitgebreide beveiliging](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
-| **Stappen** | <p>Voor elke pagina die door de gebruiker te raden inhoud kan bevatten, moet u de HTTP-header gebruiken `X-Content-Type-Options:nosniff` . Om aan deze vereiste te voldoen, kunt u de pagina met de vereiste header per pagina instellen voor alleen de pagina's die door de gebruiker instel bare inhoud kunnen bevatten, of u kunt deze globaal instellen voor alle pagina's in de toepassing.</p><p>Elk type bestand dat vanaf een webserver wordt geleverd, heeft een bijbehorend [MIME-type](https://en.wikipedia.org/wiki/Mime_type) (ook wel een *inhouds type*genoemd) waarmee de aard van de inhoud (dat wil zeggen, afbeelding, tekst, toepassing enzovoort) wordt beschreven.</p><p>De X-content-type-Options-header is een HTTP-header waarmee ontwikkel aars kunnen opgeven dat hun inhoud niet MIME-sniffing mag zijn. Deze header is ontworpen om aanvallen met MIME-sniffing te verhelpen. Ondersteuning voor deze header is toegevoegd in Internet Explorer 8 (IE8)</p><p>Alleen gebruikers van Internet Explorer 8 (IE8) kunnen profiteren van X-inhouds type-opties. Eerdere versies van Internet Explorer respecteren momenteel niet de X-inhouds type-opties-header</p><p>Internet Explorer 8 (en hoger) zijn de enige grote browsers voor het implementeren van een opt-out-functie voor MIME-sniffing. Als en wanneer andere belang rijke browsers (Firefox, Safari, Chrome) vergelijk bare functies implementeren, wordt deze aanbeveling bijgewerkt met de syntaxis voor die browsers en ook</p>|
+| **Stappen** | <p>Voor elke pagina die door de gebruiker te raden inhoud kan bevatten, moet u de HTTP-header gebruiken `X-Content-Type-Options:nosniff` . Om aan deze vereiste te voldoen, kunt u de pagina met de vereiste header per pagina instellen voor alleen de pagina's die door de gebruiker instel bare inhoud kunnen bevatten, of u kunt deze globaal instellen voor alle pagina's in de toepassing.</p><p>Elk type bestand dat vanaf een webserver wordt geleverd, heeft een bijbehorend [MIME-type](https://en.wikipedia.org/wiki/Mime_type) (ook wel een *inhouds type*genoemd) waarmee de aard van de inhoud (dat wil zeggen, afbeelding, tekst, toepassing enzovoort) wordt beschreven.</p><p>De X-content-type-Options-header is een HTTP-header waarmee ontwikkel aars kunnen opgeven dat hun inhoud niet MIME-sniffing mag zijn. Deze header is ontworpen om MIME-Sniffing-aanvallen te verhelpen. Ondersteuning voor deze header is toegevoegd in Internet Explorer 8 (IE8)</p><p>Alleen gebruikers van Internet Explorer 8 (IE8) kunnen profiteren van X-inhouds type-opties. Eerdere versies van Internet Explorer respecteren momenteel niet de X-inhouds type-opties-header</p><p>Internet Explorer 8 (en hoger) zijn de enige grote browsers voor het implementeren van een opt-out-functie voor MIME-sniffing. Als en wanneer andere belang rijke browsers (Firefox, Safari, Chrome) vergelijk bare functies implementeren, wordt deze aanbeveling bijgewerkt met de syntaxis voor die browsers en ook</p>|
 
 ### <a name="example"></a>Voorbeeld
 Als u de vereiste header globaal wilt inschakelen voor alle pagina's in de toepassing, kunt u een van de volgende handelingen uitvoeren: 

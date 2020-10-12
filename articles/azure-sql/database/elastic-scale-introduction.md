@@ -10,10 +10,10 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 1ec9884dbb8c3d02caaa7d8621905a32e7b1e36a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84047543"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Uitbreiden met Azure SQL Database
@@ -22,7 +22,7 @@ ms.locfileid: "84047543"
 U kunt data bases eenvoudig uitschalen in Azure SQL Database met behulp van de **Elastic database** -hulpprogram ma's. Met deze hulpprogram ma's en functies kunt u de database resources van **Azure SQL database** gebruiken om oplossingen te maken voor transactionele werk belastingen, en met name SaaS-toepassingen (Software as a Service). Elastic Database-functies bestaan uit het volgende:
 
 * [Elastic database-client bibliotheek](elastic-database-client-library.md): de client bibliotheek is een functie waarmee u Shard-data bases kunt maken en onderhouden.  Zie [aan de slag met Elastic database-hulpprogram ma's](elastic-scale-get-started.md).
-* [Elastic database hulp programma voor splitsen en samen voegen](elastic-scale-overview-split-and-merge.md): verplaatst gegevens tussen Shard-data bases. Dit hulp programma is nuttig voor het verplaatsen van gegevens van een Data Base met meerdere tenants naar een Data Base met één Tenant (of andersom). Zie [zelf studie Elastic Data Base voor splitsen en samen voegen](elastic-scale-configure-deploy-split-and-merge.md).
+* [Elastic database hulp programma voor splitsen en samen voegen](elastic-scale-overview-split-and-merge.md): verplaatst gegevens tussen Shard-data bases. Dit hulp programma is nuttig voor het verplaatsen van gegevens van een Data Base met meerdere tenants naar een Data Base met één Tenant (of andersom). Zie de [zelf studie voor Elastic data base Split-Merge tool](elastic-scale-configure-deploy-split-and-merge.md).
 * [Taak voor Elastic database](elastic-jobs-overview.md): gebruik taken voor het beheren van grote aantallen data bases in Azure SQL database. U kunt eenvoudig beheer bewerkingen uitvoeren zoals schema wijzigingen, referentie beheer, referentie gegevens updates, verzameling van prestatie gegevens of Tenant-telemetrie verzameling met behulp van taken.
 * [Elastic database query](elastic-query-overview.md) (preview): Hiermee kunt u een Transact-SQL-query uitvoeren die meerdere data bases omspant. Dit maakt het mogelijk om verbinding te maken met rapportage Programma's zoals Excel, Power BI, tableau, enzovoort.
 * [Elastische trans acties](elastic-transactions-overview.md): met deze functie kunt u trans acties uitvoeren die meerdere data bases omvatten. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action-klassen](https://msdn.microsoft.com/library/system.transactions.aspx).
@@ -67,7 +67,7 @@ De meeste database toepassingen in de Cloud gebruiken een combi natie van deze t
 
 ## <a name="sharding"></a>Sharding
 
-*Sharding* is een techniek waarbij grote hoeveelheden identiek gestructureerde gegevens worden gedistribueerd over een aantal onafhankelijke databases. Het is met name populair bij Cloud ontwikkelaars die software as a Service (SAAS)-aanbiedingen voor eind klanten of bedrijven maken. Deze eind klanten worden vaak ' tenants ' genoemd. Sharding kan om verschillende redenen vereist zijn:  
+*Sharding* is een techniek om grote hoeveel heden identieke, gestructureerde gegevens over een aantal onafhankelijke data bases te verdelen. Het is met name populair bij Cloud ontwikkelaars die software as a Service (SAAS)-aanbiedingen voor eind klanten of bedrijven maken. Deze eind klanten worden vaak ' tenants ' genoemd. Sharding kan om verschillende redenen vereist zijn:  
 
 * De totale hoeveelheid gegevens is te groot om te passen binnen de beperkingen van een afzonderlijke data base
 * De trans actie-door Voer van de totale werk belasting overschrijdt de mogelijkheden van een afzonderlijke data base

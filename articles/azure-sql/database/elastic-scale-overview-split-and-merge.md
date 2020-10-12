@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84047522"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Gegevens verplaatsen tussen uitgeschaalde clouddatabases
@@ -117,7 +117,7 @@ Het hulp programma voor splitsen en samen voegen wordt uitgevoerd als een Azure-
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    De tabellen ' regio ' en ' land ' worden gedefinieerd als referentie tabellen en worden gekopieerd met splitsen/samen voegen/verplaatsen. klant en orders worden op zijn beurt gedefinieerd als Shard-tabellen. `C_CUSTKEY`en `O_CUSTKEY` dienen als de sharding-sleutel.
+    De tabellen ' regio ' en ' land ' worden gedefinieerd als referentie tabellen en worden gekopieerd met splitsen/samen voegen/verplaatsen. klant en orders worden op zijn beurt gedefinieerd als Shard-tabellen. `C_CUSTKEY` en `O_CUSTKEY` dienen als de sharding-sleutel.
 
 - **Referentiële integriteit**
 
@@ -220,7 +220,7 @@ De Split-Merge-service maakt gebruik van Azure Diagnostics op basis van Azure SD
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Als u controle en diagnostische gegevens wilt inschakelen met behulp van de diagnostische configuratie voor de web-en werk rollen van het NuGet-pakket, voert u de volgende opdrachten uit met Azure PowerShell:
 

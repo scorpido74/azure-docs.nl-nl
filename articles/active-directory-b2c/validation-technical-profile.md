@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202990"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische validatie profiel definiëren in een Azure Active Directory B2C aangepast beleid
@@ -47,7 +47,7 @@ Een zelf-bevestigd technisch profiel kan een technisch profiel voor validatie de
 
 Het **ValidationTechnicalProfiles** -element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Een technisch profiel dat moet worden gebruikt voor het valideren van een aantal of alle uitvoer claims van het referentie-technische profiel. |
 
@@ -55,13 +55,13 @@ Het element **ValidationTechnicalProfile** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ReferenceId | Yes | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
-|ContinueOnError|No| Hiermee wordt aangegeven of de validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor de validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (de verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
-|ContinueOnSuccess | No | Hiermee wordt aangegeven of de validatie van de volgende validatie profielen moet worden voortgezet als het technische profiel voor de validatie is geslaagd. Mogelijke waarden: `true` of `false` . De standaard waarde is `true` , wat inhoudt dat de verwerking van verdere validatie profielen zal worden voortgezet. |
+| ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
+|ContinueOnError|Nee| Hiermee wordt aangegeven of de validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor de validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (de verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
+|ContinueOnSuccess | Nee | Hiermee wordt aangegeven of de validatie van de volgende validatie profielen moet worden voortgezet als het technische profiel voor de validatie is geslaagd. Mogelijke waarden: `true` of `false` . De standaard waarde is `true` , wat inhoudt dat de verwerking van verdere validatie profielen zal worden voortgezet. |
 
 Het element **ValidationTechnicalProfile** bevat het volgende element:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Voor waarden | 0:1 | Een lijst met voor waarden waaraan moet worden voldaan om het technische profiel voor validatie te kunnen uitvoeren. |
 
@@ -69,12 +69,12 @@ Het element **voor waarde** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Type` | Yes | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. Ofwel `ClaimsExist` wordt opgegeven om ervoor te zorgen dat acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker, of `ClaimEquals` dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
-| `ExecuteActionsIf` | Yes | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |
+| `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. Ofwel `ClaimsExist` wordt opgegeven om ervoor te zorgen dat acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker, of `ClaimEquals` dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
+| `ExecuteActionsIf` | Ja | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |
 
 Het element **voor waarde** bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Waarde | 1: n | De gegevens die worden gebruikt door de controle. Als het type van deze controle is `ClaimsExist` , geeft dit veld een ClaimTypeReferenceId op die moet worden opgevraagd. Als het type controle is `ClaimEquals` , specificeert dit veld een ClaimTypeReferenceId om op te vragen. Een ander value-element bevat de waarde die moet worden gecontroleerd.|
 | Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een Orchestration-stap. De waarde van de **actie** wordt ingesteld op `SkipThisValidationTechnicalProfile` . Hiermee geeft u op dat het bijbehorende technische profiel voor validatie niet moet worden uitgevoerd. |

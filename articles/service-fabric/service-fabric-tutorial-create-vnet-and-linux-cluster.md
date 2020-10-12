@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
 ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88586917"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Een Linux Service Fabric-cluster implementeren in een virtueel Azure-netwerk
@@ -86,7 +86,7 @@ Als er andere toepassingspoorten nodig zijn, moet u de resource Microsoft.Networ
 
 Het bestand **AzureDeploy. para meters** declareert veel waarden die worden gebruikt voor het implementeren van het cluster en de bijbehorende resources. Enkele van de parameters die u mogelijk moet wijzigen voor uw implementatie:
 
-|Parameter|Voorbeeldwaarde|Opmerkingen|
+|Parameter|Voorbeeldwaarde|Notities|
 |---|---||
 |adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. |
 |adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's.|

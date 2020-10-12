@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86522411"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens verwerken door U-SQL-scripts uit te voeren op Azure Data Lake Analytics 
@@ -123,7 +123,7 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 | :------------------ | :--------------------------------------- | :------- |
 | naam                | Naam van de activiteit in de pijp lijn     | Ja      |
 | description         | Tekst die beschrijft wat de activiteit doet.  | Nee       |
-| type                | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit **DataLakeAnalyticsU-SQL**. | Ja      |
+| type                | Voor Data Lake Analytics U-SQL-activiteit is het type activiteit  **DataLakeAnalyticsU-SQL**. | Ja      |
 | linkedServiceName   | Gekoppelde service aan Azure Data Lake Analytics. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  |Ja       |
 | scriptPath          | Pad naar de map die het U-SQL-script bevat. De naam van het bestand is hoofdletter gevoelig. | Ja      |
 | scriptLinkedService | Gekoppelde service waarmee de **Azure data Lake Store** of **Azure Storage** die het script bevat, wordt gekoppeld aan de Data Factory | Ja      |

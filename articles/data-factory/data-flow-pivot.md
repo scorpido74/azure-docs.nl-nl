@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
 ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086656"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Draai transformatie in toewijzings gegevens stroom
@@ -71,7 +71,7 @@ Als er specifieke waarden van de draai tabel worden ingesteld, worden de gedraai
 
 Met Pivot worden nieuwe kolom namen dynamisch gegenereerd op basis van rijwaarden. U kunt deze nieuwe kolommen toevoegen aan de meta gegevens waarnaar later in uw gegevens stroom kan worden verwezen. U doet dit door de snelle actie [toewijzen](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) in de voorbeeld gegevens te gebruiken. 
 
-![Draaikolommen](media/data-flow/newpivot1.png "Geplaatste draai kolommen toewijzen")
+![Kolommen draaien](media/data-flow/newpivot1.png "Geplaatste draai kolommen toewijzen")
 
 ### <a name="sinking-pivoted-columns"></a>Zinkt gedraaide kolommen
 

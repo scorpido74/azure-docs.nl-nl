@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192601"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimalisatie van mediastreaming met Azure CDN 
@@ -103,7 +103,7 @@ De volgende tabel bevat de set criteria waaraan moet worden voldaan voor optimal
 Ondersteunde streaming-typen | Bestandsextensies  
 --- | ---  
 Apple HLS | M3U8, M3U, m3ub, Key, TS, AAC
-Adobe HDS | F4M, f4x, drmmeta, Boots trap, F4F,<br>Seg-URL-structuur <br> (overeenkomende regex: ^ (/. *) SEQ (\d +)-FRAG (\d +)
+Adobe HDS | F4M, f4x, drmmeta, Boots trap, F4F,<br>Seg-Frag-URL-structuur <br> (overeenkomende regex: ^ (/. *) SEQ (\d +)-FRAG (\d +)
 LIGGENDE | mpd, streepje, DivX, ismv, M4S, M4V, MP4, mp4v, <br> sidx, webm, mp4a, m4a, isma
 Vloeiend streamen | /manifest/, /QualityLevels/Fragments/
   

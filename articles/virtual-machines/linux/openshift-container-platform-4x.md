@@ -10,18 +10,18 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: f2fb1657c26fce3e1fdd67f36b0c6511b78dd216
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373535"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>Open Shift container platform 4. x in azure implementeren
 
-De implementatie van open Shift container platform (OCP) 4,2 wordt nu ondersteund in azure via het IPI-model (installatie-ingerichte infra structuur).  De landings pagina voor het proberen van open Shift 4 is [try.openshift.com](https://try.openshift.com/). Als u wilt installeren OCP 4,2 in azure, gaat u naar de pagina [Red Hat open Shift cluster manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) .  Er zijn referentie gegevens voor Red Hat vereist voor toegang tot deze site.
+De implementatie van open Shift container platform (OCP) 4,2 wordt nu ondersteund in azure via het model van de Installer-Provisioned Infrastructure (IPI).  De landings pagina voor het proberen van open Shift 4 is [try.openshift.com](https://try.openshift.com/). Als u wilt installeren OCP 4,2 in azure, gaat u naar de pagina [Red Hat open Shift cluster manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) .  Er zijn referentie gegevens voor Red Hat vereist voor toegang tot deze site.
 
 
-## <a name="notes"></a>Opmerkingen 
+## <a name="notes"></a>Notities 
 
  - Een Azure Active Directory (AAD) Service Principal (SP) is vereist om OCP 4. x te installeren en uit te voeren in azure
      - Aan de SP moet de API-machtiging van **Application. readwrite. OwnedBy** voor Azure Active Directory Graph worden verleend

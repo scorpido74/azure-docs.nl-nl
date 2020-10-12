@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972033"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
@@ -84,7 +84,7 @@ Sommige van de weer service Api's retour neren de `iconCode` in het antwoord. De
 | 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Ja |  Ja   | Warm|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Ja |  Ja   | Koud|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Ja |  Ja   | Wikkeling|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nee  |  Ja   | Veilig|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nee  |  Ja   | Clear|
 | 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nee  |  Ja   | Voornamelijk wissen|
 | 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nee  |  Ja   | Deels Cloud|
 | 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nee  |  Ja   | Periodieke Clouds|
@@ -108,22 +108,22 @@ De volgende tabel bevat richt lijnen voor het interpreteren van de radar afbeeld
 
 | Hex-kleur code | Kleur voorbeeld | Voor waarde voor weer |
 |----------------|--------------|-------------------|
-| #93c701        | ![Kleur voor regen licht.](./media/weather-services-concepts/color-93c701.png) | Regen licht |
-| #ffd701        | ![Kleur voor de regen-matig.](./media/weather-services-concepts/color-ffd701.png) | Regen-matig |
-| #f05514        | ![Kleur voor de regen, dik.](./media/weather-services-concepts/color-f05514.png) | Regen-zwaar |
-| #dc250e        | ![Kleur voor de regen-ernstig.](./media/weather-services-concepts/color-dc250e.png) | Regen-ernstig |
-| #9ec8f2        | ![Kleur voor sneeuw licht.](./media/weather-services-concepts/color-9ec8f2.png) | Sneeuw licht |
-| #2a8fdb        | ![Kleur voor sneeuw-matig.](./media/weather-services-concepts/color-2a8fdb.png) | Sneeuw-matig |
-| #144bed        | ![Kleur voor sneeuw-dik.](./media/weather-services-concepts/color-144bed.png) | Sneeuw-zwaar |
-| #020096        | ![Kleur voor sneeuw-ernstig.](./media/weather-services-concepts/color-020096.png) | Sneeuw-ernstig |
-| #e6a5c8        | ![Kleur voor ijs-licht.](./media/weather-services-concepts/color-e6a5c8.png) | Ice-licht |
-| #d24fa0        | ![Kleur voor Ice-matig.](./media/weather-services-concepts/color-d24fa0.png) | Ice-matig |
-| #b71691        | ![Kleur voor ijs-ernstig.](./media/weather-services-concepts/color-b71691.png) | Ijs-ernstig |
-| #7a1570        | ![Kleur voor Ice-zwaar.](./media/weather-services-concepts/color-7a1570.png) | Ice-zwaar |
+| #93c701        | ![Kleur voor regen licht.](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
+| #ffd701        | ![Kleur voor de regen-matig.](./media/weather-services-concepts/color-ffd701.png) | Rain-Moderate |
+| #f05514        | ![Kleur voor de regen, dik.](./media/weather-services-concepts/color-f05514.png) | Rain-Heavy |
+| #dc250e        | ![Kleur voor de regen-ernstig.](./media/weather-services-concepts/color-dc250e.png) | Rain-Severe |
+| #9ec8f2        | ![Kleur voor sneeuw licht.](./media/weather-services-concepts/color-9ec8f2.png) | Snow-Light |
+| #2a8fdb        | ![Kleur voor sneeuw-matig.](./media/weather-services-concepts/color-2a8fdb.png) | Snow-Moderate |
+| #144bed        | ![Kleur voor sneeuw-dik.](./media/weather-services-concepts/color-144bed.png) | Snow-Heavy |
+| #020096        | ![Kleur voor sneeuw-ernstig.](./media/weather-services-concepts/color-020096.png) | Snow-Severe |
+| #e6a5c8        | ![Kleur voor ijs-licht.](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
+| #d24fa0        | ![Kleur voor Ice-matig.](./media/weather-services-concepts/color-d24fa0.png) | Ice-Moderate |
+| #b71691        | ![Kleur voor ijs-ernstig.](./media/weather-services-concepts/color-b71691.png) | Ice-Severe |
+| #7a1570        | ![Kleur voor Ice-zwaar.](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
 | #c196e6        | ![Kleur voor mix-Light.](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
-| #ae6ee6        | ![Kleur voor mix-matig.](./media/weather-services-concepts/color-ae6ee6.png) | Mix-matig |
-| #8a32d7        | ![Kleur voor mix-zwaar.](./media/weather-services-concepts/color-8a32d7.png) | Mix-zwaar |
-| #6500ba        | ![Kleur voor mix-ernstig.](./media/weather-services-concepts/color-6500ba.png) | Mix-ernstig |
+| #ae6ee6        | ![Kleur voor mix-matig.](./media/weather-services-concepts/color-ae6ee6.png) | Mix-Moderate |
+| #8a32d7        | ![Kleur voor mix-zwaar.](./media/weather-services-concepts/color-8a32d7.png) | Mix-Heavy |
+| #6500ba        | ![Kleur voor mix-ernstig.](./media/weather-services-concepts/color-6500ba.png) | Mix-Severe |
 
 Gedetailleerd kleuren palet voor radar tegels met hexadecimale kleur codes en dBZ waarden worden hieronder weer gegeven. dBZ vertegenwoordigt een precipitatie intensiteit in het weer radar diagram. 
 
@@ -199,7 +199,7 @@ De volgende tabel bevat richt lijnen voor het interpreteren van de infra rood sa
 
 | Hex-kleur code | Kleur voorbeeld | Cloud temperatuur |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![De tegel kleuren voor de #b5b5b5.](./media/weather-services-concepts/color-b5b5b5.png) | Tempe ratuur-laag | 
+| #b5b5b5        | ![De tegel kleuren voor de #b5b5b5.](./media/weather-services-concepts/color-b5b5b5.png) | Temperature-Low | 
 | #d24fa0        | ![De tegel kleuren voor de #d24fa0.](./media/weather-services-concepts/color-d24fa0.png) |  |
 | #8a32d7        | ![De tegel kleuren voor de #8a32d7.](./media/weather-services-concepts/color-8a32d7.png) |  |
 | #144bed        | ![De tegel kleuren voor de #144bed.](./media/weather-services-concepts/color-144bed.png) |  |
@@ -210,7 +210,7 @@ De volgende tabel bevat richt lijnen voor het interpreteren van de infra rood sa
 | #f05514        | ![De tegel kleuren voor de #f05514.](./media/weather-services-concepts/color-f05514.png) |  |
 | #dc250e        | ![De tegel kleuren voor de #dc250e.](./media/weather-services-concepts/color-dc250e.png) |  |
 | #ba0808        | ![De tegel kleuren voor de #ba0808.](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![De tegel kleuren voor de #1f1f1f.](./media/weather-services-concepts/color-1f1f1f.png) | Tempe ratuur-hoog |
+| #1f1f1f        | ![De tegel kleuren voor de #1f1f1f.](./media/weather-services-concepts/color-1f1f1f.png) | Temperature-High |
 
 
 Het gedetailleerde kleuren palet voor infra rood satelliet tegels wordt hieronder weer gegeven.
@@ -494,7 +494,7 @@ Hieronder ziet u een tabel met beschik bare index-Id's, hun namen en een koppeli
   Stof & dander              |18| [Laag-extreem 1](#low-extreme-1)
   Veld gereedheid            |32| [Slecht-uitstekend 1](#poor-excellent-1)
   Vist                    |13| [Slecht-uitstekend 1](#poor-excellent-1)
-  Vlucht vertragingen              |-3|  [Zeer onwaarschijnlijk: zeer waarschijnlijk 2](#very-unlikely-very-likely-2)
+  Vlucht vertragingen              |-3|  [Zeer Unlikely-Very waarschijnlijk 2](#very-unlikely-very-likely-2)
   Flu                        |26|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
   Reis index in de vaart        |31| [Uitstekend-slecht](#excellent-poor)
   Brandstof economie               |37| [Slecht-uitstekend 1](#poor-excellent-1)
@@ -523,7 +523,7 @@ Hieronder ziet u een tabel met beschik bare index-Id's, hun namen en een koppeli
   Sinuse hoofd pijn             |30|  [Nuttig, met extreem risico](#beneficial-at-extreme-risk)
   Skateboarding              | 7| [Slecht-uitstekend 1](#poor-excellent-1)
   Ski-weer                | 15| [Slecht-uitstekend 1](#poor-excellent-1)
-  Winter dagen                  | 19| [Zeer onwaarschijnlijk: zeer waarschijnlijk](#very-unlikely-very-likely)
+  Winter dagen                  | 19| [Zeer Unlikely-Very waarschijnlijk](#very-unlikely-very-likely)
   Bodem vocht              | 34| [Slecht-uitstekend 1](#poor-excellent-1)
   Stargazing                 | 12| [Slecht-uitstekend 1](#poor-excellent-1)
 
@@ -549,7 +549,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
 
 [Dagelijkse indexen ophalen API](https://aka.ms/AzureMapsWeatherDailyIndices) retourneert de bereik waarde en de bijbehorende categorie naam voor elke index-id. Bereik sets zijn niet hetzelfde voor alle indexen. In de onderstaande tabellen worden de verschillende bereik sets weer gegeven die worden gebruikt door de ondersteunde indexen in [index-id's en index groep-id's](#index-ids-and-index-groups-ids). Als u wilt weten welke indexen de bereik sets gebruiken, gaat u naar de sectie [index-id's en index groepen-id's](#index-ids-and-index-groups-ids) van dit document.
 
-### <a name="poor-excellent-1"></a>Slecht-uitstekend 1
+### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
   | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
@@ -559,17 +559,17 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   Heel goed         |  7  |               8,99
   Uitstekend         |  9  |               10
 
-### <a name="poor-excellent-2"></a>Slecht-uitstekend 2
+### <a name="poor-excellent-2"></a>Poor-Excellent 2
 
  | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
   Slecht           |0              |  3
   Redelijk           |3,01           |  6
-  Goed           |6,01           |  7,5
+  Goed           |6,01           |  7.5
   Heel goed      |7,51           |  8,99
   Uitstekend      |9              |  10
 
-### <a name="excellent-poor"></a>Uitstekend-slecht
+### <a name="excellent-poor"></a>Excellent-Poor
 
  | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
@@ -579,7 +579,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   Redelijk             |   5,01          |  7,00
   Slecht             |   7,01          |  10,00
 
-### <a name="low-extreme-1"></a>Laag-extreem 1
+### <a name="low-extreme-1"></a>Low-Extreme 1
 
    | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
@@ -589,7 +589,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   Zeer hoog          |  6         |        7,99
   Extreem            |  8         |        10
 
-### <a name="low-extreme-2"></a>Laag-extreem 2
+### <a name="low-extreme-2"></a>Low-Extreme 2
 
    | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
@@ -599,7 +599,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   Zeer hoog          |  7            |      8,99
   Extreem            |  9            |      10
 
-### <a name="very-unlikely-very-likely"></a>Zeer onwaarschijnlijk: zeer waarschijnlijk
+### <a name="very-unlikely-very-likely"></a>Zeer Unlikely-Very waarschijnlijk
 
  | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
@@ -609,7 +609,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   Vaak             | 6     |           7,99
   Zeer waarschijnlijk        | 8     |           10
 
-### <a name="very-unlikely-very-likely-2"></a>Zeer onwaarschijnlijk: zeer waarschijnlijk 2
+### <a name="very-unlikely-very-likely-2"></a>Zeer Unlikely-Very waarschijnlijk 2
 
  | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
@@ -619,7 +619,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   Vaak             |  5,01     |         7,00
   Zeer waarschijnlijk        |  7,01     |         10,00
 
-### <a name="unlikely-emergency"></a>Onwaarschijnlijke nood situatie
+### <a name="unlikely-emergency"></a>Unlikely-Emergency
 
 | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------
@@ -629,7 +629,7 @@ Hieronder ziet u de lijst met beschik bare index groepen (indexGroupId):
   Waarschuwing          |  7     |          8,99
   Urgentie        |  9     |          10
 
-### <a name="beneficial-at-extreme-risk"></a>Nuttig, met extreem risico
+### <a name="beneficial-at-extreme-risk"></a>Beneficial-At extreem risico
 
 | Categorienaam | Begin bereik | Eind bereik |
   ----------------|--------------|------------

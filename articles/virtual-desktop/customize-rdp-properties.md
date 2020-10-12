@@ -7,10 +7,10 @@ ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462221"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Eigenschappen van Remote Desktop Protocol (RDP) voor een hostgroep aanpassen
@@ -40,7 +40,7 @@ Voordat u begint, volgt u de instructies in [De PowerShell-module van Windows Vi
 
 RDP-eigenschappen configureren in de Azure Portal:
 
-1. Aanmelden bij Azure op <https://portal.azure.com>.
+1. Meld u aan bij Azure op <https://portal.azure.com>.
 2. Voer **Windows virtueel bureau blad** in op de zoek balk.
 3. Onder Services selecteert u **virtueel bureau blad voor Windows**.
 4. Selecteer op de pagina virtueel bureau blad van Windows de optie **hostgroepen** in het menu aan de linkerkant van het scherm.

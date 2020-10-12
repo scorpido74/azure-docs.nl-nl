@@ -12,10 +12,10 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
 ms.openlocfilehash: 9595627e9d7ca2de577aa83ebba3dd58d69e6750
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373552"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Problemen met de implementatie van open Shift container platform 3,11 in azure oplossen
@@ -115,5 +115,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 Voor sommige fouten kunt u ook de volgende opdrachten gebruiken om meer informatie te krijgen:
 
-1. systemctl-status\<service>
+1. systemctl-status \<service>
 2. journalctl-XE

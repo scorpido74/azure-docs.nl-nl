@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81271978"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Trage query Logboeken in Azure Database for MySQL
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Logboekregistratie voor trage query's in Azure Database for MySQL
 In Azure Database for MySQL is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
 
 Voor meer informatie over het MySQL-logboek voor langzame query's raadpleegt u de sectie voor het [langzame query logboek](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)van MySQL-verwijzing hand matig.
@@ -59,18 +59,18 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 |---|---|
 | `TenantId` | Uw Tenant-ID |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Tijds tempel voor het vastleggen van het logboek in UTC |
-| `Type` | Het type van het logboek. Altijd`AzureDiagnostics` |
+| `TimeGenerated` UTC | Tijds tempel voor het vastleggen van het logboek in UTC |
+| `Type` | Het type van het logboek. Altijd `AzureDiagnostics` |
 | `SubscriptionId` | GUID voor het abonnement waartoe de server behoort |
 | `ResourceGroup` | Naam van de resource groep waartoe de server behoort |
-| `ResourceProvider` | De naam van de resource provider. Altijd`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | De naam van de resource provider. Altijd `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Resource-URI |
 | `Resource` | Naam van de server |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Naam van de server |
-| `start_time_t`UTC | Tijdstip waarop de query is gestart |
+| `start_time_t` UTC | Tijdstip waarop de query is gestart |
 | `query_time_s` | De totale tijd in seconden die de query heeft geduurd om uit te voeren |
 | `lock_time_s` | Totale tijd in seconden dat de query is vergrendeld |
 | `user_host_s` | Gebruikersnaam |

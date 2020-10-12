@@ -12,10 +12,10 @@ ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: f81af557242503c6380d0ff7bc1dfaed852cd908
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89070680"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools Power shell-referentie
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-adsynctoolsadmoduleloaded"></a>Bevestigen-ADSyncToolsADModuleLoaded
+## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>SAMENVATTING
 {{De samen vatting invullen}}
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="export-adsynctoolsconsistencyguidmigration"></a>Exporteren-ADSyncToolsConsistencyGuidMigration
+## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SAMENVATTING
 ConsistencyGuid rapport exporteren
@@ -225,7 +225,7 @@ Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipal
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Genereert een ConsistencyGuid-rapport op basis van een import CSV-bestand van import-ADSyncToolsImmutableIdMigration
+Genereert een ConsistencyGuid-rapport op basis van een import CSV-bestand van Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -554,7 +554,7 @@ Functie query's AAD Connect run geschiedenis en exporteert alle gebruikers die d
 #Required Parameters
 ```
 
-$sourcePath = Read-host-prompt Geef het pad naar het logboek bestand op met de bestands naam "#" \<Source_Path\> "$outputPath = Read-host-prompt" Voer het pad naar de bestands naam "#" in. \<Out_Path\>
+$sourcePath = Read-Host-prompt Geef het pad naar het logboek bestand op met de bestands naam "#" \<Source_Path\> "$outputPath = Read-Host-prompt" Voer het pad naar het bestand in met de bestands naam "#" \<Out_Path\> "
  
  Get-ADSyncToolsUsersSourceAnchorChanged-bronpad $sourcePath-outputPath $outputPath
 
@@ -747,14 +747,14 @@ Er wordt een back-up van elk certificaat gemaakt met een gescheiden bestands naa
 Check all users in target OU - Expired Certificates will be copied to separated files and no certificates will be removed
 ```
 
-Remove-ADSyncToolsExpiredCertificates-TargetOU "OE = users, OU = Corp, DC = contoso, DC = com"-gebruiker class object
+Remove-ADSyncToolsExpiredCertificates-TargetOU ' OE = users, OU = Corp, DC = contoso, DC = com '-gebruiker class object
 
 #### <a name="example-2"></a>VOOR BEELD 2
 ```
 Delete Expired Certs from all Computer objects in target OU - Expired Certificates will be copied to files and removed from AD
 ```
 
-Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = computers, OU = Corp, DC = contoso, DC = com"-object class computer-BackupOnly $false
+Remove-ADSyncToolsExpiredCertificates-TargetOU "OE = computers, OE = Corp, DC = contoso, DC = com"-object class computer-BackupOnly $false
 
 ### <a name="parameters"></a>PARAMETERS
 
@@ -807,7 +807,7 @@ Accept wildcard characters: False
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
 Zie about_CommonParameters (voor meer informatie https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Herstellen-ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>SAMENVATTING
 Korte beschrijving
@@ -833,7 +833,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="resolve-adsynchostaddress"></a>Oplossen-ADSyncHostAddress
+## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
 
 ### <a name="synopsis"></a>SAMENVATTING
 {{De samen vatting invullen}}

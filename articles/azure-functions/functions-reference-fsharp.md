@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088016"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F # referentie voor ontwikkel aars
@@ -278,16 +278,16 @@ let mylog(log: ILogger, text: string) =
 
 Paden naar de `#load` instructie zijn relatief ten opzichte van de locatie van het `.fsx` bestand.
 
-* `#load "logger.fsx"`Hiermee wordt een bestand geladen dat zich in de map function bevindt.
-* `#load "package\logger.fsx"`Hiermee wordt een bestand geladen dat zich in de `package` map in de map function bevindt.
-* `#load "..\shared\mylogger.fsx"`Hiermee wordt een bestand geladen dat zich in de `shared` map op hetzelfde niveau bevindt als de functie map, direct onder `wwwroot` .
+* `#load "logger.fsx"` Hiermee wordt een bestand geladen dat zich in de map function bevindt.
+* `#load "package\logger.fsx"` Hiermee wordt een bestand geladen dat zich in de `package` map in de map function bevindt.
+* `#load "..\shared\mylogger.fsx"` Hiermee wordt een bestand geladen dat zich in de `shared` map op hetzelfde niveau bevindt als de functie map, direct onder `wwwroot` .
 
 De `#load` instructie werkt alleen met `.fsx` (F # script) bestanden en niet met `.fs` bestanden.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende bronnen voor meer informatie:
 
-* [F #-hand leiding](/dotnet/articles/fsharp/index)
+* [F# Guide](/dotnet/articles/fsharp/index)
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
 * [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)

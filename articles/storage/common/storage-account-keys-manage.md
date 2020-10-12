@@ -10,10 +10,10 @@ ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069656"
 ---
 # <a name="manage-storage-account-access-keys"></a>Toegangs sleutels voor opslag accounts beheren
@@ -52,7 +52,7 @@ $storageAccountKey = `
     -Name <storage-account>).Value[0]
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de toegangs sleutels van uw account wilt weer geven met Azure CLI, roept u de opdracht [AZ Storage account Keys List](/cli/azure/storage/account/keys#az-storage-account-keys-list) aan, zoals wordt weer gegeven in het volgende voor beeld. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden. 
 
@@ -111,7 +111,7 @@ De toegangs sleutels van uw opslag account met Power shell draaien:
 1. Werk de verbindingsreeksen in uw code bij, zodat deze verwijzen naar de nieuwe primaire toegangssleutel.
 1. Genereer de secundaire toegangssleutel op dezelfde manier opnieuw. Als u de secundaire sleutel opnieuw wilt genereren, gebruikt u `key2` als sleutel naam in plaats van `key1` .
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 De toegangs sleutels van uw opslag account met Azure CLI draaien:
 

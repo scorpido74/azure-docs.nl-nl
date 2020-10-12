@@ -9,10 +9,10 @@ ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 49fbfe116a2fe554abb3a3ca4d1dcd6cab2b746d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69626317"
 ---
 Als u verder wilt gaan met het volgende aanbevolen artikel, kunt u de resources die u al hebt gemaakt behouden en opnieuw gebruiken.
@@ -27,10 +27,10 @@ Een resourcegroep verwijderen op naam:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
 
-2. In het tekstvak **filteren op naam** typt u de naam van de resource groep met uw IOT hub. 
+2. Typ in het tekstvak **Filteren op naam** de naam van de resourcegroep die uw IoT Hub bevat. 
 
-3. Selecteer in de lijst met resultaten rechts van uw resource groep de optie **...** en vervolgens de **resource groep verwijderen**.
+3. Selecteer rechts van de resourcegroep in de lijst met resultaten **...** en vervolgens **Resourcegroep verwijderen**.
 
     ![Verwijderen](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
 
-4. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resource groep nogmaals ter bevestiging en selecteer vervolgens **verwijderen**. Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
+4. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ ter bevestiging nogmaals de naam van de resourcegroep. Selecteer vervolgens **Verwijderen**. Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.

@@ -7,10 +7,10 @@ ms.date: 11/26/2018
 ms.topic: reference
 ms.custom: devx-track-java
 ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372464"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Maven-invoeg toepassing voor Service Fabric mesh
@@ -88,7 +88,7 @@ Voer de volgende opdracht uit om het YAML-bestand van de toepassings bron te mak
 mvn azure-sfmesh:init -DapplicationName=helloworldserver
 ```
 
-- Hiermee maakt u een map met `servicefabric->appresources` de naam in de hoofdmap die een toepassings yaml bevat`app_helloworldserver`
+- Hiermee maakt u een map met `servicefabric->appresources` de naam in de hoofdmap die een toepassings yaml bevat `app_helloworldserver`
 
 ### <a name="add-resource-to-your-application"></a>Resource toevoegen aan uw toepassing
 
@@ -99,7 +99,7 @@ Voer de onderstaande opdracht uit om een netwerk bron yaml te maken.
 mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
-- Hiermee maakt u een netwerk-YAML in de map met de `servicefabric->appresources` naam`network_helloworldservicenetwork`
+- Hiermee maakt u een netwerk-YAML in de map met de `servicefabric->appresources` naam `network_helloworldservicenetwork`
 
 #### <a name="add-a-new-service-to-your-application"></a>Een nieuwe service toevoegen aan uw toepassing
 Voer de onderstaande opdracht uit om een service yaml te maken. 
@@ -119,7 +119,7 @@ Voer de onderstaande opdracht uit om een gateway resource yaml te maken.
 mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetwork=helloworldservicenetwork -DgatewayName=helloworldgateway -DlistenerName=helloworldserviceListener -DserviceName=helloworldservice -DsourceNetwork=open -DtcpPort=80
 ```
 
-- Hiermee maakt u een nieuwe gateway YAML in de map met de `servicefabric->appresources` naam`gateway_helloworldgateway`
+- Hiermee maakt u een nieuwe gateway YAML in de map met de `servicefabric->appresources` naam `gateway_helloworldgateway`
 - Verwijst naar `helloworldservicelistener` de service-listener die luistert naar aanroepen vanaf deze gateway. Verwijst ook naar de `helloworldservice` als de service, `helloworldservicenetwork` als het netwerk en `helloworldserver` als de toepassing. 
 - Luistert naar aanvragen op poort 80
 
@@ -130,7 +130,7 @@ Voer de onderstaande opdracht uit om een volume resource yaml te maken.
 mvn azure-sfmesh:addvolume -DvolumeAccountKey=key -DvolumeAccountName=name -DvolumeName=vol1 -DvolumeShareName=share
 ```
 
-- Hiermee maakt u een volume YAML in de map met de `servicefabric->appresources` naam`volume_vol1`
+- Hiermee maakt u een volume YAML in de map met de `servicefabric->appresources` naam `volume_vol1`
 - Hiermee stelt u de eigenschappen in voor de vereiste para meters, `volumeAccountKey` en `volumeShareName` als hierboven
 - Voor meer informatie over het verwijzen naar dit gemaakte volume gaat u naar de volgende, [implementeert u de app met Azure files volume](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)
 
@@ -141,7 +141,7 @@ Voer de onderstaande opdracht uit om een geheime resource yaml te maken.
 mvn azure-sfmesh:addsecret -DsecretName=secret1
 ```
 
-- Hiermee maakt u een geheime YAML in de map met de `servicefabric->appresources` naam`secret_secret1`
+- Hiermee maakt u een geheime YAML in de map met de `servicefabric->appresources` naam `secret_secret1`
 - Voor meer informatie over het verwijzen naar dit gemaakte geheim gaat u naar het volgende: [geheimen beheren](service-fabric-mesh-howto-manage-secrets.md)
 
 #### <a name="add-a-new-secretvalue-resource-to-your-application"></a>Een nieuwe secretvalue-resource toevoegen aan uw toepassing
@@ -151,7 +151,7 @@ Voer de onderstaande opdracht uit om een secretvalue-resource yaml te maken.
 mvn azure-sfmesh:addsecretvalue -DsecretValue=someVal -DsecretValueName=secret1/v1
 ```
 
-- Maak een secretvalue-YAML in de map met de `servicefabric->appresources` naam`secretvalue_secret1_v1`
+- Maak een secretvalue-YAML in de map met de `servicefabric->appresources` naam `secretvalue_secret1_v1`
 
 ### <a name="run-the-application-locally"></a>De toepassing lokaal uitvoeren
 

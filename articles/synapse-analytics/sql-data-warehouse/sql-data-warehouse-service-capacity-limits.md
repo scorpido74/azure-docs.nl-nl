@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204979"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
@@ -79,22 +79,22 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | SELECT |Bytes per kolom op basis van een groep. |8060<br/><br/>De kolommen in de GROUP BY-component kunnen Maxi maal 8060 bytes bevatten. |
 | SELECT |Aantal bytes per GESORTEERDe kolom |8060 bytes<br/><br/>De kolommen in de ORDER BY-component kunnen Maxi maal 8060 bytes bevatten |
 | Id's per instructie |Aantal id's waarnaar wordt verwezen |65.535<br/><br/> Het aantal id's dat kan worden opgenomen in één expressie van een query is beperkt. Het overschrijden van dit getal resulteert in SQL Server fout 8632. Zie [interne fout: er is een limiet voor de expressie Services bereikt](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)voor meer informatie. |
-| Letterlijke teken reeksen | Aantal letterlijke teken reeksen in een instructie | 20.000 <br/><br/>Het aantal teken reeks constanten in één expressie van een query is beperkt. Het overschrijden van dit getal resulteert in SQL Server fout 8632.|
+| Letterlijke tekenreeksen | Aantal letterlijke teken reeksen in een instructie | 20.000 <br/><br/>Het aantal teken reeks constanten in één expressie van een query is beperkt. Het overschrijden van dit getal resulteert in SQL Server fout 8632.|
 ||||
 
 ## <a name="metadata"></a>Metagegevens
 
 | Systeem weergave | Maximum aantal rijen |
 |:--- |:--- |
-| sys. dm_pdw_component_health_alerts |10.000 |
-| sys. dm_pdw_dms_cores |100 |
+| sys.dm_pdw_component_health_alerts |10.000 |
+| sys.dm_pdw_dms_cores |100 |
 | sys.dm_pdw_dms_workers |Totaal aantal DMS-werk rollen voor de meest recente 1000 SQL-aanvragen. |
-| sys. dm_pdw_errors |10.000 |
+| sys.dm_pdw_errors |10.000 |
 | sys.dm_pdw_exec_requests |10.000 |
-| sys. dm_pdw_exec_sessions |10.000 |
-| sys.dm_pdw_request_steps |Totaal aantal stappen voor de meest recente 1000 SQL-aanvragen die zijn opgeslagen in sys. dm_pdw_exec_requests. |
-| sys. dm_pdw_os_event_logs |10.000 |
-| sys.dm_pdw_sql_requests |De meest recente 1000 SQL-aanvragen die zijn opgeslagen in sys. dm_pdw_exec_requests. |
+| sys.dm_pdw_exec_sessions |10.000 |
+| sys.dm_pdw_request_steps |Totaal aantal stappen voor de meest recente 1000 SQL-aanvragen die zijn opgeslagen in sys.dm_pdw_exec_requests. |
+| sys.dm_pdw_os_event_logs |10.000 |
+| sys.dm_pdw_sql_requests |De meest recente 1000 SQL-aanvragen die zijn opgeslagen in sys.dm_pdw_exec_requests. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

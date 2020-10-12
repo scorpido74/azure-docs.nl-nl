@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
 ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87874024"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Op Linux gebaseerde clusters maken in HDInsight met behulp van de Azure Portal
@@ -33,31 +33,31 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Selecteer in het bovenste menu de optie **+ een resource maken**.
+1. Selecteer **+ Een resource maken** in het menu aan de bovenkant.
 
     ![Een nieuw cluster maken in de Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Een nieuw cluster maken in de Azure Portal")
 
-1. Selecteer **Analytics**  >  **Azure HDInsight** om naar de pagina **HDInsight-cluster maken** te gaan.
+1. Selecteer **Analytics** > **Azure HDInsight** om naar de pagina **HDInsight-cluster maken** te gaan.
 
-## <a name="basics"></a>Basisinstellingen
+## <a name="basics"></a>Basisbeginselen
 
 ![Basis beginselen van HDInsight-cluster maken](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Een nieuw cluster maken in de Azure Portal")
 
-Geef op het tabblad **basis beginselen** de volgende informatie op:
+Geef op het tabblad **Basis** de volgende gegevens op:
 
 |Eigenschap |Beschrijving |
 |---|---|
 |Abonnement|Selecteer in de vervolgkeuzelijst het Azure-abonnement dat wordt gebruikt voor het cluster.|
 |Resourcegroep|Selecteer in de vervolgkeuzelijst de bestaande resourcegroep of selecteer **Nieuwe maken**.|
 |Clusternaam|Geef een wereldwijd unieke naam op.|
-|Regio|Selecteer in de vervolg keuzelijst een regio waar het cluster wordt gemaakt.|
+|Region|Selecteer in de vervolgkeuzelijst een regio waarin het cluster wordt gemaakt.|
 |Clustertype|Klik op **cluster type selecteren** om een lijst te openen. Selecteer in de lijst het gewenste cluster type. HDInsight-clusters komen in verschillende typen voor. Ze komen overeen met de werk belasting of technologie waarvoor het cluster is afgestemd. Er wordt geen ondersteunde methode gebruikt voor het maken van een cluster waarin meerdere typen worden gecombineerd.|
 |Versie|Selecteer een **versie**in de vervolg keuzelijst. Gebruik de standaard versie als u niet weet wat u moet kiezen. Zie [HDInsight-clusterversies](hdinsight-component-versioning.md) voor meer informatie.|
 |Gebruikersnaam voor clusteraanmeldgegevens|Geef de gebruikersnaam op; de standaard is **beheerder**.|
 |Wachtwoord voor clusteraanmeldgegevens|Geef het wachtwoord op.|
 |Wacht woord voor aanmelding bij cluster bevestigen|Voer het wacht woord opnieuw in|
 |SSH-gebruikersnaam (Secure Shell)|Geef de gebruikersnaam op; de standaardwaarde is **sshuser**|
-|Wacht woord voor cluster aanmelding gebruiken voor SSH|Als u hetzelfde SSH-wacht woord wilt gebruiken als het beheerders wachtwoord dat u eerder hebt opgegeven, schakelt u het selectie vakje **wacht woord voor cluster aanmelden voor SSH** in. Als dat niet het geval is, geeft u een **wacht woord** of een **open bare sleutel** op om de SSH-gebruiker te verifiëren. Een open bare sleutel is de aanbevolen methode. Kies onder **selecteren** om de configuratie van de referenties op te slaan.  Zie voor meer informatie [verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md).|
+|Het wachtwoord voor clusteraanmelding gebruiken voor SSH|Als u hetzelfde SSH-wacht woord wilt gebruiken als het beheerders wachtwoord dat u eerder hebt opgegeven, schakelt u het selectie vakje **wacht woord voor cluster aanmelden voor SSH** in. Als dat niet het geval is, geeft u een **wacht woord** of een **open bare sleutel** op om de SSH-gebruiker te verifiëren. Een open bare sleutel is de aanbevolen methode. Kies onder **selecteren** om de configuratie van de referenties op te slaan.  Zie voor meer informatie [verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md).|
 
 Selecteer **volgende: opslag >>** om naar het volgende tabblad te gaan.
 
@@ -122,7 +122,7 @@ Geef op het tabblad **configuratie en prijzen** de volgende informatie op:
 |Automatisch schalen inschakelen|Optioneel: Schakel het selectie vakje in om de functie in te scha kelen. Zie [automatisch schalen van Azure HDInsight-clusters](./hdinsight-autoscale-clusters.md)voor meer informatie.|
 |+ Script actie toevoegen|Optioneel: deze optie werkt als u een aangepast script wilt gebruiken voor het aanpassen van een cluster, wanneer het cluster wordt gemaakt. Zie [HDInsight-clusters op basis van Linux aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over script acties.|
 
-Selecteer **controleren + >>maken** om de cluster configuratie te valideren en door te gaan naar het tabblad definitief.
+Selecteer **controleren + >>maken ** om de cluster configuratie te valideren en door te gaan naar het tabblad definitief.
 
 ## <a name="review--create"></a>Controleren en maken
 
