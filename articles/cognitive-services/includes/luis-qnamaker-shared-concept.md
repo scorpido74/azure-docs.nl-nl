@@ -8,10 +8,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87133816"
 ---
 Cognitive Services biedt twee services voor de verwerking van natuurlijke taal, [Language Understanding](../luis/what-is-luis.md) en [QnA Maker](../qnamaker/overview/overview.md), elk met een ander doel. Begrijpen wanneer u elke service gebruikt en hoe ze elkaar in de compliment hebben.
@@ -33,7 +33,7 @@ Als uw chat-bot de tekst ontvangt `How do I get to the Human Resources building 
 |Service|Client toepassing bepaalt|
 |--|--|
 |LUIS|**Hiermee wordt de bedoeling** van de tekst van de gebruiker bepaald: de service retourneert niet het antwoord op de vraag. Deze tekst wordt bijvoorbeeld geclassificeerd als overeenkomend met het `FindLocation` doel.<br>|
-|QnA Maker|**Retourneert het antwoord op de vraag** van een aangepaste Knowledge Base. Deze tekst wordt bijvoorbeeld bepaald als een vraag met het statische tekst antwoord van `Get on the #9 bus and get off at Franklin street` .|
+|QnA Maker|**Retourneert het antwoord op de vraag** van een aangepaste Knowledge Base. Deze tekst wordt bijvoorbeeld bepaald als een vraag met het statische tekst antwoord van  `Get on the #9 bus and get off at Franklin street` .|
 |||
 
 > [!div class="mx-imgBorder"]
@@ -82,7 +82,7 @@ Aanbevolen procedures voor elke service implementeren:
 * Best practices voor [Luis](../luis/luis-concept-best-practices.md)
 * Aanbevolen procedures [QnA Maker](../qnamaker/concepts/best-practices.md)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Language Understanding (LUIS)](../luis/what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006019"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-serie: een Hybrid Cloud Storage oplossing
@@ -210,10 +210,10 @@ Hieronder vindt u een overzicht van de ondersteunde StorSimple-workloads.
 
 | Scenario | Workload | Ondersteund | Beperkingen | Versie |
 | --- | --- | --- | --- | --- |
-| Samenwerking |Bestanden delen |Yes | |Alle versies |
-| Samenwerking |Distributed File Sharing |Yes | |Alle versies |
+| Samenwerking |Bestanden delen |Ja | |Alle versies |
+| Samenwerking |Distributed File Sharing |Ja | |Alle versies |
 | Samenwerking |SharePoint |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Update 2 en hoger |
-| Archivering |Eenvoudige bestands archivering |Yes | |Alle versies |
+| Archivering |Eenvoudige bestands archivering |Ja | |Alle versies |
 | Virtualisatie |Virtuele machines |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Update 2 en hoger |
 | Database |SQL |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Update 2 en hoger |
 | Videobewaking |Videobewaking |Ja* |Ondersteund wanneer het StorSimple-apparaat alleen aan deze werk belasting is toegewezen |Update 2 en hoger |
@@ -237,7 +237,7 @@ Hier volgt een lijst van de StorSimple-ondersteunde infrastructuur onderdelen.
 
 | Scenario | Workload | Ondersteund | Beperkingen | Versie |
 | --- | --- | --- | --- | --- |
-| Algemeen |ExpressRoute |Yes | |Alle versies |
+| Algemeen |ExpressRoute |Ja | |Alle versies |
 | Algemeen |DataCore FC |Ja* |Ondersteund met DataCore SANsymphony |Alle versies |
 | Algemeen |DFSR |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Alle versies |
 | Algemeen |Indexeren |Ja* |Voor gelaagde volumes wordt alleen het indexeren van meta gegevens ondersteund (geen gegevens).<br>Voor lokaal vastgemaakte volumes wordt volledige indexering ondersteund. |Alle versies |

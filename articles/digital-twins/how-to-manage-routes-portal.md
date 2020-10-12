@@ -8,10 +8,10 @@ ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252830"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Eind punten en routes beheren in azure Digital Apparaatdubbels (Portal)
@@ -37,7 +37,7 @@ U vindt deze informatie in de [Azure Portal](https://portal.azure.com) na het in
 
 Selecteer uw exemplaar in de resultaten om de detail pagina voor uw exemplaar te bekijken:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Scherm opname van Details van ADT-exemplaar." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Scherm opname van Azure Portal zoek balk." border="false":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Een eind punt maken voor Azure Digital Apparaatdubbels
 
@@ -62,11 +62,11 @@ Op de pagina *een eind punt maken* die wordt geopend, kunt u een eind punt van h
 
 Maak vervolgens uw eind punt op _Opslaan_.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Scherm opname van het maken van een eind punt van het type Event Grid.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Scherm opname van Azure Portal zoek balk.":::
 
 U kunt controleren of het eind punt is gemaakt door het meldings pictogram in de bovenste Azure Portal balk te controleren: 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Scherm afbeelding van de melding om te controleren of het eind punt is gemaakt." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Scherm opname van Azure Portal zoek balk." border="false":::
 
 U kunt ook het eind punt weer geven dat weer is gemaakt op de pagina *eind punten* voor uw Azure Digital apparaatdubbels-exemplaar.
 
@@ -88,7 +88,7 @@ Op de pagina *een eind punt maken* die wordt geopend, kunt u een eind punt van h
 
 Maak vervolgens uw eind punt op _Opslaan_.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Scherm opname van het maken van een eind punt van het type Event Hubs.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Scherm opname van Azure Portal zoek balk.":::
 
 U kunt controleren of het eind punt is gemaakt door het meldings pictogram in de bovenste Azure Portal balk te controleren. 
 
@@ -110,7 +110,7 @@ Op de pagina *een eind punt maken* die wordt geopend, kunt u een eind punt van h
 
 Maak vervolgens uw eind punt op _Opslaan_.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Scherm opname van het maken van een eind punt van het type Service Bus.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Scherm opname van Azure Portal zoek balk.":::
 
 U kunt controleren of het eind punt is gemaakt door het meldings pictogram in de bovenste Azure Portal balk te controleren. 
 
@@ -149,7 +149,7 @@ Kies op de pagina *een route voor een gebeurtenis maken* die wordt geopend mini 
 
 Als u de route wilt inschakelen, moet u ook **een gebeurtenis route filter** van ten minste toevoegen `true` . (Als u de standaard waarde van weglaat `false` , wordt de route gemaakt, maar er worden geen gebeurtenissen naar verzonden.) U doet dit door de schakel optie voor de _Geavanceerde editor_ in te scha kelen en te schrijven `true` in het vak *filter* .
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Scherm opname van het maken van gebeurtenis routes voor uw exemplaar." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Scherm opname van Azure Portal zoek balk." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 Wanneer u klaar bent, klikt u op de knop _Opslaan_ om uw gebeurtenis route te maken.
 
@@ -175,7 +175,7 @@ Als u de basis filters wilt gebruiken, vouwt u de optie _gebeurtenis typen_ uit 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Scherm afbeelding van het maken van een gebeurtenis route met een basis filter. De selectie vakjes van de gebeurtenissen te selecteren.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Scherm opname van Azure Portal zoek balk.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -185,7 +185,7 @@ Hiermee wordt het filter tekstvak automatisch gevuld met de tekst van het filter
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Scherm afbeelding van het maken van een gebeurtenis route met een basis filter. De automatisch ingevulde filter tekst wordt weer gegeven nadat u de gebeurtenissen hebt geselecteerd.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Scherm opname van Azure Portal zoek balk.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -199,7 +199,7 @@ Als u een gebeurtenis route met geavanceerde filter opties wilt maken, wisselt u
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Scherm afbeelding van het maken van een gebeurtenis route met een geavanceerd filter.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Scherm opname van Azure Portal zoek balk.":::
     :::column-end:::
     :::column:::
     :::column-end:::

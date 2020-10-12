@@ -4,10 +4,10 @@ description: Meer informatie over hoe Azure Policy de gast configuratie agent ge
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88756687"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
@@ -48,7 +48,7 @@ In de computer gebruikt de gast configuratie-client lokale hulpprogram ma's om d
 
 De volgende tabel bevat een lijst met de lokale hulpprogram ma's die op elk ondersteund besturings systeem worden gebruikt. Voor ingebouwde inhoud verwerkt gast configuratie automatisch het laden van deze hulpprogram ma's.
 
-|Besturingssysteem|Validatie programma|Opmerkingen|
+|Besturingssysteem|Validatie programma|Notities|
 |-|-|-|
 |Windows|[Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| Een kant geladen naar een map die alleen door Azure Policy wordt gebruikt. Er is geen conflict met Windows Power shell DSC. Power shell Core is niet toegevoegd aan het systeempad.|
 |Linux|[Chef-specificatie](https://www.chef.io/inspec/)| Installeert chef Inspec-versie 2.2.61 op de standaard locatie en wordt toegevoegd aan het systeempad. Afhankelijkheden voor het INSPEC-pakket, waaronder Ruby en Python, worden ook geïnstalleerd. |
@@ -66,8 +66,8 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in az
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 en hoger|
 |Credativ|Debian|8 en hoger|
-|Microsoft-peering|Windows Server|2012 en hoger|
-|Microsoft-peering|Windows-client|Windows 10|
+|Microsoft|Windows Server|2012 en hoger|
+|Microsoft|Windows-client|Windows 10|
 |OpenLogic|CentOS|7,3 en hoger|
 |Red Hat|Red Hat Enterprise Linux|7,4-7,8|
 |SuSE|SLES|12 SP3-SP5|

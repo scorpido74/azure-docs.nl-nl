@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229001"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azure-beveiligings basislijn voor Stream Analytics
@@ -856,7 +856,7 @@ U kunt ook de functie levenscyclus beheer gebruiken om back-ups te maken van geg
 
 * [Gegevens beveiliging in Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-protection#private-data-assets-that-are-stored)
 
-* [Informatie over Azure Storage redundantie en service level agreements](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Informatie over Azure Storage redundantie en Service-Level-overeenkomsten](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 * [De levenscyclus van Azure Blob-opslag beheren](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)
 

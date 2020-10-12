@@ -13,10 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689755"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Gegevens verplaatsen van een bron van een webtabel met behulp van Azure Data Factory
@@ -72,9 +72,9 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **Web** |Yes |
-| URL |URL naar de webbron |Yes |
-| authenticationType |Toegang. |Yes |
+| type |De eigenschap type moet worden ingesteld op: **Web** |Ja |
+| URL |URL naar de webbron |Ja |
+| authenticationType |Toegang. |Ja |
 
 ### <a name="using-anonymous-authentication"></a>Anonieme verificatie gebruiken
 
@@ -100,9 +100,9 @@ De sectie **typeProperties** verschilt voor elk type gegevensset en bevat inform
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |het type van de gegevensset. moet worden ingesteld op **Webtable** |Yes |
-| path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
-| TabIndex |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Yes |
+| type |het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
+| leertraject |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
+| index |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
 **Voorbeeld:**
 
@@ -292,7 +292,7 @@ Zie Eigenschappen van het webbron type voor de lijst met eigenschappen die worde
 
     ![Vanuit het dialoog venster Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    URL die in dit voor beeld wordt gebruikt:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    URL die in dit voor beeld wordt gebruikt: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. Als u het dialoog venster **webinhoud openen** ziet, selecteert u de juiste **URL**, **verificatie**en klikt u op **verbinding maken**.
 
    ![Het dialoog venster toegang tot webinhoud](./media/data-factory-web-table-connector/AccessWebContentDialog.png)

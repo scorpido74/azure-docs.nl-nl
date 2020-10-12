@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292605"
 ---
 # <a name="configure-personalizer-learning-loop"></a>De learning-lus van Personaler configureren
@@ -79,7 +79,7 @@ Met de frequentie van de **model updates** wordt aangegeven hoe vaak het model w
 
 Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
-## <a name="data-retention"></a>Gegevensretentie
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 
 **Gegevens retentie periode** instellen hoeveel dagen persoonlijke gegevens logboeken worden bewaard. Eerdere gegevens logboeken zijn vereist voor het uitvoeren van [offline-evaluaties](concepts-offline-evaluation.md), die worden gebruikt om de effectiviteit van personaler te meten en het trainings beleid te optimaliseren.
 

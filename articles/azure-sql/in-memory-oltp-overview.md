@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
 ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85985187"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimaliseer de prestaties met behulp van in-Memory technologieën in Azure SQL Database en Azure SQL Managed instance
@@ -37,20 +37,20 @@ In-Memory technologieën kunnen de prestaties van deze werk belastingen verbeter
 
 Azure SQL Database en Azure SQL Managed instance hebben de volgende in-Memory technologieën:
 
-- *[In-Memory OLTP neemt het](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* aantal trans acties per seconde toe en vermindert de latentie voor de verwerking van trans acties. Scenario's die gebruikmaken van in-Memory OLTP zijn: transactie verwerking met hoge door Voer, zoals handel en gaming, gegevens opname van gebeurtenissen of IoT-apparaten, caching, gegevens belasting en tijdelijke tabel-en tabel variabelen scenario's.
+- *[In-Memory OLTP neemt het](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* aantal trans acties per seconde toe en vermindert de latentie voor de verwerking van trans acties. Scenario's die van In-Memory OLTP profiteren, zijn: transactie verwerking met hoge door Voer, zoals handel en gaming, gegevens opname van gebeurtenissen of IoT-apparaten, caching, gegevens belasting en tijdelijke scenario's voor tabel-en tabel variabelen.
 - *Geclusterde column Store-indexen* verminderen uw opslag ruimte (Maxi maal 10 keer) en verbetert de prestaties voor rapportage-en analyse query's. U kunt het gebruiken met feiten tabellen in uw data bases voor het aanpassen van meer gegevens in uw gegevens bron en de prestaties te verbeteren. Daarnaast kunt u het gebruiken met historische gegevens in uw operationele data base om te archiveren en om Maxi maal tien keer meer gegevens op te vragen.
 - Niet- *geclusterde column Store-indexen* voor HTAP helpen u real-time inzicht te krijgen in uw bedrijf door rechtstreeks query's uit te voeren op de operationele data base, zonder dat u een kostbaar proces voor extra heren, transformeren en laden (ETL) moet uitvoeren en moet wachten tot het Data Warehouse is gevuld. Met niet-geclusterde column Store-indexen kunnen analyse query's snel worden uitgevoerd op de OLTP-data base, en wordt de impact op de operationele werk belasting verminderd.
 - Met *geheugen geoptimaliseerde column Store-indexen* voor HTAP kunt u snelle transactie verwerking uitvoeren, en *tegelijkertijd* analyse query's op dezelfde gegevens uitvoeren.
 
-Zowel de column Store-indexen als de in-Memory OLTP zijn onderdeel van het SQL Server product sinds 2012 en 2014. Azure SQL Database, Azure SQL Managed instance en SQL Server dezelfde implementatie van in-Memory technologieën te delen.
+Zowel column Store-indexen als In-Memory OLTP zijn deel van het SQL Server product sinds 2012 en 2014. Azure SQL Database, Azure SQL Managed instance en SQL Server dezelfde implementatie van in-Memory technologieën te delen.
 
 ## <a name="benefits-of-in-memory-technology"></a>Voor delen van de technologie in het geheugen
 
 Vanwege de efficiëntere query-en transactie verwerking, kunt u in-Memory technologieën ook de kosten verlagen. Normaal gesp roken hoeft u de prijs categorie van de data base niet bij te werken om de prestaties te verbeteren. In sommige gevallen is het mogelijk dat u de prijs categorie ook kunt verlagen, terwijl de prestatie verbeteringen met in-Memory technologieën nog steeds worden weer gegeven.
 
-Hieronder vindt u twee voor beelden van hoe in-Memory OLTP heeft geholpen om de prestaties aanzienlijk te verbeteren:
+Hier volgen twee voor beelden van hoe In-Memory OLTP de prestaties aanzienlijk kan verbeteren:
 
-- Door gebruik te maken van in-Memory OLTP [kunnen quorum bedrijfs oplossingen hun werk belasting verdubbelen terwijl dtu's met 70% wordt verbeterd](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
+- Met behulp van In-Memory OLTP konden [quorum bedrijfs oplossingen hun werk belasting verdubbelen terwijl dtu's met 70% wordt verbeterd](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
 - In de volgende video ziet u een aanzienlijke verbetering in het gebruik van resources met een voor beeld van een werk belasting: [in-Memory OLTP-video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). Zie het blog bericht: [in-Memory OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (Engelstalig) voor meer informatie.
 
 > [!NOTE]  
@@ -61,24 +61,24 @@ In de volgende video worden mogelijke prestatie verbeteringen met in-Memory tech
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
 >
 
-In dit artikel worden aspecten beschreven van de OLTP-en column Store-indexen in het geheugen die specifiek zijn voor Azure SQL Database en Azure SQL Managed instance en bevatten ook voor beelden:
+In dit artikel worden de aspecten beschreven van In-Memory OLTP-en column Store-indexen die specifiek zijn voor Azure SQL Database en Azure SQL Managed instance en bevatten ook voor beelden:
 
 - U ziet de impact van deze technologieën op opslag-en gegevens grootte limieten.
 - U ziet hoe u de verplaatsing beheert van data bases die gebruikmaken van deze technologieën tussen de verschillende prijs categorieën.
-- U ziet twee voor beelden die het gebruik van in-Memory OLTP en column Store-indexen illustreren.
+- U ziet twee voor beelden die het gebruik van In-Memory OLTP en column Store-indexen illustreren.
 
 Zie voor meer informatie over in-memory in SQL Server:
 
 - [Overzicht van in-Memory OLTP en gebruiks scenario's](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (bevat verwijzingen naar casestudy's van klanten en informatie om aan de slag te gaan)
-- [Documentatie voor in-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
+- [Documentatie voor In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [Hand leiding voor column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
 - Hybride transactionele/analytische verwerking (HTAP), ook wel bekend als [real-time Operational Analytics](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
 ## <a name="in-memory-oltp"></a>In-Memory OLTP
 
-De OLTP-technologie in het geheugen biedt extreem snelle bewerkingen voor gegevens toegang door alle gegevens in het geheugen te bewaren. Het maakt ook gebruik van gespecialiseerde indexen, systeem eigen compilatie van query's en vrije gegevens toegang om de prestaties van de OLTP-werk belasting te verbeteren. Er zijn twee manieren om de OLTP-gegevens in het geheugen te ordenen:
+In-Memory OLTP-technologie biedt extreem snelle bewerkingen voor gegevens toegang door alle gegevens in het geheugen te bewaren. Het maakt ook gebruik van gespecialiseerde indexen, systeem eigen compilatie van query's en vrije gegevens toegang om de prestaties van de OLTP-werk belasting te verbeteren. Er zijn twee manieren om de In-Memory OLTP-gegevens in te delen:
 
-- Voor het **geheugen geoptimaliseerde rowstore** -indeling, waarbij elke rij een afzonderlijk geheugen object is. Dit is een klassieke OLTP-indeling in het geheugen die is geoptimaliseerd voor de hoge prestaties van OLTP-workloads. Er zijn twee typen tabellen die zijn geoptimaliseerd voor geheugen die kunnen worden gebruikt in de rowstore-indeling die is geoptimaliseerd voor geheugen:
+- Voor het **geheugen geoptimaliseerde rowstore** -indeling, waarbij elke rij een afzonderlijk geheugen object is. Dit is een klassieke In-Memory OLTP-indeling die is geoptimaliseerd voor de hoge prestaties van OLTP-workloads. Er zijn twee typen tabellen die zijn geoptimaliseerd voor geheugen die kunnen worden gebruikt in de rowstore-indeling die is geoptimaliseerd voor geheugen:
 
   - *Duurzame tabellen* (SCHEMA_AND_DATA) waarbij de rijen in het geheugen worden bewaard na het opnieuw opstarten van de server. Dit type tabellen gedraagt zich als een traditionele rowstore-tabel met de extra voor delen van in-Memory optimalisaties.
   - *Niet-duurzame tabellen* (SCHEMA_ONLY) waarin de rijen niet worden bewaard na opnieuw opstarten. Dit type tabel is bedoeld voor tijdelijke gegevens (bijvoorbeeld vervangen van tijdelijke tabellen) of tabellen waarin u snel gegevens moet laden voordat u deze naar een andere persistente tabel verplaatst (dat wil zeggen faserings tabellen genoemd).
@@ -86,22 +86,22 @@ De OLTP-technologie in het geheugen biedt extreem snelle bewerkingen voor gegeve
 - **Met geheugen geoptimaliseerde column Store-** indeling waarbij gegevens in een kolom indeling worden ingedeeld. Deze structuur is ontworpen voor HTAP-scenario's waarin u analytische query's moet uitvoeren op dezelfde gegevens structuur waar de OLTP-werk belasting wordt uitgevoerd.
 
 > [!Note]
-> De OLTP-technologie in het geheugen is ontworpen voor de gegevens structuren die volledig in het geheugen kunnen worden opgeslagen. Omdat de in-Memory gegevens niet naar de schijf kunnen worden geoffload, moet u ervoor zorgen dat u de data base gebruikt die voldoende geheugen heeft. Zie [gegevens grootte en opslag limiet voor OLTP in het geheugen](#data-size-and-storage-cap-for-in-memory-oltp) voor meer informatie.
+> In-Memory OLTP-technologie is ontworpen voor de gegevens structuren die volledig in het geheugen kunnen worden opgeslagen. Omdat de in-Memory gegevens niet naar de schijf kunnen worden geoffload, moet u ervoor zorgen dat u de data base gebruikt die voldoende geheugen heeft. Zie [gegevens grootte en opslag limiet voor In-Memory OLTP](#data-size-and-storage-cap-for-in-memory-oltp) voor meer informatie.
 
-Een snelle primer op in-Memory OLTP: [Snelstartgids 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp) (een ander artikel om u te helpen aan de slag)
+Een snelle primer op In-Memory OLTP: [Snelstartgids 1: In-Memory OLTP-technologieën voor snellere T-SQL-prestaties](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp) (een ander artikel om u te helpen aan de slag)
 
 Uitgebreide Video's over de technologieën:
 
 - [In-Memory OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (dit bevat een demo van de prestatie voordelen en stappen om deze resultaten zelf te reproduceren)
 - [In-Memory OLTP-Video's: wat is het en wanneer/hoe u deze kunt gebruiken](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 
-Er is een programmatische manier om te begrijpen of een bepaalde data base in-Memory OLTP ondersteunt. U kunt de volgende Transact-SQL-query uitvoeren:
+Er is een programmatische manier om te begrijpen of een bepaalde data base In-Memory OLTP ondersteunt. U kunt de volgende Transact-SQL-query uitvoeren:
 
 ```sql
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Als de query **1**retourneert, wordt OLTP in het geheugen ondersteund in deze data base. Met de volgende query's worden alle objecten geïdentificeerd die moeten worden verwijderd voordat een Data Base kan worden gedowngraded naar Algemeen, Standard of Basic:
+Als de query **1**retourneert, wordt In-Memory OLTP ondersteund in deze data base. Met de volgende query's worden alle objecten geïdentificeerd die moeten worden verwijderd voordat een Data Base kan worden gedowngraded naar Algemeen, Standard of Basic:
 
 ```sql
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
@@ -109,11 +109,11 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Gegevens grootte en opslag limiet voor OLTP in het geheugen
+### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Gegevens grootte en opslag limiet voor In-Memory OLTP
 
 In-Memory OLTP bevat tabellen die zijn geoptimaliseerd voor geheugen, die worden gebruikt voor het opslaan van gebruikers gegevens. Deze tabellen moeten in het geheugen passen. Omdat u het geheugen rechtstreeks beheert in SQL Database, hebben we het concept van een quotum voor gebruikers gegevens. Dit wordt aangeduid als *OLTP-opslag in het geheugen*.
 
-Elke ondersteunde prijs categorie voor één data base en elke prijs categorie voor elastische Pools bevat een bepaalde hoeveelheid OLTP-opslag in het geheugen.
+Elke ondersteunde prijs categorie voor één data base en elke prijs categorie voor elastische Pools bevat een bepaalde hoeveelheid In-Memory OLTP-opslag.
 
 - [Op DTU gebaseerde resource limieten-één data base](database/resource-limits-dtu-single-databases.md)
 - [Op DTU gebaseerde resource limieten-elastische Pools](database/resource-limits-dtu-elastic-pools.md)
@@ -121,7 +121,7 @@ Elke ondersteunde prijs categorie voor één data base en elke prijs categorie v
 - [vCore-gebaseerde resource limieten: elastische Pools](database/resource-limits-vcore-elastic-pools.md)
 - [op vCore gebaseerde resource limieten-beheerd exemplaar](managed-instance/resource-limits.md)
 
-De volgende items tellen mee in de OLTP-opslag limiet van in het geheugen:
+De volgende items tellen bij uw In-Memory OLTP-opslag limiet:
 
 - Gegevens rijen van actieve gebruikers in tabellen die zijn geoptimaliseerd voor geheugen en tabel variabelen. De oude rijkoppen tellen niet mee voor het kapje.
 - Indexen op tabellen die zijn geoptimaliseerd voor geheugen.
@@ -129,27 +129,27 @@ De volgende items tellen mee in de OLTP-opslag limiet van in het geheugen:
 
 Als u het kapje bereikt, ontvangt u een fout melding met de melding dat u geen gegevens meer kunt invoegen of bijwerken. Als u deze fout wilt verhelpen, verwijdert u de gegevens of verhoogt u de prijs categorie van de data base of groep.
 
-Zie [in-Memory-opslag controleren](in-memory-oltp-monitor-space.md)voor meer informatie over het bewaken van het gebruik van in-Memory OLTP-opslag en het configureren van waarschuwingen wanneer u bijna de limiet bereikt.
+Zie [in-Memory-opslag controleren](in-memory-oltp-monitor-space.md)voor meer informatie over het controleren van het gebruik van In-Memory OLTP-opslag en het configureren van waarschuwingen wanneer u bijna de limiet bereikt.
 
 #### <a name="about-elastic-pools"></a>Over elastische Pools
 
-Met elastische Pools wordt de OLTP-opslag in het geheugen gedeeld met alle data bases in de groep. Het gebruik in de ene data base kan daarom van invloed zijn op andere data bases. Er zijn twee oplossingen voor dit:
+Met elastische Pools wordt de In-Memory OLTP-opslag gedeeld in alle data bases in de groep. Het gebruik in de ene data base kan daarom van invloed zijn op andere data bases. Er zijn twee oplossingen voor dit:
 
-- Configureer een `Max-eDTU` of `MaxvCore` voor data bases die kleiner zijn dan het aantal eDTU-of vCore voor de groep als geheel. Dit maximum is het gebruik van OLTP-opslag in het geheugen, in elke data base in de pool, tot de grootte die overeenkomt met het aantal eDTU.
-- Configureer een `Min-eDTU` of `MinvCore` dat groter is dan 0. Dit minimum garandeert dat elke data base in de pool de hoeveelheid beschik bare OLTP-opslag in het geheugen heeft die overeenkomt met het geconfigureerde `Min-eDTU` of `vCore` .
+- Configureer een `Max-eDTU` of `MaxvCore` voor data bases die kleiner zijn dan het aantal eDTU-of vCore voor de groep als geheel. Dit maximum is het gebruik van de In-Memory OLTP-opslag, in elke data base in de pool, tot de grootte die overeenkomt met het aantal eDTU.
+- Configureer een `Min-eDTU` of `MinvCore` dat groter is dan 0. Dit minimum garandeert dat elke data base in de pool de hoeveelheid beschik bare In-Memory OLTP-opslag heeft die overeenkomt met het geconfigureerde `Min-eDTU` of `vCore` .
 
-### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>Service lagen wijzigen van data bases die gebruikmaken van in-Memory OLTP-technologieën
+### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>Service lagen wijzigen van data bases die gebruikmaken van In-Memory OLTP-technologieën
 
 U kunt uw data base of exemplaar altijd upgraden naar een hogere laag, bijvoorbeeld van Algemeen naar Bedrijfskritiek (of Standard to Premium). De beschik bare functionaliteit en bronnen worden alleen verhoogd.
 
-Het downgradeen van de laag kan echter een negatieve invloed hebben op uw data base. De impact is vooral duidelijk wanneer u een downgrade van Bedrijfskritiek naar Algemeen (of Premium to Standard of Basic) uitvoert wanneer uw data base in-Memory OLTP-objecten bevat. Tabellen die zijn geoptimaliseerd voor geheugen, zijn niet beschikbaar na de downgrade (zelfs als ze zichtbaar blijven). Deze overwegingen zijn van toepassing wanneer u de prijs categorie van een elastische pool verlaagt of een Data Base met in-Memory technologieën verplaatst naar een elastische Algemeen, Standard of Basic.
+Het downgradeen van de laag kan echter een negatieve invloed hebben op uw data base. De impact is vooral duidelijk wanneer u een downgrade van Bedrijfskritiek naar Algemeen (of Premium to Standard of Basic) wanneer uw data base In-Memory OLTP-objecten bevat. Tabellen die zijn geoptimaliseerd voor geheugen, zijn niet beschikbaar na de downgrade (zelfs als ze zichtbaar blijven). Deze overwegingen zijn van toepassing wanneer u de prijs categorie van een elastische pool verlaagt of een Data Base met in-Memory technologieën verplaatst naar een elastische Algemeen, Standard of Basic.
 
 > [!Important]
-> OLTP in het geheugen wordt niet ondersteund in de laag Algemeen, Standard of Basic. Daarom is het niet mogelijk om een Data Base met een in-Memory OLTP-objecten naar een van deze lagen te verplaatsen.
+> In-Memory OLTP wordt niet ondersteund in de laag Algemeen, Standard of Basic. Daarom is het niet mogelijk om een Data Base met een In-Memory OLTP-objecten naar een van deze lagen te verplaatsen.
 
 Voordat u de data base downgradet naar Algemeen, Standard of Basic, verwijdert u alle tabellen en tabel typen die zijn geoptimaliseerd voor geheugen en van alle systeem eigen, gecompileerde T-SQL-modules.
 
-*Resources in bedrijfskritiek laag schalen*: gegevens in tabellen die zijn geoptimaliseerd voor geheugen moeten passen binnen de OLTP-opslag in het geheugen die is gekoppeld aan de laag van de data base of het beheerde exemplaar of beschikbaar is in de elastische pool. Als u de laag wilt schalen of de Data Base wilt verplaatsen naar een pool die niet voldoende beschik bare OLTP-opslag in het geheugen heeft, mislukt de bewerking.
+*Resources in bedrijfskritiek laag schalen*: gegevens in tabellen die zijn geoptimaliseerd voor geheugen, moeten passen binnen de In-Memory OLTP-opslag die is gekoppeld aan de laag van de data base of het beheerde exemplaar of beschikbaar is in de elastische pool. Als u probeert de laag te schalen of de data base te verplaatsen naar een pool die niet voldoende beschik bare In-Memory OLTP-opslag heeft, mislukt de bewerking.
 
 ## <a name="in-memory-columnstore"></a>In-Memory column Store
 
@@ -157,7 +157,7 @@ Met de column Store-technologie in het geheugen kunt u een grote hoeveelheid geg
 Er zijn twee soorten column Store-modellen die u kunt gebruiken om uw gegevens te organiseren:
 
 - **Geclusterde column Store** waarbij alle gegevens in de tabel in de kolom indeling zijn ingedeeld. In dit model worden alle rijen in de tabel in de kolom indeling geplaatst, waardoor de gegevens zeer worden gecomprimeerd en kunt u snelle analytische query's en rapporten op de tabel uitvoeren. Afhankelijk van de aard van uw gegevens, is de omvang van uw gegevens mogelijk onverminderd 10x-100x. Met een geclusterd column Store-model kunt u ook snel een grote hoeveelheid gegevens (bulksgewijs laden) maken, aangezien grote batches gegevens die groter zijn dan 100.000-rijen, worden gecomprimeerd voordat ze op schijf worden opgeslagen. Dit model is een goede keuze voor de klassieke data warehouse-scenario's.
-- **Niet-geclusterde column Store** waarin de gegevens worden opgeslagen in een traditionele rowstore-tabel en er een index is in de column Store-indeling die wordt gebruikt voor de analytische query's. Dit model maakt hybride transactionele analyse verwerking mogelijk (HTAP): de mogelijkheid om de uitvoering van een real-time analyse op een transactionele werk belasting uit te voeren. OLTP-query's worden uitgevoerd op rowstore-tabel die is geoptimaliseerd voor toegang tot een kleine set rijen, terwijl OLAP-query's worden uitgevoerd op column store-index die beter geschikt is voor scans en analyses. Met de query optimalisatie wordt de rowstore-of column Store-indeling dynamisch gekozen op basis van de query. Niet-geclusterde column Store-indexen verminderen de grootte van de gegevens omdat de oorspronkelijke gegevensset in de oorspronkelijke rowstore-tabel zonder enige wijziging wordt bewaard. De grootte van de aanvullende column store-index moet echter kleiner zijn dan de equivalente index van de B-structuur.
+- **Niet-geclusterde column Store** waarin de gegevens worden opgeslagen in een traditionele rowstore-tabel en er een index is in de column Store-indeling die wordt gebruikt voor de analytische query's. Dit model maakt hybride Transactional-Analytic verwerking mogelijk (HTAP): de mogelijkheid om uitvoering van een real-time analyse uit te voeren op een transactionele werk belasting. OLTP-query's worden uitgevoerd op rowstore-tabel die is geoptimaliseerd voor toegang tot een kleine set rijen, terwijl OLAP-query's worden uitgevoerd op column store-index die beter geschikt is voor scans en analyses. Met de query optimalisatie wordt de rowstore-of column Store-indeling dynamisch gekozen op basis van de query. Niet-geclusterde column Store-indexen verminderen de grootte van de gegevens omdat de oorspronkelijke gegevensset in de oorspronkelijke rowstore-tabel zonder enige wijziging wordt bewaard. De grootte van de aanvullende column store-index moet echter kleiner zijn dan de equivalente index van de B-structuur.
 
 > [!Note]
 > In-Memory column Store-technologie bewaart alleen de gegevens die nodig zijn voor verwerking in het geheugen, terwijl de gegevens die niet in het geheugen passen, op schijf worden opgeslagen. Daarom kan de hoeveelheid gegevens in column Store-structuren in het geheugen groter zijn dan de hoeveelheid beschikbaar geheugen.
@@ -189,21 +189,21 @@ Als u een **geclusterde** column store-index hebt, wordt de hele tabel na de dow
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Snelstartgids 1: In-Memory OLTP-technologieën voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
-- [OLTP-opslag in het geheugen bewaken](in-memory-oltp-monitor-space.md) voor OLTP in het geheugen
+- [In-Memory OLTP-opslag](in-memory-oltp-monitor-space.md) voor In-Memory OLTP bewaken
 - [Functies in het geheugen proberen](in-memory-sample.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 ### <a name="deeper-information"></a>Dieper informatie
 
-- [Meer informatie over hoe quorum de werk belasting van de Key Data Base verdubbelt tijdens het verlagen van DTU met 70% met in-Memory OLTP in SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Meer informatie over hoe quorum de werk belasting van de Key Data Base verdubbelt tijdens het verlagen van DTU met 70% met In-Memory OLTP in SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 - [In-Memory OLTP-blog bericht](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
-- [Meer informatie over in-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Meer informatie over In-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Meer informatie over column Store-indexen](https://msdn.microsoft.com/library/gg492088.aspx)
 - [Meer informatie over real-time operationele analyses](https://msdn.microsoft.com/library/dn817827.aspx)
-- Bekijk [algemene werk belasting patronen en migratie overwegingen](https://msdn.microsoft.com/library/dn673538.aspx) (waarin de werkbelasting patronen worden beschreven waarbij in-Memory OLTP doorgaans aanzienlijke prestatie verbeteringen oplevert)
+- Bekijk [algemene werk belasting patronen en migratie overwegingen](https://msdn.microsoft.com/library/dn673538.aspx) (die de werkbelasting patronen beschrijft waarbij In-Memory OLTP doorgaans aanzienlijke prestatie verbeteringen biedt)
 
 ### <a name="application-design"></a>Toepassingsontwerp
 

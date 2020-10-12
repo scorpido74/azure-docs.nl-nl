@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132718"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richt lijnen voor de verantwoordelijke implementatie van Personaler
@@ -119,7 +119,7 @@ Hier volgen de ontwerp gebieden voor de verantwoordelijke implementaties van AI.
 
 ![AI-waarden van toekomstige berekeningen](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
-### <a name="accountability"></a>Verantwoordelijkheid
+### <a name="accountability"></a>Verantwoordelijkheden
 *Personen die AI-systemen ontwerpen en implementeren, moeten verantwoordelijk zijn voor de werking van hun systemen*.
 
 * Maak interne richt lijnen voor het implementeren van persoonlijke instellingen, documenten en communicatie met uw team, leidinggevenden en leveranciers.
@@ -140,7 +140,7 @@ Hier volgen de ontwerp gebieden voor de verantwoordelijke implementaties van AI.
 * Gebruik geen functies die niet geschikt zijn voor het personaliseren van inhoud met of die het mogelijk maakt om ongewenste BIASS door te geven. Iedereen met vergelijk bare financiële omstandigheden zou bijvoorbeeld dezelfde gepersonaliseerde aanbevelingen voor financiële producten moeten zien.
 * Begrijp wat er mogelijk is in functies die zijn opgenomen in de editors, hulpprogram ma's voor algoritmen of gebruikers zelf.
 
-### <a name="reliability-and-safety"></a>Betrouw baarheid en veiligheid
+### <a name="reliability-and-safety"></a>Betrouwbaarheid en veiligheid
 *AI-systemen moeten betrouwbaar en veilig worden uitgevoerd*. Voor Personaler:
 
 * *Geef geen persoonlijke voor keuren op die niet moeten worden gekozen*. Zo moeten niet-geëigende films worden gefilterd op basis van de acties die persoonlijk moeten worden uitgevoerd als er een aanbeveling wordt gedaan voor een anonieme gebruiker of een gebruiks duur van de leeftijd.
@@ -160,7 +160,7 @@ Hier volgen de ontwerp gebieden voor de verantwoordelijke implementaties van AI.
 
 In sommige gevallen kunnen deze juridisch verplicht zijn. Houd rekening met de compromissen bij het opnieuw trainen van modellen, zodat deze geen traceringen van verwijderde gegevens bevatten.
 
-### <a name="inclusiveness"></a>Inclusieve
+### <a name="inclusiveness"></a>Inclusiviteit
 *Adresseer een breed scala aan menselijke behoeften en ervaring*.
 * *Een persoonlijke ervaring bieden voor toegankelijkheids interfaces.* De efficiëntie die afkomstig is van goede persoonlijke instellingen: wordt toegepast om de hoeveelheid inspanning, verplaatsing en onnodige herhaling in interacties te verminderen. Dit kan vooral nuttig zijn voor mensen met een handicap.
 * *Stel toepassings gedrag in op context*. U kunt Personaler gebruiken om dubbel zinnigheid te maken tussen intenties in een chat-bot, bijvoorbeeld omdat de juiste interpretatie context gevoelig is en één grootte mogelijk niet helemaal past.
@@ -186,7 +186,7 @@ Denk na over het behandelen van taken met betrekking tot verantwoordelijk gebrui
 
 ## <a name="questions-and-feedback"></a>Vragen en feedback
 
-Micro soft zet zich voortdurend bezig met hulp middelen en documenten om u op deze verantwoordelijkheden te helpen. Ons team nodigt u uit om [feedback te geven aan micro soft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) als u meer hulp middelen, product functies en documenten zou kunnen helpen bij het implementeren van deze richt lijnen voor het gebruik van personaler.
+Micro soft zet zich voortdurend bezig met hulp middelen en documenten om u op deze verantwoordelijkheden te helpen. Ons team nodigt u uit om [feedback te geven aan micro soft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D)  als u meer hulp middelen, product functies en documenten zou kunnen helpen bij het implementeren van deze richt lijnen voor het gebruik van personaler.
 
 ## <a name="recommended-reading"></a>Aanbevolen Lees bewerkingen
 

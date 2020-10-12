@@ -4,10 +4,10 @@ description: Azure Service Fabric accepteert de indeling docker opstellen, waarm
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84691285"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-ondersteuning voor implementatie in azure Service Fabric (preview-versie)
@@ -35,7 +35,7 @@ Maak een Service Fabric opstellen implementatie vanuit een docker-Compose. yml-b
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName`en `RegistryPassword` Raadpleeg de gebruikers naam en het wacht woord van het container register. Nadat u de implementatie hebt voltooid, kunt u de status ervan controleren met behulp van de volgende opdracht:
+`RegistryUserName` en `RegistryPassword` Raadpleeg de gebruikers naam en het wacht woord van het container register. Nadat u de implementatie hebt voltooid, kunt u de status ervan controleren met behulp van de volgende opdracht:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
