@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322394"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Waarschuwingenbeheer oplossing in azure Log Analytics
@@ -31,7 +31,7 @@ De oplossing werkt met een wille keurige record in de Log Analytics-opslag plaat
 - Configureer voor nagios-en zabbix-waarschuwingen [die servers](../learn/quick-collect-linux-computer.md) om waarschuwingen naar log Analytics te verzenden.
 - Voor System Center Operations Manager waarschuwingen [verbindt u uw Operations Manager-beheer groep met uw log Analytics-werk ruimte](./om-agents.md).  Alle waarschuwingen die zijn gemaakt in System Center Operations Manager, worden in Log Analytics geïmporteerd.  
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 Voeg de Waarschuwingenbeheer oplossing toe aan uw Log Analytics-werk ruimte met behulp van het proces dat wordt beschreven in [oplossingen toevoegen](../insights/solutions.md). Er is geen verdere configuratie nodig.
 
 ## <a name="management-packs"></a>Management packs

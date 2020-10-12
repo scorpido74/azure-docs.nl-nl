@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a3930698bb2999ebaad4d78e0b545b83cc968ef2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270896"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden of weergeven
 
@@ -49,7 +49,7 @@ Voor de meeste abonnementen kunt u uw factuur downloaden via de Azure-portal of 
 
     ![Schermopname met de pagina voor factuur en gebruik downloaden](./media/download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
-Zie [Meer informatie over uw factuur voor Microsoft Azure](../understand/review-individual-bill.md) voor meer informatie over uw factuur. Zie [Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer](getting-started.md) voor hulp bij het beheren van uw kosten.
+Zie [Meer informatie over uw factuur voor Microsoft Azure](../understand/review-individual-bill.md) voor meer informatie over uw factuur. Zie [Onverwachte kosten analyseren](../understand/analyze-unexpected-charges.md) voor hulp bij het beheren van uw kosten.
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Facturen voor een Microsoft-klantovereenkomst downloaden
 

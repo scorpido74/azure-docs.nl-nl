@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068144"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Service machtigingen van Azure Image Builder configureren met behulp van Azure CLI
@@ -234,7 +234,7 @@ Vervang de volgende instellingen voor de tijdelijke aanduiding:
 | \<Storage account container\> | Containernaam voor het opslagaccount |
 | \<Subscription ID\> | Azure-abonnement |
 
-Voor meer informatie over het gebruik van een door de gebruiker toegewezen beheerde identiteit, zie de een [aangepaste installatie kopie maken die gebruikmaakt van een door de gebruiker toegewezen beheerde identiteit voor het naadloos van toegang tot bestanden Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). In de Snelstartgids wordt uitgelegd hoe u de door de gebruiker toegewezen beheerde identiteit kunt maken en configureren voor toegang tot een opslag account.
+Voor meer informatie over het gebruik van een door de gebruiker toegewezen beheerde identiteit, zie de een [aangepaste installatie kopie maken die gebruikmaakt van een Azure User-Assigned beheerde identiteit voor het naadloos van toegang tot bestanden Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). In de Snelstartgids wordt uitgelegd hoe u de door de gebruiker toegewezen beheerde identiteit kunt maken en configureren voor toegang tot een opslag account.
 
 ## <a name="next-steps"></a>Volgende stappen
 

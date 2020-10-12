@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
 ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318297"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Ondersteunde categorieën voor Azure-resource logboeken
@@ -169,7 +169,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |dbfs|Databricks-bestandssysteem|
 |instancePools|Instantie groepen|
 |functies|Databricks-taken|
-|notitieblok|Databricks Notebook|
+|notebook|Databricks Notebook|
 |geheimen|Databricks geheimen|
 |sqlPermissions|Databricks SQLPermissions|
 |SSH|Databricks SSH|
@@ -347,7 +347,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |---|---|
 |ArchiveLogs|Archief logboeken|
 |AutoScaleLogs|Logboeken automatisch schalen|
-|CustomerManagedKeyUserLogs|Door de klant beheerde sleutel logboeken|
+|CustomerManagedKeyUserLogs|Sleutel logboeken Customer-Managed|
 |EventHubVNetConnectionEvent|Logboeken voor VNet/IP-filtering verbindingen|
 |KafkaCoordinatorLogs|Kafka Coordinator-logboeken|
 |KafkaUserErrorLogs|Fout logboeken van Kafka-gebruikers|
@@ -393,7 +393,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |Controleren|Controleren|
 |Uitgaand verkeer|Uitgaand verkeer|
 |Inkomend verkeer|Inkomend verkeer|
-|Functioneren|Functioneren|
+|Operationeel|Operationeel|
 |Tracering|Tracering|
 |UserDefinedFunction|UserDefinedFunction|
 
@@ -420,7 +420,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |IntegrationAccountTrackingEvents|Spoor gebeurtenissen voor integratie account|
 
 
-## <a name="microsoftlogicworkflows"></a>Micro soft. Logic/werk stromen
+## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -469,7 +469,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |BastionAuditLogs|Controle logboeken voor Bastion|
 
 
-## <a name="microsoftnetworkexpressroutecircuits"></a>Micro soft. Network/expressRouteCircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -510,7 +510,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |DDoSProtectionNotifications|DDoS-beveiligings meldingen|
 
 
-## <a name="microsoftnetworktrafficmanagerprofiles"></a>Micro soft. Network/trafficManagerProfiles
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -603,7 +603,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 
 |Categorie|Weergave naam categorie|
 |---|---|
-|Errors|Errors|
+|Fouten|Fouten|
 |QueryStoreRuntimeStatistics|Runtime statistieken voor query Store|
 |QueryStoreWaitStatistics|Wacht statistieken voor query Store|
 |SQLInsights|SQL Insights|
@@ -619,7 +619,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |Impassen|Impassen|
 |DevOpsOperationsAudit|Audit logboeken voor Devops-bewerkingen|
 |DmsWorkers|DMS-werk rollen|
-|Errors|Errors|
+|Fouten|Fouten|
 |ExecRequests|Exec-aanvragen|
 |QueryStoreRuntimeStatistics|Runtime statistieken voor query Store|
 |QueryStoreWaitStatistics|Wacht statistieken voor query Store|

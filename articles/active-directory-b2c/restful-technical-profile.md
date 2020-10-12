@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88041524"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een onderliggend technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
@@ -60,7 +60,7 @@ Een complexe JSON-nettolading verzenden:
 1. Bouw uw JSON-nettolading met de [GenerateJson](json-transformations.md) -claim transformatie.
 1. In het REST API technische profiel:
     1. Een invoer claim transformatie toevoegen met een verwijzing naar de `GenerateJson` claim transformatie.
-    1. Stel de `SendClaimsIn` optie meta gegevens in op`body`
+    1. Stel de `SendClaimsIn` optie meta gegevens in op `body`
     1. Stel de `ClaimUsedForRequestPayload` optie meta gegevens in op de naam van de claim met de JSON-nettolading.
     1. Voeg in de invoer claim een verwijzing toe naar de invoer claim met de JSON-nettolading.
 

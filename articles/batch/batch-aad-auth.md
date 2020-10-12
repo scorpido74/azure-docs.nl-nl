@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
 ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533509"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
@@ -127,7 +127,7 @@ Als u een Service-Principal wilt verifiëren, moet u RBAC toewijzen aan uw toepa
 1. Selecteer **Access Control (IAM)** in het gedeelte **instellingen** van het batch-account.
 1. Selecteer het tabblad **roltoewijzingen** .
 1. Selecteer **Roltoewijzing toevoegen**.
-1. Kies in de vervolg keuzelijst **functie** de rol *Inzender* of *lezer* voor uw toepassing. Zie [aan de slag met op rollen gebaseerde Access Control in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over deze rollen.
+1. Kies in de vervolg keuzelijst **functie** de rol *Inzender* of *lezer* voor uw toepassing. Zie [aan de slag met Role-Based Access Control in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over deze rollen.
 1. Voer in het veld **selecteren** de naam van uw toepassing in. Selecteer uw toepassing in de lijst en selecteer vervolgens **Opslaan**.
 
 Uw toepassing moet nu worden weer gegeven in de instellingen voor toegangs beheer waaraan een Azure-rol is toegewezen.

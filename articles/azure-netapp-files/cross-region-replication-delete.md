@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 0904ac36a9453e51dbb1efc50eee2b9bf3c669c7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708661"
 ---
 # <a name="delete-replications"></a>Replicaties verwijderen
@@ -37,8 +37,8 @@ U kunt de replicatie verbinding tussen de bron-en doel volumes beëindigen door 
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-* [Replicatie tussen regio's](cross-region-replication-introduction.md)
+* [Replicatie in meerdere regio's](cross-region-replication-introduction.md)
 * [Vereisten en overwegingen voor het gebruik van replicatie tussen regio's](cross-region-replication-requirements-considerations.md)
-* [Status van replicatie relatie weer geven](cross-region-replication-display-health-status.md)
+* [Status van replicatierelatie weergeven](cross-region-replication-display-health-status.md)
 * [Problemen met kruis regio's oplossen-replicatie](troubleshoot-cross-region-replication.md)
 

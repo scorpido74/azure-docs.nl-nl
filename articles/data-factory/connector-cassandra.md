@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417477"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Gegevens kopiëren van Cassandra met behulp van Azure Data Factory
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze Cassandra-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de Cassandra-data base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
@@ -185,18 +185,18 @@ Bij het kopiëren van gegevens uit Cassandra worden de volgende toewijzingen geb
 | ASCII |Tekenreeks |
 | BIGINT |Int64 |
 | BLOBCACHE |Byte [] |
-| True |Boolean-waarde |
-| KOMMA |Decimal |
+| True |Booleaans |
+| KOMMA |Decimaal |
 | DUBBELKLIK |Dubbel |
 | FLOAT |Enkelvoudig |
 | INET |Tekenreeks |
 | INT |Int32 |
 | TEXT |Tekenreeks |
 | Neem |DateTime |
-| TIMEUUID |GUID |
-| MEE |GUID |
+| TIMEUUID |Guid |
+| MEE |Guid |
 | VARCHAR |Tekenreeks |
-| VARINT |Decimal |
+| VARINT |Decimaal |
 
 > [!NOTE]
 > Voor verzamelings typen (kaart, set, lijst, enzovoort) raadpleegt u [werken met Cassandra-verzamelings typen met behulp](#work-with-collections-using-virtual-table) van de sectie virtuele tabel.

@@ -8,10 +8,10 @@ ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 5c02812d4c97b94667fcddcb275243e7a9b36b29
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321901"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Een actie groep maken met een resource manager-sjabloon
@@ -163,7 +163,7 @@ Als u een actie groep wilt maken op basis van een resource manager-sjabloon, maa
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [actie groepen](./action-groups.md).
+* Meer informatie over [actiegroepen](./action-groups.md).
 * Meer informatie over [waarschuwingen](alerts-overview.md).
 * Meer informatie over het toevoegen [van waarschuwingen met behulp van een resource manager-sjabloon](./alerts-activity-log.md).
 

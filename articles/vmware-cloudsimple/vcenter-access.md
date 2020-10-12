@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77022661"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>Toegang tot uw Private Cloud vCenter-Portal
@@ -36,7 +36,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 U kunt de vCenter-portal van uw Privécloud starten vanuit Azure Portal.
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
 2. Zoek naar **CloudSimple Services**.
 

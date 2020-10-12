@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75429157"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Een Azure IoT hub klonen naar een andere regio
@@ -407,7 +407,7 @@ Als u de wijzigingen wilt terugdraaien, moet u de apparaten opnieuw inrichten va
 
 U bent nu klaar met het migreren van uw hub en de bijbehorende apparaten. U kunt overs Laan om de [opschoon bewerking uit](#clean-up)te scha kelen.
 
-## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Import-export gebruiken om de apparaten naar de nieuwe hub te verplaatsen
+## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Import-Export gebruiken om de apparaten naar de nieuwe hub te verplaatsen
 
 De toepassing streeft naar .NET core, zodat u deze kunt uitvoeren op Windows of Linux. U kunt het voor beeld downloaden, de verbindings reeksen ophalen, de vlaggen instellen voor de bits die u wilt uitvoeren en deze uitvoeren. U kunt dit doen zonder de code te openen.
 

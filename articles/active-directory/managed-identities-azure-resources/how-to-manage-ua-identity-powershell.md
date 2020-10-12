@@ -16,10 +16,10 @@ ms.date: 04/16/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8649c9faf3905e69232cdc15bbba6607abe3e9c4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969514"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van Azure PowerShell
@@ -36,13 +36,13 @@ In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identitei
 
 - Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de sectie [Overzicht](overview.md). **Let op dat u nagaat wat het [verschil is tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Als u de voorbeeld scripts wilt uitvoeren, hebt u twee opties:
-    - Gebruik de [Azure Cloud shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **try it** in de rechter bovenhoek van code blokken.
+- Als u de voorbeeldscripts wilt uitvoeren, hebt u twee opties:
+    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **Probeer het nu** in de rechterbovenhoek van Code::Blocks.
     - Voer scripts lokaal uit met Azure PowerShell, zoals wordt beschreven in de volgende sectie.
 
 ### <a name="configure-azure-powershell-locally"></a>Azure PowerShell lokaal configureren
 
-Als u Azure PowerShell lokaal voor dit artikel wilt gebruiken (in plaats van Cloud Shell), voert u de volgende stappen uit:
+Als u Azure PowerShell voor dit artikel lokaal wilt gebruiken (in plaats van Cloud Shell), voert u de volgende stappen uit:
 
 1. Installeer de [meest recente versie van Azure PowerShell](/powershell/azure/install-az-ps) als u dat nog niet hebt gedaan.
 
@@ -58,9 +58,9 @@ Als u Azure PowerShell lokaal voor dit artikel wilt gebruiken (in plaats van Clo
     Install-Module -Name PowerShellGet -AllowPrerelease
     ```
 
-    Mogelijk moet u `Exit` de huidige Power shell-sessie verlaten nadat u deze opdracht voor de volgende stap hebt uitgevoerd.
+    Mogelijk moet u `Exit` buiten de huidige PowerShell-sessie nadat u deze opdracht voor de volgende stap hebt uitgevoerd.
 
-1. Installeer de voorlopige versie van de `Az.ManagedServiceIdentity` module om de door de gebruiker toegewezen beheerde identiteits bewerkingen in dit artikel uit te voeren:
+1. Installeer de voorlopige versie van de `Az.ManagedServiceIdentity`-module en voer de aan de gebruiker toegewezen identiteitsbewerkingen in dit artikel uit:
 
     ```azurepowershell
     Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease

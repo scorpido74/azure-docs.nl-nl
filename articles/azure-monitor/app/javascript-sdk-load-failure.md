@@ -7,10 +7,10 @@ ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333253"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Problemen met SDK-laad fouten voor Java script-web-apps oplossen
@@ -64,7 +64,7 @@ Hetzelfde geldt ook voor het gebruik van de SDK via NPM packages. Vanuit het per
 
 U kunt ook proberen om [NPM-pakketten](#use-npm-packages-to-embed-the-application-insight-sdk) te gebruiken om de Application Insights SDK in te sluiten.
 
-Om een onregelmatige fout in de netwerk verbinding te minimaliseren, hebben we de cache-control-headers voor alle CDN-bestanden geïmplementeerd, zodat de huidige versie van de SDK door de browser van de eind gebruiker niet opnieuw hoeft te worden gedownload. in de browser wordt de eerder verkregen kopie opnieuw gebruikt (Zie [hoe caching werkt](../../cdn/cdn-how-caching-works.md)). Als de cache controle mislukt of er een nieuwe release is, moet de bijgewerkte versie van de browser van uw eind gebruiker worden gedownload. Het is dus mogelijk dat het achtergrond niveau _' ruis '_ wordt weer gegeven in het scenario voor de controle fout of een tijdelijke piek wanneer een nieuwe release plaatsvindt en algemeen beschikbaar wordt gemaakt (geïmplementeerd in het CDN).
+Om een onregelmatige fout in de netwerk verbinding te minimaliseren, hebben we Cache-Control headers geïmplementeerd op alle CDN-bestanden, zodat de huidige versie van de SDK door de browser van de eind gebruiker niet meer hoeft te worden gedownload. in de browser wordt de eerder verkregen kopie opnieuw gebruikt (Zie [hoe caching werkt](../../cdn/cdn-how-caching-works.md)). Als de cache controle mislukt of er een nieuwe release is, moet de bijgewerkte versie van de browser van uw eind gebruiker worden gedownload. Het is dus mogelijk dat het achtergrond niveau _' ruis '_ wordt weer gegeven in het scenario voor de controle fout of een tijdelijke piek wanneer een nieuwe release plaatsvindt en algemeen beschikbaar wordt gemaakt (geïmplementeerd in het CDN).
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN-onderbreking
 
