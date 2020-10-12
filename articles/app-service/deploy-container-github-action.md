@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: dc8b5e75b4feed886f843e7a516cc18429afec11
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728485"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893353"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Een aangepaste container implementeren op App Service met behulp van GitHub-acties
 
@@ -25,7 +25,7 @@ Voor een Azure App Service container werk stroom heeft het bestand drie secties:
 |Sectie  |Taken  |
 |---------|---------|
 |**Verificatie** | 1. Haal een service-principal of een publicatie profiel op. <br /> 2. Maak een GitHub-geheim. |
-|**Build** | 1. Maak de omgeving. <br /> 2. bouw de container installatie kopie. |
+|**PE** | 1. Maak de omgeving. <br /> 2. bouw de container installatie kopie. |
 |**Implementeren** | 1. Implementeer de container installatie kopie. |
 
 ## <a name="prerequisites"></a>Vereisten
@@ -138,10 +138,6 @@ Geef geheimen op die moeten worden gebruikt met de actie aanmelden bij docker.
 
 In het volgende voor beeld wordt een deel van de werk stroom weer gegeven dat een Node.JS docker-installatie kopie bouwt. Gebruik [docker login](https://github.com/azure/docker-login) om u aan te melden bij een persoonlijk container register. In dit voor beeld wordt Azure Container Registry gebruikt, maar dezelfde actie werkt voor andere registers. 
 
-# <a name="publish-profile"></a>[Profiel publiceren](#tab/publish-profile)
-
-In dit voor beeld ziet u hoe u een Node.JS docker-installatie kopie bouwt met behulp van een publicatie profiel voor authenticatie.
-
 
 ```yaml
 name: Linux Container Node Workflow
@@ -191,41 +187,6 @@ jobs:
         docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
-# <a name="service-principal"></a>[Service-Principal](#tab/service-principal)
-
-In dit voor beeld ziet u hoe u een Node.JS docker-installatie kopie bouwt met behulp van een service-principal voor verificatie. 
-
-```yaml
-on: [push]
-
-name: Linux_Container_Node_Workflow
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}   
-    - uses: azure/docker-login@v1
-      with:
-        login-server: mycontainer.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}  
-    - run: |
-        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}      
-    - name: Azure logout
-      run: |
-        az logout
-```
-
----
 
 ## <a name="deploy-to-an-app-service-container"></a>Implementeren in een App Service-container
 
@@ -237,7 +198,7 @@ Gebruik de actie om uw installatie kopie te implementeren in een aangepaste cont
 | **publicatie profiel** | Beschrijving Inhoud van profiel bestand publiceren met Web Deploy-geheimen |
 | **installatie kopieën** | Volledig gekwalificeerde naam van container installatie kopie (n). Bijvoorbeeld ' myregistry.azurecr.io/nginx:latest ' of ' python: 3.7.2-Alpine/'. Voor scenario met meerdere containers kunnen namen van verschillende container installatie kopieën worden gegeven (meerdere regels gescheiden) |
 | **sleuf naam** | Beschrijving Voer een bestaande sleuf in, behalve de productie sleuf |
-| **configuratie-bestand** | Beschrijving Pad van het docker-bestand opstellen |
+| **configuratie-bestand** | Beschrijving Pad naar het Docker-Compose bestand |
 
 # <a name="publish-profile"></a>[Profiel publiceren](#tab/publish-profile)
 

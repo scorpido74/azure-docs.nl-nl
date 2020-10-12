@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836918"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Een virtuele Linux-machine in azure maken met meerdere netwerk interface kaarten
@@ -81,7 +81,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>Een virtuele machine maken en de Nic's koppelen
 Wanneer u de virtuele machine maakt, geeft u de Nic's op waarmee u hebt gemaakt `--nics` . U moet er ook voor zorgen dat u de VM-grootte selecteert. Er zijn limieten voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Meer informatie over de [grootten van Linux VM](../sizes.md).
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt:
 
 ```azurecli
 az vm create \

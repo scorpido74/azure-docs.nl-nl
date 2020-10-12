@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: ad49db3eb61b77805b0c7a3e1e9583fb22bd4373
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f570c2cd5f3939bab0df0c4fefe1becc3c81da
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291967"
+ms.locfileid: "91893438"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Veelgestelde vragen over het gebruik van Azure Database Migration Service
 
@@ -59,7 +59,7 @@ Er zijn verschillende vereisten vereist om ervoor te zorgen dat Azure Database M
 Azure Database Migration Service vereisten die gemeen schappelijk zijn voor alle ondersteunde migratie scenario's zijn onder andere het volgende:
 
 * Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel. Dit geeft site-naar-site-verbinding met uw on-premises bronservers met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende communicatie poorten 443, 53, 9354, 445, 12000 blok keren. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) voor meer informatie over verkeer filteren van verkeer via de netwerkbeveiligingsgroep voor virtuele netwerken.
+* Zorg ervoor dat in de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende communicatie poorten 443, 53, 5671-5672, 9350-9354, 445, 12000 worden geblokkeerd. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) voor meer informatie over verkeer filteren van verkeer via de netwerkbeveiligingsgroep voor virtuele netwerken.
 * Wanneer u een firewallapparaat gebruikt voor de brondatabase(s), moet u mogelijk firewallregels toevoegen om voor Azure Database Migration Service toegang tot de brondatabase(s) voor de migratie toe te staan.
 
 Zie de gerelateerde zelf studies in de Azure Database Migration Service [documentatie](https://docs.microsoft.com/azure/dms/dms-overview) op docs.Microsoft.com voor een lijst met alle vereisten die vereist zijn voor het concurreren van specifieke migratie scenario's met behulp van Azure database Migration service.

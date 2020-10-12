@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91260407"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
@@ -126,7 +126,7 @@ Selecteer **afspelen**om de taak af te spelen. U kunt op elk gewenst moment **st
 |Oranje|Opnieuw geprobeerd: exemplaren van taken die zijn mislukt, maar die geen invloed hebben op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe instanties die later kunnen slagen.|
 |Blue|Uitvoeren: de taak wordt uitgevoerd.|
 |Wit|Wachtend of overgeslagen: de taak wacht op het uitvoeren of het stadium is overgeslagen.|
-|Red|Mislukt: de taak is mislukt.|
+|Rood|Mislukt: de taak is mislukt.|
 
 De volgende afbeelding toont de kleuren groen, oranje en blauw.
 

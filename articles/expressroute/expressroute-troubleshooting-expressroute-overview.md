@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401738"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
@@ -42,18 +42,18 @@ In het voor gaande diagram duiden de getallen op belang rijke netwerk punten. In
 
 1.  Klant Compute Device (bijvoorbeeld een server of PC)
 2.  CEs: klanten Edge-routers 
-3.  PEs (CE gericht): provider Edge routers/switches die zijn gericht op klanten Edge-routers. In dit document wordt PE-CEs genoemd.
-4.  PEs (MSEE gericht): provider Edge routers/switches die zijn gericht op Msee's. In dit document wordt ' PE-Msee's ' genoemd.
+3.  PEs (CE gericht): provider Edge routers/switches die zijn gericht op klanten Edge-routers. Wordt in dit document aangeduid als PE-CEs.
+4.  PEs (MSEE gericht): provider Edge routers/switches die zijn gericht op Msee's. Wordt in dit document aangeduid als PE-MSEEs.
 5.  Msee's: micro soft Enter prise Edge (MSEE) ExpressRoute-routers
 6.  Virtual Network (VNet)-gateway
 7.  Compute-apparaat op het Azure-VNet
 
 Als de co-locatie van de Cloud uitwisseling, Point-to-Point Ethernet of directe connectiviteits modellen worden gebruikt, is CEs (2) BGP-peering tot stand gebracht met Msee's (5). 
 
-Als het verbindings model any-to-any (IPVPN) wordt gebruikt, is PE-Msee's (4) BGP-peering tot stand gebracht met Msee's (5). PE-Msee's door sturen van de routes die van micro soft zijn ontvangen via het netwerk van de IPVPN-service provider.
+Als het verbindings model any-to-any (IPVPN) wordt gebruikt, PE-MSEEs (4) BGP-peering tot stand brengen met Msee's (5). PE-MSEEs de routes die van micro soft zijn ontvangen via het netwerk van de IPVPN-service provider door geven aan het klant netwerk.
 
 > [!NOTE]
->Micro soft brengt voor hoge Beschik baarheid een volledig redundante parallelle verbinding tot stand tussen Msee's (5) en PE-Msee's (4)-paren. Er wordt ook een volledig redundant parallel netwerkpad aanbevolen tussen het netwerk van de klant en het PE-CEs-paar. Zie het artikel [ontwerpen voor hoge Beschik baarheid met ExpressRoute][HA] voor meer informatie over hoge Beschik baarheid.
+>Micro soft brengt voor hoge Beschik baarheid een volledig redundante parallelle verbinding tussen Msee's (5) en PE-MSEEs (4) paren tot stand. Er wordt ook een volledig redundant parallel netwerkpad aanbevolen tussen het netwerk van de klant en het PE-CEs-paar. Zie het artikel [ontwerpen voor hoge Beschik baarheid met ExpressRoute][HA] voor meer informatie over hoge Beschik baarheid.
 >
 >
 
@@ -319,7 +319,7 @@ StatusCode: 400
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie of hulp:
 
-- [Microsoft-ondersteuning][Support]
+- [Microsoft Ondersteuning][Support]
 - [Een ExpressRoute-circuit maken en wijzigen][CreateCircuit]
 - [Routering voor een ExpressRoute-circuit maken en wijzigen][CreatePeering]
 

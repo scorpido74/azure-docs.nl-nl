@@ -7,10 +7,10 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
 ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326899"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Container bewakings oplossing in Azure Monitor
@@ -45,7 +45,7 @@ Voordat u begint, controleert u de volgende gegevens om te controleren of u vold
 
 De volgende tabel bevat een overzicht van de ondersteuning van docker-indeling en besturingssysteem controle van de container inventaris, prestaties en logboeken met Azure Monitor.   
 
-|Docker-indeling | ACS | Linux | Windows | Container<br>Inventaris | Installatiekopie<br>Inventaris | Knooppunt<br>Inventaris | Container<br>Prestaties | Container<br>Gebeurtenis | Gebeurtenis<br>Log | Container<br>Log |
+|Docker-indeling | ACS | Linux | Windows | Container<br>Inventaris | Installatiekopie<br>Inventaris | Knooppunt<br>Inventaris | Container<br>Prestaties | Container<br>Gebeurtenis | Gebeurtenis<br>Logboek | Container<br>Logboek |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -360,7 +360,7 @@ U kunt ervoor kiezen om omsagent DaemonSets te maken met of zonder geheimen.
         KEY:    88 bytes
         ```
 
-    5. Uw omsagent-daemon maken-set door uit te voeren```sudo kubectl create -f omsagent-ds-secrets.yaml```
+    5. Uw omsagent-daemon maken-set door uit te voeren ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. Controleer of de Log Analytics agent Daemonset wordt uitgevoerd, vergelijkbaar met het volgende:
 
@@ -404,7 +404,7 @@ Voor Windows Kubernetes gebruikt u een script om het geheimen yaml-bestand te ge
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. Uw omsagent-daemon maken-set door uit te voeren```kubectl create -f omsagentsecret.yaml```
+    3. Uw omsagent-daemon maken-set door uit te voeren ```kubectl create -f omsagentsecret.yaml```
     4. Als u wilt controleren, voert u de volgende handelingen uit:
 
         ```
@@ -431,7 +431,7 @@ Voor Windows Kubernetes gebruikt u een script om het geheimen yaml-bestand te ge
         KEY:    88 bytes
         ```
 
-    5. Uw omsagent-daemon maken-set door uit te voeren```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. Uw omsagent-daemon maken-set door uit te voeren ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
 2. Controleer of de Log Analytics agent Daemonset wordt uitgevoerd, vergelijkbaar met het volgende:
 
@@ -447,7 +447,7 @@ Voor Windows Kubernetes gebruikt u een script om het geheimen yaml-bestand te ge
 
 Voer de volgende stappen uit om helm te gebruiken om Log Analytics-agent te implementeren in uw Linux Kubernetes-omgeving.
 
-1. Uw omsagent-daemon maken-set door uit te voeren```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+1. Uw omsagent-daemon maken-set door uit te voeren ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. De resultaten ziet er ongeveer als volgt uit:
 
     ```
@@ -602,7 +602,7 @@ Log Analytics een container als **mislukt** markeert als deze is afgesloten met 
    ![mislukte containers](./media/containers/containers-state-failed-select.png)  
 1. Voer de query uit en vouw vervolgens een regel uit in de resultaten om de afbeeldings-ID weer te geven.  
    ![mislukte containers](./media/containers/containers-state-failed.png)  
-1. Typ het volgende in de logboek query. `ContainerImageInventory | where ImageID == <ImageID>`om details weer te geven over de afbeelding, zoals afbeeldings grootte en aantal gestopte en mislukte installatie kopieën.  
+1. Typ het volgende in de logboek query. `ContainerImageInventory | where ImageID == <ImageID>` om details weer te geven over de afbeelding, zoals afbeeldings grootte en aantal gestopte en mislukte installatie kopieën.  
    ![mislukte containers](./media/containers/containers-failed04.png)
 
 ## <a name="query-logs-for-container-data"></a>Query logboeken voor container gegevens
@@ -620,7 +620,7 @@ Wanneer u een specifieke fout wilt oplossen, kunt u zien waar deze zich voordoen
 
 ### <a name="to-query-logs-for-container-data"></a>Logboeken voor container gegevens opvragen
 
-* Kies een afbeelding waarvan u weet dat deze onlangs is mislukt en zoek de fouten logboeken hierop. Zoek eerst de naam van een container met de installatie kopie met een **ContainerInventory** zoeken. Zoek bijvoorbeeld naar`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
+* Kies een afbeelding waarvan u weet dat deze onlangs is mislukt en zoek de fouten logboeken hierop. Zoek eerst de naam van een container met de installatie kopie met een **ContainerInventory** zoeken. Zoek bijvoorbeeld naar `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Zoeken naar Ubuntu-containers](./media/containers/search-ubuntu.png)
 
   Vouw een rij in de resultaten uit om de Details voor die container weer te geven.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828775"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Opmerkingen bij de release Microsoft Azure Storage Explorer
@@ -1031,7 +1031,7 @@ Ten slotte wordt de ondersteuning voor het gebruik van AzCopy met bestands share
 ### <a name="new"></a>Nieuw
 * Het is nu mogelijk om toegang te krijgen tot de $web containers die worden gebruikt door statische websites. Zo kunt u eenvoudig bestanden en mappen uploaden en beheren die worden gebruikt door uw website. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * De app-balk op macOS is opnieuw georganiseerd. Wijzigingen bevatten een menu bestand, wijzigingen in sneltoetsen en verschillende nieuwe opdrachten onder het app-menu. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Het instantie-eind punt voor het aanmelden bij Azure de Amerikaanse overheid is gewijzigd inhttps://login.microsoftonline.us/
+* Het instantie-eind punt voor het aanmelden bij Azure de Amerikaanse overheid is gewijzigd in https://login.microsoftonline.us/
 * Toegankelijkheid: wanneer een scherm lezer actief is, werkt de toetsenbord navigatie nu met de tabellen die worden gebruikt voor het weer geven van items aan de rechter kant. U kunt de pijl toetsen gebruiken om te navigeren in rijen en kolommen, op te geven om standaard acties aan te roepen, de context menu toets om het context menu voor een item te openen, en SHIFT of Control to MultiSelect. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>Oplossingen

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831223"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Veelvoorkomende foutberichten begrijpen tijdens het beheer van virtuele machines in Azure
@@ -79,7 +79,7 @@ In deze sectie vindt u de algemene fout berichten die u kunt tegen komen bij het
 |  DiskBlobAlreadyInUseByAnotherDisk  |  De BLOB {0} wordt al gebruikt door een andere schijf die deel uitmaakt van de VM {1} . U kunt de BLOB-meta gegevens voor de schijf referentie gegevens controleren.  |
 |  DiskBlobNotFound  |  Kan de VHD-blob met de URI voor de schijf niet vinden {0} {1} .  |
 |  DiskBlobNotFound  |  Kan de VHD-blob met URI niet vinden {0} .  |
-|  DiskEncryptionKeySecretMissingTags  |  {0}het geheim heeft geen {1} Tags. Werk de geheime versie bij, voeg de vereiste labels toe en probeer het opnieuw.  |
+|  DiskEncryptionKeySecretMissingTags  |  {0} het geheim heeft geen {1} Tags. Werk de geheime versie bij, voeg de vereiste labels toe en probeer het opnieuw.  |
 |  DiskEncryptionKeySecretUnwrapFailed  |  Het teruglopen van de geheime {0} waarde met de sleutel {1} is mislukt.  |
 |  DiskImageNotReady  |  De schijf installatie kopie {0} heeft de {1} status. Probeer het opnieuw wanneer de installatie kopie gereed is.  |
 |  DiskPreparationError  |  Er zijn een of meer fouten opgetreden bij het voorbereiden van VM-schijven. Zie weer gave van schijf instantie voor meer informatie.  |
@@ -91,7 +91,7 @@ In deze sectie vindt u de algemene fout berichten die u kunt tegen komen bij het
 |  IncorrectImageBlobType  |  Schijf-blobs kunnen alleen van het type pagina-BLOB zijn. De BLOB {0} voor de schijf {1} is van het type blok-blob.  |
 |  IncorrectImageBlobType  |  Schijf-blobs kunnen alleen van het type pagina-BLOB zijn. BLOB {0} is van het type ' {1} '.  |
 |  InternalOperationError  |  Kan het opslag account niet omzetten {0} . Zorg ervoor dat het is gemaakt via de opslag Resource provider op dezelfde locatie als de reken resource.  |
-|  InternalOperationError  |  {0}het doel van het zoeken naar taken is mislukt.  |
+|  InternalOperationError  |  {0} het doel van het zoeken naar taken is mislukt.  |
 |  InternalOperationError  |  Er is een fout opgetreden bij het valideren van het netwerk profiel van de VM {0} .  |
 |  InvalidAccountType  |  Het account type {0} is ongeldig.  |
 |  InvalidParameter  |  De waarde van de para meter {0} is ongeldig.  |
@@ -110,7 +110,7 @@ In deze sectie vindt u de algemene fout berichten die u kunt tegen komen bij het
 |  InvalidParameter  |  Het opgegeven aantal fout domeinen {0} moet in het bereik vallen {1} {2} .  |
 |  InvalidParameter  |  Het licentie type {0} is ongeldig. Geldige licentie typen zijn: Windows_Client of Windows_Server, hoofdletter gevoelig.  |
 |  InvalidParameter  |  De naam van een Linux-host mag niet langer zijn dan {0} de tekens of de volgende tekens bevatten: {1} .  |
-|  InvalidParameter  |  Doelpad voor open bare SSH-sleutels is momenteel beperkt tot de standaard waarde {0} vanwege een bekend probleem in de Linux-inrichtings agent.  |
+|  InvalidParameter  |  Doelpad voor open bare SSH-sleutels is momenteel beperkt tot de standaard waarde {0}  vanwege een bekend probleem in de Linux-inrichtings agent.  |
 |  InvalidParameter  |  Er bestaat al een schijf op LUN {0} .  |
 |  InvalidParameter  |  Het abonnement {0} van de aanvraag moet overeenkomen met het abonnement dat is {1} opgenomen in de id van de beheerde schijf.  |
 |  InvalidParameter  |  Aangepaste gegevens in OSProfile moeten een base64-code ring hebben en een maximum lengte van {0} tekens bevatten.  |
@@ -171,15 +171,15 @@ In deze sectie vindt u de algemene fout berichten die u kunt tegen komen bij het
 |  OperationNotAllowed  |  Kan de grootte van de virtuele machine niet wijzigen omdat de aangevraagde grootte {0} niet beschikbaar is in het cluster waar de beschikbaarheidsset momenteel is toegewezen. De beschik bare grootten zijn: {1} . Meer informatie over de strategie voor het wijzigen van de grootte van VM op https://aka.ms/azure-resizevm .  |
 |  OperationNotAllowed  |  Kan de grootte van de virtuele machine niet wijzigen omdat de aangevraagde grootte {0} niet beschikbaar is in het cluster waar de virtuele machine momenteel is toegewezen. Als u het formaat van de virtuele machine wilt wijzigen, moet u de toewijzing ongedaan maken {1} (dit is een stop bewerking in de Azure Portal) en de grootte van de bewerking opnieuw proberen. Meer informatie over de strategie voor het wijzigen van de grootte van VM op https://aka.ms/azure-resizevm .  |
 |  OSProvisioningClientError  |  Het inrichten van het besturings systeem is mislukt voor de virtuele machine {0} omdat het gast besturingssysteem momenteel wordt ingericht.  |
-|  OSProvisioningClientError  |  Het inrichten van het besturings systeem voor de virtuele machine {0} is mislukt. Fout Details: {1} Controleer of de installatie kopie juist is voor bereid (gegeneraliseerd). <ul><li>Instructies voor Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  Genereren van SSH-host is mislukt. Fout Details: {0} . Controleer of de Linux-agent correct is ingesteld om dit probleem op te lossen. <ul><li>U kunt de instructies controleren op:https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  Het inrichten van het besturings systeem voor de virtuele machine {0} is mislukt. Fout Details: {1} Controleer of de installatie kopie juist is voor bereid (gegeneraliseerd). <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  Genereren van SSH-host is mislukt. Fout Details: {0} . Controleer of de Linux-agent correct is ingesteld om dit probleem op te lossen. <ul><li>U kunt de instructies controleren op: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  De gebruikers naam die voor de virtuele machine is opgegeven, is ongeldig voor deze Linux-distributie. Fout Details: {0} .  |
 |  OSProvisioningInternalError  |  Het inrichten van het besturings systeem voor de virtuele machine is mislukt {0} vanwege een interne fout.  |
 |  OSProvisioningTimedOut  |  Het inrichten van het besturings systeem voor de VM is {0} niet voltooid binnen de toegewezen tijd. De inrichting van de virtuele machine kan nog steeds worden voltooid. Controleer de inrichtings status later.  |
 |  OSProvisioningTimedOut  |  Het inrichten van het besturings systeem voor de VM is {0} niet voltooid binnen de toegewezen tijd. De inrichting van de virtuele machine kan nog steeds worden voltooid. Controleer de inrichtings status later. Zorg er ook voor dat de installatie kopie op de juiste wijze is voor bereid (gegeneraliseerd).   <ul><li>Instructies voor [Windows]( ../windows/upload-generalized-managed.md).</li><li> Instructies voor [Linux](../linux/capture-image.md)</li></ul>  |
-|  OSProvisioningTimedOut  |  Het inrichten van het besturings systeem voor de VM is {0} niet voltooid binnen de toegewezen tijd. De VM-gast agent is echter wel uitgevoerd. Dit geeft aan dat het gast besturingssysteem niet goed is voor bereid om te worden gebruikt als een VM-installatie kopie (met CreateOption = FromImage). Om dit probleem op te lossen, gebruikt u de VHD als is met CreateOption = koppelen of voorbereiden op de juiste manier voor gebruik als een installatie kopie:   <ul><li>Instructies voor Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructies voor Linux:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  Het inrichten van het besturings systeem voor de VM is {0} niet voltooid binnen de toegewezen tijd. De VM-gast agent is echter wel uitgevoerd. Dit geeft aan dat het gast besturingssysteem niet goed is voor bereid om te worden gebruikt als een VM-installatie kopie (met CreateOption = FromImage). Om dit probleem op te lossen, gebruikt u de VHD als is met CreateOption = koppelen of voorbereiden op de juiste manier voor gebruik als een installatie kopie:   <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructies voor Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  De vereiste VM-grootte is momenteel niet beschikbaar op de geselecteerde locatie.  |
-|  ResourceUpdateBlockedOnPlatformUpdate  |  De resource kan op dit moment niet worden bijgewerkt vanwege een voortdurende platform update. Probeer het later opnieuw.  |
+|  ResourceUpdateBlockedOnPlatformUpdate  |  De resource kan op dit moment niet worden bijgewerkt vanwege een voortdurende platform update. Probeert u het later nog eens.  |
 |  StorageAccountLimitation  |  Het opslag account {0} biedt geen ondersteuning voor pagina-blobs die vereist zijn voor het maken van schijven.  |
 |  StorageAccountLimitation  |  Het opslag account {0} heeft de toegewezen quota overschreden.  |
 |  StorageAccountLocationMismatch  |  Kan het opslag account niet omzetten {0} . Zorg ervoor dat het is gemaakt via de opslag Resource provider op dezelfde locatie als de reken resource.  |

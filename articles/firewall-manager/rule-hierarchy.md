@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893685"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Azure Firewall-beleid gebruiken om een regel hiërarchie te definiëren
@@ -48,7 +48,7 @@ Beleids regels maken voor elk van de toepassings teams:
 - Een database firewall beleid. Het firewall beleid van de data base neemt het basis firewall beleid over.
 - Een engineering firewall-beleid. Het beleid van de technische firewall neemt ook het basis beleid voor firewalls over.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Beleids hiërarchie" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Teams en vereisten" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Aangepaste rollen maken voor toegang tot de regel verzamelings groepen 
 
@@ -62,7 +62,7 @@ Gebruik de volgende procedure op hoog niveau om aangepaste rollen te definiëren
 2. Voer de volgende opdracht uit:
 
    `Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize`
-3. Gebruik de opdracht Get-AzRoleDefinition om de rol van lezer in JSON-indeling uit te voeren. 
+3. Gebruik de Get-AzRoleDefinition opdracht om de rol van lezer in JSON-indeling uit te voeren. 
 
    `Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json`
 4. Open de ReaderSupportRole.jsvoor het bestand in een editor.
@@ -128,15 +128,15 @@ Het JSON-bestand moet er ongeveer uitzien als in het volgende voor beeld:
 
 ### <a name="list-custom-roles"></a>Aangepaste rollen opvragen
 
-U kunt de opdracht Get-AzRoleDefinition gebruiken om alle aangepaste rollen weer te geven:
+U kunt de Get-AzRoleDefinition opdracht gebruiken om alle aangepaste rollen weer te geven:
 
    `Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom`
 
 U kunt ook de aangepaste rollen bekijken in de Azure Portal. Ga naar uw abonnement en selecteer **toegangs beheer (IAM)**, **rollen**.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Teams en vereisten":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Lees machtiging SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Teams en vereisten":::
 
 Zie [zelf studie: een aangepaste Azure-rol maken met Azure PowerShell](../role-based-access-control/tutorial-custom-role-powershell.md)voor meer informatie.
 

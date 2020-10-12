@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van REST API voor het beheren en b
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88892844"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Back-ups van Azure-bestands shares beheren met REST API
@@ -58,7 +58,7 @@ Naam  | Type  |  Beschrijving
 --- | --- | ----
 200 OK |  JobResource  | OK
 
-#### <a name="response-example"></a>Antwoord voorbeeld
+#### <a name="response-example"></a>Voorbeeld van antwoord
 
 Zodra de *Get* -URI is verzonden, wordt een 200-antwoord geretourneerd.
 
@@ -166,7 +166,7 @@ msrest.http_logger :     'Azure-AsyncOperation': 'https://management.azure.com/S
 'Content-Length': '0'
 ```
 
-Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een GET-opdracht:
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation koptekst met een GET-opdracht:
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupoperations/b300922a-ad9c-4181-b4cd-d42ea780ad77?api-version=2016-12-01

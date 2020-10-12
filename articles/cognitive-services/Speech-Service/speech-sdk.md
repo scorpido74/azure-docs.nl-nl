@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870711"
 ---
 # <a name="about-the-speech-sdk"></a>Info over de Speech-SDK
@@ -29,7 +29,7 @@ De Speech-SDK maakt veel functies van de speech-service beschikbaar, maar niet a
 
 ### <a name="speech-to-text"></a>Spraak naar tekst
 
-Met [spraak naar tekst](speech-to-text.md) (ook wel *spraak herkenning*genoemd) worden audio stromen getranscribeerd naar tekst die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. Gebruik spraak-naar-tekst met [Language Understanding (Luis)](../luis/index.yml) om gebruikers intentie af te leiden van transcribed speech en Act on Voice Commands. Gebruik [spraak omzetting](speech-translation.md) om spraak invoer te vertalen naar een andere taal met één aanroep. Zie [basis beginselen van spraak naar tekst](speech-to-text-basics.md)voor meer informatie.
+Met [spraak naar tekst](speech-to-text.md) (ook wel *spraak herkenning*genoemd) worden audio stromen getranscribeerd naar tekst die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. Gebruik spraak-naar-tekst met [Language Understanding (LUIS)](../luis/index.yml) om gebruikersintentie af te leiden uit getranscribeerde spraak en om te reageren op spraakopdrachten. Gebruik [spraak omzetting](speech-translation.md) om spraak invoer te vertalen naar een andere taal met één aanroep. Zie [basis beginselen van spraak naar tekst](speech-to-text-basics.md)voor meer informatie.
 
 De **spraak herkenning (SR), woordgroepen lijst, intentie, vertaling en on-premises containers** zijn beschikbaar op de volgende platformen:
 
@@ -84,7 +84,7 @@ De Speech SDK is perfect voor het overzetten van Vergader scenario's, hetzij van
 
 #### <a name="conversation-transcription"></a>Gesprektranscriptie
 
-[Conversatie transcriptie](conversation-transcription.md) maakt spraak herkenning in realtime (en asynchroon) mogelijk, waarbij elke spreker (ook wel bekend als *diarization*) wordt toegeschreven. Het is ideaal voor het overzetten van persoonlijke vergaderingen met de mogelijkheid om de luid sprekers te onderscheiden.
+[Conversatie transcriptie](conversation-transcription.md) maakt spraak herkenning in realtime (en asynchroon) mogelijk, waarbij elke spreker (ook wel bekend als *diarization*) wordt toegeschreven. Het is ideaal voor het transcriberen van persoonlijke vergaderingen met de mogelijkheid om de sprekers te onderscheiden.
 
 **Conversation transcriptie** is beschikbaar op de volgende platformen:
 
@@ -92,7 +92,7 @@ De Speech SDK is perfect voor het overzetten van Vergader scenario's, hetzij van
   - C# (Framework & .NET core)/Windows & UWP & Linux
   - Java/Windows & Linux & Android (Speech-apparaten SDK)
 
-#### <a name="multi-device-conversation"></a>Conversatie met meerdere apparaten
+#### <a name="multi-device-conversation"></a>Gesprek via meerdere apparaten
 
 Met een [gesprek met meerdere](multi-device-conversation.md)apparaten kunt u meerdere apparaten of clients in een gesprek verbinden om berichten op basis van spraak of tekst te verzenden, met eenvoudige ondersteuning voor transcriptie en vertaling.
 
@@ -129,7 +129,7 @@ Hoewel de spraak-SDK een groot aantal functies van de spraak service omvat, kunt
 
 [Batch transcriptie](batch-transcription.md) maakt asynchrone spraak-naar-tekst-transcriptie met grote hoeveel heden gegevens mogelijk. Batch-transcriptie is alleen mogelijk vanuit het REST API. Met batch spraak naar tekst kunt u niet alleen spraak-audio omzetten naar tekst, maar ook diarization-en sentiment-analyses.
 
-## <a name="customization"></a>Aanpassing
+## <a name="customization"></a>Aanpassen
 
 De speech-service biedt uitstekende functionaliteit met de standaard modellen voor spraak naar tekst, tekst naar spraak en spraak omzetting. Soms wilt u mogelijk de basislijn prestaties verhogen zodat deze nog beter werken met uw unieke gebruiks case. De speech-service beschikt over een aantal hulpprogram ma's waarmee u geen code kunt aanpassen en waarmee u een competitief voor deel kunt maken met aangepaste modellen op basis van uw eigen gegevens. Deze modellen zijn alleen beschikbaar voor u en uw organisatie.
 

@@ -1,5 +1,5 @@
 ---
-title: Gecuratore omgevingen
+title: Gecureerde omgevingen
 titleSuffix: Azure Machine Learning
 description: Verzameling van in Azure Machine Learning beschik bare omgevingen
 services: machine-learning
@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: reference
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662080"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learningde gecuratore omgevingen
@@ -311,7 +311,7 @@ In dit artikel vindt u een overzicht van de gewerkte omgevingen in Azure Machine
 * azureml-train-automl-runtime
 * azureml-contrib-automl-DNN-Forecasting
 
-## <a name="azureml-minimal"></a>AzureML-mini maal
+## <a name="azureml-minimal"></a>AzureML-Minimal
 
 **Pakket kanalen:**
 
@@ -937,7 +937,7 @@ In dit artikel vindt u een overzicht van de gewerkte omgevingen in Azure Machine
 * tensor flow-GPU
 * horovod
 
-## <a name="azureml-tutorial"></a>AzureML-zelf studie
+## <a name="azureml-tutorial"></a>AzureML-Tutorial
 
 **Pakket kanalen:**
 

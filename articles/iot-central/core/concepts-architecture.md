@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337140"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-architectuur
@@ -152,7 +152,7 @@ In een Azure IoT Central-toepassing kunt u [taken maken en uitvoeren](howto-run-
 
 ## <a name="role-based-access-control-rbac"></a>Toegangsbeheer op basis van rollen (RBAC)
 
-Een [beheerder kan toegangs regels definiëren](howto-manage-users-roles.md) voor een Azure IOT Central-toepassing met behulp van een van de vooraf gedefinieerde rollen of door een aangepaste rol te maken. Rollen bepalen op welke gebieden van de toepassing een gebruiker toegang heeft en welke acties ze kunnen uitvoeren.
+Een [beheerder kan toegangs regels definiëren](howto-manage-users-roles.md) voor een Azure IOT Central-toepassing met behulp van een van de vooraf gedefinieerde rollen of door een aangepaste rol te maken. Rollen bepalen tot welke gebieden van de toepassing gebruikers toegang hebben en welke acties ze kunnen uitvoeren.
 
 ## <a name="security"></a>Beveiliging
 

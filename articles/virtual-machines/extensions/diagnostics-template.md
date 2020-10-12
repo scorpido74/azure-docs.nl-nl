@@ -16,10 +16,10 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 31f690277675650323763a7bc6872ad736f5776c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837003"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Bewaking en diagnose gebruiken met een Windows-VM en Azure Resource Manager sjablonen
@@ -168,7 +168,7 @@ Voor beeld: *WADMetricsPT1HP10DV2S20151108* bevat metrische gegevens die geduren
 Elke WADMetrics-tabel bevat de volgende kolommen:
 
 * **PartitionKey**: de partitie sleutel wordt opgebouwd op basis van de *resourceID* -waarde om de VM-resource uniek te identificeren. Bijvoorbeeld: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: volgt de indeling `<Descending time tick>:<Performance Counter Name>` . De berekening van de aflopende tijd is de maximale tijd maat streepjes min de tijd van het begin van de aggregatie periode. Als bijvoorbeeld de voorbeeld periode is gestart op 10-nov-2015 en 00:00Hrs UTC, zou de berekening er als volgt uitziet: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . Voor het prestatie meter item geheugen beschik bare bytes ziet de rij er als volgt uit:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **RowKey**: volgt de indeling `<Descending time tick>:<Performance Counter Name>` . De berekening van de aflopende tijd is de maximale tijd maat streepjes min de tijd van het begin van de aggregatie periode. Als bijvoorbeeld de voorbeeld periode is gestart op 10-nov-2015 en 00:00Hrs UTC, zou de berekening er als volgt uitziet: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . Voor het prestatie meter item geheugen beschik bare bytes ziet de rij er als volgt uit: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: is de naam van het prestatie meter item. Dit komt overeen met de *counterSpecifier* die is gedefinieerd in de XML-configuratie.
 * **Maximum**: de maximum waarde van het prestatie meter item gedurende de aggregatie periode.
 * **Minimum**: de minimum waarde van het prestatie meter item gedurende de aggregatie periode.

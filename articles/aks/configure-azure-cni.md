@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426143"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI-netwerken configureren in azure Kubernetes service (AKS)
@@ -63,7 +63,7 @@ Het maximum aantal peulen per knoop punt in een AKS-cluster is 250. Het *maximum
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ja (Maxi maal 250) |
 | Resource Manager-sjabloon | 110 | 30 | Ja (Maxi maal 250) |
-| Portal | 110 | 30 | No |
+| Portal | 110 | 30 | Nee |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximum aantal nieuwe clusters configureren
 
