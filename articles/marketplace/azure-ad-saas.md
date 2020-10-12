@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89483623"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace
@@ -45,7 +45,7 @@ De volgende secties bevatten informatie over de vereisten voor elke proces stap.
 
 In deze afbeelding ziet u de vier proces stappen voor het beheer van aankopen.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Illustreert de vier proces stappen voor aankoop beheer.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Illustreert het aankoop beheer, abonnements beheer en de stappen voor het uitvoeren van een optioneel gebruikers beheer.":::
 
 Deze tabel bevat details over de stappen voor het aankoop beheer proces.
 
@@ -61,7 +61,7 @@ Deze tabel bevat details over de stappen voor het aankoop beheer proces.
 
 In deze afbeelding ziet u de twee proces stappen voor het beheer van abonnementen.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Illustreert de twee proces stappen voor het beheer van abonnementen.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Illustreert het aankoop beheer, abonnements beheer en de stappen voor het uitvoeren van een optioneel gebruikers beheer.":::
 
 In deze tabel worden de details van de proces stappen voor het abonnements beheer beschreven.
 
@@ -75,7 +75,7 @@ In deze tabel worden de details van de proces stappen voor het abonnements behee
 
 In deze afbeelding ziet u de drie proces stappen voor gebruikers beheer.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Illustreert de drie optionele proces stappen voor gebruikers beheer.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Illustreert het aankoop beheer, abonnements beheer en de stappen voor het uitvoeren van een optioneel gebruikers beheer.":::
 
 Proces stappen 7 t/m 9 zijn optionele proces stappen voor gebruikers beheer. Ze bieden extra voor delen voor uitgevers die ondersteuning bieden voor eenmalige aanmelding (SSO) van Azure AD. In deze tabel worden de details van de proces stappen voor gebruikers beheer beschreven.
 

@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590112"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Zacht verwijderen inschakelen op Azure-bestands shares
@@ -25,7 +25,7 @@ In de volgende secties ziet u hoe u met voorlopig verwijderen voor Azure-bestand
 
 ## <a name="getting-started"></a>Aan de slag
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Navigeer naar uw opslag account en selecteer **voorlopig verwijderen** onder **Bestands service**.
 1. Selecteer **ingeschakeld** voor het **voorlopig verwijderen van de bestands share**.
 1. Selecteer de **Bewaar periode voor bestands shares in dagen** en voer een nummer van uw keuze in.
@@ -68,13 +68,13 @@ Een voorlopig verwijderde bestands share herstellen:
 
     Hiermee worden de shares weer gegeven die zich momenteel in een **Verwijderde** staat bevindt.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Als de kolom Status, de kolom naast de kolom naam, is ingesteld op verwijderd, wordt de bestands share in de modus voorlopig verwijderd. En worden permanent verwijderd na de opgegeven Bewaar periode.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Scherm afbeelding van het deel venster instellingen voor voorlopig verwijderen van het opslag account. De sectie bestands shares markeren, scha kelen inschakelen, een Bewaar periode instellen en opslaan. Hiermee schakelt u tijdelijke verwijdering in voor alle bestands shares in uw opslag account.":::
 
 1. Selecteer de share en selecteer **verwijderen ongedaan**maken. Hierdoor wordt de share teruggezet.
 
     U kunt bevestigen dat de share is hersteld, omdat de status overschakelt naar **actief**.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Als de kolom Status, de kolom naast de kolom naam, is ingesteld op actief, is de bestands share hersteld.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Scherm afbeelding van het deel venster instellingen voor voorlopig verwijderen van het opslag account. De sectie bestands shares markeren, scha kelen inschakelen, een Bewaar periode instellen en opslaan. Hiermee schakelt u tijdelijke verwijdering in voor alle bestands shares in uw opslag account.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -95,7 +95,7 @@ Als u wilt stoppen met het gebruik van zacht verwijderen of als u een bestands s
 1. Selecteer onder **Bestands shares** **uitgeschakeld** voor **zacht verwijderen voor bestands shares**.
 1. Selecteer **Opslaan** om de instellingen voor het bewaren van gegevens te bevestigen.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Als u zacht verwijderen uitschakelt, kunt u de bestands shares in uw opslag account onmiddellijk en op uw gemak permanent verwijderen.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Scherm afbeelding van het deel venster instellingen voor voorlopig verwijderen van het opslag account. De sectie bestands shares markeren, scha kelen inschakelen, een Bewaar periode instellen en opslaan. Hiermee schakelt u tijdelijke verwijdering in voor alle bestands shares in uw opslag account.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

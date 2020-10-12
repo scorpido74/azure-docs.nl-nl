@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 63cfe7968ec88ed75dfe23e8a3d34ac2649f6776
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84307804"
 ---
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Door de klant beheerde sleutels met Azure Key Vault
 
-U moet Azure Key Vault gebruiken om door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
+U moet Azure Key Vault gebruiken om door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
 
 Wanneer een nieuwe Cognitive Services resource wordt gemaakt, wordt deze altijd versleuteld met door micro soft beheerde sleutels. Het is niet mogelijk om door de klant beheerde sleutels in te scha kelen op het moment dat de resource wordt gemaakt. Door de klant beheerde sleutels worden opgeslagen in Azure Key Vault en de sleutel kluis moet worden ingericht met toegangs beleid waarmee sleutel machtigingen worden verleend aan de beheerde identiteit die aan de Cognitive Services-resource is gekoppeld. De beheerde identiteit is alleen beschikbaar nadat de resource is gemaakt met behulp van de prijs categorie die is vereist voor CMK.
 
@@ -36,7 +36,7 @@ Voor het gebruik van door de klant beheerde sleutels moeten twee eigenschappen w
 > [!IMPORTANT]
 > Als u niet de opties **voorlopig verwijderen** en **niet wissen** hebt ingeschakeld en u de sleutel verwijdert, kunt u de gegevens in uw cognitieve service resource niet herstellen.
 
-Voor meer informatie over het inschakelen van deze eigenschappen voor een bestaande sleutel kluis raadpleegt u de secties met het **inschakelen van zacht verwijderen** en het **inschakelen van beveiliging opschonen** in een van de volgende artikelen:
+Voor meer informatie over het inschakelen van deze eigenschappen voor een bestaande sleutelkluis raadpleegt u de secties **Voorlopig verwijderen inschakelen** en **Beveiliging tegen leegmaken inschakelen** in een van de volgende artikelen:
 
 - [Voorlopig verwijderen gebruiken met Power shell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell).
 - [Voorlopig verwijderen gebruiken met CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli).

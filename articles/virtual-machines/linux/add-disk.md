@@ -8,10 +8,10 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89076613"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Een schijf toevoegen aan een virtuele Linux-machine
@@ -126,7 +126,7 @@ De uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 ```
 
 > [!NOTE]
-> Het onjuist bewerken van het **bestand/etc/fstab** -bestand kan resulteren in een systeem dat niet kan worden opgestart. Als u niet zeker weet wat u moet doen, raadpleegt u de documentatie van de distributie over het bewerken van dit bestand. U wordt ook aangeraden een back-up van het bestand/etc/fstab-bestand te maken voordat u het bewerkt.
+> Het onjuist bewerken van het bestand **/etc/fstab** kan leiden tot een systeem dat niet kan worden opgestart. Als u niet zeker weet wat u moet doen, raadpleegt u de documentatie van de distributie over het bewerken van dit bestand. U wordt ook aangeraden een back-up van het bestand /etc/fstab te maken voordat u het bewerkt.
 
 Open vervolgens het *bestand/etc/fstab* -bestand in een tekst editor als volgt:
 

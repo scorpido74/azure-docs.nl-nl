@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876203"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>U-SQL ontwikkelen met python, R en C# voor Azure Data Lake Analytics in Visual Studio code
@@ -124,7 +124,7 @@ Registreer python-en R-extensies-assembly's voor uw ADL-account.
 5. Klik met de rechter muisknop in **USQL** -bestand, klik op **script compileren** of **taak verzenden** om taak uit te voeren.
 
 ## <a name="develop-c-file"></a>C#-bestand ontwikkelen
-Een code-behind bestand is een C#-bestand dat is gekoppeld aan één U-SQL-script. U kunt een script definiëren dat is toegewezen aan UDO, UDA, UDT en UDF in het code-behind-bestand. De UDO, UDA, UDT en UDF kunnen rechtstreeks in het script worden gebruikt zonder eerst de assembly te registreren. Het code-behind-bestand wordt opgeslagen in dezelfde map als het bijbehorende peering U-SQL-script bestand. Als het script xxx. usql heet, wordt de onderliggende code benoemd als xxx.usql.cs. Als u het code-behind-bestand hand matig verwijdert, is de functie voor code achter uitgeschakeld voor het bijbehorende U-SQL-script. Zie voor meer informatie over het schrijven van klant code voor U-SQL-script, [het schrijven en gebruiken van aangepaste code in U-SQL: door de gebruiker gedefinieerde functies]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+Een code-behind bestand is een C#-bestand dat is gekoppeld aan één U-SQL-script. U kunt een script definiëren dat is toegewezen aan UDO, UDA, UDT en UDF in het code-behind-bestand. De UDO, UDA, UDT en UDF kunnen rechtstreeks in het script worden gebruikt zonder eerst de assembly te registreren. Het code-behind-bestand wordt opgeslagen in dezelfde map als het bijbehorende peering U-SQL-script bestand. Als het script xxx. usql heet, wordt de onderliggende code benoemd als xxx.usql.cs. Als u het code-behind-bestand hand matig verwijdert, is de functie voor code achter uitgeschakeld voor het bijbehorende U-SQL-script. Zie voor meer informatie over het schrijven van klant code voor U-SQL-script, [het schrijven en gebruiken van aangepaste code in U-SQL: User-Defined-functies]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Klik op het **nieuwe bestand** in uw werk ruimte.
 2. Schrijf uw code in U-SQL-bestand. Hier volgt een voor beeld van code.

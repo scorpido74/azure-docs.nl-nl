@@ -11,10 +11,10 @@ ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387521"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Gebruik de Azure Portal om consumenten gebruikers te maken en te verwijderen in Azure AD B2C
@@ -40,7 +40,7 @@ In dit artikel wordt aandacht besteed aan het werken met **consumenten accounts*
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
-1. Selecteer onder **Beheren** de optie **Gebruikers**.
+1. Onder **Beheren**, selecteer **Gebruikers**.
 1. Selecteer **Nieuwe gebruiker**.
 1. Selecteer **Azure AD B2C gebruiker maken**.
 1. Kies een **aanmeldings methode** en geef een **e-mail** adres of een **gebruikers naam** op voor de nieuwe gebruiker. De aanmeldings methode die u hier selecteert, moet overeenkomen met de instelling die u hebt opgegeven voor de provider van de *lokale account* -id van uw Azure AD B2C-Tenant (Zie **Manage**  >  **id-providers** beheren in uw Azure AD B2C-Tenant).

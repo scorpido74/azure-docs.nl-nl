@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273004"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure Arc enabled PostgreSQL grootschalige maken met behulp van Azure Data Studio
@@ -56,7 +56,7 @@ _**Server-group-name** is de naam van de Server groep die u tijdens de volgende 
 Raadpleeg voor meer informatie over SCCs in open Shift de documentatie van open [SHIFT](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html).
 U kunt nu de volgende stap implementeren.
 
-## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een Azure-PostgreSQL grootschalige-Server groep maken
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een PostgreSQL Hyperscale-servergroep met Azure Arc maken
 
 1. Azure Data Studio starten
 1. Klik op het tabblad verbindingen op de drie puntjes linksboven en kies nieuwe implementatie
@@ -91,7 +91,7 @@ Het maken van een paar minuten is voltooid.
 
     > \* In de bovenstaande documenten slaat u de secties **voor het aanmelden bij de Azure Portal**, & **een Azure database for PostgreSQL-grootschalige maken (Citus)**. Implementeer de resterende stappen in de implementatie van Azure Arc. Deze secties zijn specifiek voor de Azure Database for PostgreSQL grootschalige (Citus) die worden aangeboden als een PaaS-service in de Azure-Cloud, maar de andere onderdelen van de documenten zijn rechtstreeks van toepassing op uw PostgreSQL grootschalige van Azure Arc.
 
-- [Uw Azure Database for PostgreSQL grootschalige-Server groep uitschalen](scale-out-postgresql-hyperscale-server-group.md)
+- [Uw Azure Database for PostgreSQL Hyperscale-servergroep uitschalen](scale-out-postgresql-hyperscale-server-group.md)
 - [Opslag configuraties en Kubernetes opslag concepten](storage-configuration.md)
 - [Kubernetes-resource model](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

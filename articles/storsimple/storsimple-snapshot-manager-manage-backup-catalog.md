@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054990"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>StorSimple Snapshot Manager gebruiken voor het beheren van de back-catalogus
@@ -93,7 +93,7 @@ Gebruik de volgende procedure om een duplicaat (kloon) van een volume of volume 
    1. Typ in het tekstvak **naam** een naam voor het gekloonde volume. Deze naam wordt weer gegeven in het knoop punt **volumes** . 
    2. (Optioneel) Selecteer **station**en selecteer vervolgens een stationsletter in de vervolg keuzelijst.
    3. (Optioneel) Selecteer **map (NTFS)** en typ een mappad of klik op Bladeren en selecteer een locatie voor de map. 
-   4. Klik op **Create**.
+   4. Klik op **Maken**.
 5. Wanneer het kloon proces is voltooid, moet u het gekloonde volume initialiseren. Start Serverbeheer en start vervolgens schijf beheer. Zie [volumes koppelen](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)voor gedetailleerde instructies. Nadat het volume is geïnitialiseerd, wordt het weer gegeven onder het knoop punt **volumes** in het deel venster **bereik** . Als u het vermelde volume niet ziet, vernieuwt u de lijst met volumes (Klik met de rechter muisknop op het knoop punt **volumes** en klik vervolgens op **vernieuwen**).
 
 ## <a name="delete-a-backup"></a>Een back-up verwijderen
@@ -126,7 +126,7 @@ Voordat u begint, moet u ervoor zorgen dat u een huidige back-up van de volume g
    1. Typ in het tekstvak **naam** een naam voor het gekloonde volume. Deze naam wordt weer gegeven in het knoop punt **volumes** . 
    2. Beschrijving Selecteer **station**en selecteer vervolgens een stationsletter in de vervolg keuzelijst. 
    3. Beschrijving Selecteer **map (NTFS)** en typ een mappad of klik op **Bladeren** en selecteer een locatie voor de map. 
-   4. Klik op **Create**. 
+   4. Klik op **Maken**. 
 5. Wanneer het kloon proces is voltooid, moet u het gekloonde volume initialiseren. Start Serverbeheer en start vervolgens schijf beheer. Zie [volumes koppelen](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)voor gedetailleerde instructies. Nadat het volume is geïnitialiseerd, wordt het weer gegeven onder het knoop punt **volumes** in het deel venster **bereik** . 
    
     Als u het vermelde volume niet ziet, vernieuwt u de lijst met volumes (Klik met de rechter muisknop op het knoop punt **volumes** en klik vervolgens op **vernieuwen**).

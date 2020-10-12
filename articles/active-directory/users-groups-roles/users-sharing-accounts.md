@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055160"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Accounts delen met Azure AD
@@ -69,7 +69,7 @@ Azure AD-functies die het delen van accounts mogelijk maken omvatten:
 Als u Azure AD wilt gebruiken om een account te delen, moet u het volgende doen:
 
 * Een app- [Galerie](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) voor toepassingen of een [aangepaste toepassing](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/) toevoegen
-* De toepassing configureren voor eenmalige aanmelding met een wacht woord (SSO)
+* De toepassing configureren voor een wacht woord single Sign-On (SSO)
 * Gebruik [toewijzing op basis van een groep](groups-saasapps.md) en selecteer de optie om een gedeelde referentie in te voeren
 
 U kunt uw gedeelde account ook veiliger maken met Multi-Factor Authentication (MFA) (meer informatie over het [beveiligen van toepassingen met Azure AD](../authentication/concept-mfa-howitworks.md)) en u kunt de mogelijkheid voor het beheren van toegang tot de toepassing overdragen met behulp van het selfservice groeps beheer van [Azure AD](groups-self-service-management.md) .

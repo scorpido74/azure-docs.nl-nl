@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 438d2fec9efc6a1ad3fcdaa2829573e7205820ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385957"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Een web-API-toepassing toevoegen aan uw Azure Active Directory B2C-Tenant
@@ -30,7 +30,7 @@ Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuw
 1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *webapi1*.
-1. Selecteer onder **Omleidings-id** de optie **Web**, en voer vervolgens een eindpunt in waarop met Azure AD B2C tokens worden geretourneerd die zijn aangevraagd via de toepassing. In een productie toepassing kunt u de omleidings-URI instellen als een eind punt, bijvoorbeeld `https://localhost:5000` . Tijdens het ontwikkelen of testen kunt u het instellen op `https://jwt.ms` , een webtoepassing van micro soft die de gedecodeerde inhoud van een token weergeeft (de inhoud van het token verlaat uw browser nooit). U kunt op elk gewenst moment omleidings-Uri's toevoegen en wijzigen in uw geregistreerde toepassingen.
+1. Selecteer onder **Omleidings-id** de optie **Web**, en voer vervolgens een eindpunt in waarop met Azure AD B2C tokens worden geretourneerd die zijn aangevraagd via de toepassing. In een productie toepassing kunt u de omleidings-URI instellen als een eind punt, bijvoorbeeld `https://localhost:5000` . Tijdens het ontwikkelen of testen kunt u het instellen op `https://jwt.ms` , een webtoepassing van micro soft die de gedecodeerde inhoud van een token weergeeft (de inhoud van het token verlaat uw browser nooit). U kunt op elk gewenst moment omleidings-URI's toevoegen en wijzigen in uw geregistreerde toepassingen.
 1. Selecteer **Registreren**.
 1. Noteer de **id van de toepassing (client)** voor gebruik in de code van uw web-API.
 
@@ -47,7 +47,7 @@ Als u een toepassing hebt die de impliciete toekennings stroom implementeert, bi
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer **Toepassingen (verouderd)** , en selecteer vervolgens **Toevoegen**.
 5. Voer een naam in voor de toepassing. Bijvoorbeeld *webapi1*.
-6. Selecteer voor **Inclusief webtoepassing/ web-API** en **Impliciete stroom toestaan****Ja**.
+6. Selecteer voor **Inclusief webtoepassing/ web-API** en **Impliciete stroom toestaan** **Ja**.
 7. Voer voor de **Antwoord-URL** een eindpunt in waarop Azure AD B2C tokens retourneert die door uw toepassing worden aangevraagd. In uw productie toepassing kunt u de antwoord-URL instellen op een waarde zoals `https://localhost:44332` . Voor test doeleinden, stelt u de antwoord-URL in op `https://jwt.ms` .
 8. Voer voor **App ID URI** de id in die wordt gebruikt voor uw web-API. De volledige id-URI, inclusief het domein, wordt voor u gegenereerd. Bijvoorbeeld `https://contosotenant.onmicrosoft.com/api`.
 9. Klik op **Create**.

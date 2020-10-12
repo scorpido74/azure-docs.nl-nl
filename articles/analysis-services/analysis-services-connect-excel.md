@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85361554"
 ---
 # <a name="connect-with-excel"></a>Verbinden met Excel
@@ -20,7 +20,7 @@ Wanneer u een server hebt gemaakt en er een tabellair model op hebt geïmplement
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Het account waarmee u zich aanmeldt, moet deel uitmaken van een model database functie met ten minste lees machtigingen. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md). 
+Het account waarmee u zich aanmeldt, moet deel uitmaken van een model database functie met ten minste lees machtigingen. Zie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md) voor meer informatie. 
 
 ## <a name="connect-in-excel"></a>Verbinding maken in Excel
 
@@ -40,7 +40,7 @@ Het maken van verbinding met een server in Excel wordt ondersteund met behulp va
     ![Verbinding maken vanuit Excel model selecteren](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Client bibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [Uw server beheren](analysis-services-manage.md)     

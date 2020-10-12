@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84267975"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-hand leiding voor voorspellende onderhouds oplossingen
@@ -36,14 +36,14 @@ In de eerste helft van deze hand leiding worden veelvoorkomende zakelijke proble
 | [Oplossings sjablonen voor voor speld onderhoud](#solution-templates-for-predictive-maintenance)|een software architect of AI-ontwikkelaar die snel een demo of een proef van het concept bekijkt |
 | [Trainings bronnen voor predictief onderhoud](#training-resources-for-predictive-maintenance) | een of meer van de bovenstaande en u wilt meer informatie over de basis concepten achter de gegevens wetenschap, hulpprogram ma's en technieken.
 
-### <a name="prerequisite-knowledge"></a>Vereiste voorkennis
+### <a name="prerequisite-knowledge"></a>Vereiste kennis
 De BDM-inhoud verwacht niet dat de lezer een eerdere data Science-kennis heeft. Voor de TDM-inhoud is basis kennis van statistieken en gegevens wetenschap nuttig. U wordt aangeraden kennis te hebben van Azure data-en AI-Services, Python, R, XML en JSON. AI-technieken worden geïmplementeerd in Python-en R-pakketten. Oplossings sjablonen worden geïmplementeerd met Azure-Services, hulpprogram ma's voor ontwikkel aars en Sdk's.
 
 ## <a name="business-case-for-predictive-maintenance"></a>Business Case voor predictief onderhoud
 
 Bedrijven vereisen dat essentiële apparatuur wordt uitgevoerd met een piek efficiëntie en gebruik om het rendement van investeringen te realiseren. Deze activa kunnen variëren van vliegtuig motoren, turbines, liften of industriële koelers, die een fantastische prijs opdoen op alledaagse apparaten zoals fotocopiers, koffie machines of water kouden.
 - Standaard zijn de meeste bedrijven afhankelijk van het _corrigerende onderhoud_, waarbij onderdelen worden vervangen als en wanneer ze mislukken. Corrigerende onderhouds werkzaamheden zorgen ervoor dat onderdelen volledig worden gebruikt (waardoor de levens duur van het onderdeel niet wordt verspild), maar dat de kosten van het bedrijf in downtime, arbeid en niet-geplande onderhouds vereisten (uit-of ongeschikte locaties) worden bespaard.
-- Op het volgende niveau gebruiken bedrijven _preventief onderhoud_, waar ze de nuttige levens duur voor een deel bepalen, en deze hand haven of vervangen vóór een storing. Preventief onderhoud voor komt ongeplande en onherstelbare storingen. Maar de hoge kosten van de geplande downtime, onder het gebruik van het onderdeel tijdens de levens duur, en arbeid blijven actief.
+- Op het volgende niveau gebruiken bedrijven  _preventief onderhoud_, waar ze de nuttige levens duur voor een deel bepalen, en deze hand haven of vervangen vóór een storing. Preventief onderhoud voor komt ongeplande en onherstelbare storingen. Maar de hoge kosten van de geplande downtime, onder het gebruik van het onderdeel tijdens de levens duur, en arbeid blijven actief.
 - Het doel van _voorspellend onderhoud_ is het optimaliseren van het evenwicht tussen corrigerend en preventief onderhoud door _just-in-time_ vervanging van onderdelen in te scha kelen. Deze aanpak vervangt deze onderdelen alleen wanneer ze zich dicht bij een fout voordoen. Door de levens duur van het onderdeel (vergeleken met preventief onderhoud) uit te breiden en niet-gepland onderhoud en arbeids kosten te verminderen (meer dan correct onderhoud), kunnen bedrijven kosten besparingen en concurrentie voordelen verkrijgen.
 
 ## <a name="business-problems-in-pdm"></a>Zakelijke problemen in PdM
@@ -114,7 +114,7 @@ Het succes van een leer proces is afhankelijk van (a) de kwaliteit van de duur v
 
 ### <a name="relevant-data"></a>Relevante gegevens
 
-Ten eerste moeten de gegevens relevant zijn _voor het probleem_. Bekijk de hierboven beschreven situatie voor het gebruik van een _Wheel-fout_ . de trainings gegevens moeten functies bevatten die betrekking hebben op de wiel bewerkingen. Als het probleem zich voordoet om de storing van het _tractie systeem_te voors pellen, moeten de opleidings gegevens alle verschillende onderdelen voor het tractie systeem omvatten. De eerste case streeft naar een specifiek onderdeel, terwijl het tweede geval gericht is op het mislukken van een groter subsysteem. De algemene aanbeveling is om Voorspellings systemen te ontwerpen over specifieke onderdelen in plaats van grotere subsystemen, aangezien de laatste meer verspreide gegevens bevat. De domein expert (Zie [problemen kwalificeren voor voor speld onderhoud](#qualifying-problems-for-predictive-maintenance)) moet helpen bij het selecteren van de meest relevante subsets met gegevens voor de analyse. De relevante gegevens bronnen worden uitgebreid beschreven in [gegevens voorbereiding voor voor speld onderhoud](#data-preparation-for-predictive-maintenance).
+Ten eerste moeten de gegevens relevant zijn _voor het probleem_. Bekijk de hierboven beschreven situatie voor het gebruik van een _Wheel-fout_ . de trainings gegevens moeten functies bevatten die betrekking hebben op de wiel bewerkingen. Als het probleem zich voordoet om de storing van het  _tractie systeem_te voors pellen, moeten de opleidings gegevens alle verschillende onderdelen voor het tractie systeem omvatten. De eerste case streeft naar een specifiek onderdeel, terwijl het tweede geval gericht is op het mislukken van een groter subsysteem. De algemene aanbeveling is om Voorspellings systemen te ontwerpen over specifieke onderdelen in plaats van grotere subsystemen, aangezien de laatste meer verspreide gegevens bevat. De domein expert (Zie [problemen kwalificeren voor voor speld onderhoud](#qualifying-problems-for-predictive-maintenance)) moet helpen bij het selecteren van de meest relevante subsets met gegevens voor de analyse. De relevante gegevens bronnen worden uitgebreid beschreven in [gegevens voorbereiding voor voor speld onderhoud](#data-preparation-for-predictive-maintenance).
 
 ### <a name="sufficient-data"></a>Voldoende gegevens
 Er worden meestal twee vragen gesteld ten aanzien van gegevens over de fout geschiedenis: (1) ' hoeveel fout gebeurtenissen zijn er vereist voor het trainen van een model? ' (2) "hoeveel records worden als" voldoende beschouwd "?" Er zijn geen definitieve antwoorden, maar alleen regels voor de duim. Voor (1), meer het aantal fout gebeurtenissen, beter het model. Voor (2), en het exacte aantal fout gebeurtenissen is afhankelijk van de gegevens en de context van het probleem dat wordt opgelost. Als een machine echter te vaak niet kan worden gespiegeld, wordt deze door het bedrijf vervangen, waardoor de fout instanties worden verminderd. Hier is de richt lijnen van de domein expert belang rijk. Er zijn echter methoden om het probleem van _zeldzame gebeurtenissen_op te lossen. Deze worden besproken in de sectie het verwerken van niet- [sluitende gegevens](#handling-imbalanced-data).
@@ -153,7 +153,7 @@ Statische functies zijn meta gegevens over de apparatuur. Voor beelden zijn het 
 
 Voor beelden van relevante gegevens voor de voor beelden van het [gebruik van PdM-aanvragen](#sample-pdm-use-cases) worden hieronder in de tabel beschreven:
 
-| Use-case | Voor beelden van relevante gegevens |
+| Toepassing | Voor beelden van relevante gegevens |
 |:---------|---------------------------|
 |_Vlucht vertraging en annuleringen_ | Vlucht gegevens in de vorm van vlucht poten en pagina Logboeken. Vlucht gegevens omvatten routerings gegevens, zoals vertrek/aankomst datum, tijd, lucht haven, layovers, enzovoort. Het pagina logboek bevat een reeks fout-en onderhouds codes die zijn vastgelegd door het personeel van het terrein onderhoud.|
 |_Storing in vliegtuig motor onderdelen_ | Gegevens die worden verzameld uit Sens oren in het vlieg tuig die informatie geven over de toestand van de verschillende onderdelen. Onderhouds records helpen bij het identificeren van defecte onderdelen en toen ze werden vervangen.|
@@ -362,7 +362,7 @@ Veel PdM-problemen hebben betrekking op dergelijke niet-sluitende gegevens sets,
 
 Met een klasse-onevenwichtigheid in gegevens is de prestaties van de meeste algoritmen van het leer proces aangetast, omdat ze het totale aantal fouten beperken. Voor een gegevensset met 99% negatief en 1% positieve voor beelden kan een model worden weer gegeven met een nauw keurigheid van 99% door alle exemplaren als negatief te labelen. Maar in het model worden alle positieve voor beelden verkeerd ingedeeld. Dus zelfs als de nauw keurigheid hoog is, is het algoritme niet nuttig. Daarom zijn conventionele evaluatie-metrische gegevens, zoals de _algehele nauw keurigheid van de fout_ , onvoldoende voor Learning. Als er niet-sluitende gegevens sets worden gebruikt, worden er voor de model evaluatie andere metrieken gehanteerd:
 - Precisie
-- Terughalen
+- Relevante overeenkomsten
 - F1-scores
 - Kosten gecorrigeerde ROC (eigendoms kenmerken van de ontvanger)
 
@@ -426,7 +426,7 @@ In het laatste gedeelte van deze hand leiding vindt u een lijst met oplossingen 
 | # | Titel | Beschrijving |
 |--:|:------|-------------|
 | 2 | [Oplossings sjabloon Azure predictief onderhoud](https://github.com/Azure/AI-PredictiveMaintenance) | Een open-source oplossings sjabloon waarmee Azure ML-modellering en een volledige Azure-infra structuur kunnen worden ondersteund die ondersteuning bieden voor voorspellende onderhouds scenario's in de context van IoT externe controle. |
-| 3 | [Deep Learning voor predictief onderhoud](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure notebook met een demo oplossing voor het gebruik van LSTM (Long Short-Term Memory) netwerken (een klasse van huidige Neural-netwerken) voor predictief onderhoud, met een [blog bericht over dit voor beeld](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
+| 3 | [Deep Learning voor predictief onderhoud](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure notebook met een demo oplossing voor het gebruik van LSTM-netwerken Short-Term (een klasse van Neural netwerken) voor predictief onderhoud, met een [blog bericht over dit voor beeld](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Azure predictief onderhoud voor B.v.](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Een van de eerste PdM-oplossings sjablonen op basis van Azure ML v 1.0 voor het onderhoud van vlieg tuigen. Deze hand leiding is afkomstig uit dit project. |
 | 5 | [Azure AI-werkset voor IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI in het IoT Edge met behulp van tensor flow; Toolkit verpakt uitgebreide leer modellen in Azure IoT Edge-compatibele docker-containers en maakt deze modellen beschikbaar als REST Api's.
 | 6 | [Azure IoT-voor speld onderhoud](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PC'S-vooraf geconfigureerde oplossing. PdM-sjabloon voor vliegtuig onderhoud met IoT Suite. [Een ander document en een](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) [scenario](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) met betrekking tot hetzelfde project. |
@@ -439,14 +439,14 @@ Microsoft Azure biedt leer trajecten voor de basis concepten achter PdM-techniek
 
 | Trainings resource  | Beschikbaarheid |
 |:-------------------|--------------|
-| [Leer traject voor PdM met behulp van structuren en wille keurige forests](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Public | 
-| [Leer traject voor PdM met behulp van diep gaande lessen](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Public |
-| [AI-ontwikkelaar op Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
-| [Micro soft AI school](https://aischool.microsoft.com/learning-paths) | Public |
-| [Azure AI Learning vanuit GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
-| [LinkedIn Learning](https://www.linkedin.com/learning) | Public |
-| [Micro soft AI YouTube webinars](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
-| [Micro soft AI-weer gave](https://channel9.msdn.com/Shows/AI-Show) | Public |
+| [Leer traject voor PdM met behulp van structuren en wille keurige forests](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Openbaar | 
+| [Leer traject voor PdM met behulp van diep gaande lessen](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Openbaar |
+| [AI-ontwikkelaar op Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Openbaar |
+| [Micro soft AI school](https://aischool.microsoft.com/learning-paths) | Openbaar |
+| [Azure AI Learning vanuit GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Openbaar |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | Openbaar |
+| [Micro soft AI YouTube webinars](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Openbaar |
+| [Micro soft AI-weer gave](https://channel9.msdn.com/Shows/AI-Show) | Openbaar |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partners |
 | [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | Partners |
 

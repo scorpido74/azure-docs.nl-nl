@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.openlocfilehash: 7f7f999c145903be5db3b20ab60bd0f5a18778ea
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463514"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Problemen oplossen met eenmalige aanmelding op basis van SAML in Azure Active Directory
@@ -46,14 +46,14 @@ Als u wilt weten welke patronen vooraf zijn geconfigureerd voor de toepassing:
     * Als het patroon niet wordt ondersteund, ziet u een rood uitroep teken wanneer u probeert de waarde in het tekstvak in te voeren. Als u de muis aanwijzer boven het rode uitroep teken houdt, ziet u de ondersteunde patronen.
     * In de zelf studie voor de toepassing kunt u ook informatie over de ondersteunde patronen ophalen. Onder de sectie **eenmalige aanmelding voor Azure AD configureren** . Ga naar de stap voor het configureren van de waarden in de sectie **domein en url's** .
 
-Als de waarden niet overeenkomen met de patronen die vooraf zijn geconfigureerd in azure AD. U kunt het volgende doen:
+Als de waarden niet overeenkomen met de patronen die vooraf zijn geconfigureerd in azure AD. U kunt:
 -   Werk samen met de leverancier van de toepassing om waarden op te halen die overeenkomen met het patroon dat vooraf is geconfigureerd in azure AD
 -   U kunt ook contact opnemen met het Azure AD-team <aadapprequest@microsoft.com> of een opmerking in de zelf studie laten staan om de update van de ondersteunde patronen voor de toepassing aan te vragen
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Waar kan ik de EntityID-indeling (gebruikers-id) instellen
 U kunt de EntityID-indeling (gebruikers-id) niet selecteren die door Azure AD wordt verzonden naar de toepassing in het antwoord na de verificatie van de gebruiker.
 
-Azure AD Selecteer de indeling voor het NameID-kenmerk (gebruikers-id) op basis van de geselecteerde waarde of de indeling die door de toepassing is aangevraagd in het SAML-AuthRequest. Ga voor meer informatie naar het artikel [SAML-protocol voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) in de sectie NameIDPolicy,
+Azure AD Selecteer de indeling voor het NameID-kenmerk (gebruikers-id) op basis van de geselecteerde waarde of de indeling die door de toepassing is aangevraagd in het SAML-AuthRequest. Ga voor meer informatie naar het artikel [Single Sign-On SAML-protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) in de sectie NameIDPolicy,
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>De Azure AD-meta gegevens zijn niet gevonden voor het volt ooien van de configuratie met de toepassing
 Voer de volgende stappen uit om de meta gegevens of het certificaat van de toepassing te downloaden uit Azure AD:

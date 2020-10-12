@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386212"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C met Azure Monitor bewaken
@@ -59,7 +59,7 @@ Vervolgens moet u de volgende informatie verzamelen:
 De **Directory-id** van uw Azure AD B2C Directory (ook wel de Tenant-id genoemd).
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als gebruiker met de rol *gebruikers beheerder* (of hoger).
-1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Selecteer het pictogram **Map + Abonnement** in de werkbalk van de portal en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. Selecteer **Azure Active Directory**en selecteer **Eigenschappen**.
 1. Noteer de **map-id**.
 
@@ -193,14 +193,14 @@ Parameters              :
 
 Nadat u de sjabloon hebt geïmplementeerd, kan het enkele minuten duren voordat de resource projectie is voltooid. Mogelijk moet u enkele minuten wachten (meestal niet meer dan vijf) voordat u naar de volgende sectie gaat om het abonnement te selecteren.
 
-## <a name="select-your-subscription"></a>Uw abonnement selecteren
+## <a name="select-your-subscription"></a>Selecteer uw abonnement
 
 Nadat u de sjabloon hebt geïmplementeerd en een paar minuten hebt gewacht totdat de resource projectie is voltooid, koppelt u uw abonnement aan uw Azure AD B2C Directory met de volgende stappen.
 
 1. **Meld u af** bij de Azure portal als u momenteel bent aangemeld. Deze en de volgende stap worden uitgevoerd om uw referenties in de portal sessie te vernieuwen.
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure AD B2C beheerders account.
 1. Selecteer het pictogram voor het adres van de **map en het abonnement** op de werk balk van de portal.
-1. Selecteer de map die uw abonnement bevat.
+1. Selecteer de map met uw abonnement.
 
     ![Schakelen tussen mappen](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
 1. Controleer of u de juiste directory en dit abonnement hebt geselecteerd. In dit voor beeld zijn alle directory's en abonnementen geselecteerd.
@@ -213,7 +213,7 @@ Diagnostische instellingen bepalen waar logboeken en metrische gegevens voor een
 
 - [Azure-opslag account](../azure-monitor/platform/resource-logs-collect-storage.md)
 - [Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) -oplossingen.
-- [Log Analytics werk ruimte](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Log Analytics-werkruimte](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
 Als u dat nog niet hebt gedaan, maakt u een exemplaar van het gekozen doel type in de resource groep die u hebt opgegeven in de [Azure Resource Manager sjabloon](#create-an-azure-resource-manager-template).
 
@@ -223,8 +223,8 @@ U kunt nu [Diagnostische instellingen maken](../active-directory/reports-monitor
 
 Controle-instellingen voor Azure AD B2C activiteiten logboeken configureren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Selecteer het pictogram **Map + Abonnement** in de werkbalk van de portal en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. **Azure Active Directory** selecteren
 1. Selecteer **Diagnostische instellingen** onder **Controle**.
 1. Als er bestaande instellingen zijn voor de resource, ziet u een lijst met instellingen die al zijn geconfigureerd. Selecteer **Diagnostische instelling toevoegen** om een nieuwe instelling toe te voegen, of **Bewerk** de instelling om een bestaande te bewerken. Elke instelling kan niet meer dan één van de doel typen hebben.

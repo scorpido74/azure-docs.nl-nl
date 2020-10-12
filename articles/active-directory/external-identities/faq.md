@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274041"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Veelgestelde vragen over Azure Active Directory B2B-samen werking
@@ -30,7 +30,7 @@ Deze veelgestelde vragen (FAQ) over de samen werking tussen Azure Active Directo
 Rechthebbend! Bekijk onze [blog post over deze functie](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Voor meer informatie over het aanpassen van de aanmeldings pagina van uw organisatie, Zie [bedrijfs huisstijl toevoegen om u aan te melden en de pagina's van het toegangs venster](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Kunnen B2B-samenwerkings gebruikers toegang krijgen tot share point online en OneDrive?
-Ja. Het is echter wel mogelijk om te zoeken naar bestaande gast gebruikers in share point online met behulp **van de** kiezer personen. Als u de optie wilt inschakelen om te zoeken naar bestaande gast gebruikers, stelt u **ShowPeoplePickerSuggestionsForGuestUsers** in **op**aan. U kunt deze instelling inschakelen op het niveau van de Tenant of op het niveau van de site verzameling. U kunt deze instelling wijzigen met behulp van de cmdlets set-SPOTenant en set-SPOSite. Met deze cmdlets kunnen leden alle bestaande gast gebruikers in de Directory doorzoeken. Wijzigingen in het Tenant bereik hebben geen invloed op share point online-sites die al zijn ingericht.
+Ja. Het is echter wel mogelijk om te zoeken naar bestaande gast gebruikers in share point online met behulp **van de** kiezer personen. Als u de optie wilt inschakelen om te zoeken naar bestaande gast gebruikers, stelt u **ShowPeoplePickerSuggestionsForGuestUsers** in **op**aan. U kunt deze instelling inschakelen op het niveau van de Tenant of op het niveau van de site verzameling. U kunt deze instelling wijzigen met behulp van de cmdlets Set-SPOTenant en Set-SPOSite. Met deze cmdlets kunnen leden alle bestaande gast gebruikers in de Directory doorzoeken. Wijzigingen in het Tenant bereik hebben geen invloed op share point online-sites die al zijn ingericht.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>Wordt de functie voor het uploaden van CSV nog steeds ondersteund?
 Ja. Zie [Dit Power shell](code-samples.md)-voor beeld voor meer informatie over het gebruik van de functie voor het uploaden van CSV-bestanden.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310305"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Taal ondersteuning voor de Content Moderator-API
@@ -25,7 +25,7 @@ ms.locfileid: "84310305"
 > Gebruik de [ISO 639-3-code](http://www-01.sil.org/iso639-3/codes.asp) **van de** ondersteunde talen die in dit artikel worden vermeld, of laat het leeg.
 
 
-| Taaldetectie | Grof taalgebruik   | OCR    | Automatische correctie     |
+| Taaldetectie | Aanstootgevend taalgebruik   | OCR    | Automatische correctie     |
 | -------------------- |-------------|--------|---------------------|
 | Arabisch (geromeins)   | Afrikaans   | Arabisch   | Arabisch |
 | Balinese | Albanees | Chinees (Vereenvoudigd)    | Deens |
@@ -81,7 +81,7 @@ ms.locfileid: "84310305"
 | Spaans | Khmer | | |
 | Zweeds | K'iche | | |
 | Sylheti | Kinyarwanda | | |
-| Hell | Swahili | | |
+| Hell | Kiswahili | | |
 | Tagbanwa | Konkani | | |
 | Tai (NUA) | Koreaans | | |
 | Tamashek | Kirgizisch | | |
@@ -91,10 +91,10 @@ ms.locfileid: "84310305"
 | Oezbeeks (Latijns) | Luxemburgs | | |
 | Vai | Macedonisch | | |
 | Si | Maleisisch | | |
-| Zhuang, Chuang | Malajalam | | |
+| Zhuang, Chuang | Malayalam | | |
 | | Maltees | | |
 | | Maori | | |
-| | Marathi | | |
+| | Mahrati | | |
 | | Mongools | | |
 | | Nepalees | | |
 | | Noors (Bokmål) | | |

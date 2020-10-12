@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: ad1b7ae08e74f455190c44a813dde44b0b683014
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311356"
 ---
 # <a name="creator-for-indoor-maps"></a>Maker voor kaarten in de binnenste
@@ -27,13 +27,13 @@ U kunt Creator gebruiken om toepassingen te ontwikkelen met kaart functies op ba
 
 Als u Creator-Services wilt gebruiken, moet u Azure Maps Maker maken in een Azure Maps-account. Zie [Azure Maps Maker beheren](how-to-manage-creator.md)voor meer informatie over het maken van Azure Maps maker in azure Maps.
 
-## <a name="upload-a-drawing-package"></a>Een teken pakket uploaden
+## <a name="upload-a-drawing-package"></a>Een tekenpakket uploaden
 
 De maker verzamelt gegevens over de binnenste kaart door een geüpload teken pakket te converteren. Het teken pakket vertegenwoordigt een geconstrueerde of opnieuw gemodelleerde faciliteit. Zie [pakket vereisten](drawing-requirements.md)voor meer informatie over het opstellen van pakket vereisten.
 
 Gebruik de [Azure Maps Data upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) om een teken pakket te uploaden.  Wanneer het uploaden is gelukt, retourneert de API voor het uploaden van gegevens een gebruikers gegevens-id ( `udid` ). De `udid` wordt in de volgende stap gebruikt om het geüploade pakket te converteren naar binnenste kaart gegevens.
 
-## <a name="convert-a-drawing-package"></a>Een teken pakket converteren
+## <a name="convert-a-drawing-package"></a>Een tekenpakket converteren
 
 De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) converteert een geüpload tekening pakket naar een binnenste kaart gegevens. De conversie service valideert ook het pakket. Validatie problemen worden onderverdeeld in twee typen: fouten en waarschuwingen. Als er fouten worden gedetecteerd, mislukt het conversie proces. Als waarschuwingen moeten worden gedetecteerd, wordt de conversie voltooid. Het is echter raadzaam om alle waarschuwingen te controleren en op te lossen. Een waarschuwing betekent dat een deel van de conversie is genegeerd of automatisch is opgelost. Als u de waarschuwingen niet oplost, kan dit leiden tot fouten in de laatste processen. Zie [waarschuwingen en fouten in het tekening pakket](drawing-conversion-error-codes.md)voor meer informatie.
 

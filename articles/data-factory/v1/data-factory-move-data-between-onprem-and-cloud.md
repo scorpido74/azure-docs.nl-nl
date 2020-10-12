@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195980"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Gegevens verplaatsen tussen on-premises bronnen en de Cloud met Data Management Gateway
@@ -96,7 +96,7 @@ In deze stap gebruikt u de Azure Portal om een Azure Data Factory-exemplaar te m
    > [!NOTE]
    > Gebruik Internet Explorer of een webbrowser die compatibel is met micro soft ClickOnce.
    >
-   > Als u met Chrome werkt, gaat u naar de [Chrome Web Store](https://chrome.google.com/webstore/), zoekt u op het trefwoord 'ClickOnce', en kiest en installeert u een van de ClickOnce-extensies.
+   > Als u Chrome gebruikt, gaat u naar de [Chrome-webwinkel](https://chrome.google.com/webstore/), zoekt u met het sleutel woord ' ClickOnce ', kiest u een van de ClickOnce-extensies en installeert u het.
    >
    > Doe hetzelfde voor Firefox (invoeg toepassing installeren). Klik op de knop **menu openen** op de werk balk (**drie horizontale lijnen** in de rechter bovenhoek), klik op **invoeg toepassingen**, Zoek met het tref woord ' ClickOnce ', kies een van de ClickOnce-extensies en installeer deze.    
    >
@@ -408,7 +408,7 @@ In deze stap gebruikt u Azure Portal om te controleren wat er gebeurt in een Azu
 8. Beschrijving Klik op **pijp lijnen**, klik op **ADFTutorialOnPremDF**en zoom in op invoer tabellen (**verbruikte**) of uitvoer gegevens sets (**geproduceerd**).
 9. Gebruik hulpprogram ma's zoals [micro soft Storage Explorer](https://storageexplorer.com/) om te controleren of een blob/bestand voor elk uur wordt gemaakt.
 
-   ![Azure Opslagverkenner](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie [Data Management Gateway](data-factory-data-management-gateway.md) artikel voor meer informatie over de Data Management Gateway.

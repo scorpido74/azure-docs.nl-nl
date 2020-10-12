@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86172023"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
@@ -78,7 +78,7 @@ Voor andere problemen controleert u het foutbericht van SQL-uitzondering en lost
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Dit type fout bericht ziet er als volgt uit: ' ongeldige object naam ' Catalog. catalog_properties '. ' In dit geval hebt u al een Data Base met de naam SSISDB, maar deze is niet gemaakt door SSIS IR, of de Data Base bevindt zich in een ongeldige status die wordt veroorzaakt door fouten in de laatste SSIS-IR-inrichting. U kunt de bestaande data base met de naam SSISDB verwijderen, maar u kunt ook een nieuw SQL Database of een door SQL beheerd exemplaar configureren voor de IR.
+Dit type fout bericht ziet er als volgt uit: "Ongeldige object naam catalog.catalog_properties". " In dit geval hebt u al een Data Base met de naam SSISDB, maar deze is niet gemaakt door SSIS IR, of de Data Base bevindt zich in een ongeldige status die wordt veroorzaakt door fouten in de laatste SSIS-IR-inrichting. U kunt de bestaande data base met de naam SSISDB verwijderen, maar u kunt ook een nieuw SQL Database of een door SQL beheerd exemplaar configureren voor de IR.
 
 ## <a name="custom-setup-issues"></a>Aangepaste installatie problemen
 
@@ -192,4 +192,4 @@ Azure-SSIS IR wordt regel matig automatisch bijgewerkt. Nieuwe IR-knoop punten w
 
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 
-Wanneer u uw eigen statische open bare IP-adressen wilt maken, moeten er twee open bare IP-adressen worden gegeven. Een van deze wordt gebruikt om de IR-knoop punten direct te maken en er wordt een andere gebruikt tijdens de upgrade van de IR. Deze fout kan optreden wanneer het andere open bare IP-adres niet kan worden gebruikt tijdens de upgrade. Raadpleeg [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) voor mogelijke oorzaken.
+Wanneer u uw eigen statische open bare IP-adressen wilt maken, moeten er twee open bare IP-adressen worden gegeven. Een van deze wordt gebruikt om de IR-knoop punten direct te maken en er wordt een andere gebruikt tijdens de upgrade van de IR. Deze fout kan optreden wanneer het andere open bare IP-adres niet kan worden gebruikt tijdens de upgrade. Raadpleeg  [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) voor mogelijke oorzaken.

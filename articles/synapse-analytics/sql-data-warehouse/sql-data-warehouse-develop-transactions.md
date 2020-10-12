@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85213377"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Trans acties in Synapse SQL-pool gebruiken
@@ -51,7 +51,7 @@ In de volgende tabel zijn twee hypo Thesen gemaakt:
 | DW300c |2.25 |60 |135 |9.000.000 |540.000.000 |
 | DW400c |3 |60 |180 |12.000.000 |720.000.000 |
 | DW500c |3,75 |60 |225 |15.000.000 |900.000.000 |
-| DW1000c |7,5 |60 |450 |30.000.000 |1.800.000.000 |
+| DW1000c |7.5 |60 |450 |30.000.000 |1.800.000.000 |
 | DW1500c |11,25 |60 |675 |45.000.000 |2.700.000.000 |
 | DW2000c |15 |60 |900 |60.000.000 |3.600.000.000 |
 | DW2500c |18,75 |60 |1125 |75.000.000 |4.500.000.000 |
@@ -72,8 +72,8 @@ In de volgende tabel zijn twee hypo Thesen gemaakt:
 | DW300 |2.25 |60 |135 |9.000.000 |540.000.000 |
 | DW400 |3 |60 |180 |12.000.000 |720.000.000 |
 | DW500 |3,75 |60 |225 |15.000.000 |900.000.000 |
-| DW600 |4,5 |60 |270 |18.000.000 |1.080.000.000 |
-| DW1000 |7,5 |60 |450 |30.000.000 |1.800.000.000 |
+| DW600 |4.5 |60 |270 |18.000.000 |1.080.000.000 |
+| DW1000 |7.5 |60 |450 |30.000.000 |1.800.000.000 |
 | DW1200 |9 |60 |540 |36.000.000 |2.160.000.000 |
 | DW1500 |11,25 |60 |675 |45.000.000 |2.700.000.000 |
 | DW2000 |15 |60 |900 |60.000.000 |3.600.000.000 |

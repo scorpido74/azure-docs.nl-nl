@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: c071d372ba90d29806fd8a44909e2c803a8d3fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84339277"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Een Azure Data Box Gateway-apparaat beheren via Windows Power shell
@@ -23,13 +23,13 @@ Dit artikel is gericht op de taken die u gebruikt om de Power shell-interface te
 
 Dit artikel bevat de volgende procedures:
 
-- Verbinding maken met de Power shell-interface
+- Verbinding maken met de PowerShell-interface
 - Een ondersteunings pakket maken
 - Certificaat uploaden
 - Opstarten in niet-DHCP-omgeving
 - Apparaatgegevens weer geven
 
-## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de Power shell-interface
+## <a name="connect-to-the-powershell-interface"></a>Verbinding maken met de PowerShell-interface
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 

@@ -7,10 +7,10 @@ ms.author: karolz
 ms.reviewer: danlep
 ms.date: 05/28/2020
 ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84309812"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Installatie kopieën van een Azure container Registry naar een Kubernetes-cluster halen
@@ -74,7 +74,7 @@ spec:
     - name: acr-secret
 ```
 
-In het vorige voor beeld `my-awesome-app:v1` is de naam van de afbeelding die moet worden opgehaald uit het Azure container Registry en `acr-secret` is de naam van het pull-geheim dat u hebt gemaakt voor toegang tot het REGI ster. Wanneer u de pod implementeert, haalt Kubernetes automatisch de installatie kopie uit het REGI ster, als deze nog niet aanwezig is in het cluster.
+In het vorige voor beeld `my-awesome-app:v1` is de naam van de afbeelding die moet worden opgehaald uit het Azure container Registry en  `acr-secret` is de naam van het pull-geheim dat u hebt gemaakt voor toegang tot het REGI ster. Wanneer u de pod implementeert, haalt Kubernetes automatisch de installatie kopie uit het REGI ster, als deze nog niet aanwezig is in het cluster.
 
 
 ## <a name="next-steps"></a>Volgende stappen
