@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142499"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-onderdelen van de privécloud
@@ -33,7 +33,7 @@ Een VMware-stack in de Privécloud wordt geïmplementeerd met de volgende softwa
 |-----------|---------|------------------|
 | ESXi | 6,7 U2 | Enter prise plus |
 | vCenter | 6,7 U2 | vCenter-standaard |
-| vSAN | 6.7 | Onderneming |
+| vSAN | 6.7 | Enterprise |
 | NSX Data Center | 2.4.1 | Geavanceerd |
 
 ## <a name="esxi"></a>ESXi
@@ -48,7 +48,7 @@ vCenter Server-apparaat (VCSA) biedt de functies voor verificatie, beheer en Orc
 
 ### <a name="vcenter-single-sign-on"></a>eenmalige aanmelding via vCenter
 
-De controller van de embedded platform Services op VCSA is gekoppeld aan een **vCenter-domein met eenmalige aanmelding**.  De domein naam is **cloudsimple. local**.  Er wordt een standaard gebruiker **CloudOwner@cloudsimple.com** voor toegang tot vCenter gemaakt.  U kunt uw on-premises/Azure Active Directory- [identiteits bronnen voor vCenter](set-vcenter-identity.md)toevoegen.
+De controller van de embedded platform Services op VCSA is gekoppeld aan een **VCenter Single Sign-On-domein**.  De domein naam is **cloudsimple. local**.  Er wordt een standaard gebruiker **CloudOwner@cloudsimple.com** voor toegang tot vCenter gemaakt.  U kunt uw on-premises/Azure Active Directory- [identiteits bronnen voor vCenter](set-vcenter-identity.md)toevoegen.
 
 ## <a name="vsan-storage"></a>vSAN-opslag
 

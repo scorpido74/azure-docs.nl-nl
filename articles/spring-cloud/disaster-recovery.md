@@ -8,15 +8,15 @@ ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892549"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Herstel na nood geval in de cloud van Azure lente
 
-**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
 
 In dit artikel worden enkele strategieën beschreven die u kunt gebruiken om te voor komen dat uw Azure lente-Cloud toepassingen downtime-uitval ondervinden.  Elke regio of Data Center kan downtime ondervinden die is veroorzaakt door regionale rampen, maar een zorgvuldige planning kan invloed hebben op uw klanten.
 

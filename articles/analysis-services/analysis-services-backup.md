@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506992"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Back-up en herstel van Analysis Services-Data Base
@@ -107,6 +107,6 @@ Gebruik de cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powershell/mod
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-[Azure-opslagaccounts](../storage/common/storage-create-storage-account.md)  
+[Azure-opslag accounts](../storage/common/storage-create-storage-account.md)  
 [Hoge Beschik baarheid](analysis-services-bcdr.md)      
 [Veelgestelde vragen over de netwerk verbinding Analysis Services](analysis-services-network-faq.md)

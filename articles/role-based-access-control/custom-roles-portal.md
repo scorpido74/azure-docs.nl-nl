@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
 ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511718"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van Azure Portal
@@ -35,7 +35,7 @@ Azure heeft duizenden machtigingen die u mogelijk in uw aangepaste rol kunt gebr
 
 | Methode | Beschrijving |
 | --- | --- |
-| De bestaande rollen bekijken | U kunt de bestaande rollen bekijken om te zien welke machtigingen er worden gebruikt. Zie [ingebouwde rollen van Azure](built-in-roles.md)voor meer informatie. |
+| De bestaande rollen bekijken | U kunt de bestaande rollen bekijken om te zien welke machtigingen er worden gebruikt. Zie [Ingebouwde rollen in Azure](built-in-roles.md) voor meer informatie. |
 | Zoeken naar machtigingen op tref woord | Wanneer u een aangepaste rol maakt met behulp van de Azure Portal, kunt u zoeken naar machtigingen op sleutel woord. U kunt bijvoorbeeld zoeken naar machtigingen voor de *virtuele machine* of *facturering* . Deze zoek functie wordt verderop beschreven in [stap 4: machtigingen](#step-4-permissions). |
 | Alle machtigingen downloaden | Wanneer u een aangepaste rol maakt met behulp van de Azure Portal, kunt u alle machtigingen als een CSV-bestand downloaden en dit bestand vervolgens doorzoeken. Klik in het deel venster **machtigingen toevoegen** op de knop **alle machtigingen downloaden** om alle machtigingen te downloaden. Zie voor meer informatie over het deel venster machtigingen toevoegen [stap 4: machtigingen](#step-4-permissions). |
 | De machtigingen in de docs weer geven | U kunt de beschik bare machtigingen weer geven in [Azure Resource Manager bewerkingen van de resource provider](resource-provider-operations.md). |
@@ -337,6 +337,6 @@ Volg deze stappen om uw aangepaste rollen weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Zelfstudie: Een aangepaste Azure-rol maken met Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Aangepaste Azure-rollen](custom-roles.md)
 - [Bewerkingen voor Azure Resource Manager-resourceproviders](resource-provider-operations.md)

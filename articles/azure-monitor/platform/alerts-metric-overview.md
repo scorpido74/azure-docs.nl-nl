@@ -5,10 +5,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578067"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
@@ -53,7 +53,7 @@ Stel dat u een regel voor metrische waarschuwing voor eenvoudige dynamische drem
 
 Zodra de waarschuwings regel is gemaakt, krijgen de dynamische drempel waarden machine learning-algoritme historische gegevens te zien die beschikbaar zijn, wordt de drempel waarde berekend die het beste past bij het gedrags patroon van de metrische serie en doorlopend meer op basis van nieuwe gegevens om de drempel waarde nauw keuriger te maken.
 
-Vanaf het moment dat de waarschuwings regel wordt gemaakt, wordt de monitor elke 1 minuut uitgevoerd en wordt de waarde van de waarden in de afgelopen 20 minuten genoteerd in vijf minuten en wordt gecontroleerd of het gemiddelde van de periode waarden in elk van de vier Peri Oden de verwachte drempel overschrijdt. Als er wordt voldaan aan de voor waarde, wordt het gemiddelde percentage CPU in de afgelopen 20 minuten (vier 5 minuten Peri Oden), ten opzichte van het verwachte gedrag vier keer, de waarschuwings regel geactiveerd met een geactiveerde melding. Als u een e-mail bericht of een actie voor een webhook hebt geconfigureerd in de actie groep die is gekoppeld aan de waarschuwings regel, ontvangt u een geactiveerde melding op beide.
+Vanaf het moment dat de waarschuwings regel wordt gemaakt, wordt de monitor elke 1 minuut uitgevoerd en wordt de waarde van de waarden in de afgelopen 20 minuten genoteerd in vijf minuten en wordt gecontroleerd of het gemiddelde van de periode waarden in elk van de vier Peri Oden de verwachte drempel overschrijdt. Als wordt voldaan aan de voor waarde, wordt het gemiddelde percentage CPU in de afgelopen 20 minuten (4 5 minuten Peri Oden) van het verwachte gedrag vier keer in de waarschuwings regel geactiveerd. Als u een e-mail bericht of een actie voor een webhook hebt geconfigureerd in de actie groep die is gekoppeld aan de waarschuwings regel, ontvangt u een geactiveerde melding op beide.
 
 ### <a name="view-and-resolution-of-fired-alerts"></a>Geactiveerde waarschuwingen weer geven en oplossen
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266779"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Veelgestelde vragen over het beheer van apparaten Azure Active Directory
@@ -215,7 +215,7 @@ Dit gedrag:
 
 - De gebruikers referenties zijn niet meer geldig.
 - Uw computer kan niet communiceren met Azure Active Directory. Controleer of er problemen zijn met de netwerk verbinding.
-- Voor federatieve aanmeldingen moet uw Federatie server WS-Trust-eind punten ondersteunen die zijn ingeschakeld en toegankelijk zijn. 
+- Voor federatieve aanmeldingen moet uw Federatie server ondersteuning bieden voor WS-Trust-eind punten die zijn ingeschakeld en toegankelijk zijn. 
 - U hebt Pass-Through-verificatie ingeschakeld. Daarom moet uw tijdelijke wacht woord worden gewijzigd wanneer u zich aanmeldt.
 
 ---

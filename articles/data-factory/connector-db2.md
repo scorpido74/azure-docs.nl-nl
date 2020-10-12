@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
 ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83873640"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Gegevens van DB2 kopiëren met behulp van Azure Data Factory
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze DB2 Data Base-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit de DB2-Data Base kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
@@ -69,21 +69,21 @@ De volgende eigenschappen worden ondersteund voor gekoppelde DB2-service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Db2** | Yes |
-| Verbindings | Geef de gegevens op die nodig zijn om verbinding te maken met het DB2-exemplaar.<br/> U kunt ook wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Yes |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |No |
+| type | De eigenschap type moet worden ingesteld op: **Db2** | Ja |
+| connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met het DB2-exemplaar.<br/> U kunt ook wacht woord in Azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 Typische eigenschappen in de connection string:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| server |Naam van de DB2-Server. U kunt het poort nummer opgeven na de server naam gescheiden door een dubbele punt, `server:port` bijvoorbeeld.<br>De DB2-connector gebruikt het DDM/DRDA-protocol en maakt standaard gebruik van poort 50000 indien niet opgegeven. De poort die uw specifieke DB2-Data Base gebruikt, kan afwijken van de versie en uw instellingen, bijvoorbeeld voor DB2 LUW de standaard poort is 50000, voor AS400 de standaard poort is 446 of 448 als TLS is ingeschakeld. Raadpleeg de volgende DB2-documenten over de manier waarop de poort wordt geconfigureerd: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [Db2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)en [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Yes |
-| database |Naam van de DB2-Data Base. |Yes |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base.<br/>Toegestane waarde is: **Basic**. |Yes |
-| gebruikersnaam |Geef de gebruikers naam op om verbinding te maken met de DB2-Data Base. |Yes |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| packageCollection | Geef op onder waar de benodigde pakketten automatisch worden gemaakt door ADF bij het uitvoeren van query's op de data base. Als deze niet is ingesteld, gebruikt Data Factory de {username} als de standaard waarde. | No |
-| certificateCommonName | Wanneer u Secure Sockets Layer (SSL) of Transport Layer Security (TLS)-code ring gebruikt, moet u een waarde opgeven voor de algemene naam van het certificaat. | No |
+| server |Naam van de DB2-Server. U kunt het poort nummer opgeven na de server naam gescheiden door een dubbele punt, `server:port` bijvoorbeeld.<br>De DB2-connector gebruikt het DDM/DRDA-protocol en maakt standaard gebruik van poort 50000 indien niet opgegeven. De poort die uw specifieke DB2-Data Base gebruikt, kan afwijken van de versie en uw instellingen, bijvoorbeeld voor DB2 LUW de standaard poort is 50000, voor AS400 de standaard poort is 446 of 448 als TLS is ingeschakeld. Raadpleeg de volgende DB2-documenten over de manier waarop de poort wordt geconfigureerd: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [Db2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)en [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Ja |
+| database |Naam van de DB2-Data Base. |Ja |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base.<br/>Toegestane waarde is: **Basic**. |Ja |
+| gebruikersnaam |Geef de gebruikers naam op om verbinding te maken met de DB2-Data Base. |Ja |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| packageCollection | Geef op onder waar de benodigde pakketten automatisch worden gemaakt door ADF bij het uitvoeren van query's op de data base. Als deze niet is ingesteld, gebruikt Data Factory de {username} als de standaard waarde. | Nee |
+| certificateCommonName | Wanneer u Secure Sockets Layer (SSL) of Transport Layer Security (TLS)-code ring gebruikt, moet u een waarde opgeven voor de algemene naam van het certificaat. | Nee |
 
 > [!TIP]
 > Als er een fout bericht wordt weer gegeven met de melding dat `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` de reden is dat er geen pakket is gemaakt voor de gebruiker. Standaard probeert ADF een pakket te maken onder de verzameling met de naam van de gebruiker die u hebt gebruikt voor verbinding met de DB2. Geef de verzamelings eigenschap van het pakket op om aan te geven onder waar u de benodigde pakketten wilt maken bij het uitvoeren van een query op de data base.
@@ -166,9 +166,9 @@ Als u gegevens wilt kopiëren uit DB2, worden de volgende eigenschappen onderste
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **Db2Table** | Yes |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **Db2Table** | Ja |
 | schema | De naam van het schema. |Nee (als "query" in activiteit bron is opgegeven)  |
-| tabel | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
+| table | De naam van de tabel. |Nee (als "query" in activiteit bron is opgegeven)  |
 | tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe werk belasting. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
@@ -201,7 +201,7 @@ Als u gegevens wilt kopiëren uit DB2, worden de volgende eigenschappen onderste
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **Db2Source** | Yes |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **Db2Source** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
 **Voorbeeld:**
@@ -252,8 +252,8 @@ Bij het kopiëren van gegevens uit de DB2 worden de volgende toewijzingen gebrui
 | Datum |Datum/tijd |
 | DB2DynArray |Tekenreeks |
 | DbClob |Tekenreeks |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
+| Decimaal |Decimaal |
+| DecimalFloat |Decimaal |
 | Dubbel |Dubbel |
 | Float |Dubbel |
 | Afbeelding |Tekenreeks |
@@ -261,7 +261,7 @@ Bij het kopiëren van gegevens uit de DB2 worden de volgende toewijzingen gebrui
 | LongVarBinary |Byte [] |
 | LongVarChar |Tekenreeks |
 | LongVarGraphic |Tekenreeks |
-| Numeriek |Decimal |
+| Numeriek |Decimaal |
 | Realistische |Enkelvoudig |
 | SmallInt |Int16 |
 | Tijd |TimeSpan |

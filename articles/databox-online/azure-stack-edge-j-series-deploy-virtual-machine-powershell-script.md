@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890644"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Vm's implementeren op uw Azure Stack Edge Pro GPU-apparaat via Azure PowerShell script
@@ -27,7 +27,7 @@ Voordat u begint met het maken en beheren van een virtuele machine op uw Azure S
 
 ### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>Voor Azure Stack Edge Pro-apparaat via de lokale web-UI
 
-1. U hebt de netwerk instellingen op uw Azure Stack Edge Pro-apparaat voltooid, zoals beschreven in [stap 1: Azure stack Edge Pro-apparaat configureren](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
+1. U hebt de netwerkinstellingen op uw Azure Stack Edge Pro-apparaat geconfigureerd, zoals wordt beschreven in [Stap 1: Een Azure Stack Edge Pro-apparaat configureren](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device).
 
 2. U hebt een netwerkinterface ingeschakeld voor berekeningen. Het IP-adres van de netwerkinterface wordt gebruikt om een virtuele switch te maken voor de VM-implementatie. Met de volgende stappen doorloopt u dit proces:
 
@@ -36,7 +36,7 @@ Voordat u begint met het maken en beheren van een virtuele machine op uw Azure S
         > [!IMPORTANT] 
         > U kunt slechts één poort configureren voor berekeningen.
 
-    2. Schakel Compute in op de netwerkinterface. Azure Stack Edge Pro maakt en beheert een virtuele switch die overeenkomt met die netwerk interface.
+    2. Schakel Compute in op de netwerkinterface. Azure Stack Edge Pro maakt en beheert een virtuele switch die overeenkomt met die netwerkinterface.
 
 3. U hebt alle certificaten gemaakt en geïnstalleerd op uw Azure Stack Edge Pro-apparaat en in het vertrouwde basis archief van uw client. Volg de procedure die wordt beschreven in [Stap 2: Certificaten maken en installeren](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 

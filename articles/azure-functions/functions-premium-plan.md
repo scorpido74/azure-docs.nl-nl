@@ -9,10 +9,10 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578033"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
@@ -141,7 +141,7 @@ Hieronder vindt u de momenteel ondersteunde maximum waarden voor scale-out voor 
 
 Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Region| Windows | Linux |
+|Regio| Windows | Linux |
 |--| -- | -- |
 |Australië - centraal| 100 | Niet beschikbaar |
 |Australië - centraal 2| 100 | Niet beschikbaar |

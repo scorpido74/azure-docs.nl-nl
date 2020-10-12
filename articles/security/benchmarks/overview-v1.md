@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 39b6a5452c4bc0cba1e1153c266b83e87f6209ea
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90059216"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v1"></a>Overzicht van de Azure Security Bench Mark (v1)
@@ -31,10 +31,10 @@ De volgende besturings elementen worden gebruikt in de beveiligings benchmark va
 - [Identiteits- en toegangsbeheer](security-control-identity-access-control.md)
 - [Gegevensbeveiliging](security-control-data-protection.md)
 - [Beheer van beveiligingsproblemen](security-control-vulnerability-management.md)
-- [Inventarisatie en het beheer van middelen](security-control-inventory-asset-management.md)
+- [Inventarisatie en asset-management](security-control-inventory-asset-management.md)
 - [Veilige configuratie](security-control-secure-configuration.md)
 - [Beveiliging tegen malware](security-control-malware-defense.md)
-- [Gegevens herstellen](security-control-data-recovery.md)
+- [Gegevensherstel](security-control-data-recovery.md)
 - [Reageren op incidenten](security-control-incident-response.md)
 - [Penetratietests en Red Team-oefeningen](security-control-penetration-tests-red-team-exercises.md)
 

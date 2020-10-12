@@ -15,10 +15,10 @@ ms.date: 09/29/2020
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578254"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
@@ -124,7 +124,7 @@ Meer informatie over de beperkingen van de prijs categorie is beschikbaar op [Az
 Geen van de verouderde prijs categorieën heeft prijzen op basis van regionaal.  
 
 > [!NOTE]
-> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2-Suite of OMS-invoeg toepassing voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
+> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2 Suite of OMS Add-On voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
 
 ## <a name="change-the-data-retention-period"></a>De gegevensretentieperiode wijzigen
 
@@ -567,7 +567,7 @@ union *
 Deze query is geen exacte replicatie van de manier waarop het gebruik wordt berekend, maar werkt in de meeste gevallen aan aanbevelingen voor de prijs categorie.  
 
 > [!NOTE]
-> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2-Suite of OMS-invoeg toepassing voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
+> Als u de rechten wilt gebruiken die afkomstig zijn van het aanschaffen van OMS E1 Suite, OMS E2 Suite of OMS Add-On voor System Center, kiest u de prijs categorie Log Analytics *per knoop punt* .
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Een waarschuwing maken wanneer het verzamelen van gegevens hoog is
 

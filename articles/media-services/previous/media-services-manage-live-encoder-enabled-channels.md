@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268302"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
@@ -75,7 +75,7 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Starten |Starten |Nee (tijdelijke status) |
 | Wordt uitgevoerd |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |JA |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
-| Gestopt |Gestopt |No |
+| Gestopt |Gestopt |Nee |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatisch afsluiten voor ongebruikte kanalen
 Vanaf 25 januari 2016 Media Services de implementatie van een update die automatisch een kanaal stopt (met Live encoding ingeschakeld) nadat het is uitgevoerd in een ongebruikte status gedurende een lange periode. Dit geldt voor kanalen zonder actieve Program Ma's en die gedurende een lange periode geen invoer bijdrage hebben ontvangen.
@@ -315,9 +315,9 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Kanaal status | UI-indica toren van portal | Gefactureerd? |
 | --- | --- | --- |
 | Starten |Starten |Nee (tijdelijke status) |
-| Wordt uitgevoerd |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |Yes |
+| Wordt uitgevoerd |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |Ja |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
-| Gestopt |Gestopt |No |
+| Gestopt |Gestopt |Nee |
 
 > [!NOTE]
 > Op dit moment is het begin gemiddelde van het kanaal ongeveer 2 minuten, maar het kan Maxi maal 20 minuten duren. Het opnieuw instellen van het kanaal kan tot vijf minuten duren.

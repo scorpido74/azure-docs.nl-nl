@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
 ms.openlocfilehash: 23c7112639a64097d95df29bde16636702837f9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83832976"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referentie architectuur: verwerking van realtime-gebeurtenissen met Microsoft Azure Stream Analytics
@@ -24,12 +24,12 @@ Microsoft Azure biedt een uitgebreide catalogus met analyse technologieën die o
 
 ## <a name="contents"></a>Inhoud
 * Samenvatting
-* Inleiding tot real-time analyse
-* Toegevoegde waarde van realtime gegevens in azure
-* Algemene Scenario's voor real-time analyse
+* Inleiding tot Real-Time Analytics
+* Toegevoegde waarde van Real-Time gegevens in azure
+* Algemene Scenario's voor Real-Time Analytics
 * Architectuur en onderdelen
   * Gegevensbronnen
-  * Gegevens integratie-laag
+  * Laag Data-Integration
   * Realtime analyse-laag
   * Gegevensopslag laag
   * Laag van presentatie/verbruik

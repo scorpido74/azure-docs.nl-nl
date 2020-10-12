@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: 7fad90cf47591b5ffab4232c2be3180138738f01
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83992826"
 ---
 # <a name="how-the-translator-counts-characters"></a>Het aantal tekens in het conversie programma
@@ -24,8 +24,8 @@ De vertaler telt elk Unicode-code punt van invoer tekst als een teken. Elke vert
 Wat is het aantal:
 
 * Tekst die wordt door gegeven aan de vertaler in de hoofd tekst van de aanvraag
-   * `Text`bij gebruik van de opzoek methoden vertalen, trans actie en Dictionary
-   * `Text`en `Translation` Wanneer u de voor beelden van de woordenlijst methode gebruikt
+   * `Text` bij gebruik van de opzoek methoden vertalen, trans actie en Dictionary
+   * `Text` en `Translation` Wanneer u de voor beelden van de woordenlijst methode gebruikt
 * Alle aantekeningen: HTML, XML-tags enzovoort, in het tekst veld van de hoofd tekst van de aanvraag. De JSON-notatie die wordt gebruikt om de aanvraag te maken (bijvoorbeeld ' Text: '), wordt niet meegerekend.
 * Een afzonderlijke brief
 * Interpunctie

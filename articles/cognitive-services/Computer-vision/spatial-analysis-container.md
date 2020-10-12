@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277288"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>De container voor ruimtelijke analyse installeren en uitvoeren (preview-versie)
@@ -65,7 +65,7 @@ In dit artikel downloadt en installeert u de volgende software pakketten. De hos
 
 | Vereiste | Beschrijving |
 |--|--|
-| Camera | De container voor ruimtelijke analyse is niet gebonden aan een specifiek camera merk. Het camera apparaat moet: ondersteuning bieden voor real-time streaming protocol (RTSP) en H. 264-code ring, toegankelijk zijn voor de hostcomputer en kunnen worden gestreamd op 15FPS en 1080p-resolutie. |
+| Camera | De container voor ruimtelijke analyse is niet gebonden aan een specifiek camera merk. Het camera apparaat moet: ondersteuning bieden voor Real-Time streaming protocol (RTSP) en H. 264-code ring, toegankelijk zijn voor de hostcomputer en kunnen worden gestreamd op 15FPS en 1080p-resolutie. |
 | Linux-besturings systeem | [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) moet zijn geïnstalleerd op de hostcomputer.  |
 
 
@@ -111,7 +111,7 @@ Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw Azure stack Edg
 
 Kies op de pagina **rand berekening configureren**   een bestaand IOT hub of kies ervoor om een nieuw item te maken. Standaard wordt een standaard prijs categorie (S1) gebruikt voor het maken van een IoT Hub bron. Als u een gratis laag IoT Hub resource wilt gebruiken, maakt u er een en selecteert u deze. De IoT Hub resource gebruikt hetzelfde abonnement en dezelfde resource groep die wordt gebruikt door de resource Azure Stack Edge 
 
-Klik op **Create**. Het maken van IoT Hub bronnen kan een paar minuten duren. Nadat de IoT Hub resource is gemaakt, wordt de tegel **Edge Compute** bijgewerkt om de nieuwe configuratie weer te geven. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **configuratie weer geven** op de tegel **Compute configureren**   .
+Klik op **Maken**. Het maken van IoT Hub bronnen kan een paar minuten duren. Nadat de IoT Hub resource is gemaakt, wordt de tegel **Edge Compute** bijgewerkt om de nieuwe configuratie weer te geven. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **configuratie weer geven** op de tegel **Compute configureren**   .
 
 Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. De Azure IoT Edge runtime wordt al uitgevoerd op het IoT Edge apparaat.            
 
@@ -322,7 +322,7 @@ In de volgende tabel ziet u de verschillende omgevings variabelen die worden geb
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | Valuta Uitgebreide | Logboek registratie niveau, selecteer een van de twee waarden|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | Niet wijzigen|
-| ARCHON_PERF_MARKER| false| Stel deze waarde in op True voor prestatie logboek registratie, anders moet dit onwaar zijn| 
+| ARCHON_PERF_MARKER| onjuist| Stel deze waarde in op True voor prestatie logboek registratie, anders moet dit onwaar zijn| 
 | ARCHON_NODES_LOG_LEVEL | Valuta Uitgebreide | Logboek registratie niveau, selecteer een van de twee waarden|
 | OMP_WAIT_POLICY | Pass | Niet wijzigen|
 | QT_X11_NO_MITSHM | 1 | Niet wijzigen|

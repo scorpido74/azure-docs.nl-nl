@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116281"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Bulk toevoegingen optimaliseren en tijdelijke gegevens gebruiken op een Azure Database for PostgreSQL-één server 
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u bewerkingen voor bulksgewijs invoegen opti
 ## <a name="use-unlogged-tables"></a>Niet-geregistreerde tabellen gebruiken
 Als u werk belasting bewerkingen hebt waarbij tijdelijke gegevens worden betrokken of als u grote data sets tegelijk invoegt, kunt u gebruikmaken van niet-geregistreerde tabellen.
 
-Niet-geregistreerde tabellen is een PostgreSQL-functie die effectief kan worden gebruikt om bulk toevoegingen te optimaliseren. PostgreSQL maakt gebruik van write-Ahead logboek registratie (WAL). Het biedt standaard atomische en duurzaamheid. Atomiciteit, consistentie, isolatie en duurzaamheid vormen de ACID-eigenschappen. 
+Niet-geregistreerde tabellen is een PostgreSQL-functie die effectief kan worden gebruikt om bulk toevoegingen te optimaliseren. PostgreSQL maakt gebruik van Write-Ahead logboek registratie (WAL). Het biedt standaard atomische en duurzaamheid. Atomiciteit, consistentie, isolatie en duurzaamheid vormen de ACID-eigenschappen. 
 
 Als u invoegt in een niet-geregistreerde tabel, betekent dit dat PostgreSQL wordt ingevoegd zonder te worden geschreven naar het transactie logboek. Dit is een I/O-bewerking. Als gevolg hiervan zijn deze tabellen aanzienlijk sneller dan gewone tabellen.
 
