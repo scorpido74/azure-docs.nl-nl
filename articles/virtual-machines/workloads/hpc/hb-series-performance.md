@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.openlocfilehash: 34e9ef3ab46f2ce11500aa87db9676635d3e9b4f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90016279"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>Grootte van virtuele machines uit de HB-serie
@@ -46,7 +46,7 @@ De MPI-bandbreedte test van de OSU microbench Mark-suite wordt uitgevoerd. Voorb
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hb.png" alt-text="MPI-band breedte op Azure HB.":::
+:::image type="content" source="./media/bandwidth-hb.png" alt-text="MPI-latentie op Azure HB.":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox perftest

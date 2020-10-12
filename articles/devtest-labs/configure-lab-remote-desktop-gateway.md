@@ -4,10 +4,10 @@ description: Informatie over het configureren van een lab in Azure DevTest Labs 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288073"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw Lab in Azure DevTest Labs configureren voor het gebruik van een extern bureau blad-gateway
@@ -21,9 +21,9 @@ Deze methode is veiliger omdat de test gebruiker zich rechtstreeks verifieert bi
 
 1. De actie [RDP-bestands inhoud ophalen](/rest/api/dtl/virtualmachines/getrdpfilecontents) wordt aangeroepen wanneer u de knop **verbinding maken** selecteert. 1. 
 1. De actie RDP-bestands inhoud ophalen wordt aangeroepen `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` om een verificatie token aan te vragen.
-    1. `{gateway-hostname}`is de hostnaam van de gateway die is opgegeven op de pagina **Lab-instellingen** voor uw Lab in de Azure Portal. 
-    1. `{lab-machine-name}`de naam is van de computer waarmee u verbinding wilt maken.
-    1. `{port-number}`is de poort waarop de verbinding moet worden gemaakt. Meestal is deze poort 3389. Als de VM van het lab de [gedeelde IP-](devtest-lab-shared-ip.md) functie in DevTest Labs gebruikt, is de poort verschillend.
+    1. `{gateway-hostname}` is de hostnaam van de gateway die is opgegeven op de pagina **Lab-instellingen** voor uw Lab in de Azure Portal. 
+    1. `{lab-machine-name}` de naam is van de computer waarmee u verbinding wilt maken.
+    1. `{port-number}` is de poort waarop de verbinding moet worden gemaakt. Meestal is deze poort 3389. Als de VM van het lab de [gedeelde IP-](devtest-lab-shared-ip.md) functie in DevTest Labs gebruikt, is de poort verschillend.
 1. De extern bureau blad-gateway Defert de aanroep van `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` naar een Azure-functie om het verificatie token te genereren. De DevTest Labs-service bevat automatisch de functie code in de aanvraag header. De functie sleutel moet worden opgeslagen in de sleutel kluis van het lab. De naam van het geheim dat moet worden weer gegeven als het geheim van de **Gateway token** op de pagina **Lab-instellingen** voor het lab.
 1. De Azure-functie wordt verwacht een token te retour neren voor certificaat authenticatie op basis van certificaten op de gateway computer.  
 1. De actie RDP-bestands inhoud ophalen retourneert vervolgens het volledige RDP-bestand, met inbegrip van de verificatie gegevens.
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Configureer het lab voor het gebruik van de token verificatie met behulp van de volgende stappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs uw **Lab**.
 1. Selecteer op de pagina Lab de optie **configuratie en beleid**.

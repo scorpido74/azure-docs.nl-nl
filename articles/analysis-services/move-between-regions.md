@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050359"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services verplaatsen naar een andere regio
@@ -278,7 +278,7 @@ Optioneel: nadat u de model database hebt hersteld, verwerkt u het model en de t
 
 Optioneel: [ALM Toolkit](http://alm-toolkit.com/) is een *open source* -hulp programma voor het vergelijken en beheren van Power BI gegevens sets *en* Analysis Services tabellaire model databases. Gebruik de Toolkit om verbinding te maken met zowel de bron-als de doel server database en vergelijk. Als uw database migratie is voltooid, worden model objecten dezelfde definitie. 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Toolkit":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="SAS ophalen":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

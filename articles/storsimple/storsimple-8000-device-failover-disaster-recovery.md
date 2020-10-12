@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511808"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Failover en herstel na noodgevallen voor apparaat uit de StorSimple 8000-serie
@@ -55,7 +55,7 @@ Stel dat er twee back-upbeleid, *defaultPol* en *customPol*:
 
 In dit geval StorSimple prioriteiten voor crash-consistentie en maakt gebruik van *customPol* wanneer het meer volumes heeft. De meest recente back-up van dit beleid wordt gebruikt om gegevens te herstellen. Ga voor meer informatie over het maken en beheren van back-upbeleid naar [gebruik van de StorSimple Apparaatbeheer-service om back-upbeleiden te beheren](storsimple-8000-manage-backup-policies-u2.md).
 
-## <a name="common-considerations-for-device-failover"></a>Algemene overwegingen voor failover van het apparaat
+## <a name="common-considerations-for-device-failover"></a>Algemene overwegingen voor failover van apparaat
 
 Lees de volgende informatie voordat u een failover van een apparaat doorstuurt:
 

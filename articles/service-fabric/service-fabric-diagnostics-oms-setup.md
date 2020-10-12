@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258652"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor-logboeken voor een cluster instellen
 
-Azure Monitor-Logboeken is onze aanbeveling om gebeurtenissen op cluster niveau te bewaken. U kunt Log Analytics werk ruimte instellen via Azure Resource Manager, Power shell of Azure Marketplace. Als u een bijgewerkte Resource Manager-sjabloon van uw implementatie wilt behouden voor toekomstig gebruik, gebruikt u dezelfde sjabloon om uw Azure Monitor-logboeken omgeving in te stellen. Implementatie via Marketplace is eenvoudiger als u al een cluster hebt dat is geïmplementeerd met diagnostische gegevens. Als u geen toegang op abonnements niveau hebt in het account waarmee u implementeert, implementeert u met Power shell of de Resource Manager-sjabloon.
+Azure Monitor-logboeken is onze aanbeveling voor het bewaken van gebeurtenissen op clusterniveau. U kunt Log Analytics werk ruimte instellen via Azure Resource Manager, Power shell of Azure Marketplace. Als u een bijgewerkte Resource Manager-sjabloon van uw implementatie wilt behouden voor toekomstig gebruik, gebruikt u dezelfde sjabloon om uw Azure Monitor-logboeken omgeving in te stellen. Implementatie via Marketplace is eenvoudiger als u al een cluster hebt dat is geïmplementeerd met diagnostische gegevens. Als u geen toegang op abonnements niveau hebt in het account waarmee u implementeert, implementeert u met Power shell of de Resource Manager-sjabloon.
 
 > [!NOTE]
 > Als u Azure Monitor logboeken wilt instellen om uw cluster te bewaken, moet u Diagnostische gegevens hebben ingeschakeld om gebeurtenissen op cluster niveau of platform niveau weer te geven. Zie [Diagnostische gegevens instellen in Windows-clusters](service-fabric-diagnostics-event-aggregation-wad.md) en [Diagnostische gegevens in Linux-clusters instellen](service-fabric-diagnostics-oms-syslog.md) voor meer informatie
@@ -47,13 +47,13 @@ Als u Windows gebruikt, gaat u door met de volgende stappen om Azure Monitor log
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>De Log Analytics-werk ruimte koppelen aan uw cluster 
 
-1. De werk ruimte moet zijn verbonden met de diagnostische gegevens die afkomstig zijn uit uw cluster. Ga naar de resource groep waarin u de Service Fabric-analyse oplossing hebt gemaakt. Selecteer **ServiceFabric \<nameOfWorkspace\> ** en ga naar de pagina overzicht. Hier kunt u de instellingen voor de oplossing, de werk ruimte-instellingen wijzigen en toegang krijgen tot de Log Analytics-werk ruimte.
+1. De werkruimte moet zijn verbonden met de diagnostische gegevens die afkomstig zijn van uw cluster. Ga naar de resource groep waarin u de Service Fabric-analyse oplossing hebt gemaakt. Selecteer **ServiceFabric \<nameOfWorkspace\> ** en ga naar de pagina overzicht. Hier kunt u de instellingen voor de oplossing, de werk ruimte-instellingen wijzigen en toegang krijgen tot de Log Analytics-werk ruimte.
 
 2. Selecteer in het navigatie menu aan de linkerkant onder **werkruimte gegevens bronnen**de optie **Logboeken voor opslag accounts**.
 
 3. Op de pagina **Logboeken voor opslag accounts** selecteert u bovenaan **toevoegen** om de logboeken van uw cluster toe te voegen aan de werk ruimte.
 
-4. Selecteer **opslag account** om het juiste account toe te voegen dat in het cluster is gemaakt. Als u de standaard naam hebt gebruikt, is het opslag **account \<resourceGroupName\> sfdg**. U kunt dit ook bevestigen met de Azure Resource Manager sjabloon die wordt gebruikt voor het implementeren van uw cluster door de waarde te controleren die wordt gebruikt voor **applicationDiagnosticsStorageAccountName**. Als de naam niet wordt weer gegeven, schuift u omlaag en selecteert u **laden meer**. Selecteer de naam van het opslag account.
+4. Selecteer **opslag account** om het juiste account toe te voegen dat in het cluster is gemaakt. Als u de standaard naam hebt gebruikt, is het opslag **account \<resourceGroupName\> sfdg**. U kunt dit ook bevestigen met de Azure Resource Manager sjabloon die wordt gebruikt voor het implementeren van uw cluster door de waarde te controleren die wordt gebruikt voor **applicationDiagnosticsStorageAccountName**. Als de naam niet wordt weer gegeven, schuift u omlaag en selecteert u **laden meer**. Selecteer de naam van het opslagaccount.
 
 5. Geef het gegevens type op. Stel deze in op **service Fabric-gebeurtenissen**.
 

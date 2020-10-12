@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9411c22183620f883b4d2819eb3078e49837e578
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90016075"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-synchronisatie: kenmerken die zijn gesynchroniseerd met Azure Active Directory
@@ -166,7 +166,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
-| title |X |X | | |
+| titel |X |X | | |
 | unauthOrig |X |X |X | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
 | userCertificate |X |X | | |
@@ -248,7 +248,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
-| title |X |X | | |
+| titel |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker
@@ -299,7 +299,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | |eenmaal gesynchroniseerd van Azure AD naar Exchange Online, waarna Exchange Online de bron van de autoriteit voor dit kenmerk wordt, en eventuele latere wijzigingen niet kunnen worden gesynchroniseerd vanuit on-premises. Zie ([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) voor meer informatie.|
-| title |X |X | | |
+| titel |X |X | | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 | wWWHomePage |X |X | | |
@@ -365,7 +365,7 @@ In dit geval begint u met de lijst met kenmerken in dit onderwerp en identificee
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
-| title |X |X | | |
+| titel |X |X | | |
 | usageLocation |X | | |mechanische eigenschap. Het land of de regio van de gebruiker. Wordt gebruikt voor licentie toewijzing. |
 | userPrincipalName |X | | |UPN is de aanmeldings-ID voor de gebruiker. Meestal hetzelfde als de waarde [mail]. |
 

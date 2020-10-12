@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068163"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder service DevOps-taak
@@ -65,7 +65,7 @@ Stel de volgende taak eigenschappen in:
 
 Selecteer in de vervolg keuzelijst welk abonnement u wilt gebruiken om de opbouw functie voor installatie kopieën uit te voeren. Gebruik hetzelfde abonnement waar uw bron installatie kopieën zich bevinden en waar de installatie kopieën moeten worden gedistribueerd. U moet de functie voor het intrekken van de Image Builder-bijdrager toegang tot het abonnement of de resource groep autoriseren.
 
-### <a name="resource-group"></a>Resourcegroep
+### <a name="resource-group"></a>Resource Group
 
 Gebruik de resource groep waarin de sjabloon artefact van de tijdelijke afbeelding wordt opgeslagen. Wanneer u een sjabloon artefact maakt, wordt er een extra resource groep voor de tijdelijke installatie kopie `IT_<DestinationResourceGroup>_<TemplateName>_guid` gemaakt. De tijdelijke resource groep slaat de meta gegevens van de installatie kopie, zoals scripts, op. Aan het einde van de taak wordt de resource groep afbeeldings sjabloon artefact en tijdelijke afbeeldings opbouw verwijderd.
  
@@ -139,12 +139,12 @@ Selecteer de knop **pad bouwen** om de map build te kiezen die u op de installat
 
 In het volgende voor beeld wordt uitgelegd hoe dit werkt:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Een mapstructuur waarin de hiërarchie wordt weer gegeven.":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Selecteer een artefact toevoegen in de release pijplijn.":::
 
 
 * Windows-bestanden bestaan in `C:\` . Er wordt een map `buildArtifacts` gemaakt met de naam die de `webapp` Directory bevat.
 
-* Linux-bestanden bestaan in `/tmp` . De `webapp` map wordt gemaakt, die alle bestanden en mappen bevat. U moet de bestanden uit deze map verplaatsen. Anders worden ze verwijderd omdat deze zich in de tijdelijke map bevindt.
+* Linux-bestanden bestaan in  `/tmp` . De `webapp` map wordt gemaakt, die alle bestanden en mappen bevat. U moet de bestanden uit deze map verplaatsen. Anders worden ze verwijderd omdat deze zich in de tijdelijke map bevindt.
 
 #### <a name="inline-customization-script"></a>Script voor inline-aanpassing
 
@@ -239,7 +239,7 @@ U kunt geen waarden door geven. met de opbouw functie voor installatie kopieën 
 
 * [VM-grootte](image-builder-json.md#vmprofile) : u kunt de grootte van de virtuele machine overschrijven van de standaard waarde van *Standard_D1_v2*. U kunt overschrijven om de totale aanpassings tijd te verminderen of omdat u de installatie kopieën wilt maken die afhankelijk zijn van bepaalde VM-grootten, zoals GPU/HPC, enzovoort.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer u de release maakt, maakt de taak een container in het opslag account met de naam *ImageBuilder-vststask*. Het zips en uploadt uw bouw artefacten en maakt een SAS-token voor het zip-bestand.
 
@@ -314,7 +314,7 @@ Als er een fout is opgetreden in de build, wordt de resource groep staging niet 
 
 Er wordt een fout melding weer geven in het DevOps-logboek voor de VM Image Builder-taak en de locatie van de aanpassings Logboeken. Bijvoorbeeld:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Voor beeld van een DevOps taak fout waarin een fout wordt weer gegeven.":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Selecteer een artefact toevoegen in de release pijplijn.":::
 
 Zie [Troubleshooting Azure Image Builder service](image-builder-troubleshoot.md)(Engelstalig) voor meer informatie over het oplossen van problemen. 
 

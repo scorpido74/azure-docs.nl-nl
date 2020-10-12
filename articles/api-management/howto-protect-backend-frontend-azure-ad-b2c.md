@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253691"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Beveiligd-wachtwoord verificatie beveiligen met OAuth 2,0, Azure Active Directory B2C en Azure API Management
@@ -99,7 +99,7 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
 
 ## <a name="build-the-function-api"></a>De functie-API maken
 1. Ga terug naar uw standaard Azure AD-Tenant in de Azure Portal zodat de items in uw abonnement opnieuw kunnen worden geconfigureerd 
-1. Ga naar de Blade functie-apps van de Azure Portal, open uw lege functie-app en maak een nieuwe functie voor webhook + API in de portal via de Snelstartgids.
+1. Ga naar de Blade functie-apps van de Azure Portal, open uw lege functie-app en maak een nieuwe In-Portal de webhook + API-functie via de Snelstartgids.
 1. Plak de voorbeeld code hieronder in run. CSX over de bestaande code die wordt weer gegeven.
 
    ```csharp
@@ -431,7 +431,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
    };
    ```
 
-1. Op Opslaan klikken
+1. Klik op Opslaan
 
 ## <a name="set-the-redirect-uris-for-the-azure-ad-b2c-frontend-app"></a>De omleidings-Uri's voor de Azure AD B2C frontend-app instellen
 1. Open de Blade Azure AD B2C en ga naar de registratie van de toepassing voor de Java script-frontend toepassing

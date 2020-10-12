@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van Azure DevTest Labs voor het ma
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482833"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Virtuele machines maken en beheren met DevTest Labs met behulp van Azure CLI
@@ -17,7 +17,7 @@ Voordat u begint:
 
 * Als een Lab niet is gemaakt, kunt u [hier](devtest-lab-create-lab.md)instructies vinden.
 
-* [Installeer de Azure cli](/cli/azure/install-azure-cli). Als u wilt starten, voert u AZ login uit om een verbinding te maken met Azure. 
+* [Installeer de Azure CLI](/cli/azure/install-azure-cli). Als u wilt starten, voert u AZ login uit om een verbinding te maken met Azure. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>De virtuele machine maken en verifiëren 
 Voordat u DevTest Labs-gerelateerde opdrachten uitvoert, stelt u de juiste Azure-context in met behulp van de `az account set` opdracht:

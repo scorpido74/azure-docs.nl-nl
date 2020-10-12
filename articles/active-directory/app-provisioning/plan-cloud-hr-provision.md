@@ -12,10 +12,10 @@ ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706351"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
@@ -255,7 +255,7 @@ U kunt ook [de standaard kenmerk toewijzingen aanpassen](../app-provisioning/cus
 
 Standaard wordt de status van het gebruikers profiel voor de inrichtings connector toegewezen aan de status van het gebruikers account in Active Directory of Azure AD om te bepalen of het gebruikers account moet worden in-of uitgeschakeld.
 
-Wanneer u het proces voor het sluiten van invoegers initieert, moet u de volgende vereisten verzamelen.
+Wanneer u het Joiners-Leavers proces initieert, moet u de volgende vereisten verzamelen.
 
 | Proces | Vereisten |
 | - | - |

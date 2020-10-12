@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7cf28df4f009b017699c926d1ca54b7e5320a179
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404108"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91377052"
 ---
 Gebruik deze quickstart om aan de slag te gaan met de Bing Video Search-clientbibliotheek voor JavaScript om nieuws te zoeken. Hoewel Bing Video Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Deze bevat meer aantekeningen en functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Node.js](https://www.nodejs.org/)
-
-Stel een consoletoepassing in met de Bing Video Search-clientbibliotheek:
-* Voer `npm install ms-rest-azure` uit in uw ontwikkelomgeving.
-* Voer `npm install azure-cognitiveservices-videosearch` uit in uw ontwikkelomgeving.
+* Nieuwste versie van [Node.js](https://nodejs.org/en/download/).
+* De [Bing Video Search-SDK voor JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-videosearch)
+     *  Voer `npm install @azure/cognitiveservices-videosearch` uit om deze te installeren
+* De klasse `CognitiveServicesCredentials` van het pakket `@azure/ms-rest-azure-js` om de client te verifiëren.
+     * Voer `npm install @azure/ms-rest-azure-js` uit om deze te installeren
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,8 +33,8 @@ Stel een consoletoepassing in met de Bing Video Search-clientbibliotheek:
 1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor en voeg een instructie `require()` toe voor de Bing Video's zoeken-bibliotheek en `CognitiveServicesCredentials`-module. Maak een variabele voor uw abonnementssleutel. 
     
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+    const VideoSearchAPIClient = require('@azure/cognitiveservices-videosearch');
     ```
 
 2. Maak een exemplaar van `CognitiveServicesCredentials` met uw sleutel. Gebruik deze vervolgens om een exemplaar te maken van de client voor het zoeken van video's.

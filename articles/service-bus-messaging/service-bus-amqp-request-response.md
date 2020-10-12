@@ -4,10 +4,10 @@ description: In dit artikel wordt de lijst met AMQP bewerkingen op aanvraag/antw
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064411"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1,0 in Microsoft Azure Service Bus: bewerkingen op basis van aanvraag-respons
@@ -123,7 +123,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:renew-lock`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
  De hoofd tekst van het aanvraag bericht moet bestaan uit een AMQP sectie met een kaart met de volgende vermeldingen:  
@@ -161,7 +161,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:peek-message`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -202,7 +202,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:schedule-message`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -215,7 +215,7 @@ De toewijzing die een bericht weergeeft, moet de volgende vermeldingen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|bericht-id|tekenreeks|Ja|`amqpMessage.Properties.MessageId`Als teken reeks|  
+|bericht-id|tekenreeks|Ja|`amqpMessage.Properties.MessageId` Als teken reeks|  
 |sessie-id|tekenreeks|No|`amqpMessage.Properties.GroupId as string`|  
 |partitie sleutel|tekenreeks|No|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
 |via-Partition-sleutel|tekenreeks|No|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
@@ -246,7 +246,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:cancel-scheduled-message`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -276,7 +276,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:renew-session-lock`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -310,7 +310,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:peek-message`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -352,7 +352,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:set-session-state`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -381,7 +381,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:get-session-state`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -415,7 +415,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:get-message-sessions`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -452,7 +452,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:add-rule`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -474,7 +474,7 @@ De SQL-filter toewijzing moet de volgende vermeldingen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|expressie|tekenreeks|Ja|Expressie voor SQL-filter.|  
+|expression|tekenreeks|Ja|Expressie voor SQL-filter.|  
   
 De **correlatie filter** toewijzing moet ten minste één van de volgende vermeldingen bevatten:  
   
@@ -482,7 +482,7 @@ De **correlatie filter** toewijzing moet ten minste één van de volgende vermel
 |---------|----------------|--------------|--------------------|  
 |correlation-id|tekenreeks|No||  
 |bericht-id|tekenreeks|No||  
-|in|tekenreeks|No||  
+|in op|tekenreeks|No||  
 |beantwoorden|tekenreeks|No||  
 |label|tekenreeks|No||  
 |sessie-id|tekenreeks|No||  
@@ -494,7 +494,7 @@ De toewijzing **SQL-regel-Action** moet de volgende vermeldingen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|expressie|tekenreeks|Ja|SQL-actie-expressie.|  
+|expression|tekenreeks|Ja|SQL-actie-expressie.|  
   
 #### <a name="response"></a>Antwoord  
 
@@ -513,7 +513,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:remove-rule`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -539,7 +539,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
 
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:enumerate-rules`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
 
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -562,17 +562,17 @@ Elk toewijzings item in de matrix bevat de volgende eigenschappen:
 
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|regel-beschrijving|matrix van beschreven objecten|Ja|`com.microsoft:rule-description:list`met AMQP-code 0x0000013700000004| 
+|regel-beschrijving|matrix van beschreven objecten|Ja|`com.microsoft:rule-description:list` met AMQP-code 0x0000013700000004| 
 
-`com.microsoft.rule-description:list`is een matrix met objecten die worden beschreven. De matrix bevat het volgende:
+`com.microsoft.rule-description:list` is een matrix met objecten die worden beschreven. De matrix bevat het volgende:
 
 |Index|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-| 0 | matrix van beschreven objecten | Ja | `filter`zoals hieronder is opgegeven. |
-| 1 | matrix van beschreven object | Ja | `ruleAction`zoals hieronder is opgegeven. |
+| 0 | matrix van beschreven objecten | Ja | `filter` zoals hieronder is opgegeven. |
+| 1 | matrix van beschreven object | Ja | `ruleAction` zoals hieronder is opgegeven. |
 | 2 | tekenreeks | Ja | de naam van de regel. |
 
-`filter`Dit kan een van de volgende typen zijn:
+`filter` Dit kan een van de volgende typen zijn:
 
 | Descriptor naam | Descriptor code | Waarde |
 | --- | --- | ---|
@@ -581,13 +581,13 @@ Elk toewijzings item in de matrix bevat de volgende eigenschappen:
 | `com.microsoft:true-filter:list` | 0x000001370000007 | True-filter dat staat voor 1 = 1 |
 | `com.microsoft:false-filter:list` | 0x000001370000008 | Onjuist filter vertegenwoordigt 1 = 0 |
 
-`com.microsoft:sql-filter:list`is een beschreven matrix met de volgende opties:
+`com.microsoft:sql-filter:list` is een beschreven matrix met de volgende opties:
 
 |Index|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 | 0 | tekenreeks | Ja | SQL-filter expressie |
 
-`com.microsoft:correlation-filter:list`is een beschreven matrix met de volgende opties:
+`com.microsoft:correlation-filter:list` is een beschreven matrix met de volgende opties:
 
 |Index (indien aanwezig)|Waardetype|Inhoud van waarde|  
 |---------|----------------|--------------|
@@ -601,14 +601,14 @@ Elk toewijzings item in de matrix bevat de volgende eigenschappen:
 | 7 | tekenreeks | Type inhoud |
 | 8 | Kaart | Toewijzing van door toepassing gedefinieerde eigenschappen |
 
-`ruleAction`Dit kan een van de volgende typen zijn:
+`ruleAction` Dit kan een van de volgende typen zijn:
 
 | Descriptor naam | Descriptor code | Waarde |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Lege regel actie-er is geen regel actie aanwezig |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL-regel actie |
 
-`com.microsoft:sql-rule-action:list`is een matrix met beschreven objecten waarvan de eerste vermelding een teken reeks is die de expressie van de SQL-regel actie bevat.
+`com.microsoft:sql-rule-action:list` is een matrix met beschreven objecten waarvan de eerste vermelding een teken reeks is die de expressie van de SQL-regel actie bevat.
 
 ## <a name="deferred-message-operations"></a>Uitgestelde bericht bewerkingen  
   
@@ -622,7 +622,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:receive-by-sequence-number`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -664,7 +664,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|schijf|tekenreeks|Ja|`com.microsoft:update-disposition`|  
+|bewerking|tekenreeks|Ja|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  

@@ -12,10 +12,10 @@ ms.date: 09/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: a9b8a2c2454c135c72d39a587e84220e8916e54b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315424"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
@@ -51,7 +51,7 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning](conc
 
 ## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werkruimte
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 Volg de instructies in de Azure CLI-documentatie voor [het instellen van uw abonnements context](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription).
 
@@ -88,7 +88,7 @@ Een geregistreerd model is een logische container voor een of meer bestanden die
 
 De volgende voor beelden laten zien hoe u een model kunt registreren.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Een model registreren vanuit een Azure ML-trainings uitvoering
 
@@ -125,7 +125,7 @@ Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `-p` u h
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    De `model_path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `model_path` u het pad in naar een map die de bestanden bevat. Zie de documentatie [Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) voor meer informatie.
+    De `model_path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `model_path` u het pad in naar een map die de bestanden bevat. Zie de [Run.register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) -documentatie voor meer informatie.
 
   + Een model van een `azureml.train.automl.run.AutoMLRun` object registreren:
 
@@ -139,7 +139,7 @@ Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `-p` u h
 
     In dit voor beeld `metric` worden de `iteration` para meters en niet opgegeven, zodat de iteratie met de beste primaire metriek wordt geregistreerd. De `model_id` waarde die wordt geretourneerd door de uitvoering, wordt gebruikt in plaats van een model naam.
 
-    Zie de documentatie van [AutoMLRun. register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) voor meer informatie.
+    Zie de [AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) -documentatie voor meer informatie.
 
 ### <a name="register-a-model-from-a-local-file"></a>Een model registreren vanuit een lokaal bestand
 
@@ -183,7 +183,7 @@ Zie [een bestaand model implementeren](how-to-deploy-existing-model.md)voor meer
 
 Een configuratie voor het afwijzen van een interferentie beschrijft het instellen van de webservice die uw model bevat. Het wordt later gebruikt wanneer u het model implementeert.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 Er kan een minimale configuratie van de inmodus worden geschreven als:
 
@@ -236,7 +236,7 @@ Zie de documentatie van [InferenceConfig](https://docs.microsoft.com/python/api/
 
 ## <a name="define-a-deployment-configuration"></a>Een implementatie configuratie definiëren
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 De beschik bare opties voor een implementatie configuratie zijn afhankelijk van het reken doel dat u kiest.
 
@@ -270,7 +270,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 U bent nu klaar om uw model te implementeren. 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 ### <a name="using-a-registered-model"></a>Een geregistreerd model gebruiken
 
@@ -313,11 +313,11 @@ In de volgende tabel worden de verschillende service statussen beschreven:
 
 | Status van webservice | Beschrijving | Eind status?
 | ----- | ----- | ----- |
-| Overstappen | De service is in het implementatie proces. | No |
-| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | No |
-| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | No |
-| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Yes |
-| In orde | De service is in orde en het eind punt is beschikbaar. | Yes |
+| Overstappen | De service is in het implementatie proces. | Nee |
+| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | Nee |
+| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | Nee |
+| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Ja |
+| In orde | De service is in orde en het eind punt is beschikbaar. | Ja |
 
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-deinterferentie
@@ -330,7 +330,7 @@ Ondersteuning voor het implementeren naar de rand is in preview. Zie [Deploy Azu
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
 Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `az ml service <name of webservice>` .
 

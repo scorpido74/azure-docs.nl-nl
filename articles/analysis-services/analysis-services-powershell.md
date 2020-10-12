@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050453"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services beheren met PowerShell
@@ -33,11 +33,11 @@ Voor Server bewerkingen met Azure PowerShell-cmdlets moet uw account of het acco
 Module installeren- [AZ. AnalysisServices](https://www.powershellgallery.com/packages/Az.AnalysisServices)   
 Documentatie- [AZ. AnalysisServices Reference](/powershell/module/az.analysisservices)
 
-## <a name="database-operations"></a>Database bewerkingen
+## <a name="database-operations"></a>Databasebewerkingen
 
 Azure Analysis Services database bewerkingen gebruiken dezelfde SqlServer-module als SQL Server Analysis Services. Niet alle cmdlets worden echter ondersteund voor Azure Analysis Services. 
 
-De SqlServer-module bevat gebruikersspecifieke data base management-cmdlets en de cmdlet invoke-ASCmd die een TMSL-query (Tabular model scripting language) of script accepteert. De volgende cmdlets in de SqlServer-module worden ondersteund voor Azure Analysis Services.
+De SqlServer-module biedt taak-specifieke data base management-cmdlets en de cmdlet voor algemeen Invoke-ASCmd gebruik die een TMSL-query (Tabellair model scripting language) of script accepteert. De volgende cmdlets in de SqlServer-module worden ondersteund voor Azure Analysis Services.
 
 Module installeren- [sqlserver](https://www.powershellgallery.com/packages/SqlServer)   
 Documentatie- [sqlserver-referentie](/powershell/module/sqlserver)

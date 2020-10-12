@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395767"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Overzicht van Azure-beveiligings beheer en-bewaking
@@ -27,7 +27,7 @@ Dit artikel bevat een overzicht van de beveiligings functies en-services die Azu
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Access Control op basis van rollen (RBAC) biedt gedetailleerd toegangs beheer voor Azure-resources. Met RBAC kunt u personen alleen de hoeveelheid toegang verlenen die ze nodig hebben om hun taken uit te voeren. RBAC kan u er ook voor zorgen dat wanneer mensen de organisatie verlaten, de toegang tot resources in de Cloud verloren gaat.
+Role-Based Access Control (RBAC) biedt gedetailleerd toegangs beheer voor Azure-resources. Met RBAC kunt u personen alleen de hoeveelheid toegang verlenen die ze nodig hebben om hun taken uit te voeren. RBAC kan u er ook voor zorgen dat wanneer mensen de organisatie verlaten, de toegang tot resources in de Cloud verloren gaat.
 
 Meer informatie:
 

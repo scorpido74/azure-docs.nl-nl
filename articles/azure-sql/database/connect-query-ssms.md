@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004151"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461135"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Verbinding maken met en query uitvoeren in Azure SQL Database of Azure SQL Managed Instance met behulp van SSMS
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,6 +83,9 @@ Maak een verbinding met de server in SSMS.
    ||||
 
    ![verbinding maken met server](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> In deze zelfstudie wordt gebruikgemaakt van SQL Server-verificatie.  Als u echter verbinding wilt maken via Azure Active Directory met MFA, moet u [SSMS 18.6 of hoger](https://aka.ms/ssms) gebruiken. 
 
 3. Selecteer **Opties** in het dialoogvenster **Verbinding maken met server**. In de vervolgkeuzelijst **Verbinding maken met database** selecteert u **mySampleDatabase**. Het voltooien van de quickstart in het [gedeelte Vereisten](#prerequisites) maakt een AdventureWorksLT-database met de naam mySampleDatabase. Als uw werkende kopie van de AdventureWorks-database een andere naam heeft dan mySampleDatabase, selecteert u deze in plaats daarvan.
 
@@ -155,7 +158,7 @@ Voer deze Transact-SQL [INSERT](/sql/t-sql/statements/insert-transact-sql/)-code
 
 ### <a name="update-data"></a>Gegevens bijwerken
 
-Voer deze Transact-SQL [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15)-code uit om uw nieuwe product te wijzigen.
+Voer deze Transact-SQL [UPDATE](/sql/t-sql/queries/update-transact-sql)-code uit om uw nieuwe product te wijzigen.
 
 1. Vervang de vorige query door deze die de nieuwe record retourneert die u eerder hebt gemaakt:
 

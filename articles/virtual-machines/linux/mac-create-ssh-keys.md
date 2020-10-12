@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513686"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Snelle stappen: maken en gebruiken van een openbaar persoonlijk sleutel paar met SSH voor Linux-Vm's in azure
@@ -37,7 +37,7 @@ Met de volgende opdracht wordt een SSH-sleutel paar gemaakt met behulp van RSA-v
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Als u de [Azure cli](/cli/azure) gebruikt om uw virtuele machine te maken met de opdracht [AZ VM Create](/cli/azure/vm#az-vm-create) , kunt u optioneel open bare en persoonlijke SSH-sleutel bestanden genereren met behulp van de `--generate-ssh-keys` optie. De sleutel bestanden worden opgeslagen in de map ~/.SSH, tenzij anders is aangegeven met de `--ssh-dest-key-path` optie. Als er al een SSH-sleutel paar bestaat en de `--generate-ssh-keys` optie wordt gebruikt, wordt er geen nieuw sleutel paar gegenereerd maar wordt in plaats daarvan het bestaande sleutel paar gebruikt. Vervang *VMname* en *RGname* door uw eigen waarden in de volgende opdracht:
+Als u de [Azure cli](/cli/azure) gebruikt om uw virtuele machine te maken met de opdracht [AZ VM Create](/cli/azure/vm#az-vm-create) , kunt u optioneel open bare en persoonlijke SSH-sleutel bestanden genereren met behulp van de `--generate-ssh-keys` optie. De sleutel bestanden worden opgeslagen in de map ~/.SSH, tenzij anders is aangegeven met de `--ssh-dest-key-path` optie. Als er al een SSH-sleutel paar bestaat en de  `--generate-ssh-keys` optie wordt gebruikt, wordt er geen nieuw sleutel paar gegenereerd maar wordt in plaats daarvan het bestaande sleutel paar gebruikt. Vervang *VMname* en *RGname* door uw eigen waarden in de volgende opdracht:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 

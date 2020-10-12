@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085545"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Apache Hive query's uitvoeren met Apache Hadoop in HDInsight met behulp van REST
@@ -27,7 +27,7 @@ Meer informatie over het gebruik van de WebHCat REST API om Apache Hive query's 
 
 * Een REST-client. In dit document wordt [invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) op Windows Power shell gebruikt en wordt [gekruld](https://curl.haxx.se/) op [bash](https://docs.microsoft.com/windows/wsl/install-win10).
 
-* Als u bash gebruikt, hebt u ook JQ, een opdracht regel-JSON-processor nodig.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
+* Als u bash gebruikt, hebt u ook JQ, een opdracht regel-JSON-processor nodig.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 ## <a name="base-uri-for-rest-api"></a>Basis-URI voor rest API
 
@@ -48,7 +48,7 @@ Bewerk het onderstaande script door `PASSWORD` uw eigen wacht woord te vervangen
 export password='PASSWORD'
 ```  
 
-**B. Power shell** voert de onderstaande code uit en voert uw referenties in het pop-upvenster in:
+**B. Power shell** Voer de onderstaande code uit en geef uw referenties op in het pop-upvenster:
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -56,7 +56,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Cluster naam met een onjuiste naam identificeren
 
-De daad werkelijke behuizing van de cluster naam kan anders zijn dan verwacht, afhankelijk van hoe het cluster is gemaakt.  In de stappen hier wordt het werkelijke hoofdletter gebruik weer gegeven en opgeslagen in een variabele voor alle latere voor beelden.
+De daadwerkelijke lettergrootte van de clusternaam kan anders zijn dan verwacht, afhankelijk van hoe het cluster is gemaakt.  In de stappen hier wordt het werkelijke hoofdletter gebruik weer gegeven en opgeslagen in een variabele voor alle latere voor beelden.
 
 Bewerk de onderstaande scripts om deze te vervangen `CLUSTERNAME` door de naam van uw cluster. Voer vervolgens de opdracht in. (De cluster naam voor de FQDN is niet hoofdletter gevoelig.)
 
@@ -98,8 +98,8 @@ $clusterName
 
     In deze opdracht worden de volgende parameters gebruikt:
 
-    * `-u`-De gebruikers naam en het wacht woord die worden gebruikt om de aanvraag te verifiëren.
-    * `-G`-Geeft aan dat deze aanvraag een GET-bewerking is.
+    * `-u` -De gebruikers naam en het wacht woord die worden gebruikt om de aanvraag te verifiëren.
+    * `-G` -Geeft aan dat deze aanvraag een GET-bewerking is.
 
 1. Het begin van de URL, `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` is hetzelfde voor alle aanvragen. Het pad, `/status` , geeft aan dat de aanvraag de status WebHCat (ook wel bekend als Templeton) voor de server moet retour neren. U kunt ook de versie van Hive aanvragen met behulp van de volgende opdracht:
 
@@ -140,23 +140,23 @@ $clusterName
 
     Deze aanvraag gebruikt de POST-methode, waarmee gegevens worden verzonden als onderdeel van de aanvraag naar de REST API. De volgende gegevens waarden worden met de aanvraag verzonden:
 
-     * `user.name`-De gebruiker die de opdracht uitvoert.
-     * `execute`-De HiveQL-instructies die moeten worden uitgevoerd.
-     * `statusdir`-De map waarnaar de status voor deze taak wordt geschreven.
+     * `user.name` -De gebruiker die de opdracht uitvoert.
+     * `execute` -De HiveQL-instructies die moeten worden uitgevoerd.
+     * `statusdir` -De map waarnaar de status voor deze taak wordt geschreven.
 
    Met deze instructies worden de volgende acties uitgevoerd:
 
-   * `DROP TABLE`-Als de tabel al bestaat, wordt deze verwijderd.
-   * `CREATE EXTERNAL TABLE`-Maakt een nieuwe externe tabel in Hive. Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.
+   * `DROP TABLE` -Als de tabel al bestaat, wordt deze verwijderd.
+   * `CREATE EXTERNAL TABLE` -Maakt een nieuwe externe tabel in Hive. Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.
 
      > [!NOTE]  
      > Externe tabellen moeten worden gebruikt wanneer u verwacht dat de onderliggende gegevens worden bijgewerkt door een externe bron. Bijvoorbeeld een geautomatiseerd proces voor het uploaden van gegevens of een andere MapReduce-bewerking.
      >
      > Als u een externe tabel verwijdert, worden de gegevens **niet** verwijderd, maar alleen de tabel definitie.
 
-   * `ROW FORMAT`-Hoe de gegevens worden ingedeeld. De velden in elk logboek worden gescheiden door een spatie.
-   * `STORED AS TEXTFILE LOCATION`-Waar de gegevens worden opgeslagen (het voor beeld/de gegevens Directory) en dat deze worden opgeslagen als tekst.
-   * `SELECT`-Selecteert een telling van alle rijen waarin de kolom **T4** de waarde **[error]** bevat. Deze instructie retourneert de waarde **3** als er drie rijen met deze waarde zijn.
+   * `ROW FORMAT` -Hoe de gegevens worden ingedeeld. De velden in elk logboek worden gescheiden door een spatie.
+   * `STORED AS TEXTFILE LOCATION` -Waar de gegevens worden opgeslagen (het voor beeld/de gegevens Directory) en dat deze worden opgeslagen als tekst.
+   * `SELECT` -Selecteert een telling van alle rijen waarin de kolom **T4** de waarde **[error]** bevat. Deze instructie retourneert de waarde **3** als er drie rijen met deze waarde zijn.
 
      > [!NOTE]  
      > U ziet dat de spaties tussen HiveQL-instructies worden vervangen door het `+` teken wanneer het wordt gebruikt met krul. Waarden die een spatie bevatten, zoals het scheidings teken, mogen niet worden vervangen door `+` .

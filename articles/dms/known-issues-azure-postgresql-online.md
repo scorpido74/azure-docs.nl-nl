@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330312"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure DB voor PostgreSQL
@@ -44,7 +44,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
 - De gebruiker moet de replicatie functie hebben op de server die als host fungeert voor de bron database.
 - De bron-en doel database schema's moeten overeenkomen.
-- Het schema in de doel Azure Database for PostgreSQL-één server mag geen refererende sleutels hebben. Gebruik de volgende query om refererende sleutels te verwijderen:
+- Het schema in de doel-Azure-Data Base voor PostgreSQL-Single server mag geen refererende sleutels hebben. Gebruik de volgende query om refererende sleutels te verwijderen:
 
     ```
                                 SELECT Queries.tablename
@@ -75,7 +75,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
     Voer het 'drop foreign key'-script (de tweede kolom) uit in het queryresultaat.
 
-- Het schema in het doel Azure Database for PostgreSQL-één server mag geen triggers hebben. Gebruik het volgende om triggers in doel database uit te scha kelen:
+- Het schema in de doel-Azure-Data Base voor PostgreSQL-Single server mag geen triggers hebben. Gebruik het volgende om triggers in doel database uit te scha kelen:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

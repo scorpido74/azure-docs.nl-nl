@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086208"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Apache Spark streaming-taken met hoge Beschik baarheid maken met GARENs
@@ -21,7 +21,7 @@ ms.locfileid: "86086208"
 
 Met Spark streaming kunt u langlopende taken maken om trans formaties toe te passen op de gegevens en vervolgens de resultaten te pushen naar bestands systemen, data bases, Dash boards en de-console. Met Spark streaming worden micro batches van gegevens verwerkt, door eerst een batch gebeurtenissen te verzamelen gedurende een opgegeven tijds interval. Vervolgens wordt deze batch verzonden op voor verwerking en uitvoer. Tijds intervallen voor batch worden doorgaans gedefinieerd in fracties van een seconde.
 
-![Spark-streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -123,4 +123,4 @@ Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receiver
 * [Apache Spark streaming-taken maken met precies eenmaal per gebeurtenis verwerking](apache-spark-streaming-exactly-once.md)
 * [Langlopende Apache Spark streaming-taken op GARENs](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/)
 * [Structured streaming: fout tolerante semantiek](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Onderscheiden streams: een fout tolerant model voor schaal bare stroom verwerking](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Onderscheiden streams: een Fault-Tolerant model voor schaal bare stroom verwerking](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

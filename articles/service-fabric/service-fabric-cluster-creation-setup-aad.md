@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van Azure Active Directory (Azur
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258775"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory instellen voor client verificatie
@@ -59,8 +59,8 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 
 U wordt gevraagd of u zich aanmeldt bij een account dat beheerdersrechten voor de Azure Active Directory-tenant heeft. Nadat u zich hebt aangemeld, maakt het script de web- en systeemeigen toepassingen voor uw Service Fabric-cluster. Als u kijkt naar de toepassingen van de tenant in de [Azure-portal][azure-portal], ziet u twee nieuwe vermeldingen:
 
-   * *Clustername* \_ Cluster
-   * *Clustername* \_ Serviceclient
+   * *ClusterName*\_Cluster
+   * *ClusterName*\_Client
 
 Het script drukt de JSON af die vereist is voor de Azure Resource Manager sjabloon bij [het maken van uw Aad-cluster](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access). Daarom is het een goed idee om het Power shell-venster geopend te laten.
 
@@ -104,7 +104,7 @@ Wanneer u zich probeert aan te melden bij Azure AD in Service Fabric Explorer, r
 De cluster toepassing (web) die staat voor Service Fabric Explorer pogingen om te verifiëren bij Azure AD en als onderdeel van de aanvraag, levert de omleidings-URL. De URL wordt echter niet weer gegeven in de lijst met **antwoord-url's** voor de Azure AD-toepassing.
 
 #### <a name="solution"></a>Oplossing
-Selecteer op de pagina Azure AD-App-registratie voor uw cluster **verificatie**en voeg in het gedeelte **omleidings-URI'S** de service Fabric Explorer URL toe aan de lijst. Sla de wijziging op.
+Selecteer op de pagina Azure AD-App-registratie voor uw cluster **verificatie**en voeg in het gedeelte **omleidings-URI'S** de service Fabric Explorer URL toe aan de lijst. Sla uw wijziging op.
 
 ![Antwoord-URL van webtoepassing][web-application-reply-url]
 

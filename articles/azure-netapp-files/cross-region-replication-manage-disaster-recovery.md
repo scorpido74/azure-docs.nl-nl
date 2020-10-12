@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: ad006279a656758ba856cd3f39c17b0410e525e6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708649"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Herstel na nood gevallen met replicatie tussen regio's beheren 
@@ -99,9 +99,9 @@ Nadat de hersynchronisatie-bewerking van de doel-naar-bron is voltooid, moet u r
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-* [Replicatie tussen regio's](cross-region-replication-introduction.md)
+* [Replicatie in meerdere regio's](cross-region-replication-introduction.md)
 * [Vereisten en overwegingen voor het gebruik van replicatie tussen regio's](cross-region-replication-requirements-considerations.md)
-* [Status van replicatie relatie weer geven](cross-region-replication-display-health-status.md)
+* [Status van replicatierelatie weergeven](cross-region-replication-display-health-status.md)
 * [Metrische gegevens van de volume replicatie](azure-netapp-files-metrics.md#replication)
 * [Problemen met replicatie tussen regio's oplossen](troubleshoot-cross-region-replication.md)
 

@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e72ed9ef43fd1222592e7f88d4e3a6e998c59d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759076"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemen bij het aanmelden bij een niet-galerie toepassing die is geconfigureerd voor federatieve eenmalige aanmelding
@@ -38,7 +38,7 @@ Als u de onderstaande aanmeldings problemen wilt oplossen, raden we u aan deze s
 
 Het kenmerk van de verlener verzendt van de toepassing naar Azure AD in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd in de toepassing Azure AD.
 
-**Afsluiting**
+**Oplossing**
 
 Zorg ervoor dat het `Issuer` kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
@@ -68,7 +68,7 @@ Zorg ervoor dat het `Issuer` kenmerk in de SAML-aanvraag overeenkomt met de id-w
 
 De waarde AssertionConsumerServiceURL in de SAML-aanvraag komt niet overeen met de waarde of het patroon van de antwoord-URL die is geconfigureerd in Azure AD. De AssertionConsumerServiceURL-waarde in de SAML-aanvraag is de URL die u ziet in de fout. 
 
-**Afsluiting** 
+**Oplossing** 
 
 Zorg ervoor dat het `Issuer` kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
  
@@ -100,7 +100,7 @@ Nadat u de waarde voor de antwoord-URL in azure AD hebt bijgewerkt en deze overe
 
 De gebruiker heeft in Azure AD geen toegang gekregen tot de toepassing.
 
-**Afsluiting**
+**Oplossing**
 
 Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
@@ -150,7 +150,7 @@ Azure AD biedt geen ondersteuning voor de SAML-aanvraag die door de toepassing i
 
 -   Gecodeerde methode voor SAML-aanvraag
 
-**Afsluiting**
+**Oplossing**
 
 1.  SAML-aanvraag vastleggen. Volg de zelf studie over het [opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) voor meer informatie over het vastleggen van de SAML-aanvraag.
 
@@ -170,7 +170,7 @@ De leverancier van de toepassing moet valideren dat de Azure AD SAML-implementat
 
 Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD is verzonden in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd voor de toepassing in azure AD.
 
-**Afsluiting**
+**Oplossing**
 
 Zorg ervoor dat het `Issuer` kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
 
@@ -198,7 +198,7 @@ Fout AADSTS50003: er is geen handtekening sleutel geconfigureerd.
 
 Het toepassings object is beschadigd en het certificaat dat is geconfigureerd voor de toepassing wordt niet herkend door Azure AD.
 
-**Afsluiting**
+**Oplossing**
 
 Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken:
 
@@ -234,7 +234,7 @@ Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken
 
 Azure AD kan de SAML-aanvraag niet identificeren binnen de URL-para meters in de HTTP-aanvraag. Dit kan gebeuren als de toepassing geen gebruik maakt van een binding voor HTTP-omleiding bij het verzenden van de SAML-aanvraag naar Azure AD.
 
-**Afsluiting**
+**Oplossing**
 
 De toepassing moet de SAML-aanvraag die is gecodeerd naar de locatie header verzenden met behulp van binding van HTTP-omleiding. Lees de sectie over binding voor HTTP-omleidingen in het [specificatiedocument over het SAML-protocol](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
@@ -246,7 +246,7 @@ Als de aanmeldings aanvraag bij eenmalige aanmelding geen expliciete antwoord-UR
 
 Toen de toepassing werd toegevoegd als niet-galerie-app, is deze antwoord-URL in Azure Active Directory gemaakt als standaardwaarde. Dit gedrag is gewijzigd en deze URL wordt niet meer standaard toegevoegd in Azure Active Directory. 
 
-**Afsluiting**
+**Oplossing**
 
 Verwijder de ongebruikte antwoord-Url's die voor de toepassing zijn geconfigureerd.
 
