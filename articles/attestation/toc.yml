@@ -4,7 +4,7 @@
   items:
     - name: Over Microsoft Azure Attestation
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: ARM-sjabloon
       href: quickstart-template.md

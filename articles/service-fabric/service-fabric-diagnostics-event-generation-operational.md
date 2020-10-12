@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846655"
 ---
 # <a name="list-of-service-fabric-events"></a>Lijst met Service Fabric gebeurtenissen 
@@ -144,7 +144,7 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 Het [service Fabric status model](service-fabric-health-introduction.md) biedt een uitgebreide, flexibele en uitbreid bare status evaluatie en rapportage. Als u Service Fabric versie 6,2, worden status gegevens geschreven als platform gebeurtenissen om historische gegevens over de status te bieden. Om het volume van de status gebeurtenissen laag te blijven, schrijven we alleen het volgende als Service Fabric gebeurtenissen:
 
 * Alle `Error` of `Warning` status rapporten
-* `Ok`status rapporten tijdens overgangen
+* `Ok` status rapporten tijdens overgangen
 * Wanneer een `Error` of `Warning` Health-gebeurtenis verloopt. Dit kan worden gebruikt om te bepalen hoe lang een entiteit is beschadigd
 
 **Gebeurtenissen van het cluster status rapport**

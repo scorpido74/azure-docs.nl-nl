@@ -17,10 +17,10 @@ ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653593"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-werkbelastingconfiguraties met Azure-beschikbaarheidszones
@@ -114,7 +114,7 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
   - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
   - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
     
-    Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in verschillende zones.
+    Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-Out-Bestands server, zoals beschreven in de [Azure-infra structuur voorbereiden voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in meerdere zones.
 - De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
 - Als u de uitvoerings tijd consistent wilt maken voor kritieke bedrijfs processen, kunt u proberen bepaalde batch taken en gebruikers te omleiden naar toepassings exemplaren die in de zone actief zijn met het actieve DBMS-exemplaar met behulp van SAP batch Server-groepen, SAP-aanmeldings groepen of RFC-groepen. In het geval van een zonegebonden-failover moet u deze groepen echter hand matig verplaatsen naar exemplaren die worden uitgevoerd op Vm's die in de zone actief zijn met de actieve DB-VM.  
 - In elk van de zones wilt u mogelijk niet-actieve dialoog instanties implementeren. Dit is om direct terug te keren naar de voormalige resource capaciteit als een zone die wordt gebruikt door een deel van uw toepassings exemplaren buiten dienst is.
@@ -142,7 +142,7 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
     - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
     
-  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in verschillende zones.
+  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-Out-Bestands server, zoals beschreven in de [Azure-infra structuur voorbereiden voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in meerdere zones.
 - De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
 - U moet actieve Vm's in de passieve zone implementeren (vanuit een DBMS-punt weergave), zodat u toepassings bronnen kunt starten in het geval van een storing in een zone.
     - [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) kan momenteel geen actieve vm's repliceren naar actieve vm's tussen zones. 
@@ -172,7 +172,7 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
     - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
 
-  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in verschillende zones.
+  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-Out-Bestands server, zoals beschreven in de [Azure-infra structuur voorbereiden voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in meerdere zones.
 - De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
 
 

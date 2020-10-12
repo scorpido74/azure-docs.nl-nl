@@ -4,10 +4,10 @@ description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540248"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Azure Policy voor Kubernetes-clusters
@@ -209,7 +209,7 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
 1. Open poorten voor de invoeg toepassing. De invoeg toepassing Azure Policy gebruikt deze domeinen en poorten om beleids definities en toewijzingen op te halen en de compatibiliteit van het cluster weer te geven aan Azure Policy.
 
-   |Domein |Poort |
+   |Domain |Poort |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |

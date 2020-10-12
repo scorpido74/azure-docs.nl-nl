@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090209"
 ---
 # <a name="collaborative-coding-with-git"></a>Samenwerken aan code met Git
@@ -49,7 +49,7 @@ git checkout <working branch name>
 
 Nadat u bent overgeschakeld naar de werk vertakking, kunt u beginnen met het ontwikkelen van code of documentatie artefacten om het werk item te volt ooien. Hiermee `git checkout master` schakelt u terug naar de `master` vertakking.
 
-Het is een goed idee om een Git-vertakking te maken voor elk werk item van de gebruikers hoofdtekst. Voor elk taak werk item kunt u vervolgens een vertakking maken op basis van de vertakking van de gebruikers verhaal. Organiseer de vertakkingen in een hiërarchie die overeenkomt met de relatie van de gebruikers verhaal wanneer u meerdere personen hebt die aan verschillende gebruikers hoofdtekst werken voor hetzelfde project of op verschillende taken voor hetzelfde gebruikers verhaal. U kunt conflicten minimaliseren door ervoor te zorgen dat elk teamlid aan een andere vertakking werkt of op verschillende code of andere artefacten wanneer een vertakking wordt gedeeld. 
+Het is een goed idee om een Git-vertakking te maken voor elk werk item van de gebruikers hoofdtekst. Voor elk taak werk item kunt u vervolgens een vertakking maken op basis van de vertakking van de gebruikers verhaal. Organiseer de vertakkingen in een hiërarchie die overeenkomt met de gebruikers Story-Task relatie wanneer u meerdere personen hebt die aan verschillende gebruikers hoofdtekst werken voor hetzelfde project of op verschillende taken voor hetzelfde gebruikers verhaal. U kunt conflicten minimaliseren door ervoor te zorgen dat elk teamlid aan een andere vertakking werkt of op verschillende code of andere artefacten wanneer een vertakking wordt gedeeld. 
 
 In het volgende diagram ziet u de aanbevolen strategie voor vertakkingen voor TDSP. U hoeft niet zoveel vertakkingen te hebben als hier wordt weer gegeven, vooral wanneer slechts één of twee mensen aan een project werken, of als er slechts één persoon werkt voor alle taken van een gebruikers verhaal. Het scheiden van de ontwikkelings vertakking van de primaire vertakking is altijd een goed idee en kan helpen voor komen dat de release vertakking wordt onderbroken door ontwikkelings activiteiten. Zie voor een volledige beschrijving van het git-vertakkings model [een geslaagd Git-vertakkings model](https://nvie.com/posts/a-successful-git-branching-model/).
 

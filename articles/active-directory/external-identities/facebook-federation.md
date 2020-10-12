@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908651"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook toevoegen als een id-provider voor externe identiteiten
@@ -84,7 +84,7 @@ Nu gaat u de ID van de Facebook-client en het client geheim instellen, hetzij do
 U kunt de instellingen van uw Facebook-Federatie verwijderen. Als u dit doet, kunnen gebruikers die zich hebben geregistreerd via gebruikers stromen met hun Facebook-accounts, zich niet meer aanmelden. 
 
 ### <a name="to-delete-facebook-federation-in-the-azure-ad-portal"></a>Facebook-Federatie verwijderen in de Azure AD-portal: 
-1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
+1. Ga naar de [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
 2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**.
 4. Selecteer op de **Facebook** -regel het snelmenu (**...**) en selecteer vervolgens **verwijderen**. 

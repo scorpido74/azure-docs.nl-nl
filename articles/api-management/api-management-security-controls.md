@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: a147179f7b55e43379b3c3fa3a7a0767cc97b198
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902572"
 ---
 # <a name="security-controls-for-api-management"></a>Beveiligings controles voor API Management
@@ -22,7 +22,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
+| Beveiligings beheer | Ja/Nee | Notities | Documentatie |
 |---|---|--|--|
 | Ondersteuning voor service-eind punten| Nee | |  |
 | Ondersteuning voor VNet-injectie| Ja | |  |
@@ -31,7 +31,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 ## <a name="monitoring--logging"></a>& logboek registratie controleren
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligings beheer | Ja/Nee | Notities| Documentatie |
 |---|---|--|--|
 | Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | | |
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | [Azure Monitor activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md) | |
@@ -40,25 +40,25 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligings beheer | Ja/Nee | Notities| Documentatie |
 |---|---|--|--|
 | Verificatie| Ja | |  |
 | Autorisatie| Ja | |  |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
+| Beveiligings beheer | Ja/Nee | Notities | Documentatie |
 |---|---|--|--|
 | Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Gevoelige gegevens zoals certificaten, sleutels en geheime naam waarden worden versleuteld met Service-beheerde exemplaren per service-exemplaar. |  |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee | Alle versleutelings sleutels zijn per service-exemplaar en worden beheerd door de service. |  |
 | Versleuteling op kolom niveau (Azure Data Services)| N.v.t. | |  |
-| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | [Express route](../expressroute/index.yml) en VNet-versleuteling worden door [Azure-netwerken](../virtual-network/index.yml)verschaft. |  |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet versleuteling)| Ja | [Express route](../expressroute/index.yml) en VNet-versleuteling worden door [Azure-netwerken](../virtual-network/index.yml)verschaft. |  |
 | Versleutelde API-aanroepen| Ja | Aanroepen van beheer vlak worden gedaan via [Azure Resource Manager](../azure-resource-manager/index.yml) via TLS. Er is een geldig JSON-webtoken (JWT) vereist.  Aanroepen voor gegevens vlak kunnen worden beveiligd met TLS en een van de ondersteunde verificatie mechanismen (bijvoorbeeld client certificaat of JWT). |   |
  |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligings beheer | Ja/Nee | Notities| Documentatie |
 |---|---|--|--|
 | Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja | De [Azure API Management DevOps Resource Kit](https://aka.ms/apimdevops) gebruiken |  |
 

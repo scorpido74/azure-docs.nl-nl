@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
 ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279430"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
@@ -50,14 +50,14 @@ Azure vereist dat de uitgevers van de getekende Linux-distributies hun afbeeldin
 
 ## <a name="azure-tuned-kernels"></a>Door Azure afgestemde kernels
 
-Azure werkt nauw samen met verschillende geplaatste Linux-distributies om de installatie kopieën te optimaliseren die ze naar Azure Marketplace hebben gepubliceerd. Eén aspect van deze samen werking is de ontwikkeling van ' afgestemde ' Linux-kernels die zijn geoptimaliseerd voor het Azure-platform en geleverd als volledig ondersteunde onderdelen van de Linux-distributie. De door Azure afgestemde kernels bevatten nieuwe functies en prestatie verbeteringen en sneller (meestal driemaandelijks) uitgebracht vergeleken met de standaard-of algemene kernels die beschikbaar zijn via de distributie.
+Azure werkt nauw samen met verschillende geplaatste Linux-distributies om de installatie kopieën te optimaliseren die ze naar Azure Marketplace hebben gepubliceerd. Eén aspect van deze samen werking is de ontwikkeling van ' afgestemde ' Linux-kernels die zijn geoptimaliseerd voor het Azure-platform en geleverd als volledig ondersteunde onderdelen van de Linux-distributie. De Azure-Tuned-kernels bevatten nieuwe functies en prestatie verbeteringen, en sneller (meestal driemaandelijks) uitgebracht vergeleken met de standaard-of algemene kernels die beschikbaar zijn via de distributie.
 
-In de meeste gevallen vindt u deze kernels die vooraf zijn geïnstalleerd op de standaard installatie kopieën in azure Marketplace, zodat klanten direct profiteren van de voor delen van deze geoptimaliseerde kernels. Meer informatie over deze kernels die zijn afgestemd op Azure, vindt u in de volgende koppelingen:
+In de meeste gevallen vindt u deze kernels die vooraf zijn geïnstalleerd op de standaard installatie kopieën in azure Marketplace, zodat klanten direct profiteren van de voor delen van deze geoptimaliseerde kernels. Meer informatie over deze Azure-Tuned-kernels vindt u in de volgende koppelingen:
 
-- [CentOS Azure-afgestemde kernel-beschikbaar via de CentOS-virtualisatie-SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [CentOS Azure-Tuned-kernel-beschikbaar via de CentOS-virtualisatie-SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud kernel-beschikbaar met de installatie kopie van Debian 10 en Debian 9 op Azure](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [Door Azure afgestemde kernel SLES](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Door Azure afgestemde kernel Ubuntu](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [SLES Azure-Tuned-kernel](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Ubuntu Azure-Tuned-kernel](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 ## <a name="partners"></a>Partners
 

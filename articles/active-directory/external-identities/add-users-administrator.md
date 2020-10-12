@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 969294f264e6744e893322864eed85e02c615126
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908813"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B-samenwerkings gebruikers toevoegen aan de Azure Portal
@@ -38,20 +38,20 @@ Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan d
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een gebruiker aan wie een beperkte beheerdersrol of de rol van de gast-uitnodiging is toegewezen.
 2. Zoek en selecteer **Azure Active Directory** op elke pagina.
 3. Onder **Beheren**, selecteer **Gebruikers**.
-4. Selecteer **nieuwe gast gebruiker**.
+4. Selecteer **Nieuwe gastgebruiker**.
 
    ![Laat zien waar een nieuwe gast gebruiker zich in de gebruikers interface bevindt](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-5. Selecteer op de pagina **nieuwe gebruiker** de optie **gebruiker uitnodigen** en voeg vervolgens de gegevens van de gast gebruiker toe. 
+5. Selecteer op de pagina **Nieuwe gebruiker** de optie **Gebruiker uitnodigen** en voeg vervolgens de gegevens van de gastgebruiker toe. 
 
     > [!NOTE]
     > E-mail adressen van groepen worden niet ondersteund. Voer het e-mail adres voor een persoon in. Daarnaast kunnen gebruikers van e-mail providers een plus teken (+) en aanvullende tekst toevoegen aan hun e-mail adressen om te helpen bij zaken als het filteren van postvak in. Azure AD biedt momenteel echter geen ondersteuning voor plus symbolen in e-mail adressen. Als u de bezorgings problemen wilt voor komen, laat u het plus teken en eventuele tekens achter het symbool weg.
 
-   - **Naam.** De voor-en achternaam van de gast gebruiker.
-   - **E-mail adres (vereist)**. Het e-mail adres van de gast gebruiker.
-   - **Persoonlijk bericht (optioneel)** Neem een persoonlijk Welkomst bericht op voor de gast gebruiker.
-   - **Groepen**: u kunt de gast gebruiker toevoegen aan een of meer bestaande groepen of u kunt dit later doen.
-   - **Directory-rol**: als u Azure AD-beheerders machtigingen voor de gebruiker nodig hebt, kunt u deze toevoegen aan een Azure AD-rol. 
+   - **Naam.** De voor- en achternaam van de gastgebruiker.
+   - **E-mailadres (verplicht)** . Het e-mailadres van de gastgebruiker.
+   - **Persoonlijk bericht (optioneel)** Neem een persoonlijk welkomstbericht op voor de gastgebruiker.
+   - **Groepen**: U kunt de gastgebruiker aan een of meer bestaande groepen toevoegen, of u kunt dit later doen.
+   - **Directory-rol**: Als u Azure AD-beheermachtigingen nodig hebt voor de gebruiker, kunt u ze aan een Azure AD-rol toevoegen. 
 
 7. Selecteer **Uitnodigen** voor het automatisch verzenden van de uitnodiging voor de gastgebruiker. 
  
@@ -102,7 +102,7 @@ Voer de volgende stappen uit om B2B-samenwerkings gebruikers toe te voegen aan e
    - Selecteer de gast gebruiker en selecteer vervolgens **bewerken**. 
    - Klik onder **toewijzing bewerken**op **rol selecteren**en selecteer de rol die u aan de geselecteerde gebruiker wilt toewijzen.
    - Klik op **Selecteren**.
-   - Klik op **toewijzen**.
+   - Klik op **Toewijzen**.
  
 ## <a name="resend-invitations-to-guest-users"></a>Uitnodigingen voor gastgebruikers opnieuw verzenden
 

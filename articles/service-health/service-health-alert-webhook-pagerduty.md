@@ -4,10 +4,10 @@ description: Krijg persoonlijke meldingen over service status gebeurtenissen aan
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87091535"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met PagerDuty met behulp van webhooks
@@ -27,7 +27,7 @@ Dit artikel laat u zien hoe u Azure service Health Notifications kunt instellen 
 
     a. **Integratie type**: Microsoft Azure
 
-    b. **Integratie naam**:\<Name\>
+    b. **Integratie naam**: \<Name\>
 
     ![De integratie-instellingen in PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -88,4 +88,4 @@ Dit artikel laat u zien hoe u Azure service Health Notifications kunt instellen 
 - Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md).
 - Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek. 
 - Meer informatie over [service status meldingen](./service-notifications.md).
-- Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).
+- Meer informatie over [actiegroepen](../azure-monitor/platform/action-groups.md).

@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84727684"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Problemen met groepen oplossen en oplossen
@@ -66,7 +66,7 @@ Op dit moment is er geen manier om de groep automatisch te activeren om op aanvr
 
 | Fout met regel-parser | Fout gebruik | Gecorrigeerd gebruik |
 | --- | --- | --- |
-| Fout: het kenmerk wordt niet ondersteund. |(User. invalidProperty-EQ "waarde") |(User. Department-EQ "waarde")<br/><br/>Zorg ervoor dat het kenmerk voor komt in de [lijst ondersteunde eigenschappen](groups-dynamic-membership.md#supported-properties). |
+| Fout: het kenmerk wordt niet ondersteund. |(User. invalidProperty-EQ "waarde") |(user.department -eq "value")<br/><br/>Zorg ervoor dat het kenmerk voor komt in de [lijst ondersteunde eigenschappen](groups-dynamic-membership.md#supported-properties). |
 | Fout: de operator wordt niet ondersteund voor het kenmerk. |(User. accountEnabled-bevat True) |(User. accountEnabled-EQ True)<br/><br/>De operator die wordt gebruikt, wordt niet ondersteund voor het eigenschaps type (in dit voor beeld kan-contains niet worden gebruikt voor het type Boolean). Gebruik de juiste Opera tors voor het eigenschaps type. |
 | Fout: compilatie fout van de query. | 1. (User. Department-EQ "Sales") (gebruiker. Department-EQ "marketing")<br>2. (User. userPrincipalName-match "* @domain.ext ") | 1. de operator ontbreekt. Gebruik-en of-of twee samenvoegings predikaten<br>(User. Department-EQ "Sales") of (User. Department-EQ "marketing")<br>2. fout in reguliere expressie die wordt gebruikt met-match<br>(User. userPrincipalName-match ". * @domain.ext ")<br>of: (User. userPrincipalName-match " @domain.ext $") |
 
@@ -76,5 +76,5 @@ Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
 
 * [Toegang tot resources beheren met Azure Active Directory groepen](../fundamentals/active-directory-manage-groups.md)
 * [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md) (Toepassingsbeheer in Azure Active Directory)
-* [What is Azure Active Directory? (Engelstalig)](../fundamentals/active-directory-whatis.md)
+* [Wat is Azure Active Directory?](../fundamentals/active-directory-whatis.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)

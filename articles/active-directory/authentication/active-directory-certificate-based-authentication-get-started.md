@@ -13,10 +13,10 @@ ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051351"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
@@ -184,7 +184,7 @@ De volgende stappen beschrijven het proces voor het bijwerken en ongeldig valide
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 ```
 
-De datum die u instelt, moet in de toekomst liggen. Als de datum niet in de toekomst ligt, is de eigenschap **StsRefreshTokensValidFrom** niet ingesteld. Als de datum in de toekomst ligt, wordt **StsRefreshTokensValidFrom** ingesteld op de huidige tijd (niet de datum die wordt aangegeven door de set-MsolUser opdracht).
+De datum die u instelt, moet in de toekomst liggen. Als de datum niet in de toekomst ligt, is de eigenschap **StsRefreshTokensValidFrom** niet ingesteld. Als de datum in de toekomst ligt, wordt **StsRefreshTokensValidFrom** ingesteld op de huidige tijd (niet de datum die wordt aangegeven door Set-MsolUser opdracht).
 
 ## <a name="step-4-test-your-configuration"></a>Stap 4: uw configuratie testen
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86540380"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>De Azure Functions-runtime Preview 2 installeren
@@ -87,7 +87,7 @@ U moet de configuratie volt ooien om de Azure Functions-runtime-installatie te v
 
     ![Azure Functions-runtime preview-versie van IIS][11]
 
-1. Klik op het tabblad **Services** .  Op dit tabblad wordt de status weer gegeven van de services in uw Azure Functions-runtime-configuratie programma.  Als de **Azure functions host Activation-Service** niet wordt uitgevoerd na de initiële configuratie, klikt u op **service starten**.
+1. Klik op het tabblad **Services** .  Op dit tabblad wordt de status weer gegeven van de services in uw Azure Functions-runtime-configuratie programma.  Als de  **Azure functions host Activation-Service** niet wordt uitgevoerd na de initiële configuratie, klikt u op **service starten**.
 
     ![Azure Functions-runtime preview-configuratie voltooid][12]
 

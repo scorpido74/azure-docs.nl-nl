@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319561"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. json voor het maken van beheerde Azure-toepassingen
@@ -129,7 +129,7 @@ Geef voor de `location` Eigenschappen op voor het locatie besturings element dat
 
 De stap **basis beginselen** is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Met de stappen in de basis beginselen kunnen gebruikers standaard het abonnement, de resource groep en de locatie voor de implementatie kiezen.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Basis principes standaard":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Wizard tabblad":::
 
 U kunt in deze sectie meer elementen toevoegen. Voeg, indien mogelijk, elementen toe die para meters voor implementatie query's uitvoeren, zoals de naam van een cluster-of beheerders referenties.
 
@@ -195,7 +195,7 @@ Als u de beschik bare locaties wilt filteren op alleen de locaties die ondersteu
           ...
 ```  
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 CreateUiDefinition biedt [functies](create-uidefinition-functions.md) voor het werken met de invoer en uitvoer van elementen en functies, zoals voor waarden. Deze functies zijn vergelijkbaar in zowel de syntaxis als de functionaliteit voor het Azure Resource Manager van sjabloon functies.
 
