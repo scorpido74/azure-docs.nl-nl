@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
 ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84668097"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Wat is Application Gateway ingangs controller?
@@ -36,16 +36,16 @@ AGIC wordt geconfigureerd via de [ingangs bron](https://kubernetes.io/docs/user-
   - Ondersteuning voor open bare, persoonlijke en hybride websites
   - Geïntegreerde Web Application Firewall
 
-## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Verschil tussen de helm-implementatie en AKS-invoeg toepassing
+## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Verschil tussen helm-implementatie en AKS-Add-On
 Er zijn twee manieren om AGIC te implementeren voor uw AKS-cluster. De eerste manier is via helm. de tweede is door AKS als een invoeg toepassing. Het belangrijkste voor deel van het implementeren van AGIC als een AKS-invoeg toepassing is dat het veel eenvoudiger is dan implementatie via helm. Voor een nieuwe installatie kunt u een nieuwe Application Gateway en een nieuw AKS-cluster implementeren met AGIC ingeschakeld als een invoeg toepassing op één regel in azure CLI. De invoeg toepassing is ook een volledig beheerde service die extra voor delen biedt, zoals automatische updates en verbeterde ondersteuning. AGIC die zijn geïmplementeerd via helm wordt niet ondersteund door AKS, maar de AGIC die is geïmplementeerd als een AKS-invoeg toepassing, wordt ondersteund door AKS. 
 
 De AGIC-invoeg toepassing wordt nog steeds geïmplementeerd als een pod in het AKS-cluster van de klant. er zijn echter enkele verschillen tussen de implementatie versie van helm en de invoeg toepassing van AGIC. Hieronder vindt u een lijst met verschillen tussen de twee versies: 
   - Helm implementatie waarden kunnen niet worden gewijzigd in de AKS-invoeg toepassing:
-    - `verbosityLevel`wordt standaard ingesteld op 5
-    - `usePrivateIp`wordt standaard ingesteld op ONWAAR. Dit kan worden overschreven door het [gebruik van de aantekening-Private-IP](ingress-controller-annotations.md#use-private-ip)
-    - `shared`wordt niet ondersteund in de invoeg toepassing 
-    - `reconcilePeriodSeconds`wordt niet ondersteund in de invoeg toepassing
-    - `armAuth.type`wordt niet ondersteund in de invoeg toepassing
+    - `verbosityLevel` wordt standaard ingesteld op 5
+    - `usePrivateIp` wordt standaard ingesteld op ONWAAR. Dit kan worden overschreven door het [gebruik van de aantekening-Private-IP](ingress-controller-annotations.md#use-private-ip)
+    - `shared` wordt niet ondersteund in de invoeg toepassing 
+    - `reconcilePeriodSeconds` wordt niet ondersteund in de invoeg toepassing
+    - `armAuth.type` wordt niet ondersteund in de invoeg toepassing
   - AGIC geïmplementeerd via helm ondersteunt ProhibitedTargets, wat betekent dat AGIC de Application Gateway voor AKS-clusters kan configureren zonder dat dit van invloed is op andere bestaande back-endservers. AGIC-invoeg toepassing biedt momenteel geen ondersteuning voor dit. 
   - Omdat de AGIC-invoeg toepassing een beheerde service is, worden klanten automatisch bijgewerkt naar de nieuwste versie van AGIC-invoeg toepassing, in tegens telling tot AGIC geïmplementeerd via helm, waarbij de klant AGIC hand matig moet bijwerken. 
 
@@ -73,8 +73,8 @@ In de volgende tabellen worden de scenario's beschreven die momenteel worden ond
 |**2 + AGICs**|Gedeelde ProhibitedTarget-functionaliteit moet worden gebruikt |N.v.t. |
 
 ## <a name="next-steps"></a>Volgende stappen
-- [**AKS-invoeg toepassing voor ontwikkel-implementatie**](tutorial-ingress-controller-add-on-new.md): instructies voor het installeren van AGIC add-on, AKS en Application Gateway op een lege infra structuur.
-- [**AKS-invoeg toepassing Brownfield-implementatie**](tutorial-ingress-controller-add-on-existing.md): Installeer AGIC-invoeg toepassing op een AKS-cluster met een bestaande Application Gateway.
+- [**AKS Add-On ontwikkel-implementatie**](tutorial-ingress-controller-add-on-new.md): instructies voor het installeren van AGIC add-on, AKS en Application Gateway op een lege infra structuur.
+- [**AKS Add-On Brownfield-implementatie**](tutorial-ingress-controller-add-on-existing.md): Installeer AGIC-invoeg toepassing op een AKS-cluster met een bestaande Application Gateway.
 - [**Helm ontwikkel-implementatie**](ingress-controller-install-new.md): Installeer AGIC via helm, nieuw AKS cluster en nieuwe Application Gateway op een lege infra structuur.
 - [**Helm Brownfield-implementatie**](ingress-controller-install-existing.md): implementeer AGIC via helm op een bestaande AKS-cluster en Application Gateway.
 

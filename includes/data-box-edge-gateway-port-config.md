@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 71460af42b4da97a578ae5a3e23a714577e71867
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86218142"
 ---
-| Poort nummer| In of uit | Poort bereik| Vereist|   Opmerkingen |
+| Poort nummer| In of uit | Poort bereik| Vereist|   Notities |
 |--------|-----|-----|-----------|----------|
 | TCP 80 (HTTP)|Uit|WAN |Nee|De uitgaande poort wordt gebruikt voor toegang tot internet om updates op te halen. <br>De uitgaande webproxy kan door de gebruiker worden geconfigureerd. |
 | TCP 443 (HTTPS)|Uit|WAN|Ja|De uitgaande poort wordt gebruikt voor toegang tot gegevens in de Cloud.<br>De uitgaande webproxy kan door de gebruiker worden geconfigureerd.|

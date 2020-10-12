@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723449"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Asynchrone Azure-bewerkingen bijhouden
@@ -43,7 +43,7 @@ Als `Azure-AsyncOperation` dit niet het geval is, zoekt u naar:
 * `Location` -URL om te bepalen wanneer een bewerking is voltooid. Gebruik deze waarde alleen als Azure-AsyncOperation niet wordt geretourneerd.
 * `Retry-After` -Het aantal seconden dat moet worden gewacht voordat de status van de asynchrone bewerking wordt gecontroleerd.
 
-## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation-aanvraag en-antwoord
+## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation aanvraag en-antwoord
 
 Als u een URL van de `Azure-AsyncOperation` header waarde hebt, verzendt u een GET-aanvraag naar die URL. Gebruik de waarde van `Retry-After` om te plannen hoe vaak de status moet worden gecontroleerd. U ontvangt een reactie object dat de status van de bewerking aangeeft. Er wordt een andere reactie geretourneerd bij het controleren van de status van de bewerking met de `Location` URL. Zie voor meer informatie over de reactie van een locatie-URL [opslag account maken (202 met locatie en opnieuw proberen na)](#create-storage-account-202-with-location-and-retry-after).
 

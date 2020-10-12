@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79479556"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats installeren
 
 In dit artikel wordt beschreven hoe u Azure FarmBeats installeert in uw Azure-abonnement.
 
-Azure FarmBeats is een Business-to-Business-aanbieding die beschikbaar is in azure Marketplace. Hiermee kunnen aggregatie van agrarische gegevens sets worden verzameld over providers en kan er inzicht hebben in het genereren van actie bare inzichten. Azure FarmBeats doet dit door u in staat te stellen om modellen van kunst matige intelligentie (AI) of machine learning (ML) te bouwen op basis van gegevens sets met zekering. De twee belangrijkste onderdelen van Azure FarmBeats zijn:
+Azure FarmBeats is een Business-to-business-aanbieding die beschikbaar is in Azure Marketplace. Hiermee kunnen aggregatie van agrarische gegevens sets worden verzameld over providers en kan er inzicht hebben in het genereren van actie bare inzichten. Azure FarmBeats doet dit door u in staat te stellen om modellen van kunst matige intelligentie (AI) of machine learning (ML) te bouwen op basis van gegevens sets met zekering. De twee belangrijkste onderdelen van Azure FarmBeats zijn:
 
 - **Datahub**: een API-laag die aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets in verschillende providers mogelijk maakt.
 
@@ -39,7 +39,7 @@ Wanneer u Azure FarmBeats installeert, worden de volgende resources ingericht in
 | Azure Data Factory V2       |     Datahub & Accelerator      |
 | Azure Batch-account    | Datahub   |
 | Azure Key Vault |  Datahub & Accelerator        |
-| Azure Maps-account       |     Snelle    |
+| Azure Maps-account       |     Accelerator    |
 | Event hub-naam ruimte    |     Datahub      |
 | Logische apps      |  Datahub       |
 | Opslagaccount      |     Datahub & Accelerator      |
@@ -57,7 +57,7 @@ De kosten van Azure FarmBeats zijn een samen vatting van de kosten van de onderl
 Momenteel wordt Azure FarmBeats ondersteund in open bare Cloud omgevingen in de volgende regio's:
 
 - Australië - oost
-- VS - centraal
+- Central US
 - VS - oost
 - VS - oost 2
 - VS - west

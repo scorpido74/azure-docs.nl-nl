@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904290"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>App beheren en bewaken met Azure Spring Boot Actuator
 
-**Dit artikel is van toepassing op:** ✔️ java
+**Dit artikel is van toepassing op:** ✔️ Java
 
 Nadat u het nieuwe binaire bestand hebt geïmplementeerd voor uw app, kunt u de functionaliteit controleren en informatie over uw actieve toepassing bekijken. In dit artikel wordt uitgelegd hoe u toegang krijgt tot de API vanuit een test eindpunt dat is opgenomen in azure lente Cloud en de functies voor productie gereed voor uw app beschikbaar maakt.
 

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87499752"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problemen met de proces server oplossen
@@ -230,7 +230,7 @@ Controleer of de op IP-adres gebaseerde firewall op de proces server de toegang 
 
 ## <a name="step-12-verify-process-server-proxy-settings"></a>Stap 12: de proxy-instellingen van de proces server controleren 
 
-1. Als u een proxy server gebruikt, moet u ervoor zorgen dat de naam van de proxy server wordt opgelost door de DNS-server. Controleer de waarde die u hebt opgegeven bij het instellen van de configuratie server in de register sleutel **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\ProxySettings**.
+1. Als u een proxy server gebruikt, moet u ervoor zorgen dat de naam van de proxy server wordt opgelost door de DNS-server. Controleer de waarde die u hebt opgegeven bij het instellen van de configuratie server in de register sleutel **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**.
 2. Zorg ervoor dat dezelfde instellingen worden gebruikt door de Azure Site Recovery-agent om gegevens te verzenden.
 
     a) zoeken naar **Microsoft Azure backup**.

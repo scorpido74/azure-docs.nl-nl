@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498834"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Opera tors in Azure Cosmos DB
@@ -21,7 +21,7 @@ In dit artikel vindt u meer informatie over de verschillende Opera tors die door
 
 In de volgende tabel ziet het resultaat van gelijkheidsvergelijkingen in de SQL-API voor elk paar JSON-typen.
 
-| **Op** | **Undefined** | **Null** | **Booleaans** | **Number** | **Tekenreeks** | **Object** | **Matrix** |
+| **Op** | **Undefined** | **Null** | **Booleaans** | **Number** | **Tekenreeks** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
@@ -29,7 +29,7 @@ In de volgende tabel ziet het resultaat van gelijkheidsvergelijkingen in de SQL-
 | **Number** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
 | **Tekenreeks** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
-| **Matrix** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
+| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
 
 Voor vergelijkings operatoren zoals,,, `>` `>=` `!=` `<` en `<=` wordt vergelijking tussen typen of tussen twee objecten of matrices gegenereerd `Undefined` .  
 
@@ -55,7 +55,7 @@ Retourneert `true` Wanneer een van de voor waarden is `true` .
 | --- | --- | --- | --- |
 | **True** |Waar |Waar |Waar |
 | **False** |Waar |Niet waar |Undefined |
-| **Undefined** |Waar |Undefined |Undefined |
+| **Undefined** |True |Undefined |Undefined |
 
 **Operator EN**
 
@@ -64,17 +64,17 @@ Retourneert `true` wanneer beide expressies zijn `true` .
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |Waar |Niet waar |Undefined |
-| **False** |Niet waar |Niet waar |Niet waar |
-| **Undefined** |Undefined |Niet waar |Undefined |
+| **False** |False |False |False |
+| **Undefined** |Undefined |False |Undefined |
 
 **Operator NIET**
 
 Keert de waarde van een booleaanse expressie om.
 
-|  | **TEN** |
+|  | **NOT** |
 | --- | --- |
-| **True** |Niet waar |
-| **False** |Waar |
+| **True** |False |
+| **False** |True |
 | **Undefined** |Undefined |
 
 **Operator prioriteit**
@@ -83,13 +83,13 @@ De logische Opera tors `OR` , `AND` en `NOT` hebben het prioriteits niveau dat h
 
 | **Operator** | **Priority** |
 | --- | --- |
-| **TEN** |1 |
-| **MAAR** |2 |
+| **NOT** |1 |
+| **AND** |2 |
 | **OF** |3 |
 
 ## <a name="-operator"></a>*-operator
 
-De speciale operator * projecteert het hele item in de vorm van. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query zoals `SELECT * FROM Families f` is geldig, maar `SELECT VALUE * FROM Families f` is `SELECT *, f.id FROM Families f` niet geldig.
+De speciale operator * projecteert het hele item in de vorm van. Als u deze operator gebruikt, moet dit het enige geprojecteerde veld zijn. Een query zoals `SELECT * FROM Families f` is geldig, maar `SELECT VALUE * FROM Families f` is  `SELECT *, f.id FROM Families f` niet geldig.
 
 ## <a name="-and--operators"></a>? en?? operatoren
 

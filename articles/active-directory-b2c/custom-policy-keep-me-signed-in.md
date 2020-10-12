@@ -11,10 +11,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389187"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aanmelden (KMSI) inschakelen in Azure Active Directory B2C
@@ -90,9 +90,9 @@ Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers tr
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** : geeft aan hoe de sessie wordt uitgebreid met de tijd die is opgegeven in `SessionExpiryInSeconds` en `KeepAliveInDays` . De `Rolling` waarde (standaard) geeft aan dat de sessie wordt uitgebreid telkens wanneer de gebruiker verificatie uitvoert. De `Absolute` waarde geeft aan dat de gebruiker na de opgegeven tijds periode opnieuw moet worden geverifieerd.
+    - **SessionExpiryType** : geeft aan hoe de sessie wordt uitgebreid met de tijd die is opgegeven in `SessionExpiryInSeconds` en  `KeepAliveInDays` . De `Rolling` waarde (standaard) geeft aan dat de sessie wordt uitgebreid telkens wanneer de gebruiker verificatie uitvoert. De `Absolute` waarde geeft aan dat de gebruiker na de opgegeven tijds periode opnieuw moet worden geverifieerd.
 
-    - **SessionExpiryInSeconds** : de levens duur van sessie cookies wanneer *keep me aangemeld* is niet ingeschakeld, of als een gebruiker niet is geselecteerd als *aangemeld blijven*. De sessie verloopt na het verlopen `SessionExpiryInSeconds` of de browser is gesloten.
+    - **SessionExpiryInSeconds**  : de levens duur van sessie cookies wanneer *keep me aangemeld* is niet ingeschakeld, of als een gebruiker niet is geselecteerd als *aangemeld blijven*. De sessie verloopt na het verlopen `SessionExpiryInSeconds` of de browser is gesloten.
 
     - **KeepAliveInDays** : de levens duur van sessie cookies wanneer *aangemeld blijven* is ingeschakeld en de gebruiker selecteert *aangemeld blijven*.  De waarde van `KeepAliveInDays` heeft voor rang op de `SessionExpiryInSeconds` waarde en dicteert de verloop tijd van de sessie. Als een gebruiker de browser sluit en later opnieuw opent, kan hij of zij zich nog steeds op de achtergrond aanmelden zolang deze zich binnen de KeepAliveInDays-periode bevindt.
 

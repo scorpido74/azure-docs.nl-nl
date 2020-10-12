@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79504390"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Stappen voor het inschakelen van eenmalige aanmelding
@@ -18,7 +18,7 @@ Cloud inrichting werkt met eenmalige aanmelding.  Er is momenteel geen optie om 
 ### <a name="step-1-download-and-extract-azure-ad-connect-files"></a>Stap 1: Azure AD Connect-bestanden downloaden en uitpakken
 1.  Down load eerst de nieuwste versie van [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2.  Open een opdracht prompt met beheerders bevoegdheden en navigeer naar het MSI-bestand dat u zojuist hebt gedownload.
-3.  Voer de volgende handelingen uit:`msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
+3.  Voer de volgende handelingen uit:  `msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
 4. Wijzig filepath en extractfolder zodat deze overeenkomen met het bestandspad en de naam van de uitpak-map.  De inhoud moet zich nu in de map extra heren bevindt.
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>Stap 2: de naadloze SSO Power shell-module importeren

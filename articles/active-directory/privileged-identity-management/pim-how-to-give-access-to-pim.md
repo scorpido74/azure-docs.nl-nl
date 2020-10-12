@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009559"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>Toegang tot Privileged Identity Management delegeren
@@ -32,13 +32,13 @@ Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegi
 
 ## <a name="delegate-access-to-manage-pim"></a>Toegang delegeren om PIM te beheren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **privileged Identity Management**in azure AD.
 
 1. Selecteer **Azure AD-rollen**.
 
-1. Selecteer **rollen**.
+1. Selecteer **Rollen**.
 
     ![Privileged Identity Management Azure AD-rollen-rollen](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
@@ -46,7 +46,7 @@ Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegi
 
     ![Beheerder van geprivilegieerde rol-leden](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Selecteer **lid toevoegen** om het deel venster **beheerde leden toevoegen** te openen.
+1. Selecteer **lid toevoegen**  om het deel venster **beheerde leden toevoegen** te openen.
 
 1. Selecteer **leden selecteren** om het deel venster **leden selecteren** te openen.
 
@@ -70,13 +70,13 @@ Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegi
 
 Zorg er altijd voor dat er nog mini maal twee gebruikers aan zijn toegewezen voordat u iemand verwijdert uit de beheerderrol.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 
 1. Selecteer **Azure AD-rollen**.
 
-1. Selecteer **rollen**.
+1. Selecteer **Rollen**.
 
 1. Selecteer de beheerdersrol **privileged Role** om de pagina leden te openen.
 

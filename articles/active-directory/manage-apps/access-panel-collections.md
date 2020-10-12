@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f520141d36726e94dc8d49d7e5aa95bb35d5484
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85956233"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Verzamelingen maken in de portal Mijn apps
@@ -57,7 +57,7 @@ Als u een verzameling wilt maken, moet u een Azure AD Premium P1 of P2-licentie 
 
    ![Pagina nieuwe verzameling](media/acces-panel-collections/new-collection.png)
 
-5. Selecteer het tabblad **toepassingen** . Selecteer **+ toepassing**en selecteer vervolgens op de pagina **toepassingen toevoegen** alle toepassingen die u aan de verzameling wilt toevoegen, of gebruik het **zoekvak** om toepassingen te zoeken.
+5. Selecteer het tabblad **toepassingen** . Selecteer **+ toepassing toevoegen**en selecteer op de pagina **toepassingen toevoegen** alle toepassingen die u wilt toevoegen aan de verzameling of gebruik het **zoekvak** om toepassingen te zoeken.
 
    ![Een toepassing toevoegen aan de verzameling](media/acces-panel-collections/add-applications.png)
 
@@ -65,7 +65,7 @@ Als u een verzameling wilt maken, moet u een Azure AD Premium P1 of P2-licentie 
 
 7. Selecteer het tabblad **eigen aars** . Selecteer **+ gebruikers en groepen toevoegen**en selecteer op de pagina **gebruikers en groepen toevoegen** de gebruikers of groepen aan wie u het eigendom wilt toewijzen. Wanneer u klaar bent met het selecteren van gebruikers en groepen, kiest u **selecteren**.
 
-9. Selecteer de tab **gebruikers en groepen** . Selecteer **+ gebruikers en groepen toevoegen**en selecteer op de pagina **gebruikers en groepen toevoegen** de gebruikers of groepen aan wie u de verzameling wilt toewijzen. Of gebruik het **zoekvak** om gebruikers of groepen te zoeken. Wanneer u klaar bent met het selecteren van gebruikers en groepen, kiest u **selecteren**.
+9. Selecteer het tabblad **gebruikers en groepen** . Selecteer **+ gebruikers en groepen toevoegen**en selecteer op de pagina **gebruikers en groepen toevoegen** de gebruikers of groepen aan wie u de verzameling wilt toewijzen. Of gebruik het **zoekvak** om gebruikers of groepen te zoeken. Wanneer u klaar bent met het selecteren van gebruikers en groepen, kiest u **selecteren**.
 
    ![Gebruikers en groepen toevoegen](media/acces-panel-collections/add-users-and-groups.png)
 

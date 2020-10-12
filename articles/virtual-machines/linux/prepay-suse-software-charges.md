@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81759280"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vooruitbetalen voor Azure-softwareabonnementen
@@ -60,7 +60,7 @@ RedHat-abonnement kortingen gelden alleen voor de grootte van de virtuele machin
 
 U kunt een SUSE-of RedHat-abonnement dat u hebt gekocht, niet annuleren of uitwisselen. Controleer uw gebruik om er zeker van te zijn dat u het juiste abonnement koopt. Zie [begrijpen hoe de korting van het software plan wordt toegepast](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)voor hulp bij het bepalen van wat u wilt kopen.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -68,7 +68,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 Zie [Azure-reserve ringen beheren](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)voor meer informatie over het beheren van een reserve ring.
 
-Raadpleeg de volgende artikelen voor meer informatie:
+Lees de volgende artikelen voor meer informatie:
 
 - [Wat zijn Azure-reserveringen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Reserveringen beheren in Azure](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
