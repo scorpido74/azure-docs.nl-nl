@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75464284"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Het opstartscript van een service uitvoeren als lokale gebruiker of systeemaccount
@@ -131,7 +131,7 @@ Vaak is het raadzaam om het opstart script uit te voeren met een lokaal systeem 
 ```
 
 > [!NOTE]
-> Voor Linux-clusters kunt u een service of het toegangs punt voor Setup als **root**uitvoeren door het **account** type op te geven als **LocalSystem**.
+> Voor Linux-clusters kunt u een service of het toegangs punt voor Setup als **root**uitvoeren door het  **account** type op te geven als **LocalSystem**.
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>Een script uitvoeren vanuit het installatie toegangs punt
 Voeg nu een opstart script toe aan het project om uit te voeren onder Administrator bevoegdheden. 

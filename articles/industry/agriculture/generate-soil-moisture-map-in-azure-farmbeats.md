@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75482567"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Bodem vocht heatmap genereren
@@ -54,7 +54,7 @@ Zodra u uw sensor account hebt gekoppeld aan Azure FarmBeats, moet u de bodem se
 2.  Selecteer **MyFarm**  >  **apparaten toevoegen**.
 3.  Het venster **apparaten toevoegen** wordt weer gegeven. Selecteer een apparaat dat is gekoppeld aan de bodem sensoren voor uw farm.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Een Farm Beats-project](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. Selecteer **apparaten toevoegen**.     
 
@@ -70,7 +70,7 @@ Deze stap bestaat uit het maken van een taak of een langlopende bewerking waarme
 6.  Voer in de **meting** **bodem vochtigheid selecteren** de meting in die u wilt gebruiken voor de kaart.
     Als u de sensor meting wilt vinden, selecteert u in **Sens oren**een aarde vocht sensor. Gebruik bij **sensor eigenschappen**de waarde voor de **meting naam** .
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Een Farm Beats-project](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  Selecteer **Maps genereren**.
@@ -87,9 +87,9 @@ Voer de volgende stappen uit:
 2. Wanneer de taak status **geslaagd**wordt weer gegeven, selecteert u **kaarten** in het menu.
 3. Zoek de kaart op de dag waarop deze is gemaakt in de indeling <bodem-moisture_MyFarm_YYYY-MM-DD>.
 4. Selecteer een kaart in de kolom **naam** . er wordt een pop-upvenster weer gegeven met het voor beeld van de geselecteerde kaart.
-5. Selecteer **Download**. De kaart wordt gedownload en opgeslagen in de lokale map van uw computer.
+5. Selecteer **Downloaden**. De kaart wordt gedownload en opgeslagen in de lokale map van uw computer.
 
-    ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
+    ![Een Farm Beats-project](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

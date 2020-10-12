@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848006"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management-beleid instellen of bewerken
@@ -110,7 +110,7 @@ Het API-bereik is geconfigureerd voor **alle bewerkingen** van de geselecteerde 
 
     ![API-bereik](./media/api-management-howto-policies/api-scope.png)
 
-2. **Alle bewerkingen** selecteren
+2. Selecteer **Alle bewerkingen**
 3. Klik op het pictogram drie hoek.
 4. Selecteer **Code-editor**.
 5. Beleids regels toevoegen of bewerken.

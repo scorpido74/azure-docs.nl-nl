@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556286"
 ---
 # <a name="msix-app-attach-glossary"></a>Woorden lijst voor het toevoegen van MSIX-apps
@@ -71,7 +71,7 @@ In virtuele Bureau bladen van Windows publiceert een MSIX-pakket deze naar een e
 
 In Windows Virtual Desktop moet een gepubliceerd MSIX-pakket worden toegewezen aan een gebruikers-of gebruikers groep van een Active Directory-domein-service (AD DS) of Azure Active Directory (Azure AD).
 
-## <a name="staging"></a>Staging
+## <a name="staging"></a>Faseren
 
 Fase ring omvat twee dingen:
 
@@ -106,7 +106,7 @@ Met destaging wordt het besturings systeem gewaarschuwd dat een MSIX-pakket of-t
 
 . CIM is een nieuwe bestands extensie die is gekoppeld aan een samengesteld installatie kopie bestand systeem (CimFS). Het koppelen en ontkoppelen van CIM-bestanden verloopt sneller dan die VHD-bestanden. CIM verbruikt ook minder CPU en geheugen dan VHD.
 
-De volgende tabel is een prestatie vergelijking tussen VHD en CimFS. Deze getallen zijn het resultaat van een test uitvoering met 800 MB aan bestanden in elke indeling die wordt uitgevoerd op een DSv4-machine.
+De volgende tabel is een prestatie vergelijking tussen VHD en CimFS. Deze getallen zijn het resultaat van een test uitvoering met 500 300 MB aan bestanden in elke indeling die wordt uitgevoerd op een DSv4-machine.
 
 |  Specificaties                          | VHD                    | CimFS   |
 |---------------------------------|--------------------------|-----------|

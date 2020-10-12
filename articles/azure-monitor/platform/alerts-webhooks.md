@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852103"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
@@ -72,14 +72,14 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 ```
 
 
-| Veld | Verplicht | Vaste set waarden | Opmerkingen |
+| Veld | Verplicht | Vaste set waarden | Notities |
 |:--- |:--- |:--- |:--- |
 | status |J |Geactiveerd, opgelost |De status van de waarschuwing op basis van de voor waarden die u hebt ingesteld. |
 | context |J | |De context van de waarschuwing. |
 | tijdstempel |J | |Het tijdstip waarop de waarschuwing is geactiveerd. |
 | id |J | |Elke waarschuwings regel heeft een unieke ID. |
 | naam |J | |De naam van de waarschuwing. |
-| beschrijving |J | |Een beschrijving van de waarschuwing. |
+| description |J | |Een beschrijving van de waarschuwing. |
 | conditionType |J |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
 | regeling |J | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |
 | metricName |Voor metrische waarschuwingen | |De naam van de metriek die definieert wat de regel controleert. |

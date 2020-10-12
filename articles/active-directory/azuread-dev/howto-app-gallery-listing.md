@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706299"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
@@ -101,7 +101,7 @@ Als u een toepassing in de Azure AD-App-galerie wilt weer geven, moet u eerst ee
 
 - **Saml 2,0** of **WS-voeder**: als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azure AD-Tenant door de [instructies te volgen om een aangepaste toepassing toe te voegen](../manage-apps/view-applications-portal.md).
 
-  ![Een SAML 2,0-of WS--toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
+  ![Een SAML 2,0-of WS-Fed-toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
 
   * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van **saml 2,0** of **WS-voeder**, selecteert u **SAML 2.0/WS-wordt gevoederd** zoals weer gegeven.
 
@@ -146,7 +146,7 @@ Hier volgt de stroom van door de klant aangevraagde toepassingen.
 
 ## <a name="timelines"></a>Tijdlijnen
 
-De tijd lijn voor het proces van het weer geven van een SAML 2,0-of WS-set-toepassing in de galerie is 7 tot 10 werk dagen.
+De tijd lijn voor het proces van het weer geven van een SAML 2,0-of WS-Fed-toepassing in de galerie is 7 tot 10 werk dagen.
 
   ![Tijd lijn voor het weer geven van een SAML-toepassing in de galerie](./media/howto-app-gallery-listing/timeline.png)
 

@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086435"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Omgaan met beperkings problemen (429-"te veel aanvragen") in Azure Logic Apps
@@ -21,7 +21,7 @@ In [Azure Logic apps](../logic-apps/logic-apps-overview.md)retourneert uw logisc
 
 Hier volgen enkele veelvoorkomende typen beperking die uw logische app kan ervaren:
 
-* [Logische app](#logic-app-throttling)
+* [Logische apps](#logic-app-throttling)
 * [Connector](#connector-throttling)
 * [Doel service of systeem](#destination-throttling)
 
@@ -164,7 +164,7 @@ U hebt de volgende opties om bandbreedte beperking op dit niveau te verwerken:
 
 * Gebruik de webhook-versies voor triggers en acties in plaats van de polling versies.
 
-  Hoe kan dat? Een polling trigger blijft de doel service of het systeem op specifieke intervallen controleren. Een regel matig interval, zoals elke seconde, kan beperkings problemen veroorzaken. Een webhook-trigger of-actie, zoals [http-webhook](../connectors/connectors-native-webhook.md), maakt echter slechts één aanroep van de doel service of het systeem, dat gebeurt op het tijdstip van het abonnement en de aanvragen die het doel krijgt de trigger of actie, alleen wanneer er een gebeurtenis optreedt. Op die manier hoeft de trigger of actie de bestemming niet continu te controleren.
+  Hoe komt dat? Een polling trigger blijft de doel service of het systeem op specifieke intervallen controleren. Een regel matig interval, zoals elke seconde, kan beperkings problemen veroorzaken. Een webhook-trigger of-actie, zoals [http-webhook](../connectors/connectors-native-webhook.md), maakt echter slechts één aanroep van de doel service of het systeem, dat gebeurt op het tijdstip van het abonnement en de aanvragen die het doel krijgt de trigger of actie, alleen wanneer er een gebeurtenis optreedt. Op die manier hoeft de trigger of actie de bestemming niet continu te controleren.
   
   Als de doel service of het systeem webhooks ondersteunt of een connector biedt met een webhook-versie, is deze optie beter dan het gebruik van de polling-versie. Als u de triggers en acties van webhooks wilt identificeren, moet u controleren of ze het `ApiConnectionWebhook` type hebben of dat u geen terugkeer patroon opgeeft. Zie [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) and [APIConnectionWebhook Action](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)(Engelstalig) voor meer informatie.
 

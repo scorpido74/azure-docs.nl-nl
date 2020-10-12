@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67176449"
 ---
 De taak produceert een JSON-uitvoer bestand dat meta gegevens bevat over gedetecteerde en getraceerde gezichten. De meta gegevens bevatten coördinaten die de locatie van de gezichten aangeven, evenals een face ID-nummer dat het bijhouden van die persoon aangeeft. Gezichts-ID-nummers zijn gevoelig voor het opnieuw instellen van de voor kant wanneer het frontale gezicht verloren is gegaan of wordt overlapt in het kader, wat betekent dat sommige personen meerdere Id's krijgen toegewezen.
@@ -17,7 +17,7 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="root-json-elements"></a>Wortel-JSON-elementen
 
-| Element | Description |
+| Element | Beschrijving |
 | --- | --- |
 | versie |Dit verwijst naar de versie van de video-API. |
 | lijnen |' Ticks ' per seconde van de video. |
@@ -28,11 +28,11 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="fragments-json-elements"></a>Fragmenten JSON-elementen
 
-|Element|Description|
+|Element|Beschrijving|
 |---|---|
-| start |De begin tijd van de eerste gebeurtenis in Ticks. |
+| starten |De begin tijd van de eerste gebeurtenis in Ticks. |
 | duur |De lengte van het fragment, in Ticks. |
-| TabIndex | (Alleen van toepassing op Azure Media Redactor) Hiermee definieert u de kader-index van de huidige gebeurtenis. |
+| index | (Alleen van toepassing op Azure Media Redactor) Hiermee definieert u de kader-index van de huidige gebeurtenis. |
 | interval |Het interval van elke gebeurtenis vermelding in het fragment, in Ticks. |
 | events |Elke gebeurtenis bevat de gezichten die binnen die tijds duur zijn gedetecteerd en bijgehouden. Het is een matrix met gebeurtenissen. De buitenste matrix vertegenwoordigt een tijdsinterval. De binnenste matrix bestaat uit 0 of meer gebeurtenissen die hebben plaatsgevonden gedurende de interval. Een lege beugel [] betekent dat er geen gezichten zijn gedetecteerd. |
 | id |De ID van het gezicht dat wordt bijgehouden. Dit aantal kan per ongeluk worden gewijzigd als een gezicht niet wordt gedetecteerd. Een bepaalde persoon moet dezelfde ID hebben in de gehele video, maar dit kan niet worden gegarandeerd vanwege beperkingen in het detectie algoritme (bedekking, enzovoort). |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131172"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Ondersteuningsmatrix voor herstel na noodgeval van virtuele Hyper-V-machines naar een secundaire site
@@ -53,14 +53,14 @@ Alleen Linux-machines met de volgende opslag kunnen worden gerepliceerd:
 
 **Configuratie** | **Ondersteund**  
 --- | --- 
-Host-NIC-koppeling | Yes 
-Host-VLAN | Yes 
-Host-IPv4 | Yes 
-Host-IPv6 | No 
-Gast-VM-NIC-koppeling | No
-Gast-VM-IPv4 | Yes
-Gast-VM-IPv6 | No
-Gast-VM-Windows/Linux-statisch IP-adres | Yes
+Host-NIC-koppeling | Ja 
+Host-VLAN | Ja 
+Host-IPv4 | Ja 
+Host-IPv6 | Nee 
+Gast-VM-NIC-koppeling | Nee
+Gast-VM-IPv4 | Ja
+Gast-VM-IPv6 | Nee
+Gast-VM-Windows/Linux-statisch IP-adres | Ja
 Gast-VM-multi-NIC | Ja
 
 
@@ -71,9 +71,9 @@ Gast-VM-multi-NIC | Ja
 **Opslag (host)** | **Ondersteund**
 --- | --- 
 NFS | N.v.t.
-SMB 3.0 |  Yes
-SAN (ISCSI) | Yes
-Meerdere paden (MPIO) | Yes
+SMB 3.0 |  Ja
+SAN (ISCSI) | Ja
+Meerdere paden (MPIO) | Ja
 
 ### <a name="guest-or-physical-server-storage"></a>Opslag van gast-of fysieke servers
 
@@ -81,26 +81,26 @@ Meerdere paden (MPIO) | Yes
 --- | --- | 
 VMDK |  N.v.t.
 VHD/VHDX | Ja (Maxi maal 16 schijven)
-VM van generatie 2 | Yes
-Gedeelde cluster schijf | No
-Versleutelde schijf | No
+VM van generatie 2 | Ja
+Gedeelde cluster schijf | Nee
+Versleutelde schijf | Nee
 UEFI| N.v.t.
-NFS | No
-SMB 3.0 | No
+NFS | Nee
+SMB 3.0 | Nee
 RDM | N.v.t.
-Schijf > 1 TB | Yes
-Volume met gestripte schijf > 1 TB<br/><br/> LVM | Yes
-Opslagruimten | Yes
-Hot toevoegen/verwijderen schijf | No
-Schijf uitsluiten | Yes
-Meerdere paden (MPIO) | Yes
+Schijf > 1 TB | Ja
+Volume met gestripte schijf > 1 TB<br/><br/> LVM | Ja
+Opslagruimten | Ja
+Hot toevoegen/verwijderen schijf | Nee
+Schijf uitsluiten | Ja
+Meerdere paden (MPIO) | Ja
 
 ## <a name="vaults"></a>Kluizen
 
 **Actie** | **Ondersteund**
 --- | --- 
-Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) |  No
-Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | No
+Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) |  Nee
+Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | Nee
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery provider
 

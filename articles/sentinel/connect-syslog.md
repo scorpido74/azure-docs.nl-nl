@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88566145"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Gegevens verzamelen van op Linux gebaseerde bronnen met behulp van syslog
@@ -30,7 +30,7 @@ U kunt gebeurtenissen streamen van op Linux gebaseerde machines of toestellen di
 >
 > - Log Analytics ondersteunt het verzamelen van berichten die worden verzonden door de **rsyslog** of **syslog-ng-** daemons, waarbij rsyslog de standaard waarde is. De standaard syslog-daemon op versie 5 van Red Hat Enterprise Linux (RHEL), CentOS en Oracle Linux versie (**sysklog**) wordt niet ondersteund voor de verzameling syslog-gebeurtenissen. Als u syslog-gegevens uit deze versie van deze distributies wilt verzamelen, moet de rsyslog-daemon worden geïnstalleerd en geconfigureerd om sysklog te vervangen.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 **Syslog** is een protocol voor gebeurtenis registratie dat algemeen is voor Linux. Wanneer de **log Analytics-agent voor Linux** op uw virtuele machine of apparaat is geïnstalleerd, wordt de lokale syslog-daemon geconfigureerd voor het door sturen van berichten naar de agent op TCP-poort 25224. De agent verzendt het bericht vervolgens naar uw Log Analytics-werk ruimte via HTTPS, waar het wordt geparseerd in een gebeurtenis logboek vermelding in de syslog-tabel in **Azure Sentinel >-logboeken**.
 

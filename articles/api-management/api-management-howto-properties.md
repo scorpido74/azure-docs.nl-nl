@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852188"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Benoemde waarden gebruiken in azure API Management-beleid
@@ -28,8 +28,8 @@ Elk API Management service-exemplaar heeft een verzameling sleutel-waardeparen, 
 | Kenmerk      | Type            | Description                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | tekenreeks          | Gebruikt voor het verwijzen naar de benoemde waarde in beleids regels. Een teken reeks van 1 tot 256 tekens. Alleen letters, cijfers, punten en streepjes zijn toegestaan. |
-| `Value`        | string          | Werkelijke waarde. Mag niet leeg zijn of alleen uit spaties bestaan. Maxi maal 4096 tekens lang.                                        |
-| `Secret`       | boolean         | Hiermee wordt bepaald of de waarde een geheim is en moet worden versleuteld of niet.                                                               |
+| `Value`        | tekenreeks          | Werkelijke waarde. Mag niet leeg zijn of alleen uit spaties bestaan. Maxi maal 4096 tekens lang.                                        |
+| `Secret`       | booleaans         | Hiermee wordt bepaald of de waarde een geheim is en moet worden versleuteld of niet.                                                               |
 | `Tags`         | tekenreeksmatrix | Hiermee wordt de lijst met benoemde waarden gefilterd. Maxi maal 32 tags.                                                                                    |
 
 ![Benoemde waarden](./media/api-management-howto-properties/named-values.png)
@@ -38,9 +38,9 @@ Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](./api-
 
 | Naam       | Waarde                      | Geheim | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Waarde      | 42                         | Niet waar  | cruciale cijfers |
+| Waarde      | 42                         | False  | cruciale cijfers |
 | Referentie | ••••••••••••••••••••••     | True   | security      |
-| Expression | @ (DateTime. Now. ToString ()) | Niet waar  |               |
+| Expression | @ (DateTime. Now. ToString ()) | False  |               |
 
 > [!NOTE]
 > In plaats van benoemde waarden die zijn opgeslagen in een API Management-service, kunt u waarden gebruiken die zijn opgeslagen in de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -service, zoals wordt geïllustreerd door dit [voor beeld](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
@@ -84,7 +84,7 @@ Als u een benoemde waarde in een beleid wilt gebruiken, plaatst u de naam ervan 
 
 In dit voor beeld `ContosoHeader` wordt gebruikt als de naam van een koptekst in een `set-header` beleid en `ContosoHeaderValue` wordt gebruikt als de waarde van die koptekst. Wanneer dit beleid wordt geëvalueerd tijdens een aanvraag of reactie op de API Management Gateway, `{{ContosoHeader}}` en `{{ContosoHeaderValue}}` worden vervangen door hun respectievelijke waarden.
 
-Benoemde waarden kunnen worden gebruikt als volledige kenmerk-of element waarden, zoals wordt weer gegeven in het vorige voor beeld, maar ze kunnen ook worden ingevoegd in of gecombineerd met een letterlijke tekst expressie, zoals wordt weer gegeven in het volgende voor beeld:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Benoemde waarden kunnen worden gebruikt als volledige kenmerk-of element waarden, zoals wordt weer gegeven in het vorige voor beeld, maar ze kunnen ook worden ingevoegd in of gecombineerd met een letterlijke tekst expressie, zoals wordt weer gegeven in het volgende voor beeld: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
 Benoemde waarden kunnen ook beleids expressies bevatten. In het volgende voor beeld `ExpressionProperty` wordt de gebruikt.
 

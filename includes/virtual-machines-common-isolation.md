@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 4f6a6dd28662c98c89dad39da3fd5c967f227dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084043"
 ---
 Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een specifiek hardwaretype en die zijn toegewezen aan één klant. De geïsoleerde grootten Live en worden gebruikt voor het genereren van specifieke hardware en worden afgeschaft wanneer het genereren van de hardware buiten gebruik wordt gesteld.
@@ -41,7 +41,7 @@ Net als geïsoleerde VM-grootten zijn hardwarematige grootten een periode van 12
 | Standard_DS15_v2<sup>1</sup> | 15 mei 2020 |
 | Standard_D15_v2<sup>1</sup>  | 15 mei 2020 |
 
-<sup>1</sup> Zie Veelgestelde vragen voor meer informatie over Standard_DS15_v2 en Standard_D15_v2 buiten gebruik gesteld programma voor isolatie
+<sup>1</sup>  Zie Veelgestelde vragen voor meer informatie over Standard_DS15_v2 en Standard_D15_v2 buiten gebruik gesteld programma voor isolatie
 
 
 ## <a name="faq"></a>Veelgestelde vragen
@@ -62,7 +62,7 @@ Net als geïsoleerde VM-grootten zijn hardwarematige grootten een periode van 12
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>V: wat zijn de mijl palen voor D15_v2 of DS15_v2 buiten gebruik stellen? 
 **A**: 
-| Datum | Bewerking | 
+| Date | Bewerking | 
 | --- | --- |
 | 18 november 2019 | Beschik baarheid van D/DS15i_v2 (PAYG, 1-jarige RI) |
 | 14 mei 2020  | Laatste dag tot aankoop D/DS15i_v2 1 jaar RI | 

@@ -16,13 +16,13 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88565839"
 ---
-# <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
+# <a name="permissions-in-azure-sentinel"></a>Machtigingen in Azure Sentinel
 
 Azure Sentinel maakt gebruik [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) om [ingebouwde rollen](../role-based-access-control/built-in-roles.md)te bieden   die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
@@ -30,7 +30,7 @@ Gebruik RBAC om rollen binnen uw beveiligings team te maken en toe te wijzen om 
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Rollen voor het werken in azure-Sentinel
 
-### <a name="azure-sentinel-specific-roles"></a>Sentinel-specifieke rollen van Azure
+### <a name="azure-sentinel-specific-roles"></a>Specifieke Azure Sentinel-rollen
 
 Er zijn drie speciale, ingebouwde Azure-Sentinel rollen.
 
@@ -78,7 +78,7 @@ Bijvoorbeeld, een gebruiker aan wie de rol van **Azure Sentinel Reader** is toeg
 
 ## <a name="roles-and-allowed-actions"></a>Rollen en toegestane acties
 
-De volgende tabel bevat een overzicht van de rollen en toegestane acties in azure Sentinel. 
+De volgende tabel bevat een overzicht van de rollen en toegestane acties in Azure Sentinel. 
 
 | Rol | Playbooks maken en uitvoeren| Werkmappen, analytische regels en andere Azure Sentinel-resources maken en bewerken | Incidenten beheren (sluiten, toewijzen, enz.) | Gegevens, incidenten, werkmappen en andere Azure Sentinel-bronnen weer geven |
 |---|---|---|---|---|

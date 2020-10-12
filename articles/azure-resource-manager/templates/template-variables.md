@@ -4,17 +4,17 @@ description: Hierin wordt beschreven hoe u variabelen definieert in een Azure Re
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75483815"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Variabelen in Azure Resource Manager sjabloon
+# <a name="variables-in-azure-resource-manager-template"></a>Variabelen in Azure Resource Manager-sjabloon
 
 In dit artikel wordt beschreven hoe u in uw Azure Resource Manager-sjabloon variabelen definieert en gebruikt. U kunt variabelen gebruiken om uw sjabloon te vereenvoudigen. In plaats van ingewikkelde expressies in uw sjabloon te herhalen, definieert u een variabele die de gecompliceerde expressie bevat. Vervolgens verwijst u naar die variabele die u nodig hebt in uw sjabloon.
 
-Met Resource Manager worden variabelen omgezet voordat de implementatie bewerkingen worden gestart. Wanneer de variabele wordt gebruikt in de sjabloon, wordt deze vervangen door de omgezette waarde.
+Met Resource Manager worden variabelen omgezet voordat de implementatie bewerkingen worden gestart. Wanneer de variabele wordt gebruikt in de sjabloon, wordt deze door de Resource Manager vervangen door de omgezette waarde.
 
 ## <a name="define-variable"></a>Variabele definiëren
 
@@ -85,7 +85,7 @@ Als u instellingen voor de opgegeven omgeving wilt ophalen, gebruikt u de variab
 
 In de volgende voor beelden ziet u scenario's voor het gebruik van variabelen.
 
-|Template  |Description  |
+|Template  |Beschrijving  |
 |---------|---------|
 | [variabele definities](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Toont de verschillende typen variabelen. De sjabloon implementeert geen resources. Er worden variabele waarden gemaakt en deze waarden worden geretourneerd. |
 | [configuratie variabele](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Toont het gebruik van een variabele die configuratie waarden definieert. De sjabloon implementeert geen resources. Er worden variabele waarden gemaakt en deze waarden worden geretourneerd. |

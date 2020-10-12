@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80365501"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Gebruikers en rollen beheren in uw IoT Central-toepassing
@@ -25,7 +25,7 @@ Voor toegang tot en gebruik van de sectie **beheer** moet u de rol **beheerder**
 
 Elke gebruiker moet een gebruikers account hebben voordat ze zich kunnen aanmelden en toegang hebben tot een Azure IoT Central-toepassing. Micro soft-accounts en-Azure Active Directory accounts worden ondersteund in azure IoT Central. Azure Active Directory-groepen worden momenteel niet ondersteund in azure IoT Central.
 
-Zie [Microsoft-account Help](https://support.microsoft.com/products/microsoft-account?category=manage-account) en [Quick Start: nieuwe gebruikers toevoegen aan Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)voor meer informatie.
+Zie [Microsoft-account Help](https://support.microsoft.com/products/microsoft-account?category=manage-account) en  [Quick Start: nieuwe gebruikers toevoegen aan Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)voor meer informatie.
 
 1. Als u een gebruiker aan een IoT Central-toepassing wilt toevoegen, gaat u naar de pagina **gebruikers** in de sectie **beheer** .
     

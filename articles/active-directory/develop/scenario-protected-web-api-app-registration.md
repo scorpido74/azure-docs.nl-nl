@@ -13,10 +13,10 @@ ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86518271"
 ---
 # <a name="protected-web-api-app-registration"></a>Beveiligde web-API: app-registratie
@@ -78,7 +78,7 @@ App-rollen kunnen niet worden door gegeven aan een gebruiker (omdat ze worden ge
 ### <a name="exposing-delegated-permissions-scopes"></a>Gedelegeerde machtigingen (bereiken) weer geven
 
 1. Selecteer **een API beschikbaar** maken in de registratie van de toepassing.
-1. Selecteer **een bereik toevoegen**.
+1. Selecteer **Een bereik toevoegen**.
 1. Als u hierom wordt gevraagd, accepteert u de voorgestelde URI voor de toepassings-ID ( `api://{clientId}` ) door **opslaan en door gaan**te selecteren.
 1. Geef deze waarden op:
     - Selecteer **Scope naam** en voer **access_as_user**in.
@@ -88,7 +88,7 @@ App-rollen kunnen niet worden door gegeven aan een gebruiker (omdat ze worden ge
     - Selecteer **weergave naam gebruikers toestemming** en voer **toegangs TodoListService in als gebruiker**.
     - De **Beschrijving van de gebruikers bevestiging** selecteren en **de TodoListService-Web-API openen als een gebruiker**.
     - Zorg ervoor dat de **status** waarde is ingesteld op **ingeschakeld**.
- 1. Selecteer **bereik toevoegen**.
+ 1. Selecteer **Bereik toevoegen**.
 
 ### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>Als uw web-API wordt aangeroepen door een daemon-app
 

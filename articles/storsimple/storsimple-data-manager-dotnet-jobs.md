@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183645"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>De .NET SDK gebruiken om de gegevenstransformatie te initiëren
@@ -36,7 +36,7 @@ Voordat u begint, moet u ervoor zorgen dat:
     - Azure Power shell. [Down load Azure Power shell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 *   Een correct geconfigureerde taak definitie in StorSimple Data Manager binnen een resource groep.
 *   Alle vereiste dll-bestanden. Down load deze DLL-bestanden vanuit de [github-opslag plaats](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)script uit de GitHub-opslag plaats.
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) script uit de GitHub-opslag plaats.
 
 ## <a name="step-by-step-procedure"></a>Stapsgewijze procedure
 

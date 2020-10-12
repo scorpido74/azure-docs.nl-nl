@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87851678"
 ---
 # <a name="api-management-advanced-policies"></a>API Management advanced policies (Geavanceerde beleidsregels API Management)
 
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
 
-## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a>Geavanceerde beleids regels
+## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Geavanceerde beleids regels
 
 -   [Controle stroom](api-management-advanced-policies.md#choose) -voorwaardelijk past beleids instructies toe op basis van de resultaten van de evaluatie van Boole- [expressies](api-management-policy-expressions.md).
 -   [Aanvraag door sturen](#ForwardRequest) : stuurt de aanvraag door naar de back-end-service.
@@ -41,11 +41,11 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 -   [Trace](#Trace) : voegt aangepaste traceringen toe aan de [API-Inspector](./api-management-howto-api-inspector.md) -uitvoer, Application Insights-Telerichtingen en resource Logboeken.
 -   [Wacht](#Wait) op een Inge sloten [verzend aanvraag](api-management-advanced-policies.md#SendRequest), haal de [waarde uit het cache geheugen](api-management-caching-policies.md#GetFromCacheByKey)of Controleer of [controle stroom](api-management-advanced-policies.md#choose) beleid is voltooid voordat u doorgaat.
 
-## <a name="control-flow"></a><a name="choose"></a>Controle stroom
+## <a name="control-flow"></a><a name="choose"></a> Controle stroom
 
 Het `choose` beleid is van toepassing op Inge sloten beleids overzichten op basis van het resultaat van de evaluatie van Boole-expressies, vergelijkbaar met een if-then-else-of een switch-constructie in een programmeer taal.
 
-### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a>Beleids verklaring
+### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a> Beleids verklaring
 
 ```xml
 <choose>
@@ -65,7 +65,7 @@ Het controle stroom beleid moet ten minste één `<when/>` element bevatten. Het
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="example"></a><a name="ChooseExample"></a>Hierbij
+#### <a name="example"></a><a name="ChooseExample"></a> Hierbij
 
 In het volgende voor beeld ziet u een [set-variabele](api-management-advanced-policies.md#set-variable) beleid en twee controle stroom beleidsregels.
 
@@ -138,7 +138,7 @@ In dit voor beeld ziet u hoe u het filteren van inhoud uitvoert door gegevens el
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | condition = "Boole-expressie &#124; Booleaanse constante" | De booleaanse expressie of-constante die moet worden geëvalueerd wanneer de insluitende `when` beleids instructie wordt geëvalueerd. | Ja      |
 
-### <a name="usage"></a><a name="ChooseUsage"></a>Belasting
+### <a name="usage"></a><a name="ChooseUsage"></a> Belasting
 
 Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management-howto-policies.md#sections) en [bereiken](./api-management-howto-policies.md#scopes).
 
@@ -146,7 +146,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="forward-request"></a><a name="ForwardRequest"></a>Aanvraag door sturen
+## <a name="forward-request"></a><a name="ForwardRequest"></a> Aanvraag door sturen
 
 Het `forward-request` beleid stuurt de inkomende aanvraag door naar de back-end-service die is opgegeven in de [context](api-management-policy-expressions.md#ContextVariables)van de aanvraag. De URL van de back-end-service is opgegeven in de API- [instellingen](./import-and-publish.md) en kan worden gewijzigd met het beleid voor het [instellen van back-upservices](api-management-transformation-policies.md) .
 
@@ -264,11 +264,11 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 -   **Beleids secties:** back-end
 -   **Beleids bereik:** alle bereiken
 
-## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a>Gelijktijdigheid beperken
+## <a name="limit-concurrency"></a><a name="LimitConcurrency"></a> Gelijktijdigheid beperken
 
 Het `limit-concurrency` beleid voor komt dat het Inge sloten beleid wordt uitgevoerd door meer dan het opgegeven aantal aanvragen op elk gewenst moment. Bij overschrijding van dat aantal, zullen nieuwe aanvragen niet onmiddellijk worden uitgevoerd met een status code van 429 te veel aanvragen.
 
-### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a>Beleids verklaring
+### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a> Beleids verklaring
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
@@ -315,7 +315,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a>Aanmelden bij Event hub
+## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a> Aanmelden bij Event hub
 
 Het `log-to-eventhub` beleid verzendt berichten in de opgegeven indeling naar een event hub die is gedefinieerd door een logboek registratie-entiteit. Zoals de naam al aangeeft, wordt het beleid gebruikt voor het opslaan van de geselecteerde aanvraag-of antwoord context gegevens voor online-of offline analyse.
 
@@ -369,7 +369,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="mock-response"></a><a name="mock-response"></a>Reactie van model
+## <a name="mock-response"></a><a name="mock-response"></a> Reactie van model
 
 De `mock-response` , zoals de naam al aangeeft, wordt gebruikt voor het aftrekken van api's en bewerkingen. De normale uitvoering van de pijp lijn wordt afgebroken en er wordt een gesimuleerde reactie op de oproepende functie geretourneerd. Het beleid probeert altijd antwoorden te retour neren van de hoogste betrouw baarheid. De voor beelden van antwoord inhoud, indien beschikbaar, worden weer gegeven. Er worden voorbeeld reacties van schema's gegenereerd, wanneer schema's worden gegeven en voor beelden niet. Als er geen voor beelden of schema's worden gevonden, worden antwoorden zonder inhoud geretourneerd.
 
@@ -413,7 +413,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="retry"></a><a name="Retry"></a>Voeren
+## <a name="retry"></a><a name="Retry"></a> Voeren
 
 Het `retry` beleid voert het onderliggende beleid eenmaal uit en probeert vervolgens de uitvoering ervan totdat de nieuwe `condition` poging `false` of nieuwe poging `count` is uitgeput.
 
@@ -465,7 +465,7 @@ In het volgende voor beeld wordt het door sturen van aanvragen tot tien keer opn
 | count            | Een positief getal dat het maximum aantal pogingen aangeeft dat moet worden geprobeerd.                                                                                | Ja      | N.v.t.     |
 | interval         | Een positief getal in seconden dat het wacht interval tussen nieuwe pogingen aangeeft.                                                                 | Ja      | N.v.t.     |
 | Max-interval     | Een positief getal in seconden voor het maximale wacht interval tussen nieuwe pogingen. Het wordt gebruikt voor het implementeren van een exponentieel nieuwe algoritme. | Nee       | N.v.t.     |
-| Delta            | Een positief getal in seconden voor de toename van het wacht interval. Het wordt gebruikt om de algoritmen voor lineaire en exponentiële pogingen te implementeren.             | Nee       | N.v.t.     |
+| delta            | Een positief getal in seconden voor de toename van het wacht interval. Het wordt gebruikt om de algoritmen voor lineaire en exponentiële pogingen te implementeren.             | Nee       | N.v.t.     |
 | eerste snelle poging | Als `true` deze is ingesteld op, wordt de eerste nieuwe poging onmiddellijk uitgevoerd.                                                                                  | Nee       | `false` |
 
 > [!NOTE]
@@ -481,7 +481,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="return-response"></a><a name="ReturnResponse"></a>Antwoord retour neren
+## <a name="return-response"></a><a name="ReturnResponse"></a> Antwoord retour neren
 
 Het `return-response` beleid breekt de uitvoering van de pijp lijn af en retourneert een standaard-of aangepast antwoord naar de aanroeper. Standaard antwoord is zonder `200 OK` hoofd tekst. Aangepaste antwoorden kunnen worden opgegeven via een context variabele of beleids instructies. Wanneer beide zijn opgegeven, wordt het antwoord dat is opgenomen in de context variabele, gewijzigd door de beleids verklaringen voordat ze worden geretourneerd naar de aanroeper.
 
@@ -531,7 +531,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a>Een eenrichtings aanvraag verzenden
+## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a> Een eenrichtings aanvraag verzenden
 
 Het `send-one-way-request` beleid verzendt de opgegeven aanvraag naar de opgegeven URL zonder te wachten op een reactie.
 
@@ -605,7 +605,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="send-request"></a><a name="SendRequest"></a>Aanvraag verzenden
+## <a name="send-request"></a><a name="SendRequest"></a> Aanvraag verzenden
 
 Het `send-request` beleid verzendt de opgegeven aanvraag naar de opgegeven URL, die niet langer is dan de ingestelde time-outwaarde.
 
@@ -692,7 +692,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a>HTTP-proxy instellen
+## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a> HTTP-proxy instellen
 
 `proxy`Met het beleid kunt u aanvragen die via een HTTP-proxy worden doorgestuurd naar back-endservers routeren. Alleen HTTP (niet HTTPS) wordt ondersteund tussen de gateway en de proxy. Alleen basis-en NTLM-verificatie.
 
@@ -734,7 +734,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="set-request-method"></a><a name="SetRequestMethod"></a>Set-aanvraag methode
+## <a name="set-request-method"></a><a name="SetRequestMethod"></a> Set-aanvraag methode
 
 `set-method`Met het beleid kunt u de HTTP-aanvraag methode voor een aanvraag wijzigen.
 
@@ -789,7 +789,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="set-status-code"></a><a name="SetStatus"></a>Status code instellen
+## <a name="set-status-code"></a><a name="SetStatus"></a> Status code instellen
 
 `set-status`Met het beleid wordt de HTTP-status code ingesteld op de opgegeven waarde.
 
@@ -838,17 +838,17 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 -   **Beleids secties:** uitgaand, back-end, op fout
 -   **Beleids bereik:** alle bereiken
 
-## <a name="set-variable"></a><a name="set-variable"></a>Variabele instellen
+## <a name="set-variable"></a><a name="set-variable"></a> Variabele instellen
 
 Het `set-variable` beleid declareert een [context](api-management-policy-expressions.md#ContextVariables) variabele en wijst deze toe aan een waarde die is opgegeven via een [expressie](api-management-policy-expressions.md) of een letterlijke teken reeks. Als de expressie een letterlijke waarde bevat, wordt deze geconverteerd naar een teken reeks en wordt het type van de waarden `System.String` .
 
-### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a>Beleids verklaring
+### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a> Beleids verklaring
 
 ```xml
 <set-variable name="variable name" value="Expression | String literal" />
 ```
 
-### <a name="example"></a><a name="set-variableExample"></a>Hierbij
+### <a name="example"></a><a name="set-variableExample"></a> Hierbij
 
 In het volgende voor beeld ziet u een ingesteld variabelen beleid in de sectie binnenkomend. Met dit set-variabele beleid maakt `isMobile` u een Boole- [context](api-management-policy-expressions.md#ContextVariables) variabele die wordt ingesteld op True als de `User-Agent` aanvraag header de tekst bevat `iPad` of `iPhone` .
 
@@ -876,7 +876,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 -   **Beleids secties:** inkomend, uitgaand, back-end, op fout
 -   **Beleids bereik:** alle bereiken
 
-### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a>Toegestane typen
+### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a> Toegestane typen
 
 Expressies die in het beleid worden gebruikt, `set-variable` moeten een van de volgende basis typen retour neren.
 
@@ -912,7 +912,7 @@ Expressies die in het beleid worden gebruikt, `set-variable` moeten een van de v
 -   System. char?
 -   System. DateTime?
 
-## <a name="trace"></a><a name="Trace"></a>Tracerings
+## <a name="trace"></a><a name="Trace"></a> Tracerings
 
 Het `trace` beleid voegt een aangepaste tracering toe aan de API-Inspector-uitvoer, Application Insights-teleelementen en/of bron Logboeken.
 
@@ -931,7 +931,7 @@ Het `trace` beleid voegt een aangepaste tracering toe aan de API-Inspector-uitvo
 
 ```
 
-### <a name="example"></a><a name="traceExample"></a>Hierbij
+### <a name="example"></a><a name="traceExample"></a> Hierbij
 
 ```xml
 <trace source="PetStore API" severity="verbose">
@@ -965,7 +965,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 -   **Beleids bereik:** alle bereiken
 
-## <a name="wait"></a><a name="Wait"></a>Bewerking
+## <a name="wait"></a><a name="Wait"></a> Bewerking
 
 Het `wait` beleid voert de direct onderliggende beleids regels parallel uit en wacht totdat alle of een van de direct onderliggende beleids regels is voltooid voordat deze is voltooid. Het wacht beleid kan net zo lang zijn als het directe onderliggende beleid [verzend aanvraag](api-management-advanced-policies.md#SendRequest), [waarde ophalen uit cache](api-management-caching-policies.md#GetFromCacheByKey)en beleid voor [controle stromen](api-management-advanced-policies.md#choose) .
 
@@ -1025,7 +1025,7 @@ In het volgende voor beeld zijn er twee `choose` beleids regels als direct onder
 
 | Kenmerk | Beschrijving                                                                                                                                                                                                                                                                                                                                                                                                            | Vereist | Standaard |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| voor       | Hiermee wordt bepaald of het `wait` beleid wacht totdat alle direct onderliggende beleids regels zijn voltooid of slechts één. Toegestane waarden zijn:<br /><br /> - `all`-wacht totdat alle direct onderliggende beleids regels zijn voltooid<br />-wille keurig-wacht tot het direct onderliggende beleid is voltooid. Zodra het eerste directe onderliggende beleid is voltooid, `wait` wordt het beleid voltooid en wordt de uitvoering van elk ander direct onderliggend beleid beëindigd. | Nee       | all     |
+| voor       | Hiermee wordt bepaald of het `wait` beleid wacht totdat alle direct onderliggende beleids regels zijn voltooid of slechts één. Toegestane waarden zijn:<br /><br /> - `all` -wacht totdat alle direct onderliggende beleids regels zijn voltooid<br />-wille keurig-wacht tot het direct onderliggende beleid is voltooid. Zodra het eerste directe onderliggende beleid is voltooid, `wait` wordt het beleid voltooid en wordt de uitvoering van elk ander direct onderliggend beleid beëindigd. | Nee       | all     |
 
 ### <a name="usage"></a>Gebruik
 

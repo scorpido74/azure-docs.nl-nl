@@ -7,10 +7,10 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846034"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Problemen met python-fouten in Azure Functions oplossen
@@ -165,9 +165,9 @@ Als u werkt met een x64-besturings systeem, moet u ervoor zorgen dat uw python 3
 
 U kunt de Bitness van de Python-interpreter controleren met de volgende opdrachten:
 
-In Windows in Power shell:`py -c 'import platform; print(platform.architecture()[0])'`
+In Windows in Power shell: `py -c 'import platform; print(platform.architecture()[0])'`
 
-Voor UNIX-achtige shell:`python3 -c 'import platform; print(platform.architecture()[0])'`
+Voor UNIX-achtige shell: `python3 -c 'import platform; print(platform.architecture()[0])'`
 
 Als er een niet-overeenkomend is tussen de Python-interpreter Bitness en de architectuur van het besturings systeem, moet u een goede Python-interpreter downloaden van [python Software Foundation](https://python.org/downloads/release).
 
