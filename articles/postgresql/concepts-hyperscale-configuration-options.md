@@ -8,15 +8,15 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/1/2020
 ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964512"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Configuratie opties Azure Database for PostgreSQL – grootschalige (Citus)
 
-## <a name="compute-and-storage"></a>Compute en opslag
+## <a name="compute-and-storage"></a>Berekeningen en opslag
  
 U kunt de berekenings-en opslag instellingen onafhankelijk selecteren voor worker-knoop punten en het coördinator knooppunt in een grootschalige (Citus)-Server groep.  Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderliggende hardware vertegenwoordigen. De opslag grootte voor inrichting heeft betrekking op de capaciteit die beschikbaar is voor de coördinator en worker-knoop punten in uw grootschalige (Citus)-Server groep. De opslag omvat database bestanden, tijdelijke bestanden, transactie logboeken en de post gres-server Logboeken.
  
@@ -79,10 +79,10 @@ Grootschalige (Citus)-Server groepen zijn beschikbaar in de volgende Azure-regio
     * VS - oost
     * VS - oost 2
     * VS - noord-centraal
-    * VS - west 2
+    * West US 2
 * Azië en Stille Oceaan:
     * Australië - oost
-    * Japan - oost
+    * Japan East
     * Korea - centraal
     * Azië - zuidoost
 * Europa

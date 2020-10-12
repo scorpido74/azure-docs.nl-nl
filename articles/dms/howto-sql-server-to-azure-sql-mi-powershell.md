@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291984"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migreren naar een beheerd exemplaar van SQL met Power shell-& Azure Database Migration Service
@@ -26,7 +26,7 @@ In dit artikel migreert u de **Adventureworks2016** -data base die is hersteld n
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
 >
-> * Een resourcegroep maken.
+> * Maak een resourcegroep.
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken in een exemplaar van Azure Database Migration Service.
 > * De migratie uitvoeren.
@@ -71,7 +71,7 @@ In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Een exemplaar maken van Azure Database Migration Service
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Een instantie van Azure Database Migration Service maken
 
 U kunt een nieuw exemplaar van Azure Database Migration Service maken met behulp van de- `New-AzDataMigrationService` cmdlet.
 Voor deze cmdlet worden de volgende vereiste para meters verwacht:

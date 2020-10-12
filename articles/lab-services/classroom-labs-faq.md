@@ -4,10 +4,10 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over klass
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85443295"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services: veelgestelde vragen (FAQ)
@@ -19,9 +19,9 @@ Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs 
 Het quotum dat u voor een Lab hebt ingesteld, is voor elke student voor een volledige duur van het lab. En de [geplande uitvoerings tijd van vm's](how-to-create-schedules.md) telt niet op het quotum dat aan een gebruiker is toegewezen. Het quotum geldt voor de tijd buiten de plannings uren die een student op Vm's doorbrengt.  Voor meer informatie over quota raadpleegt u [Quota instellen voor gebruikers](how-to-configure-student-usage.md#set-quotas-for-users).
 
 ### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Als docenten een student-VM inschakelt, heeft dit invloed op het student quotum? 
-Nee. Dit is niet het geval. Wanneer docenten de student-VM inschakelt, heeft dit geen invloed op het quotum dat aan de student is toegewezen. 
+Nee. Geen. Wanneer docenten de student-VM inschakelt, heeft dit geen invloed op het quotum dat aan de student is toegewezen. 
 
-## <a name="schedules"></a>Planningen
+## <a name="schedules"></a>Schema's
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>Worden alle Vm's in het lab automatisch gestart wanneer een planning wordt ingesteld? 
 Nee. Niet alle virtuele machines. Alleen de Vm's die aan gebruikers zijn toegewezen volgens een schema. De Vm's die niet aan een gebruiker zijn toegewezen, worden niet automatisch gestart. Het ontwerp is standaard. 
@@ -42,7 +42,7 @@ U kunt ook het privé-IP-adres van elke virtuele machine weer geven op het tabbl
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welk openbaar IP-adres bereik moet ik openen in de firewall instellingen van mijn organisatie om verbinding te maken met virtuele lab-machines via RDP/SSH?
 Zie [Azure IP-adresbereiken en service tags (open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519)), die het open bare IP-adres bereik voor data centers in Azure biedt. U kunt de IP-adressen openen voor de regio's waar uw Lab-accounts zich bevinden.
 
-## <a name="virtual-machine-images"></a>Installatie kopieën van virtuele machines
+## <a name="virtual-machine-images"></a>Installatiekopieën van virtuele machines
 
 ### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>Waarom kan ik bij het maken van een nieuw Lab geen extra afbeeldings opties in de vervolg keuzelijst voor installatie kopieën van virtuele machines inschakelen?
 

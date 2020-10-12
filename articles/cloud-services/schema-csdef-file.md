@@ -10,10 +10,10 @@ caps.latest.revision: 42
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: dadb50bd0663f47e6a1bf3d58b5187c8b466964d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79528367"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services definition-schema (csdef-bestand)
@@ -58,7 +58,7 @@ In de volgende onderwerpen wordt het schema beschreven:
 - [WorkerRole-schema](schema-csdef-workerrole.md)
 - [NetworkTrafficRules-schema](schema-csdef-networktrafficrules.md)
 
-##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a>ServiceDefinition-element
+##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a> ServiceDefinition-element
 Het `ServiceDefinition` element is het element op het hoogste niveau van het service definitie bestand.
 
 In de volgende tabel worden de kenmerken van het `ServiceDefinition` element beschreven.
@@ -66,6 +66,6 @@ In de volgende tabel worden de kenmerken van het `ServiceDefinition` element bes
 | Kenmerk               | Beschrijving |
 | ----------------------- | ----------- |
 | naam                    |Vereist. De naam van de service. De naam moet uniek zijn binnen het service account.|
-| topologyChangeDiscovery | Optioneel. Hiermee geeft u het type melding voor de topologie wijziging op. Mogelijke waarden zijn:<br /><br /> -   `Blast`-Hiermee wordt de update zo snel mogelijk verzonden naar alle rolinstanties. Als u optie kiest, moet de rol de update van de topologie kunnen afhandelen zonder opnieuw te worden opgestart.<br />-   `UpgradeDomainWalk`– Verzendt de update naar elke rolinstantie op een opeenvolgende manier nadat het vorige exemplaar de update heeft geaccepteerd.|
+| topologyChangeDiscovery | Optioneel. Hiermee geeft u het type melding voor de topologie wijziging op. Mogelijke waarden zijn:<br /><br /> -   `Blast` -Hiermee wordt de update zo snel mogelijk verzonden naar alle rolinstanties. Als u optie kiest, moet de rol de update van de topologie kunnen afhandelen zonder opnieuw te worden opgestart.<br />-   `UpgradeDomainWalk` – Verzendt de update naar elke rolinstantie op een opeenvolgende manier nadat het vorige exemplaar de update heeft geaccepteerd.|
 | schemaVersion           | Optioneel. Hiermee geeft u de versie van het service definitie schema op. Met de schema versie kan Visual Studio de juiste SDK-hulpprogram ma's selecteren die voor schema validatie moeten worden gebruikt als meer dan één versie van de SDK naast elkaar is geïnstalleerd.|
 | upgradeDomainCount      | Optioneel. Hiermee geeft u het aantal upgrade domeinen op waarmee rollen in deze service worden toegewezen. Rolinstanties worden toegewezen aan een upgrade domein wanneer de service wordt geïmplementeerd. Zie [Update a Cloud Service Role of Deployment](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)( [de beschik baarheid van virtuele machines beheren](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) en [Wat is een Cloud service model](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package)) voor meer informatie.<br /><br /> U kunt Maxi maal 20 upgrade domeinen opgeven. Als u niets opgeeft, is het standaard aantal upgrade domeinen 5.|

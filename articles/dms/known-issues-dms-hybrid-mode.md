@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291840"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Bekende problemen/migratie beperkingen bij het gebruik van de hybride modus
@@ -61,7 +61,7 @@ Het certificaat dat is gegenereerd door de actie GenerateCert is een zelfonderte
 
 Standaard wordt de Azure Database Migration Service Hybrid Worker-service uitgevoerd als het lokale systeem account. U kunt het account dat wordt gebruikt voor deze service wijzigen zolang het account dat u gebruikt netwerk machtigingen heeft. Gebruik het volgende proces om het run as-account van de service te wijzigen.
 
-1. Stop de service via Windows-Services of met behulp van de stop-service-opdracht in Power shell.
+1. Stop de service via Windows-Services of met behulp van de Stop-Service opdracht in Power shell.
 
 2. Werk de service bij voor het gebruik van een ander aanmeldings account.
 

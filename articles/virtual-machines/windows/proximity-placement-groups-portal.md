@@ -1,5 +1,5 @@
 ---
-title: Een proximity-plaatsings groep maken met behulp van de portal
+title: Een nabijheidsplaatsingsgroep maken met behulp van de portal
 description: Meer informatie over het maken van een proximity-plaatsings groep met behulp van de Azure Portal.
 author: cynthn
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82190398"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Een proximity-plaatsings groep maken met behulp van de portal
+# <a name="create-a-proximity-placement-group-using-the-portal"></a>Een nabijheidsplaatsingsgroep maken met behulp van de portal
 
 Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementeren in een [proximity-plaatsings groep](co-location.md#proximity-placement-groups).
 
@@ -58,7 +58,7 @@ Als de virtuele machine deel uitmaakt van de Beschikbaarheidsset, moet u de besc
 1. In de [Portal](https://portal.azure.com) zoekt u naar *beschikbaarheids sets* en selecteert u de beschikbaarheidsset in de resultaten.
 1. Stop\deallocate elke virtuele machine in de beschikbaarheidsset door de virtuele machine te selecteren, vervolgens op de pagina voor de virtuele machine **stoppen** te selecteren en vervolgens **OK** te selecteren om de virtuele machine te stoppen.
 1. Controleer op de pagina voor uw beschikbaarheidsset of alle virtuele machines de **status** **gestopt hebben (toewijzing opgeheven)**.
-1. Selecteer in het linkermenu **configuratie**.
+1. Selecteer **Configuratie** in het menu aan de linkerkant.
 1. Selecteer in de vervolg keuzelijst **proximity-plaatsings**groep een plaatsings groep en selecteer vervolgens **Opslaan**.
 1. Selecteer **overzicht** in het menu links om de lijst met vm's opnieuw weer te geven. 
 1. Selecteer elke virtuele machine in de beschikbaarheidsset en selecteer vervolgens **Start** op de pagina voor elke virtuele machine. 

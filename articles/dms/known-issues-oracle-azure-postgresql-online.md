@@ -1,7 +1,7 @@
 ---
 title: 'Bekende problemen: migreren van Oracle naar Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over bekende problemen en migratie beperkingen met online migraties van Oracle naar Azure Database for PostgreSQL-Eén server met behulp van de Azure Database Migration Service.
+description: Meer informatie over bekende problemen en migratie beperkingen met online migraties van Oracle naar Azure data base for PostgreSQL-Single server met behulp van de Azure Database Migration Service.
 services: database-migration
 author: arunkumarthiags
 ms.author: arthiaga
@@ -13,15 +13,15 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.openlocfilehash: 2316e0314c9d8f36aee123d4a516f382f58e83e6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291653"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van Oracle naar Azure DB voor PostgreSQL-één server
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van Oracle naar Azure DB voor PostgreSQL-Single server
 
-Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Oracle naar Azure Database for PostgreSQL-Eén server worden in de volgende secties beschreven.
+Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Oracle naar Azure data base for PostgreSQL-Single server worden in de volgende secties beschreven.
 
 ## <a name="oracle-versions-supported-as-a-source-database"></a>Oracle-versies worden ondersteund als een bron database
 
@@ -34,7 +34,7 @@ Azure Database Migration Service biedt geen ondersteuning voor het maken van ver
 
 ## <a name="postgresql-versions-supported-as-a-target-database"></a>PostgreSQL-versies worden ondersteund als doel database
 
-Azure Database Migration Service ondersteunt migraties naar Azure Database for PostgreSQL-één server versie 9,5, 9,6, 10 en 11. Zie het artikel [ondersteunde PostgreSQL-database versies](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) voor actuele informatie over versie ondersteuning in azure database for PostgreSQL-één server.
+Azure Database Migration Service ondersteunt migraties naar Azure data base for PostgreSQL-Single Server versie 9,5, 9,6, 10 en 11. Zie het artikel [ondersteunde PostgreSQL-database versies](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) voor actuele informatie over versie ondersteuning in azure data base for PostgreSQL-Single server.
 
 ## <a name="datatype-limitations"></a>Beperkingen van gegevens typen
 
@@ -48,7 +48,7 @@ De volgende gegevens typen worden **niet** gemigreerd:
 - SDO_GEOMETRY
 - Geneste tabellen
 - Door de gebruiker gedefinieerde gegevens typen
-- Opmerkingen
+- Notities
 - Virtuele kolommen
 - Gerealiseerde weer gaven op basis van de kolom ROWID
 

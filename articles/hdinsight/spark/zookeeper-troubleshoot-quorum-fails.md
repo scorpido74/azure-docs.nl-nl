@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
 ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84673357"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server kan geen quorum vormen in azure HDInsight
@@ -57,7 +57,7 @@ Message
 
 * De Zookeeper-servers vinden in het bestand/etc/hosts-bestand of in de Ambari-gebruikers interface
 * Voer de volgende opdracht uit
-  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(of 2182)  
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181` (of 2182)  
   * Poort 2181 is het Apache Zookeeper-exemplaar
   * Poort 2182 wordt gebruikt door de HDInsight-Zookeeper (om HA te bieden voor services die geen systeem eigen HA zijn)
   * Als de opdracht geen uitvoer bevat, betekent dit dat de Zookeeper-servers niet worden uitgevoerd
@@ -105,12 +105,12 @@ Node count: 133212
 * Zookeepers zijn geconfigureerd voor het automatisch verwijderen van oude moment opnamen
 * De laatste 30 moment opnamen blijven standaard behouden
 * Het aantal moment opnamen dat wordt bewaard, wordt bepaald door de configuratie sleutel `autopurge.snapRetainCount` . Deze eigenschap kan worden gevonden in de volgende bestanden:
-  * `/etc/zookeeper/conf/zoo.cfg`voor Hadoop-Zookeeper
-  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`voor HDInsight Zookeeper
+  * `/etc/zookeeper/conf/zoo.cfg` voor Hadoop-Zookeeper
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg` voor HDInsight Zookeeper
 * Stel `autopurge.snapRetainCount` in op een waarde van 3 en start de Zookeeper-servers opnieuw op
   * Hadoop Zookeeper config kan worden bijgewerkt en de service kan opnieuw worden gestart via Ambari
   * HDInsight-Zookeeper hand matig stoppen en opnieuw starten
-    * `sudo lsof -i :2182`geeft u de proces-ID die u wilt afsluiten
+    * `sudo lsof -i :2182` geeft u de proces-ID die u wilt afsluiten
     * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
 * Moment opnamen niet hand matig verwijderen: het hand matig verwijderen van moment opnamen kan leiden tot verlies van gegevens
 

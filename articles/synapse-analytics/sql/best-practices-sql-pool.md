@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958418"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL-groepen in azure Synapse Analytics
@@ -71,7 +71,7 @@ Als u de door voer wilt maximaliseren bij het gebruik van gzip-tekst bestanden, 
 
 Poly Base is niet optimaal voor query's. Poly base-tabellen voor SQL-Pools ondersteunen momenteel alleen Azure Blob-bestanden en Azure Data Lake opslag. Er zijn geen reken resources die deze bestanden kunnen herstellen. Als gevolg hiervan kunnen SQL-groepen dit werk niet verhelpen en moet het hele bestand worden gelezen door het te laden in TempDB zodat de gegevens kunnen worden gelezen.
 
-Als u verschillende query's hebt voor het uitvoeren van query's op deze gegevens, is het beter om deze gegevens één keer te laden en query's te laten gebruiken voor de lokale tabel. Meer informatie over poly Base is opgenomen in de [hand leiding voor het gebruik van poly base](data-loading-best-practices.md) -artikel.
+Als u verschillende query's hebt voor het uitvoeren van query's op deze gegevens, is het beter om deze gegevens één keer te laden en query's te laten gebruiken voor de lokale tabel. Meer informatie over poly Base is opgenomen in de  [hand leiding voor het gebruik van poly base](data-loading-best-practices.md) -artikel.
 
 ## <a name="hash-distribute-large-tables"></a>Grote tabellen distribueren met hash
 
@@ -171,7 +171,7 @@ Raadpleeg het artikel [resource klassen voor workload Management](../sql-data-wa
 
 Als u een lange vertraging in de gebruikers query's ziet, kunnen uw gebruikers in grotere bron klassen worden uitgevoerd. Met dit scenario wordt het verbruik van gelijktijdigheids sleuven verhoogd. Dit kan ertoe leiden dat andere query's in de wachtrij worden geplaatst.  Als u wilt bepalen of gebruikers query's in de wachtrij staan, voert `SELECT * FROM sys.dm_pdw_waits` u uit om te zien of er rijen worden geretourneerd.
 
-In de [resource klassen voor workload Management](../sql-data-warehouse/resource-classes-for-workload-management.md) en [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -artikelen vindt u meer informatie.
+De [resource klassen voor workload Management](../sql-data-warehouse/resource-classes-for-workload-management.md) en [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) artikelen bevatten meer informatie.
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Gebruik DMV’s om uw query’s te controleren en te optimaliseren
 

@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86221354"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Een virtuele machine met Windows Server toevoegen aan een Azure Active Directory Domain Services beheerd domein met behulp van een resource manager-sjabloon
@@ -91,7 +91,7 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een beheerd domein,
     | Locatie                  | Selecteer de locatie van voor uw VM. |
     | Bestaande VNET-naam        | De naam van het bestaande virtuele netwerk waarmee de virtuele machine moet worden verbonden, zoals *myVnet*. |
     | Bestaande Subnetnaam      | De naam van het bestaande subnet van het virtuele netwerk, zoals *werk belastingen*. |
-    | DNS-label voorvoegsel          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
+    | Voorvoegsel van DNS-label          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
     | VM-grootte                   | Geef een VM-grootte op, bijvoorbeeld *Standard_DS2_v2*. |
     | Domein om lid te worden            | De DNS-naam van het beheerde domein, zoals *aaddscontoso.com*. |
     | Domein gebruikers naam           | Het gebruikers account in het beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aaddscontoso.com` . Dit account moet deel uitmaken van het beheerde domein. |

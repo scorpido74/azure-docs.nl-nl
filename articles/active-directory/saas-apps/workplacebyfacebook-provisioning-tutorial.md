@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321897"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
@@ -108,7 +108,7 @@ Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis 
    |userName|Tekenreeks|
    |displayName|Tekenreeks|
    |actief|Booleaans|
-   |title|Boolean-waarde|
+   |titel|Booleaans|
    |emails[type eq "work"].value|Tekenreeks|
    |name.givenName|Tekenreeks|
    |name.familyName|Tekenreeks|
@@ -132,7 +132,7 @@ Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis 
    |urn:scim:schemas:extension:enterprise:1.0.costCenter|Tekenreeks|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|Tekenreeks|
    |urn: scim: schemas: extensie: Facebook: auth_method: 1.0: auth_method|Tekenreeks|
-   |urn: scim: schemas: extensie: Facebook: Frontline: 1.0. is_frontline|Boolean-waarde|
+   |urn: scim: schemas: extensie: Facebook: Frontline: 1.0.is_frontline|Booleaans|
    |urn: scim: schemas: extensie: Facebook: starttermdates: 1.0. start date|Geheel getal|
 
 

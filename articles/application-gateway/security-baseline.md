@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: b470fa72518f805c10403931280bdec96bda0fbe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226536"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure-beveiligings basislijn voor Azure-toepassing gateway
@@ -983,7 +983,7 @@ Diagnostische instellingen configureren voor uw Azure-toepassing gateway-impleme
 
 **Hulp**: de Azure-toepassing-gateway slaat geen klant gegevens op. Als u echter aangepaste definities van Azure-beleid gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschik baarheid van gegevens in het geval van hardwarestoringen, onderbreking van de service of de regionale nood situatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde of schadelijke verwijdering.
+Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschikbaarheid van gegevens in het geval van hardwarestoringen, serviceonderbrekingen of een regionale noodsituatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde verwijdering of verwijdering met kwaadaardige opzet.
 
 * [Inzicht in de beschik baarheid van gegevens in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 

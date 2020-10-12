@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82185588"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Spark-Program ma's aanroepen vanuit Azure Data Factory pijp lijnen
@@ -60,7 +60,7 @@ Hier volgen de typische stappen voor het maken van een data factory pijp lijn me
 
 1. Upload **test.py** naar de map **pyFiles** in de container **adfspark** in uw Blob-opslag. Maak de container en de map als deze nog niet bestaan.
 
-### <a name="create-a-data-factory"></a>Een gegevensfactory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 Volg deze stappen om een data factory te maken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
@@ -347,7 +347,7 @@ Maak de volgende mapstructuur in de Blob-opslag waarnaar wordt verwezen door de 
 | Pad | Beschrijving | Vereist | Type |
 | ---- | ----------- | -------- | ---- |
 | . | Het pad naar de hoofdmap van de Spark-taak in de gekoppelde Storage-service. | Ja | Map |
-| &lt;door de gebruiker gedefinieerd&gt; | Het pad dat naar het invoer bestand van de Spark-taak verwijst. | Ja | Bestand |
+| &lt;door de gebruiker gedefinieerd &gt; | Het pad dat naar het invoer bestand van de Spark-taak verwijst. | Ja | File |
 | ./jars | Alle bestanden in deze map worden geüpload en geplaatst op het Java-klassenpad van het cluster. | Nee | Map |
 | ./pyFiles | Alle bestanden in deze map worden geüpload en geplaatst op de PYTHONPATH van het cluster. | Nee | Map |
 | ./files | Alle bestanden in deze map worden geüpload en geplaatst op de werk directory van de uitvoerder. | Nee | Map |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
 ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226511"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
@@ -255,7 +255,7 @@ Wanneer u de aanvraag trigger gebruikt voor het verwerken van inkomende aanvrage
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
    | **Status code** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
-   | **Koppen** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
+   | **Headers** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
    | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
    |||||
 

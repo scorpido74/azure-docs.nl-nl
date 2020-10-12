@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 10/24/2019
 ms.openlocfilehash: 0ed948b4bf69fc672a59a7825279a12868d10521
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132123"
 ---
 # <a name="batch-testing-tsv-format"></a>TSV-indeling voor batch tests
@@ -34,19 +34,19 @@ Gebruik de volgende informatie om de TSV-indeling voor batch tests te begrijpen 
 
 ## <a name="tsv-input-fields"></a>TSV-invoer velden
 
-|Velden van het TSV-invoer bestand|Opmerkingen|
+|TSV-invoerbestandsvelden|Opmerkingen|
 |--|--|
 |KBID|Uw KB-ID vindt u op de pagina publiceren.|
 |Vraag|De vraag die een gebruiker zou invoeren.|
 |Tags met metagegevens|optioneel|
-|Bovenste para meter|optioneel| 
-|Verwachte antwoord-ID|optioneel|
+|Top-parameter|optioneel| 
+|ID van verwacht antwoord|optioneel|
 
 ![Invoer indeling voor het TSV-bestand voor batch tests.](media/batch-test/input-tsv-format-batch-test.png)
 
 ## <a name="tsv-output-fields"></a>TSV-uitvoer velden 
 
-|Para meters voor TSV-uitvoer bestand|Opmerkingen|
+|Para meters voor TSV-uitvoer bestand|Notities|
 |--|--|
 |KBID|Uw KB-ID vindt u op de pagina publiceren.|
 |Vraag|De vraag die u hebt ingevoerd in het invoer bestand.|
@@ -54,5 +54,5 @@ Gebruik de volgende informatie om de TSV-indeling voor batch tests te begrijpen 
 |Antwoord-ID|Antwoord-ID|
 |Score|Voorspellings score voor antwoord. |
 |Tags met metagegevens|gekoppeld aan het geretourneerde antwoord|
-|Verwachte antwoord-ID|optioneel (alleen als de verwachte antwoord-ID is opgegeven)|
+|ID van verwacht antwoord|optioneel (alleen als de verwachte antwoord-ID is opgegeven)|
 |Arrest label|optioneel, waarden kunnen zijn: correct of onjuist (alleen wanneer het verwachte antwoord is opgegeven)|

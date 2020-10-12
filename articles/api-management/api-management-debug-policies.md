@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91343018"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Fouten opsporen in azure API Management-beleid in Visual Studio code
@@ -59,7 +59,7 @@ Wijzig de HTTP-aanvraag in de editor volgens uw test scenario. Klik vervolgens o
 
 ![een test aanvraag verzenden](media/api-management-debug-policies/rest-client.png)
 
-## <a name="debug-policies"></a>Beleid voor fout opsporing
+## <a name="debug-policies"></a>Fouten opsporen in beleid
 Nadat de test-HTTP-aanvraag is verzonden, wordt in de uitbrei ding het venster fout opsporing geopend met het effectief beleid van deze bewerking en wordt het eerste effectief beleid gestopt. 
 
 ![beleid voor fout opsporing](media/api-management-debug-policies/main-window.png)

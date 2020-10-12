@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: ad49db3eb61b77805b0c7a3e1e9583fb22bd4373
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291967"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Veelgestelde vragen over het gebruik van Azure Database Migration Service
@@ -43,7 +43,7 @@ Bij de migratie van SQL Server worden ondersteunde bronnen voor Azure Database M
 U kunt Azure Database Migration Service gebruiken om offline-en online migraties uit te voeren. Bij een *offline* migratie wordt de uitval tijd van toepassingen gestart wanneer de migratie wordt gestart. Bij een *online* migratie is downtime beperkt tot de tijd die aan het einde van de migratie moet worden afgekapt. We raden u aan eerst een offlinemigratie te testen om te bepalen of de downtime aanvaardbaar is. Zo niet, voer dan een onlinemigratie uit.
 
 > [!NOTE]
-> Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/database-migration/) van Azure Database Migration Service voor meer informatie.
+> Als u Azure Database Migration Service gebruikt om een onlinemigratie uit te voeren, is het vereist dat u een exemplaar maakt op basis van de prijscategorie Premium. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/database-migration/) van Azure Database Migration Service voor meer informatie.
 
 **Nils. Hoe werkt Azure Database Migration Service vergelijken met andere hulpprogram ma's voor migratie van micro soft-data bases, zoals de data base Migration Assistant (DMA) of SQL Server Migration Assistant (SSMA)?**
 Azure Database Migration Service is de voorkeurs methode voor database migratie naar Microsoft Azure op schaal. Zie voor meer informatie over de manier waarop Azure Database Migration Service vergelijkt met andere hulpprogram ma's voor migratie van micro soft-data bases en voor aanbevelingen over het gebruik van de service voor verschillende scenario's, de blog berichten over de [hulp middelen en services voor database migratie van micro soft](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
@@ -58,9 +58,9 @@ Er zijn verschillende vereisten vereist om ervoor te zorgen dat Azure Database M
 
 Azure Database Migration Service vereisten die gemeen schappelijk zijn voor alle ondersteunde migratie scenario's zijn onder andere het volgende:
 
-* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende communicatie poorten 443, 53, 9354, 445, 12000 blok keren. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
-* Wanneer u een firewall apparaat voor uw bron database (s) gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor de migratie.
+* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel. Dit geeft site-naar-site-verbinding met uw on-premises bronservers met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende communicatie poorten 443, 53, 9354, 445, 12000 blok keren. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) voor meer informatie over verkeer filteren van verkeer via de netwerkbeveiligingsgroep voor virtuele netwerken.
+* Wanneer u een firewallapparaat gebruikt voor de brondatabase(s), moet u mogelijk firewallregels toevoegen om voor Azure Database Migration Service toegang tot de brondatabase(s) voor de migratie toe te staan.
 
 Zie de gerelateerde zelf studies in de Azure Database Migration Service [documentatie](https://docs.microsoft.com/azure/dms/dms-overview) op docs.Microsoft.com voor een lijst met alle vereisten die vereist zijn voor het concurreren van specifieke migratie scenario's met behulp van Azure database Migration service.
 

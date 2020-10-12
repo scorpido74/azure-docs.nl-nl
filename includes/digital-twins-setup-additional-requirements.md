@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
 ms.openlocfilehash: c2668bdda5002ebd2a34b8a2ffa5885263aec0c9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009639"
 ---
 Het is mogelijk dat uw organisatie aanvullende acties vereist van abonnements eigenaren/-beheerders om een app-registratie te kunnen instellen (en dus om het instellen van een bruikbaar Azure Digital Apparaatdubbels-exemplaar te volt ooien). De vereiste stappen kunnen variëren afhankelijk van de specifieke instellingen van uw organisatie.
@@ -20,7 +20,7 @@ Hier volgen enkele veelvoorkomende mogelijke activiteiten die een eigenaar/behee
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/grant-admin-consent.png" alt-text="Portal weergave van de knop ' toestemming verlenen aan beheerder ' onder API-machtigingen":::
   - Als toestemming is verleend, moet de vermelding voor Azure Digital Apparaatdubbels de *status* waarde van _verleende voor **(uw bedrijf)** _ weer geven
    
-    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text="Portal weergave van de beheerder toestemming verleend voor het bedrijf onder API-machtigingen":::
+    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text="Portal weergave van de knop ' toestemming verlenen aan beheerder ' onder API-machtigingen":::
 * Open bare client toegang activeren
 * Specifieke antwoord-Url's instellen voor web-en bureaublad toegang
 * Impliciete OAuth2-verificatie stromen toestaan

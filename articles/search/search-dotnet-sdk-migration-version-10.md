@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bfe24ff38446fa0d0ccea96799e6f42b561713bf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002807"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 10
@@ -112,7 +112,7 @@ var webApiSkill = new WebApiSkill(
 
 Shaper-vaardigheid kan nu invoer samenvoeging van geneste contexten toestaan. Om deze wijziging in te scha kelen, zijn we gewijzigd `InputFieldMappingEntry` zodat deze kan worden geïnstantieerd door alleen een `Source` eigenschap op te geven, of zowel de `SourceContext` als- `Inputs` Eigenschappen.
 
-Waarschijnlijk hoeft u geen code wijzigingen aan te brengen. Houd er echter rekening mee dat slechts één van deze twee combi Naties is toegestaan. Dit houdt in:
+Waarschijnlijk hoeft u geen code wijzigingen aan te brengen. Houd er echter rekening mee dat slechts één van deze twee combi Naties is toegestaan. Dit betekent:
 
 - Het `InputFieldMappingEntry` `Source` is niet toegestaan om een geïnitialiseerde te maken.
 - Het maken van een `InputFieldMappingEntry` waar alleen `SourceContext` en `Inputs` is geïnitialiseerd, is geldig.

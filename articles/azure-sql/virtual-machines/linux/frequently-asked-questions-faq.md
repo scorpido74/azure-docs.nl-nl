@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84669457"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Veelgestelde vragen over SQL Server on Linux virtuele machines
@@ -29,7 +29,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a name="images"></a><a id="images"></a>Installatie kopieën
+## <a name="images"></a><a id="images"></a> Installatie kopieën
 
 1. **Wat SQL Server afbeeldingen van de galerie met virtuele machines zijn beschikbaar?**
 
@@ -99,7 +99,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 * [Overzicht van SQL Server op een Linux-VM](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [SQL Server inrichten op een Linux-VM](sql-vm-create-portal-quickstart.md)
-* [Documentatie over SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Documentatie voor SQL Server op Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
 **Windows-vm's**:
 

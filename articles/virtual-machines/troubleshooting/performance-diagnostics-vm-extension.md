@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090649"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>VM-extensie voor Windows voor diagnostische gegevens over Azure-prestaties
@@ -79,7 +79,7 @@ De volgende JSON toont het schema voor de VM-extensie Azure prestatie diagnostie
 |apiVersion|2015-06-15|De versie van de API.
 |publisher|Micro soft. Azure. performance. Diagnostics|De naam ruimte van de uitgever voor de extensie.
 |type|AzurePerformanceDiagnostics|Het type van de VM-extensie.
-|typeHandlerVersion|1,0|De versie van de extensie-handler.
+|typeHandlerVersion|1.0|De versie van de extensie-handler.
 |performanceScenario|hoofd|Het prestatie scenario waarvoor gegevens moeten worden vastgelegd. Geldige waarden zijn: **Basic**, **vmslow**, **Azure files**en **Custom**.
 |traceDurationInSeconds|300|De duur van de traceringen, als een van de tracerings opties is geselecteerd.
 |perfCounterTrace|p|Optie voor het inschakelen van tracering van prestatie meter items. Geldige waarden zijn **p** of empty. Als u deze tracering niet wilt vastleggen, laat u de waarde leeg.

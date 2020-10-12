@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86223683"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Automatisch schalen configureren voor een Cloud service in de portal
@@ -21,7 +21,7 @@ Er kunnen voor waarden worden ingesteld voor een werk rollen van de Cloud servic
 > [!NOTE]
 > Dit artikel richt zich op Web-en werk rollen van de Cloud service. Wanneer u een virtuele machine (klassiek) rechtstreeks maakt, wordt deze gehost in een Cloud service. U kunt een standaard virtuele machine schalen door deze te koppelen aan een [beschikbaarheidsset](../virtual-machines/windows/classic/configure-availability-classic.md) en ze hand matig in of uit te scha kelen.
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 U moet rekening houden met de volgende informatie voordat u schaling voor uw toepassing configureert:
 
 * Schalen wordt beïnvloed door het gebruik van kernen.

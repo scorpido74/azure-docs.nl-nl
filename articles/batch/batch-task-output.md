@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965107"
 ---
 # <a name="persist-job-and-task-output"></a>Taken persistent maken
@@ -59,7 +59,7 @@ U kunt de bestands conventies standaard zelf een naam geven als u een bewezen be
 
 U kunt ook uw eigen volledige oplossing voor bestands verplaatsing implementeren. Gebruik deze methode wanneer:
 
-- U wilt taak gegevens persistent maken voor een ander gegevens archief dan Azure Storage. Als u bestanden wilt uploaden naar een gegevens archief, zoals Azure SQL of Azure DataLake, kunt u een aangepast script of een uitvoerbaar bestand maken om te uploaden naar die locatie. U kunt deze vervolgens aanroepen op de opdracht regel nadat u het primaire uitvoer bare bestand hebt uitgevoerd. Op een Windows-knoop punt kunt u bijvoorbeeld de volgende twee opdrachten aanroepen:`doMyWork.exe && uploadMyFilesToSql.exe`
+- U wilt taak gegevens persistent maken voor een ander gegevens archief dan Azure Storage. Als u bestanden wilt uploaden naar een gegevens archief, zoals Azure SQL of Azure DataLake, kunt u een aangepast script of een uitvoerbaar bestand maken om te uploaden naar die locatie. U kunt deze vervolgens aanroepen op de opdracht regel nadat u het primaire uitvoer bare bestand hebt uitgevoerd. Op een Windows-knoop punt kunt u bijvoorbeeld de volgende twee opdrachten aanroepen: `doMyWork.exe && uploadMyFilesToSql.exe`
 - U wilt de oorspronkelijke resultaten op basis van de controle of het begin van het uploaden uitvoeren.
 - U wilt nauw keurige controle over de fout afhandeling behouden. U kunt bijvoorbeeld uw eigen oplossing implementeren als u taak afhankelijke acties wilt gebruiken om bepaalde upload acties uit te voeren op basis van de afsluit codes van specifieke taken. Zie [taak afhankelijkheden maken om taken uit te voeren die afhankelijk zijn van andere taken](batch-task-dependencies.md)voor meer informatie over taak afhankelijkheden.
 
