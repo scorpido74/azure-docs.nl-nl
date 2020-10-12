@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u de prestaties van een Kuberne
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988122"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Uw Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers
@@ -34,8 +34,8 @@ Als u de status van alle geïmplementeerde Kubernetes-clusters wilt weer geven, 
 
 U kunt de resultaten die in het raster worden weer gegeven, bereiken om clusters weer te geven die zijn:
 
-* **Azure** -AKS en AKS-engine-clusters die worden gehost in azure Kubernetes service
-* **Azure stack (preview)** -AKS-engine-clusters die worden gehost op Azure stack
+* **Azure** -AKS en AKS-Engine-clusters die worden gehost in de Azure Kubernetes-service
+* **Azure stack (preview)** : AKS-Engine-clusters die worden gehost op Azure stack
 * **Niet-Azure (preview)** -Kubernetes-clusters die on-premises worden gehost
 * **Alle** -alle Kubernetes-clusters weer geven die worden gehost in Azure, Azure stack en on-premises omgevingen die zijn onboarded voor Azure monitor voor containers
 
@@ -191,7 +191,7 @@ De informatie die wordt weer gegeven wanneer u het tabblad **knoop punten** beki
 
 | Kolom | Beschrijving |
 |--------|-------------|
-| Name | De naam van de host. |
+| Naam | De naam van de host. |
 | Status | De weer gave Kubernetes van de knooppunt status. |
 | Min &nbsp; .%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;%  | Gemiddeld knooppunt percentage op basis van percentiel tijdens de geselecteerde duur. |
 | Min, Gem, 50e, negen tigste, 95e, Max | De gemiddelde werkelijke waarde van knoop punten op basis van percentiel tijdens de geselecteerde tijds duur. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een knoop punt. Voor peulen en containers is het de gemiddelde waarde die wordt gerapporteerd door de host. |
@@ -234,7 +234,7 @@ De informatie die wordt weer gegeven wanneer u controllers bekijkt, wordt beschr
 
 | Kolom | Beschrijving |
 |--------|-------------|
-| Name | De naam van de controller.|
+| Naam | De naam van de controller.|
 | Status | De rollup-status van de containers nadat deze is uitgevoerd met de status *OK*, *beëindigd*, *mislukt*, *gestopt*of *onderbroken*. Als de container actief is, maar de status niet correct wordt weer gegeven of niet is opgehaald door de agent en al meer dan 30 minuten niet heeft gereageerd, is de status *onbekend*. Meer informatie over het status pictogram vindt u in de volgende tabel.|
 | Min &nbsp; .%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;%| Rollup gemiddelde van het gemiddelde percentage van elke entiteit voor de geselecteerde metriek en percentiel. |
 | Min, Gem, 50e, negen tigste, 95e, Max  | Rollup van de gemiddelde CPU-millicore of geheugen prestaties van de container voor het geselecteerde percentiel. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een pod. |
@@ -271,7 +271,7 @@ De informatie die wordt weer gegeven wanneer u containers bekijkt, wordt beschre
 
 | Kolom | Beschrijving |
 |--------|-------------|
-| Name | De naam van de controller.|
+| Naam | De naam van de controller.|
 | Status | De status van de containers, indien van toepassing. Meer informatie over het status pictogram vindt u in de volgende tabel.|
 | Min &nbsp; .%, Gem. &nbsp; %, 50e &nbsp; %, negen tigste &nbsp; %, 95e &nbsp; %, Max&nbsp;% | De rollup van het gemiddelde percentage van elke entiteit voor de geselecteerde metriek en percentiel. |
 | Min, Gem, 50e, negen tigste, 95e, Max | De rollup van de gemiddelde CPU-millicore of-geheugen prestaties van de container voor het geselecteerde percentiel. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een pod. |

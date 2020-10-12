@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902254"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Ontwikkelaars accounts met OAuth 2,0 in azure API Management autoriseren
@@ -68,18 +68,18 @@ In deze hand leiding wordt beschreven hoe u uw API Management service-exemplaar 
 
     ![OAuth 2,0-nieuwe server](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Voor een Azure Active Directory OAuth 2,0-server heeft de **eind punt-URL** van het token de volgende indeling, waarbij `<TenantID>` de indeling heeft `yourapp.onmicrosoft.com` .
+    Voor een Azure Active Directory OAuth 2,0-server heeft de **eind punt-URL** van het token de volgende indeling, waarbij `<TenantID>`  de indeling heeft `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    De standaard instelling voor **client verificatie methoden** is **Basic**en de **methode voor het verzenden van toegangs tokens** is **autorisatie-header**. Deze waarden worden geconfigureerd in deze sectie van het formulier, samen met het **standaard bereik**.
+    De standaard instelling voor **client verificatie methoden** is **Basic**en de  **methode voor het verzenden van toegangs tokens** is **autorisatie-header**. Deze waarden worden geconfigureerd in deze sectie van het formulier, samen met het **standaard bereik**.
 
 6. De sectie **client referenties** bevat de **client-id** en het **client geheim**die tijdens het maken en configureren van uw OAuth 2,0-server worden verkregen. Zodra de **client-id** en het **client geheim** zijn opgegeven, wordt de **redirect_uri** voor de **autorisatie code** gegenereerd. Deze URI wordt gebruikt voor het configureren van de antwoord-URL in uw OAuth 2,0-server configuratie.
 
     In de nieuwe ontwikkelaars Portal is het URI-achtervoegsel de vorm:
 
-    - `/signin-oauth/code/callback/{authServerName}`voor de overdracht van autorisatie code toewijzen
-    - `/signin-oauth/implicit/callback`voor impliciete toekennings stroom
+    - `/signin-oauth/code/callback/{authServerName}` voor de overdracht van autorisatie code toewijzen
+    - `/signin-oauth/implicit/callback` voor impliciete toekennings stroom
 
     ![OAuth 2,0-nieuwe server](./media/api-management-howto-oauth2/oauth-04.png)
 

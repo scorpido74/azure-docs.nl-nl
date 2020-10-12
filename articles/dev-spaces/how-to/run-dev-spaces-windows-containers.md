@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Meer informatie over het uitvoeren van Azure-ontwikkel ruimten op een bestaand cluster met Windows-containers
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Windows-containers
 ms.openlocfilehash: 131f69d42795b857a53fc21b760a7275a6826bb8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212467"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interactie met Windows-containers met behulp van Azure dev Spaces
@@ -167,7 +167,7 @@ U ziet de service die wordt uitgevoerd door de open bare URL te openen, die word
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](../how-dev-spaces-works.md)

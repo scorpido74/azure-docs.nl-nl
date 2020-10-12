@@ -4,10 +4,10 @@ description: Meer informatie over het ontwerpen van uw batch-toepassing voor een
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83725734"
 ---
 # <a name="design-your-application-for-high-availability"></a>Een toepassing voor hoge beschikbaarheid ontwerpen

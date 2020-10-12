@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171751"
 ---
 # <a name="rest-api"></a>REST-API
@@ -22,8 +22,8 @@ In dit artikel worden de REST-Api's van Azure Event Grid op IoT Edge beschreven
 ### <a name="base-url"></a>Basis-URL
 Event Grid op IoT Edge heeft de volgende Api's die worden weer gegeven via HTTP (poort 5888) en HTTPS (poort 4438).
 
-* Basis-URL voor HTTP:http://eventgridmodule:5888
-* Basis-URL voor HTTPS:https://eventgridmodule:4438
+* Basis-URL voor HTTP: http://eventgridmodule:5888
+* Basis-URL voor HTTPS: https://eventgridmodule:4438
 
 ### <a name="request-query-string"></a>Query reeks voor aanvraag
 Voor alle API-aanvragen is de volgende query teken reeks parameter vereist:
@@ -72,7 +72,7 @@ Alle Api's retour neren een fout met de volgende Payload:
 
 ### <a name="put-topic-create--update"></a>Onderwerp plaatsen (maken/bijwerken)
 
-**Aanvraag**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Payload**:
 
@@ -105,7 +105,7 @@ Alle Api's retour neren een fout met de volgende Payload:
 
 ### <a name="get-topic"></a>Onderwerp ophalen
 
-**Aanvraag**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Antwoord**: http 200
 
@@ -125,7 +125,7 @@ Alle Api's retour neren een fout met de volgende Payload:
 
 ### <a name="get-all-topics"></a>Alle onderwerpen ophalen
 
-**Aanvraag**:``` GET /topics?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` GET /topics?api-version=2019-01-01-preview ```
 
 **Antwoord**: http 200
 
@@ -157,7 +157,7 @@ Alle Api's retour neren een fout met de volgende Payload:
 
 ### <a name="delete-topic"></a>Onderwerp verwijderen
 
-**Aanvraag**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Antwoord**: http 200, lege nettolading
 
@@ -166,7 +166,7 @@ Voor beelden in deze sectie worden gebruikt `EndpointType=Webhook;` . De JSON-vo
 
 ### <a name="put-event-subscription-create--update"></a>Gebeurtenis abonnement plaatsen (maken/bijwerken)
 
-**Aanvraag**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Payload**:
 ```json
@@ -371,7 +371,7 @@ Voor beelden in deze sectie worden gebruikt `EndpointType=Webhook;` . De JSON-vo
 
 ### <a name="get-event-subscription"></a>Gebeurtenis abonnement ophalen
 
-**Aanvraag**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Antwoord**: http 200
 
@@ -476,7 +476,7 @@ Voor beelden in deze sectie worden gebruikt `EndpointType=Webhook;` . De JSON-vo
 
 ### <a name="get-event-subscriptions"></a>Gebeurtenis abonnementen ophalen
 
-**Aanvraag**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
 **Antwoord**: http 200
 
@@ -494,7 +494,7 @@ Voor beelden in deze sectie worden gebruikt `EndpointType=Webhook;` . De JSON-vo
 
 ### <a name="delete-event-subscription"></a>Gebeurtenis abonnement verwijderen
 
-**Aanvraag**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Antwoord**: http 200, geen nettolading
 
@@ -503,7 +503,7 @@ Voor beelden in deze sectie worden gebruikt `EndpointType=Webhook;` . De JSON-vo
 
 ### <a name="send-batch-of-events-in-event-grid-schema"></a>Batch gebeurtenissen verzenden (in Event Grid schema)
 
-**Aanvraag**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -525,18 +525,18 @@ Voor beelden in deze sectie worden gebruikt `EndpointType=Webhook;` . De JSON-vo
 
 
 **Beschrijvingen van lading veld**
-- ```Id```is verplicht. Dit kan een wille keurige teken reeks waarde zijn die wordt ingevuld door de aanroeper. Event Grid voert geen duplicaten detectie uit of dwingt geen semantiek af van dit veld.
-- ```Topic```is optioneel, maar indien opgegeven moet overeenkomen met de topic_name van de aanvraag-URL
-- ```Subject```is verplicht, kan een wille keurige teken reeks waarde zijn
-- ```EventType```is verplicht, kan een wille keurige teken reeks waarde zijn
-- ```EventTime```is verplicht, wordt niet gevalideerd, maar moet een geldige datum/tijd zijn.
-- ```DataVersion```is verplicht
-- ```MetadataVersion```is optioneel, indien opgegeven, moet een teken reeks zijn met de waarde```"1"```
-- ```Data```is optioneel en kan elk JSON-token (Number, String, Boolean, array, object) zijn
+- ```Id``` is verplicht. Dit kan een wille keurige teken reeks waarde zijn die wordt ingevuld door de aanroeper. Event Grid voert geen duplicaten detectie uit of dwingt geen semantiek af van dit veld.
+- ```Topic``` is optioneel, maar indien opgegeven moet overeenkomen met de topic_name van de aanvraag-URL
+- ```Subject``` is verplicht, kan een wille keurige teken reeks waarde zijn
+- ```EventType``` is verplicht, kan een wille keurige teken reeks waarde zijn
+- ```EventTime``` is verplicht, wordt niet gevalideerd, maar moet een geldige datum/tijd zijn.
+- ```DataVersion``` is verplicht
+- ```MetadataVersion``` is optioneel, indien opgegeven, moet een teken reeks zijn met de waarde ```"1"```
+- ```Data``` is optioneel en kan elk JSON-token (Number, String, Boolean, array, object) zijn
 
 ### <a name="send-batch-of-events-in-custom-schema"></a>Batch gebeurtenissen verzenden (in aangepast schema)
 
-**Aanvraag**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Aanvraag**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -754,7 +754,7 @@ Als u wilt publiceren naar een Service Bus onderwerp, stelt `endpointType` u de 
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>Opslag wachtrijen instellen als bestemming
 
-Als u wilt publiceren naar een opslag wachtrij, stelt `endpointType` u de in `storageQueue` en geeft u het volgende op:
+Als u wilt publiceren naar een opslag wachtrij, stelt  `endpointType` u de in `storageQueue` en geeft u het volgende op:
 
 * wachtrijmap: de naam van de opslag wachtrij waarnaar u publiceert.
 * Connections Tring: de verbindings reeks voor het opslag account waarin de opslag wachtrij zich bevindt.

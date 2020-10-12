@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87924203"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Communiceren met uw DPS met het MQTT-Protocol
@@ -48,7 +48,7 @@ Als een apparaat de Sdk's van het apparaat niet kan gebruiken, kan het nog steed
 
 * Gebruik voor het **wachtwoord** veld een SAS-token. De indeling van de SAS-token is hetzelfde als voor de HTTPS-en AMQP-protocollen:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`De resourceURI moet de indeling hebben `{idScope}/registrations/{registration_id}` . De naam van het beleid moet zijn `registration` .
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` De resourceURI moet de indeling hebben `{idScope}/registrations/{registration_id}` . De naam van het beleid moet zijn `registration` .
 
   > [!NOTE]
   > Als u X. 509-certificaat authenticatie gebruikt, zijn SAS-token wachtwoorden niet vereist.

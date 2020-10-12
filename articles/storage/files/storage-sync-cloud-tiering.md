@@ -8,10 +8,10 @@ ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538177"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
@@ -184,7 +184,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCoun
 ``` 
 
 > [!Note]  
-> - De cmdlet invoke-StorageSyncFileRecall kan ook worden gebruikt om de prestaties van het bestand te downloaden wanneer u een nieuw server eindpunt toevoegt aan een bestaande synchronisatie groep.  
+> - De cmdlet Invoke-StorageSyncFileRecall kan ook worden gebruikt om de prestaties van het downloaden van bestanden te verbeteren wanneer u een nieuw server eindpunt toevoegt aan een bestaande synchronisatie groep.  
 >- Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, `Invoke-StorageSyncFileRecall` mislukt de cmdlet.  
 
 <a id="sizeondisk-versus-size"></a>

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: 60be7c234a0166331c35eb6528eae11bfbbf518f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074322"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>De verbinding met Extern bureaublad wordt regelmatig verbroken in de Azure-VM
@@ -53,7 +53,7 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
 
     `REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f`
 
-5. Schakel het besturings element RDP Keep-Alive in:
+5. Schakel het besturings element RDP-Keep-Alive in:
 
     `REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f`
 
@@ -120,7 +120,7 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
 
     `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f`
 
-11. Schakel het besturings element RDP Keep-Alive in:
+11. Schakel het besturings element RDP-Keep-Alive in:
 
     `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f`
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281623"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Continue integratie en continue implementatie naar Azure IoT Edge-apparaten
@@ -23,7 +23,7 @@ U kunt eenvoudig DevOps met uw Azure IoT Edge-toepassingen met de ingebouwde Azu
 
 In dit artikel leert u hoe u de ingebouwde [Azure IOT Edge taken](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) voor Azure-pijp lijnen kunt gebruiken voor het maken van builds en release pijplijnen voor uw IOT EDGE oplossing. Elke Azure IoT Edge taak die aan uw pijp lijn is toegevoegd, implementeert een van de volgende vier acties:
 
- | Actie | Beschrijving |
+ | Bewerking | Beschrijving |
  | --- | --- |
  | Module installatie kopieën bouwen | Neemt uw IoT Edge oplossings code en bouwt de container installatie kopieën.|
  | Installatie kopieën push module | Pusht installatie kopieën van module naar het container register dat u hebt opgegeven. |

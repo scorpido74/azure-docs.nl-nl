@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
 ms.openlocfilehash: e6b8708edeeb4b3b69dab82265d13db2a4c22e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051647"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver
@@ -66,12 +66,12 @@ Lees eerst de volgende SAP-opmerkingen en-documenten
 * [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
 * [Product documentatie voor Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * Algemene documentatie voor RHEL
-  * [Overzicht van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Beheer van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Overzicht van Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Add-On beheer met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referentie voor Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
 * Specifieke RHEL-documentatie voor Azure:
   * [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden](https://access.redhat.com/articles/3131341)
-  * [Installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Installeren en configureren van een Red Hat Enterprise Linux 7,4 (en hoger) High-Availability cluster op Microsoft Azure](https://access.redhat.com/articles/3252491)
 
 ## <a name="overview"></a>Overzicht
 
@@ -109,10 +109,10 @@ U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een loa
 1. Een beschikbaarheidsset maken  
    Maximum aantal update domeinen instellen
 1. Virtuele machine 1 maken  
-   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Virtuele machine 2 maken  
-   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Voeg één gegevens schijf voor elk SAP-systeem toe aan beide virtuele machines.
 

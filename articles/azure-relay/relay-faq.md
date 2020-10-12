@@ -4,10 +4,10 @@ description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen ove
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299283"
 ---
 # <a name="azure-relay-faqs"></a>Veelgestelde vragen over Azure Relay
@@ -69,7 +69,7 @@ Het verzenden van een bericht naar een Azure Relay wordt behandeld als een ' vol
 Relays die worden geopend met behulp van de WCF-binding van **netTCPRelay** behandelen berichten niet als afzonderlijke berichten, maar als een stroom gegevens stroom via het systeem. Wanneer u deze binding gebruikt, hebben alleen de afzender en de listener inzicht in het framing van de afzonderlijke berichten die zijn verzonden en ontvangen. Voor Relais die de **netTCPRelay** -binding gebruiken, worden alle gegevens behandeld als een stroom voor het berekenen van factureer bare berichten. In dit geval berekent Service Bus de totale hoeveelheid gegevens die via elke afzonderlijke relay wordt verzonden of ontvangen, op een basis van vijf minuten. Vervolgens wordt de totale hoeveelheid gegevens met 64 KB gedeeld om het aantal factureer bare berichten voor die relay tijdens die periode te bepalen.
 
 ## <a name="quotas"></a>Quota
-| Quotum naam | Bereik |  Notities | Waarde |
+| Quotumnaam | Bereik |  Notities | Waarde |
 | --- | --- | --- | --- |
 | Gelijktijdige listeners op een relay |Entiteit |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |25 |
 | Gelijktijdige relay-verbindingen per alle relay-eind punten in een service naam ruimte |Naamruimte |- |5\.000 |

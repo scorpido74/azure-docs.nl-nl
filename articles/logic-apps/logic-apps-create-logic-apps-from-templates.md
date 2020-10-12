@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87066244"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Werkstromen voor logische apps maken met vooraf gedefinieerde sjablonen
@@ -47,7 +47,7 @@ Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-a
    | Instelling | Waarde | Beschrijving | 
    | ------- | ----- | ----------- | 
    | **Naam** | *naam-van-uw-logische-app* | Geef een unieke naam voor de logische app op. | 
-   | **Abonnement** | *naam-van-uw-Azure-abonnement* | Selecteer het Azure-abonnement dat u wilt gebruiken. | 
+   | **Abonnement** | *your-Azure-subscription-name* | Selecteer het Azure-abonnement dat u wilt gebruiken. | 
    | **Resourcegroep** | *naam-van-uw-Azure-resourcegroep* | Maak of selecteer een [Azure-resource groep](../azure-resource-manager/management/overview.md) voor deze logische app en beheer alle resources die zijn gekoppeld aan deze app. | 
    | **Locatie** | *uw-Azure-datacenter-regio* | Selecteer de regio van het datacenter voor het implementeren van uw logische app, bijvoorbeeld VS - west. | 
    | **Log Analytics** | **Uit** (standaard) of **op** | Stel [Diagnostische logboek registratie](../logic-apps/monitor-logic-apps-log-analytics.md) in voor uw logische app met behulp van [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md). Hiervoor hebt u al een Log Analytics-werk ruimte nodig. | 

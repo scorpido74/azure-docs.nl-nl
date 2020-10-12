@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 4f40a821a0a639fa117dc0844146f28d887166e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102593"
 ---
 Incrementele moment opnamen zijn Point-in-time back-ups voor beheerde schijven die, wanneer ze worden gemaakt, alleen de wijzigingen sinds de laatste moment opname bestaan. Wanneer u een schijf herstelt vanuit een incrementele moment opname, bouwt het systeem de volledige schijf opnieuw op die het moment van de back-up van de schijf vertegenwoordigt wanneer de incrementele moment opname is gemaakt. Deze nieuwe mogelijkheid voor moment opnamen van beheerde schijven maakt het mogelijk rendabeler te zijn, omdat, tenzij u dat doet, u de volledige schijf niet hoeft op te slaan met elke afzonderlijke moment opname. Net als bij volledige moment opnamen kunnen incrementele moment opnamen worden gebruikt om een volledige beheerde schijf of een volledige moment opname te maken.

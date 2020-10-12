@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
 ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092521"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Door de klant beheerde versleutelings sleutels gebruiken voor Azure HPC-cache
@@ -150,4 +150,4 @@ In deze artikelen wordt uitgelegd hoe u Azure Key Vault en door de klant beheerd
 
 Nadat u de Azure HPC-cache en geautoriseerde versleuteling op basis van Key Vault hebt gemaakt, kunt u door gaan met het instellen van uw cache door deze toegang te geven tot uw gegevens bronnen.
 
-* [Opslag doelen toevoegen](hpc-cache-add-storage.md)
+* [Opslagdoelen toevoegen](hpc-cache-add-storage.md)

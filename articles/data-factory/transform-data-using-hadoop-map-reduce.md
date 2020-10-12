@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 48afff71d4b5241ede1783a270658e56e4b8c242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849243"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop MapReduce-activiteit in Azure Data Factory
@@ -64,17 +64,17 @@ Zie [Pig](transform-data-using-hadoop-pig.md) en [Hive](transform-data-using-had
 
 | Eigenschap          | Beschrijving                              | Vereist |
 | ----------------- | ---------------------------------------- | -------- |
-| naam              | Naam van de activiteit                     | Yes      |
-| description       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
-| type              | Voor MapReduce-activiteit is het type activiteit HDinsightMapReduce | Yes      |
-| linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Yes      |
-| className         | Naam van de klasse die moet worden uitgevoerd         | Yes      |
-| jarLinkedService  | Verwijzing naar een Azure Storage gekoppelde service die wordt gebruikt voor het opslaan van de jar-bestanden. Hier worden alleen **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** -en **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** gekoppelde services ondersteund. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage gekoppelde service gebruikt die is gedefinieerd in de gekoppelde HDInsight-service. | No       |
-| jarFilePath       | Geef het pad op naar de jar-bestanden die zijn opgeslagen in de Azure Storage waarnaar wordt verwezen door jarLinkedService. De bestands naam is hoofdletter gevoelig. | Yes      |
-| jarlibs           | Teken reeks matrix van het pad naar de jar-bibliotheek bestanden waarnaar wordt verwezen door de taak die is opgeslagen in de Azure Storage gedefinieerd in jarLinkedService. De bestands naam is hoofdletter gevoelig. | No       |
-| getDebugInfo      | Hiermee geeft u op wanneer de logboek bestanden worden gekopieerd naar de Azure Storage gebruikt door het HDInsight-cluster (of) dat is opgegeven door jarLinkedService. Toegestane waarden: geen, altijd of mislukt. Standaard waarde: geen. | No       |
-| opmerkingen         | Hiermee wordt een matrix met argumenten voor een Hadoop-taak opgegeven. De argumenten worden door gegeven als opdracht regel argumenten voor elke taak. | No       |
-| compliant           | Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script. | No       |
+| naam              | Naam van de activiteit                     | Ja      |
+| description       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | Nee       |
+| type              | Voor MapReduce-activiteit is het type activiteit HDinsightMapReduce | Ja      |
+| linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
+| className         | Naam van de klasse die moet worden uitgevoerd         | Ja      |
+| jarLinkedService  | Verwijzing naar een Azure Storage gekoppelde service die wordt gebruikt voor het opslaan van de jar-bestanden. Hier worden alleen **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** -en **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** gekoppelde services ondersteund. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage gekoppelde service gebruikt die is gedefinieerd in de gekoppelde HDInsight-service. | Nee       |
+| jarFilePath       | Geef het pad op naar de jar-bestanden die zijn opgeslagen in de Azure Storage waarnaar wordt verwezen door jarLinkedService. De bestands naam is hoofdletter gevoelig. | Ja      |
+| jarlibs           | Teken reeks matrix van het pad naar de jar-bibliotheek bestanden waarnaar wordt verwezen door de taak die is opgeslagen in de Azure Storage gedefinieerd in jarLinkedService. De bestands naam is hoofdletter gevoelig. | Nee       |
+| getDebugInfo      | Hiermee geeft u op wanneer de logboek bestanden worden gekopieerd naar de Azure Storage gebruikt door het HDInsight-cluster (of) dat is opgegeven door jarLinkedService. Toegestane waarden: geen, altijd of mislukt. Standaard waarde: geen. | Nee       |
+| opmerkingen         | Hiermee wordt een matrix met argumenten voor een Hadoop-taak opgegeven. De argumenten worden door gegeven als opdracht regel argumenten voor elke taak. | Nee       |
+| compliant           | Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script. | Nee       |
 
 
 

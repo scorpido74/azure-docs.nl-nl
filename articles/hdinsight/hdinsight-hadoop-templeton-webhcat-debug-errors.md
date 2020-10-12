@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086956"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Fouten die vanuit WebHCat zijn ontvangen, begrijpen en oplossen op HDInsight
@@ -71,7 +71,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 | --- | --- |
 | Interne garbagecollection wordt uitgevoerd in het WebHCat-proces |Wacht tot de garbagecollection is voltooid of start de WebHCat-service opnieuw |
 | Time-out tijdens het wachten op een reactie van de Resource Manager-service. Deze fout kan optreden wanneer het aantal actieve toepassingen het geconfigureerde maximum overschrijdt (standaard 10.000) |Wacht totdat de taken die momenteel worden uitgevoerd, zijn voltooid of verg root de gelijktijdige taak limiet door te wijzigen `yarn.scheduler.capacity.maximum-applications` . Zie de sectie [configuratie wijzigen](#modifying-configuration) voor meer informatie. |
-| Er wordt geprobeerd om alle taken op te halen via de aanroep [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) terwijl `Fields` is ingesteld op`*` |Niet *alle* taak Details ophalen. Gebruik in plaats daarvan `jobid` om details op te halen voor taken die groter zijn dan een bepaalde taak-id. Of gebruik niet`Fields` |
+| Er wordt geprobeerd om alle taken op te halen via de aanroep [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) terwijl `Fields` is ingesteld op `*` |Niet *alle* taak Details ophalen. Gebruik in plaats daarvan `jobid` om details op te halen voor taken die groter zijn dan een bepaalde taak-id. Of gebruik niet `Fields` |
 | De WebHCat-service is niet beschikbaar tijdens de hoofd knooppunt-failover |Wacht twee minuten en voer de bewerking opnieuw uit |
 | Er zijn meer dan 500 taken die moeten worden verzonden via WebHCat |Wachten tot de momenteel wachtende taken zijn voltooid voordat u meer taken hebt verzonden |
 

@@ -12,10 +12,10 @@ ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
 ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488861"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
@@ -46,7 +46,7 @@ De vCore-gebaseerde service lagen worden gedifferentieerd op basis van de beschi
 |  **Resourcetype** ||Door SQL Database/SQL beheerd exemplaar | Individuele database | Door SQL Database/SQL beheerd exemplaar |
 | **Reken grootte**|SQL Database * | 1 tot 80 vCores | 1 tot 80 vCores * | 1 tot 80 vCores |
 | **Reken grootte**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 8, 16, 24, 32, 40, 64, 80 vCores |
-| **Opslagtype** | Alles |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
+| **Opslag type** | Alles |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Opslag grootte** | SQL Database *| 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
 | **Opslag grootte** | SQL Managed Instance  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
 | **IOPS** | Individuele database | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|

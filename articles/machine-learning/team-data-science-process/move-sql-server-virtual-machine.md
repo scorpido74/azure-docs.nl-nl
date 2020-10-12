@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012175"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Gegevens verplaatsen naar SQL Server op een virtuele Azure-machine
@@ -28,8 +28,8 @@ De volgende tabel bevat een overzicht van de opties voor het verplaatsen van geg
 
 | <b>Bron</b> | <b>DOEL: SQL Server op Azure VM</b> |
 | --- | --- |
-| <b>Plat bestand</b> |1. <a href="#insert-tables-bcp">opdracht regel programma voor bulksgewijs kopiëren (BCP)</a><br> 2. <a href="#insert-tables-bulkquery">SQL-query bulksgewijs invoegen</a><br> 3. <a href="#sql-builtin-utilities">ingebouwde grafische Hulpprogram ma's in SQL Server</a> |
-| <b>On-premises SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">een SQL Server-Data Base implementeren op een Microsoft Azure VM-wizard</a><br> 2. <a href="#export-flat-file">exporteren naar een plat bestand</a><br> 3. <a href="#sql-migration">SQL database wizard Migratie</a> <br> 4. <a href="#sql-backup">back-up en herstel van data base</a><br> |
+| <b>Plat bestand</b> |1. <a href="#insert-tables-bcp">opdracht regel programma voor bulksgewijs kopiëren (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">SQL-query bulksgewijs invoegen </a><br> 3. <a href="#sql-builtin-utilities">ingebouwde grafische Hulpprogram ma's in SQL Server</a> |
+| <b>On-premises SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">een SQL Server-Data Base implementeren op een Microsoft Azure VM-wizard</a><br> 2. <a href="#export-flat-file">exporteren naar een plat bestand </a><br> 3. <a href="#sql-migration">SQL database wizard Migratie </a> <br> 4. <a href="#sql-backup">back-up en herstel van data base </a><br> |
 
 In dit document wordt ervan uitgegaan dat SQL-opdrachten worden uitgevoerd vanuit SQL Server Management Studio of Visual Studio Database Explorer.
 
@@ -46,7 +46,7 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 * Ingericht **SQL Server op een virtuele machine van Azure**. Zie [een virtuele machine van Azure SQL Server instellen als IPython-notebook server voor geavanceerde analyses](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)voor instructies.
 * **Azure PowerShell** lokaal geïnstalleerd en geconfigureerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies.
 
-## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>Gegevens verplaatsen van een bron met een plat bestand naar SQL Server op een virtuele machine van Azure
+## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> Gegevens verplaatsen van een bron met een plat bestand naar SQL Server op een virtuele machine van Azure
 Als uw gegevens zich in een plat bestand bevindt (gerangschikt in een rij-of kolom indeling), kan het worden verplaatst naar SQL Server VM op Azure via de volgende methoden:
 
 1. [Opdracht regel programma voor bulksgewijs kopiëren (BCP)](#insert-tables-bcp)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: bc0369e99552859393da206e791477040681ccc4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281062"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Bestanden uploaden naar een Media Services-account met REST
@@ -72,7 +72,7 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
 
     Als u waarden voor de eerste vijf variabelen wilt ophalen, raadpleegt u [de Azure Media Services-API openen met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-import-env.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-import-env.png)
 2. Geef de waarde op voor de omgevings variabele **MediaFileName** .
 
     Geef de bestands naam op van de media die u wilt uploaden. In dit voor beeld gaan we de BigBuckBunny.mp4 uploaden. 
@@ -94,7 +94,7 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
 
     Het URL-gedeelte wordt gevuld met de omgevings variabele **AzureADSTSEndpoint** (eerder in de zelf studie stelt u de waarden van omgevings variabelen in die ondersteuning bieden voor de verzameling).
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postment-get-token.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postment-get-token.png)
 
 5. Druk op **Verzenden**.
 
@@ -116,7 +116,7 @@ Voordat u bestanden naar Blob Storage uploadt, stelt u de rechten voor het toega
 1. Selecteer **AccessPolicy**  ->  **maken om AccessPolicy te uploaden**.
 2. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-access-policy.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-access-policy.png)
 
     Het script ' test ' haalt de AccessPolicy-id op en stelt de juiste omgevings variabele in.
 
@@ -137,7 +137,7 @@ In dit voor beeld maken we een niet-versleutelde Asset.
 1. Selecteer **activa**  ->  **maken activa**.
 2. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-asset.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-asset.png)
 
     Het script test haalt de Asset-id op en stelt de juiste omgevings variabele in.
 
@@ -170,7 +170,7 @@ Hierbij geldt het volgende:
 
     Met het script ' test ' wordt de ' upload-URL ' gemaakt op basis van de media bestands naam die u hebt opgegeven en de SAS-locatorgegevens en wordt de juiste omgevings variabele ingesteld.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Een bestand uploaden naar Blob Storage met behulp van de upload-URL
 
@@ -197,7 +197,7 @@ Een nieuwe aanvraag maken en instellen:
 4. Kies het bestand met de naam die u hebt opgegeven in de omgevings variabele **MediaFileName** .
 5. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-upload-file.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-upload-file.png)
 
 ##  <a name="create-a-metadata-in-the-asset"></a>Een meta gegevens in de Asset maken
 
@@ -206,7 +206,7 @@ Zodra het bestand is geüpload, moet u een meta gegevens maken in de Asset voor 
 1. Selecteer **AssetFiles**  ->  **CreateFileInfos**.
 2. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-file-info.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-file-info.png)
 
 Het bestand moet worden geüpload en de meta gegevens zijn ingesteld.
 
