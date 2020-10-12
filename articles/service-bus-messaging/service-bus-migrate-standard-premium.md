@@ -4,10 +4,10 @@ description: Gids voor het toestaan van de migratie van bestaande Azure Service 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85340740"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Bestaande Azure Service Bus Standard-naam ruimten migreren naar de Premium-laag
@@ -211,7 +211,7 @@ Als u echter kunt migreren tijdens een gepland onderhouds-en housekeeping en u d
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de [verschillen tussen de Standard-en Premium-berichten](./service-bus-premium-messaging.md).
-* Meer informatie over de [aspecten van een hoge Beschik baarheid en geo-nood herstel voor service bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
+* Meer informatie over de [herstel aspecten met hoge Beschik baarheid en Geo-Disaster voor service bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
 
 [Migratie landings pagina]: ./media/service-bus-standard-premium-migration/1.png
 [Naam ruimte instellen]: ./media/service-bus-standard-premium-migration/2.png

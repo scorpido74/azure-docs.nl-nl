@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847859"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Cluster resource manager-integratie met Service Fabric Cluster beheer
@@ -105,7 +105,7 @@ Blocklisting is geen permanente voor waarde. Na een paar minuten wordt het knoop
 
 Met al deze beperkingen is het mogelijk dat u denken dat fout domein beperkingen het belangrijkst zijn in mijn systeem. Om ervoor te zorgen dat de beperking van het fout domein niet wordt geschonden, wil ik andere beperkingen schenden. "
 
-Beperkingen kunnen worden geconfigureerd met verschillende prioriteits niveaus. Dit zijn:
+Beperkingen kunnen worden geconfigureerd met verschillende prioriteits niveaus. Deze zijn:
 
    - "hard" (0)
    - "zacht" (1)

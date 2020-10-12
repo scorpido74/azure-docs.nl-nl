@@ -4,10 +4,10 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378403"
 ---
 # <a name="arm-template-functions"></a>ARM-sjabloon functies
@@ -38,15 +38,15 @@ De meeste functies werken hetzelfde wanneer ze worden geïmplementeerd in een re
 
 Resource Manager biedt verschillende functies voor het werken met matrices.
 
-* [array](template-functions-array.md#array)
+* [matrix](template-functions-array.md#array)
 * [concat](template-functions-array.md#concat)
 * [daarin](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
-* [gelaten](template-functions-array.md#empty)
+* [leeg](template-functions-array.md#empty)
 * [instantie](template-functions-array.md#first)
 * [Snij punt](template-functions-array.md#intersection)
 * [duren](template-functions-array.md#last)
-* [lange](template-functions-array.md#length)
+* [length](template-functions-array.md#length)
 * [min.](template-functions-array.md#min)
 * [aantal](template-functions-array.md#max)
 * [bereik](template-functions-array.md#range)
@@ -123,7 +123,7 @@ Resource Manager biedt de volgende functies voor het werken met logische voor wa
 
 Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 
-* [toe](template-functions-numeric.md#add)
+* [add](template-functions-numeric.md#add)
 * [Functie copyindex](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
@@ -141,10 +141,10 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 Resource Manager biedt verschillende functies voor het werken met objecten.
 
 * [daarin](template-functions-object.md#contains)
-* [gelaten](template-functions-object.md#empty)
+* [leeg](template-functions-object.md#empty)
 * [Snij punt](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
-* [lange](template-functions-object.md#length)
+* [length](template-functions-object.md#length)
 * [Réunion](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -218,7 +218,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen:
 * [daarin](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [gelaten](template-functions-string.md#empty)
+* [leeg](template-functions-string.md#empty)
 * [endsWith](template-functions-string.md#endswith)
 * [instantie](template-functions-string.md#first)
 * [Formatteer](template-functions-string.md#format)
@@ -226,14 +226,14 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen:
 * [indexOf](template-functions-string.md#indexof)
 * [duren](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
-* [lange](template-functions-string.md#length)
+* [length](template-functions-string.md#length)
 * [newGuid](template-functions-string.md#newguid)
 * [padLeft](template-functions-string.md#padleft)
 * [vervangen](template-functions-string.md#replace)
 * [verdergaan](template-functions-string.md#skip)
 * [delen](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [tekenreeks](template-functions-string.md#string)
+* [tekenreeksexpressie](template-functions-string.md#string)
 * [subtekenreeks](template-functions-string.md#substring)
 * [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)

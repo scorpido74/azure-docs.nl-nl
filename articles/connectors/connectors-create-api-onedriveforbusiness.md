@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74789445"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Aan de slag met de OneDrive voor bedrijven-connector
@@ -24,7 +24,7 @@ Als u logische Apps wilt maken met OneDrive voor bedrijven, moet u eerst een **v
 
 | Eigenschap | Vereist | Beschrijving |
 | --- | --- | --- |
-| Token |Yes |Referenties voor OneDrive voor bedrijven opgeven |
+| Token |Ja |Referenties voor OneDrive voor bedrijven opgeven |
 
 Nadat u de verbinding hebt gemaakt, kunt u deze gebruiken om de acties uit te voeren en om te Luis teren naar de triggers die in dit artikel worden beschreven.
 

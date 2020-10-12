@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
 ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87489670"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Beheer concepten voor gebruikers accounts, wacht woorden en beheer in Azure Active Directory Domain Services
@@ -81,7 +81,7 @@ In azure AD DS zijn de beschik bare prestaties en functies gebaseerd op de SKU. 
 | SKU-naam   | Maximum aantal objecten | Back-upfrequentie | Maximum aantal uitgaande forest-vertrouwens relaties |
 |------------|----------------------|------------------|----|
 | Standard   | Onbeperkt            | Elke 7 dagen     | 0  |
-| Onderneming | Onbeperkt            | Elke 3 dagen     | 5  |
+| Enterprise | Onbeperkt            | Elke 3 dagen     | 5  |
 | Premium    | Onbeperkt            | Dagelijks            | 10 |
 
 Vóór deze Azure AD DS Sku's werd een facturerings model gebruikt dat is gebaseerd op het aantal objecten (gebruikers-en computer accounts) in het beheerde domein. Er zijn geen variabele prijzen meer op basis van het aantal objecten in het beheerde domein.

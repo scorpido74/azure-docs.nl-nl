@@ -4,10 +4,10 @@ description: Gebruik Azure Backup Server om een back-up te maken van uw share po
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378318"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Een back-up maken van een share point-Farm op Azure Stack
@@ -148,7 +148,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
 5. U kunt ook bladeren door verschillende herstel punten en een Data Base of een item selecteren dat u wilt herstellen. Selecteer **datum > herstel tijd**en selecteer vervolgens de juiste **Data Base > share point-Farm > herstel punt > item**.
 
     ![MABS share point Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen** om de **wizard herstellen**te openen. Selecteer **Volgende**.
+6. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen** om de **wizard herstellen**te openen. Selecteer **Next**.
 
     ![Selectie voor herstel controleren](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. Selecteer het type herstel dat u wilt uitvoeren en selecteer vervolgens **volgende**.
@@ -172,7 +172,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
     MABS koppelt de inhouds database die als host fungeert voor het share point-item aan het tijdelijke SQL Server-exemplaar. Vanuit de inhouds database wordt het item hersteld en geplaatst op de locatie van het staging-bestand op MABS. Het herstelde item op de faserings locatie moet nu worden geëxporteerd naar de faserings locatie in de share point-farm.
 
     ![Staging-Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
-10. Selecteer **herstel opties opgeven**en pas beveiligings instellingen toe op de share point-Farm of pas de beveiligings instellingen van het herstel punt toe. Selecteer **Volgende**.
+10. Selecteer **herstel opties opgeven**en pas beveiligings instellingen toe op de share point-Farm of pas de beveiligings instellingen van het herstel punt toe. Selecteer **Next**.
 
     ![Herstel opties](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -211,7 +211,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
 
     ![MABS share point Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Selecteer **Close** (Sluiten).
+    Nadat het catalogiseren is voltooid, verandert de status in *geslaagd*. Selecteer **Sluiten**.
 
     ![MABS share point Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. Selecteer het share point-object dat wordt weer gegeven op het tabblad MABS- **herstel** om de structuur van de inhouds database op te halen. Klik met de rechter muisknop op het item en selecteer vervolgens **herstellen**.
@@ -219,7 +219,7 @@ In het volgende voor beeld is het herstel van het *share point-item* per ongeluk
     ![MABS share point Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Volg op dit punt de herstel stappen eerder in dit artikel om een share point-inhouds database van schijf te herstellen.
 
-## <a name="switching-the-front-end-web-server"></a>Scha kelen tussen de front-end-webserver
+## <a name="switching-the-front-end-web-server"></a>Scha kelen tussen de Front-End webserver
 
 Als u meer dan één front-endwebserver hebt en u wilt overschakelen van de server die MABS gebruikt om de farm te beveiligen, volgt u de instructies:
 

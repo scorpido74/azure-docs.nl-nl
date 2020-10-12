@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74451569"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Sjabloon implementeren vanuit Cloud Shell
@@ -43,7 +43,7 @@ U kunt [Cloud Shell](../articles/cloud-shell/overview.md) gebruiken om uw sjablo
 
 1. Selecteer **Uploaden**.
 
-   ![BLOB uploaden](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![Blob uploaden](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Zoek de sjabloon en upload deze.
 

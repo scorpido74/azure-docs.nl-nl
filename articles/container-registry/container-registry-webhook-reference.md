@@ -4,10 +4,10 @@ description: Naslag informatie voor JSON-nettolading voor webhook-aanvragen in e
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74455976"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Verwijzing naar Azure Container Registry webhook
@@ -36,7 +36,7 @@ Webhook geactiveerd wanneer een container installatie kopie naar een opslag plaa
 
 ### <a name="push-event-payload"></a>Nettolading van push gebeurtenis
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |-------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
 |`timestamp`|DateTime|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
@@ -46,7 +46,7 @@ Webhook geactiveerd wanneer een container installatie kopie naar een opslag plaa
 
 ### <a name="target"></a><a name="target"></a>stemming
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
 |`size`|Int32|Het aantal bytes van de inhoud. Gelijk aan het veld lengte.|
@@ -57,7 +57,7 @@ Webhook geactiveerd wanneer een container installatie kopie naar een opslag plaa
 
 ### <a name="request"></a><a name="request"></a>schot
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de aanvraag die de gebeurtenis heeft gestart.|
 |`host`|Tekenreeks|De extern toegankelijke hostnaam van het register exemplaar, zoals opgegeven door de HTTP-host-header op binnenkomende aanvragen.|
@@ -100,7 +100,7 @@ Webhook geactiveerd wanneer een helm-grafiek naar een opslag plaats wordt gepush
 
 ### <a name="chart-push-event-payload"></a>Nettolading van push gebeurtenis van grafiek
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |-------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
 |`timestamp`|DateTime|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
@@ -109,7 +109,7 @@ Webhook geactiveerd wanneer een helm-grafiek naar een opslag plaats wordt gepush
 
 ### <a name="target"></a><a name="helm_target"></a>stemming
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
 |`size`|Int32|Het aantal bytes van de inhoud.|
@@ -150,7 +150,7 @@ Webhook wordt geactiveerd wanneer een afbeeldings opslagplaats of-manifest wordt
 
 ### <a name="delete-event-payload"></a>Gebeurtenis lading verwijderen
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |-------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
 |`timestamp`|DateTime|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
@@ -158,17 +158,17 @@ Webhook wordt geactiveerd wanneer een afbeeldings opslagplaats of-manifest wordt
 |[stemming](#delete_target)|Complex type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
 |[schot](#delete_request)|Complex type|De aanvraag die de gebeurtenis webhook heeft gegenereerd.|
 
-### <a name="target"></a><a name="delete_target"></a>stemming
+### <a name="target"></a><a name="delete_target"></a> stemming
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
 |`digest`|Tekenreeks|De samen vatting van de inhoud, zoals gedefinieerd in de HTTP API-specificatie van Regi ster v2.|
 |`repository`|Tekenreeks|De naam van de opslag plaats.|
 
-### <a name="request"></a><a name="delete_request"></a>schot
+### <a name="request"></a><a name="delete_request"></a> schot
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de aanvraag die de gebeurtenis heeft gestart.|
 |`host`|Tekenreeks|De extern toegankelijke hostnaam van het register exemplaar, zoals opgegeven door de HTTP-host-header op binnenkomende aanvragen.|
@@ -212,16 +212,16 @@ Webhook geactiveerd wanneer een helm-grafiek of-opslag plaats wordt verwijderd.
 
 ### <a name="chart-delete-event-payload"></a>Gebeurtenis lading van grafiek verwijderen
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |-------------|----------|-----------|
 |`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
 |`timestamp`|DateTime|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
 |`action`|Tekenreeks|De actie die de gebeurtenis webhook heeft geactiveerd.|
 |[stemming](#chart_delete_target)|Complex type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
 
-### <a name="target"></a><a name="chart_delete_target"></a>stemming
+### <a name="target"></a><a name="chart_delete_target"></a> stemming
 
-|Element|Type|Description|
+|Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
 |`size`|Int32|Het aantal bytes van de inhoud.|

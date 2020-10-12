@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
 ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719649"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Instellingen pushen naar app-configuratie met Azure-pijp lijnen
@@ -87,7 +87,7 @@ De volgende para meters worden gebruikt door de taak app-configuratie push:
 - **Label**: een teken reeks die wordt toegevoegd aan elke sleutel waarde als het label in de app-configuratie opslag.
 - **Inhouds type**: een teken reeks die wordt toegevoegd aan elke sleutel waarde als het inhouds type in de app-configuratie opslag.
 - **Tags**: een JSON-object in de indeling van `{"tag1":"val1", "tag2":"val2"}` , waarmee Tags worden gedefinieerd die worden toegevoegd aan elke sleutel waarde die wordt gepusht naar de app-configuratie opslag.
-- **Alle andere sleutel waarden in het archief verwijderen met het opgegeven voor voegsel en label: de**standaard waarde is **uitgeschakeld**.
+- **Verwijder alle andere Key-Values in de Store met het opgegeven voor voegsel en label: de**standaard waarde is **uitgeschakeld**.
   - **Ingeschakeld**: Hiermee verwijdert u alle sleutel waarden in de app-configuratie opslag die overeenkomen met het opgegeven voor voegsel en label voordat u nieuwe sleutel waarden uit het configuratie bestand pusht.
   - **Uitgeschakeld**: Hiermee worden alle sleutel waarden van het configuratie bestand naar de app-configuratie opslag gepusht en blijven alle andere in de app-configuratie Store intact.
 

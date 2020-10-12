@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902795"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Een back-up maken en herstellen van een server in Azure Database for MySQL met behulp van de Azure Portal
@@ -37,11 +37,11 @@ Wanneer u een server maakt via de Azure Portal, selecteert u in het venster **pr
 Zie de [Snelstartgids van Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-portal.md)voor meer informatie over het instellen van deze waarden tijdens het maken.
 
 De Bewaar periode voor back-ups kan worden gewijzigd op een server met behulp van de volgende stappen:
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer uw Azure Database for MySQL-server. Met deze actie wordt de pagina **overzicht** geopend.
 3. Selecteer **prijs categorie** in het menu onder **instellingen**. Met de schuif regelaar kunt u de **Bewaar periode voor back-ups** wijzigen van 7 tot 35 dagen.
 In de onderstaande scherm afbeelding is meer dan 34 dagen verg root.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="De Bewaar periode voor back-ups is verhoogd":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Prijs categorie: Kies back-upredundantie":::
 
 4. Klik op **OK** om de wijziging te bevestigen.
 
@@ -57,11 +57,11 @@ Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijd
 
 2. Selecteer in de werk balk van de pagina **overzicht** van de server **herstellen**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL-overzicht-knop herstellen":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Prijs categorie: Kies back-upredundantie":::
 
 3. Vul in het formulier Restore de vereiste gegevens in:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL-herstel informatie":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Prijs categorie: Kies back-upredundantie":::
    - **Herstel punt**: Selecteer het tijdstip waarop u wilt herstellen.
    - **Doel server**: Geef een naam op voor de nieuwe server.
    - **Locatie**: u kunt de regio niet selecteren. Het is standaard hetzelfde als de bron server.
@@ -86,13 +86,13 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
 1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal. Selecteer **Databases** > **Azure Database voor MySQL**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Navigeer naar Azure Database for MySQL.":::
+   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Prijs categorie: Kies back-upredundantie":::
  
 2. Geef het abonnement, de resource groep en de naam van de nieuwe server op. 
 
 3. Selecteer **back-up** als **gegevens bron**. Met deze actie wordt een vervolg keuzelijst geladen die een lijst met servers bevat waarvoor geo redundante back-ups zijn ingeschakeld.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Selecteer een gegevens bron.":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Prijs categorie: Kies back-upredundantie":::
     
    > [!NOTE]
    > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
@@ -100,21 +100,21 @@ Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan ee
 
 4. Selecteer de vervolg keuzelijst **back-up** .
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Selecteer vervolg keuzelijst voor back-up.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Prijs categorie: Kies back-upredundantie":::
 
 5. Selecteer de bron server waarvan u wilt herstellen.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Selecteer back-up.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Prijs categorie: Kies back-upredundantie":::
 
 6. De server wordt standaard ingesteld op waarden voor het aantal **vCores**, de **Bewaar periode voor back-ups**, de optie voor de **redundantie van back-ups**, de **Engine versie**en de **beheerders referenties**. Selecteer **Doorgaan**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Ga door met de back-up.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Prijs categorie: Kies back-upredundantie":::
 
 7. Vul de rest van het formulier in met uw voor keuren. U kunt een wille keurige **locatie**selecteren.
 
     Nadat u de locatie hebt geselecteerd, kunt **u server configureren** selecteren om de **generatie** van de berekening bij te werken (indien beschikbaar in de regio die u hebt gekozen), het aantal **vCores**, de **Bewaar periode voor back-ups**en de optie voor de **redundantie van back-ups**. Het wijzigen van de **prijs categorie** (Basic, algemeen of Optimized memory) of **opslag** grootte tijdens het terugzetten wordt niet ondersteund.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Formulier opvulling."::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Prijs categorie: Kies back-upredundantie"::: 
 
 8. Selecteer **Beoordelen en maken** om uw selecties te controleren. 
 

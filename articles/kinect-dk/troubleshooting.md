@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: problemen oplossen, bijwerken, bug, kinect, feedback, herstel, logboek registratie, tips
 ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277358"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Bekende problemen met Azure Kinect en probleem oplossing
@@ -134,7 +134,7 @@ Als dat niet het geval is, moet u de [fabrieks instellingen terugzetten](https:/
 - Voor het delen van afbeeldings kwaliteits problemen met het team kunt u het volgende doen:
 
 1) De weer gave onderbreken in [Azure Kinect Viewer](azure-kinect-viewer.md) en een scherm opname maken of
-2) Neem bijvoorbeeld een opname met [Azure Kinect-recorder](azure-kinect-recorder.md).`k4arecorder.exe -l 5 -r 5 output.mkv`
+2) Neem bijvoorbeeld een opname met [Azure Kinect-recorder](azure-kinect-recorder.md). `k4arecorder.exe -l 5 -r 5 output.mkv`
 
 ## <a name="inconsistent-or-unexpected-device-timestamps"></a>Inconsistente of onverwachte tijds tempels van het apparaat
 

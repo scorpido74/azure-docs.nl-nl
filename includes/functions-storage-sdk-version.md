@@ -10,12 +10,12 @@ ms.date: 01/28/2020
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 6a37850eb6536c5399d63144e60ea210fbc194d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77198412"
 ---
-#### <a name="azure-storage-sdk-version-in-functions-1x"></a>Azure Storage SDK-versie in functions 1. x
+#### <a name="azure-storage-sdk-version-in-functions-1x"></a>Azure Storage SDK-versie in Functions 1.x
 
-In functions 1. x gebruiken de opslag triggers en bindingen versie 7.2.1 van het Azure Storage SDK-pakket ([WindowsAzure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet). Als u verwijst naar een andere versie van de opslag-SDK en u koppelt aan een opslag-SDK in uw functie handtekening, kan de functions-runtime rapporteren dat deze niet kan worden gebonden aan dat type. De oplossing is te controleren of uw project verwijst naar [WindowsAzure. Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+In Functions 1.x maken de Storage-triggers en -bindingen gebruik van versie 7.2.1 van de Azure Storage-SDK ([WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet-pakket). Als u naar een andere versie van de Storage-SDK verwijst en een aan Storage-SDK-type bindt in uw functiehandtekening, rapporteert de Function-runtime mogelijk dat het niet kan binden met dat yype. De oplossing is om ervoor te zorgen dat uw project verwijst naar [WindowsAzure.Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).

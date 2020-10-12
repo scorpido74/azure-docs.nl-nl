@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74847846"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Versie geschiedenis van de Azure AD-wachtwoord beveiligings agent
@@ -34,14 +34,14 @@ Release datum: 3/22/2019
 
 Release datum: 3/13/2019
 
-* De cmdlets Get-AzureADPasswordProtectionProxy en Get-AzureADPasswordProtectionDCAgent rapporteren nu de software versie en de huidige Azure-Tenant met de volgende beperkingen:
+* Met de cmdlets Get-AzureADPasswordProtectionProxy en Get-AzureADPasswordProtectionDCAgent wordt nu software versie en de huidige Azure-Tenant gerapporteerd met de volgende beperkingen:
   * Software versie en Azure-Tenant gegevens zijn alleen beschikbaar voor DC-agents en-proxy's waarop versie 1.2.116.0 of hoger wordt uitgevoerd.
   * Azure-Tenant gegevens worden mogelijk pas gerapporteerd als er een nieuwe registratie (of verlenging) van de proxy of het forest is opgetreden.
 * Voor de proxy service moet .NET 4,7 nu zijn geïnstalleerd.
   * .NET 4,7 moet al zijn geïnstalleerd op een volledig bijgewerkte Windows-Server. Als dat niet het geval is, downloadt en voert u het installatie programma uit dat is gevonden op [het .NET Framework 4,7 offline-installatie programma voor Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
   * Op Server Core-systemen kan het nodig zijn om de/q-vlag door te geven aan het .NET 4,7-installatie programma om deze te laten slagen.
 * De proxy service ondersteunt nu automatische upgrades. Automatische upgrade maakt gebruik van de Microsoft Azure AD connect agent Updater-service die naast de proxy service is geïnstalleerd. Automatische upgrade is standaard ingeschakeld.
-* Automatische upgrades kunnen worden in-of uitgeschakeld met de cmdlet Set-AzureADPasswordProtectionProxyConfiguration. De huidige instelling kan worden opgevraagd met behulp van de cmdlet Get-AzureADPasswordProtectionProxyConfiguration.
+* Automatische upgrades kunnen worden ingeschakeld of uitgeschakeld met behulp van de cmdlet Set-AzureADPasswordProtectionProxyConfiguration. De huidige instelling kan worden opgevraagd met behulp van de cmdlet Get-AzureADPasswordProtectionProxyConfiguration.
 * De naam van de service-binary voor de DC-Agent service is gewijzigd in AzureADPasswordProtectionDCAgent.exe.
 * De naam van de binaire service voor de proxy service is gewijzigd in AzureADPasswordProtectionProxy.exe. Firewall regels moeten mogelijk dienovereenkomstig worden gewijzigd als een firewall van een derde partij in gebruik is.
   * Opmerking: als er een http-proxy configuratie bestand werd gebruikt in een eerdere proxy installatie, moet u na deze upgrade een andere naam (van *proxyservice.exe.config* tot *AzureADPasswordProtectionProxy.exe.config*) krijgen.
@@ -55,11 +55,11 @@ Release datum: 2/1/2019
 Gewijzigde
 
 * DC-agent en proxy service worden nu ondersteund op Server Core. Mininimum OS-vereisten zijn niet gewijzigd ten opzichte van vóór: Windows Server 2012 voor DC-agents en Windows Server 2012 R2 voor proxy's.
-* De cmdlets REGI ster-AzureADPasswordProtectionProxy en REGI ster-AzureADPasswordProtectionForest bieden nu ondersteuning voor op apparaten code gebaseerde Azure-verificatie modi.
+* De cmdlets Register-AzureADPasswordProtectionProxy en Register-AzureADPasswordProtectionForest bieden nu ondersteuning voor Azure-verificatie modi op basis van een apparaatcode.
 * Met de cmdlet Get-AzureADPasswordProtectionDCAgent worden vervormde en/of ongeldige service verbindings punten genegeerd. Hiermee wordt de bug opgelost waarbij domein controllers soms meerdere keren in de uitvoer worden weer gegeven.
 * Met de cmdlet Get-AzureADPasswordProtectionSummaryReport worden vervormde en/of ongeldige service verbindings punten genegeerd. Hiermee wordt de bug opgelost waarbij domein controllers soms meerdere keren in de uitvoer worden weer gegeven.
 * De module proxy Power shell is nu geregistreerd bij%ProgramFiles%\WindowsPowerShell\Modules. De omgevings variabele PSModulePath van de machine wordt niet meer gewijzigd.
-* Er is een nieuwe cmdlet Get-AzureADPasswordProtectionProxy toegevoegd ter ondersteuning bij het detecteren van geregistreerde proxy's in een forest of domein.
+* Er is een nieuwe Get-AzureADPasswordProtectionProxy cmdlet toegevoegd ter ondersteuning bij het detecteren van geregistreerde proxy's in een forest of domein.
 * De DC-agent gebruikt een nieuwe map in de SYSVOL-share voor het repliceren van wachtwoord beleid en andere bestanden.
 
    Oude maplocatie:
@@ -110,8 +110,8 @@ Release datum: 8/17/2018
 
 Dit
 
-* REGI ster-AzureADPasswordProtectionProxy en REGI ster-AzureADPasswordProtectionForest bieden nu ondersteuning voor multi-factor Authentication
-* Voor REGI ster-AzureADPasswordProtectionProxy is een WS2012 of nieuwe domein controller in het domein vereist om versleutelings fouten te voor komen.
+* Register-AzureADPasswordProtectionProxy en Register-AzureADPasswordProtectionForest bieden nu ondersteuning voor multi-factor Authentication
+* Voor Register-AzureADPasswordProtectionProxy is een WS2012 of nieuwe domein controller in het domein vereist om versleutelings fouten te voor komen.
 * De DC-Agent service is betrouwbaarder voor het aanvragen van een nieuw wachtwoord beleid van Azure bij het opstarten.
 * DC-Agent service vraagt elk uur, indien nodig, een nieuw wachtwoord beleid aan van Azure, maar zal dit nu doen op een wille keurige geselecteerde begin tijd.
 * DC-Agent service veroorzaakt niet langer een onbeperkte vertraging in een nieuwe DC-aankondiging wanneer deze wordt geïnstalleerd op een server voorafgaand aan de promotie als een replica.

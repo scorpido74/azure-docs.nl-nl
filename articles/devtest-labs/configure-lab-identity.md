@@ -4,10 +4,10 @@ description: Meer informatie over het configureren van een Lab-identiteit in azu
 ms.topic: article
 ms.date: 08/20/2020
 ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719642"
 ---
 # <a name="configure-a-lab-identity"></a>Een Lab-identiteit configureren
@@ -38,7 +38,7 @@ In deze sectie ziet u hoe u het identiteits beleid van Lab kunt configureren.
 >
 > Voor nieuwe Labs die zijn gemaakt na 8/10/2020, wordt de toegewezen systeem-id van het lab standaard ingesteld op ingeschakeld en kan de eigenaar van het lab dit niet uitschakelen voor de levens cyclus van het lab.  
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar **DevTest Labs**.
 1. Selecteer in de lijst met Labs het gewenste Lab.
 1. Selecteer de identiteit van de **configuratie en het beleid**  ->  **(preview-versie)**. 

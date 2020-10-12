@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89535769"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Procedure: Service voorwaarden en de privacyverklaring voor een app configureren
@@ -62,7 +62,7 @@ Volg deze stappen in de Azure Portal.
 2. Ga naar de sectie **app-registraties** en selecteer uw app.
 3. Open het deel venster **huis stijl** .
 4. Vul de URL-velden **voor de service voorwaarden** en de **privacyverklaring** in.
-5. Sla de wijzigingen op.
+5. Sla uw wijzigingen op.
 
     ![App-eigenschappen bevatten de Url's van de service voorwaarden en de privacyverklaring](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
@@ -73,7 +73,7 @@ Als u de JSON van het app-object liever rechtstreeks wilt wijzigen, kunt u de ma
 1. Navigeer naar de sectie **app-registraties** en selecteer uw app.
 2. Open het deel venster **manifest** .
 3. CTRL + F, zoek naar ' informationalUrls '. Vul de informatie in.
-4. Sla de wijzigingen op.
+4. Sla uw wijzigingen op.
 
 ```json
     "informationalUrls": { 

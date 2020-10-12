@@ -1,5 +1,5 @@
 ---
-title: Door de klant beheerde sleutels voor Cognitive Services
+title: Customer-Managed sleutels voor Cognitive Services
 titleSuffix: Cognitive Services
 description: Meer informatie over het gebruik van de Azure Portal voor het configureren van door de klant beheerde sleutels met Azure Key Vault. Door de klant beheerde sleutels bieden u de mogelijkheid om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken.
 services: cognitive-services
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310696"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Door de klant beheerde sleutels configureren met Azure Key Vault voor Cognitive Services
 
-Het proces voor het inschakelen van door de klant beheerde sleutels met Azure Key Vault voor Cognitive Services is afhankelijk van het product. Gebruik deze koppelingen voor servicespecifieke instructies:
+Het proces voor het inschakelen van Customer-Managed sleutels met Azure Key Vault voor Cognitive Services varieert per product. Gebruik deze koppelingen voor servicespecifieke instructies:
 
 ## <a name="vision"></a>Vision
 
@@ -39,4 +39,4 @@ Het proces voor het inschakelen van door de klant beheerde sleutels met Azure Ke
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
-* [Cognitive Services aanvraag formulier voor door de klant beheerde sleutel](https://aka.ms/cogsvc-cmk)
+* [Aanvraag formulier voor Cognitive Services Customer-Managed](https://aka.ms/cogsvc-cmk)

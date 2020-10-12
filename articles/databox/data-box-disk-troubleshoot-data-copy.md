@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85849178"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Problemen met het kopiëren van gegevens in Azure Data Box Disk oplossen
@@ -38,7 +38,7 @@ Het opnieuw koppelen van een station als lezen/schrijven werkt niet met Data Box
 
 Het opnieuw koppelen is geslaagd, maar de gegevens blijven niet behouden.
 
-**Afsluiting**
+**Oplossing**
 
 Voer de volgende stappen uit op uw Linux-systeem:
 
@@ -78,7 +78,7 @@ Voer de volgende stappen uit op uw Linux-systeem:
 
 Als u ziet dat uw station geen gegevens bevat nadat het is ontkoppeld (terwijl er gegevens naar zijn gekopieerd), is het mogelijk dat u een station hebt gekoppeld als lezen-schrijven nadat het station als alleen-lezen is gekoppeld.
 
-**Afsluiting**
+**Oplossing**
  
 Als dat het geval is, raadpleegt u de oplossing voor stations die worden [gekoppeld als alleen-lezen](#issue-drive-getting-mounted-as-read-only).
 

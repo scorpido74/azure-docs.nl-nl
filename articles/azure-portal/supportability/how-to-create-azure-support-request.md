@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
 ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851866"
 ---
 # <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
@@ -23,9 +23,9 @@ Met Azure kunt u ondersteunings aanvragen maken en beheren, ook wel ondersteunin
 > [!NOTE]
 > De Azure Portal-URL is specifiek voor de Azure-Cloud waar uw organisatie is geïmplementeerd.
 >
->* Azure Portal voor commercieel gebruik:[https://portal.azure.com](https://portal.azure.com)
->* Azure Portal voor Duitsland is:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* Azure Portal voor de Verenigde Staten overheid is:[https://portal.azure.us](https://portal.azure.us)
+>* Azure Portal voor commercieel gebruik: [https://portal.azure.com](https://portal.azure.com)
+>* Azure Portal voor Duitsland is: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* Azure Portal voor de Verenigde Staten overheid is: [https://portal.azure.us](https://portal.azure.us)
 
 De ondersteunings verzoek ervaring is gericht op drie hoofd doelen:
 
@@ -47,7 +47,7 @@ Als u een ondersteunings aanvraag wilt maken, moet u [eigenaar](../../role-based
 
 Als u een ondersteunings aanvraag wilt starten vanaf elke locatie in de Azure Portal:
 
-1. Selecteer het **?** in de globale header. Selecteer vervolgens **Help + ondersteuning**.
+1. Selecteer de **?** in de globale header. Selecteer vervolgens **Help + ondersteuning**.
 
    ![Help en ondersteuning](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -95,7 +95,7 @@ Vervolgens verzamelen we aanvullende informatie over het probleem. Door in deze 
 
 1. Vul vervolgens de sectie **contact gegevens** in zodat we weten hoe ze contact met u kunnen opnemen.
 
-### <a name="review--create"></a>Beoordelen en maken
+### <a name="review--create"></a>Controleren en maken
 
 Vul alle vereiste gegevens op elk tabblad in en selecteer vervolgens **controleren + maken**. Controleer de details die u gaat verzenden naar ondersteuning. Ga terug naar een tabblad om zo nodig een wijziging aan te brengen. Wanneer u hebt nagevraagd of het ondersteunings verzoek is voltooid, selecteert u **maken**.
 

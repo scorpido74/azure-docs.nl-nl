@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289766"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender voor opslag configureren
@@ -35,11 +35,11 @@ Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleeg
 
 De volgende lijst bevat een overzicht van de beschik baarheid van Azure Defender voor opslag:
 
-- Release status:
+- Releasestatus:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)
   - [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (algemene Beschik baarheid)
   - Azure Data Lake Storage Gen2 (algemene Beschik baarheid)
-- Clouds<br>
+- Clouds:<br>
     ✔ Commerciële Clouds<br>
     ✔ US Gov<br>
     ✘ China gov, andere gov
@@ -69,7 +69,7 @@ Azure Defender is nu ingeschakeld voor alle opslag accounts in dit abonnement.
 1. Ga naar uw opslagaccount. Selecteer onder **instellingen**de optie **geavanceerde beveiliging**.
 1. Selecteer **Azure Defender inschakelen voor opslag**.
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor een Azure Storage-account":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
 
 Azure Defender is nu ingeschakeld voor dit opslag account.
 
@@ -84,15 +84,15 @@ Gebruik een Azure Policy om Azure Defender in te scha kelen voor opslag accounts
 1. Start de pagina Azure **Policy-Definitions** .
 1. Zoek het beleid **Azure Defender implementeren op opslag accounts** .
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Beleid Toep assen om Azure Defender voor opslag accounts in te scha kelen":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
 
 1. Selecteer een Azure-abonnement of resource groep.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Abonnement of resource groep selecteren voor het bereik van beleid ":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
 
 1. Wijs het beleid toe.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Beleid toewijzen om Azure Defender voor opslag in te scha kelen":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -125,11 +125,11 @@ Wanneer er afwijkingen optreden bij de opslag activiteit, ontvangt u een e-mail 
 
 Het e-mail bericht bevat ook informatie over mogelijke oorzaken en aanbevolen acties voor het onderzoeken en oplossen van mogelijke bedreigingen.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="E-mail waarschuwings bericht van Azure Defender voor opslag":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
 
 U kunt uw huidige beveiligings waarschuwingen controleren en beheren via de [tegel beveiligings waarschuwingen](../../security-center/security-center-managing-and-responding-alerts.md)van Azure Security Center. Als u op een specifieke waarschuwing klikt, vindt u details en acties voor het onderzoeken van de huidige dreiging en het adresseren van toekomstige bedreigingen.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Waarschuwing voor Azure Defender voor opslag":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Scherm afbeelding die laat zien hoe u Azure Defender inschakelt voor opslag in Security Center":::
 
 ## <a name="security-alerts"></a>Beveiligingswaarschuwingen
 
