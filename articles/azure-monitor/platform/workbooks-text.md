@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81687329"
 ---
 # <a name="workbook-text-parameters"></a>Werkmap tekst parameters
@@ -27,10 +27,10 @@ Een veelvoorkomend gebruik van tekst vakken is de interne variabelen die worden 
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`SlowRequestThreshold`
-    2. Parameter type:`Text`
-    3. Vereist:`checked`
-    4. Standaard waarde ophalen uit query:`unchecked`
+    1. Parameter naam: `SlowRequestThreshold`
+    2. Parameter type: `Text`
+    3. Vereist: `checked`
+    4. Standaard waarde ophalen uit query: `unchecked`
 5. Kies opslaan op de werk balk om de para meter te maken.
 
     ![Afbeelding van het maken van een tekst parameter](./media/workbooks-text/text-create.png)
@@ -67,10 +67,10 @@ Zo ziet de werkmap eruit als Lees modus.
 2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
 3. Klik op de knop Blue _para meter toevoegen_ .
 4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam:`SlowRequestThreshold`
-    2. Parameter type:`Text`
-    3. Vereist:`checked`
-    4. Standaard waarde ophalen uit query:`checked`
+    1. Parameter naam: `SlowRequestThreshold`
+    2. Parameter type: `Text`
+    3. Vereist: `checked`
+    4. Standaard waarde ophalen uit query: `checked`
 5. Voeg in het vak KQL dit fragment toe:
     ```kusto
     requests

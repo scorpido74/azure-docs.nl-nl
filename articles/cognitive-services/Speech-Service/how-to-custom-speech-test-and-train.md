@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84628056"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
@@ -80,7 +80,7 @@ Gebruik deze tabel om ervoor te zorgen dat uw audio bestanden correct zijn inged
 | Sample frequentie              | 8.000 Hz of 16.000 Hz |
 | Kanalen                 | 1 (mono)              |
 | Maximum lengte per audio | 2 uur               |
-| Voorbeeld indeling            | PCM, 16-bits           |
+| Sample-indeling            | PCM, 16-bits           |
 | Archief indeling           | .zip                  |
 | Maximale archief grootte     | 2 GB                  |
 
@@ -108,7 +108,7 @@ Audio bestanden kunnen stilte aan het begin en het einde van de opname hebben. I
 | Sample frequentie              | 8.000 Hz of 16.000 Hz               |
 | Kanalen                 | 1 (mono)                            |
 | Maximum lengte per audio | 2 uur (testen)/60 s (training) |
-| Voorbeeld indeling            | PCM, 16-bits                         |
+| Sample-indeling            | PCM, 16-bits                         |
 | Archief indeling           | .zip                                |
 | Maximale grootte van zip         | 2 GB                                |
 

@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
 ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465555"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>De Azure IoT Edge-runtime op Windows installeren
 
-Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge runtime, kunt u beginnen met het implementeren van bedrijfs logica vanuit de Cloud.
+Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge-runtime, kunt u beginnen met het implementeren van bedrijfslogica vanuit de cloud.
 
 Zie [inzicht in de Azure IOT Edge runtime en de architectuur](iot-edge-runtime.md)voor meer informatie over de IOT Edge runtime.
 
@@ -85,7 +85,7 @@ In dit voor beeld ziet u een hand matige installatie met Windows-containers:
 2. Voer PowerShell uit als beheerder.
 
    >[!NOTE]
-   >Gebruik een AMD64-sessie van Power shell om IoT Edge, niet Power shell (x86), te installeren. Als u niet zeker weet welk sessie type u gebruikt, voert u de volgende opdracht uit:
+   >Gebruik een AMD64-sessie van PowerShell om IoT Edge, niet PowerShell (x86), te installeren. Als u niet zeker weet welk sessietype u gebruikt, voert u de volgende opdracht uit:
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
@@ -100,7 +100,7 @@ In dit voor beeld ziet u een hand matige installatie met Windows-containers:
 
 4. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
 
-5. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers.
+5. Met de opdracht **Initialize-IoTEdge** configureert u de IoT Edge-runtime op uw machine. De opdracht wordt standaard ingesteld op handmatig inrichten met Windows-containers.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -109,7 +109,7 @@ In dit voor beeld ziet u een hand matige installatie met Windows-containers:
 
 6. Wanneer u hierom wordt gevraagd, geeft u de connection string op van het apparaat dat u in stap 1 hebt opgehaald. Het apparaat connection string het fysieke apparaat koppelt aan een apparaat-ID in IoT Hub.
 
-   De connection string van het apparaat heeft de volgende indeling en mag geen aanhalings tekens bevatten:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   De connection string van het apparaat heeft de volgende indeling en mag geen aanhalings tekens bevatten: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 7. Volg de stappen in [verifiëren geslaagde installatie](#verify-successful-installation) om de status van IOT Edge op het apparaat te controleren.
 
@@ -244,13 +244,13 @@ Als u de IoT Edge-installatie wilt verwijderen van uw Windows-apparaat, gebruikt
 Uninstall-IoTEdge
 ```
 
-De opdracht uninstall-IoTEdge werkt niet in Windows IoT core. Als u IoT Edge van Windows IoT core-apparaten wilt verwijderen, moet u uw Windows IoT Core-installatie kopie opnieuw implementeren.
+De Uninstall-IoTEdge opdracht werkt niet in Windows IoT core. Als u IoT Edge van Windows IoT core-apparaten wilt verwijderen, moet u uw Windows IoT Core-installatie kopie opnieuw implementeren.
 
 Voor meer informatie over verwijderings opties gebruikt u de opdracht `Get-Help Uninstall-IoTEdge -full` .
 
 ## <a name="verify-installation-script"></a>Installatie script controleren
 
-De installatie opdrachten die in dit artikel worden gegeven, gebruiken de cmdlet invoke-webaanvraag om het installatie script aan te vragen bij `aka.ms/iotedge-win` . Deze koppeling wijst naar het `IoTEdgeSecurityDaemon.ps1` script vanuit de meest recente [IOT Edge versie](https://github.com/Azure/azure-iotedge/releases). U kunt dit script of een versie van het script van een specifieke versie ook downloaden om de installatie opdrachten op uw IoT Edge-apparaat uit te voeren.
+De installatie opdrachten die in dit artikel worden gegeven, gebruiken de cmdlet Invoke-WebRequest om het installatie script aan te vragen bij `aka.ms/iotedge-win` . Deze koppeling wijst naar het `IoTEdgeSecurityDaemon.ps1` script vanuit de meest recente [IOT Edge versie](https://github.com/Azure/azure-iotedge/releases). U kunt dit script of een versie van het script van een specifieke versie ook downloaden om de installatie opdrachten op uw IoT Edge-apparaat uit te voeren.
 
 Het gegeven script is ondertekend om de beveiliging te verbeteren. U kunt de hand tekening controleren door het script te downloaden naar uw apparaat en vervolgens de volgende Power shell-opdracht uit te voeren:
 
@@ -264,9 +264,9 @@ De uitvoer status is **geldig** als de hand tekening wordt geverifieerd.
 
 In de vorige secties werden veelvoorkomende installatie scenario's geïntroduceerd met voor beelden van het gebruik van para meters voor het wijzigen van het installatie script. Deze sectie bevat naslag tabellen van de algemene para meters die worden gebruikt om IoT Edge te installeren, bij te werken of te verwijderen.
 
-### <a name="deploy-iotedge"></a>Implementeren-IoTEdge
+### <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
-Met de opdracht Deploy-IoTEdge worden de IoT Edge Security daemon en de bijbehorende afhankelijkheden gedownload en geïmplementeerd. De implementatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht voor de volledige lijst `Get-Help Deploy-IoTEdge -full` .  
+Met de Deploy-IoTEdge opdracht worden de IoT Edge Security daemon en de bijbehorende afhankelijkheden gedownload en geïmplementeerd. De implementatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht voor de volledige lijst `Get-Help Deploy-IoTEdge -full` .  
 
 | Parameter | Geaccepteerde waarden | Opmerkingen |
 | --------- | --------------- | -------- |
@@ -276,9 +276,9 @@ Met de opdracht Deploy-IoTEdge worden de IoT Edge Security daemon en de bijbehor
 | **InvokeWebRequestParameters** | Hashtabel van para meters en waarden | Tijdens de installatie worden er diverse webaanvragen gedaan. Gebruik dit veld om para meters in te stellen voor deze webaanvragen. Deze para meter is handig voor het configureren van referenties voor proxy servers. Zie [een IOT edge apparaat configureren om te communiceren via een proxy server](how-to-configure-proxy-support.md)voor meer informatie. |
 | **RestartIfNeeded** | geen | Met deze vlag kan het implementatie script de computer opnieuw opstarten zonder te vragen, indien nodig. |
 
-### <a name="initialize-iotedge"></a>Initialisatie-IoTEdge
+### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-De initialisatie-IoTEdge-opdracht configureert IoT Edge met uw apparaat connection string en operationele gegevens. Veel van de gegevens die door deze opdracht worden gegenereerd, worden vervolgens opgeslagen in het iotedge\config.yaml-bestand. De initialisatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht voor de volledige lijst `Get-Help Initialize-IoTEdge -full` .
+Met de Initialize-IoTEdge-opdracht configureert u IoT Edge met uw apparaat connection string en operationele gegevens. Veel van de gegevens die door deze opdracht worden gegenereerd, worden vervolgens opgeslagen in het iotedge\config.yaml-bestand. De initialisatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht voor de volledige lijst `Get-Help Initialize-IoTEdge -full` .
 
 | Parameter | Geaccepteerde waarden | Opmerkingen |
 | --------- | --------------- | -------- |

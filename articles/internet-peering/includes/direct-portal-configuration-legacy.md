@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81678833"
 ---
 1. Vul op de pagina **een peering maken** op het tabblad **configuratie** de selectie vakjes in, zoals hier wordt weer gegeven.
@@ -31,7 +31,7 @@ ms.locfileid: "81678833"
 1. Als u band breedte wilt bijwerken, selecteert u de knop bewerken voor een regel om de verbindings instellingen te wijzigen.
 
     > [!div class="mx-imgBorder"]
-    > ![Knop Bewerken](../media/setup-directlegacy-conf-tab-edit.png)
+    > ![Knop bewerken](../media/setup-directlegacy-conf-tab-edit.png)
 
     > [!NOTE]
     > Als u aanvullende peering-verbindingen wilt toevoegen met micro soft in de geselecteerde **metro** locatie, selecteert u **nieuwe maken**. Zie [direct peering maken of wijzigen met behulp van de portal](../howto-direct-portal.md)voor meer informatie.

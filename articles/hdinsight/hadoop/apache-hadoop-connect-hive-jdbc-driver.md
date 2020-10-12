@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207385"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Query uitvoeren op Apache Hive via het JDBC-stuurprogramma in HDInsight
@@ -25,7 +25,7 @@ Zie [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDB
 
 ## <a name="prerequisites"></a>Vereisten
 
-* An HDInsight Hadoop-cluster. Zie aan de [slag met Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)om een account te maken. Zorg ervoor dat de service-HiveServer2 wordt uitgevoerd.
+* An HDInsight Hadoop-cluster. Zie [Aan de slag met Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md) om er een te maken. Zorg ervoor dat de service-HiveServer2 wordt uitgevoerd.
 * De [jdk-versie 11 of hoger van Java Developer Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) .
 * [Squirrel SQL](http://squirrel-sql.sourceforge.net/). SQuirreL is een JDBC-client toepassing.
 

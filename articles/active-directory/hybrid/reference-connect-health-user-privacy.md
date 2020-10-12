@@ -16,10 +16,10 @@ ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182357"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Privacy en Azure AD Connect Health van gebruiker 
@@ -32,7 +32,7 @@ ms.locfileid: "89182357"
 ## <a name="user-privacy-classification"></a>Classificatie van gebruikers-privacy
 Azure AD Connect Health valt in de **gegevens processor** categorie van de AVG-classificatie. Als pijp lijn van de gegevens processor biedt de service gegevens verwerking aan belang rijke partners en eind gebruikers. Azure AD Connect Health genereert geen gebruikers gegevens en heeft geen onafhankelijke controle over welke persoons gegevens worden verzameld en hoe deze worden gebruikt. Het ophalen van gegevens, aggregatie, analyse en rapportage in Azure AD Connect Health zijn gebaseerd op bestaande on-premises gegevens. 
 
-## <a name="data-retention-policy"></a>Beleid voor gegevens retentie
+## <a name="data-retention-policy"></a>Beleid voor gegevensretentie
 Azure AD Connect Health genereert geen rapporten, voert geen analyses uit of bieden meer dan dertig dagen geen inzichten. Daarom worden gegevens na 30 dagen niet opgeslagen, verwerkt of bewaard door Azure AD Connect Health. Dit ontwerp is compatibel met de AVG-voor Schriften, micro soft-regelgeving voor privacybeleid en Azure AD-Bewaar beleid voor gegevens. 
 
 Servers met actieve **Health Service-gegevens zijn niet up-to-date** - **fout** meldingen gedurende meer dan 30 opeenvolgende dagen, om aan te nemen dat geen gegevens de verbindings status hebben bereikt tijdens die periode. Deze servers worden uitgeschakeld en worden niet weer gegeven in de portal Connect Health. Als u de servers opnieuw wilt inschakelen, moet u [de Health-Agent verwijderen en opnieuw installeren](how-to-connect-health-agent-install.md). Houd er rekening mee dat dit niet geldt voor **waarschuwingen** met hetzelfde waarschuwings type. Waarschuwingen geven aan dat gedeeltelijke gegevens ontbreken op de server waarvoor u wordt gewaarschuwd. 

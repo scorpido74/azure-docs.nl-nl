@@ -4,10 +4,10 @@ description: Een token maken met machtigingen die zijn gericht op specifieke ops
 ms.topic: article
 ms.date: 05/27/2020
 ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84509403"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Een token met machtigingen voor een opslag plaats maken
@@ -157,9 +157,9 @@ In het volgende voor beeld wordt een token gemaakt en wordt een scope toewijzing
 1. Selecteer onder **Scope toewijzing**de optie **nieuwe maken**.
 1. De scope toewijzing configureren:
     1. Voer een naam en beschrijving in voor de bereik toewijzing. 
-    1. Onder **opslag**plaatsen, Enter en `samples/hello-world` onder **machtigingen**selecteert u `content/read` en `content/write` . Selecteer vervolgens **+ toevoegen**.  
+    1. Onder **opslag**plaatsen, Enter en `samples/hello-world` onder **machtigingen**selecteert u  `content/read` en `content/write` . Selecteer vervolgens **+ toevoegen**.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Scope toewijzing maken in de portal":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Token maken in de portal":::
 
     1. Nadat u opslag plaatsen en machtigingen hebt toegevoegd, selecteert u **toevoegen** om de scope toewijzing toe te voegen.
 1. Accepteer de standaard token **status** **ingeschakeld** en selecteer vervolgens **maken**.
@@ -176,7 +176,7 @@ Als u een token wilt gebruiken dat is gemaakt in de portal, moet u een wacht woo
 1. In het scherm wacht woord stelt u desgewenst een verval datum voor het wacht woord in en selecteert u **genereren**. Het is raadzaam om een verval datum in te stellen.
 1. Nadat u een wacht woord hebt gegenereerd, kopieert u het naar een veilige locatie en slaat u deze op. U kunt een gegenereerd wacht woord niet ophalen nadat het scherm is gesloten, maar er kan wel een nieuwe worden gegenereerd.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Token wachtwoord maken in de portal":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Token maken in de portal":::
 
 ## <a name="authenticate-with-token"></a>Verifiëren met token
 
@@ -186,11 +186,11 @@ De verificatie methode is afhankelijk van de geconfigureerde actie of acties die
 
 |Bewerking  |Verificatie uitvoeren  |
   |---------|---------|
-  |`content/delete`    | `az acr repository delete`in azure CLI<br/><br/>Voorbeeld: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
-  |`content/read`     |  `docker login`<br/><br/>`az acr login`in azure CLI<br/><br/>Voorbeeld: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
-  |`content/write`     |  `docker login`<br/><br/>`az acr login`in azure CLI     |
-  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests`in azure CLI   |
-  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update`in azure CLI |
+  |`content/delete`    | `az acr repository delete` in azure CLI<br/><br/>Voorbeeld: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` in azure CLI<br/><br/>Voorbeeld: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
+  |`content/write`     |  `docker login`<br/><br/>`az acr login` in azure CLI     |
+  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` in azure CLI   |
+  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` in azure CLI |
 
 ## <a name="examples-use-token"></a>Voor beelden: token gebruiken
 

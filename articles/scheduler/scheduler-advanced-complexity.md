@@ -10,10 +10,10 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78898591"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Geavanceerde schema's en herhalingen maken voor taken in azure scheduler
@@ -66,13 +66,13 @@ Deze tabel bevat een overzicht op hoog niveau voor de belangrijkste JSON-element
 
 | Element | Vereist | Beschrijving | 
 |---------|----------|-------------|
-| **startTime** | No | Een DateTime-teken reeks waarde in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601) die aangeeft wanneer de taak voor het eerst in een basis schema wordt gestart. <p>Voor complexe schema's wordt de taak niet eerder gestart dan **StartTime**. | 
-| **optreden** | No | De regels voor het terugkeer patroon voor wanneer de taak wordt uitgevoerd. Het object **recurrence** ondersteunt deze elementen: **frequentie**, **interval**, **planning**, **aantal**en **EndTime**. <p>Als u het element **recurrence** gebruikt, moet u ook het element **Frequency** gebruiken, terwijl andere **terugkeer** elementen optioneel zijn. |
+| **startTime** | Nee | Een DateTime-teken reeks waarde in [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601) die aangeeft wanneer de taak voor het eerst in een basis schema wordt gestart. <p>Voor complexe schema's wordt de taak niet eerder gestart dan **StartTime**. | 
+| **optreden** | Nee | De regels voor het terugkeer patroon voor wanneer de taak wordt uitgevoerd. Het object **recurrence** ondersteunt deze elementen: **frequentie**, **interval**, **planning**, **aantal**en **EndTime**. <p>Als u het element **recurrence** gebruikt, moet u ook het element **Frequency** gebruiken, terwijl andere **terugkeer** elementen optioneel zijn. |
 | **ingang** | Ja, wanneer u **terugkeer patroon** gebruikt | De tijds eenheid tussen exemplaren en ondersteunt deze waarden: ' minute ', ' hour ', ' Day ', ' week ', ' month ' en ' Year ' | 
-| **bereik** | No | Een positief geheel getal dat het aantal tijds eenheden tussen exemplaren bepaalt op basis van de **frequentie**. <p>Als **interval** bijvoorbeeld 10 is en de **frequentie** is ' week ', wordt de taak elke 10 weken herhaald. <p>Dit is het hoogste aantal intervallen voor elke frequentie: <p>-18 maanden <br>-78 weken <br>-548 dagen <br>-Voor uren en minuten is het bereik 1 <= <*interval*> <= 1000. | 
-| **planning** | No | Hiermee worden wijzigingen in het terugkeer patroon gedefinieerd op basis van de opgegeven minutes-tekens, uur-tekens, dagen van de week en dagen van de maand | 
-| **aantal** | No | Een positief geheel getal dat het aantal keren opgeeft dat de taak wordt uitgevoerd voordat wordt voltooid. <p>Als bijvoorbeeld een dagelijkse taak het **aantal** heeft ingesteld op 7 en de begin datum maandag is, wordt de taak uitgevoerd op zondag. Als de begin datum al is verstreken, wordt de eerste uitvoering berekend op basis van de aanmaak tijd. <p>Zonder **EndTime** of **Count**wordt de taak oneindig uitgevoerd. U kunt niet zowel **Count** als **EndTime** in dezelfde taak gebruiken, maar de regel die het eerst eindigt, wordt gehonoreerd. | 
-| **endTime** | No | Een datum-of DateTime-waarde in de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601) die aangeeft wanneer de uitvoering van de taak wordt gestopt. U kunt een waarde instellen voor **EndTime** die in het verleden ligt. <p>Zonder **EndTime** of **Count**wordt de taak oneindig uitgevoerd. U kunt niet zowel **Count** als **EndTime** in dezelfde taak gebruiken, maar de regel die het eerst eindigt, wordt gehonoreerd. |
+| **bereik** | Nee | Een positief geheel getal dat het aantal tijds eenheden tussen exemplaren bepaalt op basis van de **frequentie**. <p>Als **interval** bijvoorbeeld 10 is en de **frequentie** is ' week ', wordt de taak elke 10 weken herhaald. <p>Dit is het hoogste aantal intervallen voor elke frequentie: <p>-18 maanden <br>-78 weken <br>-548 dagen <br>-Voor uren en minuten is het bereik 1 <= <*interval*> <= 1000. | 
+| **planning** | Nee | Hiermee worden wijzigingen in het terugkeer patroon gedefinieerd op basis van de opgegeven minutes-tekens, uur-tekens, dagen van de week en dagen van de maand | 
+| **aantal** | Nee | Een positief geheel getal dat het aantal keren opgeeft dat de taak wordt uitgevoerd voordat wordt voltooid. <p>Als bijvoorbeeld een dagelijkse taak het **aantal** heeft ingesteld op 7 en de begin datum maandag is, wordt de taak uitgevoerd op zondag. Als de begin datum al is verstreken, wordt de eerste uitvoering berekend op basis van de aanmaak tijd. <p>Zonder **EndTime** of **Count**wordt de taak oneindig uitgevoerd. U kunt niet zowel **Count** als **EndTime** in dezelfde taak gebruiken, maar de regel die het eerst eindigt, wordt gehonoreerd. | 
+| **endTime** | Nee | Een datum-of DateTime-waarde in de [ISO 8601-notatie](https://en.wikipedia.org/wiki/ISO_8601) die aangeeft wanneer de uitvoering van de taak wordt gestopt. U kunt een waarde instellen voor **EndTime** die in het verleden ligt. <p>Zonder **EndTime** of **Count**wordt de taak oneindig uitgevoerd. U kunt niet zowel **Count** als **EndTime** in dezelfde taak gebruiken, maar de regel die het eerst eindigt, wordt gehonoreerd. |
 |||| 
 
 Dit JSON-schema beschrijft bijvoorbeeld een basis schema en een terugkeer patroon voor een taak: 
@@ -160,12 +160,12 @@ Als u meer dan één schema-element opgeeft, is de volg orde van de evaluatie va
 
 In de volgende tabel worden de schedule-elementen in detail beschreven:
 
-| JSON-naam | Description | Geldige waarden |
+| JSON-naam | Beschrijving | Geldige waarden |
 |:--- |:--- |:--- |
 | **wachten** |Minuten van het tijdstip waarop de taak wordt uitgevoerd. |Een matrix met gehele getallen. |
 | **loopt** |De uren van de dag waarop de taak wordt uitgevoerd. |Een matrix met gehele getallen. |
 | **weekDays** |Dagen van de week waarop de taak wordt uitgevoerd. Kan alleen worden opgegeven met een wekelijkse frequentie. |Een matrix met een van de volgende waarden (maximale matrix grootte is 7):<br />-"Maandag"<br />-"Dinsdag"<br />-"Woensdag"<br />-"Donderdag"<br />-"Vrijdag"<br />-"Zaterdag"<br />-"Zondag"<br /><br />Niet hoofdletter gevoelig. |
-| **monthlyOccurrences** |Bepaalt op welke dagen van de maand de taak wordt uitgevoerd. Kan alleen worden opgegeven met een maandelijkse frequentie. |Een matrix met **monthlyOccurrences** -objecten:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **dag** is de dag van de week waarop de taak wordt uitgevoerd. Zo is bijvoorbeeld *{zondag}* elke zondag van de maand. Vereist.<br /><br />**voorval** is de dag van de maand. Bijvoorbeeld: *{zondag,-1}* is de laatste zondag van de maand. Optioneel. |
+| **monthlyOccurrences** |Bepaalt op welke dagen van de maand de taak wordt uitgevoerd. Kan alleen worden opgegeven met een maandelijkse frequentie. |Een matrix met **monthlyOccurrences** -objecten:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **dag** is de dag van de week waarop de taak wordt uitgevoerd. Zo is bijvoorbeeld *{zondag}* elke zondag van de maand. Vereist.<br /><br />**voorval** is de dag van de maand. Bijvoorbeeld:  *{zondag,-1}* is de laatste zondag van de maand. Optioneel. |
 | **monthDays** |Dag van de maand waarop de taak wordt uitgevoerd. Kan alleen worden opgegeven met een maandelijkse frequentie. |Een matrix met de volgende waarden:<br />- Alle waarden < = -1 en > =-31<br />- Alle waarden > = 1 en < =31|
 
 ## <a name="examples-recurrence-schedules"></a>Voor beelden: herhalings schema's
@@ -174,7 +174,7 @@ In de volgende voor beelden ziet u verschillende terugkeer planningen. De voor b
 
 Deze schema's nemen aan dat het **interval** is ingesteld op 1\. De voor beelden nemen ook de juiste **frequentie** waarden voor de waarden in **schema**. U kunt **bijvoorbeeld geen '** dag ' gebruiken en een **monthDays** wijzigen in de **planning**. Deze beperkingen worden eerder in het artikel beschreven.
 
-| Voorbeeld | Description |
+| Voorbeeld | Beschrijving |
 |:--- |:--- |
 | `{"hours":[5]}` |Wordt elke dag om 5 uur uitgevoerd.<br /><br />Scheduler komt overeen met elke waarde in ' hours ' met elke waarde in ' minuten ', een voor één, om een lijst te maken van alle tijdstippen waarop de taak wordt uitgevoerd. |
 | `{"minutes":[15], "hours":[5]}` |Wordt elke dag om 5:15 uur uitgevoerd. |

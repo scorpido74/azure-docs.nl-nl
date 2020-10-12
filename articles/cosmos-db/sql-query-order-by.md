@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
 ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84484325"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY-component in Azure Cosmos DB
@@ -45,7 +45,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   Geeft aan dat de waarden in de opgegeven kolom in oplopende of aflopende volg orde moeten worden gesorteerd. `ASC`Hiermee wordt van de laagste waarde naar de hoogste waarde gesorteerd. `DESC`Hiermee wordt van de hoogste waarde naar de laagste waarde gesorteerd. `ASC`is de standaard sorteer volgorde. Null-waarden worden beschouwd als de laagst mogelijke waarden.  
+   Geeft aan dat de waarden in de opgegeven kolom in oplopende of aflopende volg orde moeten worden gesorteerd. `ASC` Hiermee wordt van de laagste waarde naar de hoogste waarde gesorteerd. `DESC` Hiermee wordt van de hoogste waarde naar de laagste waarde gesorteerd. `ASC` is de standaard sorteer volgorde. Null-waarden worden beschouwd als de laagst mogelijke waarden.  
   
 ## <a name="remarks"></a>Opmerkingen  
   

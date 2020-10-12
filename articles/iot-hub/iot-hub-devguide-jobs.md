@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81730106"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Taken op meerdere apparaten plannen
@@ -33,7 +33,7 @@ Overweeg het gebruik van taken wanneer u de voortgang van een van de volgende ac
 Taken worden geïnitieerd door de back-end van de oplossing en worden onderhouden door IoT Hub. U kunt een taak initiëren via een service gerichte URI ( `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` ) en een query uitvoeren op een uitvoering van een taak via een service gerichte URI ( `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` ). Als u de status van actieve taken wilt vernieuwen nadat een taak is gestart, voert u een taak query uit.
 
 > [!NOTE]
-> Wanneer u een taak initieert, kunnen eigenschaps namen en-waarden alleen in de volgende gevallen een door ons ASCII afdruk bare alfanumerieke waarde bevatten:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Wanneer u een taak initieert, kunnen eigenschaps namen en-waarden alleen in de volgende gevallen een door ons ASCII afdruk bare alfanumerieke waarde bevatten: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
 ## <a name="jobs-to-execute-direct-methods"></a>Taken voor het uitvoeren van directe methoden
 
@@ -186,7 +186,7 @@ De volgende lijst bevat de eigenschappen en bijbehorende beschrijvingen die kunn
 | **type** |Typen taken: |
 | | **scheduleUpdateTwin**: een taak die wordt gebruikt om een set gewenste eigenschappen of labels bij te werken. |
 | | **scheduleDeviceMethod**: een taak die wordt gebruikt om een apparaat methode aan te roepen voor een set apparaat apparaatdubbels. |
-| **hebben** |Huidige status van de taak. Mogelijke waarden voor status: |
+| **status** |Huidige status van de taak. Mogelijke waarden voor status: |
 | | **in behandeling**: gepland en wachten om te worden opgehaald door de taak service. |
 | | **gepland**: in de toekomst gepland voor een tijd. |
 | | **uitvoeren**: huidige actieve taak. |

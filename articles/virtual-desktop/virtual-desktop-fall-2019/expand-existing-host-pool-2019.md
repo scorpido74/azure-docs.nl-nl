@@ -7,16 +7,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009168"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts in virtueel bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../expand-existing-host-pool.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../expand-existing-host-pool.md) als u Azure Resource Manager Windows Virtual Desktop-objecten probeert te beheren.
 
 Wanneer u het gebruik in uw hostgroep wilt verbeteren, moet u mogelijk uw bestaande hostgroep uitbreiden met nieuwe sessie-hosts om de nieuwe belasting af te handelen.
 
@@ -47,7 +47,7 @@ Als u al een hostgroep en host-Vm's hebt gemaakt met behulp van de [Azure Market
 
 U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een hostgroep uit te breiden:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Zoek in de zoek balk aan de bovenkant van de Azure Portal naar **resource groepen** en selecteer het item onder **Services**.
 3. Zoek en selecteer de resource groep die u hebt gemaakt tijdens het maken van de hostgroep.
 4. Selecteer **implementaties**in het deel venster aan de linkerkant van de browser.
@@ -64,7 +64,7 @@ U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een
      >[!NOTE]
      >Als er een fout bericht wordt weer gegeven waarin u wordt aangegeven dat u een andere resource groep wilt selecteren, terwijl u de naam juist hebt ingevoerd, selecteert u een andere resource groep en selecteert u vervolgens de oorspronkelijke resource groep.
 
-8. Voer de volgende URL in voor de *_artifactsLocation*:`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
+8. Voer de volgende URL in voor de *_artifactsLocation*: `https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
 9. Voer het nieuwe totale aantal sessie-hosts in dat u wilt in het *Rdsh-aantal exemplaren*. Als u uw hostgroep bijvoorbeeld uitbreidt van vijf sessie-hosts tot acht, voert u **8**in.
 10. Voer hetzelfde bestaande domein wachtwoord in dat u hebt gebruikt voor de bestaande domein-UPN. Wijzig de gebruikers naam niet, omdat dat resulteert in een fout wanneer u de sjabloon uitvoert.
 11. Voer hetzelfde Tenant beheerders wachtwoord in dat u hebt gebruikt voor de gebruiker of de toepassings-ID die u hebt opgegeven voor de UPN-naam *of toepassings-id van de Tenant beheerder*. Wijzig de gebruikers naam opnieuw.
@@ -74,7 +74,7 @@ U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een
 
 Volg de instructies in [een hostgroep maken met behulp van de Azure Marketplace](create-host-pools-azure-marketplace-2019.md) totdat u [de Azure Marketplace-aanbieding hebt uitgevoerd om een nieuwe hostgroep in te richten](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Wanneer u dat punt krijgt, moet u de volgende informatie invoeren voor elk tabblad:
 
-### <a name="basics"></a>Basisinstellingen
+### <a name="basics"></a>Basisbeginselen
 
 Alle waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens de eerste keer dat u de hostgroep en de Vm's voor de host maakt, met uitzonde ring van *standaard bureaublad gebruikers*:
 

@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79199639"
 ---
 ### <a name="create-a-console-application"></a>Een consoletoepassing maken
@@ -25,7 +25,7 @@ Maak in Visual Studio een nieuw **Console-app (.NET Framework)**-project.
 
 1. Klik met de rechtermuisknop op het nieuwe project en selecteer **NuGet-pakketten beheren**.
 2. Selecteer de optie **Prerelease insluiten**. 
-3. Selecteer **Bladeren** en zoek naar **Microsoft.Azure.Relay**. Selecteer **Microsoft Azure door sturen**in de zoek resultaten.
+3. Selecteer **Bladeren** en zoek naar **Microsoft.Azure.Relay**. Selecteer  **Microsoft Azure door sturen**in de zoek resultaten.
 4. Selecteer versie **2.0.0-preview1-20180523**. 
 5. Selecteer **Installeren** om de installatie uit te voeren. Sluit het dialoogvenster.
 

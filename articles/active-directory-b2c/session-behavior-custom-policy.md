@@ -11,10 +11,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385260"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Sessie gedrag configureren met aangepaste beleids regels in Azure Active Directory B2C
@@ -59,7 +59,7 @@ Wanneer u de gebruiker omleidt naar het eind punt van de Azure AD B2C-afmelding 
 
 Voor de ondersteuning van eenmalige afmelding moeten voor de token Uitgever technische profielen voor zowel JWT als SAML worden opgegeven:
 
-- De protocol naam, zoals`<Protocol Name="OpenIdConnect" />`
+- De protocol naam, zoals `<Protocol Name="OpenIdConnect" />`
 - De verwijzing naar het profiel voor technische sessie, zoals `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` .
 
 In het volgende voor beeld ziet u de JWT-en SAML-token verleners met eenmalige afmelding:

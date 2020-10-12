@@ -13,10 +13,10 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79281130"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Gegevens uit Sales Force verplaatsen met behulp van Azure Data Factory
@@ -68,11 +68,11 @@ De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn 
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **Sales Force**. |Yes |
-| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br><br> -Standaard is ' https: \/ /login.salesforce.com '. <br> -Geef "" op om gegevens uit de sandbox te kopiëren https://test.salesforce.com . <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld ' https://[domain]. mijn. Sales Force. com ' op. |No |
-| gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Yes |
-| wachtwoord |Geef een wacht woord op voor het gebruikers account. |Yes |
-| Security |Geef een beveiligings token op voor het gebruikers account. Zie [beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) voor instructies over het opnieuw instellen/ophalen van een beveiligings token. Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. |Yes |
+| type |De eigenschap type moet worden ingesteld op: **Sales Force**. |Ja |
+| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br><br> -Standaard is ' https: \/ /login.salesforce.com '. <br> -Geef "" op om gegevens uit de sandbox te kopiëren https://test.salesforce.com . <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld ' https://[domain]. mijn. Sales Force. com ' op. |Nee |
+| gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Ja |
+| wachtwoord |Geef een wacht woord op voor het gebruikers account. |Ja |
+| Security |Geef een beveiligings token op voor het gebruikers account. Zie [beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) voor instructies over het opnieuw instellen/ophalen van een beveiligings token. Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
@@ -199,7 +199,7 @@ Als u **extern** instelt op **True** , informeert de Data Factory-service dat de
 
 ![Data Factory-Sales Force-verbinding-API-naam](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
-**Azure Blob-uitvoer gegevensset**
+**De Azure Blob-uitvoergegevensset**
 
 Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1).
 
@@ -286,16 +286,16 @@ Zie [Eigenschappen van het type RelationalSource](#copy-activity-properties) voo
 | Sales Force-type | . Op het netwerk gebaseerd type |
 | --- | --- |
 | Automatisch nummer |Tekenreeks |
-| Checkbox |Boolean-waarde |
-| Valuta |Decimal |
+| Checkbox |Booleaans |
+| Valuta |Decimaal |
 | Date |DateTime |
 | Datum en tijd |DateTime |
 | E-mail |Tekenreeks |
 | Id |Tekenreeks |
 | Opzoek relatie |Tekenreeks |
 | Meervoudige selectie lijst |Tekenreeks |
-| Aantal |Decimal |
-| Percentage |Decimal |
+| Getal |Decimaal |
+| Percentage |Decimaal |
 | Telefoon |Tekenreeks |
 | Picklist |Tekenreeks |
 | Tekst |Tekenreeks |

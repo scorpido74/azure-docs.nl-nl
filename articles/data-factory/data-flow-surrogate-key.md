@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81606297"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Surrogaat sleutel transformatie bij toewijzing van gegevens stroom 
@@ -41,7 +41,7 @@ Als u de sleutel waarde met het vorige maximum wilt seeden, zijn er twee methode
 
 #### <a name="database-sources"></a>Database bronnen
 
-Gebruik een SQL-query optie om MAX () te selecteren in de bron. Bijvoorbeeld:`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+Gebruik een SQL-query optie om MAX () te selecteren in de bron. Bijvoorbeeld: `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![Surrogaat sleutel query](media/data-flow/sk002.png "Query voor surrogaat sleutel transformatie")
 

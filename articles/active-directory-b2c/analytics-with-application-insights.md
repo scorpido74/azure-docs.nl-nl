@@ -12,10 +12,10 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385974"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Gebruikers gedrag bijhouden in Azure Active Directory B2C met behulp van Application Insights
@@ -43,14 +43,14 @@ Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.
 
 Wanneer u Application Insights met Azure AD B2C gebruikt, hoeft u alleen maar een resource te maken en de instrumentatie sleutel op te halen. Zie [een Application Insights resource maken](../azure-monitor/app/create-new-resource.md) voor meer informatie
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure-abonnement gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw abonnement bevat. Deze Tenant is niet uw Azure AD B2C-Tenant.
 3. Kies **een resource maken** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **Application Insights**.
-4. Klik op **Create**.
+4. Klik op **Maken**.
 5. Voer een **naam** in voor de resource.
 6. Selecteer voor **toepassings Type** **ASP.NET-webtoepassing**.
 7. Voor **resource groep**selecteert u een bestaande groep of voert u een naam in voor een nieuwe groep.
-8. Klik op **Create**.
+8. Klik op **Maken**.
 4. Nadat u de Application Insights resource hebt gemaakt, opent u deze, vouwt u de **essentiële**elementen uit en kopieert u de instrumentatie sleutel.
 
 ![Application Insights overzicht en instrumentatie sleutel](./media/analytics-with-application-insights/app-insights.png)
@@ -106,7 +106,7 @@ Technische profielen kunnen worden beschouwd als functies in het Framework voor 
 
 | Technisch profiel | Taak |
 | ----------------- | -----|
-| AppInsights-algemeen | De algemene set para meters die moeten worden opgenomen in alle technische profielen van Azure Insights. |
+| AppInsights-Common | De algemene set para meters die moeten worden opgenomen in alle technische profielen van Azure Insights. |
 | AppInsights-SignInRequest | Registreert een `SignInRequest` gebeurtenis met een set claims wanneer een aanmeldings aanvraag is ontvangen. |
 | AppInsights-UserSignUp | Registreert een `UserSignUp` gebeurtenis wanneer de gebruiker de registratie optie activeert in een traject voor registreren/aanmelden. |
 | AppInsights-SignInComplete | Registreert een `SignInComplete` gebeurtenis wanneer een verificatie is voltooid, wanneer er een token naar de Relying Party-toepassing is verzonden. |
@@ -223,11 +223,11 @@ Sla het *TrustFrameworkExtensions.xml* bestand op en upload het. Roep vervolgens
 2. Selecteer **gebruiks**  >  **gebeurtenissen**.
 3. Stel **in** op **vorig uur** en **met** **3 minuten**.  Mogelijk moet u **vernieuwen** selecteren om de resultaten weer te geven.
 
-![Application Insights gebruik: gebeurtenissen blase](./media/analytics-with-application-insights/app-ins-graphic.png)
+![Application Insights USAGE-Events blase](./media/analytics-with-application-insights/app-ins-graphic.png)
 
 ## <a name="optional-collect-more-data"></a>Beschrijving Meer gegevens verzamelen
 
-Voeg claim typen en gebeurtenissen toe aan uw gebruikers traject, zodat deze aan uw behoeften voldoen. U kunt [claim resolvers](claim-resolver-overview.md) of een teken reeks claim type gebruiken, de claims toevoegen door een **invoer claim** element toe te voegen aan de Application Insights gebeurtenis of aan het AppInsights-algemeen technische profiel.
+Voeg claim typen en gebeurtenissen toe aan uw gebruikers traject, zodat deze aan uw behoeften voldoen. U kunt [claim resolvers](claim-resolver-overview.md) of een teken reeks claim type gebruiken, de claims toevoegen door een **invoer claim** element toe te voegen aan de Application Insights gebeurtenis of aan het technische profiel van AppInsights-Common.
 
 - **ClaimTypeReferenceId** is de verwijzing naar een claim type.
 - **PartnerClaimType** is de naam van de eigenschap die wordt weer gegeven in azure Insights. Gebruik de syntaxis van `{property:NAME}` , waarbij de `NAME` eigenschap wordt toegevoegd aan de gebeurtenis.

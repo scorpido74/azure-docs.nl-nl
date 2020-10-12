@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132038"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
@@ -131,7 +131,7 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 **Oplossing:** Als deze fout wordt weer gegeven, voert u de volgende stappen uit:
 
-1.  Controleer of u verbinding kunt maken met de back-endserver op de poort die wordt vermeld in de HTTP-instellingen met behulp van een browser of Power shell. Voer bijvoorbeeld de volgende opdracht uit:`Test-NetConnection -ComputerName
+1.  Controleer of u verbinding kunt maken met de back-endserver op de poort die wordt vermeld in de HTTP-instellingen met behulp van een browser of Power shell. Voer bijvoorbeeld de volgende opdracht uit: `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  Als de vermelde poort niet de gewenste poort is, voert u het juiste poort nummer in voor Application Gateway verbinding maken met de back-end-server
