@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
 ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982988"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Gids voor probleem oplossing van Azure IoT connector voor FHIR (preview)
@@ -33,12 +33,12 @@ In deze sectie vindt u meer informatie over het validatie proces dat door Azure 
 
 |Element|Vereist|
 |:-------|:------|
-|TypeName|Waar|
-|TypeMatchExpression|Waar|
-|DeviceIdExpression|Waar|
-|TimestampExpression|Waar|
-|Values []. ValueName|Waar|
-|Values []. ValueExpression|Waar|
+|TypeName|True|
+|TypeMatchExpression|True|
+|DeviceIdExpression|True|
+|TimestampExpression|True|
+|Values []. ValueName|True|
+|Values []. ValueExpression|True|
 
 > [!NOTE]
 > Values []. Waardenaam en waarden []. ValueExpression
@@ -49,7 +49,7 @@ In deze sectie vindt u meer informatie over het validatie proces dat door Azure 
 
 |Element|Vereist|
 |:------|:-------|
-|TypeName|Waar|
+|TypeName|True|
 
 > [!NOTE]
 > Dit is het enige vereiste FHIR-toewijzings element dat op dit moment is gevalideerd.
@@ -99,18 +99,18 @@ Het toewijzings bestand moet worden voorzien van de technische ondersteuning van
 
 2. Selecteer de **connector** waarmee u de JSON van de conversie toewijzing wilt kopiëren.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Connector1" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > Dit proces kan ook worden gebruikt voor het kopiëren en opslaan van de inhoud van de JSON **FHIR-toewijzing configureren** .
 
 3. Selecteer **apparaattoewijzing configureren**.
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Connector3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. Selecteer de inhoud van de JSON en voer een Kopieer bewerking uit (bijvoorbeeld: Selecteer CTRL + c). 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-Connector4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. Maak een plak bewerking (bijvoorbeeld: Selecteer CTRL + v) in een nieuw bestand binnen een editor (bijvoorbeeld Visual Studio code, Klad blok) en sla het bestand op met de extensie *. json.
 

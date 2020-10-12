@@ -11,10 +11,10 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075950"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Problemen met latentie oplossen met behulp van logboeken voor Opslaganalyse
@@ -87,11 +87,11 @@ De volgende stappen laten zien hoe u latentie problemen kunt identificeren en op
 
    End-to-end-latentie wordt berekend met behulp van de volgende vergelijking:
 
-   * End-to-end latentie = server-latentie + client latentie
+   * End-to-end latentie = Server-Latency + client latentie
 
    De latentie van de client berekenen met behulp van de logboek vermelding:
 
-   * Client latentie = end-to-end latentie – server latentie
+   * Client latentie = end-to-end latentie – Server-Latency
 
         Voor beeld: 8453 – 391 = 8062ms
 
@@ -111,10 +111,10 @@ De volgende stappen laten zien hoe u latentie problemen kunt identificeren en op
 Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
 * End-to-end-latentie
-* Server-latentie
-* Client-latentie
+* Server-Latency
+* Client-Latency
 
-In een **GetBlob-bewerking** met **RequestStatus = geslaagd**, **wordt met** deze waarde aangegeven **Client-Latency**dat Azure Storage een grote hoeveelheid tijd besteedt aan het schrijven van gegevens naar de client. Deze vertraging duidt op een probleem aan de client zijde.
+In een **GetBlob-bewerking** met **RequestStatus = geslaagd**, **wordt met** deze waarde aangegeven **Client-Latency**dat Azure Storage een grote hoeveelheid tijd besteedt aan het schrijven van gegevens naar de client. Deze vertraging duidt op een Client-Side probleem.
 
 **Advies**
 
@@ -126,8 +126,8 @@ In een **GetBlob-bewerking** met **RequestStatus = geslaagd**, **wordt met** dez
 Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
 * End-to-end-latentie
-* Server-latentie
-* Client-latentie
+* Server-Latency
+* Client-Latency
 
 In een **GetBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError**, als de **maximale tijd** wordt besteed aan **client latentie**, is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
 
@@ -141,10 +141,10 @@ In een **GetBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError**, als de 
 Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
 * End-to-end-latentie
-* Server-latentie
-* Client-latentie
+* Server-Latency
+* Client-Latency
 
-In een **put-bewerking** met **RequestStatus = geslaagd**, als de **maximale tijd** wordt besteed aan de **client latentie**, geeft dit aan dat de client meer tijd neemt om gegevens te verzenden naar de Azure Storage. Deze vertraging duidt op een probleem aan de client zijde.
+In een **put-bewerking** met **RequestStatus = geslaagd**, als de **maximale tijd** wordt besteed aan de **client latentie**, geeft dit aan dat de client meer tijd neemt om gegevens te verzenden naar de Azure Storage. Deze vertraging duidt op een Client-Side probleem.
 
 **Advies**
 
@@ -156,8 +156,8 @@ In een **put-bewerking** met **RequestStatus = geslaagd**, als de **maximale tij
 Controleer de volgende waarden zoals vermeld in stap 5 van de sectie ' aanbevolen stappen ':
 
 * End-to-end-latentie
-* Server-latentie
-* Client-latentie
+* Server-Latency
+* Client-Latency
 
 In een **PutBlob-bewerking** met **REQUESTSTATUS = (SAS) NetworkError**, als de **maximale tijd** wordt besteed aan **client latentie**, is het meest voorkomende probleem dat de client de verbinding verbreekt voordat een time-out in de opslag service verloopt.
 

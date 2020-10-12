@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90980681"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Overzicht van Threat Modeling Tool-functies
@@ -54,7 +54,7 @@ De symbolen zijn snelkoppelingen voor de menu's op het hoogste niveau:
 | --------------------------------------- | ------------ |
 | **Openen** | Hiermee opent u een nieuw bestand. |
 | **Opslaan** | Hiermee slaat u het huidige bestand. |
-| **Ontwerpen** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
+| **Ontwerp** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
 | **Analyseren** | Toont gegenereerde bedreigingen en hun eigenschappen. |
 | **Diagram toevoegen** | Hiermee voegt u een nieuw diagram toe (vergelijkbaar met nieuwe tabbladen in Excel). |
 | **Diagram verwijderen** | Hiermee verwijdert u het huidige diagram. |
@@ -84,7 +84,7 @@ Op basis van de sjabloon die u selecteert, vindt u alle beschik bare stencils di
 | **Proces** | Toepassingen, invoeg toepassingen voor browsers, threads, virtuele machines |
 | **Externe interactie** | Verificatie providers, browsers, gebruikers, webtoepassingen |
 | **Gegevensarchief** | Cache, opslag, configuratie bestanden, data bases, REGI ster |
-| **Gegevensstroom** | Binary, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, named pipe, RPC/DCOM, SMB, UDP |
+| **Gegevens stroom** | Binary, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, named pipe, RPC/DCOM, SMB, UDP |
 | **Grens lijn/rand vertrouwen** | Bedrijfs netwerken, Internet, computer, sandbox, gebruikers-en kernelmodus-modus |
 
 ### <a name="notesmessages"></a>Opmerkingen/berichten

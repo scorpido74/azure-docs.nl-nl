@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88652845"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Mainframe-opslag verplaatsen naar Azure
@@ -97,8 +97,8 @@ Ssd's bieden de hoogste opslag prestaties op Azure. De volgende opties zijn besc
 | Type         | Grootte           | IOPS                  |
 |--------------|----------------|-----------------------|
 | Ultra - SSD    | 4 GB tot 64 TB  | 1.200 tot 160.000 IOPS |
-| Premium - SSD  | 32 GB tot 32 TB | 12 tot 15.000 IOPS     |
-| Standard - SSD | 32 GB tot 32 TB | 12 tot 2.000 IOPS      |
+| Premium SSD  | 32 GB tot 32 TB | 12 tot 15.000 IOPS     |
+| Standard SSD | 32 GB tot 32 TB | 12 tot 2.000 IOPS      |
 
 Blob-opslag biedt de grootste hoeveelheid opslag ruimte op Azure. Naast de opslag grootte biedt Azure zowel beheerde als onbeheerde opslag. Met beheerde opslag neemt Azure zorg voor het beheren van de onderliggende opslag accounts. Met niet-beheerde opslag neemt de gebruiker verantwoordelijk voor het instellen van Azure-opslag accounts van de juiste grootte om te voldoen aan de opslag vereisten.
 

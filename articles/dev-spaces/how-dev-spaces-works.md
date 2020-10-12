@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981278"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Hoe Azure Dev Spaces werkt
@@ -22,7 +22,7 @@ Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing
 
 Azure dev Spaces vermindert de inspanningen voor het ontwikkelen, testen en herhalen van uw Kubernetes-toepassing in de context van uw AKS-cluster. Met deze reductie in inspanningen kunnen ontwikkel aars zich richten op de bedrijfs logica van hun toepassingen en hun services niet configureren om te worden uitgevoerd in Kubernetes.
 
-### <a name="bridge-to-kubernetes"></a>Brug naar Kubernetes
+### <a name="bridge-to-kubernetes"></a>Bridge to Kubernetes
 
 Met Bridge to Kubernetes kunt u uw ontwikkel computer verbinden met uw Kubernetes-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Brug naar Kubernetes omleidt verkeer tussen uw verbonden cluster door een pod uit te voeren op uw cluster dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en services die in uw cluster worden uitgevoerd, communiceren alsof ze zich in hetzelfde cluster bevonden. Zie [hoe Bridge to Kubernetes werkt][how-it-works-bridge-to-kubernetes]voor meer informatie over het verbinden van uw ontwikkel computer met een Kubernetes-cluster.
 

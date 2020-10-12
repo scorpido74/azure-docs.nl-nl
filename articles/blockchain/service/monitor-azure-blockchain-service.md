@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076918"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>De Azure Block Chain-Service bewaken via Azure Monitor  
@@ -36,7 +36,7 @@ Wanneer u een diagnostische instelling maakt, geeft u op welke categorieën logb
 
 **Block Chain-proxy logboeken** : Selecteer de categorie als u de NGNIX-proxy logboeken wilt bewaken. Alle details van de klant transacties zijn beschikbaar voor het doel van de controle en de fout opsporing.  
 
-**Block Chain-toepassings logboeken** : Selecteer de categorie om logboeken op te halen van de Block Chain-toepassing die door de beheerde service wordt gehost. Bijvoorbeeld: voor een ABS-quorum lid zijn deze logboeken de logboeken van quorum zelf.  
+**Block Chain-toepassings logboeken** : Selecteer de categorie om logboeken op te halen van de Block Chain-toepassing die door de beheerde service wordt gehost. Bijvoorbeeld: voor een ABS-Quorum-lid zijn deze logboeken de logboeken van quorum zelf.  
 
 **Metrische aanvragen**: Selecteer de optie voor het verzamelen van metrische gegevens van Azure Cosmos DB naar de doelen in de diagnostische instelling, die automatisch wordt verzameld in de metrische waarden van Azure. Verzamelen van metrische gegevens met resource logboeken voor het analyseren van beide soorten gegevens en het verzenden van metrische gegevens buiten Azure Monitor.
 
@@ -134,8 +134,8 @@ De volgende tabel bevat de lijst met block Chain-metrische gegevens die worden v
 | Naam van meetwaarde | Eenheid  |  Aggregatietype| Beschrijving   |
 |---|---|---|---|
 | Trans acties in behandeling   | Aantal  |  Average | Het aantal trans acties dat wacht om te worden ook niet gebruikt.   |
-| Verwerkte blokken   | Aantal  | Som  |  Het aantal blokken dat in elk tijds interval wordt verwerkt. Op dit moment is de blok grootte 5 seconden. in een minuut worden 12 blokken en 60 blokken in vijf minuten in elk knoop punt verwerkt.   |
-|Verwerkte trans acties    | Aantal  | Som  | Het aantal trans acties dat in een blok is verwerkt.    |
+| Verwerkte blokken   | Aantal  | Sum  |  Het aantal blokken dat in elk tijds interval wordt verwerkt. Op dit moment is de blok grootte 5 seconden. in een minuut worden 12 blokken en 60 blokken in vijf minuten in elk knoop punt verwerkt.   |
+|Verwerkte trans acties    | Aantal  | Sum  | Het aantal trans acties dat in een blok is verwerkt.    |
 |Trans acties in de wachtrij    |  Aantal | Average  | Het aantal trans acties dat niet direct kan worden ook niet gebruikt. Het kan zijn dat ze niet in de juiste volg orde zijn aangekomen en dat de volgende trans actie in de toekomst wordt gewacht. Het kan ook zijn dat twee trans acties hetzelfde nummer hebben als één keer (nonce) en dezelfde aardgas waarde, dus de tweede kan niet ook niet gebruikt zijn.   |
 
 ### <a name="connection-metrics"></a>Verbindings gegevens  
@@ -145,10 +145,10 @@ De volgende tabel geeft een lijst van de verschillende metrische verbindings geg
 
 | Naam van meetwaarde | Eenheid  |  Aggregatietype| Beschrijving |
 |---|---|---|---|
-| Geaccepteerde verbindingen   | Aantal  |  Som | Het totale aantal geaccepteerde client verbindingen.   |
+| Geaccepteerde verbindingen   | Aantal  |  Sum | Het totale aantal geaccepteerde client verbindingen.   |
 | Actieve verbindingen  | Aantal  | Average  |  Het huidige aantal actieve client verbindingen, inclusief wachtende verbindingen.    |
-|Afgehandelde verbindingen    | Aantal  | Som  | Het totale aantal verwerkte verbindingen. Over het algemeen is de parameter waarde hetzelfde als geaccepteerde verbindingen, tenzij sommige resource limieten zijn bereikt.     |
-|Verwerkte aanvragen     |  Aantal | Som  | Het totale aantal client aanvragen.  |
+|Afgehandelde verbindingen    | Aantal  | Sum  | Het totale aantal verwerkte verbindingen. Over het algemeen is de parameter waarde hetzelfde als geaccepteerde verbindingen, tenzij sommige resource limieten zijn bereikt.     |
+|Verwerkte aanvragen     |  Aantal | Sum  | Het totale aantal client aanvragen.  |
 
 
 ### <a name="performance-metrics"></a>Metrische gegevens voor prestaties
@@ -158,9 +158,9 @@ De volgende tabel bevat de prestatie gegevens die worden verzameld voor elk van 
 
 | Naam van meetwaarde | Eenheid  |  Aggregatietype| Beschrijving   |
 |---|---|---|---|
-| Percentage CPU-gebruik   | Percentage  |  Max | Het percentage van het CPU-gebruik.     |
-| I/o gelezen bytes   | Kilo bytes   | Som  |  De som van i/o-Lees bewerkingen op alle knoop punten van de Block chain.      |
-|I/o-schrijf bytes     | Kilo bytes   | Som  | De som van i/o-schrijf bewerkingen op alle knoop punten van de Block chain.     |
+| Percentage CPU-gebruik   | Percentage  |  Max. | Het percentage van het CPU-gebruik.     |
+| I/o gelezen bytes   | Kilo bytes   | Sum  |  De som van i/o-Lees bewerkingen op alle knoop punten van de Block chain.      |
+|I/o-schrijf bytes     | Kilo bytes   | Sum  | De som van i/o-schrijf bewerkingen op alle knoop punten van de Block chain.     |
 |Geheugen limiet       |  Gigabytes   | Average    | Maxi maal beschikbaar geheugen voor het block chain-proces per knoop punt. |
 |Geheugengebruik     | Gigabytes  |  Average | De hoeveelheid geheugen die gemiddeld op alle knoop punten wordt gebruikt.  |
 | Percentage geheugen gebruik     | Percentage   | Average  |  Het percentage van het geheugen dat gemiddeld op alle knoop punten wordt gebruikt.       |

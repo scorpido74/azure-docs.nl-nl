@@ -4,17 +4,17 @@ description: Hierin worden aanbevolen benaderingen beschreven voor het ontwerpen
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87809252"
 ---
 # <a name="arm-template-best-practices"></a>Aanbevolen procedures voor ARM-sjablonen
 
 Dit artikel laat u zien hoe u aanbevolen procedures kunt gebruiken bij het maken van uw ARM-sjabloon. Met deze aanbevelingen kunt u veelvoorkomende problemen voor komen wanneer u een ARM-sjabloon gebruikt om een oplossing te implementeren.
 
-## <a name="template-limits"></a>Sjabloon limieten
+## <a name="template-limits"></a>Limieten voor sjablonen
 
 Beperk de grootte van uw sjabloon tot 4 MB en elk parameter bestand tot 64 KB. De limiet van 4 MB is van toepassing op de uiteindelijke status van de sjabloon nadat deze is uitgebreid met iteratieve resource definities en waarden voor variabelen en para meters.
 
@@ -26,7 +26,7 @@ U bent ook beperkt tot:
 * 64 uitvoer waarden
 * 24.576 tekens in een sjabloon expressie
 
-U kunt enkele sjabloon limieten overschrijden met behulp van een geneste sjabloon. Zie voor meer informatie [gekoppelde sjablonen gebruiken bij het implementeren van Azure-resources](linked-templates.md). Als u het aantal para meters, variabelen of uitvoer wilt reduceren, kunt u verschillende waarden combi neren in een-object. Zie [objecten als para meters](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)voor meer informatie.
+U kunt enkele limieten voor sjablonen overschrijden met behulp van een geneste sjabloon. Zie voor meer informatie [gekoppelde sjablonen gebruiken bij het implementeren van Azure-resources](linked-templates.md). Als u het aantal parameters, variabelen of uitvoerwaarden wilt verkleinen, kunt u verschillende waarden combineren in een object. Raadpleeg [Objects as parameters](/azure/architecture/building-blocks/extending-templates/objects-as-parameters) (Objecten als parameters) voor meer informatie.
 
 ## <a name="resource-group"></a>Resourcegroep
 
@@ -44,7 +44,7 @@ De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](templat
 
 * Gebruik Camel-Case voor parameter namen.
 
-* Gebruik para meters voor instellingen die variëren afhankelijk van de omgeving, zoals SKU, grootte of capaciteit.
+* Gebruik parameters voor instellingen die variëren afhankelijk van de omgeving, zoals SKU, grootte en capaciteit.
 
 * Gebruik para meters voor resource namen die u voor eenvoudige identificatie wilt opgeven.
 

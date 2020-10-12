@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111980"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Gegevens verzamelen van verzamelde op Linux-agents in Azure Monitor
@@ -54,7 +54,7 @@ De verzamelde-configuratie maakt gebruik van de standaard- `write_http` invoeg t
 > [!NOTE]
 > Deze poort kan zo nodig worden geconfigureerd voor een aangepaste poort.
 
-De Log Analytics-agent voor Linux luistert ook naar poort 26000 voor metrische gegevens over verzamelde en converteert deze vervolgens naar Azure Monitor schema-metrische gegevens. Hieronder vindt u de configuratie van de Log Analytics-agent voor Linux `collectd.conf` .
+De Log Analytics-agent voor Linux luistert ook naar poort 26000 voor metrische gegevens over verzamelde en converteert deze vervolgens naar Azure Monitor schema-metrische gegevens. Hieronder vindt u de configuratie van de Log Analytics-agent voor Linux  `collectd.conf` .
 
 ```xml
 <source>

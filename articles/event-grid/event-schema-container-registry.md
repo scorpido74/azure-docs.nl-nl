@@ -4,10 +4,10 @@ description: Hierin worden de eigenschappen beschreven die worden gegeven voor C
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113714"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry als Event Grid bron
@@ -20,7 +20,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Container Registry ge
 
 Azure Container Registry worden de volgende gebeurtenis typen meeverzonden:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. ContainerRegistry. ImagePushed | Deze gebeurtenis treedt op wanneer een afbeelding wordt gepusht. |
 | Micro soft. ContainerRegistry. ImageDeleted | Deze gebeurtenis treedt op wanneer een afbeelding wordt verwijderd. |
@@ -152,10 +152,10 @@ Het schema voor een verwijderde grafiek gebeurtenis is vergelijkbaar met het sch
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
@@ -165,17 +165,17 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | id | tekenreeks | De gebeurtenis-ID. |
 | tijdstempel | tekenreeks | Het tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
-| action | tekenreeks | De actie die de gegeven gebeurtenis omvat. |
+| actie | tekenreeks | De actie die de gegeven gebeurtenis omvat. |
 | stemming | object | Het doel van de gebeurtenis. |
 | schot | object | De aanvraag die de gebeurtenis heeft gegenereerd. |
 
 Het doel object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | Type | tekenreeks | Het MIME-type van het object waarnaar wordt verwezen. |
 | grootte | geheel getal | Het aantal bytes van de inhoud. Gelijk aan het veld lengte. |
@@ -188,7 +188,7 @@ Het doel object heeft de volgende eigenschappen:
 
 Het object Request heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | id | tekenreeks | De ID van de aanvraag die de gebeurtenis heeft gestart. |
 | addr | tekenreeks | Het IP-adres of de hostnaam en mogelijk poort van de client verbinding die de gebeurtenis heeft gestart. Deze waarde is de RemoteAddr van de standaard-HTTP-aanvraag. |
@@ -204,5 +204,5 @@ Het object Request heeft de volgende eigenschappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Wat is Event Grid?](overview.md) voor een inleiding tot Azure Event Grid.
 * Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.
