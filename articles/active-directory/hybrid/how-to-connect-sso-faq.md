@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: naadloze eenmalige aanmelding-Veelgestelde vragen | Microsoft Docs'
+title: 'Azure AD Connect: naadloze enkelvoudige Sign-On-Veelgestelde vragen | Microsoft Docs'
 description: Antwoorden op veelgestelde vragen over Azure Active Directory naadloze eenmalige aanmelding.
 services: active-directory
 keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658346"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory naadloze eenmalige aanmelding: veelgestelde vragen
 
-In dit artikel adresseren we veelgestelde vragen over Azure Active Directory naadloze eenmalige aanmelding (naadloze SSO). Blijf op de hoogte van nieuwe inhoud.
+In dit artikel sturen we veelgestelde vragen over Azure Active Directory naadloze single Sign-On (naadloze SSO). Blijf op de hoogte van nieuwe inhoud.
 
 **V: welke aanmeldings methoden maken naadloze SSO mogelijk met**
 

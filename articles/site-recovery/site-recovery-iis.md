@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083766"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Herstel na nood geval instellen voor een IIS-webtoepassing met meerdere lagen
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Herstel na noodgeval instellen voor een IIS-webtoepassing met meerdere lagen
 
 Toepassings software is de bedrijfs productiviteit in een organisatie. Verschillende webtoepassingen kunnen verschillende doel einden hebben in een organisatie. Sommige toepassingen, zoals toepassingen die worden gebruikt voor salaris verwerking, financiële toepassingen en klant gerichte websites, kunnen van cruciaal belang zijn voor een organisatie. Om het verlies van productiviteit te voor komen, is het belang rijk dat de organisatie deze toepassingen continu actief en werkend uitvoert. Belang rijker is dat deze toepassingen consistent kunnen worden voor komen dat het merk of de installatie kopie van de organisatie wordt beschadigd.
 
@@ -62,8 +62,8 @@ Scenario | Op een secundaire site | In Azure
 --- | --- | ---
 Hyper-V | Ja | Ja
 VMware | Ja | Ja
-Fysieke server | Nee | Yes
-Azure|N.v.t.|Yes
+Fysieke server | Nee | Ja
+Azure|N.v.t.|Ja
 
 ## <a name="replicate-virtual-machines"></a>Virtuele machines repliceren
 

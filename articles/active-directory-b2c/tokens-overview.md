@@ -11,10 +11,10 @@ ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89258432"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
@@ -50,7 +50,7 @@ De claims in ID-tokens worden niet in een bepaalde volg orde geretourneerd. Nieu
 
 De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-tokens en toegangs tokens die zijn uitgegeven door Azure AD B2C.
 
-| Name | Claim | Voorbeeldwaarde | Beschrijving |
+| Naam | Claim | Voorbeeldwaarde | Beschrijving |
 | ---- | ----- | ------------- | ----------- |
 | Doelgroep | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identificeert de beoogde ontvanger van het token. Voor Azure AD B2C is de doel groep de toepassings-ID. Uw toepassing moet deze waarde valideren en het token afwijzen als het niet overeenkomt. De doel groep is synoniemen met resources. |
 | Verlener | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identificeert de Security Token Service (STS) die het token bouwt en retourneert. Ook wordt de map geïdentificeerd waarin de gebruiker is geverifieerd. Uw toepassing moet de Issuer claim valideren om er zeker van te zijn dat het token afkomstig is van het juiste eind punt. |
@@ -68,7 +68,7 @@ De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-toke
 | Bereik | `scp` | `Read`| De machtigingen die zijn verleend aan de resource voor een toegangs token. Meerdere verleende machtigingen worden gescheiden door een spatie. |
 | Gemachtigde partij | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | De **toepassings-id** van de client toepassing die de aanvraag heeft gestart. |
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 De volgende eigenschappen worden gebruikt voor het [beheren van de levens duur van beveiligings tokens](configure-tokens.md) die worden gegenereerd door Azure AD B2C:
 

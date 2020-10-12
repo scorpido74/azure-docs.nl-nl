@@ -4,10 +4,10 @@ description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behu
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890090"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (vorige versies)
@@ -100,7 +100,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
 Volg deze stappen om het offline back-upcertificaat hand matig te uploaden naar een eerder gemaakte Azure Active Directory toepassing die bedoeld is voor offline back-ups.
 
 1. Meld u aan bij Azure Portal.
-1. Ga naar **Azure Active Directory**  >  **app-registraties**.
+1. Ga naar **Azure Active Directory** > **App-registraties**.
 1. Zoek op het tabblad **toepassingen in eigendom** een toepassing met de indeling van de weergave naam `AzureOfflineBackup _<Azure User Id` .
 
     ![Zoek naar de toepassing op het tabblad toepassingen in eigendom](./media/offline-backup-dpm-mabs-previous-versions/owned-applications.png)
@@ -115,7 +115,7 @@ Volg deze stappen om het offline back-upcertificaat hand matig te uploaden naar 
     ![Het certificaat uploaden](./media/offline-backup-dpm-mabs-previous-versions/upload-certificate.png)
 
 1. Open het REGI ster op de server door in het venster uitvoeren **regedit** in te voeren.
-1. Ga naar de register vermelding *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*.
+1. Ga naar de register vermelding *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*.
 1. Klik met de rechter muisknop op **CloudBackupProvider**en voeg een nieuwe teken reeks waarde toe met de naam `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]

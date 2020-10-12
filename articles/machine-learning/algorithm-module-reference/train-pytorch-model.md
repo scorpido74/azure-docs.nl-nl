@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439086"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-model trainen
@@ -71,10 +71,10 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 | Epoches        | >0               | Geheel getal | 5       | Selecteer de kolom die de kolom Label of het resultaat bevat |
 | Batchgrootte    | >0               | Geheel getal | 16      | Het aantal exemplaren dat in een batch moet worden getraind   |
 | Leersnelheid | >= double. Letter | Float   | 0,001   | Het eerste leer tempo voor de stochastische Gradient Daal Optimizer. |
-| Wille keurige Seed   | Elk              | Geheel getal | 1       | Het Seed voor de generator voor wille keurige getallen die wordt gebruikt door het model. |
+| Wille keurige Seed   | Alle              | Geheel getal | 1       | Het Seed voor de generator voor wille keurige getallen die wordt gebruikt door het model. |
 | Geduld      | >0               | Geheel getal | 3       | Het aantal epochen naar een vroege stop-training   |
 
-###  <a name="outputs"></a>Uitvoer  
+###  <a name="outputs"></a>Uitvoerwaarden  
 
 | Naam          | Type           | Beschrijving   |
 | ------------- | -------------- | ------------- |

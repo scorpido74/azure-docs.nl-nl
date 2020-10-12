@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165818"
 ---
 # <a name="using-web-browsers-msalnet"></a>Webbrowsers (MSAL.NET) gebruiken
@@ -41,7 +41,7 @@ Het is belang rijk om te begrijpen dat bij het interactief ophalen van een token
 
 MSAL.NET is een multi Framework-bibliotheek en heeft Framework-specifieke code voor het hosten van een browser in een besturings element in de gebruikers interface (bijvoorbeeld op de klassieke versie van .NET maakt gebruik van WinForms, op Xamarin wordt gebruikgemaakt van systeem eigen mobiele besturings elementen, enzovoort). Dit besturings element wordt de `embedded` Web-UI genoemd. Daarnaast kunt u met MSAL.NET ook de besturingssysteem browser starten.
 
-Over het algemeen is het raadzaam om de standaard waarde van het platform te gebruiken. Dit is doorgaans de systeem browser. De systeem browser is beter dan de gebruikers die zich hebben aangemeld. Als u dit gedrag moet wijzigen, gebruikt u`WithUseEmbeddedWebView(bool)`
+Over het algemeen is het raadzaam om de standaard waarde van het platform te gebruiken. Dit is doorgaans de systeem browser. De systeem browser is beter dan de gebruikers die zich hebben aangemeld. Als u dit gedrag moet wijzigen, gebruikt u `WithUseEmbeddedWebView(bool)`
 
 ### <a name="at-a-glance"></a>In één oogopslag
 

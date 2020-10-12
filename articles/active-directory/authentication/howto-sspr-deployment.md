@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657221"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Een Azure Active Directory self-service voor het opnieuw instellen van wacht woorden plannen
@@ -154,14 +154,14 @@ De volgende instellingen zijn vereist om SSPR samen met aanbevolen waarden in te
 | **SSPR-eigenschappen** | Self-service voor wacht woord opnieuw instellen is ingeschakeld | **Geselecteerde** groep voor pilot/ **all** voor productie |
 | **Verificatiemethoden** | Verificatie methoden die nodig zijn om te registreren | Altijd 1 meer dan vereist voor opnieuw instellen |
 |   | Verificatie methoden die nodig zijn om opnieuw in te stellen | Een of twee |
-| **Registratie** | Vereisen dat gebruiker zich bij aanmelding registreren | Yes |
+| **Registratie** | Vereisen dat gebruiker zich bij aanmelding registreren | Ja |
 |   | Het aantal dagen waarna gebruikers wordt gevraagd om de verificatiegegevens opnieuw te bevestigen | 90 – 180 dagen |
-| **Meldingen** | Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord | Yes |
-|   | Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen | Yes |
-| **Aanpassing** | Help Desk-koppeling aanpassen | Yes |
+| **Meldingen** | Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord | Ja |
+|   | Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen | Ja |
+| **Aanpassing** | Help Desk-koppeling aanpassen | Ja |
 |   | Aangepaste e-mail adres of URL voor de Help Desk | Ondersteunings site of e-mail adres |
-| **On-premises integratie** | Wacht woorden terugschrijven naar on-premises AD | Yes |
-|   | Gebruikers toestaan om het account te ontgrendelen zonder het wacht woord opnieuw in te stellen | Yes |
+| **On-premises integratie** | Wacht woorden terugschrijven naar on-premises AD | Ja |
+|   | Gebruikers toestaan om het account te ontgrendelen zonder het wacht woord opnieuw in te stellen | Ja |
 
 ### <a name="sspr-properties"></a>SSPR-eigenschappen
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: aahi
 ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936728"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Instructies: een grafiek met metrische gegevens maken om gerelateerde metrische gegevens te analyseren
@@ -35,7 +35,7 @@ Vervolgens moet u een ander knoop punt toevoegen en een relatie met een bestaand
 
 Klik op **relatie toevoegen**en u kunt een andere metriek kiezen en het relatie type tussen de twee knoop punten opgeven. U kunt ook specifieke dimensie filters toep assen. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Een knoop punt en relatie toevoegen":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Metrische waarde selecteren":::
 
 Nadat u de bovenstaande stappen hebt herhaald, hebt u een grafiek met metrische gegevens waarin de relaties tussen alle gerelateerde metrische gegevens worden beschreven.
 **Hint op knooppunt kleuren**
@@ -50,7 +50,7 @@ Wanneer de grafiek metrische gegevens wordt gemaakt en er een afwijkende waarde 
 
 Klik in het diagram op een incident en schuif omlaag naar de **analyse van metrische**gegevens, onder de diagnostische gegevens.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Gerelateerde metrische gegevens en afwijkingen weer geven":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Metrische waarde selecteren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

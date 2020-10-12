@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051165"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
@@ -155,7 +155,7 @@ A. U kunt in de Azure Portal naar uw Data Box-bestelling gaan en dan **Overzicht
 A.  Data Box heeft een bruikbare opslagcapaciteit van 80 TB. U kunt een Data Box-apparaat gebruiken voor gegevens met een grootte van 40 tot 80 TB. Voor grotere hoeveelheden gegevens tot 500 TB kunt u meerdere Data Box-apparaten bestellen. Meld u aan voor Data Box Heavy voor gegevens die groter zijn dan 500 TB.  
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box"></a>V. Wat zijn de maximale groottes voor blok-blob en pagina-blob die voor Data Box worden ondersteund? 
-A.  De maximale groottes worden bepaald door Azure Storage-limieten. De maximale blok-blob is ongeveer 4,768 TiB en de maximale blobgrootte is 8 TiB. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](../storage/blobs/scalability-targets.md)voor meer informatie.
+A.  De maximale groottes worden bepaald door Azure Storage-limieten. De maximale blok-blob is ongeveer 4,768 TiB en de maximale blobgrootte is 8 TiB. Zie [Schaalbaarheids- en prestatiedoelen voor blob-opslag](../storage/blobs/scalability-targets.md) voor meer informatie.
 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>V. Hoe weet ik of mijn gegevens veilig zijn tijdens de overdracht? 
 A. Er zijn meerdere beveiligingsfuncties geïmplementeerd om te zorgen dat uw Data Box veilig is tijdens het verzenden. Sommige daarvan zijn verzegeling, detectie van hardware- en softwaremanipulatie en een wachtwoord om het apparaat te ontgrendelen. Ga naar [Azure Data Box-beveiliging en -gegevensbescherming](data-box-security.md) voor meer informatie.
