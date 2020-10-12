@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081063"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-clusters beheren met behulp van de Apache Ambari REST API
@@ -29,9 +29,9 @@ Apache Ambari vereenvoudigt het beheer en de bewaking van Hadoop-clusters door e
 
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* Bash op Ubuntu in Windows 10.  In de voor beelden in dit artikel wordt gebruikgemaakt van de bash-shell in Windows 10. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.  De voor beelden, met een kleine wijziging, kunnen werken aan een Windows-opdracht prompt.  U kunt ook Windows Power shell gebruiken.
+* Bash op Ubuntu in Windows 10.  In de voorbeelden in dit artikel wordt gebruikgemaakt van de Bash-shell in Windows 10. Zie [Installatiehandleiding voor Windows 10 voor Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10) voor installatiestappen.  Andere [UNIX-shells](https://www.gnu.org/software/bash/) kunnen ook worden gebruikt.  De voor beelden, met een kleine wijziging, kunnen werken aan een Windows-opdracht prompt.  U kunt ook Windows Power shell gebruiken.
 
-* JQ, een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
+* jq, een opdrachtregel-JSON-processor.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * Windows PowerShell.  U kunt ook bash gebruiken.
 
@@ -214,11 +214,11 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 De geretourneerde waarde is vergelijkbaar met een van de volgende voor beelden:
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`-Deze waarde geeft aan dat het cluster een Azure Storage-account gebruikt voor de standaard opslag. De `ACCOUNTNAME` waarde is de naam van het opslag account. Het `CONTAINER` gedeelte is de naam van de BLOB-container in het opslag account. De container is de hoofdmap van de HDFS-compatibele opslag voor het cluster.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` -Deze waarde geeft aan dat het cluster een Azure Storage-account gebruikt voor de standaard opslag. De `ACCOUNTNAME` waarde is de naam van het opslag account. Het `CONTAINER` gedeelte is de naam van de BLOB-container in het opslag account. De container is de hoofdmap van de HDFS-compatibele opslag voor het cluster.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`-Deze waarde geeft aan dat het cluster Azure Data Lake Storage Gen2 gebruikt voor de standaard opslag. De `ACCOUNTNAME` `CONTAINER` waarden en hebben dezelfde betekenis als voor Azure Storage eerder beschreven.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` -Deze waarde geeft aan dat het cluster Azure Data Lake Storage Gen2 gebruikt voor de standaard opslag. De `ACCOUNTNAME` `CONTAINER` waarden en hebben dezelfde betekenis als voor Azure Storage eerder beschreven.
 
-* `adl://home`-Deze waarde geeft aan dat het cluster Azure Data Lake Storage Gen1 gebruikt voor de standaard opslag.
+* `adl://home` -Deze waarde geeft aan dat het cluster Azure Data Lake Storage Gen1 gebruikt voor de standaard opslag.
 
     Als u de naam van het Data Lake Storage account wilt vinden, gebruikt u de volgende voor beelden:
 

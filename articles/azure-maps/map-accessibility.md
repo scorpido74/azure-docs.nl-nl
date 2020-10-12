@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006210"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
@@ -94,7 +94,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijker kunt gebruiken. Deze sneltoetsen werken op het moment dat de kaart de focus heeft.
 
-| Sleutel      | Actie                            |
+| Sleutel      | Bewerking                            |
 |----------|-----------------------------------|
 | `Tab` | Navigeer over de besturings elementen en pop-upvensters in de kaart. |
 | `ESC` | De focus verplaatsen van een wille keurig element in de kaart naar het kaart element op het hoogste niveau. |
@@ -103,15 +103,15 @@ De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijke
 | Pijltoets-rechts | Kaart naar rechts 100 pixels pannen |
 | Pijl-omlaag | De kaart omhoog pannen 100 pixels |
 | Pijl-omhoog | Kaart omhoog 100 pixels pannen |
-| `Shift`+ pijl-omhoog | De kaart hoogte met 10 graden verg Roten |
-| `Shift`+ pijl-omlaag | De kaart hoogte met 10 graden verlagen |
-| `Shift`+ pijl-rechts | De kaart 15 graden rechtsom draaien |
-| `Shift`+ pijl-links | De kaart 15 graden linksom draaien |
+| `Shift` + pijl-omhoog | De kaart hoogte met 10 graden verg Roten |
+| `Shift` + pijl-omlaag | De kaart hoogte met 10 graden verlagen |
+| `Shift` + pijl-rechts | De kaart 15 graden rechtsom draaien |
+| `Shift` + pijl-links | De kaart 15 graden linksom draaien |
 | Plus teken ( `+` ) of <sup>*</sup> gelijkteken ( `=` ) | Inzoomen |
 | Minteken, afbreek streepje ( `-` ) of <sup>*</sup> onderstrepings teken ( `_` ) | Uitzoomen | 
-| `Shift`+ muis slepen op kaart naar teken gebied | Inzoomen op gebied |
+| `Shift` + muis slepen op kaart naar teken gebied | Inzoomen op gebied |
 
-<sup>*</sup>Deze sneltoetsen delen meestal dezelfde sleutel op een toetsen bord. Deze snelkoppelingen zijn toegevoegd om de gebruikers ervaring te verbeteren. Het maakt ook niet uit of de gebruiker de Shift-toets gebruikt of niet voor deze sneltoetsen.
+<sup>*</sup> Deze sneltoetsen delen meestal dezelfde sleutel op een toetsen bord. Deze snelkoppelingen zijn toegevoegd om de gebruikers ervaring te verbeteren. Het maakt ook niet uit of de gebruiker de Shift-toets gebruikt of niet voor deze sneltoetsen.
 
 ## <a name="screen-reader-support"></a>Ondersteuning voor scherm lezers
 

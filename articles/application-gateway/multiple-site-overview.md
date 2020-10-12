@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474322"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Meerdere sites in Application Gateway hosten
@@ -20,7 +20,7 @@ Als u meerdere sites host, kunt u meer dan één webtoepassing configureren op d
 
 U kunt ook hostnamen met jokertekens definiëren in een listener voor meerdere sites (maximaal vijf hostnamen per listener). Zie [namen van hostnamen in listener](#wildcard-host-names-in-listener-preview)voor meer informatie.
 
-:::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Application Gateway voor meerdere locaties":::
+:::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 > [!IMPORTANT]
 > Regels worden verwerkt in de volg orde waarin ze worden weer gegeven in de portal voor de V1-SKU. Voor de v2-SKU hebben exacte overeenkomsten een hogere prioriteit. Het is raadzaam om eerst listeners voor meerdere locaties te configureren voordat u een basislistener configureert.  Dit zorgt ervoor dat verkeer naar de juiste back-end wordt geleid. Als een basislistener als eerste wordt weergegeven en overeenkomt met een inkomende aanvraag, wordt deze door die listener verwerkt.
@@ -35,7 +35,7 @@ Application Gateway staat route ring op basis van een host met behulp van HTTP (
 
 Als u een Joker teken in de hostnaam gebruikt, kunt u meerdere hostnamen in één listener vinden. `*.contoso.com`Kan bijvoorbeeld overeenkomen met en `ecom.contoso.com` , enzovoort `b2b.contoso.com` `customer1.b2b.contoso.com` . Als u een matrix met hostnamen gebruikt, kunt u meer dan één hostnaam voor een listener configureren om aanvragen naar een back-end-groep te routeren. Een listener kan bijvoorbeeld bevatten `contoso.com, fabrikam.com` waarmee aanvragen voor beide hostnamen worden geaccepteerd.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Joker-listener":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Een toepassingsgateway voor meerdere sites maken":::
 
 >[!NOTE]
 > Deze functie is in Preview en is alleen beschikbaar voor Standard_v2 en WAF_v2 SKU van Application Gateway. Zie hier voor meer informatie over het [gebruik van voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)beelden.
@@ -50,16 +50,16 @@ In [Azure cli](tutorial-multiple-sites-cli.md)moet u `--host-names` in plaats va
 
 ### <a name="allowed-characters-in-the-host-names-field"></a>Toegestane tekens in het veld hostnamen:
 
-* `(A-Z,a-z,0-9)`-alfanumerieke tekens
-* `-`-koppel teken of minteken
-* `.`-punt als scheidings teken
-*   `*`-kan overeenkomen met meerdere tekens in het toegestane bereik
-*   `?`-kan overeenkomen met één teken in het toegestane bereik
+* `(A-Z,a-z,0-9)` -alfanumerieke tekens
+* `-` -koppel teken of minteken
+* `.` -punt als scheidings teken
+*   `*` -kan overeenkomen met meerdere tekens in het toegestane bereik
+*   `?` -kan overeenkomen met één teken in het toegestane bereik
 
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Voor waarden voor het gebruik van joker tekens en meerdere hostnamen in een listener:
 
 *   U kunt Maxi maal 5 hostnamen in één listener vermelden
-*   Sterretjes `*` kunnen slechts één keer worden vermeld in een onderdeel van een domein stijl naam of hostnaam. Bijvoorbeeld Component1 *. component2*. component3. `(*.contoso-*.com)`is geldig.
+*   Sterretjes `*` kunnen slechts één keer worden vermeld in een onderdeel van een domein stijl naam of hostnaam. Bijvoorbeeld Component1 *. component2*. component3. `(*.contoso-*.com)` is geldig.
 *   De naam van een host mag Maxi maal twee sterretjes bevatten `*` . `*.contoso.*`Is bijvoorbeeld geldig en `*.contoso.*.*.com` is ongeldig.
 *   Een hostnaam mag Maxi maal 4 joker tekens bevatten. Zo zijn bijvoorbeeld `????.contoso.com` `w??.contoso*.edu.*` geldig, maar dit `????.contoso.*` is ongeldig.
 *   Het gebruik `*` van een sterretje en vraag teken `?` in een onderdeel van een hostnaam `*?` ( `?*` of `**` ) is ongeldig. `*?.contoso.com`En `**.contoso.com` zijn bijvoorbeeld ongeldig.

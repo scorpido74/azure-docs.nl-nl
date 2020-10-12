@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403004"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
@@ -77,7 +77,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Backup | Het maken van een onlineherstelpunt is mislukt | **Fout bericht**: er kan geen moment opname van het geselecteerde volume worden gemaakt met de Windows Azure backup-agent. <br> **Tijdelijke oplossing**: Probeer de ruimte in het replica-en herstel punt volume te verg Roten.<br> <br> **Fout bericht**: de Windows Azure backup-agent kan geen verbinding maken met de OBEngine-service <br> **Tijdelijke oplossing**: Controleer of de OBEngine bestaat in de lijst met actieve services op de computer. Als de OBEngine-service niet wordt uitgevoerd, gebruikt u de opdracht ' net start OBEngine ' om de OBEngine-service te starten. <br> <br> **Fout bericht**: de wachtwoordzin voor versleuteling voor deze server is niet ingesteld. Configureer een wachtwoordzin voor versleuteling. <br> **Tijdelijke oplossing**: Probeer een coderings wachtwoord code te configureren. Als dit mislukt, voert u de volgende stappen uit: <br> <ol><li>Controleer of de Scratch locatie bestaat. Dit is de locatie die wordt vermeld in het REGI ster **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config**, met de naam **ScratchLocation** moet bestaan.</li><li> Als de Scratch locatie bestaat, kunt u opnieuw registreren met de oude wachtwoordzin. *Wanneer u een wachtwoordzin voor versleuteling configureert, kunt u deze op een veilige locatie opslaan.*</li><ol>|
+| Backup | Het maken van een onlineherstelpunt is mislukt | **Fout bericht**: er kan geen moment opname van het geselecteerde volume worden gemaakt met de Windows Azure backup-agent. <br> **Tijdelijke oplossing**: Probeer de ruimte in het replica-en herstel punt volume te verg Roten.<br> <br> **Fout bericht**: de Windows Azure backup-agent kan geen verbinding maken met de OBEngine-service <br> **Tijdelijke oplossing**: Controleer of de OBEngine bestaat in de lijst met actieve services op de computer. Als de OBEngine-service niet wordt uitgevoerd, gebruikt u de opdracht ' net start OBEngine ' om de OBEngine-service te starten. <br> <br> **Fout bericht**: de wachtwoordzin voor versleuteling voor deze server is niet ingesteld. Configureer een wachtwoordzin voor versleuteling. <br> **Tijdelijke oplossing**: Probeer een coderings wachtwoord code te configureren. Als dit mislukt, voert u de volgende stappen uit: <br> <ol><li>Controleer of de Scratch locatie bestaat. Dit is de locatie die wordt vermeld in het REGI ster **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, met de naam **ScratchLocation** moet bestaan.</li><li> Als de Scratch locatie bestaat, kunt u opnieuw registreren met de oude wachtwoordzin. *Wanneer u een wachtwoordzin voor versleuteling configureert, kunt u deze op een veilige locatie opslaan.*</li><ol>|
 
 ## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>De oorspronkelijke en externe DPM-servers moeten worden geregistreerd bij dezelfde kluis
 

@@ -1,16 +1,16 @@
 ---
-title: Back-ups bewaken en gebruiken met Back-upcentrum
+title: Back-ups bewaken en gebruiken in het Backup-centrum
 description: In dit artikel wordt uitgelegd hoe u back-ups op schaal kunt bewaken en gebruiken met behulp van Back-upcentrum
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 29e09e502e83ea67af290f206ee0e68b847b2069
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995271"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Back-ups bewaken en gebruiken met Back-upcentrum
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Back-ups bewaken en gebruiken in het Backup-centrum
 
 Als back-upbeheerder kunt u het Back-upcentrum gebruiken als een enkel glas venster om uw taken en de inventaris van de back-up dagelijks te bewaken. U kunt Back-upcentrum ook gebruiken om uw normale bewerkingen uit te voeren, zoals het reageren op aanvragen voor back-ups op aanvraag, het herstellen van back-ups, het maken van back-upbeleid, enzovoort.
 

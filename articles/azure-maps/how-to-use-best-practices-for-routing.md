@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086399"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Aanbevolen procedures voor Azure Maps route service
@@ -21,7 +21,7 @@ De route richtingen en route matrix-Api's in Azure Maps [route service](https://
 
 > [!div class="checklist"]
 > * Kiezen tussen de route richtingen Api's en de API voor de matrix routering
-> * Historische en voorspelde reis tijden aanvragen, op basis van real-time en historische verkeers gegevens
+> * Historische en voorspelde reistijden aanvragen, op basis van real-time en historische verkeersgegevens
 > * Routerings gegevens, zoals tijd en afstand, voor de hele route en elk poot van de route aanvragen
 > * Vraag route voor een bedrijfs voertuig, zoals een truck
 > * Informatie over verkeer aanvragen via een route, zoals storingen en informatie over de telefoon
@@ -60,7 +60,7 @@ Hier volgt een vergelijking om enkele mogelijkheden van de route richtingen en m
 
 | Azure Maps-API | Maximum aantal query's in de aanvraag | Gebieden voor komen | Route ring van vracht wagen en elektrisch Voer tuig | Waypoints en Traveling Salesman Optimization | Ondersteunende punten |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Route beschrijving ophalen | 1 | | X | X | |
+| Routebeschrijving ophalen | 1 | | X | X | |
 | Route beschrijving plaatsen | 1 | X | X | X | X |
 | Post route beschrijving batch | 700 | | X | X | |
 | Post-routematrix | 700 | | X | | |
@@ -205,7 +205,7 @@ Deze optie kan worden gebruikt om de secties te kleuren wanneer de kaart wordt w
 
 ![Gekleurde secties worden weer gegeven op de kaart](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
-## <a name="calculate-and-optimize-a-multi-stop-route"></a>Een multi-stop route berekenen en optimaliseren
+## <a name="calculate-and-optimize-a-multi-stop-route"></a>Een multi-stop-route berekenen en optimaliseren
 
 Azure Maps biedt momenteel twee soorten route optimalisaties:
 
@@ -282,7 +282,7 @@ De Azure Maps Web-SDK biedt een [service module](https://docs.microsoft.com/java
 Ga voor meer informatie naar:
 
 > [!div class="nextstepaction"]
-> [Azure Maps route service](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Maps Route-service](https://docs.microsoft.com/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
 > [De service module gebruiken](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)

@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 53a861761f819c2127228e7ef688f04d91744d25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081250"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Verbinding maken met gegevensbronnen
@@ -59,5 +59,5 @@ Om het eenvoudiger te maken voor gebruikers die een gegevens bron hebben gedetec
 ## <a name="summary"></a>Samenvatting
 Als u een gegevens bron registreert met **Azure Data Catalog** , kunnen de gegevens worden gedetecteerd door structurele en beschrijvende meta gegevens te kopiëren van de gegevens bron naar de catalogus service. Nadat een gegevens bron is geregistreerd en gedetecteerd, kunnen gebruikers verbinding maken met de gegevens bron vanuit het **Azure Data Catalog** portal ' openen in... ' menu's of gebruiken van de gewenste gegevens hulpprogramma's.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Aan de slag met Azure Data Catalog](data-catalog-get-started.md) -zelf studie voor stapsgewijze informatie over het maken van verbinding met gegevens bronnen.
