@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325404"
 ---
 # <a name="set-up-a-capacity-pool"></a>Een capaciteitspool instellen
@@ -60,16 +60,16 @@ U moet al een NetApp-account hebben gemaakt.
 
      > [!IMPORTANT] 
      > **QoS-type** instellen op **hand matig** is permanent. U kunt een hand matige QoS-capaciteits groep niet converteren om automatische QoS te gebruiken. U kunt echter een capaciteits groep voor automatische QoS converteren om hand matig QoS te gebruiken. Zie [een capaciteits groep wijzigen om hand matig QoS te gebruiken](manage-manual-qos-capacity-pool.md#change-to-qos).   
-     > Als u het hand matige QoS-type voor een capaciteits groep wilt gebruiken, moet u registratie. Zie [een hand matige QoS-capaciteits groep beheren](manage-manual-qos-capacity-pool.md#register-the-feature). 
+     > Om het handmatige QoS-type voor een capaciteitsgroep wilt gebruiken, is registratie vereist. Zie [Een handmatige QoS-capaciteitspool maken](manage-manual-qos-capacity-pool.md#register-the-feature). 
 
     ![Nieuwe capaciteitspool](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 ## <a name="next-steps"></a>Volgende stappen 
 
 - [Opslag hiërarchie](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Serviceniveau's voor Azure NetApp Files](azure-netapp-files-service-levels.md)
 - [Pagina met Azure NetApp Files prijzen](https://azure.microsoft.com/pricing/details/storage/netapp/)
-- [Een hand matige QoS-capaciteits groep beheren](manage-manual-qos-capacity-pool.md)
+- [Een handmatige QoS-capaciteitspool maken](manage-manual-qos-capacity-pool.md)
 - [Een subnet delegeren aan Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

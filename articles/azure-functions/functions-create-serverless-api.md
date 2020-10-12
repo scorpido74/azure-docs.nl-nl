@@ -7,10 +7,10 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083018"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Een HTTP-eind punt in Azure Functions aanpassen
@@ -40,7 +40,7 @@ De functie HTTP-activering is standaard zo geconfigureerd dat elke HTTP-methode 
     | Veld | Voorbeeldwaarde | Beschrijving |
     |---|---|---|
     | Routesjabloon | /hello | Hiermee wordt bepaald welke route wordt gebruikt om deze functie aan te roepen |
-    | Verificatieniveau | Anoniem | Optioneel: dit maakt uw functie toegankelijk zonder een API-sleutel |
+    | Autorisatieniveau | Anoniem | Optioneel: dit maakt uw functie toegankelijk zonder een API-sleutel |
     | Geselecteerde HTTP-methoden | GET | Hiermee is het alleen geselecteerde HTTP-methoden toegestaan om deze functie aan te roepen |
 
     U hebt het `/api` voor voegsel van het basis traject niet in de route sjabloon ingevoegd, omdat het wordt verwerkt door een globale instelling.
@@ -107,18 +107,18 @@ Herhaal de stappen uit [Een functie-app maken](./functions-create-first-azure-fu
 
     | Veld | Voorbeeldwaarde | Beschrijving |
     |---|---|---|
-    | Naam | HelloProxy | Een beschrijvende naam die alleen wordt gebruikt voor beheer |
+    | Name | HelloProxy | Een beschrijvende naam die alleen wordt gebruikt voor beheer |
     | Routesjabloon | /api/remotehello | Hiermee wordt bepaald welke route wordt gebruikt om deze proxy aan te roepen |
     | URL van back-end | https://%HELLO_HOST%/api/hello | Geeft het eindpunt aan waarnaar de aanvraag moet worden geproxied |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Een proxy maken":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Een HTTP-functie aanpassen":::
 
     Azure Functions-proxy's levert niet het `/api` basispad voor het basis traject dat moet worden opgenomen in de route sjabloon. De `%HELLO_HOST%` syntaxis verwijst naar de app-instelling die u eerder hebt gemaakt. De omgezette URL verwijst naar uw oorspronkelijke functie.
 
 1. Probeer uw nieuwe proxy uit door de URL van de proxy te kopiëren en deze te testen in de browser of met uw favoriete HTTP-client:
-    - Gebruik voor een anonieme functie: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
-    - Voor een functie met autorisatie gebruik: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
+    - Gebruik voor een anonieme functie:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
+    - Voor een functie met autorisatie gebruik:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
 
 ## <a name="create-a-mock-api"></a>Een mock-API maken
 

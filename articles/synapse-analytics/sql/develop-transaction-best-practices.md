@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288644"
 ---
 # <a name="optimize-transactions-in-sql-pool"></a>Trans acties in SQL-groep optimaliseren
@@ -50,7 +50,7 @@ De volgende bewerkingen kunnen mini maal worden geregistreerd:
 * ALTER INDEX REBUILD
 * DROP INDEX
 * TRUNCATE TABLE
-* TABEL NEERZETTEN
+* DROP TABLE
 * ALTER TABLE SWITCH-PARTITIE
 
 <!--
@@ -68,7 +68,7 @@ CTAS en invoegen... Selecteer beide bewerkingen voor bulksgewijs laden. Beide wo
 
 | Primaire index | Scenario voor laden | Modus logboek registratie |
 | --- | --- | --- |
-| Heap |Elk |**Minimaal** |
+| Heap |Alle |**Minimaal** |
 | Geclusterde index |Lege doel tabel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen niet met bestaande pagina's in het doel |**Minimaal** |
 | Geclusterde index |Geladen rijen overlappen met bestaande pagina's in het doel |Volledig |

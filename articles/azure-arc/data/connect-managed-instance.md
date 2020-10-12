@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936092"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Verbinding maken met Azure Arc enabled SQL Managed instance
@@ -82,7 +82,7 @@ Als u een regel wilt instellen, moet u de naam weten van uw NSG die u kunt vinde
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-Zodra u de naam van de NSG hebt, kunt u een firewall regel toevoegen met behulp van de volgende opdracht. De voorbeeld waarden maken hier een NSG-regel voor poort 30913 en staan de verbinding vanaf **elk** bron-IP-adres toe.  Dit is geen beveiligings best practice!  U kunt de functies beter vergren delen door een waarde voor de voor voegsels voor de bron adressen op te geven die specifiek is voor uw client-IP-adres of een IP-adres bereik dat betrekking heeft op de IP-adressen van uw team of organisatie.
+Zodra u de naam van de NSG hebt, kunt u een firewall regel toevoegen met behulp van de volgende opdracht. De voorbeeld waarden maken hier een NSG-regel voor poort 30913 en staan de verbinding vanaf **elk** bron-IP-adres toe.  Dit is geen beveiligings best practice!  U kunt de functies beter vergrendelen door een waarde voor de bron-adres-voorvoegsels op te geven die specifiek is voor uw client-IP-adres of een IP-adresbereik dat betrekking heeft op de IP-adressen van uw team of organisatie.
 
 Vervang de waarde van de `--destination-port-ranges` onderstaande para meter door het poort nummer dat u hebt ontvangen van de `azdata sql instance list` F-opdracht hierboven.
 

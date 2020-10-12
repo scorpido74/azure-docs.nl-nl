@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Connect: problemen met naadloze eenmalige aanmelding oplossen | Microsoft Docs'
-description: In dit onderwerp wordt beschreven hoe u Azure Active Directory naadloze eenmalige aanmelding kunt oplossen
+title: 'Azure Active Directory Connect: problemen met naadloze enkelvoudige Sign-On oplossen | Microsoft Docs'
+description: In dit onderwerp wordt beschreven hoe u Azure Active Directory naadloze enkelvoudige Sign-On kunt oplossen
 services: active-directory
 author: billmath
 ms.reviewer: swkrish
@@ -14,15 +14,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294815"
 ---
-# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problemen met Azure Active Directory naadloze eenmalige aanmelding oplossen
+# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problemen met Azure Active Directory naadloze single Sign-On oplossen
 
-In dit artikel vindt u informatie over het oplossen van problemen met de naadloze eenmalige aanmelding van Azure Active Directory (naadloze SSO).
+In dit artikel vindt u informatie over het oplossen van problemen met bekende problemen met Azure Active Directory (Azure AD) naadloze single Sign-On (naadloze SSO).
 
 ## <a name="known-issues"></a>Bekende problemen
 

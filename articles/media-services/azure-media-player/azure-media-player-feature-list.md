@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296362"
 ---
 # <a name="feature-list"></a>Lijst met functies #
@@ -59,7 +59,7 @@ Hier volgt een lijst met geteste functies en niet-ondersteunde functies:
 | Analyse                               |        | X                |          |             | AMP biedt de mogelijkheid om te Luis teren naar analyses en diagnostische gebeurtenissen om te verzenden naar een analyse back-end van uw keuze.  Alle gebeurtenissen en eigenschappen zijn niet beschikbaar in technici vanwege beperkingen van het platform.                                                                            |
 | Aangepaste skins                            |        |                  | X        |             | Dit scenario kan worden bereikt door de instelling van de besturings elementen in te stellen op ONWAAR in AMP en uw eigen HTML en CSS te gebruiken.           |
 | Zoek balk reinigen                      |        |                  |          | X           |                                                                                                                      |
-| Slagen-Play                              |        |                  |          | X           |                                                                                                                      |
+| Trick-Play                              |        |                  |          | X           |                                                                                                                      |
 | Alleen audio                              | X      |                  |          |           | Ondersteund in AzureHtml5JS. Progressief MP3-afspelen kan samen werken met de HTML5-tech als dit door het platform wordt ondersteund.                                                                                                        |
 | Alleen video                              | X      |                  |          |           | Ondersteund in AzureHtml5JS.                                                                                                        |
 | Presentaties met meerdere Peri Oden               |        |                  |          | X                                                                                                                                  |

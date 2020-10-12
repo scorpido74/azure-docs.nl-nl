@@ -15,10 +15,10 @@ ms.date: 09/09/2020
 ms.author: mlottner
 ms.custom: references_regions
 ms.openlocfilehash: 19263f8db58c8d20288d3ae74c24efd85667bc33
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935324"
 ---
 # <a name="azure-defender-for-iot-prerequisites"></a>Azure Defender voor IoT-vereisten
@@ -66,7 +66,7 @@ Defender voor IoT wordt momenteel ondersteund voor IoT-hubs in de volgende Azure
 - Azië - zuidoost
 - Korea - centraal
 - Korea - zuid
-- Central India
+- India - centraal
 - India - zuid
 
 Defender voor IoT stuurt al het verkeer van alle Europese regio's naar het Europa-west regionale Data Center en alle overige regio's naar het centrale regionale Data Center van de Verenigde Staten.

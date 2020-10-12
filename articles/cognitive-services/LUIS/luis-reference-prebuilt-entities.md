@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541999"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteiten per cultuur in uw LUIS-model
@@ -35,7 +35,7 @@ Tenzij anders vermeld, zijn vooraf gebouwde entiteiten beschikbaar in alle land 
 |Engels|[en-US (Amerikaans)](#english-american-entity-support)||
 |Frans|[fr-ca (Canada)](#french-canadian-entity-support), [fr-fr (Frank rijk)](#french-france-entity-support), ||
 |Duits|[de-DE](#german-entity-support)||
-|Italiaans|[IT-IT](#italian-entity-support)||
+|Italiaans|[it-IT](#italian-entity-support)||
 |Japans|[ja-JP](#japanese-entity-support)||
 |Koreaans|[ko-KR](#korean-entity-support)||
 |Portugees|[pt-BR (Brazilië)](#portuguese-brazil-entity-support)||
@@ -138,7 +138,7 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-| Vooraf gebouwde entiteit | FR-CA |
+| Vooraf gebouwde entiteit | fr-CA |
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
@@ -346,9 +346,9 @@ KeyPhrase is not available.
 -->
 
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>Bijdragen aan vooraf ontwikkelde entity culturen
-De vooraf gemaakte entiteiten worden ontwikkeld in het open-source-tekst project van recognizers. [Bijdragen](https://github.com/Microsoft/Recognizers-Text) aan het project. Dit project bevat voor beelden van valuta per cultuur.
+De vooraf gemaakte entiteiten worden ontwikkeld in het Recognizers-Text open source-project. [Bijdragen](https://github.com/Microsoft/Recognizers-Text) aan het project. Dit project bevat voor beelden van valuta per cultuur.
 
-GeographyV2 en Persoonnaam worden niet opgenomen in het tekst project recognizers. Voor problemen met deze vooraf gemaakte entiteiten opent u een [ondersteunings aanvraag](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+GeographyV2 en Persoonnaam worden niet opgenomen in het Recognizers-Text-project. Voor problemen met deze vooraf gemaakte entiteiten opent u een [ondersteunings aanvraag](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

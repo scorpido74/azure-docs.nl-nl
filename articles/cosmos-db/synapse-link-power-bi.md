@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935396"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI en Synapse SQL Server gebruiken om Azure Cosmos DB gegevens te analyseren met Synapse-koppeling (preview-versie)
@@ -46,7 +46,7 @@ Ga in de werk ruimte Synapse naar het tabblad **ontwikkelen** en selecteer in he
 
 Elke werk ruimte wordt geleverd met een Synapse SQL Server zonder eind punt. Nadat u een SQL-script hebt gemaakt, gaat u vanuit de werk balk aan de bovenkant verbinding maken met **SQL op aanvraag**.
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Het SQL-script inschakelen voor het gebruik van het Synapse SQL serverloze eind punt in de werk ruimte":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Een SQL-script toevoegen aan de Synapse Analytics-werk ruimte":::
 
 Maak een nieuwe Data Base met de naam **RetailCosmosDB**en een SQL-weer gave over de containers die zijn ingeschakeld voor de Synapse-koppeling. De volgende opdracht laat zien hoe u een Data Base maakt:
 
@@ -106,7 +106,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 Selecteer **uitvoeren** die de volgende tabel als resultaat geeft:
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Query resultaten na het toevoegen van de weer gaven StoreDemographics en RetailSales":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Een SQL-script toevoegen aan de Synapse Analytics-werk ruimte":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Model weergaven via containers met Power BI
 
@@ -141,7 +141,7 @@ Ga nu naar het **rapport** venster en maak een rapport om het relatieve belang v
 1. Sleep de product code van de weer gave **RetailSales** **naar de** legenda om een specifieke productlijn te selecteren.
 Nadat u deze opties hebt gekozen, ziet u een grafiek zoals in de volgende scherm afbeelding:
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Rapport dat het relatieve belang van de omvang van de huishoudens vergelijkt met de gemiddelde omzet per winkel":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Een SQL-script toevoegen aan de Synapse Analytics-werk ruimte":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
