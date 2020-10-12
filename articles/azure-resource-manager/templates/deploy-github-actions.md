@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u Azure Resource Manager-sjablonen impl
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85854737"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sjablonen implementeren met behulp van GitHub-acties
@@ -44,7 +44,7 @@ $scope=$(az group create --name $resourceGroupName --location $location --query 
 az ad sp create-for-rbac --name $appName --role Contributor --scopes $scope --sdk-auth
 ```
 
-Pas de waarde van **$projectName** en **$Location** in het script aan. De naam van de resource groep is de naam van het project waaraan **RG** is toegevoegd. U moet de naam van de resource groep opgeven in uw werk stroom.
+Pas de waarde van **$projectName** en **$Location** in het script aan. De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd. U moet de naam van de resource groep opgeven in uw werk stroom.
 
 Het script voert een JSON-object uit dat er ongeveer als volgt uitziet:
 

@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008913"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Problemen met Azure Cache voor Redis aan serverzijde oplossen
@@ -35,12 +35,12 @@ Geheugen druk aan de server zijde leidt tot allerlei prestatie problemen die het
 
 Redis maakt twee statistieken beschikbaar via de opdracht [info](https://redis.io/commands/info) , waarmee u dit probleem kunt identificeren: ' used_memory ' en ' used_memory_rss '. U kunt [Deze metrische gegevens weer geven](cache-how-to-monitor.md#view-metrics-with-azure-monitor) met behulp van de portal.
 
-Er zijn verschillende mogelijke wijzigingen die u kunt aanbrengen om het geheugen gebruik in orde te houden:
+Er zijn verschillende mogelijke wijzigingen die u kunt aanbrengen om het geheugengebruik in balans te houden:
 
-- [Configureer een geheugen beleid](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) en stel verval tijden in voor uw sleutels. Dit beleid is mogelijk niet voldoende als u fragmentatie hebt.
+- [Configureer een geheugen beleid](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) en stel verval tijden in voor uw sleutels. Dit beleid is mogelijk niet voldoende als u te maken hebt met fragmentatie.
 - [Configureer een maxmemory-gereserveerde waarde](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) die groot genoeg is voor het compenseren van geheugen fragmentatie.
-- Opsplitsen van uw grote objecten in de cache in kleinere gerelateerde objecten.
-- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) voor metrische gegevens zoals gebruikt geheugen om te worden geïnformeerd over mogelijke gevolgen.
+- Splits uw grote objecten in de cache op in kleinere gerelateerde objecten.
+- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) voor metrische gegevens, zoals het gebruikte geheugen, zodat u tijdig een melding krijgt over mogelijke gevolgen.
 - [Schaal](cache-how-to-scale.md) naar een grotere cache grootte met meer geheugen capaciteit.
 
 ## <a name="high-cpu-usage-or-server-load"></a>Hoog CPU-gebruik of server belasting
@@ -70,7 +70,7 @@ De metrische gegevens ' cache read ' en ' cache write ' kunnen worden gebruikt o
 Voor het beperken van situaties waarbij het netwerk bandbreedte gebruik bijna de maximale capaciteit heeft:
 
 - Wijzig het gedrag van de client aanroep om de netwerk vraag te verminderen.
-- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) voor metrische gegevens zoals een cache-Lees-of cache-schrijf om te worden geïnformeerd over mogelijke gevolgen.
+- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) voor metrische gegevens, zoals het lezen van de cache of schrijven naar de cache, zodat u tijdig een melding krijgt over mogelijke gevolgen.
 - [Schaal](cache-how-to-scale.md) naar een grotere cache grootte met meer capaciteit voor netwerk bandbreedte.
 
 ## <a name="additional-information"></a>Aanvullende informatie
@@ -78,5 +78,5 @@ Voor het beperken van situaties waarbij het netwerk bandbreedte gebruik bijna de
 - [Problemen met Azure Cache voor Redis aan clientzijde oplossen](cache-troubleshoot-client.md)
 - [De juiste laag kiezen](cache-overview.md#choosing-the-right-tier)
 - [Hoe kan ik Bench Mark en test de prestaties van mijn cache?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Azure-cache bewaken voor redis](cache-how-to-monitor.md)
+- [Azure Cache voor Redis bewaken](cache-how-to-monitor.md)
 - [Hoe kan ik redis-opdrachten uitvoeren?](cache-development-faq.md#how-can-i-run-redis-commands)

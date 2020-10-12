@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74932053"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Power shell-script: gegevens transformeren in de Cloud met behulp van Azure Data Factory
@@ -54,7 +54,7 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn waarmee gegevens in d
     if __name__ == "__main__":
         main()
     ```
-2. Vervang ** &lt; storageAccountName &gt; ** door de naam van uw Azure Storage-account. Sla het bestand vervolgens op. 
+2. Vervang **&lt;storageaccountname&gt;** door de naam van uw Azure Storage-account. Sla het bestand vervolgens op. 
 3. Maak in de Azure Blob-opslag een container met de naam **adftutorial** als deze nog niet bestaat. 
 4. Maak een map met de naam **spark**.
 5. Maak in de map **spark** een submap met de naam **script**. 

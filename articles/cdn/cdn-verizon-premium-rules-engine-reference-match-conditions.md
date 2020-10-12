@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: efd6e6a93cd4ca79e6c4b6de69f8514e2d71b252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84323311"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN van de overeenkomst voor waarden van de Verizon Premium-regels engine
@@ -20,11 +20,11 @@ In dit artikel vindt u gedetailleerde beschrijvingen van de beschik bare Matchin
 
 Het tweede gedeelte van een regel is de match-voor waarde. Een match-voor waarde identificeert specifieke typen aanvragen waarvoor een set functies worden uitgevoerd.
 
-U kunt bijvoorbeeld een match-voor waarde gebruiken voor het volgende:
+U kunt bijvoorbeeld een voorwaarde van overeenkomst gebruiken voor het volgende:
 
 - Aanvragen voor inhoud filteren op een bepaalde locatie.
 - Aanvragen filteren die zijn gegenereerd op basis van een bepaald IP-adres of specifieke land/regio.
-- Aanvragen filteren op header-informatie.
+- Aanvragen filteren op headergegevens.
 
 ## <a name="match-conditions"></a><a name="top"></a>Overeenkomst voorwaarden
 
@@ -43,7 +43,7 @@ U kunt bijvoorbeeld een match-voor waarde gebruiken voor het volgende:
 
 Deze matching-voor waarden zijn ontworpen om aanvragen te identificeren op basis van de gebruikers agent van de client.
 
-| Name       | Functie                                                           |
+| Name       | Doel                                                           |
 |------------|-------------------------------------------------------------------|
 | Merk naam | Identificeert aanvragen door te controleren of de merk naam van het apparaat overeenkomt met een: <br> **-** Specifieke waarde ([letterlijke merk naam](https://docs.vdms.com/cdn/Content/HRE/M/D-Brand-Name-Literal.htm)) <br> **-** Reguliere expressie ([merk naam regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Brand-Name-Regex.htm)) <br> **-** Specifiek patroon ([merk naam Joker teken](https://docs.vdms.com/cdn/Content/HRE/M/D-Brand-Name-Wildcard.htm)) |
 | Besturings systeem van apparaat | Identificeert aanvragen door te controleren of het besturings systeem van het apparaat overeenkomt met een: <br> **-** Specifieke waarde ([literal van besturings systeem van apparaat](https://docs.vdms.com/cdn/Content/HRE/M/D-Device-OS-Literal.htm)) <br> **-** Reguliere expressie ([regex-besturings systeem van apparaat](https://docs.vdms.com/cdn/Content/HRE/M/D-Device-OS-Regex.htm)) <br> **-** Specifiek patroon ([Joker teken voor het besturings systeem](https://docs.vdms.com/cdn/Content/HRE/M/D-Device-OS-Wildcard.htm)) |
@@ -77,15 +77,15 @@ Deze matching-voor waarden zijn ontworpen om aanvragen te identificeren op basis
 
 Deze matching-voor waarden zijn ontworpen om aanvragen te identificeren op basis van de locatie van de aanvrager.
 
-| Name       | Functie                                                           |
+| Name       | Doel                                                           |
 |------------|-------------------------------------------------------------------|
 | [Als getal](https://docs.vdms.com/cdn/Content/HRE/M/AS-Number.htm) | Identificeert aanvragen die afkomstig zijn van een bepaald netwerk. |
 | Plaatsnaam | Identificeert aanvragen door te controleren of ze afkomstig zijn van een stad waarvan de naam overeenkomt met een: <br> **-** Specifieke waarde ([letterlijke stad naam](https://docs.vdms.com/cdn/Content/HRE/M/City-Name-Literal.htm)) <br> **-** Reguliere expressie (locatie[naam van plaats](https://docs.vdms.com/cdn/Content/HRE/M/City-Name-Regex.htm)) |
 | [Continent](https://docs.vdms.com/cdn/Content/HRE/M/Continent.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven continenten. |
-| [Land/regio](https://docs.vdms.com/cdn/Content/HRE/M/Country.htm) | Identificeert aanvragen die afkomstig zijn uit de opgegeven landen. |
+| [Land](https://docs.vdms.com/cdn/Content/HRE/M/Country.htm) | Identificeert aanvragen die afkomstig zijn uit de opgegeven landen. |
 | [DMA-code](https://docs.vdms.com/cdn/Content/HRE/M/DMA-Code.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven metro lijnen (aangeduide markt gebieden). |
-| [Breedtegraad](https://docs.vdms.com/cdn/Content/HRE/M/Latitude.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven Latitudes. |
-| [Lengtegraad](https://docs.vdms.com/cdn/Content/HRE/M/Longitude.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven lengte graad. |
+| [Breedte graad](https://docs.vdms.com/cdn/Content/HRE/M/Latitude.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven Latitudes. |
+| [Lengte graad](https://docs.vdms.com/cdn/Content/HRE/M/Longitude.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven lengte graad. |
 | [Metro code](https://docs.vdms.com/cdn/Content/HRE/M/Metro-Code.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven metro lijnen (aangeduide markt gebieden). |
 | [Post code](https://docs.vdms.com/cdn/Content/HRE/M/Postal-Code.htm) | Identificeert aanvragen die afkomstig zijn van de opgegeven post codes. |
 | [Regio code](https://docs.vdms.com/cdn/Content/HRE/M/Region-Code.htm) | Identificeert aanvragen die afkomstig zijn uit de opgegeven regio's. |
@@ -100,7 +100,7 @@ Beide voor waarden van deze overeenkomst bieden dezelfde mogelijkheid. We raden 
 
 Deze matching-voor waarden zijn ontworpen om aanvragen te identificeren die verwijzen naar de CDN-opslag of een bron server van de klant.
 
-| Name       | Functie                                                           |
+| Name       | Doel                                                           |
 |------------|-------------------------------------------------------------------|
 | [CDN-oorsprong](https://docs.vdms.com/cdn/Content/HRE/M/CDN-Origin.htm) | Identificeert aanvragen voor inhoud die is opgeslagen in CDN-opslag. |
 | [Oorsprong van klant](https://docs.vdms.com/cdn/Content/HRE/M/Customer-Origin.htm) | Identificeert aanvragen voor inhoud die is opgeslagen op een specifieke bron server van de klant. |
@@ -111,7 +111,7 @@ Deze matching-voor waarden zijn ontworpen om aanvragen te identificeren die verw
 
 Deze matching-voor waarden zijn ontworpen om aanvragen te identificeren op basis van hun eigenschappen.
 
-| Name              | Functie                                                                |
+| Name              | Doel                                                                |
 |-------------------|------------------------------------------------------------------------|
 | [Client-IP-adres](https://docs.vdms.com/cdn/Content/HRE/M/Client-IP-Address.htm) | Identificeert aanvragen die afkomstig zijn van een bepaald IP-adres. |
 | Cookie parameter  | Identificeert een aanvraag door te controleren of deze een cookie bevat dat overeenkomt met een: <br> **-** Specifieke waarde ([letterlijke cookie parameter](https://docs.vdms.com/cdn/Content/HRE/M/Cookie-Parameter-Literal.htm)) <br> **-** Reguliere expressie ([cookie para meter regex](https://docs.vdms.com/cdn/Content/HRE/M/Cookie-Parameter-Regex.htm) <br> **-** Specifiek patroon ([cookie parameter Joker teken](https://docs.vdms.com/cdn/Content/HRE/M/Cookie-Parameter-Wildcard.htm)) |
@@ -125,7 +125,7 @@ Deze matching-voor waarden zijn ontworpen om aanvragen te identificeren op basis
 
 ### <a name="url"></a><a name="url"></a>URL
 
-| Name              | Functie                                                                |
+| Name              | Doel                                                                |
 |-------------------|------------------------------------------------------------------------|
 | URL-pad | Identificeert aanvragen door te bepalen of hun relatieve pad, inclusief bestands naam, overeenkomt met een: <br> **-** Specifieke waarde ([letterlijke URL-pad](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Literal.htm)) <br> **-** Reguliere expressie ([regex URL-pad](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Regex.htm)) <br> **-** Specifiek patroon ([Joker teken voor URL-pad](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Wildcard.htm)) |
 | URL-pad naar map | Identificeert aanvragen door te bepalen of hun relatieve pad overeenkomt met een: <br> **-** Specifieke waarde ([URL-pad Directory-letterlijke map](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Directory-Literal.htm)) <br> **-** Specifiek patroon ([URL-pad naar map met Joker tekens](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Directory-Wildcard.htm)) |

@@ -1,7 +1,7 @@
 ---
 title: Een sjabloon voor schaalsets converteren voor gebruik van beheerde schijven
 description: Een Azure Resource Manager sjabloon voor een schaalset voor virtuele machines converteren naar een sjabloon met een beheerde schijf schaalset.
-keywords: schaalsets voor virtuele machines
+keywords: virtuele-machineschaalsets
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -11,10 +11,10 @@ ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85373961"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Een sjabloon voor schaal sets converteren naar een sjabloon voor een schaalset voor beheerde schijven

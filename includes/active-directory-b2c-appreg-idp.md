@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: bbf1daf3a70e5ca87b4a0027b53aed5fab5691d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84317760"
 ---
 Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuwe uniforme ervaring voor **App-registraties** of de verouderde ervaring **Toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
@@ -22,11 +22,11 @@ Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuw
 1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *testapp1*.
 1. Selecteer **accounts in een organisatorische Directory of een id-provider**.
-1. Onder **omleidings-URI**selecteert u **Web**en voert u `https://jwt.ms` in het tekstvak URL in.
+1. Selecteer onder **Omleidings-URI** de optie **Web** en voer vervolgens `https://jwt.ms` in het URL-tekstvak in.
 1. Selecteer in **Machtigingen** het selectievakje *Beheerdersgoedkeuring verlenen aan machtigingen van OpenID en offline_access*.
 1. Selecteer **Registreren**.
 
-Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekennings stroom in:
+Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekenningsstroom in:
 
 1. Selecteer **Verificatie** onder **Beheren**.
 1. Selecteer **De nieuwe ervaring proberen** (indien weergegeven).

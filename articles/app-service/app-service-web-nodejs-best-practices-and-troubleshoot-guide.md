@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961887"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Aanbevolen procedures en richt lijnen voor probleem oplossing voor knooppunt toepassingen op Azure App Service Windows
@@ -205,7 +205,7 @@ Met de voor gaande code worden de WriteConsoleLog-functie en vervolgens de profi
 
 ![Scherm opname van het bestand profile. cpuprofile.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-Down load dit bestand en open het met Chrome F12-Hulpprogram Ma's. Druk op F12 op Chrome en kies vervolgens het tabblad **profielen** . Klik op de knop **laden** . Selecteer uw profiel. cpuprofile-bestand dat u hebt gedownload. Klik op het profiel dat u zojuist hebt geladen.
+Down load dit bestand en open het met Chrome F12-Hulpprogram Ma's. Druk op F12 op Chrome en kies vervolgens het tabblad **profielen** . Kies de knop **laden** . Selecteer uw profiel. cpuprofile-bestand dat u hebt gedownload. Klik op het profiel dat u zojuist hebt geladen.
 
 ![Scherm opname van het cpuprofile-bestand van het profiel dat u hebt geladen.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 

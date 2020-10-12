@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81460644"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Best practices virtuele array van StorSimple
@@ -149,7 +149,7 @@ Gebruik de volgende aanbevelingen voor opslag accounts die zijn gekoppeld aan uw
   
   * We raden u aan deze te maken in de regio die het dichtst bij het externe kantoor/filiaal waar uw virtuele StorSimple-matrix wordt geïmplementeerd om latentie te minimaliseren.
   * Houd er rekening mee dat u een opslag account niet over verschillende regio's kunt verplaatsen. U kunt ook geen service verplaatsen tussen abonnementen.
-  * Gebruik een opslag account dat redundantie tussen de data centers implementeert. Geografisch redundante opslag (GRS), zone-redundante opslag (ZRS) en lokaal redundante opslag (LRS) worden ondersteund voor gebruik met uw virtuele matrix. Ga naar [Azure storage-replicatie](../storage/common/storage-redundancy.md)voor meer informatie over de verschillende soorten opslag accounts.
+  * Gebruik een opslag account dat redundantie tussen de data centers implementeert. Geo-Redundant Storage (GRS), zone redundante opslag (ZRS) en lokaal redundante opslag (LRS) worden ondersteund voor gebruik met uw virtuele matrix. Ga naar [Azure storage-replicatie](../storage/common/storage-redundancy.md)voor meer informatie over de verschillende soorten opslag accounts.
 
 ### <a name="shares-and-volumes"></a>Shares en volumes
 U kunt voor uw virtuele StorSimple-matrix shares inrichten wanneer deze is geconfigureerd als een bestands server en volumes wanneer deze zijn geconfigureerd als een iSCSI-server. De aanbevolen procedures voor het maken van shares en volumes zijn gerelateerd aan de grootte en het type dat is geconfigureerd.
@@ -241,7 +241,7 @@ Houd bij het uitvoeren van een failover voor uw virtuele matrix het volgende in 
   * Er is een fout opgetreden tijdens het feitelijke failoverproces. In dit geval is het doel apparaat gemarkeerd als onbruikbaar. U moet een andere virtuele doel matrix inrichten en configureren en gebruiken voor failover.
   * De failover is voltooid toen het bron apparaat werd verwijderd, maar het doel apparaat heeft problemen en u hebt geen toegang tot gegevens. De gegevens zijn nog steeds veilig in de Cloud en kunnen eenvoudig worden opgehaald door een andere virtuele matrix te maken en deze vervolgens als doel apparaat te gebruiken voor de DR.
 
-### <a name="deactivate"></a>Deactiveren
+### <a name="deactivate"></a>Deactivate
 Wanneer u een virtuele StorSimple-matrix deactiveert, verbreekt u de verbinding tussen het apparaat en de bijbehorende StorSimple Manager service. Deactivering is een **permanente** bewerking en kan niet ongedaan worden gemaakt. Een gedeactiveerd apparaat kan niet opnieuw worden geregistreerd bij de StorSimple Manager-service. Ga voor meer informatie naar [deactiveren en verwijder de virtuele StorSimple-matrix](storsimple-virtual-array-deactivate-and-delete-device.md).
 
 Houd bij het deactiveren van uw virtuele array de volgende aanbevolen procedures in acht:
@@ -250,7 +250,7 @@ Houd bij het deactiveren van uw virtuele array de volgende aanbevolen procedures
 * Voordat u een virtuele StorSimple-matrix deactiveert, moet u ervoor zorgen dat clients en hosts die afhankelijk zijn van dat apparaat, worden gestopt of verwijderd.
 * Een gedeactiveerd apparaat verwijderen als u niet meer gebruikt, zodat er geen kosten in rekening worden gebracht.
 
-### <a name="monitoring"></a>Controleren
+### <a name="monitoring"></a>Bewaking
 Om ervoor te zorgen dat uw virtuele StorSimple-matrix een voortdurende status heeft, moet u de matrix controleren en ervoor zorgen dat u informatie ontvangt van het systeem, inclusief waarschuwingen. Als u de algehele status van de virtuele matrix wilt bewaken, voert u de volgende aanbevolen procedures uit:
 
 * Configureer bewaking om het schijf gebruik van de gegevens schijf van uw virtuele matrix en de besturingssysteem schijf bij te houden. Als Hyper-V wordt uitgevoerd, kunt u een combi natie van System Center Virtual Machine Manager (SCVMM) en System Center Operations Manager gebruiken om de virtualisatiehost te bewaken.

@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270747"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Een Azure bastion-host maken met behulp van de portal
 
-In dit artikel wordt beschreven hoe u een Azure bastion-host maakt met behulp van de Azure Portal. Zodra u de Azure Bastion-service in uw virtuele netwerk hebt ingericht, is de naadloze RDP/SSH-ervaring beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk. Azure Bastion-implementatie is per virtueel netwerk, niet per abonnement/account of virtuele machine.
+In dit artikel wordt beschreven hoe u een Azure bastion-host maakt met behulp van de Azure Portal. Zodra u de Azure Bastion-service in uw virtuele netwerk hebt ingericht, is de naadloze RDP/SSH-ervaring beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk. De Azure Bastion-implementatie vindt plaats per virtueel netwerk, niet per abonnement/account of virtuele machine.
 
 U kunt een nieuwe bastion-host maken in de portal door alle instellingen hand matig op te geven of door de instellingen te gebruiken die overeenkomen met een bestaande virtuele machine. Zie het artikel [Quick](quickstart-host-portal.md) start voor het maken van een bastion-host met behulp van VM-instellingen. U kunt eventueel [Azure PowerShell](bastion-create-host-powershell.md) gebruiken om een Azure bastion-host te maken.
 
@@ -26,7 +26,7 @@ Bastion is beschikbaar in de volgende open bare Azure-regio's:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Een bastion-host maken
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Een Bastion-host maken
 
 In deze sectie kunt u een nieuwe Azure Bastion-resource maken op basis van de Azure Portal.
 
@@ -34,7 +34,7 @@ In deze sectie kunt u een nieuwe Azure Bastion-resource maken op basis van de Az
 
 1. Typ **Bastion**in het veld *Marketplace doorzoeken* op de pagina **Nieuw** en klik vervolgens op **Enter** om naar de zoek resultaten te gaan.
 
-1. Klik in de resultaten op **Bastion**. Zorg ervoor dat de uitgever van *micro soft* is en dat de categorie *netwerk*is.
+1. Klik in de resultaten op **Bastion**. Controleer of de uitgever *Microsoft* is en of de categorie *Netwerken* is.
 
 1. Klik op de pagina **Bastion** op **maken** om de pagina **een bastion maken** te openen.
 
@@ -50,8 +50,8 @@ In deze sectie kunt u een nieuwe Azure Bastion-resource maken op basis van de Az
     * **Subnet**: het subnet in het virtuele netwerk waarin de nieuwe bastion-host wordt geïmplementeerd. Het subnet wordt toegewezen aan de bastion-host en moet de naam **AzureBastionSubnet**hebben. Dit subnet moet minstens/27 of groter zijn.
     
        **AzureBastionSubnet** biedt geen ondersteuning voor door de [gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md#custom-routes), maar biedt wel ondersteuning voor [netwerk beveiligings groepen](bastion-nsg.md).
-    * **Openbaar IP-adres**: de open bare IP van de Bastion-bron waarop RDP/SSH wordt gebruikt (via poort 443). Maak een nieuw openbaar IP-adres of gebruik een bestaande. Het open bare IP-adres moet zich in dezelfde regio bevinden als de Bastion-resource die u maakt.
-    * **Naam van openbaar IP-adres**: de naam van de resource voor het open bare IP-adres.
+    * **Openbaar IP-adres**: de open bare IP van de Bastion-bron waarop RDP/SSH wordt gebruikt (via poort 443). Maak een nieuw, openbaar IP-adres of gebruik een bestaande. Het openbare IP-adres moet zich in dezelfde regio bevinden als de Bastion-resource die u aan het maken bent.
+    * **Openbare IP-adresnaam**: De naam van de resource voor het openbare IP-adres.
     * **SKU openbaar IP-adres**: deze instelling **is standaard vooraf ingevuld.** Azure Bastion gebruikt/ondersteunt alleen de standaard open bare IP-SKU.
     * **Toewijzing**: deze instelling wordt standaard vooraf ingevuld in **statisch**.
 
@@ -63,4 +63,4 @@ In deze sectie kunt u een nieuwe Azure Bastion-resource maken op basis van de Az
 
 * Lees de [Veelgestelde vragen over Bastion](bastion-faq.md) voor meer informatie.
 
-* Als u netwerk beveiligings groepen wilt gebruiken met het Azure Bastion-subnet, raadpleegt u [werken met nsg's](bastion-nsg.md).
+* Zie [Werken met NSG's](bastion-nsg.md) als u netwerkbeveiligingsgroepen wilt gebruiken met het Azure Bastion-subnet.

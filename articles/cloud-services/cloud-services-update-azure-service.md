@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75360341"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Een Cloud service bijwerken
@@ -53,7 +53,7 @@ In de volgende tabel ziet u de wijzigingen die zijn toegestaan voor een service 
 | Instellingen voor lokale opslag |Meer dan<sup>2</sup> |Ja |Ja |
 | Rollen toevoegen aan of verwijderen uit een service |Ja |Ja |Ja |
 | Aantal exemplaren van een bepaalde rol |Ja |Ja |Ja |
-| Aantal of type eind punten voor een service |Ja<sup>2</sup> |Nee |Yes |
+| Aantal of type eind punten voor een service |Ja<sup>2</sup> |Nee |Ja |
 | Namen en waarden van configuratie-instellingen |Ja |Ja |Ja |
 | Waarden (maar geen namen) van configuratie-instellingen |Ja |Ja |Ja |
 | Nieuwe certificaten toevoegen |Ja |Ja |Ja |
@@ -104,7 +104,7 @@ Wanneer u een service van één exemplaar bijwerkt naar meerdere instanties, wor
 |VM opnieuw opstarten|Behouden|Behouden|Behouden|
 |Portal opnieuw opstarten|Behouden|Behouden|Verbroken|
 |Herinstallatie kopie van portal|Behouden|Verbroken|Verbroken|
-|In-place upgrade|Behouden|Behouden|Verbroken|
+|In-Place upgrade|Behouden|Behouden|Verbroken|
 |Knooppunt migratie|Verbroken|Verbroken|Verbroken|
 
 Houd er rekening mee dat in de bovenstaande lijst het station E: staat voor het hoofd station van de rol en niet moet worden vastgelegd. In plaats daarvan gebruikt u de omgevings variabele **% RoleRoot%** om het station aan te duiden.

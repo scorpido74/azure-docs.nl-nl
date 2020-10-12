@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74974935"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Registratie van apparaten beheren met Azure Portal
@@ -20,7 +20,7 @@ ms.locfileid: "74974935"
 Een *apparaatregistratie* maakt een record van één apparaat of een groep apparaten die op een bepaald moment bij de Azure-IOT hub Device Provisioning Service kunnen worden geregistreerd. De registratie record bevat de eerste gewenste configuratie voor de apparaten die deel uitmaken van deze inschrijving, inclusief de gewenste IoT-hub. In dit artikel leest u hoe u de registratie van apparaten voor uw inrichtings service kunt beheren.
 
 
-## <a name="create-a-device-enrollment"></a>Een apparaatregistratie maken
+## <a name="create-a-device-enrollment"></a>Een apparaatinschrijving maken
 
 Er zijn twee manieren waarop u uw apparaten kunt inschrijven bij de inrichtings service:
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999513"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Een apparaat beheren met Windows PowerShell voor StorSimple
@@ -57,7 +57,7 @@ Zorg ervoor dat u de volgende PuTTy-instellingen gebruikt om vanuit de seriële 
    | Functie toetsen en toetsen blok |ESC [n ~ |
    | Begin status van cursor sleutels |Normaal |
    | Begin status van het numerieke toetsen blok |Normaal |
-   | Extra toetsenbord functies inschakelen |Control-Alt wijkt af van de AltGr |
+   | Extra toetsenbord functies inschakelen |Control-Alt wijkt af van AltGr |
    
     ![Ondersteunde putty-instellingen](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. Klik op **Toepassen**.
@@ -157,8 +157,8 @@ Hier volgt een korte beschrijving van de Help-informatie voor deze Windows Power
 
 ### <a name="to-get-help-for-a-cmdlet"></a>Help voor een cmdlet verkrijgen
 
-* Gebruik de volgende opdracht om hulp te krijgen voor cmdlets of functies:`Get-Help <cmdlet-name>`
-* Als u online-Help voor een cmdlet wilt krijgen, gebruikt u de vorige cmdlet met de `-Online` para meter:`Get-Help <cmdlet-name> -Online`
+* Gebruik de volgende opdracht om hulp te krijgen voor cmdlets of functies: `Get-Help <cmdlet-name>`
+* Als u online-Help voor een cmdlet wilt krijgen, gebruikt u de vorige cmdlet met de `-Online` para meter: `Get-Help <cmdlet-name> -Online`
 * Voor volledige ondersteuning kunt u de `–Full` para meter gebruiken en voor beelden gebruiken de `–Examples` para meter.
 
 ### <a name="to-update-help"></a>Help bijwerken
@@ -167,7 +167,7 @@ U kunt de Help eenvoudig bijwerken in de Windows Power shell-interface. Voer de 
 
 #### <a name="to-update-cmdlet-help"></a>Help voor cmdlets bijwerken
 1. Start Windows Power shell met de optie **als administrator uitvoeren** .
-2. Typ het volgende achter de opdracht prompt:`Update-Help`
+2. Typ het volgende achter de opdracht prompt:  `Update-Help`
 3. De bijgewerkte Help-bestanden worden geïnstalleerd.
 4. Nadat de Help-bestanden zijn geïnstalleerd, typt u: `Get-Help Get-Command` . Hiermee wordt een lijst met cmdlets weer gegeven waarvoor Help beschikbaar is.
 

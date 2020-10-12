@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: trbye
 ms.openlocfilehash: d97a1bf00d722414bedda4be79adc0c26d02c751
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81421919"
 ---
 ## <a name="speech-modes"></a>Spraak modi
@@ -19,7 +19,7 @@ ms.locfileid: "81421919"
 - Heeft een time-outwaarde van X.
 - Aan het einde van een herkende utterance stopt de service de verwerking van de audio van die aanvraag-ID en eindigt de beurt. De verbinding is niet gesloten.
 - De maximum limiet voor herkenning is 20s.
-- Typische Carbon-aanroep naar invoke `RecognizeOnceAsync`is.
+- Typische Carbon-aanroep naar invoke is `RecognizeOnceAsync` .
 
 **Gesprek**
 - Bedoeld om meer herkennings handelingen uit te voeren.
@@ -29,9 +29,9 @@ ms.locfileid: "81421919"
 - Carbon gaat door met een nieuwe aanvraag-ID en de audio opnieuw af te spelen als dat nodig is.
 - De verbinding met de service wordt na 10 minuten van spraak herkenning afgedwongen.
 - Kool wordt opnieuw verbonden en niet-bevestigde audio opnieuw afgespeeld.
-- Aangeroepen in carbon with `StartContinuousRecognition`.
+- Aangeroepen in carbon with `StartContinuousRecognition` .
 
 **Dicteren**
 - Hiermee kunnen gebruikers interpunctie opgeven door het te spreken.
-- Wordt aangeroepen in kooldioxyde door op `EnableDictation` het `SpeechConfig` object op te geven, ongeacht de API-aanroep die de herkenning start.
-- De 1<sup>St</sup> partij-cluster `speech.fragment` retourneert berichten voor tussenliggende resultaten, de<sup>drie retour</sup> `speech.hypothesis` berichten van de derde partij.
+- Wordt aangeroepen in kooldioxyde door `EnableDictation` op het object op te geven `SpeechConfig` , ongeacht de API-aanroep die de herkenning start.
+- De 1<sup>St</sup> partij-cluster retourneert `speech.fragment` berichten voor tussenliggende resultaten, de<sup>rd</sup> drie retour berichten van de derde partij `speech.hypothesis` .

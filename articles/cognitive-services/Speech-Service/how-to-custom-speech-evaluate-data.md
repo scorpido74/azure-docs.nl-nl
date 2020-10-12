@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85856830"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Nauwkeurigheid van Custom Speech evalueren
@@ -56,7 +56,7 @@ Modellen naast elkaar evalueren:
 3. Klik op **test toevoegen**.
 4. Selecteer **nauw keurigheid evalueren**. Geef een naam en beschrijving op voor de test en selecteer uw transcriptie-gegevensset voor audio + met Human label.
 5. Selecteer Maxi maal twee modellen die u wilt testen.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 Nadat de test is gemaakt, kunt u de resultaten naast elkaar vergelijken.
 
@@ -69,7 +69,7 @@ Zodra de test is voltooid, wordt aangegeven dat de status is gewijzigd in *gesla
 * [Uw model trainen](how-to-custom-speech-train-model.md)
 * [Uw model implementeren](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
 * [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)

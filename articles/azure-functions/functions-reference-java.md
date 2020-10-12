@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
 ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89144920"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
@@ -145,7 +145,7 @@ In de volgende tabel ziet u de huidige ondersteunde Java-versies voor elke prima
 | Functie versie | Java-versies (Windows) | Java-versies (Linux) |
 | ----- | ----- | --- |
 | 3.x | 11 (preview-versie)<br/>8 | 11 (preview-versie)<br/>8 |
-| 2.x | 8 | N.v.t. |
+| 2.x | 8 | n.v.t. |
 
 Tenzij u een Java-versie voor uw implementatie opgeeft, wordt de Maven-archetype standaard ingesteld op Java 8 tijdens de implementatie naar Azure.
 

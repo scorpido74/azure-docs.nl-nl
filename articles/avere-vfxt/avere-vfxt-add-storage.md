@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271138"
 ---
 # <a name="configure-storage"></a>Opslag configureren
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om een NAS-kern bestand toe te voegen:
 
 1. Klik op **core filer**  >  **kern bestanden beheren** aan de linkerkant.
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
    ![Scherm afbeelding van de pagina nieuwe kern bestand toevoegen met een cursor boven de knop maken](media/avere-vfxt-add-core-filer-start.png)
 

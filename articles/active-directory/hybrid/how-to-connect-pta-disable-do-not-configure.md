@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85358341"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>PTA uitschakelen bij het gebruik van Azure AD Connect "niet configureren"
@@ -41,7 +41,7 @@ De volgende vereisten zijn vereist:
 
 ## <a name="to-disable-pta"></a>PTA uitschakelen
 Gebruik in een Power shell-sessie het volgende om PTA uit te scha kelen:
-1. PS C:\Program Files\Microsoft Azure AD Connect-Verificatie agent>`Import-Module .\Modules\PassthroughAuthPSModule`
+1. PS C:\Program Files\Microsoft Azure AD Connect-Verificatie agent> `Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` of `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` of `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
 
@@ -50,7 +50,7 @@ Gebruik in een Power shell-sessie het volgende om PTA uit te scha kelen:
 Als u geen agent machine hebt, kunt u de volgende opdracht gebruiken om een agent te installeren.
 
 1. Down load de nieuwste auth-agent van portal.azure.com.
-2. De functie installeren: `.\AADConnectAuthAgentSetup.exe` of`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+2. De functie installeren: `.\AADConnectAuthAgentSetup.exe` of `.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>Volgende stappen
