@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906839"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Een toepassing voorbereiden voor implementatie in azure lente-Cloud
@@ -23,7 +23,7 @@ Azure lente Cloud biedt krachtige services voor het hosten, controleren, schalen
 In dit artikel worden de afhankelijkheden, configuratie en code beschreven die nodig zijn voor het uitvoeren van een .NET core Steeltoe-app in azure lente Cloud. Voor informatie over het implementeren van een toepassing in azure lente-Cloud, raadpleegt u [uw eerste Azure lente-Cloud toepassing implementeren](spring-cloud-quickstart.md).
 
 >[!Note]
-> Steeltoe-ondersteuning voor Azure lente-Cloud wordt momenteel aangeboden als een open bare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Raadpleeg de [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of een [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)van het bestand voor meer informatie over ondersteuning tijdens previews.
+> Steeltoe-ondersteuning voor Azure Spring Cloud wordt momenteel aangeboden als openbare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.  Voor meer informatie over ondersteuning tijdens previews kunt u de [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) raadplegen of een [Ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) indienen.
 
 ##  <a name="supported-versions"></a>Ondersteunde versies
 
@@ -87,11 +87,11 @@ using (var client = new HttpClient(discoveryHandler, false))
 ::: zone pivot="programming-language-java"
 In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
 
-Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring-cloud-quickstart.md) proberen.
+Voordat u dit voorbeeld kunt uitvoeren, kunt u de [eenvoudige quickstart](spring-cloud-quickstart.md) uitproberen.
 
 Andere voor beelden wordt uitgelegd hoe u een toepassing implementeert in azure lente-Cloud wanneer het POM-bestand wordt geconfigureerd. 
 * [Uw eerste app starten](spring-cloud-quickstart.md)
-* [Microservices bouwen en uitvoeren](spring-cloud-quickstart-sample-app-introduction.md)
+* [Micro services bouwen en uitvoeren](spring-cloud-quickstart-sample-app-introduction.md)
 
 In dit artikel worden de vereiste afhankelijkheden beschreven en wordt uitgelegd hoe u deze toevoegt aan het POM-bestand.
 

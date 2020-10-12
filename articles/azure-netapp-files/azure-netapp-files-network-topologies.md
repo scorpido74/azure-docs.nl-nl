@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
 ms.openlocfilehash: a8d81acc0fcb4afa0f981fca3fd099296a0361df
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89569489"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlijnen voor Azure NetApp Files-netwerkplanning
@@ -56,20 +56,20 @@ De volgende tabel beschrijft de netwerktopologieën die door Azure NetApp Files 
 
 |    Topologieën    |    Wordt ondersteund    |     Tijdelijke oplossing    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Connectiviteit met volume in een lokaal VNet    |    Yes    |         |
-|    Connectiviteit met volume in een gepeerd VNet (dezelfde regio)    |    Yes    |         |
-|    Connectiviteit met volume in een gepeerd VNet (meerdere regio's of globale peering)    |    No    |    Geen    |
-|    Connectiviteit met een volume via de ExpressRoute-gateway    |    Yes    |         |
-|    Connectiviteit van on-premises naar een volume in een spoke-VNet via ExpressRoute gateway en VNet-peering met gateway-door Voer    |    Yes    |        |
-|    Connectiviteit van on-premises naar een volume in een spoke-VNet via een VPN-gateway    |    Yes    |         |
-|    Connectiviteit van on-premises naar een volume in een spoke-VNet via VPN-gateway en VNet-peering met gateway-door Voer    |    Yes    |         |
+|    Connectiviteit met volume in een lokaal VNet    |    Ja    |         |
+|    Connectiviteit met volume in een gepeerd VNet (dezelfde regio)    |    Ja    |         |
+|    Connectiviteit met volume in een gepeerd VNet (meerdere regio's of globale peering)    |    Nee    |    Geen    |
+|    Connectiviteit met een volume via de ExpressRoute-gateway    |    Ja    |         |
+|    Connectiviteit van on-premises naar een volume in een spoke-VNet via ExpressRoute gateway en VNet-peering met gateway-door Voer    |    Ja    |        |
+|    Connectiviteit van on-premises naar een volume in een spoke-VNet via een VPN-gateway    |    Ja    |         |
+|    Connectiviteit van on-premises naar een volume in een spoke-VNet via VPN-gateway en VNet-peering met gateway-door Voer    |    Ja    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtueel netwerk voor Azure NetApp Files volumes
 
 In deze sectie worden de concepten uitgelegd die u helpen bij het plannen van virtuele netwerken.
 
-### <a name="azure-virtual-networks"></a>Virtuele netwerken van Azure
+### <a name="azure-virtual-networks"></a>Virtuele netwerken van Azure.
 
 Voordat u een Azure NetApp Files-volume inricht, moet u een virtueel Azure-netwerk (VNet) maken of er een gebruiken dat al aanwezig is in uw abonnement. Het VNet definieert de netwerk grens van het volume.  Zie de [documentatie van Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)voor meer informatie over het maken van virtuele netwerken.
 

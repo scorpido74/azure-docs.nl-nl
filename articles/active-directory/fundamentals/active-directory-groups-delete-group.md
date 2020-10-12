@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565504"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Een groep verwijderen met Azure Active Directory
@@ -36,7 +36,7 @@ U kunt een Azure Active Directory-groep (Azure AD) om een aantal redenen verwijd
 
 3. Zoek en selecteer de groep die u wilt verwijderen op de pagina **groepen-alle groepen** . Voor deze stappen gebruiken we **MDM-beleid-Oost**.
 
-    ![Groepen-pagina alle groepen, groeps naam gemarkeerd](media/active-directory-groups-delete-group/group-all-groups-screen.png)
+    ![Pagina Groups-All groepen, groeps naam gemarkeerd](media/active-directory-groups-delete-group/group-all-groups-screen.png)
 
 4. Op de **overzichts pagina MDM-beleid-Oost** en selecteer vervolgens **verwijderen**.
 

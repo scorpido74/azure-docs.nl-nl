@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
 ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322975"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
@@ -64,10 +64,10 @@ Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketpla
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
 * RHEL 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 7,0
 * Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4
-* Oracle Linux 7,7, 7,7-CI
+* Oracle Linux 7.7, 7.7CI
 
 > [!NOTE]
-> Specifieke grootten voor virtuele machines, zoals Mv2-Series, ondersteunen mogelijk alleen een subset van deze installatie kopieën. Raadpleeg de documentatie van de betreffende grootte van de virtuele machine voor meer informatie.
+> Bij specifieke grootten van virtuele machines, zoals Mv2-Series, wordt mogelijk alleen een subset van deze installatie kopieën ondersteund. Raadpleeg de documentatie van de betreffende grootte van de virtuele machine voor meer informatie.
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Azure Generation 2 Vm's
 
@@ -99,7 +99,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 | Besturings systeem voor aangepaste schijf/image/swap         | :heavy_check_mark: | :heavy_check_mark: |
 | Ondersteuning voor schaal sets voor virtuele machines | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
-| Back-up maken/herstellen                    | :heavy_check_mark: | :heavy_check_mark: |
+| Back-up/herstel                    | :heavy_check_mark: | :heavy_check_mark: |
 | Galerie met gedeelde afbeeldingen              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | BxDxH                |
 
@@ -117,7 +117,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).

@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
 ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409660"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Voer een upgrade uit voor de MongoDB wire-protocol versie van de API van uw Azure Cosmos DB voor het MongoDB-account
@@ -62,27 +62,27 @@ U moet het bestaande eind punt vervangen in uw toepassingen en stuur Programma's
 
 2. Selecteer de Blade in de opties aan de linkerkant `Features` . Hiermee worden de functies van het account niveau onthuld die beschikbaar zijn voor uw database account.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal met MongoDB-account overzicht met de Blade functies gemarkeerd" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Overzicht van Azure Portal met MongoDB-account" border="false":::
 
 3. Klik op de `Upgrade to Mongo server version 3.6` rij. Als u deze optie niet ziet, komt uw account mogelijk niet in aanmerking voor deze upgrade. Als dit het geval is, moet u [een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) indienen.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="De Blade functies met opties." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Overzicht van Azure Portal met MongoDB-account" border="false":::
 
 4. Bekijk de informatie die wordt weer gegeven over deze specifieke upgrade. Houd er rekening mee dat de upgrade pas wordt voltooid als uw toepassingen het bijgewerkte eind punt gebruiken, zoals in deze sectie is gemarkeerd. Klik op aan zodra `Enable` u klaar bent om het proces te starten.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Uitgebreide upgrade richtlijnen." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Overzicht van Azure Portal met MongoDB-account" border="false":::
 
 5. Nadat het proces is gestart, `Features` wordt in het menu de status van de upgrade weer gegeven. De status gaat van `Pending` naar naar `In Progress` `Upgraded` . Dit proces heeft geen invloed op de bestaande functionaliteit of bewerkingen van het database account.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Upgrade status na het initiëren." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Overzicht van Azure Portal met MongoDB-account" border="false":::
 
 6. Zodra de upgrade is voltooid, wordt de status weer gegeven als `Upgraded` . Klik hierop om meer te weten te komen over de volgende stappen en acties die u moet uitvoeren om het proces te volt ooien. [Neem contact op met de ondersteuning](https://azure.microsoft.com/en-us/support/create-ticket/) als er een probleem is opgetreden bij het verwerken van uw aanvraag.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Bijgewerkte account status." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Overzicht van Azure Portal met MongoDB-account" border="false":::
 
 7. **Als u de bijgewerkte versie van uw database account wilt gaan gebruiken**, gaat u terug naar de `Overview` Blade en kopieert u de nieuwe connection string om in uw toepassing te gebruiken. De toepassingen gaan gebruikmaken van de bijgewerkte versie zodra deze verbinding maken met het nieuwe eind punt. Bestaande verbindingen worden niet onderbroken en kunnen op uw gemak worden bijgewerkt. Voor een consistente ervaring moeten al uw toepassingen het nieuwe eind punt gebruiken.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Nieuwe blade overzicht." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Overzicht van Azure Portal met MongoDB-account" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

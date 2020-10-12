@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: f6bb119e5e82ce642722d0f739177fc1e4c06c25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255719"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Zelf studie: Signagelive configureren voor automatische gebruikers inrichting
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Signagelive om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Signagelive, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Signagelive, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-signagelive--for-provisioning"></a>Signagelive instellen voor inrichting
 
@@ -116,7 +116,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Signagelive in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Signagelive voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Scherm afbeelding van de sectie kenmerk toewijzingen met zeven toewijzingen weer gegeven.](media/signagelive-provisioning-tutorial/userattribute.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met zeven toewijzingen weergegeven.](media/signagelive-provisioning-tutorial/userattribute.png)
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groep synchroniseren met Signagelive**.
 
@@ -124,7 +124,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Signagelive in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de groeps accounts in Signagelive voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Scherm afbeelding van de sectie kenmerk toewijzingen waarbij drie toewijzingen worden weer gegeven.](media/signagelive-provisioning-tutorial/groupattribute.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met drie toewijzingen weergegeven.](media/signagelive-provisioning-tutorial/groupattribute.png)
 
 12. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

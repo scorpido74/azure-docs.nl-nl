@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322892"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Meer informatie over het gebruik van virtuele machines in azure
@@ -33,9 +33,9 @@ Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inz
 | Meter Region| De datacenterlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacenterlocatie.|  `JA East`|
 | Eenheid| Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Reken bronnen worden per uur gefactureerd.| `Hours`|
 | Verbruikt| De hoeveelheid van de resource die voor die dag is verbruikt. Voor Compute worden voor elke minuut voor de VM een bepaald uur gefactureerd (Maxi maal 6 decimalen nauw keurigheid).| `1, 0.5`|
-| Resourcelocatie  | Hiermee wordt het datacenter geïdentificeerd waarop de resource wordt uitgevoerd.| `JA East`|
+| Resource Location  | Hiermee wordt het datacenter geïdentificeerd waarop de resource wordt uitgevoerd.| `JA East`|
 | Consumed Service | De Azure-platform service die u hebt gebruikt.| `Microsoft.Compute`|
-| Resourcegroep | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md) voor meer informatie.|`MyRG`|
+| Resource Group | De resourcegroep waarin de geïmplementeerde resource wordt uitgevoerd. Zie [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md) voor meer informatie.|`MyRG`|
 | Instance ID | De id voor de resource. De id bevat de naam die u voor de resource opgeeft wanneer deze wordt gemaakt. Voor Vm's bevat de exemplaar-ID de SubscriptionId, ResourceGroupName en VMName (of de naam van de schaalset voor het gebruik van schaal sets).| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>of<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Tags| Label dat u toewijst aan de resource. Tags gebruiken om factureringsrecords te groeperen. Meer informatie over het coderen van uw Virtual Machines met behulp van de [cli](./linux/tag.md) of [Power shell](./windows/tag.md) dit is alleen beschikbaar voor virtuele machines van Resource Manager.| `{"myDepartment":"RD","myUser":"myName"}`|
 | Aanvullende informatie | Servicespecifieke metagegevens. Voor Vm's vullen we de volgende gegevens in het veld aanvullende gegevens in: <br><br> Afbeeldings type-specifieke installatie kopie die u hebt uitgevoerd. Zoek de volledige lijst met ondersteunde teken reeksen onder afbeeldings typen.<br><br> Service type: de grootte die u hebt geïmplementeerd.<br><br> VMName: naam van de virtuele machine. Dit veld wordt alleen ingevuld voor virtuele machines met schaal sets. Als u de VM-naam voor virtuele machines van de schaalset nodig hebt, kunt u deze vinden in de bovenstaande teken reeks voor exemplaar-ID.<br><br> UsageType: Hiermee geeft u het type gebruik op dat dit vertegenwoordigt.<br><br> ComputeHR is het reken uren-gebruik voor de onderliggende VM, zoals Standard_D1_v2.<br><br> ComputeHR_SW is de Premium-software kosten als de virtuele machine Premium-software gebruikt, zoals Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtuele-machineschaalsets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium-software<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
@@ -59,7 +59,7 @@ Voor sommige installatie kopieën in de Azure-galerie wordt het type afbeelding 
 - Windows Server-preview 
 
 ## <a name="service-type"></a>Servicetype
-Het veld Service type in het veld aanvullende informatie komt overeen met de exacte VM-grootte die u hebt geïmplementeerd. Virtuele machines met Premium-opslag (SSD) en niet-Premium-opslag-Vm's (op basis van schijven) zijn hetzelfde als de prijs. Als u een op SSD gebaseerde grootte implementeert, zoals Standard \_ DS2 \_ v2, ziet u de grootte van niet-SSD ( `Standard\_D2\_v2 VM` ) in de kolom meter subcategorie en de SSD-grootte ( `Standard\_DS2\_v2` ) in het veld aanvullende informatie.
+Het veld Service type in het veld aanvullende informatie komt overeen met de exacte VM-grootte die u hebt geïmplementeerd. Virtuele machines met Premium-opslag (SSD) en niet-Premium-opslag-Vm's (op basis van schijven) zijn hetzelfde als de prijs. Als u een op SSD gebaseerde grootte implementeert, zoals Standard \_ DS2 \_ v2, ziet u de grootte van niet-SSD ( `Standard\_D2\_v2 VM` ) in de meter Sub-Category kolom en de SSD-grootte ( `Standard\_DS2\_v2` ) in het veld aanvullende informatie.
 
 ## <a name="region-names"></a>Regio namen
 De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegevens verschilt van de regio naam die wordt gebruikt in de Azure Resource Manager. Hier volgt een toewijzing tussen de regio waarden:
@@ -72,7 +72,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 | CanadaCentral | CA - centraal|
 | CanadaEast | CA - oost|
 | CentralIndia | IN - centraal|
-| centralus | VS - centraal|
+| centralus | Central US|
 | chinaeast | China East|
 | chinanorth | China - noord|
 | eastasia | Azië - oost|
@@ -86,7 +86,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 | KoreaSouth | KR - zuid|
 | northcentralus | VS - noord-centraal|
 | northeurope | Europa - noord|
-| southcentralus | VS - zuid-centraal|
+| southcentralus | South Central US|
 | southeastasia | Azië - zuidoost|
 | SouthIndia | IN - zuid|
 | UKNorth | VS Noord|

@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 45f63aed410c4d140259808044872cbbecfaa95b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355564"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klassieke) webservices beheren met API Management
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 ## <a name="overview"></a>Overzicht
@@ -41,12 +41,12 @@ U kunt uw Azure Machine Learning-webservice beheren met een API Management-exemp
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **+ Een resource maken**.
 3. Typ ' API Management ' in het zoekvak en selecteer vervolgens de resource ' API Management '.
-4. Klik op **Create**.
+4. Klik op **Maken**.
 5. De **naam** waarde wordt gebruikt om een unieke URL te maken (in dit voor beeld wordt ' demoazureml ' gebruikt).
 6. Selecteer een **abonnement**, **resource groep**en **locatie** voor uw service-exemplaar.
 7. Geef een waarde voor de naam van de **organisatie** op (in dit voor beeld wordt ' demoazureml ' gebruikt).
 8. Voer uw **e-mail adres** van de beheerder in. dit e-mail adres wordt gebruikt voor meldingen van het API management systeem.
-9. Klik op **Create**.
+9. Klik op **Maken**.
 
 Het kan tot 30 minuten duren voordat een nieuwe service is gemaakt.
 

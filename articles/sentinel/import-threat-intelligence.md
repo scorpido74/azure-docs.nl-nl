@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
 ms.openlocfilehash: e04d7fa1f319ca3969d8acdc0235e2838bb3a88d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995739"
 ---
-# <a name="import-threat-intelligence-into-azure-sentinel"></a>Bedreigings informatie importeren in azure Sentinel
+# <a name="import-threat-intelligence-into-azure-sentinel"></a>Bedreigingsinformatie importeren in Azure Sentinel
 
 ## <a name="introduction-to-threat-intelligence"></a>Inleiding tot bedreigings informatie
 
@@ -78,7 +78,7 @@ Deze informatie is altijd afkomstig van uw Azure Active Directory via een proces
 
 1. Kies een naam voor de registratie van uw toepassing, selecteer het keuze rondje **Eén Tenant** en selecteer **registreren**.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Een toepassing registreren":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-register-application.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
 1. Kopieer vanuit het resulterende scherm de waarden van de **toepassing (client) ID** en **Directory (Tenant)** . Dit zijn de eerste twee stukjes informatie die u later nodig hebt om uw TIP of aangepaste oplossing te configureren voor het verzenden van bedreigings indicatoren naar Azure Sentinel.
 
@@ -96,13 +96,13 @@ Deze informatie is altijd afkomstig van uw Azure Active Directory via een proces
 
 1. Selecteer **ThreatIndicators. readwrite. OwnedBy** en selecteer **machtigingen toevoegen** om deze machtiging toe te voegen aan de lijst met machtigingen van uw app.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Machtigingen opgeven":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-1.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
 **Toestemming van uw organisatie verkrijgen om deze machtigingen te verlenen**
 
 1. Als u toestemming wilt geven, moet u een Azure Active Directory globale beheerder zijn om de knop **toestemming geven voor het verlenen van de beheerder voor uw Tenant** te selecteren op de pagina API-machtigingen van uw app. Als u niet beschikt over de rol van globale beheerder voor uw account, is deze knop niet beschikbaar en moet u een globale beheerder van uw organisatie vragen om deze stap uit te voeren.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Toestemming verlenen":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-api-permissions-2.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
 1. Zodra de toestemming voor uw app is verleend, ziet u een groen vinkje onder **status**.
  
@@ -114,7 +114,7 @@ Nu de app is geregistreerd en er machtigingen zijn verleend, kunt u het laatste 
 
 1. Selecteer **certificaten & geheimen** in het menu en klik op de knop **Nieuw client geheim** om een geheim (API-sleutel) voor uw app te verkrijgen.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Client geheim ophalen":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-client-secret.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
 1. Klik op de knop **toevoegen** en **Zorg ervoor dat u het client geheim kopieert**, omdat u dit geheim niet opnieuw kunt ophalen als u deze pagina verlaat. U hebt deze waarde nodig wanneer u uw TIP of een aangepaste oplossing configureert.
 
@@ -145,7 +145,7 @@ Binnen een paar minuten moeten bedreigings indicatoren stromen naar deze Azure S
 
 De meest wereld wijd gekozen industrie norm voor de verzen ding van bedreigings informatie is een [combi natie van de Stix-gegevens indeling en het TAXII-protocol](https://oasis-open.github.io/cti-documentation/). Als uw organisatie bedreigings indicatoren krijgt van oplossingen die de huidige STIX/TAXII-versie ondersteunen (2,0 of 2,1), kunt u de gegevens connector **Threat Intelligence-TAXII** gebruiken om uw bedreigings indicatoren in azure Sentinel te brengen. Met de TAXII-gegevens connector van Threat Intelligence kunt u een ingebouwde TAXII-client in azure Sentinel voor het importeren van bedreigings informatie van TAXII 2. x-servers.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Pad naar TAXII-import":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-taxii-import-path.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
  
 Voer de volgende stappen uit om de STIX-opmaak bedreigingen te importeren in azure Sentinel van een TAXII-server:
 
@@ -287,7 +287,7 @@ Als u bedreigings indicatoren wilt importeren in azure Sentinel van een TAXII-se
 
 1. Typ een **naam** voor deze TAXII-server verzameling, URL van de **API-hoofdmap**, **verzamelings-id**, **gebruikers naam** (indien nodig) en **wacht woord** (indien nodig) en klik op de knop **toevoegen** .
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="TAXII-servers configureren":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-configure-taxii-servers.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
  
 U ontvangt een bevestiging dat er een verbinding met de TAXII-server is gemaakt en u kunt stap (4) zo vaak herhalen als gewenst om verbinding te maken met meerdere verzamelingen vanaf dezelfde of verschillende TAXII-servers.
 
@@ -307,7 +307,7 @@ Nu u risico indicatoren hebt geïmporteerd in azure Sentinel met behulp van de *
 
 De resultaten moeten er ongeveer uitzien als de volgende voor beeld van bedreigings indicator:
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Voorbeeld query gegevens":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-sample-query.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
  
 ## <a name="manage-your-threat-indicators-in-the-new-threat-intelligence-area-of-azure-sentinel"></a>Uw bedreigings indicatoren beheren in het nieuwe bedreigings informatie gebied van Azure Sentinel
 
@@ -322,7 +322,7 @@ Laten we eens kijken naar twee van de meest voorkomende taken, het maken van nie
 
 1. Selecteer de knop **Nieuw toevoegen** in het bovenste menu van de pagina.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Een nieuwe bedreigings indicator toevoegen" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-add-new-indicator.png" alt-text="Pad naar Threat Intelligence-import bewerking" lightbox="media/import-threat-intelligence/threat-intel-add-new-indicator.png":::
 
 1. Kies het indicator type en vul vervolgens de vereiste velden in die zijn gemarkeerd met een rood sterretje (*) in het deel venster **nieuwe indicator** .
 
@@ -330,7 +330,7 @@ Laten we eens kijken naar twee van de meest voorkomende taken, het maken van nie
 
 Het coderen van bedreigings indicatoren is een eenvoudige manier om ze samen te groeperen, zodat u ze eenvoudiger kunt vinden. Normaal gesp roken kunt u een tag Toep assen op Indica tors die betrekking hebben op een bepaald incident of op indica toren die bedreigingen vertegenwoordigen van een bepaalde bekende actor of een bekende aanvals campagne. U kunt risico indicatoren afzonderlijk labelen of meervoudige indica toren en ze allemaal tegelijk labelen. Hieronder ziet u een voor beeld van het coderen van meerdere indica toren met een incident-ID. Omdat labels gratis zijn, is het raadzaam om standaard naam conventies voor bedreigings indicator Tags te maken. U kunt meerdere labels Toep assen op elke indicator.
 
-:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Tags Toep assen op bedreigings indicatoren" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
+:::image type="content" source="media/import-threat-intelligence/threat-intel-tagging-indicators.png" alt-text="Pad naar Threat Intelligence-import bewerking" lightbox="media/import-threat-intelligence/threat-intel-tagging-indicators.png":::
 
 ## <a name="analytics-puts-your-threat-indicators-to-work-detecting-potential-threats"></a>Met Analytics worden uw bedreigings indicatoren gebruikt voor het detecteren van mogelijke dreigingen
 
@@ -350,11 +350,11 @@ Laten we eens kijken naar een van deze regel sjablonen en instructies voor het i
 
 1. Navigeer naar de regel met de naam **map IP-entiteit toewijzen aan AzureActivity** en zorg ervoor dat u alle vereiste gegevens bronnen hebt verbonden, zoals hieronder wordt weer gegeven.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Vereiste gegevens bronnen":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-required-data-sources.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
 1. Selecteer deze regel en selecteer de knop **regel maken** . Hiermee opent u een wizard om de regel te configureren. Vul de instellingen hier in en selecteer de **volgende: regel logica instellen >** knop.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Analytics-regel maken":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-create-analytics-rule.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
 1. Het gedeelte regel logica van de wizard bevat:
     - De query die wordt gebruikt in de regel.
@@ -397,7 +397,7 @@ Laten we eens kijken hoe u de Threat Intelligence-werkmap kunt vinden die is opg
 
 1. Navigeer naar de werkmap met de titel **Threat Intelligence** en controleer of u gegevens hebt in de tabel **ThreatIntelligenceIndicator** , zoals hieronder wordt weer gegeven.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Gegevens controleren":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-verify-data.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
  
 1. Selecteer de knop **Opslaan** en kies een Azure-locatie om de werkmap op te slaan. Deze stap is vereist als u de werkmap op een wille keurige manier wilt wijzigen en uw wijzigingen wilt opslaan.
 
@@ -417,7 +417,7 @@ Laten we eens kijken hoe u de Threat Intelligence-werkmap kunt vinden die is opg
 
 1. Selecteer de knop **bewerken is voltooid** . U hebt een nieuwe grafiek voor uw werkmap gemaakt.
 
-    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Staafdiagram":::
+    :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Pad naar Threat Intelligence-import bewerking":::
 
 Werkmappen bieden krachtige interactieve Dash boards die u inzicht geven in alle aspecten van Azure Sentinel. Er is een hele partij die u met werkmappen kunt doen, en terwijl de meegeleverde sjablonen een geweldig start punt zijn, wilt u waarschijnlijk de sjablonen in de hand brengen en aanpassen of nieuwe Dash boards maken die veel verschillende gegevens bronnen combi neren, zodat u uw gegevens op unieke wijze kunt visualiseren. Omdat Azure Sentinel-werkmappen zijn gebaseerd op Azure Monitor werkmappen, is er al uitgebreide documentatie beschikbaar en veel meer sjablonen. Een fantastische plek om te beginnen is dit artikel over het [maken van interactieve rapporten met Azure monitor-werkmappen](../azure-monitor/platform/workbooks-overview.md). 
 

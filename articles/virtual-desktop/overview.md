@@ -3,15 +3,15 @@ title: Wat is Windows Virtual Desktop? - Azure
 description: Een overzicht van Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661109"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91322050"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop?
 
@@ -101,6 +101,8 @@ Zorg ervoor dat uw netwerk aan de volgende vereisten voldoet voor optimale prest
 * Netwerkverkeer kan buiten de grenzen van het land/de regio stromen wanneer virtuele machines die desktops en apps hosten, verbinding maken met de beheerservice.
 * Voor optimale netwerkprestaties raden we aan dat de virtuele machines van de host van de sessie zich in dezelfde Azure-regio bevinden als de beheerservice.
 
+U kunt een typische architectuur van Windows Virtual Desktop voor bedrijven bekijken in onze [documentatie over architectuur](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop).
+
 ## <a name="supported-remote-desktop-clients"></a>Ondersteunde Extern bureaublad-clients
 
 De volgende Extern bureaublad-clients bieden ondersteuning voor Windows Virtual Desktop:
@@ -110,12 +112,10 @@ De volgende Extern bureaublad-clients bieden ondersteuning voor Windows Virtual 
 * [MacOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Microsoft Store-client
 
 > [!IMPORTANT]
 > Windows Virtual Desktop biedt geen ondersteuning voor de client voor RemoteApp- en bureaubladverbindingen of de client voor verbinding met extern bureaublad.
-
-> [!IMPORTANT]
-> Windows Virtual Desktop biedt momenteel geen ondersteuning voor de Extern bureaublad-client uit de Windows Store. Ondersteuning voor deze client wordt in een toekomstige versie toegevoegd.
 
 Zie de [Lijst met veilige URL's](safe-url-list.md) voor meer informatie over URL's die u moet deblokkeren om de clients te gebruiken.
 

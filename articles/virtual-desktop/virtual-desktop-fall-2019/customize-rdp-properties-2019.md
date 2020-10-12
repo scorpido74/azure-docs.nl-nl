@@ -7,16 +7,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 260125b5e7aa4537c6e204d93263b65be042793a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540741"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Remote Desktop Protocol eigenschappen voor een hostgroep in een virtueel bureau blad (klassiek) van Windows aanpassen
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../customize-rdp-properties.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../customize-rdp-properties.md) als u Azure Resource Manager Windows Virtual Desktop-objecten probeert te beheren.
 
 Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wilt aanpassen, zoals de ervaring voor meerdere monitors en audio-omleiding, kunt u een optimale ervaring bieden aan uw gebruikers op basis van hun behoeften. U kunt RDP-eigenschappen in virtueel bureau blad van Windows aanpassen met behulp van de para meter **-CustomRdpProperty** in de cmdlet **set-RdsHostPool** .
 
@@ -49,7 +49,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Een scherm opname van de Power shell-cmdlet Get-RDSRemoteApp met de naam en FriendlyName is gemarkeerd om een aangepaste R D P-eigenschap te bewerken.](../media/singlecustomrdpproperty.png)
+> ![Een scherm opname van de Power shell-cmdlet Get-RDSRemoteApp met de naam en FriendlyName gemarkeerd voor het bewerken van een aangepaste R D P-eigenschap.](../media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Meerdere aangepaste RDP-eigenschappen toevoegen of bewerken
 
@@ -72,7 +72,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Een scherm opname van de Power shell-cmdlet Get-RDSRemoteApp met de naam en FriendlyName is gemarkeerd.](../media/resetcustomrdpproperty.png)
+> ![Een scherm opname van de Power shell-cmdlet Get-RDSRemoteApp met de naam en FriendlyName gemarkeerd.](../media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

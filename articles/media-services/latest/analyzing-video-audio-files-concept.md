@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320678"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video-en audio bestanden analyseren met Azure Media Services
@@ -162,7 +162,7 @@ Voorbeeld:
 |knownPersonId|De interne ID (als deze een bekende persoon is).|
 |referenceId|De Bing-ID (als het een Bing-beroemdheden is).|
 |Type|Momenteel alleen Bing.|
-|title|De titel (als het een beroemdheden is, bijvoorbeeld ' micro soft ' CEO ').|
+|titel|De titel (als het een beroemdheden is, bijvoorbeeld ' micro soft ' CEO ').|
 |imageUrl|De afbeeldings-URL, als het een beroemdheden is.|
 |vaak|Exemplaren waarvan het gezicht in het opgegeven tijds bereik is verschenen. Elk exemplaar heeft ook een thumbnailsId. |
 

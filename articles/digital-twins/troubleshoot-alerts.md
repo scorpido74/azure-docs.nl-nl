@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087202"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Problemen met Azure Digital Apparaatdubbels oplossen: waarschuwingen
@@ -44,17 +44,17 @@ Zie [*overzicht van waarschuwingen in Microsoft Azure*](../azure-monitor/platfor
 
 Hier volgt een fragment van het proces *voor voor waarden selecteren* waarin wordt uitgelegd welke typen waarschuwings signalen er beschikbaar zijn voor Azure Digital apparaatdubbels. Op deze pagina kunt u het type signaal filteren en het gewenste signaal in een lijst selecteren.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Scherm opname met de eerste pagina signaal logica configureren. Er is een hooglicht op het vak signaal type voor het selecteren van metrische gegevens of activiteiten logboeken en een lijst met metrische gegevens waaronder kan worden geselecteerd.":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Scherm opname van de pagina waarschuwings regel maken met secties voor de details van het bereik, de voor waarde, de actie groep en de waarschuwings regel":::
 
 Nadat u een signaal hebt geselecteerd, wordt u gevraagd om de logica van de waarschuwing te configureren. U kunt filteren op een dimensie, een drempel waarde voor uw waarschuwing instellen en de frequentie van controles voor de voor waarde instellen. Hier volgt een voor beeld van het instellen van een waarschuwing voor wanneer de gemiddelde waarde voor het aantal mislukte routerings fouten boven 5% komt.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Scherm afbeelding met de tweede pagina signaal logica configureren. Op de pagina wordt de geschiedenis van metrische gegevens weer gegeven, heeft een gebied om te filteren op een dimensie zoals Event Grid bewerkingen, en een sectie voor het definiëren van de logica van een waarschuwing zoals ' gemiddelde is groter dan 5 '":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Scherm opname van de pagina waarschuwings regel maken met secties voor de details van het bereik, de voor waarde, de actie groep en de waarschuwings regel":::
 
 ### <a name="verify-success"></a>Controleren geslaagd
 
 Nadat u een waarschuwing hebt ingesteld, worden deze weer gegeven op de pagina *waarschuwingen* voor uw exemplaar.
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Scherm afbeelding van de pagina met waarschuwingen en de knop om toe te voegen. Er is één waarschuwing geconfigureerd" lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Scherm opname van de pagina waarschuwings regel maken met secties voor de details van het bereik, de voor waarde, de actie groep en de waarschuwings regel" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

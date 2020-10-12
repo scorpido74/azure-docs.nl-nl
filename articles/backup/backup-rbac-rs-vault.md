@@ -1,17 +1,17 @@
 ---
-title: Back-ups beheren met Access Control op basis van rollen
+title: Back-ups beheren met Role-Based Access Control
 description: Gebruik op rollen gebaseerde Access Control voor het beheren van de toegang tot bewerkingen voor back-upbeheer in Recovery Services kluis.
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89376125"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren
+# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Role-Based Access Control gebruiken om Azure Backup herstel punten te beheren
 
 Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
 

@@ -8,10 +8,10 @@ ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88997214"
 ---
 # <a name="use-the-change-feed-estimator"></a>De Estimator van de wijzigings feed gebruiken
@@ -53,7 +53,7 @@ U kunt deze schatting verzenden naar uw bewakings oplossing en deze gebruiken om
 > [!NOTE]
 > De Estimator van de wijzigings feed hoeft niet te worden geïmplementeerd als onderdeel van de processor voor wijzigings invoer en niet deel uitmaken van hetzelfde project. Het kan onafhankelijk zijn en in een volledig ander exemplaar worden uitgevoerd. U hoeft alleen dezelfde naam en lease configuratie te gebruiken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

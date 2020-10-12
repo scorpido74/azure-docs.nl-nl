@@ -12,10 +12,10 @@ author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 0f7ee0e18187b0a5d8ad1eb83dbda9734a9ff7de
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650192"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>machine learning pijp lijnen definiëren in YAML
@@ -26,17 +26,17 @@ De volgende tabel bevat een overzicht van wat is en wordt momenteel niet onderst
 
 | Type stap | Ondersteund? |
 | ----- | :-----: |
-| PythonScriptStep | Yes |
-| ParallelRunStep | Yes |
-| AdlaStep | Yes |
-| AzureBatchStep | Yes |
-| DatabricksStep | Yes |
-| DataTransferStep | Yes |
-| AutoMLStep | No |
-| HyperDriveStep | No |
-| ModuleStep | Yes |
-| MPIStep | No |
-| EstimatorStep | No |
+| PythonScriptStep | Ja |
+| ParallelRunStep | Ja |
+| AdlaStep | Ja |
+| AzureBatchStep | Ja |
+| DatabricksStep | Ja |
+| DataTransferStep | Ja |
+| AutoMLStep | Nee |
+| HyperDriveStep | Nee |
+| ModuleStep | Ja |
+| MPIStep | Nee |
+| EstimatorStep | Nee |
 
 ## <a name="pipeline-definition"></a>Pijplijn definitie
 

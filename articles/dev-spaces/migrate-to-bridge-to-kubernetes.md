@@ -1,18 +1,18 @@
 ---
-title: Migreren naar Bridge naar Kubernetes
+title: Bridge migreren naar Kubernetes
 services: azure-dev-spaces
 ms.date: 09/21/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Bridge to Kubernetes
 ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995520"
 ---
-# <a name="migrating-to-bridge-to-kubernetes"></a>Migreren naar Bridge naar Kubernetes
+# <a name="migrating-to-bridge-to-kubernetes"></a>Bridge migreren naar Kubernetes
 
 Bridge to Kubernetes biedt een lichtere gewicht alternatief voor veel van de ontwikkelings scenario's die werken met Azure dev Spaces. Bridge to Kubernetes is een client-side ervaring met het gebruik van extensies in [Visual Studio][vs]   en [Visual Studio code][vsc].  
 
@@ -34,7 +34,7 @@ Bridge to Kubernetes stelt ontwikkel aars in staat om rechtstreeks op hun ontwik
 
 Azure dev Spaces en Bridge to Kubernetes hebben vergelijk bare functies, maar ze verschillen ook op verschillende gebieden:
 
-| Vereiste  | Azure Dev Spaces  | Brug naar Kubernetes  |
+| Vereiste  | Azure Dev Spaces  | Bridge to Kubernetes  |
 |---------------|-------------------|--------------------------------|
 | Azure Kubernetes Service | In 15 Azure-regio's | Een AKS-service regio    |
 | **Beveiliging** |

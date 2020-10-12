@@ -4,10 +4,10 @@ description: Gebruik Azure Backup voor het maken van back-ups en het herstellen 
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180980"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Back-ups maken van bestanden en toepassingen op Azure Stack
@@ -46,19 +46,19 @@ Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in
 
     Micro soft raadt aan om alle gegevens die een beveiligings beleid zullen delen, in één beveiligings groep te plaatsen. Voor volledige informatie over het plannen en implementeren van beveiligings groepen raadpleegt u het artikel over System Center DPM en [implementeert u beveiligings groepen](/system-center/dpm/create-dpm-protection-groups).
 
-4. Typ in het scherm **methode voor gegevens beveiliging selecteren** een naam voor de beveiligings groep. Schakel het selectie vakje in **die ik op kortetermijnbeveiliging wil gebruiken met:** en **Ik wil online beveiliging**. Selecteer **Volgende**.
+4. Typ in het scherm **methode voor gegevens beveiliging selecteren** een naam voor de beveiligings groep. Schakel het selectie vakje in **die ik op kortetermijnbeveiliging wil gebruiken met:** en **Ik wil online beveiliging**. Selecteer **Next**.
 
     ![Methode voor gegevens beveiliging selecteren](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     Als u **wilt selecteren wat ik wil online beveiliging**, moet u eerst kiezen voor **kortetermijnbeveiliging op basis van:** schijf. Azure Backup Server beschermt niet op tape, dus de enige keuze voor beveiliging op korte termijn.
 
-5. Geef in het scherm **doel stellingen voor de korte termijn** op hoe lang de herstel punten die op schijf moeten worden bewaard en wanneer u incrementele back-ups wilt opslaan. Selecteer **Volgende**.
+5. Kies in het scherm **Short-Term doelen opgeven** hoe lang de herstel punten die op schijf moeten worden bewaard en wanneer u incrementele back-ups wilt opslaan. Selecteer **Next**.
 
     > [!IMPORTANT]
     > Bewaar op Azure Backup Server gekoppelde schijven meer dan vijf dagen **geen** back-upgegevens.
     >
 
-    ![Doelen voor de korte termijn opgeven](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Short-Term doelen opgeven](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     In plaats van het selecteren van een interval voor incrementele back-ups, voor het uitvoeren van een snelle volledige back-up, net vóór elk gepland herstel punt, selecteert u **net vóór een herstel punt**. Als u toepassings werkbelastingen beveiligt, maakt Azure Backup Server herstel punten op basis van het schema voor de synchronisatie frequentie (mits de toepassing incrementele back-ups ondersteunt). Als de toepassing geen incrementele back-ups ondersteunt, voert Azure Backup Server een snelle volledige back-up uit.
 

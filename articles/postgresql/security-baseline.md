@@ -8,10 +8,10 @@ ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: fb27868a06e133f6f90d0a7a18d218b74aafdd69
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89420044"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL-één server
@@ -28,7 +28,7 @@ Zie [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
-**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for PostgreSQL met privé-eind punten. Met een Private Link kunt u via een privé-eindpunt verbinding maken met verschillende PaaS-services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en PostgreSQL-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
+**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for PostgreSQL met privé-eind punten. Met een Private Link kunt u via een privé-eindpunt verbinding maken met verschillende PaaS-services in Azure. Met Azure Private Link worden Azure-services binnen uw persoonlijke virtuele network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en PostgreSQL-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
 
 U kunt ook Virtual Network Service-eind punten gebruiken om de netwerk toegang tot uw Azure Database for PostgreSQL-implementaties te beveiligen en te beperken. Regels voor virtuele netwerken zijn één firewall beveiligings functie die bepaalt of uw Azure Database for PostgreSQL server communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken.
 
@@ -970,7 +970,7 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zorg voor regel matige automatische back-ups
 
-**Hulp**: Azure database for PostgreSQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (4 TB Maxi maal opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+**Hulp**: Azure database for PostgreSQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (4 TB Maxi maal opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaardretentieperiode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
 - [Een back-up maken van een server in Azure Database for PostgreSQL](howto-restore-server-portal.md)
 
@@ -1010,7 +1010,7 @@ Test de herstel bewerking van uw Azure Database for PostgreSQL-instanties regel 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Hulp**: Azure database for PostgreSQL volledige, differentiële en back-ups van transactie Logboeken. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+**Hulp**: Azure database for PostgreSQL volledige, differentiële en back-ups van transactie Logboeken. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaardretentieperiode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
 - [Meer informatie over back-up en herstel in Azure Database for PostgreSQL](concepts-backup.md)
 
