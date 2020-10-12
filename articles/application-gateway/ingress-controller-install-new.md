@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807147"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Een Application Gateway ingangs controller (AGIC) installeren met behulp van een nieuwe Application Gateway
@@ -30,10 +30,10 @@ U kunt ook Cloud Shell starten vanuit Azure Portal met behulp van het volgende p
 
 Uw [Azure Cloud shell](https://shell.azure.com/) beschikt al over alle benodigde hulpprogram ma's. Als u ervoor kiest om een andere omgeving te gebruiken, moet u ervoor zorgen dat de volgende opdracht regel Programma's zijn geïnstalleerd:
 
-* `az`-Azure CLI: [installatie-instructies](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* `kubectl`-Kubernetes opdracht regel programma: [installatie-instructies](https://kubernetes.io/docs/tasks/tools/install-kubectl)
-* `helm`-Kubernetes Package Manager: [installatie-instructies](https://github.com/helm/helm/releases/latest)
-* `jq`-opdracht regel JSON-processor: [installatie-instructies](https://stedolan.github.io/jq/download/)
+* `az` -Azure CLI: [installatie-instructies](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `kubectl` -Kubernetes opdracht regel programma: [installatie-instructies](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+* `helm` -Kubernetes Package Manager: [installatie-instructies](https://github.com/helm/helm/releases/latest)
+* `jq` -opdracht regel JSON-processor: [installatie-instructies](https://stedolan.github.io/jq/download/)
 
 
 ## <a name="create-an-identity"></a>Een identiteit maken
@@ -66,7 +66,7 @@ Volg de onderstaande stappen om een [Service-Principal-object](https://docs.micr
     }
     EOF
     ```
-    Als u een met **RBAC** ingeschakeld cluster wilt implementeren, stelt `aksEnableRBAC` u het veld in op`true`
+    Als u een met **RBAC** ingeschakeld cluster wilt implementeren, stelt `aksEnableRBAC` u het veld in op `true`
 
 ## <a name="deploy-components"></a>Onderdelen implementeren
 Met deze stap worden de volgende onderdelen aan uw abonnement toegevoegd:
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory pod-identiteit biedt toegang tot [Azure Resource Manager (arm)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)op basis van tokens.
 
   Met de [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) worden de volgende onderdelen toegevoegd aan uw Kubernetes-cluster:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` ,`AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` , `AzureIdentityBinding`
    * Onderdeel [Managed Identity controller (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
    * [NMI-onderdeel (node Managed Identity)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
@@ -256,7 +256,7 @@ De AAD pod-identiteit voor uw cluster installeren:
      - `appgw.name`: De naam van de Application Gateway. Voorbeeld: `applicationgatewayd0f0`
      - `appgw.shared`: Deze Booleaanse vlag moet worden standaard ingesteld op `false` . Ingesteld op `true` moet u een [gedeelde Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)nodig hebben.
      - `kubernetes.watchNamespace`: Geef de naam ruimte op die AGIC moet volgen. Dit kan een enkele teken reeks waarde zijn of een door komma's gescheiden lijst met naam ruimten.
-    - `armAuth.type`: mogelijk `aadPodIdentity` of`servicePrincipal`
+    - `armAuth.type`: mogelijk `aadPodIdentity` of `servicePrincipal`
     - `armAuth.identityResourceID`: Resource-ID van de door Azure beheerde identiteit
     - `armAuth.identityClientId`: De client-ID van de identiteit. Zie hieronder voor meer informatie over identiteiten
     - `armAuth.secretJSON`: Alleen vereist wanneer het geheim type van de Service-Principal is gekozen (wanneer `armAuth.type` is ingesteld op `servicePrincipal` ) 
@@ -267,7 +267,7 @@ De AAD pod-identiteit voor uw cluster installeren:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```
-   > `<resource-group>`in de bovenstaande opdracht is de resource groep van uw Application Gateway. `<identity-name>`is de naam van de gemaakte identiteit. Alle identiteiten voor een bepaald abonnement kunnen worden weer gegeven met behulp van:`az identity list`
+   > `<resource-group>` in de bovenstaande opdracht is de resource groep van uw Application Gateway. `<identity-name>` is de naam van de gemaakte identiteit. Alle identiteiten voor een bepaald abonnement kunnen worden weer gegeven met behulp van: `az identity list`
 
 
 1. Installeer het Application Gateway ingangs controller pakket:

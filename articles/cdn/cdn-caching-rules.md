@@ -14,16 +14,16 @@ ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
 ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887854"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Cachinggedrag in Azure CDN beheren met regels voor opslaan in cache
 
 > [!NOTE] 
-> Cache regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen. Voor **Azure CDN van micro soft** -profielen moet u de [Standard Rules engine](cdn-standard-rules-engine-reference.md) gebruiken voor **Azure CDN Premium van Verizon** -profielen. u moet de [regel engine van Verizon Premium](cdn-rules-engine.md) gebruiken in de portal **beheren** voor vergelijk bare functionaliteit.
+> Regels voorcaching zijn alleen beschikbaar voor de profielen **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai**. Voor **Azure CDN van Microsoft**-profielen moet u de [standaardregelengine](cdn-standard-rules-engine-reference.md) gebruiken. Voor **Azure CDN Premium van Verizon**-profielen moet u de [Verizon Premium-regelengine](cdn-rules-engine.md) gebruiken in de portal **Beheren** voor vergelijkbare functionaliteit.
  
 Azure Content Delivery Network (CDN) biedt twee manieren om te bepalen hoe uw bestanden in de cache worden opgeslagen: 
 
@@ -113,7 +113,7 @@ Wanneer deze regels zijn ingesteld, wordt een aanvraag voor _ &lt; eind &gt; pun
 > - Voor **Azure CDN standaard van Verizon** -profielen wordt de doorgifte doorgaans in tien minuten voltooid.  
 >
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Hoe caching werkt](cdn-how-caching-works.md)
 - [Zelfstudie: Azure CDN-regels voor opslaan in cache instellen](cdn-caching-rules-tutorial.md)

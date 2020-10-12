@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
 ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87405123"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Levens cyclus van Azure Service Fabric-hosting
@@ -58,7 +58,7 @@ Wanneer een code package vastloopt, gebruikt Service Fabric een back-out om het 
 De waarde voor de back-up is altijd min (RetryTime, **ActivationMaxRetryInterval**) en deze waarde kan constant, lineair of exponentiële zijn op basis van **ActivationRetryBackoffExponentiationBase** config.
 
 - Constante: if **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = **ActivationRetryBackoffInterval**;
-- Lineair: als **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** waarbij ContinousFailureCount het aantal keren is dat een code package vastloopt of niet kan worden geactiveerd.
+- Lineair: als  **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** waarbij ContinousFailureCount het aantal keren is dat een code package vastloopt of niet kan worden geactiveerd.
 - Exponentieel: RetryTime = (**ActivationRetryBackoffInterval** in seconden) * (**ActivationRetryBackoffExponentiationBase** ^ ContinuousFailureCount);
     
 U kunt het gedrag bepalen dat u wilt, zoals snel opnieuw opstarten. Over lineaire communicatie. Dit betekent dat als een code package vastloopt, het start interval na 10, 20, 30 40 sec tot de code package wordt gedeactiveerd. 
@@ -81,7 +81,7 @@ Service Fabric maakt altijd gebruik van een lineaire back-up wanneer er een fout
 > [!NOTE]
 > Voordat u de configuratie wijzigt, zijn hier enkele voor beelden die u moet onthouden.
 
-* Als de code package vastloopt en er back-ups worden verwijderd, wordt service type uitgeschakeld. Maar als de activerings configuratie zodanig is dat deze snel opnieuw wordt opgestart, kan de code package enkele keren worden bereikt voordat het uitschakelen van Service type kan worden weer geven. Bijvoorbeeld: aangenomen dat uw code package actief is, registreert u het Service type met Service Fabric en loopt vervolgens vast. In dat geval wordt de **ServiceTypeDisableGraceInterval** -periode geannuleerd zodra de hosting een type registratie heeft ontvangen. En dit kan worden herhaald totdat uw code package wordt teruggedraaid naar een waarde die groter is dan **ServiceTypeDisableGraceInterval** en vervolgens op Service type wordt uitgeschakeld op het knoop punt. Daarom kan het enige tijd duren voordat uw service type is uitgeschakeld op het knoop punt.
+* Als de code package vastloopt en er back-ups worden verwijderd, wordt service type uitgeschakeld. Maar als de activerings configuratie zodanig is dat deze snel opnieuw wordt opgestart, kan de code package enkele keren worden bereikt voordat het uitschakelen van Service type kan worden weer geven. Bijvoorbeeld: aangenomen dat uw code package actief is, registreert u het Service type met Service Fabric en loopt vervolgens vast. In dat geval wordt de **ServiceTypeDisableGraceInterval** -periode geannuleerd zodra de hosting een type registratie heeft ontvangen. En dit kan worden herhaald totdat uw code package wordt teruggedraaid naar een waarde die groter is dan  **ServiceTypeDisableGraceInterval** en vervolgens op Service type wordt uitgeschakeld op het knoop punt. Daarom kan het enige tijd duren voordat uw service type is uitgeschakeld op het knoop punt.
 
 * Als Service Fabric systeem een replica in een knoop punt moet plaatsen, wordt in het geval van activeringen het hosting subsysteem door RA (ReconfigurationAgent) om de toepassing te activeren en wordt elke 15 sec (**RAPMessageRetryInterval**) opnieuw geprobeerd om de activerings aanvraag uit te voeren. Voor Service Fabric systeem om te weten dat Service type is uitgeschakeld, moet de activerings bewerking in de hosting gedurende een langere periode actief zijn dan het interval voor nieuwe pogingen en de **ServiceTypeDisableGraceInterval**. Bijvoorbeeld: laat het cluster de configuratie **ActivationMaxFailureCount** instellen op 5 en **ActivationRetryBackoffInterval** ingesteld op 1 sec. Dit betekent dat de activerings bewerking na (0 + 1 + 2 + 3 + 4) = 10 sec (de eerste nieuwe poging onmiddellijk) wordt uitgevoerd en dat de hosting het opnieuw probeert. In dit geval wordt de activerings bewerking voltooid en wordt na 15 seconden geen nieuwe poging gedaan. Er is een fout opgetreden omdat Service Fabric alle pogingen binnen 15 seconden uitgeput zijn. Bij elke nieuwe poging van ReconfigurationAgent wordt dus een nieuwe activerings bewerking gemaakt in het hosting subsysteem en het patroon blijft herhalen en service type wordt nooit uitgeschakeld op het knoop punt. Omdat het Service type niet is uitgeschakeld op het knoop punt, wordt de replica door het SF-systeem onderdeel FM (FailoverManager) niet naar een ander knoop punt verplaatst.
 > 
@@ -128,23 +128,23 @@ Configuraties met de standaard instellingen die van invloed zijn op de activerin
 
 ### <a name="servicetype"></a>ServiceType
 **ServiceTypeDisableFailureThreshold**: standaard 1. De drempel waarde voor het aantal mislukte pogingen waarna FM (FailoverManager) wordt gewaarschuwd om het Service type op dat knoop punt uit te scha kelen en een ander knoop punt voor plaatsing te proberen.
-**ServiceTypeDisableGraceInterval**: standaard 30 sec. tijds interval waarna het Service type kan worden uitgeschakeld.
+**ServiceTypeDisableGraceInterval**: standaard 30 sec. Tijds interval waarna het Service type kan worden uitgeschakeld.
 **ServiceTypeRegistrationTimeout**: standaard 300 sec. De time-out voor registratie bij Service Fabric van het Service type.
 
 ### <a name="activation"></a>Activering
-**ActivationRetryBackoffInterval**: standaard 10 sec. uitstel-interval bij elke activerings fout.
+**ActivationRetryBackoffInterval**: standaard 10 sec. Uitstel-interval bij elke activerings fout.
 **ActivationMaxFailureCount**: standaard 20. Maximum aantal waarvoor het systeem opnieuw moet worden geactiveerd voordat de activering wordt uitgevoerd. 
 **ActivationRetryBackoffExponentiationBase**: standaard 1,5.
-**ActivationMaxRetryInterval**: standaard 3600 sec. Maximale back-out voor activering bij fouten.
+**ActivationMaxRetryInterval**: standaard 3600 sec. Maxi maal aantal back-ups voor activering op fouten.
 **CodePackageContinuousExitFailureResetInterval**: standaard 300 sec. De time-out voor het opnieuw instellen van het aantal doorlopende afsluit fouten voor code package.
 
 ### <a name="download"></a>Downloaden
 **DeploymentRetryBackoffInterval**: standaard 10. Back-outinterval voor de implementatie fout.
-**DeploymentMaxRetryInterval**: standaard 3600 sec. maximum aantal back-ups voor de implementatie op fouten.
+**DeploymentMaxRetryInterval**: standaard 3600 sec. Maxi maal aantal back-ups voor de implementatie op fouten.
 **DeploymentMaxFailureCount**: standaard 20. De implementatie van de toepassing wordt opnieuw geprobeerd voor DeploymentMaxFailureCount tijden voordat de implementatie van die toepassing op het knoop punt is mislukt.
 
 ### <a name="deactivation"></a>Deactivering
-**DeactivationScanInterval**: standaard 600 sec. de minimale tijd die aan ServicePackage is gegeven voor het hosten van een replica als deze nooit een replica heeft gehost, d.w.z. Als deze niet wordt gebruikt.
+**DeactivationScanInterval**: standaard 600 sec. Minimale tijd die aan ServicePackage wordt gegeven voor het hosten van een replica als deze nooit een replica heeft gehost, d.w.z. Als deze niet wordt gebruikt.
 **DeactivationGraceInterval**: standaard 60 sec. De tijd die aan een ServicePackage is toegewezen voor het hosten van een andere replica zodra deze een replica heeft gehost in het geval van een **gedeeld** proces model.
 **ExclusiveModeDeactivationGraceInterval**: standaard 1 sec. De tijd die aan een ServicePackage is toegewezen voor het hosten van een andere replica zodra deze een replica in het geval van een **exclusief** proces model heeft gehost.
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84976673"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>De concepten van vaardig heden in azure Cognitive Search
@@ -85,7 +85,7 @@ De eerste twee vaardig heden worden hieronder weer gegeven:
 }
 ```
 > [!NOTE]
-> U kunt complexe vaardig heden maken met lussen en vertakkingen, met behulp van de [voorwaardelijke vaardigheid](cognitive-search-skill-conditional.md) om de expressies te maken. De syntaxis is gebaseerd op de notatie van het pad naar de [JSON-pointer](https://tools.ietf.org/html/rfc6901) , met een paar wijzigingen in het identificeren van knoop punten in de verrijkings structuur. Er wordt `"/"` een niveau lager in de structuur door lopen en `"*"` fungeert als een for-each-operator in de context. Een groot aantal voor beelden in dit artikel illustreren de syntaxis. 
+> U kunt complexe vaardig heden maken met lussen en vertakkingen, met behulp van de [voorwaardelijke vaardigheid](cognitive-search-skill-conditional.md) om de expressies te maken. De syntaxis is gebaseerd op de notatie van het pad naar de [JSON-pointer](https://tools.ietf.org/html/rfc6901) , met een paar wijzigingen in het identificeren van knoop punten in de verrijkings structuur. Er wordt `"/"` een niveau lager in de structuur door lopen en  `"*"` fungeert als een for-each-operator in de context. Een groot aantal voor beelden in dit artikel illustreren de syntaxis. 
 
 ### <a name="enrichment-tree"></a>Verrijkings structuur
 
@@ -223,7 +223,7 @@ Om het voor beeld uit te breiden, kunt u ervoor kiezen om de inline-vorm te verw
 
 #### <a name="shaper-skill-and-projection"></a>Shaper vaardig heden en projectie
 
-Deze/dit 
+Deze 
 
 > [!Note]
 > Enkele van de kolommen uit de document tabel zijn uit dit voor beeld verwijderd voor de boog.

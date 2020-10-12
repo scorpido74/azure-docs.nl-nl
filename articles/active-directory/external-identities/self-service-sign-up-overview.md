@@ -12,16 +12,16 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908481"
 ---
 # <a name="self-service-sign-up-preview"></a>Selfservice registreren (preview)
 
 > [!NOTE]
-> Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+> Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Wanneer u een toepassing deelt met externe gebruikers, weet u mogelijk niet altijd vooraf wie toegang tot de toepassing nodig heeft. Als alternatief voor het rechtstreeks verzenden van uitnodigingen naar personen, kunt u externe gebruikers toestaan zich aan te melden voor specifieke toepassingen zelf door het aanmelden via een self-service in te scha kelen. U kunt een persoonlijke aanmeldings ervaring maken door de self-service voor het registreren van gebruikers aan te passen. U kunt bijvoorbeeld opties bieden om u aan te melden bij Azure AD of Social id-providers en informatie over de gebruiker te verzamelen tijdens het registratie proces.
 

@@ -11,15 +11,15 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400176"
 ---
 # <a name="azure-peering-service-overview"></a>Overzicht van Azure peering-service
 
-Azure peering service is een netwerk service die de connectiviteit van klanten verbetert met micro soft-Cloud Services, zoals Microsoft 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. Micro soft heeft wereld wijd een partnerschap gemaakt met Internet serviceproviders (Isp's), IXPs (Internet Exchange partners) en SDCI-providers (software-defined Cloud Interconnect) om betrouw bare en hoogwaardige open bare connectiviteit te bieden met optimale route ring van de klant naar het micro soft-netwerk.
+Azure Peering Service is een netwerkservice die de klantconnectiviteit verbetert met Microsoft-cloudservices, zoals Microsoft 365, Dynamics 365, SaaS-services (Software as a Service), Azure of een andere Microsoft-service die toegankelijk is via openbaar internet. Micro soft heeft wereld wijd een partnerschap gemaakt met Internet serviceproviders (Isp's), IXPs (Internet Exchange partners) en SDCI-providers (software-defined Cloud Interconnect) om betrouw bare en hoogwaardige open bare connectiviteit te bieden met optimale route ring van de klant naar het micro soft-netwerk.
 
 Met peering service kunnen klanten een goed verbonden partner serviceprovider selecteren in een bepaalde regio. Open bare connectiviteit is geoptimaliseerd voor hoge betrouw baarheid en minimale latentie van Cloud Services naar de locatie van de eind gebruiker.
 

@@ -16,10 +16,10 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654596"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
@@ -179,7 +179,7 @@ De aanbeveling om compressie toe te passen voordat uploadt naar Azure, heeft ver
 * De duur van het uitvoeren van de compressie is korter, ervan uitgaande dat een grotere hardware kan gebruiken met meer Cpu's of een hogere I/O-band breedte of minder I/o-latentie on-premises.
 * Kleinere database grootten kunnen leiden tot minder kosten voor schijf toewijzing
 
-Gegevens-en LOB-compressie werken in een virtuele machine die wordt gehost in azure Virtual Machines als deze on-premises wordt uitgevoerd. Voor meer informatie over het controleren of compressie al in gebruik is in een bestaande SAP ASE-data base, raadpleegt u [SAP-ondersteunings opmerking 1750510](https://launchpad.support.sap.com/#/notes/1750510). Voor meer informatie over SAP ASE-database compressie raadpleegt u [SAP-ondersteunings opmerking #2121797](https://launchpad.support.sap.com/#/notes/2121797)
+Gegevens-en LOB-Compression werken in een virtuele machine die wordt gehost in azure Virtual Machines, zoals on-premises. Voor meer informatie over het controleren of compressie al in gebruik is in een bestaande SAP ASE-data base, raadpleegt u [SAP-ondersteunings opmerking 1750510](https://launchpad.support.sap.com/#/notes/1750510). Voor meer informatie over SAP ASE-database compressie raadpleegt u [SAP-ondersteunings opmerking #2121797](https://launchpad.support.sap.com/#/notes/2121797)
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Hoge Beschik baarheid van SAP-ASE op Azure 
 De hand leiding voor HADR-gebruikers bevat informatie over het instellen en configureren van een ' always-on '-oplossing van 2 node SAP ASE.  Daarnaast wordt een derde herstel knooppunt voor nood gevallen ook ondersteund. SAP ASE ondersteunt veel configuraties met hoge Beschik baarheid, waaronder gedeelde schijven en systeem eigen clusteren van het besturings systeem (zwevend IP-adres). Voor de enige ondersteunde configuratie in azure wordt fout beheer zonder zwevend IP-adres gebruikt.  De methode voor zwevende IP-adressen werkt niet in Azure.  De SAP-kernel is een ' HA-bewuste ' toepassing en weet wat de primaire en secundaire SAP ASE-servers zijn. Er zijn geen nauwe integraties tussen de SAP-ASE en Azure, de interne load balancer van Azure wordt niet gebruikt. Daarom moet de Standard SAP ASE-documentatie worden gevolgd vanaf de [Gebruikers handleiding voor SAP ASE HADR](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html) 
@@ -188,7 +188,7 @@ De hand leiding voor HADR-gebruikers bevat informatie over het instellen en conf
 > Voor de enige ondersteunde configuratie in azure wordt fout beheer zonder zwevend IP-adres gebruikt.  De methode voor zwevende IP-adressen werkt niet in Azure. 
 
 ### <a name="third-node-for-disaster-recovery"></a>Derde knoop punt voor herstel na nood geval
-Als u SAP ASE altijd gebruikt voor lokale hoge Beschik baarheid, wilt u mogelijk de configuratie uitbreiden naar een asynchroon gerepliceerd knoop punt in een andere Azure-regio. Documentatie over een dergelijk scenario vindt u [hier](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199).
+Meer dan het gebruik van SAP ASE Always-On voor lokale hoge Beschik baarheid, kunt u de configuratie uitbreiden naar een asynchroon gerepliceerd knoop punt in een andere Azure-regio. Documentatie over een dergelijk scenario vindt u [hier](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199).
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE-database versleuteling & SSL 
 SAP software Provisioning Manager (SWPM) biedt een optie voor het versleutelen van de data base tijdens de installatie.  Als u versleuteling wilt gebruiken, kunt u het beste SAP Full Data Base Encryption gebruiken.  Details weer geven die zijn gedocumenteerd in:
@@ -239,7 +239,7 @@ en de koppelingen die zijn gegenereerd in trans actie DBACockpit zien er ongevee
 
 Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie [SAP-ondersteunings opmerking #773830](https://launchpad.support.sap.com/#/notes/773830) als u wilt weten hoe ICM de volledige gekwalificeerde hostnaam bepaalt op basis van de profiel parameters en stel para meter ICM/host_name_full expliciet in als dat nodig is.
 
-Als u de virtuele machine hebt geïmplementeerd in een alleen-Cloud scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP-adres en een opgeven `domainlabel` . De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
+Als u de virtuele machine hebt geïmplementeerd in een Cloud-Only scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP-adres en een opgeven `domainlabel` . De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
 
 > `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 

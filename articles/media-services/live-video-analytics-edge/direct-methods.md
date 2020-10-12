@@ -4,10 +4,10 @@ description: Met live video Analytics op IoT Edge worden verschillende directe m
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87091824"
 ---
 # <a name="direct-methods"></a>Directe methoden
@@ -124,7 +124,7 @@ Deze directe methode haalt een topologie met één grafiek op.
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -140,12 +140,12 @@ Deze directe methode haalt een topologie met één grafiek op.
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |Entiteit gevonden|  200 |N.v.t.
-|Algemene gebruikers fouten    |400-bereik  ||
+|Algemene gebruikersfouten    |400-bereik  ||
 |Kan de entiteit niet vinden   |404        ||
-|Algemene server fouten| 500-bereik       ||
+|Algemene serverfouten| 500-bereik       ||
 
 ### <a name="graphtopologyset"></a>GraphTopologySet
 
@@ -175,7 +175,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -191,14 +191,14 @@ Belangrijkste aspecten:
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 Bestaande entiteit bijgewerkt |200|   N.v.t.|
 Nieuwe entiteit gemaakt  |201|   N.v.t.|
-Algemene gebruikers fouten |400-bereik  ||
+Algemene gebruikersfouten |400-bereik  ||
 Grafiek validatie fouten |400    |GraphValidationError|
 Module validatie fouten|   400 |ModuleValidationError|
-Algemene server fouten   |500-bereik  ||
+Algemene serverfouten   |500-bereik  ||
 
 ### <a name="graphtopologydelete"></a>GraphTopologyDelete
 
@@ -216,7 +216,7 @@ Hiermee verwijdert u een topologie met één grafiek.
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -227,13 +227,13 @@ Hiermee verwijdert u een topologie met één grafiek.
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |Entiteit verwijderd|    200|    N.v.t.|
 |Kan de entiteit niet vinden|  204|    N.v.t.|
-|Algemene gebruikers fouten|   400-bereik   ||
+|Algemene gebruikersfouten|   400-bereik   ||
 |Er wordt naar de grafiek topologie verwezen door een of meer grafiek exemplaren| 409 |GraphTopologyInUse|
-|Algemene server fouten| 500-bereik   ||
+|Algemene serverfouten| 500-bereik   ||
 
 ### <a name="graphtopologylist"></a>GraphTopologyList
 
@@ -255,7 +255,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek-topologieën die overeenkomen
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -280,16 +280,16 @@ Hiermee wordt een lijst opgehaald met alle grafiek-topologieën die overeenkomen
 
 |Bewerking      |Veld (en)   |Operators|
 |---|---|---|
-|$orderby|name  |ASC|
+|$orderby|naam  |ASC|
 
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |Geslaagd|   200 |N.v.t.|
-|Algemene gebruikers fouten|   400-bereik   ||
-|Algemene server fouten| 500-bereik   ||
+|Algemene gebruikersfouten|   400-bereik   ||
+|Algemene serverfouten| 500-bereik   ||
 
 ### <a name="graphinstanceget"></a>GraphInstanceGet
 
@@ -307,7 +307,7 @@ Hiermee wordt één exemplaar van een grafiek opgehaald:
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -323,12 +323,12 @@ Hiermee wordt één exemplaar van een grafiek opgehaald:
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |Entiteit gevonden   |200|   N.v.t.|
-|Algemene gebruikers fouten|   400-bereik   ||
+|Algemene gebruikersfouten|   400-bereik   ||
 |Kan de entiteit niet vinden|  404 ||
-|Algemene server fouten| 500-bereik   ||
+|Algemene serverfouten| 500-bereik   ||
 
 ### <a name="graphinstanceset"></a>GraphInstanceSet
 
@@ -357,7 +357,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ````
 {
@@ -373,15 +373,15 @@ Belangrijkste aspecten:
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |Bestaande entiteit bijgewerkt    |200    |N.v.t.|
 |Nieuwe entiteit gemaakt|    201 |N.v.t.|
-|Algemene gebruikers fouten|   400-bereik   ||
+|Algemene gebruikersfouten|   400-bereik   ||
 |Grafiek validatie fouten    |400|   GraphValidationError|
 |Module validatie fouten|  400 |ModuleValidationError|
 |Bron validatie fouten |409    |ResourceValidationError|
-|Algemene server fouten  |500-bereik||    
+|Algemene serverfouten  |500-bereik||    
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
@@ -403,7 +403,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -414,13 +414,13 @@ Belangrijkste aspecten:
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |De grafiek is verwijderd|    200|    N.v.t.|
 |De grafiek is niet gevonden|   204|    N.v.t.|
-|Algemene gebruikers fouten    |400-bereik  ||
+|Algemene gebruikersfouten    |400-bereik  ||
 |De grafiek heeft niet de status ' Stopped '    |409    |OperationNotAllowedInState|
-|Algemene server fouten| 500-bereik   ||
+|Algemene serverfouten| 500-bereik   ||
 
 ### <a name="graphinstancelist"></a>GraphInstanceList
 
@@ -443,7 +443,7 @@ Hiermee wordt een lijst opgehaald met alle grafiek exemplaren die overeenkomen m
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -468,15 +468,15 @@ Hiermee wordt een lijst opgehaald met alle grafiek exemplaren die overeenkomen m
 
 |Bewerking  |   Veld (en)|   Operators|
 |---|---|---|
-|$orderby|  name|   ASC|
+|$orderby|  naam|   ASC|
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |Geslaagd    |200    |N.v.t.|
-|Algemene gebruikers fouten|   400-bereik   ||
-|Algemene server fouten| 500-bereik   ||
+|Algemene gebruikersfouten|   400-bereik   ||
+|Algemene serverfouten| 500-bereik   ||
 
 ### <a name="graphinstanceactivate"></a>GraphInstanceActivate
 
@@ -505,7 +505,7 @@ Belang rijke aspecten
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -516,15 +516,15 @@ Belang rijke aspecten
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |De grafiek is geactiveerd   |200    |N.v.t.|
 |Nieuwe entiteit gemaakt |201|   N.v.t.|
-|Algemene gebruikers fouten    |400-bereik  ||
+|Algemene gebruikersfouten    |400-bereik  ||
 |Module validatie fouten   |400|   ModuleValidationError|
 |Bron validatie fouten|    409|    ResourceValidationError|
 |De grafiek wordt gedeactiveerd |409    |OperationNotAllowedInState|
-|Algemene server fouten| 500-bereik   ||
+|Algemene serverfouten| 500-bereik   ||
 
 ### <a name="graphinstancedeactivate"></a>GraphInstanceDeactivate
 
@@ -556,7 +556,7 @@ Belangrijkste aspecten:
 }
 ```
 
-#### <a name="response"></a>Reactie
+#### <a name="response"></a>Antwoord
 
 ```
 {
@@ -565,14 +565,14 @@ Belangrijkste aspecten:
 }
 ```
 
-|Voorwaarde  |Statuscode    |Gedetailleerde fout code|
+|Conditie  |Statuscode    |Gedetailleerde fout code|
 |---|---|---|
 |De grafiek is geactiveerd   |200|   N.v.t.|
 |Nieuwe entiteit gemaakt |201|   N.v.t.|
-|Algemene gebruikers fouten    |400-bereik  ||
+|Algemene gebruikersfouten    |400-bereik  ||
 |De status van de grafiek wordt geactiveerd   |409|   OperationNotAllowedInState|
-|Algemene server fouten  |500-bereik  ||
+|Algemene serverfouten  |500-bereik  ||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Schema voor de module dubbele configuratie](module-twin-configuration-schema.md)
+[Configuratieschema van moduledubbel](module-twin-configuration-schema.md)

@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 6ea960e93dba634573ec1ef594f1d2c49be57ca9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84945304"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Overzicht van Azure-platformlogboeken
@@ -20,11 +20,11 @@ Platform logboeken bieden gedetailleerde informatie over diagnostische gegevens 
 ## <a name="types-of-platform-logs"></a>Typen platform logboeken
 De volgende tabel bevat de specifieke platform logboeken die beschikbaar zijn op verschillende lagen van Azure.
 
-| Logboek | Laag | Description |
+| Logboek | Laag | Beschrijving |
 |:---|:---|:---|
 | [Resourcelogboeken](resource-logs.md) | Azure-bronnen | Verstrek inzicht in de bewerkingen die zijn uitgevoerd in een Azure-resource (het *gegevens vlak*), bijvoorbeeld om een geheim te verkrijgen van een Key Vault of een aanvraag naar een Data Base te maken. De inhoud van bron Logboeken is afhankelijk van de Azure-service en het resource type.<br><br>*In de bron logboeken werden eerder Diagnostische logboeken genoemd.*  |
 | [Activiteitenlogboek](activity-log.md) | Azure-abonnement | Biedt inzicht in de bewerkingen op elke Azure-resource in het abonnement van buiten (*het beheer vlak*) naast updates voor service Health gebeurtenissen. Gebruik het activiteiten logboek om te bepalen _wat_, _wie_en _Wanneer_ voor schrijf bewerkingen (put, post, Delete) die zijn uitgevoerd op de resources in uw abonnement. Er is één activiteiten logboek voor elk Azure-abonnement. |
-| [Azure Active Directory logboeken](../../active-directory/reports-monitoring/overview-reports.md) | Azure-tenant |  Bevat de geschiedenis van de aanmeldings activiteit en de audittrail van wijzigingen die zijn aangebracht in de Azure Active Directory voor een bepaalde Tenant.   |
+| [Azure Active Directory-logboeken](../../active-directory/reports-monitoring/overview-reports.md) | Azure-tenant |  Bevat de geschiedenis van de aanmeldings activiteit en de audittrail van wijzigingen die zijn aangebracht in de Azure Active Directory voor een bepaalde Tenant.   |
 
 > [!NOTE]
 > Het Azure-activiteiten logboek is voornamelijk bedoeld voor activiteiten die zich in Azure Resource Manager voordoen. Er worden geen resources bijgehouden met het klassieke/RDFE-model. Sommige klassieke resource typen hebben een proxy resource provider in Azure Resource Manager (bijvoorbeeld micro soft. ClassicCompute). Als u met een klassiek resource type communiceert via Azure Resource Manager met behulp van deze proxy resource providers, worden de bewerkingen weer gegeven in het activiteiten logboek. Als u communiceert met een klassiek resource type buiten de Azure Resource Manager-proxy's, worden uw acties alleen vastgelegd in het bewerkings logboek. Het bewerkings logboek kan worden doorzocht in een afzonderlijk gedeelte van de portal.
@@ -44,7 +44,7 @@ Er zijn verschillende opties voor het weer geven en analyseren van de verschille
 ## <a name="destinations"></a>Bestemmingen
 U kunt platform logboeken verzenden naar een of meer van de doelen in de volgende tabel, afhankelijk van uw bewakings vereisten. Configureer doelen voor platform logboeken door [een diagnostische instelling te maken](diagnostic-settings.md).
 
-| Doel | Description |
+| Doel | Beschrijving |
 |:---|:---|
 | Log Analytics-werkruimte | Analyseer de logboeken van al uw Azure-resources samen en profiteer van alle functies die beschikbaar zijn voor [Azure monitor logboeken](data-platform-logs.md) , inclusief [logboek query's](../log-query/log-query-overview.md) en [logboek waarschuwingen](alerts-log.md). De resultaten van een logboek query vastmaken aan een Azure-dash board of opnemen in een werkmap als onderdeel van een interactief rapport. |  |
 | Event Hub | Verzend gegevens van het platform logboek buiten Azure, bijvoorbeeld naar een SIEM of aangepast telemetrie-platform van derden.
@@ -53,8 +53,8 @@ U kunt platform logboeken verzenden naar een of meer van de doelen in de volgend
 - Zie voor meer informatie over het maken van een diagnostische instelling voor activiteiten logboek of bron logboeken [Diagnostische instellingen maken om platform logboeken en metrische gegevens naar verschillende bestemmingen te verzenden](diagnostic-settings.md). 
 - Raadpleeg de volgende artikelen voor meer informatie over het maken van een diagnostische instelling voor Azure Active Directory Logboeken.
   - [Azure AD-logboeken integreren met Azure Monitor-logboeken](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-  - [Zelf studie: stream Azure Active Directory logboeken naar een Azure-Event Hub](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
-  - [Zelf studie: Azure AD-logboeken archiveren in een Azure-opslag account](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
+  - [Zelfstudie: Azure Active Directory-logboeken streamen naar een Azure Event Hub](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
+  - [Zelfstudie: Azure AD-logboeken archiveren in een Azure-opslagaccount](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 
 
 

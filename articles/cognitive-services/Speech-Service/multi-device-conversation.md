@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921415"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Wat is een uitwisseling van meerdere apparaten (preview-versie)?
@@ -62,7 +62,7 @@ U kunt ook bijschriften bieden voor presentaties en lezingen op het scherm en op
 > [!NOTE]
 > Als u een voor beeld wilt bekijken, bekijkt u de [presentatie-vertaler](https://www.microsoft.com/translator/apps/presentation-translator/), een Power Point-invoeg toepassing die gebruikmaakt van de multi-device-conversatie service. U kunt het artikel [hier](https://download.cnet.com/s/powerpoint-add-in/) downloaden.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Alle clients gebruiken de Speech SDK om een conversatie te maken of eraan toe te voegen. De Speech SDK communiceert met de service voor meerdere apparaten, die de levens duur van een gesprek beheert, met inbegrip van de lijst met deel nemers, de gekozen taal/talen van elke client en verzonden berichten.  
 
@@ -79,7 +79,7 @@ Elke conversatie maakt meta gegevens die het volgende bevatten:
 -    Lijst met alle deel nemers aan de conversatie, waarbij de geselecteerde bijnaam van de gebruiker en de primaire taal voor spraak of tekst invoer wordt opgenomen.
 
 
-Er zijn twee soorten gebruikers in een gesprek: **host** en **deel nemer**.
+Er zijn twee soorten gebruikers in een gesprek:  **host** en **deel nemer**.
 
 De **host** is de gebruiker die een gesprek start en die fungeert als beheerder van de conversatie.
 - Elke conversatie kan slechts één host hebben

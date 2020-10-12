@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
 ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068384"
 ---
-# <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB - overzicht
 
 Azure Cosmos DB is een schema-neutraal-data base waarmee u de toepassing kunt herhalen zonder schema-of index beheer. Standaard indexeert Azure Cosmos DB automatisch elke eigenschap voor alle items in uw [container](databases-containers-items.md#azure-cosmos-containers) zonder schema te hoeven definiëren of secundaire indexen te configureren.
 
@@ -180,7 +180,7 @@ De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gema
 
 Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Het query predicaat (filteren op items, waarbij een wille keurige locatie ' Frank rijk ' heeft als land/regio) zou overeenkomen met het pad dat in rood is gemarkeerd:
 
-:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Een specifiek pad binnen een structuur zoeken" border="false":::
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Het vorige item wordt weer gegeven als een boom structuur" border="false":::
 
 > [!NOTE]
 > Een `ORDER BY` component waarbij orders met één eigenschap *altijd* een bereik index nodig heeft en mislukt als het pad waarnaar wordt verwezen, niet is opgenomen. Op dezelfde manier `ORDER BY` heeft een query die door meerdere eigenschappen orders *altijd* een samengestelde index nodig.

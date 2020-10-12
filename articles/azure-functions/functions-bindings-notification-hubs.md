@@ -7,17 +7,17 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212228"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs uitvoer binding voor Azure Functions
 
 In dit artikel wordt uitgelegd hoe u push meldingen verzendt met behulp van [Azure notification hubs](../notification-hubs/notification-hubs-push-notification-overview.md) -bindingen in azure functions. Azure Functions ondersteunt uitvoer bindingen voor Notification Hubs.
 
-Azure Notification Hubs moet worden geconfigureerd voor de PNS (platform Notification Service) die u wilt gebruiken. Zie aan de slag [met Notification hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) en selecteer uw doel-client platform in de vervolg keuzelijst aan de bovenkant van de pagina voor meer informatie over het ophalen van push meldingen in uw client-app van Notification hubs.
+Azure Notification Hubs moet worden geconfigureerd voor de PNS (platform Notification Service) die u wilt gebruiken. Zie [Aan de slag met Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) en selecteer uw doelclientplatform in de vervolgkeuzelijst aan de bovenkant van de pagina voor meer informatie over het ophalen van pushmeldingen in uw client-app van Notification Hubs.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -248,14 +248,14 @@ De para meters en eigenschappen van de constructor van het kenmerk worden beschr
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `NotificationHub` kenmerk:
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** |N.v.t.| Moet worden ingesteld op `notificationHub` . |
-|**direction** |N.v.t.| Moet worden ingesteld op `out` . | 
+|**type** |N.v.t.| Moet worden ingesteld op `notificationHub`. |
+|**direction** |N.v.t.| Moet worden ingesteld op `out`. | 
 |**name** |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor het bericht van de notification hub. |
 |**tagExpression** |**TagExpression** | Met label expressies kunt u opgeven dat meldingen worden bezorgd bij een set apparaten die zijn geregistreerd voor het ontvangen van meldingen die overeenkomen met de tag-expressie.  Zie [route ring en label expressies](../notification-hubs/notification-hubs-tags-segment-push-message.md)voor meer informatie. |
 |**hubName** | **HubName** | De naam van de notification hub-resource in de Azure Portal. |
-|**Combi** | **ConnectionStringSetting** | De naam van een app-instelling die een Notification Hubs connection string bevat.  De connection string moet worden ingesteld op de waarde *DefaultFullSharedAccessSignature* voor uw notification hub. Zie de installatie van de [verbindings reeks](#connection-string-setup) later in dit artikel.|
+|**connection** | **ConnectionStringSetting** | De naam van een app-instelling die een Notification Hubs connection string bevat.  De connection string moet worden ingesteld op de waarde *DefaultFullSharedAccessSignature* voor uw notification hub. Zie de installatie van de [verbindings reeks](#connection-string-setup) later in dit artikel.|
 |**onafhankelijk** | **Platform** | De platform eigenschap geeft aan op welk client platform uw meldings doelen zijn gericht. Als de platform eigenschap wordt wegge laten uit de uitvoer binding, kunnen standaard sjabloon meldingen worden gebruikt om te richten op elk platform dat is geconfigureerd op de Azure notification hub. Zie [sjablonen](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)voor meer informatie over het gebruik van sjablonen in het algemeen voor het verzenden van meldingen tussen verschillende platforms met een Azure notification hub. Wanneer het is ingesteld, moet **platform** een van de volgende waarden zijn: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Zie [Push meldingen verzenden naar IOS met Azure notification hubs](../notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md)voor meer informatie over het configureren van de notification hub voor APNS en het ontvangen van de melding in een client-app.</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Zie aan de slag [met Notification hubs voor Kindle-apps](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)voor meer informatie over het configureren van de notification hub voor adm en het ontvangen van de melding in een Kindle-app.</li><li><code>wns</code>&mdash;[Windows-Push Notification Services](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) gericht op Windows-platforms. Windows Phone 8,1 en hoger wordt ook ondersteund door WNS. Zie aan de slag [met Notification hubs voor Windows Universal platform-apps](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)voor meer informatie.</li><li><code>mpns</code>&mdash;[Micro soft Push Notification Service](/previous-versions/windows/apps/ff402558(v=vs.105)). Dit platform ondersteunt Windows Phone 8 en eerdere Windows Phone platforms. Zie [Push meldingen verzenden met Azure notification hubs op Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)voor meer informatie.</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -297,7 +297,7 @@ De naam van deze toepassings instelling is wat er gebeurt in de instelling voor 
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Verwijzing |
+| Binding | Naslaginformatie |
 |---|---|
 | Notification hub | [Bedienings handleiding](/rest/api/notificationhubs/) |
 

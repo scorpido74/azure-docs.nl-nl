@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208371"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
@@ -38,7 +38,7 @@ Azure Monitor gebruikt een versie van de [Kusto-querytaal](/azure/kusto/query/) 
 
 1. Voer een naam in voor de **Diagnostische instellingen**en selecteer vervolgens **Opslaan**.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Een diagnostische instelling toevoegen":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnostische instellingen selecteren":::
 
 ## <a name="user-generated-logs"></a>Door de gebruiker gegenereerde logboeken
 
@@ -89,7 +89,7 @@ Query's uitvoeren op de gegenereerde logboeken:
 
    Azure Functions schrijft alle logboeken naar de tabel **FunctionAppLogs** onder **LogManagement**. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Query venster in Log Analytics werk ruimte":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Diagnostische instellingen selecteren":::
 
 Hier volgen enkele voor beelden van query's:
 
@@ -125,4 +125,4 @@ FunctionAppLogs
 
 - Bekijk het [Azure functions overzicht](functions-overview.md).
 - Meer informatie over [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md).
-- Lees meer over de [querytaal](../azure-monitor/log-query/get-started-queries.md).
+- Meer informatie over de [querytaal](../azure-monitor/log-query/get-started-queries.md).

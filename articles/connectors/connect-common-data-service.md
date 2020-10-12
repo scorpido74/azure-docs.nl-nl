@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334579"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Records in Common Data Service maken en beheren met behulp van Azure Logic Apps
@@ -51,9 +51,9 @@ Voor dit voor beeld voegt u de trigger Common Data Service toe die wordt geactiv
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Omgeving** | Yes | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](/power-platform/admin/environments-overview)voor meer informatie. |
-   | **Naam van entiteit** | Yes | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
-   | **Bereik** | Yes | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
+   | **Omgeving** | Ja | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](/power-platform/admin/environments-overview)voor meer informatie. |
+   | **Naam van entiteit** | Ja | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
+   | **Bereik** | Ja | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service actie toevoegen
@@ -72,8 +72,8 @@ Voeg nu een Common Data Service actie toe waarmee een taak record voor een nieuw
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam van organisatie** | Yes | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
-   | **Naam van entiteit** | Yes | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
+   | **Naam van organisatie** | Ja | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
+   | **Naam van entiteit** | Ja | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
    | **Onderwerp** | Ja, op basis van de entiteit die in dit voor beeld is geselecteerd | Een korte beschrijving van de doel stelling voor deze taak |
    ||||
 

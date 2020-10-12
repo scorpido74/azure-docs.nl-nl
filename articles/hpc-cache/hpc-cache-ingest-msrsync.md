@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 323ecd6a2dd001c3c8df1b2ec15f0ae8402ec70c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092402"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC cache data opname-msrsync-methode
@@ -21,7 +21,7 @@ Lees [gegevens verplaatsen naar Azure Blob Storage](hpc-cache-ingest.md)voor mee
 
 Het ``msrsync`` hulp programma kan worden gebruikt om gegevens te verplaatsen naar een back-end-opslag doel voor de Azure HPC-cache. Dit hulp programma is ontworpen om het bandbreedte gebruik te optimaliseren door meerdere parallelle processen uit te voeren ``rsync`` . Het is beschikbaar via GitHub op https://github.com/jbd/msrsync .
 
-``msrsync``Hiermee wordt de bron directory opgesplitst in afzonderlijke buckets en worden vervolgens afzonderlijke ``rsync`` processen uitgevoerd op elke Bucket.
+``msrsync`` Hiermee wordt de bron directory opgesplitst in afzonderlijke buckets en worden vervolgens afzonderlijke ``rsync`` processen uitgevoerd op elke Bucket.
 
 Voor bereiding van het testen met behulp van een virtuele machine met vier kernen wordt de beste efficiëntie weer gegeven wanneer u 64 processen Gebruik de ``msrsync`` optie ``-p`` om het aantal processen in te stellen op 64.
 

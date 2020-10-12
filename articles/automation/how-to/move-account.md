@@ -10,10 +10,10 @@ ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185548"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Uw Azure Automation-account verplaatsen naar een ander abonnement
@@ -150,7 +150,7 @@ Wanneer de verplaatsing is voltooid, controleert u of de hieronder vermelde moge
 |Mogelijkheid|Testen|Problemen oplossen|
 |---|---|---|
 |Runbooks|Een runbook kan worden uitgevoerd en er verbinding mee worden gemaakt met Azure-resources.|[Problemen met runbooks oplossen](../troubleshoot/runbooks.md)
-|Broncodebeheer|U kunt een hand matige synchronisatie uitvoeren in uw opslag plaats voor broncode beheer.|[Integratie van bronbeheer](../source-control-integration.md)|
+|Broncodebeheer|U kunt een hand matige synchronisatie uitvoeren in uw opslag plaats voor broncode beheer.|[Integratie van broncode beheer](../source-control-integration.md)|
 |Wijzigingen bijhouden en inventaris|Controleer of er actuele inventaris gegevens van uw computers worden weer gegeven.|[Problemen met het bijhouden van wijzigingen oplossen](../troubleshoot/change-tracking.md)|
 |Updatebeheer|Controleer of uw computers worden weer geven en of ze in orde zijn.</br>Voer een test implementatie van de software-update uit.|[Problemen met update beheer oplossen](../troubleshoot/update-management.md)|
 |Gedeelde resources|Controleer of alle gedeelde bronnen, zoals [referenties](../shared-resources/credentials.md) en [variabelen](../shared-resources/variables.md), worden weer geven.|

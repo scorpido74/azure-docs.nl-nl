@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887707"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Prestaties van edge nod analyseren in Microsoft Azure CDN
@@ -126,7 +126,7 @@ Het doel van deze metrische gegevens is om de algemene CDN-prestaties voor uw ve
 #### <a name="secure-traffic-metrics"></a>Metrische gegevens van beveiligd verkeer
 Het doel van deze metrische gegevens is om de CDN-prestaties voor HTTPS-verkeer bij te houden.
 
-| Veld | Description |
+| Veld | Beschrijving |
 | --- | --- |
 | Efficiëntie van de cache beveiligen |Hiermee wordt het percentage verzonden gegevens aangegeven voor HTTPS-aanvragen die vanuit de cache zijn bediend. Deze metrische gegevens worden gemeten wanneer een in cache opgeslagen versie van de aangevraagde inhoud rechtstreeks vanuit het CDN (Edge-servers) naar aanvragers (bijvoorbeeld webbrowser) via HTTPS wordt verzonden. |
 | Beveiligde overdrachts frequentie |Hiermee wordt de gemiddelde snelheid aangegeven waarmee inhoud van het CDN (Edge-servers) naar aanvragers (bijvoorbeeld webservers) via HTTPS is overgedragen. |
@@ -173,8 +173,8 @@ Elk rapport in deze module bevat een diagram en statistieken over band breedte e
 | Compressie typen |Bevat een ring diagram waarmee aangevraagde assets worden opgesplitst door onze edge-servers te comprimeren. Het percentage van de gecomprimeerde activa wordt uitgesplitst op basis van het type compressie dat wordt gebruikt. Gedetailleerde informatie wordt weer gegeven onder de grafiek voor elk compressie type en-status. |
 | Bestands typen |Bevat een staaf diagram waarin de tien belangrijkste bestands typen worden weer gegeven die via onze CDN voor uw account zijn aangevraagd. Voor de doel einden van dit rapport wordt een bestands type gedefinieerd door de bestands extensie van de Asset en het type Internet media (bijvoorbeeld. HTML \[ tekst/HTML \] ,. htm \[ text/HTML \] ,. aspx- \[ tekst/HTML, \] enzovoort). Gedetailleerde informatie vindt u onder de grafiek voor de meeste bestands typen van 100. |
 | Unieke bestanden |Bevat een grafiek die het totale aantal unieke assets dat is aangevraagd op een bepaalde dag gedurende een opgegeven periode. |
-| Samen vatting van token verificatie |Bevat een cirkel diagram met een kort overzicht van de vraag of de gevraagde assets zijn beveiligd door authenticatie op basis van tokens. Beveiligde assets worden weer gegeven in de grafiek volgens de resultaten van de verificatie. |
-| Details van deny-token auth |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die zijn geweigerd vanwege verificatie op basis van tokens. |
+| Samen vatting van token verificatie |Bevat een cirkel diagram met een kort overzicht van de vraag of de gevraagde assets zijn beveiligd door Token-Based-verificatie. Beveiligde assets worden weer gegeven in de grafiek volgens de resultaten van de verificatie. |
+| Details van deny-token auth |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die zijn geweigerd vanwege Token-Based-verificatie. |
 | HTTP-antwoord codes |Biedt een uitsplitsing van de HTTP-status codes (bijvoorbeeld 200 OK, 403 verboden, 404 niet gevonden, enzovoort) die aan uw HTTP-clients zijn geleverd door onze edge-servers. Met een cirkel diagram kunt u snel bepalen hoe uw assets zijn geleverd. Voor elke reactie code onder de grafiek worden gedetailleerde statistische gegevens gegeven. |
 | 404 fouten |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die hebben geleid tot een niet-gevonden antwoord code van 404. |
 | 403 fouten |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die hebben geleid tot een niet-toegestane antwoord code van 403. Er treedt een 403 niet-geautoriseerde respons code op wanneer een aanvraag wordt geweigerd door een bron server van de klant of een Edge-Server op de POP. |
@@ -183,7 +183,7 @@ Elk rapport in deze module bevat een diagram en statistieken over band breedte e
 | 502 fouten |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die hebben geleid tot een ongeldige gateway-reactie code van 502. Een ongeldige gateway-reactie code van 502 treedt op wanneer een HTTP-protocol fout optreedt tussen een server en een HTTP-proxy. In het geval van ons CDN treedt 502 er meestal een ongeldige gateway-antwoord code op wanneer een klant van oorsprong een ongeldige reactie op een Edge-Server retourneert. Een antwoord is ongeldig als het niet kan worden geparseerd of niet is voltooid. |
 | 5xx-fouten |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die hebben geresulteerd in een antwoord code in het 500-bereik.  Uitgesloten van dit rapport zijn 502 ongeldige gateway-en 504-time-outantwoord codes. |
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure CDN](cdn-overview.md)
 * [Realtime-statistieken in Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Standaard HTTP-gedrag negeren met de regel engine](cdn-rules-engine.md)

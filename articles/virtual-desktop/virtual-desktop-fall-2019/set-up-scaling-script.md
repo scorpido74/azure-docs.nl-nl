@@ -7,16 +7,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078177"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Windows Virtual Desktop (klassieke) sessie-hosts schalen met behulp van Azure Automation
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 U kunt de totale kosten voor het implementeren van virtuele Windows-Bureau bladen verlagen door uw virtuele machines (Vm's) te schalen. Dit betekent dat de virtuele machines van de host worden afgesloten en opnieuw worden toegewezen tijdens gebruiks uren en vervolgens weer worden ingeschakeld en opnieuw worden toegewezen tijdens piek uren.
 
@@ -28,9 +28,9 @@ Het hulp programma voor schalen biedt een voordelige automatiserings optie voor 
 
 U kunt het hulp programma schalen gebruiken voor het volgende:
 
-- Plan Vm's om te starten en stoppen op basis van pieken en kantoor uren.
+- Plan Vm's om te starten en stoppen op basis van pieken en Off-Peak kantoor uren.
 - Uitschalen van Vm's op basis van het aantal sessies per CPU-kern.
-- Schaal in Vm's tijdens rustige uren, waardoor het minimale aantal actieve host-Vm's wordt uitgevoerd.
+- Schaal in Vm's tijdens Off-Peak uur, waardoor het minimale aantal actieve host-Vm's wordt uitgevoerd.
 
 Het hulp programma voor schalen maakt gebruik van een combi natie van een Azure Automation account, een Power shell-runbook, een webhook en de Azure Logic-app die u kunt gebruiken. Wanneer het hulp programma wordt uitgevoerd, roept Azure Logic app een webhook aan om het Azure Automation runbook te starten. Het runbook maakt vervolgens een taak.
 

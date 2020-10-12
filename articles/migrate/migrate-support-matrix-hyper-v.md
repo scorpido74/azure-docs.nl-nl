@@ -4,10 +4,10 @@ description: Meer informatie over ondersteuning voor Hyper-V-evaluatie met Azure
 ms.topic: conceptual
 ms.date: 06/14/2020
 ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318174"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Ondersteunings matrix voor Hyper-V-evaluatie
@@ -23,7 +23,7 @@ Als u de Hyper-V VM-evaluatie wilt instellen, maakt u een Azure Migrate project 
 --- | ---
 **Beoordelings limieten** | U kunt Maxi maal 35.000 Hyper-V-Vm's in één [Azure migrate project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen.
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement. Naast virtuele Hyper-V-machines kan een project VMware-Vm's en fysieke servers bevatten, tot de evaluatie limieten voor elke.
-**Detectie** | Het Azure Migrate-apparaat kan Maxi maal 5000 Hyper-V-Vm's detecteren.<br/><br/> Het apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
+**Discovery** (Detectie) | Het Azure Migrate-apparaat kan Maxi maal 5000 Hyper-V-Vm's detecteren.<br/><br/> Het apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
 **Evaluatie** | U kunt Maxi maal 35.000 computers in één groep toevoegen.<br/><br/> U kunt Maxi maal 35.000 Vm's evalueren in één evaluatie voor een groep.
 
 Meer [informatie](concepts-assessment-calculation.md) over evaluaties.

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87023463"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Woorden lijst met IoT Hub voor waarden
@@ -106,7 +106,7 @@ U gebruikt verbindings reeksen in uw app-code om de vereiste gegevens voor het m
 
 - Met *IOT hub verbindings reeksen* kunnen back-end-apps verbinding maken met de service gerichte eind punten op een IOT-hub.
 
-## <a name="custom-endpoints"></a>Aangepaste eind punten
+## <a name="custom-endpoints"></a>Aangepaste eindpunten
 
 U kunt aangepaste [eind punten](iot-hub-devguide-endpoints.md) maken op een IOT-hub om berichten te leveren die worden verzonden door een [routerings regel](#routing-rules). Aangepaste eind punten verbinden rechtstreeks met een event hub, een Service Bus wachtrij of een Service Bus onderwerp.
 

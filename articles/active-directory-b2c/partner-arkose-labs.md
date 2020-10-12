@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86170221"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van arkose Labs met Azure Active Directory B2C
@@ -60,7 +60,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
 
 1. Meld u aan bij de Azure Portal.
 
-2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure B2C-Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw abonnement bevat. Dit is een andere map dan de map met uw Azure B2C-tenant.
 
 3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer  **opslag accounts**.
 
@@ -70,11 +70,11 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
 
 6. Voer een naam in voor het opslagaccount. De naam die u kiest, moet uniek zijn in Azure, moet tussen de 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 
-7. Selecteer de locatie van het opslag account of accepteer de standaard locatie.
+7. Selecteer de locatie van het opslagaccount of accepteer de standaardlocatie.
 
 8. Accepteer alle andere standaard waarden, selecteer  **beoordeling &** Create  >  **Create**.
 
-9. Nadat het opslag account is gemaakt, selecteert  **u Ga naar resource**.
+9. Nadat het opslagaccount is gemaakt, selecteert u  **Naar de resource gaan**.
 
 #### <a name="create-a-container"></a>Een container maken
 
@@ -84,7 +84,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
 
 #### <a name="enable-cross-origin-resource-sharing-cors"></a>Cross-Origin-resource delen (CORS) inschakelen
 
-Azure AD B2C-code in een browser gebruikt een moderne en standaard benadering voor het laden van aangepaste inhoud vanuit een URL die u opgeeft in een gebruikers stroom. Met CORS kunnen beperkte bronnen op een webpagina worden aangevraagd vanuit andere domeinen.
+In browsers maakt Azure AD B2C-code gebruik van een moderne en gestandaardiseerde benadering om aangepaste inhoud te laden vanaf een URL die u in een gebruikersstroom opgeeft. Met CORS kunnen beperkte bronnen op een webpagina worden aangevraagd vanuit andere domeinen.
 
 1. Selecteer  **CORS**in het menu.
 
@@ -92,11 +92,11 @@ Azure AD B2C-code in een browser gebruikt een moderne en standaard benadering vo
 
 3. Voor **toegestane methoden**selecteert u **ophalen**, **plaatsen**en **Opties**.
 
-4. Voer een asterisk (*) in bij **toegestane headers**.
+4. Voer bij **Toegestane headers** een asterisk (*) in.
 
 5. Voer een asterisk (*) in voor **weer gegeven headers**.
 
-6. Voer 200 in als **maximum leeftijd**.
+6. Voer bij **Maximumleeftijd** 200 in.
 
    ![Aanmelden bij arkose Labs en aanmelden](media/partner-arkose-labs/signup-signin-arkose.png)
 
@@ -154,7 +154,7 @@ Deze URL voor de aangepaste pagina wordt opgehaald uit de locatie van het index.
 
    ![Scherm opname van de opslag-URL van arkose Labs](media/partner-arkose-labs/arkose-storage-url.png)
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 1. Open de Azure AD B2C-Tenant en selecteer onder **beleids regels** **gebruikers stromen**.
 

@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121092"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Verbinding maken met Azure Database for MariaDB met behulp van omleiding
@@ -44,7 +44,7 @@ Het omleidings gedrag wordt bepaald door de waarde van `mysqlnd_azure.enableRedi
 
 Als u een oudere versie van de mysqlnd_azure extensie (versie 1.0.0-1.0.3) gebruikt, wordt het omleidings gedrag bepaald door de waarde van `mysqlnd_azure.enabled` . De geldige waarden zijn `off` (reageren op dezelfde manier als het gedrag dat wordt beschreven in de onderstaande tabel) en `on` ( `preferred` in de onderstaande tabel).  
 
-|**waarde van mysqlnd_azure. enableRedirect**| **Gedrag**|
+|**waarde van mysqlnd_azure. enableRedirect**| Gedrag|
 |----------------------------------------|-------------|
 |`off` of `0`|Omleiding wordt niet gebruikt. |
 |`on` of `1`|-Als de verbinding geen SSL op het stuur programma gebruikt, wordt er geen verbinding gemaakt. De volgende fout wordt geretourneerd: *"mysqlnd_azure. enableRedirect is ingeschakeld, maar de SSL-optie is niet ingesteld in Connection String. Omleiding is alleen mogelijk met SSL. "*<br>-Als SSL wordt gebruikt op het stuur programma, maar de omleiding wordt niet ondersteund op de server, wordt de eerste verbinding afgebroken en wordt de volgende fout geretourneerd: *' de verbinding is afgebroken omdat omleiding niet is ingeschakeld op de MariaDB-server of het netwerk pakket niet voldoet aan het omleidings Protocol '. '*<br>-Als de MariaDB-server omleiding ondersteunt, maar de omgeleide verbinding om een of andere reden mislukt, wordt ook de eerste proxy verbinding afgebroken. Retourneert de fout van de omgeleide verbinding.|

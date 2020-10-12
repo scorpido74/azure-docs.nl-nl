@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: c90590ac4c47f6ac8d51273fecfb653dfe056b1d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485767"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Gegevens laden in azure Synapse Analytics met behulp van Azure Data Factory
@@ -45,7 +45,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 * Azure SQL Database: in deze zelf studie worden gegevens uit de gegevensset Adventure Works LT voor beeld gekopieerd in Azure SQL Database. U kunt deze voorbeeld database in SQL Database maken door de instructies in [een voorbeeld database maken in Azure SQL database](../azure-sql/database/single-database-create-quickstart.md)te volgen.
 * Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure Storage-account hebt, raadpleegt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Selecteer in het linkermenu **Een resource maken** > **Gegevens en analyses** > **Data factory**:
 
