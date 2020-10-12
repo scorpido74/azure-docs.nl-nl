@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039990"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail meldingen configureren voor problemen in Azure Active Directory Domain Services
@@ -57,7 +57,7 @@ U kunt er ook voor kiezen alle *globale beheerders* van de Azure AD-Directory en
 
 Voer de volgende stappen uit om de bestaande ontvangers van e-mail meldingen te controleren of extra ontvangers toe te voegen:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**.
+1. Zoek en selecteer **Azure AD Domain Services** in de Azure-portal.
 1. Selecteer uw beheerde domein, zoals *aaddscontoso.com*.
 1. Selecteer aan de linkerkant van het Azure AD DS-resource venster **instellingen voor meldingen**. De bestaande ontvangers voor e-mail meldingen worden weer gegeven.
 1. Als u een e-mail ontvanger wilt toevoegen, voert u het e-mail adres in in de tabel extra geadresseerden.
@@ -76,7 +76,7 @@ Als een waarschuwing is opgelost, wordt de waarschuwing uit het Azure Portal ver
 
 Als u geen toegang hebt tot de pagina met instellingen voor meldingen in de Azure Portal, hebt u geen machtigingen om het beheerde domein te bewerken. Neem contact op met een globale beheerder om machtigingen te krijgen voor het bewerken van Azure AD DS resource of uit de lijst met ontvangers verwijderd.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ik wil geen e-mail meldingen ontvangen, maar ik heb mijn e-mail adres ingevoerd. Hoe kan dat?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>Ik wil geen e-mail meldingen ontvangen, maar ik heb mijn e-mail adres ingevoerd. Hoe komt dat?
 
 Controleer uw e-mail adres of map in uw e-mail op de melding en zorg ervoor dat de afzender van wordt toegestaan `azure-noreply@microsoft.com` .
 

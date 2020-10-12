@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: 4fab0be90e6941d1a6b8f137ae574223b0d7a9d1
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232743"
 ---
-# <a name="authenticate-requests-to-azure-cognitive-services"></a>Aanvragen verifiëren voor Azure Cognitive Services
+# <a name="authenticate-requests-to-azure-cognitive-services"></a>Aanvragen verifiëren bij Azure Cognitive Services
 
 Elke aanvraag voor een Azure cognitieve service moet een verificatie header bevatten. Deze header wordt door gegeven aan een abonnements sleutel of toegangs token, die wordt gebruikt om uw abonnement voor een service of groep services te valideren. In dit artikel vindt u meer informatie over drie manieren om een aanvraag te verifiëren en de vereisten voor elke.
 
@@ -34,7 +34,7 @@ U kunt uw abonnements sleutel ophalen uit de [Azure Portal](cognitive-services-a
 
 U kunt snel de verificatie headers bekijken die beschikbaar zijn voor gebruik met Azure Cognitive Services.
 
-| Header | Beschrijving |
+| Koptekst | Beschrijving |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Gebruik deze header om te verifiëren met een abonnements sleutel voor een specifieke service of een sleutel van een abonnement op meerdere services. |
 | OCP-APIM-abonnement-regio | Deze header is alleen vereist bij het gebruik van een sleutel voor meerdere services met de [Translator-service](./Translator/reference/v3-0-reference.md). Gebruik deze header om de regio van het abonnement op te geven. |
@@ -73,7 +73,7 @@ De abonnements sleutel wordt in elke aanvraag gegeven als de `Ocp-Apim-Subscript
 
 [![Demonstratie van een sleutel voor meerdere service abonnementen voor Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
-### <a name="supported-regions"></a>Ondersteunde regio's
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
 Wanneer u de sleutel voor meerdere service abonnementen gebruikt om een aanvraag in te stellen `api.cognitive.microsoft.com` , moet u de regio in de URL toevoegen. Bijvoorbeeld: `westus.api.cognitive.microsoft.com`.
 

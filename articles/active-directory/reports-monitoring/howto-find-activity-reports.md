@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230616"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Activiteitenrapporten zoeken in de Azure-portal
@@ -52,7 +52,7 @@ U kunt Geavanceerd filteren in het controle rapport gebruiken om toegang te krij
 
 Categorieën zijn onder andere:
 
-- Alle
+- Alles
 - AdministrativeUnit
 - ApplicationManagement
 - Verificatie
@@ -73,7 +73,7 @@ U kunt ook filteren op een specifieke service met behulp van het vervolg filter 
 
 Services omvatten:
 
-- Alle
+- Alles
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
@@ -106,7 +106,7 @@ Het rapport aanmeldingen openen:
 
 U kunt het rapport aanmeldingen gebruiken om details over toepassings gebruik te bekijken door te filteren op gebruikers naam of toepassings naam.
 
-![Pagina aanmeldings gebeurtenissen filteren](./media/howto-find-activity-reports/07.png "Pagina aanmeldings gebeurtenissen filteren")
+![Pagina Sign-In gebeurtenissen filteren](./media/howto-find-activity-reports/07.png "Pagina Sign-In gebeurtenissen filteren")
 
 ## <a name="security-reports"></a>Beveiligingsrapporten
 
@@ -147,9 +147,9 @@ U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **be
 
 #### <a name="symptoms"></a>Symptomen 
 
-Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Waarom? 
+Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe komt dat? 
 
- ![Rapportage](./media/troubleshoot-missing-data-download/01.png)
+ ![Rapporten](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -165,7 +165,7 @@ U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md)
 
 Ik heb enkele acties uitgevoerd in de Azure-portal en had verwacht de auditlogboeken voor deze acties te zien op de blade `Activity logs > Audit Logs`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/01.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -186,7 +186,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 Ik heb me onlangs aangemeld bij de Azure-portal en dan zou ik hier eigenlijk vermeldingen voor moeten zien in de logboeken op de blade `Activity logs > Sign-ins`, maar ik kan ze niet vinden.
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/02.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Oorzaak
 
@@ -205,9 +205,9 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 #### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Waarom? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
 
- ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
+ ![Rapporten](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Oorzaak
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246687"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Back-up herstellen in azure Service Fabric
@@ -207,7 +207,7 @@ Voor _gegevens verlies_ of _beschadiging van gegevens_, kunnen back-ups van part
 
 Het volgende voor beeld is een voortzetting van het [inschakelen van periodieke back-ups voor betrouw bare stateful service en reliable actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). In dit voor beeld is een back-upbeleid voor de partitie ingeschakeld en maakt de service back-ups op een gewenste frequentie in Azure Storage.
 
-Selecteer een back-up in de uitvoer van [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). In dit scenario wordt de back-up van hetzelfde cluster als voorheen gegenereerd.
+Selecteer een back-up in de uitvoer van  [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). In dit scenario wordt de back-up van hetzelfde cluster als voorheen gegenereerd.
 
 Als u de herstel bewerking wilt starten, kiest u een back-up in de lijst. Voor de gegevens beschadiging van het huidige _gegevens verlies_ / _data corruption_selecteert u de volgende back-up:
 

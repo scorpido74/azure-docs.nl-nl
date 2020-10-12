@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
 ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015082"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Een door Azure gehoste API exporteren naar PowerApps en Microsoft Flow
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om de export in **Express** -modus te volt ooien:
 
     |Instelling|Beschrijving|
     |--------|------------|
-    |**Variabelen**|Selecteer de omgeving waarin de aangepaste connector moet worden opgeslagen. Zie voor meer informatie [Overzicht van omgevingen](https://powerapps.microsoft.com/tutorials/environments-overview/).|
+    |**Omgeving**|Selecteer de omgeving waarin de aangepaste connector moet worden opgeslagen. Zie voor meer informatie [Overzicht van omgevingen](https://powerapps.microsoft.com/tutorials/environments-overview/).|
     |**Aangepaste API-naam**|Voer een naam in, die PowerApps en Microsoft Flow bouwers worden weer geven in de lijst met connectors.|
     |**Beveiligings configuratie voorbereiden**|Geef indien nodig de beveiligings configuratie gegevens op die nodig zijn om gebruikers toegang te verlenen tot uw API. Dit voor beeld toont een API-sleutel. Zie voor meer informatie [verificatie type opgeven](#auth) hieronder.|
  

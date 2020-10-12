@@ -4,10 +4,10 @@ description: Biedt een samen vatting van nieuwe functies en de meest recente upd
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 1bf051afaeb61c80e3708a72a4a0605b68533977
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90527340"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
@@ -355,7 +355,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Functie** | **Details**
 --- | ---
 **Azure Managed Disks** | De replicatie van on-premises virtuele VMware-machines en fysieke servers is nu rechtstreeks voor beheerde schijven in Azure. On-premises gegevens worden verzonden naar een cache-opslag account in Azure en er worden herstel punten gemaakt op beheerde schijven op de doel locatie. Dit zorgt ervoor dat u niet meerdere doel opslag accounts hoeft te beheren.
-**Configuratie server** | Site Recovery ondersteunt nu configuratie servers met meerdere Nic's. Voeg extra adapters toe aan de configuratie Server-VM voordat u de configuratie server in de kluis registreert. Als u later toevoegt, moet u de server opnieuw registreren in de kluis.
+**Configuratieserver** | Site Recovery ondersteunt nu configuratie servers met meerdere Nic's. Voeg extra adapters toe aan de configuratie Server-VM voordat u de configuratie server in de kluis registreert. Als u later toevoegt, moet u de server opnieuw registreren in de kluis.
 
 
 ## <a name="updates-february-2019"></a>Updates (februari 2019)
@@ -387,7 +387,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Functie** | **Details**
 --- | ---
 **Netwerktoewijzing** | Voor herstel na nood gevallen van Azure VM kunt u nu elk beschik bare doelnet werken gebruiken wanneer u replicatie inschakelt.
-**Standard - SSD** | U kunt nu herstel na nood gevallen instellen voor Azure-Vm's met behulp van [Standard-SSD-schijven](../virtual-machines/disks-types.md#standard-ssd).
+**Standard SSD** | U kunt nu herstel na nood gevallen instellen voor Azure-Vm's met behulp van [Standard-SSD-schijven](../virtual-machines/disks-types.md#standard-ssd).
 **Opslagruimten direct** | U kunt herstel na nood gevallen instellen voor apps die worden uitgevoerd op Azure VM-apps met behulp van [opslagruimten direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) voor hoge Beschik baarheid.  Het gebruik van Opslagruimten Direct (S2D) in combi natie met Site Recovery biedt uitgebreide beveiliging van Azure VM-workloads. Met S2D kunt u een gast cluster hosten in Azure. Dit is vooral handig wanneer een virtuele machine als host fungeert voor een kritieke toepassing, zoals SAP ASCS Layer, SQL Server of scale-out Bestands server.
 
 
@@ -456,7 +456,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **LVM** | Ondersteuning toegevoegd voor LVM-en LVM2-volumes.<br/><br/> De/boot-map op een schijf partitie en op LVM-volumes wordt nu ondersteund.
 **Adressen** | Er is ondersteuning toegevoegd voor deze mappen die zijn ingesteld als afzonderlijke partities of bestands systemen die zich niet op dezelfde systeem schijf bevinden:<br/><br/> /(root),/boot,/usr,/usr/local,/var,/etc.
 **Windows Server 2008** | Ondersteuning voor dynamische schijven is toegevoegd.
-**Failover** | Verbeterde failover-tijd voor VMware-Vm's waarbij storvsc en vsbus geen stuur Programma's worden opgestart.
+**Cluster** | Verbeterde failover-tijd voor VMware-Vm's waarbij storvsc en vsbus geen stuur Programma's worden opgestart.
 **UEFI-ondersteuning** | Azure-Vm's ondersteunen boot type UEFI niet. U kunt nu on-premises fysieke servers met UEFI migreren naar Azure met Site Recovery. Site Recovery migreert de server door het opstart type te converteren naar BIOS vóór de migratie. Site Recovery eerder deze conversie alleen voor Vm's ondersteund. Ondersteuning is beschikbaar voor fysieke servers met Windows Server 2012 of hoger.
 
 ### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM

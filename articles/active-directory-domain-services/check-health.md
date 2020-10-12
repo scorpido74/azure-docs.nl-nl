@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 34f4ecfd4cc3432babbd26d65bd37ea4d1fb882c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040415"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>De status controleren van een door Azure Active Directory Domain Services beheerd domein
@@ -28,7 +28,7 @@ In dit artikel leest u hoe u de status van Azure AD DS kunt bekijken en hoe u de
 
 De integriteits status voor een beheerd domein wordt weer gegeven met behulp van de Azure Portal. Informatie over de tijd van de laatste back-up en synchronisatie met Azure AD kan worden weer gegeven, samen met eventuele waarschuwingen die duiden op een probleem met de status van het beheerde domein. Voer de volgende stappen uit om de status van een beheerd domein weer te geven:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**.
+1. Zoek en selecteer **Azure AD Domain Services** in de Azure-portal.
 1. Selecteer uw beheerde domein, zoals *aaddscontoso.com*.
 1. Selecteer aan de linkerkant van het venster Azure AD DS resource de optie **status**. In de volgende voorbeeld scherm afbeelding ziet u een goed beheerd domein en de status van de laatste back-up en Azure AD-synchronisatie:
 
@@ -40,7 +40,7 @@ De status in de rechter bovenhoek geeft de algemene status van het beheerde dome
 
 | Status | Pictogram | Uitleg |
 | --- | :----: | --- |
-| In uitvoering | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Het beheerde domein wordt correct uitgevoerd en heeft geen kritieke of waarschuwings meldingen. Het domein heeft mogelijk informatieve waarschuwingen. |
+| Wordt uitgevoerd | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Het beheerde domein wordt correct uitgevoerd en heeft geen kritieke of waarschuwings meldingen. Het domein heeft mogelijk informatieve waarschuwingen. |
 | Aandacht vereist (waarschuwing) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Er zijn geen kritieke waarschuwingen op het beheerde domein, maar er zijn een of meer waarschuwingen die moeten worden opgelost. |
 | Aandacht vereist (kritiek) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Er zijn een of meer kritieke waarschuwingen op het beheerde domein die moeten worden geadresseerd. Mogelijk hebt u ook waarschuwings-en/of informatieve waarschuwingen. |
 | Installeert | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Het beheerde domein wordt geïmplementeerd. |

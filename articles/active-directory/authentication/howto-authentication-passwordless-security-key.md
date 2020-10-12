@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526949"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden zonder wacht woord voor beveiligings sleutel inschakelen (preview)
@@ -50,7 +50,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2-beveiligings sleutel methode inschakelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **Security**  >  **Authentication methods**  >  **beleid voor verificatie methode**voor beveiligings verificatie methoden (preview).
 1. Kies onder de **beveiligings sleutel methode FIDO2**de volgende opties:
    1. **Inschakelen** -ja of Nee

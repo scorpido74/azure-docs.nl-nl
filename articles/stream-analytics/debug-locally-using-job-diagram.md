@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045396"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Fouten opsporen Azure Stream Analytics query's lokaal met behulp van taak diagram in Visual Studio
@@ -62,7 +62,7 @@ In deze sectie bekijkt u de metrische gegevens die beschikbaar zijn voor elk dee
 | **Gedegradeerde gebeurtenissen**|Het aantal gebeurtenissen waarvoor een probleem is opgetreden, anders dan bij deserialisatie.|
 |**Vroege gebeurtenissen**| Het aantal gebeurtenissen met een tijds tempel van de toepassing voor de bovengrens.|
 |**Late gebeurtenissen**| Het aantal gebeurtenissen met een tijds tempel van een toepassing na de bovengrens.|
-|**Gebeurtenis bronnen**| Het aantal gelezen gegevens eenheden. Bijvoorbeeld het aantal blobs.|
+|**Gebeurtenisbronnen**| Het aantal gelezen gegevens eenheden. Bijvoorbeeld het aantal blobs.|
 
 #### <a name="input-sources-local-input"></a>Invoer bronnen (lokale invoer)
 

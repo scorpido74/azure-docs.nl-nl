@@ -10,17 +10,17 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
 ms.openlocfilehash: 67af6ab9ae5c60ee8291f38ea58b3b3d9744dbc9
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88506648"
 ---
 # <a name="custom-translator-glossary"></a>Woorden lijst voor aangepaste vertalers
 
 In de woorden lijst van de [aangepaste vertaler](https://portal.customtranslator.azure.ai) worden de termen beschreven die u kunt tegen komen tijdens het werken met de aangepaste vertaler.
 
-| **Woord of woord groep**       | **Beschrijving**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Woord of woord groep**       | **Definitie**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Bron taal          | De bron taal is de taal waarmee u begint en die u wilt converteren naar een andere taal (het doel).                                                                                                                                                                                                                                                                                                                                                         |
 | Doel taal          | De doel taal is de taal waarvan u wilt dat de machine vertaling wordt aangeboden nadat de bron taal is ontvangen.                                                                                                                                                                                                                                                                                                                                               |

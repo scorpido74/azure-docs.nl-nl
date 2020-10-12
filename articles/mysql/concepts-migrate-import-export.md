@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905936"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Uw MySQL-data base migreren met behulp van importeren en exporteren
@@ -31,7 +31,7 @@ Als u verbinding wilt krijgen, zoekt u de verbindings gegevens in het **overzich
 
 Voeg de verbindings gegevens toe aan MySQL Workbench.
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL Workbench connection string":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>Bepalen wanneer de technieken voor importeren en exporteren worden gebruikt
 
@@ -68,7 +68,7 @@ Er zijn twee manieren om gegevens te exporteren en te importeren in MySQL Workbe
 > - Voor een flexibele MySQL-server kunt u ' gebruikers naam ' alleen gebruiken als u ' username@servername ' gebruikt om verbinding te maken, mislukt de verbinding.
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>Wizards voor het exporteren en importeren van tabel gegevens in het context menu van het object browser
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="MySQL Workbench-wizards in het context menu van het object browser":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
 
 De wizards voor tabel gegevens ondersteunen import-en export bewerkingen door gebruik te maken van CSV-en JSON-bestanden. Ze bevatten verschillende configuratie opties, zoals scheidings tekens, kolom selectie en coderings selectie. U kunt elke wizard uitvoeren op een lokaal of extern aangesloten MySQL-servers. De import actie bevat tabel-, kolom-en type toewijzing.
 
@@ -94,7 +94,7 @@ In het volgende voor beeld wordt de tabel uit een CSV-bestand geïmporteerd:
 Gebruik een wizard voor het exporteren of importeren van SQL die is gegenereerd vanuit MySQL Workbench of wordt gegenereerd met de opdracht mysqldump. Open deze wizards vanuit het deel venster **Navigator** of door **Server** te selecteren in het hoofd menu. Selecteer vervolgens **gegevens export** of **gegevens import**.
 
 #### <a name="data-export"></a>Gegevensexport
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Gegevens export van MySQL Workbench met behulp van het deel venster navigator":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
 
 U kunt het tabblad **gegevens export** gebruiken om uw MySQL-gegevens te exporteren.
 1. Selecteer elk schema dat u wilt exporteren, eventueel specifieke schema objecten/tabellen uit elk schema kiezen en de export genereren. Configuratie opties zijn onder andere exporteren naar een projectmap of een zelf opgenomen SQL-bestand, opgeslagen routines en gebeurtenissen dumpen of tabel gegevens overs Laan.
@@ -107,7 +107,7 @@ U kunt het tabblad **gegevens export** gebruiken om uw MySQL-gegevens te exporte
 
 
 #### <a name="data-import"></a>Gegevens importeren
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Gegevens import van MySQL Workbench met behulp van beheer Navigator":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="De verbindings gegevens in de Azure Portal zoeken":::
 
 U kunt het tabblad **gegevens importeren** gebruiken om geëxporteerde gegevens te importeren of te herstellen uit de bewerking voor het exporteren van gegevens of vanuit de mysqldump-opdracht.
 1. Kies de projectmap of het zelf opgenomen SQL-bestand, kies het schema dat u wilt importeren of kies **Nieuw** om een nieuw schema te definiëren.

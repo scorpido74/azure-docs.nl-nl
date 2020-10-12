@@ -9,10 +9,10 @@ ms.date: 06/28/2020
 ms.author: yelevin
 ms.custom: include file
 ms.openlocfilehash: 63cb53dc60a718892d4bf86140e7fd51303bd61c
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88761713"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Het gegevens model van het schema
@@ -43,7 +43,7 @@ ms.locfileid: "88761713"
 | **Ernst** | tekenreeks | Ernst van het incident (hoog/gemiddeld/laag/informatief) |
 | **SourceSystem** | tekenreeks | Constante (' Azure ') |
 | **Status** | tekenreeks |  |
-| **TenantId** | tekenreeks |  |
+| **Tenant-ID** | tekenreeks |  |
 | **TimeGenerated** | datum/tijd | Tijds tempel (UTC) van wanneer de huidige record is gemaakt <br>(na wijziging van het incident) |
 | **Titel** | tekenreeks | 
 | **Type** | tekenreeks | Constante (' SecurityIncident ') |

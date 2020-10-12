@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243542"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fout bij het verwerken van API Management-beleid
 
-Door een object op te geven `ProxyError` , kunnen uitgevers met Azure API Management reageren op fout voorwaarden. Dit kan voor komen tijdens het verwerken van aanvragen. Het `ProxyError` object wordt geopend via de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error en kan worden gebruikt door beleid in de `on-error` sectie Policy. In dit artikel vindt u informatie over de mogelijkheden voor het afhandelen van fouten in azure API Management.
+Door een object op te geven `ProxyError` , kunnen uitgevers met Azure API Management reageren op fout voorwaarden. Dit kan voor komen tijdens het verwerken van aanvragen. Het `ProxyError` object wordt geopend via de [context. ](api-management-policy-expressions.md#ContextVariables) De eigenschap Last error en kan worden gebruikt door beleid in de `on-error` sectie Policy. In dit artikel vindt u informatie over de mogelijkheden voor het afhandelen van fouten in azure API Management.
 
 ## <a name="error-handling-in-api-management"></a>Fout afhandeling in API Management
 
@@ -78,7 +78,7 @@ Het volgende beleid kan worden gebruikt in de `on-error` sectie Policy.
 
 ## <a name="lasterror"></a>LastError
 
-Als er een fout optreedt en er wordt verwezen naar de `on-error` beleids sectie, wordt de fout opgeslagen in de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error, die kan worden geopend door beleid in de `on-error` sectie. Last error heeft de volgende eigenschappen.
+Als er een fout optreedt en er wordt verwezen naar de `on-error` beleids sectie, wordt de fout opgeslagen in de [context. ](api-management-policy-expressions.md#ContextVariables) De eigenschap Last error, die kan worden geopend door beleid in de `on-error` sectie. Last error heeft de volgende eigenschappen.
 
 | Naam       | Type   | Beschrijving                                                                                               | Vereist |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
@@ -100,7 +100,7 @@ Als er een fout optreedt en er wordt verwezen naar de `on-error` beleids sectie,
 
 De volgende fouten zijn vooraf gedefinieerd voor fout situaties die kunnen optreden tijdens de evaluatie van de ingebouwde verwerkings stappen.
 
-| Bron        | Voorwaarde                                 | Reden                  | Bericht                                                                                                                |
+| Bron        | Conditie                                 | Reden                  | Bericht                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | configuratie | De URI komt niet overeen met een API of bewerking | OperationNotFound       | Kan de inkomende aanvraag niet overeenkomen met een bewerking.                                                                      |
 | autorisatie | De abonnements sleutel is niet opgegeven             | SubscriptionKeyNotFound | De toegang is geweigerd vanwege een ontbrekende abonnements sleutel. Zorg ervoor dat u de abonnements sleutel opneemt bij het maken van aanvragen voor deze API. |
@@ -113,7 +113,7 @@ De volgende fouten zijn vooraf gedefinieerd voor fout situaties die kunnen optre
 
 De volgende fouten zijn vooraf gedefinieerd voor fout situaties die kunnen optreden tijdens de beleids evaluatie.
 
-| Bron       | Voorwaarde                                                       | Reden                    | Bericht                                                                                                                              |
+| Bron       | Conditie                                                       | Reden                    | Bericht                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | frequentie limiet   | Frequentie limiet overschreden                                             | RateLimitExceeded         | Frequentie limiet is overschreden                                                                                                               |
 | quota        | Quotum overschreden                                                  | QuotaExceeded             | Volumequotum buiten bereik. Het quotum wordt aangevuld in xx: xx: xx. -of-verouderd quotum voor de band breedte. Het quotum wordt aangevuld in xx: xx: xx. |

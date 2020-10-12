@@ -9,10 +9,10 @@ ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82788983"
 ---
 ## <a name="create-an-image-gallery"></a>Een galerie met installatiekopieën maken
@@ -30,7 +30,7 @@ In het volgende voorbeeld wordt een galerie met de naam *myGallery* gemaakt in d
 1. De standaard waarde voor de **regio**behouden.
 1. U kunt een korte beschrijving van de galerie typen, zoals de galerie met afbeeldingen die u wilt *testen.* en klik vervolgens op **beoordeling + maken**.
 1. Nadat de validatie is geslaagd, selecteert u **maken**.
-1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
+1. Nadat de implementatie klaar is, selecteert u **Ga naar resource**.
 
 
 ## <a name="create-an-image-definition"></a>Een definitie voor de installatiekopie maken 
@@ -50,7 +50,7 @@ Maak de definitie van de galerie-afbeelding in uw galerie. In dit voor beeld hee
 1. Typ *mySKU*voor **SKU**.
 1. Wanneer u klaar bent, selecteert u **controleren + maken**.
 1. Wanneer de definitie van de installatie kopie wordt door gegeven, selecteert u **maken**.
-1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
+1. Nadat de implementatie klaar is, selecteert u **Ga naar resource**.
 
 
 ## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
@@ -72,7 +72,7 @@ De stappen voor het maken van een installatie kopie versie zijn iets anders, afh
 1. In **replicatie**, moet u het **aantal standaard replica's** op 1 laten staan. U moet naar de bron regio repliceren, dus verlaat de eerste replica als de standaard waarde en kies vervolgens een tweede replica regio om *VS-Oost*te zijn.
 1. Als u klaar bent, selecteert u **Beoordelen en maken**. De configuratie wordt door Azure gevalideerd.
 1. Wanneer de versie van de installatie kopie wordt goedgekeurd, selecteert u **maken**.
-1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
+1. Nadat de implementatie klaar is, selecteert u **Ga naar resource**.
 
 Het kan even duren om de installatiekopie naar alle doelregio's te repliceren.
 
@@ -87,13 +87,13 @@ Het kan even duren om de installatiekopie naar alle doelregio's te repliceren.
 1. In **replicatie**, moet u het **aantal standaard replica's** op 1 laten staan. U moet naar de bron regio repliceren, dus verlaat de eerste replica als de standaard waarde en kies vervolgens een tweede replica regio om *VS-Oost*te zijn.
 1. Als u klaar bent, selecteert u **Beoordelen en maken**. De configuratie wordt door Azure gevalideerd.
 1. Wanneer de versie van de installatie kopie wordt goedgekeurd, selecteert u **maken**.
-1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
+1. Nadat de implementatie klaar is, selecteert u **Ga naar resource**.
 
 ## <a name="share-the-gallery"></a>De galerie delen
 
 We raden aan om te delen op galerieniveau. Hieronder vindt u instructies voor het delen van de galerie die u zojuist hebt gemaakt.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu aan de linkerkant. 
 1. Selecteer **myGalleryRG**in de lijst met resource groepen. De Blade voor de resource groep wordt geopend.
 1. Selecteer **toegangs beheer (IAM)** in het menu aan de linkerkant van de pagina **myGalleryRG** . 

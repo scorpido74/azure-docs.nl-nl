@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85478124"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Procedure: browsers en webweergaven voor iOS/macOS aanpassen
@@ -36,7 +36,7 @@ Voor iOS en macOS:
 - [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-MSAL voor macOS ondersteunt alleen de `WKWebView` oudere versies van het besturings systeem. `ASWebAuthenticationSession`wordt alleen ondersteund voor macOS 10,15 en hoger. 
+MSAL voor macOS ondersteunt alleen de `WKWebView` oudere versies van het besturings systeem. `ASWebAuthenticationSession` wordt alleen ondersteund voor macOS 10,15 en hoger. 
 
 ## <a name="system-browsers"></a>Systeem browsers
 
@@ -61,8 +61,8 @@ Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen sy
 
 Ontwikkel aars kunnen ook een andere systeem browser voor MSAL-apps selecteren:
 
-- `SFAuthenticationSession`is de iOS 11-versie van `ASWebAuthenticationSession` .
-- `SFSafariViewController`is een meer algemeen doel en biedt een interface voor het surfen op internet en kan ook worden gebruikt voor aanmeldings doeleinden. In iOS 9 en 10 worden cookies en andere website gegevens gedeeld met Safari, maar niet in iOS 11 en hoger.
+- `SFAuthenticationSession` is de iOS 11-versie van `ASWebAuthenticationSession` .
+- `SFSafariViewController` is een meer algemeen doel en biedt een interface voor het surfen op internet en kan ook worden gebruikt voor aanmeldings doeleinden. In iOS 9 en 10 worden cookies en andere website gegevens gedeeld met Safari, maar niet in iOS 11 en hoger.
 
 ## <a name="in-app-browser"></a>Browser in-app
 
@@ -74,11 +74,11 @@ De browser die u gebruikt, is van invloed op de SSO-ervaring vanwege hoe ze cook
 
 | Technologie    | Browser type  | iOS-Beschik baarheid | macOS-Beschik baarheid | Cookies en andere gegevens delen  | MSAL-Beschik baarheid | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systeem | iOS12 en up | macOS 10,15 en up | Yes | iOS-en macOS-10.15 + | exemplaren van w/Safari
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systeem | iOS11 en up | N.v.t. | Yes | Alleen voor iOS |  exemplaren van w/Safari
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systeem | iOS11 en up | N.v.t. | No | Alleen voor iOS | Geen * *
-| **SFSafariViewController** | Systeem | iOS10 | N.v.t. | Yes | Alleen voor iOS |  exemplaren van w/Safari
-| **WKWebView**  | In-app | iOS8 en up | macOS 10,10 en up | No | iOS en macOS | Geen * *
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Systeem | iOS12 en up | macOS 10,15 en up | Ja | iOS-en macOS-10.15 + | exemplaren van w/Safari
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Systeem | iOS11 en up | N.v.t. | Ja | Alleen voor iOS |  exemplaren van w/Safari
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Systeem | iOS11 en up | N.v.t. | Nee | Alleen voor iOS | Geen * *
+| **SFSafariViewController** | Systeem | iOS10 | N.v.t. | Ja | Alleen voor iOS |  exemplaren van w/Safari
+| **WKWebView**  | In-app | iOS8 en up | macOS 10,10 en up | Nee | iOS en macOS | Geen * *
 
 * * Voor het werken met SSO moeten tokens worden gedeeld tussen apps. Hiervoor is een token cache of een Broker-toepassing vereist, zoals Microsoft Authenticator voor iOS.
 

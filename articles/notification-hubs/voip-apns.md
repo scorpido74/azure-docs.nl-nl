@@ -7,10 +7,10 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80146886"
 ---
 # <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>APNS VOIP gebruiken via Notification Hubs (niet officieel ondersteund)
@@ -21,7 +21,7 @@ Het is mogelijk om APNS VOIP-meldingen te gebruiken via Azure Notification Hubs;
 
 Als u nog steeds APNS VOIP-meldingen via Notification Hubs wilt verzenden, moet u rekening houden met de volgende beperkingen:
 
-- Voor het verzenden van een VOIP-melding moet de `apns-topic` header worden ingesteld op de Application bundel-id + het `.voip` achtervoegsel. Bijvoorbeeld: voor een voor beeld-app met de bundel-ID `com.microsoft.nhubsample` `apns-topic` moet de header worden ingesteld op`com.microsoft.nhubsample.voip.`
+- Voor het verzenden van een VOIP-melding moet de `apns-topic` header worden ingesteld op de Application bundel-id + het `.voip` achtervoegsel. Bijvoorbeeld: voor een voor beeld-app met de bundel-ID `com.microsoft.nhubsample` `apns-topic` moet de header worden ingesteld op `com.microsoft.nhubsample.voip.`
 
    Deze methode werkt niet goed met Azure Notification Hubs, omdat de bundel-ID van de app moet worden geconfigureerd als onderdeel van de APNS-referenties van de hub en de waarde kan niet worden gewijzigd. Daarnaast staat Notification Hubs niet toe dat de waarde van de `apns-topic` header tijdens runtime wordt overschreven.
 

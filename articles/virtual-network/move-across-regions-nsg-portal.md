@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: a22dc6dc0c4fc199d3f262b18aeeae5090a06dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689313"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Verplaats de Azure-netwerk beveiligings groep (NSG) naar een andere regio met behulp van de Azure Portal
@@ -28,7 +28,7 @@ Azure-beveiligings groepen kunnen niet worden verplaatst van de ene regio naar e
 
 - Als u een NSG-configuratie wilt exporteren en een sjabloon wilt implementeren om een NSG in een andere regio te maken, hebt u de rol netwerk bijdrager of hoger nodig.
 
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, open bare Ip's en virtuele netwerken.
+- Identificeer de bronnetwerkindeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, open bare Ip's en virtuele netwerken.
 
 - Controleer of u met uw Azure-abonnement Nsg's kunt maken in de doel regio die wordt gebruikt. Neem contact op met ondersteuning voor het inschakelen van het vereiste quotum.
 
@@ -169,7 +169,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
 
 Als u de doel-NSG wilt verwijderen, verwijdert u de resource groep die de doel-NSG bevat.  Hiervoor selecteert u de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan de pagina overzicht.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Als u de wijzigingen wilt door voeren en de NSG wilt verplaatsen, verwijdert u de bron-NSG of de resource groep. Hiertoe selecteert u de netwerk beveiligings groep of de resource groep in het dash board in de portal en selecteert u **verwijderen** boven aan elke pagina.
 

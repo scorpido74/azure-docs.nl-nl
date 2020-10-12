@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232522"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Aanbevelingen voor SDK-microfoon matrix voor speech-apparaten
@@ -30,7 +30,7 @@ De volgende matrix geometries worden aanbevolen voor gebruik met de micro soft a
 | Mics & geometrie | Cirkel vormige matrix | Cirkel vormige matrix | Lineaire matrix | Lineaire matrix |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
-| \#Mics | 7 | 4 | 4 | 2 |
+| \# Mics | 7 | 4 | 4 | 2 |
 | Geometrie | 6 buitenste, 1 middelste, RADIUS = 42,5 mm, gelijkmatig gespatieerd | 3 buiten, 1 midden, RADIUS = 42,5 mm, gelijkmatig gespatieerd | Lengte = 120 mm, afstand = 40 mm | Afstand = 40 mm |
 
 Microfoon kanalen moeten worden besteld op basis van de nummering die voor elke bovenstaande matrix wordt weer gegeven, verhoogd van 0. Voor de micro soft audio-stack is een extra referentie stroom van audio afspelen vereist om echo annulering uit te voeren.
@@ -62,7 +62,7 @@ De prestaties van de microfoon matrix wanneer deze zijn geïntegreerd in een app
 
 | Parameter          | Aanbevolen                                        |
 | ------------------ | -------------------------------------------------- |
-| SNR                | \>63 dB (1 kHz sein 94 dBSPL, A-gewogen lawaai) |
+| SNR                | \> 63 dB (1 kHz sein 94 dBSPL, A-gewogen lawaai) |
 | Uitvoer gevoeligheid | -26 dBFS/pa @ 1 kHz (aanbevolen)                  |
 | Amplitude overeenkomst | ± 2 dB, 200-8000 Hz                                |
 | THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, vijfde bestelling             |
@@ -81,7 +81,7 @@ Omdat Echo annulering nood zakelijk is voor apparaten voor spraak herkenning die
 | Overwegingen voor lineariteit | Geen niet-lineaire verwerking na de referentie van de spreker, anders is een hardwarematige loop back-referentie stroom vereist |
 | Loop back van de spreker | Verschaft via WASAPI, persoonlijke Api's, aangepaste ALSA-invoeg toepassingen (Linux) of via een firmware kanaal |
 | THD% | 3e octave-banden mini maal vijfde order, 70 dBA afspelen @ 0,8 m ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
-| ECHO koppeling op microfoons | \>-10 dB-TCLw met behulp van ITU-T G. 122 bijlage B. 4 methode, genormaliseerd op het niveau van de microfoon<br />TCLw = TCLwmeasured \+ (gemeten niveau doel uitvoer gevoeligheid)<br />TCLw = TCLwmeasured \+ (gemeten niveau-(-26)) |
+| ECHO koppeling op microfoons | \> -10 dB-TCLw met behulp van ITU-T G. 122 bijlage B. 4 methode, genormaliseerd op het niveau van de microfoon<br />TCLw = TCLwmeasured \+ (gemeten niveau doel uitvoer gevoeligheid)<br />TCLw = TCLwmeasured \+ (gemeten niveau-(-26)) |
 
 ## <a name="integration-design-architecture"></a>Ontwerp architectuur voor integratie
 

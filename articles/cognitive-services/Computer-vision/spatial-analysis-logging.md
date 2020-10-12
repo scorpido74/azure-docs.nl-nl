@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
 ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254071"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie en probleem oplossing
 
-Ruimtelijke analyse bevat een aantal functies voor het controleren van de status van het systeem en hulp bij het oplossen van problemen.
+Ruimtelijke analyse bevat een aantal functies voor het controleren van de status van het systeem en hulp bij het diagnosticeren van problemen.
 
 ## <a name="enable-visualizations"></a>Visualisaties inschakelen
 
@@ -229,7 +229,7 @@ Logboeken worden op aanvraag geüpload met de `getRTCVLogs` methode IOT Edge in 
 >[!NOTE]
 > `getRTCVLogs`Als de methode wordt aangeroepen met een lege Payload, wordt een lijst geretourneerd met alle containers die op het apparaat zijn geïmplementeerd. De naam van de methode is hoofdletter gevoelig. U krijgt een 501-fout als er een onjuiste methode naam wordt opgegeven.
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Aanroepen van de methode getRTCVLogs ":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Monitor telemetrie-rapport":::
 ![pagina directe methode getRTCVLogs](./media/spatial-analysis/direct-log-collection.png)
 
  

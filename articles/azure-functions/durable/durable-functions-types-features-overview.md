@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697704"
 ---
 # <a name="durable-functions-types-and-features"></a>Durable Functions typen en-functies
@@ -41,7 +41,7 @@ Gebruik een [activiteit trigger](durable-functions-bindings.md#activity-trigger)
 > [!NOTE]
 > U kunt een activiteit functie alleen activeren vanuit een Orchestrator-functie.
 
-## <a name="entity-functions"></a>Entiteit functies
+## <a name="entity-functions"></a>Entiteitsfuncties
 
 Met entiteits functies worden bewerkingen gedefinieerd voor het lezen en bijwerken van kleine stukjes status. Vaak verwijzen we naar deze stateful-entiteiten als *duurzame entiteiten*. Net als Orchestrator functions zijn entiteits functies functies met een speciaal trigger type, *entiteits trigger*. Ze kunnen ook worden aangeroepen vanuit client functies of vanuit Orchestrator-functies. In tegens telling tot Orchestrator-functies hebben entiteits functies geen specifieke code beperkingen. Met entiteits functies wordt ook de status expliciet beheerd in plaats van impliciet de status via de controle stroom te vertegenwoordigen.
 
