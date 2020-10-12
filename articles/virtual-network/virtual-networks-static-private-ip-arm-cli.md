@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: allensu
 ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708158"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Privé IP-adressen configureren voor een virtuele machine met behulp van de Azure CLI
@@ -123,7 +123,7 @@ Als u een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een
 
    * `--nics`: De naam van de NIC waaraan de virtuele machine is gekoppeld.
    
-Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dit nodig is, bijvoorbeeld wanneer [u meerdere IP-adressen toewijst aan een Windows-VM](virtual-network-multiple-ip-addresses-cli.md). Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](virtual-network-network-interface-addresses.md#private) .
+Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dit nodig is, bijvoorbeeld wanneer [u meerdere IP-adressen toewijst aan een Windows-VM](virtual-network-multiple-ip-addresses-cli.md). Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](virtual-network-network-interface-addresses.md#private).
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Informatie over statisch privé-IP-adres ophalen voor een virtuele machine
 

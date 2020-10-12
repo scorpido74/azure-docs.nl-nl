@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: functions
 author: ggailey777
 ms.service: azure-functions
@@ -9,10 +9,10 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: aa9a715fdafc143a116458691965087b016dec1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83343351"
 ---
 Gebruik de volgende procedure om de runtime-versie weer te geven en bij te werken die momenteel wordt gebruikt door een functie-app.
@@ -27,4 +27,4 @@ Gebruik de volgende procedure om de runtime-versie weer te geven en bij te werke
 
 1. Wanneer u de runtime-versie wijzigt, gaat u terug naar het tabblad **Overzicht** en kiest u **Opnieuw opstarten** om de app opnieuw op te starten.  De functie-app wordt opnieuw opgestart met versie 1.x van de runtime en de sjablonen van versie 1.x worden gebruikt wanneer u functies maakt.
 
-    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="Start de functie-app opnieuw." border="true":::
+    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="De runtime versie weer geven." border="true":::

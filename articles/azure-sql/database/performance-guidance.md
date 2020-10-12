@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645794"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Toepassingen en data bases voor prestaties afstemmen in Azure SQL Database en Azure SQL Managed instance
@@ -122,7 +122,7 @@ Nadat de SELECT-instructie is gemaakt, wordt er een ander plan gekozen, waarbij 
 
 ![Een query plan met gecorrigeerde indexen](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-Het belangrijkste inzicht is dat de i/o-capaciteit van een gedeeld, grondstoffen systeem meer beperkt is dan dat van een dedicated server machine. Er is een Premium-fout opgetreden bij het minimaliseren van onnodige IO om Maxi maal te profiteren van het systeem in de resources van elke reken grootte van de service lagen. De juiste mogelijkheden voor het ontwerpen van fysieke data bases kunnen de latentie van afzonderlijke query's aanzienlijk verbeteren, de door Voer van gelijktijdige aanvragen die per schaal eenheid worden verwerkt, verbeteren en de kosten die nodig zijn om aan de query te voldoen, minimaliseren. Voor meer informatie over de ontbrekende index Dmv's raadpleegt u [sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Het belangrijkste inzicht is dat de i/o-capaciteit van een gedeeld, grondstoffen systeem meer beperkt is dan dat van een dedicated server machine. Er is een Premium-fout opgetreden bij het minimaliseren van onnodige IO om Maxi maal te profiteren van het systeem in de resources van elke reken grootte van de service lagen. De juiste mogelijkheden voor het ontwerpen van fysieke data bases kunnen de latentie van afzonderlijke query's aanzienlijk verbeteren, de door Voer van gelijktijdige aanvragen die per schaal eenheid worden verwerkt, verbeteren en de kosten die nodig zijn om aan de query te voldoen, minimaliseren. Zie [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)voor meer informatie over de ontbrekende index dmv's.
 
 ### <a name="query-tuning-and-hinting"></a>Verfijning van query's en hints
 
@@ -216,7 +216,7 @@ In het tweede gedeelte van het voor beeld wordt een query Hint gebruikt om te ge
 
 ![Afstemmen van query's met behulp van een query Hint](./media/performance-guidance/query_tuning_3.png)
 
-U kunt het effect in de tabel **sys. resource_stats** zien (er is een vertraging van de tijd dat u de test uitvoert en wanneer de gegevens in de tabel worden ingevuld). Voor dit voor beeld wordt deel 1 uitgevoerd tijdens het 22:25:00-tijd venster en deel 2 uitgevoerd om 22:35:00. In het vorige tijd venster werden meer resources in dat tijd venster gebruikt dan in een later stadium (vanwege verbeteringen in de plan efficiëntie).
+U kunt het effect in de tabel **sys.resource_stats** bekijken (er is een vertraging van de tijd dat u de test uitvoert en wanneer de gegevens in de tabel worden ingevuld). Voor dit voor beeld wordt deel 1 uitgevoerd tijdens het 22:25:00-tijd venster en deel 2 uitgevoerd om 22:35:00. In het vorige tijd venster werden meer resources in dat tijd venster gebruikt dan in een later stadium (vanwege verbeteringen in de plan efficiëntie).
 
 ```sql
 SELECT TOP 1000 *
@@ -230,7 +230,7 @@ ORDER BY start_time DESC
 > [!NOTE]
 > Hoewel het volume in dit voor beeld opzettelijk klein is, kan het effect van suboptimale para meters aanzienlijk zijn, met name voor grotere data bases. Het verschil kan in uitzonderlijke gevallen tussen seconden liggen voor snelle gevallen en uren voor trage gevallen.
 
-U kunt **sys. resource_stats** onderzoeken om te bepalen of de resource voor een test meer of minder resources gebruikt dan een andere test. Wanneer u gegevens vergelijkt, moet u de timing van tests scheiden, zodat ze zich niet in hetzelfde venster van vijf minuten bevinden in de weer gave **sys. resource_stats** . Het doel van de oefening is het minimaliseren van de totale hoeveelheid gebruikte resources en niet om de piek bronnen te minimaliseren. Over het algemeen is het optimaliseren van een stukje code voor latentie het verbruik van resources verminderd. Zorg ervoor dat de wijzigingen die u aanbrengt in een toepassing nood zakelijk zijn en dat de wijzigingen geen negatieve invloed hebben op de klant ervaring voor iemand die mogelijk query hints in de toepassing gebruikt.
+U kunt **sys.resource_stats** onderzoeken om te bepalen of de resource voor een test meer of minder resources gebruikt dan een andere test. Wanneer u gegevens vergelijkt, moet u de timing van tests scheiden, zodat ze zich niet in hetzelfde venster van vijf minuten bevinden in de weer gave **sys.resource_stats** . Het doel van de oefening is het minimaliseren van de totale hoeveelheid gebruikte resources en niet om de piek bronnen te minimaliseren. Over het algemeen is het optimaliseren van een stukje code voor latentie het verbruik van resources verminderd. Zorg ervoor dat de wijzigingen die u aanbrengt in een toepassing nood zakelijk zijn en dat de wijzigingen geen negatieve invloed hebben op de klant ervaring voor iemand die mogelijk query hints in de toepassing gebruikt.
 
 Als een werk belasting een set herhalende query's heeft, is het vaak zinvol om de optimale plannings opties vast te leggen en te valideren, omdat deze de minimale resource grootte-eenheid die is vereist voor het hosten van de data base. Nadat u het hebt gevalideerd, kunt u de plannen opnieuw onderzoeken om u ervan te verzekeren dat ze niet zijn gedegradeerd. U kunt meer te weten komen over [query hints (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 

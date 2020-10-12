@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87020106"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-toepassingen schalen
@@ -33,7 +33,7 @@ Het AOCC-Compileer systeem (AMD Optimization C/C++ compiler) biedt een hoog nive
 
 ### <a name="clang"></a>Clang
 
-Clang is een C-, C++-en objectief-C-compiler verwerking, parsering, optimalisatie, code generatie, assembly en koppeling. Clang biedt ondersteuning `-march=znver1` voor de vlag voor het genereren en afstemmen van de beste code voor de x86-architectuur op basis van Zen van AMD.
+Clang is een C-, C++-en objectief-C-compiler verwerking, parsering, optimalisatie, code generatie, assembly en koppeling. Clang biedt ondersteuning  `-march=znver1` voor de vlag voor het genereren en afstemmen van de beste code voor de x86-architectuur op basis van Zen van AMD.
 
 ### <a name="flang"></a>FLANG
 

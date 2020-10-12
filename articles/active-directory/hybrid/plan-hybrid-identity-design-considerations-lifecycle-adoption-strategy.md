@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abec780deb7834e67618c74e556a1bc20154b0b4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658551"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Strategie voor acceptatie van levens duur van hybride identiteit bepalen
@@ -60,7 +60,7 @@ Andere bedrijven kunnen het niet praktisch om zakelijke redenen vinden om op rol
 ## <a name="license-management"></a>Licentiebeheer
 Met licentie beheer op basis van groepen in azure AD kunnen beheerders gebruikers toewijzen aan een beveiligings groep en wordt in azure AD automatisch licenties toegewezen aan alle leden van de groep. Als een gebruiker vervolgens wordt toegevoegd aan of verwijderd uit de groep, wordt een licentie automatisch toegewezen of verwijderd als dat nodig is.
 
-U kunt groepen gebruiken die u synchroniseert vanuit on-premises AD of beheren in azure AD. Koppeling maken met Azure AD Premium self-service groeps beheer u kunt de licentie toewijzing eenvoudig overdragen aan de juiste besluit vormers. U kunt er zeker van zijn dat problemen zoals licentie conflicten en ontbrekende locatie gegevens automatisch worden gesorteerd.
+U kunt groepen gebruiken die u synchroniseert vanuit on-premises AD of beheren in azure AD. Koppeling maken met Azure AD Premium Self-Service groeps beheer u kunt de licentie toewijzing eenvoudig delegeren aan de juiste besluit vormers. U kunt er zeker van zijn dat problemen zoals licentie conflicten en ontbrekende locatie gegevens automatisch worden gesorteerd.
 
 ## <a name="self-regulating-user-administration"></a>Zelfregulerend gebruikers beheer
 Wanneer uw organisatie begint met het inrichten van resources voor alle interne organisaties, implementeert u de zelfregulerende functie voor het beheer van de gebruiker. U kunt profiteren van de voor delen en voor delen van het inrichten van gebruikers binnen de grenzen van de organisatie. In deze omgeving wordt een wijziging in de status van een gebruiker automatisch doorgevoerd in de toegangs rechten voor de grenzen van de organisatie en de geografische gebieden. U kunt de inrichtings kosten verlagen en de toegangs-en goedkeurings processen stroom lijnen. De implementatie realiseert de volledige mogelijkheden voor het implementeren van op rollen gebaseerd toegangs beheer voor end-to-end toegangs beheer in uw organisatie. U kunt de beheer kosten verlagen door geautomatiseerde procedures voor het inrichten van gebruikers. U kunt de beveiliging verbeteren door het afdwingen van het beveiligings beleid te automatiseren en het beheer van de levens cyclus van gebruikers en resources te stroom lijnen en te centraliseren voor grote gebruikers populaties.
@@ -77,7 +77,7 @@ Azure AD-Services op basis van licenties (op basis van rechten) werkt door een a
 Azure Active Directory biedt een eenmalige aanmelding en verbeterde beveiliging van toepassings toegang tot duizenden SaaS-toepassingen en on-premises webtoepassingen. Zie [toepassingen integreren met Azure Active Directory](../develop/quickstart-register-app.md) voor meer informatie
 
 ## <a name="define-synchronization-management"></a>Synchronisatie beheer definiëren
-Wanneer u uw on-premises directory's integreert met Azure AD, worden uw gebruikers productiever omdat zij één identiteit hebben voor toegang tot zowel cloud als on-premises resources. Met deze integratie kunnen gebruikers en organisaties profiteren van het volgende:
+Wanneer u uw on-premises directory's integreert met Azure AD, worden uw gebruikers productiever omdat zij één identiteit hebben voor toegang tot zowel resources in de cloud als on-premises. Met deze integratie kunnen gebruikers en organisaties profiteren van het volgende:
 
 * Organisaties kunnen gebruikers voorzien van een gemeen schappelijke hybride identiteit voor on-premises of Cloud Services die gebruikmaken van Windows Server Active Directory en vervolgens verbinding maken met Azure Active Directory.
 * Beheerders kunnen voorwaardelijke toegang bieden op basis van toepassings resource, apparaat-en gebruikers identiteit, netwerk locatie en multi-factor Authentication.

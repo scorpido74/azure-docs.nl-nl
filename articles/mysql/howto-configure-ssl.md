@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905826"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MySQL
@@ -63,7 +63,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 Ga met behulp van de Azure Portal naar uw Azure Database for MySQL-server en klik vervolgens op **verbindings beveiliging**. Gebruik de wissel knop om de instelling SSL- **verbinding afdwingen** in of uit te scha kelen en klik vervolgens op **Opslaan**. Micro soft adviseert altijd de instelling **SSL-verbinding afdwingen** in te scha kelen voor verbeterde beveiliging.
 
-:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="Scherm opname van Azure Portal voor het afdwingen van SSL-verbindingen in Azure Database for MySQL":::
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="SSL-configuratie opslaan":::
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 

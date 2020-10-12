@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van platform-as-a-Service-(Pass) s
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85478736"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>PaaS-Services (platform-as-a-Service) gebruiken in Azure DevTest Labs
@@ -44,7 +44,7 @@ Er zijn een aantal aangepaste Lab-gegevens die zich buiten de resource groep bev
 In de [verbinding met omgevingen met het virtuele netwerk van het lab](connect-environment-lab-virtual-network.md) wordt beschreven hoe u de Resource Manager-sjabloon voor het gebruik van het `$(LabSubnetId)` token wijzigt. Wanneer een omgeving wordt gemaakt, `$(LabSubnetId)` wordt het token vervangen door het eerste subnet, waarbij de optie **gebruiken bij het maken van virtuele machines** is ingesteld op **waar**. Zo kan onze omgeving eerder gemaakte netwerken gebruiken. Als u de Resource Manager-sjablonen in omgevingen testen als fase ring en productie wilt gebruiken, gebruikt u `$(LabSubnetId)` als standaard waarde in een resource manager-sjabloon parameter. 
 
 #### <a name="environment-storage-account"></a>Omgevings opslag account
-DevTest Labs ondersteunt het gebruik van [geneste Resource Manager-sjablonen](../azure-resource-manager/templates/linked-templates.md). In het artikel [[geneste Azure Resource Manager sjablonen implementeren voor test omgevingen](deploy-nested-template-environments.md) wordt uitgelegd hoe u `_artifactsLocation` en `_artifactsLocationSasToken` tokens gebruikt om een URI te maken naar een resource manager-sjabloon in dezelfde map als of in een geneste map van de hoofd sjabloon. Zie de sectie **implementatie artefacten** in de [hand leiding voor de aanbevolen procedures van Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)voor meer informatie over deze twee tokens.
+DevTest Labs ondersteunt het gebruik van [geneste Resource Manager-sjablonen](../azure-resource-manager/templates/linked-templates.md). In het artikel [[geneste Azure Resource Manager sjablonen implementeren voor test omgevingen](deploy-nested-template-environments.md) wordt uitgelegd hoe u  `_artifactsLocation` en `_artifactsLocationSasToken` tokens gebruikt om een URI te maken naar een resource manager-sjabloon in dezelfde map als of in een geneste map van de hoofd sjabloon. Zie de sectie **implementatie artefacten** in de [hand leiding voor de aanbevolen procedures van Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)voor meer informatie over deze twee tokens.
 
 ## <a name="user-experience"></a>Gebruikerservaring
 

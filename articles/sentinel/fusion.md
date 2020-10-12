@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906279"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Geavanceerde aanvals detectie in azure-Sentinel
@@ -40,7 +40,7 @@ Deze detectie is standaard ingeschakeld in azure Sentinel. Gebruik de volgende i
 
 1. Selecteer **actieve regels**en zoek in de kolom **naam** **Geavanceerde detectie van aanvallen** van meerdere fasen door de lijst voor het type **Fusion** regel te filteren. Controleer de kolom **status** om te controleren of deze detectie is ingeschakeld of uitgeschakeld.
 
-    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{ALT-tekst}":::
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}":::
 
 1. Als u de status wilt wijzigen **, selecteert u**dit item en selecteert u op de Blade **Geavanceerde aanvals detectie** .
 
@@ -422,7 +422,7 @@ Dit scenario is momenteel beschikbaar als **open bare preview**.
 
 **Mitre ATT&VERzonken tactiek:** Initiële toegang, uitvoering, zijdelingse verplaatsing, escalatie van bevoegdheden
 
-**Mitre ATT&VERzonken technieken:** Open bare toepassing (T1190) exploiteren voor client uitvoering (T1203), uitbuiting van externe services (T1210), uitbuiting voor bevoegdheden escalation (T1068)
+**Mitre ATT&VERzonken technieken:** Exploiting Public-Facing Application (T1190), uitbuiting for client Execution (T1203), uitbuiting of Remote Services (T1210), uitbuiting for bevoegdheden escalation (T1068)
 
 **Gegevens connector bronnen:** Micro soft Defender voor eind punt (voorheen MDATP), Palo Alto-netwerken 
 

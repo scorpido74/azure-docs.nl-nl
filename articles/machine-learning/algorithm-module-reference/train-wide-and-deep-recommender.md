@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
 ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907792"
 ---
 # <a name="train-wide--deep-recommender"></a>Uitgebreide aanbevolen &er trainen
@@ -77,7 +77,7 @@ De gegevensset van item functies moet item-id's in de eerste kolom bevatten. De 
 
 Een typische set met item functies kan er bijvoorbeeld als volgt uitzien:  
 
-|MovieId|Titel|Oorspronkelijke taal|Genres|Year|
+|MovieId|Titel|Oorspronkelijke taal|Genres|Jaar|
 |-------------|-------------|-------------------|-----------|---------------|
 |68646|De Godfather|Engels|Drama|1972|
 |31381|Met de wind weg|Engels|Geschiedenis|1939|

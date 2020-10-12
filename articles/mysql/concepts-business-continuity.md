@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: b21062256896ebfc9c11b031413538b39620d1e7
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613979"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Inzicht in de bedrijfs continuïteit in Azure Database for MySQL
@@ -23,7 +23,7 @@ Azure Database for MySQL biedt functies voor bedrijfs continuïteit, waaronder g
 
 De volgende tabel vergelijkt de ERT en RPO voor de beschik bare functies:
 
-| **Mogelijkheid** | **Basic** | **Algemeen** | **Geoptimaliseerd geheugen** |
+| **Mogelijkheid** | **Basic** | **Algemeen doel** | **Geoptimaliseerd geheugen** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Herstel naar een bepaald tijdstip vanuit back-up | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode |
 | Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | ERT < 12 uur<br/>RPO < 1 uur | ERT < 12 uur<br/>RPO < 1 uur |

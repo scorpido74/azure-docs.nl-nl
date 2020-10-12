@@ -4,10 +4,10 @@ description: Webtests met meerdere stappen instellen om uw webtoepassingen te be
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87024770"
 ---
 # <a name="multi-step-web-tests"></a>Webtests met meerdere stappen
@@ -65,7 +65,7 @@ Raadpleeg de [officiële documentatie voor Visual studio 2019](/visualstudio/tes
 |Instelling| Uitleg
 |----|----|----|
 |**Bijna realtime (preview-versie)** | We raden u aan bijna realtime waarschuwingen te gebruiken. Het configureren van dit type waarschuwing wordt uitgevoerd nadat de beschikbaarheids test is gemaakt.  |
-|**Klassiek** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
+|**Klassieke** | Het gebruik van klassieke waarschuwingen voor nieuwe beschikbaarheids tests wordt niet meer aanbevolen.|
 |**Drempel waarde voor waarschuwings locatie**|We raden aan dat er mini maal 3/5 locaties zijn. De optimale relatie tussen de drempel waarde van de waarschuwings locatie en het aantal test locaties is drempel waarde voor **waarschuwings locaties**  =  **aantal test locaties-2, met een minimum van vijf test locaties.**|
 
 ## <a name="configuration"></a>Configuratie

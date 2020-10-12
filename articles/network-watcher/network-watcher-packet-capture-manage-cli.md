@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84724914"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Pakket opnames beheren met Azure Network Watcher met behulp van de Azure CLI
@@ -29,7 +29,7 @@ ms.locfileid: "84724914"
 
 Met Network Watcher-pakket opname kunt u opname sessies maken om verkeer van en naar een virtuele machine bij te houden. Er worden filters voor de opname sessie gegeven om ervoor te zorgen dat u alleen het gewenste verkeer vastlegt. Met pakket opname kunt u netwerk afwijkingen zowel reactief als proactief vaststellen. Andere gebruiken zijn onder andere het verzamelen van netwerk statistieken, het verkrijgen van informatie over inbreuken op het netwerk, het opsporen van fouten in client-server communicatie en nog veel meer. Doordat pakket opnames op afstand kunnen worden geactiveerd, vereenvoudigt deze mogelijkheid de belasting van het hand matig uitvoeren van een pakket opname en op de gewenste computer, waardoor kost bare tijd wordt bespaard.
 
-Als u de stappen in dit artikel wilt uitvoeren, moet u [de Azure-opdracht regel interface voor Mac, Linux en Windows (Azure CLI) installeren](/cli/azure/install-azure-cli).
+Als u de stappen in dit artikel wilt uitvoeren, moet u [de Azure Command-Line-interface voor Mac, Linux en Windows (Azure CLI) installeren](/cli/azure/install-azure-cli).
 
 Dit artikel begeleidt u door de verschillende beheer taken die momenteel beschikbaar zijn voor pakket opname.
 
@@ -82,7 +82,7 @@ Voor virtuele Linux-machines:
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
-Het volgende voor beeld is een voor beeld van het resultaat van het uitvoeren van`az vm extension show`
+Het volgende voor beeld is een voor beeld van het resultaat van het uitvoeren van `az vm extension show`
 
 ```json
 {
@@ -224,7 +224,7 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 
 ## <a name="download-a-packet-capture"></a>Pakket opname downloaden
 
-Zodra de pakket opname sessie is voltooid, kan het opname bestand worden geüpload naar de Blob-opslag of naar een lokaal bestand op de virtuele machine. De opslag locatie van de pakket opname wordt gedefinieerd tijdens het maken van de sessie. Een handig hulp middel om toegang te krijgen tot deze opname bestanden die zijn opgeslagen in een opslag account, is Microsoft Azure Storage Explorer, dat hier kan worden gedownload:https://storageexplorer.com/
+Zodra de pakket opname sessie is voltooid, kan het opname bestand worden geüpload naar de Blob-opslag of naar een lokaal bestand op de virtuele machine. De opslag locatie van de pakket opname wordt gedefinieerd tijdens het maken van de sessie. Een handig hulp middel om toegang te krijgen tot deze opname bestanden die zijn opgeslagen in een opslag account, is Microsoft Azure Storage Explorer, dat hier kan worden gedownload:  https://storageexplorer.com/
 
 Als er een opslag account is opgegeven, worden pakket opname bestanden opgeslagen in een opslag account op de volgende locatie:
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592505"
 ---
 # <a name="translator-30-dictionary-examples"></a>Vertaler 3,0: Dictionary-voor beelden
@@ -37,16 +37,16 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 | --------- | ----------- |
 | api-versie <img width=200/> | **Vereiste para meter**.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0` . |
 | from | **Vereiste para meter**.<br/>Geeft de taal van de invoer tekst aan. De bron taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die in het `dictionary` bereik zijn opgenomen. |
-| tot | **Vereiste para meter**.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die in het `dictionary` bereik zijn opgenomen.  | 
+| in op | **Vereiste para meter**.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die in het `dictionary` bereik zijn opgenomen.  | 
 
 Aanvraag headers zijn onder andere:
 
 | Kopteksten  | Beschrijving |
 | ------ | ----------- |
-| Verificatie header (s) <img width=200/>  | De **vereiste aanvraag header**.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>. |
-| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json` . |
-| Content-length   | De **vereiste aanvraag header**.<br/>De lengte van de aanvraag tekst. |
-| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId` . |
+| Verificatieheader(s) <img width=200/>  | **Vereiste aanvraagheader**.<br/>Zie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Beschikbare opties voor verificatie</a>. |
+| Content-Type | **Vereiste aanvraagheader**.<br/>Hiermee geeft u het inhoudstype van de payload op. Mogelijke waarden zijn: `application/json` . |
+| Content-Length   | **Vereiste aanvraagheader**.<br/>De lengte van de aanvraagtekst. |
+| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag op unieke wijze te identificeren. U kunt deze header weglaten als u de tracerings-id in de queryreeks opneemt middels een queryparameter met de naam `ClientTraceId`. |
 
 ## <a name="request-body"></a>Aanvraagbody
 

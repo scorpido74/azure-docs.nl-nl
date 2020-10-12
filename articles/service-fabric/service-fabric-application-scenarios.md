@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248166"
 ---
 # <a name="service-fabric-application-scenarios"></a>Toepassings scenario's Service Fabric
@@ -23,7 +23,7 @@ Overweeg het gebruik van het Service Fabric platform voor de volgende typen toep
 
 * **Gegevens verzameling, verwerking en IOT**: Service Fabric verwerkt grote schaal en heeft een lage latentie door de stateful Services. Hiermee kunnen gegevens worden verwerkt op miljoenen apparaten waar de gegevens voor het apparaat en de berekening worden geplaatst.
 
-    Klanten die IoT-Services hebben gebouwd met behulp van Service Fabric, zijn [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL-constructie](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneidere Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)en [net Systems](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
+    Klanten die IoT-Services hebben gebouwd met behulp van Service Fabric, zijn [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL-constructie](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure),  [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneidere Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)en [net Systems](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
 * **Interactieve toepassingen op het niveau van games en sessies**: Service Fabric is handig als uw toepassing Lees-en schrijf bewerkingen met een lage latentie vereist, zoals in online gaming of chat berichten. Met Service Fabric kunt u deze interactieve, stateful toepassingen bouwen zonder dat u een afzonderlijke Store of cache hoeft te maken. Ga naar [Azure gaming oplossingen](https://azure.microsoft.com/solutions/gaming/) voor ontwerp richtlijnen over het [gebruik van service fabric in gaming services](/gaming/azure/reference-architectures/multiplayer-synchronous-sf).
 

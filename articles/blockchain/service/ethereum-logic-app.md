@@ -5,10 +5,10 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230531"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps
@@ -17,20 +17,20 @@ Gebruik de [Ethereum Block Chain-connector](/connectors/blockchainethereum/) met
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voltooi de optionele [Snelstartgids: gebruik Visual Studio code om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md). De Snelstartgids helpt u bij het installeren [van Azure Block Chain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het instellen van uw Block Chain-ontwikkel omgeving.
+- Voltooi de optionele [Snelstartgids: gebruik Visual Studio code om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md). De Snelstartgids helpt u bij het installeren van de [Azure Blockchain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het instellen van uw blockchain-ontwikkelomgeving.
 - Als u niet bekend bent met Azure Logic Apps, kunt u overwegen om de Microsoft Learn modules [Inleiding tot Azure Logic apps te](/learn/modules/intro-to-logic-apps/) bekijken en [een API aan te roepen vanuit een Logic apps werk stroom met behulp van een aangepaste connector](/learn/modules/logic-apps-and-custom-connectors/).
 
 ## <a name="create-a-logic-app"></a>Een logische app maken
 
-Azure Logic Apps helpt u bij het plannen en automatiseren van bedrijfs processen en werk stromen wanneer u systemen en services moet integreren. Eerst maakt u een logica die gebruikmaakt van de Ethereum Block Chain-connector.
+Azure Logic Apps helpt u bij het plannen en automatiseren van bedrijfsprocessen en werkstromen wanneer u systemen en services moet integreren. Eerst maakt u een logica die gebruikmaakt van de Ethereum Block Chain-connector.
 
 1. Selecteer in [Azure Portal](https://portal.azure.com)**Een resource maken** > **Integratie** > **Logische app**.
 1. Geef onder **logische app maken**Details op over waar u uw logische app maakt. Selecteer **Maken** als u klaar bent.
 
-    Zie [automatische werk stromen maken met Azure Logic apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md)voor meer informatie over het maken van logische apps.
+    Zie [Automatische werkstromen maken met Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md) voor meer informatie over het maken van logische apps.
 
 1. Nadat Azure uw app heeft geïmplementeerd, selecteert u de resource van de logische app.
-1. Selecteer in de ontwerp functie voor Logic Apps onder **sjablonen**de optie **lege logische app**.
+1. Selecteer in de Logic Apps Designer onder **Sjablonen** **Lege logische app**.
 
 Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert.
 
@@ -55,7 +55,7 @@ Gebruik Ethereum Block Chain-gebeurtenis triggers wanneer u wilt dat een logisch
 
     | Eigenschap | Beschrijving |
     |----------|-------------|
-    | **ABI contract** | Met de ABI (contract Application Binary Interface) worden de Smart contract interfaces gedefinieerd. Zie [Get the contract Abi](#get-the-contract-abi)voor meer informatie. |
+    | **Contract-ABI** | Met de ABI (contract Application Binary Interface) worden de Smart contract interfaces gedefinieerd. Zie [Get the contract Abi](#get-the-contract-abi)voor meer informatie. |
     | **Info contract adres** | Het contract adres is het doel adres van het slimme contract op de Ethereum Block chain. Zie [het contract adres ophalen](#get-the-contract-address)voor meer informatie. |
     | **Gebeurtenis naam** | Selecteer een slimme contract gebeurtenis om te controleren. De logische app wordt geactiveerd door de gebeurtenis. |
     | **Interval** en **frequentie** | Selecteer hoe vaak u wilt controleren op de gebeurtenis. |
@@ -81,7 +81,7 @@ Voor connector acties is een trigger vereist. U kunt een Ethereum Block Chain-co
 
     | Eigenschap | Beschrijving |
     |----------|-------------|
-    | **ABI contract** | In het contract ABI worden de slimme contract interfaces gedefinieerd. Zie [Get the contract Abi](#get-the-contract-abi)voor meer informatie. |
+    | **Contract-ABI** | In de ABI van het contract worden de slimme contractinterfaces gedefinieerd. Zie [Get the contract Abi](#get-the-contract-abi)voor meer informatie. |
     | **Byte code van contract** | De gecompileerde byte code van het Smart contract. Zie [Get the contract byte code](#get-the-contract-bytecode)(Engelstalig) voor meer informatie. |
     | **Info contract adres** | Het contract adres is het doel adres van het slimme contract op de Ethereum Block chain. Zie [het contract adres ophalen](#get-the-contract-address)voor meer informatie. |
     | **Naam van de functie voor slimme contracten** | Selecteer de naam van de functie voor de actie. De lijst wordt ingevuld op basis van de details in het contract ABI. |
@@ -214,23 +214,23 @@ Zie [Ethereum-account](consortium.md#ethereum-account)voor meer informatie over 
 
 ## <a name="get-the-contract-abi"></a>De ABI van het contract ophalen
 
-In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de contract ABI ophalen met behulp van de Azure Block Chain Development Kit voor Ethereum. U kunt dit bestand ook ophalen uit het meta gegevensbestand voor contracten dat is gemaakt door de volheid-compiler.
+In de ABI van het contract worden de slimme contractinterfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de contract ABI ophalen met behulp van de Azure Block Chain Development Kit voor Ethereum. U kunt dit bestand ook ophalen uit het meta gegevensbestand voor contracten dat is gemaakt door de volheid-compiler.
 
 **De Development Kit gebruiken:**
 
 Als u de Development Kit of Truffle hebt gebruikt om uw slimme contract te maken, kunt u de extensie gebruiken om de contract ABI naar het klem bord te kopiëren.
 
-1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
-1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Selecteer **contract Abi kopiëren**.
+1. Vouw in het deelvenster Visual Studio Code-verkenner de map **Build/contracten** van uw Solidity-project uit.
+1. Klik met de rechter muisknop op het JSON-bestand met metagegevens van het contract. De bestandsnaam is de naam van het slimme contract gevolgd door de extensie **. json**.
+1. Selecteer **ABI van het contract kopiëren**.
 
-    ![Visual Studio code-deel venster met de selectie van het Kopieer contract ABI](./media/ethereum-logic-app/abi-devkit.png)
+    ![Visual Studio Code-deelvenster met de selectie ABI van het contract kopiëren](./media/ethereum-logic-app/abi-devkit.png)
 
-    Het contract ABI wordt gekopieerd naar het klem bord.
+    De ABI van het contract wordt gekopieerd naar het klembord.
 
 **Het meta gegevensbestand voor het contract gebruiken:**
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestandsnaam is de naam van het slimme contract gevolgd door de extensie **. json**.
 1. Zoek de sectie **Abi** in het JSON-bestand.
 1. Kopieer de JSON-matrix **Abi** .
 
@@ -244,8 +244,8 @@ De byte code van het contract is het gecompileerde slimme contract dat door de v
 
 Als u de Development Kit of Truffle hebt gebruikt om uw slimme contract te maken, kunt u de extensie gebruiken om de byte code van het contract te kopiëren naar het klem bord.
 
-1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
-1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Vouw in het deelvenster Visual Studio Code-verkenner de map **Build/contracten** van uw Solidity-project uit.
+1. Klik met de rechter muisknop op het JSON-bestand met metagegevens van het contract. De bestandsnaam is de naam van het slimme contract gevolgd door de extensie **. json**.
 1. Selecteer de **byte code van het Kopieer contract**.
 
     ![Deel venster Visual Studio met de byte code ring van het Kopieer contract](./media/ethereum-logic-app/bytecode-devkit.png)
@@ -254,7 +254,7 @@ Als u de Development Kit of Truffle hebt gebruikt om uw slimme contract te maken
 
 **Het meta gegevensbestand voor het contract gebruiken:**
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestandsnaam is de naam van het slimme contract gevolgd door de extensie **. json**.
 1. Zoek het **byte code** -element in het JSON-bestand.
 1. Kopieer de waarde van de **byte code** .
 
@@ -276,7 +276,7 @@ Truffle geeft het contract adres na de implementatie van het slimme contract wee
 
 **Het meta gegevensbestand voor het contract gebruiken:**
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestandsnaam is de naam van het slimme contract gevolgd door de extensie **. json**.
 1. Zoek de sectie **netwerken** in het JSON-bestand.
 1. Particuliere netwerken worden aangeduid met een netwerk-ID met gehele getallen. Zoek de adres waarde binnen de sectie netwerk.
 1. Kopieer de **adres** waarde.

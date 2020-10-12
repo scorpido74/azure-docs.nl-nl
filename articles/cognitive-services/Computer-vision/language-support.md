@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530196"
 ---
 # <a name="language-support-for-computer-vision"></a>Taal ondersteuning voor Computer Vision
@@ -58,7 +58,7 @@ De OCR-Api's van Computer Vision ondersteunen verschillende talen. U hoeft geen 
 
 Sommige acties van de [analyse-image-](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API kunnen resultaten retour neren in andere talen, opgegeven met de `language` query-para meter. Andere acties retour neren resultaten in het Engels, ongeacht de taal die is opgegeven, en anderen genereren een uitzonde ring voor niet-ondersteunde talen. Acties zijn opgegeven met de `visualFeatures` `details` para meters en query; Zie het [overzicht](overview.md) voor een lijst met alle acties die u kunt uitvoeren met afbeeldings analyse.
 
-|Taal | Taalcode | Categorieën | Tags | Beschrijving | Volwassene | Merken | Color | Gezichten | ImageType | Objecten | Beroemdheden | Oriëntatiepunten |
+|Taal | Taalcode | Categorieën | Tags | Beschrijving | Volwassene | Merken | Kleur | Gezichten | ImageType | Objecten | Beroemdheden | Oriëntatiepunten |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chinees | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Engels | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80297710"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-serie software, hoge Beschik baarheid en netwerk vereisten
@@ -41,7 +41,7 @@ De volgende software vereisten gelden voor de opslaghardware die toegang hebben 
 
 | Ondersteunde besturingssystemen | Versie vereist | Aanvullende vereisten/notities |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple iSCSI-volumes worden alleen ondersteund voor gebruik op de volgende Windows-schijf typen:<ul><li>Eenvoudig volume op een standaard schijf</li><li>Eenvoudig en gespiegeld volume op dynamische schijf</li></ul>Alleen de iSCSI-initia tors van de software die standaard aanwezig zijn in het besturings systeem, worden ondersteund. Hardware-iSCSI-initia tors worden niet ondersteund.<br></br>Windows Server 2012 en 2016 Thin Provisioning en ODX-functies worden ondersteund als u een StorSimple iSCSI-volume gebruikt.<br><br>StorSimple kan Thin provisioned en volledig ingerichte volumes maken. Er kunnen geen gedeeltelijk ingerichte volumes worden gemaakt.<br><br>Het opnieuw Format teren van een thin-provisioned volume kan veel tijd in beslag nemen. Het is raadzaam om het volume te verwijderen en vervolgens een nieuwe te maken in plaats van opnieuw te Format teren. Als u echter nog steeds een volume wilt Format teren:<ul><li>Voer de volgende opdracht uit vóór de indeling om te voor komen dat ruimte wordt vrijgemaakt: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Nadat de opmaak is voltooid, gebruikt u de volgende opdracht om ruimte vrijmaken opnieuw in te scha kelen:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Pas de hotfix voor Windows Server 2012 toe, zoals wordt beschreven in [KB 2878635](https://support.microsoft.com/kb/2870270) op uw Windows Server-computer.</li></ul></li></ul></ul> Als u StorSimple Snapshot Manager of StorSimple-adapter configureert voor share point, gaat u naar [Software vereisten voor optionele onderdelen](#software-requirements-for-optional-components). |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple iSCSI-volumes worden alleen ondersteund voor gebruik op de volgende Windows-schijf typen:<ul><li>Eenvoudig volume op een standaard schijf</li><li>Eenvoudig en gespiegeld volume op dynamische schijf</li></ul>Alleen de iSCSI-initia tors van de software die standaard aanwezig zijn in het besturings systeem, worden ondersteund. Hardware-iSCSI-initia tors worden niet ondersteund.<br></br>Windows Server 2012 en 2016 Thin Provisioning en ODX-functies worden ondersteund als u een StorSimple iSCSI-volume gebruikt.<br><br>StorSimple kan Thin provisioned en volledig ingerichte volumes maken. Er kunnen geen gedeeltelijk ingerichte volumes worden gemaakt.<br><br>Het opnieuw formatteren van een volume met thin provisioning kan lang duren. Het is raadzaam om het volume te verwijderen en vervolgens een nieuw volume te maken in plaats van het opnieuw te formatteren. Als u echter toch de voorkeur geeft aan opnieuw formatteren:<ul><li>Voer de volgende opdracht uit vóór het opnieuw formatteren om vertragingen wegens vrijmaken van ruimte te voorkomen:  <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Nadat het formatteren is voltooid, gebruikt u de volgende opdracht om het vrijmaken van ruimte opnieuw in te schakelen: <br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Pas de hotfix voor Windows Server 2012 toe, zoals wordt beschreven in [KB 2878635](https://support.microsoft.com/kb/2870270) op uw Windows Server-computer.</li></ul></li></ul></ul> Als u StorSimple Snapshot Manager of StorSimple-adapter configureert voor share point, gaat u naar [Software vereisten voor optionele onderdelen](#software-requirements-for-optional-components). |
 | VMware ESX |5,5 en 6,0 |Ondersteund met VMware vSphere als iSCSI-client. De functie VAAI-Block wordt ondersteund met VMware vSphere op StorSimple-apparaten. |
 | Linux RHEL/CentOS |5, 6 en 7 |Ondersteuning voor Linux iSCSI-clients met open-iSCSI-initiator versies 5, 6 en 7. |
 | Linux |SUSE Linux 11 | |
@@ -122,7 +122,7 @@ We raden u aan om de firewall regels voor uitgaand verkeer, op basis van StorSim
 
 Een routerings metriek is gekoppeld aan de interfaces en de gateway die de gegevens naar de opgegeven netwerken routeren. De metrische gegevens van de route ring worden gebruikt door het routerings protocol om het beste pad naar een bepaalde bestemming te berekenen, als er meerdere paden naar hetzelfde doel zijn. Hoe lager de routerings metriek, des te hoger de voor keur.
 
-Als meerdere netwerk interfaces en gateways zijn geconfigureerd voor kanaal verkeer, worden de metrische gegevens van de route ring in de context van StorSimple afgespeeld om de relatieve volg orde te bepalen waarin de interfaces zullen worden gebruikt. De metrische gegevens van de route ring kunnen niet worden gewijzigd door de gebruiker. U kunt de cmdlet echter gebruiken `Get-HcsRoutingTable` om de routerings tabel (en meet waarden) op uw StorSimple-apparaat af te drukken. Meer informatie over de cmdlet Get-HcsRoutingTable bij het [oplossen van problemen met StorSimple-implementatie](storsimple-troubleshoot-deployment.md).
+Als meerdere netwerk interfaces en gateways zijn geconfigureerd voor kanaal verkeer, worden de metrische gegevens van de route ring in de context van StorSimple afgespeeld om de relatieve volg orde te bepalen waarin de interfaces zullen worden gebruikt. De metrische gegevens van de route ring kunnen niet worden gewijzigd door de gebruiker. U kunt de cmdlet echter gebruiken `Get-HcsRoutingTable` om de routerings tabel (en meet waarden) op uw StorSimple-apparaat af te drukken. Meer informatie over Get-HcsRoutingTable-cmdlet bij het [oplossen van problemen met StorSimple-implementatie](storsimple-troubleshoot-deployment.md).
 
 De Routing metric-algoritme die wordt gebruikt voor update 2 en latere versies kunnen als volgt worden uitgelegd.
 
@@ -203,7 +203,7 @@ StorSimple-apparaten zijn redundante, hot-swappable controller modules. De contr
 
 #### <a name="network-interfaces"></a>Netwerkinterfaces
 
-StorSimple-apparaat-controller modules elk vier Gigabit-en 2 10 Gigabit Ethernet-netwerk interfaces.
+StorSimple-apparaat-controller modules hebben elk 4 1 Gigabit-en 2 10 Gigabit Ethernet-netwerk interfaces.
 
 * Zorg ervoor dat de netwerk verbindingen met beide controller modules identiek zijn en dat de netwerk interfaces waarmee de controller module interfaces zijn verbonden, dezelfde netwerk configuratie hebben.
 * Implementeer, indien mogelijk, netwerk verbindingen tussen verschillende switches om te zorgen voor de beschik baarheid van de service in het geval van een storing in het netwerk apparaat.

@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87023735"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Blockchain Data Manager configureren met behulp van Azure CLI
@@ -20,15 +20,15 @@ Als u een Block Chain Data Manager-exemplaar wilt configureren, doet u het volge
 * Een instantie van Block chain manager maken
 * Een invoer maken naar een Azure Block Chain Service-transactie knooppunt
 * Een uitvoer maken naar een Azure Event Grid onderwerp
-* Een Block Chain-toepassing toevoegen
+* Een blockchain-toepassing toevoegen
 * Een exemplaar starten
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Installeer de nieuwste [Azure cli](/cli/azure/install-azure-cli) en meld u aan met `az login` .
 * Volledige [Snelstartgids: gebruik Visual Studio code om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md). De *Standard* -laag van de Azure Block Chain-service wordt aanbevolen bij het gebruik van Block Chain Data Manager.
-* Een [Event grid onderwerp](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) maken
-* Meer informatie over [gebeurtenis-handlers in azure Event grid](../../event-grid/event-handlers.md)
+* Een [Event Grid-onderwerp](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) maken
+* Meer informatie over [Gebeurtenis-handlers in Azure Event Grid](../../event-grid/event-handlers.md)
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
@@ -36,7 +36,7 @@ Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit a
 
 Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/bash](https://shell.azure.com/bash) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-Als u liever de CLI lokaal wilt installeren en gebruiken, is voor deze Snelstartgids Azure CLI-versie 2.0.51 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0.51 of hoger van Azure CLI nodig. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -46,9 +46,9 @@ Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een
 az group create --name myRG --location eastus
 ```
 
-## <a name="create-instance"></a>Exemplaar maken
+## <a name="create-instance"></a>Instantie maken
 
-Een Block Chain Data Manager-exemplaar bewaakt een Azure Block Chain Service-transactie knooppunt. Een exemplaar legt alle onbewerkte blok keringen en ruwe transactie gegevens vast van het trans actie-knoop punt. Block Chain Data Manager een **RawBlockAndTransactionMsg** -bericht publiceert dat een hoofd verzameling informatie is die wordt geretourneerd door web3. ETH [GetBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) -en [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) -query's.
+Een Block Chain Data Manager-exemplaar bewaakt een Azure Block Chain Service-transactie knooppunt. Een instantie legt alle onbewerkte blokkeringen en ruwe transactiegegevens vast van het transactieknooppunt. Block Chain Data Manager een **RawBlockAndTransactionMsg** -bericht publiceert dat een hoofd verzameling informatie is die wordt geretourneerd door web3. ETH [GetBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) -en [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) -query's.
 
 ``` azurecli
 az resource create \
@@ -62,9 +62,9 @@ az resource create \
 | Parameter | Beschrijving |
 |-----------|-------------|
 | resource-group | De naam van de resource groep waar de Block Chain-Data Manager-instantie moet worden gemaakt. |
-| name | De naam van het block Chain-Data Manager exemplaar. |
+| naam | De naam van het block Chain-Data Manager exemplaar. |
 | resource-type | Het resource type voor een Block Chain Data Manager-exemplaar is **micro soft. Block Chain/** volgers. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties bevatten voor de Watcher-resource. |
+| is-full-object | Hiermee wordt aangegeven dat eigenschappen opties bevatten voor de Watcher-resource. |
 | properties | JSON-indelings teken reeks met eigenschappen voor de Watcher-resource. Kan worden door gegeven als een teken reeks of een bestand.  |
 
 ### <a name="create-instance-examples"></a>Voor beelden van exemplaren maken
@@ -124,11 +124,11 @@ az resource create \
 | Parameter | Beschrijving |
 |-----------|-------------|
 | resource-group | De naam van de resource groep waar de invoer bron wordt gemaakt. |
-| name | De naam van de invoer. |
+| naam | De naam van de invoer. |
 | naamruimte | Gebruik de naam ruimte van de **micro soft. Block Chain** -provider. |
 | resource-type | Het resource type voor een Block Chain-Data Manager invoer **is**inputs. |
 | schijf | Het pad naar de Watcher waaraan de invoer is gekoppeld. Bijvoorbeeld volgers **/mywatcher**. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de invoer bron bevatten. |
+| is-full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de invoer bron bevatten. |
 | properties | JSON-indelings teken reeks met eigenschappen voor de invoer bron. Kan worden door gegeven als een teken reeks of een bestand. |
 
 ### <a name="input-examples"></a>Invoer voorbeelden
@@ -180,7 +180,7 @@ az resource create \
 
 ## <a name="create-output"></a>Uitvoer maken
 
-Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. U kunt Block Chain-gegevens naar één bestemming verzenden of block Chain-gegevens verzenden naar meerdere bestemmingen. Block Chain Data Manager ondersteunt meerdere uitgaande verbindingen van Event Grid onderwerp voor een gegeven block Chain Data Manager exemplaar.
+Een uitgaande verbinding verzendt blockchain-gegevens naar Azure Event Grid. U kunt Block Chain-gegevens naar één bestemming verzenden of block Chain-gegevens verzenden naar meerdere bestemmingen. Block Chain Data Manager ondersteunt meerdere uitgaande verbindingen van Event Grid onderwerp voor een gegeven block Chain Data Manager exemplaar.
 
 ``` azurecli
 az resource create \
@@ -196,11 +196,11 @@ az resource create \
 | Parameter | Beschrijving |
 |-----------|-------------|
 | resource-group | De naam van de resource groep waar de uitvoer resource moet worden gemaakt. |
-| name | De naam van de uitvoer. |
+| naam | De naam van de uitvoer. |
 | naamruimte | Gebruik de naam ruimte van de **micro soft. Block Chain** -provider. |
 | resource-type | Het resource type voor een Block Chain-Data Manager uitvoer is **uitvoer**. |
 | schijf | Het pad naar de Watcher waaraan de uitvoer is gekoppeld. Bijvoorbeeld volgers **/mywatcher**. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de uitvoer bron bevatten. |
+| is-full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de uitvoer bron bevatten. |
 | properties | JSON-indelings teken reeks met eigenschappen voor de uitvoer bron. Kan worden door gegeven als een teken reeks of een bestand. |
 
 ### <a name="output-examples"></a>Uitvoer voorbeelden
@@ -273,11 +273,11 @@ az resource create \
 | Parameter | Beschrijving |
 |-----------|-------------|
 | resource-group | De naam van de resource groep waar de toepassings resource moet worden gemaakt. |
-| name | De naam van de toepassing. |
+| naam | De naam van de toepassing. |
 | naamruimte | Gebruik de naam ruimte van de **micro soft. Block Chain** -provider. |
 | resource-type | Het resource type voor een Block Chain-Data Manager toepassing is **artefacten**. |
 | schijf | Het pad naar de Watcher waaraan de toepassing is gekoppeld. Bijvoorbeeld volgers **/mywatcher**. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de toepassings bron bevatten. |
+| is-full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de toepassings bron bevatten. |
 | properties | JSON-indelings teken reeks met eigenschappen voor de toepassings bron. Kan worden door gegeven als een teken reeks of een bestand. |
 
 ### <a name="blockchain-application-examples"></a>Voor beelden van Block Chain-toepassingen
@@ -348,7 +348,7 @@ az resource invoke-action \
 | Parameter | Beschrijving |
 |-----------|-------------|
 | actie | Gebruik **Start** om de Watcher uit te voeren. |
-| id's | Watcher-Resource-ID. Vervang \<Subscription ID\> , \<Resource group\> en door \<Watcher name\> de waarden voor de Watcher-resource.|
+| ids | Watcher-Resource-ID. Vervang \<Subscription ID\> , \<Resource group\> en door \<Watcher name\> de waarden voor de Watcher-resource.|
 
 ### <a name="start-instance-example"></a>Voor beeld van start-exemplaar
 
@@ -373,7 +373,7 @@ az resource invoke-action \
 | Parameter | Beschrijving |
 |-----------|-------------|
 | actie | Gebruik **stoppen** om de Watcher te stoppen. |
-| id's | De naam van de Watcher. Vervang \<Subscription ID\> , \<Resource group\> en door \<Watcher name\> de waarden voor de Watcher-resource. |
+| ids | De naam van de Watcher. Vervang \<Subscription ID\> , \<Resource group\> en door \<Watcher name\> de waarden voor de Watcher-resource. |
 
 ### <a name="stop-watcher-example"></a>Stoppen van Watcher-voor beeld
 
@@ -399,7 +399,7 @@ az resource delete \
 | Parameter | Beschrijving |
 |-----------|-------------|
 | resource-group | De naam van de resource groep van de Watcher die u wilt verwijderen. |
-| name | De naam van de Watcher die moet worden verwijderd. |
+| naam | De naam van de Watcher die moet worden verwijderd. |
 | resource-type | Het resource type voor een Block Chain Data Manager Watcher is **micro soft. Block Chain/** volgers. |
 
 ### <a name="delete-instance-example"></a>Voor beeld van instantie verwijderen

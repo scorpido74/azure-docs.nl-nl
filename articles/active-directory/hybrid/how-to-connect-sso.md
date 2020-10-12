@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: naadloze eenmalige aanmelding | Microsoft Docs'
-description: In dit onderwerp worden de naadloze eenmalige aanmelding van Azure Active Directory (Azure AD) beschreven en wordt uitgelegd hoe u een echte eenmalige aanmelding kunt bieden voor zakelijke desktop gebruikers binnen uw bedrijfs netwerk.
+title: 'Azure AD Connect: naadloze enkelvoudige Sign-On | Microsoft Docs'
+description: In dit onderwerp wordt Azure Active Directory (Azure AD) naadloze single Sign-On beschreven en hoe u hiermee echte eenmalige aanmelding kunt bieden voor zakelijke desktop gebruikers in uw bedrijfs netwerk.
 services: active-directory
 keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658359"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory naadloze eenmalige aanmelding
+# <a name="azure-active-directory-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding met Azure Active Directory
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Wat is Azure Active Directory naadloze eenmalige aanmelding?
 
@@ -33,7 +33,7 @@ Met Naadloze eenmalige aanmelding van Azure Active Directory (Naadloze SSO van A
 
 Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoord-hash](how-to-connect-password-hash-synchronization.md) of [Pass-Through-verificatie](how-to-connect-pta.md) . Naadloze SSO is _niet_ van toepassing op Active Directory Federation Services (ADFS).
 
-![Naadloze eenmalige aanmelding](./media/how-to-connect-sso/sso1.png)
+![Naadloze single Sign-On](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
 >Voor naadloze SSO moet het apparaat van de gebruiker alleen lid worden van een **domein** , maar dit wordt niet gebruikt op apparaten die zijn toegevoegd aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md) . SSO op Azure AD join, hybride Azure AD toegevoegd en geregistreerde Azure AD-apparaten werken op basis van het [primaire vernieuwings token](../devices/concept-primary-refresh-token.md).
@@ -64,10 +64,10 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|N.v.t.
-|Windows 8.1|Yes\*|N.v.t.|Yes|Ja\*\*\*|N.v.t.
-|Windows 8|Yes\*|N.v.t.|Yes|Ja\*\*\*|N.v.t.
-|Windows 7|Yes\*|N.v.t.|Yes|Ja\*\*\*|N.v.t.
-|Windows Server 2012 R2 of hoger|Klikt\*\*|N.v.t.|Yes|Ja\*\*\*|N.v.t.
+|Windows 8.1|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 8|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 7|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows Server 2012 R2 of hoger|Klikt\*\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
 |Mac OS X|N.v.t.|N.v.t.|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
 

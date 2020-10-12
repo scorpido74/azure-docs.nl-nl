@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507245"
 ---
 In dit artikel wordt beschreven hoe u infrastructuur resources als een service (IaaS) migreert van het klassieke model naar Resource Manager-implementatie modellen en hoe u resources verbindt met de twee implementatie modellen die naast elkaar zijn opgenomen in uw abonnement met behulp van site-naar-site gateways van het virtuele netwerk. U kunt meer lezen over [Azure Resource Manager functies en voor delen](../articles/azure-resource-manager/management/overview.md). 
@@ -81,7 +81,7 @@ Als uw opslag account geen gekoppelde schijven of Virtual Machines gegevens heef
 > Het Resource Manager-implementatie model bevat niet het concept van klassieke installatie kopieën en schijven. Wanneer het opslag account is gemigreerd, zijn klassieke installatie kopieën en schijven niet zichtbaar in de stack van de Resource Manager, maar blijven de back-upvhd's in het opslag account.
 
 In de volgende scherm afbeeldingen ziet u hoe u een klassiek opslag account bijwerkt naar een Azure Resource Manager Storage-account met behulp van Azure Portal:
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar uw opslagaccount.
 3. Klik in de sectie **instellingen** op **migreren naar arm**.
 4. Klik op **valideren** om de haal baarheid van de migratie te bepalen.
@@ -120,7 +120,7 @@ De volgende configuraties worden momenteel niet ondersteund.
 
 | Service | Configuratie | Aanbeveling |
 | --- | --- | --- |
-| Resource Manager |Op rollen gebaseerde Access Control (RBAC) voor klassieke bronnen |Omdat de URI van de resources na de migratie is gewijzigd, is het raadzaam om de RBAC-beleids updates te plannen die na de migratie moeten plaatsvinden. |
+| Resource Manager |Role-Based Access Control (RBAC) voor klassieke bronnen |Omdat de URI van de resources na de migratie is gewijzigd, is het raadzaam om de RBAC-beleids updates te plannen die na de migratie moeten plaatsvinden. |
 | Compute |Meerdere subnetten die zijn gekoppeld aan een virtuele machine |De configuratie van het subnet bijwerken zodat deze slechts naar één subnet verwijst. Hiervoor moet u mogelijk een secundaire NIC (die verwijst naar een ander subnet) verwijderen van de virtuele machine en deze opnieuw koppelen nadat de migratie is voltooid. |
 | Compute |Virtuele machines die deel uitmaken van een virtueel netwerk, maar waaraan geen expliciet subnet is toegewezen |U kunt de virtuele machine eventueel verwijderen. |
 | Compute |Virtuele machines met waarschuwingen, beleid voor automatisch schalen |De migratie gaat door en deze instellingen worden verwijderd. Het wordt ten zeerste aanbevolen om uw omgeving te evalueren voordat u de migratie gaat uitvoeren. U kunt de instellingen voor waarschuwingen ook opnieuw configureren nadat de migratie is voltooid. |
