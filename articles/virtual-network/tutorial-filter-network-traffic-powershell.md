@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: c0b0d366518b786b33048d2d2f182abd787856ad
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89075100"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Netwerk verkeer filteren met een netwerk beveiligings groep met behulp van Power shell
@@ -35,7 +35,7 @@ U kunt het netwerkverkeer inkomend in en uitgaand naar een subnet van een virtue
 * Virtuele machines (VM) implementeren in een subnet
 * Verkeersfilters testen
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -97,7 +97,7 @@ $mgmtRule = New-AzNetworkSecurityRuleConfig `
   -DestinationPortRange 3389
 ```
 
-In dit artikel wordt RDP (poort 3389) blootgesteld aan Internet voor de *myAsgMgmtServers* -VM. Voor productieomgevingen wordt u aanbevolen in plaats van poort 3389 voor internet te gebruiken, verbinding te maken met Azure-resources die u wilt beheren met behulp van een [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [persoonlijke](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) netwerkverbinding.
+In dit artikel wordt RDP (poort 3389) blootgesteld aan Internet voor de *myAsgMgmtServers* -VM. Voor productie omgevingen, in plaats van poort 3389 aan Internet weer te geven, is het raadzaam om verbinding te maken met Azure-resources die u wilt beheren met een [VPN-](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [particuliere](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) netwerk verbinding.
 
 ### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
@@ -294,7 +294,7 @@ Om te bevestigen dat u toegang hebt tot de *myVmWeb*-webserver buiten Azure, ope
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat te verwijderen:
+U kunt de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep en alle resources die deze bevat te verwijderen, wanneer u deze niet meer nodig hebt:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

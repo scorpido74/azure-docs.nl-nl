@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
 ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368197"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Een Debian-VHD voorbereiden voor Azure
@@ -24,7 +24,7 @@ In deze sectie wordt ervan uitgegaan dat u al een Debian Linux-besturings systee
 * Configureer geen swap partitie op de besturingssysteem schijf. De Azure Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf. Meer informatie vindt u in de volgende stappen.
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Zie [installatie notities voor Linux](create-upload-generic.md#general-linux-installation-notes)voor meer informatie.
 
-## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage gebruiken om Debian-Vhd's te maken
+## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage gebruiken om Debian Vhd's te maken
 Er zijn hulpprogram ma's beschikbaar voor het genereren van Debian-Vhd's voor Azure, zoals de [Azure-beheer](https://github.com/credativ/azure-manage) scripts van [Credativ](https://www.credativ.com/). Dit is de aanbevolen benadering en een volledig nieuwe installatie kopie maken. Als u bijvoorbeeld een Debian 8-VHD wilt maken, voert u de volgende opdrachten uit om het `azure-manage` hulp programma (en de afhankelijkheden) te downloaden en het script uit te voeren `azure_build_image` :
 
 ```console

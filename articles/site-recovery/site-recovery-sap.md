@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133693"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen
@@ -117,7 +117,7 @@ Als u de virtuele machines van de SAP-toepassing wilt repliceren naar het Azure 
 
 * Meer informatie over [het beveiligen](site-recovery-sql.md)van een database laag die wordt uitgevoerd op SQL Server, is te vinden in de beveiliging van SQL Server.
 
-## <a name="networking-configuration"></a>Netwerk configuratie
+## <a name="networking-configuration"></a>Netwerkconfiguratie
 
 Als u een statisch IP-adres gebruikt, kunt u het IP-adres opgeven dat u wilt dat de virtuele machine moet overnemen. Als u het IP-adres wilt instellen **Compute and Network settings**, gaat u naar de  >  **netwerk interface kaart**reken-en netwerk instellingen.
 
@@ -141,7 +141,7 @@ U kunt de meest gebruikte Site Recovery scripts implementeren in uw Azure Automa
 [![Implementeren in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Voeg een pre-action script aan groep 1 toe om een failover uit te geven voor de SQL Server-beschikbaarheids groep. Gebruik het ASR-SQL-FailoverAG-script dat is gepubliceerd in de voorbeeld scripts. Volg de instructies in het script en breng de vereiste wijzigingen in het script op de juiste wijze aan.
-1. Voeg een script dat volgt op de actie toe om een load balancer toe te voegen aan de virtuele machines met failover van de weblaag (groep 1). Gebruik het ASR-AddSingleLoadBalancer-script dat is gepubliceerd in de voorbeeld scripts. Volg de instructies in het script en breng de gewenste wijzigingen aan in het script.
+1. Voeg een script dat volgt op de actie toe om een load balancer toe te voegen aan de virtuele machines met failover van de weblaag (groep 1). Gebruik het ASR-AddSingleLoadBalancer script dat in de voorbeeld scripts is gepubliceerd. Volg de instructies in het script en breng de gewenste wijzigingen aan in het script.
 
 ![SAP-herstel plan](./media/site-recovery-sap/sap_recovery_plan.png)
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462544"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Veelgestelde vragen over IoT-oplossingsversnellers
@@ -46,9 +46,9 @@ In de afgelopen twee jaar is de Cloud architectuur aanzienlijk ontwikkeld. Micro
 
 Zie [een bestaand abonnement toevoegen aan uw Azure AD-adres lijst](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
 
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Ik wil een service beheerder of mede beheerder wijzigen wanneer hij is aangemeld met een organisatie account
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Ik wil een service beheerder of Co-Administrator wijzigen wanneer u bent aangemeld met een organisatie account
 
-Zie de ondersteunings artikelen [service beheerder en mede beheerder wijzigen wanneer u bent aangemeld met een organisatie account](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
+Zie de ondersteunings artikelen [service beheerder en Co-Administrator wijzigen wanneer u bent aangemeld met een organisatie account](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
 
 ### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Waarom wordt deze fout weer gegeven? "Uw account beschikt niet over de juiste machtigingen om een oplossing te maken. Neem contact op met uw account beheerder of probeer met een ander account.
 

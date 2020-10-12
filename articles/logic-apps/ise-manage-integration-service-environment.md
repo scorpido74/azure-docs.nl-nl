@@ -7,10 +7,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269366"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Uw ISE (Integratieserviceomgeving) beheren in Azure Logic Apps
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u beheer taken kunt uitvoeren voor uw [Integ
 
 ## <a name="view-your-ise"></a>Uw ISE weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Voer in het zoekvak van de portal "integratie service omgevingen" in en selecteer vervolgens **integratie service omgevingen**.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: container-service
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b468f967e68b72e3c9da276dc2077fc09256c895
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470031"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen
@@ -47,7 +47,7 @@ De `Microsoft.ContainerService AROGA` functie,,, en `Microsoft.Solutions` `Micro
 
 Als u deze providers en onderdelen hand matig wilt registreren, gebruikt u de volgende instructies van een bash-shell als u de CLI hebt geïnstalleerd of van de Azure Cloud Shell-sessie (bash) in uw Azure Portal:
 
-1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-ID op:
+1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-id op:
 
     ```azurecli
     az account set --subscription <SUBSCRIPTION ID>

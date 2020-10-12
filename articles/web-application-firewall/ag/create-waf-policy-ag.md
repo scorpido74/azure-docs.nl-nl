@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
 ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86146607"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Een firewall beleid voor webtoepassingen voor Application Gateway maken
@@ -23,13 +23,13 @@ U kunt zoveel beleids regels maken als u wilt. Als u een beleid hebt gemaakt, mo
 Als op uw Application Gateway een beleid is toegepast en u vervolgens een ander beleid toepast op een listener op die Application Gateway, wordt het beleid van de listener van kracht, maar alleen voor de listener (s) waaraan ze zijn toegewezen. Het Application Gateway beleid is nog steeds van toepassing op alle andere listeners waaraan geen specifiek beleid is toegewezen. 
 
    > [!NOTE]
-   > Het WAF-beleid per URI is beschikbaar als open bare preview. Dit betekent dat deze functie onderhevig is aan de aanvullende gebruiksvoorwaarden van Microsoft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+   > WAF-beleidsregels per URI zijn beschikbaar als openbare preview. Dit betekent dat deze functie onderhevig is aan de aanvullende gebruiksvoorwaarden van Microsoft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
    > [!NOTE]
    > Zodra een firewall beleid is gekoppeld aan een WAF, moet er altijd een beleid zijn dat aan die WAF is gekoppeld. U kunt dat beleid overschrijven, maar het ontkoppelen van een beleid van de WAF wordt niet volledig ondersteund. 
 
 Alle nieuwe WAF-instellingen van de firewall voor webtoepassingen (aangepaste regels, beheerde rulset-configuraties, uitsluitingen, enzovoort) Live binnen een WAF-beleid. Als u een bestaande WAF hebt, zijn deze instellingen mogelijk nog aanwezig in de WAF-configuratie. Zie [uw WAF config migreren naar een WAF-beleid](#migrate) verderop in dit artikel voor meer informatie over het overstappen op het nieuwe WAF-beleid. 
 
-## <a name="create-a-policy"></a>Beleid maken
+## <a name="create-a-policy"></a>Een beleid maken
 
 Maak eerst een Basic-WAF-beleid met een beheerde standaard regelset (DRS) met behulp van de Azure Portal.
 
@@ -51,13 +51,13 @@ Maak eerst een Basic-WAF-beleid met een beheerde standaard regelset (DRS) met be
 
    > [!NOTE]
    > Als u een beleid toewijst aan uw Application Gateway (of listener) waaraan al een beleid is toegewezen, wordt het oorspronkelijke beleid overschreven en vervangen door het nieuwe beleid.
-4. Selecteer **controleren + maken**en selecteer vervolgens **maken**.
+4. Selecteer **Controleren en maken** en selecteer vervolgens **Maken**.
 
    ![Basis beginselen van WAF-beleid](../media/create-waf-policy-ag/waf-policy-basics.png)
 
 ## <a name="configure-waf-rules-optional"></a>WAF-regels configureren (optioneel)
 
-Wanneer u een WAF-beleid maakt, is dit standaard in de *detectie* modus. In de detectie modus worden door WAF geen aanvragen geblokkeerd. In plaats daarvan worden de overeenkomende WAF-regels vastgelegd in de WAF-Logboeken. Als u WAF in actie wilt zien, kunt u de modus instellingen wijzigen in *preventie*. In de preventie modus worden overeenkomende regels die zijn gedefinieerd in de CRS-regelset die u hebt geselecteerd, geblokkeerd en/of geregistreerd in de WAF-Logboeken.
+Wanneer u een WAF-beleid maakt, is dit standaard in de *detectie* modus. In de modus Detectie worden er door WAF geen aanvragen geblokkeerd. In plaats daarvan worden de overeenkomende WAF-regels vastgelegd in de WAF-Logboeken. Als u WAF in actie wilt zien, kunt u de modus instellingen wijzigen in *preventie*. In de preventie modus worden overeenkomende regels die zijn gedefinieerd in de CRS-regelset die u hebt geselecteerd, geblokkeerd en/of geregistreerd in de WAF-Logboeken.
 
 ## <a name="managed-rules"></a>Beheerde regels
 

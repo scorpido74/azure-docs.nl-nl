@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85560823"
 ---
 # <a name="shaper-cognitive-skill"></a>Cognitieve vaardigheid van shaper
@@ -246,10 +246,10 @@ In dit geval maakt de **shaper** een complex type. Deze structuur bevindt zich i
 }
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Complexe typen gebruiken](search-howto-complex-data-types.md)
-+ [Knowledge Store](knowledge-store-concept-intro.md)
++ [Kennisarchief](knowledge-store-concept-intro.md)
 + [Een kennis archief maken in REST](knowledge-store-create-rest.md)

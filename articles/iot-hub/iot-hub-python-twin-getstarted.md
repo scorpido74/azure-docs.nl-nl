@@ -10,10 +10,10 @@ ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87875469"
 ---
 # <a name="get-started-with-device-twins-python"></a>Aan de slag met Device apparaatdubbels (python)
@@ -116,7 +116,7 @@ In deze sectie maakt u een python-console-app waarmee de meta gegevens van de lo
 
     Het **IoTHubRegistryManager** -object bevat alle methoden die nodig zijn om te communiceren met de apparaatdubbels van de service. De code initialiseert eerst het **IoTHubRegistryManager** -object, werkt het apparaat vervolgens bij met de dubbele voor **DEVICE_ID**en voert ten slotte twee query's uit. De eerste selecteert alleen het apparaat apparaatdubbels van apparaten die zich in de **Redmond43** -installatie bevinden en de tweede verfijnt de query om alleen de apparaten te selecteren die ook zijn verbonden via een mobiel netwerk.
 
-6. Voeg de volgende code toe aan het einde van **AddTagsAndQuery.py** om de **iothub_service_sample_run** -functie te implementeren:
+6. Voeg de volgende code toe aan het einde van  **AddTagsAndQuery.py** om de **iothub_service_sample_run** -functie te implementeren:
 
     ```python
     if __name__ == '__main__':
@@ -199,7 +199,7 @@ In deze sectie maakt u een python-console-app die verbinding maakt met uw hub al
 
     Het **IoTHubModuleClient** -object bevat alle methoden die u nodig hebt om te communiceren met de apparaatdubbels van het apparaat. De vorige code, na het initialiseren van het **IoTHubModuleClient** -object, haalt het apparaat op voor uw apparaat en werkt de gerapporteerde eigenschap bij met de verbindings gegevens.
 
-6. Voeg de volgende code toe aan het einde van **ReportConnectivity.py** om de **iothub_client_sample_run** -functie te implementeren:
+6. Voeg de volgende code toe aan het einde van  **ReportConnectivity.py** om de **iothub_client_sample_run** -functie te implementeren:
 
     ```python
     if __name__ == '__main__':

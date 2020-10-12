@@ -14,10 +14,10 @@ ms.custom:
 - fasttrack-edit
 - iot
 ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462033"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
@@ -41,7 +41,7 @@ In dit artikel gebruikt u de [Azure IOT Device SDK voor C](iot-hub-device-sdk-c-
 
   - **Europa - noord**
   - **Azië - zuidoost**
-  - **VS - west 2**
+  - **West US 2**
 
 - In dit artikel wordt ervan uitgegaan dat u bekend bent met het verzenden van telemetrie-berichten naar uw IoT-hub. Zorg ervoor dat u de Snelstartgids voor het [verzenden van telemetrie C](quickstart-send-telemetry-c.md)hebt voltooid.
 

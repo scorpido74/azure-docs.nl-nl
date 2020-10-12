@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76748907"
 ---
 Dit artikel bevat het volgende detail niveau voor het beveiligen van de IoT-infra structuur (Azure IoT-based Internet of Things). Het bevat koppelingen naar details over het implementatie niveau voor het configureren en implementeren van elk onderdeel. Het biedt ook vergelijkingen en keuzes tussen verschillende concurrerende methoden.

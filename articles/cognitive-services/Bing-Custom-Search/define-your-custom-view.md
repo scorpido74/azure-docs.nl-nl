@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86183202"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Uw Bing Aangepaste zoekopdrachten-ervaring configureren
@@ -27,7 +27,7 @@ Gebruik het volgende bij het definiëren van uw segmenten van het web:
 
 | Segment naam | Beschrijving                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domein     | Een domein segment bevat alle inhoud die binnen een Internet domein is gevonden. Bijvoorbeeld `www.microsoft.com`. Als u dit weglaat, `www.` zoekt Bing ook de subdomeinen van het domein. Als u bijvoorbeeld opgeeft `microsoft.com` , retourneert Bing ook resultaten van `support.microsoft.com` of `technet.microsoft.com` . |
+| Domain     | Een domein segment bevat alle inhoud die binnen een Internet domein is gevonden. Bijvoorbeeld `www.microsoft.com`. Als u dit weglaat, `www.` zoekt Bing ook de subdomeinen van het domein. Als u bijvoorbeeld opgeeft `microsoft.com` , retourneert Bing ook resultaten van `support.microsoft.com` of `technet.microsoft.com` . |
 | Subpagina    | Een segment van een subpagina bevat alle inhoud die is gevonden op de subpagina en de onderliggende paden. U kunt Maxi maal twee subpagina's in het pad opgeven. Bijvoorbeeld: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Webpagina    | Een segment van een webpagina kan alleen die webpagina in een aangepaste zoek opdracht bevatten. U kunt eventueel ook opgeven of u subpagina's wilt toevoegen.                                                                                                                                                                                  |
 
@@ -114,7 +114,7 @@ De Super Boost, het boosten en het degraderen zijn niet beschikbaar voor de afbe
 
 ## <a name="pin-slices-to-the-top-of-search-results"></a>Segmenten vastmaken aan de bovenkant van de zoek resultaten
 
-Met de portal kunt u ook Url's aan de bovenkant van de zoek resultaten voor specifieke zoek termen vastmaken met behulp van het tabblad **vastgemaakt** . Voer een URL en een query in om de webpagina op te geven die als het beste resultaat wordt weer gegeven. Houd er rekening mee dat u Maxi maal één webpagina per zoek opdracht kunt vastmaken en dat alleen geïndexeerde webpagina's worden weer gegeven in Zoek opdrachten. Het vastmaken van resultaten is niet beschikbaar voor afbeeldingen of video-Zoek opdrachten.
+Met de portal kunt u ook Url's aan de bovenkant van de zoek resultaten vastmaken voor specifieke zoek termen, met behulp van het tabblad **vastgemaakt** . Voer een URL en een query in om de webpagina op te geven die als het beste resultaat wordt weer gegeven. Houd er rekening mee dat u Maxi maal één webpagina per zoek opdracht kunt vastmaken en dat alleen geïndexeerde webpagina's worden weer gegeven in Zoek opdrachten. Het vastmaken van resultaten is niet beschikbaar voor afbeeldingen of video-Zoek opdrachten.
 
 U kunt op twee manieren een webpagina aan de bovenkant vastmaken:
 

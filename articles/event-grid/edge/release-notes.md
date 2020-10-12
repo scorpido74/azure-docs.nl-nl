@@ -4,10 +4,10 @@ description: Opmerkingen over IoT Edge-release Azure Event Grid
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: a7582750f5230f02c784b14f50dfc6efa7af8698
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171411"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>Release opmerkingen: Azure Event Grid op IoT Edge
@@ -28,7 +28,7 @@ De eerste versie van Azure Event Grid op IoT Edge. Opgenomen functies:
 * Permanente status voor meta gegevens
 * Integratie van Blob Storage-module
 
-Koptags`1.0.0-preview1`
+Koptags `1.0.0-preview1`
 
 ## <a name="100-preview2"></a>1.0.0-preview2
 
@@ -42,4 +42,4 @@ Preview 2 van Azure Event Grid op IoT Edge toegevoegd:
 * Publiceren naar Service Bus-onderwerpen als doel
 * Publiceren naar opslag wachtrijen als doel
 
-Tags: `1.0.0-preview2` , `1.0` ,`latest`
+Tags: `1.0.0-preview2` , `1.0` , `latest`

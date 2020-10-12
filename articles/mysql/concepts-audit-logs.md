@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362122"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Audit Logboeken in Azure Database for MySQL
@@ -31,7 +31,7 @@ Andere para meters die u kunt aanpassen zijn onder andere:
 - `audit_log_exclude_users`: MySQL-gebruikers die moeten worden uitgesloten van logboek registratie. De maximale lengte van de para meter is 512 tekens.
 
 > [!NOTE]
-> `audit_log_include_users`heeft een hogere prioriteit dan `audit_log_exclude_users` . Als `audit_log_include_users`  =  `demouser` en wordt `audit_log_exclude_users`  =  `demouser` de gebruiker bijvoorbeeld opgenomen in de audit logboeken, omdat deze een `audit_log_include_users` hogere prioriteit heeft.
+> `audit_log_include_users` heeft een hogere prioriteit dan `audit_log_exclude_users` . Als `audit_log_include_users`  =  `demouser` en wordt `audit_log_exclude_users`  =  `demouser` de gebruiker bijvoorbeeld opgenomen in de audit logboeken, omdat deze een `audit_log_include_users` hogere prioriteit heeft.
 
 | **Gebeurtenis** | **Beschrijving** |
 |---|---|
@@ -60,10 +60,10 @@ In de volgende secties wordt beschreven wat er wordt uitgevoerd door MySQL-contr
 | `TenantId` | Uw Tenant-ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Tijds tempel voor het vastleggen van het logboek in UTC |
-| `Type` | Het type van het logboek. Altijd`AzureDiagnostics` |
+| `Type` | Het type van het logboek. Altijd `AzureDiagnostics` |
 | `SubscriptionId` | GUID voor het abonnement waartoe de server behoort |
 | `ResourceGroup` | Naam van de resource groep waartoe de server behoort |
-| `ResourceProvider` | De naam van de resource provider. Altijd`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | De naam van de resource provider. Altijd `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Resource-URI |
 | `Resource` | Naam van de server |
@@ -91,10 +91,10 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `TenantId` | Uw Tenant-ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Tijds tempel voor het vastleggen van het logboek in UTC |
-| `Type` | Het type van het logboek. Altijd`AzureDiagnostics` |
+| `Type` | Het type van het logboek. Altijd `AzureDiagnostics` |
 | `SubscriptionId` | GUID voor het abonnement waartoe de server behoort |
 | `ResourceGroup` | Naam van de resource groep waartoe de server behoort |
-| `ResourceProvider` | De naam van de resource provider. Altijd`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | De naam van de resource provider. Altijd `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Resource-URI |
 | `Resource` | Naam van de server |
@@ -104,7 +104,7 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`, `ERROR` , `RESULT` (alleen beschikbaar voor MySQL 5,6) |
 | `event_time` | Begin tijd van de query in UTC-tijds tempel |
-| `error_code_d` | Fout code als de query is mislukt. `0`betekent geen fout |
+| `error_code_d` | Fout code als de query is mislukt. `0` betekent geen fout |
 | `thread_id_d` | ID van de thread die de query heeft uitgevoerd |
 | `host_s` | Leeg |
 | `ip_s` | IP-adres van de client die verbinding maakt met MySQL |
@@ -122,10 +122,10 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `TenantId` | Uw Tenant-ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Tijds tempel voor het vastleggen van het logboek in UTC |
-| `Type` | Het type van het logboek. Altijd`AzureDiagnostics` |
+| `Type` | Het type van het logboek. Altijd `AzureDiagnostics` |
 | `SubscriptionId` | GUID voor het abonnement waartoe de server behoort |
 | `ResourceGroup` | Naam van de resource groep waartoe de server behoort |
-| `ResourceProvider` | De naam van de resource provider. Altijd`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | De naam van de resource provider. Altijd `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Resource-URI |
 | `Resource` | Naam van de server |
@@ -133,7 +133,7 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Naam van de server |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` of`DELETE` |
+| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` of `DELETE` |
 | `connection_id_d` | Unieke verbindings-ID die is gegenereerd door MySQL |
 | `db_s` | De naam van de data base die wordt geopend |
 | `table_s` | De naam van de tabel die wordt geopend |

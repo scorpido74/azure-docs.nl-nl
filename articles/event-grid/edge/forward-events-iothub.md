@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171547"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Zelf studie: gebeurtenissen door sturen naar IoTHub
@@ -76,7 +76,7 @@ Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. Het onde
         ]
    ```
 
-## <a name="create-event-subscription"></a>Gebeurtenis abonnement maken
+## <a name="create-event-subscription"></a>Gebeurtenisabonnement maken
 
 Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moet u een event grid-abonnement maken op een onderwerp van belang.
 

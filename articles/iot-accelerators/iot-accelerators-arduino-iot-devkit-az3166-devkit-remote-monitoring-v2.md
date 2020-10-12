@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337667"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Een IoT DevKit-apparaat verbinden met de oplossings versneller voor externe controle
@@ -77,7 +77,7 @@ Voer de volgende stappen uit om te controleren of de voorbeeld toepassing die u 
 
 ### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>De telemetrie weer geven die is verzonden naar de oplossing voor externe controle
 
-Wanneer de voor beeld-app wordt uitgevoerd, verzendt het DevKit-apparaat telemetrie van de sensor gegevens via Wi-Fi naar uw oplossings versneller. Voor een overzicht van de telemetrie:
+Wanneer de voor beeld-app wordt uitgevoerd, verzendt het DevKit-apparaat telemetrie van de sensor gegevens naar Wi-Fi naar uw oplossings versneller. Voor een overzicht van de telemetrie:
 
 1. Ga naar het dash board van de oplossing en klik op **device Explorer**.
 
@@ -113,7 +113,7 @@ Als u de kleur van een van de DevKit-Led's wilt wijzigen, gebruikt u de methode 
 
 Als u van plan bent verder te gaan met de zelfstudies, laat u de verbetering voor de externe bewakingsoplossing geïmplementeerd.
 
-Als u de oplossings versneller niet meer nodig hebt, verwijdert u deze van de pagina ingerichte oplossingen door deze te selecteren en vervolgens op oplossing verwijderen te klikken:
+Als u de oplossingsverbetering niet meer nodig hebt, verwijdert u deze op de pagina Ingerichte oplossingen door de oplossingsverbetering te selecteren en op Oplossing verwijderen te klikken:
 
 ![Oplossing verwijderen](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 

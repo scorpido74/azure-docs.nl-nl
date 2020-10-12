@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171445"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Zelf studie: publiceren, lokaal abonneren op gebeurtenissen
@@ -54,7 +54,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 1. Geef de naam, de afbeelding en de opties voor het maken van de container van de container op:
 
    * **Naam**: eventgridmodule
-   * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Opties**voor het maken van containers:
 
    [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
@@ -75,7 +75,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
           }
         }
     ```    
- 1. Klik op **Opslaan**
+ 1. Klik op **Opslaan**.
  1. Ga verder met de volgende sectie om de Azure Event Grid Subscriber module toe te voegen voordat u ze samen implementeert.
 
     >[!IMPORTANT]
@@ -95,9 +95,9 @@ In deze sectie wordt beschreven hoe u een andere IoT-module implementeert die al
 1. Geef de naam, de afbeelding en de opties voor het maken van de container op van de container:
 
    * **Naam**: abonnee
-   * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Opties**voor het maken van containers: geen
-1. Klik op **Opslaan**
+1. Klik op **Opslaan**.
 1. Klik op **volgende** om door te gaan naar de sectie routes
 
  ### <a name="setup-routes"></a>Installatie routes

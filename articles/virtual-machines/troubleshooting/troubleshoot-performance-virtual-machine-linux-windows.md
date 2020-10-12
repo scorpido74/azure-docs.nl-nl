@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526653"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Problemen met prestaties van virtuele Azure-machines in Linux of Windows oplossen
@@ -210,13 +210,13 @@ Met nieuwe schijf aanbiedingen onder standaard opslag kunnen de limieten voor IO
 
 * [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](../windows/disk-scalability-targets.md).
 
-#### <a name="references"></a>Naslaginformatie
+#### <a name="references"></a>Referenties
 
 * [Schaalbaarheids-en prestatie doelen voor Premium-pagina-Blob Storage-accounts](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 De band breedte van het opslag account wordt gemeten door de metrische gegevens van het opslag account: TotalIngress en TotalEgress. U hebt verschillende drempel waarden voor band breedte, afhankelijk van het type redundantie en regio's.
 
-* [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../../storage/common/scalability-targets-standard-account.md)
+* [Schaalbaarheids- en prestatiedoelen voor standaardopslagaccounts](../../storage/common/scalability-targets-standard-account.md)
 
 Controleer de TotalIngress en de TotalEgress op basis van de limieten voor inkomend en uitgaand verkeer voor het type en de regio van het opslag account.
 

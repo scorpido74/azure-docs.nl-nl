@@ -6,10 +6,10 @@ ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
 ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89294591"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Aangepaste handlers Azure Functions (preview-versie)
@@ -190,7 +190,7 @@ Per Conventie worden functie reacties opgemaakt als sleutel/waarde-paren. Onders
 | <nobr>Payload-sleutel</nobr>   | Gegevenstype | Opmerkingen                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
 | `Outputs`     | object    | Bevat reactie waarden zoals gedefinieerd door de `bindings` matrix in *function.jsop*.<br /><br />Als een functie bijvoorbeeld is geconfigureerd met een wachtrij-uitvoer binding met de naam ' myQueueOutput ', `Outputs` bevat deze een sleutel met `myQueueOutput` de naam, die door de aangepaste handler wordt ingesteld op de berichten die naar de wachtrij worden verzonden. |
-| `Logs`        | array     | Berichten worden weer gegeven in de functie Logboeken van functies.<br /><br />Bij het uitvoeren in Azure worden berichten weer gegeven in Application Insights. |
+| `Logs`        | matrix     | Berichten worden weer gegeven in de functie Logboeken van functies.<br /><br />Bij het uitvoeren in Azure worden berichten weer gegeven in Application Insights. |
 | `ReturnValue` | tekenreeks    | Wordt gebruikt om een reactie te geven wanneer een uitvoer is geconfigureerd als `$return` in de *function.jsvoor* het bestand. |
 
 Dit is een voor beeld van een nettolading van een reactie.

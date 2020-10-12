@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171343"
 ---
 # <a name="common-issues"></a>Algemene problemen
@@ -100,7 +100,7 @@ Veelvoorkomende oorzaken hiervoor zijn:
 
 * Meld u aan bij de VM waar Event Grid module is geïmplementeerd en Bekijk de logboeken ervan.
 
-* Schakel logboek registratie per levering in door **Broker: logDeliverySuccess = True** in te stellen en de module Event grid opnieuw te implementeren en de aanvraag opnieuw uit te voeren. Het inschakelen van logboek registratie per levering kan invloed hebben op de door Voer en latentie wanneer de fout opsporing is voltooid. Als u deze optie uitschakelt, wordt de aanbeveling ingesteld op **Broker: logDeliverySuccess = False** en wordt Event grid module opnieuw geïmplementeerd.
+* Schakel logboek registratie per levering in door **Broker: logDeliverySuccess = True** in te stellen en de module Event grid opnieuw te implementeren en de aanvraag opnieuw uit te voeren. Het inschakelen van logboek registratie per levering kan invloed hebben op de door Voer en latentie wanneer de fout opsporing is voltooid. Als u deze optie uitschakelt, wordt de aanbeveling ingesteld op **Broker: logDeliverySuccess = False**  en wordt Event grid module opnieuw geïmplementeerd.
 
 * Schakel metrische gegevens in door metrische gegevens in te stellen **: reportertype = console** en implementeer Event grid module opnieuw. Als er bewerkingen worden uitgevoerd, worden er metrische gegevens geregistreerd op de console van Event Grid module, die kan worden gebruikt om fouten op te sporen. We raden u aan om metrische gegevens alleen in te scha kelen voor fout opsporing en eenmaal op te zetten om deze functie uit te voeren door metrische gegevens in te stellen **: reportertype = none** en de module Event grid opnieuw te implementeren.
 

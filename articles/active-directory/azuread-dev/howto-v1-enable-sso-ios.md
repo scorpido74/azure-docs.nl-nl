@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383696"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Procedure: cross-app SSO inschakelen op iOS met ADAL
@@ -46,7 +46,7 @@ In deze procedure wordt ervan uitgegaan dat u weet hoe u:
 * Richt uw app in met behulp van de verouderde portal voor Azure AD. Zie [een app registreren](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) voor meer informatie
 * Integreer uw toepassing met de [Azure AD IOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
-## <a name="single-sign-on-concepts"></a>Concepten voor eenmalige aanmelding
+## <a name="single-sign-on-concepts"></a>Concepten van eenmalige aanmelding
 
 ### <a name="identity-brokers"></a>Identiteits Brokers
 
@@ -175,11 +175,11 @@ Om het identiteits platform te laten weten dat het is toegestaan om tokens in uw
 
 Met omleidings-Uri's kunt u verschillende apps identificeren voor de micro soft Identity-service als deze dezelfde toepassings-ID gebruikt. Voor elke toepassing kunnen meerdere omleidings-Uri's zijn geregistreerd in de onboarding-Portal. Elke app in uw suite krijgt een andere omleidings-URI. Hieronder ziet u een voor beeld van hoe dit wordt weer gegeven:
 
-App1 omleidings-URI:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+App1 omleidings-URI: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 omleidings-URI:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 omleidings-URI: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 omleidings-URI:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 omleidings-URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 

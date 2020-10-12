@@ -8,18 +8,18 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171768"
 ---
 # <a name="advanced-filtering"></a>Geavanceerd filteren
 Met Event Grid kunt u filters voor elke eigenschap in de JSON-nettolading opgeven. Deze filters zijn gemodelleerd als set `AND` voor waarden, waarbij elke Outer voor waarde optionele interne `OR` voor waarden heeft. Voor elke `AND` voor waarde geeft u de volgende waarden op:
 
-* `OperatorType`-Het type vergelijking.
-* `Key`-Het JSON-pad naar de eigenschap waarop het filter moet worden toegepast.
-* `Value`-De referentie waarde waarmee het filter wordt uitgevoerd (of) `Values` : de set referentie waarden waartegen het filter wordt uitgevoerd.
+* `OperatorType` -Het type vergelijking.
+* `Key` -Het JSON-pad naar de eigenschap waarop het filter moet worden toegepast.
+* `Value` -De referentie waarde waarmee het filter wordt uitgevoerd (of) `Values` : de set referentie waarden waartegen het filter wordt uitgevoerd.
 
 ## <a name="json-syntax"></a>JSON-syntaxis
 
@@ -55,7 +55,7 @@ Voor de Opera tors die meerdere waarden ondersteunen (zoals `NumberIn` , `Number
 > [!CAUTION]
 > De Opera tors en `NumberNotIn` `StringNotIn` gedragen zich als en voor waarden voor elke waarde die in het `Values` veld wordt gegeven.
 >
-> Als u dit niet doet, wordt het filter ' accept-all filter en verslaan het doel van het filteren.
+> Als u dit niet doet, wordt er een Accept-All filter gemaakt en wordt het filter verslaan.
 
 ## <a name="floating-point-rounding-behavior"></a>Drijvende komma Afrondings gedrag
 

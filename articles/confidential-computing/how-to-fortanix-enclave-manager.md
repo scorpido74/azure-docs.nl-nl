@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462425"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Procedure: een toepassing uitvoeren met Fortanix enclave Manager 
@@ -28,7 +28,7 @@ Fortanix is een software leverancier van derden met producten en services die zi
 
 
 
-In deze zelf studie leert u hoe u de installatie kopie van uw toepassing kunt converteren naar een met een vertrouwelijk image beveiligde afbeelding. In deze omgeving wordt gebruikgemaakt van [Fortanix](https://www.fortanix.com/) -software, aangedreven door de virtuele machines van de DCsv2-serie met Intel SGX-functionaliteit van Azure. Deze oplossing coördineert essentiële beveiligings beleidsregels, zoals identiteits verificatie en gegevens toegangs beheer.
+In deze zelf studie leert u hoe u de installatie kopie van uw toepassing kunt converteren naar een met een vertrouwelijk image beveiligde afbeelding. In deze omgeving wordt gebruikgemaakt van [Fortanix](https://www.fortanix.com/) -software, die wordt ondersteund door de DCsv2-Series Intel SGX-virtual machines van Azure. Deze oplossing coördineert essentiële beveiligings beleidsregels, zoals identiteits verificatie en gegevens toegangs beheer.
 
  Voor Fortanix-specifieke ondersteuning moet u lid worden van de [Fortanix-marge Community](https://fortanix.com/community/) en de kanaal #enclavemanager gebruiken.
 
@@ -117,10 +117,10 @@ Als u een Fortanix-knoop punt agent maakt, worden een virtuele machine, netwerk 
      ![Marketplace zoeken](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
 1. Selecteer **nu downloaden**, Vul zo nodig uw gegevens in en selecteer **door gaan**. U wordt omgeleid naar de Azure Portal. 
 1. Selecteer **maken** om de implementatie pagina van de Fortanix vertrouwelijk computing-knoop punt in te voeren.
-1. Op deze pagina voert u informatie in voor het implementeren van een virtuele machine. Met name deze VM is een virtuele machine met Intel SGX-functionaliteit voor DCsv2 van Azure met Fortanix-knooppunt agent software geïnstalleerd. Met de knooppunt agent kan de geconverteerde afbeelding veilig worden uitgevoerd op Intel SGX-knoop punten in Azure.  Selecteer het **abonnement** en de **resource groep** waar u de virtuele machine en de bijbehorende resources wilt implementeren. 
+1. Op deze pagina voert u informatie in voor het implementeren van een virtuele machine. Deze VM is met name een DCsv2-Series Intel SGX-ingeschakelde virtuele machine van Azure met de Fortanix-knooppunt agent software geïnstalleerd. Met de knooppunt agent kan de geconverteerde afbeelding veilig worden uitgevoerd op Intel SGX-knoop punten in Azure.  Selecteer het **abonnement** en de **resource groep** waar u de virtuele machine en de bijbehorende resources wilt implementeren. 
  
     > [!NOTE]
-    > Er zijn beperkingen bij het implementeren van virtuele machines uit de DCsv2-serie in Azure. Mogelijk moet u een quotum aanvragen voor extra kern geheugens. Lees meer informatie over de [oplossingen voor vertrouwelijke Computing op Azure-vm's](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
+    > Er gelden beperkingen bij het implementeren van DCsv2-Series virtuele machines in Azure. Mogelijk moet u een quotum aanvragen voor extra kern geheugens. Lees meer informatie over de [oplossingen voor vertrouwelijke Computing op Azure-vm's](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
 
 1. Selecteer een beschikbare regio.
 1. Voer in het veld **knooppunt naam** een naam in voor de virtuele machine. 

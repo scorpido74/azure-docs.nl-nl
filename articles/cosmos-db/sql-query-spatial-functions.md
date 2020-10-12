@@ -8,17 +8,17 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 87d73787998d1a49d7512723b212c26b7107513f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85559800"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>Ruimtelijke functies (Azure Cosmos DB)
 
 Cosmos DB biedt ondersteuning voor de volgende ingebouwde OGC-functies (Open Geospatial Consortium) voor georuimtelijke query's. 
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 De volgende scalaire functies voeren een bewerking uit op een invoer waarde van een ruimtelijk object en retour neren een numerieke of Booleaanse waarde.  
 
@@ -38,4 +38,4 @@ De volgende scalaire functies voeren een bewerking uit op een invoer waarde van 
 - [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)
 - [Door de gebruiker gedefinieerde functies](sql-query-udfs.md)
-- [Aggregaties](sql-query-aggregates.md)
+- [Statistische functies](sql-query-aggregates.md)

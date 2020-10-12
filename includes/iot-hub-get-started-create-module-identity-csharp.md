@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883752"
 ---
 ## <a name="create-a-module-identity"></a>Een module-id maken
@@ -21,7 +21,7 @@ In deze sectie maakt u een .NET-console-app die een apparaat-id en een module-ID
 
 Als u deze consoletoepassing uitvoert, worden er een unieke id en een unieke sleutel gemaakt voor zowel het apparaat als de module. Uw apparaat en module gebruiken deze waarden om zichzelf te identificeren bij het verzenden van apparaat-naar-Cloud-berichten naar IoT Hub. De id's zijn hoofdlettergevoelig.
 
-1. Open Visual Studio en selecteer **een nieuw project maken**.
+1. Open Visual Studio en selecteer **Een nieuw project maken**.
 
 1. Selecteer **console-app (.NET Framework)** in **een nieuw project maken**.
 
@@ -29,7 +29,7 @@ Als u deze consoletoepassing uitvoert, worden er een unieke id en een unieke sle
 
     ![Voer de naam en het framework in voor uw Visual Studio-oplossing](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-1. Open in Visual Studio **tools**  >  **NuGet package manager**  >  **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
+1. Open in Visual Studio **tools**  >  **NuGet package manager**  >  **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Bladeren**.
 
 1. Zoek naar **micro soft. Azure. devices**. Selecteer deze en selecteer vervolgens **installeren**.
 

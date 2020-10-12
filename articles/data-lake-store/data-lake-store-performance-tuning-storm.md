@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192814"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor Storm op HDInsight en Azure Data Lake Storage Gen1
@@ -89,7 +89,7 @@ In I/O-intensieve topologieën is het een goed idee om elke Schicht-thread naar 
 
 In Storm wordt een Spout op een tuple bewaard totdat deze expliciet door de schicht wordt bevestigd. Als een tuple is gelezen door de flits maar nog niet is bevestigd, is de Spout mogelijk niet persistent in Data Lake Storage Gen1 back-end. Nadat een tuple is bevestigd, kan de Spout worden gegarandeerd door de flits en kan vervolgens de bron gegevens worden verwijderd uit de bron waaruit het wordt gelezen.  
 
-Voor de beste prestaties van Data Lake Storage Gen1 hebt u de flits buffer 4 MB tuple-gegevens nodig. Schrijf vervolgens naar de Data Lake Storage Gen1 back-end als één 4 MB schrijf bewerking. Nadat de gegevens zijn geschreven naar de Store (door het aanroepen van hflush ()), kan de schicht de gegevens weer op de Spout bevestigen. Dit is de voor beeld-Schicht die hier wordt opgegeven. Het is ook acceptabel om een groter aantal Tuples te bevatten voordat de hflush ()-aanroep wordt gedaan en de Tuples zijn bevestigd. Dit verhoogt echter het aantal Tuples in de vlucht dat de Spout moet vasthouden en verhoogt daarom de hoeveelheid geheugen die wordt vereist per JVM.
+Voor de beste prestaties van Data Lake Storage Gen1 hebt u de flits buffer 4 MB tuple-gegevens nodig. Schrijf vervolgens naar de Data Lake Storage Gen1 back-end als 1 4 MB schrijven. Nadat de gegevens zijn geschreven naar de Store (door het aanroepen van hflush ()), kan de schicht de gegevens weer op de Spout bevestigen. Dit is de voor beeld-Schicht die hier wordt opgegeven. Het is ook acceptabel om een groter aantal Tuples te bevatten voordat de hflush ()-aanroep wordt gedaan en de Tuples zijn bevestigd. Dit verhoogt echter het aantal Tuples in de vlucht dat de Spout moet vasthouden en verhoogt daarom de hoeveelheid geheugen die wordt vereist per JVM.
 
 > [!NOTE]
 > Toepassingen hebben mogelijk een vereiste om vaak Tuples te bevestigen (bij gegevens grootte van minder dan 4 MB) om andere niet-prestatie redenen. Dit kan echter van invloed zijn op de I/O-door Voer voor de back-end van de opslag. Weeg deze balans zorgvuldig af tegen de I/O-prestaties van de schicht.
@@ -98,7 +98,7 @@ Als het binnenkomende aantal Tuples niet hoog is, kan de 4-MB buffer veel tijd i
 * Als u het aantal schichten reduceert, zijn er minder buffers om in te vullen.
 * Een beleid op basis van tijd of aantal, waarbij een hflush () wordt geactiveerd elke x-leegmaak acties of elke y milliseconden, en de Tuples die tot nu toe zijn verzameld, worden teruggestuurd.
 
-De door Voer in dit geval is lager, maar met een trage snelheid van gebeurtenissen is de maximale door Voer toch niet het grootste doel. Met deze oplossingen kunt u de totale tijd beperken die een tuple nodig heeft om door te stromen naar de Store. Dit kan van belang zijn als u een realtime pijp lijn wilt, zelfs met een lage gebeurtenis frequentie. Als uw binnenkomende tuple laag is, moet u ook de para meter topologie. Message. timeout_secs aanpassen, zodat er geen time-out is opgetreden voor de Tuples terwijl ze worden gebufferd of verwerkt.
+De door Voer in dit geval is lager, maar met een trage snelheid van gebeurtenissen is de maximale door Voer toch niet het grootste doel. Met deze oplossingen kunt u de totale tijd beperken die een tuple nodig heeft om door te stromen naar de Store. Dit kan van belang zijn als u een realtime pijp lijn wilt, zelfs met een lage gebeurtenis frequentie. Houd er ook rekening mee dat als uw binnenkomende tuple laag is, u de topology.message.timeout_secs para meter moet aanpassen, zodat er geen time-out is opgetreden tijdens het ophalen of verwerken van de tupels.
 
 ## <a name="monitor-your-topology-in-storm"></a>Uw topologie bewaken in Storm  
 Terwijl uw topologie wordt uitgevoerd, kunt u deze bewaken in de Storm-gebruikers interface. Hier volgen de belangrijkste para meters om te kijken naar:

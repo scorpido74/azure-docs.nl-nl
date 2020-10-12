@@ -15,15 +15,15 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86146663"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-roltoewijzingen toevoegen of verwijderen met Azure PowerShell
+# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure PowerShell
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]In dit artikel wordt beschreven hoe u rollen toewijst met behulp van Azure PowerShell.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In dit artikel wordt beschreven hoe u rollen toewijst met behulp van Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -230,6 +230,6 @@ Als u het volgende fout bericht wordt weer gegeven: ' de opgegeven informatie is
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Toewijzingen van Azure-roltoewijzingen weer geven met Azure PowerShell](role-assignments-list-powershell.md)
-- [Zelf studie: een groep toegang verlenen tot Azure-resources met behulp van Azure PowerShell](tutorial-role-assignments-group-powershell.md)
-- [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Zelfstudie: een groep toegang verlenen tot Azure-resources met behulp van Azure PowerShell](tutorial-role-assignments-group-powershell.md)
+- [Zelfstudie: Een aangepaste Azure-rol maken met Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Resources beheren met Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)

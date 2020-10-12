@@ -9,13 +9,13 @@ ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
 ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194321"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Bedrijfscontinuïteit en herstel na noodgevallen (BCDR: gekoppelde Azure-regio’s
+# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Bedrijfscontinuïteit en herstel na noodgeval (BCDR): gekoppelde Azure-regio's
 
 ## <a name="what-are-paired-regions"></a>Wat zijn gekoppelde regio's?
 
@@ -49,13 +49,13 @@ Nee. Klanten kunnen Azure-Services gebruiken voor het ontwikkelen van een flexib
 
 | Geografie | Regionaal paar A | Regionaal paar B  |
 |:--- |:--- |:--- |
-| Azië en Stille Oceaan |Azië-oost (Hongkong) | Zuidoost-Azië (Singapore) |
+| Asia-Pacific |Azië-oost (Hongkong) | Zuidoost-Azië (Singapore) |
 | Australië |Australië - oost |Australië - zuidoost |
 | Australië |Australië - centraal |Australië - centraal 2 |
-| Brazilië |Brazilië - zuid |VS - zuid-centraal |
+| Brazilië |Brazil South |South Central US |
 | Canada |Canada - midden |Canada - oost |
 | China |China - noord |China East|
-| China |China-noord 2 |China-oost 2|
+| China |China - noord 2 |China - oost 2|
 | Europa |Europa-noord (Ierland) |Europa-west (Nederland) |
 | Frankrijk |Frankrijk - centraal|Frankrijk - zuid|
 | Duitsland |Duitsland - centraal |Duitsland - noordoost |
@@ -64,15 +64,15 @@ Nee. Klanten kunnen Azure-Services gebruiken voor het ontwikkelen van een flexib
 | Japan |Japan - oost |Japan - west |
 | Korea |Korea - centraal |Korea - zuid |
 | Noord-Amerika |VS - oost |VS - west |
-| Noord-Amerika |VS - oost 2 |VS - centraal |
+| Noord-Amerika |VS - oost 2 |Central US |
 | Noord-Amerika |VS - noord-centraal |VS - zuid-centraal |
-| Noord-Amerika |VS - west 2 |VS - west-centraal |
+| Noord-Amerika |West US 2 |VS - west-centraal |
 | Noorwegen | Noorwegen - oost | Noorwegen - west |
 | Zuid-Afrika | Zuid-Afrika - noord |Zuid-Afrika - west |
 | Zwitserland | Zwitserland - noord |Zwitserland - west |
 | VK |Verenigd Koninkrijk West |Verenigd Koninkrijk Zuid |
-| Verenigde Arabische Emiraten | UAE - noord | UAE - centraal
-| Amerikaans Ministerie van defensie |US DoD East |US DoD Central |
+| Verenigde Arabische Emiraten | VAE - noord | UAE - centraal
+| US Department of Defense |US DoD East |US DoD Central |
 | Amerikaanse overheid |VS (overheid) - Arizona |VS (overheid) - Texas |
 | Amerikaanse overheid |US Gov - Iowa |VS (overheid) - Virginia |
 | Amerikaanse overheid |VS (overheid) - Virginia |VS (overheid) - Texas |
@@ -104,7 +104,7 @@ Zoals bedoeld in afbeelding 2.
 
 5. **Fysieke isolatie** : als dat mogelijk is, geeft Azure de voor keur aan een schei ding van ten minste 300 mijl tussen data centers in een regionale combi natie, hoewel dit niet praktisch of mogelijk is in alle geografische gebieden. Fysieke datacenter schei ding vermindert de kans op natuur rampen, burgerlijke, stroom storingen of fysieke netwerk storingen die beide regio's tegelijkertijd beïnvloeden. Voor isolatie gelden de beperkingen binnen de Geografie (geografische grootte, Beschik baarheid van de infra structuur, voeding, netwerk infrastructuur, enz.).  
 
-6. Door het **platform geleverde replicatie** : sommige services, zoals geografisch redundante opslag, bieden automatische replicatie naar de gekoppelde regio.
+6. Door het **platform geleverde replicatie** : sommige services, zoals Geo-Redundant opslag, bieden automatische replicatie naar de gekoppelde regio.
 
 7. **Volg orde van regio herstel** : in het geval van een grote storing wordt het herstellen van één regio voor elk paar voor rang gegeven. Toepassingen die binnen gekoppelde regio’s worden geïmplementeerd hebben de garantie dat een van de regio’s met prioriteit wordt hersteld. Als een toepassing wordt geïmplementeerd in meerdere niet-gekoppelde regio's, kan het herstel worden vertraagd: in het ergste geval kunnen de gekozen regio's de laatste twee zijn om te worden hersteld.
 

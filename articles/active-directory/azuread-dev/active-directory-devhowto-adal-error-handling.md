@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
 ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383731"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Aanbevolen procedures voor het afhandelen van de Azure Active Directory Authentication Library (ADAL)-clients
@@ -51,7 +51,7 @@ Er is een set fouten die door het besturings systeem wordt gegenereerd. hiervoor
 
 Er zijn in het algemeen twee situaties met AcquireTokenSilent-fouten:
 
-| Case | Description |
+| Case | Beschrijving |
 |------|-------------|
 | Voor **Beeld 1**: fout kan worden omgezet met een interactieve aanmelding | Voor fouten die zijn veroorzaakt door een gebrek aan geldige tokens is een interactieve aanvraag nood zakelijk. Voor het opzoeken van de cache en een ongeldig/verlopen vernieuwings token is een AcquireToken-aanroep vereist om het probleem op te lossen.<br><br>In deze gevallen moet de eind gebruiker worden gevraagd zich aan te melden. De toepassing kan ervoor kiezen om direct een interactieve aanvraag te doen, nadat de interactie tussen de eind gebruiker (bijvoorbeeld een aanmeldings knop) of hoger is. De keuze is afhankelijk van het gewenste gedrag van de toepassing.<br><br>Zie de code in de volgende sectie voor dit specifieke geval en de fouten die het probleem vaststellen.|
 | **Case 2**: fout kan niet worden omgezet met een interactieve aanmelding | Het probleem wordt niet opgelost met het uitvoeren van een interactieve AcquireToken-aanvraag voor netwerk-en tijdelijke/tijdelijke fouten of andere storingen. Onnodige prompts voor interactieve aanmelding kunnen ook de voor uitzichten van de eind gebruikers. ADAL probeert automatisch één nieuwe poging uit te voeren voor de meeste fouten in AcquireTokenSilent-fouten.<br><br>De client toepassing kan ook op een later tijdstip proberen een nieuwe poging uit te voeren, maar wanneer en hoe afhankelijk is van het gedrag van de toepassing en de gewenste ervaring van de eind gebruiker. De toepassing kan bijvoorbeeld een AcquireTokenSilent opnieuw proberen na een paar minuten of als reactie op de actie van de eind gebruiker. Een onmiddellijke nieuwe poging leidt ertoe dat de toepassing wordt beperkt en niet wordt geprobeerd.<br><br>Een volgende poging mislukt met dezelfde fout betekent niet dat de client een interactieve aanvraag moet doen met behulp van AcquireToken, omdat de fout niet wordt opgelost.<br><br>Zie de code in de volgende sectie voor dit specifieke geval en de fouten die het probleem vaststellen. |
@@ -545,7 +545,7 @@ Als u specifieke ADAL-fouten wilt verkennen, is de bron code in de [opslag plaat
 
 Er kunnen iOS-fouten optreden tijdens het aanmelden wanneer gebruikers webweergaves en de aard van de verificatie gebruiken. Dit kan worden veroorzaakt door omstandigheden zoals TLS-fouten, time-outs of netwerk fouten:
 
-- Voor het delen van rechten zijn aanmeldingen niet permanent en de cache is leeg. U kunt oplossen door de volgende regel code toe te voegen aan de sleutel hanger:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- Voor het delen van rechten zijn aanmeldingen niet permanent en de cache is leeg. U kunt oplossen door de volgende regel code toe te voegen aan de sleutel hanger: `[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - Voor de NsUrlDomainset fouten verandert de actie afhankelijk van de app-logica. Zie de [NSURLErrorDomain-referentie documentatie](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) voor specifieke instanties die kunnen worden verwerkt.
 - Zie [ADAL obj-C common issues (Engelstalig)](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) voor een lijst met veelvoorkomende fouten die worden onderhouden door het ADAL-doel-C-team.
 

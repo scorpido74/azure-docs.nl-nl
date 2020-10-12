@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
 ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846017"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Azure Active Directory identiteits configuratie voor de Azure-API voor FHIR
@@ -97,10 +97,10 @@ Wanneer u een FHIR-server gebruikt, kunt u de `v1.0` of de `v2.0` eind punten ge
 
 De relevante secties van de Azure AD-documentatie zijn:
 
-* `v1.0`endpoints
+* `v1.0` endpoints
     * [Autorisatie code stroom](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code).
     * [Client referentie stroom](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow).
-* `v2.0`endpoints
+* `v2.0` endpoints
     * [Autorisatie code stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow).
     * [Client referentie stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).
 

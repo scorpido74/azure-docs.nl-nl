@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908590"
 ---
-# <a name="leave-an-organization-as-a-guest-user"></a>Een organisatie als gast gebruiker laten staan
+# <a name="leave-an-organization-as-a-guest-user"></a>Een organisatie verlaten als gastgebruiker
 
 Een Azure Active Directory (Azure AD) B2B-gast gebruiker kan ervoor kiezen om een organisatie op elk gewenst moment te verlaten als ze niet langer apps van die organisatie hoeven te gebruiken of een koppeling te onderhouden. Een gebruiker kan een organisatie zelf verlaten zonder dat hiervoor contact moet worden opgenomen met een beheerder.
 

@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75482372"
 ---
 # <a name="integration-patterns"></a>Integratiepatronen
 
 Azure FarmBeats is een Business-to-Business-aanbieding die beschikbaar is in azure Marketplace. FarmBeats maakt aggregatie van agrarische gegevens sets tussen providers mogelijk en genereert detectie van actie bare inzichten door middel van het samen stellen van kunst matige intelligentie (AI) of Machine Learning (ML) modellen door de gegevens sets te weigeren.
 
-![Maten van project-Farm](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![Een Farm Beats-project](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
 In de volgende secties wordt het integratie patroon voor Azure FarmBeats beschreven.
 

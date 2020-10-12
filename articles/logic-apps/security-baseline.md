@@ -8,10 +8,10 @@ ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 16ee5fb59741d57f47083a0c5db852872ceb91d0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296087"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-beveiligings basislijn voor Logic Apps
@@ -646,7 +646,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Logic Apps en hee
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, moet u gebruikmaken van Azure Role Access Control (RBAC), zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
+**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, gebruikt u Azure Role-Based Access Control (RBAC) zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
 
 - Inzender van Logic apps: Hiermee kunt u logische apps beheren, maar u kunt de toegang niet wijzigen.
 - Logische app-operator: Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar u kunt ze niet bewerken of bijwerken.
@@ -1190,13 +1190,13 @@ Het herstellen van een back-up van door de klant beheerde sleutels testen. Houd 
 
 Beveilig back-ups van door de klant beheerde sleutels. Houd er rekening mee dat dit alleen van toepassing is op Logic Apps die worden uitgevoerd op ISE (Integration service environments).
 
-Schakel de beveiliging voor voorlopig verwijderen en opschonen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+Schakel Soft-Delete in en verwijder de beveiliging in Key Vault om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
 - [Meer informatie over bedrijfs continuïteit en herstel na nood gevallen voor Azure Logic Apps](business-continuity-disaster-recovery-guidance.md)
 
 - [Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor integratie service omgevingen (ISEs) in Azure Logic Apps](customer-managed-keys-integration-service-environment.md)
 
-- [Het inschakelen van de functie voor voorlopig verwijderen en het opschonen van beveiliging in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Security Center bewaking**: Ja
 

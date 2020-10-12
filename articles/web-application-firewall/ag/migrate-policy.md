@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143857"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Web Application firewall-beleid migreren met behulp van Azure PowerShell
@@ -27,7 +27,7 @@ Gebruik de volgende stappen om het migratie script uit te voeren:
 1. Open het volgende Cloud shell-venster of open er een in de portal.
 2. Kopieer het script naar het Cloud shell-venster en voer dit uit.
 3. Het script vraagt om de abonnements-ID, naam van de resource groep, de naam van de Application Gateway waaraan de WAF-configuratie is gekoppeld en de naam van het nieuwe WAF-beleid dat moet worden gemaakt. Wanneer u deze invoer invoert, wordt het script uitgevoerd en wordt het nieuwe WAF-beleid gemaakt
-4. Koppel het nieuwe WAF-beleid aan uw toepassings gateway. Ga naar het WAF-beleid in de portal en selecteer het tabblad **gekoppelde toepassings gateways** . selecteer **een Application Gateway koppelen** en selecteer vervolgens het Application Gateway waaraan u het WAF-beleid wilt koppelen.
+4. Koppel het nieuwe WAF-beleid aan uw toepassings gateway. Ga naar het WAF-beleid in de portal en selecteer het tabblad **gekoppelde toepassings gateways** . Selecteer **een Application Gateway koppelen** en selecteer vervolgens de Application Gateway om het WAF-beleid aan te koppelen.
 
 > [!NOTE]
 > Het script voltooit geen migratie als aan de volgende voor waarden wordt voldaan:

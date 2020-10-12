@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
 ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85559403"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Beheerde identiteiten voor de Azure signalerings service
@@ -46,7 +46,7 @@ Voor het maken van een exemplaar van de Azure signalerings service met een door 
 
 5. Zoek naar de identiteit die u eerder hebt gemaakt en selecteer deze. Selecteer **Toevoegen**.
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Een door de gebruiker toegewezen identiteit toevoegen aan de portal":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Een door het systeem toegewezen identiteit toevoegen aan de portal":::
 
 ## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Een beheerde identiteit gebruiken in serverloze scenario's
 

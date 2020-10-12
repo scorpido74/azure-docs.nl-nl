@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84171460"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Naslag informatie Bing Local Business Search API V7
@@ -89,7 +89,7 @@ Hieronder ziet u de JSON-antwoord objecten die het antwoord kan bevatten. Als de
 
 |Object|Beschrijving|  
 |------------|-----------------|  
-|[Locatie](#place)|Definieert informatie over een lokale onderneming, zoals een restaurant of Hotel.|  
+|[Brengen](#place)|Definieert informatie over een lokale onderneming, zoals een restaurant of Hotel.|  
 
   
 ### <a name="error"></a>Fout  
@@ -120,8 +120,8 @@ Hiermee wordt de licentie gedefinieerd waarmee de tekst of foto kan worden gebru
   
 |Name|Waarde|Type|  
 |----------|-----------|----------|  
-|name|De naam van de licentie.|Tekenreeks|  
-|URL|De URL naar een website waar de gebruiker meer informatie over de licentie kan krijgen.<br /><br /> Gebruik de naam en URL om een Hyper link te maken.|Tekenreeks|  
+|naam|De naam van de licentie.|Tekenreeks|  
+|url|De URL naar een website waar de gebruiker meer informatie over de licentie kan krijgen.<br /><br /> Gebruik de naam en URL om een Hyper link te maken.|Tekenreeks|  
 
 
 ### <a name="link"></a>Koppeling  
@@ -131,7 +131,7 @@ Hiermee worden de onderdelen van een Hyper Link gedefinieerd.
 |----------|-----------|----------|  
 |_type|Type hint.|Tekenreeks|  
 |tekst|De weergave tekst.|Tekenreeks|  
-|URL|Een URL. Gebruik de URL en weergave tekst om een Hyper link te maken.|Tekenreeks|  
+|url|Een URL. Gebruik de URL en weergave tekst om een Hyper link te maken.|Tekenreeks|  
   
 
 
@@ -143,8 +143,8 @@ Houd er rekening mee dat een uitgever hun naam of hun website of beide kan opgev
   
 |Name|Waarde|Type|  
 |----------|-----------|----------|  
-|name|De naam van de uitgever.|Tekenreeks|  
-|URL|De URL naar de website van de uitgever.<br /><br /> Houd er rekening mee dat de uitgever mogelijk geen website levert.|Tekenreeks|  
+|naam|De naam van de uitgever.|Tekenreeks|  
+|url|De URL naar de website van de uitgever.<br /><br /> Houd er rekening mee dat de uitgever mogelijk geen website levert.|Tekenreeks|  
   
   
 
@@ -156,9 +156,9 @@ Definieert informatie over een lokale onderneming, zoals een restaurant of Hotel
 |_type|Type hint, die kan worden ingesteld op een van de volgende opties:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurant</ul><li>|Tekenreeks|  
 |adres|Het post adres van de locatie waar de entiteit zich bevindt.|PostalAddress|  
 |entityPresentationInfo|Aanvullende informatie over de entiteit, zoals hints, die u kunt gebruiken om het type van de entiteit te bepalen. Bijvoorbeeld of het nu gaat om een restaurant of Hotel. Het `entityScenario` veld wordt ingesteld op lijst item.|EntityPresentationInfo|  
-|name|De naam van de entiteit.|Tekenreeks|  
+|naam|De naam van de entiteit.|Tekenreeks|  
 |telefoon|Het telefoon nummer van de entiteit.|Tekenreeks|  
-|URL|De URL naar de website van de entiteit.<br /><br /> Gebruik deze URL samen met de naam van de entiteit om een Hyper link te maken waarop wordt geklikt op de gebruiker van de website van de entiteit.|Tekenreeks|  
+|url|De URL naar de website van de entiteit.<br /><br /> Gebruik deze URL samen met de naam van de entiteit om een Hyper link te maken waarop wordt geklikt op de gebruiker van de website van de entiteit.|Tekenreeks|  
 |webSearchUrl|De URL naar het Zoek resultaat van Bing voor deze locatie.|Tekenreeks| 
   
   
@@ -167,10 +167,10 @@ Hiermee wordt de query context gedefinieerd die door Bing voor de aanvraag wordt
   
 |Element|Beschrijving|Type|  
 |-------------|-----------------|----------|  
-|adultIntent|Een Booleaanse waarde die aangeeft of de opgegeven query volwassen intentie heeft. De waarde is **True** als de query volwassen intentie heeft; anders **False**.|Boolean|  
+|adultIntent|Een Booleaanse waarde die aangeeft of de opgegeven query volwassen intentie heeft. De waarde is **True** als de query volwassen intentie heeft; anders **False**.|Booleaans|  
 |alterationOverrideQuery|De query teken reeks die moet worden gebruikt om Bing te dwingen de oorspronkelijke teken reeks te gebruiken. Als de query reeks bijvoorbeeld *Saling Downwind*is, is de query reeks opheffen *+ Saling Downwind*. Vergeet niet om de query teken reeks te coderen die resulteert in *% 2Bsaling + Downwind*.<br /><br /> Dit veld wordt alleen opgenomen als de oorspronkelijke query reeks een spel fout bevat.|Tekenreeks|  
 |alteredQuery|De query teken reeks die door Bing wordt gebruikt om de query uit te voeren. Bing gebruikt de gewijzigde query reeks als de oorspronkelijke query reeks spel fouten bevat. Als de query reeks bijvoorbeeld is `saling downwind` , wordt de gewijzigde query reeks `sailing downwind` .<br /><br /> Dit veld wordt alleen opgenomen als de oorspronkelijke query reeks een spel fout bevat.|Tekenreeks|  
-|askUserForLocation|Een Booleaanse waarde die aangeeft of Bing de locatie van de gebruiker nodig heeft om nauw keurige resultaten te leveren. Als u de locatie van de gebruiker hebt opgegeven met behulp van de [x-MSEdge-client](#clientip) en [x-Search-locatie](#location) headers, kunt u dit veld negeren.<br /><br /> Voor locatie bewuste query's, zoals ' nu weer geven ' of ' restaurants vlakbij ' waarvoor de locatie van de gebruiker voor nauw keurige resultaten nodig is, wordt dit veld ingesteld op **True**.<br /><br /> Voor locatie bewuste query's die de locatie bevatten (bijvoorbeeld ' Seattle weer '), is dit veld ingesteld op **Onwaar**. Dit veld wordt ook ingesteld op **Onwaar** voor query's die geen locatie ondervinden, zoals ' best verkochte '.|Boolean|  
+|askUserForLocation|Een Booleaanse waarde die aangeeft of Bing de locatie van de gebruiker nodig heeft om nauw keurige resultaten te leveren. Als u de locatie van de gebruiker hebt opgegeven met behulp van de [x-MSEdge-client](#clientip) en [x-Search-locatie](#location) headers, kunt u dit veld negeren.<br /><br /> Voor locatie bewuste query's, zoals ' nu weer geven ' of ' restaurants vlakbij ' waarvoor de locatie van de gebruiker voor nauw keurige resultaten nodig is, wordt dit veld ingesteld op **True**.<br /><br /> Voor locatie bewuste query's die de locatie bevatten (bijvoorbeeld ' Seattle weer '), is dit veld ingesteld op **Onwaar**. Dit veld wordt ook ingesteld op **Onwaar** voor query's die geen locatie ondervinden, zoals ' best verkochte '.|Booleaans|  
 |originalQuery|De query reeks zoals opgegeven in de aanvraag.|Tekenreeks|  
 
 ### <a name="identifiable"></a>Persoonlijke
@@ -271,6 +271,6 @@ Hier volgen de mogelijke fout code en waarden voor de subfout code.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Snelstartgids voor lokale zakelijke Zoek opdrachten](quickstarts/local-quickstart.md)
-- [Lokale zakelijke zoek opdracht voor zoeken in Java Quick Start](quickstarts/local-search-java-quickstart.md)
+- [Quickstart over Bing Local Business Search met Java](quickstarts/local-search-java-quickstart.md)
 - [Quick start voor lokaal bedrijfs Zoek knooppunt](quickstarts/local-search-node-quickstart.md)
-- [Snelstartgids voor lokale zakelijke Zoek opdrachten python](quickstarts/local-search-python-quickstart.md)
+- [Quickstart over zoeken naar lokale bedrijven met Python](quickstarts/local-search-python-quickstart.md)

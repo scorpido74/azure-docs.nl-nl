@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
 ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928816"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Door de klant beheerde sleutels voor gegevens versleuteling configureren in azure Cognitive Search
@@ -30,7 +30,7 @@ Sleutels hoeven niet allemaal in dezelfde sleutel kluis te zijn. Eén zoek servi
 
 Voor services die zijn gemaakt na 1 augustus 2020 en in specifieke regio's, geldt het bereik van CMK-versleuteling voor tijdelijke schijven, met [volledige dubbele versleuteling](search-security-overview.md#double-encryption), die momenteel beschikbaar is in deze regio's: 
 
-+ US - west 2
++ West US 2
 + VS - oost
 + VS - zuid-centraal
 + VS (overheid) - Virginia

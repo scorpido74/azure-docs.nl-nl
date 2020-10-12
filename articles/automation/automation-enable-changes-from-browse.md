@@ -6,10 +6,10 @@ ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
 ms.openlocfilehash: 11ae873ae4700dc4f9cb3d02a898a3ded9f6db59
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87367415"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Wijzigingen bijhouden en inventaris inschakelen vanuit Azure Portal
@@ -29,7 +29,7 @@ Het aantal resource groepen dat u kunt gebruiken voor het beheren van uw Vm's, w
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Aanmelden bij Azure op https://portal.azure.com.
+Meld u aan bij Azure op https://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
