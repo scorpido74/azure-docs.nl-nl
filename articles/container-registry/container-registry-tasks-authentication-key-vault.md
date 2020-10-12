@@ -4,10 +4,10 @@ description: Configureer een Azure Container Registry taak (ACR taak) om docker 
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86058126"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externe authenticatie in een ACR-taak met behulp van een door Azure beheerde identiteit 
@@ -161,7 +161,7 @@ az keyvault set-policy --name mykeyvault \
   --secret-permissions get
 ```
 
-## <a name="manually-run-the-task"></a>De taak hand matig uitvoeren
+## <a name="manually-run-the-task"></a>De taak handmatig uitvoeren
 
 Als u wilt controleren of de taak waarin u een beheerde identiteit hebt ingeschakeld, met succes wordt uitgevoerd, moet u de taak hand matig activeren met de opdracht [AZ ACR Task run][az-acr-task-run] . De `--set` para meter wordt gebruikt om de naam van de persoonlijke opslag plaats door te geven aan de taak. In dit voor beeld is de naam van de tijdelijke aanduiding opslag plaats *hubuser/hubrepo*.
 

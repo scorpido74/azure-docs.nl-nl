@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116458"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problemen oplossen: on-premises Azure AD-wachtwoord beveiliging
@@ -50,7 +50,7 @@ Het belangrijkste symptoom van dit probleem is 30018 gebeurtenissen in het gebeu
 
 1. Zorg ervoor dat het forest en alle proxy servers zijn geregistreerd bij dezelfde Azure-Tenant.
 
-   U kunt deze vereiste controleren door de `Get-AzureADPasswordProtectionProxy` -en `Get-AzureADPasswordProtectionDCAgent` Power shell-cmdlets uit te voeren en vervolgens de `AzureTenant` eigenschap van elk geretourneerd item te vergelijken. Voor een juiste werking moet de gerapporteerde Tenant naam hetzelfde zijn voor alle DC-agents en proxy servers.
+   U kunt deze vereiste controleren door de  `Get-AzureADPasswordProtectionProxy` -en `Get-AzureADPasswordProtectionDCAgent` Power shell-cmdlets uit te voeren en vervolgens de `AzureTenant` eigenschap van elk geretourneerd item te vergelijken. Voor een juiste werking moet de gerapporteerde Tenant naam hetzelfde zijn voor alle DC-agents en proxy servers.
 
    Als er een voor waarde is die niet overeenkomt met de Azure-Tenant registratie, kan dit probleem worden opgelost door de `Register-AzureADPasswordProtectionProxy` -en/of `Register-AzureADPasswordProtectionForest` Power shell-cmdlets als nodig uit te voeren, zodat u referenties van dezelfde Azure-Tenant gebruikt voor alle registraties.
 
@@ -84,7 +84,7 @@ The forest has not been registered with Azure. Password policies cannot be downl
 
 Er zijn twee mogelijke oorzaken voor dit probleem.
 
-1. Het forest is inderdaad niet geregistreerd. Voer de opdracht REGI ster-AzureADPasswordProtectionForest uit zoals beschreven in de [implementatie vereisten](howto-password-ban-bad-on-premises-deploy.md)om het probleem op te lossen.
+1. Het forest is inderdaad niet geregistreerd. Om het probleem op te lossen, voert u de Register-AzureADPasswordProtectionForest opdracht uit zoals beschreven in de [implementatie vereisten](howto-password-ban-bad-on-premises-deploy.md).
 1. Het forest is geregistreerd, maar de DC-agent kan de registratie gegevens van het forest niet ontsleutelen. Dit geldt voor dezelfde hoofd oorzaak als het probleem #2 hierboven vermeld onder [DC-agent kan wachtwoord beleids bestanden niet versleutelen of ontsleutelen](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files). Een eenvoudige manier om deze theorie te bevestigen, is dat deze fout alleen wordt weer geven bij DC-agents die worden uitgevoerd op Windows Server 2012-of Windows Server 2012R2-domein controllers, terwijl DC-agents die worden uitgevoerd op Windows Server 2016 en latere domein controllers prima zijn. De tijdelijke oplossing is hetzelfde: werk alle domein controllers bij naar Windows Server 2016 of hoger.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Er worden zwakke wacht woorden geaccepteerd, maar dit mag niet

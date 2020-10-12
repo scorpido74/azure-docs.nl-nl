@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, ophalen, sensor, camera, SDK, diepte, RGB, afbeeldingen, kleur, vastleg ging, oplossing, buffer
 ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87538911"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Azure Kinect-installatie kopie gegevens ophalen
@@ -94,7 +94,7 @@ U moet een ingang aanroepen die [`k4a_image_release()`](https://microsoft.github
 
 ## <a name="access-image-buffers"></a>Afbeeldings buffers openen
 
-[`k4a_image_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__image__t.html)heeft veel accessor-functies om eigenschappen van de installatie kopie op te halen.
+[`k4a_image_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__image__t.html) heeft veel accessor-functies om eigenschappen van de installatie kopie op te halen.
 
 Gebruik [k4a_image_get_buffer](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga2ef070cf4e543cd0f726478af332546e.html#ga2ef070cf4e543cd0f726478af332546e)om toegang te krijgen tot de geheugen buffer van de installatie kopie.
 

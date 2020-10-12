@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976004"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Externe bewakings gegevens visualiseren met behulp van Power BI
@@ -38,7 +38,7 @@ In deze zelf studie leert u hoe u uw gegevens voor uw externe bewakings oplossin
 
 4. Klik op de pagina overzicht op het item met het type Azure Cosmos DB account. vervolgens wordt u naar de pagina overzicht van de Cosmos DB-stroom geleid voor die IoT-oplossing.
 
-    ![Resourcegroep](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
+    ![Resource Group](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
 5. Klik in het deel venster aan de linkerkant op de sectie ' sleutels ' en noteer de volgende waarden die moeten worden gebruikt in Power BI:
 

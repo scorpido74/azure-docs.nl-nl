@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513939"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Uw StorSimple-Apparaatbeheer beheren
@@ -117,7 +117,7 @@ Voer de volgende stappen uit om de fabrieks instellingen van uw Microsoft Azure 
    
     `Reset-HcsFactoryDefault`
    
-    Als u in plaats daarvan één controller opnieuw wilt instellen, gebruikt u de cmdlet [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) met de `-scope` para meter.)
+    Als u in plaats daarvan één controller opnieuw wilt instellen, gebruikt u de cmdlet  [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) met de `-scope` para meter.)
    
     Het systeem wordt meerdere keren opnieuw opgestart. U ontvangt een melding wanneer de herstel bewerking is voltooid. Afhankelijk van het systeem model kan het 45-60 minuten duren voor een 8100-apparaat en 60-90 minuten voor een 8600 om dit proces te volt ooien.
    

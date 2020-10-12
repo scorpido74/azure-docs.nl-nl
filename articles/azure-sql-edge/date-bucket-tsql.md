@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886845"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -43,21 +43,21 @@ Het deel van de *datum* dat met de para meter ' Number ' wordt gebruikt. Bijvoor
 |---|---|
 |**profieldag**|**dd**, **d**|  
 |**gevormd**|**WK**, **WW**|  
-|**uur**|**UU**|  
+|**uur**|**hh**|  
 |**notulen**|**mi**, **n**|  
-|**tweede**|**SS**, **s**|  
-|**milliseconde**|**Mevrouw**|  
+|**seconde**|**SS**, **s**|  
+|**milliseconde**|**ms**|  
 
 *Telwoord*
 
 Het gehele getal dat de breedte van de Bucket in combi natie met het argument *date Part* bepaalt. Dit vertegenwoordigt de breedte van de data Part bevindt buckets van de oorspronkelijke tijd. **`This argument cannot be a negative integer value`**. 
 
-*datum*
+*vallen*
 
 Een expressie die kan worden omgezet in een van de volgende waarden:
 
-+ **datum**
-+ **datetime**
++ **vallen**
++ **datum/tijd**
 + **datetimeoffset**
 + **datetime2**
 + **smalldatetime**
@@ -69,8 +69,8 @@ Voor *datum* `DATE_BUCKET` accepteert een kolom expressie, expressie of door de 
 
 Een optionele expressie die kan worden omgezet in een van de volgende waarden:
 
-+ **datum**
-+ **datetime**
++ **vallen**
++ **datum/tijd**
 + **datetimeoffset**
 + **datetime2**
 + **smalldatetime**

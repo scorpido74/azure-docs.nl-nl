@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-java
 ms.openlocfilehash: e6006444e933dd93467dde01affd29c5d0c4a146
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90019543"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (Java)
@@ -159,7 +159,7 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     > [!NOTE]
     > U vindt de meest recente versie van **iot-service-client** met [Maven zoeken](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Sla het bestand op en sluit het `pom.xml` .
+4. Sla het bestand `pom.xml` op en sluit het vervolgens.
 
 5. Open het bestand met behulp van een tekst editor `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` .
 
@@ -236,7 +236,7 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     }
     ```
 
-10. Sla het bestand op en sluit het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` .
+10. Sla het bestand `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` op en sluit het vervolgens.
 
 11. Gebruik de volgende opdracht om de app **read-file-upload-melding** te maken en te controleren op fouten:
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085936"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Oozie gebruiken met Apache Hadoop voor het definiëren en uitvoeren van een werkstroom in Azure HDInsight op basis van Linux
@@ -37,7 +37,7 @@ U kunt Oozie ook gebruiken om taken te plannen die specifiek zijn voor een syste
 
 * **Een Azure SQL database**.  Zie [een Data Base maken in Azure SQL database in het Azure Portal](../sql-database/sql-database-get-started.md).  In dit artikel wordt gebruikgemaakt van een Data Base met de naam **oozietest**.
 
-* Het URI-schema voor de primaire opslag van uw clusters. `wasb://`voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://` . Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
+* Het URI-schema voor de primaire opslag voor uw clusters. `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, wordt de URI `wasbs://`. Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="example-workflow"></a>Voorbeeld werk stroom
 
@@ -64,7 +64,7 @@ De werk stroom die in dit document wordt gebruikt, bevat twee acties. Acties zij
 
 ## <a name="create-the-working-directory"></a>De werkmap maken
 
-Oozie verwacht u dat alle resources die vereist zijn voor een taak, worden opgeslagen in dezelfde map. In dit voor beeld wordt gebruikt `wasbs:///tutorials/useoozie` . Voer de volgende stappen uit om deze map te maken:
+Oozie verwacht u dat alle resources die vereist zijn voor een taak, worden opgeslagen in dezelfde map. In dit voorbeeld wordt `wasbs:///tutorials/useoozie` gebruikt. Voer de volgende stappen uit om deze map te maken:
 
 1. Bewerk de code hieronder om te vervangen `sshuser` door de SSH-gebruikers naam voor het cluster en vervang door `CLUSTERNAME` de naam van het cluster.  Voer vervolgens de code in om verbinding te maken met het HDInsight-cluster met [behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md).  
 

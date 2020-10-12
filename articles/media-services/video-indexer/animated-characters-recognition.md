@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047498"
 ---
 # <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (preview)
@@ -208,7 +208,7 @@ Bekijk de animatie tekens in het gegenereerde JSON-bestand.
 
 ## <a name="limitations"></a>Beperkingen
 
-* Momenteel wordt de functie voor animatie-identificatie niet ondersteund in de regio Oost-Azië.
+* Momenteel wordt de functie voor animatie-identificatie niet ondersteund in East-Asia regio.
 * Tekens die klein of ten opzichte van de video worden weer gegeven, worden mogelijk niet goed herkend als de kwaliteit van de video slecht is.
 * De aanbeveling is een model te gebruiken per set met animatie tekens (bijvoorbeeld per reeks met animatie).
 

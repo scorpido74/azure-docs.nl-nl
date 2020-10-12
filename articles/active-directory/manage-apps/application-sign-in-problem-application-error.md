@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759535"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Op een app-pagina wordt een fout bericht weer gegeven nadat de gebruiker zich heeft aangemeld
@@ -124,7 +124,7 @@ Voer de volgende stappen uit om te wijzigen welke onderdelen van het SAML-token 
 
 7. Nadat de toepassing is geladen, selecteert u **eenmalige aanmelding** in het navigatie deel venster.
 
-8. Onder **SAML-handtekening certificaat**selecteert u **Geavanceerde instellingen voor certificaat ondertekening weer geven**.
+8. Onder **SAML-handtekening certificaat**selecteert u  **Geavanceerde instellingen voor certificaat ondertekening weer geven**.
 
 9. Selecteer de **handtekening optie** die door de app wordt verwacht van de volgende opties:
 

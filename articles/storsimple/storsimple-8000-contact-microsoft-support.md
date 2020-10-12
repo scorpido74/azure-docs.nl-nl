@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: d5e867849d17a489fad37d09215905d23fb0ed6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514246"
 ---
 # <a name="contact-microsoft-support"></a>Neem contact op met Microsoft Ondersteuning
@@ -57,7 +57,7 @@ Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/pla
 
    1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
    2. Geef in de contact gegevens uw naam, e-mail adres, optionele contact persoon, land/regio. Schakel het selectie vakje **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen** in.
-   3. Klik op **Create**.
+   3. Klik op **Maken**.
    
        ![Contact opnemen met MS-ondersteuning via de nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

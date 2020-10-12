@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 5c038cc309d8f1f13a04de01ed83e04afa70ba6d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546165"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Zelf studie: Zendesk configureren voor automatische gebruikers inrichting
@@ -67,7 +67,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen aan Zendesk om de initiële configuratie van de automatische gebruikers inrichting te testen. U kunt later aanvullende gebruikers of groepen toewijzen nadat de tests zijn voltooid.
 
-* Wanneer u een gebruiker toewijst aan Zendesk, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Zendesk, selecteert u een geldige toepassingsspecifieke rol, indien beschikbaar, in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="configure-automatic-user-provisioning-to-zendesk"></a>Automatische gebruikers inrichting configureren voor Zendesk 
 
@@ -78,19 +78,19 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zendesk in azure AD
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **Zendesk**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **Zendesk**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Zendesk**.
+2. Selecteer **Zendesk** in de lijst met toepassingen.
 
     ![De koppeling Zendesk in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
     ![Zendesk-inrichting](./media/zendesk-provisioning-tutorial/ZenDesk16.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
     ![Zendesk-inrichtings modus](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
 
@@ -152,9 +152,9 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of
 
 U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. In het rapport worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Zendesk.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische toewijzing van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Connectorbeperkingen
 
 * Zendesk biedt alleen ondersteuning voor het gebruik van groepen voor gebruikers met **agent** rollen. Zie de [Zendesk-documentatie](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)voor meer informatie.
 
@@ -167,7 +167,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

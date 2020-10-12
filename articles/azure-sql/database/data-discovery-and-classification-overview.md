@@ -14,10 +14,10 @@ ms.reviewer: vanto
 ms.date: 09/21/2020
 tags: azure-synapse
 ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886501"
 ---
 # <a name="data-discovery--classification"></a>Gegevensdetectie en -classificatie
@@ -142,7 +142,7 @@ Zie de volgende verwijzingen voor meer informatie over het gebruik van T-SQL voo
 
 - Om de classificatie van een of meer kolommen toe te voegen of bij te werken: [gevoeligheids classificatie toevoegen](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - De classificatie verwijderen uit een of meer kolommen: [gevoeligheids classificatie voor neerzetten](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Alle classificaties weer geven op de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Alle classificaties weer geven in de Data Base: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="use-powershell-cmdlets"></a>PowerShell-cmdlets gebruiken
 Beheer classificaties en aanbevelingen voor Azure SQL Database en Azure SQL Managed instance met behulp van Power shell.

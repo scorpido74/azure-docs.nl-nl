@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590551"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics docker-containers configureren
@@ -47,11 +47,11 @@ Met deze `Billing` instelling geeft u de eindpunt-URI op van de _Text Analytics_
 
 Deze instelling bevindt zich op de volgende locatie:
 
-* Azure Portal: **Text Analytics** overzicht, met het label`Endpoint`
+* Azure Portal: **Text Analytics** overzicht, met het label `Endpoint`
 
 |Vereist| Name | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
+|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [Aangepaste subdomeinnamen voor Cognitive Services](../cognitive-services-custom-subdomains.md) voor meer informatie en een volledige lijst met regionale eindpunten. |
 
 ## <a name="eula-setting"></a>Gebruiksrecht overeenkomst instellen
 
@@ -85,4 +85,4 @@ De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhank
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer [informatie over het installeren en uitvoeren van containers](how-tos/text-analytics-how-to-install-containers.md)
-* Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken
+* Gebruik meer [Cognitive Services-containers](../cognitive-services-container-support.md)

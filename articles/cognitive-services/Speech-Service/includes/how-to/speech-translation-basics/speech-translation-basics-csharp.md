@@ -6,10 +6,10 @@ ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 27beefc16987361d63aa7b26f6f666cbb6c3ab23
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376489"
 ---
 Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
@@ -18,9 +18,9 @@ Een van de belangrijkste functies van de speech-service is de mogelijkheid om me
 * Spraak omzetten naar meerdere doel talen
 * Direct omzetten van spraak naar spraak uitvoeren
 
-## <a name="skip-to-samples-on-github"></a>Overs laan voor voor beelden op GitHub
+## <a name="skip-to-samples-on-github"></a>Naar voorbeelden op GitHub
 
-Als u direct naar voorbeeld code wilt overs Laan, raadpleegt u de voor [beelden van C# Quick](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) start op github.
+Zie de [C#-quickstartvoorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) op GitHub als u direct naar voorbeeldcode wilt gaan.
 
 ## <a name="prerequisites"></a>Vereisten
 

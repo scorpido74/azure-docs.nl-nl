@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084525"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebooks gebruiken met Apache Spark-cluster in Azure HDInsight
@@ -22,7 +22,7 @@ HDInsight Spark-clusters zijn [Apache Zeppelin](https://zeppelin.apache.org/) -n
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies.
-* Het URI-schema voor de primaire opslag van uw clusters. Het schema is `wasb://` voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://` .  Zie [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
+* Het URI-schema voor de primaire opslag voor uw clusters. Het schema is `wasb://` voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://` .  Zie [veilige overdracht vereisen in azure Storage](../../storage/common/storage-require-secure-transfer.md) voor meer informatie.
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Een Apache Zeppelin-notebook starten
 
@@ -159,7 +159,7 @@ Zoals hierboven vermeld, `%sh` wordt de interpreter niet ondersteund vanaf HDIns
 
 Geprivilegieerde domein gebruikers kunnen het `Shiro.ini` bestand gebruiken om de toegang tot de gebruikers interface van de interpreter te beheren. Alleen deze gebruikers kunnen nieuwe `%sh` interpreters maken en machtigingen instellen voor elke nieuwe `%sh` interpreter. Gebruik de volgende stappen om de toegang te beheren met het `shiro.ini` bestand:
 
-1. Definieer een nieuwe rol met behulp van de naam van een bestaande domein groep. In het volgende voor beeld `adminGroupName` is een groep bevoegde gebruikers in Aad. Gebruik geen speciale tekens of spaties in de groeps naam. De tekens nadat u `=` de machtigingen voor deze rol hebt toegewezen. `*`betekent dat de groep volledige machtigingen heeft.
+1. Definieer een nieuwe rol met behulp van de naam van een bestaande domein groep. In het volgende voor beeld `adminGroupName` is een groep bevoegde gebruikers in Aad. Gebruik geen speciale tekens of spaties in de groeps naam. De tekens nadat u `=` de machtigingen voor deze rol hebt toegewezen. `*` betekent dat de groep volledige machtigingen heeft.
 
     ```
     [roles]

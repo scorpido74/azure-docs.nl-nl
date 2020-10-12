@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515033"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van uw referenties voor het opslag account
@@ -45,7 +45,7 @@ Op de Blade referenties voor het **opslag account** worden alle opslag accounts 
 
 De meest voorkomende taken met betrekking tot opslag accounts die kunnen worden uitgevoerd, zijn:
 
-* Een opslag account toevoegen 
+* Een opslagaccount toevoegen 
 * Een opslag account bewerken 
 * Een opslagaccount verwijderen 
 * Sleutel rotatie van opslag accounts 
@@ -58,7 +58,7 @@ Er zijn drie typen opslag accounts die kunnen worden gebruikt met uw StorSimple-
 * **Opslag accounts in het service abonnement** : Dit zijn de Azure Storage-accounts die zijn gekoppeld aan hetzelfde abonnement als die van de service. Zie [over Azure Storage-accounts](../storage/common/storage-create-storage-account.md)voor meer informatie over de manier waarop deze opslag accounts worden gemaakt. 
 * **Opslag accounts buiten het service abonnement** : Dit zijn de Azure Storage-accounts die niet zijn gekoppeld aan uw service en die waarschijnlijk bestonden voordat de service werd gemaakt.
 
-## <a name="add-a-storage-account"></a>Een opslag account toevoegen
+## <a name="add-a-storage-account"></a>Een opslagaccount toevoegen
 
 U kunt een opslag account toevoegen door een unieke beschrijvende naam op te geven en toegang te krijgen tot de referenties die zijn gekoppeld aan het opslag account (met de opgegeven Cloud serviceprovider). U kunt ook de modus Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL) inschakelen om een beveiligd kanaal te maken voor netwerk communicatie tussen uw apparaat en de Cloud.
 

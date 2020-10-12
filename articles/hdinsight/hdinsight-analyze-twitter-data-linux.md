@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086718"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-gegevens analyseren met Apache Hive en Apache Hadoop op HDInsight
@@ -37,7 +37,7 @@ Met Twitter kunt u de gegevens voor elke Tweet ophalen als een JavaScript Object
    | Veld | Waarde |
    |--- |--- |
    | Naam |MyHDInsightApp |
-   | Description |MyHDInsightApp |
+   | Beschrijving |MyHDInsightApp |
    | Website |`https://www.myhdinsightapp.com` |
 
 4. Selecteer **Ja, ik ga akkoord**en selecteer vervolgens **uw Twitter-toepassing maken**.
@@ -59,7 +59,7 @@ Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgesl
 > [!NOTE]  
 > De volgende stappen worden uitgevoerd op het HDInsight-cluster, omdat python al is geïnstalleerd.
 
-1. Gebruik de [SSH-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [ssh-opdracht](./hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster. Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
