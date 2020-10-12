@@ -15,15 +15,15 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84728262"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Zoeken in groepen en leden (preview) in Azure Active Directory
 
-In dit artikel leest u hoe u kunt zoeken naar leden en eigen aren van een groep en hoe u zoek filters kunt gebruiken als onderdeel van de preview-versie voor het verbeteren van groepen in de Azure Active Directory-Portal (Azure AD). Er zijn veel verbeteringen in de groeps ervaringen waarmee u uw groepen, met inbegrip van leden en eigen aren, snel en eenvoudig kunt beheren. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+In dit artikel leest u hoe u kunt zoeken naar leden en eigen aren van een groep en hoe u zoek filters kunt gebruiken als onderdeel van de preview-versie voor het verbeteren van groepen in de Azure Active Directory-Portal (Azure AD). Er zijn veel verbeteringen in de groeps ervaringen waarmee u uw groepen, met inbegrip van leden en eigen aren, snel en eenvoudig kunt beheren. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Wijzigingen in deze preview zijn onder andere:
 

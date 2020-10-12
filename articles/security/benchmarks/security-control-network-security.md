@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193119"
 ---
 # <a name="security-control-network-security"></a>Beveiligings beheer: netwerk beveiliging
@@ -56,7 +56,7 @@ Gebruik Azure Security Center en volg aanbevelingen voor netwerk beveiliging om 
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.3 | 9,5 | Klant |
+| 1.3 | 9.5 | Klant |
 
 Implementeer Azure Web Application firewall (WAF) voor essentiële webtoepassingen voor extra inspectie van inkomend verkeer. Schakel de diagnostische instelling voor WAF-en opname Logboeken in een opslag account, Event hub of Log Analytics werk ruimte in.
 
@@ -116,7 +116,7 @@ Implementeer de door u gewenste firewall oplossing op elk van de netwerk grenzen
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.7 | 12,9, 12,10 | Klant |
+| 1,7 | 12,9, 12,10 | Klant |
 
 Implementeer Azure-toepassing gateway voor webtoepassingen met HTTPS/TLS ingeschakeld voor vertrouwde certificaten.
 
@@ -144,7 +144,7 @@ U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings c
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1.9 | 11,1 | Klant |
+| 1,9 | 11,1 | Klant |
 
 Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen met Azure Policy.
 
@@ -178,7 +178,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 1,11 | 11,3 | Klant |
+| 1.11 | 11,3 | Klant |
 
 Gebruik Azure-activiteiten logboek om resource configuraties te bewaken en wijzigingen in uw Azure-resources te detecteren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke resources plaatsvinden.
 

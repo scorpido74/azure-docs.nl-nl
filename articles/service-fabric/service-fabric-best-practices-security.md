@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257600"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-beveiliging 
@@ -171,7 +171,7 @@ Voor het inschakelen van door het systeem toegewezen beheerde identiteit tijdens
 ```
 Zie [Wat zijn beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss.md#system-assigned-managed-identity) voor meer informatie.
 
-Als u een door de [gebruiker toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)hebt gemaakt, declareert u de volgende resource in uw sjabloon om deze toe te wijzen aan de schaalset van de virtuele machine. Vervang door `\<USERASSIGNEDIDENTITYNAME\>` de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt:
+Als u een door de  [gebruiker toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)hebt gemaakt, declareert u de volgende resource in uw sjabloon om deze toe te wijzen aan de schaalset van de virtuele machine. Vervang door `\<USERASSIGNEDIDENTITYNAME\>` de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt:
 
 ```json
 "identity": {

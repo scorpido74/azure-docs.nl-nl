@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763649"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Zichtbaarheid en beheer van cloud-apps
@@ -34,10 +34,10 @@ Gebruik Microsoft Cloud app-detectie (een Azure Active Directory Premium P1-func
 - Advanced Shadow IT Discovery-rapportage
 - Goedgekeurde apps beheren
  
-### <a name="learn-more"></a>Lees meer
+### <a name="learn-more"></a>Meer informatie
 
-- [Schaduw in uw netwerk detecteren en beheren](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Gedetecteerde apps met Cloud App Security](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [Schaduw in uw netwerk detecteren en beheren ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
+- [Gedetecteerde apps met Cloud App Security ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
  
 ## <a name="user-session-visibility-and-control"></a>Zicht baarheid en beheer van gebruikers sessies 
 
@@ -51,21 +51,21 @@ Met dit besturings element kunt u het volgende doen:
 - Toegang tot bestanden beheren  
 - Documenten beveiligen bij downloaden  
  
-### <a name="learn-more"></a>Lees meer
+### <a name="learn-more"></a>Meer informatie
 
-- [Apps beveiligen met sessie beheer in Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Apps beveiligen met sessie beheer in Cloud App Security ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
  
 ## <a name="advanced-app-visibility-and-controls"></a>Zicht baarheid en besturings elementen van geavanceerde apps 
 
 App-connectors maken gebruik van de Api's van app-providers om de zicht baarheid en controle door Microsoft Cloud App Security over de apps waarmee u verbinding maakt, beter zichtbaar te maken. Cloud App Security maakt gebruik van de Api's van de Cloud provider. Elke service heeft een eigen Framework en API-beperkingen, zoals beperking, API-limieten, dynamische time-verschuiving van API-Vensters en andere. Het Cloud App Security product team heeft deze services gebruikt om het gebruik van Api's te optimaliseren en de beste prestaties te leveren. Rekening houdend met de verschillende beperkingen van services, maken de Cloud App Security-engines gebruik van de Maxi maal toegestane capaciteit. Sommige bewerkingen, zoals het scannen van alle bestanden in de Tenant, vereisen talrijke API-aanroepen zodat ze gedurende een langere periode worden verspreid. Sommige beleids regels worden gedurende enkele uren of dagen verwacht. 
  
-### <a name="learn-more"></a>Lees meer  
+### <a name="learn-more"></a>Meer informatie  
 
-- [Apps verbinden in Cloud App Security](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Apps verbinden in Cloud App Security ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Schaduw in uw netwerk detecteren en beheren](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Gedetecteerde apps met Cloud App Security](https://docs.microsoft.com/cloud-app-security/discovered-apps)
-- [Apps beveiligen met sessie beheer in Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Apps verbinden in Cloud App Security](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Schaduw in uw netwerk detecteren en beheren ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
+- [Gedetecteerde apps met Cloud App Security ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [Apps beveiligen met sessie beheer in Cloud App Security ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Apps verbinden in Cloud App Security ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

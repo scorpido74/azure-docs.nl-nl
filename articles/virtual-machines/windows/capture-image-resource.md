@@ -10,10 +10,10 @@ ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047289"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatiekopie maken van een gegeneraliseerde VM in Azure
@@ -85,7 +85,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 7. Als u de installatie kopie in elke [beschikbaarheids zone](../../availability-zones/az-overview.md)wilt gebruiken, selecteert u **aan** voor **zone tolerantie**.
 
-8. Selecteer **maken** om de installatie kopie te maken.
+8. Selecteer **Maken** om de installatiekopie te maken.
 
 Nadat de installatie kopie is gemaakt, kunt u deze als een **afbeeldings** resource vinden in de lijst met resources in de resource groep.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: e3ec25504decca0747c8a853bb88ab3e7a10966a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546318"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Zelf studie: Wrike configureren voor automatische gebruikers inrichting
@@ -29,7 +29,7 @@ Het doel van deze zelf studie is het demonstreren van de stappen die u uitvoert 
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-Tenant
 * [Een Wrike-Tenant](https://www.wrike.com/price/)
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * We raden u aan één Azure AD-gebruiker toe te wijzen aan Wrike om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Wrike, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Wrike, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
 
 ## <a name="set-up-wrike-for-provisioning"></a>Wrike instellen voor inrichting
 
@@ -109,19 +109,19 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Wrike in azure AD
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![Alle toepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Wrike**.
+2. Selecteer **Wrike** in de lijst met toepassingen.
 
-    ![De koppeling Wrike in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling naar Wrike in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichting](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
     ![Inrichtings modus ingesteld op automatisch](common/provisioning-automatic.png)
 
@@ -139,7 +139,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Wrike-gebruikers toewijzingen](media/Wrike-provisioning-tutorial/Wrike-user-mappings.png)
 
-10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Wrike in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Wrike voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Wrike in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Wrike voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     ![Wrike-gebruikers kenmerken](media/Wrike-provisioning-tutorial/Wrike-user-attributes.png)
 
@@ -151,7 +151,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 13. Definieer de gebruikers of groepen die u wilt inrichten voor Wrike door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 14. Wanneer u klaar bent om in te richten, selecteert u **Opslaan**.
 
@@ -168,4 +168,4 @@ U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)

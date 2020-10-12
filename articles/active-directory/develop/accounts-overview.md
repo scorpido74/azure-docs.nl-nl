@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
 ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115982"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Accounts en tenantprofielen (Android)
@@ -48,7 +48,7 @@ Een account in het micro soft Identity platform bestaat uit:
 - Omdat een account in een of meer tenants aanwezig kan zijn, heeft een account mogelijk meer dan één profiel.
 
 > [!NOTE]
-> MSAL behandelt het Microsoft-account systeem (Live, MSA) als een andere Tenant binnen het micro soft Identity-platform. De Tenant-id van de Microsoft-account Tenant is:`9188040d-6c67-4c5b-b112-36a304b66dad`
+> MSAL behandelt het Microsoft-account systeem (Live, MSA) als een andere Tenant binnen het micro soft Identity-platform. De Tenant-id van de Microsoft-account Tenant is: `9188040d-6c67-4c5b-b112-36a304b66dad`
 
 ## <a name="account-overview-diagram"></a>Diagram van account overzicht
 
@@ -58,12 +58,12 @@ In het bovenstaande diagram:
 
 - Het account `bob@contoso.com` wordt gemaakt in het on-premises Windows Server-Active Directory (lokaal systeem van de record).
 - Het account `tom@live.com` wordt gemaakt in de Microsoft-account Tenant.
-- `bob@contoso.com`heeft toegang tot ten minste één resource in de volgende Azure Active Directory tenants:
+- `bob@contoso.com` heeft toegang tot ten minste één resource in de volgende Azure Active Directory tenants:
   - contoso.com (Cloud systeem van de record die is gekoppeld aan een on-premises systeem van record)
   - fabrikam.com
   - woodgrovebank.com
   - Een Tenant profiel voor `bob@contoso.com` bestaat in elk van deze tenants.
-- `tom@live.com`heeft toegang tot resources in de volgende micro soft-tenants:
+- `tom@live.com` heeft toegang tot resources in de volgende micro soft-tenants:
   - contoso.com
   - fabrikam.com
   - Een Tenant profiel voor `tom@live.com` bestaat in elk van deze tenants.
@@ -99,7 +99,7 @@ Naast het aanvragen van een toegangs token, vraagt MSAL ook altijd een ID-token 
 - OpenID Connect
 - profiel
 
-Het ID-token bevat een lijst met claims. `Claims`zijn naam/waarde-paren over het account en worden gebruikt om de aanvraag te doen.
+Het ID-token bevat een lijst met claims. `Claims` zijn naam/waarde-paren over het account en worden gebruikt om de aanvraag te doen.
 
 Zoals eerder vermeld, kan elke Tenant waarbij een account bestaat, verschillende informatie over het account opslaan, inclusief, maar niet beperkt tot kenmerken zoals: taak titel, kantoor locatie, enzovoort.
 

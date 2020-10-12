@@ -10,10 +10,10 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783041"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>De toepassingsstatusextensie gebruiken met virtuele-machineschaalsets
@@ -59,18 +59,18 @@ De volgende JSON toont het schema voor de uitbrei ding van de toepassings status
 
 | Name | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | date |
+| apiVersion | `2018-10-01` | datum |
 | publisher | `Microsoft.ManagedServices` | tekenreeks |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | tekenreeks |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | tekenreeks |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Instellingen
 
 | Name | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ----
-| protocol | `http`of `https` of`tcp` | tekenreeks |
-| poort | Optioneel wanneer protocol is `http` of `https` , verplicht wanneer protocol wordt`tcp` | int |
-| requestPath | Verplicht wanneer het protocol is `http` of `https` niet is toegestaan wanneer het protocol is`tcp` | tekenreeks |
+| protocol | `http` of `https` of `tcp` | tekenreeks |
+| poort | Optioneel wanneer protocol is `http` of `https` , verplicht wanneer protocol wordt `tcp` | int |
+| requestPath | Verplicht wanneer het protocol is `http` of `https` niet is toegestaan wanneer het protocol is `tcp` | tekenreeks |
 
 ## <a name="deploy-the-application-health-extension"></a>De toepassings status uitbreiding implementeren
 Er zijn meerdere manieren om de toepassings status extensie te implementeren op uw schaal sets, zoals beschreven in de onderstaande voor beelden.
