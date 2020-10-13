@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
 ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825591"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migreren van Bing Speech naar de speech-service
@@ -87,7 +87,7 @@ Ga naar de [ondersteunings pagina](support.md)voor spraak Services voor spraak s
 * [Aan de slag met spraak-naar-tekst](get-started-speech-to-text.md)
 * [Aan de slag met tekst-naar-spraak](get-started-text-to-speech.md)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Release opmerkingen bij de spraak service](releasenotes.md)
 * [Wat is de speech-service](overview.md)

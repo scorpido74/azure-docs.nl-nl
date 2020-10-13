@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855919"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970007"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Technische details over door platforms ondersteunde migratie van klassiek naar Azure Resource Manager
 
@@ -135,7 +135,7 @@ Dit is een optionele stap als u de wijzigingen in het klassieke implementatie mo
 Nadat de validatie is voltooid, kunt u de migratie doorvoeren. Resources worden niet meer weer gegeven in het klassieke implementatie model en zijn alleen beschikbaar in het Resource Manager-implementatie model. De gemigreerde resources kunnen alleen in de nieuwe portal worden beheerd.
 
 > [!NOTE]
-> Dit is een idempotente bewerking. Als dit mislukt, voert u de bewerking opnieuw uit. Als het probleem blijft optreden, maakt u een ondersteunings ticket of maakt u een forum op [micro soft Q&a](https://docs.microsoft.com/answers/index.html)
+> Dit is een idempotente bewerking. Als dit mislukt, voert u de bewerking opnieuw uit. Als het probleem blijft optreden, maakt u een ondersteunings ticket of maakt u een forum op [micro soft Q&a](/answers/index.html)
 >
 >
 
@@ -150,7 +150,7 @@ Hier volgt een stroom diagram dat laat zien hoe u kunt door gaan met de migratie
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Vertaling van het klassieke implementatie model naar Resource Manager-resources
 U vindt het klassieke implementatie model en de Resource Manager-weer gave van de resources in de volgende tabel. Andere functies en resources worden momenteel niet ondersteund.
 
-| Klassieke weergave | Weergave van de Resource Manager | Notities |
+| Klassieke weergave | Weergave van de Resource Manager | Opmerkingen |
 | --- | --- | --- |
 | Naam cloudservice |DNS-naam |Tijdens de migratie wordt een nieuwe resourcegroep gemaakt voor elke cloudservice met het naamgevingspatroon `<cloudservicename>-migrated`. Deze resourcegroep bevat al uw resources. De naam van de cloudservice wordt een DNS-naam die is gekoppeld aan het openbare IP-adres. |
 | Virtuele machine |Virtuele machine |VM-specifieke eigenschappen worden ongewijzigd gemigreerd. Bepaalde osProfile-gegevens, zoals computer naam, worden niet opgeslagen in het klassieke implementatie model en blijven leeg na de migratie. |

@@ -4,10 +4,10 @@ description: Meer informatie over de belangrijkste mogelijkheden van Azure VMwar
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316865"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-oplossing persoonlijke Cloud-en cluster concepten
@@ -38,7 +38,7 @@ De knoop punten met een Hyper-Metal-infrastructuur beheerder worden gebruikt in 
 
 | Hosttype              |             CPU             |   RAM (GB)   |  vSAN NVMe-cache-laag (TB, RAW)  |  vSAN SSD-capaciteits tier (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| High-end (HE)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
+| High-End (HE)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 Hosts die worden gebruikt voor het bouwen of schalen van clusters, worden verkregen van een geïsoleerde groep hosts. Deze hosts hebben hardware-tests door lopen en alle gegevens zijn veilig verwijderd uit de flash-schijven. Wanneer u een host uit een cluster verwijdert, worden de interne schijven veilig gewist en worden de hosts in de geïsoleerde groep hosts geplaatst. Wanneer u een host aan een cluster toevoegt, wordt een gezuiverde host uit de geïsoleerde groep gebruikt.
 
@@ -61,7 +61,7 @@ Het algemene upgrade beleid en de processen voor de Azure VMware Solution platfo
 
 Host onderhoud en levenscyclus beheer worden uitgevoerd zonder gevolgen voor de capaciteit of prestaties van particuliere cloud clusters. Voor beelden van automatische host onderhoud zijn onder andere firmware-upgrades en reparaties of vervangingen van hardware.
 
-Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T EDGE. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van Noord-Zuid-route ring. Als beheerder van uw Azure VMware-oplossing privécloud, bent u verantwoordelijk voor de configuratie van NSX-T SDN. Bijvoorbeeld netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
+Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T EDGE. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van North-South route ring. Als beheerder van uw Azure VMware-oplossing privécloud, bent u verantwoordelijk voor de configuratie van NSX-T SDN. Bijvoorbeeld netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
 
 > [!IMPORTANT]
 > Een Azure VMware-oplossings beheerder mag de configuratie van de NSX-T-rand of de laag-0-gateway niet wijzigen. Dit kan leiden tot een verlies van de service.

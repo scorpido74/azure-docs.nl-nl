@@ -10,10 +10,10 @@ ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
 ms.openlocfilehash: ba8c3f730897c01c52aaf4499269425426d0b7b5
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667177"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure Compute-eenheid (ACU)
@@ -64,7 +64,7 @@ Hyper-Threaded en geschikt voor het uitvoeren van geneste virtualisatie
 | [D11-F16s](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [G1-G5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [GS1-GS5](sizes-previous-gen.md) |180 - 240* | 1:1 |
-| [H](h-series.md) |290 - 300* | 1:1 |
+| [HxBxD](h-series.md) |290 - 300* | 1:1 |
 | [HB](hb-series.md) |199-216 * * | 1:1 |
 | [KM](hc-series.md) |297-315 * | 1:1 |
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |

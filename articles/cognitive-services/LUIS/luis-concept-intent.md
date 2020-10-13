@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536100"
 ---
 # <a name="intents-in-your-luis-app"></a>Intenties in uw LUIS-app
@@ -25,8 +25,8 @@ Definieer een set intenties die overeenkomt met acties die gebruikers in uw toep
 App-intenties voor reizen   |   Voorbeelden van utterances   |
 ------|------|
  BookFlight     |   "Boek me een vlucht naar Rio volgende week" <br/> "Vlucht naar Rio op het 24" <br/> "Ik heb een vlak ticket nodig volgende zondag tot Rio de Janeiro"    |
- Begroeting     |   Snelle <br/>Hello <br/>' Goede ochtend '  |
- CheckWeather | ' Wat is de weers verwachting zoals in Boston? ' <br/> De prognose voor dit weekend weer geven |
+ Begroeting     |   Hoi <br/>Hallo <br/>Goedemorgen  |
+ Weersverwachting | ' Wat is de weers verwachting zoals in Boston? ' <br/> De prognose voor dit weekend weer geven |
  Geen         | Een recept voor een cookie ontvangen<br>"Heeft de Lakeers gewonnen?" |
 
 Alle toepassingen worden geleverd met de vooraf gedefinieerde intentie, '[geen](#none-intent)', de terugval opzet.
@@ -53,8 +53,8 @@ Maak een intentie wanneer de _bedoeling_ van de gebruiker een actie in uw client
 
 |Intentie   | Entiteit | Voorbeeld van een utterance   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"type": "locatie", "entiteit": "Seattle"}<br>{"type": "Builtin. datetimeV2. date", "entiteit": "morgen", "oplossing": "2018-05-23"} | Wat is het weer `Seattle` `tomorrow` ? |
-| CheckWeather | {"type": "date_range", "entiteit": "dit weekend"} | De prognose voor weer geven `this weekend` |
+| Weersverwachting | {"type": "locatie", "entiteit": "Seattle"}<br>{"type": "Builtin. datetimeV2. date", "entiteit": "morgen", "oplossing": "2018-05-23"} | Wat is het weer `Seattle` `tomorrow` ? |
+| Weersverwachting | {"type": "date_range", "entiteit": "dit weekend"} | De prognose voor weer geven `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Vooraf ontwikkelde domein intentie
@@ -63,7 +63,7 @@ Maak een intentie wanneer de _bedoeling_ van de gebruiker een actie in uw client
 
 ## <a name="none-intent"></a>None- intent
 
-**Geen** intentie wordt gemaakt, maar is op het doel leeg gelaten. **Geen** intentie is een vereiste intentie en kan niet worden verwijderd of de naam ervan kan niet worden gewijzigd. Vul het met uitingen die zich buiten uw domein bevinden.
+**Geen** intentie wordt gemaakt, maar is op het doel leeg gelaten. **Geen** intentie is een vereiste intentie en kan niet worden verwijderd of de naam ervan kan niet worden gewijzigd. Vul deze met uitingen die buiten uw domein vallen.
 
 De **geen** intentie is de terugval intentie, die belang rijk is voor elke app, en moet 10% van de totale uitingen hebben. Dit wordt gebruikt om LUIS uitingen te leren die niet belang rijk zijn in het app-domein (onderwerpgebied). Als u geen uitingen toevoegt voor de **geen** intentie, dwingt Luis een utterance af die zich buiten het domein bevindt in een van de domein intentie. Hierdoor worden de Voorspellings scores schuingetrokken door LUIS de verkeerde intentie te geven voor de utterance.
 

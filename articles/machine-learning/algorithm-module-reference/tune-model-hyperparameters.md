@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/17/2020
-ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/10/2020
+ms.openlocfilehash: 2ec1726056c7ab223f7d3de70a715a8254e95db4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907773"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940206"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
@@ -77,9 +77,9 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 Wanneer de training is voltooid:
 
-+ Als u de opschonings resultaten wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u vervolgens **visualiseren**.
++ Als u de opschonings resultaten wilt weer geven, kunt u met de rechter muisknop op de module klikken en vervolgens **visualiseren**selecteren, of met de rechter muisknop op uitvoer poort links van de module om te visualiseren.
 
-    De uitvoer bevat alle para meters voor het weglaten en nauw keurigheid van gegevens die van toepassing zijn op het model type, maar de metrische gegevens die u hebt geselecteerd voor de rang schikking bepalen welk model als ' Best ' wordt beschouwd.
+    De opschonings **resultaten** omvatten alle para meters voor wegvegen en nauw keurigheid die van toepassing zijn op het model type en de metriek die u hebt geselecteerd voor de rang schikking bepaalt welk model als ' Best ' wordt beschouwd.
 
 + Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer en logboeken** in het rechter paneel van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 

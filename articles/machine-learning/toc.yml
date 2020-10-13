@@ -15,7 +15,7 @@
 - name: Zelfstudies
   expanded: true
   items:
-    - name: Aan de slag Python dag 1
+    - name: Aan de slag met Python (dag 1)
       expanded: true
       items:
         - name: 1. Lokale computer instellen
@@ -188,6 +188,8 @@
             - name: Private Link gebruiken
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: Aangepaste DNS gebruiken
+              href: how-to-custom-dns.md
             - name: Beveiligde webservices configureren
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md

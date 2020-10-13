@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264637"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Een Smooth Streaming Windows Store-toepassing bouwen
@@ -69,11 +69,11 @@ Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fant
 1. Klik in het menu **bestand** op **Nieuw**en klik vervolgens op **project**.
 1. Typ of Selecteer in het dialoog venster Nieuw project de volgende waarden:
 
-    | Name | Waarde |
+    | Naam | Waarde |
     | --- | --- |
     | Sjabloon groep |Geïnstalleerd/templates/Visual C#/Windows Store |
     | Template |Lege app (XAML) |
-    | Name |SSPlayer |
+    | Naam |SSPlayer |
     | Locatie |C:\SSTutorials |
     | Naam van de oplossing |SSPlayer |
     | Map maken voor oplossing |(geselecteerd) |
@@ -85,10 +85,10 @@ Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fant
 1. Klik in Solution Explorer met de rechter muisknop op **SSPlayer**en klik vervolgens op **verwijzing toevoegen**.
 1. Typ of selecteer de volgende waarden:
 
-    | Name | Waarde |
+    | Naam | Waarde |
     | --- | --- |
     | Verwijzings groep |Windows/uitbrei dingen |
-    | Referentie |Selecteer micro soft Smooth Streaming client SDK voor Windows 8 en micro soft Visual C++ runtime-pakket |
+    | Naslaginformatie |Selecteer micro soft Smooth Streaming client SDK voor Windows 8 en micro soft Visual C++ runtime-pakket |
 
 1. Klik op **OK**. 
 

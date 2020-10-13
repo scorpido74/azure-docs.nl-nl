@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535828"
 ---
 # <a name="caching-with-azure-front-door"></a>Caching met de voor deur van Azure
@@ -113,13 +113,13 @@ De volgende volg orde van koppen wordt gebruikt om te bepalen hoe lang een item 
 2. Cache-Control: Max-Age =\<seconds>
 3. Verstreken \<http-date>
 
-Cache-Control-antwoord headers die aangeven dat het antwoord niet in de cache moet worden opgeslagen, zoals cache-Control: private, caching-Control: no-cache en Cache-Control: No-Store is gehonoreerd.  Als er geen cache-Control aanwezig is, is het standaard gedrag dat de resource voor de X-tijd in de cache plaatst, waarbij X wille keurig tussen 1 en 3 dagen wordt gekozen.
+Cache-Control antwoord headers die aangeven dat het antwoord niet in de cache moet worden opgeslagen, zoals het beheer van de cache: persoonlijk, cache-Control: no-cache en Cache-Control: No-Store worden nageleefd.  Als er geen Cache-Control aanwezig is, is het standaard gedrag dat de resource voor de X-tijd in de cache plaatst waarbij X wille keurig wordt gekozen tussen 1 en 3 dagen.
 
 ## <a name="request-headers"></a>Aanvraagheaders
 
 De volgende aanvraag headers worden niet doorgestuurd naar een back-end wanneer caching wordt gebruikt.
 - Content-Length
-- Overdracht-encoding
+- Transfer-Encoding
 
 ## <a name="cache-duration"></a>Cacheduur
 

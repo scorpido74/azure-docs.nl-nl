@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2f36e568603ded5a89f88cf11627a09a5a240fac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316984"
 ---
 # <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>VNN configureren met Azure Load Balancer (SQL Server op Azure Vm's)
@@ -72,11 +72,11 @@ Gebruik de [Azure Portal](https://portal.azure.com) om de Load Balancer te maken
 
 1. Selecteer **back-endservers**en selecteer vervolgens **toevoegen**.
 
-1. Koppel de back-end-pool met de beschikbaarheidsset die de virtuele machines bevat.
+1. Koppel de back-endpool met de beschikbaarheidsset die de virtuele machines bevat.
 
 1. Onder **IP-configuraties**voor het doelnet **werk selecteert u virtuele machine** en kiest u de virtuele machines die als cluster knooppunten zullen worden beschouwd. Zorg ervoor dat u alle virtuele machines opneemt die als host moeten fungeren voor de FCI of beschikbaarheids groep.
 
-1. Selecteer **OK** om de back-end-pool te maken.
+1. Selecteer **OK** om de back-endpool te maken.
 
 ## <a name="configure-health-probe"></a>Status test configureren
 
@@ -160,7 +160,7 @@ Testfailover van de geclusterde bron om de cluster functionaliteit te valideren.
 Voer de volgende stappen uit:
 
 1. Maak verbinding met een van de SQL Server cluster knooppunten met behulp van RDP.
-1. Open **Failoverclusterbeheer**. Selecteer **rollen**. U ziet welk knoop punt eigenaar is van de SQL Server rol FCI.
+1. Open **Failoverclusterbeheer**. Selecteer **Rollen**. U ziet welk knoop punt eigenaar is van de SQL Server rol FCI.
 1. Klik met de rechter muisknop op de SQL Server FCI rol. 
 1. Selecteer **verplaatsen**en selecteer vervolgens **best mogelijke knoop punt**.
 

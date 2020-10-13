@@ -1,5 +1,5 @@
 ---
-title: Beveiligde Score in Azure Security Center
+title: Beveiligingsscore in Azure Security Center
 description: Beschrijving van de beveiligde Score van Azure Security Center en de bijbehorende beveiligings controles
 services: security-center
 documentationcenter: na
@@ -14,19 +14,19 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268261"
 ---
-# <a name="secure-score-in-azure-security-center"></a>Beveiligde Score in Azure Security Center
+# <a name="secure-score-in-azure-security-center"></a>Beveiligingsscore in Azure Security Center
 
 ## <a name="introduction-to-secure-score"></a>Inleiding tot beveiligde Score
 
 Azure Security Center heeft twee belang rijke doel stellingen: om u inzicht te geven in de huidige beveiligings situatie en om u te helpen uw beveiliging efficiënt en effectief te verbeteren. Het centrale aspect van Security Center waarmee u deze doelen kunt bereiken, is een veilige Score.
 
-Met Security Center worden uw resources, abonnementen en organisaties doorlopend beoordeeld op beveiligings problemen. Vervolgens worden alle bevindingen in één enkele score geaggregeerd, zodat u in een oogopslag uw huidige beveiligings situatie kunt zien: hoe hoger de score, hoe lager het geïdentificeerde risico niveau is.
+Security Center controleert uw resources, abonnementen en organisatie doorlopend op beveiligingsproblemen. Vervolgens worden alle bevindingen tot één enkele score samengevoegd, zodat u in een oogopslag uw huidige beveiligingssituatie kunt zien: hoe hoger de score, hoe lager het geïdentificeerde risiconiveau is.
 
 De pagina beveiligde Score van Security Center omvat:
 
@@ -34,9 +34,9 @@ De pagina beveiligde Score van Security Center omvat:
 
     [![Beveiligde Score weer gegeven als een percentage waarde met de onderliggende cijfers is te laat](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
 
-- **Beveiligings besturings elementen** : elk besturings element is een logische groep gerelateerde beveiligings aanbevelingen en weerspiegelt uw kwets bare aanvals oppervlakken. Een besturings element is een reeks beveiligings aanbevelingen met instructies die u helpen bij het implementeren van deze aanbevelingen. Uw score is alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt.
+- **Beveiligings besturings elementen** : elk besturings element is een logische groep gerelateerde beveiligings aanbevelingen en weerspiegelt uw kwets bare aanvals oppervlakken. Een besturingselement is een reeks beveiligingsaanbevelingen met instructies die u helpen bij het implementeren van deze aanbevelingen. Uw score is alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt.
 
-    Als u onmiddellijk wilt zien hoe goed uw organisatie een afzonderlijke kwets baarheid beveiligt, controleert u de scores voor elk beveiligings beheer.
+    Als u onmiddellijk wilt zien hoe goed uw organisatie een afzonderlijke kwetsbaarheid beveiligt, controleert u de scores voor elk besturingselement voor beveiliging.
 
     Zie [hoe uw beveiligde score wordt berekend](secure-score-security-controls.md#how-your-secure-score-is-calculated) hieronder voor meer informatie. 
 
@@ -57,7 +57,7 @@ Security Center wordt uw score prominent weer gegeven in de portal: het is het e
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Uw beveiligde Score ophalen uit de REST API
 
-U krijgt toegang tot uw score via de [API voor beveiligde scores](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (momenteel in preview-versie). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportage mechanisme te bouwen van uw beveiligde scores in de loop van de tijd. U kunt bijvoorbeeld de API **beveiligde scores** gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de API **besturings elementen voor beveiligde scores** gebruiken om de beveiligings controles en de huidige Score van uw abonnementen weer te geven.
+U krijgt toegang tot uw score via de [API voor beveiligde scores](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (momenteel in preview-versie). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportagemechanisme te bouwen van uw beveiligingsscores in de loop van de tijd. U kunt bijvoorbeeld de **Beveiligingsscore**-API gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de API voor **besturingselementen van de beveiligingsscore** gebruiken om de besturingselementen voor beveiliging en de huidige score van uw abonnementen weer te geven.
 
 ![Het ophalen van een enkele beveiligde Score via de API](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -95,17 +95,17 @@ De maximum score voor dit besturings element, het Toep assen van systeem updates
 
 Alleen ingebouwde aanbevelingen hebben invloed op de beveiligde Score.
 
-Aanbevelingen die als **Preview** zijn gemarkeerd, zijn niet opgenomen in de berekeningen van uw beveiligde Score. Ze moeten, waar mogelijk, nog steeds worden hersteld, zodat wanneer de preview-periode afloopt dat ze bijdragen aan uw score.
+Aanbevelingen die als **Preview** zijn gemarkeerd, zijn niet opgenomen in de berekeningen van uw beveiligde Score. Ze moeten, waar mogelijk, nog steeds worden hersteld. Wanneer de preview-periode is afgelopen, worden ze dus meegerekend in uw score.
 
-Een voor beeld van een voor beeld van een preview-aanbeveling:
+Een voorbeeld van een preview-aanbeveling:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling met de vlag preview":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Aanbeveling met de preview-markering":::
 
 ## <a name="improve-your-secure-score"></a>Uw secure score verbeteren
 
 Als u uw beveiligde score wilt verbeteren, kunt u de aanbevelingen voor beveiliging herstellen in uw lijst met aanbevelingen. U kunt elke aanbeveling hand matig herstellen voor elke resource, of met behulp van de **oplossing voor snel oplossen!** optie (indien beschikbaar) om een herbemiddeling toe te passen voor een aanbeveling voor een groep resources snel. Zie [aanbevelingen herstellen](security-center-remediate-recommendations.md)voor meer informatie.
 
-Een andere manier om uw score te verbeteren en ervoor te zorgen dat uw gebruikers geen resources maken die een negatieve invloed hebben op uw score, is door de opties voor afdwingen en weigeren te configureren voor de relevante aanbevelingen. Meer informatie over het [voor komen van onjuiste configuraties met het afdwingen/weigeren van aanbevelingen](prevent-misconfigurations.md).
+Een andere manier om uw score te verbeteren en ervoor te zorgen dat uw gebruikers geen resources maken die een negatieve invloed hebben op uw score, is door de opties voor afdwingen en weigeren te configureren voor de relevante aanbevelingen. Meer informatie vindt u in [Onjuiste configuraties voorkomen met de aanbevelingen voor afdwingen/weigeren](prevent-misconfigurations.md).
 
 ## <a name="security-controls-and-their-recommendations"></a>Beveiligings controles en hun aanbevelingen
 
@@ -148,7 +148,7 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Toegang en machtigingen beheren (maximale score 4)</p></strong>Een kern onderdeel van een beveiligings programma zorgt ervoor dat uw gebruikers de benodigde toegang hebben om hun werk te doen, maar niet meer dan dat: het model voor de <a href="https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">minimale bevoegdheids toegang</a>.<br>Beheer de toegang tot uw resources door roltoewijzingen te maken met <a href="https://docs.microsoft.com/azure/role-based-access-control/overview">op rollen gebaseerd toegangs beheer (RBAC)</a>. Een roltoewijzing bestaat uit drie elementen:<br>- <strong>Beveiligingsprincipal</strong>: het object waartoe de gebruiker toegang vraagt<br>- <strong>Roldefinitie</strong>: hun machtigingen<br>- <strong>Bereik</strong>: de set resources waarop de machtigingen van toepassing zijn</td>
-    <td class="tg-lboi"; width=55%>- Afgeschafte accounts moeten worden verwijderd uit uw abonnement (preview)<br>- Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement (preview)<br>- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement (preview)<br>- Externe accounts met schrijf machtigingen moeten worden verwijderd uit uw abonnement (preview)<br>- Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen<br>- Op rollen gebaseerde Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services (preview)<br>- Service Fabric-clusters mogen alleen gebruikmaken van Azure Active Directory voor client verificatie<br>- Service-principals moeten worden gebruikt voor het beveiligen van uw abonnementen in plaats van beheer certificaten<br>- Er moeten mini maal bevoegde Linux-mogelijkheden worden afgedwongen voor containers (preview-versie)<br>- Onveranderbaar (alleen-lezen) hoofd bestands systeem moet worden afgedwongen voor containers (preview-versie)<br>- Container met bevoegdheids escalatie moet worden vermeden (preview-versie)<br>- Containers uitvoeren als hoofd gebruiker moet worden vermeden (preview-versie)<br>- Containers die gevoelige host-naam ruimten delen, moeten worden vermeden (preview-versie)<br>- Het gebruik van pod HostPath-volume koppelingen moet worden beperkt tot een bekende lijst (preview-versie)<br>- Geprivilegieerde containers moeten worden vermeden (preview-versie)<br>- Azure Policy-invoeg toepassing voor Kubernetes moet zijn geïnstalleerd en ingeschakeld in uw clusters (preview)</td>
+    <td class="tg-lboi"; width=55%>- Afgeschafte accounts moeten worden verwijderd uit uw abonnement (preview)<br>- Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement (preview)<br>- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement (preview)<br>- Externe accounts met schrijf machtigingen moeten worden verwijderd uit uw abonnement (preview)<br>- Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen<br>- Role-Based Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services (preview)<br>- Service Fabric-clusters mogen alleen gebruikmaken van Azure Active Directory voor client verificatie<br>- Service-principals moeten worden gebruikt voor het beveiligen van uw abonnementen in plaats van beheer certificaten<br>- Er moeten mini maal bevoegde Linux-mogelijkheden worden afgedwongen voor containers (preview-versie)<br>- Onveranderbaar (alleen-lezen) hoofd bestands systeem moet worden afgedwongen voor containers (preview-versie)<br>- Container met bevoegdheids escalatie moet worden vermeden (preview-versie)<br>- Containers uitvoeren als hoofd gebruiker moet worden vermeden (preview-versie)<br>- Containers die gevoelige host-naam ruimten delen, moeten worden vermeden (preview-versie)<br>- Het gebruik van pod HostPath-volume koppelingen moet worden beperkt tot een bekende lijst (preview-versie)<br>- Geprivilegieerde containers moeten worden vermeden (preview-versie)<br>- Azure Policy-invoeg toepassing voor Kubernetes moet zijn geïnstalleerd en ingeschakeld in uw clusters (preview)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Beveiligings configuraties herstellen (maximum score 4)</p></strong>Onjuist geconfigureerde IT-assets hebben een hoger risico op aanvallen. Basis acties voor beveiliging worden vaak verg eten wanneer er activa worden geïmplementeerd en er deadlines aan moeten worden voldaan. Onjuiste configuratie van beveiliging kan elk niveau in de infra structuur zijn: van de besturings systemen en netwerk apparaten tot cloud resources.<br>Azure Security Center vergelijkt voortdurend de configuratie van uw resources met vereisten in de industrie normen,-voor schriften en-benchmarks. Wanneer u de relevante ' nalevings pakketten ' (standaarden en basis lijnen) hebt geconfigureerd die van toepassing zijn op uw organisatie, zullen eventuele hiaten resulteren in beveiligings aanbevelingen die de CCEID omvatten en een uitleg van de potentiële beveiligings impact.<br>Veelgebruikte pakketten zijn <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Security Bench Mark</a> en <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure basis Bench Mark-benchmark versie 1.1.0</a></td>
@@ -176,10 +176,10 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Controle en logboek registratie inschakelen (maximum score 1)</p></strong>Logboek gegevens bieden inzicht in problemen in het verleden, waardoor de prestaties van de toepassing kunnen worden verbeterd, en biedt de mogelijkheid om acties te automatiseren die anders hand matig zijn.<br>- <strong>Controle-en beheer logboeken</strong> bieden informatie over <a href="https://docs.microsoft.com/azure/azure-resource-manager/management/overview">Azure Resource Manager</a> bewerkingen.<br>- <strong>Gegevens vlak logboeken</strong> bevatten informatie over gebeurtenissen die worden gegenereerd als onderdeel van het gebruik van Azure-resources.<br>- <strong>Verwerkte gebeurtenissen</strong> bieden informatie over geanalyseerde gebeurtenissen/waarschuwingen die zijn verwerkt.</td>
-    <td class="tg-lboi"; width=55%>- Controle op SQL Server moet zijn ingeschakeld<br>- Diagnostische logboeken in App Services moeten worden ingeschakeld<br>- Diagnostische logboeken in Azure Data Lake Store moeten worden ingeschakeld<br>- Diagnostische logboeken in Azure Stream Analytics moeten worden ingeschakeld<br>- Diagnostische logboeken in batch-accounts moeten worden ingeschakeld<br>- Diagnostische logboeken in Data Lake Analytics moeten worden ingeschakeld<br>- Diagnostische logboeken in Event hub moeten worden ingeschakeld<br>- Diagnostische logboeken in IoT Hub moeten worden ingeschakeld<br>- Diagnostische logboeken in Key Vault moeten worden ingeschakeld<br>- Diagnostische logboeken in Logic Apps moeten worden ingeschakeld<br>- Diagnostische logboeken in de zoek service moeten worden ingeschakeld<br>- Diagnostische logboeken in Service Bus moeten worden ingeschakeld<br>- Diagnostische logboeken in Virtual Machine Scale Sets moeten worden ingeschakeld<br>- Metrische waarschuwings regels moeten worden geconfigureerd voor batch-accounts<br>- Voor de SQL-controle-instellingen moeten actie-groepen zijn geconfigureerd voor het vastleggen van kritieke activiteiten<br>- SQL-servers moeten worden geconfigureerd met controle dagen van meer dan 90 dagen.</td>
+    <td class="tg-lboi"; width=55%>- Controle op SQL Server moet zijn ingeschakeld<br>- Diagnostische logboeken in App Services moeten worden ingeschakeld<br>- Diagnostische logboeken in Azure Data Lake Store moeten worden ingeschakeld<br>- Diagnostische logboeken in Azure Stream Analytics moeten worden ingeschakeld<br>- Diagnostische logboeken in batch-accounts moeten worden ingeschakeld<br>- Diagnostische logboeken in Data Lake Analytics moeten worden ingeschakeld<br>- Diagnostische logboeken in Event hub moeten worden ingeschakeld<br>- Diagnostische logboeken in IoT Hub moeten worden ingeschakeld<br>- Diagnostische logboeken in Key Vault moeten worden ingeschakeld<br>- Diagnostische logboeken in Logic Apps moeten worden ingeschakeld<br>- Diagnostische logboeken in de zoek service moeten worden ingeschakeld<br>- Diagnostische logboeken in Service Bus moeten worden ingeschakeld<br>- Diagnostische logboeken in Virtual Machine Scale Sets moeten worden ingeschakeld<br>- Metrische waarschuwings regels moeten worden geconfigureerd voor batch-accounts<br>- Voor de SQL-controle-instellingen moet Action-Groups zijn geconfigureerd voor het vastleggen van kritieke activiteiten<br>- SQL-servers moeten worden geconfigureerd met controle dagen van meer dan 90 dagen.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection inschakelen (maximale score 0)</p></strong>De optionele Azure Defender Threat Protection-abonnementen van Azure Security Center bieden uitgebreide beveiligingen voor uw omgeving. Wanneer Security Center een bedreiging in een wille keurig gebied van uw omgeving detecteert, wordt er een waarschuwing gegenereerd. Deze waarschuwingen beschrijven de details van de betrokken resources, voorgestelde herstels tappen en in sommige gevallen een logische app activeren als reactie.<br>Elk Azure Defender-abonnement is een afzonderlijke, optionele aanbieding die u kunt inschakelen met behulp van de relevante aanbeveling in dit beveiligings beheer.<br>Meer <a href="https://docs.microsoft.com/azure/security-center/threat-protection">informatie over beveiliging tegen bedreigingen vindt u in Security Center</a>.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection inschakelen (maximale score 0)</p></strong>De optionele Azure Defender Threat Protection-abonnementen van Azure Security Center bieden uitgebreide beveiligingen voor uw omgeving. Wanneer Security Center een bedreiging in een wille keurig gebied van uw omgeving detecteert, wordt er een waarschuwing gegenereerd. Deze waarschuwingen bevatten details over de relevante bronnen, voorgestelde stappen voor herstel en soms ook de optie om een logische app te activeren.<br>Elk Azure Defender-abonnement is een afzonderlijke, optionele aanbieding die u kunt inschakelen met behulp van de relevante aanbeveling in dit beveiligings beheer.<br>Meer <a href="https://docs.microsoft.com/azure/security-center/threat-protection">informatie over beveiliging tegen bedreigingen vindt u in Security Center</a>.</td>
     <td class="tg-lboi"; width=55%>- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op Azure SQL Database servers<br>- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op SQL-servers op computers<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Virtual Machines<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure App Service plannen<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld voor Azure Storage accounts<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure Kubernetes Service-clusters<br>- Geavanceerde beveiliging tegen bedreigingen moet worden ingeschakeld voor Azure Container Registry registers<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure Key Vault kluizen</td>
   </tr>
   <tr>
@@ -208,7 +208,7 @@ In sommige gevallen ziet u een maximum Score van het besturings element die grot
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel vindt u een beschrijving van de beveiligde Score en de beveiligings controles die worden geïntroduceerd. Raadpleeg de volgende artikelen voor gerelateerde materialen:
+In dit artikel vindt u een beschrijving van de beveiligde Score en de beveiligings controles die worden geïntroduceerd. Raadpleeg de volgende artikelen voor gerelateerd materiaal:
 
 - [Meer informatie over de verschillende elementen van een aanbeveling](security-center-recommendations.md)
 - [Meer informatie over het oplossen van aanbevelingen](security-center-remediate-recommendations.md)

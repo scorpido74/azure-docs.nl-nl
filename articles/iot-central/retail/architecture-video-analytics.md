@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48808f762536390287bae40e8af3849da20b81c2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372201"
+ms.locfileid: "91874285"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>Video analyse-toepassings architectuur voor object-en bewegings detectie
 
@@ -41,4 +41,4 @@ Met media Graph kunt u bepalen waar de media moeten worden vastgelegd, hoe deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De voorgestelde volgende stap is informatie over het [maken van een video Analytics-toepassing in Azure IOT Central](tutorial-video-analytics-create-app.md).
+De voorgestelde volgende stap is om te leren hoe u [een IOT Central-toepassing kunt implementeren met behulp van de toepassing video Analytics-object-en bewegings detectie](tutorial-video-analytics-deploy.md).

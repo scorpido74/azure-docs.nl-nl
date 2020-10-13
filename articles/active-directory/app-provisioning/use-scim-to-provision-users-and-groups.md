@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266646"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
@@ -98,9 +98,9 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 |department|urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|
 | displayName |displayName |
 |employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
-| Fax-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
+| Facsimile-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
 | givenName |name.givenName |
-| jobTitle |title |
+| jobTitle |titel |
 | mail |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
@@ -335,7 +335,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 */Users ophalen? filter = gebruikers naam EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Antwoord
+##### <a name="response"></a><a name="response-2"></a>Beantwoord
 
 *HTTP/1.1 200 OK*
 ```json
@@ -376,7 +376,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 */Users ophalen? filter = gebruikers naam EQ "niet-bestaande gebruiker"*
 
-##### <a name="response"></a><a name="response-3"></a>Antwoord
+##### <a name="response"></a><a name="response-3"></a>Beantwoord
 
 *HTTP/1.1 200 OK*
 ```json
@@ -413,7 +413,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Antwoord
+##### <a name="response"></a><a name="response-4"></a>Beantwoord
 
 *HTTP/1.1 200 OK*
 ```json
@@ -457,7 +457,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Antwoord
+##### <a name="response"></a><a name="response-5"></a>Beantwoord
 
 *HTTP/1.1 200 OK*
 ```json
@@ -506,7 +506,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Antwoord
+##### <a name="response"></a><a name="response-14"></a>Beantwoord
 
 ```json
 {
@@ -546,7 +546,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 */Users/5171a35d82074e068ce2 HTTP/1.1 verwijderen*
 
-##### <a name="response"></a><a name="response-6"></a>Antwoord
+##### <a name="response"></a><a name="response-6"></a>Beantwoord
 
 *HTTP/1.1 204 geen inhoud*
 
@@ -573,7 +573,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Antwoord
+##### <a name="response"></a><a name="response-7"></a>Beantwoord
 
 *HTTP/1.1 201 gemaakt*
 ```json
@@ -598,7 +598,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 */Groups/40734ae655284ad3abcc ophalen? excludedAttributes = leden HTTP/1.1*
 
-##### <a name="response"></a><a name="response-8"></a>Antwoord
+##### <a name="response"></a><a name="response-8"></a>Beantwoord
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -619,7 +619,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 ##### <a name="request"></a><a name="request-9"></a>Aanvraag
 */Groups ophalen? excludedAttributes = leden&filter = DisplayName EQ "displayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Antwoord
+##### <a name="response"></a><a name="response-9"></a>Beantwoord
 
 *HTTP/1.1 200 OK*
 ```json
@@ -659,7 +659,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Antwoord
+##### <a name="response"></a><a name="response-10"></a>Beantwoord
 
 *HTTP/1.1 204 geen inhoud*
 
@@ -682,7 +682,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Antwoord
+##### <a name="response"></a><a name="response-11"></a>Beantwoord
 
 *HTTP/1.1 204 geen inhoud*
 
@@ -705,7 +705,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Antwoord
+##### <a name="response"></a><a name="response-12"></a>Beantwoord
 
 *HTTP/1.1 204 geen inhoud*
 
@@ -715,7 +715,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 */Groups/cdb1ce18f65944079d37 HTTP/1.1 verwijderen*
 
-##### <a name="response"></a><a name="response-13"></a>Antwoord
+##### <a name="response"></a><a name="response-13"></a>Beantwoord
 
 *HTTP/1.1 204 geen inhoud*
 

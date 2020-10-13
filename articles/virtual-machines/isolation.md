@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: sttsinar
 ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666837"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Isolatie van virtuele machines in azure
@@ -64,7 +64,7 @@ Net als geïsoleerde VM-grootten zijn hardwarematige grootten een periode van 12
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>V: wat zijn de mijl palen voor D15_v2 of DS15_v2 buiten gebruik stellen? 
 **A**: 
  
-| Date | Actie |
+| Date | Bewerking |
 |---|---| 
 | 18 november 2019 | Beschik baarheid van D/DS15i_v2 (PAYG, 1-jarige RI) | 
 | 14 mei 2020 | Laatste dag tot aankoop D/DS15i_v2 1 jaar RI | 

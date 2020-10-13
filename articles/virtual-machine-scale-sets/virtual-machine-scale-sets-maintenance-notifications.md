@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837173"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meldingen voor gepland onderhoud voor virtuele-machineschaalsets
@@ -106,7 +106,7 @@ Zie [waarschuwingen voor activiteiten](../azure-monitor/platform/activity-log-al
 
 Meer informatie over onderhoud vindt u in het overzicht van virtuele-machine schaal sets. Als ten minste één virtuele machine in de schaalset voor virtuele machines is opgenomen in de geplande onderhoud Golf, wordt er een nieuw lint aan de bovenkant van de pagina toegevoegd. Selecteer het lint met meldingen om naar de **onderhouds** pagina te gaan. 
 
-Op de pagina **onderhoud** kunt u zien welke VM-instantie wordt beïnvloed door het geplande onderhoud. Als u onderhoud wilt starten, schakelt u het selectie vakje in dat overeenkomt met de betreffende VM. Selecteer vervolgens **Onderhoud starten**.
+Op de pagina **onderhoud** kunt u zien welke VM-instantie wordt beïnvloed door het geplande onderhoud. Als u onderhoud wilt starten, schakelt u het selectie vakje in dat overeenkomt met de betreffende VM. Selecteer vervolgens  **Onderhoud starten**.
 
 Nadat u het onderhoud hebt gestart, onderneemt de betrokken Vm's in de schaalset voor virtuele machines onderhoud en zijn ze tijdelijk niet beschikbaar. Als u het self-service venster hebt gemist, kunt u nog steeds het tijd venster zien wanneer de schaalset van de virtuele machine wordt onderhouden door Azure.
  
