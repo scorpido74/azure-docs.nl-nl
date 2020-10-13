@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080995"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Uw Azure IoT Central-gegevens visualiseren en analyseren in een Power BI dash board
@@ -55,13 +55,13 @@ Wanneer u het PBIX-bestand opent, moet u de instructies lezen en volgen op het v
 
 Het PBIX-bestand bevat het rapport **apparaten en telemetrie** toont een historisch overzicht van de telemetrie die is verzonden door apparaten. Het biedt een uitsplitsing van de verschillende typen telemetrie en toont ook de meest recente telemetrie die wordt verzonden door apparaten.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI apparaten en telemetrie-rapport":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI solution-pijp lijn":::
 
 ## <a name="pipeline-resources"></a>Pijplijn resources
 
 U hebt toegang tot alle Azure-resources die de pijp lijn vormen in de Azure Portal. Alle resources bevinden zich in de resource groep die u hebt gemaakt bij het instellen van de pijp lijn.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Azure Portal weer gave van resource groep":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI solution-pijp lijn":::
 
 In de volgende lijst wordt de rol van elke resource in de pijp lijn beschreven:
 

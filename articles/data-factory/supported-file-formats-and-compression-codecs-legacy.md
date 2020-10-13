@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254613"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Ondersteunde bestands indelingen en compressie-codecs in Azure Data Factory (verouderd)
@@ -25,7 +25,7 @@ ms.locfileid: "85254613"
 >[!IMPORTANT]
 >In Data Factory nieuw op indeling gebaseerd gegevensset-model, zie het bijbehorende artikel betreffende indeling met Details: <br>- [Avro-indeling](format-avro.md)<br>- [Binaire indeling](format-binary.md)<br>- [Tekst indeling met scheidings tekens](format-delimited-text.md)<br>- [JSON-indeling](format-json.md)<br>- [ORC-indeling](format-orc.md)<br>- [Parquet-indeling](format-parquet.md)<br>De rest-configuraties die in dit artikel worden vermeld, worden nog steeds ondersteund voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken. 
 
-## <a name="text-format-legacy"></a><a name="text-format"></a>Tekst indeling (verouderd)
+## <a name="text-format-legacy"></a><a name="text-format"></a> Tekst indeling (verouderd)
 
 >[!NOTE]
 >Meer informatie over het nieuwe model van het artikel [tekst met scheidings tekens](format-delimited-text.md) . De volgende configuraties voor gegevens opslag gegevensset op basis van een bestand worden nog steeds ondersteund als-is voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken.
@@ -34,15 +34,15 @@ Als u wilt lezen uit een tekst bestand of naar een tekst bestand wilt schrijven,
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U kunt overwegen om een zeldzaam niet-afdrukbaar teken te gebruiken dat mogelijk niet voor komt in uw gegevens. Geef bijvoorbeeld ' \u0001 ' op, die het begin van de kop (SOH) vertegenwoordigt. |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')**. <br/><br/>Als u een Unicode-teken wilt gebruiken, raadpleegt u [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om de bijbehorende code te verkrijgen. |No |
-| rowDelimiter |Het teken dat wordt gebruikt voor het scheiden van rijen in een bestand. |Er is slechts één teken toegestaan. De **standaardwaarde** is een van de volgende leeswaarden **['\r\n', '\r', '\n']** en de schrijfwaarde **'\r\n'**. |No |
-| escapeChar |Dit speciale teken wordt gebruikt om een scheidingsteken voor kolommen van de inhoud van het invoerbestand om te zetten. <br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voor beeld: als u een komma (', ') hebt als scheidings teken voor de kolom, maar u de komma wilt gebruiken in de tekst (bijvoorbeeld: "Hallo, wereld"), kunt u $ opgeven als escape teken en de teken reeks "Hallo $, wereld" in de bron. |No |
-| quoteChar |Het teken dat wordt gebruikt om een tekenreekswaarde te citeren. De scheidingstekens voor kolommen en rijen binnen de aanhalingstekens worden beschouwd als onderdeel van de tekenreekswaarde. Deze eigenschap is van toepassing op gegevenssets voor invoer en uitvoer.<br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: <Hallo, wereld>), kunt u " (dubbel aanhalingsteken) als het aanhalingsteken opgeven en de tekenreeks "Hallo, wereld" in de bron gebruiken. |No |
-| nullValue |Een of meer tekens die worden gebruikt om een null-waarde te vertegenwoordigen. |Een of meer tekens. De **standaardwaarden** zijn **'\N' en 'NULL'** voor lezen en **'\N'** voor schrijven. |No |
-| encodingName |Geef de coderingsnaam op. |Een geldige coderingsnaam. Zie [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Voorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is **UTF-8**. |No |
-| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |True<br/><b>False (standaard)</b> |No |
-| skipLineCount |Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Geheel getal |No |
-| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>False |No |
+| columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U kunt overwegen om een zeldzaam niet-afdrukbaar teken te gebruiken dat mogelijk niet voor komt in uw gegevens. Geef bijvoorbeeld ' \u0001 ' op, die het begin van de kop (SOH) vertegenwoordigt. |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')**. <br/><br/>Als u een Unicode-teken wilt gebruiken, raadpleegt u [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om de bijbehorende code te verkrijgen. |Nee |
+| rowDelimiter |Het teken dat wordt gebruikt voor het scheiden van rijen in een bestand. |Er is slechts één teken toegestaan. De **standaardwaarde** is een van de volgende leeswaarden **['\r\n', '\r', '\n']** en de schrijfwaarde **'\r\n'**. |Nee |
+| escapeChar |Dit speciale teken wordt gebruikt om een scheidingsteken voor kolommen van de inhoud van het invoerbestand om te zetten. <br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voor beeld: als u een komma (', ') hebt als scheidings teken voor de kolom, maar u de komma wilt gebruiken in de tekst (bijvoorbeeld: "Hallo, wereld"), kunt u $ opgeven als escape teken en de teken reeks "Hallo $, wereld" in de bron. |Nee |
+| quoteChar |Het teken dat wordt gebruikt om een tekenreekswaarde te citeren. De scheidingstekens voor kolommen en rijen binnen de aanhalingstekens worden beschouwd als onderdeel van de tekenreekswaarde. Deze eigenschap is van toepassing op gegevenssets voor invoer en uitvoer.<br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: <Hallo, wereld>), kunt u " (dubbel aanhalingsteken) als het aanhalingsteken opgeven en de tekenreeks "Hallo, wereld" in de bron gebruiken. |Nee |
+| nullValue |Een of meer tekens die worden gebruikt om een null-waarde te vertegenwoordigen. |Een of meer tekens. De **standaardwaarden** zijn **'\N' en 'NULL'** voor lezen en **'\N'** voor schrijven. |Nee |
+| encodingName |Geef de coderingsnaam op. |Een geldige coderingsnaam. Zie [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Voorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is **UTF-8**. |Nee |
+| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |True<br/><b>False (standaard)</b> |Nee |
+| skipLineCount |Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Geheel getal |Nee |
+| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>False |Nee |
 
 ### <a name="textformat-example"></a>Voorbeeld van TextFormat
 
@@ -79,7 +79,7 @@ Gebruik een `escapeChar` in plaats van `quoteChar`, vervang de regel door `quote
 * U wilt kopiëren vanuit een tekstbestand met een headerregel naar een sink die geen bestand is en wilt die regel verwijderen. Geef voor `firstRowAsHeader` 'True' op in de invoergegevensset.
 * U wilt kopiëren uit een tekstbestand en wilt een paar regels aan het begin overslaan die geen gegevens of headerinformatie bevatten. Geef `skipLineCount` op om aan te geven hoeveel regels er moeten worden overgeslagen. Als de rest van het bestand een headerregel bevat, kunt u ook `firstRowAsHeader` opgeven. Als zowel `skipLineCount` als `firstRowAsHeader` is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand
 
-## <a name="json-format-legacy"></a><a name="json-format"></a>JSON-indeling (verouderd)
+## <a name="json-format-legacy"></a><a name="json-format"></a> JSON-indeling (verouderd)
 
 >[!NOTE]
 >Meer informatie over het nieuwe model van het artikel [JSON-indeling](format-json.md) . De volgende configuraties voor gegevens opslag gegevensset op basis van een bestand worden nog steeds ondersteund als-is voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken.
@@ -90,11 +90,11 @@ Als u de JSON-bestanden wilt parseren of de gegevens in JSON-indeling wilt schri
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |No |
-| jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden. | No |
-| jsonPathDefinition | Hiermee geeft u de JSON-padexpressie aan voor elke kolomtoewijzing met een aangepaste kolomnaam (begin met een kleine letter). Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden en u kunt gegevens uit een object of matrix ophalen. <br/><br/> Voor velden onder het hoofdobject begint u met root $; voor velden binnen de matrix die is gekozen door de eigenschap `jsonNodeReference`, begint u vanaf het element van de matrix. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies. | No |
-| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Bijvoorbeeld: windows 1250 of shift_jis. De **standaard** waarde is: **UTF-8**. |No |
-| nestingSeparator |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. De standaardwaarde is '.' (punt). |No |
+| filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
+| jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden. | Nee |
+| jsonPathDefinition | Hiermee geeft u de JSON-padexpressie aan voor elke kolomtoewijzing met een aangepaste kolomnaam (begin met een kleine letter). Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden en u kunt gegevens uit een object of matrix ophalen. <br/><br/> Voor velden onder het hoofdobject begint u met root $; voor velden binnen de matrix die is gekozen door de eigenschap `jsonNodeReference`, begint u vanaf het element van de matrix. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies. | Nee |
+| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Bijvoorbeeld: windows 1250 of shift_jis. De **standaard** waarde is: **UTF-8**. |Nee |
+| nestingSeparator |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. De standaardwaarde is '.' (punt). |Nee |
 
 >[!NOTE]
 >In het geval van cross-apply gegevens in een matrix in meerdere rijen (hoofdletter 1-> voor beeld 2 in [JsonFormat-voor beelden](#jsonformat-example)), kunt u er alleen voor kiezen om één matrix uit te breiden met behulp van eigenschap `jsonNodeReference` .
@@ -306,7 +306,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling, door d
 De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie [kolommen van bron gegevensset toewijzen aan kolommen voor doel gegevensset](copy-activity-schema-and-type-mapping.md)voor meer informatie.
-- `jsonNodeReference`Hiermee wordt aangegeven dat gegevens uit de objecten met hetzelfde patroon worden herhaald en opgehaald uit de **matrix** `orderlines` .
+- `jsonNodeReference` Hiermee wordt aangegeven dat gegevens uit de objecten met hetzelfde patroon worden herhaald en opgehaald uit de **matrix** `orderlines` .
 - Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. In dit voor beeld,, `ordernumber` `orderdate` , en `city` bevinden zich onder het hoofd object waarvan het JSON-pad begint met `$.` , terwijl `order_pd` en `order_price` worden gedefinieerd met een pad dat is afgeleid van het element matrix zonder `$.` .
 
 ```json
@@ -406,7 +406,7 @@ De uitvoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: 
 }
 ```
 
-## <a name="parquet-format-legacy"></a><a name="parquet-format"></a>Parquet-indeling (verouderd)
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a> Parquet-indeling (verouderd)
 
 >[!NOTE]
 >Meer informatie over het nieuwe model van [Parquet](format-parquet.md) -artikel. De volgende configuraties voor gegevens opslag gegevensset op basis van een bestand worden nog steeds ondersteund als-is voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken.
@@ -453,20 +453,20 @@ Voor beeld: Stel variabele `_JAVA_OPTIONS` met waarde in `-Xms256m -Xmx16g` . Me
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/binair | UInt64 | Decimal |
+| UInt64 | Int64/binair | UInt64 | Decimaal |
 | Enkelvoudig | Float | N.v.t. | N.v.t. |
 | Dubbel | Dubbel | N.v.t. | N.v.t. |
-| Decimal | Binair | Decimal | Decimal |
+| Decimaal | Binair | Decimaal | Decimaal |
 | Tekenreeks | Binair | Utf8 | Utf8 |
 | DateTime | Int96 | N.v.t. | N.v.t. |
 | TimeSpan | Int96 | N.v.t. | N.v.t. |
 | Date time offset | Int96 | N.v.t. | N.v.t. |
 | Array | Binair | N.v.t. | N.v.t. |
-| GUID | Binair | Utf8 | Utf8 |
+| Guid | Binair | Utf8 | Utf8 |
 | Char | Binair | Utf8 | Utf8 |
 | CharArray | Niet ondersteund | N.v.t. | N.v.t. |
 
-## <a name="orc-format-legacy"></a><a name="orc-format"></a>ORC-indeling (verouderd)
+## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC-indeling (verouderd)
 
 >[!NOTE]
 >Meer informatie over het nieuwe model van [Orc](format-orc.md) -artikel. De volgende configuraties voor gegevens opslag gegevensset op basis van een bestand worden nog steeds ondersteund als-is voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken.
@@ -509,16 +509,16 @@ Voor een kopie die wordt uitgevoerd op een zelf-hostende IR met ORC-serialisatie
 | UInt64 | Tekenreeks |
 | Enkelvoudig | Float |
 | Dubbel | Dubbel |
-| Decimal | Decimal |
+| Decimaal | Decimaal |
 | Tekenreeks | Tekenreeks |
 | DateTime | Tijdstempel |
 | Date time offset | Tijdstempel |
 | TimeSpan | Tijdstempel |
 | Array | Binair |
-| GUID | Tekenreeks |
+| Guid | Tekenreeks |
 | Char | Char (1) |
 
-## <a name="avro-format-legacy"></a><a name="avro-format"></a>AVRO-indeling (verouderd)
+## <a name="avro-format-legacy"></a><a name="avro-format"></a> AVRO-indeling (verouderd)
 
 >[!NOTE]
 >Meer informatie over het nieuwe model van [Avro](format-avro.md) -artikel. De volgende configuraties voor gegevens opslag gegevensset op basis van een bestand worden nog steeds ondersteund als-is voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken.
@@ -538,7 +538,7 @@ Houd rekening met de volgende punten:
 
 * [Complexe gegevens typen](https://avro.apache.org/docs/current/spec.html#schema_complex) worden niet ondersteund (records, enums, matrices, kaarten, vakbonden en vast).
 
-## <a name="compression-support-legacy"></a><a name="compression-support"></a>Ondersteuning voor compressie (verouderd)
+## <a name="compression-support-legacy"></a><a name="compression-support"></a> Ondersteuning voor compressie (verouderd)
 
 Azure Data Factory ondersteunt gecomprimeerde/gedecomprimeerde gegevens tijdens het kopiëren. Wanneer u `compression` een eigenschap opgeeft in een invoer-gegevensset, worden de gecomprimeerde gegevens van de bron door de Kopieer activiteit gelezen en gedecomprimeerd. Wanneer u de eigenschap in een uitvoer-gegevensset opgeeft, worden de gegevens door de Kopieer activiteit gecomprimeerd en vervolgens naar de Sink geschreven. Hier volgen enkele voor beelden van scenario's:
 

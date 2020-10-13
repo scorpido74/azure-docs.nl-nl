@@ -10,10 +10,10 @@ caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
 ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79537343"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe-schema voor Azure Cloud Services definition
@@ -47,10 +47,10 @@ Het `LoadBalancerProbes` element van het service definitie bestand bevat de volg
 - [LoadBalancerProbes-element](#LoadBalancerProbes)
 - [LoadBalancerProbe-element](#LoadBalancerProbe)
 
-##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>LoadBalancerProbes-element
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> LoadBalancerProbes-element
 Met het `LoadBalancerProbes` element wordt de verzameling Load Balancer tests beschreven. Dit element is het bovenliggende element van het [element LoadBalancerProbe](#LoadBalancerProbe). 
 
-##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>LoadBalancerProbe-element
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> LoadBalancerProbe-element
 Het `LoadBalancerProbe` element definieert de status test voor een model. U kunt meerdere load balancer tests definiëren. 
 
 In de volgende tabel worden de kenmerken van het `LoadBalancerProbe` element beschreven:
@@ -59,7 +59,7 @@ In de volgende tabel worden de kenmerken van het `LoadBalancerProbe` element bes
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Vereist. De naam van de load balancer-test. De naam moet uniek zijn.|
 | `protocol`          | `string` | Vereist. Hiermee geeft u het Protocol van het eind punt. Mogelijke waarden zijn `http` en `tcp`. Als `tcp` is opgegeven, is een ontvangen ack vereist om de test te laten slagen. Als `http` is opgegeven, is er een antwoord van 200 OK van de opgegeven URI vereist om de test te laten slagen.|
-| `path`              | `string` | De URI die wordt gebruikt voor het aanvragen van de integriteits status van de virtuele machine. `path`is vereist als `protocol` is ingesteld op `http` . Als dat niet het geval is, is dit niet toegestaan.<br /><br /> Er is geen standaard waarde.|
+| `path`              | `string` | De URI die wordt gebruikt voor het aanvragen van de integriteits status van de virtuele machine. `path` is vereist als `protocol` is ingesteld op `http` . Als dat niet het geval is, is dit niet toegestaan.<br /><br /> Er is geen standaard waarde.|
 | `port`              | `integer` | Optioneel. De poort voor het communiceren van de test. Dit is optioneel voor elk eind punt, omdat dezelfde poort wordt gebruikt voor de test. U kunt ook een andere poort voor hun zoek opdracht configureren. Mogelijke waarden variëren van 1 tot 65535, inclusief.<br /><br /> De standaard waarde wordt ingesteld door het eind punt.|
 | `intervalInSeconds` | `integer` | Optioneel. Het interval in seconden voor hoe vaak het eind punt moet worden getest op de status. Normaal gesp roken is het interval iets minder dan de helft van de toegewezen time-outperiode (in seconden) waarmee twee volledige tests kunnen worden uitgevoerd voordat het exemplaar uit de rotatie kan worden gehaald.<br /><br /> De standaard waarde is 15, de minimum waarde is 5.|
 | `timeoutInSeconds`  | `integer` | Optioneel. De time-outperiode, in seconden, die wordt toegepast op de test, waarbij geen enkele reactie leidt tot het stoppen van verdere verkeer van de bezorging bij het eind punt. Met deze waarde kunnen eind punten sneller of langzamer worden gemaakt dan de typische tijden die worden gebruikt in azure (dit zijn de standaard waarden).<br /><br /> De standaard waarde is 31, de minimum waarde is 11.|

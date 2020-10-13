@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
 ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513367"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Azure IoT connector voor FHIR (preview)-gegevens stroom
+# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Gegevensstroom van Azure IoT Connector for FHIR (preview)
 
 Dit artikel bevat een overzicht van de gegevens stroom in azure IoT connector voor FHIR *. Meer informatie over de verschillende fasen voor gegevens verwerking binnen Azure IoT connector voor FHIR waarmee apparaatgegevens worden omgezet in op FHIR gebaseerde [observatie](https://www.hl7.org/fhir/observation.html) resources.
 
-![Azure IoT-connector voor FHIR-gegevens stroom](media/concepts-iot-data-flow/iot-connector-data-flow.png)
+![Gegevensstroom van Azure IoT Connector for FHIR](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
 In het bovenstaande diagram ziet u algemene gegevens stromen met behulp van Azure IoT connector voor FHIR. 
 
@@ -62,8 +62,8 @@ Zodra de FHIR-resource wordt gegenereerd in het transformatie stadium, wordt de 
 Klik hieronder op de volgende stap voor meer informatie over het maken van FHIR.
 
 >[!div class="nextstepaction"]
->[Azure IoT connector voor FHIR-toewijzings sjablonen](iot-mapping-templates.md)
+>[Toewijzingssjablonen in Azure IoT Connector for FHIR](iot-mapping-templates.md)
 
-* In de Azure Portal wordt de Azure IoT-connector voor FHIR aangeduid als IoT-connector (preview).
+*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
 
 FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.

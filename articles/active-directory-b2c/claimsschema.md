@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201358"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -44,11 +44,11 @@ Het element **claim** type bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Yes | Een id die wordt gebruikt voor het claim type. Andere elementen kunnen deze id in het beleid gebruiken. |
+| Id | Ja | Een id die wordt gebruikt voor het claim type. Andere elementen kunnen deze id in het beleid gebruiken. |
 
 Het element **claim** type bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | De titel die wordt weer gegeven voor gebruikers op verschillende schermen. De waarde kan worden [gelokaliseerd](localization.md). |
 | DataType | 1:1 | Het type claim. |
@@ -66,12 +66,12 @@ PredicateValidationReference| 0:1 | Een verwijzing naar een **PredicateValidatio
 
 Het **Data type** -element ondersteunt de volgende waarden:
 
-| Type | Description |
+| Type | Beschrijving |
 | ------- | ----------- |
 |booleaans|Vertegenwoordigt een Booleaanse `true` waarde (of `false` ).|
-|date| Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt de ISO 8601-Conventie.|
+|datum| Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt de ISO 8601-Conventie.|
 |dateTime|Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. De waarde van de datum volgt de ISO 8601-Conventie.|
-|duur|Vertegenwoordigt een tijds interval in jaren, maanden, dagen, uren, minuten en seconden. De indeling van is `PnYnMnDTnHnMnS` , waarbij `P` positief of voor een `N` negatieve waarde wordt aangegeven. `nY`is het aantal jaren, gevolgd door een letterlijke waarde `Y` . `nMo`is het aantal maanden gevolgd door een letterlijke waarde `Mo` . `nD`is het aantal dagen, gevolgd door een letterlijke waarde `D` . Voor beelden: `P21Y` vertegenwoordigen 21 jaar. `P1Y2Mo`vertegenwoordigt één jaar en twee maanden. `P1Y2Mo5D`vertegenwoordigt één jaar, twee maanden en vijf dagen.  `P1Y2M5DT8H5M620S`vertegenwoordigt één jaar, twee maanden, vijf dagen, acht uur, vijf minuten en twintig seconden.  |
+|duur|Vertegenwoordigt een tijds interval in jaren, maanden, dagen, uren, minuten en seconden. De indeling van is `PnYnMnDTnHnMnS` , waarbij `P` positief of voor een `N` negatieve waarde wordt aangegeven. `nY` is het aantal jaren, gevolgd door een letterlijke waarde `Y` . `nMo` is het aantal maanden gevolgd door een letterlijke waarde `Mo` . `nD` is het aantal dagen, gevolgd door een letterlijke waarde `D` . Voor beelden: `P21Y` vertegenwoordigen 21 jaar. `P1Y2Mo` vertegenwoordigt één jaar en twee maanden. `P1Y2Mo5D` vertegenwoordigt één jaar, twee maanden en vijf dagen.  `P1Y2M5DT8H5M620S` vertegenwoordigt één jaar, twee maanden, vijf dagen, acht uur, vijf minuten en twintig seconden.  |
 |phoneNumber|Vertegenwoordigt een telefoon nummer. |
 |int| Vertegenwoordigt een getal tussen-2.147.483.648 en 2.147.483.647|
 |long| Vertegenwoordigt een getal tussen-9.223.372.036.854.775.808 en 9.223.372.036.854.775.807 |
@@ -84,7 +84,7 @@ Het **Data type** -element ondersteunt de volgende waarden:
 
 De **DefaultPartnerClaimTypes** kan het volgende element bevatten:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Protocol | 1: n | Lijst met protocollen met de standaard type naam van de partner claim. |
 
@@ -92,8 +92,8 @@ Het **protocol** element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Naam | Yes | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
-| PartnerClaimType | Yes | De claim type naam die moet worden gebruikt. |
+| Naam | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| PartnerClaimType | Ja | De claim type naam die moet worden gebruikt. |
 
 In het volgende voor beeld, wanneer het Framework voor identiteits ervaring communiceert met een SAML2-ID-provider of Relying Party toepassing, wordt de claim **Achternaam** toegewezen aan `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` , met OpenIdConnect en OAuth2, de claim wordt toegewezen aan `family_name` .
 
@@ -127,8 +127,8 @@ Het **masker** element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Type` | Yes | Het type van het claim masker. Mogelijke waarden: `Simple` of `Regex` . De `Simple` waarde geeft aan dat een eenvoudig tekst masker wordt toegepast op het voorste gedeelte van een teken reeks claim. De `Regex` waarde geeft aan dat een reguliere expressie wordt toegepast op de teken reeks claim als geheel.  Als de `Regex` waarde is opgegeven, moet er ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
-| `Regex` | No | Als **`Type`** is ingesteld op `Regex` , geeft u de reguliere expressie op die moet worden gebruikt.
+| `Type` | Ja | Het type van het claim masker. Mogelijke waarden: `Simple` of `Regex` . De `Simple` waarde geeft aan dat een eenvoudig tekst masker wordt toegepast op het voorste gedeelte van een teken reeks claim. De `Regex` waarde geeft aan dat een reguliere expressie wordt toegepast op de teken reeks claim als geheel.  Als de `Regex` waarde is opgegeven, moet er ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
+| `Regex` | Nee | Als **`Type`** is ingesteld op `Regex` , geeft u de reguliere expressie op die moet worden gebruikt.
 
 In het volgende voor beeld wordt een **phonenumber** -claim met het `Simple` masker geconfigureerd:
 
@@ -167,11 +167,11 @@ Het **beperkings** element kan het volgende kenmerk bevatten:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| MergeBehavior | No | De methode die wordt gebruikt voor het samen voegen van opsommings waarden met een claim type in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in het basis beleid. Mogelijke waarden: `Append` , `Prepend` of `ReplaceAll` . De `Append` waarde is een verzameling gegevens die moet worden toegevoegd aan het einde van de verzameling die in het bovenliggende beleid is opgegeven. De `Prepend` waarde is een verzameling gegevens die moet worden toegevoegd vóór de verzameling die in het bovenliggende beleid is opgegeven. De `ReplaceAll` waarde is een verzameling gegevens die is opgegeven in het bovenliggende beleid en die moet worden genegeerd. |
+| MergeBehavior | Nee | De methode die wordt gebruikt voor het samen voegen van opsommings waarden met een claim type in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in het basis beleid. Mogelijke waarden: `Append` , `Prepend` of `ReplaceAll` . De `Append` waarde is een verzameling gegevens die moet worden toegevoegd aan het einde van de verzameling die in het bovenliggende beleid is opgegeven. De `Prepend` waarde is een verzameling gegevens die moet worden toegevoegd vóór de verzameling die in het bovenliggende beleid is opgegeven. De `ReplaceAll` waarde is een verzameling gegevens die is opgegeven in het bovenliggende beleid en die moet worden genegeerd. |
 
 Het **beperkings** element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Inventarisatie | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
 | Patroon | 1:1 | De reguliere expressie die moet worden gebruikt. |
@@ -184,9 +184,9 @@ Het **opsommings** element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Tekst | Yes | De weergave teken reeks die wordt weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
-|Waarde | Yes | De claim waarde die is gekoppeld aan het selecteren van deze optie. |
-| SelectByDefault | No | Hiermee wordt aangegeven of deze optie standaard moet worden geselecteerd in de gebruikers interface. Mogelijke waarden: True of false. |
+| Tekst | Ja | De weergave teken reeks die wordt weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
+|Waarde | Ja | De claim waarde die is gekoppeld aan het selecteren van deze optie. |
+| SelectByDefault | Nee | Hiermee wordt aangegeven of deze optie standaard moet worden geselecteerd in de gebruikers interface. Mogelijke waarden: True of false. |
 
 In het volgende voor beeld wordt een lijst claim voor een **plaats** keuzelijst geconfigureerd met een standaard waarde ingesteld op `New York` :
 
@@ -213,8 +213,8 @@ Het element **pattern** kan de volgende kenmerken bevatten:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| RegularExpression | Yes | De reguliere expressie die de claims van dit type moet overeenkomen om geldig te zijn. |
-| HelpText | No | Een fout bericht voor gebruikers als de reguliere expressie is mislukt. |
+| RegularExpression | Ja | De reguliere expressie die de claims van dit type moet overeenkomen om geldig te zijn. |
+| HelpText | Nee | Een fout bericht voor gebruikers als de reguliere expressie is mislukt. |
 
 In het volgende voor beeld wordt een **e-mail** claim geconfigureerd met de reguliere expressie invoer validatie en Help-tekst:
 
@@ -243,7 +243,7 @@ Azure AD B2C ondersteunt diverse invoer typen voor gebruikers, zoals een tekstva
 
 Het **UserInputType** -element beschik bare invoer typen voor gebruikers:
 
-| UserInputType | Ondersteunde claim type | Description |
+| UserInputType | Ondersteunde claim type | Beschrijving |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Vervolg keuzelijst meervoudige selectie. De claim waarde wordt weer gegeven in een komma als scheidings teken reeks van de geselecteerde waarden. |
 |DateTimeDropdown | `date`, `dateTime` |Vervolg keuzelijst om een dag, maand en jaar te selecteren. |

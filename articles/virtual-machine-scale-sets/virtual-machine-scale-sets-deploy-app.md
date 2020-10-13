@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079588"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uw toepassing implementeren op virtuele-machineschaalsets
@@ -26,14 +26,14 @@ Wanneer u een van de installatie kopieën van het Azure-platform gebruikt om de 
 
 Om het configuratie beheer en de tijd voor het inrichten van een virtuele machine te beperken, kunt u een aangepaste VM-installatie kopie maken die gereed is voor het uitvoeren van uw toepassing zodra een exemplaar is ingericht in de schaalset. Zie de volgende zelf studies voor meer informatie over het maken en gebruiken van een aangepaste VM-installatie kopie met een schaalset:
 
-- [Azure CLI](tutorial-use-custom-image-cli.md)
+- [Azure-CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>Een app met de aangepaste script extensie installeren
 Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies. Zie de volgende zelf studies voor meer informatie over het installeren van een app met een aangepaste script extensie:
 
-- [Azure CLI](tutorial-install-apps-cli.md)
+- [Azure-CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Azure Resource Manager-sjabloon](tutorial-install-apps-template.md)
 

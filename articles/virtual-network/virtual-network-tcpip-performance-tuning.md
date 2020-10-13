@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87068523"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP-prestaties afstemmen voor Azure-Vm's
@@ -164,7 +164,7 @@ In deze tabel wordt de maximale door Voer van het aantal mega bytes/per seconde 
 | TCP-venster grootte (bytes) | Latentie van RTT (MS) | Maximale door Voer van MB/seconde | Maximale door Voer van megabit/seconde |
 | ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|1|65,54|524,29|
-|65.535|30|2,18|17,48|
+|65.535|30|2.18|17,48|
 |65.535|60|1.09|8,74|
 |65.535|90|.73|5,83|
 |65.535|120|.55|4,37|
@@ -179,7 +179,7 @@ Deze tabel illustreert de volgende relaties:
 
 | TCP-venster grootte (bytes) | Latentie van RTT (MS) | Maximale door Voer van MB/seconde | Maximale door Voer van megabit/seconde |
 | ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
-|65.535|30|2,18|17,48|
+|65.535|30|2.18|17,48|
 |131.070|30|4,37|34,95|
 |262.140|30|8,74|69,91|
 |524.280|30|17,48|139,81|
@@ -210,7 +210,7 @@ U kunt de `Get-NetTCPSetting` Power shell-opdracht gebruiken om de waarden van e
 Get-NetTCPSetting
 ```
 
-U kunt de eerste TCP-venster grootte en TCP-schaal factor in Windows instellen met behulp van de `Set-NetTCPSetting` Power shell-opdracht. Zie [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps)voor meer informatie.
+U kunt de eerste TCP-venster grootte en TCP-schaal factor in Windows instellen met behulp van de `Set-NetTCPSetting` Power shell-opdracht. Zie  [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps)voor meer informatie.
 
 ```powershell
 Set-NetTCPSetting

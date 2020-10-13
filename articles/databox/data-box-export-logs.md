@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87494482"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy het exporteren van orders
@@ -190,7 +190,7 @@ Nadat de gegevens zijn gewist van de Data Box schijven volgens de richt lijnen v
 
 ### <a name="chain-of-custody-audit-logs"></a>Audit logboeken van Bewaar keten
 
-De audit logboeken van de Bewaar keten bevatten informatie over het inschakelen en openen van shares op de Data Box of Data Box Heavy wanneer deze zich buiten het Azure-Data Center bevindt. Deze logboeken bevinden zich in:`storage-account/azuredatabox-chainofcustodylogs`
+De audit logboeken van de Bewaar keten bevatten informatie over het inschakelen en openen van shares op de Data Box of Data Box Heavy wanneer deze zich buiten het Azure-Data Center bevindt. Deze logboeken bevinden zich in: `storage-account/azuredatabox-chainofcustodylogs`
 
 Hier volgt een voor beeld van het audit logboek van een Data Box:
 

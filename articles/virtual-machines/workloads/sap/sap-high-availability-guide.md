@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a330fc18f39ffd7007e2a41a28016df69a2b739
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314654"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Azure Virtual Machines met hoge Beschik baarheid voor SAP NetWeaver
@@ -522,7 +522,7 @@ Als u de sjabloon ASCS/SCS multi-sid wilt instellen, voert u in de sjabloon [ASC
   -  **Systeem beschikbaarheid**. Selecteer **ha**.
   -  **Gebruikers naam en beheerders wachtwoord**voor de beheerder. Maak een nieuwe gebruiker die kan worden gebruikt om u aan te melden bij de computer.
   -  **Nieuw of bestaand subnet**. Stel in of een nieuw virtueel netwerk en subnet moet worden gemaakt of dat een bestaand subnet moet worden gebruikt. Als u al een virtueel netwerk hebt dat is verbonden met uw on-premises netwerk, selecteert u **bestaande**.
-  -  **Subnet-id**. Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/<*abonnements-ID*>/ResourceGroups/<naam van de *resource groep*>/providers/Microsoft.Network/virtualnetworks/<naam van het *virtuele netwerk*>/subnets/<naam van het *subnet*>
+  -  **Subnet-id**. Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID ziet er ongeveer als volgt uit:/Subscriptions/<*abonnements-ID*>/resourceGroups/<naam van de *resource groep*>/providers/Microsoft.Network/virtualNetworks/<naam van het *virtuele netwerk*>/subnets/<naam van het *subnet*>
 
 De sjabloon implementeert een Azure Load Balancer-exemplaar dat meerdere SAP-systemen ondersteunt.
 

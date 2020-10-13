@@ -4,10 +4,10 @@ description: Gebruik Azure Advisor om de betrouw baarheid in uw bedrijfs kritiek
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405187"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbeter de betrouw baarheid van uw toepassing met behulp van Azure Advisor
@@ -113,7 +113,7 @@ Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio
 De [agent van de Azure Connected machine](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) wordt regel matig bijgewerkt met fout oplossingen, verbeteringen in stabiliteit en nieuwe functionaliteit. Er zijn resources geïdentificeerd die niet werken met de meest recente versie van machine agent en deze Advisor-aanbeveling raadt u aan om uw agent bij te werken naar de nieuwste versie voor de beste Azure Arc-ervaring.
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>De hostnaam niet overschrijven om de integriteit van de website te garanderen
-Advisor raadt aan om te voor komen dat de hostnaam wordt overschreven bij het configureren van Application Gateway. Als u een ander domein hebt op de front-end van Application Gateway dan de-URL die wordt gebruikt voor toegang tot de back-end, kan dit leiden tot cookies of omleidings-url's die worden verbroken. Houd er rekening mee dat dit in alle gevallen niet het geval is en dat bepaalde soorten back-ends (zoals REST API) in het algemeen minder gevoelig zijn. Controleer of de back-end kan worden verwerkt of werk de Application Gateway configuratie bij, zodat de hostnaam niet op de back-end hoeft te worden overschreven. Bij gebruik in combi natie met App Service koppelt u een aangepaste domein naam aan de web-app en vermijdt u het gebruik van de *azurewebsites.net-hostnaam voor de back-end.* [Meer informatie over een aangepast domein](https://aka.ms/appgw-advisor-usecustomdomain).
+Advisor raadt aan om te voor komen dat de hostnaam wordt overschreven bij het configureren van Application Gateway. Als u een ander domein hebt op de front-end van Application Gateway dan het domein dat wordt gebruikt voor toegang tot de back-end, kan ertoe leiden dat cookies of omleidings-URL's worden verbroken. Houd er rekening mee dat dit niet altijd het geval hoeft te zijn en dat bepaalde categorieën back-ends (zoals REST API's) hiervoor in het algemeen minder gevoelig zijn. Controleer of de back-end hiermee kan omgaan of werk de configuratie van Application Gateway bij, zodat de hostnaam niet op de back-end hoeft te worden overschreven. Bij gebruik in combi natie met App Service koppelt u een aangepaste domein naam aan de web-app en vermijdt u het gebruik van de *azurewebsites.net-hostnaam voor de back-end.* [Meer informatie over een aangepast domein](https://aka.ms/appgw-advisor-usecustomdomain).
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Toegang tot aanbevelingen voor hoge Beschik baarheid in Advisor
 
