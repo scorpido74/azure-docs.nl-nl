@@ -8,10 +8,10 @@ ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89075423"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall implementeren en configureren met behulp van Azure CLI
@@ -105,7 +105,7 @@ az network vnet subnet create \
 Maak nu de virtuele jump- en workloadmachines en plaats ze in de toepasselijke subnetten.
 Typ een wacht woord voor de virtuele machine wanneer u hierom wordt gevraagd.
 
-Maak de SRV-Jump-virtuele machine.
+Maak de virtuele machine van Srv-Jump.
 
 ```azurecli-interactive
 az vm create \
@@ -121,7 +121,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Maak een NIC voor SRV-werk met specifieke IP-adressen van de DNS-server en geen openbaar IP-adres om met te testen.
+Maak een NIC voor Srv-Work met specifieke IP-adressen van de DNS-server en geen openbaar IP-adres om met te testen.
 
 ```azurecli-interactive
 az network nic create \

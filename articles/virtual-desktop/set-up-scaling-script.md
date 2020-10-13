@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078551"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
@@ -25,9 +25,9 @@ Het hulp programma voor schalen biedt een voordelige automatiserings optie voor 
 
 U kunt het hulp programma schalen gebruiken voor het volgende:
 
-- Plan Vm's om te starten en stoppen op basis van pieken en kantoor uren.
+- Plan Vm's om te starten en stoppen op basis van pieken en Off-Peak kantoor uren.
 - Uitschalen van Vm's op basis van het aantal sessies per CPU-kern.
-- Schaal in Vm's tijdens rustige uren, waardoor het minimale aantal actieve host-Vm's wordt uitgevoerd.
+- Schaal in Vm's tijdens Off-Peak uur, waardoor het minimale aantal actieve host-Vm's wordt uitgevoerd.
 
 Het hulp programma voor schalen maakt gebruik van een combi natie van een Azure Automation account, een Power shell-runbook, een webhook en de Azure Logic-app die u kunt gebruiken. Wanneer het hulp programma wordt uitgevoerd, roept Azure Logic app een webhook aan om het Azure Automation runbook te starten. Het runbook maakt vervolgens een taak.
 

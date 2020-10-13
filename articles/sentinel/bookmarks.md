@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588685"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Gegevens bijhouden tijdens de jacht met Azure Sentinel
@@ -110,7 +110,7 @@ Voor instructies voor het gebruik van de onderzoek grafiek raadpleegt u [de onde
     > [!div class="mx-imgBorder"]
     > ![Blad wijzers toevoegen aan incident](./media/bookmarks/incident-actions.png)
 
-3. Selecteer een **nieuw incident maken** of **toevoegen aan een bestaand incident**, indien nodig. Vervolgens:
+3. Selecteer een **nieuw incident maken** of **toevoegen aan een bestaand incident**, indien nodig. Daarna kunt u het volgende doen:
     
     - Voor een nieuw incident: werk eventueel de details van het incident bij en selecteer vervolgens **maken**.
     - Ga als volgt te werk om een blad wijzer toe te voegen aan een bestaand incident: Selecteer één incident en selecteer vervolgens **toevoegen**. 

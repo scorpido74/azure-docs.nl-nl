@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77019550"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Quick Start: VMware-Vm's in azure gebruiken
@@ -26,7 +26,7 @@ Maak een virtuele machine in uw Privécloud vanuit de vCenter-gebruikers interfa
 
 ## <a name="create-a-virtual-machine-in-the-azure-portal"></a>Een virtuele machine maken in Azure Portal
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
 2. Zoek naar **CloudSimple-virtual machines**.
 
@@ -41,8 +41,8 @@ Maak een virtuele machine in uw Privécloud vanuit de vCenter-gebruikers interfa
     | Veld | Beschrijving |
     | ------------ | ------------- |
     | Abonnement | Het Azure-abonnement dat is gekoppeld aan uw Privécloud.  |
-    | Resourcegroep | De resource groep waaraan de virtuele machine wordt toegewezen. U kunt een bestaande groep selecteren of een nieuwe maken. |
-    | Name | Naam voor het identificeren van de virtuele machine.  |
+    | Resource Group | De resource groep waaraan de virtuele machine wordt toegewezen. U kunt een bestaande groep selecteren of een nieuwe maken. |
+    | Naam | Naam voor het identificeren van de virtuele machine.  |
     | Locatie | De Azure-regio waarin deze VM wordt gehost.  |
     | Privécloud | CloudSimple de Privécloud waar u de virtuele machine wilt maken. |
     | Resource groep | Toegewezen resource groep voor de virtuele machine. Selecteer een van de beschik bare resource groepen. |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393595"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP configureren op een Azure VPN-gateway met behulp van CLI
@@ -91,7 +91,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Maak de VPN-gateway met het AS-nummer
 
-Maak de gateway van het virtuele netwerk voor TestVNet1. BGP vereist een op route gebaseerde VPN-gateway. U hebt ook de extra para meter nodig `-Asn` om het autonome systeem nummer (ASN) voor TestVNet1 in te stellen. Het maken van een gateway kan enige tijd duren (45 minuten of langer). 
+Maak de gateway van het virtuele netwerk voor TestVNet1. BGP vereist een Route-Based VPN-gateway. U hebt ook de extra para meter nodig `-Asn` om het autonome systeem nummer (ASN) voor TestVNet1 in te stellen. Het maken van een gateway kan enige tijd duren (45 minuten of langer). 
 
 Als u deze opdracht uitvoert met behulp van de `--no-wait` -para meter, worden er geen feedback of uitvoer weer gegeven. `--no-wait`Met de para meter kan de gateway op de achtergrond worden gemaakt. Dit betekent niet dat de VPN-gateway onmiddellijk wordt gemaakt.
 

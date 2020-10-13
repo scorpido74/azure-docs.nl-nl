@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049567"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Maak een flexibele toegangs beheer strategie met Azure Active Directory
@@ -119,7 +119,7 @@ Een beleid voor voorwaardelijke toegang voor nood gevallen is een **back-upbelei
 
 * Een set terugval beleid configureren als een onderbreking in één referentie type of een mechanisme voor toegangs beheer invloed heeft op de toegang tot uw apps. Configureer een beleid in de status alleen rapport waarvoor lidmaatschap van een domein als een besturings element is vereist als back-up voor een actief beleid waarvoor een MFA-provider van derden is vereist.
 * Verminder het risico dat ongeldige actors wacht woorden raden als MFA niet vereist is door de procedures in het technisch document voor [richt lijnen voor wacht](https://aka.ms/passwordguidance) woorden te volgen.
-* Implementeer [Azure AD self-service voor wachtwoord herstel (SSPR)](./tutorial-enable-sspr.md) en [Azure AD-wachtwoord beveiliging](./howto-password-ban-bad-on-premises-deploy.md) om ervoor te zorgen dat gebruikers geen gemeen schappelijk wacht woord en voor waarden gebruiken die u wilt verbieden.
+* Implementeer [Azure ad Self-Service wachtwoord herstel (SSPR)](./tutorial-enable-sspr.md) en [Azure AD-wachtwoord beveiliging](./howto-password-ban-bad-on-premises-deploy.md) om ervoor te zorgen dat gebruikers geen gemeen schappelijk wacht woord en voor waarden gebruiken die u wilt verbieden.
 * Gebruik beleids regels voor het beperken van de toegang binnen de apps als een bepaald verificatie niveau niet wordt bereikt in plaats van eenvoudigweg terug te vallen op volledige toegang. Bijvoorbeeld:
   * Configureer een back-upbeleid dat de beperkte sessie claim verzendt naar Exchange en share point.
   * Als uw organisatie gebruikmaakt van Microsoft Cloud App Security, overweeg dan terug te vallen op een beleid dat MCAS en vervolgens MCAS alleen-lezen toegang toestaat, maar niet uploads.
@@ -215,13 +215,13 @@ Als u Azure AD MFA NPS-extensie hebt geïmplementeerd voor het beveiligen van on
 In dit geval kunt u de NPS-uitbrei ding uitschakelen, omdat de NPS-server alleen primaire authenticatie verifieert en niet MFA afdwingt voor de gebruikers.
 
 NPS-uitbrei ding uitschakelen: 
--   Exporteer de HKEY_LOCAL_MACHINE register sleutel \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters als back-up. 
+-   Exporteer de HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters register sleutel als back-up. 
 -   Verwijder de register waarden voor "AuthorizationDLLs" en "ExtensionDLLs", niet de sleutel para meters. 
 -   Start de service Network Policy service opnieuw op om de wijzigingen van kracht te laten worden 
 -   Bepaal of de primaire verificatie voor VPN is geslaagd.
 
 Zodra de service is hersteld en u klaar bent om MFA af te dwingen voor uw gebruikers, schakelt u de NPS-extensie in: 
--   De register sleutel importeren uit een back-up HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   De register sleutel importeren uit een back-up HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   Start de service Network Policy service opnieuw op om de wijzigingen van kracht te laten worden 
 -   Bepaal of primaire authenticatie en secundaire verificatie voor VPN geslaagd zijn.
 -   Controleer de NPS-server en het VPN-logboek om te bepalen welke gebruikers zich hebben aangemeld tijdens het nood venster.

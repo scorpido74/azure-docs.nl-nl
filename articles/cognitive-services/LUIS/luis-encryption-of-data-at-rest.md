@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078126"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Language Understanding-service versleuteling van gegevens in rust
@@ -32,11 +32,11 @@ Uw abonnement maakt standaard gebruik van door Microsoft beheerde versleutelings
 
 Er is ook een optie voor het beheren van uw abonnement met uw eigen sleutels. Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelingssleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
-U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
+U moet Azure Key Vault gebruiken om door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Door de klant beheerde sleutels voor Language Understanding
 
-Als u de mogelijkheid wilt aanvragen om door de klant beheerde sleutels te gebruiken, vult u het aanvraag formulier voor de door de [klant beheerde sleutel](https://aka.ms/cogsvc-cmk)van de Luis-service in en verzendt u deze. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Na goed keuring voor het gebruik van CMK met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. De nieuwe SKU werkt hetzelfde als de F0-SKU die al beschikbaar is, met uitzonde ring van CMK. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
+Als u de mogelijkheid wilt aanvragen om door de klant beheerde sleutels te gebruiken, vult u het [Luis-Service Customer-Managed](https://aka.ms/cogsvc-cmk)en verzendt u het aanvraag formulier. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Na goed keuring voor het gebruik van CMK met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. De nieuwe SKU werkt hetzelfde als de F0-SKU die al beschikbaar is, met uitzonde ring van CMK. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
 
 ![Installatie kopie van LUIS-abonnement](../media/cognitive-services-encryption/luis-subscription.png)
 
@@ -85,5 +85,5 @@ Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aanvraag formulier voor door de klant beheerde sleutel van de LUIS-service](https://aka.ms/cogsvc-cmk)
+* [Aanvraag formulier voor LUIS-service Customer-Managed](https://aka.ms/cogsvc-cmk)
 * [Meer informatie over Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

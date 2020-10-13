@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737356"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Detectie van binnendringing van het netwerk met Network Watcher en open source-hulpprogram ma's uitvoeren
@@ -38,7 +38,7 @@ Beide open source-hulpprogram ma's kunnen worden ingesteld op een virtuele Azure
 
 ### <a name="install-suricata"></a>Suricata installeren
 
-Voor alle andere installatie methoden gaat u naarhttps://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Voor alle andere installatie methoden gaat u naar https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. Voer de volgende opdrachten uit in de opdracht regel terminal van uw VM:
 
@@ -233,7 +233,7 @@ Raadpleeg de [officiële documentatie](https://www.elastic.co/guide/en/beats/lib
     ./bin/kibana
     ```
 
-1. Als u uw Kibana web interface wilt weer geven, gaat u naar`http://localhost:5601`
+1. Als u uw Kibana web interface wilt weer geven, gaat u naar `http://localhost:5601`
 1. Voor dit scenario is het index patroon dat wordt gebruikt voor de logboeken van de Suricata "logstash-*"
 
 1. Als u het Kibana-dash board extern wilt weer geven, maakt u een inkomende NSG-regel waarmee toegang tot **poort 5601**wordt toegestaan.

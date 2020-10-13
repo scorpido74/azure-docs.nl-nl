@@ -7,10 +7,10 @@ ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056390"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
@@ -236,7 +236,7 @@ Aanmelden VSI is een Windows-service provider voor virtueel bureau blad en micro
 
 Nasuni Corp., de toonaangevende provider van Cloud bestands Services en een topazure Global ISV-partner, biedt het Nasuni software-as-a-service-platform als de moderne oplossing voor bestands opslag voor moderne virtuele Bureau bladen. Nasuni, in combi natie met Azure Blob Storage, consolideert de primaire bestands opslag (NAS), back-ups van bestanden, herstel na nood gevallen en bestands synchronisatie over meerdere regio's in één geïntegreerde oplossing. Met Nasuni kunnen ondernemingen virtuele Windows-Bureau bladen implementeren voor meer use cases en in meer Azure-regio's, het beheer vereenvoudigen en zorgen voor bedrijfs continuïteit. 
 
-Windows Virtual Desktop is een moderne VDI-oplossing voor de Cloud en vereist moderne Cloud bestands opslag. Normaal gesp roken is VDI File Storage gebaseerd op Network-Attached Storage (NAS) en de on-premises hardware van de bestands server en de bijbehorende vereiste technologie voor het maken van back-ups van bestanden, herstel en herstel na nood gevallen. Deze traditionele benaderingen zijn duur, complex om te onderhouden en te beheren, en kunnen niet eenvoudig worden geschaald. Ze introduceren ook latentie als het wordt gebruikt in combi natie met een moderne VDI-oplossing in de Cloud, zoals Windows virtueel bureau blad, vanwege de fysieke afstand en de langzamere WAN-verbindingen tussen de Bureau bladen op basis van Azure en de opslag op basis van lokale bestanden. Nasuni, een platform voor bestands Services dat speciaal voor Azure is gebouwd, biedt onbeperkte opslag capaciteit voor bestanden en bestands toegang met hoge prestaties. Nasuni kunnen zich in dezelfde Azure-regio's bevinden met het virtuele bureau blad van Windows om voordelige, hoogwaardige bestands toegang te bieden tot één globale naam ruimte. Nasuni biedt Windows-bestands opslag voor virtueel bureau blad met een fractie van de kosten van traditionele NAS-en Windows-bestands servers en bevat ingebouwde back-ups en herstel na nood gevallen om de kosten te verlagen en IT-resources vrij te maken.
+Windows Virtual Desktop is een moderne VDI-oplossing voor de Cloud en vereist moderne Cloud bestands opslag. In de meeste gevallen is VDI File Storage gebaseerd op Network-Attached Storage (NAS) en on-premises Bestands server hardware, en de bijbehorende vereiste technologie voor het maken van back-ups, herstel en herstel na een nood geval. Deze traditionele benaderingen zijn duur, complex om te onderhouden en te beheren, en kunnen niet eenvoudig worden geschaald. Ze introduceren ook latentie als het wordt gebruikt in combi natie met een moderne VDI-oplossing in de Cloud, zoals Windows virtueel bureau blad, vanwege de fysieke afstand en de langzamere WAN-verbindingen tussen de Bureau bladen op basis van Azure en de opslag op basis van lokale bestanden. Nasuni, een platform voor bestands Services dat speciaal voor Azure is gebouwd, biedt onbeperkte opslag capaciteit voor bestanden en bestands toegang met hoge prestaties. Nasuni kunnen zich in dezelfde Azure-regio's bevinden met het virtuele bureau blad van Windows om voordelige, hoogwaardige bestands toegang te bieden tot één globale naam ruimte. Nasuni biedt Windows-bestands opslag voor virtueel bureau blad met een fractie van de kosten van traditionele NAS-en Windows-bestands servers en bevat ingebouwde back-ups en herstel na nood gevallen om de kosten te verlagen en IT-resources vrij te maken.
 
 - [Ga naar de website van de partner](https://www.nasuni.com/partner/microsoft/#wvd).
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).

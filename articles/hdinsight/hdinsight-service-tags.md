@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 112f915f533627ccdc0ac6efe38caacc80b254bc
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89399953"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>NSG-service tags voor Azure HDInsight
@@ -59,15 +59,15 @@ Als uw cluster zich bevindt in een regio die in deze tabel wordt vermeld, hoeft 
 | Land | Regio | Servicetag |
 | ---- | ---- | ---- |
 | Australië | Australië - oost | HDInsight. AustraliaEast |
-| &nbsp; | Australië - zuidoost | HDInsight. AustraliaSoutheast |
+| &nbsp; | Australia Southeast | HDInsight. AustraliaSoutheast |
 | &nbsp; | Australië - centraal | HDInsight. AustraliaCentral |
-| China | China-oost 2 | HDInsight. ChinaEast2 |
+| China | China - oost 2 | HDInsight. ChinaEast2 |
 | &nbsp; | China - noord 2 | HDInsight. ChinaNorth2 |
 | Verenigde Staten | VS - noord-centraal | HDInsight. NorthCentralUS |
-| &nbsp; | VS - west 2 | HDInsight. WestUS2 |
+| &nbsp; | West US 2 | HDInsight. WestUS2 |
 | &nbsp; | VS - west-centraal | HDInsight. WestCentralUS |
 | Canada | Canada - oost | HDInsight. CanadaEast |
-| Brazilië | Brazilië - zuid | HDInsight. BrazilSouth |
+| Brazilië | Brazil South | HDInsight. BrazilSouth |
 | Korea | Korea - centraal | HDInsight. KoreaCentral |
 | &nbsp; | Korea - zuid | HDInsight. KoreaSouth |
 | India | India - centraal | HDInsight. CentralIndia |
@@ -99,12 +99,12 @@ Als uw cluster bijvoorbeeld in de regio wordt gemaakt `East US 2` , moet u de vo
 | Land | Regio | Servicetag |
 | ---- | ---- | ---- |
 | Verenigde Staten | VS - oost 2 | HDInsight. EastUS2 |
-| &nbsp; | VS - centraal | HDInsight. Centraalus |
+| &nbsp; | Central US | HDInsight. Centraalus |
 | &nbsp; | NorthCentral | HDInsight. NorthCentralUS |
-| &nbsp; | VS - zuid-centraal | HDInsight. SouthCentralUS |
+| &nbsp; | South Central US | HDInsight. SouthCentralUS |
 | &nbsp; | VS - oost | HDInsight. Oostelijkeus |
 | &nbsp; | VS - west | HDInsight. Westelijkeus |
-| Japan | Japan - oost | HDInsight. JapanEast |
+| Japan | Japan East | HDInsight. JapanEast |
 | Europa | Europa - noord | HDInsight. NorthEurope |
 | &nbsp; | Europa -west| HDInsight. Europa West |
 | Azië | Azië - oost | HDInsight. EastAsia |

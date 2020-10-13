@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300306"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Uw Stream Analytics-taak schalen met de functies Azure Machine Learning Studio (klassiek)
@@ -106,10 +106,10 @@ Hieronder ziet u een tabel voor de door Voer van de Stream Analytics-taak voor v
 
 | Batch grootte (ML-latentie) | 500 (200 MS) | 1.000 (200 MS) | 5.000 (250 MS) | 10.000 (300 MS) | 25.000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2500 |5.000 |20.000 |30.000 |50,000 |
-| **3 SUs** |2500 |5.000 |20.000 |30.000 |50,000 |
-| **6 SUs** |2500 |5.000 |20.000 |30.000 |50,000 |
-| **12 SUs** |5.000 |10.000 |40,000 |60.000 |100.000 |
+| **1 SU** |2500 |5\.000 |20.000 |30.000 |50,000 |
+| **3 SUs** |2500 |5\.000 |20.000 |30.000 |50,000 |
+| **6 SUs** |2500 |5\.000 |20.000 |30.000 |50,000 |
+| **12 SUs** |5\.000 |10.000 |40,000 |60.000 |100.000 |
 | **18 SUs** |7\.500 |15.000 |60.000 |90,000 |150.000 |
 | **24-SUs** |10.000 |20.000 |80,000 |120.000 |200.000 |
 | **…** |… |… |… |… |… |

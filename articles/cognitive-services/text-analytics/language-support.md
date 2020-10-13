@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: aahi
 ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056588"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Ondersteuning voor Text Analytics-API v3-taal 
@@ -27,8 +27,8 @@ ms.locfileid: "90056588"
 
 | Taal              | Taalcode | v2-ondersteuning | v3-ondersteuning | De versie van het v3-model wordt gestart: |              Notities |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Chinees-vereenvoudigd    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` ook geaccepteerd |
-| Chinees-traditioneel   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
+| Chinese-Simplified    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` ook geaccepteerd |
+| Chinese-Traditional   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
 | Deens               |     `da`      |     ✓      |            |                            |                    |
 | Nederlands                 |     `nl`      |     ✓      |            |                            |                    |
 | Engels               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
@@ -54,7 +54,7 @@ ms.locfileid: "90056588"
 | Engels               |     `en`      |              2020-04-01              |                    |
 
 
-#### <a name="named-entity-recognition-ner"></a>[Herkenning van benoemde entiteiten (NER)](#tab/named-entity-recognition)
+#### <a name="named-entity-recognition-ner"></a>[NER (Herkenning van benoemde entiteiten)](#tab/named-entity-recognition)
 
 > [!NOTE]
 > * NER v3 ondersteunt momenteel alleen Engelse en Spaanse talen. Als u NER v3 aanroept met een andere taal, retourneert de API v 2.1-resultaten, op voor waarde dat de taal wordt ondersteund in versie 2,1.
@@ -64,8 +64,8 @@ ms.locfileid: "90056588"
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arabisch                |     `ar`      |     ✓      |            |                                 |                    |
 | Tsjechisch                 |     `cs`      |     ✓      |            |                                 |                    |
-| Chinees-vereenvoudigd     |   `zh-hans`   |     ✓      |            |                                 | `zh` ook geaccepteerd |
-| Chinees-traditioneel   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| Chinese-Simplified     |   `zh-hans`   |     ✓      |            |                                 | `zh` ook geaccepteerd |
+| Chinese-Traditional   |   `zh-hant`   |     ✓      |            |                                 |                    |
 | Deens                |     `da`      |     ✓      |            |                                 |                    |
 | Nederlands                 |     `nl`      |     ✓      |            |                                 |                    |
 | Engels                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
