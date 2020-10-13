@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 70f350204796099e02f7afe829a6e2e1fdf653c8
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613093"
 ---
 # <a name="edit-storage-targets"></a>Opslagdoelen bewerken
@@ -38,7 +38,7 @@ U kunt de naam, het type of het back-end-opslag systeem (BLOB-container of NBS-h
 
 Als u een opslag doel wilt verwijderen, opent u de pagina **opslag doelen** . Selecteer het opslag doel in de lijst en klik op de knop **verwijderen** .
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -77,7 +77,7 @@ Klik op de naam van het pad dat u wilt wijzigen en maak het nieuwe pad in het be
 
 Nadat u wijzigingen hebt aangebracht, klikt u op **OK** om het opslag doel bij te werken of klikt u op **Annuleren** om de wijzigingen te negeren.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -115,7 +115,7 @@ Gebruik de **naam ruimte** pagina voor uw Azure HPC-cache om naam ruimte waarden
 1. Gebruik het bewerkings venster om nieuwe waarden voor het virtuele pad, de export of de subdirectory te typen.
 1. Nadat u wijzigingen hebt aangebracht, klikt u op **OK** om het opslag doel bij te werken of op **Annuleren** om de wijzigingen te negeren.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -133,7 +133,7 @@ U moet alle drie de waarden voor elk pad opgeven in de ``--junction`` instructie
 
 De cache naam, de naam van het opslag doel en de resource groep zijn ook vereist in alle update-opdrachten.
 
-Voor beeld opdracht:
+Voorbeeldopdracht:
 
 ```azurecli
 az hpc-cache nfs-storage-target update --cache-name mycache \
@@ -157,7 +157,7 @@ Wijzig het gebruiks model op de pagina **opslag doelen** in het Azure Portal. Kl
 
 Gebruik de vervolg keuzelijst om een nieuw gebruiks model te kiezen. Klik op **OK** om het opslag doel bij te werken of klik op **Annuleren** om de wijzigingen te negeren.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 

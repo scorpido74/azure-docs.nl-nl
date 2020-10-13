@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898214"
 ---
 # <a name="summarize-data"></a>Gegevens samenvatten
@@ -46,7 +46,7 @@ De module berekent de belang rijke scores voor elke kolom en retourneert een rij
 
 Het rapport van de module kan de volgende statistieken bevatten. 
 
-|Kolomnaam|Description|
+|Kolomnaam|Beschrijving|
 |------|------|  
 |**Functie**|Naam van de kolom|
 |**Aantal**|Aantal rijen|
@@ -54,7 +54,7 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**Aantal ontbrekende waarden**|Aantal unieke waarden in kolom|
 |**Haal**|Laagste waarde in kolom|  
 |**Aantal**|Hoogste waarde in kolom|
-|**Gemiddeld**|Gemiddelde van alle kolom waarden|
+|**Greenwich**|Gemiddelde van alle kolom waarden|
 |**Gemiddelde afwijking**|Gemiddelde afwijking van kolom waarden|
 |**1e kwartiel**|Waarde bij eerste kwartiel|
 |**Mediaan**|Kolom waarde mediaan|
@@ -67,7 +67,7 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**Voor beeld van kurtosis**|Kurtosis voor kolom; Zie opmerking|
 |**P 0,5**|0,5% percentiel|
 |**P1**|1% percentiel|
-|**B5**|5% percentiel|
+|**P5**|5% percentiel|
 |**P95**|95% percentiel|
 |**P 99,5**|99,5% percentiel |
 

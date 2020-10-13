@@ -9,12 +9,12 @@ ms.date: 08/26/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8d8d8caec81dc71992fe330c2fde24f89ccfc961
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 62989c21333e53fcb58b4b637802c8b697ae970e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371436"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmatisch Azure-abonnementen maken (preview)
 
@@ -130,7 +130,7 @@ Gebruik de eigenschap `principalName` om het account te identificeren waarvoor a
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Abonnementen maken onder een specifiek inschrijvingsaccount
 
-In het volgende voorbeeld wordt in het inschrijvingsaccount dat u in de vorige stap hebt geselecteerd, een abonnement gemaakt met de naam *Dev Team Subscription*. De aanbieding voor het abonnement *MS-AZR-0017P* (regulier Microsoft Enterprise Agreement). Optioneel worden twee gebruikers toegevoegd als RBAC-eigenaren voor het abonnement.
+In het volgende voorbeeld wordt in het inschrijvingsaccount dat u in de vorige stap hebt geselecteerd, een abonnement gemaakt met de naam *Dev Team Subscription*. De aanbieding voor het abonnement *MS-AZR-0017P* (regulier Microsoft Enterprise Agreement). Optioneel worden twee gebruikers toegevoegd als Azure RBAC-eigenaren voor het abonnement.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -157,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Nee      | Tekenreeks | De weergavenaam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, bijvoorbeeld Microsoft Azure Enterprise.                                 |
 | `offerType`   | Ja      | Tekenreeks | De aanbieding voor het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (gebruikt voor productie) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (ontwikkelen/testen; moet worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `owners`      | Nee       | Tekenreeks | De object-id van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
+| `owners`      | Nee       | Tekenreeks | De object-id van een gebruiker die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
 
 Als onderdeel van de header `Location` wordt in het antwoord een URL weergegeven waarmee u de status van de maakbewerking van een abonnement kunt achterhalen. Wanneer het abonnement is gemaakt, retourneert een GET-bewerking voor de URL van het type `Location` een `subscriptionLink`-object, dat de abonnement-id heeft. Raadpleeg [Documentatie over abonnement-API](/rest/api/subscription/) voor meer informatie
 
@@ -176,9 +176,9 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `Name` | Nee      | Tekenreeks | De weergavenaam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, bijvoorbeeld Microsoft Azure Enterprise.                                 |
 | `OfferType`   | Ja      | Tekenreeks | De aanbieding voor het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (gebruikt voor productie) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (ontwikkelen/testen; moet worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `EnrollmentAccountObjectId`      | Ja       | Tekenreeks | De object-id van het inschrijvingsaccount waaronder het abonnement wordt gemaakt en waarvoor het wordt gefactureerd. Deze waarde is een GUID die u ophaalt van `Get-AzEnrollmentAccount`. |
-| `OwnerObjectId`      | Nee       | Tekenreeks | De object-id van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
-| `OwnerSignInName`    | Nee       | Tekenreeks | Het e-mailadres van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze parameter gebruiken in plaats van `OwnerObjectId`.|
-| `OwnerApplicationId` | Nee       | Tekenreeks | De toepassing-id van een service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer het wordt gemaakt. U kunt deze parameter gebruiken in plaats van `OwnerObjectId`. Wanneer u deze parameter gebruikt, moet de service-principal [leestoegang voor de map hebben](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+| `OwnerObjectId`      | Nee       | Tekenreeks | De object-id van een gebruiker die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
+| `OwnerSignInName`    | Nee       | Tekenreeks | Het e-mailadres van een gebruiker die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze parameter gebruiken in plaats van `OwnerObjectId`.|
+| `OwnerApplicationId` | Nee       | Tekenreeks | De toepassing-id van een service-principal die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer het wordt gemaakt. U kunt deze parameter gebruiken in plaats van `OwnerObjectId`. Wanneer u deze parameter gebruikt, moet de service-principal [leestoegang voor de map hebben](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Zie [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription) voor een volledige lijst met parameters.
 
@@ -198,9 +198,9 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `display-name` | Nee      | Tekenreeks | De weergavenaam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, bijvoorbeeld Microsoft Azure Enterprise.                                 |
 | `offer-type`   | Ja      | Tekenreeks | De aanbieding voor het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (gebruikt voor productie) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (ontwikkelen/testen; moet worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `enrollment-account-object-id`      | Ja       | Tekenreeks | De object-id van het inschrijvingsaccount waaronder het abonnement wordt gemaakt en waarvoor het wordt gefactureerd. Deze waarde is een GUID die u ophaalt van `az billing enrollment-account list`. |
-| `owner-object-id`      | Nee       | Tekenreeks | De object-id van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
-| `owner-upn`    | Nee       | Tekenreeks | Het e-mailadres van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze parameter gebruiken in plaats van `owner-object-id`.|
-| `owner-spn` | Nee       | Tekenreeks | De toepassing-id van een service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer het wordt gemaakt. U kunt deze parameter gebruiken in plaats van `owner-object-id`. Wanneer u deze parameter gebruikt, moet de service-principal [leestoegang voor de map hebben](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+| `owner-object-id`      | Nee       | Tekenreeks | De object-id van een gebruiker die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
+| `owner-upn`    | Nee       | Tekenreeks | Het e-mailadres van een gebruiker die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze parameter gebruiken in plaats van `owner-object-id`.|
+| `owner-spn` | Nee       | Tekenreeks | De toepassing-id van een service-principal die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer het wordt gemaakt. U kunt deze parameter gebruiken in plaats van `owner-object-id`. Wanneer u deze parameter gebruikt, moet de service-principal [leestoegang voor de map hebben](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Zie [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) voor een volledige lijst met parameters.
 
@@ -210,7 +210,7 @@ Zie [az account create](/cli/azure/ext/subscription/account?view=azure-cli-lates
 
 - Alleen Azure Enterprise-abonnementen kunnen met deze API worden gemaakt.
 - Er is een limiet van 2000 abonnementen per inschrijvingsaccount. Daarna kunnen alleen nog meer abonnementen voor het account worden gemaakt in Azure Portal. Als u meer abonnementen via de API wilt maken, maakt u een nieuw inschrijvingsaccount.
-- Gebruikers die geen accounteigenaar zijn, maar die zijn toegevoegd aan een inschrijvingsaccount via RBAC, kunnen geen abonnementen maken in Azure Portal.
+- Gebruikers die geen accounteigenaar zijn, maar die zijn toegevoegd aan een inschrijvingsaccount via Azure RBAC, kunnen geen abonnementen maken in Azure Portal.
 - U kunt de tenant niet selecteren voor het abonnement waarin deze moet worden gemaakt. Het abonnement wordt altijd gemaakt in de starttenant van de accounteigenaar. Zie [Abonnementstenant wijzigen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) om het abonnement naar een andere tenant te verplaatsen.
 
 
@@ -349,7 +349,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `displayName` | Ja      | Tekenreeks | De weergavenaam van het abonnement.|
 | `billingProfileId`   | Ja      | Tekenreeks | De id van het factureringsprofiel waarmee de kosten voor het abonnement worden gefactureerd.  |
 | `skuId` | Ja      | Tekenreeks | De SKU-id die het type het Azure-plan bepaalt. |
-| `owners`      | Nee       | Tekenreeks | De object-id van een gebruiker of service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer het wordt gemaakt.  |
+| `owners`      | Nee       | Tekenreeks | De object-id van een gebruiker of service-principal die u wilt toevoegen als een Azure RBAC-eigenaar voor het abonnement wanneer het wordt gemaakt.  |
 | `costCenter` | Nee      | Tekenreeks | Kostenplaats die aan het abonnement is gekoppeld. Het wordt weergegeven in het CSV-bestand voor het gebruik. |
 | `managementGroupId` | Nee      | Tekenreeks | De id van de beheergroep waaraan het abonnement wordt toegevoegd. Zie [Beheergroepen - Lijst-API](/rest/api/resources/managementgroups/list) voor een lijst met beheergroepen. Gebruik de id van een beheergroep van de API. |
 

@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/09/2020
-ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/07/2020
+ms.openlocfilehash: c1d43da3a0be65b2351a4b6dbeeb2772062356bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442381"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974631"
 ---
 # <a name="archived-release-notes"></a>Gearchiveerde releaseopmerkingen
 
 ## <a name="summary"></a>Samenvatting
 
 Azure HDInsight is onder zakelijke klanten een van de meest populaire services voor open source Apache Hadoop- en Apache Spark-analyses in Azure.
+
+## <a name="release-date-09282020"></a>Release datum: 09/28/2020
+
+Deze versie is van toepassing op zowel HDInsight 3,6 als HDInsight 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
+
+### <a name="new-features"></a>Nieuwe functies
+#### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Automatisch schalen voor interactieve Query's met HDInsight 4,0 is nu algemeen beschikbaar
+Automatisch schalen voor interactief query cluster type is nu algemeen beschikbaar (GA) voor HDInsight 4,0. Alle interactieve query 4,0-clusters die zijn gemaakt na 27 augustus 2020, hebben ondersteuning voor automatisch schalen.
+
+#### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase-cluster ondersteunt Premium-ADLS Gen2
+HDInsight ondersteunt nu Premium ADLS Gen2 als primair opslag account voor HDInsight HBase 3,6-en 4,0-clusters. In combi natie met [versnelde schrijf bewerkingen](./hbase/apache-hbase-accelerated-writes.md)kunt u betere prestaties voor uw HBase-clusters krijgen.
+
+#### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Distributie van Kafka-partities in azure-fout domeinen
+Een foutdomein is een logische groepering van de onderliggende hardware in een Azure-datacenter. Elk foutdomein deelt een algemene voedingsbron en netwerkswitch. Voordat HDInsight Kafka alle partitie replica's in hetzelfde fout domein kan opslaan. Vanaf deze release ondersteunt HDInsight nu automatisch de distributie van Kafka-partities op basis van Azure-fout domeinen. 
+
+#### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+Klanten kunnen versleuteling in transit tussen cluster knooppunten inschakelen met behulp van IPSec-versleuteling met door het platform beheerde sleutels. Deze optie kan worden ingeschakeld op het moment dat het cluster wordt gemaakt. Zie meer informatie over [het inschakelen van versleuteling tijdens de overdracht](./domain-joined/encryption-in-transit.md).
+
+#### <a name="encryption-at-host"></a>Versleuteling op de host
+Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host zijn opgeslagen, versleuteld op rest en stromen die zijn versleuteld naar de opslag service. Vanuit deze release kunt u versleuteling op de **tijdelijke gegevens schijf op de host inschakelen** bij het maken van het cluster. Versleuteling op host wordt alleen ondersteund op [bepaalde VM-sku's in beperkte regio's](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal). HDInsight ondersteunt de [volgende knooppunt configuratie en sku's](./hdinsight-supported-node-configuration.md). Zie meer informatie over [het inschakelen van versleuteling op de host](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Verplaatsen naar schaal sets voor virtuele Azure-machines
+HDInsight maakt nu gebruik van virtuele machines van Azure om het cluster in te richten. Vanaf deze release wordt de service geleidelijk naar [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)gemigreerd. Het hele proces kan maanden duren. Nadat uw regio's en abonnementen zijn gemigreerd, worden nieuw gemaakte HDInsight-clusters uitgevoerd op virtuele-machine schaal sets zonder klant acties. Er wordt geen breuk wijziging verwacht.
+
+### <a name="deprecation"></a>Afschaffing
+Geen afschaffing voor deze release.
+
+### <a name="behavior-changes"></a>Gedrags wijzigingen
+Er is geen wijziging van het gedrag voor deze versie.
+
+### <a name="upcoming-changes"></a>Aanstaande wijzigingen
+De volgende wijzigingen worden uitgevoerd in toekomstige releases.
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Mogelijkheid om verschillende Zookeeper-SKU'S te selecteren voor Spark-, Hadoop-en ML-Services
+HDInsight biedt geen ondersteuning voor het wijzigen van Zookeeper SKU voor cluster typen van Spark, Hadoop en ML Services. Er wordt gebruikgemaakt van A2_v2/a2 SKU voor Zookeeper knooppunten en klanten worden niet in rekening gebracht. In de aanstaande release kunnen klanten de Zookeeper-SKU voor Spark-, Hadoop-en ML-Services indien nodig wijzigen. Zookeeper-knoop punten met een andere SKU dan A2_v2/a2 worden in rekening gebracht. De standaard-SKU wordt nog steeds A2_V2/a2 en gratis.
+
+### <a name="bug-fixes"></a>Opgeloste fouten
+HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 
+
+### <a name="component-version-change"></a>Onderdeel versie wijzigen
+Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor hdinsight 4,0 en hdinsight 3,6.
 
 ## <a name="release-date-08092020"></a>Release datum: 08/09/2020
 
@@ -304,7 +345,7 @@ Met HDInsight Identity Broker (HIB) kunnen gebruikers zich aanmelden bij Apache 
 
 #### <a name="kafka-rest-api-proxy-preview"></a>Kafka rest API-proxy (preview-versie)
 
-Kafka rest API proxy biedt één klik voor de implementatie van de Maxi maal beschik bare REST proxy met Kafka-cluster via een beveiligde AAD-autorisatie en een OAuth-protocol. 
+Kafka rest API proxy biedt één klik voor de implementatie van de Maxi maal beschik bare REST proxy met het Kafka-cluster via een beveiligde Azure AD-autorisatie en een OAuth-protocol. 
 
 #### <a name="auto-scale"></a>Automatisch schalen
 

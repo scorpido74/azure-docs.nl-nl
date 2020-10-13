@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398303"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
@@ -74,11 +74,11 @@ In dit voor beeld ziet u hoe u NSG-regels configureert voor replicatie van een v
 
 1. Maak een uitgaande HTTPS-beveiligings regel voor de NSG, zoals weer gegeven in de volgende scherm afbeelding. In dit voor beeld wordt de servicetag van de **doel service**gebruikt: _opslag. oostelijk_ en **doel poortbereiken**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="Scherm afbeelding toont een deel venster uitgaande beveiligings regel toevoegen voor een beveiligings regel voor opslag dot Oost U S.":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-fout":::
 
 1. Maak een uitgaande HTTPS-beveiligings regel voor de NSG, zoals weer gegeven in de volgende scherm afbeelding. In dit voor beeld wordt de servicetag van de **doel service**gebruikt: _AzureActiveDirectory_ en **doel poortbereiken**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="Scherm afbeelding toont een deel venster uitgaande beveiligings regel toevoegen voor een beveiligings regel voor Azure Active Directory.":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-fout":::
 
 1. Net als hierboven, maakt u een uitgaande HTTPS (443) beveiligings regel voor ' EventHub. Centralus ' op de NSG die overeenkomt met de doel locatie. Hiermee krijgt u toegang tot Site Recovery bewaking.
 1. Maak een uitgaande HTTPS (443) beveiligings regel voor ' AzureSiteRecovery ' op de NSG. Hiermee krijgt u toegang tot Site Recovery-service in elke regio.

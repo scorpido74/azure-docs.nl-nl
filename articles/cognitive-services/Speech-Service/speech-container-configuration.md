@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900288"
 ---
 # <a name="configure-speech-service-containers"></a>Spraak service containers configureren
@@ -50,7 +50,7 @@ Deze instelling bevindt zich op de volgende locatie:
 
 - Azure Portal: overzicht **van spraak** , gelabeld `Endpoint`
 
-| Vereist | Name | Gegevenstype | Beschrijving |
+| Vereist | Naam | Gegevenstype | Beschrijving |
 | -------- | ---- | --------- | ----------- |
 | Ja | `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](speech-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [Aangepaste subdomeinnamen voor Cognitive Services](../cognitive-services-custom-subdomains.md) voor meer informatie en een volledige lijst met regionale eindpunten. |
 
@@ -78,7 +78,7 @@ De standaard spraak containers gebruiken geen invoer-of uitvoer koppelingen om t
 
 De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhankelijk van het besturings systeem van de host. Daarnaast is de koppel locatie van de [hostcomputer](speech-container-howto.md#the-host-computer)mogelijk niet toegankelijk als gevolg van een conflict tussen de machtigingen die worden gebruikt door het docker-service account en de machtigingen voor het koppelen van de host-locatie.
 
-| Optioneel | Name | Gegevenstype | Beschrijving |
+| Optioneel | Naam | Gegevenstype | Beschrijving |
 | -------- | ---- | --------- | ----------- |
 | Niet toegestaan | `Input` | Tekenreeks | Standaard spraak containers gebruiken deze niet. Aangepaste spraak containers gebruiken [volume koppelingen](#volume-mount-settings).                                                                                    |
 | Optioneel | `Output` | Tekenreeks | Het doel van de uitvoer koppeling. De standaardwaarde is `/output`. Dit is de locatie van de logboeken. Dit omvat container Logboeken. <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output` |

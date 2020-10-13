@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 05ca16ad828525f2b09e4adf8f75be4667254614
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535182"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management access restriction policies (Beleid voor toegangsbeperking API Management)
@@ -133,7 +133,7 @@ Het `rate-limit` beleid voor komt dat het API-gebruik piekt per abonnement door 
 
 | Naam           | Beschrijving                                                                                           | Vereist | Standaard |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | De naam van de API waarvoor de frequentie limiet moet worden toegepast.                                                | Ja      | N.v.t.     |
+| naam           | De naam van de API waarvoor de frequentie limiet moet worden toegepast.                                                | Ja      | N.v.t.     |
 | rpc's          | Het maximale aantal aanroepen dat is toegestaan tijdens het tijds interval dat is opgegeven in de `renewal-period` . | Ja      | N.v.t.     |
 | verlenging-periode | De tijds periode in seconden waarna het quotum opnieuw wordt ingesteld.                                              | Ja      | N.v.t.     |
 
@@ -306,7 +306,7 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 
 | Naam           | Beschrijving                                                                                               | Vereist                                                         | Standaard |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | De naam van de API of bewerking waarvoor het quotum geldt.                                             | Ja                                                              | N.v.t.     |
+| naam           | De naam van de API of bewerking waarvoor het quotum geldt.                                             | Ja                                                              | N.v.t.     |
 | BAP      | Het Maxi maal toegestane aantal kilo bytes tijdens het tijds interval dat is opgegeven in de `renewal-period` . | Ofwel `calls` , `bandwidth` of beide moeten worden opgegeven. | N.v.t.     |
 | rpc's          | Het maximale aantal aanroepen dat is toegestaan tijdens het tijds interval dat is opgegeven in de `renewal-period` .     | Ofwel `calls` , `bandwidth` of beide moeten worden opgegeven. | N.v.t.     |
 | verlenging-periode | De tijds periode in seconden waarna het quotum opnieuw wordt ingesteld.                                                  | Ja                                                              | N.v.t.     |

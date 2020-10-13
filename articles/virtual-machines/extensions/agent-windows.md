@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 07/20/2019
 ms.author: mimckitt
-ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef2c9ef4e2a2296ceb214c89bb6e3fb98dcb26f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855772"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974903"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Overzicht van de agent voor virtuele Azure-machines
 De Microsoft Azure-agent van de virtuele machine (VM-agent) is een veilig, licht gewicht proces dat interactie van de virtuele machine (VM) beheert met de Azure Fabric-controller. De VM-agent heeft een primaire rol bij het inschakelen en uitvoeren van extensies van virtuele Azure-machines. VM-extensies maken de configuratie van de na de implementatie van de VM mogelijk, zoals het installeren en configureren van software. VM-extensies bieden ook herstel functies, zoals het opnieuw instellen van het beheerders wachtwoord van een virtuele machine. Zonder de VM-agent van Azure kunnen VM-extensies niet worden uitgevoerd.
@@ -68,7 +68,7 @@ $vm | Update-AzVM
 
 - Zorg ervoor dat uw virtuele machine toegang heeft tot het IP-adres 168.63.129.16. Zie [Wat is IP-adres 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)? voor meer informatie.
 
-- Zorg ervoor dat DHCP is ingeschakeld in de gast-VM. Dit is vereist om de host of het infrastructuur adres van DHCP op te halen voor de IaaS-VM-agent en-extensies. Als u een statisch privé IP-adres nodig hebt, moet u dit configureren via de Azure Portal of Power shell en ervoor zorgen dat de DHCP-optie in de virtuele machine is ingeschakeld. Meer [informatie](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) over het instellen van een statisch IP-adres met Power shell.
+- Zorg ervoor dat DHCP is ingeschakeld in de gast-VM. Dit is vereist om de host of het infrastructuur adres van DHCP op te halen voor de IaaS-VM-agent en-extensies. Als u een statisch privé IP-adres nodig hebt, moet u dit configureren via de Azure Portal of Power shell en ervoor zorgen dat de DHCP-optie in de virtuele machine is ingeschakeld. Meer [informatie](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) over het instellen van een statisch IP-adres met Power shell.
 
 
 ## <a name="detect-the-vm-agent"></a>De VM-agent detecteren
@@ -120,7 +120,7 @@ Als u een certificaat permanent wilt verwijderen, moet u het verwijderen uit de 
 
 Gebruik voor een virtuele machine de [Remove-AzVMSecret]() om certificaten te verwijderen uit de `OSProfile` .
 
-Zie [Virtual Machine Scale sets-hoe kan ik afgeschafte certificaten verwijderen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates) voor meer informatie over certificaten voor virtuele-machine schaal sets?
+Zie [Virtual Machine Scale sets-hoe kan ik afgeschafte certificaten verwijderen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates) voor meer informatie over certificaten voor virtuele-machine schaal sets?
 
 
 ## <a name="next-steps"></a>Volgende stappen

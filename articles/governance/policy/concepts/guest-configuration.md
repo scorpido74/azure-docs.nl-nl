@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88756687"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974716"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -48,7 +48,7 @@ In de computer gebruikt de gast configuratie-client lokale hulpprogram ma's om d
 
 De volgende tabel bevat een lijst met de lokale hulpprogram ma's die op elk ondersteund besturings systeem worden gebruikt. Voor ingebouwde inhoud verwerkt gast configuratie automatisch het laden van deze hulpprogram ma's.
 
-|Besturingssysteem|Validatie programma|Notities|
+|Besturingssysteem|Validatie programma|Opmerkingen|
 |-|-|-|
 |Windows|[Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| Een kant geladen naar een map die alleen door Azure Policy wordt gebruikt. Er is geen conflict met Windows Power shell DSC. Power shell Core is niet toegevoegd aan het systeempad.|
 |Linux|[Chef-specificatie](https://www.chef.io/inspec/)| Installeert chef Inspec-versie 2.2.61 op de standaard locatie en wordt toegevoegd aan het systeempad. Afhankelijkheden voor het INSPEC-pakket, waaronder Ruby en Python, worden ook geïnstalleerd. |
@@ -116,9 +116,7 @@ Gast configuratie beleidsregels gebruiken het **AuditIfNotExists** -effect. Wann
 Het **AuditIfNotExists** -beleid retourneert geen compliantie resultaten totdat aan alle vereisten wordt voldaan op de computer. De requirments worden beschreven in de sectie [vereisten voor Azure virtual machines implementeren](#deploy-requirements-for-azure-virtual-machines)
 
 > [!IMPORTANT]
-> In een eerdere versie van de gast configuratie was een initiatief vereist om **DeployIfNoteExists** -en **AuditIfNotExists** -definities te combi neren. **DeployIfNotExists** -definities zijn niet meer vereist. De definities en intiaitives hebben een label, `[Deprecated]` maar bestaande toewijzingen blijven functioneren.
->
-> Er is een hand matige stap vereist. Als u de beleids initiatieven in categorie eerder hebt toegewezen `Guest Configuration` , verwijdert u de beleids toewijzing en wijst u de nieuwe definitie toe. Gast configuratie beleidsregels hebben als volgt een naam patroon: `Audit <Windows/Linux> machines that <non-compliant condition>`
+> In een eerdere versie van de gast configuratie was een initiatief vereist om **DeployIfNoteExists** -en **AuditIfNotExists** -definities te combi neren. **DeployIfNotExists** -definities zijn niet meer vereist. De definities en intiaitives hebben een label, `[Deprecated]` maar bestaande toewijzingen blijven functioneren. Zie voor meer informatie het blog bericht: [belang rijke wijziging vrijgegeven voor controle beleid gast configuratie](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 Azure Policy maakt gebruik van de eigenschap **complianceStatus** van de gast configuratie resource provider om naleving te rapporteren in het knoop punt **naleving** . Zie [nalevings gegevens ophalen](../how-to/get-compliance-data.md)voor meer informatie.
 

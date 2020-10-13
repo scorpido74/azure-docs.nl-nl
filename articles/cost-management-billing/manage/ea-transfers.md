@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: c4d328d2e2ef562813bcb529c104b3559f03066e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371895"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-overdrachten
 
@@ -101,13 +101,13 @@ In Azure EA Portal kunnen abonnementen worden overdragen van de ene accounteigen
 
 Wanneer een Azure-abonnement wordt overgedragen naar een account in dezelfde Azure Active Directory-tenant, blijft de toegang behouden voor alle gebruikers, groepen en service-principals die [op Azure-rollen gebaseerde toegang (Azure RBAC)](../../role-based-access-control/overview.md) hadden om de resources te beheren.
 
-Gebruikers met RBAC-toegang tot het abonnement weergeven:
+Gebruikers met Azure RBAC-toegang tot het abonnement weergeven:
 
 1. Open in Azure Portal **Abonnementen**.
 2. Selecteer het abonnement dat u wilt weergeven en selecteer vervolgens **Toegangsbeheer (IAM)** .
-3. Selecteer **Roltoewijzingen**. De pagina met roltoewijzingen bevat een overzicht van alle gebruikers met RBAC-toegang tot het abonnement.
+3. Selecteer **Roltoewijzingen**. De pagina met roltoewijzingen bevat een overzicht van alle gebruikers met Azure RBAC-toegang tot het abonnement.
 
-Als het abonnement wordt overgedragen naar een account in een andere Azure AD-tenant, verliezen alle gebruiker, groepen en service-principals met [RBAC](../../role-based-access-control/overview.md) om resources te beheren, _hun toegang_. Hoewel er geen RBAC-toegang aanwezig is, is het abonnement mogelijk toegankelijk via een beveiligingsmechanisme, inclusief:
+Als het abonnement wordt overgedragen naar een account in een andere Azure AD-tenant, _verliezen_ alle gebruikers, groepen en service-principals met [Azure RBAC](../../role-based-access-control/overview.md) om resources te beheren, hun toegang. Hoewel er geen Azure RBAC-toegang aanwezig is, is het abonnement mogelijk toegankelijk via een beveiligingsmechanisme, inclusief:
 
 - Beheercertificaten die de gebruiker beheerdersrechten verlenen voor de abonnementsresources. Zie [Een beheercertificaat voor Azure maken en uploaden](../../cloud-services/cloud-services-certs-create.md) voor meer informatie.
 - Toegangssleutels voor services zoals Storage. Zie [Overzicht van Azure-opslagaccount](../../storage/common/storage-account-overview.md) voor meer informatie.

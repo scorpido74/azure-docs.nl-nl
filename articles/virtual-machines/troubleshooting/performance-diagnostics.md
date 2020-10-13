@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090632"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963241"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostische gegevens over prestaties voor virtuele Azure-machines
 
@@ -61,7 +61,7 @@ U kunt prestatie diagnostiek rechtstreeks vanuit de Azure Portal uitvoeren, waar
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Prestatie diagnostiek op uw virtuele machine installeren en uitvoeren
 
-Met diagnostische gegevens over prestaties wordt een VM-extensie geïnstalleerd waarmee een diagnostisch hulp programma wordt uitgevoerd met de naam PerfInsights. PerfInsights is beschikbaar voor [Windows](https://aka.ms/perfinsights) en [Linux](https://aka.ms/perfinsightslinux). Voer de volgende stappen uit om prestatie diagnostiek te installeren en uit te voeren:
+Met diagnostische gegevens over prestaties wordt een VM-extensie geïnstalleerd waarmee een diagnostisch hulp programma wordt uitgevoerd met de naam PerfInsights. PerfInsights is beschikbaar voor [Windows](./how-to-use-perfinsights.md) en [Linux](./how-to-use-perfinsights-linux.md). Voer de volgende stappen uit om prestatie diagnostiek te installeren en uit te voeren:
 
 1. Selecteer **virtuele machines**in de linkerkolom van de opdrachten.
 1. Selecteer in de lijst met VM-namen de virtuele machine waarvoor u Diagnostische gegevens wilt uitvoeren.
@@ -91,16 +91,16 @@ Met diagnostische gegevens over prestaties wordt een VM-extensie geïnstalleerd 
 De volgende analyse scenario's zijn beschikbaar via de Azure Portal. Selecteer een analyse, afhankelijk van het prestatie probleem dat u hebt. Selecteer de duur en tracerings opties die nodig zijn voor de analyse.
 
 * **Analyse van snelle prestaties**  
-    Hiermee wordt gecontroleerd op bekende problemen, worden aanbevolen procedures geanalyseerd en worden diagnostische gegevens verzameld. Het uitvoeren van deze analyse duurt enkele minuten. Meer informatie over [Windows](https://aka.ms/perfinsights/quick) of [Linux](https://aka.ms/perfinsightslinux/quick)
+    Hiermee wordt gecontroleerd op bekende problemen, worden aanbevolen procedures geanalyseerd en worden diagnostische gegevens verzameld. Het uitvoeren van deze analyse duurt enkele minuten. Meer informatie over [Windows](./how-to-use-perfinsights.md) of [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Analyse van prestaties**  
-    Omvat alle controles in de analyse van snelle prestaties en bewaken het gebruik van hoge bronnen. Gebruik deze versie om algemene prestatie problemen op te lossen, zoals hoge CPU, geheugen en schijf gebruik. Deze analyse duurt 30 seconden tot 15 minuten, afhankelijk van de geselecteerde duur. Meer informatie over [Windows](https://aka.ms/perfinsights/vmslow) of [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    Omvat alle controles in de analyse van snelle prestaties en bewaken het gebruik van hoge bronnen. Gebruik deze versie om algemene prestatie problemen op te lossen, zoals hoge CPU, geheugen en schijf gebruik. Deze analyse duurt 30 seconden tot 15 minuten, afhankelijk van de geselecteerde duur. Meer informatie over [Windows](./how-to-use-perfinsights.md) of [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Geavanceerde prestatie analyse**`*`  
-    Omvat alle controles in de analyse van prestaties en verzamelt een of meer van de traceringen, zoals vermeld in de volgende secties. Gebruik dit scenario om ingewikkelde problemen op te lossen waarvoor extra traceringen zijn vereist. Als u dit scenario voor langere Peri Oden uitvoert, wordt de totale grootte van de diagnostische uitvoer verg root, afhankelijk van de grootte van de virtuele machine en de geselecteerde tracerings opties. Het uitvoeren van deze analyse duurt 30 seconden tot 15 minuten, afhankelijk van de geselecteerde duur. [Meer informatie](https://aka.ms/perfinsights/advanced)
+    Omvat alle controles in de analyse van prestaties en verzamelt een of meer van de traceringen, zoals vermeld in de volgende secties. Gebruik dit scenario om ingewikkelde problemen op te lossen waarvoor extra traceringen zijn vereist. Als u dit scenario voor langere Peri Oden uitvoert, wordt de totale grootte van de diagnostische uitvoer verg root, afhankelijk van de grootte van de virtuele machine en de geselecteerde tracerings opties. Het uitvoeren van deze analyse duurt 30 seconden tot 15 minuten, afhankelijk van de geselecteerde duur. [Meer informatie](./how-to-use-perfinsights.md)
 
 * **Azure files analyse**`*`  
-    Omvat alle controles in de prestatie analyse en legt een netwerk tracering en SMB-teller vast. Gebruik dit scenario om de prestaties van Azure files op te lossen. Het uitvoeren van deze analyse duurt 30 seconden tot 15 minuten, afhankelijk van de geselecteerde duur. [Meer informatie](https://aka.ms/perfinsights/azurefiles)
+    Omvat alle controles in de prestatie analyse en legt een netwerk tracering en SMB-teller vast. Gebruik dit scenario om de prestaties van Azure files op te lossen. Het uitvoeren van deze analyse duurt 30 seconden tot 15 minuten, afhankelijk van de geselecteerde duur. [Meer informatie](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[ `*` ] Deze analyse scenario's worden alleen ondersteund in Windows.

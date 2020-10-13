@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: radeltch
 ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598301"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Pacemaker instellen voor Red Hat Enterprise Linux in azure
@@ -59,13 +59,13 @@ Lees eerst de volgende SAP-opmerkingen en-documenten:
 * [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
 * [SAP HANA systeem replicatie in pacemaker-cluster](https://access.redhat.com/articles/3004101)
 * Algemene documentatie voor RHEL
-  * [Overzicht van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Beheer van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Overzicht van Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Add-On beheer met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referentie voor Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-SBD en fence_sbd](https://access.redhat.com/articles/2800691)
 * Documentatie voor Azure-specifieke RHEL:
   * [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden](https://access.redhat.com/articles/3131341)
-  * [Installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Installeren en configureren van een Red Hat Enterprise Linux 7,4 (en hoger) High-Availability cluster op Microsoft Azure](https://access.redhat.com/articles/3252491)
   * [Overwegingen bij het aannemen van RHEL 8-hoge Beschik baarheid en clusters](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [SAP S/4HANA ASCS/ERS met zelfstandige server 2 (ENSA2) configureren in pacemaker op RHEL 7,6](https://access.redhat.com/articles/3974941)
 
@@ -102,7 +102,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-eus-rpms
    </code></pre>
 
-1. **[A]** INVOEG toepassing RHEL ha installeren
+1. **[A]** RHEL HA installeren Add-On
 
    <pre><code>sudo yum install -y pcs pacemaker fence-agents-azure-arm nmap-ncat
    </code></pre>
@@ -110,9 +110,9 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    > [!IMPORTANT]
    > We raden u aan de volgende versies van de Azure Fence-agent (of hoger) voor klanten te laten profiteren van een snellere failover, als het stoppen van een resource mislukt of als de cluster knooppunten niet meer kunnen communiceren.  
    > RHEL 7,7 of hoger gebruiken de nieuwste beschik bare versie van het pakket omheining-agents  
-   > RHEL 7,6: omheining-agents-4.2.1-11. el7_6.8  
-   > RHEL 7,5: omheining-agents-4.0.11-86. el7_5.8  
-   > RHEL 7,4: omheining-agents-4.0.11-66. el7_4.12  
+   > RHEL 7,6: omheining-agents-4.2.1-11.el7_6.8  
+   > RHEL 7,5: omheining-agents-4.0.11-86.el7_5.8  
+   > RHEL 7,4: omheining-agents-4.0.11-66.el7_4.12  
    > Zie voor meer informatie [Azure VM die wordt uitgevoerd als een RHEL-lid van een cluster met hoge Beschik baarheid neemt erg veel tijd in beslag om te worden geomheiningd of mislukt het uitzetten van een storing of een time-out voordat de virtuele machine wordt afgesloten](https://access.redhat.com/solutions/3408711).
 
    Controleer de versie van de Azure Fence-agent. Indien nodig moet u deze bijwerken naar een versie die gelijk is aan of hoger dan de hierboven vermelde.
