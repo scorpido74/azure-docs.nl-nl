@@ -2,13 +2,13 @@
 title: Sjabloonfuncties
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden op te halen, te werken met teken reeksen en cijfers en implementatie gegevens op te halen.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378403"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961167"
 ---
 # <a name="arm-template-functions"></a>ARM-sjabloon functies
 
@@ -47,7 +47,7 @@ Resource Manager biedt verschillende functies voor het werken met matrices.
 * [Snij punt](template-functions-array.md#intersection)
 * [duren](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [min.](template-functions-array.md#min)
+* [Haal](template-functions-array.md#min)
 * [aantal](template-functions-array.md#max)
 * [bereik](template-functions-array.md#range)
 * [verdergaan](template-functions-array.md#skip)
@@ -66,7 +66,7 @@ Resource Manager biedt verschillende functies voor het werken met matrices.
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
 
 * [Voeg](template-functions-comparison.md#coalesce)
-* [gelijk is aan](template-functions-comparison.md#equals)
+* [is gelijk aan](template-functions-comparison.md#equals)
 * [less](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [groter](template-functions-comparison.md#greater)
@@ -104,9 +104,11 @@ Resource Manager biedt de volgende functies voor het werken met logische voor wa
 
 * [and](template-functions-logical.md#and)
 * [booleaans](template-functions-logical.md#bool)
+* [onjuist](template-functions-logical.md#false)
 * [If](template-functions-logical.md#if)
 * [ten](template-functions-logical.md#not)
 * [or](template-functions-logical.md#or)
+* [true](template-functions-logical.md#true)
 
 <a id="add" aria-hidden="true"></a>
 <a id="copyindex" aria-hidden="true"></a>
@@ -128,7 +130,7 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [min.](template-functions-numeric.md#min)
+* [Haal](template-functions-numeric.md#min)
 * [aantal](template-functions-numeric.md#max)
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -141,10 +143,12 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 Resource Manager biedt verschillende functies voor het werken met objecten.
 
 * [daarin](template-functions-object.md#contains)
+* [createObject](template-functions-object.md#createobject)
 * [leeg](template-functions-object.md#empty)
 * [Snij punt](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
 * [length](template-functions-object.md#length)
+* [Null](template-functions-object.md#null)
 * [Réunion](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
