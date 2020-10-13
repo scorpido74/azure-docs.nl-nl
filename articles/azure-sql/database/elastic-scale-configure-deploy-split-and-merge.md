@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443042"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Een service voor splitsen en samen voegen implementeren om gegevens te verplaatsen tussen Shard-data bases
@@ -23,39 +23,39 @@ ms.locfileid: "91443042"
 
 Met het gereedschap splitsen en samen voegen kunt u gegevens verplaatsen tussen Shard-data bases. Zie [gegevens verplaatsen tussen uitgeschaalde Cloud databases](elastic-scale-overview-split-and-merge.md)
 
-## <a name="download-the-split-merge-packages"></a>De pakketten voor splitsen en samen voegen downloaden
+## <a name="download-the-split-merge-packages"></a>De Split-Merge-pakketten downloaden
 
 1. Down load de nieuwste versie van NuGet van [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
 
 1. Open een opdracht prompt en ga naar de map waarin u nuget.exe hebt gedownload. De down load bevat Power shell-opdrachten.
 
-1. Down load het nieuwste pakket voor splitsen en samen voegen in de huidige map met de onderstaande opdracht:
+1. Down load het nieuwste Split-Merge-pakket naar de huidige map met de onderstaande opdracht:
 
    ```cmd
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-De bestanden worden geplaatst in een map met de naam **micro soft. Azure. SqlDatabase. ElasticScale. service. SplitMerge. x. x. xxx. x** waarbij *x. x. xxx. x* het versie nummer aangeeft. Zoek de service bestanden voor splitsen en samen voegen in de **content\splitmerge\service** -submap en de Split-Merge Power shell-scripts (en de vereiste client-dll's) in de submap **content\splitmerge\powershell** .
+De bestanden worden geplaatst in een map met de naam **micro soft. Azure. SqlDatabase. ElasticScale. service. SplitMerge. x. x. xxx. x** waarbij *x. x. xxx. x* het versie nummer aangeeft. Zoek de service bestanden voor splitsen en samen voegen in de **content\splitmerge\service** -submap en de Split-Merge Power shell-scripts (en de vereiste client-dll's) in de **content\splitmerge\powershell** -submap.
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Maak een Azure SQL Database-data base die wordt gebruikt als de Data Base voor splitsen en samen voegen. Ga naar [Azure Portal](https://portal.azure.com). Maak een nieuwe **SQL database**. Geef de Data Base een naam en maak een nieuwe beheerder en een nieuw wacht woord. Zorg ervoor dat u de naam en het wacht woord noteert voor later gebruik.
+1. Maak een Azure SQL Database-data base die wordt gebruikt als de Data Base voor splitsen en samen voegen. Ga naar de [Azure Portal](https://portal.azure.com). Maak een nieuwe **SQL database**. Geef de Data Base een naam en maak een nieuwe beheerder en een nieuw wacht woord. Zorg ervoor dat u de naam en het wacht woord noteert voor later gebruik.
 
 1. Zorg ervoor dat de server met Azure-Services verbinding kan maken. Zorg er in de portal in de **firewall instellingen**voor dat de instelling **toegang tot Azure-Services toestaan** is ingesteld op **aan**. Klik op het pictogram opslaan.
 
 1. Maak een Azure Storage-account voor diagnostische uitvoer.
 
-1. Maak een Azure-Cloud service voor uw service voor splitsen en samen voegen.
+1. Maak een Azure-Cloud service voor uw Split-Merge service.
 
-## <a name="configure-your-split-merge-service"></a>Uw service voor splitsen en samen voegen configureren
+## <a name="configure-your-split-merge-service"></a>Uw Split-Merge-service configureren
 
-### <a name="split-merge-service-configuration"></a>Service configuratie splitsen en samen voegen
+### <a name="split-merge-service-configuration"></a>Configuratie van Split-Merge-service
 
-1. Maak in de map waarnaar u de Splits-samen voegingen hebt gedownload, een kopie van het bestand *ServiceConfiguration. template. cscfg* dat naast *SplitMergeService. cspkg* is geleverd en wijzig de naam *ServiceConfiguration. cscfg*.
+1. Maak in de map waarin u de Split-Merge assembly's hebt gedownload een kopie van het bestand *ServiceConfiguration. Temp late. cscfg* dat naast *SplitMergeService. cspkg* is geleverd en wijzig de naam *ServiceConfiguration. cscfg*.
 
 1. Open *ServiceConfiguration. cscfg* in een tekst editor, zoals Visual Studio, waarmee invoer wordt gevalideerd, zoals de indeling van certificaat vingerafdrukken.
 
-1. Maak een nieuwe data base of kies een bestaande Data Base als de status database voor splitsen en samen voegen en haal de connection string van die data base op.
+1. Maak een nieuwe data base of kies een bestaande data base die u als de status database voor Split-Merge bewerkingen wilt gebruiken en de connection string van die Data Base wilt ophalen.
 
    > [!IMPORTANT]
    > Op dit moment moet de status database de Latijnse sortering (SQL \_ Latin1 \_ General \_ CP1 \_ CI \_ as) gebruiken. Zie [Windows Collation name (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)voor meer informatie.
@@ -108,7 +108,7 @@ Voer de volgende opdracht uit vanuit hetzelfde venster waarin makecert is uitgev
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Upload het PFX-bestand naar de Cloud service
 
-1. Ga naar [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Selecteer **Cloud Services**.
 3. Selecteer de Cloud service die u hierboven hebt gemaakt voor de service voor splitsen en samen voegen.
 4. Klik op **certificaten** in het bovenste menu.
@@ -168,7 +168,7 @@ Als uw werknemersrol niet online kan worden gebracht, maar uw webrole slaagt, is
 
 ### <a name="connect-with-a-web-browser"></a>Verbinding maken met een webbrowser
 
-Bepaal het web-eind punt van uw service voor splitsen en samen voegen. U kunt dit vinden in de portal door naar het **overzicht** van uw Cloud service te gaan en aan de rechter kant onder **site-URL** te kijken. Vervang **http://** door **https://** omdat de standaard beveiligings instellingen het http-eind punt uitschakelen. Laad de pagina voor deze URL in uw browser.
+Bepaal het web-eind punt van uw Split-Merge service. U kunt dit vinden in de portal door naar het **overzicht** van uw Cloud service te gaan en aan de rechter kant onder **site-URL** te kijken. Vervang **http://** door **https://** omdat de standaard beveiligings instellingen het http-eind punt uitschakelen. Laad de pagina voor deze URL in uw browser.
 
 ### <a name="test-with-powershell-scripts"></a>Testen met Power shell-scripts
 
@@ -214,13 +214,13 @@ De volgende script bestanden zijn opgenomen:
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
-       <td>1. Hiermee verzendt u een splits aanvraag naar de web-frontend van de Split-Merge-service, die de helft van de gegevens van de eerste Shard opsplitst in de tweede Shard.</td>
+       <td>1. Hiermee verzendt u een splits aanvraag naar de webfrontend van de Split-Merge-service, die de helft van de gegevens van de eerste Shard naar de tweede Shard splitst.</td>
      </tr>
      <tr>
        <td>2. Hiermee wordt de web-frontend gecontroleerd op de status van de gesplitste aanvraag en wordt gewacht totdat de aanvraag is voltooid.</td>
      </tr>
      <tr>
-       <td>3. Hiermee verzendt u een aanvraag voor samen voegen naar de web-frontend voor het splitsen en samen voegen van de service. Hiermee worden de gegevens van de tweede Shard terug naar de eerste Shard.</td>
+       <td>3. Hiermee verzendt u een aanvraag voor samen voegen naar de web-frontend van de Split-Merge-service, waarmee de gegevens van de tweede Shard terug worden verplaatst naar de eerste Shard.</td>
      </tr>
      <tr>
        <td>4. Hiermee wordt de web-frontend voor de status van de samenvoeg aanvraag gecontroleerd en wordt gewacht totdat de aanvraag is voltooid.</td>
@@ -229,14 +229,14 @@ De volgende script bestanden zijn opgenomen:
 
 ## <a name="use-powershell-to-verify-your-deployment"></a>Power shell gebruiken om uw implementatie te controleren
 
-1. Open een nieuw Power shell-venster en navigeer naar de map waarin u het pakket voor splitsen en samen voegen hebt gedownload en navigeer vervolgens naar de map Power shell.
+1. Open een nieuw Power shell-venster en navigeer naar de map waar u het Split-Merge-pakket hebt gedownload en navigeer vervolgens naar de map Power shell.
 
 2. Maak een server (of kies een bestaande server) waar Shard-toewijzings beheer en Shards worden gemaakt.
 
    > [!NOTE]
-   > Het *SetupSampleSplitMergeEnvironment.ps1* script maakt standaard al deze data bases op dezelfde server, zodat het script eenvoudig te gebruiken is. Dit is geen beperking van de service voor splitsen en samen voegen.
+   > Het *SetupSampleSplitMergeEnvironment.ps1* script maakt standaard al deze data bases op dezelfde server, zodat het script eenvoudig te gebruiken is. Dit is geen beperking van de Split-Merge-service zelf.
 
-   Er is een SQL-verificatie aanmelding met lees-/schrijftoegang tot de Db's vereist voor de Split-Merge-service om gegevens te verplaatsen en de Shard-kaart bij te werken. Omdat de service voor splitsen en samen voegen in de Cloud wordt uitgevoerd, biedt deze momenteel geen ondersteuning voor geïntegreerde verificatie.
+   Er is een SQL-verificatie aanmelding met lees-/schrijftoegang tot de Db's vereist voor de Split-Merge-service om gegevens te verplaatsen en de Shard-kaart bij te werken. Omdat de Split-Merge-service in de Cloud wordt uitgevoerd, ondersteunt deze momenteel geen geïntegreerde verificatie.
 
    Zorg ervoor dat de server is geconfigureerd voor toegang vanaf het IP-adres van de computer waarop deze scripts worden uitgevoerd. U kunt deze instelling vinden onder SQL Server/firewalls en virtuele netwerken/client-IP-adressen.
 
@@ -329,7 +329,7 @@ Als u een bewerking voor splitsen en samen voegen wilt uitvoeren, moet u de Shar
 
 Een voor beeld hiervan is te zien in het SetupSampleSplitMergeEnvironment.ps1 script.
 
-De Split-Merge-service maakt niet de doel database (of schema voor tabellen in de data base) voor u. Deze moeten vooraf worden gemaakt voordat een aanvraag naar de service wordt verzonden.
+De Split-Merge-service maakt de doel database (of het schema voor tabellen in de data base) niet voor u. Deze moeten vooraf worden gemaakt voordat een aanvraag naar de service wordt verzonden.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

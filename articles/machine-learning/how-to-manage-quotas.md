@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
 ms.openlocfilehash: 4e5634633aacb56e7c7744b3afdb3aec0fe2b70f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629587"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>& quota voor resources met Azure Machine Learning beheren
@@ -69,11 +69,11 @@ Beschik bare resources:
 | Maximum aantal GPU-MPI processen per knoop punt | 1-4 |
 | Maximum aantal GPU-werk nemers per knoop punt | 1-4 |
 | Maximale levens duur van de taak | 21 dagen<sup>1</sup> |
-| Maximale levens duur van de taak op een knoop punt met een lage prioriteit | 7 dagen<sup>2</sup> |
+| Maximale levens duur van een taak op een Low-Priority knoop punt | 7 dagen<sup>2</sup> |
 | Maximum aantal parameter servers per knoop punt | 1 |
 
 <sup>1</sup> de maximale levens duur verwijst naar het tijdstip waarop een uitvoering wordt gestart en wanneer deze is voltooid. Voltooide uitvoeringen blijven voor onbepaalde tijd oneindig; gegevens voor uitvoeringen die niet binnen de maximale levens duur zijn voltooid, zijn niet toegankelijk.
-<sup>2</sup> taken op een knoop punt met een lage prioriteit kunnen worden afgebroken op het moment dat er een capaciteits beperking is. U wordt aangeraden om in uw taak controle punten te implementeren.
+<sup>2</sup> taken op een Low-Priority knoop punt kunnen worden afgebroken wanneer er sprake is van een capaciteits beperking. U wordt aangeraden om in uw taak controle punten te implementeren.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning pijp lijnen
 Voor [Azure machine learning pijp lijnen](concept-ml-pipelines.md)geldt een quotum limiet voor het aantal stappen in een pijp lijn en op basis van het aantal op schema's gebaseerde uitvoeringen van gepubliceerde pijp lijnen per regio in een abonnement.

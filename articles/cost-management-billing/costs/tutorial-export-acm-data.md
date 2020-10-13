@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683263"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447608"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Zelfstudie: Geëxporteerde gegevens maken en beheren
 
@@ -91,9 +91,9 @@ Exports voor beheergroepen van andere typen abonnementen worden niet ondersteund
 
 1. Als u nog geen beheergroep hebt gemaakt, maakt u een groep en wijst u er abonnementen aan toe.
 1. Stel in kostenanalyse het bereik in op uw beheergroep, en selecteer **Deze beheergroep selecteren**.  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Voorbeeld van de optie Deze beheergroep selecteren" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Voorbeeld van nieuwe export" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. Maak een export in het bereik om gegevens over kostenbeheer op te halen voor de abonnementen in de beheergroep.  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Voorbeeld van de optie Nieuwe export maken, met het bereik van een beheergroep":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Voorbeeld van nieuwe export":::
 
 ## <a name="verify-that-data-is-collected"></a>Controleren of de gegevens zijn geëxporteerd
 
@@ -128,11 +128,11 @@ U kunt het geëxporteerde CSV-bestand ook downloaden in de Azure-portal. In de v
 
 U kunt de uitvoeringsgeschiedenis van uw geplande export bekijken door een individuele export te selecteren op de exportlijstpagina. De exportlijstpagina biedt u ook snelle toegang om de looptijd van uw vorige exporten te bekijken en de volgende keer dat de export wordt uitgevoerd. Hier is een voorbeeld dat de uitvoeringsgeschiedenis laat zien.
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Voorbeeld van exportuitvoeringsgeschiedenis":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Voorbeeld van nieuwe export":::
 
 Selecteer een export om de uitvoeringsgeschiedenis te bekijken.
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Voorbeeld van exportuitvoeringsgeschiedenis":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Voorbeeld van nieuwe export":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Geëxporteerde gegevens gebruiken in externe systemen
 

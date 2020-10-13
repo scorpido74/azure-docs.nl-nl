@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629740"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>Azure-beveiligings basislijn voor Virtual Network
@@ -562,7 +562,7 @@ Implementeer aanbevelingen van Security Center als een veilige configuratie basi
 
 - [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
+- [Aanbevelingen voor beveiliging: een naslaggids](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -714,13 +714,13 @@ Machtigingen verlenen of weigeren voor specifieke gebruikers, ingebouwde beveili
 
 Gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) voor de beveiliging van door de klant beheerde sleutels.   
 
-Schakel de beveiliging voor voorlopig verwijderen en opschonen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.  
+Schakel Soft-Delete in en verwijder de beveiliging in Key Vault om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.  
 
 - [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [Over machtigingen en groepen in azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-- [Het inschakelen van de functie voor voorlopig verwijderen en het opschonen van beveiliging in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
+- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
 
 - [Voorlopig verwijderen voor Azure Storage-blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 

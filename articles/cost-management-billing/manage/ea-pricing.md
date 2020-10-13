@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b4905b1aba11a2f8c457d4785897cbe70dd31f76
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63e648681a63daafe1eaeb1d2e8e5a6cd607aa70
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687413"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446329"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Azure-prijzen voor uw organisatie bekijken en downloaden
 
@@ -28,17 +28,17 @@ Afhankelijk van beleid dat door de ondernemingsbeheerder is ingesteld voor uw or
 1. Meld u als ondernemingsbeheerder aan bij de [Azure-portal.](https://portal.azure.com/)
 1. Zoek naar *Kostenbeheer en facturering*.
 
-   ![Schermopname van de zoekopdracht in de Azure-portal](./media/ea-pricing/portal-cm-billing-search.png)
+   ![Schermopname van de zoekopdracht in Azure Portal.](./media/ea-pricing/portal-cm-billing-search.png)
 
 1. Selecteer in het factureringsaccount de optie **Gebruik en kosten**.
 
    ![Schermopname van het gebruik en de kosten onder Facturering](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. Selecteer ![Schermopname van de zoekopdracht in de Azure-portal](./media/ea-pricing/download-icon.png)**Downloaden** voor de maand.
+1. Selecteer het ![downloadpictogram.](./media/ea-pricing/download-icon.png) Selecteer **Downloaden** voor de maand.
 
 1. Selecteer onder **Prijzenoverzicht** de optie **CSV-bestand downloaden**.
 
-   ![Schermopname van de knop CSV-bestand downloaden voor een prijzenoverzicht](./media/ea-pricing/download-ea-price-sheet.png)
+   ![Schermopname van de optie Gebruik + kosten downloaden.](./media/ea-pricing/download-ea-price-sheet.png)
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>Prijzen voor een MCA- of MPA-account downloaden
 
@@ -46,12 +46,12 @@ Als u een MCA hebt, moet u een eigenaar van het factureringsprofiel, inzender, l
 
 ### <a name="download-price-sheets-for-billed-charges"></a>Prijzenoverzichten voor gefactureerde kosten downloaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.
 1. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
 1. Selecteer **Facturen**.
 1. Ga in het factuurraster naar de rij van de factuur die overeenkomt met het prijzenoverzicht dat u wilt downloaden.
-1. Klik op het beletselteken (`...`) aan het einde van de rij.
+1. Klik op het weglatingsteken (`...`) aan het einde van de rij.
 ![Schermopname met het geselecteerde weglatingsteken](./media/ea-pricing/billingprofile-invoicegrid-new.png)
 
 1. Als u de prijzen voor de services in de geselecteerde factuur wilt bekijken, selecteert u **Prijzenoverzicht voor facturering**.
@@ -63,7 +63,7 @@ Als u een MCA hebt, moet u een eigenaar van het factureringsprofiel, inzender, l
 
 Als u een MCA hebt, kunt u de prijzen voor de huidige factureringsperiode downloaden.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.
 1. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
 1. Zoek in het gebied **Overzicht** de downloadkoppelingen onder de kosten (maand tot heden).
@@ -79,7 +79,7 @@ U kunt ook de prijzen van uw organisatie gebruiken om de kosten te schatten met 
 1. Selecteer **EA (Enterprise Agreement)** onder **Programma's en aanbieding** > **Licentieprogramma**.
 1. Selecteer **Geen geselecteerd** onder **Programma's en aanbieding** > **Geselecteerde overeenkomst**.
 
-    ![Schermopname van de knop CSV-bestand downloaden voor een prijzenoverzicht](./media/ea-pricing/ea-pricing-calculator-estimate.png)
+    ![Schermopname van de beschikbare programma's en aanbiedingen.](./media/ea-pricing/ea-pricing-calculator-estimate.png)
 
 1. Kies de organisatie.
 1. Selecteer **Toepassen**.
@@ -102,6 +102,6 @@ Als u een Microsoft-klantovereenkomst hebt, raadpleegt u:
 
 - [Inzicht in de voorwaarden in uw prijzenoverzicht voor een Microsoft-klantovereenkomst](mca-understand-pricesheet.md)
 - [Uw Microsoft Azure-factuur weergeven en downloaden](../understand/download-azure-invoice.md)
-- [Uw Microsoft Azure-gebruik en -kosten bekijken en downloaden](../understand/download-azure-daily-usage.md)
+- [Uw Microsoft Azure-gebruik en -kosten weergeven en downloaden](../understand/download-azure-daily-usage.md)
 - [Belastingdocumenten voor uw factureringsprofiel bekijken en downloaden](../understand/mca-download-tax-document.md)
 - [Inzicht in de kosten voor de factuur van uw factureringsprofiel](../understand/review-customer-agreement-bill.md)

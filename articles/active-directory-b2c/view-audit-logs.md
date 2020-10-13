@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383934"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
@@ -32,7 +32,7 @@ Audit logboek gebeurtenissen worden alleen **zeven dagen**bewaard. Plan uw logbo
 
 De categorie **B2C** in audit Logboeken bevat de volgende soorten activiteiten:
 
-|Type activiteit |Description  |
+|Type activiteit |Beschrijving  |
 |---------|---------|
 |Autorisatie |Activiteiten met betrekking tot de autorisatie van een gebruiker om toegang te krijgen tot B2C-bronnen (bijvoorbeeld een beheerder die toegang heeft tot een lijst met B2C-beleid).         |
 |Directory |Activiteiten gerelateerd aan adreslijst kenmerken die zijn opgehaald wanneer een beheerder zich aanmeldt met behulp van de Azure Portal. |
@@ -53,7 +53,7 @@ Het deel venster activity Details bevat de volgende relevante informatie:
 
 |Sectie|Veld|Beschrijving|
 |-------|-----|-----------|
-| Activiteit | Name | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
+| Activiteit | Naam | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
 | Gestart door (actor) | ObjectId | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
 | Gestart door (actor) | SPN | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
 | Doel(en) | ObjectId | De **object-id** van de gebruiker die zich aanmeldt. |
@@ -98,7 +98,7 @@ Volg de stappen in het volgende artikel om een toepassing met de vereiste machti
 
 Nadat u een toepassing met de juiste machtigingen hebt geregistreerd, raadpleegt u de sectie Power shell-script verderop in dit artikel voor een voor beeld van hoe u activiteiten gebeurtenissen kunt ophalen met een script.
 
-### <a name="access-the-api"></a>Toegang tot de API
+### <a name="access-the-api"></a>Toegang krijgen tot de API
 
 Als u Azure AD B2C controle logboek gebeurtenissen via de API wilt downloaden, filtert u de logboeken op de `B2C` categorie. Als u wilt filteren op categorie, gebruikt `filter` u de query reeks parameter wanneer u het Azure AD Reporting API-eind punt aanroept.
 

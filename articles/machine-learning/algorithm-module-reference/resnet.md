@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: bd0431a8e503605c6137d948cf207c1bd2fa45b4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442033"
 ---
 # <a name="resnet"></a>ResNet
@@ -52,8 +52,8 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 | Naam       | Bereik | Type    | Standaard           | Beschrijving                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
-| Modelnaam | Elk   | Modus    | resnext101 \_ 32x8d | Naam van een bepaalde ResNet-structuur       |
-| Voortraind | Elk   | Boolean-waarde | True              | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
+| Modelnaam | Alle   | Modus    | resnext101 \_ 32x8d | Naam van een bepaalde ResNet-structuur       |
+| Voortraind | Alle   | Boolean-waarde | True              | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
 |            |       |         |                   |                                          |
 
 ###  <a name="output"></a>Uitvoer  

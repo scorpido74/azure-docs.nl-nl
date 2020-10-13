@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
 ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629825"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
@@ -306,12 +306,12 @@ Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land inst
 > [!TIP]
 > U kunt de volledige toewijzing van de service naam blijven gebruiken als ' micro soft server Speech Text to Speech Voice (nl-nl, AriaRUS) ' in uw spraakherkennings aanvragen.
 
-### <a name="customization"></a>Aanpassing
+### <a name="customization"></a>Aanpassen
 
 Stem aanpassing is beschikbaar voor,,,,,, `de-DE` `en-GB` , en `en-IN` `en-US` `es-MX` `fr-FR` `it-IT` `pt-BR` `zh-CN` . Selecteer de juiste land instelling die overeenkomt met de trainings gegevens die u nodig hebt om een aangepast spraak model te trainen. Als de opname gegevens die u hebt gesp roken in het Engels met een Britse accent, selecteert u bijvoorbeeld `en-GB` .
 
 > [!NOTE]
-> We bieden geen ondersteuning voor bidirectionele model trainingen in aangepaste spraak, met uitzonde ring van het Chinese Engelse bi-taal gebruik. Selecteer ' Chinees-Engels-tweetalig ' als u een Chinese stem wilt trainen die ook Engels kan spreken. Spraak training in alle land instellingen begint met een gegevensset van 2000 + uitingen, met uitzonde ring van de `en-US` en `zh-CN` waar u kunt beginnen met elke grootte van de trainings gegevens.
+> We bieden geen ondersteuning voor bidirectionele model trainingen in aangepaste spraak, met uitzonde ring van de Chinese-English bi. Selecteer ' Chinees-Engels-tweetalig ' als u een Chinese stem wilt trainen die ook Engels kan spreken. Spraak training in alle land instellingen begint met een gegevensset van 2000 + uitingen, met uitzonde ring van de `en-US` en `zh-CN` waar u kunt beginnen met elke grootte van de trainings gegevens.
 
 ## <a name="speech-translation"></a>Spraakomzetting
 
@@ -323,20 +323,20 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 |:------------------------|:-------------:|
 | Afrikaans               | `af`          |
 | Arabisch                  | `ar`          |
-| Bengalese                  | `bn`          |
+| Bengaals                  | `bn`          |
 | Bosnisch (Latijns)         | `bs`          |
 | Bulgaars               | `bg`          |
 | Kantonees (traditioneel) | `yue`         |
 | Catalaans                 | `ca`          |
-| Vereenvoudigd Chinees      | `zh-Hans`     |
-| Traditioneel Chinees     | `zh-Hant`     |
+| Chinees (vereenvoudigd)      | `zh-Hans`     |
+| Chinees (traditioneel)     | `zh-Hant`     |
 | Kroatisch                | `hr`          |
 | Tsjechisch                   | `cs`          |
 | Deens                  | `da`          |
 | Nederlands                   | `nl`          |
 | Engels                 | `en`          |
 | Ests                | `et`          |
-| Fijian                  | `fj`          |
+| Fijisch                  | `fj`          |
 | Filipino                | `fil`         |
 | Fins                 | `fi`          |
 | Frans                  | `fr`          |
@@ -353,18 +353,18 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 | Italiaans                 | `it`          |
 | Japans                | `ja`          |
 | Kannada                 | `kn`          |
-| Swahili               | `sw`          |
+| Kiswahili               | `sw`          |
 | Klingon                 | `tlh-Latn`    |
 | Klingon (plqaD)         | `tlh-Piqd`    |
 | Koreaans                  | `ko`          |
 | Lets                 | `lv`          |
 | Litouws              | `lt`          |
-| Malagassische                | `mg`          |
+| Malagassisch                | `mg`          |
 | Maleisisch                   | `ms`          |
-| Malajalam               | `ml`          |
+| Malayalam               | `ml`          |
 | Maltees                 | `mt`          |
 | Maori                   | `mi`          |
-| Marathi                 | `mr`          |
+| Mahrati                 | `mr`          |
 | Noors               | `nb`          |
 | Perzisch                 | `fa`          |
 | Pools                  | `pl`          |
@@ -374,24 +374,24 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 | Queretaro Otomi         | `otq`         |
 | Roemeens                | `ro`          |
 | Russisch                 | `ru`          |
-| Samoan                  | `sm`          |
+| Samoaans                  | `sm`          |
 | Servisch (Cyrillisch)      | `sr-Cyrl`     |
 | Servisch (Latijns)         | `sr-Latn`     |
 | Slowaaks                  | `sk`          |
 | Sloveens               | `sl`          |
 | Spaans                 | `es`          |
 | Zweeds                 | `sv`          |
-| Tahitian                | `ty`          |
+| Tahitiaans                | `ty`          |
 | Tamil                   | `ta`          |
 | Telugu                  | `te`          |
 | Thai                    | `th`          |
-| Tongaanse                  | `to`          |
+| Tongaans                  | `to`          |
 | Turks                 | `tr`          |
 | Oekraïens               | `uk`          |
 | Urdu                    | `ur`          |
 | Vietnamees              | `vi`          |
 | Welsh                   | `cy`          |
-| Yucatec Maya            | `yua`         |
+| Yucateeks Maya            | `yua`         |
 
 ## <a name="speaker-recognition"></a>Speaker Recognition
 
@@ -400,18 +400,18 @@ Raadpleeg de volgende tabel voor ondersteunde talen voor de verschillende Speake
 | Landinstelling | Taal | Tekstafhankelijke verificatie | Tekstonafhankelijke verificatie | Tekst onafhankelijke identificatie |
 |----|----|----|----|----|
 | nl-NL | Engels (VS) | ja | ja | ja |
-|zh-CN    |Chinees (Mandarijn, vereenvoudigd)|    N.v.t.|    ja|    ja|
-|de-DE    |Duits (Duitsland)    |N.v.t.    |ja    |ja|
-|en-GB    |Engels (UK)    |N.v.t.    |ja    |ja|
-|fr-FR    |Frans (Frankrijk)    |N.v.t.    |ja    |ja|
-|en-AU    |Engels (Australië)    |N.v.t.    |ja    |ja|
-|en-CA    |Engels (Canada)    |N.v.t.|    ja|    ja|
-|FR-CA    |Frans (Canada)    |N.v.t.    |ja|    ja|
-|it-IT    |Italiaans|    N.v.t.    |ja|    ja|
-|es-ES|    Spaans (Spanje)    |N.v.t.    |ja|    ja|
-|es-MX    |Spaans (Mexico)    |N.v.t.|    ja|    ja|
-|ja-JP|    Japans    |N.v.t.    |ja    |ja|
-|pt-BR|    Portugees (Brazilië)|    N.v.t.|    ja|    ja|
+|zh-CN    |Chinees (Mandarijn, vereenvoudigd)|    n.v.t.|    ja|    ja|
+|de-DE    |Duits (Duitsland)    |n.v.t.    |ja    |ja|
+|en-GB    |Engels (UK)    |n.v.t.    |ja    |ja|
+|fr-FR    |Frans (Frankrijk)    |n.v.t.    |ja    |ja|
+|en-AU    |Engels (Australië)    |n.v.t.    |ja    |ja|
+|en-CA    |Engels (Canada)    |n.v.t.|    ja|    ja|
+|fr-CA    |Frans (Canada)    |n.v.t.    |ja|    ja|
+|it-IT    |Italiaans|    n.v.t.    |ja|    ja|
+|es-ES|    Spaans (Spanje)    |n.v.t.    |ja|    ja|
+|es-MX    |Spaans (Mexico)    |n.v.t.|    ja|    ja|
+|ja-JP|    Japans    |n.v.t.    |ja    |ja|
+|pt-BR|    Portugees (Brazilië)|    n.v.t.|    ja|    ja|
 
 ## <a name="next-steps"></a>Volgende stappen
 

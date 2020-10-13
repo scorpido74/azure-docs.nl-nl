@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
 ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803463"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Veelvoorkomende problemen bij het certificeren van installatie kopieën van virtuele machines voor Azure Marketplace
@@ -338,7 +338,7 @@ Stap 3. Nadat de opdracht is uitgevoerd, start u de VM opnieuw op.
 
 Stap 4. Generaliseer de virtuele machine, maak de VHD met installatie kopieën en stop de virtuele machine.
 
-Stap 5.     Verzend de gegeneraliseerde installatie kopie opnieuw.
+Stap 5.     Re-Submit de gegeneraliseerde installatie kopie.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Uitzonde ringen aanvragen (aangepaste sjablonen) op VM-installatie kopieën voor selectieve tests
 

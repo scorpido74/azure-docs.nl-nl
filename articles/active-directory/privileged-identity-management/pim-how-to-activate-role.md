@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317534"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Mijn Microsoft Azure AD-rollen activeren in PIM
@@ -44,7 +44,7 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 
 Wanneer u een Azure AD-rol wilt aannemen, kunt u activering aanvragen door **mijn rollen** te openen in privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 
@@ -122,7 +122,7 @@ Wanneer u een rol in Privileged Identity Management activeert, wordt de activeri
 
 Wanneer u een Azure AD-rol nodig hebt, kunt u activering aanvragen met behulp van de navigatie optie **mijn rollen** in privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 

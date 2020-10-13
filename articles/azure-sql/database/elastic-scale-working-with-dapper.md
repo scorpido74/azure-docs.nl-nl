@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 617ecc6b2eccab3a123f4d3cbc2fb96a40d15f11
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442681"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>De client bibliotheek voor Elastic Data Base gebruiken met dapper
@@ -39,7 +39,7 @@ Een ander voor deel van dapper en ook DapperExtensions is dat de toepassing het 
 Zie [dapper dot net](https://www.nuget.org/packages/Dapper/)om de dapper-assembly's op te halen. Zie [DapperExtensions](https://www.nuget.org/packages/DapperExtensions)voor de dapper-extensies.
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Een beknopt overzicht van de client bibliotheek voor Elastic data base
-Met de client bibliotheek voor Elastic data base definieert u partities van uw toepassings gegevens met de naam *shardlets*, wijst u deze toe aan data bases en identificeert u deze met *sharding-sleutels*. U kunt zoveel data bases als u nodig hebt en uw shardlets distribueren over deze data bases. De toewijzing van sharding-sleutel waarden aan de data bases wordt opgeslagen door een Shard-kaart die wordt weer gegeven door de Api's van de bibliotheek. Deze mogelijkheid heet **Shard-toewijzings beheer**. De Shard-toewijzing fungeert ook als de Broker van database verbindingen voor aanvragen die een sharding-sleutel bevatten. Deze mogelijkheid wordt aangeduid als **gegevens afhankelijke route ring**.
+Met de client bibliotheek voor Elastic data base definieert u partities van uw toepassings gegevens met de naam *shardlets*, wijst u deze toe aan data bases en identificeert u deze met *sharding-sleutels*. U kunt zoveel data bases als u nodig hebt en uw shardlets distribueren over deze data bases. De toewijzing van sharding-sleutel waarden aan de data bases wordt opgeslagen door een Shard-kaart die wordt weer gegeven door de Api's van de bibliotheek. Deze mogelijkheid heet **Shard-toewijzings beheer**. De shard-toewijzing dient ook als broker voor databaseverbindingen voor aanvragen die een sharding-sleutel bevatten. Deze mogelijkheid wordt aangeduid als **gegevens afhankelijke route ring**.
 
 ![Shard Maps en gegevens afhankelijke route ring][1]
 
@@ -162,10 +162,10 @@ Het code voorbeeld is afhankelijk van de tijdelijke fout bibliotheek om te bevei
     });
 ```
 
-**SqlDatabaseUtils. SqlRetryPolicy** in de bovenstaande code wordt gedefinieerd als een **SqlDatabaseTransientErrorDetectionStrategy** met een aantal nieuwe pogingen van 10 en een wacht tijd van vijf seconden tussen nieuwe pogingen. Als u trans acties gebruikt, moet u ervoor zorgen dat uw bereik voor opnieuw proberen teruggaat naar het begin van de trans actie in het geval van een tijdelijke fout.
+**SqlDatabaseUtils.SqlRetryPolicy** in de bovenstaande code is gedefinieerd als een **SqlDatabaseTransientErrorDetectionStrategy** met maximaal 10 pogingen en een wachttijd van 5 seconden tussen de pogingen. Als u trans acties gebruikt, moet u ervoor zorgen dat uw bereik voor opnieuw proberen teruggaat naar het begin van de trans actie in het geval van een tijdelijke fout.
 
 ## <a name="limitations"></a>Beperkingen
-De benaderingen die in dit document worden beschreven, omvatten een aantal beperkingen:
+De in dit document beschreven methoden brengen een aantal beperkingen met zich mee:
 
 * De voorbeeld code voor dit document laat zien hoe u schema beheert over Shards.
 * Op basis van een aanvraag, wordt ervan uitgegaan dat alle database verwerking is opgenomen in één Shard die wordt geïdentificeerd door de sharding-sleutel die door de aanvraag wordt verstrekt. Deze veronderstelling houdt echter niet altijd vast, bijvoorbeeld wanneer het niet mogelijk is om een sharding-sleutel beschikbaar te maken. Om dit op te lossen, bevat de client bibliotheek voor Elastic data base de [MultiShardQuery-klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). De klasse implementeert een verbindings abstractie voor het uitvoeren van query's op verschillende Shards. Het gebruik van MultiShardQuery in combi natie met dapper valt buiten het bereik van dit document.

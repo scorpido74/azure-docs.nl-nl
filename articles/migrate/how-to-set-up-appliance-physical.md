@@ -5,32 +5,32 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448065"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 
 In dit artikel wordt beschreven hoe u het Azure Migrate apparaat instelt als u fysieke servers wilt beoordelen met het Azure Migrate: Server Assessment-hulp programma.
 
-Het Azure Migrate apparaat is een licht gewicht apparaat dat door de Azure Migrate server-evaluatie wordt gebruikt om het volgende te doen:
+Het Azure Migrate-apparaat is een licht apparaat dat door de Azure Migrate-serverevaluatie wordt gebruikt om het volgende te doen:
 
 - On-premises servers detecteren.
-- Meta gegevens en prestatie gegevens voor gedetecteerde servers verzenden naar Azure Migrate server-evaluatie.
+- Metagegevens en prestatiegegevens voor gedetecteerde servers verzenden naar Azure Migrate-serverevaluatie.
 
-Meer [informatie](migrate-appliance.md) over het Azure migrate apparaat.
+[Meer informatie](migrate-appliance.md) over het Azure Migrate-apparaat.
 
 
-## <a name="appliance-deployment-steps"></a>Implementatie stappen voor het apparaat
+## <a name="appliance-deployment-steps"></a>Stappen voor implementatie van het apparaat
 
 Om het apparaat in te stellen, moet u het volgende doen:
-- Geef een naam op voor het apparaat en Genereer een Azure Migrate project sleutel in de portal.
+- Geef een naam op voor het apparaat en genereer een Azure Migrate-projectsleutel in de portal.
 - Download een zip-bestand met Azure Migrate-installatiescript uit de Azure-portal.
 - Pak de inhoud uit het zip-bestand uit. Start PowerShell-console met beheerdersbevoegdheden.
 - Voer het PowerShell-script uit om de webtoepassing voor het apparaat te starten.
-- Configureer het apparaat voor de eerste keer en registreer het met het Azure Migrate project met behulp van de Azure Migrate-project sleutel.
+- Configureer het apparaat voor het eerst en registreer het bij het Azure Migrate-project met behulp van de Azure Migrate-projectsleutel.
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate-projectsleutel genereren
 
@@ -152,7 +152,7 @@ De detectie wordt gestart. Het duurt ongeveer 2 minuten per server voordat de me
 
 ## <a name="verify-servers-in-the-portal"></a>Verifieer servers in de portal
 
-Nadat de detectie is voltooid, kunt u controleren of de servers worden weer gegeven in de portal.
+Nadat de detectie is voltooid, kunt u controleren of de servers worden weergegeven in de portal.
 
 1. Open het Azure Migrate-dashboard.
 2. Klik op de pagina **Azure Migrate - Servers** > **Azure Migrate: Serverevaluatie** op het pictogram dat het aantal voor **Gedetecteerde servers** weergeeft.

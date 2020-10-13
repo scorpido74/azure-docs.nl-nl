@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van live video analyses op IoT Edge
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567551"
 ---
 # <a name="monitoring-and-logging"></a>Bewaking en registratie
@@ -21,7 +21,7 @@ U leert ook hoe u de logboeken kunt beheren die door de module worden gegenereer
 Live video Analytics op IoT Edge verzendt gebeurtenissen of telemetriegegevens op basis van de volgende taxonomie.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Taxonomie van gebeurtenissen":::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Taxonomie van gebeurtenissen&quot;:::
 
 * Operationeel: gebeurtenissen die worden gegenereerd als onderdeel van acties die worden uitgevoerd door een gebruiker of tijdens de uitvoering van een [Media grafiek](media-graph-concept.md).
    
@@ -32,16 +32,16 @@ Live video Analytics op IoT Edge verzendt gebeurtenissen of telemetriegegevens o
       
       ```
       {
-        "body": {
-          "outputType": "assetName",
-          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
+        &quot;body&quot;: {
+          &quot;outputType&quot;: &quot;assetName&quot;,
+          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
         },
-        "applicationProperties": {
-          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
-          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
-          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
-          "eventTime": "2020-05-12T23:33:10.392Z",
-          "dataVersion": "1.0"
+        &quot;applicationProperties&quot;: {
+          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
+          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
+          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
+          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
+          &quot;dataVersion&quot;: &quot;1.0"
         }
       }
       ```

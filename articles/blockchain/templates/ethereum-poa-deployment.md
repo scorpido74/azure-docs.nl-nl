@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
 ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283425"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
@@ -98,7 +98,7 @@ VM-gebruikers naam | Gebruikers naam van de beheerder van elke geïmplementeerde
 Verificatietype | De methode voor verificatie bij de virtuele machine. | Wachtwoord
 Wachtwoord | Het wacht woord voor het beheerders account voor elk van de virtuele machines die zijn geïmplementeerd. Alle Vm's hebben in eerste instantie hetzelfde wacht woord. U kunt het wacht woord na het inrichten wijzigen. | 12-72 tekens 
 Abonnement | Het abonnement waarop het consortium netwerk moet worden geïmplementeerd |
-Resourcegroep| De resource groep waarvoor het consortium netwerk moet worden geïmplementeerd. | myResourceGroup
+Resource Group| De resource groep waarvoor het consortium netwerk moet worden geïmplementeerd. | myResourceGroup
 Locatie | De Azure-regio voor de resource groep. | West US 2
 
 Selecteer **OK**.
@@ -126,16 +126,16 @@ Geef onder *netwerk grootte en prestaties*invoer op voor de grootte van het cons
 Parameter | Beschrijving | Voorbeeldwaarde
 ----------|-------------|--------------
 Aantal validator-knoop punten met gelijke taak verdeling | Het aantal validatie knooppunten dat moet worden ingericht als onderdeel van het netwerk. | 2
-Prestaties van het knoop punt opslag valideren | Het type beheerde schijf voor elk van de geïmplementeerde validatie knooppunten. Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/managed-disks/) voor meer informatie over prijzen. | Standard - SSD
+Prestaties van het knoop punt opslag valideren | Het type beheerde schijf voor elk van de geïmplementeerde validatie knooppunten. Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/managed-disks/) voor meer informatie over prijzen. | Standard SSD
 Grootte van de virtuele machine van het validatie knooppunt | De grootte van de virtuele machine die wordt gebruikt voor validatie knooppunten. Zie [prijzen van virtuele machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) voor meer informatie over prijzen. | Standard D2 v3
 
 De virtuele machine en de opslaglaag zijn van invloed op de netwerk prestaties.  Gebruik de volgende tabel om rendabele efficiëntie te kiezen:
 
 SKU van virtuele machine|Opslaglaag|Prijs|Doorvoer|Latentie
 ---|---|---|---|---
-F1|Standard - SSD|gebrek|gebrek|hoog
-D2_v3|Standard - SSD|gemiddeld|gemiddeld|gemiddeld
-F16s|Premium - SSD|hoog|hoog|gebrek
+F1|Standard SSD|gebrek|gebrek|hoog
+D2_v3|Standard SSD|gemiddeld|gemiddeld|gemiddeld
+F16s|Premium SSD|hoog|hoog|gebrek
 
 Selecteer **OK**.
 
@@ -685,7 +685,7 @@ Nu uw slimme contract is geïmplementeerd, kunt u een trans actie verzenden om e
 
 ## <a name="webassembly-wasm-support"></a>Ondersteuning voor webassembly (WASM)
 
-Ondersteuning voor webassembly is al voor u ingeschakeld op nieuwe geïmplementeerde PoA-netwerken. Dit maakt het mogelijk om intelligente contracten te ontwikkelen in elke taal die wordt gestapeld naar een webassemblatie (roest, C, C++). Zie voor meer informatie: [pariteits overzicht van Webassembly](https://wiki.parity.io/WebAssembly-Home) en [zelf studie van parity tech](https://github.com/paritytech/pwasm-tutorial)
+Ondersteuning voor webassembly is al voor u ingeschakeld op nieuwe geïmplementeerde PoA-netwerken. Dit maakt het mogelijk om intelligente contracten te ontwikkelen in elke taal die wordt gepoold naar Web-Assembly (roest, C, C++). Zie voor meer informatie: [pariteits overzicht van Webassembly](https://wiki.parity.io/WebAssembly-Home) en [zelf studie van parity tech](https://github.com/paritytech/pwasm-tutorial)
 
 ## <a name="faq"></a>Veelgestelde vragen
 

@@ -12,10 +12,10 @@ author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629723"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Een Azure Machine Learning-trainings omgeving beveiligen met virtuele netwerken
@@ -171,7 +171,7 @@ U kunt dit op twee manieren doen:
         ```
 
         > [!TIP]
-        > Als u de Amerikaanse Virginia, VS-Arizona regio's of China-Oost-2-regio's gebruikt, retour neren deze opdrachten geen IP-adressen. Gebruik in plaats daarvan een van de volgende koppelingen voor het downloaden van een lijst met IP-adressen:
+        > Als u gebruikmaakt van de Amerikaanse Virginia, US-Arizona regio's of China-Oost-2 regio's, retour neren deze opdrachten geen IP-adressen. Gebruik in plaats daarvan een van de volgende koppelingen voor het downloaden van een lijst met IP-adressen:
         >
         > * [IP-adresbereiken en service tags voor Azure voor Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [Azure IP-adresbereiken en service tags voor Azure China](https://www.microsoft.com//download/details.aspx?id=57062)

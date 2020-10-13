@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
 ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443791"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
@@ -29,7 +29,7 @@ Azure SQL Database biedt verschillende methoden voor het maken van een kopie van
 Een database kopie is een transactionele consistente moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gestart. U kunt dezelfde server of een andere server voor de kopie selecteren. U kunt er ook voor kiezen om de back-upredundantie, de servicelaag en de berekenings grootte van de bron database te bewaren, of om een andere back-upopslag en/of reken grootte binnen dezelfde of een andere servicelaag te gebruiken. Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. De aanmeldingen, gebruikers en machtigingen in de gekopieerde Data Base worden onafhankelijk van de bron database beheerd. De kopie wordt gemaakt met behulp van de geo-replicatie technologie. Zodra de replica-seeding is voltooid, wordt de geo-replicatiekoppeling automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de kopieerbewerking van de database. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
 
 > [!NOTE]
-> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in open bare preview in de Azure-regio Zuidoost-Azië. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het kopiëren van de Data Base naar een server in een andere Azure-regio niet ondersteund. 
+> Azure SQL Database Configurable Backup Storage Redundancy is momenteel alleen in de Azure-regio Azië - zuidoost beschikbaar als openbare preview. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het kopiëren van de Data Base naar een server in een andere Azure-regio niet ondersteund. 
 
 ## <a name="logins-in-the-database-copy"></a>Aanmeldingen in de database kopie
 
@@ -56,7 +56,7 @@ Gebruik de volgende voor beelden om een Data Base te kopiëren.
 Voor Power shell gebruikt u de cmdlet [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) .
 
 > [!IMPORTANT]
-> De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
+> De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft tot ten minste december 2020 bugfixes ontvangen.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek. Zie [Introductie van de nieuwe Az-module van Azure PowerShell](/powershell/azure/new-azureps-module-az) voor meer informatie over de compatibiliteit van de argumenten.
 
 ```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourceserver -DatabaseName "<databaseName>" `
@@ -128,7 +128,7 @@ U kunt de stappen in de sectie [een SQL database kopiëren naar een andere serve
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>De voortgang van de Kopieer bewerking bewaken
 
-Bewaak het kopieer proces door een query uit te geven op de weer gaven [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)en [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren**.
+Bewaak het kopieer proces door een query uit te geven op de weer gaven [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)en [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) . Terwijl het kopiëren wordt uitgevoerd, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **kopiëren**.
 
 * Als het kopiëren mislukt, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **verdacht**. Voer de instructie DROP uit op de nieuwe data base en probeer het later opnieuw.
 * Als het kopiëren is voltooid, wordt de kolom **state_desc** van de weer gave sys. data bases voor de nieuwe data base ingesteld op **online**. Het kopiëren is voltooid en de nieuwe Data Base is een reguliere data base die onafhankelijk van de bron database kan worden gewijzigd.
