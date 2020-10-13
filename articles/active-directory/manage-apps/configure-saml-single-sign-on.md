@@ -12,10 +12,10 @@ ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597910"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>Informatie over eenmalige aanmelding op basis van SAML
@@ -81,7 +81,7 @@ Azure AD maakt gebruik van een certificaat voor het ondertekenen van de SAML-tok
 > [!IMPORTANT]
 > Veel apps zijn al vooraf geconfigureerd en in de app-galerie en u hoeft geen certificaten aan te gaan. De [Quick](add-application-portal.md) start-serie helpt u bij het toevoegen en configureren van apps.
 
-Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtstreeks downloaden vanuit de hoofd **set eenmalige aanmelding met de SAML-** pagina. U kunt ook het actieve certificaat ophalen door het XML-bestand met meta gegevens van de toepassing te downloaden of door gebruik te maken van de URL voor de federatieve meta gegevens van de app. Als u uw certificaten (actief of inactief) wilt weer geven, maken of downloaden, voert u de volgende stappen uit.
+Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtstreeks downloaden vanuit de hoofd **set Single Sign-On met de SAML** -pagina. U kunt ook het actieve certificaat ophalen door het XML-bestand met meta gegevens van de toepassing te downloaden of door gebruik te maken van de URL voor de federatieve meta gegevens van de app. Als u uw certificaten (actief of inactief) wilt weer geven, maken of downloaden, voert u de volgende stappen uit.
 
 Enkele veelvoorkomende zaken die u moet controleren om te controleren of een certificaat is inbegrepen: 
    - *De juiste verval datum.* U kunt de verval datum Maxi maal drie jaar in de toekomst configureren.
@@ -133,4 +133,4 @@ Zie voor meer informatie [debug op SAML gebaseerde eenmalige aanmelding bij toep
 - [Quickstartreeks over toepassingsbeheer](view-applications-portal.md)
 - [Gebruikers of groepen toewijzen aan de toepassing](methods-for-assigning-users-and-groups.md)
 - [Automatisch inrichten van gebruikers accounts configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-- [SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml-protocol.md)
+- [Enkelvoudig Sign-On SAML-Protocol](../develop/single-sign-on-saml-protocol.md)

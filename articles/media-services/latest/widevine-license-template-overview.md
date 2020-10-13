@@ -15,10 +15,10 @@ ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598150"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Overzicht van Media Services V3 met Widevine-licentie sjabloon
@@ -91,7 +91,7 @@ Elke content_key_specs waarde moet worden opgegeven voor alle sporen, ongeacht d
 | content_key_specs  <br/> security_level |uint32 |Hiermee worden de vereisten voor het afspelen van clients gedefinieerd. <br/> -Op software gebaseerde, witte box crypto grafie is vereist. <br/> -Software-crypto grafie en een verborgen decoder zijn vereist. <br/> -Het sleutel materiaal en cryptografische bewerkingen moeten worden uitgevoerd binnen een vertrouwde, door hardware ondersteunde omgeving. <br/> -De crypto grafie en de code ring van inhoud moet worden uitgevoerd binnen een vertrouwde, door hardware ondersteunde omgeving.  <br/> -De crypto grafie, het decoderen en alle verwerking van de media (gecomprimeerd en niet-gecomprimeerd) moeten worden afgehandeld binnen een vertrouwde, door hardware ondersteunde omgeving. |
 | content_key_specs <br/> required_output_protection. HDC |teken reeks, een van HDCP_NONE, HDCP_V1, HDCP_V2 |Hiermee wordt aangegeven of HDCP is vereist. |
 | content_key_specs <br/>sleutel |Base64<br/>versleutelde teken reeks |De inhouds sleutel die moet worden gebruikt voor dit nummer. Indien opgegeven, is de track_type of key_id vereist. De inhouds provider kan deze optie gebruiken om de inhouds sleutel voor dit spoor te injecteren in plaats van de Widevine-licentie server een sleutel te laten genereren of op te zoeken. |
-| content_key_specs. key_id |Base64-gecodeerde teken reeks binair, 16 bytes |De unieke id voor de sleutel. |
+| content_key_specs content_key_specs.key_id |Base64-gecodeerde teken reeks binair, 16 bytes |De unieke id voor de sleutel. |
 
 ## <a name="policy-overrides"></a>Beleids onderdrukkingen
 | Naam | Waarde | Beschrijving |

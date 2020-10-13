@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847276"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Release opmerkingen bij StorSimple 8000 Series update 4
@@ -66,10 +66,10 @@ In update 4 zijn de volgende belang rijke verbeteringen en oplossingen voor oplo
 
 De volgende tabel bevat een overzicht van problemen die zijn opgelost in update 4.    
 
-| No | Functie | Probleem | Is van toepassing op het fysieke apparaat | Is van toepassing op virtueel apparaat |
+| Nee | Functie | Probleem | Is van toepassing op het fysieke apparaat | Is van toepassing op virtueel apparaat |
 | --- | --- | --- | --- | --- |
 | 1 |Failover |In de eerdere versie was er na de failover een probleem met het opschonen van de klant. Dit probleem is opgelost in deze release. |Ja |Ja |
-| 2 |Lokaal vastgemaakte volumes |In de vorige versie is er een probleem opgetreden bij het maken van een gerelateerd volume voor lokaal vastgemaakte volumes, waardoor er fouten ontstaan bij het maken van volumes. Dit probleem is in deze release veroorzaakt en opgelost. |Yes |Nee |
+| 2 |Lokaal vastgemaakte volumes |In de vorige versie is er een probleem opgetreden bij het maken van een gerelateerd volume voor lokaal vastgemaakte volumes, waardoor er fouten ontstaan bij het maken van volumes. Dit probleem is in deze release veroorzaakt en opgelost. |Ja |Nee |
 | 3 |Ondersteunings pakket |In de vorige versie zijn er problemen met het ondersteunings pakket die resulteren in een System. OutOfMemory-uitzonde ring of andere fouten die resulteren in een probleem bij het maken van een ondersteunings pakket. Deze fouten zijn opgelost in deze release. |Ja |Ja |
 | 4 |Bewaking |In de vorige versie heeft zich een probleem voorgedaan bij het bewaken van grafieken voor lokaal vastgemaakte volumes waarbij verbruik in EB werd weer gegeven. Deze fout is opgelost in deze release. |Ja |Ja |
 | 5 |Migratie |In de vorige versie waren er diverse problemen met de betrouw baarheid van de migratie van de 5000-7000-serie naar 8000 Series-apparaten. Deze problemen zijn opgelost in deze release. |Ja |Ja |

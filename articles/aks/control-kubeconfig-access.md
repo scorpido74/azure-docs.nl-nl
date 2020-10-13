@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009287"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Gebruik Azure op rollen gebaseerd toegangs beheer voor het definiëren van toegang tot het Kubernetes-configuratie bestand in azure Kubernetes service (AKS)
@@ -71,7 +71,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Als u machtigingen wilt toewijzen aan een Azure AD-groep, werkt u de `--assignee` para meter die wordt weer gegeven in het vorige voor beeld bij met de object-id voor de *groep* in plaats van een *gebruiker*. Als u de object-ID voor een groep wilt ophalen, gebruikt u de opdracht [AZ Ad Group show][az-ad-group-show] . In het volgende voor beeld wordt de object-ID van de Azure AD-groep met de naam *appdev*opgehaald:`az ad group show --group appdev --query objectId -o tsv`
+> Als u machtigingen wilt toewijzen aan een Azure AD-groep, werkt u de `--assignee` para meter die wordt weer gegeven in het vorige voor beeld bij met de object-id voor de *groep* in plaats van een *gebruiker*. Als u de object-ID voor een groep wilt ophalen, gebruikt u de opdracht [AZ Ad Group show][az-ad-group-show] . In het volgende voor beeld wordt de object-ID van de Azure AD-groep met de naam *appdev*opgehaald: `az ad group show --group appdev --query objectId -o tsv`
 
 U kunt de voor gaande toewijzing wijzigen naar de *gebruikersrol cluster* als dat nodig is.
 

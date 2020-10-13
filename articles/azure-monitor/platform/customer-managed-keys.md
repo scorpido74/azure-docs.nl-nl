@@ -1,16 +1,16 @@
 ---
 title: Door de klant beheerde sleutel van Azure Monitor
-description: Informatie en stappen voor het configureren van door de klant beheerde sleutel (CMK) voor het versleutelen van gegevens in uw Log Analytics-werk ruimten met behulp van een Azure Key Vault sleutel.
+description: Informatie en stappen voor het configureren van Customer-Managed sleutel (CMK) voor het versleutelen van gegevens in uw Log Analytics-werk ruimten met behulp van een Azure Key Vault sleutel.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
 ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657309"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Door de klant beheerde sleutel van Azure Monitor 
@@ -240,7 +240,7 @@ De identiteit wordt toegewezen aan de *cluster* bron op het moment van aanmaak.
 
 Hoewel het inrichten van het Log Analytics cluster a is voltooid, kunt u de inrichtings status op twee manieren controleren:
 
-1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
+1. Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
 2. Verzend een GET-aanvraag op de *cluster* resource en kijk naar de waarde *provisioningState* . Het is *ProvisioningAccount* tijdens het *inrichten en voltooid wanneer het is voltooid* .
 
 ```rst
@@ -337,7 +337,7 @@ Content-type: application/json
 
 200 OK en koptekst.
 Het duurt de doorgifte van de sleutel-id enkele minuten om te volt ooien. U kunt de status van de update op twee manieren controleren:
-1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
+1. Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
 2. Verzend een GET-aanvraag voor de *cluster* bron en Bekijk de *KeyVaultProperties* -eigenschappen. Uw recent bijgewerkte sleutel-id-details moeten in het antwoord worden geretourneerd.
 
 Een antwoord op de GET-aanvraag voor de *cluster* bron moet er als volgt uitzien wanneer de sleutel-id-Update is voltooid:
@@ -406,7 +406,7 @@ Content-type: application/json
 
 Opgenomen gegevens worden tijdens de koppelings bewerking opgeslagen die zijn versleuteld met uw beheerde sleutel. Dit kan tot 90 minuten duren. U kunt de status van de werkruimte koppeling op twee manieren controleren:
 
-1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
+1. Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
 2. Een [werk ruimte verzenden: aanvraag ophalen](/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de gekoppelde werk ruimte heeft een clusterResourceId onder "functies".
 
 ```rest
@@ -664,7 +664,7 @@ Meer informatie over [klanten-lockbox voor Microsoft Azure](https://docs.microso
 
   Opgenomen gegevens na de ontkoppelings bewerking worden opgeslagen in Log Analytics opslag. Dit kan 90 minuten duren. U kunt de status van de werk ruimte-koppeling op twee manieren controleren:
 
-  1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
+  1. Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
   2. Een [werk ruimte verzenden: aanvraag ophalen](/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de niet-gekoppelde werk ruimte heeft niet de *clusterResourceId* onder *functies*.
 
 - **Status van werkruimte koppeling controleren**
@@ -744,7 +744,7 @@ Meer informatie over [klanten-lockbox voor Microsoft Azure](https://docs.microso
 - Als u de sleutel versie bijwerkt in Key Vault en de nieuwe sleutel-id-details niet bijwerkt in de *cluster* bron, blijft de log Analytics cluster uw vorige sleutel gebruiken en worden uw gegevens niet meer toegankelijk. De nieuwe sleutel-id-gegevens in de *cluster* bron bijwerken om gegevens opname en de mogelijkheid om gegevens op te vragen, te hervatten.
 
 - Sommige bewerkingen zijn lang en kunnen even duren: Dit zijn *clusters* maken, *cluster* sleutel updates en *cluster* verwijdering. U kunt de bewerkings status op twee manieren controleren:
-  1. Wanneer u REST gebruikt, kopieert u de URL-waarde voor Azure-AsyncOperation uit het antwoord en volgt u de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
+  1. Wanneer u REST gebruikt, kopieert u de waarde van de Azure-AsyncOperation-URL uit het antwoord en volgt u de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
   2. Verzend aanvraag verzenden naar *cluster* of werk ruimte en Bekijk het antwoord. De niet-gekoppelde werk ruimte heeft bijvoorbeeld niet de *clusterResourceId* onder *functies*.
 
 - Gebruik uw contact personen in micro soft voor ondersteuning en Help met betrekking tot de door de klant beheerde sleutel.

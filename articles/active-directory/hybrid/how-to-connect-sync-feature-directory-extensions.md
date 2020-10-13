@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662484"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronisatie: Directory-extensies
@@ -87,7 +87,7 @@ Een van de handigste scenario's is het gebruik van deze kenmerken in dynamische 
 
    ![Scherm afbeelding met nieuwe kenmerken die in de gebruikers interface worden weer gegeven](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   Voltooi de expressie om uw vereisten aan te passen. In ons voor beeld is de regel ingesteld op **(User. extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales and Marketing")**.
+   Voltooi de expressie om uw vereisten aan te passen. In ons voor beeld is de regel ingesteld op **(User.extension_9d98ed114c4840d298fad781915f27e4_division-EQ ' verkoop en marketing ')**.
 
 4. Nadat de groep is gemaakt, geeft u Azure AD enige tijd om de leden in te vullen en bekijkt u de leden.
 

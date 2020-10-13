@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441711"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Wat is een logische SQL-Server in Azure SQL Database en Azure Synapse?
@@ -83,7 +83,7 @@ Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bas
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 Als u servers, data bases en firewalls met Azure PowerShell wilt maken en beheren, gebruikt u de volgende Power shell-cmdlets. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
@@ -147,21 +147,21 @@ Gebruik de volgende T-SQL-opdrachten om servers, data bases en firewalls te make
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[DATA base maken (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Hiermee maakt u een nieuwe data base in Azure SQL Database. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
+|[DATA base maken (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Hiermee maakt u een nieuwe database in Azure SQL Database. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 |[CREATE data base (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Hiermee maakt u een nieuwe Data Warehouse-data base in azure Synapse. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER data base (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Data Base of elastische pool wordt gewijzigd. |
 |[ALTER data base (Azure Synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Hiermee wijzigt u een Data Warehouse-data base in azure Synapse.|
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
-|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Data Base. Als u bent aangemeld bij de hoofd database voor een-server, retourneert informatie over alle data bases. Voor Azure Synapse moet u verbinding hebben met de hoofd database.|
-|[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een data base in Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
-|[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een data base in Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
-|[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor database connectiviteits gebeurtenissen voor Azure SQL Database, waarmee u een overzicht krijgt van geslaagde en mislukte database verbindingen. |
-|[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database database verbindingen, verbindings fouten en deadlocks voor Azure SQL Database geretourneerd. U kunt deze informatie gebruiken om de activiteit van uw data base bij te houden of problemen op te lossen.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Data Base. Als u bent aangemeld bij de hoofd database voor een-server, retourneert informatie over alle data bases. Voor Azure Synapse moet u verbinding hebben met de hoofd database.|
+|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een data base in Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
+|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een data base in Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
+|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor database connectiviteits gebeurtenissen voor Azure SQL Database, waarmee u een overzicht krijgt van geslaagde en mislukte database verbindingen. |
+|[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database database verbindingen, verbindings fouten en deadlocks voor Azure SQL Database geretourneerd. U kunt deze informatie gebruiken om de activiteit van uw data base bij te houden of problemen op te lossen.|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Hiermee worden de firewall instellingen op server niveau voor uw server gemaakt of bijgewerkt. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau. Een firewall regel op server niveau kan alleen worden gemaakt met behulp van Transact-SQL nadat de eerste firewall regel op server niveau is gemaakt door een gebruiker met machtigingen op Azure-niveau|
-|[sys. firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op server niveau die zijn gekoppeld aan een server.|
+|[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op server niveau die zijn gekoppeld aan een server.|
 |[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Hiermee verwijdert u Firewall instellingen op server niveau van een server. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau.|
 |[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Hiermee worden de firewall regels op database niveau voor een data base in Azure SQL Database gemaakt of bijgewerkt. Database firewall regels kunnen worden geconfigureerd voor de hoofd database en voor gebruikers databases in SQL Database. Database firewall regels zijn handig wanneer u Inge sloten database gebruikers gebruikt. De firewall regels voor de Data Base worden niet ondersteund in azure Synapse.|
-|[sys. database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op database niveau voor een data base in Azure SQL Database. |
+|[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op database niveau voor een data base in Azure SQL Database. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Hiermee verwijdert u de firewall-instelling op database niveau voor een Data Base van uw bedrijf in Azure SQL Database. |
 
 > [!TIP]

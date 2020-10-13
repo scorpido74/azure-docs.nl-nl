@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
 ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307276"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
@@ -120,7 +120,7 @@ Zie [resource afhankelijkheden definiëren](../../azure-resource-manager/templat
 
 ## <a name="identity"></a>Identiteit
 
-Vereist: voor de opbouw functie voor installatie kopieën die machtigingen voor lezen/schrijven moeten hebben, leest u in scripts van Azure Storage u moet een door een gebruiker toegewezen Azure-identiteit maken die machtigingen voor de afzonderlijke resources heeft. Raadpleeg de [documentatie](image-builder-user-assigned-identity.md)voor meer informatie over de werking van de opbouw functie voor installatie kopieën en de relevante stappen.
+Vereist: voor de opbouw functie voor installatie kopieën die machtigingen voor lezen/schrijven moeten hebben, leest u in scripts van Azure Storage u moet een Azure User-Assigned-identiteit maken die machtigingen heeft voor de afzonderlijke resources. Raadpleeg de [documentatie](image-builder-user-assigned-identity.md)voor meer informatie over de werking van de opbouw functie voor installatie kopieën en de relevante stappen.
 
 
 ```json
@@ -133,7 +133,7 @@ Vereist: voor de opbouw functie voor installatie kopieën die machtigingen voor 
 ```
 
 
-Image Builder-ondersteuning voor een door de gebruiker toegewezen identiteit:
+Ondersteuning voor Image Builder voor een User-Assigned identiteit:
 * Ondersteunt slechts één identiteit
 * Biedt geen ondersteuning voor aangepaste domein namen
 

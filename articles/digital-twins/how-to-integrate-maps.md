@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
 ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564356"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Apparaatdubbels gebruiken voor het bijwerken van een Azure Maps binnenste kaart
@@ -152,7 +152,7 @@ Volg de onderstaande stappen om de Tempe ratuur voor Live bijwerken te bekijken:
 
 Beide steek proeven verzenden temperatuur in een compatibel bereik, zodat u de kleur van de room 121-update op de kaart ongeveer elke 30 seconden zou moeten zien.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Een Office-kaart met room 121 gekleurd oranje":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, waarbij u het integratie gedeelte over de binnenste kaarten markeert":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Sla uw kaarten gegevens op in azure Digital Apparaatdubbels
 

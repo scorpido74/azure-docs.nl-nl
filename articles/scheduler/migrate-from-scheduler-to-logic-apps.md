@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532149"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-taken migreren naar Azure Logic Apps
@@ -220,7 +220,7 @@ Zie voor meer informatie over het afhandelen van uitzonde [ringen afhandelen en 
 **V**: waar kan ik ondersteuning krijgen voor het migreren van mijn scheduler-taken? <br>
 **A**: Hier volgen enkele manieren om ondersteuning te krijgen:
 
-**Azure Portal**
+**Azure-portal**
 
 Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvraag voor technische ondersteuning in het Azure Portal maken. Anders kunt u een andere ondersteunings optie selecteren.
 

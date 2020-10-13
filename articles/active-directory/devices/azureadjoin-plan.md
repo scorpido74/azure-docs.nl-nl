@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653210"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
@@ -64,7 +64,7 @@ Voor deze scenario's is het niet nodig om een federatieve server te configureren
 
 ### <a name="federated-environment"></a>Federatieve omgeving
 
-Een gefedereerde omgeving moet een id-provider hebben die zowel WS-Trust-als WS-inschakel protocollen ondersteunt:
+Een gefedereerde omgeving moet een id-provider hebben die zowel WS-Trust als WS-Fed protocollen ondersteunt:
 
 - **WS-voeder:** Dit protocol is vereist om een apparaat toe te voegen aan Azure AD.
 - **WS-Trust:** Dit protocol is vereist om u aan te melden bij een toegevoegd Azure AD-apparaat.
@@ -180,7 +180,7 @@ Apparaten die zijn toegevoegd aan Azure AD, bieden geen ondersteuning voor on-pr
 
 **Aanbeveling:** Overweeg deze toepassingen buiten gebruik te stellen en te verplaatsen naar hun moderne alternatieven.
 
-### <a name="remote-desktop-services"></a>Externe bureaubladservices
+### <a name="remote-desktop-services"></a>Extern bureaublad-services
 
 Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten moet de hostcomputer lid zijn van Azure AD of lid zijn van een hybride Azure AD. Extern bureau blad vanaf een niet-samengevoegd of niet-Windows-apparaat wordt niet ondersteund. Zie [verbinding maken met een externe Azure AD-computer](/windows/client-management/connect-to-remote-aadj-pc) voor meer informatie.
 

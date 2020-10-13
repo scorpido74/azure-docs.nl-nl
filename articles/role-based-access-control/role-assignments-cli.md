@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
 ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597647"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI
@@ -28,7 +28,7 @@ Om roltoewijzingen toe te voegen of te verwijderen, hebt u het volgende nodig:
 - Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) of [Eigenaar](built-in-roles.md#owner)
 - [Bash in azure Cloud shell](/azure/cloud-shell/overview) of [Azure cli](/cli/azure)
 
-## <a name="steps-to-add-a-role-assignment"></a>Stappen voor het toevoegen van een roltoewijzing
+## <a name="steps-to-add-a-role-assignment"></a>Stappen om een roltoewijzing toe te voegen
 
 In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd). Voer de volgende stappen uit om een roltoewijzing toe te voegen.
 
@@ -95,7 +95,7 @@ Zie [Azure Role-definities weer](role-definitions-list.md#azure-cli)geven voor m
  
 ### <a name="step-3-identify-the-needed-scope"></a>Stap 3: het benodigde bereik identificeren
 
-Azure biedt vier niveaus van bereik: resource, [resource groep](../azure-resource-manager/management/overview.md#resource-groups), abonnement en [beheer groep](../governance/management-groups/overview.md). Het is een best practice om toegang te verlenen met de mini maal benodigde bevoegdheden, dus vermijd het toewijzen van een rol in een breder bereik. Zie [inzicht in bereik](scope-overview.md)voor meer informatie over het bereik.
+Azure biedt vier niveaus van bereik: resource, [resource groep](../azure-resource-manager/management/overview.md#resource-groups), abonnement en [beheer groep](../governance/management-groups/overview.md). Het is een best practice om toegang te verlenen met de mini maal benodigde bevoegdheden, dus vermijd het toewijzen van een rol in een breder bereik. Zie [Bereik](scope-overview.md) voor meer informatie over het bereik.
 
 **Resourcebereik**
 

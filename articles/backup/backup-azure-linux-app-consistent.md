@@ -4,10 +4,10 @@ description: Maak toepassings consistente back-ups van uw virtuele Linux-machine
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999237"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Toepassingsconsistente back-up van Azure Linux-VM’s
@@ -78,8 +78,8 @@ Zorg ervoor dat u de juiste logboek registratie toevoegt tijdens het schrijven v
 | Post-ScriptNotFound |Het post script is niet gevonden op de locatie die is opgegeven in het **VMSnapshotScriptPluginConfig.jsin** het configuratie bestand. |Zorg ervoor dat het post script aanwezig is op het pad dat is opgegeven in het configuratie bestand om te zorgen voor toepassings consistente back-up.|
 | IncorrectPluginhostFile |Het **Pluginhost** -bestand, dat wordt meegeleverd met de uitbrei ding VmSnapshotLinux, is beschadigd, dus pre-script en post-script kan niet worden uitgevoerd en de back-up is niet toepassings consistent.| Verwijder de **VmSnapshotLinux** -extensie en wordt deze automatisch opnieuw geïnstalleerd met de volgende back-up om het probleem op te lossen. |
 | IncorrectJSONConfigFile | De **VMSnapshotScriptPluginConfig.jsin** het bestand is onjuist, dus het script kan niet worden uitgevoerd en het script is niet consistent. | Down load het exemplaar van [github](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) en configureer het opnieuw. |
-| InsufficientPermissionforPre-script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
-| InsufficientPermissionforPost-script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
+| InsufficientPermissionforPre-Script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
+| InsufficientPermissionforPost-Script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
 | Pre-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in de **VMSnapshotScriptPluginConfig.jsop** het bestand dat zich op **/etc/Azure**bevindt. |
 | Post-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in de **VMSnapshotScriptPluginConfig.jsop** het bestand dat zich op **/etc/Azure**bevindt. |
 

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532525"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud
@@ -98,7 +98,7 @@ U kunt desgewenst andere Azure AD-functies configureren.  Deze zijn niet vereist
 
 3. Meld u aan bij uw Privécloud-vCenter nadat de bevoegdheden zijn geëscaleerd.
 4. Volg de instructies in [een id-bron toevoegen in vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) met de waarden uit de vorige stap om Azure Active Directory als een identiteits bron in te stellen.
-5. Gebruikers/groepen toevoegen vanuit Azure AD aan vCenter-groepen, zoals beschreven in het VMware-onderwerp [leden toevoegen aan een vCenter-groep voor eenmalige aanmelding](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+5. Gebruikers/groepen toevoegen vanuit Azure AD aan vCenter-groepen, zoals beschreven in het VMware-onderwerp [leden toevoegen aan een vCenter-groep voor één Sign-On](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 > [!CAUTION]
 > Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* .

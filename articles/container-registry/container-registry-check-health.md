@@ -4,10 +4,10 @@ description: Meer informatie over het uitvoeren van een snelle diagnose opdracht
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245380"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>De status van een Azure container Registry controleren
@@ -19,7 +19,7 @@ Als eerste diagnostische stap voert u de opdracht [AZ ACR check-Health][az-acr-c
 Zie voor aanvullende hulp bij het oplossen van problemen met het REGI ster:
 * [Problemen met register aanmelding oplossen](container-registry-troubleshoot-login.md)
 * [Problemen met het netwerk oplossen met het REGI ster](container-registry-troubleshoot-access.md)
-* [Problemen met het REGI ster oplossen](container-registry-troubleshoot-performance.md)
+* [Problemen met registerprestaties oplossen](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Uitvoeren AZ ACR check-Health
 

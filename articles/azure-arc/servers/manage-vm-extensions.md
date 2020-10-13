@@ -4,10 +4,10 @@ description: Servers met Azure-Arc kunnen de implementatie van virtuele-machine 
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329071"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Extensie beheer voor virtuele machines met servers die geschikt zijn voor Azure-Arc
@@ -32,7 +32,7 @@ Ondersteuning voor VM-extensies voor Azure Arc ingeschakelde servers biedt de vo
 
 De functionaliteit van de VM-extensie is alleen beschikbaar in de lijst met [ondersteunde regio's](overview.md#supported-regions). Zorg ervoor dat u uw computer in een van deze regio's onboardt.
 
-## <a name="extensions"></a>Uitbreidingen
+## <a name="extensions"></a>Extensies
 
 In deze release ondersteunen we de volgende VM-extensies op Windows-en Linux-computers.
 

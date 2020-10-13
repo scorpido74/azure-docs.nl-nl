@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
 ms.openlocfilehash: 53c5dc4920b6c50ee3c900db9626f4d283f7b846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426415"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische update van de Mobility-service in azure-naar-Azure-replicatie
@@ -63,7 +63,7 @@ Wanneer u replicatie voor een virtuele machine inschakelt [vanuit de VM-weer gav
 
 1. Selecteer **Opslaan**.
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Instellingen voor extensie-updates":::
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Extensie-instellingen":::
 
 > [!IMPORTANT]
 > Wanneer u **site Recovery voor beheer toestaan**kiest, wordt de instelling toegepast op alle virtuele machines in de kluis.
@@ -460,12 +460,12 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 1. Als er nieuwe updates zijn voor de Mobility-service die is geïnstalleerd op uw Vm's, ziet u de volgende melding: er **is een nieuwe site Recovery update voor de replicatie agent beschikbaar. Klik om te installeren.**
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Venster gerepliceerde items":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Extensie-instellingen":::
 
 1. Selecteer de melding om de pagina VM selecteren te openen.
 1. Kies de Vm's die u wilt bijwerken en selecteer vervolgens **OK**. De update Mobility-service wordt gestart voor elke geselecteerde VM.
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="VM-lijst van gerepliceerde items":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="Extensie-instellingen":::
 
 ## <a name="common-issues-and-troubleshooting"></a>Veelvoorkomende problemen en probleem oplossing
 
@@ -479,7 +479,7 @@ Als u automatische updates niet kunt inschakelen, raadpleegt u de volgende veelv
 
   Als u de meeste problemen wilt verhelpen nadat u automatische updates hebt ingeschakeld, selecteert u **herstellen**. Als de knop herstellen niet beschikbaar is, raadpleegt u het fout bericht dat wordt weer gegeven in het deel venster instellingen voor het bijwerken van de extensie.
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Knop Site Recovery service herstellen in instellingen voor extensie-updates":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Extensie-instellingen":::
 
 - **Fout**: het run as-account heeft geen machtiging voor toegang tot de Recovery Services-resource.
 
@@ -495,7 +495,7 @@ Als u automatische updates niet kunt inschakelen, raadpleegt u de volgende veelv
 
   **Aanbevolen actie**: Selecteer **herstellen** en vervolgens **certificaat vernieuwen**om dit probleem op te lossen.
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="renew-CERT":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="Extensie-instellingen":::
 
   > [!NOTE]
   > Nadat u het certificaat hebt vernieuwd, vernieuwt u de pagina om de huidige status weer te geven.

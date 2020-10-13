@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532547"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Een resource uitsluiten van aanbevelingen en beveiligde Score
@@ -20,7 +20,7 @@ Een kern prioriteit van elk beveiligings team probeert ervoor te zorgen dat de a
 
 Wanneer u een beveiligings aanbeveling in Azure Security Center onderzoekt, is een van de eerste stukjes informatie die u controleert de lijst met betrokken resources.
 
-In sommige gevallen wordt een resource weer gegeven die u niet wilt opnemen. Het kan zijn opgelost door een proces dat niet wordt bijgehouden door Security Center. Of misschien heeft uw organisatie besloten het risico voor die specifieke resource te accepteren. 
+In sommige gevallen wordt een resource weer gegeven die u niet wilt opnemen. Dit kan zijn opgelost door een proces dat niet wordt bijgehouden door Security Center. Of misschien heeft uw organisatie besloten het risico voor die specifieke resource te accepteren. 
 
 In dergelijke gevallen kunt u een uitzonderings regel maken en ervoor zorgen dat de resource niet in de toekomst wordt weer gegeven met de beschadigde resources en niet van invloed is op uw beveiligde Score. 
 
@@ -30,10 +30,10 @@ De resource wordt weer gegeven als niet van toepassing en de reden wordt weer ge
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Preview|
-|Koers|Dit is een Premium Azure-beleids mogelijkheid die wordt aangeboden aan Azure Defender-klanten zonder extra kosten. Voor andere gebruikers kunnen kosten in de toekomst worden toegepast.|
+|Releasestatus:|Preview|
+|Prijzen:|Dit is een Premium Azure-beleids mogelijkheid die wordt aangeboden aan Azure Defender-klanten zonder extra kosten. Voor andere gebruikers kunnen kosten in de toekomst worden toegepast.|
 |Vereiste rollen en machtigingen:|**Eigenaar van abonnement** of **beleids bijdrage** voor het maken van een uitzonde ring<br>Als u een regel wilt maken, hebt u machtigingen nodig voor het bewerken van beleid in Azure Policy.<br>Meer informatie vindt u in de [Azure RBAC-machtigingen in azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
 |||
 
 
@@ -81,4 +81,4 @@ U kunt Azure Policy gebruiken om al uw uitzonde ringen bij te houden op de pagin
 
 In dit artikel hebt u geleerd hoe u een resource kunt uitsluiten van een aanbeveling zodat deze geen invloed heeft op uw beveiligde Score. Zie voor meer informatie over beveiligde scores:
 
-- [Beveiligde Score in Azure Security Center](secure-score-security-controls.md)
+- [Beveiligingsscore in Azure Security Center](secure-score-security-controls.md)

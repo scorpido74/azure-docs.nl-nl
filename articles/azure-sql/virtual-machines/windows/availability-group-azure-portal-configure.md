@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89482795"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Een beschikbaarheids groep configureren voor SQL Server op Azure VM (Azure Portal-preview)
@@ -67,18 +67,11 @@ Als u nog geen bestaand cluster hebt, maakt u dit met behulp van de Azure Portal
 
 1. Geef uw cluster een naam en een opslag account om te gebruiken als de Cloudwitness. Gebruik een bestaand opslag account of selecteer **nieuwe maken** om een nieuw opslag account te maken. Een opslagaccountnaam moet tussen 3 en 24 tekens lang zijn en mag alleen bestaan uit getallen en kleine letters.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Naam, opslag account en referenties opgeven voor het cluster":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Vouw de referenties van het **Windows Server-failovercluster** uit om [referenties](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) op te geven voor het SQL Server-service account, evenals de cluster operator en de Boots trap-accounts als deze verschillen van het account dat wordt gebruikt voor de SQL Server-service. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Geef referenties op voor het SQL-Service account, het cluster operator account en het Boots trap-account van het cluster":::
-
-1. Selecteer de SQL Server Vm's die u aan het cluster wilt toevoegen. Controleer of de computer opnieuw moet worden opgestart en wees voorzichtig. Alleen Vm's die zijn geregistreerd bij de resource provider van de SQL-VM in de volledige beheer modus en zich op dezelfde locatie, domein en op hetzelfde virtuele netwerk bevinden als de primaire SQL Server VM is zichtbaar. 
-1. Selecteer **Toep assen** om het cluster te maken. U kunt de status van uw implementatie controleren in het **activiteiten logboek** dat toegankelijk is via het klok pictogram in de bovenste navigatie balk. 
-1. Voor een failovercluster dat door micro soft wordt ondersteund, moet de cluster validatie worden door gegeven. Maak verbinding met de virtuele machine met behulp van uw voorkeurs methode (zoals Remote Desktop Protocol (RDP)) en controleer of de validatie van uw cluster wordt uitgevoerd voordat u doorgaat. Als u dit niet doet, wordt de status van het cluster niet ondersteund. U kunt het cluster valideren met behulp van Failoverclusterbeheer (FCM) of de volgende Power shell-opdracht:
-
-    ```powershell
-    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal"
     ```
     
 
@@ -94,7 +87,7 @@ Voer hiervoor de volgende stappen uit:
 1. Selecteer **hoge Beschik baarheid** onder **instellingen**. 
 1. Selecteer een **bestaand Windows Server-failovercluster onboarding** om de pagina **onboarding Windows Server failover cluster** te openen. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Onboarding van een bestaand cluster op de pagina hoge Beschik baarheid op uw virtuele SQL-machines":::
+   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Controleer de instellingen voor uw cluster. 
 1. Selecteer **Toep assen** om het cluster vrij te maken en selecteer vervolgens **Ja** bij de prompt om door te gaan.
@@ -111,21 +104,21 @@ Nadat het cluster is gemaakt of onboarded, maakt u de beschikbaarheids groep met
 1. Selecteer **hoge Beschik baarheid** onder **instellingen**. 
 1. Selecteer **+ nieuwe always on-beschikbaarheids groep** om de pagina **beschikbaarheids groep maken** te openen.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Selecteer nieuwe always on-beschikbaarheids groep om de pagina beschikbaarheids groep maken te openen.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Voer een naam in voor de beschikbaarheids groep. 
 1. Selecteer **listener configureren** om de pagina **beschikbaarheids groep-listener configureren** te openen. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Een naam opgeven voor de beschikbaarheids groep en een listener configureren":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Vul de waarden in en gebruik een bestaande load balancer of selecteer **nieuwe maken** om een nieuwe Load Balancer te maken.  Selecteer **Toep assen** om uw instellingen op te slaan en uw listener en Load Balancer te maken. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Vul de waarden in het formulier in om uw nieuwe listener te maken en load balancer":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Kies **en selecteer replica** om de pagina **replica's van beschikbaarheids groep configureren** te openen.
 1. Selecteer de virtuele machines die u wilt toevoegen aan de beschikbaarheids groep en kies de instellingen voor de beschikbaarheids groep die het beste bij uw bedrijfs behoeften passen. Selecteer **Toep assen** om uw instellingen op te slaan. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Kies Vm's om toe te voegen aan uw beschikbaarheids groep en configureer de instellingen die geschikt zijn voor uw bedrijf":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Controleer de instellingen van uw beschikbaarheids groep en selecteer vervolgens **Toep assen** om uw beschikbaarheids groep te maken. 
 
@@ -147,7 +140,7 @@ Voer de volgende stappen uit om data bases toe te voegen aan uw beschikbaarheids
 1. Vouw **altijd uit op hoge Beschik baarheid** in **objectverkenner**.
 1. Vouw **beschikbaarheids groepen**uit, klik met de rechter muisknop op uw beschikbaarheids groep en kies **Data Base toevoegen...**.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Klik met de rechter muisknop op de beschikbaarheids groep in object Verkenner en kies data base toevoegen":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Volg de aanwijzingen om de data base (s) te selecteren die u wilt toevoegen aan uw beschikbaarheids groep. 
 1. Selecteer **OK** om uw instellingen op te slaan en uw data base toe te voegen aan de beschikbaarheids groep. 
@@ -155,7 +148,7 @@ Voer de volgende stappen uit om data bases toe te voegen aan uw beschikbaarheids
 
 Nadat de data bases zijn toegevoegd, kunt u de status van uw beschikbaarheids groep controleren in de Azure Portal: 
 
-:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Controleer de status van uw beschikbaarheids groep op de pagina hoge Beschik baarheid van de Azure Portal nadat de data bases zijn gesynchroniseerd":::
+:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 ## <a name="add-more-vms"></a>Meer Vm's toevoegen
 
@@ -166,7 +159,7 @@ Voer de volgende stappen uit om meer SQL Server Vm's toe te voegen aan het clust
 1. Selecteer **hoge Beschik baarheid** onder **instellingen**. 
 1. Selecteer **Windows Server-failovercluster configureren** om de pagina **Windows Server-failovercluster configureren** te openen. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Selecteer Windows Server-failovercluster configureren om Vm's toe te voegen aan uw cluster.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 1. Vouw de referenties voor het **Windows Server-failovercluster** uit en voer in de accounts die worden gebruikt voor de SQL Server service, cluster operator en de Boots trap-accounts van het cluster. 
 1. Selecteer de SQL Server Vm's die u aan het cluster wilt toevoegen. 
@@ -180,7 +173,7 @@ U kunt de status van uw implementatie controleren in het **activiteiten logboek*
 
 U kunt **meer Replica's toevoegen** aan de beschikbaarheids groep, **de listener configureren**of **de listener verwijderen** van de pagina **hoge Beschik baarheid** in het Azure portal door de beletsel tekens (...) naast uw beschikbaarheids groep te selecteren: 
 
-:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Selecteer de weglatings tekens naast de beschikbaarheids groep en selecteer vervolgens replica toevoegen om meer replica's aan de beschikbaarheids groep toe te voegen.":::
+:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal":::
 
 ## <a name="remove-cluster"></a>Cluster verwijderen
 
@@ -255,7 +248,7 @@ Voer de volgende stappen uit om de logboeken voor de implementatie weer te geven
 1. Selecteer de implementatie van belang voor meer informatie over de implementatie. 
 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Selecteer de implementatie waarover u meer wilt weten." :::
+   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Nieuw cluster maken door het + nieuwe cluster te selecteren in de portal" :::
 
 ### <a name="common-errors"></a>Algemene fouten
 

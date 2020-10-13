@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837272"
 ---
-# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Een back-up maken van een Azure Database for MySQL-server en deze herstellen met Power shell
+# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Een back-up van Azure Database for MySQL-server maken en deze terugzetten met behulp van PowerShell
 
 Er wordt regel matig een back-up van Azure Database for MySQL servers gemaakt om herstel functies in te scha kelen. Met deze functie kunt u de server en alle bijbehorende data bases naar een eerder tijdstip herstellen op een nieuwe server.
 
@@ -27,8 +27,8 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease` .
-> Zodra de AZ. MySql Power shell-module algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
+> Zo lang de PowerShell-module Az.MySQL in preview is, moet u deze afzonderlijk van de Az-module van PowerShell installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.MySQL algemeen beschikbaar is, wordt het onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
 
@@ -133,4 +133,4 @@ De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een Azure Database for MySQL connection string genereren met Power shell](howto-connection-string-powershell.md)
+> [Een Azure Database for MariaDB-verbindingsreeks genereren met PowerShell](howto-connection-string-powershell.md)
