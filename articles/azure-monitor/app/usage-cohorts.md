@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77671083"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995751"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortes
 
@@ -49,7 +49,7 @@ Uw team definieert een ingeschakelde gebruiker als iedereen die uw app vijf of m
 
     Nu vertegenwoordigt deze cohort alle gebruikers-Id's die met een aangepaste gebeurtenis of pagina weergave worden verzonden op 5 afzonderlijke dagen in de afgelopen 28.
 
-5. Selecteer **Opslaan**.
+5. Selecteer **Save** (Opslaan).
 
    > [!TIP]
    > Geef uw cohort een naam, bijvoorbeeld ' ingeschakelde gebruikers (5 + dagen) '. Sla het bestand op in ' mijn rapporten ' of ' gedeelde rapporten ', afhankelijk van of u wilt dat andere personen die toegang hebben tot deze Application Insights resource, deze cohort kunnen zien.
@@ -129,9 +129,9 @@ Cohort en filters verschillen. Stel dat u een cohort hebt van gebruikers uit het
 * De cohort-versie toont alle gebeurtenissen van gebruikers die een of meer gebeurtenissen van het Verenigd Konink rijk in het huidige tijds bereik hebben verzonden. Als u op land of regio splitst, ziet u waarschijnlijk veel landen en regio's.
 * De filters-versie toont alleen gebeurtenissen uit het Verenigd Konink rijk. Maar als u op land of regio splitst, ziet u alleen het Verenigd Konink rijk.
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
-* [Querytaal voor analytische gegevens](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Querytaal voor analytische gegevens](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 * [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)
-* [Gebruikers stromen](usage-flows.md)
+* [Gebruikersstromen](usage-flows.md)
 * [Overzicht van gebruik](usage-overview.md)

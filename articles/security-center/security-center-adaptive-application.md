@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3f3aad08266337756038dfa6ac6ff0c9afe093c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439013"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996782"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -149,6 +149,23 @@ De regels voor een groep machines bewerken:
 
 1. Selecteer **Opslaan**om de wijzigingen toe te passen.
 
+
+## <a name="review-and-edit-a-groups-settings"></a>De instellingen van een groep controleren en bewerken
+
+1. Als u de details en instellingen van uw groep wilt weer geven, selecteert u **groeps instellingen**
+
+    Dit deel venster toont de naam van de groep (die kan worden gewijzigd), het type besturings systeem, de locatie en andere relevante informatie.
+
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Besturings elementen voor adaptieve toepassingen openen vanuit het Azure-dash board" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+
+    > [!IMPORTANT]
+    > De optie **afdwingen** in de instellingen voor de beveiligings modus voor bestands typen wordt in alle scenario's grijs weer gegeven. Er zijn op dit moment geen afdwingings opties beschikbaar. 
+    >
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Besturings elementen voor adaptieve toepassingen openen vanuit het Azure-dash board":::
+
+1. U kunt desgewenst de naam van de groep of de beveiligings modus voor het bestands type wijzigen.
+
+1. Selecteer **Toep assen** en **Opslaan**.
 
 
 

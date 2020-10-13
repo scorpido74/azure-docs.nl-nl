@@ -1,276 +1,276 @@
 ---
-title: Zelf studie voor de SaaS-data base per Tenant
-description: Implementeer en verken de SaaS multi tenant-toepassing Wingtip tickets die het data base-per-Tenant patroon en andere SaaS-patronen demonstreert met behulp van Azure SQL Database.
+title: Zelfstudie voor SaaS-app met een database per tenant
+description: Implementeer en verken de Wingtip Tickets SaaS-toepassing met meerdere tenants, waarmee het database-per-tenantpatroon en andere SaaS-patronen worden gedemonstreerd met behulp van Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: MT
+ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356822"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91618935"
 ---
-# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Implementeer en verken een multi tenant SaaS-app die gebruikmaakt van het data base-per-Tenant patroon met Azure SQL Database
+# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Implementeer en verken een SaaS-app met meerdere tenants die het database-per-tenantpatroon gebruikt met Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deze zelf studie implementeert en bekijkt u de Wingtip tickets SaaS data base-per-Tenant toepassing (Wingtip). De app maakt gebruik van een Data Base-per-Tenant patroon om de gegevens van meerdere tenants op te slaan. De app is ontworpen om functies van Azure SQL Database te demonstreren die het inschakelen van SaaS-scenario's vereenvoudigen.
+In deze zelfstudie implementeert en verkent u de Wingtip Tickets SaaS-database-per-tenanttoepassing (Wingtip). Deze app maakt gebruik van een database-per-tenantpatroon om de gegevens van meerdere tenants op te kunnen slaan. De app is ontworpen om functies van Azure SQL Database weer te geven die de inschakeling van SaaS-scenario's vereenvoudigen.
 
-Vijf minuten nadat u **implementeren naar Azure**hebt geselecteerd, hebt u een multi tenant-SaaS-toepassing. De app bevat een Data Base die wordt uitgevoerd in Azure SQL Database. De app wordt geïmplementeerd met drie voor beelden van tenants, elk met een eigen data base. Alle data bases worden geïmplementeerd in een elastische SQL-pool. De app is geïmplementeerd in uw Azure-abonnement. U hebt volledige toegang om de afzonderlijke onderdelen van de app te verkennen en ermee te werken. De C#-bron code van de toepassing en de beheer scripts bevinden zich in de [WingtipTicketsSaaS-DbPerTenant github opslag plaats][github-wingtip-dpt].
+Vijf minuten nadat u **Implementeren naar Azure**hebt geselecteerd, hebt u een SaaS-toepassing met meerdere tenants. De app bevat een database die wordt uitgevoerd in Azure SQL Database. De app wordt geïmplementeerd met drie voorbeeldtenants, elk met hun eigen database. Alle databases worden geïmplementeerd in een elastische SQL-pool. De app is geïmplementeerd in uw Azure-abonnement. U hebt volledige toegang om te verkennen en te werken met de afzonderlijke app-onderdelen. De C#-broncode en beheerscripts van de app zijn beschikbaar in de GitHub-opslagplaats [WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
 
 In deze zelfstudie komen deze onderwerpen aan bod:
 
 > [!div class="checklist"]
-> - Hoe u de SaaS-toepassing Wingtip implementeert.
-> - Waar de bron code en beheer scripts van de toepassing worden opgehaald.
-> - Over de servers, Pools en data bases die de app vormen.
-> - Hoe tenants worden toegewezen aan hun gegevens met de *catalogus*.
-> - Hoe u een nieuwe Tenant inricht.
-> - De Tenant activiteiten in de app bewaken.
+> - Wingtip SaaS-toepassing implementeren.
+> - Waar u de broncode en beheerscripts van de app ophaalt.
+> - Informatie over de servers, pools en databases waaruit de app bestaat.
+> - Tenants via de *catalogus* toewijzen aan de bijbehorende gegevens.
+> - Een nieuwe tenant inrichten.
+> - Tenantactiviteiten in de app bewaken.
 
-Een [reeks gerelateerde zelf studies](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) biedt verschillende SaaS-ontwerp-en beheer patronen. De zelf studies maken gebruik van de eerste implementatie. Wanneer u de zelf studies gebruikt, kunt u de meegeleverde scripts bekijken om te zien hoe de verschillende SaaS-patronen worden geïmplementeerd. De scripts laten zien hoe functies van SQL Database de ontwikkeling van SaaS-toepassingen te vereenvoudigen.
+Een [reeks gerelateerde zelfstudies](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) aanbiedingen om verschillende SaaS-ontwerp en -beheerpatronen te verkennen. De zelfstudies bouwen verder op de initiële implementatie. Wanneer u de zelfstudies gebruikt, wordt u aangeraden de meegeleverde scripts door te nemen om te zien hoe de verschillende SaaS-patronen worden geïmplementeerd. De scripts laten zien hoe functies van SQL Database de ontwikkeling van SaaS-toepassingen vereenvoudigen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat Azure PowerShell is geïnstalleerd om deze zelf studie te volt ooien. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
+Om deze zelfstudie te voltooien, zorgt u ervoor dat Azure PowerShell geïnstalleerd is. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
 
-## <a name="deploy-the-wingtip-tickets-saas-application"></a>De SaaS-toepassing Wingtip tickets implementeren
+## <a name="deploy-the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS-toepassing implementeren
 
 ### <a name="plan-the-names"></a>De namen plannen
 
-In de stappen van deze sectie geeft u een gebruikers waarde op die wordt gebruikt om te controleren of de resource namen wereld wijd uniek zijn. U geeft ook een naam op voor de resource groep met alle resources die zijn gemaakt door een implementatie van de app. Voor een fictieve persoon met de naam Anne Finley wordt voorgesteld:
+In de stappen van deze sectie geeft u een gebruikerswaarde op die wordt gebruikt om te controleren of de resourcenamen wereldwijd uniek zijn. U geeft ook een naam op voor de resourcegroep met alle resources die zijn gemaakt door een implementatie van de app. Voor een fictieve persoon met de naam Ann Finley wordt het volgende voorgesteld:
 
-- **Gebruiker**: *AF1* bestaat uit de initialen van Anne Finley plus een cijfer. Als u de app een tweede keer implementeert, moet u een andere waarde gebruiken. Een voor beeld is AF2.
-- **Resource groep**: *Wingtip-dpt-AF1* geeft aan dat dit de data base-per-Tenant-app is. Voeg de gebruikers naam AF1 toe om de naam van de resource groep te correleren met de namen van de resources die deze bevat.
+- **Gebruiker**: *af1* bestaat uit de initialen van Anne Finley plus een cijfer. Gebruik een andere waarde als u de app een tweede keer implementeert. Een voorbeeld is af2.
+- **Resourcegroep**: *wingtip-dpt-af1* geeft aan dat dit de database-per-tenant-app is. Voeg gebruikersnaam af1 toe om de naam van de resourcegroep te correleren met de namen van de resources die deze bevat.
 
-Kies uw namen nu en noteer deze.
+Kies uw namen nu en noteer ze.
 
 ### <a name="steps"></a>Stappen
 
-1. Als u de sjabloon voor de implementatie van de Wingtip tickets SaaS-data base per Tenant in de Azure Portal wilt openen, selecteert **u implementeren naar Azure**.
+1. Selecteer **Implementeren naar Azure** om de sjabloon voor de implementatie van Wingtip Tickets SaaS-database-per-tenant te openen in het Azure-portaal.
 
    [![Afbeelding met een knop met het label Implementeren naar Azure.](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
-1. Voer waarden in de sjabloon in voor de vereiste para meters.
+1. Voer waarden in de sjabloon in voor de vereiste parameters.
 
     > [!IMPORTANT]
-    > Sommige verificatie-en server firewalls zijn opzettelijk onveilig voor demonstratie doeleinden. We raden u aan een nieuwe resource groep te maken. Gebruik geen bestaande resource groepen,-servers of-groepen. Gebruik deze toepassing, scripts of enige geïmplementeerde resources niet voor productie. Verwijder deze resource groep wanneer u klaar bent met de toepassing om gerelateerde facturering te stoppen.
+    > Om het overzichtelijk te houden zijn bepaalde verificatieprocessen weggelaten. Ook zijn de firewalls op servers uitgeschakeld voor deze zelfstudie. Het wordt aangeraden om een nieuwe resourcegroep te maken. Gebruik geen bestaande resourcegroepen, -servers of -pools. Gebruik deze toepassing, scripts of enige geïmplementeerde resources niet voor productie. Verwijder deze resourcegroep wanneer u klaar bent om gerelateerde facturering te stoppen.
 
-    - **Resource groep**: Selecteer **nieuwe maken**en geef de unieke naam op die u eerder hebt gekozen voor de resource groep.
-    - **Locatie**: Selecteer een locatie in de vervolg keuzelijst.
-    - **Gebruiker**: gebruik de waarde voor de gebruikers naam die u eerder hebt gekozen.
+    - **Resourcegroep**: Selecteer **Nieuwe maken** en geef de unieke naam op die u eerder hebt gekozen voor de resourcegroep.
+    - **Locatie**: Selecteer een locatie in de vervolgkeuzelijst.
+    - **Gebruiker**: Gebruik de waarde voor de gebruikersnaam die u eerder hebt gekozen.
 
 1. De toepassing implementeren.
 
-    a. Selecteer deze optie om de voor waarden te accepteren.
+    a. Selecteer om akkoord te gaan met de voorwaarden.
 
     b. Selecteer **Aankoop**.
 
-1. Als u de implementatie status wilt controleren, selecteert u **meldingen** (het klok pictogram rechts van het zoekvak). De implementatie van de SaaS-app van Wingtip tickets neemt ongeveer vijf minuten in beslag.
+1. Om de voortgang van de implementatie te controleren, selecteert u **Meldingen** (het belpictogram naast het zoekvak). Het implementeren van de Wingtip Tickets SaaS-app duurt ongeveer vijf minuten.
 
    ![Implementatie geslaagd](./media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
-## <a name="download-and-unblock-the-wingtip-tickets-management-scripts"></a>De beheer scripts voor Wingtip tickets downloaden en deblokkeren
+## <a name="download-and-unblock-the-wingtip-tickets-management-scripts"></a>De Wingtip Tickets-beheerscripts downloaden en deblokkeren
 
-Wanneer de toepassing wordt geïmplementeerd, downloadt u de bron code-en beheer scripts.
+Terwijl de toepassing wordt geïmplementeerd, downloadt u de broncode en beheerscripts.
 
 > [!IMPORTANT]
-> Uitvoer bare inhoud (scripts en Dll's) wordt mogelijk geblokkeerd door Windows wanneer zip-bestanden worden gedownload vanaf een externe bron en geëxtraheerd. Volg de stappen voor het deblokkeren van het zip-bestand voordat u de scripts uitpakt. Als u de blok kering opheffen, zorgt u ervoor dat de scripts mogen worden uitgevoerd.
+> Uitvoerbare inhoud (scripts en DLL's) wordt mogelijk door Windows geblokkeerd wanneer zip-bestanden vanaf een externe bron worden gedownload en uitgepakt. Volg de stappen voor het deblokkeren van het .zip-bestand voordat u de scripts uitpakt. Als u de blokkering opheffen, zorgt u ervoor dat de scripts mogen worden uitgevoerd.
 
-1. Blader naar de [WingtipTicketsSaaS-DbPerTenant github opslag plaats][github-wingtip-dpt].
+1. Ga naar de opslagplaats voor [WingtipTicketsSaaS-DbPerTenant GitHub-opslagplaats][github-wingtip-dpt].
 1. Selecteer **Klonen of downloaden**.
-1. Selecteer **zip downloaden**en sla het bestand op.
-1. Klik met de rechter muisknop op het **WingtipTicketsSaaS-DbPerTenant-master.zip** -bestand en selecteer vervolgens **Eigenschappen**.
-1. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen**  >  **Apply**.
-1. Selecteer **OK**en pak de bestanden uit
+1. Selecteer **Zip-bestand downloaden** en sla vervolgens het bestand op.
+1. Klik met de rechtermuisknop op het bestand **WingtipTicketsSaaS-DbPerTenant-master.zip** en selecteer **Eigenschappen**.
+1. Op het tabblad **Algemeen** selecteert u **Deblokkeren** > **Toepassen**.
+1. Selecteer **OK** en pak de bestanden uit
 
-De scripts bevinden zich in de.. \\ . WingtipTicketsSaaS-DbPerTenant-master \\ learning modules-map.
+Scripts bevinden zich in de map \\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules.
 
-## <a name="update-the-user-configuration-file-for-this-deployment"></a>Het gebruikers configuratie bestand voor deze implementatie bijwerken
+## <a name="update-the-user-configuration-file-for-this-deployment"></a>Het gebruikersconfiguratiebestand voor deze implementatie bijwerken
 
-Voordat u scripts uitvoert, moet u de waarden van de resource groep en de gebruiker in het gebruikers configuratie bestand bijwerken. Stel deze variabelen in op de waarden die u tijdens de implementatie hebt gebruikt.
+Voordat u scripts uitvoert, moet u de waarden van de resourcegroep en de gebruiker in het gebruikersconfiguratiebestand bijwerken. Stel deze variabelen in op de waarden die u tijdens de implementatie hebt ingesteld.
 
-1. Open in de Power shell-ISE.. \\ . Learning modules \\ **userconfig. psm1**
-1. **ResourceGroupName** en **naam** bijwerken met de specifieke waarden voor uw implementatie (alleen op regels 10 en 11).
+1. Open in de PowerShell ISE ...\\Learning Modules\\**UserConfig.psm1**
+1. Werk **ResourceGroupName** en **Name** bij met de specifieke waarden voor uw implementatie (alleen in regels 10 en 11).
 1. Sla de wijzigingen op.
 
 Er wordt in bijna elk script naar deze waarden verwezen.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-De app geeft een overzicht van locaties die gebeurtenissen hosten. Locatie typen zijn onder andere concert huizen, Jazz klaveren en sport clubs. In Wingtip-tickets worden locaties geregistreerd als tenants. Een Tenant geeft u een eenvoudige manier om gebeurtenissen weer te geven en om tickets aan hun klanten te verkopen. Elke locatie krijgt een gepersonaliseerde website om hun evenementen weer te geven en om tickets te verkopen.
+De app geeft een overzicht van de locaties waarop evenementen plaatsvinden. Voorbeelden van locatietypen zijn concertzalen, jazzclubs en sportverenigingen. In Wingtip Tickets worden locaties geregistreerd als tenants. Een tenant geeft u een eenvoudige manier om gebeurtenissen weer te geven en om tickets aan hun klanten te verkopen. Elke locatie krijgt een gepersonaliseerde website waarop de evenementen voor die locatie worden vermeld en kaartjes worden verkocht.
 
-In de app wordt intern in elke Tenant een Data Base opgehaald die is geïmplementeerd in een elastische pool.
+In de app wordt intern in elke tenant een database geïmplementeerd in een elastische pool.
 
-Een centrale **gebeurtenis hub** pagina bevat een lijst met koppelingen naar de tenants in uw implementatie.
+Een centrale **Events Hub**-pagina bevat een lijst met koppelingen naar de tenants in uw implementatie.
 
-1. Gebruik de URL om de evenementen hub in uw webbrowser te openen: http://events.wingtip-dpt.&lt ; User &gt; . trafficmanager.net. Vervang de &lt; gebruiker &gt; door de gebruikers waarde van uw implementatie.
+1. Gebruik de URL om de Events Hub in uw webbrowser te openen: http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net. Vervang &lt;user&gt; door de gebruikerswaarde van uw implementatie.
 
-    ![Events hub](./media/saas-dbpertenant-get-started-deploy/events-hub.png)
+    ![Events Hub](./media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Selecteer **fabrikam Jazz Club** in de evenementen hub.
+2. Klik in de Events Hub op **Fabrikam Jazz Club**.
 
     ![Gebeurtenissen](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-De Wingtip-toepassing maakt gebruik van [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md) om de distributie van binnenkomende aanvragen te beheren. De URL voor toegang tot de gebeurtenissen pagina voor een specifieke Tenant gebruikt de volgende indeling:
+De Wingtip-app maakt gebruik van  [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md) om de distributie van inkomende aanvragen te regelen. De URL voor toegang tot de gebeurtenissenpagina voor een specifieke tenant gebruikt de volgende indeling:
 
-- http://events.wingtip-dpt.&lt; User &gt; . trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
-    De delen van de voor gaande notatie worden beschreven in de volgende tabel.
+    De delen van de voorgaande indeling worden beschreven in de volgende tabel.
 
     | URL-onderdeel        | Beschrijving       |
     | :-------------- | :---------------- |
-    | Events. Wingtip-dpt | De gebeurtenissen delen van de Wingtip-app.<br /><br /> *-dpt* onderscheidt de implementatie van de *Data Base-per-Tenant* van Wingtip-tickets van andere implementaties. Voor beelden zijn de implementaties van *één* app-per-Tenant (*-sa*) of *multi tenant-data base* (*-MT*). |
-    | . * &lt; gebruiker &gt; * | *AF1* in het voor beeld. |
-    | . trafficmanager.net/ | Traffic Manager, basis-URL. |
-    | fabrikamjazzclub | Identificeert de Tenant met de naam fabrikam Jazz Club. |
+    | events.wingtip-dpt | De gebeurtenisdelen van de Wingtip-app.<br /><br /> *-dpt* onderscheidt *database-per-tenant*-implementatie van Wingtip Tickets van andere implementaties. Voorbeelden zijn de implementaties met *één* app-per-tenant ( *-sa*) of de *database met meerdere tenants* ( *-mt*). |
+    | . *&lt;user&gt;* | *af1* in het voorbeeld. |
+    | .trafficmanager.net/ | Traffic manager, basis-URL. |
+    | fabrikamjazzclub | Identificeert de tenant met de naam Fabrikam Jazz Club. |
     | &nbsp; | &nbsp; |
 
-- De naam van de Tenant wordt geparseerd uit de URL door de gebeurtenissen-app.
-- De naam van de Tenant wordt gebruikt om een sleutel te maken.
-- De sleutel wordt gebruikt om toegang te krijgen tot de catalogus om de locatie van de data base van de Tenant op te halen.
-  - De catalogus wordt geïmplementeerd met behulp van *Shard-toewijzings beheer*.
-- De Events hub gebruikt uitgebreide meta gegevens in de catalogus om de lijst met Url's voor elke Tenant op te bouwen.
+- De tenantnaam wordt geparseerd uit de URL door de evenementenapp.
+- De tenantnaam wordt gebruikt om een sleutel te maken.
+- De sleutel wordt gebruikt om toegang te krijgen tot de catalogus om de locatie van de database van de tenant op te halen.
+  - De catalogus wordt geïmplementeerd met behulp van *shard-toewijzingsbeheer*
+- De Events Hub gebruikt uitgebreide metagegevens in de catalogus om URL's voor de pagina met de lijst met evenementen voor elke tenant op te bouwen.
 
-In een productie omgeving maakt u doorgaans een CNAME DNS-record om het [*Internet domein van een bedrijf*](../../traffic-manager/traffic-manager-point-internet-domain.md)   te laten verwijzen naar de DNS-naam van het Traffic Manager.
+In een productieomgeving maakt u doorgaans een CNAME DNS-record om  [*een internetdomein van het bedrijf te laten verwijzen*](../../traffic-manager/traffic-manager-point-internet-domain.md)  naar de DNS-naam van Traffic Manager.
 
 > [!NOTE]
-> Het is mogelijk niet onmiddellijk duidelijk wat het gebruik van Traffic Manager is in deze zelf studie. Het doel van deze reeks zelf studies is het demonstreren van patronen die de schaal van een complexe productie omgeving kunnen afhandelen. In een dergelijk geval hebt u bijvoorbeeld meerdere web-apps verdeeld over de hele wereld, naast elkaar met data bases en hebt u Traffic manager nodig om tussen deze instanties te routeren.
-Een andere set zelf studies die het gebruik van Traffic Manager illustreert hoewel de [geo-Restore](../../sql-database/saas-dbpertenant-dr-geo-restore.md) en de [geo-replicatie](../../sql-database/saas-dbpertenant-dr-geo-replication.md) zelf studies zijn. In deze zelf studies wordt Traffic Manager gebruikt om over te scha kelen naar een herstel exemplaar van de SaaS-app in het geval van een regionale storing.
+> Het is misschien niet onmiddellijk duidelijk wat het nut van Traffic Manager is in deze zelfstudie. Het doel van deze reeks zelfstudies is het demonstreren van patronen geschikt voor een complexe productie-omgeving op grote schaal. In een dergelijk geval, wanneer u bijvoorbeeld meerdere web-apps hebt verspreid over de hele wereld, dan heeft u samen met databases Traffic Manager nodig als verbinding tussen deze instanties.
+Een andere set zelfstudies die het gebruik van Traffic Manager illustreren zijn de zelfstudies voor [geo-restore](../../sql-database/saas-dbpertenant-dr-geo-restore.md) en [geo-replication](../../sql-database/saas-dbpertenant-dr-geo-replication.md). In deze zelfstudies wordt Traffic Manager gebruikt om over te schakelen naar een herstelinstantie van de SaaS-app in het geval van een regionale storing.
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>Workloads genereren voor de tenant-databases
 
-Nu de app is geïmplementeerd, kunt u deze gebruiken.
+Nu de app is geïmplementeerd, kunt u ermee aan de slag.
 
-Het Power shell *-script demo-LoadGenerator* start een werk belasting die wordt uitgevoerd op alle Tenant databases. De werkelijke belasting van veel SaaS-apps is sporadisch en onvoorspelbaar. Voor het simuleren van dit type belasting, produceert de generator een belasting met wille keurige pieken of bursts van de activiteit op elke Tenant. De bursts treden op in wille keurige intervallen. Het duurt enkele minuten voordat het laad patroon zich voordoet. Laat de generator ten minste drie of vier minuten uitvoeren voordat u de belasting bewaken.
+Met het PowerShell-script *Demo-LoadGenerator* wordt een workload voor alle tenantdatabases opgestart. De werkelijke belasting voor veel SaaS-apps is sporadisch en onvoorspelbaar. Om dit soort belasting te simuleren, produceert de generator een belasting met willekeurige pieken van de activiteit voor elke tenant. De pieken treden op in willekeurige intervallen. Het duurt enkele minuten voordat het laadpatroon zich voordoet. Laat de generator ten minste drie of vier minuten draaien voordat u de belasting controleert.
 
-1. Open in de Power shell-ISE de.. \\ . Hulpprogram ma's voor leer modules \\ \\ *Demo-LoadGenerator.ps1* script.
-2. Druk op F5 om het script uit te voeren en de load generator te starten. Wijzig de standaard parameter waarden nu.
+1. In PowerShell ISE opent u het script ...\\Learning Modules\\Utilities\\*Demo-LoadGenerator.ps1*.
+2. Druk op F5 om het script uit te voeren en de loadgenerator te starten. Laat de standaard parameterwaarden voorlopig ongewijzigd.
 3. Meld u aan bij uw Azure-account en selecteer het abonnement dat u wilt gebruiken, indien nodig.
 
-Met het script laad generator wordt een achtergrond taak voor elke data base in de catalogus gestart en vervolgens gestopt. Als u het script voor de laad Generator opnieuw uitvoert, worden alle achtergrond taken gestopt die worden uitgevoerd voordat nieuwe worden gestart.
+Met het script voor de loadgenerator wordt een achtergrondtaak voor elke database in de catalogus gestart en vervolgens gestopt. Als u het script voor de loadgenerator opnieuw uitvoert, worden alle achtergrondtaken die momenteel worden uitgevoerd gestopt voordat er nieuwe worden opgestart.
 
-### <a name="monitor-the-background-jobs"></a>De achtergrond taken bewaken
+### <a name="monitor-the-background-jobs"></a>De achtergrondtaken controleren
 
-Als u de achtergrond taken wilt beheren en controleren, gebruikt u de volgende cmdlets:
+Als u de achtergrondtaken wilt beheren en controleren, gebruikt u de volgende cmdlets:
 
 - `Get-Job`
 - `Receive-Job`
 - `Stop-Job`
 
-### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 acties
+### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1-acties
 
-*Demo-LoadGenerator.ps1* imiteert een actieve werk belasting van klant transacties. De volgende stappen beschrijven de volg orde van de acties die *Demo-LoadGenerator.ps1* initieert:
+*Demo-LoadGenerator.ps1* imiteert een actieve workload van klanttransacties. De volgende stappen beschrijven de volgorde van de acties die *Demo-LoadGenerator.ps1* initieert:
 
-1. *Demo-LoadGenerator.ps1* *LoadGenerator.ps1* op de voor grond wordt gestart.
+1. *Demo-LoadGenerator.ps1* start *LoadGenerator.ps1* op de voorgrond.
 
-    - Beide. ps1-bestanden worden opgeslagen in de hulpprogram ma's mappen learning modules \\ \\ .
+    - Beide. ps1-bestanden worden opgeslagen in de mappen onder Learning Modules\\Utilities\\.
 
-2. *LoadGenerator.ps1* doorloopt alle Tenant databases in de catalogus.
+2. *LoadGenerator.ps1* doorloop alle tenantdatabases in de catalogus.
 
-3. *LoadGenerator.ps1* start een Power shell-taak op de achtergrond voor elke Tenant database:
+3. *LoadGenerator.ps1* start een Powershell-taak op de achtergrond voor elke tenantdatabase:
 
-    - De achtergrond taken worden standaard gedurende 120 minuten uitgevoerd.
-    - Elke taak veroorzaakt een op CPU gebaseerde belasting voor één Tenant database door *sp_CpuLoadGenerator*uit te voeren. De intensiteit en duur van de belasting variëren afhankelijk van `$DemoScenario` .
-    - *sp_CpuLoadGenerator* lussen rond een SQL SELECT-instructie die een hoge CPU-belasting veroorzaakt. Het tijds interval tussen de problemen van de SELECT is afhankelijk van de parameter waarden voor het maken van een instelbaar CPU-belasting. Laad niveaus en intervallen worden wille keurig voor het simuleren van meer realistische belasting.
-    - Dit. SQL-bestand wordt opgeslagen *onder \\ WingtipTenantDB \\ dbo \\ StoredProcedures*.
+    - De achtergrondtaken worden standaard gedurende 120 minuten uitgevoerd.
+    - Elke taak veroorzaakt een belasting voor de CPU voor één tenantdatabase door *sp_CpuLoadGenerator*uit te voeren. De intensiteit en duur van de belasting variëren afhankelijk van `$DemoScenario`.
+    - *sp_CpuLoadGenerator* herhaalt een SQL SELECT-instructie die een hoge CPU-belasting veroorzaakt. Het tijdsinterval tussen de uitgiftes van de SELECT is afhankelijk van de parameterwaarden om een beheerbare CPU-belasting te maken. Laadniveaus en -intervallen zijn willekeurig om meer realistische belastingen te simuleren.
+    - Dit .sql-bestand wordt opgeslagen onder *WingtipTenantDB\\dbo\\StoredProcedures\\* .
 
-4. Als `$OneTime = $false` de load Generator de achtergrond taken start en vervolgens blijft uitvoeren. Elke 10 seconden wordt gecontroleerd op nieuwe tenants die zijn ingericht. Als u instelt `$OneTime = $true` , start de LoadGenerator de achtergrond taken en stopt de uitvoering op de voor grond. Voor deze zelf studie verlaat u `$OneTime = $false` .
+4. Als `$OneTime = $false`, dan start de loadgenerator de achtergrondtaken en blijft deze draaien. Elke 10 seconden controleert hij of er nieuwe tenants ingericht zijn. Als u `$OneTime = $true` instelt, start de LoadGenerator de achtergrondtaken en stopt hij met in de voorgrond te draaien. Laat voor deze zelfstudie `$OneTime = $false` staan.
 
-   Gebruik CTRL + C of stop de bewerking CTRL-outlock als u de load generator wilt stoppen of opnieuw wilt starten.
+   Gebruik CTRL + C of stop de bewerking met CTRL-Break als u de loadgenerator wilt stoppen of opnieuw wilt opstarten.
 
-   Als u de load-generator op de voor grond uitvoert, gebruikt u een ander Power shell ISE-exemplaar om andere Power shell-scripts uit te voeren.
+   Als u de loadgenerator op de voorgrond laat draaien, gebruik dan een PowerShell ISE-instantie om andere PowerShell-script uit te voeren.
 
 &nbsp;
 
-Voordat u verdergaat met de volgende sectie, moet u de belasting Generator laten uitvoeren in de status van de taak die wordt aangeroepen.
+Voordat u verdergaat met het volgende onderdeel, moet u de loadgenerator laten draaien in de toestand waarbij hij taken aanroept.
 
 ## <a name="provision-a-new-tenant"></a>Een nieuwe tenant inrichten
 
-Bij de eerste implementatie worden drie voor beelden van tenants gemaakt. U maakt nu een andere Tenant om de impact op de geïmplementeerde toepassing te bekijken. In de Wingtip-app wordt de werk stroom voor het inrichten van nieuwe tenants uitgelegd in de [zelf studie voor het inrichten en de catalogus](saas-dbpertenant-provision-and-catalog.md). In deze fase maakt u een nieuwe Tenant die minder dan een minuut in beslag neemt.
+Bij de eerste implementatie worden drie voorbeelden van tenants gemaakt. U maakt nu een andere tenant om de impact op de geïmplementeerde toepassing te bekijken. In de Wingtip-app wordt de werkstroom voor het inrichten van nieuwe tenants uitgelegd in de [zelfstudie ](saas-dbpertenant-provision-and-catalog.md)Inrichten en in catalogus opnemen. In deze fase maakt u een nieuwe tenant, wat minder dan één minuut duurt.
 
-1. Open een nieuwe Power shell-ISE.
-2. Openen... \\ Learning Modules\Provision en catalogus \\ *Demo-ProvisionAndCatalog.ps1*.
-3. Druk op F5 om het script uit te voeren. Behoud de standaard waarden voor nu.
+1. Open een nieuwe PowerShell ISE.
+2. Open ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*.
+3. Druk op F5 om het script uit te voeren. Laat nu de standaardwaarden staan.
 
    > [!NOTE]
-   > Veel Wingtip SaaS-scripts gebruiken *$PSScriptRoot* om door mappen te bladeren om functies in andere scripts aan te roepen. Deze variabele wordt alleen geëvalueerd wanneer het volledige script wordt uitgevoerd door op F5 te drukken.Het markeren en uitvoeren van een selectie met F8 kan fouten veroorzaken. Als u de scripts wilt uitvoeren, drukt u op F5.
+   > Veel Wingtip SaaS-scripts gebruiken *$PSScriptRoot* om te bladeren door mappen om functies in andere scripts aan te roepen. Deze variabele wordt alleen geëvalueerd wanneer het volledige script wordt uitgevoerd door op F5 te drukken. Een selectie markeren en uitvoeren met F8 kan fouten veroorzaken. Druk op F5 om de scripts uit te voeren.
 
-De nieuwe Tenant database is:
+De nieuwe tenantdatabase is:
 
-- Gemaakt in een elastische SQL-pool.
+- Aangemaakt in een elastische SQL-pool.
 - Geïnitialiseerd.
 - Geregistreerd in de catalogus.
 
-Nadat het inrichten is voltooid, wordt de site met *gebeurtenissen* van de nieuwe Tenant weer gegeven in uw browser.
+Als de inrichting is voltooid, wordt de site *Events* van de nieuwe tenant in uw browser weergegeven.
 
 ![Nieuwe tenant](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
-Vernieuw de Events hub om te zorgen dat de nieuwe Tenant wordt weer gegeven in de lijst.
+Vernieuw Events Hub om de nieuwe tenant in de lijst weer te geven.
 
 ## <a name="explore-the-servers-pools-and-tenant-databases"></a>Servers, pools en tenant-databases
 
-Nu u bent begonnen met het uitvoeren van een belasting voor de verzameling tenants, kijken we naar enkele van de resources die zijn geïmplementeerd.
+Laten we, nu u een belasting bent beginnen uitvoeren voor een collectie tenants, eens kijken welke resources er allemaal zijn geïmplementeerd.
 
-1. Blader in het [Azure Portal](https://portal.azure.com)naar de lijst met SQL-servers. Open vervolgens de **catalogus-dpt- &lt; gebruikers &gt; ** server.
-    - De catalogus server bevat twee data bases: **tenantcatalog** en **basetenantdb** (een sjabloon database die is gekopieerd om nieuwe tenants te maken).
+1. Ga in het  [Azure-portaal](https://portal.azure.com) naar de lijst met SQL-servers. Open de server **catalog-dpt-&lt;USER&gt;** .
+    - De catalogusserver bevat twee databases, **tenantcatalog** en **basetenantdb** (een sjabloondatabase die is gekopieerd om nieuwe tenants te maken).
 
-   ![Scherm afbeelding toont een overzichts pagina voor catalogus servers met de twee data bases.](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![Schermafbeelding met een Overzichtspagina voor catalogusservers met de twee databases.](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
-2. Ga terug naar de lijst met SQL-servers.
+2. Ga terug naar uw lijst met SQL-servers.
 
-3. Open de **tenants1-dpt- &lt; gebruikers &gt; ** server die de Tenant databases bevat.
+3. Open de server **tenants1-dpt-&lt;USER&gt;** waarop de tenantdatabases zijn opgeslagen.
 
 4. Bekijk de volgende items:
 
-    - Elke Tenant database is een **elastische Standard** -data base in een 50-eDTU Standard-pool.
-    - De Red esdoorn race-data base is de Tenant database die u eerder hebt ingericht.
+    - Elke tenantdatabase iis een database van het type **Standard - elastisch** in een standaardpool van 50 eDTU.
+    - De database Red Maple Racing is de tenantdatabase die u eerder hebt ingericht.
 
-   ![Server met data bases](./media/saas-dbpertenant-get-started-deploy/server.png)
+   ![Server met databases](./media/saas-dbpertenant-get-started-deploy/server.png)
 
 ## <a name="monitor-the-pool"></a>De pool bewaken
 
-Nadat *LoadGenerator.ps1* enkele minuten is uitgevoerd, moeten er voldoende gegevens beschikbaar zijn om te kijken naar enkele bewakings mogelijkheden. Deze mogelijkheden zijn ingebouwd in Pools en data bases.
+Nadat *LoadGenerator.ps1* enkele minuten wordt uitgevoerd, zoudener voldoende gegevens beschikbaar moeten zijn om enkele controlemogelijkheden te bekijken. Deze mogelijkheden zijn ingebouwd in pools en data bases.
 
-Blader naar de server **tenants1-dpt- &lt; gebruiker &gt; **en selecteer **Pool1** om het resource gebruik voor de groep weer te geven. In de volgende grafieken is de load Generator één uur uitgevoerd.
+Ga naar de server **tenants1-dpt-&lt;user&gt;** en selecteer **Pool1** om het resourcegebruik voor de pool weer te geven. In de volgende grafieken werd de loadgenerator één uur uitgevoerd.
 
-   ![Groep bewaken](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
+   ![Pool bewaken](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
-- Het eerste diagram, het **resource gebruik**met een label, toont het gebruik van de pool-eDTU.
-- Het tweede diagram toont het eDTU-gebruik van de vijf meest actieve data bases in de pool.
+- De eerste grafiek, met het label **Resourcegebruik**, toont het eDTU-gebruik van de pool.
+- De tweede grafiek toont het eDTU-gebruik van de vijf meest actieve databases in de pool.
 
-De twee grafieken illustreren dat elastische Pools en SQL Database goed zijn afgestemd op onvoorspelbare SaaS-toepassings werkbelastingen. In de grafieken ziet u dat vier data bases elke bursting tot 40 Edtu's hebben en dat alle data bases kunnen worden ondersteund door een 50-eDTU-groep. De 50-eDTU-groep kan zelfs zware werk belastingen ondersteunen. Als de data bases zijn ingericht als afzonderlijke data bases, moet elk een S2 (50 DTU) zijn voor de ondersteuning van de bursts. De kosten van vier enkele S2-data bases zijn bijna drie maal de prijs van de pool. In praktijk situaties SQL Database klanten Maxi maal 500 data bases uitvoeren in 200 eDTU-groepen. Zie voor meer informatie de [zelf studie voor prestatie bewaking](saas-dbpertenant-performance-monitoring.md).
+Wat deze twee grafieken laten zien, is dat elastische pools en SQL Database uitermate geschikt zijn voor de workloads van onvoorspelbare SaaS-toepassingen. Op de grafieken ziet u dat vier databases elk pieken hebben tot 40 eDTU's en dat alle databases probleemloos ondersteund kunnen worden door een pool met 50-eDTU. De pool met 50-eDTU kan zelfs zwaardere workloads aan. Als de databases zijn ingericht als afzonderlijke databases, moet elke database een S2 (50 DTU) zijn om de pieken aan te kunnen. De kosten voor vier enkelvoudige S2-databases zijn bijna driemaal zo hoog als de prijs van de pool. In praktijksituaties draaien SQL Database-klanten momenteel maximaal 500 databases in pools van 200 eDTU. Zie voor meer informatie de [zelfstudie over Prestatiebewaking](saas-dbpertenant-performance-monitoring.md).
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- Zie voor meer informatie aanvullende [zelf studies over het bouwen van de Wingtip tickets SaaS data base-per-Tenant toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
-- Zie [Wat is een elastische Azure SQL-pool?](elastic-pool-overview.md)voor meer informatie over elastische Pools.
-- Zie [uitgeschaalde Cloud databases beheren](../../sql-database/elastic-jobs-overview.md)voor meer informatie over elastische taken.
-- Zie [ontwerp patronen voor SaaS-toepassingen met meerdere tenants voor](saas-tenancy-app-design-patterns.md)meer informatie over SaaS-toepassingen met meerdere tenants.
+- Zie voor meer informatie aanvullende [zelfstudies over de Wingtip Tickets-SaaS-database-per-tenant-toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
+- Informatie over elastische pools vindt u in  [Wat is een elastische pool van Azure SQL?](elastic-pool-overview.md).
+- Informatie over elastische taken vindt u in  [Uitgeschaalde clouddatabases beheren](../../sql-database/elastic-jobs-overview.md).
+- Raadpleeg  [Ontwerppatronen voor SaaS-apps voor meerdere tenants](saas-tenancy-app-design-patterns.md) voor meer informatie over SaaS-apps voor meerdere tenants.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> - De SaaS-toepassing Wingtip tickets implementeren.
-> - Over de servers, Pools en data bases die de app vormen.
-> - Hoe tenants worden toegewezen aan hun gegevens met de *catalogus*.
-> - Het inrichten van nieuwe tenants.
-> - Pool gebruik weer geven voor het bewaken van Tenant activiteit.
-> - Voorbeeld resources verwijderen om gerelateerde facturering te stoppen.
+> - Wingtip Tickets SaaS-toepassing implementeren.
+> - Informatie over de servers, pools en databases waaruit de app bestaat.
+> - Tenants via de *catalogus* toewijzen aan de bijbehorende gegevens.
+> - Inrichten van nieuwe tenants.
+> - Poolgebruik bekijken om de activiteit van een tenant te bewaken.
+> - Voorbeeldresources verwijderen om gerelateerde facturering te stoppen.
 
-Probeer vervolgens de [zelf studie voor het inrichten en de catalogus](saas-dbpertenant-provision-and-catalog.md).
+Hierna kunt u [de zelfstudie over het inrichten en catalogiseren van tenants](saas-dbpertenant-provision-and-catalog.md) volgen.
 
 <!-- Link references. -->
 

@@ -3,12 +3,12 @@ title: Kubernetes bewaking met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de prestaties van een Kubernetes-cluster kunt weer geven en analyseren met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988122"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994757"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Uw Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers
 
@@ -293,7 +293,7 @@ De pictogrammen in het veld status geven de online statussen aan, zoals wordt be
 
 ## <a name="workbooks"></a>Werkmappen
 
-Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), [metrische gegevens](../platform/data-platform-metrics.md)en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere teamleden die toegang hebben tot dezelfde Azure-resources.
+Werkmappen combi neren tekst, [logboek query's](/azure/data-explorer/kusto/query/), [metrische gegevens](../platform/data-platform-metrics.md)en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere teamleden die toegang hebben tot dezelfde Azure-resources.
 
 Azure Monitor voor containers bevat vier werkmappen om aan de slag te gaan:
 
@@ -321,8 +321,8 @@ U opent deze werkmappen door elk ervan te selecteren in de vervolg keuzelijst **
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk [prestatie waarschuwingen maken met Azure monitor voor containers](container-insights-alerts.md) voor meer informatie over het maken van waarschuwingen voor hoog CPU-en geheugen gebruik ter ondersteuning van uw DevOps-of operationele processen en procedures.
+- Bekijk [prestatie waarschuwingen maken met Azure monitor voor containers](./container-insights-log-alerts.md) voor meer informatie over het maken van waarschuwingen voor hoog CPU-en geheugen gebruik ter ondersteuning van uw DevOps-of operationele processen en procedures.
 
 - Bekijk de [voor beelden van logboek query's](container-insights-log-search.md#search-logs-to-analyze-data) om vooraf gedefinieerde query's en voor beelden te bekijken om te evalueren of aan te passen om uw clusters te waarschuwen, te visualiseren of te analyseren.
 
-- Bekijk de status van het [monitor cluster](container-insights-health.md) voor meer informatie over het weer geven van de integriteits status van uw Kubernetes-cluster.
+- Bekijk de status van het [monitor cluster](./container-insights-overview.md) voor meer informatie over het weer geven van de integriteits status van uw Kubernetes-cluster.

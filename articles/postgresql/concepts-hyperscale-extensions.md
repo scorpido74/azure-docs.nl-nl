@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314875"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996451"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-uitbrei dingen in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -41,6 +41,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > | [laag](https://www.postgresql.org/docs/current/lo.html) | Large Object onderhoud. |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Voorziet in een gegevens type voor hiërarchische structuren op boom structuur. |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | Gegevens type voor de weer gave van lijn segmenten of drijvende-komma intervallen. |
+> | [tdigest](https://github.com/tvondra/tdigest) | Gegevens type voor on line accumulatie van op rang gebaseerde statistieken, zoals quantiles en bijgesneden middelen. |
 > | [topn](https://github.com/citusdata/postgresql-topn/) | Typ voor de bovenste n JSONB. |
 
 ### <a name="full-text-search-extensions"></a>Extensies voor zoeken in volledige tekst
