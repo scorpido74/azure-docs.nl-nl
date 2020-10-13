@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827838"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963360"
 ---
 # <a name="use-spot-vms-in-azure"></a>Gebruik van een spot Vm's in azure
 
@@ -58,7 +58,7 @@ Spot-Vm's kunnen worden geïmplementeerd in elke regio, met uitzonde ring van Mi
 De volgende [aanbiedings typen](https://azure.microsoft.com/support/legal/offer-details/) worden momenteel ondersteund:
 
 -   Enterprise Agreement
--   Betalen naar gebruik
+-   Betalen per gebruik
 -   Gesponsorde
 - Neem contact op met uw partner voor Cloud service provider (CSP)
 
@@ -99,17 +99,17 @@ U kunt historische prijzen en verwijderings tarieven weer geven per grootte in e
 
 **V:** Hoe wordt het quotum beheerd voor de plaats van virtuele machines?
 
-**A:** Spot Vm's hebben een afzonderlijke quotum groep. Het steun quotum wordt gedeeld tussen Vm's en scale-set-exemplaren. Zie [Azure-abonnement- en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) voor meer informatie.
+**A:** Spot Vm's hebben een afzonderlijke quotum groep. Het steun quotum wordt gedeeld tussen Vm's en scale-set-exemplaren. Zie [Azure-abonnement- en servicelimieten, quota en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor meer informatie.
 
 
 **V:** Kan ik een extra quotum voor plaats vragen?
 
-**A:** Ja, u kunt de aanvraag indienen om uw quotum voor de begeleide Vm's te verhogen via het [standaard quotum aanvraag proces](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+**A:** Ja, u kunt de aanvraag indienen om uw quotum voor de begeleide Vm's te verhogen via het [standaard quotum aanvraag proces](../azure-portal/supportability/per-vm-quota-requests.md).
 
 
 **V:** Waar kan ik vragen plaatsen?
 
-**A:** U kunt uw vraag met `azure-spot` op [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)plaatsen en labelen. 
+**A:** U kunt uw vraag met `azure-spot` op [Q&A](/answers/topics/azure-spot.html)plaatsen en labelen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Gebruik de [cli](./linux/spot-cli.md)-, [Portal](spot-portal.md)-, [arm-sjabloon](./linux/spot-template.md)of [Power shell](./windows/spot-powershell.md) voor het implementeren van spot-vm's.
