@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
 ms.openlocfilehash: 706b2306fbe9f2a744d2874a8b55f78fa2fc8e4d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89302065"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Een release pijplijn maken voor continue implementatie
@@ -52,7 +52,7 @@ Maak een nieuwe pijp lijn en voeg een nieuwe fase toe:
     | Parameter | Beschrijving |
     | --- | --- |
     | Weergavenaam | De weergave naam wordt automatisch bijgewerkt wanneer het actie veld wordt gewijzigd. |
-    | Actie | Selecteer `Generate deployment manifest`. |
+    | Bewerking | Selecteer `Generate deployment manifest`. |
     | .template.jsvoor bestand | Geef het pad op: `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json` . Het pad wordt gepubliceerd vanuit een build-pijp lijn. |
     | Standaard platform | Selecteer het juiste besturings systeem voor uw modules op basis van uw doel-IoT Edge apparaat. |
     | Uitvoerpad| Plaats het pad `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Dit pad is het uiteindelijke manifest bestand voor de implementatie van IoT Edge. |
@@ -72,10 +72,10 @@ Maak een nieuwe pijp lijn en voeg een nieuwe fase toe:
     | Parameter | Beschrijving |
     | --- | --- |
     | Weergavenaam | De weergave naam wordt automatisch bijgewerkt wanneer het actie veld wordt gewijzigd. |
-    | Actie | Selecteer `Deploy to IoT Edge devices`. |
+    | Bewerking | Selecteer `Deploy to IoT Edge devices`. |
     | Implementatie bestand | Plaats het pad `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Dit pad is het bestand IoT Edge implementatie manifest bestand. |
     | Azure-abonnement | Selecteer het abonnement dat uw IoT Hub bevat.|
-    | Naam van de IoT Hub | Selecteer uw IoT-hub.|
+    | IoT Hub naam | Selecteer uw IoT-hub.|
     | Kies één of meerdere apparaten | Kies of u de release pijplijn wilt implementeren op een of meer apparaten. Als u op één apparaat implementeert, voert u de **IOT edge apparaat-id**in. Als u implementeert op meerdere apparaten, geeft u de **voor waarde voor**het apparaat doel op. De doel voorwaarde is een filter dat overeenkomt met een set IoT Edge apparaten in IoT Hub. Als u Device Tags als voor waarde wilt gebruiken, moet u de labels van de bijbehorende apparaten bijwerken met IoT Hub apparaat twee. Werk de **IOT Edge implementatie-id** en **IOT Edge implementatie prioriteit** bij in de geavanceerde instellingen. Zie [inzicht IOT Edge automatische implementaties](../articles/iot-edge/module-deployment-monitoring.md)voor meer informatie over het maken van een implementatie voor meerdere apparaten. |
     | Apparaat-ID of doel voorwaarde | Geef, afhankelijk van de vorige selectie, een apparaat-ID of [doel voorwaarde](../articles/iot-edge/module-deployment-monitoring.md#target-condition) op om op meerdere apparaten te implementeren. |
     | Geavanceerd | Geef voor de IoT Edge implementatie-ID op `$(System.TeamProject)-$(Release.EnvironmentName)` . Met deze variabele wordt de naam van het project en de release toegewezen aan uw IoT Edge-implementatie-ID. |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07444e32d1808f928de418dd898aa1fa30703c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87439477"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977626"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux installatie kopieën
 
@@ -108,7 +108,7 @@ Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 |Uitgever | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191023) | Deze installatie kopieën zijn RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met standaard Red Hat-opslag plaatsen.
-|RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../linux/generation-2.md)voor meer informatie over virtuele machines van de tweede generatie in Azure.
+|RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../generation-2.md)voor meer informatie over virtuele machines van de tweede generatie in Azure.
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL meer ondersteuning voor invoeg toepassingen
 
@@ -116,7 +116,7 @@ Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 
 Vanaf 2019 april zijn er RHEL-installatie kopieën beschikbaar die standaard zijn gekoppeld aan de EUS-opslag plaatsen. Meer informatie over RHEL EUS is beschikbaar in [de documentatie van Red Hat](https://access.redhat.com/articles/rhel-eus).
 
-Overschakelen naar EUS-opslag plaatsen is mogelijk en wordt ondersteund. Zie [RHEL Eus and versie-locking RHEL vm's](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)(Engelstalig) voor instructies over het overschakelen van de virtuele machine naar Eus en meer informatie over Eus.
+Overschakelen naar EUS-opslag plaatsen is mogelijk en wordt ondersteund. Zie [RHEL Eus and versie-locking RHEL vm's](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)(Engelstalig) voor instructies over het overschakelen van de virtuele machine naar Eus en meer informatie over Eus.
 
 >[!NOTE]
 > EUS wordt niet ondersteund voor RHEL-Extra's. Dit betekent dat als u een pakket installeert dat doorgaans beschikbaar is via het RHEL extras-kanaal, u dit niet kunt doen wanneer u op EUS. Zie [Red Hat Enterprise Linux extra's levens cyclus](https://access.redhat.com/support/policy/updates/extras/)voor meer informatie over de levens cyclus van Red Hat extras.
@@ -183,6 +183,6 @@ Het huidige beleid is om alle eerder gepubliceerde installatie kopieën te blijv
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Red Hat Enterprise Linux (RHEL)-installatie kopieën die beschikbaar zijn in azure](./redhat-imagelist.md)om de volledige lijst met RHEL-installatie kopieën in azure weer te geven.
-* Zie voor meer informatie over de Azure Red Hat-update-infra [structuur voor Red Hat update voor on-demand RHEL-vm's in azure](https://aka.ms/rhui-update).
+* Zie voor meer informatie over de Azure Red Hat-update-infra [structuur voor Red Hat update voor on-demand RHEL-vm's in azure](./redhat-rhui.md).
 * Voor meer informatie over de RHEL BYOS-aanbieding raadpleegt u [Red Hat Enterprise Linux uw Gold-installatie kopieën met uw eigen abonnement in azure](./byos.md).
 * Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL.
