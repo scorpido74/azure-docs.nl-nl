@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
 ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91343689"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Een Machine Learning Studio-webservice (klassiek) gebruiken
@@ -36,7 +36,7 @@ Met de Azure Machine Learning-webservice communiceert een externe toepassing met
 
 Azure Machine Learning Studio (klassiek) heeft twee soorten services:
 
-* Request-Response Service (RR'S): een laag latentie, uiterst schaal bare service die een interface biedt voor de stateless modellen die zijn gemaakt en geïmplementeerd vanuit de Machine Learning Studio (klassiek).
+* Request-Response service (RR'S): een zeer schaal bare service met lage latentie die een interface biedt voor de stateless modellen die zijn gemaakt en geïmplementeerd via de Machine Learning Studio (klassiek).
 * Batch Execution Service (BES): een asynchrone service die een batch voor gegevens records verlaagt.
 
 Zie [Deploy a machine learning web service](deploy-a-machine-learning-web-service.md)(Engelstalig) voor meer informatie over machine learning Web Services.
@@ -78,7 +78,7 @@ De Help van de Machine Learning-API bevat details over een Voorspellings webserv
 1. Klik op de webservice waarmee u werkt.
 2. Klik op het eind punt waarvoor u de API Help-pagina wilt weer geven.
 3. Klik in het menu bovenaan op **verbruikt**.
-4. Klik op de **Help-pagina** van de API onder de eind punten aanvraag/antwoord of batch uitvoering.
+4. Klik op de **Help-pagina** van de API onder de Request-Response of batch Execution-eind punten.
 
 **De Help van Machine Learning-API voor een nieuwe webservice weer geven**
 
@@ -87,7 +87,7 @@ In de [Azure machine learning Web Services-portal](https://services.azureml.net/
 1. Klik op **Web Services** in het bovenste menu.
 2. Klik op de webservice waarvoor u de sleutel wilt ophalen.
 
-Klik op **webservice gebruiken** om de uri's op te halen voor de Services aanvraag/antwoord en batch uitvoering en voorbeeld code in C#, R en python.
+Klik op **webservice gebruiken** om de uri's voor de Request-Response en batch Execution Services en voorbeeld code in C#, R en python op te halen.
 
 Klik op **SWAGGER API** om op Swagger gebaseerde documentatie op te halen voor de api's die worden aangeroepen vanuit de opgegeven uri's.
 

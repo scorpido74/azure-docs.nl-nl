@@ -8,15 +8,15 @@ ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892570"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Logboeken en metrische gegevens analyseren met Diagnostische instellingen
 
-**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
 
 Met de diagnostische functionaliteit van Azure lente-Cloud kunt u Logboeken en metrische gegevens analyseren met een van de volgende services:
 
@@ -31,7 +31,7 @@ Kies de categorie van het logboek en de metrische gegevens die u wilt bewaken.
 
 ## <a name="logs"></a>Logboeken
 
-|Logboek | Description |
+|Logboek | Beschrijving |
 |----|----|
 | **ApplicationConsole** | Console logboek van alle toepassingen van klanten. |
 | **SystemLogs** | Op dit moment worden alleen logboeken met [lente-Cloud configuratie servers](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) in deze categorie vastgelegd. |

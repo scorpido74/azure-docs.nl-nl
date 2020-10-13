@@ -10,17 +10,17 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335293"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>De Azure Maps ruimtelijke IO-module gebruiken
 
 De Azure Maps Web-SDK biedt de **ruimtelijke IO-module**, die ruimtelijke gegevens integreert met de Azure Maps Web-SDK met behulp van Java script of type script. Met de krachtige functies in deze module kunnen ontwikkel aars het volgende doen:
 
-- [Algemene ruimtelijke gegevens bestanden lezen en schrijven](spatial-io-read-write-spatial-data.md). Ondersteunde bestands indelingen zijn: KML, KMZ, GPX, GeoRSS, GML, geojson en CSV-bestanden met kolommen met ruimtelijke gegevens. Ondersteunt ook bekende tekst (WKT).
+- [Algemene ruimtelijke gegevens bestanden lezen en schrijven](spatial-io-read-write-spatial-data.md). Ondersteunde bestands indelingen zijn: KML, KMZ, GPX, GeoRSS, GML, geojson en CSV-bestanden met kolommen met ruimtelijke gegevens. Ondersteunt ook Well-Known tekst (WKT).
 - [Maak verbinding met Open Geospatial Consortium-Services (OGC) en integreer met Azure Maps Web-SDK. Overlay van web map Services (WMS) en WMTS (web map tile Services) als lagen op de kaart](spatial-io-add-ogc-map-layer.md).
 - [Query's uitvoeren op gegevens in een Web Feature Service (WFS)](spatial-io-connect-wfs-service.md).
 - [Bedekking complexe gegevens sets die stijl informatie bevatten en ze automatisch laten renderen met minimale code](spatial-io-add-simple-data-layer.md).

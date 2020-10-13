@@ -12,10 +12,10 @@ ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251011"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Uw Machine Learning service werkruimte gegevens exporteren of verwijderen
@@ -50,7 +50,7 @@ Deze resources kunnen worden verwijderd door ze te selecteren in de lijst en **v
 
 Geschiedenis documenten uitvoeren, die persoonlijke gebruikers gegevens kunnen bevatten, worden opgeslagen in het opslag account in Blob Storage, in submappen van `/azureml` . U kunt de gegevens downloaden en verwijderen uit de portal.
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Scherm afbeelding van de azureml-Directory in het opslag account in de portal":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Scherm opname van de portal, met het pictogram verwijderen gemarkeerd":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>machine learning resources exporteren en verwijderen met behulp van Azure Machine Learning Studio
 
@@ -62,7 +62,7 @@ U kunt trainings artefacten downloaden van experimentele uitvoeringen met behulp
 
 U kunt een geregistreerd model downloaden door te navigeren naar het gewenste **model** en **downloaden**te kiezen. 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Scherm afbeelding van Studio model pagina met download optie gemarkeerd":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Scherm opname van de portal, met het pictogram verwijderen gemarkeerd":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Resources exporteren en verwijderen met behulp van de python-SDK
 
@@ -82,7 +82,7 @@ model_output_port.download('.', show_progress=True)
 
 De volgende machine learning resources kunnen worden verwijderd met behulp van de python-SDK: 
 
-| Type | Functie aanroep | Opmerkingen | 
+| Type | Functie aanroep | Notities | 
 | --- | --- | --- |
 | `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Gebruiken `delete-dependent-resources` om de verwijdering te trapsgewijs |
 | `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | | 

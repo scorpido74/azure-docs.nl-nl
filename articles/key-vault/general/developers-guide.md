@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6564804b7003b5e1c166868dae1bfaac7bd28fa5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812400"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940461"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -52,17 +52,27 @@ Zie [Key Vault-beheer vlak](https://docs.microsoft.com/azure/key-vault/general/s
 Key Vault maakt gebruik van Azure AD-verificatie waarvoor Azure AD security principal toegang moet verlenen. Een beveiligings-principal voor Azure AD kan een gebruiker, een service-principal van de toepassing, een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)of een groep van elk type beveiligings-principals zijn.
 
 ### <a name="authentication-best-practices"></a>Aanbevolen procedures voor verificatie
+
 Het is raadzaam beheerde identiteit te gebruiken voor toepassingen die zijn geïmplementeerd in Azure. Als u Azure-Services gebruikt die geen beheerde identiteit ondersteunen of als toepassingen op locatie worden geïmplementeerd, is de [Service-Principal met een certificaat](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) een mogelijk alternatief. In dat scenario moet het certificaat worden opgeslagen in Key Vault en vaak worden gedraaid. Service-principals met geheim kunnen worden gebruikt voor ontwikkel-en test omgevingen, en lokaal of in Cloud Shell het gebruik van User Principal wordt aanbevolen.
 
-De bovenstaande verificaties scenario's worden ondersteund door de Azure Identity client-bibliotheek en geïntegreerd met Key Vault Sdk's. Azure Identity Library kan worden gebruikt in verschillende omgevingen en platformen zonder uw code te wijzigen. Met Azure-identiteit wordt ook automatisch een verificatie token opgehaald van aangemeld bij Azure-gebruiker met Azure CLI, Visual Studio, Visual Studio code en anderen. 
+Aanbevolen beveiligings-principals per omgeving:
+- **Productie omgeving**:
+  - Beheerde identiteit of Service-Principal met een certificaat
+- **Test-en ontwikkelings omgevingen**:
+  - Beheerde identiteit, Service-Principal met certificaat of Service-Principal met geheim
+- **Lokale ontwikkeling**:
+  - Gebruikers principal of Service-Principal met geheim
 
-Zie voor meer informatie: 
+De bovenstaande verificaties scenario's worden ondersteund door de **Azure Identity client-bibliotheek** en geïntegreerd met Key Vault sdk's. Azure Identity Library kan worden gebruikt in verschillende omgevingen en platformen zonder uw code te wijzigen. Met Azure-identiteit wordt ook automatisch een verificatie token opgehaald van aangemeld bij Azure-gebruiker met Azure CLI, Visual Studio, Visual Studio code en anderen. 
 
+Voor meer informatie over Azure Identity client libarary raadpleegt u:
+
+### <a name="azure-identity-client-libraries"></a>Azure Identity client-bibliotheken
 | .NET | Python | Java | Javascript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK java script](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
 
-Verifiëren bij Key Vault in toepassingen:
+Voor zelf studies over het verifiëren van Key Vault in toepassingen raadpleegt u:
 - [Verifiëren bij Key Vault in de toepassing die in de virtuele machine wordt gehost in .NET](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - [Verifiëren bij Key Vault in de toepassing die in de virtuele machine wordt gehost in python](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
 - [Verifiëren bij Key Vault met App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)

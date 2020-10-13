@@ -4,10 +4,10 @@ description: Meer informatie over de levens cyclus van de definitie van een blau
 ms.date: 08/27/2020
 ms.topic: conceptual
 ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049703"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Inzicht in de levens cyclus van een Azure Blueprint

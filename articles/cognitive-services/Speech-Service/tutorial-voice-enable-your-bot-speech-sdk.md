@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360953"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
@@ -75,7 +75,7 @@ De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azur
    * Voer een naam in voor de **resource groep**. We raden **SpeechEchoBotTutorial-ResourceGroup**aan.
    * Selecteer in de vervolg keuzelijst **regio** **VS West**.
 1. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-1. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
+1. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
 1. Net als bij de resources die u later in deze zelf studie maakt, is het een goed idee om deze resource groep vast te maken aan uw dash board voor eenvoudige toegang. Als u deze resource groep wilt vastmaken, klikt u op het speld pictogram rechts van de naam van de resource groep.
 
 ### <a name="choosing-an-azure-region"></a>Een Azure-regio kiezen
@@ -109,7 +109,7 @@ Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGro
 
 | Naam | Type  | Locatie |
 |------|-------|----------|
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | VS - west |
 
 ### <a name="create-an-azure-app-service-plan"></a>Een Azure App Service-plan maken
 
@@ -124,14 +124,14 @@ De volgende stap is het maken van een App Service-abonnement. Een App Service-pl
    * Selecteer voor **regio** **VS-West**.
    * Zorg ervoor dat **standaard S1** is geselecteerd voor de **prijs categorie**. Dit moet de standaard waarde zijn. Als dat niet het geval is, moet u ervoor zorgen dat u het **besturings systeem** instelt op **Windows** zoals hierboven wordt beschreven.
 5. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-6. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
+6. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) twee resources heeft:
 
 | Naam | Type  | Locatie |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | VS - west |
 
 ## <a name="build-an-echo-bot"></a>Een echo bot bouwen
 
@@ -201,7 +201,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
    * Voor het **abonnement**stelt u deze in op **gratis proef versie**
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**
    * Voor **hosting plan**selecteert u **SpeechEchoBotTutorial-AppServicePlan**
-1. Klik op **Create**. Klik in het laatste scherm van de wizard op **volt ooien**.
+1. Klik op **Maken**. Klik in het laatste scherm van de wizard op **volt ooien**.
 1. Klik aan de rechter kant van het venster publiceren op **publiceren** . Visual Studio implementeert de bot naar Azure.
 1. Er wordt een bericht weer gegeven in het uitvoer venster van Visual Studio dat er als volgt uitziet:
 
@@ -217,7 +217,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | VS - west |
 
 ## <a name="enable-web-sockets"></a>Websockets inschakelen
 
@@ -255,7 +255,7 @@ Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup**
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
 | SpeechEchoBotTutorial-BotRegistration-8726 | Registratie van bot-kanalen | Globaal |
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | VS - west |
 
 > [!IMPORTANT]
 > In de bron van de bot-kanalen wordt de wereld wijde regio weer gegeven, zelfs als u vs West hebt geselecteerd. Dit is normaal.

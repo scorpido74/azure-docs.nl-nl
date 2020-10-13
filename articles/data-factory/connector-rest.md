@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
 ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360766"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een REST-eind punt met behulp van Azure Data Factory
@@ -59,11 +59,11 @@ De volgende eigenschappen worden ondersteund voor de REST-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** moet worden ingesteld op **RestService**. | Yes |
-| url | De basis-URL van de REST-service. | Yes |
-| enableServerCertificateValidation | Hiermee wordt aangegeven of het TLS/SSL-certificaat aan de server zijde moet worden gevalideerd wanneer er verbinding wordt gemaakt met het eind punt. | No<br /> (de standaard waarde is **True**) |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **anoniem**, **Basic**, **AadServicePrincipal**en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder voor meer eigenschappen en voor beelden. | Yes |
-| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |No |
+| type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
+| url | De basis-URL van de REST-service. | Ja |
+| enableServerCertificateValidation | Hiermee wordt aangegeven of het TLS/SSL-certificaat aan de server zijde moet worden gevalideerd wanneer er verbinding wordt gemaakt met het eind punt. | Nee<br /> (de standaard waarde is **True**) |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **anoniem**, **Basic**, **AadServicePrincipal**en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder voor meer eigenschappen en voor beelden. | Ja |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 ### <a name="use-basic-authentication"></a>Basis verificatie gebruiken
 
@@ -71,8 +71,8 @@ Stel de eigenschap **authenticationType** in op **Basic**. Naast de algemene eig
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het REST-eind punt. | Yes |
-| wachtwoord | Het wacht woord voor de gebruiker (de waarde van de **gebruikers naam** ). Markeer dit veld als **SecureString** -type om het veilig op te slaan in Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het REST-eind punt. | Ja |
+| wachtwoord | Het wacht woord voor de gebruiker (de waarde van de **gebruikers naam** ). Markeer dit veld als **SecureString** -type om het veilig op te slaan in Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 
 **Voorbeeld**
 
@@ -104,11 +104,11 @@ Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast d
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Yes |
-| servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| tenant | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Yes |
-| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net` .| Yes |
-| azureCloudType | Voor Service-Principal-verificatie geeft u het type van de Azure-cloud omgeving op waarvoor uw AAD-toepassing is geregistreerd. <br/> Toegestane waarden zijn **AzurePublic**, **AzureChina**, **AzureUsGovernment**en **AzureGermany**. De cloud omgeving van de data factory wordt standaard gebruikt. | No |
+| servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Ja |
+| servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| tenant | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net` .| Ja |
+| azureCloudType | Voor Service-Principal-verificatie geeft u het type van de Azure-cloud omgeving op waarvoor uw AAD-toepassing is geregistreerd. <br/> Toegestane waarden zijn **AzurePublic**, **AzureChina**, **AzureUsGovernment**en **AzureGermany**. De cloud omgeving van de data factory wordt standaard gebruikt. | Nee |
 
 **Voorbeeld**
 
@@ -142,7 +142,7 @@ Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Naas
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net` .| Yes |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net` .| Ja |
 
 **Voorbeeld**
 
@@ -174,8 +174,8 @@ Als u gegevens wilt kopiëren uit REST, worden de volgende eigenschappen onderst
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Yes |
-| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. De HTTP-connector kopieert gegevens van de gecombineerde URL: `[URL specified in linked service]/[relative URL specified in dataset]` . | No |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. De HTTP-connector kopieert gegevens van de gecombineerde URL: `[URL specified in linked service]/[relative URL specified in dataset]` . | Nee |
 
 Als u instelt `requestMethod` , `additionalHeaders` , `requestBody` en `paginationRules` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in activiteit bron gaat gebruiken.
 
@@ -210,13 +210,13 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Yes |
-| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | No |
-| additionalHeaders | Aanvullende HTTP-aanvraag headers. | No |
-| requestBody | De hoofd tekst van de HTTP-aanvraag. | No |
-| paginationRules | De paginerings regels voor het opstellen van volgende pagina-aanvragen. Raadpleeg de sectie [ondersteuning voor paginering](#pagination-support) voor meer informatie. | No |
-| httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**.  | No |
-| requestInterval | De tijd die moet worden gewacht voordat de aanvraag wordt verzonden naar de volgende pagina. De standaard waarde is **00:00:01** |  No |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Ja |
+| requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
+| additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
+| requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
+| paginationRules | De paginerings regels voor het opstellen van volgende pagina-aanvragen. Raadpleeg de sectie [ondersteuning voor paginering](#pagination-support) voor meer informatie. | Nee |
+| httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**.  | Nee |
+| requestInterval | De tijd die moet worden gewacht voordat de aanvraag wordt verzonden naar de volgende pagina. De standaard waarde is **00:00:01** |  Nee |
 
 >[!NOTE]
 >De header ' Accept ' die is opgegeven in, wordt door de REST-connector genegeerd `additionalHeaders` . Als REST-connector alleen ondersteuning biedt voor een reactie in JSON, wordt er automatisch een header van gegenereerd `Accept: application/json` .
@@ -412,7 +412,7 @@ De sjabloon definieert twee para meters:
     |:--- |:--- |:--- |
     | URL |Geef de URL op waarvoor het OAuth Bearer-token moet worden opgehaald. in het voor beeld is dit bijvoorbeeld https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | Methode | De HTTP-methode. Toegestane waarden zijn **post** en **Get**. | 
-    | Kopteksten | De header is door de gebruiker gedefinieerd, die verwijst naar één header naam in de HTTP-aanvraag. | 
+    | Headers | De header is door de gebruiker gedefinieerd, die verwijst naar één header naam in de HTTP-aanvraag. | 
     | Hoofdtekst | De hoofd tekst van de HTTP-aanvraag. | 
 
     ![Pijplijn](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)

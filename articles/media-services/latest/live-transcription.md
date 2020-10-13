@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291412"
 ---
 # <a name="live-transcription-preview"></a>Live transcriptie (preview-versie)
@@ -39,10 +39,10 @@ Live transcriptie is beschikbaar in de volgende regio's:
 - Europa -west
 - Europa - noord
 - VS - oost
-- VS - centraal
+- Central US
 - VS - zuid-centraal
 - VS - west 2
-- Brazilië - zuid
+- Brazil South
 
 Dit is de lijst met beschik bare talen die kunnen worden getranscribeerd. Gebruik de taal code in de API.
 
@@ -60,7 +60,7 @@ Dit is de lijst met beschik bare talen die kunnen worden getranscribeerd. Gebrui
 | Spaans (Spanje) | es-ES |
 | Spaans (Mexico) | es-MX |
 | Fins (Finland) | fi-FI |
-| Frans (Canada) | FR-CA |
+| Frans (Canada) | fr-CA |
 | Frans (Frankrijk) | fr-FR |
 | Italiaans (Italië) | it-IT |
 | Nederlands (Nederland) | nl-NL |

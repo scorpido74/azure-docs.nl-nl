@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356363"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB Change feed gebruiken om real-time gegevens analyse te visualiseren
@@ -170,7 +170,7 @@ Als u wilt zien hoe wijzigingen in de feed nieuwe acties op een e-commerce-site 
 
 3. Voeg de namen van de **verzameling** en de **Data Base** toe. (Deze namen moeten **changefeedlabcollection** en **changefeedlabdatabase** zijn, tenzij u een andere naam wilt opgeven.)
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Verbindings reeksen bijwerken":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Project-visueel element":::
  
 4. Sla de wijzigingen op in alle bestanden die zijn bewerkt.  
 
@@ -180,7 +180,7 @@ Als u wilt zien hoe wijzigingen in de feed nieuwe acties op een e-commerce-site 
 
 7. Als u naar [Azure Portal](https://portal.azure.com/) navigeert, vervolgens naar het Cosmos DB-account in de resource groep en vervolgens naar **Data Explorer**, ziet u de wille keurige gegevens die in uw **changefeedlabcollection** zijn geïmporteerd.
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Gegevens die in de portal worden gegenereerd":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Project-visueel element":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Een stream Analytics-taak instellen
 
@@ -190,7 +190,7 @@ Azure Stream Analytics is een volledig beheerde Cloud service voor realtime-verw
 
 2. Selecteer de **invoer** zoals hieronder wordt geïllustreerd.  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Invoer maken":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Project-visueel element":::
 
 3. Selecteer **+ stroom invoer toevoegen**. Selecteer vervolgens **Event hub** in de vervolg keuzelijst.  
 
@@ -222,7 +222,7 @@ Azure Stream Analytics is een volledig beheerde Cloud service voor realtime-verw
 
 8. Ga vervolgens terug naar **streamjob1** en selecteer **query bewerken**.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Query bewerken":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Project-visueel element":::
  
 9. Plak de volgende query in het query venster. De **gemiddelde prijs** query berekent de gemiddelde prijs van alle items die worden weer gegeven door gebruikers, de gemiddelde prijs van alle items die worden toegevoegd aan de manden van gebruikers en de gemiddelde prijs van alle items die door gebruikers worden gekocht. Met deze metriek kunnen e-commerce-bedrijven helpen bij het bepalen van de prijzen voor het verkopen van artikelen op en de inventarisatie in. Als de gemiddelde prijs van items die worden weer gegeven, bijvoorbeeld veel hoger is dan de gemiddelde prijs van de gekochte artikelen, kan een bedrijf ervoor kiezen minder dure artikelen toe te voegen aan de inventaris.
 
@@ -315,7 +315,7 @@ Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kun
 
    Zo ziet een voorbeeld dashboard eruit met deze grafieken:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Scherm afbeelding toont een voor beeld van een dash board met de naam gemiddelde prijs van items op actie, unieke bezoekers, omzet en top 5 van items die zijn gekocht.":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Project-visueel element":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Optioneel: visualiseren met een E-commerce-site
 
@@ -329,13 +329,13 @@ U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken o
 
 2. Selecteer de **topItems** -verzameling en stel onder **schaal en instellingen** de **time to Live** in op **30 seconden** zodat topItems elke 30 seconden wordt bijgewerkt.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Time To Live":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Project-visueel element":::
 
 3. Als u de **topItems** verzameling met de meest gekochte items wilt vullen, gaat u terug naar **streamjob1** en voegt u een nieuwe **uitvoer**toe. Selecteer **Cosmos DB**.
 
 4. Vul de vereiste velden in zoals hieronder wordt beschreven.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos uitvoer":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Project-visueel element":::
  
 5. Als u de optionele TOP 5-query in het vorige deel van het Lab hebt toegevoegd, gaat u verder met deel 5a. Als dat niet het geval is, gaat u verder met stap 5.
 

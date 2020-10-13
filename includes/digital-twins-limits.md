@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 2ea607b22bfa1eebdf6b63adcd14a5d1bb1ca9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a5f62d4ea23db1052b2e40d10775dfaa33c632
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89304020"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989522"
 ---
 ### <a name="functional-limits"></a>Functionele limieten
 
@@ -22,6 +22,8 @@ De volgende tabel bevat de functionele limieten van Azure Digital Apparaatdubbel
 | Digitale tweelingen | Aantal apparaatdubbels in een Azure Digital Apparaatdubbels-instantie | 200.000 | Ja |
 | Digitale tweelingen | Aantal inkomende relaties met één dubbele waarde | 5\.000 | Nee |
 | Digitale tweelingen | Aantal uitgaande relaties van een enkele dubbele | 5\.000 | Nee |
+| Digitale tweelingen | Maximale grootte van een enkele dubbele | 32 kB | Nee |
+| Digital apparaatdubbels-API | Maximale grootte van de aanvraag lading | 32 kB | Nee | 
 | Routering | Aantal eind punten voor één Azure Digital Apparaatdubbels-exemplaar | 6 | Nee |
 | Routering | Aantal routes voor één Azure Digital Apparaatdubbels-exemplaar | 6 | Ja |
 | Modellen | Aantal modellen binnen één Azure Digital Apparaatdubbels-exemplaar | 10.000 | Ja |

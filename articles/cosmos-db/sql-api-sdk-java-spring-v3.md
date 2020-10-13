@@ -10,10 +10,10 @@ ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326657"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Lente gegevens Azure Cosmos DB v3 voor Core-API (SQL): release opmerkingen en bronnen
@@ -27,7 +27,7 @@ ms.locfileid: "91326657"
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
-> * [Lente gegevens v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,14 +45,14 @@ Het [lente-Framework](https://spring.io/projects/spring-framework) is een progra
 U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https://azure.microsoft.com/services/spring-cloud/) toepassingen.
 
 > [!IMPORTANT]  
-> Deze release opmerkingen zijn voor versie 3 van Lente gegevens Azure Cosmos DB. U vindt [hier release opmerkingen voor versie 2](sql-api-sdk-java-spring-v2.md). 
+> Deze release-opmerkingen horen bij versie 3 van Spring Data Azure Cosmos DB. Hier vindt u [opmerkingen bij de release van versie 2](sql-api-sdk-java-spring-v2.md). 
 >
-> Lente gegevens Azure Cosmos DB ondersteunt alleen de SQL-API.
+> Spring Data Azure Cosmos DB ondersteunt alleen de SQL-API.
 >
-> Zie deze artikelen voor informatie over Lente gegevens op andere Azure Cosmos DB-Api's:
-> * [Lente gegevens voor Apache Cassandra met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Lente gegevens MongoDB met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Lente gegevens Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> Lees deze artikelen voor informatie over Spring Data op andere Azure Cosmos DB-API's:
+> * [Spring Data voor Apache Cassandra met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 ## <a name="start-here"></a>Hier beginnen

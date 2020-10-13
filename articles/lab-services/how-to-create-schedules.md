@@ -4,10 +4,10 @@ description: Meer informatie over het maken van planningen voor klassikale Labs 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326436"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Planningen voor het maken en beheren van klassikale Labs in Azure Lab Services 
@@ -38,7 +38,7 @@ Maak een geplande gebeurtenis voor het lab, zodat VM's in het lab op opgegeven m
     4. Geef de **begin tijd** op waarop u de vm's wilt starten.
     5. Geef de **eind tijd** op waarop de vm's moeten worden afgesloten. 
     6. Geef de **tijd zone** op voor de start-en stop tijden die u hebt opgegeven. 
-    2. Selecteer de dagen waarop de planning moet gelden. In het volgende voor beeld is maandag-donderdag geselecteerd. 
+    2. Selecteer de dagen waarop de planning moet gelden. In het volgende voor beeld is Monday-Thursday geselecteerd. 
     8. Selecteer **Opslaan**. 
 
         ![Herhalingsplanning instellen](./media/how-to-create-schedules/set-repeat-schedule.png)
