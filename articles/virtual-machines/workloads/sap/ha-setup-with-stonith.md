@@ -14,10 +14,10 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91363117"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hoge beschikbaarheid ingesteld in SUSE met behulp van de STONITH
@@ -75,7 +75,7 @@ Micro soft Service Management biedt deze teken reeks. Wijzig het bestand op **be
 
 ![Scherm afbeelding toont een initiatorname-bestand met InitiatorName-waarden voor een knoop punt.](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 */etc/iscsi/iscsid.conf*wijzigen: set *node. Session. timeo. replacement_timeout = 5* en *node. startup = Automatic*. Wijzig het bestand op **beide** knoop punten.
+1,2 */etc/iscsi/iscsid.conf*wijzigen: set *node.Session.Timeo.replacement_timeout = 5* en *node. startup = Automatic*. Wijzig het bestand op **beide** knoop punten.
 
 1,3 de detectie opdracht uit te voeren, worden vier sessies weer gegeven. Voer de app uit op beide knoop punten.
 

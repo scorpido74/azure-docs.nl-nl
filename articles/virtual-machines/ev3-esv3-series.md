@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: lahugh
 ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649572"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3- en Esv3-serie
@@ -24,7 +24,7 @@ Instanties van de Ev3-serie worden uitgevoerd op Intel® Xeon® Platinum 8272CL 
 
 Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruik dan de ESv3-grootten. De prijs- en factureringsmeters voor de ESv3-grootten zijn gelijk aan die van de Ev3-serie.
 
-De Ev3-serie van de virtuele machine met Intel® Hyper-Threading-technologie.
+Intel® Hyper-Threading-Ev3-serie onderdeel van de VM.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): niet ondersteund<br>
@@ -54,7 +54,7 @@ Er zijn <sup>1</sup> beperkte core-grootten beschikbaar.
 
 Instanties van de Esv3-serie worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon-® E5-2673 v4 2,3 GHz (Broadwell)-processor, functie Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken. Instanties van de Esv3-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen.
 
-De Esv3-serie van de virtuele machine met Intel® Hyper-Threading-technologie.
+Intel® Hyper-Threading-Esv3-serie onderdeel van de VM.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): ondersteund<br>
@@ -86,7 +86,7 @@ Virtuele machines uit <sup>de Esv3</sup> - [serie kunnen de](linux/disk-bursting
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

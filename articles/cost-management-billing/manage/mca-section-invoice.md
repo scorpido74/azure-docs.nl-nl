@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362765"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Kosten organiseren door uw factureringsrekening aan te passen
 
@@ -53,19 +53,19 @@ In deze sectie worden algemene scenario's voor het organiseren van kosten en de 
 |---------|---------|
 |Jack meldt zich aan voor Azure en heeft één factuur per maand nodig. | Een factureringsprofiel en een factuursectie. Deze structuur wordt automatisch ingesteld voor Jack wanneer hij zich aanmeldt voor Azure. Hiervoor zijn geen extra stappen vereist. |
 
-![Info-afbeelding van een eenvoudig factureringsscenario](./media/mca-section-invoice/organize-billing-scenario1.png)
+![Info-afbeelding van een enkelvoudig factureringsscenario.](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |Scenario  |Structuur  |
 |---------|---------|
 |Contoso is een kleine organisatie die één factuur per maand nodig heeft, maar kosten groepeert op hun afdelingen: Marketing en Engineering.  | Een factureringsprofiel voor Contoso met een factuursectie voor de afdeling Marketing en een factuursectie voor de afdeling Engineering. |
 
-![Info-afbeelding van een eenvoudig factureringsscenario](./media/mca-section-invoice/organize-billing-scenario2.png)
+![Info-afbeelding van een meervoudig factureringsscenario.](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |Scenario  |Structuur  |
 |---------|---------|
 |Fabrikam is een middelgrote organisatie die afzonderlijke facturen nodig heeft voor de afdelingen Engineering en Marketing. Voor de afdeling Engineering willen ze kosten groeperen op hun omgevingen: Productie en Ontwikkeling.  | Een factureringsprofiel voor de afdeling Marketing en een factureringsprofiel voor de afdeling Engineering. Voor de afdeling Engineering: een factuursectie voor de productieomgeving en een factuursectie voor de ontwikkelomgeving. |
 
-![Info-afbeelding van een eenvoudig factureringsscenario](./media/mca-section-invoice/organize-billing-scenario3.png)
+![Info-afbeelding van een scenario met meervoudige facturering, met afzonderlijke facturering voor productie- en ontwikkelingsomgevingen.](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>Een nieuwe factuursectie maken
 
@@ -79,7 +79,7 @@ Als u een factuursectie wilt maken, moet u een **factureringsprofiel-eigenaar** 
 
 3. Selecteer in het linkerdeelvenster de optie **Factureringsprofielen**. Selecteer een factureringsprofiel in de lijst. De nieuwe sectie wordt weergegeven op de factuur van het geselecteerde factureringsprofiel.
 
-   [![Schermopname van de lijst met factureringsprofielen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Schermopname van de lijst met factureringsprofielen.](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. Selecteer **Factuursecties** in het linkerdeelvenster en selecteer vervolgens **Toevoegen** boven aan de pagina.
 
@@ -107,7 +107,7 @@ Als u een factureringsprofiel wilt maken, moet u een **factureringsrekening-eige
 
 3. Selecteer **Factureringsprofielen** in het linkerdeelvenster en selecteer vervolgens **Toevoegen** boven aan de pagina.
 
-   [![Schermopname van de lijst met factureringsprofielen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Schermopname van de lijst met factureringsprofielen met Toevoegen geselecteerd.](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ Zodra u uw factureringsrekening hebt aangepast op basis van uw behoeften, kunt u
 
 2. Zoek naar **Abonnementen**.
 
-   [![Schermopname van zoekopdracht in portal naar abonnementen](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![Schermopname van zoeken naar abonnement in Azure Portal.](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. Selecteer **Toevoegen** bovenaan de pagina.
 
-   ![Schermopname van de knop Toevoegen in de weergave Abonnementen](./media/mca-section-invoice/subscription-add.png)
+   ![Schermopname van de knop Toevoegen in de weergave Abonnementen voor een nieuw abonnement.](./media/mca-section-invoice/subscription-add.png)
 
 4. Als u toegang hebt tot meerdere factureringsrekeningen, selecteert u de factureringsrekening voor uw Microsoft-klantovereenkomst.
 
-   ![Schermopname van de knop Toevoegen in de weergave Abonnementen](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![Schermopname van de pagina Abonnement maken.](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. Selecteer het factureringsprofiel waarmee het gebruik van het abonnement wordt gefactureerd. De kosten voor Azure-gebruik en andere aankopen voor dit abonnement worden in rekening gebracht op de factuur van het geselecteerde factureringsprofiel.
 
@@ -166,7 +166,7 @@ Als u beschikt over bestaande Azure-abonnementen of andere producten, zoals Azur
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in portal naar abonnementen](./media/mca-section-invoice/search-cmb.png)
+   ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in Azure Portal.](./media/mca-section-invoice/search-cmb.png)
 
 3. Als u een abonnement wilt koppelen aan een nieuwe factuursectie, selecteert u **Azure-abonnementen** aan de linkerkant van het scherm. Voor andere producten, zoals Azure Marketplace en App-bronresources, selecteert u **Terugkerende kosten**.
 

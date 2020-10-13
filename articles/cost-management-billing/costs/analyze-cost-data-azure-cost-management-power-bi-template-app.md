@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685048"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447655"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analyseer kosten met de Azure Cost Management Power BI-app voor Enterprise Agreements (EA)
 
@@ -47,7 +47,7 @@ De app installeren:
 9. Voer in het weergegeven dialoogvenster uw EA-inschrijvingsnummer in voor **BillingProfileIdOrEnrollmentNumber**. Geef het aantal maanden aan gegevens op dat moet worden opgehaald. Behoud de standaardwaarde voor **Bereik** van **Inschrijvingsnummer** en selecteer **Volgende**.  
   ![Informatie over EA-inschrijving invoeren](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. Het volgende dialoogvenster maakt verbinding met Azure en haalt gegevens op die nodig zijn voor gereserveerde instantieaanbevelingen. *Laat de standaardwaarden zoals ze geconfigureerd zijn* en selecteer **Aanmelden**.  
-  ![Verbinding maken met Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+  ![Schermopname van het dialoogvenster Verbinding maken met Azure Cost Management met standaardwaarden.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. De laatste installatiestap maakt verbinding met uw EA-inschrijving en vereist een [Enterprise Administrator](../manage/understand-ea-roles.md)-account. Selecteer **Aanmelden** voor verificatie met uw EA-inschrijving. Met deze stap wordt ook een actie voor gegevensvernieuwing in Power BI gestart.  
   ![Verbinding maken met EA-inschrijving](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
@@ -189,7 +189,7 @@ Deze fout treedt op als u de verificatiemethode voor de AutoFitComboMeter-blobve
 
 1. Maak verbinding met uw gegevens.
 1. Nadat u uw EA-registratie en aantal maanden invoert, moet u ervoor zorgen dat u de standaardwaarden **Anoniem** voor Verificatiemethode en **Geen** voor Privacyniveau behoudt.  
-  ![Verbinding maken met Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  ![Schermopname van het dialoogvenster Verbinding maken met Azure Cost Management met de ingevoerde waarden Anoniem en Geen.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
 1. Stel op de volgende pagina **OAuth2** voor de verificatiemethode in en **Geen** voor het Privacyniveau. Meld vervolgens aan om uw inschrijving te verifiëren. Met deze stap wordt ook een gegevensvernieuwing in Power BI gestart.
 
 

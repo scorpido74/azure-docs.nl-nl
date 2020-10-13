@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649946"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
@@ -72,12 +72,12 @@ Zie [Azure files netwerk overwegingen](storage-files-networking-overview.md)voor
 ## <a name="encryption"></a>Versleuteling
 Azure Files ondersteunt twee verschillende soorten versleuteling: versleuteling in transit, dat betrekking heeft op de versleuteling die wordt gebruikt bij het koppelen/openen van de Azure-bestands share, en versleuteling op rest, die betrekking heeft op hoe de gegevens worden versleuteld wanneer deze op schijf worden opgeslagen. 
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
 
 > [!IMPORTANT]
-> Deze sectie bevat informatie over versleuteling in de doorvoer gegevens voor SMB-shares. Zie [beveiliging](storage-files-compare-protocols.md#security)voor meer informatie over versleuteling in transit met NFS-shares.
+> Deze sectie bevat informatie over versleuteling tijdens overdracht voor SMB-shares. Zie [Beveiliging](storage-files-compare-protocols.md#security) voor meer informatie over versleuteling tijdens overdracht voor NFS-shares.
 
-Standaard is versleuteling in transit ingeschakeld voor alle Azure-opslagaccounts. Dit betekent dat wanneer u een bestandsshare koppelt via SMB of de bestandsshare opent via het FileREST-protocol (bijvoorbeeld via de Azure-portal, PowerShell/CLI of Azure-SDK's), de verbinding alleen wordt toegestaan als deze wordt gemaakt met SMB 3.0+ met versleuteling of HTTPS. Op clients die SMB 3.0 niet ondersteunen of op clients die SMB 3.0 wel ondersteunen maar SMB-versleuteling niet, kan de Azure-bestandsshare niet worden gekoppeld als versleuteling in transit is ingeschakeld. Zie onze gedetailleerde documentatie voor [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) en [Linux-](storage-how-to-use-files-linux.md) voor meer informatie over besturingssystemen waarin SMB 3.0 met versleuteling wordt ondersteund. Alle huidige versies van PowerShell, CLI en SDK's ondersteunen HTTPS.  
+Standaard is versleuteling in-transit ingeschakeld voor alle Azure-opslagaccounts. Dit betekent dat wanneer u een bestandsshare koppelt via SMB of de bestandsshare opent via het FileREST-protocol (bijvoorbeeld via de Azure-portal, PowerShell/CLI of Azure-SDK's), de verbinding alleen wordt toegestaan als deze wordt gemaakt met SMB 3.0+ met versleuteling of HTTPS. Op clients die SMB 3.0 niet ondersteunen of op clients die SMB 3.0 wel ondersteunen maar SMB-versleuteling niet, kan de Azure-bestandsshare niet worden gekoppeld als versleuteling in transit is ingeschakeld. Zie onze gedetailleerde documentatie voor [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) en [Linux-](storage-how-to-use-files-linux.md) voor meer informatie over besturingssystemen waarin SMB 3.0 met versleuteling wordt ondersteund. Alle huidige versies van PowerShell, CLI en SDK's ondersteunen HTTPS.  
 
 U kunt versleuteling in transit uitschakelen voor een Azure-opslagaccount. Wanneer versleuteling is uitgeschakeld, staat Azure Files ook toe dat SMB 2,1, SMB 3,0 zonder versleuteling en niet-versleutelde API-aanroepen van FileREST via HTTP. De belangrijkste reden om versleuteling in transit uit te schakelen, is het ondersteunen van een verouderde toepassing die moet worden uitgevoerd op een ouder besturingssysteem, zoals Windows Server 2008 R2 of een oudere Linux-distributie. In Azure Files worden SMB 2.1-verbindingen alleen toegestaan binnen dezelfde Azure-regio als de Azure-bestandsshare. SMB 2.1-clients buiten de Azure-regio van de Azure-bestandsshare, zoals on-premises clients of clients in een andere Azure-regio, hebben geen toegang tot de bestandsshare.
 

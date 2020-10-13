@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637241"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure-beveiligings basislijn voor Azure Kubernetes-service
@@ -1237,7 +1237,7 @@ Maak regel matig automatische back-ups van Key Vault certificaten, sleutels, beh
 
 Bijvoorbeeld:
 
-Backup-AzKeyVaultCertificate backup-AzKeyVaultKey backup-AzKeyVaultManagedStorageAccount backup-AzKeyVaultSecret
+Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
 - [Back-up maken van Key Vault certificaten](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1281,11 +1281,11 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **Richt lijnen**: Maak een back-up van uw gegevens met behulp van een geschikt hulp programma voor uw opslag type, zoals velero, waarmee back-ups van permanente volumes kunnen worden gemaakt, samen met extra cluster bronnen en-configuraties. 
 
-Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering als Azure Key Vault wordt gebruikt met voor Azure Kubernetes service (AKS)-implementaties.
+Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering als Azure Key Vault wordt gebruikt met voor Azure Kubernetes service (AKS)-implementaties.
 
 - [Azure Storage service-versleuteling begrijpen](../storage/common/storage-service-encryption.md)
 
-- [Zacht verwijderen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft-Delete in Key Vault inschakelen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 
