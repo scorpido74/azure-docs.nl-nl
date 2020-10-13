@@ -64,6 +64,8 @@
       href: tutorial-deploy-vm-content-library.md
     - name: GitHub Enterprise Server instellen
       href: github-enterprise-server.md
+    - name: IPSec-tunnel maken
+      href: create-ipsec-tunnel.md
     - name: Systeemeigen Azure-integratie
       items:
         - name: API Management

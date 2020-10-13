@@ -35,7 +35,11 @@
         - name: 0 - Een toepassing voor object- en bewegingsdetectie implementeren
           href: tutorial-video-analytics-deploy.md
         - name: 1 - Een toepassing voor videoanalyse maken
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: Object- en bewegingsdetectie (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: Object- en bewegingsdetectie (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2 - Een IoT Edge-apparaat configureren
           items:
             - name: Apparaat voor videoanalyse aan de rand maken (Linux-VM)

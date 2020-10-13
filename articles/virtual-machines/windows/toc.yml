@@ -304,7 +304,7 @@
             - name: Flexibiliteit van de VM-instantiegrootte
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Toegewezen hosts
-      href: dedicated-hosts.md
+      href: ../dedicated-hosts.md
     - name: Onderhoud en updates
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: File Storage

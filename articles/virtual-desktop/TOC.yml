@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: Verbinding maken met de Microsoft Store-client
           href: connect-microsoft-store.md
+    - name: Apparaatomleidingen configureren
+      href: configure-device-redirections.md
     - name: De PowerShell-module installeren
       href: powershell-module.md
     - name: Een hostpool en sessiehosts maken
@@ -102,6 +104,8 @@
       href: azure-advisor.md
     - name: Aanbevelingen oplossen
       href: azure-advisor-recommendations.md
+    - name: Een plan voor herstel na noodgevallen opzetten
+      href: disaster-recovery.md
 - name: Concepten
   items:
     - name: Verificatie

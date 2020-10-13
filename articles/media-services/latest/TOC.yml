@@ -61,6 +61,8 @@
           href: protect-with-aes128.md
         - name: Dynamisch versleutelen met DRM
           href: protect-with-drm.md
+        - name: Inhoudsbeveiliging met Azure AD
+          href: azure-ad-content-protection.md
     - name: REST
       items:
         - name: Een extern bestand REST coderen en streamen
@@ -188,8 +190,6 @@
           href: streaming-policy-concept.md
         - name: Beleid voor inhoudssleutels
           href: content-key-policy-concept.md
-        - name: Inhoudsbeveiliging met Azure AD
-          href: azure-ad-content-protection.md
     - name: Bewaking
       items:
         - name: Gebeurtenissen met Event Grid

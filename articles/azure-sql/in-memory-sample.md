@@ -1,59 +1,59 @@
 ---
-title: Voor beeld in het geheugen
-description: Probeer Azure SQL Database in-Memory technologieën met OLTP en column Store-voor beeld.
+title: Voorbeeld van In-Memory
+description: Probeer een voorbeeld van de Azure SQL Database in-Memory met OLTP en columnstore.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345271"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91616802"
 ---
-# <a name="in-memory-sample"></a>Voor beeld in het geheugen
+# <a name="in-memory-sample"></a>Voorbeeld van In-Memory
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-In de geheugen technologieën in Azure SQL Database kunt u de prestaties van uw toepassing verbeteren en mogelijk de kosten van uw data base verminderen. Door gebruik te maken van in-Memory technologieën in Azure SQL Database kunt u prestatie verbeteringen door diverse werk belastingen krijgen.
+Met In-Memory in Azure SQL Database kunt u de prestaties van uw toepassing verbeteren en mogelijk de kosten voor uw database verminderen. Door gebruik te maken van in-Memory in Azure SQL Database kunt u prestatieverbeteringen bekomen voor verschillende workloads.
 
-In dit artikel ziet u twee voor beelden die het gebruik van in-Memory OLTP en column Store-indexen in Azure SQL Database illustreren.
+In dit artikel ziet u twee voorbeelden die het gebruik van in-Memory OLTP en columnstore-indexen in Azure SQL Database illustreren.
 
 Zie voor meer informatie:
 
-- [Overzicht van in-Memory OLTP en gebruiks scenario's](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (bevat verwijzingen naar casestudy's van klanten en informatie om aan de slag te gaan)
+- [Overzicht van in-Memory OLTP en gebruiksscenario's](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (bevat verwijzingen naar casestudy's van klanten en informatie om aan de slag te gaan)
 - [Documentatie voor in-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
-- [Hand leiding voor column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
-- Hybride transactionele/analytische verwerking (HTAP), ook wel bekend als [real-time Operational Analytics](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
+- [Gids columnstore-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview)
+- Hybride transactionele/analytische verwerking (HTAP), ook wel bekend onder de naam [real-time operationele analyses](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. Installeer het voor beeld in het geheugen OLTP
+## <a name="1-install-the-in-memory-oltp-sample"></a>1. Het voorbeeld van In-Memory OLTP installeren
 
-U kunt de AdventureWorksLT-voorbeeld database maken met enkele klikken in de [Azure Portal](https://portal.azure.com/). In de stappen in dit gedeelte wordt uitgelegd hoe u uw AdventureWorksLT-Data Base kunt verrijken met in-Memory OLTP-objecten en de prestatie voordelen demonstreert.
+U kunt de AdventureWorksLT-voorbeelddatabase in enkele klikken aanmaken in het [Azure-portaal](https://portal.azure.com/). In de stappen in dit gedeelte wordt uitgelegd hoe u uw AdventureWorksLT-database kunt verrijken met In-Memory OLTP-objecten en worden de prestatieverbeteringen gedemonstreerd.
 
-Voor een meer vereenvoudigde, maar visueel aantrekkelijke prestatie demo voor in-Memory OLTP, zie:
+Voor een eenvoudigere, maar visueel aantrekkelijke prestatiedemo voor In-Memory OLTP, zie:
 
-- Release: [in-Memory-OLTP-demo-v 1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
-- Bron code: [in-Memory-OLTP-demo-bron code](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/in-memory-database)
+- Release: [in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
+- Broncode: [in-memory-oltp-demo-source-code](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/in-memory-database)
 
 ### <a name="installation-steps"></a>Installatiestappen
 
-1. Maak in de [Azure Portal](https://portal.azure.com/)een Premium-of bedrijfskritiek-Data Base op een server. Stel de **bron** in op de voorbeeld database AdventureWorksLT. Zie [uw eerste data base maken in Azure SQL database](database/single-database-create-quickstart.md)voor gedetailleerde instructies.
+1. Maak in het [Azure-portaal](https://portal.azure.com/) een Premium- of Bedrijfskritieke database op een server. Stel de **bron** in op de voorbeelddatabase AdventureWorksLT. Zie [Uw eerste data base in Azure SQL Database maken](database/single-database-create-quickstart.md) voor gedetailleerde instructies.
 
-2. Verbinding maken met de data base met SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
+2. Maak verbinding met de database met behulp van SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Kopieer het [Transact-SQL-script van OLTP in het geheugen](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) naar het klem bord. Het T-SQL-script maakt de benodigde in-Memory objecten in de AdventureWorksLT-voorbeeld database die u in stap 1 hebt gemaakt.
+3. Kopieer het [script In-Memory OLTP Transact-SQL](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) naar uw klembord. Het script T-SQL maakt de benodigde In-Memory-objecten in de AdventureWorksLT-voorbeelddatabase die u in stap 1 hebt gemaakt.
 
-4. Plak het T-SQL-script in SSMS en voer het script uit. De `MEMORY_OPTIMIZED = ON` component CREATE TABLE-instructies zijn van cruciaal belang. Bijvoorbeeld:
+4. Plak het T-SQL-script in SSMS en voer vervolgens het script uit. De CREATE TABLE-instructies in `MEMORY_OPTIMIZED = ON` zijn van cruciaal belang. Bijvoorbeeld:
 
 ```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
@@ -64,27 +64,27 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 
 ### <a name="error-40536"></a>Fout 40536
 
-Als u fout 40536 krijgt wanneer u het T-SQL-script uitvoert, voert u het volgende T-SQL-script uit om te controleren of de data base in-Memory ondersteunt:
+Als u fout 40536 krijgt wanneer u het T-SQL-script uitvoert, voert u het volgende T-SQL-script uit om te controleren of de database In-Memory ondersteunt:
 
 ```sql
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
-Een resultaat van **0** betekent dat het geheugen niet wordt ondersteund en **1** betekent dat het wordt ondersteund. Zorg ervoor dat de data base zich in de laag Premium bevindt om de oorzaak van het probleem vast te stellen.
+Het resultaat **0** betekent dat In-Memory niet wordt ondersteund en **1** betekent dat het wel wordt ondersteund. Zorg ervoor dat de database zich in het Premium-serviceniveau bevindt om de oorzaak van het probleem vast te stellen.
 
-### <a name="about-the-created-memory-optimized-items"></a>Over de gemaakte items die zijn geoptimaliseerd voor geheugen
+### <a name="about-the-created-memory-optimized-items"></a>Over de aangemaakte items die zijn geoptimaliseerd voor geheugen
 
-**Tables**: het voor beeld bevat de volgende tabellen die zijn geoptimaliseerd voor geheugen:
+**Tabellen**: Het voorbeeld bevat de volgende tabellen die zijn geoptimaliseerd voor geheugen:
 
-- Tabel saleslt. Product_inmem
-- Tabel saleslt. SalesOrderHeader_inmem
-- Tabel saleslt. SalesOrderDetail_inmem
-- Demo. DemoSalesOrderHeaderSeed
-- Demo. DemoSalesOrderDetailSeed
+- SalesLT.Product_inmem
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
+- Demo.DemoSalesOrderHeaderSeed
+- Demo.DemoSalesOrderDetailSeed
 
-U kunt tabellen die zijn geoptimaliseerd voor geheugen, inspecteren via de **objectverkenner** in SSMS. Klik met de rechter muisknop op **tabellen**  >  **filter**  >  **filter instellingen**  >  **is geoptimaliseerd voor geheugen**. De waarde is gelijk aan 1.
+U kunt tabellen die zijn geoptimaliseerd voor geheugen inspecteren met de **Objectverkenner** in SSMS. Klik met de rechtermuisknop op **Tabellen** > **Filter** > **Filterinstellingen** > **Is geoptimaliseerd voor geheugen**. De waarde is gelijk aan 1.
 
-U kunt ook een query uitvoeren op de catalogus weergaven, zoals:
+U kunt ook een query uitvoeren op de catalogusweergaven, zoals:
 
 ```sql
 SELECT is_memory_optimized, name, type_desc, durability_desc
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Systeem eigen, gecompileerde, opgeslagen procedure**: u kunt tabel saleslt. usp_InsertSalesOrder_inmem inspecteren met een query in de catalogus weergave:
+**In eigen systeem gecompileerde opgeslagen procedure**: U kunt SalesLT.usp_InsertSalesOrder_inmem inspecteren via een query in de catalogusweergave:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -102,30 +102,30 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 &nbsp;
 
-### <a name="run-the-sample-oltp-workload"></a>De voor beeld van de OLTP-workload uitvoeren
+### <a name="run-the-sample-oltp-workload"></a>Het voorbeeld van een OTLTP-workload uitvoeren
 
-Het enige verschil tussen de volgende twee *opgeslagen procedures* is dat in de eerste procedure de versies van de tabellen die zijn geoptimaliseerd voor geheugen, worden gebruikt, terwijl de tweede procedure gebruikmaakt van de normale on-disk tabellen:
+Het enige verschil tussen de volgende twee *opgeslagen procedures* is dat de eerste procedure gebruikmaakt van tabelversies die zijn geoptimaliseerd voor geheugen, terwijl voor de tweede procedure de normale on-disk tabellen worden gebruikt:
 
-- Tabel saleslt **.** usp_InsertSalesOrder **_inmem**
-- Tabel saleslt **.** usp_InsertSalesOrder **_ondisk**
+- SalesLT **.** usp_InsertSalesOrder **_inmem**
+- SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
-In deze sectie ziet u hoe u het handige **ostress.exe** -hulp programma gebruikt om de twee opgeslagen procedures op stress niveau uit te voeren. U kunt vergelijken hoe lang het duurt om de twee stress-uitvoeringen te volt ooien.
+In deze sectie ziet u hoe u het handige **ostress.exe** exe-hulpprogramma gebruikt om de twee opgeslagen procedures op stressniveau uit te voeren. U kunt vergelijken hoe lang het duurt om de twee stressuitvoeringen te voltooien.
 
-Wanneer u ostress.exe uitvoert, raden we u aan parameter waarden door te geven die zijn ontworpen voor het volgende:
+Wanneer u ostress.exe uitvoert, raden we u aan om parameterwaarden op te geven die zijn ontworpen voor de volgende twee bewerkingen:
 
-- Voer een groot aantal gelijktijdige verbindingen uit met behulp van-N100.
-- Laat elke verbinding honderden keer worden herhaald met behulp van-R500.
+- Voer een groot aantal gelijktijdige verbindingen uit met behulp van -n100.
+- Laat elke verbinding verschillende honderden keer herhalen met behulp van -r500.
 
-Het is echter verstandig om te beginnen met veel kleinere waarden, zoals-N10 en-R50, om ervoor te zorgen dat alles werkt.
+Het kan echter verstandig zijn om te beginnen met veel kleinere waarden, zoals -n10 en -r50, om ervoor te zorgen dat alles werkt.
 
 ### <a name="script-for-ostressexe"></a>Script voor ostress.exe
 
-In deze sectie wordt het T-SQL-script weer gegeven dat is inge sloten in onze ostress.exe-opdracht regel. Het script maakt gebruik van items die zijn gemaakt door het T-SQL-script dat u eerder hebt geïnstalleerd.
+In deze sectie wordt het T-SQL-script weergegeven dat is ingesloten in onze ostress.exe-opdrachtregel. Het script maakt gebruik van items die zijn gemaakt door het T-SQL-script dat u eerder hebt geïnstalleerd.
 
-Met het volgende script wordt een voor beeld van een verkoop order met vijf regel items ingevoegd in de volgende *tabellen*die zijn geoptimaliseerd voor geheugen:
+Met het volgende script wordt een voorbeeld van een verkooporder met vijf regelitems ingevoegd in de volgende *tabellen* die zijn geoptimaliseerd voor geheugen:
 
-- Tabel saleslt. SalesOrderHeader_inmem
-- Tabel saleslt. SalesOrderDetail_inmem
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
 
 ```sql
 DECLARE
@@ -150,19 +150,19 @@ begin;
 end
 ```
 
-Als u de *_ondisk* versie van het voor gaande T-SQL-script voor ostress.exe wilt maken, vervangt u beide exemplaren van de *_inmem* subtekenreeks door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
+Als u de versie *_ondisk* van het vorige T-SQL-script voor ostress.exe wilt maken, vervangt u beide exemplaren van de subtekenreeks *_inmem* door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
 
-#### <a name="install-rml-utilities-and-ostress"></a>Installeer RML-hulpprogram ma's en`ostress`
+#### <a name="install-rml-utilities-and-ostress"></a>Installeer RML-hulpprogramma's en `ostress`
 
-In het ideale geval is het van plan om ostress.exe uit te voeren op een virtuele Azure-machine (VM). U maakt een [virtuele Azure-machine](https://azure.microsoft.com/documentation/services/virtual-machines/) in dezelfde Azure-geografische regio waar uw AdventureWorksLT-data base zich bevindt. Maar u kunt in plaats daarvan ostress.exe uitvoeren op uw laptop.
+Idealiter gaat u ostress.exe uitvoeren op een virtuele Azure-machine (VM). U maakt een [Virtuele Azure-machine](https://azure.microsoft.com/documentation/services/virtual-machines/) in dezelfde geografische regio waarin uw AdventureWorksLT-database zich bevindt. In plaats daarvan kunt u ostress.exe uitvoeren op uw laptop.
 
-Installeer de RML-hulpprogram ma's (Replay Markup Language) op de virtuele machine, of op welke host u ook kiest. De hulpprogram ma's bevatten ostress.exe.
+Installeer de RML-hulpprogram ma's (Replay Markup Language) op de virtuele machine, of een host naar keuze. Ostress.exe maakt deel uit van de hulpprogramma's.
 
 Zie voor meer informatie:
 
-- De ostress.exe discussie in de [voorbeeld database voor in-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- [Voorbeeld database voor in-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- De [blog voor het installeren van ostress.exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
+- De discussie oer ostress.exe in [Voorbeelddatabase voor In-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
+- [Voorbeelddatabase voor In-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
+- De [blog om ostress.exe te installeren](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
 dn511655.aspx is for SQL 2014,
@@ -174,100 +174,100 @@ whereas for SQL 2016+
 (https://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
-#### <a name="run-the-_inmem-stress-workload-first"></a>Voer eerst de *_inmem* stress-workload uit
+#### <a name="run-the-_inmem-stress-workload-first"></a>Voer eerst de stressworkload *_inmem* stress uit
 
-U kunt een *RML cmd prompt* venster gebruiken om de ostress.exe opdracht regel uit te voeren. De opdracht regel parameters direct `ostress` naar:
+U kunt een venster met *RML-opdrachtprompt* gebruiken om onze opdrachtregel voor ostress.exe uit te voeren. De opdrachtregelparameters geven `ostress` de opdracht om:
 
-- 100-verbindingen gelijktijdig uitvoeren (-N100).
-- Laat elke verbinding het T-SQL-script 50 keer (-R50) uitvoeren.
+- 100 verbindingen tegelijkertijd uit te voeren (-n100).
+- Elke verbinding het T-SQL-script 50 keer te laten uitvoeren (-r50).
 
 ```
 ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password> -d<database> -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem, @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() * 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()* 10000; INSERT INTO @od SELECT OrderQty, ProductID FROM Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int); WHILE (@i < 20) begin; EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od; set @i += 1; end"
 ```
 
-De voor gaande ostress.exe opdracht regel uitvoeren:
+De voorgaande ostress.exe-opdrachtregel uitvoeren:
 
-1. De inhoud van de database gegevens opnieuw instellen door de volgende opdracht uit te voeren in SSMS, om alle gegevens te verwijderen die zijn ingevoegd door eerdere uitvoeringen:
+1. De gegevensinhoud van de database opnieuw instellen door de volgende opdracht uit te voeren in SSMS, om alle gegevens te verwijderen die zijn ingevoegd bij eerdere uitvoeringen:
 
     ``` tsql
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. De tekst van de voor gaande ostress.exe opdracht regel kopiëren naar het klem bord.
+2. Kopieer de tekst van de voorgaande ostress.exe-opdrachtregel naar het klembord.
 
-3. Vervang de `<placeholders>` para meters-S-U-P-d door de juiste werkelijke waarden.
+3. Vervang de `<placeholders>` voor de parameters -S -U -P -d door de juiste echte waarden.
 
-4. Voer de bewerkte opdracht regel uit in een RML CMD-venster.
+4. Voer de bewerkte opdrachtregel uit in een venster met de RML-opdrachtprompt.
 
-#### <a name="result-is-a-duration"></a>Resultaat is een duur
+#### <a name="result-is-a-duration"></a>Het resultaat is een duur
 
-Als `ostress.exe` u klaar bent, wordt de uitvoerings duur als laatste uitvoer regel geschreven in het RML CMD-venster. Een korte test uitvoering heeft bijvoorbeeld ongeveer 1,5 minuten geduren:
+Als `ostress.exe` voltooid is, wordt de uitvoeringsduur als laatste regel van de uitvoer in het RML-opdrachtpromptvenster geschreven. Een korte testuitvoering duurde bijvoorbeeld ongeveer 1,5 minuten:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Opnieuw instellen, bewerken voor *_ondisk*en vervolgens opnieuw uitvoeren
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Stel het opnieuw in, bewerk het voor *_ondisk* en voer dan opnieuw uit
 
-Nadat u het resultaat van de *_inmem* uitvoeren hebt, voert u de volgende stappen uit om de *_ondisk* uit te voeren:
+Nadat u het resultaat van de *_inmem*-uitvoering hebt verkregen, voert u de volgende stappen uit voor de *_ondisk*-uitvoering:
 
-1. Stel de data base opnieuw in door de volgende opdracht uit te voeren in SSMS om alle gegevens te verwijderen die zijn ingevoegd door de vorige uitvoering:
+1. Stel de database opnieuw in door de volgende opdracht uit te voeren in SSMS om alle gegevens te verwijderen die zijn ingevoegd bij de eerdere uitvoering:
 
    ```sql
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Bewerk de ostress.exe opdracht regel om alle *_inmem* met *_ondisk*te vervangen.
+2. Bewerk de opdrachtregel voor ostress.exe om *_inmem* overal door *_ondisk* te vervangen.
 
-3. Voer ostress.exe voor de tweede keer opnieuw uit en leg het resultaat van de duur vast.
+3. Voer ostress.exe voor de tweede keer uit en leg vast hoelang het duurt.
 
-4. Stel de data base opnieuw in (voor vergoedd verwijderen wat kan een grote hoeveelheid test gegevens zijn).
+4. Stel de database opnieuw in (om op een verantwoorde manier een grote hoeveelheid testgegevens te verwijderen).
 
-#### <a name="expected-comparison-results"></a>Verwachte vergelijkings resultaten
+#### <a name="expected-comparison-results"></a>Verwachte vergelijkingsresultaten
 
-Onze tests in het geheugen hebben laten zien dat de prestaties zijn verbeterd door **negen keer** voor deze vereenvoudigde-werk belasting, waarbij `ostress` wordt uitgevoerd op een virtuele Azure-machine in dezelfde Azure-regio als de data base.
+Onze In-Memory-tests hebben laten zien dat de prestaties **negen keer** beter zijn voor deze eenvoudige workload, waarbij `ostress` worden uitgevoerd op een virtuele Azure-machine in dezelfde Azure-regio als de database.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. Installeer het voor beeld in het geheugen analyse
+## <a name="2-install-the-in-memory-analytics-sample"></a>2. Het voorbeeld van in-memory Analytics installeren
 
-In deze sectie gaat u de resultaten van de i/o-en statistieken vergelijken wanneer u een column store-index gebruikt in plaats van een traditionele b-structuur index.
+In deze sectie gaat u de IO en de statistische resultaten vergelijken wanneer u een columnstore-index gebruikt versus wanneer u een traditionele b-tree-index gebruikt.
 
-Voor realtime analyses van een OLTP-werk belasting is het vaak het beste om een niet-geclusterde column store-index te gebruiken. Zie [Column Store-indexen](https://msdn.microsoft.com/library/gg492088.aspx)die worden beschreven voor meer informatie.
+Voor realtime analyses van een OLTP-workload kunt u vaak best een niet-geclusterde columnstore-index gebruiken. Zie [Beschreven columnstore-indexen](https://msdn.microsoft.com/library/gg492088.aspx) voor meer informatie.
 
-### <a name="prepare-the-columnstore-analytics-test"></a>De column Store Analytics-test voorbereiden
+### <a name="prepare-the-columnstore-analytics-test"></a>De analysetest van columnstore voorbereiden
 
-1. Gebruik de Azure Portal om een nieuwe AdventureWorksLT-data base te maken op basis van het voor beeld.
+1. Gebruik het Azure-portaal om een nieuwe AdventureWorksLT-database te maken op basis van het voorbeeld.
    - Gebruik die exacte naam.
-   - Kies een Premium-servicelaag.
+   - Kies een Premium servicelaag.
 
-2. Kopieer de [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) naar het klem bord.
-   - Het T-SQL-script maakt de benodigde in-Memory objecten in de AdventureWorksLT-voorbeeld database die u in stap 1 hebt gemaakt.
-   - Het script maakt de dimensie tabel en twee feiten tabellen. De feiten tabellen worden gevuld met 3.500.000 rijen.
-   - Het uitvoeren van het script kan 15 minuten duren.
+2. Kopieer de [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) naar het klembord.
+   - Het script T-SQL maakt de benodigde In-Memory-objecten in de AdventureWorksLT-voorbeelddatabase die u in stap 1 hebt gemaakt.
+   - Het script maakt de dimensietabel en twee feitentabellen aan. De feitentabellen worden elk gevuld met 3,5 miljoen rijen.
+   - Het kan 15 minuten duren om het script uit te voeren.
 
-3. Plak het T-SQL-script in SSMS en voer het script uit. Het sleutel woord **Column Store** in de instructie **Create Index** is van cruciaal belang, zoals in:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. Plak het T-SQL-script in SSMS en voer vervolgens het script uit. Het trefwoord **COLUMNSTORE** in de instructie **CREATE INDEX** is van cruciaal belang, zoals in:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
-4. Stel AdventureWorksLT in op compatibiliteits niveau 130:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+4. Stel AdventureWorksLT in op compatibiliteitsniveau 130:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
-    Niveau 130 is niet direct gerelateerd aan de functies in het geheugen. Maar niveau 130 biedt doorgaans snellere query prestaties dan 120.
+    Niveau 130 is niet direct gerelateerd aan de In-Memory-functies. Maar niveau 130 biedt doorgaans snellere queryprestaties dan 120.
 
-#### <a name="key-tables-and-columnstore-indexes"></a>Sleutel tabellen en column Store-indexen
+#### <a name="key-tables-and-columnstore-indexes"></a>Sleuteltabellen en columnstore-indexen
 
-- dbo. FactResellerSalesXL_CCI is een tabel met een geclusterde column store-index, die een geavanceerde compressie heeft op het *gegevens* niveau.
+- dbo.FactResellerSalesXL_CCI is een tabel met een geclusterde columnstore-index met geavanceerde compressie op het *gegevens*niveau.
 
-- dbo. FactResellerSalesXL_PageCompressed is een tabel die een equivalente reguliere geclusterde index heeft, die alleen op *pagina* niveau wordt gecomprimeerd.
+- dbo.FactResellerSalesXL_PageCompressed is een tabel die een equivalente reguliere geclusterde index heeft, die alleen op het *pagina*niveau gecomprimeerd wordt.
 
-#### <a name="key-queries-to-compare-the-columnstore-index"></a>Belangrijkste query's voor het vergelijken van de column store-index
+#### <a name="key-queries-to-compare-the-columnstore-index"></a>Belangrijkste query's om de columnstore-index te vergelijken
 
-Er zijn [verschillende typen T-SQL-query's die u kunt uitvoeren](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql) om prestatie verbeteringen te bekijken. In stap 2 van het T-SQL-script moet u aandacht best Eden aan dit paar query's. Ze verschillen alleen op één regel:
+Er zijn [verschillende T-SQL-querytypen die u kunt uitvoeren](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql) om prestatieverbeteringen te bekijken. Let in stap 2 van het T-SQL-script op dit paar query's. Ze verschillen op slechts één regel:
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
-Een geclusterde column store-index bevindt zich in de FactResellerSalesXL \_ CCI-tabel.
+Een geclusterde columnstore-index bevindt zich in de FactResellerSalesXL\_CCI-tabel.
 
-In het volgende T-SQL-script fragment worden de statistieken voor de i/o en het tijdstip voor de query van elke tabel afgedrukt.
+Het volgende T-SQL-scriptfragment drukt statistieken af voor IO en TIME voor de query van elke tabel.
 
 ```sql
 /*********************************************************************
@@ -331,35 +331,35 @@ SET STATISTICS TIME OFF
 GO
 ```
 
-In een Data Base met de prijs categorie P2 kunt u ongeveer negen keer de prestatie winst voor deze query verwachten door de geclusterde column store-index te gebruiken in vergelijking met de traditionele index. Met P15 kunt u verwachten dat de prestaties ongeveer 57 keer zo goed mogelijk zijn door gebruik te maken van de column store-index.
+In een database in prijscategorie P2 kunt u ongeveer negen keer zoveel prestatiewinsten verwachten voor deze query wanneer u de geclusterde columnstore-index gebruikt in plaats van de traditionele index. Met P15 kunt u ongeveer 57 keer meer prestatiewinsten verwachten wanneer u de columnstore-index gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Snelstart 1: In-Memory OLTP voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
 
-- [OLTP-opslag in het geheugen bewaken](in-memory-oltp-monitor-space.md) voor OLTP in het geheugen
+- [In-Memory OLTP-opslag controleren](in-memory-oltp-monitor-space.md) voor In-Memory OLTP
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-### <a name="deeper-information"></a>Dieper informatie
+### <a name="deeper-information"></a>Meer gedetailleerde informatie
 
-- [Meer informatie over hoe quorum de werk belasting van de Key Data Base verdubbelt tijdens het verlagen van DTU met 70% met in-Memory OLTP in Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Meer informatie over hoe Quorum de workload voor belangrijke databases verdubbelt en tegelijkertijd de DTU met 70% verlaagt met In-Memory OLTP in Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
-- [In-Memory OLTP in Azure SQL Database blog bericht](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+- [Blogbericht over In-Memory OLTP in Azure SQL Database](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [Meer informatie over in-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Meer informatie over In-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 
-- [Meer informatie over column Store-indexen](https://msdn.microsoft.com/library/gg492088.aspx)
+- [Meer informatie over columnstore-indexen](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [Meer informatie over real-time operationele analyses](https://msdn.microsoft.com/library/dn817827.aspx)
+- [Meer informatie over realtime operationele analyses](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- Bekijk [algemene werk belasting patronen en migratie overwegingen](https://msdn.microsoft.com/library/dn673538.aspx) (waarin de werkbelasting patronen worden beschreven waarbij in-Memory OLTP doorgaans aanzienlijke prestatie verbeteringen oplevert)
+- Zie [Veelvoorkomende workloadpatronen en overwegingen bij migratie](https://msdn.microsoft.com/library/dn673538.aspx) (waarin wordt beschreven welke de workloadpatronen zijn waarbij In-Memory OLTP vaak significante prestatiewinsten biedt)
 
 #### <a name="application-design"></a>Toepassingsontwerp
 
-- [OLTP in het geheugen (in-Memory optimalisatie)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [In-Memory OLTP (In-Memory-optimalisatie)](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
 

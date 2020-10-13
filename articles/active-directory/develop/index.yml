@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91801882"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91962017"
 landingContent:
 - title: Over het Microsoft Identity Platform
   linkLists:
@@ -120,23 +120,9 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Wat is er nieuw in Docs?
+      url: whats-new-docs.md
     - text: Overzicht van Microsoft Identity Web-bibliotheek
       url: microsoft-identity-web.md
     - text: 'Zelfstudie: Blazor Server'
       url: tutorial-blazor-server.md
-    - text: 'Quickstart: Een ASP.NET Core-web-API beveiligen'
-      url: quickstart-v2-aspnet-core-web-api.md
-    - text: MSAL Python-API-verwijzing
-      url: /python/api/msal/
-    - text: 'Quickstart: Een app registreren (herschrijven)'
-      url: quickstart-register-app.md
-    - text: 'Quickstart: Een web-API beschikbaar maken (herschrijven)'
-      url: quickstart-configure-app-expose-web-apis.md
-    - text: 'Quickstart: Een web-API openen (herschrijven)'
-      url: quickstart-configure-app-access-web-apis.md
-    - text: Een brokered Xamarin Android-app migreren naar MSAL.NET
-      url: msal-net-migration-android-broker.md
-    - text: Fouten en uitzonderingen verwerken - Android
-      url: msal-android-handling-exceptions.md
-    - text: Kenmerken van directory-schema-extensies in claims
-      url: active-directory-schema-extensions.md

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8d5f9b360e1d81bae62e34a8e20d61636e1d22ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91859374"
+ms.locfileid: "91936122"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netwerklimieten - Azure Resource Manager
 De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd via **Azure Resource Manager**. De beperkingen gelden per regio en per abonnement. Meer informatie over het [bekijken van uw huidige resourcegebruik op basis van uw abonnementslimieten](../articles/networking/check-usage-against-limits.md).
@@ -75,6 +75,7 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Backend-resources per load balancer <sup>1<sup> | 150                   |
 | Poorten met een hoge beschikbaarheid                 | 1 per interne frontend       |
 | Uitgaande regels per load balancer        | 600                           |
+| Load balancers per VM                   | 2 (1 openbaar en 1 intern)   |
 
 <sup>1</sup>De limiet is maximaal 150 resources, bestaande uit een willekeurige combinatie van zelfstandige VM-resources, resources voor beschikbaarheidssets en plaatsingsgroepen op VM-schaal.
 
@@ -88,6 +89,7 @@ De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd v
 | Frontend-IP-configuraties              | 200                          |
 | Grootte van back-end-pool                       | 300 IP-configuraties, één beschikbaarheidsset |
 | Beschikbaarheidssets per load balancer     | 1                            |
+| Load balancers per VM                   | 2 (1 openbaar en 1 intern)  |
 
 <a name="virtual-networking-limits-classic"></a>De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd via het **klassieke** implementatiemodel voor elk abonnement. Meer informatie over het [bekijken van uw huidige resourcegebruik op basis van uw abonnementslimieten](../articles/networking/check-usage-against-limits.md).
 
