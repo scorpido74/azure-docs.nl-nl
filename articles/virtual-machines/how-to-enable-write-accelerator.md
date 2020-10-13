@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: 0b5e6134de2260998e599bad0d1bf6b381898ffd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0f489bd6109a5dcd6625eb26286e0d40c50c63
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88513177"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962323"
 ---
 # <a name="enable-write-accelerator"></a>Write Accelerator inschakelen
 
@@ -77,23 +77,23 @@ Voor het inschakelen of implementeren van schijven die door Write Accelerator wo
 
 Er is een nieuwe switch parameter **-Write Accelerator** toegevoegd aan de volgende cmdlets:
 
-- [Set-AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
-- [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzVmssDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMOsDisk](/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
+- [Add-AzVMDataDisk](/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMDataDisk](/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzVmssDataDisk](/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
 
 Als u de para meter niet opgeeft, wordt de eigenschap ingesteld op False en worden schijven zonder ondersteuning voor Write Accelerator geïmplementeerd.
 
 Er is een nieuwe switch parameter **-osdiskwriteaccelerator is** toegevoegd aan de volgende cmdlets:
 
-- [Set-AzVmssStorageProfile](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzVmssStorageProfile](/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
 
 Als u de para meter niet opgeeft, wordt de eigenschap standaard ingesteld op ONWAAR, waarbij schijven worden geretourneerd die geen gebruikmaken van Write Accelerator.
 
 Een nieuwe optionele Booleaanse para meter (niet-nullable), **-osdiskwriteaccelerator is** is toegevoegd aan de volgende cmdlets:
 
-- [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Update-AzVM](/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
+- [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
 
 Geef $true of $false op om de ondersteuning van Azure Write Accelerator met de schijven te beheren.
 
@@ -168,13 +168,13 @@ U kunt Write Accelerator inschakelen via de portal waar u de instellingen voor d
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Write Accelerator inschakelen met behulp van Azure CLI
 
-U kunt de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) gebruiken om Write Accelerator in te scha kelen.
+U kunt de [Azure cli](/cli/azure/?view=azure-cli-latest) gebruiken om Write Accelerator in te scha kelen.
 
-Als u Write Accelerator op een bestaande schijf wilt inschakelen, gebruikt u [AZ VM update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update), kunt u de volgende voor beelden gebruiken als u de diskettes, VMName en ResourceGroup vervangt door uw eigen waarden: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
+Als u Write Accelerator op een bestaande schijf wilt inschakelen, gebruikt u [AZ VM update](/cli/azure/vm?view=azure-cli-latest#az-vm-update), kunt u de volgende voor beelden gebruiken als u de diskettes, VMName en ResourceGroup vervangt door uw eigen waarden: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-Als u een schijf wilt koppelen met Write Accelerator ingeschakeld Gebruik [AZ VM Disk attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), kunt u het volgende voor beeld gebruiken als u vervangt door uw eigen waarden: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+Als u een schijf wilt koppelen met Write Accelerator ingeschakeld Gebruik [AZ VM Disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), kunt u het volgende voor beeld gebruiken als u vervangt door uw eigen waarden: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-Als u Write Accelerator wilt uitschakelen, gebruikt u [AZ VM update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)en stelt u de eigenschappen in op False: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+Als u Write Accelerator wilt uitschakelen, gebruikt u [AZ VM update](/cli/azure/vm?view=azure-cli-latest#az-vm-update)en stelt u de eigenschappen in op False: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>Inschakelen van Write Accelerator met rest-Api's
 

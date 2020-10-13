@@ -180,6 +180,12 @@
           href: basic-age-gating.md
         - name: Aangepaste kenmerken definiëren
           href: user-flow-custom-attributes.md
+        - name: API-connectors
+          items:
+            - name: Overzicht
+              href: api-connectors-overview.md
+            - name: Een API-connector toevoegen
+              href: add-api-connector.md
         - name: Pass Through van extern IdP-token
           href: idp-pass-through-user-flow.md
     - name: Identiteitsbescherming en voorwaardelijke toegang

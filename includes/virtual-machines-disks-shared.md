@@ -9,10 +9,10 @@ ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6f819d9b6ba4d74612da304aafea0118f9094bde
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91451548"
 ---
 Gedeelde Azure-schijven is een nieuwe functie voor Azure Managed disks waarmee u tegelijkertijd een beheerde schijf kunt koppelen aan meerdere virtuele machines (Vm's). Als u een beheerde schijf aan meerdere Vm's koppelt, kunt u nieuwe, geclusterde toepassingen implementeren of migreren naar Azure.

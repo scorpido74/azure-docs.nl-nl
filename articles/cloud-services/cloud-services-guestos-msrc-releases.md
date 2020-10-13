@@ -10,47 +10,44 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/29/2020
+ms.date: 10/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fae523245189ca73caf38f643ded79dd0dd2f94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531153"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949085"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
 ## <a name="september-2020-guest-os"></a>September 2020-gast besturingssysteem
->[!NOTE]
->Het besturings systeem september gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem september gast. Deze lijst is onderhevig aan wijzigingen.
-
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2,102, 3,89, 4,82 | 8 sep 2020 |
-|  Rel 20-09 |  [4561600]  |  Flash-Update | 3,89, 4,82, 5,47, 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4577015]  |  Meest recente cumulatieve update (LCU) | 5,47 | 8 sep 2020 |
-|  Rel 20-09 |  [4570333]  |  Meest recente cumulatieve update (LCU) | 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4570673]  |  Onderhouds stack-update | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4577051]  |  Maandelijks samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569767]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4566426]  |  Onderhouds stack-update | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4577038]  |  Maandelijks samen vouwen | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 3,89 | 8 sep 2020 |
-|  Rel 20-09 |  [4566425]  |  Onderhouds stack-update | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4577066]  |  Maandelijks samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security en Quality totalisatie | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4578013]  |  Beveiligings update | 2,102 | 8 sep 2020 |
-|  Rel 20-09 |  [4576750]  |  Onderhouds stack-update | 5,47 | 8 sep 2020 |
-|  Rel 20-09 |  [4494175]  |  Micro | 5,47 | 8 sep 2020 |
-|  Rel 20-09 |  [4570332]  |  Onderhouds stack-update | 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4570720]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4494174]  |  Micro | 6,23 | 8 sep 2020 |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | [2,102], [3,89], [4,82] | 8 sep 2020 |
+|  Rel 20-09 |  [4561600]  |  Flash-Update | [3,89], [4,82], [5,47], [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4577015]  |  Meest recente cumulatieve update (LCU) | [5,47] | 8 sep 2020 |
+|  Rel 20-09 |  [4570333]  |  Meest recente cumulatieve update (LCU) | [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4570673]  |  Onderhouds stack-update | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4577051]  |  Maandelijks samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4566426]  |  Onderhouds stack-update | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4577038]  |  Maandelijks samen vouwen | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | [3,89] | 8 sep 2020 |
+|  Rel 20-09 |  [4566425]  |  Onderhouds stack-update | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4577066]  |  Maandelijks samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security en Quality totalisatie | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4578013]  |  Beveiligings update | [2,102] | 8 sep 2020 |
+|  Rel 20-09 |  [4576750]  |  Onderhouds stack-update | [5,47] | 8 sep 2020 |
+|  Rel 20-09 |  [4494175]  |  Micro | [5,47] | 8 sep 2020 |
+|  Rel 20-09 |  [4570332]  |  Onderhouds stack-update | [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4570720]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | [6,23] | 8 sep 2020 |
+|  Rel 20-09 |  [4494174]  |  Micro | [6,23] | 8 sep 2020 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
 [4561600]: https://support.microsoft.com/kb/4561600
@@ -74,6 +71,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,102]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,47]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,23]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 ## <a name="august-2020-guest-os"></a>Augustus 2020-gast besturingssysteem
 

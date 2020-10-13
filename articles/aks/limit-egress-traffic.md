@@ -8,10 +8,10 @@ ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
 ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570370"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
@@ -779,7 +779,7 @@ In dit artikel hebt u geleerd welke poorten en adressen zijn toegestaan als u ui
 
 Als dat nodig is, kunt u de bovenstaande stappen voor het door sturen van het verkeer naar uw voorkeurs uitgangs oplossing generaliseren door de [uitgaande type `userDefinedRoute` documentatie](egress-outboundtype.md)te volgen.
 
-Als u wilt beperken hoe peulen de communicatie tussen zichzelf en het Oost-West-verkeer binnen het cluster tot stand brengt, raadpleegt u het [beveiligde verkeer tussen peulen met netwerk beleid in AKS][network-policy].
+Als u wilt beperken hoe peulen tussen zichzelf en East-West verkeers beperkingen binnen het cluster worden gecommuniceerd, raadpleegt u het [beveiligde verkeer tussen peulen met netwerk beleid in AKS][network-policy].
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

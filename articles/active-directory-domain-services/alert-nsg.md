@@ -2,7 +2,7 @@
 title: Waarschuwingen voor netwerk beveiligings groepen oplossen in azure AD DS | Microsoft Docs
 description: Meer informatie over het oplossen van problemen met configuratie waarschuwingen voor netwerk beveiligings groepen voor Azure Active Directory Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86040449"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962782"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: waarschuwingen voor netwerk configuratie in Azure Active Directory Domain Services
 
@@ -38,7 +38,7 @@ De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegep
 
 ### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
-| Prioriteit | Name | Poort | Protocol | Bron | Doel | Bewerking |
+| Prioriteit | Naam | Poort | Protocol | Bron | Doel | Bewerking |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Alle | Toestaan |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Alle | Toestaan |
@@ -52,7 +52,7 @@ De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegep
 
 ### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
 
-| Prioriteit | Name | Poort | Protocol | Bron | Doel | Bewerking |
+| Prioriteit | Naam | Poort | Protocol | Bron | Doel | Bewerking |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Alle | Alle | VirtualNetwork | VirtualNetwork | Toestaan |
 | 65001    | AllowAzureLoadBalancerOutBound | Alle | Alle |  Alle | Internet | Toestaan |

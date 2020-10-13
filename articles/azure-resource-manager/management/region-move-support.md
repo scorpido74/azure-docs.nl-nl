@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: dc931b910981578a3257c9131bea93cd836d1def
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 83cd36683a0487f13ab5707e4b1534cc7f20a88a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945160"
+ms.locfileid: "91948524"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Ondersteuning voor het verplaatsen van Azure-resources in verschillende regio's
 
@@ -1134,11 +1134,11 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | instancepools | Nee | 
-> | managedinstances | Ja <br/><br/> Meer [informatie](/azure/azure-sql/database/move-resources-across-regions) over het verplaatsen van beheerde exemplaren tussen regio's. | 
+> | managedinstances | Ja <br/><br/> Meer [informatie](../../azure-sql/database/move-resources-across-regions.md) over het verplaatsen van beheerde exemplaren tussen regio's. | 
 > | managedinstances/data bases | Ja | 
 > | Server | Ja | 
-> | servers/data bases | Ja <br/><br/> Meer [informatie](/azure/azure-sql/database/move-resources-across-regions) over het verplaatsen van data bases in verschillende regio's.<br/><br/> Meer [informatie](../../resource-mover/tutorial-move-region-sql.md) over het gebruik van Azure resource-overstap voor het verplaatsen van Azure SQL-data bases.  | 
-> | servers/elasticpools | Ja <br/><br/> Meer [informatie](/azure/azure-sql/database/move-resources-across-regions) over het verplaatsen van elastische Pools in verschillende regio's.<br/><br/> Meer [informatie](../../resource-mover/tutorial-move-region-sql.md) over het gebruik van Azure resource Move om elastische Azure SQL-Pools te verplaatsen.  | 
+> | servers/data bases | Ja <br/><br/> Meer [informatie](../../azure-sql/database/move-resources-across-regions.md) over het verplaatsen van data bases in verschillende regio's.<br/><br/> Meer [informatie](../../resource-mover/tutorial-move-region-sql.md) over het gebruik van Azure resource-overstap voor het verplaatsen van Azure SQL-data bases.  | 
+> | servers/elasticpools | Ja <br/><br/> Meer [informatie](../../azure-sql/database/move-resources-across-regions.md) over het verplaatsen van elastische Pools in verschillende regio's.<br/><br/> Meer [informatie](../../resource-mover/tutorial-move-region-sql.md) over het gebruik van Azure resource Move om elastische Azure SQL-Pools te verplaatsen.  | 
 > | virtualclusters | Ja | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Micro soft. SqlVirtualMachine

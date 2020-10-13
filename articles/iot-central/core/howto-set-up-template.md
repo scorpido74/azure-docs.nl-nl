@@ -11,10 +11,10 @@ ms.custom:
 - contperfq1
 - device-developer
 ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803786"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing
@@ -155,7 +155,7 @@ De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogeli
 | Opmerking | Eventuele opmerkingen over de eigenschaps mogelijkheid. |
 | Beschrijving | Een beschrijving van de eigenschaps mogelijkheid. |
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 U kunt de opdrachten van een apparaat aanroepen vanuit IoT Central. Opdrachten geven optioneel para meters door aan het apparaat en ontvangen een reactie van het apparaat. U kunt bijvoorbeeld een opdracht aanroepen om een apparaat binnen tien seconden opnieuw op te starten.
 

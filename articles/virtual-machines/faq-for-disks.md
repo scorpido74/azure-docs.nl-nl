@@ -8,10 +8,10 @@ ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575857"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS VM-schijven en beheerde en onbeheerde Premium-schijven
@@ -26,15 +26,15 @@ Managed Disks is een functie die schijf beheer voor Azure IaaS-Vm's vereenvoudig
 
 **Als ik een standaard beheerde schijf Maak op basis van een bestaande VHD van 80 GB, hoeveel krijg ik dan de kosten?**
 
-Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wordt beschouwd als de volgende beschik bare standaard schijf grootte, een S10-schijf. Er worden kosten in rekening gebracht op basis van de S10-schijf prijzen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wordt beschouwd als de volgende beschik bare standaard schijf grootte, een S10-schijf. Er worden kosten in rekening gebracht op basis van de S10-schijf prijzen. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Zijn er transactie kosten voor Standard Managed disks?**
 
-Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Voor een Standard Managed disk worden er kosten in rekening gebracht voor de werkelijke grootte van de gegevens op de schijf of voor de ingerichte capaciteit van de schijf?**
 
-Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Hoe worden de prijzen van Premium-beheerde schijven afwijkend van niet-beheerde schijven?**
 
@@ -76,7 +76,7 @@ Afhankelijk van de regio waar de beschikbaarheidsset met Managed Disks zich bevi
 
 U stelt een privé opslag account in voor de diagnostische gegevens van de virtuele machine.
 
-**Welk soort op rollen gebaseerd Access Control ondersteuning is beschikbaar voor Managed Disks?**
+**Welk soort Role-Based Access Control ondersteuning is beschikbaar voor Managed Disks?**
 
 Managed Disks ondersteunt drie belangrijkste standaard rollen:
 
@@ -364,7 +364,7 @@ Een Premium-gegevens schijf die is gemaakt op basis van een VHD van 80 GB, wordt
 
 **Zijn er transactie kosten om Premium-SSD schijven te gebruiken?**
 
-Er zijn vaste kosten voor elke schijf grootte, die wordt geleverd met specifieke limieten voor IOPS en door voer. De overige kosten zijn uitgaande band breedte en moment opname capaciteit, indien van toepassing. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage)voor meer informatie.
+Er zijn vaste kosten voor elke schijf grootte, die wordt geleverd met specifieke limieten voor IOPS en door voer. De overige kosten zijn uitgaande band breedte en moment opname capaciteit, indien van toepassing. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Wat zijn de limieten voor IOPS en door Voer die ik uit de schijf cache kan halen?**
 

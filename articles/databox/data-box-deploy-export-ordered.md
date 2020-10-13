@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575568"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Zelf studie: export volgorde voor Azure Data Box maken (preview)
@@ -119,14 +119,14 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
 
    ![Contactgegevens](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
 
-1. In **beveiliging**, als u dubbele versleuteling op basis van software wilt inschakelen, selecteert u **dubbele versleuteling inschakelen voor de order**. 
+1. Als u dubbele versleuteling op basis van software wilt inschakelen, selecteert u onder **Beveiliging** de optie **Dubbele versleuteling inschakelen voor de volgorde**. 
 
    De op software gebaseerde versleuteling wordt uitgevoerd naast de AES-256-bits versleuteling van de gegevens op de Data Box.
 
    > [!NOTE]
-   > Als u deze optie inschakelt, kunnen order verwerking en het kopiëren van gegevens langer duren. U kunt deze optie niet wijzigen nadat u uw bestelling hebt gemaakt.
+   > Als u deze optie inschakelt, kan verwerking van de opdracht en het kopiëren van gegevens langer duren. U kunt deze optie niet wijzigen nadat u uw opdracht hebt gemaakt.
 
-   ![Beveiligings scherm voor het importeren van data box, dubbele versleuteling](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+   ![Beveiligingsscherm voor het importeren in Data Box, dubbele versleuteling](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
 
    Selecteer **Volgende: Contactgegevens** om verder te gaan.
 

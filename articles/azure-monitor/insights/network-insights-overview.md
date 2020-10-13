@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
 ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803803"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor voor netwerken (preview-versie)
@@ -71,7 +71,7 @@ Verschillende filters bieden hulp om te beperken tot een specifiek pad en de sta
 
 Klik op **gedetailleerde metrische weer gave** om een vooraf geconfigureerde werkmap te openen met gedetailleerde metrische gegevens voor de Application Gateway, alle bronnen van de back-endadresgroep en front-end ip's. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Connectiviteit
+## <a name="connectivity"></a><a name="connectivity"></a>Mogelijkheden
 
 Het tabblad **connectiviteit** biedt een moeiteloze manier om alle tests te visualiseren die zijn geconfigureerd met behulp van verbindings monitor en [verbindings monitor (preview)](../../network-watcher/connection-monitor-preview.md) voor de geselecteerde set abonnementen.
 

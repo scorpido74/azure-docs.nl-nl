@@ -110,18 +110,26 @@
   items:
     - name: Gebruikers toewijzen en toegang tot apps beheren
       items:
-        - name: Gebruikerstoestemming configureren
-          href: configure-user-consent.md
-        - name: Toestemmingsaanvragen beheren en evalueren
-          href: manage-consent-requests.md
-        - name: Beheerderstoestemming verlenen voor de hele tenant
-          href: grant-admin-consent.md
-        - name: Beheerderstoestemming voor werkstroom configureren (preview)
-          href: configure-admin-consent-workflow.md
+        - name: Toestemming en machtigingen
+          items:
+            - name: Gebruikerstoestemming configureren
+              href: configure-user-consent.md
+            - name: Machtiging van groepseigenaar configureren
+              href: configure-user-consent-groups.md
+            - name: Machtigingsclassificaties configureren
+              href: configure-permission-classifications.md
+            - name: Beleid voor app-toestemming beheren
+              href: manage-app-consent-policies.md
+            - name: Beheerderstoestemming voor werkstroom configureren (preview)
+              href: configure-admin-consent-workflow.md
+            - name: Toestemmingsaanvragen beheren en evalueren
+              href: manage-consent-requests.md
+            - name: Beheerderstoestemming verlenen voor de hele tenant
+              href: grant-admin-consent.md
+            - name: Verleende machtigingen voor apps controleren
+              href: manage-application-permissions.md
         - name: Gebruikerstoewijzing voor een app beheren
           href: assign-user-or-group-access-portal.md
-        - name: Verleende machtigingen voor apps controleren
-          href: manage-application-permissions.md
         - name: Verzamelingen maken in mijn apps
           href: access-panel-collections.md
         - name: Selfservice-app-toegang gebruiken

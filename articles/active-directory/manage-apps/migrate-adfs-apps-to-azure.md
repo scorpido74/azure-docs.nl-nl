@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802698"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Toepassings verificatie van Active Directory Federation Services naar Azure Active Directory verplaatsen
@@ -94,7 +94,7 @@ Werk de configuratie van uw productie toepassing bij zodat deze naar uw producti
 
 LOB-apps worden intern ontwikkeld door uw organisatie of beschikbaar als een standaard verpakt product dat is geïnstalleerd in uw Data Center. Voor beelden zijn apps die zijn gebouwd op Windows Identity Foundation en share point-apps (niet share point online).
 
-LOB-apps die gebruikmaken van OAuth 2,0, OpenID Connect Connect of WS-Federation kunnen worden geïntegreerd met Azure AD als [app-registraties](../develop/quickstart-register-app.md). Integreer aangepaste apps die gebruikmaken van SAML 2,0 of WS-Federation als [niet-galerie toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) op de pagina bedrijfs toepassingen in de [Azure Portal](https://portal.azure.com/).
+LOB-apps die gebruikmaken van OAuth 2,0, OpenID Connect Connect of WS-Federation, kunnen worden geïntegreerd met Azure AD als [app-registraties](../develop/quickstart-register-app.md). Integreer aangepaste apps die gebruikmaken van SAML 2,0 of WS-Federation als [niet-galerie toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) op de pagina bedrijfs toepassingen in de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="saml-based-single-sign-on"></a>Eenmalige aanmelding op basis van SAML
 
@@ -458,7 +458,7 @@ Afhankelijk van hoe u uw app configureert, controleert u of SSO goed werkt.
 ‎ |
 | Op SAML gebaseerde SSO| U kunt de knop [SAML-instellingen testen](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) vinden onder **eenmalige aanmelding**.
 ‎ |
-| Eenmalige aanmelding op basis van wacht woorden| Down load en installeer de [MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [in extension](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction). Deze uitbrei ding helpt u bij het starten van de Cloud-apps van uw organisatie waarvoor u een SSO-proces moet gebruiken.
+| Password-Based SSO| Down load en installeer de [MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [in extension](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction). Deze uitbrei ding helpt u bij het starten van de Cloud-apps van uw organisatie waarvoor u een SSO-proces moet gebruiken.
 ‎ |
 | Toepassingsproxy| Zorg ervoor dat uw connector wordt uitgevoerd en aan uw toepassing is toegewezen. Ga naar de [probleemoplossings gids voor toepassings proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) voor verdere ondersteuning.
 ‎ |
@@ -484,7 +484,7 @@ Zodra de implementatie is voltooid, kunt u communicatie verzenden die de gebruik
 
 * Herinner gebruikers die ze nodig hebben om hun MFA-instellingen bij te werken.
 
-* Als self-service voor wachtwoord herstel is geïmplementeerd, moeten gebruikers mogelijk hun verificatie methoden bijwerken of verifiëren. Zie [MFA](https://aka.ms/mfatemplates) en [SSPR](https://aka.ms/ssprtemplates) -communicatie sjablonen voor eind gebruikers.
+* Als Self-Service wacht woord opnieuw instellen is geïmplementeerd, moeten gebruikers mogelijk hun verificatie methoden bijwerken of verifiëren. Zie [MFA](https://aka.ms/mfatemplates) en [SSPR](https://aka.ms/ssprtemplates) -communicatie sjablonen voor eind gebruikers.
 
 Communicatie met externe gebruikers: deze groep gebruikers is doorgaans de meest kritieke impact in het geval van problemen. Dit geldt met name als uw beveiligings postuur een andere set regels voor voorwaardelijke toegang of risico profielen voor externe partners bepaalt. Zorg ervoor dat externe partners op de hoogte zijn van het migratie schema voor de Cloud en een periode hebben waarin ze worden aangemoedigd om deel te nemen aan een pilot implementatie waarmee alle stromen die uniek zijn voor externe samen werking, worden getest. Ten slotte moet u ervoor zorgen dat ze toegang hebben tot de Help Desk in het geval van problemen.
 

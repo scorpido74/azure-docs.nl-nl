@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91740867"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Een facet filter maken in azure Cognitive Search 
@@ -123,7 +123,7 @@ Een van de uitdagingen met facet navigatie in azure Cognitive Search is dat face
 
 Hoewel dit een veelvoorkomende use-case is, is het niet duidelijk dat de facet navigatie structuur momenteel out-of-the-box bevat. Ontwikkel aars die statische facetten willen, kunnen de beperking meestal omzeilen door twee gefilterde query's uit te geven: één scoped to the results, de andere die wordt gebruikt voor het maken van een statische lijst met facetten voor navigatie doeleinden.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Filters in azure Cognitive Search](search-filters.md)
 + [Index REST API maken](/rest/api/searchservice/create-index)

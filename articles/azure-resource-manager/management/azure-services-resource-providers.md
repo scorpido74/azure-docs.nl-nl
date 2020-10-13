@@ -3,12 +3,12 @@ title: Resource providers door Azure-Services
 description: Een lijst met alle naam ruimten van de resource provider voor Azure Resource Manager en toont de Azure-service voor die naam ruimte.
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9e31f902d36cf84fc559337f3c69529cf1c014b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330822"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949119"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resource providers for Azure services (Resourceproviders voor Azure-services)
 
@@ -96,7 +96,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Micro soft. HealthcareApis | [Azure-API voor FHIR](../../healthcare-apis/index.yml) |
-| Microsoft.HybridCompute | [Azure-boog](../../azure-arc/index.yml) |
+| Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Micro soft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Micro soft. HybridNetwork  | [Zones met persoonlijke randen](../../networking/edge-zones-overview.md) |
 | Microsoft.ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
@@ -110,7 +110,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
 | Micro soft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
-| Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
+| Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/classic/index.yml) |
 | Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
 | Micro soft. onderhoud | [Onderhoud van Azure](../../virtual-machines/maintenance-control-cli.md) |
 | Micro soft. ManagedIdentity | [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/index.yml) |

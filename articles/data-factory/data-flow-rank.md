@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/05/2020
 ms.openlocfilehash: cb3a8c1c6df61a4a20ce596e3ff1118c2870033a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716511"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>Positie transformatie in gegevens stroom toewijzen 
@@ -37,7 +37,7 @@ De bovenstaande configuratie neemt binnenkomende basketbal gegevens en maakt een
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
