@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504692"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van prestaties voor het gebruik van Power shell met Azure Data Lake Storage Gen1
@@ -21,7 +21,7 @@ In dit artikel worden de eigenschappen beschreven die u kunt afstemmen om betere
 
 ## <a name="performance-related-properties"></a>Eigenschappen die betrekking hebben op prestaties
 
-| Eigenschap            | Standaard | Description |
+| Eigenschap            | Standaard | Beschrijving |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Met deze parameter kunt u het aantal parallelle threads voor het uploaden of downloaden van elk bestand kiezen. Dit nummer vertegenwoordigt het maximum aantal threads dat per bestand kan worden toegewezen, maar u kunt echter wel minder threads ontvangen, afhankelijk van uw scenario (bijvoorbeeld als u een bestand van 1 KB uploadt, krijgt u één thread, zelfs als u voor 20 threads vraagt).  |
 | ConcurrentFileCount | 10      | Deze parameter is specifiek bedoeld voor het uploaden en downloaden van mappen. De parameter bepaalt het aantal bestanden dat tegelijk kan worden geüpload of gedownload. Dit nummer vertegenwoordigt het maximum aantal gelijktijdige bestanden dat tegelijkertijd kan worden geüpload of gedownload, maar u kunt een minder gelijktijdigheid krijgen, afhankelijk van uw scenario (bijvoorbeeld als u twee bestanden uploadt, kunt u twee gelijktijdige bestanden uploaden, zelfs als u om 15 vraagt). |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: e9491757852b42faef40c107540e0ce3da3c7f99
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650898"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Query's uitvoeren op gegevens uit Azure Time Series Insights Gen2
@@ -24,7 +24,7 @@ Azure Time Series Insights Gen2 maakt gegevens query's op gebeurtenissen en meta
 Er zijn drie primaire API-categorieën beschikbaar in Azure Time Series Insights Gen2:
 
 * **Omgevings-api's**: met deze api's worden query's op de Azure time series Insights Gen2-omgeving zelf ingeschakeld. Deze kunnen worden gebruikt voor het verzamelen van de lijst met omgevingen waartoe de aanroeper toegang heeft en de meta gegevens van de omgeving.
-* **Time Series model-query-api's (TSM-Q)**: maakt maken, lezen, bijwerken en verwijderen van meta gegevens die zijn opgeslagen in het tijdreeks model van de omgeving. Deze kunnen worden gebruikt om de instanties, typen en hiërarchieën te openen en te bewerken.
+* **Time series Model-Query-api's (TSM-Q)**: Hiermee kunt u bewerkingen voor maken, lezen, bijwerken en verwijderen van meta gegevens die zijn opgeslagen in het tijdreeks model van de omgeving. Deze kunnen worden gebruikt om de instanties, typen en hiërarchieën te openen en te bewerken.
 * **Api's voor time series query (TSQ)**: Hiermee wordt het ophalen van gegevens over telemetrie of gebeurtenissen mogelijk gemaakt wanneer deze worden vastgelegd van de bron provider en kunnen er berekeningen en aggregaties worden uitgevoerd op de gegevens met behulp van geavanceerde scalaire en statistische functies.
 
 Azure Time Series Insights Gen2 maakt gebruik van een op teken reeks gebaseerde expressie taal, [Time Series-expressie (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax), voor het uitdrukken van berekeningen in [Time Series-variabelen](./concepts-variables.md).
@@ -41,7 +41,7 @@ De volgende kern-Api's worden ondersteund.
 * [Beschikbaarheids-API voor omgevingen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): retourneert de verdeling van het aantal gebeurtenissen over het tijds tempel van de gebeurtenis `$ts` . Met deze API kunt u bepalen of er gebeurtenissen in de omgeving zijn door het aantal gebeurtenissen te retour neren dat is opgesplitst in tijds intervallen, indien aanwezig.
 * [Event schema-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): retourneert de meta gegevens van het gebeurtenis schema voor een opgegeven zoek reeks. Deze API helpt bij het ophalen van alle meta gegevens en eigenschappen die beschikbaar zijn in het schema voor de opgegeven zoek reeks.
 
-## <a name="time-series-model-query-tsm-q-apis"></a>Time Series model-query (TSM-Q)-Api's
+## <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model-Query-Api's (TSM-Q)
 
 De meeste van deze Api's ondersteunen de batch-uitvoerings bewerking om batch-ruwe bewerkingen in te scha kelen op meerdere time series-model entiteiten:
 

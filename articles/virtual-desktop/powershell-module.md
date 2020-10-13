@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f2f01e2b58c997db08ad4427de7eef1ee3760c4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323497"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>De Power shell-module voor Windows virtueel bureau blad instellen
@@ -68,7 +68,7 @@ Als u het standaard abonnement wilt wijzigen nadat u zich hebt aangemeld, voert 
 Select-AzSubscription -Subscription <preferredsubscriptionname>
 ```
 
-U kunt er ook een selecteren in een lijst met behulp van de out-GridView-cmdlet:
+U kunt er ook een selecteren in een lijst met behulp van de cmdlet Out-GridView:
 
 ```powershell
 Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription

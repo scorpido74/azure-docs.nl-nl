@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87051351"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965621"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
 
@@ -104,7 +104,7 @@ Voor de configuratie kunt u de [Azure Active Directory Power shell versie 2](/po
 
 Als eerste configuratie stap moet u een verbinding maken met uw Tenant. Zodra er een verbinding met uw Tenant bestaat, kunt u de vertrouwde certificerings instanties die in uw Directory zijn gedefinieerd, bekijken, toevoegen, verwijderen en wijzigen.
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Verbinden
 
 Gebruik de cmdlet [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) om verbinding te maken met uw Tenant:
 

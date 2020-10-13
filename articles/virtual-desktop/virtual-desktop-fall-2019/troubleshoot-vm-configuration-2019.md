@@ -7,16 +7,16 @@ ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008624"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Virtuele-machine configuratie van Virtual Desktop (klassiek) van Windows-sessiehost
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-vm-configuration.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-vm-configuration.md) als u Azure Resource Manager Windows Virtual Desktop-objecten probeert te beheren.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 
@@ -114,7 +114,7 @@ Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en 
 
 Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd op de host van de sessiehost (hand matig of via de Azure Resource Manager sjabloon en Power shell DSC), biedt deze een registratie token. De volgende sectie bevat informatie over het oplossen van problemen die van toepassing zijn op de Windows Virtual Desktop agent en het token.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Fout: de status die is opgeslagen in de cmdlet Get-RdsSessionHost, toont de status als niet beschikbaar
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Fout: de status die in Get-RdsSessionHost-cmdlet is opgeslagen, toont de status als niet beschikbaar
 
 > [!div class="mx-imgBorder"]
 > ![Met de cmdlet Get-RdsSessionHost wordt de status weer gegeven als niet beschikbaar.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)

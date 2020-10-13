@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297355"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Veelvoorkomende problemen met Azure Database Migration Service oplossen
@@ -64,7 +64,7 @@ U ontvangt de volgende fout bij het stoppen van het Azure Database Migration Ser
 
 | Oorzaak         | Oplossing |
 | ------------- | ------------- |
-| Deze fout wordt weer gegeven wanneer het service-exemplaar dat u probeert te stoppen, activiteiten bevat die nog in de migratie projecten worden uitgevoerd of aanwezig zijn. <br><br><br><br><br><br> | Zorg ervoor dat er geen activiteiten worden uitgevoerd in het exemplaar van Azure Database Migration Service dat u probeert te stoppen. U kunt ook de activiteiten of projecten verwijderen voordat u probeert de service te stoppen. De volgende stappen laten zien hoe u projecten kunt verwijderen om het migratie service-exemplaar op te schonen door alle actieve taken te verwijderen:<br>1. install-module-name AzureRM. DataMigration <br>2. login-AzureRmAccount <br>3. Select-AzureRmSubscription-Subscriptionname " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
+| Deze fout wordt weer gegeven wanneer het service-exemplaar dat u probeert te stoppen, activiteiten bevat die nog in de migratie projecten worden uitgevoerd of aanwezig zijn. <br><br><br><br><br><br> | Zorg ervoor dat er geen activiteiten worden uitgevoerd in het exemplaar van Azure Database Migration Service dat u probeert te stoppen. U kunt ook de activiteiten of projecten verwijderen voordat u probeert de service te stoppen. De volgende stappen laten zien hoe u projecten kunt verwijderen om het migratie service-exemplaar op te schonen door alle actieve taken te verwijderen:<br>1. Install-Module naam AzureRM. DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-Subscriptionname " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Fout bij het starten van Azure Database Migration Service
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294860"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Een strategie voor het implementeren van een hybride identiteit definiëren
@@ -82,7 +82,7 @@ De strategie die u gebruikt, bepaalt de aanmeldings ervaring van de gebruiker.  
 
 Als u hebt vastgesteld van taak 1 dat u een IdP van derden hebt of als u een Federatie met Azure AD wilt gebruiken, moet u rekening houden met de volgende ondersteunde mogelijkheden:
 
-* Een SAML 2,0-provider die compatibel is met het SP-Lite-profiel, kan authenticatie ondersteunen voor Azure AD en de bijbehorende toepassingen
+* Een SAML 2,0-provider die compatibel is met het SP-Lite profiel kan verificatie ondersteunen voor Azure AD en de bijbehorende toepassingen
 * Biedt ondersteuning voor passieve verificatie, waarmee de verificatie wordt vereenvoudigd voor OWA, SPO, enzovoort.
 * Exchange Online-clients kunnen worden ondersteund via het SAML 2,0 Enhanced client profile (ECP)
 

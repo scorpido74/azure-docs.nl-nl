@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370875"
+ms.locfileid: "91874829"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -260,6 +260,10 @@ Als u letterlijke waarden in uw samenvoegings voorwaarden gebruikt of meerdere o
 #### <a name="sorting-before-joins"></a>Sorteren voor samen voegingen
 
 In tegens telling tot merge-koppeling in hulpprogram ma's als SSIS is de koppelings transformatie geen verplichte samenvoeg bewerking samen voegen. De koppelings sleutels hoeven niet te worden gesorteerd vóór de trans formatie. Het Azure Data Factory team wordt niet aanbevolen om sorteer bewerkingen te gebruiken voor het toewijzen van gegevens stromen.
+
+### <a name="window-transformation-performance"></a>Prestaties van de venster transformatie
+
+Met de [venster transformatie](data-flow-window.md) worden uw gegevens gepartitioneerd op waarde in kolommen die u als onderdeel van de ```over()``` component in de trans formatie-instellingen selecteert. Er zijn een aantal populaire statistische en analytische functies die worden weer gegeven in de Windows-trans formatie. Als uw use-case echter een venster voor uw hele gegevensset moet genereren voor het doel van de rang schikking ```rank()``` of het rijnummer ```rowNumber()``` , is het raadzaam om in plaats daarvan de [rang transformatie](data-flow-rank.md) en de [surrogaat sleutel transformatie](data-flow-surrogate-key.md)te gebruiken. Met deze trans formatie worden de volledige gegevensset-bewerkingen sneller uitgevoerd met behulp van deze functies.
 
 ### <a name="repartitioning-skewed-data"></a>Gescheefe gegevens opnieuw partitioneren
 

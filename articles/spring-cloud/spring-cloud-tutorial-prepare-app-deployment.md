@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906839"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945444"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Een toepassing voorbereiden voor implementatie in azure lente-Cloud
 
@@ -210,6 +210,8 @@ Neem de volgende dependenciy op in uw pom.xml-bestand als u een Spring boot 2,1 
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> Geef niets `server.port` op in uw configuratie. Deze instelling wordt door Azure lente Cloud OVERiDE naar een vast poort nummer. U moet deze instelling ook respecteren en de server poort niet opgeven in uw code.
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Andere aanbevolen afhankelijkheden voor het inschakelen van Azure lente-Cloud functies
 
@@ -227,6 +229,7 @@ Als u de beheerde Azure Service Registry-service wilt gebruiken, neemt u de `spr
 ```
 
 Het eind punt van de service register server wordt automatisch geïnjecteerd als omgevings variabelen met uw app. Toepassingen kunnen zich bij de service register server registreren en andere afhankelijke micro services ontdekken.
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient aantekening
 

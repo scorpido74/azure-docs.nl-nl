@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541166"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946090"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Controle van bestands integriteit in Azure Security Center
 Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
@@ -29,28 +29,32 @@ Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azu
 |Aspect|Details|
 |----|:----|
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
-|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
+|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md)vereist.<br>FIM uploadt gegevens naar de Log Analytics-werk ruimte. De gegevens kosten zijn van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.|
 |Vereiste rollen en machtigingen:|**Eigenaar van de werk ruimte** kan FIM inschakelen/uitschakelen (Zie [Azure-rollen voor log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) voor meer informatie.<br>**Lezer** kan resultaten weer geven.|
-|Clouds:|![Ja ](./media/icons/yes-icon.png) commerciële Clouds<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Geen ](./media/icons/no-icon.png) China gov, andere gov<br>Wordt alleen ondersteund in regio's waar de oplossing voor het bijhouden van wijzigingen van Azure Automation beschikbaar is.<br>Zie [ondersteunde regio's voor gekoppelde log Analytics-werk ruimte](../automation/how-to/region-mappings.md).<br>[Meer informatie over het bijhouden van wijzigingen](../automation/change-tracking.md) |
+|Clouds:|![Ja ](./media/icons/yes-icon.png) commerciële Clouds<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Geen ](./media/icons/no-icon.png) China gov, andere gov<br>Wordt alleen ondersteund in regio's waar de oplossing voor het bijhouden van wijzigingen van Azure Automation beschikbaar is.<br>Zie [ondersteunde regio's voor gekoppelde log Analytics-werk ruimte](../automation/how-to/region-mappings.md).<br>Meer [informatie over het bijhouden van wijzigingen](../automation/change-tracking.md).|
 |||
 
-
-
-
-
 ## <a name="what-is-fim-in-security-center"></a>Wat is FIM in Security Center?
-Met de File Integrity Monitoring (FIM), ook wel bekend als wijzigings controle, worden bestanden en registers van het besturings systeem, toepassings software en anderen onderzocht op wijzigingen die mogelijk duiden op een aanval. Er wordt een vergelijkingsmethode gebruikt om te bepalen of de huidige toestand van het bestand anders is dan bij de laatste scan van het bestand. U kunt deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
+File Integrity Monitoring (FIM), ook wel bekend als wijzigings controle, onderzoekt bestanden van het besturings systeem, Windows-registers, toepassings software, Linux-systeem bestanden en meer, voor wijzigingen die mogelijk duiden op een aanval. 
 
-De bestands integriteits controle van Security Center valideert de integriteit van Windows-bestanden, Windows-REGI ster en Linux-bestanden. U selecteert de bestanden die u wilt controleren door FIM in te scha kelen. Security Center bewaakt bestanden met FIM ingeschakeld voor activiteit, zoals:
+Security Center raadt entiteiten aan om te controleren met FIM, en u kunt ook uw eigen FIM-beleid of-entiteiten definiëren om te controleren. FIM waarschuwt u voor verdachte activiteiten, zoals:
 
-- Bestanden en REGI ster maken en verwijderen
+- Bestanden en register sleutels maken of verwijderen
 - Bestands wijzigingen (wijzigingen in de bestands grootte, Toegangs beheer lijsten en de hash van de inhoud)
 - Wijzigingen in het REGI ster (wijzigingen in grootte, toegangscontrole lijsten, type en de inhoud)
 
-Security Center raadt entiteiten aan om te bewaken, waarmee u eenvoudig FIM kunt inschakelen. U kunt ook uw eigen FIM-beleid of-entiteiten definiëren om te bewaken. In dit scenario ziet u hoe.
+In deze zelfstudie leert u het volgende:
 
-> [!NOTE]
-> De FIM-functie (File Integrity Monitoring) werkt voor Windows-en Linux-computers en Vm's en is alleen beschikbaar wanneer **Azure Defender voor servers** is ingeschakeld. Bekijk de [prijzen](security-center-pricing.md) voor meer informatie. FIM uploadt gegevens naar de Log Analytics-werk ruimte. De gegevens kosten zijn van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.
+> [!div class="checklist"]
+> * Bekijk de lijst met voorgestelde entiteiten om te controleren met FIM
+> * Uw eigen aangepaste FIM-regels definiëren
+> * Wijzigingen in uw bewaakte entiteiten controleren
+> * Joker tekens gebruiken om het bijhouden van meerdere mappen te vereenvoudigen
+
+
+## <a name="how-does-fim-work"></a>Hoe werkt FIM?
+
+Door de huidige status van deze items te vergelijken met de status tijdens de vorige scan, wordt u door FIM gewaarschuwd als er verdachte wijzigingen zijn aangebracht.
 
 FIM maakt gebruik van de Azure Wijzigingen bijhouden-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Als bestands integriteits controle is ingeschakeld, hebt u een **Wijzigingen bijhouden** bron van het type **oplossing**. Zie [Details van gegevensverzameling voor Wijzigingen bijhouden](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) voor informatie over de gegevensverzameling door Wijzigingen bijhouden van Azure.
 
@@ -58,11 +62,11 @@ FIM maakt gebruik van de Azure Wijzigingen bijhouden-oplossing om wijzigingen in
 > Als u de **Wijzigingen bijhouden** resource verwijdert, schakelt u ook de functie bestands integriteit controleren uit in Security Center.
 
 ## <a name="which-files-should-i-monitor"></a>Welke bestanden moet ik controleren?
-U moet nadenken over de bestanden die essentieel zijn voor uw systeem en toepassingen wanneer u kiest welke bestanden moeten worden bewaakt. Overweeg het kiezen van bestanden die u niet verwacht te wijzigen zonder te hoeven plannen. Het kiezen van bestanden die regel matig worden gewijzigd door toepassingen of besturings systeem (zoals logboek bestanden en tekst bestanden) maken veel ruis waardoor het moeilijk is om een aanval te identificeren.
+Wanneer u kiest welke bestanden u wilt bewaken, moet u overwegen welke bestanden essentieel zijn voor uw systeem en toepassingen. Bewaak bestanden die u niet verwacht te wijzigen zonder te hoeven plannen. Als u bestanden kiest die regel matig worden gewijzigd door toepassingen of besturings systeem (zoals logboek bestanden en tekst bestanden), wordt er veel ruis gemaakt, waardoor het lastig is om een aanval te identificeren.
 
-Security Center biedt de volgende lijst met aanbevolen items die moeten worden bewaakt op basis van bekende aanvals patronen. Dit zijn onder andere bestanden en Windows-register sleutels. Alle sleutels bevinden zich onder HKEY_LOCAL_MACHINE (HKLM in de tabel).
+Security Center biedt de volgende lijst met aanbevolen items die moeten worden bewaakt op basis van bekende aanvals patronen.
 
-|**Linux-bestanden**|**Windows-bestanden**|**Windows-register sleutels**|
+|Linux-bestanden|Windows-bestanden|Windows-register sleutels (HKLM = HKEY_LOCAL_MACHINE)|
 |:----|:----|:----|
 |/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
@@ -96,6 +100,8 @@ Security Center biedt de volgende lijst met aanbevolen items die moeten worden b
 
 
 ## <a name="enable-file-integrity-monitoring"></a>Controle van bestands integriteit inschakelen 
+
+FIM is alleen beschikbaar op de pagina's van Security Center in het Azure Portal. Er is momenteel geen REST API voor het werken met FIM.
 
 1. Selecteer in het gebied **geavanceerde beveiliging** van het **Azure Defender** -dash board de optie **Bestands integriteit controleren**.
 

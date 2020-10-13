@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76309032"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>Eigenschappen van AuthenticationResult in MSAL.NET
@@ -27,10 +27,10 @@ De methoden voor het verkrijgen van tokens retour neren `AuthenticationResult` .
 
 In MSAL.NET wordt het `AuthenticationResult` volgende getoond:
 
-- `AccessToken`voor de Web-API voor toegang tot bronnen. Deze para meter is een teken reeks, meestal een met base-64-gecodeerde JWT. De client mag nooit kijken in het toegangs token. De indeling is niet gegarandeerd stabiel en kan worden versleuteld voor de resource. Het schrijven van code die afhankelijk is van de inhoud van toegangs tokens op de client is een van de grootste bronnen van fouten en client logica-onderbrekingen. Zie [toegangs tokens](../articles/active-directory/develop/access-tokens.md)voor meer informatie.
-- `IdToken`voor de gebruiker. Deze para meter is een gecodeerde JWT. Zie [id-tokens](../articles/active-directory/develop/id-tokens.md)voor meer informatie.
-- `ExpiresOn`Hiermee wordt aangegeven op welke datum en tijd het token verloopt.
-- `TenantId`bevat de Tenant waarin de gebruiker is gevonden. Voor gast gebruikers in Azure Active Directory-B2B-scenario's (Azure AD) is de Tenant-ID de gast-Tenant, niet de unieke Tenant.
+- `AccessToken` voor de Web-API voor toegang tot bronnen. Deze para meter is een teken reeks, meestal een met base-64-gecodeerde JWT. De client mag nooit kijken in het toegangs token. De indeling is niet gegarandeerd stabiel en kan worden versleuteld voor de resource. Het schrijven van code die afhankelijk is van de inhoud van toegangs tokens op de client is een van de grootste bronnen van fouten en client logica-onderbrekingen. Zie [toegangs tokens](../articles/active-directory/develop/access-tokens.md)voor meer informatie.
+- `IdToken` voor de gebruiker. Deze para meter is een gecodeerde JWT. Zie [id-tokens](../articles/active-directory/develop/id-tokens.md)voor meer informatie.
+- `ExpiresOn` Hiermee wordt aangegeven op welke datum en tijd het token verloopt.
+- `TenantId` bevat de Tenant waarin de gebruiker is gevonden. Voor gast gebruikers in Azure Active Directory-B2B-scenario's (Azure AD) is de Tenant-ID de gast-Tenant, niet de unieke Tenant.
 Wanneer het token wordt geleverd voor een gebruiker, `AuthenticationResult` bevat ook informatie over deze gebruiker. Voor vertrouwelijke client stromen waarbij tokens worden aangevraagd zonder gebruiker voor de toepassing, zijn deze gebruikers gegevens null.
 - De `Scopes` waarvoor het token is uitgegeven.
 - De unieke ID voor de gebruiker.
@@ -48,7 +48,7 @@ De `AccountId` klasse identificeert een account in een specifieke Tenant met de 
 |----------|-------------|
 | `TenantId` | Een teken reeks representatie voor een GUID. Dit is de ID van de Tenant waar het account zich bevindt. |
 | `ObjectId` | Een teken reeks representatie voor een GUID. Dit is de ID van de gebruiker die eigenaar is van het account in de Tenant. |
-| `Identifier` | De unieke id voor het account. `Identifier`is de samen voeging van `ObjectId` en `TenantId` gescheiden door een komma. Deze zijn niet base 64-code ring. |
+| `Identifier` | De unieke id voor het account. `Identifier` is de samen voeging van `ObjectId` en `TenantId` gescheiden door een komma. Deze zijn niet base 64-code ring. |
 
 De `IAccount` interface vertegenwoordigt informatie over één account. Dezelfde gebruiker kan zich in verschillende tenants bevinden, wat betekent dat een gebruiker meerdere accounts kan hebben. De leden ervan worden weer gegeven in de volgende tabel.
 

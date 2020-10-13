@@ -11,10 +11,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036841"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
@@ -65,7 +65,7 @@ Nadat de toepassing een toegangs token heeft ontvangen, verzendt de SDK en/of to
 | Autorisatie  | Bearer-token eyJ0e….HNIVN |
 
 > [!NOTE]
-> `x-ms-client-id`is de Azure Maps op een account gebaseerde GUID die wordt weer gegeven op de Azure Maps-verificatie pagina.
+> `x-ms-client-id` is de Azure Maps op een account gebaseerde GUID die wordt weer gegeven op de Azure Maps-verificatie pagina.
 
 Hier volgt een voor beeld van een Azure Maps route aanvraag die gebruikmaakt van een Azure AD OAuth Bearer-token:
 
@@ -133,7 +133,7 @@ Als u een roltoewijzing aan een resource groep toewijst, kan toegang tot meerder
 
 Zie voor meer informatie over RBAC.
 > [!div class="nextstepaction"]
-> [Toegangsbeheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Toegangs beheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 Zie voor meer informatie over het verifiëren van een toepassing met Azure AD en Azure Maps
 > [!div class="nextstepaction"]

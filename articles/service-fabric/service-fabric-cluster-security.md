@@ -4,12 +4,12 @@ description: Meer informatie over beveiligings scenario's voor een Azure Service
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261075"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946192"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligings scenario's voor Service Fabric cluster
 
@@ -134,7 +134,7 @@ Het concept van het maken van beveiligde clusters is hetzelfde, of het nu gaat o
 
 ### <a name="client-authentication-certificates-optional"></a>Client verificatie certificaten (optioneel)
 
-U kunt een wille keurig aantal extra certificaten opgeven voor beheer-of gebruikers-client bewerkingen. De client kan dit certificaat gebruiken wanneer wederzijdse verificatie is vereist. Client certificaten worden meestal niet uitgegeven door een certificerings instantie van derden. In plaats daarvan bevat het persoonlijke archief van de huidige gebruikers locatie meestal client certificaten die daar zijn geplaatst door een basis instantie. Het certificaat moet een waarde hebben **die bedoeld** is voor **client verificatie**.  
+U kunt een wille keurig aantal extra certificaten opgeven voor beheer-of gebruikers-client bewerkingen. De client kan deze certificaten gebruiken wanneer wederzijdse verificatie is vereist. Client certificaten worden meestal niet uitgegeven door een certificerings instantie van derden. In plaats daarvan bevat het persoonlijke archief van de huidige gebruikers locatie meestal client certificaten die daar zijn geplaatst door een basis instantie. Het certificaat moet een waarde hebben **die bedoeld** is voor **client verificatie**.  
 
 Het cluster certificaat heeft standaard beheerders machtigingen voor de beheerder. Deze aanvullende client certificaten mogen niet worden geïnstalleerd in het cluster, maar zijn wel opgegeven als toegestaan in de cluster configuratie.  De client certificaten moeten echter worden geïnstalleerd op de client computers om verbinding te maken met het cluster en bewerkingen uit te voeren.
 

@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037181"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Configureren, optimaliseren en problemen oplossen in AzCopy
@@ -32,7 +32,7 @@ Stel de omgevings variabele in om de proxy-instellingen voor AzCopy te configure
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | In een opdracht prompt gebruikt u:`set https_proxy=<proxy IP>:<proxy port>`<br> In Power shell gebruikt u:`$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | In een opdracht prompt gebruikt u: `set https_proxy=<proxy IP>:<proxy port>`<br> In Power shell gebruikt u: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -42,7 +42,7 @@ Momenteel biedt AzCopy geen ondersteuning voor proxy's waarvoor authenticatie me
 
 Als u AzCopy uitvoert in Windows en u wilt weten dat u _geen_ proxy kunt gebruiken (in plaats van de instellingen automatisch te detecteren), gebruikt u deze opdrachten. Met deze instellingen zal AzCopy niet zoeken naar of proberen om een proxy te gebruiken.
 
-| Besturingssysteem | Omgeving | Opdrachten  |
+| Besturingssysteem | Omgeving | Opdracht  |
 |--------|-----------|----------|
 | **Windows** | Opdracht prompt (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
 | **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
@@ -191,7 +191,7 @@ Gebruik een van deze opdrachten.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | Zo`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> In een opdracht prompt gebruikt u::`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | Zo`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> In een opdracht prompt gebruikt u:: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
@@ -203,7 +203,7 @@ Gebruik een van deze opdrachten.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | Zo`$env:AZCOPY_LOG_LOCATION="<value>"` <br> In een opdracht prompt gebruikt u::`set AZCOPY_LOG_LOCATION=<value>`|
+| **Windows** | Zo`$env:AZCOPY_LOG_LOCATION="<value>"` <br> In een opdracht prompt gebruikt u:: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 

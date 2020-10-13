@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ae15fc59137e9bf6fb7bfd9fedfb410aa4e0931c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336936"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651901"
 ---
 # <a name="analyze-unexpected-charges"></a>Onverwachte kosten analyseren
 
@@ -26,7 +26,7 @@ Hoe u uw Azure-services aanschaft, helpt u te bepalen welke methodologie en hulp
 
 De volgende artikelen bevatten gedetailleerde stappen waarin wordt uitgelegd hoe u uw factuur kunt controleren op basis van uw klanttype. In elk artikel vindt u instructies voor het downloaden van een CSV-bestand met daarin gegevens over het gebruik en de kosten over een bepaalde factureringsperiode.
 
-- [Controleproces voor factuur voor Betalen per gebruik](review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Controleproces voor factuur voor Betalen per gebruik](review-individual-bill.md#charges)
 - [Controleproces voor factuur voor Enterprise Agreement](review-enterprise-agreement-bill.md)
 - [Controleproces voor factuur voor Microsoft-klantovereenkomst](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Controleproces voor Microsoft Partner-overeenkomst](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)

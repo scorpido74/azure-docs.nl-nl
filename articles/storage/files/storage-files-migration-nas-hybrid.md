@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85510302"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migreren van NAS (Network Attached Storage) naar een hybride Cloud implementatie met Azure File Sync
@@ -23,7 +23,7 @@ Dit leidt tot een migratie van uw bestanden die nodig zijn. in dit artikel wordt
 
 Het doel is om de shares die u op uw NAS-apparaat hebt geplaatst, te verplaatsen naar een Windows-Server. Gebruik vervolgens Azure File Sync voor een hybride Cloud implementatie. Deze migratie moet zo worden uitgevoerd dat de integriteit van de productie gegevens en de beschik baarheid tijdens de migratie gewaarborgd is. Ten laatste moet de downtime tot een minimum worden beperkt, zodat deze kan worden aangepast aan of slechts een beetje meer regel matig onderhouds Vensters kan hebben.
 
-## <a name="migration-overview"></a>Overzicht van Migratie
+## <a name="migration-overview"></a>Migratieoverzicht
 
 Zoals vermeld in het [overzichts artikel](storage-files-migration-overview.md)over Azure files migratie, met het juiste Kopieer programma en de aanpak is belang rijk. Uw NAS-apparaat maakt SMB-shares rechtstreeks op uw lokale netwerk zichtbaar. RoboCopy, ingebouwde Windows Server, is de beste manier om uw bestanden in dit migratie scenario te verplaatsen.
 
@@ -208,7 +208,7 @@ U bent klaar met het migreren van een share/groep shares naar een gemeen schappe
 U kunt proberen enkele van deze kopieën parallel uit te voeren. Het is raadzaam om het bereik van een Azure-bestands share tegelijk te verwerken.
 
 > [!WARNING]
-> Wanneer u alle gegevens van de NAS naar de Windows-Server hebt verplaatst en uw migratie is voltooid, gaat u terug naar ***alle*** synchronisatie groepen in het Azure Portal en past u de waarde voor het percentage beschik bare ruimte op het volume voor de Cloud laag aan wat beter geschikt is voor het gebruik van de cache, bijvoorbeeld 20%. 
+> Wanneer u alle gegevens van de NAS naar de Windows-Server hebt verplaatst en uw migratie is voltooid, gaat u terug naar ***alle***  synchronisatie groepen in het Azure Portal en past u de waarde voor het percentage beschik bare ruimte op het volume voor de Cloud laag aan wat beter geschikt is voor het gebruik van de cache, bijvoorbeeld 20%. 
 
 Het beleid voor beschik bare ruimte op het niveau van de Cloud-laag is een volume dat mogelijk meerdere server eindpunten synchroniseert. Als u vergeet de beschik bare ruimte op zelfs één server eindpunt aan te passen, blijft synchronisatie de meest beperkende regel Toep assen en wordt geprobeerd om 99% vrije schijf ruimte te houden, waardoor de lokale cache niet wordt uitgevoerd zoals u zou verwachten. Tenzij het uw doel is om alleen de naam ruimte te hebben voor een volume dat slechts zelden wordt gebruikt, worden de archiverings gegevens opgeslagen en moet u de rest van de opslag ruimte voor een ander scenario reserveren.
 

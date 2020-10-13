@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116798"
 ---
-# <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Best practices en aanbevelingen van micro soft Identity platform
+# <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Best practices en aanbevelingen voor het Microsoft-identiteitsplatform
 
 In dit artikel worden aanbevolen procedures, aanbevelingen en algemene toezichten besproken wanneer u integreert met het micro soft Identity-platform.  Deze controle lijst leidt u naar een hoogwaardige en veilige integratie. Lees deze lijst regel matig om ervoor te zorgen dat u de kwaliteit en beveiliging behoudt van de integratie van uw app met het identiteits platform. De controle lijst is niet bedoeld om uw hele toepassing te controleren. De inhoud van de controle lijst kan worden gewijzigd terwijl er verbeteringen aan het platform worden aangebracht.
 
@@ -30,7 +30,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 > [!TIP]
 > De *integratie-assistent* in de Azure Portal kan u helpen bij het Toep assen van veel van deze aanbevolen procedures en aanbevelingen. Selecteer een van de [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in de Azure Portal en selecteer vervolgens het menu **-item voor de integratie-assistent (preview)** om aan de slag te gaan met de-assistent.
 
-## <a name="basics"></a>Basisinstellingen
+## <a name="basics"></a>Basisbeginselen
 
 ![in ](./media/active-directory-integration-checklist/checkbox-two.svg) het selectie vakje [wordt het micro soft-platform beleid](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)gelezen en begrepen. Zorg ervoor dat uw toepassing voldoet aan de voor waarden die worden beschreven, zoals ze zijn ontworpen om gebruikers en het platform te beveiligen.
 

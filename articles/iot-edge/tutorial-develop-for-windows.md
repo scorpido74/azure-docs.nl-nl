@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439701"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449617"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -275,7 +275,7 @@ Als er fouten optreden bij het bouwen en pushen van de installatiekopie van de m
 
 U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen in het containerregister, dus het is tijd om ze te implementeren op een apparaat. Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
-1. Open de Cloud Explorer in Visual Studio en vouw de details voor uw IoT-hub uit.
+1. Open Cloud Explorer in Visual Studio en vouw de details voor uw IoT-hub uit.
 
 2. Selecteer de naam van het apparaat waarop u wilt implementeren. Selecteer in de lijst **Actions** de optie **Create Deployment**.
 
@@ -285,7 +285,7 @@ U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen
 
    Gebruik niet het bestand deployment.template.json, dat niet de volledige module-installatiekopiewaarden bevat.
 
-4. Vouw de details van uw IoT Edge-apparaat uit in de Cloud Explorer om de modules op uw apparaat te bekijken.
+4. Vouw de details van uw IoT Edge-apparaat uit in Cloud Explorer om de modules op uw apparaat te bekijken.
 
 5. Gebruik de knop **Vernieuwen** om de status van het apparaat bij te werken om te zien of de modules SimulatedTemperatureSensor en IotEdgeModule1 op uw apparaat zijn geïmplementeerd.
 
@@ -295,7 +295,7 @@ U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen
 
 De IotEdgeModule1-code ontvangt berichten via de invoerwachtrij en geeft deze door aan de uitvoerwachtrij. Het implementatiemanifest heeft routes gedeclareerd die berichten hebben doorgegeven van SimulatedTemperatureSensor aan IotEdgeModule1 en berichten vervolgens hebben doorgestuurd van IotEdgeModule1 naar IoT Hub. Met de Azure IoT Edge Tools voor Visual Studio kunt u berichten zien wanneer ze vanaf uw afzonderlijke apparaten op IoT Hub arriveren.
 
-1. Selecteer in de Visual Studio Cloud Explorer de naam van het IoT Edge-apparaat waarop u hebt geïmplementeerd.
+1. Selecteer in Cloud Explorer van Visual Studio de naam van het IoT Edge-apparaat waarop u hebt geïmplementeerd.
 
 2. Selecteer in het menu **Actions** de optie **Start Monitoring Built-in Event Endpoint**.
 

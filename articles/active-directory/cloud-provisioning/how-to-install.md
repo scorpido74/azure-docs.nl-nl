@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85807635"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>De agent voor Azure AD Connect-cloudinrichting installeren
@@ -46,7 +46,7 @@ Voer de volgende stappen uit om de agent te installeren.
    ![Microsoft Azure AD scherm voor het inrichtings agent-pakket koppelen](media/how-to-install/install1.png)</br>
 
 1. Nadat deze bewerking is voltooid, wordt de configuratie wizard gestart. Meld u aan met uw globale beheerdersreferenties voor Azure AD.
-1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Volgende**.
+1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Next**.
 
    ![Active Directory scherm verbinden](media/how-to-install/install3.png)</br>
 
@@ -74,7 +74,7 @@ Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azu
 
     ![Optie Alle agents controleren](media/how-to-install/install7.png)</br>
  
-1. Op het scherm **on-premises Provisioning agents** ziet u de agents die u hebt geïnstalleerd. Controleer of de agent in kwestie is en is gemarkeerd als *actief*.
+1. Op het scherm **on-premises Provisioning agents** ziet u de agents die u hebt geïnstalleerd. Controleer of de agent in kwestie beschikbaar is en op *Uitgeschakeld* staat.
 
    ![Scherm on-premises ingerichte agents](media/how-to-install/verify1.png)</br>
 

@@ -11,59 +11,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894555"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946214"
 ---
 # <a name="monitor-identity-and-access"></a>Identiteit en toegang bewaken
 
-> [!TIP]
-> Vanaf 2020 maart zijn de aanbevelingen voor identiteits-en toegangs toegang van Azure Security Center opgenomen in alle abonnementen op de prijs categorie gratis. Als u abonnementen op de gratis laag hebt, wordt de beveiligde score beïnvloed omdat deze nog niet eerder is beoordeeld op hun identiteits-en toegangs beveiliging. 
+De beveiligings verbinding is vanuit een netwerk verbinding met een identiteits verbinding ontwikkeld. Met deze ontwikkeling is de beveiliging minder dan het beschermen van uw netwerk en meer informatie over het beheren van de beveiliging van uw apps, gegevens en gebruikers.
 
-Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
+Door de activiteiten en configuratie-instellingen die betrekking hebben op identiteit te bewaken, kunt u proactieve acties uitvoeren voordat een incident plaatsvindt of reactieve acties om pogingen tot aanvallen te stoppen.
 
-De beveiligings verbinding is vanuit een netwerk verbinding met een identiteits verbinding ontwikkeld. De beveiliging wordt verminderd met het beschermen van uw netwerk en het beschermen van uw gegevens, en het beheren van de beveiliging van uw apps en gebruikers. Tegenwoordig bevinden zich steeds meer gegevens en apps in de cloud en is identiteit het nieuwe perimeternetwerk.
+## <a name="what-identity-and-access-safeguards-does-security-center-provide"></a>Welke identiteits-en toegangs beveiliging bieden Security Center? 
 
-Door identiteits activiteiten te bewaken, kunt u proactieve acties uitvoeren voordat een incident plaatsvindt of reactieve acties om een aanval te stoppen. Security Center kunnen bijvoorbeeld afgeschafte accounts (accounts die niet meer nodig zijn en de aanmelding door Azure Active Directory) voor verwijdering markeren. 
+Azure Security Center heeft twee specifieke beveiligings controles om ervoor te zorgen dat u voldoet aan de identiteits-en beveiligings vereisten van uw organisatie: 
 
-Voor beelden van aanbevelingen die u kunt zien in het gedeelte over het beveiligen van de **identiteits-en toegangs** resource van Azure Security Center zijn:
+ - **Toegang en machtigingen beheren** : we raden u aan het [toegangs model voor de minimale bevoegdheid te gebruiken](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) en ervoor te zorgen dat u uw gebruikers alleen de toegang verleent die nodig zijn om hun taken uit te voeren. Dit besturings element bevat ook aanbevelingen voor het implementeren van [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md) om toegang tot uw resources te beheren.
+ 
+ - **Schakel MFA** in als u [MFA](https://www.microsoft.com/security/business/identity/mfa) hebt ingeschakeld, uw accounts veilig zijn en gebruikers nog steeds kunnen worden geverifieerd bij vrijwel elke toepassing met eenmalige aanmelding.
+
+### <a name="example-recommendations-for-identity-and-access"></a>Voor beelden van aanbevelingen voor identiteit en toegang
+
+Voor beelden van aanbevelingen die u kunt zien in deze twee besturings elementen op de pagina met **aanbevelingen** van Security Center:
 
 - MFA moet zijn ingeschakeld voor accounts met eigenaarsmachtigingen voor uw abonnement
 - Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement
 - Externe accounts met leesmachtigingen moeten worden verwijderd uit uw abonnement
-- Afgeschafte accounts moeten worden verwijderd uit uw abonnement
+- Afgeschafte accounts moeten worden verwijderd uit uw abonnement (afgeschafte accounts zijn accounts die niet meer nodig zijn, en zijn geblokkeerd voor het aanmelden door Azure Active Directory)
 
-Zie [aanbevelingen voor identiteits-en toegangs rechten](recommendations-reference.md#recs-identity)voor meer informatie over deze aanbevelingen en een volledige lijst met aanbevelingen die hier kunnen worden weer gegeven.
+> [!TIP]
+> Zie [aanbevelingen voor identiteits-en toegangs rechten](recommendations-reference.md#recs-identity)voor meer informatie over deze aanbevelingen en andere in deze besturings elementen.
 
-> [!NOTE]
-> Als uw abonnement meer dan 600 accounts bevat, kunnen Security Center de identiteits aanbevelingen niet uitvoeren op uw abonnement. De aanbevelingen die niet worden uitgevoerd, worden vermeld onder "niet-beschik bare evaluaties" hieronder.
-Security Center kan de identiteits aanbevelingen niet uitvoeren op de beheer agenten van een Cloud Solution Provider (CSP)-partner.
->
+### <a name="limitations"></a>Beperkingen
 
+Er zijn enkele beperkingen ten aanzien van de identiteits-en toegangs beveiliging van Security Center:
 
-Alle aanbevelingen voor identiteits-en toegangs beveiliging zijn beschikbaar in twee beveiligings controles op de pagina **aanbevelingen** :
+- Er zijn geen aanbevelingen voor identiteiten beschikbaar voor abonnementen met meer dan 600 accounts. In dergelijke gevallen worden deze aanbevelingen vermeld onder "niet-beschik bare evaluaties".
+- Er zijn geen aanbevelingen voor identiteiten beschikbaar voor de beheer agenten van de Cloud Solution Provider (CSP)-partner.
+- Met identiteits aanbevelingen worden geen accounts geïdentificeerd die worden beheerd met een systeem voor privileged Identity Management (PIM). Als u een PIM-hulp programma gebruikt, ziet u mogelijk onnauwkeurige resultaten in het beheer van **toegang en machtigingen beheren** .
 
-- Toegang en machtigingen beheren 
-- MFA inschakelen
+## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-factor Authentication (MFA) en Azure Active Directory 
 
-![De twee beveiligings controles met de aanbevelingen met betrekking tot identiteit en toegang](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
-
-
-## <a name="enable-multi-factor-authentication-mfa"></a>Multi-factor Authentication (MFA) inschakelen
-
-Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)vereist. 
+Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directory (AD)](../active-directory/users-groups-roles/directory-assign-admin-roles.md)vereist.
 
 - Als u een Premium-editie van AD hebt, schakelt u MFA in met behulp van [voorwaardelijke toegang](../active-directory/conditional-access/concept-conditional-access-policy-common.md).
+- Als u de gratis versie van AD gebruikt, schakelt u de **standaard instellingen voor beveiliging** in, zoals beschreven in [Azure Active Directory documentatie](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
-- Als u de gratis versie van AD gebruikt, schakelt u **standaard instellingen voor beveiliging** in azure Active Directory, zoals beschreven in de [ad-documentatie](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
+## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>Accounts identificeren waarvoor MFA (multi-factor Authentication) is ingeschakeld
+
+Als u wilt zien voor welke accounts geen MFA is ingeschakeld, gebruikt u de volgende Azure resource Graph-query. De query retourneert alle beschadigde resources-accounts-van de aanbeveling ' MFA moet worden ingeschakeld voor accounts met eigenaars machtigingen voor uw abonnement '. 
+
+1. Open **Azure resource Graph Explorer**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="De pagina aanbeveling van Azure resource Graph Explorer * * wordt gestart" :::
+
+1. Voer de volgende query in en selecteer **query uitvoeren**.
+
+    ```kusto
+    securityresources
+     | where type == "microsoft.security/assessments"
+     | where properties.displayName == "MFA should be enabled on accounts with owner permissions on your subscription"
+     | where properties.status.code == "Unhealthy"
+    ```
+
+1. De `additionalData` eigenschap toont de lijst met account-object-id's voor accounts waarvoor MFA niet is afgedwongen. 
+
+    > [!NOTE]
+    > De accounts worden weer gegeven als object-Id's in plaats van account namen om de privacy van de account houders te beveiligen.
+
+> [!TIP]
+> U kunt ook de evaluaties van de methode REST API van Security Center gebruiken [-ophalen](https://docs.microsoft.com/rest/api/securitycenter/assessments/get).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
+Zie het volgende artikel voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
 - [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5ae0e0d312aa9a959b114d576f887bfa5072f49
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666157"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965502"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
@@ -43,7 +43,7 @@ De volgende tabel bevat een overzicht van de beveiligings overwegingen voor de b
 | FIDO2-beveiligings sleutel (preview-versie)   | Hoog     | Hoog      | Hoog         |
 | OATH-hardware-tokens (preview-versie) | Gemiddeld   | Gemiddeld    | Hoog         |
 | OATH-software tokens           | Gemiddeld   | Gemiddeld    | Hoog         |
-| Sms                            | Normaal   | Hoog      | Gemiddeld       |
+| Sms                            | Middelgroot   | Hoog      | Gemiddeld       |
 | Spraak                          | Gemiddeld   | Gemiddeld    | Gemiddeld       |
 | Wachtwoord                       | Laag      | Hoog      | Hoog         |
 
@@ -73,7 +73,7 @@ Al deze verificatie methoden kunnen worden geconfigureerd in de Azure Portal en 
 
 Raadpleeg de volgende afzonderlijke conceptuele artikelen voor meer informatie over de werking van elke verificatie methode:
 
-* [Windows Hello voor Bedrijven](/windows/security/identity-protection/hello-for-business/hello-overview)
+* [Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator-app](concept-authentication-authenticator-app.md)
 * [FIDO2-beveiligings sleutel (preview-versie)](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH-hardware-tokens (preview-versie)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)

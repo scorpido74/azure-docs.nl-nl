@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964682"
 ---
 # <a name="unsupported-language-deployments"></a>Implementaties in niet-ondersteunde talen
@@ -47,7 +47,7 @@ Na verzen ding is het model niet meer beschikbaar op het tabblad niet- **aangevr
 
 ## <a name="whats-next"></a>Volgende stappen
 
-De modellen die u hebt geselecteerd voor implementatie, worden opgeslagen nadat de hub uit bedrijf is genomen en alle modellen niet meer zijn geïmplementeerd.  U hebt tot 24 mei aanvragen voor de implementatie van niet-ondersteunde modellen te verzenden.  Deze modellen worden op 15 juni geïmplementeerd, op het moment dat ze toegankelijk zijn via Translator v3.  Bovendien zullen ze tot 1 juli beschikbaar zijn via Translator v2.  
+De modellen die u hebt geselecteerd voor implementatie, worden opgeslagen nadat de hub uit bedrijf is genomen en alle modellen niet meer zijn geïmplementeerd.  U hebt tot 24 mei aanvragen voor de implementatie van niet-ondersteunde modellen te verzenden.  Deze modellen worden op 15 juni geïmplementeerd, op het moment dat ze toegankelijk zijn via de Translator v3 API.  Bovendien zullen ze tot 1 juli via de v2 API beschikbaar zijn.  
 
 Zie [hier](https://www.microsoft.com/translator/business/hub/)voor meer informatie over belang rijke datums in de afschaffing van de hub.
 Zodra de implementatie is geïmplementeerd, worden de normale hosting kosten toegepast.  Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) voor meer informatie.  
@@ -57,4 +57,4 @@ Hub modellen zijn, in tegens telling tot standaard aangepaste Translator-modelle
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Train een model](how-to-train-model.md).
-- Begin met het gebruik van uw geïmplementeerde aangepaste Vertaal model via [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Begin met het gebruik van uw geïmplementeerde aangepaste Vertaal model via [micro soft Translator text-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

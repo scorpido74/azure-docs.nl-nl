@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
 ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653550"
 ---
 # <a name="mv2-series"></a>Mv2-serie
 
 De Mv2-serie biedt een platform met hoge door Voer en een laag latentie dat wordt uitgevoerd op een Hyper-Threaded Intel® Xeon® Platinum 8180M 2.5 GHz (Skylake)-processor met een basis frequentie van 2,5 GHz en een maximale Turbo frequentie van 3,8 GHz. Alle grootten voor virtuele machines uit de Mv2-serie kunnen zowel standaard als permanente schijven gebruiken. Instanties van de Mv2-serie zijn geoptimaliseerd voor geheugen die ongeëvenaarde reken prestaties bieden ter ondersteuning van grote data bases in het geheugen en workloads, met een hoge geheugen-naar-CPU-verhouding die ideaal is voor relationele database servers, grote caches en analyse in het geheugen.
 
-Mv2-serie VM-functie Intel® Hyper-Threading-technologie
+Mv2-serie VM-functie Intel® Hyper-Threading technologie
 
 [Premium Storage](premium-storage-performance.md): ondersteund<br>
 [Premium Storage caching](premium-storage-performance.md): ondersteund<br>
@@ -48,7 +48,7 @@ Mv2-serie VM-functie Intel® Hyper-Threading-technologie
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295733"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
@@ -52,7 +52,7 @@ Zoals vermeld, heeft het `citus` beheerders account geen toestemming om extra ge
 
 2. Voer de rolnaam en het wacht woord in. Klik op **Opslaan**.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Rol toevoegen":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="De pagina rollen":::
 
 De gebruiker wordt gemaakt op het coördinator knooppunt van de Server groep en door gegeven aan alle worker-knoop punten. Rollen die zijn gemaakt via de Azure Portal hebben het `LOGIN` kenmerk, wat betekent dat ze echte gebruikers zijn die zich kunnen aanmelden bij de data base.
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Als u een gebruiker wilt bijwerken, gaat u naar de pagina **rollen** voor uw Citus-Server groep (grootschalige) en klikt u op de weglatings tekens **...** naast de gebruiker. De weglatings tekens openen een menu om de gebruiker te verwijderen of hun wacht woord opnieuw in te stellen.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Een rol bewerken":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="De pagina rollen":::
 
 De `citus` rol is privileged en kan niet worden verwijderd.
 

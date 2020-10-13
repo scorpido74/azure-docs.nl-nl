@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514600"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>De DATA 0-netwerk interface-instellingen op uw StorSimple 8000 Series-apparaat wijzigen
@@ -47,7 +47,7 @@ U kunt de gegevens van de netwerk instellingen van 0 opnieuw configureren door v
 > [!NOTE]
 > De IP-adressen van de vaste controllers moeten opnieuw worden geconfigureerd via de Blade **netwerk instellingen** van het StorSimple-apparaat in de Azure Portal. Ga naar [netwerk interfaces aanpassen](storsimple-8000-modify-device-config.md#modify-network-interfaces)voor meer informatie.
 
-## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>DATA 0 Network Settings wijzigen via set-HcsNetInterface cmdlet
+## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>DATA 0 Network Settings wijzigen via Set-HcsNetInterface-cmdlet
 Een alternatieve manier om de DATA 0-netwerk interface opnieuw te configureren, is door het gebruik van de `Set-HcsNetInterface` cmdlet. De cmdlet wordt uitgevoerd vanuit de Windows Power shell-interface van uw StorSimple-apparaat. Wanneer u deze procedure gebruikt, kunnen de vaste IP-adressen van de controller hier ook worden geconfigureerd. Voer de volgende stappen uit om de DATA 0-instellingen te wijzigen: 
 
 #### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>DATA 0 Network Settings wijzigen via de cmdlet Set-HcsNetInterface

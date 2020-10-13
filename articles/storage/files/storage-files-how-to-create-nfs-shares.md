@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 2a848cb77336fc89172d55a6204d66b9e5be5976
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705228"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Een NFS-share maken
@@ -131,7 +131,7 @@ Nu u een FileStorage-account hebt gemaakt en het netwerk hebt geconfigureerd, ku
 1. Als u een Premium-bestands share met de module Azure PowerShell wilt maken, gebruikt u de cmdlet [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) .
 
 > [!NOTE]
-> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/)voor meer informatie.
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
 
   ```powershell
   New-AzRmStorageShare `
@@ -148,7 +148,7 @@ Nu u een FileStorage-account hebt gemaakt en het netwerk hebt geconfigureerd, ku
 Als u een Premium-bestands share wilt maken met de Azure CLI, gebruikt u de opdracht [AZ Storage share Create](/cli/azure/storage/share-rm) .
 
 > [!NOTE]
-> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/storage/files/)voor meer informatie.
+> Ingerichte share groottes worden opgegeven door het share quotum, bestands shares worden gefactureerd op basis van de ingerichte grootte. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage/files/) voor meer informatie.
 
 ```azurecli-interactive
 az storage share-rm create \

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449787"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken: Azure Monitor voor VM's met werkmappen
@@ -44,7 +44,7 @@ In de volgende tabel ziet u een overzicht van de werkmappen die Azure Monitor vo
 
 Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafieken, tabellen, tekst en invoer besturings elementen. Voor een beter begrip van werkmappen kunt u beginnen met het openen van een sjabloon en het maken van een aangepaste werkmap door lopen. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **virtual machines**.
 

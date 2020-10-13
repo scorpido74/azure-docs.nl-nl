@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120572"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
@@ -229,7 +229,7 @@ Azure biedt een uitgebreide set ervaringen waarmee u uw Azure-resources,-toepass
 
 Azure biedt twee manieren om uw toepassingen en services te beheren vanaf de opdracht regel. U kunt hulpprogram ma's zoals bash, Terminal, de opdracht prompt of het gewenste opdracht regel programma gebruiken. Normaal gesp roken kunt u dezelfde taken uitvoeren vanaf de opdracht regel als in de Azure Portal, zoals het maken en configureren van virtuele machines, virtuele netwerken, Web-apps en andere services.
 
--   [Azure-opdracht regel interface (CLI)](../../xplat-cli-install.md): Hiermee kunt u verbinding maken met een Azure-abonnement en verschillende taken Program meren met Azure-resources vanaf de opdracht regel.
+-   [Azure Command-Line interface (CLI)](../../xplat-cli-install.md): Hiermee kunt u verbinding maken met een Azure-abonnement en verschillende taken Program meren op basis van Azure-resources vanaf de opdracht regel.
 
 -   [Azure PowerShell](../../powershell-install-configure.md): voorziet in een set modules met cmdlets waarmee u Azure-resources kunt beheren met behulp van Windows Power shell.
 
