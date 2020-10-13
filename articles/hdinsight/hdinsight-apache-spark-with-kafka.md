@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086089"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark streaming (DStream)-voor beeld met Apache Kafka in HDInsight
@@ -29,7 +29,7 @@ Meer informatie over het gebruik van [Apache Spark](https://spark.apache.org/) v
 
 ## <a name="create-the-clusters"></a>De clusters maken
 
-Apache Kafka op HDInsight biedt geen toegang tot de Kafka-Brokers via het open bare Internet. Alles wat er naar Kafka praat, moet zich in hetzelfde virtuele Azure-netwerk bevindt als de knoop punten in het Kafka-cluster. In dit voor beeld bevinden zowel de Kafka-als Spark-clusters zich in een virtueel Azure-netwerk. In het volgende diagram ziet u hoe communicatie stromen tussen de clusters:
+Apache Kafka in HDInsight biedt geen toegang tot de Kafka-brokers via het openbare internet. Alles wat er naar Kafka praat, moet zich in hetzelfde virtuele Azure-netwerk bevindt als de knoop punten in het Kafka-cluster. In dit voor beeld bevinden zowel de Kafka-als Spark-clusters zich in een virtueel Azure-netwerk. In het volgende diagram ziet u hoe communicatie stromen tussen de clusters:
 
 ![Diagram van Spark- en Kafka-clusters in een Azure Virtual Network](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
 
@@ -63,7 +63,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
     ![Aangepaste implementatie parameters voor HDInsight](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. Lees de voor **waarden**en selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
+1. Lees de **voorwaarden** en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
 
 1. Selecteer ten slotte **Inkoop**. Het duurt ongeveer 20 minuten om de clusters te maken.
 

@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71718519"
 ---
 # <a name="detect-adult-content"></a>Inhoud voor volwassenen detecteren
@@ -35,7 +35,7 @@ In de categorie ' volwassene ' zijn er verschillende categorieën:
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-U kunt inhoud voor volwassenen detecteren met de API voor het [analyseren van afbeeldingen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Wanneer `Adult` u de waarde van aan de query parameter **visualFeatures** toevoegt, retourneert de API drie Booleaanse eigenschappen&mdash;`isAdultContent`, `isRacyContent`en `isGoryContent` &mdash;in het bijbehorende JSON-antwoord. De-methode retourneert ook de&mdash;`adultScore`bijbehorende `racyScore`eigenschappen, `goreScore` &mdash;en die betrouw bare scores vertegenwoordigen tussen nul en één voor elke betreffende categorie.
+U kunt inhoud voor volwassenen detecteren met de API voor het [analyseren van afbeeldingen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Wanneer u de waarde van `Adult` aan de query parameter **visualFeatures** toevoegt, retourneert de API drie Booleaanse eigenschappen &mdash; `isAdultContent` , `isRacyContent` en `isGoryContent` &mdash; in het bijbehorende JSON-antwoord. De-methode retourneert ook de bijbehorende eigenschappen &mdash; `adultScore` , `racyScore` en `goreScore` &mdash; die betrouw bare scores vertegenwoordigen tussen nul en één voor elke betreffende categorie.
 
 - [Snelstartgids: een afbeelding analyseren (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Quick Start: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

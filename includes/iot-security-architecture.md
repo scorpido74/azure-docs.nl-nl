@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73034543"
 ---
 Bij het ontwerpen van een systeem is het belang rijk om inzicht te krijgen in de mogelijke dreigingen van dat systeem en de juiste verdedigingen dienovereenkomstig, aangezien het systeem is ontworpen en gearchitectd. Het is belang rijk dat u het product ontwerpt van het begin met beveiliging in het gedrang, omdat u kunt zien hoe een aanvaller een systeem kan misbruiken om ervoor te zorgen dat de juiste oplossingen van het begin worden uitgevoerd.
@@ -263,7 +263,7 @@ Een besturings systeem (of controller) is een software oplossing die is gekoppel
 
 Tussenliggende fysieke controle oppervlakken zijn de Opper vlakten die de functie van het fysieke besturings element beheersen, zodat een gelijkwaardige functie op afstand kan worden geïnitieerd of invoer conflicten met externe invoer kunnen worden vermeden: dergelijke tussenliggende controle oppervlakken worden conceptueel gekoppeld aan een lokaal controle systeem dat gebruikmaakt van dezelfde onderliggende functionaliteit als elk ander systeem voor extern beheer waarop het apparaat parallel kan worden aangesloten. De belangrijkste bedreigingen voor cloud computing kunnen worden gelezen op de pagina [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/articles/csa-releases-top-threats-to-cloud-computing-deep-dive/) .
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
