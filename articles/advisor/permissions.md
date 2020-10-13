@@ -4,10 +4,10 @@ description: Advisor-machtigingen en hoe ze de mogelijkheid kunnen blok keren om
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91712923"
 ---
 # <a name="permissions-in-azure-advisor"></a>Machtigingen in Azure Advisor
@@ -20,8 +20,8 @@ De volgende tabel definieert de rollen en de toegang die ze hebben in Advisor:
 
 | **Role** | **Aanbevelingen bekijken** | **Regels bewerken** | **Abonnements configuratie bewerken** | **Configuratie van de resource groep bewerken**| **Aanbevelingen negeren en uitstellen**|
 |---|:---:|:---:|:---:|:---:|:---:|
-|Abonnements eigenaar|**X**|**X**|**X**|**X**|**X**|
-|Mede werker van abonnement|**X**|**X**|**X**|**X**|**X**|
+|Abonnementeigenaar|**X**|**X**|**X**|**X**|**X**|
+|Abonnementinzender|**X**|**X**|**X**|**X**|**X**|
 |Abonnements lezer|**X**|--|--|--|--|
 |Eigenaar van resource groep|**X**|--|--|**X**|**X**|
 |Inzender voor resource groep|**X**|--|--|**X**|**X**|

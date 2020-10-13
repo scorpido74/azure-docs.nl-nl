@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: 52404aa1514dc3189305117181408e25e233fce8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362398"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webservices Azure Machine Learning Studio (klassiek): implementatie en verbruik
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 U kunt Azure Machine Learning Studio (klassiek) gebruiken om machine learning werk stromen en modellen als webservices te implementeren. Deze webservices kunnen vervolgens worden gebruikt voor het aanroepen van de machine learning modellen van toepassingen via internet om voor spellingen in realtime of in batch modus uit te voeren. Omdat de webservices actief zijn, kunt u deze aanroepen vanuit verschillende programmeer talen en platformen, zoals .NET en Java, en vanuit toepassingen, zoals Excel.
 
@@ -89,7 +89,7 @@ Raadpleeg de volgende artikelen en voorbeeld code voor aanvullende informatie:
 
 ### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Vanuit de gebruikers interface van Azure Machine Learning-webservices (testen)
 
-U kunt uw webservice testen vanuit de Azure Machine Learning-webservices Portal. Dit omvat het testen van de aanvraag-antwoord service (RR'S) en BES-interfaces (batch Execution Service).
+U kunt uw webservice testen vanuit de Azure Machine Learning-webservices Portal. Dit omvat het testen van de Request-Response service (RR'S) en BES-interfaces (batch Execution Service).
 
 * [Een nieuwe webservice implementeren](deploy-a-machine-learning-web-service.md)
 * [Een Azure Machine Learning-webservice implementeren](deploy-a-machine-learning-web-service.md)

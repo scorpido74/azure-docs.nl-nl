@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330329"
+ms.locfileid: "91893744"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Online migratie problemen & beperkingen voor Azure DB voor MySQL met Azure Database Migration Service
 
@@ -82,12 +82,12 @@ Large Object LOB-kolommen zijn kolommen die groot kunnen worden uitgebreid. Voor
 
     **Tijdelijke oplossing**: Vervang de primaire sleutel door andere gegevens typen of kolommen die niet LOB zijn.
 
-- **Beperking**: als de LOB-kolom (lengte van large object) groter is dan 32 KB, kunnen gegevens worden afgekapt bij het doel. U kunt de lengte van de LOB-kolom controleren met behulp van deze query:
+- **Beperking**: als de LOB-kolom (lengte van large object) groter is dan de para meter "LOB-grootte beperken" (mag niet groter zijn dan 64 KB), worden de gegevens mogelijk afgekapt bij het doel. U kunt de lengte van de LOB-kolom controleren met behulp van deze query:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Tijdelijke oplossing**: als u een LOB-object hebt dat groter is dan 32 KB, neemt u contact op met het technische team om [Azure data base-migraties te vragen](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Tijdelijke oplossing**: als u een LOB-object hebt dat groter is dan 64 KB, gebruikt u de para meter ' onbeperkte LOB-grootte toestaan '. Houd er rekening mee dat migraties die gebruikmaken van de para meter ' onbeperkte LOB-grootte toestaan ' lager zijn dan migraties met behulp van de para meter ' LOB-grootte beperken '.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Beperkingen bij het online migreren van AWS RDS MySQL
 

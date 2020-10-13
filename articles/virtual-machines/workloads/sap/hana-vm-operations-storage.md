@@ -16,10 +16,10 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449373"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
@@ -75,7 +75,7 @@ Linux heeft verschillende I/O-plannings modi. Algemene aanbeveling via Linux-lev
 Azure Write Accelerator is een functionaliteit die alleen beschikbaar is voor virtuele machines uit de M-serie van Azure. Als de naam statussen is het doel van de functionaliteit om de I/O-latentie van schrijf bewerkingen te verbeteren voor de Azure Premium-opslag. Voor SAP HANA moet Write Accelerator alleen worden gebruikt voor het **/Hana/log** -volume. Daarom zijn de **/Hana/data** en **/Hana/log** afzonderlijke volumes met Azure write Accelerator alleen het **/Hana/log** -volume ondersteunen. 
 
 > [!IMPORTANT]
-> Als Azure Premium Storage wordt gebruikt, is het gebruik van Azure [Write Accelerator](../../how-to-enable-write-accelerator.md) voor het **/Hana/log** -volume verplicht. Write Accelerator is alleen beschikbaar voor Premium-opslag en alleen Vm's uit de M-serie en Mv2-serie. Write Accelerator werkt niet in combi natie met andere Azure VM-families, zoals Esv3 of Edsv4.
+> Als Azure Premium Storage wordt gebruikt, is het gebruik van Azure [Write Accelerator](../../how-to-enable-write-accelerator.md) voor het **/Hana/log** -volume verplicht. Write Accelerator is alleen beschikbaar voor Premium-opslag en M-serie en Mv2-Series Vm's. Write Accelerator werkt niet in combi natie met andere Azure VM-families, zoals Esv3 of Edsv4.
 
 In de onderstaande cache aanbevelingen voor Azure Premium-schijven worden de I/O-kenmerken voor SAP HANA deze lijst als volgt aangenomen:
 
@@ -88,7 +88,7 @@ In de onderstaande cache aanbevelingen voor Azure Premium-schijven worden de I/O
 **Aanbeveling: als gevolg van deze waargenomen I/O-patronen door SAP HANA, moet de cache voor de verschillende volumes die Azure Premium Storage gebruiken, worden ingesteld als:**
 
 - **/Hana/data** -geen caching of lees cache
-- **/Hana/log** -geen caching-uitzonde ring voor vm's met de M-en Mv2-serie waarbij Azure write Accelerator moet worden ingeschakeld 
+- **/Hana/log** : geen caching-uitzonde ring voor M-en Mv2-Series Vm's waarvoor Azure write Accelerator moet worden ingeschakeld 
 - **/Hana/Shared** -cache lezen
 - **Besturingssysteem schijf** -de standaard cache die door Azure is ingesteld tijdens het maken van de VM, niet wijzigen
 
@@ -250,8 +250,8 @@ De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in
 | M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 2500 | 96 GB | 250 MBps  | 1800 |
 | M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 2500 | 256 GB | 250 MBps  | 1800 |
 | M64ls | 512 GiB | 1.000 MB/s | 620 GB | 400 MBps | 3500 | 256 GB | 250 MBps  | 1800 |
-| M64s | 1.000 GiB | 1.000 MB/s |  1.200 GB | 600 MBps | 5.000 | 512 GB | 250 MBps  | 2500 |
-| M64ms | 1.750 GiB | 1.000 MB/s | 2.100 GB | 600 MBps | 5.000 | 512 GB | 250 MBps  | 2500 |
+| M64s | 1.000 GiB | 1.000 MB/s |  1.200 GB | 600 MBps | 5\.000 | 512 GB | 250 MBps  | 2500 |
+| M64ms | 1.750 GiB | 1.000 MB/s | 2.100 GB | 600 MBps | 5\.000 | 512 GB | 250 MBps  | 2500 |
 | M128s | 2.000 GiB | 2.000 MB/s |2.400 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2500 | 
 | M128ms | 3.800 GiB | 2.000 MB/s | 4.800 GB | 750 MBps |9600 | 512 GB | 250 MBps  | 2500 | 
 | M208s_v2 | 2.850 GiB | 1.000 MB/s | 3.500 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2500 | 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204360"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961286"
 ---
 # <a name="json-claims-transformations"></a>JSON-claim transformaties
 
@@ -33,6 +33,8 @@ Gebruik claim waarden of constanten voor het genereren van een JSON-teken reeks.
 | Input claim | Wille keurige teken reeks na de punt notatie | tekenreeks | De JsonPath van de JSON waar de claim waarde wordt ingevoegd. |
 | Parameter | Wille keurige teken reeks na de punt notatie | tekenreeks | De JsonPath van de JSON waar de constante teken reeks waarde wordt ingevoegd. |
 | Output claim | Output claim | tekenreeks | De gegenereerde JSON-teken reeks. |
+
+### <a name="example-1"></a>Voorbeeld 1
 
 In het volgende voor beeld wordt een JSON-teken reeks gegenereerd op basis van de claim waarde "email" en "otp" en ook constante teken reeksen.
 
@@ -52,8 +54,6 @@ In het volgende voor beeld wordt een JSON-teken reeks gegenereerd op basis van d
   </OutputClaims>
 </ClaimsTransformation>
 ```
-
-### <a name="example"></a>Voorbeeld
 
 De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoofd tekst van de aanvraag is die wordt verzonden naar SendGrid (een e-mail provider van derden). De structuur van het JSON-object wordt gedefinieerd door de Id's in punt notatie van de invoer parameters en de TransformationClaimTypes van de InputClaims. Getallen in de punt notatie impliceren matrices. De waarden zijn afkomstig van de waarden van de InputClaims en de waarde van de eigenschap input parameters.
 
@@ -87,6 +87,56 @@ De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoof
   "from": {
     "email": "service@contoso.com"
   }
+}
+```
+
+### <a name="example-2"></a>Voorbeeld 2
+
+In het volgende voor beeld wordt een JSON-teken reeks gegenereerd op basis van de claim waarden en constante teken reeksen.
+
+```xml
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="customerEntity.email" />
+    <InputClaim ClaimTypeReferenceId="objectId" TransformationClaimType="customerEntity.userObjectId" />
+    <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="customerEntity.firstName" />
+    <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="customerEntity.lastName" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="customerEntity.role.name" DataType="string" Value="Administrator"/>
+    <InputParameter Id="customerEntity.role.id" DataType="long" Value="1"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoofd tekst van de aanvraag is die naar een REST API wordt verzonden. De structuur van het JSON-object wordt gedefinieerd door de Id's in punt notatie van de invoer parameters en de TransformationClaimTypes van de InputClaims. Getallen in de punt notatie impliceren matrices. De waarden zijn afkomstig van de waarden van de InputClaims en de waarde van de eigenschap input parameters.
+
+- Invoer claims:
+  - **e-mail**, transformatie claim type **customerEntity. email**: john.s@contoso.com
+  - **objectId**, transformatie claim type **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
+  - **objectId**, transformatie claim type **customerEntity. FirstName** "John"
+  - **objectId**, transformatie claim type **customerEntity. lastName** "Smit"
+- Invoer parameter:
+  - **customerEntity.Role.name**: beheerder
+  - **customerEntity.Role.id** 1
+- Uitvoer claim:
+  - **requestBody**: JSON-waarde
+
+```json
+{
+   "customerEntity":{
+      "email":"john.s@contoso.com",
+      "userObjectId":"01234567-89ab-cdef-0123-456789abcdef",
+      "firstName":"John",
+      "lastName":"Smith",
+      "role":{
+         "name":"Administrator",
+         "id": 1
+      }
+   }
 }
 ```
 

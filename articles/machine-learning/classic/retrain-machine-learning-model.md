@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362330"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Retraining is een manier om ervoor te zorgen dat machine learning modellen nauw keurig blijven en op basis van de meest relevante gegevens die beschikbaar zijn. In dit artikel wordt beschreven hoe u een machine learning model opnieuw traint en implementeert als nieuwe webservice in Studio (klassiek). Als u een klassieke webservice opnieuw wilt trainen, [raadpleegt u dit artikel met instructies.](retrain-classic-web-service.md)
@@ -150,7 +150,7 @@ Ga vervolgens naar het web service-definitie object door de cmdlet [Get-AzMlWebS
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 ```
 
-Als u de naam van de resource groep van een bestaande webservice wilt bepalen, voert u de cmdlet Get-AzMlWebService uit zonder para meters om de webservices in uw abonnement weer te geven. Zoek de webservice en controleer de webservice-ID. De naam van de resource groep is het vierde element in de ID, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
+Als u de naam van de resource groep van een bestaande webservice wilt bepalen, voert u de Get-AzMlWebService cmdlet zonder para meters uit om de webservices in uw abonnement weer te geven. Zoek de webservice en controleer de webservice-ID. De naam van de resource groep is het vierde element in de ID, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
 
 ```azurepowershell
 Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph

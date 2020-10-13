@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
 ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448602"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
@@ -104,7 +104,7 @@ Dit kan als volgt worden geconfigureerd:
 
     ![Planning configureren](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Klik op **Create**.
+3. Klik op **Maken**.
 
 4. Vul de para meters voor de planning in. Deze worden gebruikt telkens wanneer het Runbook wordt geactiveerd. De para meter **WEBHOOKDATA** moet leeg blijven als deze wordt uitgevoerd via een schema.
 
@@ -161,7 +161,7 @@ Voor beeld van JSON-hoofd tekst:
 
 Deze para meters worden gedefinieerd in het Power shell-script voor runbook.  Wanneer de webactiviteit wordt uitgevoerd, is de door gegeven JSON-nettolading WEBHOOKDATA.
 
-Dit wordt gedeserialiseerd en opgeslagen als Power shell-para meters, die vervolgens worden gebruikt door de opdracht invoke-ProcesASDatabase Power shell.
+Dit wordt gedeserialiseerd en opgeslagen als Power shell-para meters, die vervolgens worden gebruikt door de Invoke-ProcesASDatabase Power shell-opdracht.
 
 ![Ongeserialiseerde webhook](./media/analysis-services-refresh-azure-automation/20.png)
 

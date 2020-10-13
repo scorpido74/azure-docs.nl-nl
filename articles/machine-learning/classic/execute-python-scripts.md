@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: 5c728b219168f61f7f791b7db280a701ff216985
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362381"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 Python is een waardevol hulp middel in de hulp middelen van veel gegevens wetenschappers. Deze wordt gebruikt in elke fase van typische machine learning werk stromen, inclusief gegevens exploratie, extractie van functies, model training en-implementatie.
@@ -149,7 +149,7 @@ Het is mogelijk om meerdere cijfers te retour neren door ze op te slaan in versc
 
 De Anaconda-omgeving die in Studio (klassiek) is geïnstalleerd, bevat algemene pakketten zoals NumPy, SciPy en scikits-leer. Deze pakketten kunnen effectief worden gebruikt voor de verwerking van gegevens in een machine learning-pijp lijn.
 
-Het volgende experiment en script illustreren bijvoorbeeld het gebruik van ensemble-kennissen in scikits-Leer hoe u de prioriteits scores van functies voor een gegevensset kunt berekenen. De scores kunnen worden gebruikt om de functie selectie onder Super visie uit te voeren voordat deze in een ander model wordt ingevoerd.
+Het volgende experiment en script illustreren bijvoorbeeld het gebruik van ensemble-informatie in Scikits-Learn om urgentie scores van functies te berekenen voor een gegevensset. De scores kunnen worden gebruikt om de functie selectie onder Super visie uit te voeren voordat deze in een ander model wordt ingevoerd.
 
 Hier volgt de python-functie die wordt gebruikt voor het berekenen van de prioriteits scores en het rangschikken van de functies op basis van de scores:
 

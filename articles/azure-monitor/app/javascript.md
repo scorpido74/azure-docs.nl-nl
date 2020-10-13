@@ -4,12 +4,12 @@ description: Het ophalen van de pagina weergave en aantal sessies, webclientgege
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841438"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876206"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -200,6 +200,41 @@ De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden 
 | ajaxPerfLookupDelay | 25 | De standaard waarde is 25 MS. De hoeveelheid tijd die moet worden gewacht voordat opnieuw wordt geprobeerd om de Vensters te vinden. prestatie-instellingen voor een `ajax` aanvraag, tijd is in milliseconden en wordt direct door gegeven aan setTimeout ().
 | enableUnhandledPromiseRejectionTracking | onjuist | Indien waar, worden niet-verwerkte beloofings afwijzingen automatisch verzameld en gerapporteerd als Java script-fout. Wanneer disableExceptionTracking is ingesteld op True (geen uitzonde ringen bijhouden), wordt de configuratie waarde genegeerd en worden niet-verwerkte beloofe weigeringen niet gerapporteerd.
 
+## <a name="enable-time-on-page-tracking"></a>Bijhouden van tijd op pagina inschakelen
+
+Als u deze instelling inschakelt `autoTrackPageVisitTime: true` , wordt de tijd die een gebruiker aan elke pagina besteed, bijgehouden. Bij elke nieuwe pagina weergave wordt de duur die de gebruiker op de *vorige* pagina heeft besteed, verzonden als een [aangepaste metriek](../platform/metrics-custom-overview.md) met de naam `PageVisitTime` . Deze aangepaste metriek kan worden weer gegeven in de [Metrics Explorer](../platform/metrics-getting-started.md) als een ' op logboek gebaseerde metriek '.
+
+## <a name="enable-correlation"></a>Correlatie inschakelen
+
+Correlatie genereert en verzendt gegevens die gedistribueerde tracering mogelijk maken en de [toepassings toewijzing](../app/app-map.md), de [end-to-end-transactie weergave](../app/app-map.md#go-to-details)en andere diagnostische hulpprogram ma's.
+
+In het volgende voor beeld ziet u alle mogelijke configuraties die vereist zijn voor het inschakelen van correlatie, met hieronder scenario-specifieke opmerkingen:
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
+    enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
+
+Als een van de servers van derden waarmee de client communiceert `Request-Id` , de-en-headers niet kan accepteren `Request-Context` en u de configuratie ervan niet kunt bijwerken, moet u ze in een uitsluitings lijst plaatsen via de `correlationHeaderExcludeDomains` configuratie-eigenschap. Deze eigenschap ondersteunt joker tekens.
+
+Aan de server zijde moeten verbindingen met deze headers zijn toegestaan. Afhankelijk van de `Access-Control-Allow-Headers` configuratie van de server is het vaak nodig om de lijst aan de server zijde uit te breiden door hand matig toe te voegen `Request-Id` en `Request-Context` .
+
+Access-Control-Allow-headers: `Request-Id` , `Request-Context` , `<your header>`
+
+> [!NOTE]
+> Als u gebruikmaakt van OpenTelemtry of Application Insights Sdk's die zijn uitgebracht in 2020 of hoger, kunt u het beste [WC3 tracering voor](https://www.w3.org/TR/trace-context/)gebruiken. Zie configuratie-instructies [hier](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
+
 ## <a name="single-page-applications"></a>Toepassingen met één pagina
 
 Deze SDK verwerkt standaard **geen** route wijzigingen op basis van status die optreden in toepassingen met één pagina. Als u het bijhouden van automatische route wijzigingen wilt inschakelen voor uw toepassing met één pagina, kunt u `enableAutoRouteTracking: true` aan uw installatie configuratie toevoegen.
@@ -208,10 +243,6 @@ Op dit moment bieden we een afzonderlijke [reageer-plugin](javascript-react-plug
 > [!NOTE]
 > Gebruik `enableAutoRouteTracking: true` alleen als u de **niet** -reagerende invoeg toepassing niet gebruikt. Beide kunnen nieuwe page views verzenden wanneer de route verandert. Als beide zijn ingeschakeld, kan dubbele page views worden verzonden.
 
-## <a name="configuration-autotrackpagevisittime"></a>Configuratie: autoTrackPageVisitTime
-
-Als u deze instelling inschakelt `autoTrackPageVisitTime: true` , wordt de tijd die een gebruiker aan elke pagina besteed, bijgehouden. Bij elke nieuwe pagina weergave wordt de duur die de gebruiker op de *vorige* pagina heeft besteed, verzonden als een [aangepaste metriek](../platform/metrics-custom-overview.md) met de naam `PageVisitTime` . Deze aangepaste metriek kan worden weer gegeven in de [Metrics Explorer](../platform/metrics-getting-started.md) als een ' op logboek gebaseerde metriek '.
-
 ## <a name="extensions"></a>Extensies
 
 | Extensies |
@@ -219,38 +250,6 @@ Als u deze instelling inschakelt `autoTrackPageVisitTime: true` , wordt de tijd 
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
 | [Angular](javascript-angular-plugin.md) |
-
-## <a name="correlation"></a>Correlatie
-
-Correlatie van client naar server zijde wordt ondersteund voor:
-
-- XHR/AJAX-aanvragen 
-- Aanvragen ophalen 
-
-Correlatie tussen client en server zijde wordt **niet ondersteund** voor `GET` en- `POST` aanvragen.
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Kruis-onderdeel correlatie tussen client-AJAX en server aanvragen inschakelen
-
-Om correlatie in te scha kelen `CORS` , moet de client twee extra aanvraag headers verzenden `Request-Id` en moet `Request-Context` de server de verbindingen met deze headers kunnen accepteren. Het verzenden van deze headers wordt ingeschakeld via `enableCorsCorrelation: true` de instelling in de Java script SDK-configuratie. 
-
-Afhankelijk van de `Access-Control-Allow-Headers` configuratie van de server is het vaak nodig om de lijst aan de server zijde uit te breiden door hand matig toe te voegen `Request-Id` en `Request-Context` .
-
-Access-Control-Allow-headers: `Request-Id` , `Request-Context` , `<your header>`
-
-Als een van de servers van derden waarmee de client communiceert `Request-Id` , de-en-headers niet kan accepteren `Request-Context` en u de configuratie ervan niet kunt bijwerken, moet u ze in een uitsluitings lijst plaatsen via de `correlationHeaderExcludeDomains` configuratie-eigenschap. Deze eigenschap ondersteunt joker tekens.
-
-```javascript
-// excerpt of the config section of the JavaScript SDK snippet with correlation
-// between client-side AJAX and server requests enabled.
-cfg: { // Application Insights Configuration
-    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
-    enableCorsCorrelation: true,
-    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
-    /* ...Other Configuration Options... */
-}});
-</script>
-
-``` 
 
 ## <a name="explore-browserclient-side-data"></a>Browser/gegevens van client zijde verkennen
 

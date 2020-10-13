@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447749"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge apparaat maken en inrichten met X. 509-certificaten
@@ -279,7 +279,7 @@ Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-wind
    ```
 
    >[!TIP]
-   >In het bestand config. yaml worden uw certificaat en sleutel gegevens opgeslagen als bestands-Uri's. De opdracht initialiseren-IoTEdge verwerkt echter deze opmaak stap voor u, zodat u het absolute pad naar het certificaat en de sleutel bestanden op uw apparaat kunt opgeven.
+   >In het bestand config. yaml worden uw certificaat en sleutel gegevens opgeslagen als bestands-Uri's. De Initialize-IoTEdge-opdracht verwerkt echter deze opmaak stap voor u, zodat u het absolute pad naar het certificaat en de sleutel bestanden op uw apparaat kunt opgeven.
 
 ## <a name="verify-successful-installation"></a>Geslaagde installatie controleren
 
