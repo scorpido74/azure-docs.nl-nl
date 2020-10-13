@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829013"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Een volledige virtuele Linux-machine maken met de Azure CLI
@@ -473,7 +473,7 @@ U hebt de netwerk bronnen gemaakt ter ondersteuning van virtuele machines die to
 
 Geef een SSH-sleutel op die moet worden gebruikt voor verificatie. Als u geen open bare SSH-sleutel paar hebt, kunt u [deze maken](mac-create-ssh-keys.md) of de `--generate-ssh-keys` para meter gebruiken om ze voor u te maken. Als u al een sleutel paar hebt, gebruikt deze para meter bestaande sleutels in `~/.ssh` .
 
-Maak de virtuele machine door alle resources en informatie samen met de opdracht [AZ VM Create](/cli/azure/vm) op te halen. In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
+Maak de virtuele machine door alle resources en informatie samen met de opdracht [AZ VM Create](/cli/azure/vm) op te halen. In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt:
 
 ```azurecli
 az vm create \

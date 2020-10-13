@@ -4,10 +4,10 @@ description: In dit artikel vindt u een aantal geavanceerde onderwerpen met betr
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248081"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric toepassings upgrade: geavanceerde onderwerpen
@@ -100,7 +100,7 @@ De genegeerde vertragings duur is alleen van toepassing op het aangeroepen upgra
 >
 
 > [!NOTE]
-> Deze functie kan worden geconfigureerd in bestaande services met behulp van de cmdlet Update-ServiceFabricService of de ARM-sjabloon zoals hierboven wordt vermeld, wanneer de cluster code versie 7.1.XXX of hoger is.
+> Deze functie kan worden geconfigureerd in bestaande services met Update-ServiceFabricService cmdlet of de ARM-sjabloon zoals hierboven wordt vermeld, wanneer de cluster code versie 7.1.XXX of hoger is.
 >
 >
 

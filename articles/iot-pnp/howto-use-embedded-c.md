@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610072"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>IoT-Plug en Play op beperkte apparaten implementeren
@@ -24,7 +24,7 @@ De SDK voor Embedded C biedt een licht gewicht oplossing voor het verbinden van 
 
 ### <a name="use-a-real-device"></a>Een echt apparaat gebruiken
 
-Voor een volledige end-to-end zelf studie met de SDK voor Embedded C, de Device Provisioning Service en IoT Plug en Play op een echt apparaat, zie het [ontwikkel bord doel-pic-IOT wx om verbinding te maken met Azure via IOT hub Device Provisioning Service](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
+Voor een volledige end-to-end zelf studie met de SDK voor Embedded C, de Device Provisioning Service en IoT Plug en Play op een echt apparaat, Zie [redoel PIC-IoT wx Development Board om verbinding te maken met Azure via IOT hub Device Provisioning Service](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
 
 ### <a name="introductory-samples"></a>Inleidende voor beelden
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833246"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Een back-up van Azure Database for MariaDB-server maken en deze terugzetten met behulp van PowerShell
@@ -133,4 +133,4 @@ De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een Azure Database for MariaDB connection string genereren met Power shell](howto-connection-string-powershell.md)
+> [Azure Database for MariaDB-verbindingsreeks genereren met PowerShell](howto-connection-string-powershell.md)
