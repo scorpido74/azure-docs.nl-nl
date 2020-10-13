@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: 6fc0add55caccd7721f3ee2c72db68fbcf6bc0dc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458498"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Service-eindpunten en -regels voor virtuele netwerken gebruiken voor Azure Database for MariaDB
@@ -135,7 +135,7 @@ Als u alleen een VNet-firewall regel instelt, kunt u de server niet beveiligen m
 U kunt de vlag **IgnoreMissingServiceEndpoint** instellen met behulp van de Azure CLI of portal.
 
 ## <a name="related-articles"></a>Verwante artikelen:
-- [Virtuele netwerken van Azure][vm-virtual-network-overview]
+- [Virtuele netwerken van Azure.][vm-virtual-network-overview]
 - [Service-eindpunten voor een virtueel Azure-netwerk][vm-virtual-network-service-endpoints-overview-649d]
 
 ## <a name="next-steps"></a>Volgende stappen

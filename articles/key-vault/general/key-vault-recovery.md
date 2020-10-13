@@ -9,10 +9,10 @@ ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
 ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604280"
 ---
 # <a name="azure-key-vault-recovery-overview"></a>Overzicht van Azure Key Vault herstel
@@ -34,7 +34,7 @@ Het **opschonen** van de beveiliging is zodanig ontworpen dat het verwijderen va
 > [!NOTE]
 > Het opschonen van de beveiliging is zo ontworpen dat er geen beheerdersrol of machtiging is die het opschonen van de beveiliging kan overschrijven, uitschakelen of omzeilen. **Wanneer het leegmaken van de beveiliging is ingeschakeld, kan het niet worden uitgeschakeld of overschreven door iedereen, waaronder micro soft.** Dit betekent dat u een verwijderde sleutel kluis moet herstellen of wachten totdat de Bewaar periode is verstreken voordat u de naam van de sleutel kluis opnieuw gebruikt.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
 
 ## <a name="verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete"></a>Controleren of de functie voor voorlopig verwijderen is ingeschakeld voor een sleutel kluis en het voorlopig verwijderen inschakelen
 
@@ -89,7 +89,7 @@ Het **opschonen** van de beveiliging is zodanig ontworpen dat het verwijderen va
 
 :::image type="content" source="../media/key-vault-recovery-5.png" alt-text=" Een scherm afbeelding van de Azure Portal<>":::
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ## <a name="key-vault-cli"></a>Key Vault (CLI)
 

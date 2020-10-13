@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443126"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Rapportage over uitgeschaalde Cloud databases (preview-versie)
@@ -33,8 +33,8 @@ Zie [Query's uitvoeren in Cloud databases met verschillende schema's](elastic-qu
 
 * Maak een Shard-kaart met behulp van de client bibliotheek voor Elastic data base. Zie [Shard-toewijzings beheer](elastic-scale-shard-map-management.md). U kunt ook de voor beeld-app gebruiken in aan de [slag met Elastic data base-hulpprogram ma's](elastic-scale-get-started.md).
 * U kunt ook de [bestaande data bases migreren naar uitgeschaalde data bases](elastic-convert-to-use-elastic-tools.md).
-* De gebruiker moet beschikken over de machtiging voor het wijzigen van externe gegevens bronnen. Deze machtiging is opgenomen in de machtiging ALTER data base.
-* Machtigingen voor externe gegevens bronnen wijzigen is nodig om te verwijzen naar de onderliggende gegevens bron.
+* De gebruiker moet beschikken over de machtiging voor het wijzigen van externe gegevens bronnen. Deze machtiging is opgenomen in de machtiging ALTER DATABASE.
+* Machtigingen voor ALTER ANY EXTERNAL DATA SOURCE zijn nodig om te verwijzen naar de onderliggende gegevensbron.
 
 ## <a name="overview"></a>Overzicht
 
@@ -211,9 +211,9 @@ Voorbeeld:
         N'select count(w_id) as foo from warehouse'
 ```
 
-## <a name="connectivity-for-tools"></a>Connectiviteit voor hulpprogram ma's
+## <a name="connectivity-for-tools"></a>Connectiviteit voor hulpprogramma's
 
-Gebruik reguliere SQL Server verbindings reeksen om uw toepassing, uw BI-en gegevens integratie Programma's te koppelen aan de data base met uw externe tabel definities. Zorg ervoor dat SQL Server wordt ondersteund als gegevens bron voor uw hulp programma. Ga vervolgens naar de Elastic query-data base, zoals alle andere SQL Server data bases die zijn verbonden met het hulp programma, en gebruik externe tabellen van uw hulp programma of toepassing alsof ze lokale tabellen zijn.
+Gebruik reguliere SQL Server verbindings reeksen om uw toepassing, uw BI-en gegevens integratie Programma's te koppelen aan de data base met uw externe tabel definities. Zorg ervoor dat SQL Server wordt ondersteund als gegevensbron voor uw hulpprogramma. Ga vervolgens naar de Elastic query-data base, zoals alle andere SQL Server data bases die zijn verbonden met het hulp programma, en gebruik externe tabellen van uw hulp programma of toepassing alsof ze lokale tabellen zijn.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -225,10 +225,10 @@ Gebruik reguliere SQL Server verbindings reeksen om uw toepassing, uw BI-en gege
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [overzicht van elastische query's](elastic-query-overview.md)voor een overzicht van elastische query's.
-* Zie aan de slag [met query's tussen data bases (verticaal partitioneren)](elastic-query-getting-started-vertical.md)voor een verticaal gepartitioneerde zelf studie.
-* Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
-* Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md)voor een zelf studie over horizontale partitionering (sharding).
-* Zie [ \_ \_ extern uitvoeren van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [Aan de slag met query's op meerdere databases (verticale partitionering)](elastic-query-getting-started-vertical.md) voor een zelfstudie over verticale partitionering.
+* Zie [Query's uitvoeren op verticaal gepartitioneerde gegevens](elastic-query-vertical-partitioning.md) voor de syntaxis van en voorbeeldquery's voor verticaal gepartitioneerde gegevens
+* Zie [Aan de slag met elastische query's voor horizontale partitionering (sharding)](elastic-query-getting-started.md) voor een zelfstudie over horizontale partitionering (sharding).
+* Zie [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL-database of een aantal databases die als shards fungeren in een schema voor horizontale partitionering.
 
 <!--Image references-->
 [1]: ./media/elastic-query-horizontal-partitioning/horizontalpartitioning.png

@@ -9,10 +9,10 @@ ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
 ms.openlocfilehash: 56112107bbd1bb506fcbff615ec524e043d54d1a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653720"
 ---
 # <a name="h-series"></a>H-serie
@@ -45,7 +45,7 @@ Virtuele machines uit de H-serie zijn geoptimaliseerd voor toepassingen die word
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

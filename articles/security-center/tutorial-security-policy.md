@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894584"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
@@ -86,7 +86,7 @@ Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Securi
 
 U kunt beveiligings beleid via de Azure Policy Portal bewerken via REST API of met behulp van Windows Power shell.
 
-Security Center gebruikt op rollen gebaseerd Access Control (RBAC), dat ingebouwde rollen biedt die u kunt toewijzen aan Azure-gebruikers,-groepen en-services. Wanneer gebruikers Security Center openen, zien ze alleen informatie met betrekking tot de resources waartoe ze toegang hebben. Dit betekent dat gebruikers de rol van *eigenaar*, *bijdrager*of *lezer* aan het abonnement van de resource krijgen toegewezen. Er zijn ook twee specifieke Security Center rollen:
+Security Center maakt gebruik van Role-Based Access Control (RBAC), dat ingebouwde rollen biedt die u kunt toewijzen aan Azure-gebruikers,-groepen en-services. Wanneer gebruikers Security Center openen, zien ze alleen informatie met betrekking tot de resources waartoe ze toegang hebben. Dit betekent dat gebruikers de rol van *eigenaar*, *bijdrager*of *lezer* aan het abonnement van de resource krijgen toegewezen. Er zijn ook twee specifieke Security Center rollen:
 
 - **Beveiligings lezer**: heeft rechten voor het weer geven van Security Center items, zoals aanbevelingen, waarschuwingen, beleid en status. Kan geen wijzigingen aanbrengen.
 - **Beveiligings beheerder**: heeft dezelfde weergave rechten als de *beveiligings lezer*. Kan het beveiligings beleid ook bijwerken en waarschuwingen negeren.

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893800"
 ---
 # <a name="filter-based-feature-selection"></a>Functieselectie op basis van filters
@@ -36,7 +36,7 @@ Normaal gesp roken gebruikt u alleen de kolommen met de beste scores om uw voors
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>De metriek van een functie selecteren
 
-De functie selectie module voor het filteren van functies biedt diverse metrische gegevens voor het beoordelen van de informatie waarde in elke kolom. Deze sectie bevat een algemene beschrijving van elke metriek en hoe deze wordt toegepast. U vindt aanvullende vereisten voor het gebruik van elke metriek in de [technische opmerkingen](#technical-notes) en in de [instructies](#how-to-configure-filter-based-feature-selection) voor het configureren van elke module.
+De module Filter-Based onderdelen electie biedt diverse metrische gegevens voor het beoordelen van de informatie waarde in elke kolom. Deze sectie bevat een algemene beschrijving van elke metriek en hoe deze wordt toegepast. U vindt aanvullende vereisten voor het gebruik van elke metriek in de [technische opmerkingen](#technical-notes) en in de [instructies](#how-to-configure-filter-based-feature-selection) voor het configureren van elke module.
 
 -   **Pearson-correlatie**  
 
@@ -52,11 +52,11 @@ De functie selectie module voor het filteren van functies biedt diverse metrisch
 > [!TIP]
 > Als u een andere optie voor de selectie methode voor aangepaste functies nodig hebt, gebruikt u de module [R-script uitvoeren](execute-r-script.md) . 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>Selectie van functies op basis van filters configureren
+## <a name="how-to-configure-filter-based-feature-selection"></a>Filter-Based functie selectie configureren
 
 U kiest een standaard statistische metrische waarde. De module berekent de correlatie tussen een paar kolommen: de kolom Label en een functie kolom.
 
-1.  Voeg de functie selectie module voor het filteren van functies toe aan uw pijp lijn. U kunt deze vinden in de categorie **functie selectie** in de ontwerper.
+1.  Voeg de module voor het selecteren van Filter-Based onderdelen toe aan uw pijp lijn. U kunt deze vinden in de categorie **functie selectie** in de ontwerper.
 
 2. Verbind een invoer-gegevensset die ten minste twee kolommen bevat die mogelijke functies zijn.  
 
