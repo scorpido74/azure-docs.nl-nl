@@ -1,24 +1,18 @@
 ---
 title: Configuratie en optimalisatie van met InfiniBand ingeschakelde H-Series en N-Series Azure Virtual Machines
 description: Meer informatie over het configureren en optimaliseren van de met InfiniBand ingeschakelde H-Series en N-Series Vm's voor HPC.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88006601"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994821"
 ---
 # <a name="configure-and-optimize-vms"></a>VM's configureren en optimaliseren
 

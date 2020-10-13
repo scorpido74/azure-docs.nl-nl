@@ -6,19 +6,19 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16f4cfd70cf4dbeaeb1376368787b3fa0e4b9a52
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761597"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994041"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
 
 > [!NOTE]
 > Application Insights Java SDK biedt geen ondersteuning voor een lente-webstroom. 
 >
-> Zowel webstroom als micrometer worden ondersteund in [Application Insights Java 3,0-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises) waarvoor geen instrumentatie is vereist. 
+> Zowel webstroom als micrometer worden ondersteund in [Application Insights Java 3,0-agent](./java-on-premises.md) waarvoor geen instrumentatie is vereist. 
 
 Met de micrometer-toepassings bewaking worden metrische gegevens gemeten voor op JVM gebaseerde toepassings code en kunt u deze exporteren naar uw favoriete bewakings systemen. In dit artikel leert u hoe u micrometer kunt gebruiken met Application Insights voor zowel veer boot-als niet-veer boot-toepassingen.
 
@@ -279,4 +279,3 @@ Voeg de volgende bindings code toe aan het configuratie bestand:
 
 * Zie de officiële [micrometer-documentatie](https://micrometer.io/docs)voor meer informatie over micrometer.
 * Zie de [documentatie van de officiële lente op Azure](/java/azure/spring-framework/?view=azure-java-stable)voor meer informatie over de lente op Azure.
-

@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89144920"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996503"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -151,7 +151,7 @@ Tenzij u een Java-versie voor uw implementatie opgeeft, wordt de Maven-archetype
 
 ### <a name="specify-the-deployment-version"></a>De implementatie versie opgeven
 
-U kunt de versie van Java beheren die is gericht op de Maven-archetype met behulp van de `-DjavaVersion` para meter. De waarde van deze para meter kan ether `8` of zijn `11` . Java 11-ondersteuning is momenteel beschikbaar als preview-versie. 
+U kunt de versie van Java beheren die is gericht op de Maven-archetype met behulp van de `-DjavaVersion` para meter. De waarde van deze para meter kan `8` of zijn `11` . Java 11-ondersteuning is momenteel beschikbaar als preview-versie. 
 
 De Maven archetype genereert een pom.xml dat de opgegeven Java-versie als doel heeft. De volgende elementen in pom.xml geven aan welke Java-versie moet worden gebruikt:
 
@@ -276,8 +276,8 @@ public class Function {
     @FunctionName("echo")
     public static String echo(
         @HttpTrigger(name = "req", methods = { HttpMethod.PUT }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
-        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
-        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
+        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData,
+        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData
     ) {
         testOutputData.setValue(new Person(httpbody + "Partition", httpbody + "Row", httpbody + "Name"));
         return "Hello, " + inputReq + " and " + inputData.getKey() + ".";
@@ -506,7 +506,7 @@ public class Function {
 Raadpleeg de volgende bronnen voor meer informatie over het ontwikkelen van Java Azure Functions:
 
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
-* [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
+* [Naslag informatie voor Azure Functions ontwikkel aars](functions-reference.md)
 * [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)
 * Lokale ontwikkeling en fout opsporing met [Visual Studio code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)en [eclips](functions-create-maven-eclipse.md)
 * [Java-functies voor fout opsporing op afstand met Visual Studio code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

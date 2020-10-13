@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d0e8c4806784cf9b00712ad1bf45bca958a7eb1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803803"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995367"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor voor netwerken (preview-versie)
-Azure Monitor voor netwerk biedt een uitgebreid overzicht van de [status](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) en [metrische gegevens](../platform/metrics-supported.md) voor alle geïmplementeerde netwerk bronnen zonder enige configuratie.  Het biedt ook toegang tot alle mogelijkheden voor netwerk bewaking, zoals [verbindings monitor](../../network-watcher/connection-monitor-preview.md), [flow logboek registratie voor netwerk beveiligings groepen (nsg's)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Traffic Analytics](../../network-watcher/traffic-analytics.md)en andere [Diagnostische](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) functies voor het netwerk.
+Azure Monitor voor netwerk biedt een uitgebreid overzicht van de [status](../../service-health/resource-health-checks-resource-types.md) en [metrische gegevens](../platform/metrics-supported.md) voor alle geïmplementeerde netwerk bronnen zonder enige configuratie.  Het biedt ook toegang tot alle mogelijkheden voor netwerk bewaking, zoals [verbindings monitor](../../network-watcher/connection-monitor-preview.md), [flow logboek registratie voor netwerk beveiligings groepen (nsg's)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Traffic Analytics](../../network-watcher/traffic-analytics.md)en andere [Diagnostische](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) functies voor het netwerk.
 
 Azure Monitor voor netwerken is gestructureerd rond de volgende belang rijke onderdelen van bewaking:
 - [Netwerk status en-metrische gegevens](#networkhealth)
@@ -71,7 +71,7 @@ Verschillende filters bieden hulp om te beperken tot een specifiek pad en de sta
 
 Klik op **gedetailleerde metrische weer gave** om een vooraf geconfigureerde werkmap te openen met gedetailleerde metrische gegevens voor de Application Gateway, alle bronnen van de back-endadresgroep en front-end ip's. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Mogelijkheden
+## <a name="connectivity"></a><a name="connectivity"></a>Connectiviteit
 
 Het tabblad **connectiviteit** biedt een moeiteloze manier om alle tests te visualiseren die zijn geconfigureerd met behulp van verbindings monitor en [verbindings monitor (preview)](../../network-watcher/connection-monitor-preview.md) voor de geselecteerde set abonnementen.
 

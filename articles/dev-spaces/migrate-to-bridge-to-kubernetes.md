@@ -3,14 +3,14 @@ title: Bridge migreren naar Kubernetes
 services: azure-dev-spaces
 ms.date: 10/12/2020
 ms.topic: conceptual
-description: Hierin worden de processen beschreven die Power Azure dev Spaces
+description: Beschrijft het migratie proces van Azure dev Spaces om te Bridgepen naar Kubernetes
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Bridge to Kubernetes
-ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2b923e87e1eefe9cb0ba4afc018eed728ee6aaba
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962850"
+ms.locfileid: "91993928"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Bridge migreren naar Kubernetes
 
@@ -84,10 +84,34 @@ Bridge to Kubernetes heeft de flexibiliteit om te werken met toepassingen die wo
 
 1. Werk uw Visual Studio IDE bij naar versie 16,7 of hoger en installeer de Bridge in de Kubernetes-extensie van [Visual Studio Marketplace][vs-marketplace].
 1. Schakel de Azure dev Spaces-controller uit met behulp van de Azure Portal of de [Azure dev Spaces-cli][azds-delete].
-1. Verwijder het `azds.yaml` bestand uit uw project.
+1. Gebruik [Azure Cloud shell](https://shell.azure.com). Of op Mac, Linux of Windows waarop bash is geïnstalleerd, opent u een bash shell-prompt. Zorg ervoor dat de volgende hulpprogram ma's beschikbaar zijn in uw opdracht regel omgeving: Azure CLI, docker, kubectl, krul, tar en gunzip.
+1. Een container register maken of een bestaand REGI ster gebruiken. U kunt een container register maken in azure met behulp van [Azure container Registry](../container-registry/index.yml) of met behulp van [docker hub](https://hub.docker.com/).
+1. Voer het migratie script uit om activa van Azure-ontwikkel ruimten te converteren naar Kubernetes-assets. Het script bouwt een nieuwe installatie kopie die compatibel is met Bridge naar Kubernetes, uploadt deze naar het aangewezen REGI ster en gebruikt vervolgens [helm](https://helm.sh) om het cluster bij te werken met de installatie kopie. U moet de resource groep, de naam van het AKS-cluster en een container register opgeven. Er zijn andere opdracht regel opties, zoals hier wordt weer gegeven:
+
+   ```azure-cli
+   curl -sL https://aka.ms/migrate-tool | bash -s -- -g ResourceGroupName -n AKSName -h ContainerRegistryName -r PathOfTheProject -y
+   ```
+
+   Het script ondersteunt de volgende vlaggen:
+
+   ```cmd  
+    -g Name of resource group of AKS Cluster [required]
+    -n Name of AKS Cluster [required]
+    -h Container registry name. Examples: ACR, Docker [required]
+    -k Kubernetes namespace to deploy resources (uses 'default' otherwise)
+    -r Path to root of the project that needs to be migrated (default = current working directory)
+    -t Image name & tag in format 'name:tag' (default is 'projectName:stable')
+    -i Enable a public endpoint to access your service over internet. (default is false)
+    -y Doesn't prompt for non-tty terminals
+    -d Helm Debug switch
+   ```
+
+1. Migreer hand matig aanpassingen, zoals omgevings variabele-instellingen, in *azds. yaml* naar het bestand *Values. yml* van het project.
+1. Beschrijving Verwijder het `azds.yaml` bestand uit uw project.
 1. Implementeer uw toepassing opnieuw.
 1. Configureer de brug naar Kubernetes op uw geïmplementeerde toepassing. Zie [Bridge gebruiken voor Kubernetes][use-btk-vs]voor meer informatie over het gebruik van Bridge voor Kubernetes in Visual Studio.
 1. Start de fout opsporing in Visual Studio met behulp van de zojuist gemaakte brug naar het Kubernetes-profiel voor fout opsporing.
+1. U kunt het script opnieuw uitvoeren als dat nodig is om het opnieuw te implementeren in uw cluster.
 
 ### <a name="use-visual-studio-code-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Visual Studio code gebruiken om over te stappen naar een brug naar Kubernetes vanuit Azure dev Spaces
 

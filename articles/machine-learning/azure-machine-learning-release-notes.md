@@ -9,18 +9,61 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 189d6a57a17172f181e7375265960fe4f25f8ed1
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940239"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996750"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
+
+## <a name="2020-10-12"></a>2020-10-12
+
+### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Azure Machine Learning SDK voor python v-1.16.0
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **Azure-cli-ml**
+    + AKSWebservice en AKSEndpoints bieden nu ondersteuning voor pod CPU-en geheugen resource limieten. Deze optionele limieten kunnen worden gedefinieerd via 1. Instelling `cpu_cores_limit` en `memory_gb_limit` para meters in de `AKSEndpoint.deploy_configuration()` en- `AKSWebservice.deploy_configuration()` methode 2. Instelling `--cpu-cores-limit` en `--memory-gb-limit` vlaggen in TOEPAS bare cli-aanroepen 3. `cpuLimit`De instelling en `memoryInGBLimit` in de `containerResourceRequirements` implementatie configuratie. json/. yml-bestanden meer informatie over Kubernetes-resources en-limieten vindt u ophttps://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+  + **azureml-contrib-interpret**
+    + pakket beschrijvingen oplossen waardoor het uploaden fout naar pypi voor azureml-interpreteert, azureml-uitleggen-model, azureml-contrib-interprete en azureml-tensorboard
+  + **azureml-contrib-K8S**
+    + Er is ondersteuning toegevoegd voor het koppelen van ArcKubernetes compute
+  + **azureml-contrib-Mir**
+    + AKSWebservice en AKSEndpoints bieden nu ondersteuning voor pod CPU-en geheugen resource limieten. Deze optionele limieten kunnen worden gedefinieerd via 1. Instelling `cpu_cores_limit` en `memory_gb_limit` para meters in de `AKSEndpoint.deploy_configuration()` en- `AKSWebservice.deploy_configuration()` methode 2. Instelling `--cpu-cores-limit` en `--memory-gb-limit` vlaggen in TOEPAS bare cli-aanroepen 3. `cpuLimit`De instelling en `memoryInGBLimit` in de `containerResourceRequirements` implementatie configuratie. json/. yml-bestanden meer informatie over Kubernetes-resources en-limieten vindt u ophttps://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+  + **azureml-contrib-server**
+    + AKSWebservice en AKSEndpoints bieden nu ondersteuning voor pod CPU-en geheugen resource limieten. Deze optionele limieten kunnen worden gedefinieerd via 1. Instelling `cpu_cores_limit` en `memory_gb_limit` para meters in de `AKSEndpoint.deploy_configuration()` en- `AKSWebservice.deploy_configuration()` methode 2. Instelling `--cpu-cores-limit` en `--memory-gb-limit` vlaggen in TOEPAS bare cli-aanroepen 3. `cpuLimit`De instelling en `memoryInGBLimit` in de `containerResourceRequirements` implementatie configuratie. json/. yml-bestanden meer informatie over Kubernetes-resources en-limieten vindt u ophttps://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+  + **azureml-core**
+    + Primaire versies van de directe afhankelijkheden van azureml-core vastmaken
+    + AKSWebservice en AKSEndpoints bieden nu ondersteuning voor pod CPU-en geheugen resource limieten. Meer informatie over Kubernetes-bronnen en-limieten vindt u op https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + Run.log_table bijgewerkt zodat afzonderlijke rijen kunnen worden geregistreerd.
+    + Er is een statische methode toegevoegd `Run.get(workspace, run_id)` voor het ophalen van een uitvoering alleen met een instantie methode voor het toevoegen van een werk ruimte `Workspace.get_run(run_id)` om een uitvoering in de werk ruimte op te halen
+    + Hiermee wordt de opdracht eigenschap in een uitvoerings configuratie geïntroduceerd, waarmee gebruikers opdracht kunnen verzenden in plaats van script & argumenten.
+  + **azureml-dataprep-systeem eigen**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` officiële ondersteuning voor python 3,8.
+  + **azureml-uitleg-model**
+    + pakket beschrijvingen oplossen waardoor het uploaden fout naar pypi voor azureml-interpreteert, azureml-uitleggen-model, azureml-contrib-interprete en azureml-tensorboard
+  + **azureml-interpret**
+    + gedrag van de vlag voor client is_raw met vaste uitleg in azureml-interpret
+    + pakket beschrijvingen oplossen waardoor het uploaden fout naar pypi voor azureml-interpreteert, azureml-uitleggen-model, azureml-contrib-interprete en azureml-tensorboard
+  + **azureml-pipeline-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` officiële ondersteuning voor python 3,8.
+  + **azureml-SDK**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` officiële ondersteuning voor python 3,8.
+  + **azureml-tensorboard**
+    + pakket beschrijvingen oplossen waardoor het uploaden fout naar pypi voor azureml-interpreteert, azureml-uitleggen-model, azureml-contrib-interprete en azureml-tensorboard
+  + **azureml-trainen**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` officiële ondersteuning voor python 3,8.
+  + **azureml-train-core**
+    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` officiële ondersteuning voor python 3,8.
+    + Tensor Flow 2,3-gecuratore omgeving toevoegen
+    + Hiermee wordt de opdracht eigenschap in een uitvoerings configuratie geïntroduceerd, waarmee gebruikers opdracht kunnen verzenden in plaats van script & argumenten.
+  + **azureml-widgets**
+    + Opnieuw ontworpen interface voor widget script uitvoering.
+
 
 ## <a name="2020-09-28"></a>2020-09-28
 
@@ -196,7 +239,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + Markeer create_from_model-API in DataDriftDetector als afgeschaft moet worden.
   + **azureml-dataprep**
     + Er is een verbeterd fout bericht weer gegeven bij het downloaden of koppelen van een onjuist type gegevensset.
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Er is een fout opgelost bij het deserialiseren van de pijplijn grafiek die geregistreerde gegevens sets bevat.
   + **azureml-pipeline-steps**
     + RScriptStep ondersteunt RSection van azureml. core. Environment.
@@ -352,7 +395,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + Reken type van CmAk wordt ondersteund. U kunt uw eigen AKS-cluster toevoegen aan de werk ruimte voor trainings taken.
   + **azureml-contrib-notebook**
     + Doc-verbeteringen in het contrib-notebook pakket.
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + Doc-verbeteringen in het pakket voor azureml-contrib--pipeline-Steps.
   + **azureml-core**
     + Set_connection toevoegen, get_connection, list_connections, delete_connection functies voor de klant voor het uitvoeren van de werk ruimte verbindings resource
@@ -448,7 +491,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + Kleine aanpassingen aan notebooks, voor hulp bij fout opsporing
   + **azureml-opendatasets**
     + voor azureml-opendatapreps is de versie 1.4.0 of hoger van azureml vereist. Er is een waarschuwing toegevoegd als een lagere versie wordt gedetecteerd
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Met deze wijziging kan de gebruiker een optioneel runconfig opgeven voor de moduleVersion bij het aanroepen van de module. Publish_python_script.
     + Het inschakelen van knooppunt accounts kan een pijplijn parameter zijn in ParallelRunStep in azureml. pipeline. stappen
   + **azureml-pipeline-steps**
@@ -520,7 +563,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   + **azureml-contrib-Mir**
     + Er is ondersteuning toegevoegd voor Windows-Services in ManagedInferencing
     + Oude MIR-werk stromen verwijderen, zoals MIR Compute koppelen, SingleModelMirWebservice klasse-opschonen model Profiler geplaatst in contrib-Mir-pakket
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + Kleine oplossing voor YAML-ondersteuning
     + ParallelRunStep wordt uitgebracht voor algemene Beschik baarheid-azureml. contrib. pipeline. stappen hebben een kennisgeving van afschaffing en worden verplaatst naar azureml. pipeline. stappen
   + **azureml-contrib-reinforcementlearning**
@@ -543,7 +586,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   + **azureml-opendatasets**
     + Geen retour waarde wanneer er geen gegevens zijn geretourneerd.
     + Verbeter de prestaties van to_pandas_dataframe.
-  + **azureml-pijp lijn-kern**
+  + **azureml-pipeline-core**
     + Snelle oplossing voor ParallelRunStep, waarbij het laden van YAML is verbroken
     + ParallelRunStep wordt uitgebracht voor algemene Beschik baarheid-azureml. contrib. pipeline. stappen hebben een kennisgeving met betrekking tot de afschaffing. pijp lijn. stappen: nieuwe functies zijn: 1. Gegevens sets als PipelineParameter 2. Nieuwe para meter run_max_retry 3. Configureer bare append_row uitvoer bestands naam
   + **azureml-pipeline-steps**
@@ -639,7 +682,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + Bugfix voor zeldzame uitleg gemaakt met behulp van een lineair surrogaat model met de gesimuleerde uitleger.
   + **azureml-opendatasets**
     + Het oplossen van het probleem van de kolommen van de MNIST wordt geparseerd als teken reeks, die int moet zijn.
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + De optie voor het regenerate_outputs van het gebruik van een module die is inge sloten in een ModuleStep.
   + **azureml-train-automl-client**
     + Afgeschafte tensor flow-modellen voor AutoML.
@@ -742,7 +785,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Update voor azureml-interpret voor gebruik van interpretatie-Community 0,9. *
     + Probleem opgelost met het downloaden van een uitleg die verspreide evaluatie gegevens had
     + Ondersteuning toegevoegd voor de sparse-indeling van het object uitleg in AutoML
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + ComputeInstance als Compute-doel in pijp lijnen ondersteunen
   + **azureml-train-automl-client**
     + Er is extra telemetrie toegevoegd rondom post training-bewerkingen.
@@ -939,11 +982,11 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + **azureml-interpret**
     + uitzonde ringen voor azureml-stijl toegevoegd aan azureml-interprete
     + vaste DeepScoringExplainer-serialisatie voor Keras-modellen
-  + **azureml-pipeline-core**
+  + **azureml-pijp lijn-kern**
     + Pipeline batch Score notebook maakt nu gebruik van ParallelRunStep
   + **azureml-pipeline-steps**
     + De `AutoMLStep` in het pakket is verplaatst `azureml-pipeline-steps` . Afgeschaft `AutoMLStep` in `azureml-train-automl-runtime` .
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + Optionele para meter side_inputs toegevoegd aan ParallelRunStep. Deze para meter kan worden gebruikt om de map in de container te koppelen. De momenteel ondersteunde typen zijn DataReference en PipelineData.
   + **azureml-tensorboard**
     + update voor azureml-tensorboard om tensor Flow 2,0 te ondersteunen
@@ -974,7 +1017,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Er is een fout opgelost waarbij PythonScriptStep resultaten onjuist opnieuw kunnen worden gebruikt, ondanks het wijzigen van de lijst met argumenten
   + **azureml-pipeline-steps**
     + Voor beeld van toegevoegde documentatie voor gegevensset als PythonScriptStep-invoer
-  + **azureml-contrib-pijp lijn-stappen**
+  + **azureml-contrib-pipeline-steps**
     + Para meters die in ParallelRunConfig worden door gegeven, kunnen worden overschreven door de pijplijn parameters nu door te geven. Nieuwe pijplijn parameters die worden ondersteund aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count en aml_process_count_per_node maken al deel uit van een eerdere versie).
   
 ## <a name="2020-01-21"></a>2020-01-21
