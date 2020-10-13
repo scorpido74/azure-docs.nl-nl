@@ -4,10 +4,10 @@ description: Meer informatie over het integreren van Azure Relay met Azure Priva
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263841"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integreren met een persoonlijke Azure-koppeling (preview-versie)
@@ -33,7 +33,7 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Zie [een Azure relay naam ruimte maken met behulp van de Azure Portal](relay-create-namespace-portal.md)voor stapsgewijze instructies voor het maken van een nieuwe Azure relay naam ruimte en entiteiten hierin.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **relays**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
@@ -236,7 +236,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 ### <a name="limitations"></a>Beperkingen 
 - Maximum aantal privé-eind punten per Azure Relay naam ruimte: 64.
 - Maximum aantal Azure Relay-naam ruimten met persoonlijke eind punten per abonnement: 64.
-- De regels voor de netwerk beveiligings groep (NSG) en door de gebruiker gedefinieerde routes zijn niet van toepassing op een privé-eind punt. Zie voor meer informatie [Azure Private Link service: beperkingen](../private-link/private-link-service-overview.md#limitations)
+- De regels voor de netwerk beveiligings groep (NSG) en User-Defined routes zijn niet van toepassing op een privé-eind punt. Zie voor meer informatie [Azure Private Link service: beperkingen](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Volgende stappen
 

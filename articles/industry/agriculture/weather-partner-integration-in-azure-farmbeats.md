@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86496992"
 ---
 # <a name="weather-partner-integration"></a>Partnerintegratie voor weer
@@ -18,7 +18,7 @@ Dit artikel bevat informatie over het docker-onderdeel van de Azure FarmBeats- *
 
  > [!NOTE]
  > Voor het doel van deze documentatie gebruiken we een referentie-implementatie die is gebouwd met behulp van NOAA van Azure open gegevens sets en is beschikbaar op [https://github.com/azurefarmbeats/noaa_docker](https://github.com/azurefarmbeats/noaa_docker) .
- > De bijbehorende docker-installatie kopie is beschikbaar op[https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
+ > De bijbehorende docker-installatie kopie is beschikbaar op [https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
 
 Een weer partner moet een docker-installatie kopie/programma (met de hieronder vermelde specificaties) leveren en de docker-installatie kopie hosten in een container register dat toegankelijk is voor klanten. De weer partner moet de volgende informatie aan haar klanten verstrekken:
 
@@ -36,10 +36,10 @@ Met behulp van de bovenstaande docker-gegevens registreert de klant een weer par
 
 De FarmBeats-Api's bevatten technische documentatie voor Swagger. Zie [FarmBeats Swagger](https://aka.ms/farmbeatsswagger)voor meer informatie over alle api's en hun bijbehorende aanvragen of antwoorden. 
 
-Als u FarmBeats hebt geïnstalleerd, kunt u toegang krijgen tot uw FarmBeats Swagger op`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
+Als u FarmBeats hebt geïnstalleerd, kunt u toegang krijgen tot uw FarmBeats Swagger op `https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 Let op:-API wordt toegevoegd aan de naam van uw FarmBeats-website.
-Het API-eind punt wordt:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
+Het API-eind punt wordt: `https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>Datahub lib
 
@@ -55,7 +55,7 @@ FarmBeats maakt gebruik van Bearer-verificatie en de Api's kunnen worden geopend
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-Het toegangs token kan worden aangevraagd vanuit een Azure-functie die wordt uitgevoerd op het FarmBeats-exemplaar van de klant. De URL van de Azure-functie wordt als argument aan het docker-programma geleverd en het toegangs token kan worden verkregen door een GET-aanvraag voor de URL te maken. Het antwoord van de URL bevat het toegangs token. De Datahub lib biedt hulp functies om partners in staat te stellen het toegangs token op te halen. [Hier](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py) vindt u meer informatie.
+Het toegangs token kan worden aangevraagd vanuit een Azure-functie die wordt uitgevoerd op het FarmBeats-exemplaar van de klant. De URL van de Azure-functie wordt als argument aan het docker-programma geleverd en het toegangs token kan worden verkregen door een GET-aanvraag voor de URL te maken. Het antwoord van de URL bevat het toegangs token. De Datahub lib biedt hulp functies om partners in staat te stellen het toegangs token op te halen. Meer informatie [vindt u hier](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py).
 
 Het toegangs token is slechts enkele uren geldig en moet opnieuw worden aangevraagd wanneer het is verlopen.
 
@@ -85,7 +85,7 @@ De API-service serializeert deze dicteer en slaat deze op in een sleutel [kluis]
 ```
 Houd er rekening mee dat de "partnerCredentials" beschikbaar is op exact dezelfde manier als tijdens de partner registratie van de klant.
 
-De FarmBeats lib biedt hulp functies om partners in staat te stellen de referenties van de activiteit eigenschappen te lezen. [Hier](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py) vindt u meer informatie.
+De FarmBeats lib biedt hulp functies om partners in staat te stellen de referenties van de activiteit eigenschappen te lezen. Meer informatie [vindt u hier](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py).
 
 De levens duur van het bestand is alleen tijdens de uitvoering van de docker-code en wordt verwijderd nadat de docker-uitvoering is beëindigd.
 
@@ -95,10 +95,10 @@ Zie voor meer informatie over de werking van ADF-pijp lijnen en-activiteiten [ht
 
 Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wanneer u een API-aanroep naar FarmBeats maakt.
 
-**Header** | **Beschrijving en voor beeld**
+**Journaalkop** | **Beschrijving en voor beeld**
 --- | ---
 Content-Type | De aanvraag indeling (content-type: Application/ <format> ). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
-Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-token>
+Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-Token>
 Accepteren | De antwoord indeling. Voor FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
 
 ## <a name="data-format"></a>Gegevensindeling
@@ -136,7 +136,7 @@ Dit onderdeel wordt elke keer aangeroepen wanneer een FarmBeats-gebruiker een ta
 
   WeatherDataModel | Beschrijving |
   --- | ---
-  Naam  | Naam van het weer gegeven gegevens model |
+  Name  | Naam van het weer gegeven gegevens model |
   Beschrijving  | Geef een zinvolle beschrijving van het model op. |
   Eigenschappen  | Aanvullende eigenschappen die zijn gedefinieerd door de gegevens provider. |
   > naam weatherMeasures  | De naam van de weer maat meting. Bijvoorbeeld humidity_max |
@@ -159,7 +159,7 @@ Dit onderdeel wordt elke keer aangeroepen wanneer een FarmBeats-gebruiker een ta
   **WeatherDataLocation** | **Beschrijving** |
   weatherDataModelId  | ID van de bijbehorende WeatherDataModel die is gemaakt tijdens de Boots trap|
   location  | vertegenwoordigt de breedte graad, lengte graad en uitbrei ding |
-  Naam | Naam van het object |
+  Name | Naam van het object |
   Beschrijving | Beschrijving |
   farmId | **optioneel** ID van de farm die door de klant wordt gegeven als onderdeel van de taak parameter |
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
@@ -249,7 +249,7 @@ Hier volgt bijvoorbeeld een telemetrie-bericht:
 
 Omdat de partner taak wordt uitgevoerd in het bestaande taak raamwerk: de fouten worden op dezelfde manier vastgelegd als fouten voor andere bestaande taken in FarmBeats (zoals GetFarmData, SensorPlacement enzovoort). De ADF-activiteit die wordt uitgevoerd binnen de ADF-pijp lijn registreert zowel STDERR als STDOUT. Beide bestanden zijn beschikbaar in het opslag account ' datahublogs-xxx ' in de resource groep FarmBeats.
 
-De Datahub lib biedt hulp functies om logboek registratie in te scha kelen als onderdeel van de algemene Datahub-Logboeken. [Hier](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py) vindt u meer informatie.
+De Datahub lib biedt hulp functies om logboek registratie in te scha kelen als onderdeel van de algemene Datahub-Logboeken. Meer informatie [vindt u hier](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py).
 
 **Problemen met de optie of ondersteuning oplossen**
 

@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90020280"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure-beveiligings basislijn voor Azure-Sentinel
@@ -551,13 +551,13 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Hulp**: Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering. In het geval dat de sleutel versleutelings sleutel door een gebruiker wordt ingetrokken door deze te verwijderen of door de toegang tot Azure-Sentinel te verwijderen binnen één uur, zal Azure Sentinel de wijziging naleven en zich gedragen alsof de gegevens niet meer beschikbaar zijn. Op dit moment wordt een bewerking uitgevoerd die gebruikmaakt van permanente opslag resources, zoals gegevens opname, blijvende configuratie wijzigingen en het maken van incidenten, voor komen. Eerder opgeslagen gegevens worden niet verwijderd, maar blijven ontoegankelijk. Ontoegankelijke gegevens vallen onder het beleid voor gegevens behoud en worden verwijderd overeenkomstig dat beleid.
+**Hulp**: Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering. In het geval dat de sleutel versleutelings sleutel door een gebruiker wordt ingetrokken door deze te verwijderen of door de toegang tot Azure-Sentinel te verwijderen binnen één uur, zal Azure Sentinel de wijziging naleven en zich gedragen alsof de gegevens niet meer beschikbaar zijn. Op dit moment wordt een bewerking uitgevoerd die gebruikmaakt van permanente opslag resources, zoals gegevens opname, blijvende configuratie wijzigingen en het maken van incidenten, voor komen. Eerder opgeslagen gegevens worden niet verwijderd, maar blijven ontoegankelijk. Ontoegankelijke gegevens vallen onder het beleid voor gegevens behoud en worden verwijderd overeenkomstig dat beleid.
 
 De enige bewerking die mogelijk is nadat de versleutelings sleutel is ingetrokken of verwijderd, is account verwijdering.
 
 Als de toegang na het intrekken wordt hersteld, wordt de toegang tot de gegevens binnen een uur hersteld door Azure Sentinel.
 
-- [Zacht verwijderen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Soft-Delete in Key Vault inschakelen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 - [Informatie over door de klant beheerde sleutels in azure Sentinel](customer-managed-keys.md)
 

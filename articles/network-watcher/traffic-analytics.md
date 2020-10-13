@@ -13,10 +13,10 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90967505"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
@@ -79,7 +79,7 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
-* Central India
+* India - centraal
 * India - zuid
 * Japan - oost 
 * Japan - west
@@ -110,7 +110,7 @@ De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
-* Central India
+* India - centraal
 * Japan East
 * VS (overheid) - Virginia
 * China - oost 2

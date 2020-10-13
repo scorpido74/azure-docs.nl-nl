@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
 ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015633"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Pull-model voor feed wijzigen in Azure Cosmos DB
@@ -45,7 +45,7 @@ Hier volgen enkele belang rijke verschillen tussen de Change feed-processor en h
 | Mogelijkheid om eerdere wijzigingen opnieuw af te spelen | Ja, met push model | Ja, met pull-model|
 | Navragen voor toekomstige wijzigingen | Controleert automatisch op wijzigingen op basis van door de gebruiker opgegeven `WithPollInterval` | Handmatig |
 | Wijzigingen van de hele container verwerken | Ja, en automatisch geparallelleerd voor meerdere threads/machine die uit dezelfde container worden verbruikt| Ja, en hand matig geparallelleerd met behulp van FeedTokens |
-| Wijzigingen van slechts één partitie sleutel verwerken | Niet ondersteund | Yes|
+| Wijzigingen van slechts één partitie sleutel verwerken | Niet ondersteund | Ja|
 | Ondersteunings niveau | Algemeen beschikbaar | Preview |
 
 ## <a name="consuming-an-entire-containers-changes"></a>De wijzigingen van een hele container gebruiken

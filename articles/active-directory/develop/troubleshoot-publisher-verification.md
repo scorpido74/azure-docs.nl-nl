@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256888"
+ms.locfileid: "91873146"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problemen met Verificatie van uitgever oplossen
 Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
@@ -58,7 +58,7 @@ Hieronder vindt u enkele veelvoorkomende problemen die zich kunnen voordoen tijd
     Uw app-registraties zijn mogelijk gemaakt met een ander gebruikers account in deze Tenant, een persoonlijk/Consumer account of een andere Tenant. Zorg ervoor dat u bent aangemeld met het juiste account in de Tenant waar de app-registraties zijn gemaakt.
 
 - **Er verschijnt een fout met betrekking tot multi-factor Authentication. Wat moet ik doen?** 
-    Zorg ervoor dat [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) is ingeschakeld en is vereist voor de gebruiker waarbij u zich aanmeldt en voor dit scenario. MFA kan bijvoorbeeld zijn:
+    Zorg ervoor dat [multi-factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) is ingeschakeld en is **vereist** voor de gebruiker waarbij u zich aanmeldt en voor dit scenario. MFA kan bijvoorbeeld zijn:
     - Altijd vereist voor de gebruiker waarbij u zich aanmeldt
     - [Vereist voor Azure-beheer](../conditional-access/howto-conditional-access-policy-azure-management.md).
     - [Vereist voor het type beheerder](../conditional-access/howto-conditional-access-policy-admin-mfa.md) waarbij u zich aanmeldt.
@@ -226,7 +226,9 @@ Deze functie wordt niet ondersteund voor micro soft-consumenten accounts. Alleen
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-Treedt op wanneer multi-factor Authentication niet is uitgevoerd voordat een geverifieerde uitgever aan de app wordt toegevoegd. Zie [algemene problemen](#common-issues) voor meer informatie.
+Treedt op wanneer multi-factor Authentication niet is uitgevoerd voordat een geverifieerde uitgever aan de app wordt toegevoegd. Zie [algemene problemen](#common-issues) voor meer informatie. Opmerking: MFA moet in dezelfde sessie worden uitgevoerd wanneer u een geverifieerde uitgever probeert toe te voegen. Als MFA is ingeschakeld maar niet moet worden uitgevoerd in de sessie, mislukt de aanvraag.   
+
+Het volgende fout bericht wordt weer gegeven: "als gevolg van een configuratie wijziging door de beheerder of omdat u naar een nieuwe locatie hebt verplaatst, moet u multi-factor Authentication gebruiken om door te gaan."
 
 ## <a name="next-steps"></a>Volgende stappen
 

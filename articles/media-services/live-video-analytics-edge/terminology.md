@@ -4,10 +4,10 @@ description: Dit artikel bevat een overzicht van live video analyses op IoT Edge
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88690609"
 ---
 # <a name="terminology"></a>Terminologie
@@ -38,7 +38,7 @@ In de context van een video beheersysteem voor beveiligings camera's verwijst de
 
 ## <a name="rtsp"></a>RTSP
 
-[RTSP](https://tools.ietf.org/html/rfc2326) verwijst naar het real-time streaming-protocol. Het is een protocol op toepassings niveau voor controle over de levering van gegevens met realtime-eigenschappen. RTSP biedt een uitbreidbaar Framework voor het inschakelen van beheerde, on-demand levering van real-time gegevens, zoals audio en video. 
+[RTSP](https://tools.ietf.org/html/rfc2326) verwijst naar Real-Time streaming-protocol. Het is een protocol op toepassings niveau voor controle over de levering van gegevens met realtime-eigenschappen. RTSP biedt een uitbreidbaar Framework voor het inschakelen van beheerde, on-demand levering van real-time gegevens, zoals audio en video. 
 
 ## <a name="streaming"></a>Streaming
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: raynew
 ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602282"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Ondersteuning voor het verplaatsen van virtuele Azure-machines tussen Azure-regio's
@@ -131,7 +131,7 @@ Gegevens schijf (standaard opslag account) | Niet ondersteund. | Wijzig het opsl
 Gegevens schijf (Premium Storage-account) | Niet ondersteund | Wijzig het opslag type in beheerde schijf en probeer vervolgens de virtuele machine te verplaatsen.
 Beheerde schijf (standaard) | Ondersteund  |
 Beheerde schijf (Premium) | Ondersteund |
-Standard - SSD | Ondersteund |
+Standard SSD | Ondersteund |
 Generatie 2 (UEFI-opstart) | Ondersteund
 Opslag account voor diagnostische gegevens over opstarten | Niet ondersteund | Schakel deze opnieuw in nadat u de virtuele machine naar de doel regio hebt verplaatst.
 

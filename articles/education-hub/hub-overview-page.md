@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 5a29fa8d60d3c581a502cded1a7e04026f768667
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86540667"
 ---
 # <a name="managing-your-academic-grant"></a>Uw academische subsidie beheren
@@ -19,7 +19,7 @@ ms.locfileid: "86540667"
 Uw belangrijkste landings pagina in de Azure-Education Hub is de pagina overzicht. Deze pagina bevat alle relevante informatie over uw academische subsidie, zoals het aantal klassen dat u hebt gemaakt en het totale tegoed dat is toegewezen en gebruikt voor deze klassen. Het bevat ook snelkoppelingen naar andere voor delen van de Education Hub: software-, leer-en Quick Start-sjablonen.
 
 ## <a name="overview-page"></a>Overzichtspagina
-:::image type="content" source="media/hub-overview-page/overview.png" alt-text="Fout bericht voor aanmelden." border="false":::
+:::image type="content" source="media/hub-overview-page/overview.png" alt-text="Foutbericht bij aanmelden." border="false":::
 
 1. In de **cursussen** wordt het totale aantal actieve cursussen voor het account van de docent weer gegeven.
 1. In **Labs** wordt het totale aantal actieve Labs weer gegeven dat aan studenten is door gegeven.

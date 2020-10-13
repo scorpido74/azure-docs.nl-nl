@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
 ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281188"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>HTTP-headers en URL opnieuw schrijven met Application Gateway
 
- Met Application Gateway kunt u geselecteerde inhoud van aanvragen en antwoorden opnieuw schrijven. Met deze functie kunt u Url's, query reeks parameters en wijzigings aanvragen en-antwoord headers omzetten. U kunt hiermee ook voor waarden toevoegen om ervoor te zorgen dat de URL of de opgegeven headers alleen worden herschreven wanneer aan bepaalde voor waarden wordt voldaan. Deze voor waarden zijn gebaseerd op de aanvraag-en antwoord informatie.
+ Met Application Gateway kunt u geselecteerde inhoud van aanvragen en antwoorden opnieuw schrijven. Met deze functie kunt u Url's, query reeks parameters en wijzigings aanvragen en-antwoord headers omzetten. U kunt hiermee ook voor waarden toevoegen om ervoor te zorgen dat de URL of de opgegeven headers alleen worden herschreven wanneer aan bepaalde voor waarden wordt voldaan. Deze voorwaarden zijn gebaseerd op de informatie in de aanvraag en het antwoord.
 
 >[!NOTE]
 >De HTTP-header en de functies voor het herschrijven van URL'S zijn alleen beschikbaar voor de [SKU van Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)
@@ -113,21 +113,21 @@ Application Gateway biedt ondersteuning voor de volgende server variabelen:
 | client_port               | De client poort.                                             |
 | client_tcp_rtt            | Informatie over de TCP-verbinding van de client. Beschikbaar op systemen die ondersteuning bieden voor de TCP_INFO socket optie. |
 | client_user               | Wanneer HTTP-verificatie wordt gebruikt, wordt de gebruikers naam opgegeven voor verificatie. |
-| host                      | In deze volg orde van prioriteit: de hostnaam van de aanvraag regel, de hostnaam uit het veld met de aanvraag header van de host of de server naam die overeenkomt met een aanvraag. Voor beeld: in de aanvraag `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` is de waarde host`contoso.com` |
+| host                      | In deze volg orde van prioriteit: de hostnaam van de aanvraag regel, de hostnaam uit het veld met de aanvraag header van de host of de server naam die overeenkomt met een aanvraag. Voor beeld: in de aanvraag `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` is de waarde host `contoso.com` |
 | cookie_*naam*             | De *naam* cookie.                                           |
 | http_method               | De methode die wordt gebruikt om de URL-aanvraag te maken. Bijvoorbeeld GET of POST. |
 | http_status               | De sessie status. Bijvoorbeeld 200, 400 of 403.           |
 | http_version              | Het aanvraag protocol. Meestal HTTP/1.0, HTTP/1.1 of HTTP/2.0. |
-| query_string              | De lijst met variabele/waarde-paren die volgt op '? ' in de aangevraagde URL. Voor beeld: in de aanvraag is `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING waarde`id=123&title=fabrikam` |
+| query_string              | De lijst met variabele/waarde-paren die volgt op '? ' in de aangevraagde URL. Voor beeld: in de aanvraag is `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING waarde `id=123&title=fabrikam` |
 | received_bytes            | De lengte van de aanvraag (inclusief de aanvraag regel, kop en hoofd tekst van de aanvraag). |
 | request_query             | De argumenten in de aanvraag regel.                           |
 | request_scheme            | Het aanvraag schema: http of https.                           |
-| request_uri               | De volledige oorspronkelijke aanvraag-URI (met argumenten). Voor beeld: in de aanvraag is `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI waarde`/article.aspx?id=123&title=fabrikam` |
+| request_uri               | De volledige oorspronkelijke aanvraag-URI (met argumenten). Voor beeld: in de aanvraag is `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` REQUEST_URI waarde `/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | Het aantal bytes dat naar een client is verzonden.                        |
 | server_port               | De poort van de server die een aanvraag heeft geaccepteerd.              |
 | ssl_connection_protocol   | Het Protocol van een tot stand gebrachte TLS-verbinding.               |
 | ssl_enabled               | Aan als de verbinding in de TLS-modus werkt. Zoniet, een lege teken reeks. |
-| uri_path                  | Identificeert de specifieke resource in de host waartoe de webclient toegang wil. Dit is het deel van de aanvraag-URI zonder de argumenten. Voor beeld: in de aanvraag is `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path waarde`/article.aspx` |
+| uri_path                  | Identificeert de specifieke resource in de host waartoe de webclient toegang wil. Dit is het deel van de aanvraag-URI zonder de argumenten. Voor beeld: in de aanvraag is `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path waarde `/article.aspx` |
 
  
 
@@ -205,23 +205,23 @@ Als u de back-end-pool wilt gebruiken op basis van de waarde van een koptekst, e
 
 **Stap 2 (a):** Maak een herschrijvende set met 3 regels voor herschrijven: 
 
-* De eerste regel bevat een voor waarde waarmee de *QUERY_STRING* variabele voor *Category = schoenen* wordt gecontroleerd en die een actie bevat waarmee het URL-pad naar/*listing1* opnieuw wordt geschreven en dat **Path map opnieuw** is ingeschakeld
+* De eerste regel bevat een voor waarde waarmee de *QUERY_STRING*  variabele voor *Category = schoenen* wordt gecontroleerd en die een actie bevat waarmee het URL-pad naar/*listing1* opnieuw wordt geschreven en dat **Path map opnieuw** is ingeschakeld
 
-* De tweede regel heeft een voor waarde die de *QUERY_STRING* variabele voor *categorie = tassen* controleert en een actie heeft waarmee het URL-pad naar/*listing2* opnieuw wordt geschreven en de **pad-map opnieuw geëvalueerd** is ingeschakeld
+* De tweede regel heeft een voor waarde die de *QUERY_STRING*  variabele voor *categorie = tassen* controleert en een actie heeft waarmee het URL-pad naar/*listing2*  opnieuw wordt geschreven en de **pad-map opnieuw geëvalueerd** is ingeschakeld
 
 * De derde regel heeft een voor waarde die de *QUERY_STRING* variabele voor *Category = Accessories* controleert en een actie heeft waarmee het URL-pad naar/*listing3* opnieuw wordt geschreven en dat **Path map opnieuw wordt geëvalueerd**
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-herschrijf scenario 1-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-herschrijf scenario 1-1.":::
 
  
 
 **Stap 2 (b):** Deze herschrijfset koppelen aan het standaardpad van de bovenstaande regel op basis van het pad
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-herschrijf scenario 1-3.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-herschrijf scenario 1-1.":::
 
 Als de gebruiker zich nu aanvraagt, wordt deze met het standaardpad gematcht omdat geen van de paden in de pad- *contoso.com/Listing?Category=any*(/listing1,/listing2,/listing3) overeenkomt. Omdat u de bovenstaande herschrijfset hebt gekoppeld met dit pad, wordt deze herschrijfset geëvalueerd. Omdat de query reeks niet overeenkomt met de voor waarde in een van de drie regels voor herschrijven in deze herschrijfset, wordt er geen herschrijf actie uitgevoerd en daarom wordt de aanvraag niet gewijzigd naar de back-end die is gekoppeld aan het standaardpad ( *GenericList*).
 
- Als de gebruiker *contoso.com/Listing?Category=Shoes vraagt,* wordt het standaardpad automatisch aangepast. In dit geval komt de voor waarde in de eerste regel echter overeen en daarom wordt de actie die aan de voor waarde is gekoppeld, uitgevoerd, waardoor het URL-pad opnieuw naar/*listing1* wordt geschreven en de pad-map opnieuw moet worden geëvalueerd. Wanneer het pad-toewijzing opnieuw wordt geëvalueerd, komt de aanvraag nu overeen met het pad dat is gekoppeld aan het patroon */listing1* en wordt de aanvraag doorgestuurd naar de back-end die is gekoppeld aan dit patroon. Dit is ShoesListBackendPool
+ Als de gebruiker *contoso.com/Listing?Category=Shoes vraagt,* wordt het standaardpad automatisch aangepast. In dit geval komt de voor waarde in de eerste regel echter overeen en daarom wordt de actie die aan de voor waarde is gekoppeld, uitgevoerd, waardoor het URL-pad opnieuw naar/*listing1*  wordt geschreven en de pad-map opnieuw moet worden geëvalueerd. Wanneer het pad-toewijzing opnieuw wordt geëvalueerd, komt de aanvraag nu overeen met het pad dat is gekoppeld aan het patroon */listing1* en wordt de aanvraag doorgestuurd naar de back-end die is gekoppeld aan dit patroon. Dit is ShoesListBackendPool
 
 >[!NOTE]
 >Dit scenario kan worden uitgebreid naar elke kop-of cookie waarde, een URL-pad, een query reeks of server variabelen op basis van de gedefinieerde voor waarde, en stelt u in staat om aanvragen te routeren op basis van deze voor waarden.
@@ -232,13 +232,13 @@ Houd rekening met een scenario van een winkel website waar de door de gebruiker 
 
 In dat geval kunnen Application Gateway para meters uit de URL vastleggen en sleutel-waardeparen van de query reeks toevoegen uit de URL. Stel bijvoorbeeld dat de gebruiker wil herschrijven `https://www.contoso.com/fashion/shirts` naar `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` , en dat deze kan worden bereikt via de volgende URL-herschrijf configuratie.
 
-**Voor waarde** -als server variabele `uri_path` gelijk is aan het patroon`/(.+)/(.+)`
+**Voor waarde** -als server variabele `uri_path` gelijk is aan het patroon `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-herschrijf scenario 2-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-herschrijf scenario 1-1.":::
 
-**Actie** : Stel het URL-pad naar `buy.aspx` en de query reeks naar`category={var_uri_path_1}&product={var_uri_path_2}`
+**Actie** : Stel het URL-pad naar `buy.aspx` en de query reeks naar `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-herschrijf scenario 2-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-herschrijf scenario 1-1.":::
 
 Voor een stapsgewijze hand leiding voor het uitvoeren van het hierboven beschreven scenario raadpleegt u [URL herschrijven met Application Gateway met behulp van Azure Portal](rewrite-url-portal.md)
 
@@ -248,11 +248,11 @@ In het geval van een URL-herschrijf bewerking, Application Gateway de URL opnieu
 
 In het geval van een URL-omleiding stuurt Application Gateway een omleidings antwoord naar de client met de nieuwe URL. Op zijn beurt moet de client zijn aanvraag opnieuw verzenden naar de nieuwe URL die in de omleiding wordt vermeld. De URL die de gebruiker in de browser ziet, wordt bijgewerkt naar de nieuwe URL
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Write versus redirect.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL-herschrijf scenario 1-1.":::
 
 ## <a name="limitations"></a>Beperkingen
 
-- Als een antwoord meer dan één header met dezelfde naam heeft en vervolgens de waarde van een van deze headers herschrijft, worden de andere headers in het antwoord verwijderd. Dit kan meestal gebeuren met de set-cookie-header omdat u in een antwoord meer dan één set-cookie-header kunt hebben. Een dergelijk scenario is wanneer u een app service gebruikt met een toepassings gateway en op cookies gebaseerde sessie affiniteit hebt geconfigureerd op de toepassings gateway. In dit geval bevat het antwoord twee set-cookie headers: één die wordt gebruikt door de app service, bijvoorbeeld: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` en een andere voor Application Gateway-affiniteit, bijvoorbeeld `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Het opnieuw schrijven van een van de set-cookie headers in dit scenario kan ertoe leiden dat de andere set-cookie-header van het antwoord wordt verwijderd.
+- Als een antwoord meer dan één header met dezelfde naam heeft en vervolgens de waarde van een van deze headers herschrijft, worden de andere headers in het antwoord verwijderd. Dit kan meestal gebeuren met Set-Cookie-header omdat u in een antwoord meer dan één Set-Cookie header kunt hebben. Een dergelijk scenario is wanneer u een app service gebruikt met een toepassings gateway en op cookies gebaseerde sessie affiniteit hebt geconfigureerd op de toepassings gateway. In dit geval bevat het antwoord twee Set-Cookie headers: één gebruikt door de app service, bijvoorbeeld: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` en een andere voor Application Gateway-affiniteit, bijvoorbeeld `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Het herschrijven van een van de Set-Cookie-headers in dit scenario kan ertoe leiden dat de andere Set-Cookie-header uit het antwoord wordt verwijderd.
 - Herschrijven wordt niet ondersteund wanneer de toepassings gateway is geconfigureerd om de aanvragen om te leiden of een aangepaste fout pagina weer te geven.
 - Header namen mogen alfanumerieke tekens en specifieke symbolen bevatten zoals gedefinieerd in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Het onderstrepings teken (_) wordt momenteel niet ondersteund in header namen.
 - De headers voor verbinding en upgrades kunnen niet opnieuw worden geschreven

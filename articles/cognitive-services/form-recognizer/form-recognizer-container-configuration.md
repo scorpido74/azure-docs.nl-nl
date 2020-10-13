@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538000"
 ---
 # <a name="configure-form-recognizer-containers"></a>Containers voor formulier herkenning configureren
@@ -47,7 +47,7 @@ Met deze `Billing` instelling geeft u de eindpunt-URI op van de _formulier Recog
 
 U kunt deze instelling vinden in het Azure Portal, in het **overzicht van formulier herkenning**, onder **eind punt**.
 
-|Vereist| Naam | Gegevenstype | Beschrijving |
+|Vereist| Name | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
 |Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](form-recognizer-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [Aangepaste subdomeinnamen voor Cognitive Services](../cognitive-services-custom-subdomains.md) voor meer informatie en een volledige lijst met regionale eindpunten. |
 
@@ -76,7 +76,7 @@ De container voor de formulier herkenning vereist een invoer koppeling en een ui
 
 De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhankelijk van het besturings systeem van de host. Daarnaast is de koppelings locatie van de [hostcomputer](form-recognizer-container-howto.md#the-host-computer) mogelijk niet toegankelijk vanwege een conflict tussen de machtigingen van het docker-service account en de machtigingen van de host-koppelings locatie.
 
-|Optioneel| Naam | Gegevenstype | Beschrijving |
+|Optioneel| Name | Gegevenstype | Beschrijving |
 |-------|------|-----------|-------------|
 |Vereist| `Input` | Tekenreeks | Het doel van de invoer koppeling. De standaardwaarde is `/input`.    <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Vereist| `Output` | Tekenreeks | Het doel van de uitvoer koppeling. De standaardwaarde is `/output`.  <br><br>Voorbeeld:<br>`--mount type=bind,src=c:\output,target=/output`|

@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600793"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen voor een sterke identiteits basis met Azure Active Directory
@@ -131,7 +131,7 @@ In de huidige digitale werk plek is het belang rijk om de beveiliging met produc
 
 In deze sectie vindt u de aanbevelingen voor het verwijderen van wrijving van uw organisatie door uw gebruikers te voorzien van de resterende Vigilant.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Selfservice voor wacht woord opnieuw instellen inschakelen voor alle gebruikers
+### <a name="enable-self-service-password-reset-for-all-users"></a>Self-Service wacht woord opnieuw instellen inschakelen voor alle gebruikers
 
 De [self-service voor wachtwoord herstel](../authentication/tutorial-enable-sspr.md) (SSPR) van Azure biedt een eenvoudige manier om gebruikers toe te staan hun wacht woorden of accounts te herstellen en te ontgrendelen zonder tussen komst van de beheerder. Het systeem biedt gedetailleerde rapporten zodat u kunt volgen wanneer gebruikers het systeem openen. U ontvangt ook meldingen om u te waarschuwen over misbruik.
 
@@ -147,7 +147,7 @@ Op dezelfde manier kan het [rapport voor Self-Service wachtwoord beheer](../auth
 
 ### <a name="self-service-app-management"></a>Self-service app-beheer
 
-Voordat uw gebruikers toepassingen zelf kunnen detecteren vanuit hun toegangs venster, moet u de toegang van [selfservice toepassingen](../manage-apps/access-panel-manage-self-service-access.md) inschakelen voor alle toepassingen waarvoor u gebruikers de mogelijkheid wilt bieden om zichzelf te detecteren en toegang tot te vragen. Toegang voor selfservice toepassingen is een uitstekende manier om gebruikers de mogelijkheid te bieden om zelf toepassingen te detecteren en de bedrijfs groep toe te staan om de toegang tot deze toepassingen goed te keuren. U kunt de bedrijfs groep toestaan om de referenties te beheren die aan deze gebruikers zijn toegewezen voor [wacht woord voor eenmalige aanmelding voor toepassingen](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) , direct vanaf hun toegangs Vensters.
+Voordat uw gebruikers toepassingen zelf kunnen detecteren vanuit hun toegangs venster, moet u de toegang van [selfservice toepassingen](../manage-apps/access-panel-manage-self-service-access.md) inschakelen voor alle toepassingen waarvoor u gebruikers de mogelijkheid wilt bieden om zichzelf te detecteren en toegang tot te vragen. Toegang voor selfservice toepassingen is een uitstekende manier om gebruikers de mogelijkheid te bieden om zelf toepassingen te detecteren en de bedrijfs groep toe te staan om de toegang tot deze toepassingen goed te keuren. U kunt de bedrijfs groep toestaan om de referenties te beheren die aan deze gebruikers zijn toegewezen voor [wachtwoord Single-Sign op toepassingen](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) rechtstreeks vanuit hun toegangs Vensters.
 
 ### <a name="self-service-group-management"></a>Groepsbeheer via selfservice
 

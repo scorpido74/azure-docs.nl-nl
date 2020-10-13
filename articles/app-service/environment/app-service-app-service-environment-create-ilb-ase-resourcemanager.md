@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85833550"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Een ILB ASE maken met behulp van Azure Resource Manager-sjablonen
@@ -88,7 +88,7 @@ De para meters in de *azuredeploy.parameters.jsvoor* het bestand worden hieronde
 * *pfxBlobString*: de met based64 gecodeerde teken reeks representatie van het pfx-bestand.  Met behulp van het code fragment dat eerder is weer gegeven, kopieert u de teken reeks in "exportedcert. pfx. b64" en plakt u deze in als de waarde van het kenmerk *pfxBlobString* .
 * *wacht woord*: het wacht woord dat wordt gebruikt om het pfx-bestand te beveiligen.
 * *certificateThumbprint*: de vinger afdruk van het certificaat.  Als u deze waarde ophaalt uit Power shell (bijvoorbeeld *$Certificate. Vinger afdruk* van het vorige code fragment), kunt u de waarde als-is.  Als u de waarde echter uit het dialoog venster Windows-certificaat kopieert, vergeet dan niet de overbodige spaties te verwijderen.  De *certificateThumbprint* moet er ongeveer als volgt uitzien: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificaatpad*: een beschrijvende teken reeks-id van uw eigen keuze voor het identificeren van het certificaat.  De naam wordt gebruikt als onderdeel van de unieke Azure Resource Manager-id voor de entiteit *micro soft. Web/certificates* die het TLS/SSL-certificaat vertegenwoordigt.  De naam **moet** eindigen op het volgende achtervoegsel: \_ yourASENameHere_InternalLoadBalancingASE.  Dit achtervoegsel wordt door de portal gebruikt als een indicator waarmee het certificaat wordt gebruikt voor het beveiligen van een ILB-ASE.
+* *certificaatpad*: een beschrijvende teken reeks-id van uw eigen keuze voor het identificeren van het certificaat.  De naam wordt gebruikt als onderdeel van de unieke Azure Resource Manager-id voor de entiteit *micro soft. Web/certificates* die het TLS/SSL-certificaat vertegenwoordigt.  De naam **moet** eindigen op het volgende achtervoegsel:  \_ yourASENameHere_InternalLoadBalancingASE.  Dit achtervoegsel wordt door de portal gebruikt als een indicator waarmee het certificaat wordt gebruikt voor het beveiligen van een ILB-ASE.
 
 Een afkorting voor beeld van *azuredeploy.parameters.jsop* wordt hieronder weer gegeven:
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: af3513c4a4f3b3187e85c65de51ad2e6e2d7279c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983154"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Instellingen voor lokale netwerkgateway wijzigen via Azure-portal
@@ -35,7 +35,7 @@ In de onderstaande scherm afbeelding ziet u de **configuratie** pagina van een l
 
 Dit is dezelfde configuratie pagina met een FQDN-eind punt:
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="Lokale netwerk gateway configureren-FQDN":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="Gateway van het lokale netwerk configureren-IP-adres":::
 
 ## <a name="modify-the-gateway-ip-address"></a><a name="ip"></a>Het IP-adres van de gateway wijzigen
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
 ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263773"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Overzicht van Azure Monitor-agent (preview)
@@ -101,7 +101,7 @@ De Azure Monitor-agent wordt geïmplementeerd als een [Azure VM-extensie](../../
 |:---|:---|:---|
 | Publisher | Micro soft. Azure. monitor  | Micro soft. Azure. monitor |
 | Type      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1,0 | 1.5 |
+| TypeHandlerVersion  | 1.0 | 1.5 |
 
 Installeer de Azure Monitor agent met behulp van een van de methoden om virtuele-machine agents te installeren, inclusief het volgende met behulp van Power shell of CLI. U kunt de agent ook installeren en gegevens verzameling configureren op virtuele machines in uw Azure-abonnement met behulp van de portal met de procedure die wordt beschreven in [gegevens verzameling configureren voor de Azure monitor-agent (preview)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal).
 

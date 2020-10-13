@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
 ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744786"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA scale-out systeem op Red Hat Enterprise Linux 
@@ -80,14 +80,14 @@ Raadpleeg voordat u begint de volgende SAP-opmerkingen en-documenten:
 * [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
 * [SAP HANA netwerk vereisten](https://www.sap.com/documents/2016/08/1cd2c2fb-807c-0010-82c7-eda71af511fa.html)
 * Algemene documentatie voor RHEL
-  * [Overzicht van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Beheer van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Overzicht van Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Add-On beheer met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referentie voor Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux-netwerk gids](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-  * [Hoe kan ik SAP HANA scale-out systeem replicatie configureren in een pacemaker-cluster met HANA-bestands systemen op NFS-shares](https://access.redhat.com/solutions/5423971)
+  * [Hoe kan ik SAP HANA Scale-Out systeem replicatie configureren in een pacemaker-cluster met HANA-bestands systemen op NFS-shares](https://access.redhat.com/solutions/5423971)
 * Documentatie voor Azure-specifieke RHEL:
   * [SAP HANA op Red Hat Enterprise Linux installeren voor gebruik in Microsoft Azure](https://access.redhat.com/public-cloud/microsoft-azure)
-  * [Red Hat Enterprise Linux oplossing voor SAP HANA scale-out-en systeem replicatie](https://access.redhat.com/solutions/4386601)
+  * [Red Hat Enterprise Linux oplossing voor SAP HANA Scale-Out en systeem replicatie](https://access.redhat.com/solutions/4386601)
 * [NetApp SAP-toepassingen op Microsoft Azure met behulp van Azure NetApp Files][anf-sap-applications-azure]
 * [Documentatie over Azure NetApp Files][anf-azure-doc] 
 
@@ -836,7 +836,7 @@ Neem alle virtuele machines op, met inbegrip van de hoofd Maker in het cluster.
     ```
 
    > [!TIP]
-   > Als uw configuratie andere bestands systemen bevat, behalve/ `hana/shared` , die gekoppeld zijn aan NFS, neemt u vervolgens `sequential=false` de optie op, zodat er geen volg orde van afhankelijkheden tussen de bestands systemen is. Alle aan NFS gekoppelde bestands systemen moeten vóór de bijbehorende kenmerk resource worden gestart, maar ze hoeven niet in een volg orde te beginnen ten opzichte van elkaar. Zie voor meer informatie [Hoe kan ik SAP Hana scale-out HSR configureren in een pacemaker-cluster wanneer de Hana-bestands systemen NFS-shares zijn](https://access.redhat.com/solutions/5423971).  
+   > Als uw configuratie andere bestands systemen bevat, behalve/ `hana/shared` , die gekoppeld zijn aan NFS, neemt u vervolgens `sequential=false` de optie op, zodat er geen volg orde van afhankelijkheden tussen de bestands systemen is. Alle aan NFS gekoppelde bestands systemen moeten vóór de bijbehorende kenmerk resource worden gestart, maar ze hoeven niet in een volg orde te beginnen ten opzichte van elkaar. Zie voor meer informatie [Hoe kan ik SAP HANA Scale-Out HSR configureren in een pacemaker-cluster wanneer de Hana-bestands systemen NFS-shares zijn](https://access.redhat.com/solutions/5423971).  
 
 8. **[1]** plaats pacemaker in onderhouds modus, in voor bereiding voor het maken van de Hana-cluster resources.  
     ```

@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
 ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509355"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Toewijzingsproblemen bij het maken, opnieuw starten of het wijzigen van het formaat van VM’s in Azure oplossen
@@ -73,7 +73,7 @@ Bij volledige toewijzing betekent dat u alle virtuele machines in een beschikbaa
 ### <a name="workaround"></a>Tijdelijke oplossing
 
 Als u oudere VM-reeksen of-grootten gebruikt, zoals Dv1, DSv1, Av1, D15v2 of DS15v2, kunt u overwegen om over te stappen naar nieuwere versies. Bekijk deze aanbevelingen voor specifieke VM-grootten.
-Als u niet over de mogelijkheid beschikt om een andere VM-grootte te gebruiken, kunt u het implementeren naar een andere regio binnen hetzelfde geografische gebied. Voor meer informatie over de beschik bare VM-grootten in elke regio ophttps://aka.ms/azure-regions
+Als u niet over de mogelijkheid beschikt om een andere VM-grootte te gebruiken, kunt u het implementeren naar een andere regio binnen hetzelfde geografische gebied. Voor meer informatie over de beschik bare VM-grootten in elke regio op https://aka.ms/azure-regions
 
 Als u beschikbaarheids zones gebruikt, probeert u een andere zone in de regio die mogelijk capaciteit beschikbaar heeft voor de aangevraagde VM-grootte.
 

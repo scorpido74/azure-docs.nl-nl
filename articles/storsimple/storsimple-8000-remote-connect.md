@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514580"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Extern verbinding maken met uw StorSimple 8000 Series-apparaat
@@ -66,9 +66,9 @@ Voer de volgende stappen uit op de seriële console van het apparaat om extern b
 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Extern beheer via de seriële console van het apparaat inschakelen
 1. Selecteer optie 1 in het menu van de seriële console. Ga voor meer informatie over het gebruik van de seriële console op het apparaat naar [verbinding maken met Windows PowerShell voor StorSimple via de seriële console](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)van het apparaat.
-2. Typ het volgende bij de prompt:`Enable-HcsRemoteManagement –AllowHttp`
+2. Typ het volgende bij de prompt: `Enable-HcsRemoteManagement –AllowHttp`
 3. U wordt gewaarschuwd over de beveiligings problemen van het gebruik van HTTP om verbinding te maken met het apparaat. Wanneer u hierom wordt gevraagd, bevestigt u door **Y**te typen.
-4. Controleer of HTTP is ingeschakeld door het volgende te typen:`Get-HcsSystem`
+4. Controleer of HTTP is ingeschakeld door het volgende te typen: `Get-HcsSystem`
 5. Controleer of in **RemoteManagementMode** het veld RemoteManagementMode **HttpsAndHttpEnabled**wordt weer gegeven. In de volgende afbeelding ziet u deze instellingen in PuTTy.
    
      ![Seriële HTTPS en HTTP ingeschakeld](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
