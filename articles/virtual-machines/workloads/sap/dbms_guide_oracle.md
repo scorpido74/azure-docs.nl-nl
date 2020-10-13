@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540707"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963530"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle DBMS-implementatie voor SAP-workload
 
@@ -422,7 +422,7 @@ Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azur
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
 Voor Oracle-implementaties in Windows wordt het beste versneld netwerken aanbevolen, zoals beschreven in [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met de aanbevelingen die worden gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overige
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Details voor Oracle Database op Oracle Linux
@@ -444,7 +444,7 @@ In dit geval kunt u het beste de installatie/locatie van Oracle Home, stage,,, `
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 
-De bestands systemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden in Azure. Alle database bestanden moeten worden opgeslagen op deze bestands systemen op basis van Vhd's of Managed Disks. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of [Azure Managed disks](../../managed-disks-overview.md).
+De bestands systemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden in Azure. Alle database bestanden moeten worden opgeslagen op deze bestands systemen op basis van Vhd's of Managed Disks. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) of [Azure Managed disks](../../managed-disks-overview.md).
 
 Voor Oracle Linux UEK-kernels is mini maal UEK versie 4 vereist voor de ondersteuning van [Azure Premium ssd's](../../premium-storage-performance.md#disk-caching).
 
@@ -508,7 +508,7 @@ Voor virtuele machines uit de M-serie van Azure, wanneer u Azure Write Accelerat
 ### <a name="backuprestore"></a>Back-up/herstel
 Voor de functionaliteit voor back-up/herstel worden de SAP BR *-Hulpprogram Ma's voor Oracle ondersteund op dezelfde manier als op bare metal-en Hyper-V. Oracle Recovery Manager (RMAN) wordt ook ondersteund voor back-ups naar schijf en terugzetten van schijf.
 
-Zie een [back-up maken van een Oracle database 12c-Data Base op een virtuele machine van Azure Linux](../oracle/oracle-backup-recovery.md)voor meer informatie over hoe u Azure backup en herstel Services kunt gebruiken voor het maken van back-ups van Oracle-data bases en het herstellen ervan.
+Zie een [back-up maken van een Oracle database 12c-Data Base op een virtuele machine van Azure Linux](../oracle/oracle-overview.md)voor meer informatie over hoe u Azure backup en herstel Services kunt gebruiken voor het maken van back-ups van Oracle-data bases en het herstellen ervan.
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
 Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na nood gevallen. Als u automatische failover in Data Guard wilt uitvoeren, moet u Fast-Start failover (FSFA) gebruiken. De functionaliteit van de waarnemer (FSFA) activeert de failover. Als u FSFA niet gebruikt, kunt u alleen een hand matige failover-configuratie gebruiken. Zie [Oracle Data Guard implementeren op een virtuele machine van Azure Linux](../oracle/configure-oracle-dataguard.md)voor meer informatie.
@@ -531,5 +531,3 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 Lees het artikel 
 
 - [Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads](dbms_guide_general.md)
- 
-

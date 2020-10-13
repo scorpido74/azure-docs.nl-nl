@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
 ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614424"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2-serie     |-Intel® 8168-processors (Skylake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Maxi maal 72 vCores (1 vCore = 1 Hyper Thread) inrichten|-1,9 GB per vCore<br>-Maxi maal 136 GB inrichten|
 |M-serie     |-Intel® E7-8890 v3 2,5 GHz en Intel® 8280M 2,7 GHz (Cascade Lake)-processors<br>-Maxi maal 128 vCores (1 vCore = 1 Hyper Thread) inrichten|-29 GB per vCore<br>-Maxi maal 3,7 TB inrichten|
 
-\* In de weer gave [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) Dynamic Management worden de hardware-generatie voor data bases met Intel® SP-8160 (Skylake)-processors weer gegeven als Gen6, terwijl het genereren van hardware voor data bases met behulp van Intel® 8272CL (Cascade Lake) als Gen7 wordt weer gegeven. Resource limieten voor alle GEN5-data bases zijn hetzelfde, ongeacht het processor type (Broadwell, Skylake of Cascade Lake).
+\* In de [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamische beheer weergave worden de hardware-generatie voor data bases met Intel® SP-8160 (Skylake)-processors weer gegeven als Gen6, terwijl het genereren van hardware voor data bases met behulp van Intel® 8272CL (Cascade Lake) als Gen7 wordt weer gegeven. Resource limieten voor alle GEN5-data bases zijn hetzelfde, ongeacht het processor type (Broadwell, Skylake of Cascade Lake).
 
 Zie [resource limieten voor afzonderlijke data bases (vCore)](resource-limits-vcore-single-databases.md)of resource limieten [voor elastische Pools (vCore)](resource-limits-vcore-elastic-pools.md)voor meer informatie over resource limieten.
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
 ms.openlocfilehash: cb66c0371914b29c3db911823519b29df8c4b16c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616462"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Problemen met SQL Data Sync oplossen
@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u bekende problemen met SQL Data Sync in azu
 Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync in Azure ](sql-data-sync-data-sql-server-sql-database.md) voor een overzicht van SQL Data Sync.
 
 > [!IMPORTANT]
-> SQL Data Sync biedt op dit moment **geen** ondersteuning voor het beheerde exemplaar van Azure SQL.
+> SQL Data Sync biedt op dit moment **geen** ondersteuning voor Azure SQL Managed Instance.
 
 ## <a name="sync-issues"></a>Synchronisatie problemen
 
@@ -257,5 +257,5 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 Meer informatie over SQL Database vindt u in:
 
--   [Overzicht van SQL Database](sql-database-paas-overview.md)
+-   [Wat is de Azure SQL Database-service?](sql-database-paas-overview.md)
 -   [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)

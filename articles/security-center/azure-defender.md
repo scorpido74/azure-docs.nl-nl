@@ -1,31 +1,28 @@
 ---
 title: Overzicht van Azure Defender en de beschikbare abonnementen
-description: Lees meer informatie over de abonnementen, beschermingen en waarschuwingen van Azure Defender. Stel Azure Defender vervolgens in voor uw abonnementen.
+description: Lees meer informatie over de abonnementen, beschermingen en waarschuwingen van Azure Defender. Schakel Azure Defender vervolgens in op uw abonnementen voor geavanceerde beveiliging.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5a5b96d5a9ea6aa05da30238690b8f5fa745b3f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448420"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576848"
 ---
 # <a name="introduction-to-azure-defender"></a>Inleiding tot Azure Defender
 
 De twee grote pijlers van cloudbeveiliging zijn verwerkt in de functies van Azure Security Center:
 
-- **Beheer van cloudbeveiligingspostuur (CSPM)**
-- **Beveiliging van cloudworkloads (CWP)**
+- **Beheer van cloudbeveiligingspostuur (CSPM)** : Security Center is **gratis** beschikbaar voor alle Azure-gebruikers. De gratis ervaring omvat CSPM-functies, zoals beveiligingsscore, de detectie van onjuiste beveiligingsconfiguraties op uw Azure-machines, assetinventarisatie en meer. Gebruik deze CSPM-functies om uw hybride cloudpostuur te versterken en om de naleving van het ingebouwde beleid bij te houden.
 
-De CSPM-functies van Security Center, zoals de beveiligingsscore en detectie van onjuiste beveiligingsconfiguraties op uw Azure-machines op Windows en Linux, maken allemaal deel uit van de gratis Security Center-versie die voor alle Azure-gebruikers beschikbaar is. Gebruik deze CSPM-functies om uw beveiligingspostuur te versterken en naleving van de regelgeving te waarborgen.
+- **Beveiliging van cloudworkloads (CWP)** : het Cloud Workload Protection Platform (CWPP), **Azure Defender**, dat geïntegreerd is in Security Center, zorgt voor geavanceerde, intelligente beveiliging van uw Azure- en hybride resources en workloads. Door Azure Defender in te schakelen, beschikt u over diverse aanvullende beveiligingsfuncties, zoals beschreven op deze pagina. Naast het ingebouwde beleid kunt u, wanneer u een Azure Defender-abonnement hebt ingeschakeld, aangepaste beleidsregels en initiatieven toevoegen. U kunt wettelijke standaarden, zoals NIST en Azure CIS, evenals de Azure Security-benchmark toevoegen voor een echte aangepaste weergave van uw nalevingsinspanningen.
 
-**Azure Defender** is het Cloud Workload Protection Platform (CWPP) dat is geïntegreerd in Security Center voor geavanceerde, intelligente beveiliging van uw Azure- en hybride workloads.
-
-Het Azure Defender-dashboard in Azure Security Center ziet er als volgt uit:
+Het Azure Defender-dashboard in Security Center biedt inzicht in en controle over de CWP-functies voor uw omgeving:
 
 :::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Een voorbeeld van het Azure Defender-dashboard" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
@@ -57,9 +54,11 @@ Met Azure Defender kunt u niet alleen uw Azure-omgeving, maar ook uw hybride clo
 
 U kunt gebruikmaken van aangepaste bedreigingsinformatie en op prioriteit gerangschikte waarschuwingen afgestemd op uw specifieke omgeving. Zo kunt u zich richten op de belangrijkste zaken.
 
-Implementeer [Azure Arc](https://azure.microsoft.com/services/azure-arc/) en schakel Azure Defender in om de bescherming uit te breiden naar on-premises en multi-cloud virtuele machines plus SQL databases. Azure Arc voor servers is een gratis service, maar services die worden gebruikt op servers met Arc-functionaliteit, zoals Azure Defender, worden in rekening gebracht volgens de prijzen voor die service.
+Implementeer [Azure Arc](https://azure.microsoft.com/services/azure-arc/) en schakel Azure Defender in om de bescherming uit te breiden naar virtuele machines die zich in andere clouds of on-premises bevinden. Azure Arc voor servers is een gratis service, maar services die worden gebruikt op servers met Arc-functionaliteit, zoals Azure Defender, worden in rekening gebracht volgens de prijzen voor die service. Zie [Andere computers dan Azure-computers toevoegen met Azure Arc](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc) voor meer informatie.
 
-[Meer informatie over Azure Arc](https://docs.microsoft.com/azure/azure-arc/overview)
+> [!TIP]
+> De systeemeigen connector voor AWS zorgt dat de implementatie transparant voor u wordt afgehandeld. Meer informatie vindt u in [Uw AWS-accounts verbinden met Azure Security Center](quickstart-onboard-aws.md).
+
 
 
 ## <a name="azure-defender-alerts"></a>Azure Defender-waarschuwingen 

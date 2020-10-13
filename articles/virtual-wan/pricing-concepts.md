@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: reyandap
 ms.custom: references_pricing
 ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327954"
 ---
 # <a name="about-virtual-wan-pricing"></a>Over de prijzen voor Virtual WAN
@@ -56,7 +56,7 @@ In de onderstaande tabellen worden de volgende afkortingen gebruikt: {naam: Noor
 
 **Prijzen binnen continenten (*)**
 
-| Binnen continent| Prijs ($/GB)|
+| Intra-Continent| Prijs ($/GB)|
 |---|---|
 | De nr.|$ 0,02 |
 | EU naar EU |$ 0,02 |
@@ -67,7 +67,7 @@ In de onderstaande tabellen worden de volgende afkortingen gebruikt: {naam: Noor
 
 **Inter-continentale prijzen (*)**
 
-| Inter-continentale| Prijs ($/GB)|
+| Inter-Continental| Prijs ($/GB)|
 |---|---|
 | VAN de in de EU of EU naar de nr. |$0,07 |
 | VAN LATAM naar een wille keurige locatie |$0,17 |

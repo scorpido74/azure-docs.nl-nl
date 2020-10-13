@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
 ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773243"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Een virtueel netwerk apparaat maken in een virtuele WAN-hub van Azure (preview)
@@ -90,7 +90,7 @@ In deze stap maakt u een virtueel netwerk apparaat in de hub. De procedure voor 
    * **NVA infrastructuur eenheden** : Hiermee geeft u het aantal NVA-infrastructuur eenheden aan waarop u deze NVA wilt implementeren. Kies de hoeveelheid cumulatieve band breedte die u wilt bieden voor alle Branch sites die via deze NVA met deze hub worden verbonden.
    * Voor **token** -Barracuda moet u hier een verificatie token opgeven, zodat u zich kunt identificeren als een geregistreerde gebruiker van dit product. U moet dit verkrijgen van Barracuda.
 1. Selecteer de knop **controleren en maken** om door te gaan.
-1. Op deze pagina wordt u gevraagd de voor waarden van de gebruiksrecht overeenkomst voor co-beheerders te accepteren. Dit is standaard met beheerde toepassingen waarbij de uitgever toegang heeft tot bepaalde resources in deze implementatie. Schakel het selectie vakje **Ik ga akkoord met de bovenstaande voor waarden** in en selecteer vervolgens **maken**.
+1. Op deze pagina wordt u gevraagd om de voor waarden van de Co-Admin toegangs overeenkomst te accepteren. Dit is standaard met beheerde toepassingen waarbij de uitgever toegang heeft tot bepaalde resources in deze implementatie. Schakel het selectie vakje **Ik ga akkoord met de bovenstaande voor waarden** in en selecteer vervolgens **maken**.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet verbinden met de hub
 

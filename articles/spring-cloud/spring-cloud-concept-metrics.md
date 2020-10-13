@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892646"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informatie over metrische gegevens voor Azure lente-Cloud
@@ -90,13 +90,13 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="error"></a>Fout
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Tomcat. Global. error | Tomcat. Global. error | Aantal | Aantal fouten dat is opgetreden in verwerkte aanvragen |
 
 ### <a name="performance"></a>Prestaties
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| System. CPU. Usage | System. CPU. Usage | Percentage | Recent CPU-gebruik voor het hele systeem. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat alle Cpu's inactief zijn geweest tijdens de meest recente periode, terwijl een waarde van 1,0 betekent dat alle Cpu's op dit moment 100% van de tijd actief werden tijdens de meest recente periode.|
 >| proces. CPU. Usage | CPU-gebruiks percentage van app | Percentage | Recent CPU-gebruik voor het Java Virtual Machine proces. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat geen van de Cpu's threads uit het JVM-proces heeft uitgevoerd gedurende de recent gebruikte periode, terwijl een waarde van 1,0 betekent dat alle Cpu's actief threads van de JVM 100% van de tijd tijdens de laatste periode hebben uitgevoerd. Threads van de JVM bevatten de Application threads en de JVM interne threads.|
@@ -114,7 +114,7 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 ### <a name="performance-net"></a>Prestaties (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|------|-----------------------------|------|---------|
 >| CPU-gebruik       | CPU-gebruik      | Milliseconden | De hoeveelheid tijd die de CPU heeft gebruikt voor het proces. |
 >| Werkset     | Working-set    | Mega bytes    | De hoeveelheid werkset die door het proces wordt gebruikt. |
@@ -140,7 +140,7 @@ Zie voor meer informatie [DotNet-tellers](/dotnet/core/diagnostics/dotnet-counte
 
 ### <a name="request"></a>Aanvraag
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Tomcat. Global. sent | Tomcat. Global. sent | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft verzonden |
 >| Tomcat. Global. ontvangen | Tomcat. Global. ontvangen | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft ontvangen |
@@ -151,7 +151,7 @@ Zie voor meer informatie [DotNet-tellers](/dotnet/core/diagnostics/dotnet-counte
 ### <a name="request-net"></a>Aanvraag (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|------|-----------------------------|------|---------|
 >| Aanvragen per seconde | aanvragen per seconde | Aantal | Aanvraag frequentie. |
 >| Totaal aantal aanvragen | Totaal-aanvragen | Aantal | Totaal aantal aanvragen. |
@@ -163,7 +163,7 @@ Zie voor meer informatie [DotNet-tellers](/dotnet/core/diagnostics/dotnet-counte
 
 ### <a name="session"></a>Sessie
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
 >| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Aantal | Het maximum aantal sessies dat tegelijkertijd actief is geweest |
 >| Tomcat. Sessions. Alive. Max | Tomcat. Sessions. Alive. Max | Milliseconden | Langste tijd (in seconden) dat een verlopen sessie actief was |

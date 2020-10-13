@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776303"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor de beveiliging en upgrades van het cluster in azure Kubernetes service (AKS)
@@ -30,7 +30,7 @@ U kunt ook [integratie van Azure Kubernetes Services met Security Center][securi
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Veilige toegang tot de API-server en cluster knooppunten
 
-**Best Practice-richt lijnen** voor het beveiligen van de toegang tot de Kubernetes API-server is een van de belangrijkste dingen die u kunt doen om uw cluster te beveiligen. Kubernetes op rollen gebaseerd toegangs beheer (RBAC) integreren met Azure Active Directory om de toegang tot de API-server te beheren. Met deze besturings elementen kunt u AKS op dezelfde manier beveiligen als u de toegang tot uw Azure-abonnementen beveiligt.
+**Best Practice-richt lijnen** voor het beveiligen van de toegang tot de Kubernetes API-Server is een van de belangrijkste dingen die u kunt doen om uw cluster te beveiligen. Kubernetes op rollen gebaseerd toegangs beheer (RBAC) integreren met Azure Active Directory om de toegang tot de API-server te beheren. Met deze besturings elementen kunt u AKS op dezelfde manier beveiligen als u de toegang tot uw Azure-abonnementen beveiligt.
 
 De Kubernetes API-server biedt één verbindings punt voor aanvragen voor het uitvoeren van acties binnen een cluster. Als u de toegang tot de API-server wilt beveiligen en controleren, beperkt u de toegang en geeft u de mini maal privileged Access permissions vereist. Deze methode is niet uniek voor Kubernetes, maar is vooral belang rijk wanneer het AKS-cluster logisch is geïsoleerd voor gebruik door meerdere tenants.
 

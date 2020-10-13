@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
 ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326776"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
@@ -88,8 +88,8 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Databasenaam** | Yes | De naam voor uw SQL database, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
-   | **Tabel naam** | Yes | De tabel die u wilt gebruiken, bijvoorbeeld `SalesLT.Customer` |
+   | **Databasenaam** | Ja | De naam voor uw SQL database, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
+   | **Tabelnaam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -129,10 +129,10 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **SQL Server-naam** | Yes | Het adres voor uw SQL Server, bijvoorbeeld `Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL-databasenaam** | Yes | De naam voor uw SQL Server-Data Base, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
-   | **Gebruikersnaam** | Yes | Uw gebruikers naam voor de SQL-Server en-data base |
-   | **Wachtwoord** | Yes | Uw wacht woord voor de SQL-Server en-data base |
+   | **SQL Server-naam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld `Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL-databasenaam** | Ja | De naam voor uw SQL Server-Data Base, bijvoorbeeld `Fabrikam-Azure-SQL-DB` |
+   | **Gebruikersnaam** | Ja | Uw gebruikers naam voor de SQL-Server en-data base |
+   | **Wachtwoord** | Ja | Uw wacht woord voor de SQL-Server en-data base |
    | **Abonnement** |  Ja, voor Windows-verificatie | Het Azure-abonnement voor de gegevens gateway resource die u eerder hebt gemaakt in azure |
    | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip**: als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](../logic-apps/logic-apps-gateway-connection.md)correct hebt ingesteld. |
    |||

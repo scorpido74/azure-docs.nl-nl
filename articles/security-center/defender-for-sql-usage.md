@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577830"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers 
@@ -30,10 +30,10 @@ U ziet waarschuwingen wanneer er verdachte database activiteiten, potentiële kw
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Preview|
-|Koers|**Azure Defender voor SQL-servers op computers** wordt gefactureerd zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
+|Releasestatus:|Preview|
+|Prijzen:|**Azure Defender voor SQL-servers op computers** wordt gefactureerd zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
 |Beveiligde SQL-versies:|Azure SQL Server (alle versies die worden gedekt door micro soft support)|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China Gov, Other Gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers instellen
@@ -129,6 +129,6 @@ Azure Defender-waarschuwingen zijn beschikbaar op de pagina waarschuwingen van S
 Zie het volgende artikel voor verwante materialen:
 
 - [Beveiligings waarschuwingen voor SQL Database en Azure Synapse Analytics (voorheen SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
-- [E-mail meldingen instellen voor beveiligings waarschuwingen](security-center-provide-security-contact-details.md)
+- [E-mailmeldingen voor beveiligingswaarschuwingen instellen](security-center-provide-security-contact-details.md)
 - [Meer informatie over Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Gegevens beveiligings pakket van Azure Security Center](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

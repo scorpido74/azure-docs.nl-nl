@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537654"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
@@ -129,8 +129,8 @@ Dit zijn de geldige `threshold` waarden die u in het bestand kunt opgeven `Appli
 | drempel waarde   | Log4j  | Logback | JUL     |
 |-------------------|--------|---------|---------|
 | UIT               | UIT    | UIT     | UIT     |
-| FATALE             | FATALE  | ERROR   | ZEER  |
-| FOUT (of ernstig) | ERROR  | ERROR   | ZEER  |
+| FATALE             | FATALE  | FOUT   | ZEER  |
+| FOUT (of ernstig) | FOUT  | FOUT   | ZEER  |
 | Waarschuwing (of waarschuwing) | WETEN   | WETEN    | WAARSCHUWING |
 | VALUTA              | VALUTA   | VALUTA    | VALUTA    |
 | CONFIGURATIES            | FOUTOPSPORING  | FOUTOPSPORING   | CONFIGURATIES  |

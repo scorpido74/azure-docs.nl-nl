@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891219"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Verbinding maken met Azure Resource Manager op uw Azure Stack Edge Pro-apparaat
@@ -460,4 +460,4 @@ U bent nu overgeschakeld naar de gewenste omgeving.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Implementeer vm's op uw Azure stack Edge Pro-apparaat](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Implementeer VM's op uw Azure Stack Edge-apparaat](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849840"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975158"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -108,7 +108,7 @@ Configureer de volgende gegevens op de pagina *Logic apps aangepaste connector b
 * **Aangepaste connectors**
     - API-eind punt: REST (laat de standaard instelling)
     - Import modus: OpenAPI-bestand (standaard instelling behouden)
-    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.jsaan*) en klik op *openen*.
+    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer (*Azure_Digital_Twins_Custom_Swaggers \logicapps \...\digitaltwins.jsaan*) en klik op *openen*.
 * **Algemene informatie**
     - Pictogram: Upload een pictogram dat u wilt
     - Achtergrond kleur van pictogram: Voer hexadecimale code in de notatie #xxxxxx in voor de kleur.
@@ -201,7 +201,7 @@ U wordt mogelijk gevraagd om u aan te melden met uw Azure-referenties om verbind
 Vul in het vak nieuwe *DigitalTwinsAdd* de velden als volgt in:
 * _id_: Vul de *dubbele id* van het digitale dubbele item in uw exemplaar dat u wilt dat de logische app wordt bijgewerkt.
 * _dubbele_: in dit veld voert u de hoofd tekst in die voor de gekozen API-aanvraag nodig is. Voor *DigitalTwinsUpdate*is deze tekst in de vorm van de JSON-patch code. Voor meer informatie over het structureren van een JSON-patch voor het bijwerken van uw twee, raadpleegt u het artikel [een digitale dubbele sectie bijwerken](how-to-manage-twin.md#update-a-digital-twin) van *How-to: Manage Digital apparaatdubbels*.
-* _API-Version_: in de huidige open bare preview is deze waarde *2020-05-31-preview*
+* _API-Version_: de nieuwste API-versie. In de huidige open bare preview is deze waarde *2020-05-31-preview*
 
 Druk op *Opslaan* in de Logic apps Designer.
 
