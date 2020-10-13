@@ -12,10 +12,10 @@ ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88640851"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Problemen en foutberichten met Application Proxy oplossen
@@ -47,7 +47,7 @@ Wanneer u de connector fout in het gebeurtenis logboek vindt, gebruikt u deze ta
 | Fout | Aanbevolen stappen |
 | ----- | ----------------- |
 | Registratie van connector is mislukt: Controleer of u de toepassings proxy hebt ingeschakeld in de Azure Beheerportal en of u de gebruikers naam en het wacht woord van uw Active Directory correct hebt ingevoerd. Fout: er zijn een of meer fouten opgetreden. | Als u het registratie venster hebt gesloten zonder u aan te melden bij Azure AD, voert u de wizard connector opnieuw uit en registreert u de connector. <br><br> Als het registratie venster wordt geopend en vervolgens onmiddellijk wordt gesloten zonder dat u zich hoeft aan te melden, wordt deze fout waarschijnlijk weer gegeven. Deze fout treedt op wanneer het systeem een netwerk fout bevat. Zorg ervoor dat het mogelijk is om vanuit een browser verbinding te maken met een open bare website en dat de poorten zijn geopend zoals is opgegeven in de vereisten voor de [toepassings proxy](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
-| Er wordt een duidelijke fout weer gegeven in het registratie venster. Kan niet door gaan | Als u deze fout ziet en het venster wordt gesloten, hebt u de verkeerde gebruikers naam of het juiste wacht woord opgegeven. &Opnieuw. |
+| Er wordt een duidelijke fout weer gegeven in het registratie venster. Kan niet door gaan | Als u deze fout ziet en het venster wordt gesloten, hebt u de verkeerde gebruikers naam of het juiste wacht woord opgegeven. Probeer het opnieuw. |
 | Registratie van connector is mislukt: Controleer of u de toepassings proxy hebt ingeschakeld in de Azure Beheerportal en of u de gebruikers naam en het wacht woord van uw Active Directory correct hebt ingevoerd. Fout: ' AADSTS50059: geen Tenant gegevens gevonden in de aanvraag of impliciet door de verstrekte referenties en de zoek opdracht op de Service Principal URI is mislukt. | U probeert u aan te melden met een micro soft-account en niet een domein dat deel uitmaakt van de organisatie-ID van de map waartoe u toegang wilt krijgen. Zorg ervoor dat de beheerder deel uitmaakt van dezelfde domein naam als het Tenant domein, bijvoorbeeld als het Azure AD-domein contoso.com is, de beheerder moet zijn admin@contoso.com . |
 | Kan het huidige uitvoerings beleid voor het uitvoeren van Power shell-scripts niet ophalen. | Als de installatie van de connector mislukt, controleert u of het Power shell-uitvoerings beleid niet is uitgeschakeld. <br><br>1. Open de groepsbeleid editor.<br>2. Ga naar **computer configuratie**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **Windows Power shell** en dubbel klik op **script uitvoering inschakelen**.<br>3. het uitvoerings beleid kan worden ingesteld op **niet geconfigureerd** of **ingeschakeld**. Als deze optie is **ingeschakeld**, moet u ervoor zorgen dat het uitvoerings beleid onder opties is ingesteld op het **toestaan van lokale scripts en externe ondertekende scripts** of voor het **toestaan van alle scripts**. |
 | Connector kan de configuratie niet downloaden. | Het client certificaat van de connector, dat wordt gebruikt voor authenticatie, is verlopen. Dit kan ook gebeuren als de connector achter een proxy is geïnstalleerd. In dit geval heeft de connector geen toegang tot internet en kan deze geen toepassingen leveren aan externe gebruikers. Vernieuw de vertrouwens relatie hand matig met de `Register-AppProxyConnector` cmdlet in Windows Power shell. Als uw connector zich achter een proxy bevindt, moet u Internet toegang verlenen tot de connector-accounts ' netwerk services ' en ' lokaal systeem '. Dit kan worden bereikt door hen toegang te verlenen tot de proxy of door deze in te stellen om de proxy over te slaan. |

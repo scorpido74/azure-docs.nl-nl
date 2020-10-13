@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005862"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>De component FROM in Azure Cosmos DB
@@ -55,11 +55,11 @@ FROM <from_specification>
   
 -  Als de expressie is `<container_expression>` , dan property_name, wordt property_name als alias gebruikt. Als de expressie een container_name is, wordt container_name als alias gebruikt.  
   
-- ALSOOK`input_alias`  
+- ALSOOK `input_alias`  
   
   Hiermee geeft u `input_alias` op dat de is een set waarden die wordt geretourneerd door de onderliggende container expressie.  
  
-- `input_alias`Naast  
+- `input_alias` Naast  
   
   Specificeert dat de `input_alias` moet de set waarden vertegenwoordigen die worden verkregen door te herhalen over alle matrix elementen van elke matrix die wordt geretourneerd door de onderliggende container expressie. Elke waarde die wordt geretourneerd door de onderliggende container expressie die geen matrix is, wordt genegeerd.  
   

@@ -7,17 +7,17 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: 197decbb263391a32b8bf01cdbb6c2f34b750111
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88003564"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
 
 * [Veelgestelde vragen over planning](cache-planning-faq.md)
-* [Veelgestelde vragen over ontwikkel aars](cache-development-faq.md)
+* [Veelgestelde vragen over ontwikkeling](cache-development-faq.md)
 * [Veelgestelde vragen over beheer](cache-management-faq.md)
 * [Veelgestelde vragen over bewaking en probleem oplossing](cache-monitor-troubleshoot-faq.md)
 
@@ -28,10 +28,10 @@ Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevole
 
 Zie [gearchiveerde Managed cache service documentatie](/previous-versions/azure/azure-services/dn386094(v=azure.100))voor informatie over het weer geven van gearchiveerde documentatie.
 
-### <a name="in-role-cache"></a>In-Role Cache
+### <a name="in-role-cache"></a>In-Role cache
 [In-Role Cache is buiten gebruik gesteld op 30 november 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Zie [gearchiveerde in-Role cache documentatie](/previous-versions/azure/azure-services/dn386103(v=azure.100))voor informatie over het weer geven van gearchiveerde documentatie.
+Zie [Archief met gearchiveerde In-Role cache](/previous-versions/azure/azure-services/dn386103(v=azure.100))voor informatie over het weer geven van gearchiveerde documentatie.
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 

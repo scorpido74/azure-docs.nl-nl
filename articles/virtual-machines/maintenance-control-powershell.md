@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306936"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Updates beheren met onderhouds beheer en Azure PowerShell
@@ -37,7 +37,7 @@ Als u lokaal installeert, moet u ervoor zorgen dat u de Power shell-prompt opent
 U wordt mogelijk ook gevraagd om te bevestigen dat u wilt installeren vanuit een *niet-vertrouwde opslag plaats*. Typ `Y` of selecteer **Ja om alles** om de module te installeren.
 
 
-## <a name="create-a-maintenance-configuration"></a>Een onderhouds configuratie maken
+## <a name="create-a-maintenance-configuration"></a>Een onderhoudsconfiguratie maken
 
 Maak een resource groep als een container voor uw configuratie. In dit voor beeld wordt een resource groep met de naam *myMaintenanceRG* gemaakt in *Oost-Timor*. Als u al een resource groep hebt die u wilt gebruiken, kunt u dit deel overs Laan en de naam van de resource groep vervangen door uw eigen in de rest van de voor beelden.
 

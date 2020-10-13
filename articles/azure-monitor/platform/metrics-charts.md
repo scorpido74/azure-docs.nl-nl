@@ -8,10 +8,10 @@ ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079550"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Geavanceerde functies van Azure Metrics Explorer
@@ -21,7 +21,7 @@ ms.locfileid: "87079550"
 
 ## <a name="metrics-in-azure"></a>Metrische gegevens in azure
 
-[Metrische gegevens in azure monitor](data-platform-metrics.md) zijn de reeks gemeten waarden en aantallen die gedurende een bepaalde periode worden verzameld en opgeslagen. Er zijn standaard metrische gegevens (of platformen) en aangepaste metrische gegevens. De standaard metrische gegevens worden aan u door het Azure-platform zelf verschaft. Standaard waarden zijn de status-en gebruiks statistieken van uw Azure-resources. Terwijl aangepaste metrische gegevens worden verzonden naar Azure door uw toepassingen met behulp [van de Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../app/api-custom-events-metrics.md), een [Windows Azure Diagnostics-extensie (WAD)](./diagnostics-extension-overview.md)of door [Azure monitor rest API](./metrics-store-custom-rest-api.md).
+[Metrische gegevens in azure monitor](data-platform-metrics.md) zijn de reeks gemeten waarden en aantallen die gedurende een bepaalde periode worden verzameld en opgeslagen. Er zijn standaard metrische gegevens (of platformen) en aangepaste metrische gegevens. De standaard metrische gegevens worden aan u door het Azure-platform zelf verschaft. Standaard waarden zijn de status-en gebruiks statistieken van uw Azure-resources. Terwijl aangepaste metrische gegevens worden verzonden naar Azure door uw toepassingen met behulp [van de Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../app/api-custom-events-metrics.md), een  [Windows Azure Diagnostics-extensie (WAD)](./diagnostics-extension-overview.md)of door [Azure monitor rest API](./metrics-store-custom-rest-api.md).
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Weer gaven met meerdere metrische gegevens en grafieken maken
 

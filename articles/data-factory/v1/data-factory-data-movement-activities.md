@@ -13,10 +13,10 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195970"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Gegevens verplaatsen met behulp van Kopieer activiteit
@@ -96,15 +96,15 @@ Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, geb
 |:--- |:--- |:--- |
 | Verenigde Staten | VS - oost | VS - oost |
 | &nbsp; | VS - oost 2 | VS - oost 2 |
-| &nbsp; | VS - centraal | VS - centraal |
+| &nbsp; | Central US | Central US |
 | &nbsp; | VS - noord-centraal | VS - noord-centraal |
 | &nbsp; | VS - zuid-centraal | VS - zuid-centraal |
 | &nbsp; | VS - west-centraal | VS - west-centraal |
 | &nbsp; | VS - west | VS - west |
-| &nbsp; | VS - west 2 | VS - west 2 |
+| &nbsp; | VS - west 2 | West US 2 |
 | Canada | Canada - oost | Canada - midden |
 | &nbsp; | Canada - midden | Canada - midden |
-| Brazilië | Brazilië - zuid | Brazilië - zuid |
+| Brazilië | Brazil South | Brazil South |
 | Europa | Europa - noord | Europa - noord |
 | &nbsp; | Europa -west | Europa -west |
 | Verenigd Koninkrijk | Verenigd Koninkrijk West | Verenigd Koninkrijk Zuid |
@@ -112,12 +112,12 @@ Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, geb
 | Azië en Stille Oceaan | Azië - zuidoost | Azië - zuidoost |
 | &nbsp; | Azië - oost | Azië - zuidoost |
 | Australië | Australië - oost | Australië - oost |
-| &nbsp; | Australië - zuidoost | Australië - zuidoost |
+| &nbsp; | Australië - zuidoost | Australia Southeast |
 | India | India - centraal | India - centraal |
 | &nbsp; | India - west | India - centraal |
 | &nbsp; | India - zuid | India - centraal |
-| Japan | Japan - oost | Japan - oost |
-| &nbsp; | Japan - west | Japan - oost |
+| Japan | Japan East | Japan - oost |
+| &nbsp; | Japan - west | Japan East |
 | Korea | Korea - centraal | Korea - centraal |
 | &nbsp; | Korea - zuid | Korea - centraal |
 

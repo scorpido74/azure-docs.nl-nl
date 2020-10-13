@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83123661"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Doorlopende implementatie voor Azure Functions
@@ -42,7 +42,7 @@ Voer de volgende stappen uit om een continue implementatie voor een bestaande fu
 
 3. In GitHub selecteert u **AzureAppService autoriseren**.
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service autoriseren":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service implementatie centrum":::
 
     Voer uw GitHub-wacht woord in en selecteer vervolgens **door gaan**.
 
@@ -53,9 +53,9 @@ Voer de volgende stappen uit om een continue implementatie voor een bestaande fu
 
     Selecteer **Doorgaan**.
 
-5. Configureer informatie die specifiek is voor de bron beheer optie die u hebt opgegeven. Voor GitHub moet u waarden voor **organisatie**, **opslag plaats**en **vertakking**invoeren of selecteren. De waarden zijn gebaseerd op de locatie van uw code. Selecteer vervolgens **door gaan**.
+5. Configureer informatie die specifiek is voor de bron beheer optie die u hebt opgegeven. Voor GitHub moet u waarden voor **organisatie**, **opslag plaats**en **vertakking**invoeren of selecteren. De waarden zijn gebaseerd op de locatie van uw code. Selecteer vervolgens **Doorgaan**.
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="GitHub configureren":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Azure App Service implementatie centrum":::
 
 6. Bekijk alle gegevens en selecteer vervolgens **volt ooien** om de configuratie van de implementatie te volt ooien.
 

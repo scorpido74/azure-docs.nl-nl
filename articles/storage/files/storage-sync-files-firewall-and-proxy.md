@@ -8,10 +8,10 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87903711"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- en firewallinstellingen van Azure File Sync
@@ -44,7 +44,7 @@ Azure File Sync beschik bare manieren om in azure te kunnen bereiken, automatisc
 ## <a name="proxy"></a>Proxy
 Azure File Sync biedt ondersteuning voor app-specifieke proxy-instellingen voor de hele machine.
 
-Met **app-specifieke proxy-instellingen** kunt u een proxy configureren die specifiek is voor Azure file sync verkeer. App-specifieke proxy-instellingen worden ondersteund op Agent versie 4.0.1.0 of hoger en kunnen worden geconfigureerd tijdens de installatie van de agent of met behulp van de Power shell-cmdlet Set-StorageSyncProxyConfiguration.
+Met **app-specifieke proxy-instellingen** kunt u een proxy configureren die specifiek is voor Azure file sync verkeer. App-specifieke proxy-instellingen worden ondersteund op Agent versie 4.0.1.0 of hoger en kunnen worden geconfigureerd tijdens de installatie van de agent of met behulp van de Set-StorageSyncProxyConfiguration Power shell-cmdlet.
 
 PowerShell-opdrachten voor het configureren van app-specifieke proxyinstellingen:
 ```powershell
@@ -266,7 +266,7 @@ if ($found) {
 Vervolgens kunt u de IP-adresbereiken gebruiken in `$ipAddressRanges` om uw firewall bij te werken. Raadpleeg de website van uw firewall/netwerk apparaat voor informatie over het bijwerken van uw firewall.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>De netwerk verbinding met Service-eind punten testen
-Zodra een server is geregistreerd bij de Azure File Sync-Service, kunnen de cmdlet test-StorageSyncNetworkConnectivity en ServerRegistration.exe worden gebruikt om de communicatie met alle eind punten (Url's) die voor deze server gelden, te testen. Met deze cmdlet kunt u problemen oplossen wanneer de server niet volledig met Azure File Sync werkt en kan worden gebruikt voor het afstemmen van proxy-en firewall configuraties.
+Zodra een server is geregistreerd bij de Azure File Sync-Service, kunnen de Test-StorageSyncNetworkConnectivity-cmdlet en ServerRegistration.exe worden gebruikt om de communicatie met alle eind punten (Url's) die voor deze server gelden, te testen. Met deze cmdlet kunt u problemen oplossen wanneer de server niet volledig met Azure File Sync werkt en kan worden gebruikt voor het afstemmen van proxy-en firewall configuraties.
 
 Als u de test voor de netwerk verbinding wilt uitvoeren, installeert u Azure File Sync agent versie 9,1 of hoger en voert u de volgende Power shell-opdrachten uit:
 ```powershell
@@ -280,6 +280,6 @@ De lijsten eerder in dit document bevatten de Url's Azure File Sync momenteel co
 Het instellen van domein beperking van firewall regels kan een maat eenheid zijn voor het verbeteren van de beveiliging. Als deze firewall configuraties worden gebruikt, moet er een of meer Url's worden toegevoegd. Dit kan zelfs na verloop van tijd worden gewijzigd. Controleer dit artikel regel matig.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
-- [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+- [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)

@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935208"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Naslag informatie over het Azure Sentinel data normalisatie-schema
@@ -28,7 +28,7 @@ ms.locfileid: "90935208"
 
 De volgende terminologie wordt gebruikt in schema's van Sentinel:
 
-| Term | Definitie |
+| Termijn | Definitie |
 | ---- | ---------- |
 | Rapportage apparaat | Het systeem dat de records naar Azure Sentinel verzendt. Dit mag niet het onderliggende systeem van de record zijn. |
 | Record | Een eenheid van gegevens die vanaf het rapport apparaat worden verzonden. Dit wordt vaak aangeduid als ' Log ', ' event ' of ' alert ', maar hoeft niet noodzakelijkerwijs een van beide te zijn. |
@@ -41,11 +41,11 @@ De waarden moeten worden genormaliseerd op basis van de onderstaande richt lijne
 | Gegevenstype | Fysiek type | Indeling en waarde |
 | --------- | ------------- | ---------------- |
 | **Datum en tijd** | Afhankelijk van de functie van de opname methode in aflopende prioriteit:<ul><li>Log Analytics ingebouwde type datum/tijd</li><li>Een geheel getal-veld met Log Analytics datetime-numerieke representatie</li><li>Een teken reeks veld met Log Analytics datetime-numerieke representatie</li></ul> | Weer gave van Log Analytics DateTime. <br></br>Log Analytics datum & tijd weergave lijkt op dezelfde aard, maar is anders dan bij de Unix-tijd weergave. Raadpleeg deze conversie richtlijnen. <br></br>De datum waarop & tijd zone moet worden aangepast. |
-| **MAC-adres** | Tekenreeks | Hexadecimale notatie met dubbele punten |
+| **MAC-adres** | Tekenreeks | Colon-Hexadecimal notatie |
 | **IP-adres** | IP-adres | Het schema heeft geen afzonderlijke IPv4-en IPv6-adressen. Elk IP-adres veld kan een IPv4-adres of een IPv6-adres zijn:<ul><li>IPv4 in een punt decimale notatie</li><li>IPv6 in 8 hextets-notatie, waardoor de korte formulieren hier worden beschreven.</li></ul> |
 | **Gebruiker** | Tekenreeks | De volgende drie gebruikers velden zijn beschikbaar:<ul><li>Gebruikersnaam</li><li>UPN van gebruiker</li><li>Gebruikers domein</li></ul> |
 | **Gebruikers-id** | Tekenreeks | De volgende twee gebruikers-Id's worden momenteel ondersteund:<ul><li>Gebruikers-SID</li><li>Azure Active Directory-ID</li></ul> |
-| **Apparaat** | Tekenreeks | De volgende drie apparaat-en host-kolommen worden ondersteund:<ul><li>Id</li><li>Name</li><li>Fully Qualified Domain Name (FQDN)</li></ul> |
+| **Apparaat** | Tekenreeks | De volgende drie apparaat-en host-kolommen worden ondersteund:<ul><li>Id</li><li>Naam</li><li>Fully Qualified Domain Name (FQDN)</li></ul> |
 | **Land** | Tekenreeks | Een teken reeks die gebruikmaakt van ISO 3166-1 volgens deze prioriteit:<ul><li>Alfanumerieke 2-codes (dus voor de Verenigde Staten)</li><li>Alpha-3-codes (Verenigde Staten voor de Verenigde Staten)</li><li>Korte naam</li></ul> |
 | **Regio** | Tekenreeks | De subafdelings naam van het land met ISO 3166-2 |
 | **Plaats** | Tekenreeks | |
@@ -160,16 +160,16 @@ Hieronder ziet u het schema van de tabel netwerk sessies, versiond 1.0.0
 | CloudAppId | Tekenreeks | 124 | De ID van de doel toepassing voor een HTTP-toepassing, zoals geïdentificeerd door een proxy. Deze waarde is doorgaans specifiek voor de gebruikte proxy. | Cloud |
 | CloudAppOperation | Tekenreeks | Delete | De bewerking die de gebruiker heeft uitgevoerd in de context van de doel toepassing voor een HTTP-toepassing, zoals geïdentificeerd door een proxy. Deze waarde is doorgaans specifiek voor de gebruikte proxy. | Cloud |
 | CloudAppRiskLevel | Tekenreeks | 3 | Het risico niveau dat is gekoppeld aan een HTTP-toepassing, zoals geïdentificeerd door een proxy. Deze waarde is doorgaans specifiek voor de gebruikte proxy. | Cloud |
-| Bestands | Tekenreeks | ImNotMalicious.exe | De bestands naam die via de netwerk verbindingen wordt verzonden voor protocollen, zoals FTP en HTTP, die de bestandsnaam informatie bevat. | Bestand |
-| Bestandspad | Tekenreeks | C:\Malicious\ImNotMalicious.exe | Het volledige pad, inclusief de bestands naam, van het bestand | Bestand |
-| FileHashMd5 | Tekenreeks | 51BC68715FC7C109DCEA406B42D9D78F | De MD5-hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | Bestand |
-| FileHashSha1 | Tekenreeks | 491AE3... C299821476F4 | De SHA1-hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | Bestand |
-| FileHashSha256 | Tekenreeks | 9B8F8EDB... C129976F03 | De SHA256 hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | Bestand |
-| FileHashSha512 | Tekenreeks | 5E127D... F69F73F01F361 | De SHA512 gebruikt hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | Bestand |
-| File Extension |  Tekenreeks | exe | Het type van het bestand dat wordt verzonden via de netwerk verbindingen voor protocollen zoals FTP en HTTP. | Bestand
-| FileMimeType | Tekenreeks | toepassings-MSWord | Het MIME-type van het bestand dat wordt verzonden via de netwerk verbindingen voor protocollen zoals FTP en HTTP | Bestand |
-| FileSize | Geheel getal | 23500 | De bestands grootte, in bytes, van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | Bestand |
-| HttpVersion | Tekenreeks | 2,0 | De versie van de HTTP-aanvraag voor HTTP/HTTPS-netwerk verbindingen. | HTTP |
+| Bestands | Tekenreeks | ImNotMalicious.exe | De bestands naam die via de netwerk verbindingen wordt verzonden voor protocollen, zoals FTP en HTTP, die de bestandsnaam informatie bevat. | File |
+| Bestandspad | Tekenreeks | C:\Malicious\ImNotMalicious.exe | Het volledige pad, inclusief de bestands naam, van het bestand | File |
+| FileHashMd5 | Tekenreeks | 51BC68715FC7C109DCEA406B42D9D78F | De MD5-hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | File |
+| FileHashSha1 | Tekenreeks | 491AE3... C299821476F4 | De SHA1-hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | File |
+| FileHashSha256 | Tekenreeks | 9B8F8EDB... C129976F03 | De SHA256 hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | File |
+| FileHashSha512 | Tekenreeks | 5E127D... F69F73F01F361 | De SHA512 gebruikt hash-waarde van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | File |
+| File Extension |  Tekenreeks | exe | Het type van het bestand dat wordt verzonden via de netwerk verbindingen voor protocollen zoals FTP en HTTP. | File
+| FileMimeType | Tekenreeks | toepassings-MSWord | Het MIME-type van het bestand dat wordt verzonden via de netwerk verbindingen voor protocollen zoals FTP en HTTP | File |
+| FileSize | Geheel getal | 23500 | De bestands grootte, in bytes, van het bestand dat via de netwerk verbindingen voor protocollen wordt verzonden. | File |
+| HttpVersion | Tekenreeks | 2.0 | De versie van de HTTP-aanvraag voor HTTP/HTTPS-netwerk verbindingen. | HTTP |
 | HttpRequestMethod | Tekenreeks | GET | De HTTP-methode voor HTTP/HTTPS-netwerk sessies. | HTTP |
 | Http status code | Tekenreeks | 404 | De HTTP-status code voor HTTP/HTTPS-netwerk sessies. | HTTP |
 | HttpContentType | Tekenreeks | meerdelige/formulier-data; grens = iets | De header van het inhouds type van het HTTP-antwoord voor HTTP/HTTPS-netwerk sessies. | HTTP |

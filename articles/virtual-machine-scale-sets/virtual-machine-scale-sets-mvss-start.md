@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831495"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor virtuele-machine schaal sets
@@ -165,7 +165,7 @@ In het volgende code fragment gebruikt u de para meters van voordat u de gebruik
 ### <a name="specify-vm-network-configuration"></a>VM-netwerk configuratie opgeven
 Specificeer ten slotte de netwerk configuratie voor de virtuele machines in de schaalset. In dit geval hoeft u alleen de ID op te geven van het subnet dat u eerder hebt gemaakt. Hiermee wordt de schaal ingesteld waarmee de netwerk interfaces in dit subnet worden geplaatst.
 
-U kunt de ID van het virtuele netwerk met het subnet ophalen met behulp van de `resourceId` sjabloon functie. Deze functie neemt het type en de naam van een resource en retourneert de volledig gekwalificeerde id van die resource. Deze ID heeft de volgende notatie:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+U kunt de ID van het virtuele netwerk met het subnet ophalen met behulp van de `resourceId` sjabloon functie. Deze functie neemt het type en de naam van een resource en retourneert de volledig gekwalificeerde id van die resource. Deze ID heeft de volgende notatie: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
 De id van het virtuele netwerk is echter niet voldoende. Geef het specifieke subnet op waar de virtuele machines voor de schaalset zich bevinden. U kunt dit doen door samen `/subnets/mySubnet` te voegen met de id van het virtuele netwerk. Het resultaat is de volledig gekwalificeerde ID van het subnet. Doe dit samen met de `concat` functie, die in een reeks teken reeksen neemt en die de samen voeging retourneert.
 

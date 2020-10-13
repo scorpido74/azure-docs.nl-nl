@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.openlocfilehash: ab72512b2e5d915dbd4b8a3d7d8446a5932eef9e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165444"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn MVC-project (Visual Studio Azure Active Directory Connected service)?
@@ -138,7 +138,7 @@ Aanvullende wijzigingen als u de optie **Directory gegevens lezen** hebt geselec
 
 - Toegevoegd `Connected Services/AzureAD/ConnectedService.json` (Visual studio 2017) of `Service References/Azure AD/ConnectedService.json` (visual studio 2015) met informatie die Visual Studio gebruikt om de toevoeging van de verbonden service bij te houden.
 
-- Als u de optie **Directory gegevens lezen** hebt geselecteerd, toegevoegd `Models/ADALTokenCache.cs` en voor het ondersteunen van het opslaan van `Models/ApplicationDbContext.cs` tokens. Daarnaast hebt u een extra controller en weer gave toegevoegd om toegang te krijgen tot gebruikers profiel gegevens met behulp van Azure Graph Api's: `Controllers/UserProfileController.cs` , `Views/UserProfile/Index.cshtml` en`Views/UserProfile/Relogin.cshtml`
+- Als u de optie **Directory gegevens lezen** hebt geselecteerd, toegevoegd `Models/ADALTokenCache.cs` en voor het ondersteunen van het opslaan van `Models/ApplicationDbContext.cs` tokens. Daarnaast hebt u een extra controller en weer gave toegevoegd om toegang te krijgen tot gebruikers profiel gegevens met behulp van Azure Graph Api's: `Controllers/UserProfileController.cs` , `Views/UserProfile/Index.cshtml` en `Views/UserProfile/Relogin.cshtml`
 
 ### <a name="file-backup-visual-studio-2015"></a>Back-up van bestanden (Visual Studio 2015)
 

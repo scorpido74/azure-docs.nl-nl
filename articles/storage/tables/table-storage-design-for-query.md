@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236332"
 ---
 # <a name="design-for-querying"></a>Ontwerp voor query's
@@ -41,7 +41,7 @@ In de volgende voor beelden wordt ervan uitgegaan dat de tabel service werk neme
 | **RowKey** (werk nemer-id) |Tekenreeks |
 | **FirstName** |Tekenreeks |
 | **LastName** |Tekenreeks |
-| **Ouderdom** |Geheel getal |
+| **Age** |Geheel getal |
 | **EmailAddress** |Tekenreeks |
 
 In het artikel [overzicht van Azure Table Storage](table-storage-overview.md) worden enkele van de belangrijkste functies van de Azure-Table service beschreven die een directe invloed hebben op het ontwerpen van query's. Dit resulteert in de volgende algemene richt lijnen voor het ontwerpen van Table service query's. Houd er rekening mee dat de filter syntaxis die in de onderstaande voor beelden wordt gebruikt, afkomstig is uit de Table service REST API, Zie [query-entiteiten](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)voor meer informatie.  

@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790243"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure deny-toewijzingen weer geven met behulp van de Azure Portal
@@ -32,7 +32,7 @@ Met [Azure deny-toewijzingen](deny-assignments.md) kunnen gebruikers specifieke 
 
 Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende nodig:
 
-- `Microsoft.Authorization/denyAssignments/read`toestemming, die deel uitmaakt van de meeste [ingebouwde rollen van Azure](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read` toestemming, die deel uitmaakt van de meeste [ingebouwde rollen van Azure](built-in-roles.md).
 
 ## <a name="list-deny-assignments"></a>Lijst met geweigerde toewijzingen weergeven
 
@@ -90,7 +90,7 @@ Volg deze stappen om aanvullende informatie over een weiger toewijzing weer te g
 
     ![Machtigingen voor geweigerde toewijzing weigeren](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Actietype | Description |
+    | Actietype | Beschrijving |
     | --- | --- |
     | **Acties**  | Beheer bewerkingen geweigerd. |
     | **NotActions** | Beheer bewerkingen die zijn uitgesloten van een geweigerde beheer bewerking. |

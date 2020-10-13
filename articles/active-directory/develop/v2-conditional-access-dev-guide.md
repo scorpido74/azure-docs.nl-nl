@@ -15,10 +15,10 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120623"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Hulp voor ontwikkelaars bij voorwaardelijke toegang van Azure Active Directory
@@ -36,7 +36,7 @@ Voor ontwikkel aars die apps bouwen voor Azure AD, laat dit artikel zien hoe u v
 Er wordt uitgegaan van kennis van apps met [één](quickstart-register-app.md) en [meerdere tenants](howto-convert-app-to-be-multi-tenant.md) en [algemene verificatie patronen](./authentication-vs-authorization.md) .
 
 > [!NOTE]
-> Voor het gebruik van deze functie is een Azure AD Premium P1-licentie vereist. Zie [Algemeen beschikbare functies van de edities Gratis, Basic en Premium vergelijken](https://azure.microsoft.com/pricing/details/active-directory/) als u een licentie zoekt die bij uw vereisten past.
+> Voor deze functie hebt u een Azure AD Premium P1-licentie nodig. Zie [Algemeen beschikbare functies van de edities Gratis, Basic en Premium vergelijken](https://azure.microsoft.com/pricing/details/active-directory/) als u een licentie zoekt die bij uw vereisten past.
 > Klanten met een [Microsoft 365 Business-licentie](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot de functies voor voorwaardelijke toegang.
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>Wat is het effect van voorwaardelijke toegang op een app?
@@ -156,9 +156,9 @@ In dit scenario wordt de zaak door lopen wanneer we een app met één pagina (SP
 
 In MSAL.js zijn er enkele functies die tokens verkrijgen: `loginPopup()` , `acquireTokenSilent(...)` , `acquireTokenPopup(…)` , en `acquireTokenRedirect(…)` .
 
-* `loginPopup()`Hiermee wordt een ID-token opgehaald via een interactieve aanmeldings aanvraag, maar geen toegangs tokens voor een service ontvangen (inclusief een beveiligde web-API met voorwaardelijke toegang).
-* `acquireTokenSilent(…)`kan vervolgens worden gebruikt om een toegangs token op de achtergrond te verkrijgen, wat betekent dat de gebruikers interface in geen enkele omstandigheid wordt weer gegeven.
-* `acquireTokenPopup(…)`en `acquireTokenRedirect(…)` worden beide gebruikt voor het interactief aanvragen van een token voor een bron, wat betekent dat ze altijd de AANMELDINGS gebruikersinterface weer geven.
+* `loginPopup()` Hiermee wordt een ID-token opgehaald via een interactieve aanmeldings aanvraag, maar geen toegangs tokens voor een service ontvangen (inclusief een beveiligde web-API met voorwaardelijke toegang).
+* `acquireTokenSilent(…)` kan vervolgens worden gebruikt om een toegangs token op de achtergrond te verkrijgen, wat betekent dat de gebruikers interface in geen enkele omstandigheid wordt weer gegeven.
+* `acquireTokenPopup(…)` en `acquireTokenRedirect(…)` worden beide gebruikt voor het interactief aanvragen van een token voor een bron, wat betekent dat ze altijd de AANMELDINGS gebruikersinterface weer geven.
 
 Wanneer een app een toegangs token nodig heeft om een web-API aan te roepen, wordt geprobeerd een `acquireTokenSilent(…)` . Als de token sessie is verlopen of als er een beleid voor voorwaardelijke toegang moet worden nageleefd, mislukt de functie *acquireToken* en gebruikt `acquireTokenPopup()` of. de app `acquireTokenRedirect()` .
 

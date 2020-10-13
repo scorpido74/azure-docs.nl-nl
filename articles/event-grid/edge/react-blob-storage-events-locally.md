@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87462017"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Zelf studie: reageren op Blob Storage gebeurtenissen in IoT Edge (preview-versie)
@@ -54,7 +54,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 1. Geef de naam, de afbeelding en de opties voor het maken van de container van de container op:
 
    * **Naam**: eventgridmodule
-   * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Opties**voor het maken van containers:
 
     ```json
@@ -93,7 +93,7 @@ In deze sectie wordt beschreven hoe u een andere IoT-module implementeert die al
 1. Geef de naam, de afbeelding en de opties voor het maken van de container op van de container:
 
    * **Naam**: abonnee
-   * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Opties**voor het maken van containers: geen
 1. Klik op **Opslaan**.
 1. Ga door naar de volgende sectie om de Azure Blob Storage-module toe te voegen
@@ -193,8 +193,8 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
     ```
 
     > [!IMPORTANT]
-    > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
-    > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, de krul aanvraag:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
+    > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, de krul aanvraag: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
 2. Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moet u een Event Grid-abonnement maken voor **MicrosoftStorage** -onderwerp.
     1. Maak blobsubscription.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
@@ -222,7 +222,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
        ```
 
        > [!IMPORTANT]
-       > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
        > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, de krul aanvraag:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. Voer de volgende opdracht uit om het abonnement te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
@@ -251,8 +251,8 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
        ```
 
        > [!IMPORTANT]
-       > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom:`curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-       > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, de krul aanvraag:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, de krul aanvraag: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
 3. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) downloaden en [verbinding maken met uw lokale opslag](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
@@ -328,7 +328,7 @@ Hier ziet u de lijst met ondersteunde gebeurtenis eigenschappen en hun typen en 
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | gegevens | object | Gebeurtenis gegevens van Blob-opslag. |
@@ -339,7 +339,7 @@ Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| api | tekenreeks | De bewerking die de gebeurtenis heeft geactiveerd. Dit kan een van de volgende waarden zijn: <ul><li>De waarden die zijn toegestaan voor BlobCreated zijn: `PutBlob` en`PutBlockList`</li><li>BlobDeleted: toegestane waarden zijn `DeleteBlob` , `DeleteAfterUpload` en `AutoDelete` . <p>De `DeleteAfterUpload` gebeurtenis wordt gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschap deleteAfterUpload is ingesteld op True. </p><p>`AutoDelete`Er wordt een gebeurtenis gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschaps waarde voor deleteAfterMinutes is verlopen.</p></li></ul>|
+| api | tekenreeks | De bewerking die de gebeurtenis heeft geactiveerd. Dit kan een van de volgende waarden zijn: <ul><li>De waarden die zijn toegestaan voor BlobCreated zijn: `PutBlob` en `PutBlockList`</li><li>BlobDeleted: toegestane waarden zijn `DeleteBlob` , `DeleteAfterUpload` en `AutoDelete` . <p>De `DeleteAfterUpload` gebeurtenis wordt gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschap deleteAfterUpload is ingesteld op True. </p><p>`AutoDelete` Er wordt een gebeurtenis gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschaps waarde voor deleteAfterMinutes is verlopen.</p></li></ul>|
 | clientRequestId | tekenreeks | een aanvraag-ID van de client voor de bewerking van de opslag-API. Deze ID kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld ' client-request-id ' in de logboeken, en kan worden verschaft in client aanvragen via de header ' x-MS-Client-Request-id '. Zie [logboek indeling](/rest/api/storageservices/storage-analytics-log-format)voor meer informatie. |
 | requestId | tekenreeks | Door de service gegenereerde aanvraag-ID voor de bewerking van de opslag-API. Kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld aanvraag-id-header in de logboeken en wordt geretourneerd van het initiëren van de API-aanroep in de header x-MS-Request-id. Zie de [logboek indeling](/rest/api/storageservices/storage-analytics-log-format). |
 | eTag | tekenreeks | De waarde die u kunt gebruiken om bewerkingen voorwaardelijk uit te voeren. |
