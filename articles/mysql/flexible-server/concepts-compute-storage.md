@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708676"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Berekenings-en opslag opties in Azure Database for MySQL-flexibele server (preview-versie)
@@ -71,7 +71,7 @@ De gedetailleerde specificaties van de beschik bare server typen zijn als volgt:
 
 Voor meer informatie over de beschik bare reken reeks raadpleegt u de Azure VM-documentatie voor de [Burstable (B-serie)](../../virtual-machines/sizes-b-series-burstable.md), [Algemeen (Ddsv4-serie)](../../virtual-machines/ddv4-ddsv4-series.md)en [geoptimaliseerd voor geheugen (Edsv4-serie)](../../virtual-machines/edv4-edsv4-series.md).
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
 De opslag ruimte die u hebt ingericht, is de opslag capaciteit die beschikbaar is voor uw flexibele server. Opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de MySQL-server Logboeken. In alle reken lagen is de minimale opslag die wordt ondersteund, 5 GiB en maximum 16 TiB. Opslag wordt geschaald in 1 GiB-stappen en kan worden geschaald nadat de server is gemaakt.
 

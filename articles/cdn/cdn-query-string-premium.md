@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887263"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Gedrag van Azure CDN caching bepalen met query reeksen-Premium-laag
 > [!div class="op_single_selector"]
-> * [Standaardlaag](cdn-query-string.md)
-> * [Premiumlaag](cdn-query-string-premium.md)
+> * [De servicelaag Standard](cdn-query-string.md)
+> * [Premium-laag](cdn-query-string-premium.md)
 > 
 
 ## <a name="overview"></a>Overzicht

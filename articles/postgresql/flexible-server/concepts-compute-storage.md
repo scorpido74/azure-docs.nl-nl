@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710070"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Berekenings-en opslag opties in Azure Database for PostgreSQL-flexibele server
@@ -65,7 +65,7 @@ De gedetailleerde specificaties van de beschik bare server typen zijn als volgt:
 | E48s_v3              | 48     | 384 GiB     | 18000              | 750-MiB per seconde                 |
 | E64s_v3              | 64     | 432 GiB     | 18000              | 750-MiB per seconde                 |
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for PostgreSQL-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de PostgreSQL-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
@@ -78,7 +78,7 @@ Opslag is beschikbaar in de volgende vaste groottes:
 | 128 GiB | Ingericht 500, Maxi maal 3.500 |
 | 256 GiB | Ingericht 1100, Maxi maal 3.500 |
 | 512 GiB | Ingericht 2300, Maxi maal 3.500 |
-| 1 TiB | 5.000 |
+| 1 TiB | 5\.000 |
 | 2 TiB | 7\.500 |
 | 4 TiB | 7\.500 |
 | 8 TiB | 16.000 |

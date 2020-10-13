@@ -1,5 +1,5 @@
 ---
-title: Tips voor betere prestaties voor Azure Cosmos DB Java SDK v4
+title: Tips voor betere prestaties van Azure Cosmos DB Java SDK v4
 description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van Azure Cosmos Data Base voor Java SDK v4
 author: anfeldma-ms
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.date: 07/08/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258310"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties voor Azure Cosmos DB Java SDK v4
+# <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties van Azure Cosmos DB Java SDK v4
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -55,7 +55,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientConnectionModeAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -73,7 +73,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -141,7 +141,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -157,7 +157,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     * ***Overzicht van directe modus***
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Afbeelding van de architectuur van de directe modus" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Afbeelding van het verbindings beleid voor Azure Cosmos DB" border="false":::
 
         De architectuur aan de client zijde die in directe modus wordt gebruikt, maakt voorspel bare netwerk gebruik en multiplex toegang tot Azure Cosmos DB replica's mogelijk. In het bovenstaande diagram ziet u hoe directe modus client aanvragen naar replica's in de Cosmos DB back-end stuurt. De architectuur van de directe modus wijst Maxi maal 10 **kanalen** aan de client zijde per database replica toe. Een kanaal is een TCP-verbinding voorafgegaan door een aanvraag buffer, die 30 aanvragen diep is. De kanalen die deel uitmaken van een replica, worden dynamisch toegewezen naar behoefte aan het **service-eind punt**van de replica. Wanneer de gebruiker een aanvraag uitgeeft in de directe modus, stuurt de **TransportClient** de aanvraag naar het juiste service-eind punt op basis van de partitie sleutel. De **aanvraag wachtrij** buffers aanvragen vóór het service-eind punt.
 
@@ -282,7 +282,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNoPKAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -298,7 +298,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddPKAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -339,7 +339,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceRequestChargeAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 

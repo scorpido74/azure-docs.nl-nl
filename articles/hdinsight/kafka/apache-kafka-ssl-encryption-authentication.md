@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082077"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-versleuteling en-verificatie instellen voor Apache Kafka in azure HDInsight
@@ -52,7 +52,7 @@ De samen vatting van het installatie proces van de Broker is als volgt:
 Gebruik de volgende gedetailleerde instructies om de Broker-installatie te volt ooien:
 
 > [!Important]
-> In de volgende code fragmenten wnX is een afkorting voor een van de drie worker-knoop punten en moet worden vervangen door `wn0` , `wn1` of `wn2` waar nodig. `WorkerNode0_Name`en `HeadNode0_Name` moet worden vervangen door de namen van de betreffende computers.
+> In de volgende code fragmenten wnX is een afkorting voor een van de drie worker-knoop punten en moet worden vervangen door `wn0` , `wn1` of `wn2` waar nodig. `WorkerNode0_Name` en `HeadNode0_Name` moet worden vervangen door de namen van de betreffende computers.
 
 1. Voer de eerste installatie uit op het hoofd knooppunt 0, dat voor HDInsight de rol van de certificerings instantie (CA) zal vullen.
 
@@ -129,7 +129,7 @@ Voer de volgende stappen uit om de configuratie wijziging te volt ooien:
 1. Meld u aan bij de Azure Portal en selecteer uw Azure HDInsight Apache Kafka-cluster.
 1. Ga naar de Ambari-gebruikers interface door te klikken op **Ambari start** onder **cluster dashboards**.
 1. Stel de eigenschap **listeners** onder **Kafka Broker** in op`PLAINTEXT://localhost:9092,SSL://localhost:9093`
-1. Onder **Geavanceerd Kafka-Broker** stelt u de eigenschap **Security. intercompany Broker. Protocol** in op`SSL`
+1. Onder **Geavanceerd Kafka-Broker** stelt u de eigenschap **Security. intercompany Broker. Protocol** in op `SSL`
 
     ![Kafka SSL-configuratie-eigenschappen bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 

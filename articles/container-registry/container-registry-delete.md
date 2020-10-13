@@ -4,10 +4,10 @@ description: Meer informatie over het effectief beheren van de register grootte 
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403345"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Container installatie kopieën in Azure Container Registry verwijderen met behulp van de Azure CLI
@@ -154,7 +154,7 @@ fi
 
 Zoals vermeld in de sectie [manifest Digest](container-registry-concepts.md#manifest-digest) , het pushen van een gewijzigde installatie kopie met behulp van een bestaande tag, **ontlabelt** de eerder gepushte afbeelding, wat resulteert in een zwevende afbeelding (of "Dangling"). Het manifest van de vorige gepushte afbeelding, en de laag gegevens ervan, blijft aanwezig in het REGI ster. Houd rekening met de volgende reeks gebeurtenissen:
 
-1. Push installatie kopie *ACR-HelloWorld* met tag **nieuwste**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Push installatie kopie *ACR-HelloWorld* met tag **nieuwste**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Raadpleeg de manifesten voor de opslag plaats *ACR-HelloWorld*:
 
    ```azurecli
@@ -175,7 +175,7 @@ Zoals vermeld in de sectie [manifest Digest](container-registry-concepts.md#mani
    ```
 
 1. *ACR wijzigen-HelloWorld* Dockerfile
-1. Push installatie kopie *ACR-HelloWorld* met tag **nieuwste**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Push installatie kopie *ACR-HelloWorld* met tag **nieuwste**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Raadpleeg de manifesten voor de opslag plaats *ACR-HelloWorld*:
 
    ```azurecli

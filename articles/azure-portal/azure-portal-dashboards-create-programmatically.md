@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764040"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmatisch Azure-Dash boards maken
@@ -78,7 +78,7 @@ Als u dit dash board voor elke virtuele machine in de toekomst wilt publiceren, 
 Er zijn twee benaderingen voor Api's die resources maken in Azure:
 
 * Met verplichte Api's maakt u één resource per keer. Zie [resources](/rest/api/resources/resources)voor meer informatie.
-* Een implementatie systeem op basis van een sjabloon dat meerdere, afhankelijke resources maakt met één API-aanroep. Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)voor meer informatie.
+* Een implementatie systeem op basis van een sjabloon dat meerdere, afhankelijke resources maakt met één API-aanroep. Zie  [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)voor meer informatie.
 
 Implementatie op basis van een sjabloon ondersteunt parameterisering en sjabloon. We gebruiken deze benadering in dit artikel.
 
@@ -124,7 +124,7 @@ U moet de vereiste meta gegevens van de sjabloon en de para meters boven aan de 
 ```
 Nadat u uw sjabloon hebt geconfigureerd, implementeert u deze met een van de volgende methoden:
 
-* [REST-API’s](/rest/api/resources/deployments)
+* [REST-API's](/rest/api/resources/deployments)
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure-CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [De pagina implementatie van Azure Portal sjabloon](https://portal.azure.com/#create/Microsoft.Template)

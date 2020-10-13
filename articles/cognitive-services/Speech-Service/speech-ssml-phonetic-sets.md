@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78675329"
 ---
 # <a name="speech-service-phonetic-sets"></a>Fonetische sets van spraak service
 
-De speech-service definieert fonetische letters ("telefoon sets" voor korte), bestaande uit zeven talen; `en-US`, `fr-FR`, `de-DE`, `es-ES` `ja-JP`, `zh-CN`, en `zh-TW`. De telefoon sets van de spraak service worden doorgaans toegewezen aan het <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">internationale fonetische <span class="docon docon-navigate-external x-hidden-focus"> </span>alfabet (IPA) </a>. Telefoon sets voor spraak services worden gebruikt in combi natie met de [SSML (Speech synthese Markup Language)](speech-synthesis-markup.md)als onderdeel van de service aanbieding voor tekst naar spraak. In dit artikel leest u hoe deze telefoon sets worden toegewezen en wanneer u de telefoonset wilt gebruiken.
+De speech-service definieert fonetische letters ("telefoon sets" voor korte), bestaande uit zeven talen; `en-US`, `fr-FR` ,,,, en `de-DE` `es-ES` `ja-JP` `zh-CN` `zh-TW` . De telefoon sets van de spraak service worden doorgaans toegewezen aan het <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">internationale fonetische <span class="docon docon-navigate-external x-hidden-focus"></span> alfabet (IPA) </a>. Telefoon sets voor spraak services worden gebruikt in combi natie met de [SSML (Speech synthese Markup Language)](speech-synthesis-markup.md)als onderdeel van de service aanbieding voor tekst naar spraak. In dit artikel leest u hoe deze telefoon sets worden toegewezen en wanneer u de telefoonset wilt gebruiken.
 
-# <a name="en-us"></a>[en-US](#tab/en-US)
+# <a name="en-us"></a>[nl-NL](#tab/en-US)
 
 ### <a name="english-suprasegmentals"></a>Engels suprasegmentals
 
@@ -95,9 +95,9 @@ De speech-service definieert fonetische letters ("telefoon sets" voor korte), be
 
 | `sapi` | `ipa` | Voorbeeld 1   | Voorbeeld 2        | Voorbeeld 3  |
 |--------|-------|-------------|------------------|------------|
-| v      | `f`   | **f**ORK    | Le**f**t         | hal**f**   |
+| f      | `f`   | **f**ORK    | Le**f**t         | hal**f**   |
 | v      | `v`   | **v**-aarde   | e**v**        | Lo**v**e   |
-| e     | `θ`   | **th**in    | EMPA**y**      | ma**e**  |
+| th     | `θ`   | **th**in    | EMPA**y**      | ma**e**  |
 | DH     | `ð`   | **th**en    | mo**th**       | Smoo**th** |
 | s      | `s`   | **s**it     | RI**s**k         | fact**s**  |
 | z      | `z`   | **z**-AP     | Bu**s**y         | Kid**s**   |
@@ -129,12 +129,12 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 
 | `sapi` | `ipa` | Voorbeeld 1     | Voorbeeld 2       | Voorbeeld 3 |
 |--------|-------|---------------|-----------------|-----------|
-| a      | `a`   | **een**rbre     | p**a**TTE       | IR**a**   |
+| een      | `a`   | **een**rbre     | p**a**TTE       | IR**a**   |
 | aa     | `ɑ`   |               | p**â**te        | p**a**s   |
 | AA ~   | `ɑ̃`  | **en**fant    | er ENF**en**t      | t**em**PS |
 | AX     | `ə`   |               | p**e**tite      | l**e**    |
 | eh     | `ɛ`   | **e**lle      | p**e**RDU       | ét**AI**t |
-| EU     | `ø`   | **œu**FS      | CR**EU**ser     | qu-**EU**  |
+| eu     | `ø`   | **œu**FS      | CR**EU**ser     | qu-**EU**  |
 | EY     | `e`   | ému           | crétin          | ôté       |
 | eh ~   | `ɛ̃`  | **im**-poort | p**ein**tleggen    | Passe-**in** |
 | iy     | `i`   | **Ik**Dée      | huis dier dat**Ik**te      | ben**Ik**   |
@@ -152,7 +152,7 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 |--------|-------|-------------|---------------|----------------------------------|
 | b      | `b`   | **b**ête    | ha**b**Ille   | ro**b**e                         |
 | d      | `d`   | **d**Ierland    | Loek**d**   | Chau**d**e                       |
-| v      | `f`   | **f**Emme   | su**ff**IXe   | Bo**f**                          |
+| f      | `f`   | **f**Emme   | su**ff**IXe   | Bo**f**                          |
 | g      | `g`   | **g**auche  | é**g**ALE     | BA**gu**e                        |
 | lopen     | `ŋ`   |             |               | [<sup>1</sup>](#fr-1)Park**ING** |
 | hy     | `ɥ`   | h**u**/estand   | n**u**Ierland     |                                  |
@@ -179,7 +179,7 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 **1** *alleen voor sommige buitenlandse woorden.*
 
 > [!TIP]
-> De `fr-FR` set spraak service-telefoon biedt geen ondersteuning voor de volgende `n‿`Franse `t‿`liasions, `z‿`, en. Als ze nodig zijn, kunt u overwegen om de IPA rechtstreeks te gebruiken.
+> De `fr-FR` set spraak service-telefoon biedt geen ondersteuning voor de volgende Franse liasions, `n‿` , `t‿` en `z‿` . Als ze nodig zijn, kunt u overwegen om de IPA rechtstreeks te gebruiken.
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
@@ -195,14 +195,14 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 | `sapi` | `ipa`     | Voorbeeld 1                             | Voorbeeld 2     | Voorbeeld 3                          |
 |--------|-----------|---------------------------------------|---------------|------------------------------------|
 | één     | `aː`      | **Ber**                              | Maßst**a**b   | Schem**a**                         |
-| a      | `a`       | **Een**bfall                            | B**a**CH      | Agath**a**                         |
+| een      | `a`       | **Een**bfall                            | B**a**CH      | Agath**a**                         |
 | Oh     | `ɔ`       | **O**sten                             | PF**o**sten   |                                    |
 | eh:    | `ɛː`      | **Ä**hnlichkeit                       | B**ä**r       | [<sup>1</sup>](#de-v-1) Fasci**AE** |
 | eh     | `ɛ`       | **ä**ndern                            | ProZ**e**NT   | Amygdal**AE**                      |
 | AX     | `ə`       | [<sup>2</sup>](#de-v-2)' v**e**rstauen | Aach**e**n    | Frag**e**                          |
 | iy     | `iː`      | **Ik heb**uitgevoerd                              | ABB**IE**gt   | Relativitätstheor**IE**            |
 | ih     | `ɪ`       | **Ik**nnung                            | s**Ik**ngen    | Hout**y**                          |
-| EU     | `øː`      | **Ö**afzen                              | ABL**ö**sten  | Malm**ö**                          |
+| eu     | `øː`      | **Ö**afzen                              | ABL**ö**sten  | Malm**ö**                          |
 | &     | `o`, `oː` | **o**hne                              | Balk**o**n    | Trept**ow**                        |
 | OE     | `œ`       | **Ö**ffnung                           | BEF**ö**rdern |                                    |
 | EY     | `e`, `eː` | **E**Berhard                          | ABF-**e**gt    | b                                  |
@@ -238,7 +238,7 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 | c | `ç` | **CH**emie | mögli**CH**St | [<sup>2</sup>](#de-c-2)i/**CH** |
 | d | `d` | **d**anken | [<sup>3</sup>](#de-c-3) Len**d**l | [<sup>4</sup>](#de-c-4) Clau**d**e |  |
 | jh | `ʤ` | **J**eff | gemana**g**t | [<sup>5</sup>](#de-c-5) Kanaal**g**e |
-| v | `f` | **F**ahrtdauer | Angri**ff**slustig | abbruchrei**f** |  |
+| f | `f` | **F**ahrtdauer | Angri**ff**slustig | abbruchrei**f** |  |
 | g | `g` | **g**UT |  | [<sup>6</sup>](#de-c-6) GRE**g** |  |
 | h | `h` | **H**ausanbau |  |  |  |
 | y | `j` | **J**od | Reakt**i** | hu**i** |  |
@@ -256,7 +256,7 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 | Terminal | `ts` | **Z**mg | AR**z**t | Wit**z** |  |
 | ch | `tʃ` | **Tsch**echien | aufgepu**tsch**t | bundesdeu**tsch** |  |
 | v | `v` | **w**inken | Q**u**alle | [<sup>9</sup>](#de-c-9) Go**OO**ve |  |
-| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) BA**CH**erach | Ma**CH**t mögli**CH**& St | Schma**CH** ' i**CH** |
+| x | [<sup>10</sup>](#de-c-10) `x` ,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) BA**CH**erach | Ma**CH**t mögli**CH**& St | Schma**CH** ' i**CH** |
 | z | `z` | **s**Super |  |  |  |
 | zh | `ʒ` | **G**Enre | B ezinski**opnieuw** | Edvi**g** |
 
@@ -292,7 +292,7 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 | ^      | `ʔ`   | beachtlich/b AX-^ a 1 x t-l IH c/ |
 
 > [!NOTE]
-> We moeten een [GS\] -telefoon toevoegen tussen twee afzonderlijke klinkers, met uitzonde ring van de twee klinkers zijn een authentiek diphthong. Deze orale medeklinker is <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">een glottis slag <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>. Zie voor meer informatie glottis slag.
+> We moeten een [GS- \] telefoon toevoegen tussen twee afzonderlijke klinkers, met uitzonde ring van de twee klinkers zijn een authentiek diphthong. Deze orale medeklinker is een glottis slag. Zie voor meer informatie <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank"> glottis slag <span class="docon docon-navigate-external x-hidden-focus"> </a> </a> .
 
 # <a name="es-es"></a>[es-ES](#tab/es-ES)
 
@@ -300,9 +300,9 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 
 | `sapi` | `ipa` | Voorbeeld 1    | Voorbeeld 2     | Voorbeeld 3    |
 |--------|-------|--------------|---------------|--------------|
-| a      | `a`   | **een**LTO     | c**a**ntar    | CAS**a**     |
+| een      | `a`   | **een**LTO     | c**a**ntar    | CAS**a**     |
 | i      | `i`   | **Ik**bérica  | AV**i**Spa    | belastingen**i**     |
-| a      | `e`   | **e**LeFante | bij**e**nKlik    | Elefant**e** |
+| e      | `e`   | **e**LeFante | bij**e**nKlik    | Elefant**e** |
 | o      | `o`   | **o**caso    | ENC**o**ntrar | ocasenc**o** |
 | h      | `u`   | **u**sted    | p**u**NTA     | Juanl**u**   |
 
@@ -315,7 +315,7 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 | ch     | `tʃ`       | **CH**eque | Co**CH**e      | Marraque-**CH** |
 | d      | `d`        | **d**Edo   |                | portlan**d**   |
 |        | `ð`        |            | de**d**o       | Verda**d**     |
-| v      | `f`        | **f**ácil  | ele**vooraf**   | PU**f**        |
+| f      | `f`        | **f**ácil  | ele**vooraf**   | PU**f**        |
 | g      | `g`        | **g**Anga  |                | dópin**g**     |
 |        | `ɣ`        |            | een**g**UA       | tuare**g**     |
 | v      | `j`        | **Ik**Odo   | CAL **-** Ente   | opnieuw**y**        |
@@ -331,16 +331,16 @@ De telefoonset van de spraak service plaatst stress na de klinker van de benadru
 | RR     | `r`        | **r**adio  | Co**RR**e      | PU**RR**       |
 | s      | `s`        | **s**accountable Care Organization   | VA**s**o       | pelo**s**      |
 | t      | `t`        | **t**oldo  | a**t**AR       | Disque**t**    |
-| e     | `θ`        | **z**ebra  | een**z**UL       | lápi**z**      |
+| th     | `θ`        | **z**ebra  | een**z**UL       | lápi**z**      |
 | w      | `w`        | h**u**ESO  | AG**u**a       | Gua**u**       |
 | x      | `x`        | **j**OTA   | een**j**o        | relo**j**      |
 
 > [!TIP]
-> De `es-ES` set spraak service-telefoon biedt geen ondersteuning voor de volgende `β`Spaanse `ð`IPA, `ɣ`, en. Als ze nodig zijn, kunt u overwegen om de IPA rechtstreeks te gebruiken.
+> De `es-ES` set spraak service-telefoon biedt geen ondersteuning voor de volgende Spaanse IPA, `β` , `ð` en `ɣ` . Als ze nodig zijn, kunt u overwegen om de IPA rechtstreeks te gebruiken.
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
-Het telefoon nummer van de spraak `zh-CN` service voor is gebaseerd op de ingebouwde telefoon- <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">pinyinset <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+Het telefoon nummer van de spraak service voor `zh-CN` is gebaseerd op de ingebouwde telefoon- <a href="https://en.wikipedia.org/wiki/Pinyin" target="_blank">pinyinset <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 
 ### <a name="tone"></a>Toon
 
@@ -362,7 +362,7 @@ Het telefoon nummer van de spraak `zh-CN` service voor is gebaseerd op de ingebo
 
 # <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
 
-Het telefoon nummer van de spraak `zh-TW` service voor is gebaseerd op de systeem eigen telefoon- <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">Bopomofo <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -set.
+Het telefoon nummer van de spraak service voor `zh-TW` is gebaseerd op de systeem eigen telefoon- <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Bopomofo</a> -set.
 
 ### <a name="tone"></a>Toon
 
@@ -384,14 +384,14 @@ Het telefoon nummer van de spraak `zh-TW` service voor is gebaseerd op de systee
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-Het telefoon nummer van de spraak `ja-JP` service voor is gebaseerd op de systeem eigen telefoon <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -set.
+Het telefoon nummer van de spraak service voor `ja-JP` is gebaseerd op de systeem eigen telefoon <a href="https://en.wikipedia.org/wiki/Kana" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Kana</a> -set.
 
 ### <a name="stress"></a>Uitvoert
 
 | `sapi` | `ipa`          |
 |--------|----------------|
-| `ˈ`    | `ˈ`mainstress |
-| `+`    | `ˌ`substress  |
+| `ˈ`    | `ˈ` mainstress |
+| `+`    | `ˌ` substress  |
 
 #### <a name="example"></a>Voorbeeld
 
