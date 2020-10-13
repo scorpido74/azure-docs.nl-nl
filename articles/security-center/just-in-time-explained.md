@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
 ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449005"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Meer informatie over just-in-time-VM-toegang
@@ -24,7 +24,7 @@ Zie [How to Beveilig your beheer ports with JIT](security-center-just-in-time.md
 
 ## <a name="the-risk-of-open-management-ports-on-a-virtual-machine"></a>Het risico van open-beheer poorten op een virtuele machine
 
-Threat actors kunnen met open-beheer poorten, zoals RDP of SSH, actieve apparaten actief opsporen. Al uw virtuele machines zijn potentiële doelen voor een aanval. Wanneer een virtuele machine is aangetast, wordt deze als toegangs punt gebruikt om verdere resources in uw omgeving aan te vallen.
+Threat actors kunnen met open-beheer poorten, zoals RDP of SSH, actieve apparaten actief opsporen. Al uw virtuele machines zijn potentiële doelen voor een aanval. Wanneer het lukt een VM aan te tasten, wordt deze gebruikt als ingangspunt om verdere resources in uw omgeving aan te vallen.
 
 
 
