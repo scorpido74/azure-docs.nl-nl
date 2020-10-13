@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/17/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5b1084cfdd5995b7983badcdce71460f7bdec3d5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919451"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Taak voorbereiding en taak release taken uitvoeren op batch Compute-knoop punten
@@ -38,7 +38,7 @@ Batch-taken vereisen vaak een gemeen schappelijke set gegevens als invoer voor d
 
 In een omgeving met gedeelde groep waarbij de reken knooppunten van een pool niet buiten gebruik worden gesteld door taken, is het mogelijk dat u taak gegevens tussen uitvoeringen moet verwijderen. Mogelijk moet u schijf ruimte op de knoop punten besparen of voldoen aan het beveiligings beleid van uw organisatie. Gebruik een taak **release** om gegevens te verwijderen die zijn gedownload door een taak voorbereidings taak of die tijdens het uitvoeren van de taak zijn gegenereerd.
 
-**Bewaar periode logboek**
+**Logboekbehoud**
 
 Mogelijk wilt u een kopie van de logboek bestanden die door uw taken worden gegenereerd, of eventueel crash dump bestanden die door toepassingen die kunnen worden gegenereerd, opslaan. Een taak **release taak** in dergelijke gevallen gebruiken om deze gegevens te comprimeren en te uploaden naar een [Azure Storage][azure_storage] -account.
 

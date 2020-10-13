@@ -3,22 +3,47 @@ title: Uw niet-Azure-machines verbinden met Azure Security Center
 description: Leer hoe u uw niet-Azure-machines kunt verbinden met Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6f2889c298f525e1babf80f86d4ae140ef2ce96f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448946"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612214"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Uw niet-Azure-machines verbinden met Security Center
 
-Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. U kunt niet-Azure-computers toevoegen vanaf de pagina **Aan de slag** of vanuit **Voorraad**, zoals hieronder wordt beschreven.
+Security Center kan de beveiligingsstatus van uw niet-Azure-computers controleren, maar u moet deze resources dan eerst onboarden. 
 
-## <a name="add-non-azure-computers"></a>Niet-Azure-computers toevoegen 
+U kunt andere computers dan Azure-computers op een van de volgende manieren toevoegen:
+
+- Met Azure Arc (**aanbevolen**)
+- Via de pagina's van Azure Security Center in Azure Portal (**Aan de slag** en **Voorraad**)
+
+Deze methoden worden beide hieronder beschreven.
+
+## <a name="add-non-azure-machines-with-azure-arc"></a>Andere computers dan Azure-computers toevoegen met Azure Arc
+
+Het gebruik van Azure Arc is de aanbevolen manier om andere computers dan Azure-computers toe te voegen aan Azure Security Center.
+
+Een computer waarop Azure Arc is ingeschakeld, wordt een Azure-resource en wordt weergegeven in Azure Security Center met aanbevelingen zoals uw andere Azure-resources. 
+
+Bovendien biedt Azure Arc uitgebreide mogelijkheden, zoals de optie voor het inschakelen van beleidsregels op de computer, het implementeren van de Log Analytics-agent als een uitbreiding en het vereenvoudigen van de implementatie met andere Azure-services. Zie [Ondersteunde scenario's](../azure-arc/servers/overview.md#supported-scenarios) voor een overzicht van de voordelen.
+
+**U kunt als volgt Azure Arc implementeren:**
+
+- Volg voor één computer de instructies in [Quickstart: Een hybride computer verbinden met servers met Azure Arc](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
+- Zie [Hybride computers op schaal verbinden met Azure](../azure-arc/servers/onboard-service-principal.md) als u Azure Arc op schaal wilt implementeren
+
+Meer informatie over [Azure Arc](../azure-arc/servers/overview.md).
+
+> [!TIP]
+> Als u AWS-computers in gebruik neemt, handelt de connector voor AWS van Azure Security Center de implementatie van Azure Arc op transparante wijze af. In [Uw AWS-accounts verbinden met Azure Security Center](quickstart-onboard-aws.md) vindt u hierover meer informatie.
+
+## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Andere computers dan Azure-computers toevoegen vanaf de portalpagina's van Azure Security Center
 
 1. Open in het menu van Security Center de pagina **Aan de slag**.
 1. Selecteer het tabblad **Aan de slag**.
@@ -29,6 +54,8 @@ Security Center kan de beveiligingsstatus van uw niet-Azure-computers controlere
 
     > [!TIP]
     > U kunt Apparaten toevoegen ook openen met de knop **Niet-Azure-servers toevoegen** op de pagina **Voorraad**.
+    > 
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="Tabblad Aan de slag op de pagina Aan de slag":::
 
     Een lijst met uw Log Analytics-werkruimten wordt weergegeven. De lijst bevat, indien van toepassing, de standaardwerkruimte die is gemaakt door Security Center toen automatisch inrichten werd ingeschakeld. Selecteer deze werkruimte of een andere werkruimte die u wilt gebruiken.
 
@@ -89,12 +116,13 @@ Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#ins
 
 
 ## <a name="verifying"></a>Controleren
-Gefeliciteerd. Nu worden uw Azure- en niet-Azure-machines op één plek weergegeven. Open de pagina [Assetvoorraad](asset-inventory.md) en filter de relevante resourcetypen. Deze twee pictogrammen onderscheiden de typen:
+Gefeliciteerd! Nu worden uw Azure- en niet-Azure-machines op één plek weergegeven. Open de pagina [Assetvoorraad](asset-inventory.md) en filter de relevante resourcetypen. Met de volgende pictogrammen worden de typen onderscheiden:
 
-  ![pictogram1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Niet-Azure-machine
+  ![ASC-pictogram voor andere computer dan Azure-computer](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Niet-Azure-machine
 
-  ![pictogram2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![ASC-pictogram voor Azure-computer](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
+  ![ASC-pictogram voor Azure Arc-computer](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Computer met Azure Arc
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,10 +8,10 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 9f8fba617eb0274a8db7adc5d36c6ff50be10924
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761376"
 ---
 # <a name="security-recommendations-for-app-service"></a>Beveiligings aanbevelingen voor App Service
@@ -33,7 +33,7 @@ Dit artikel bevat beveiligings aanbevelingen voor Azure App Service. Als u deze 
 | Back-end-bronnen beveiligen met geverifieerde toegang | U kunt de identiteit van de gebruiker gebruiken of een toepassings-id gebruiken om een back-end-bron te verifiëren. Wanneer u ervoor kiest om een toepassings-id te gebruiken, moet u een [beheerde identiteit](overview-managed-identity.md)gebruiken.
 | Verificatie van client certificaat vereisen | Verificatie van client certificaten verbetert de beveiliging door alleen verbindingen toe te staan van clients die kunnen worden geverifieerd met behulp van door u verstrekte certificaten. |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Aanbeveling | Opmerkingen |
 |-|-|

@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280023"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
@@ -36,7 +36,7 @@ In de portal begint u met het selecteren van _een resource maken_ in het menu St
 
 Zoek in het zoekvak naar *Azure Digital apparaatdubbels* en kies de **Azure Digital apparaatdubbels-service (preview)** in de resultaten. Selecteer de knop _maken_ om een nieuw exemplaar van de service te maken.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="' Maken ' selecteren op de pagina van de Azure Digital Apparaatdubbels-service":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Vul op de pagina de volgende *resource maken* de waarden in die hieronder zijn opgegeven:
 * **Abonnement**: het Azure-abonnement dat u gebruikt
@@ -44,7 +44,7 @@ Vul op de pagina de volgende *resource maken* de waarden in die hieronder zijn o
 * **Locatie**: een Azure Digital apparaatdubbels-regio voor de implementatie. Ga voor meer informatie over regionale ondersteuning naar [*Azure-producten die beschikbaar zijn per regio (Azure Digital apparaatdubbels)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 * **Resource naam**: een naam voor uw Azure Digital apparaatdubbels-exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio voor uw abonnement (wat betekent dat als uw abonnement een ander Azure Digital Apparaatdubbels-exemplaar heeft in de regio die al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="De beschreven waarden invullen om een Azure Digital Apparaatdubbels-resource te maken":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Wanneer u klaar bent, selecteert u _controleren + maken_. Hiermee gaat u naar een overzichts pagina waar u de exemplaar gegevens kunt bekijken die u hebt ingevoerd en op _maken_hebt geklikt. 
 
@@ -52,7 +52,7 @@ Wanneer u klaar bent, selecteert u _controleren + maken_. Hiermee gaat u naar ee
 
 Nadat u het *maken*hebt gepusht, kunt u de status van de implementatie van uw exemplaar bekijken in uw Azure-meldingen via de portal pictogram balk. De melding geeft aan wanneer de implementatie is voltooid en u kunt de knop _Ga naar resource_ selecteren om uw gemaakte exemplaar weer te geven.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Weer gave van meldingen van Azure met een geslaagde implementatie en het markeren van de knop ' go to resource '":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Als de implementatie mislukt, wordt de melding ook aangegeven waarom. Bekijk het advies van het fout bericht en probeer het exemplaar opnieuw te maken.
 
@@ -61,7 +61,7 @@ Als de implementatie mislukt, wordt de melding ook aangegeven waarom. Bekijk het
 
 Noteer de *naam*, de *resource groep*en de *hostnaam*op de pagina *overzicht* van het exemplaar. Dit zijn alle belang rijke waarden die u mogelijk nodig hebt om te werken met uw Azure Digital Apparaatdubbels-exemplaar. Als andere gebruikers op het exemplaar worden geprogrammeerd, moet u deze waarden met hen delen.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Markeren van de belang rijke waarden van de overzichts pagina van het exemplaar":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan. Vervolgens geeft u de juiste Azure-gebruikers machtigingen om deze te beheren.
 
@@ -71,7 +71,7 @@ U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan. Vervolge
 
 Open eerst de pagina voor uw Azure Digital Apparaatdubbels-exemplaar in het Azure Portal. Selecteer in het menu van de instantie *toegangs beheer (IAM)*. Selecteer de knop  *toevoegen* onder *een roltoewijzing toevoegen*.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Selecteren om een roltoewijzing toe te voegen op de pagina toegangs beheer (IAM)":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Vul de waarden in op de volgende pagina *roltoewijzing toevoegen* (moet worden voltooid door een gebruiker met [voldoende machtigingen](#prerequisites-permission-requirements) in het Azure-abonnement):
 * **Rol**: Selecteer de *Azure Digital apparaatdubbels-eigenaar (preview)* in het vervolg keuzemenu
@@ -80,7 +80,7 @@ Vul de waarden in op de volgende pagina *roltoewijzing toevoegen* (moet worden v
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="De vermelde velden invullen in het dialoog venster functie toewijzing toevoegen":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -92,7 +92,7 @@ Wanneer u klaar bent met het invoeren van de details, klikt u op de knop *Opslaa
 
 U kunt de roltoewijzing weer geven die u hebt ingesteld onder *toegangs beheer (IAM) > roltoewijzingen*. De gebruiker moet in de lijst worden weer gegeven met een rol van de *Azure Digital apparaatdubbels-eigenaar (preview)*. 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Weer gave van de roltoewijzingen voor een Azure Digital Apparaatdubbels-exemplaar in Azure Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan, en u hebt machtigingen toegewezen om het te beheren. Vervolgens stelt u de machtigingen voor een client-app in om deze te openen.
 
@@ -102,7 +102,7 @@ U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan, en u heb
 
 Begin met het navigeren naar [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) in het Azure Portal (u kunt deze koppeling gebruiken of zoeken naar de portal-zoek balk). Selecteer *app-registraties* in het menu service en klik vervolgens op *+ nieuwe registratie*.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Weer gave van de Azure AD-service pagina in de Azure Portal, waarbij u de menu optie App-registraties en de knop + nieuwe registratie markeert":::
+:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Vul op de pagina *een toepassing registreren* de gevraagde waarden in:
 * **Naam**: een weergave naam voor de Azure AD-toepassing die u aan de registratie wilt koppelen
@@ -111,7 +111,7 @@ Vul op de pagina *een toepassing registreren* de gevraagde waarden in:
 
 Wanneer u klaar bent, klikt u op de knop *registreren* .
 
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Weer gave van de pagina een toepassing registreren met de beschreven waarden":::
+:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Wanneer de registratie is voltooid, wordt u doorgestuurd naar de pagina met details van de portal.
 
@@ -121,18 +121,18 @@ Vervolgens configureert u de app-registratie die u hebt gemaakt met basislijn ma
 
 Selecteer vanuit de portal pagina voor de registratie van uw app *API-machtigingen* in het menu. Op de volgende machtigingen pagina, klikt u op de knop *+ een machtiging toevoegen* .
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Weer gave van de app-registratie in de Azure Portal, waarbij u de menu optie API-machtigingen en de knop + een machtiging toevoegen selecteert":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Schakel op de pagina *API-machtigingen voor aanvragen* de volgende opdracht uit naar de api's die *Mijn organisatie gebruikt* en zoek naar *Azure Digital apparaatdubbels*. Selecteer *Azure Digital apparaatdubbels* in de zoek resultaten om machtigingen toe te wijzen voor de Azure Digital Apparaatdubbels-api's.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Weer gave van het Zoek resultaat van de pagina API-machtigingen aanvragen met Azure Digital Apparaatdubbels":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 >[!NOTE]
 > Als u een bestaand exemplaar van Azure Digital Apparaatdubbels hebt van de vorige open bare preview van de service (vóór 2020 juli) in uw abonnement, moet u in plaats daarvan naar de *Azure Smart Spaces-service* zoeken. Dit is een oudere naam voor dezelfde set Api's en zal uw ervaring buiten deze stap niet wijzigen.
 
 Vervolgens selecteert u de machtigingen die u voor deze Api's wilt verlenen. Vouw de machtiging **Read (1)** uit en schakel het selectie vakje *lezen. schrijven* in om deze app-registratie lezer en schrijf machtigingen te verlenen.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Weer gave van de pagina ' API-machtigingen aanvragen ' om ' Lees. schrijf machtigingen ' te selecteren voor de Azure Digital Apparaatdubbels-Api's":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Klik op *machtigingen toevoegen* wanneer u klaar bent.
 
@@ -140,19 +140,19 @@ Klik op *machtigingen toevoegen* wanneer u klaar bent.
 
 Ga terug naar de pagina *API-machtigingen* en controleer of er nu een vermelding voor de machtigingen voor lezen/schrijven wordt weer gegeven in azure Digital apparaatdubbels:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Portal weergave van de API-machtigingen voor de Azure AD-App-registratie, met lees-en schrijf toegang voor Azure Digital Apparaatdubbels":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 U kunt ook de verbinding met Azure Digital Apparaatdubbels in de *manifest.jsvan*de app-registratie controleren, die automatisch is bijgewerkt met de gegevens van de Azure Digital apparaatdubbels wanneer u de API-machtigingen hebt toegevoegd.
 
 Als u dit wilt doen, selecteert u *manifest* in het menu om de manifest code van de app-registratie weer te geven. Ga naar de onderkant van het code venster en zoek deze velden onder `requiredResourceAccess` . De waarden moeten overeenkomen met die in de onderstaande scherm afbeelding:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Portal weergave van het manifest voor de registratie van de Azure AD-app. Genest onder ' requiredResourceAccess ', is de waarde ' resourceAppId ' van 0b07f429-9f4b-4714-9392-cc5e8e80c8b0 en een ' resourceAccess > id-waarde van 4589bd03-58cb-4e6c-b17f-b580e39652f8":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 ### <a name="collect-important-values"></a>Belang rijke waarden verzamelen
 
 Selecteer vervolgens *overzicht* in de menu balk om de details van de app-registratie te bekijken:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Portal weergave van de belang rijke waarden voor de app-registratie":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. Deze waarden zijn later nodig om [een client-app te verifiëren tegen de Azure Digital apparaatdubbels-api's](how-to-authenticate-client.md). Als u niet de persoon bent die code gaat schrijven voor dergelijke toepassingen, moet u deze waarden delen met de persoon die u wilt.
 

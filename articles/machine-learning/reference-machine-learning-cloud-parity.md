@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892982"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning soevereine Cloud pariteit
@@ -34,14 +34,14 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Functie | Status open bare Cloud  | VS-Virginia | VS-Arizona| 
+| Functie | Status open bare Cloud  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Geautomatiseerde Machine Learning** | | | |
 | Experimenten maken en uitvoeren in notitie blokken                                    | Algemene beschikbaarheid                   | JA                | JA         |
-| Experimenten maken en uitvoeren in Studio Web Experience                        | Open bare preview       | JA                | JA         |
+| Experimenten maken en uitvoeren in Studio Web Experience                        | Openbare preview       | JA                | JA         |
 | Toonaangevende prognose mogelijkheden                                  | Algemene beschikbaarheid                   | JA                | JA         |
 | Ondersteuning voor diep gaande lessen en andere geavanceerde kennissen                      | Algemene beschikbaarheid                   | JA                | JA         |
-| Ondersteuning voor grote gegevens (Maxi maal 100 GB)                                          | Open bare preview       | JA                | JA         |
+| Ondersteuning voor grote gegevens (Maxi maal 100 GB)                                          | Openbare preview       | JA                | JA         |
 | Integratie van Azure Databricks                                              | Algemene beschikbaarheid                   | NO                 | NO          |
 | SQL-, CosmosDB-en HDInsight-integraties                                   | Algemene beschikbaarheid                   | JA                | JA         |
 | **Machine Learning pijp lijnen** |   |  | | 
@@ -55,64 +55,64 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | **Geïntegreerde notebooks** |   |  | | 
 | Werkruimte notitieblokken en delen van bestanden                                        | Algemene beschikbaarheid                   | JA                | JA         |
 | Ondersteuning voor R en python                                                       | Algemene beschikbaarheid                   | JA                | JA         |
-| Ondersteuning voor virtuele netwerken                                                    | Open bare preview       | NO                 | NO          |
+| Ondersteuning voor virtuele netwerken                                                    | Openbare preview       | NO                 | NO          |
 | **Rekenproces** |   |  | | 
 | Beheerde Compute-instanties voor geïntegreerde notebooks                         | Algemene beschikbaarheid                   | JA                | JA         |
 | Jupyter, Jjupyterlab-integratie                                            | Algemene beschikbaarheid                   | JA                | JA         |
-| Ondersteuning voor Virtual Network (VNet)                                             | Open bare preview       | JA                | JA         |
+| Ondersteuning voor Virtual Network (VNet)                                             | Openbare preview       | JA                | JA         |
 | **SDK-ondersteuning** |  |  | | 
-| R SDK-ondersteuning                                                              | Open bare preview       | JA                | JA         |
+| R SDK-ondersteuning                                                              | Openbare preview       | JA                | JA         |
 | Ondersteuning voor python-SDK                                                         | Algemene beschikbaarheid                   | JA                | JA         |
 | **Beveiliging** |   | | | 
 | Virtual Network-ondersteuning (VNet) voor training                                | Algemene beschikbaarheid                   | JA                | JA         |
 | Virtual Network-ondersteuning (VNet) voor demijnen                               | Algemene beschikbaarheid                   | JA                | JA         |
-| Score endpoint-verificatie                                            | Open bare preview       | JA                | JA         |
-| Persoonlijke werkplek koppeling                                                     | Open bare preview       | NO                 | NO          |
-| ACI achter VNet                                                            | Open bare preview       | NO                 | NO          |
-| ACR achter VNet                                                            | Open bare preview       | NO                 | NO          |
-| Persoonlijk IP-adres van AKS-cluster                                                  | Open bare preview       | NO                 | NO          |
+| Score endpoint-verificatie                                            | Openbare preview       | JA                | JA         |
+| Persoonlijke werkplek koppeling                                                     | Openbare preview       | NO                 | NO          |
+| ACI achter VNet                                                            | Openbare preview       | NO                 | NO          |
+| ACR achter VNet                                                            | Openbare preview       | NO                 | NO          |
+| Persoonlijk IP-adres van AKS-cluster                                                  | Openbare preview       | NO                 | NO          |
 | **Compute** |   | | |
 | quota beheer in werk ruimten                                         | Algemene beschikbaarheid                   | JA                | JA         |
 | **Gegevens voor machine learning** |   | | |
 | Gegevens sets en gegevens opslag maken, weer geven of bewerken vanuit de SDK                  | Algemene beschikbaarheid                   | JA                | JA         |
 | Gegevens sets en gegevens opslag maken, weer geven of bewerken vanuit de gebruikers interface                   | Algemene beschikbaarheid                   | JA                | JA         |
-| Videodrijf monitors voor gegevensset weer geven, bewerken of verwijderen uit de SDK                   | Open bare preview       | JA                | JA         |
-| Het maken, bewerken of verwijderen van de gegevensset voor het maken van gegevens sets vanuit de gebruikers interface                    | Open bare preview       | JA                | JA         |
+| Videodrijf monitors voor gegevensset weer geven, bewerken of verwijderen uit de SDK                   | Openbare preview       | JA                | JA         |
+| Het maken, bewerken of verwijderen van de gegevensset voor het maken van gegevens sets vanuit de gebruikers interface                    | Openbare preview       | JA                | JA         |
 | **Machine learning-levens cyclus** |   | | |
 | Model profilering                                                            | Algemene beschikbaarheid                   | JA                | GEDEELTELIJKE     |
 | De Azure DevOps-extensie voor Machine Learning & de Azure ML CLI         | Algemene beschikbaarheid                   | JA                | JA         |
 | Modellen met hardwareversnelling op basis van FPGA                                     | Algemene beschikbaarheid                   | NO                 | NO          |
-| Integratie van Visual Studio code                                             | Open bare preview       | NO                 | NO          |
-| Event Grid-integratie                                                     | Open bare preview       | NO                 | NO          |
-| Azure Stream Analytics integreren met Azure Machine Learning               | Open bare preview       | NO                 | NO          |
+| Integratie van Visual Studio code                                             | Openbare preview       | NO                 | NO          |
+| Event Grid-integratie                                                     | Openbare preview       | NO                 | NO          |
+| Azure Stream Analytics integreren met Azure Machine Learning               | Openbare preview       | NO                 | NO          |
 | **Labels** |   | | |
 | Labelen project Beheerportal                                        | Algemene beschikbaarheid                   | JA                | JA         |
 | Labeler-Portal                                                            | Algemene beschikbaarheid                   | JA                | JA         |
 | Labelen met privé personeel                                          | Algemene beschikbaarheid                   | JA                | JA         |
-| ML gesteunde labels (afbeeldings classificatie en object detectie)           | Open bare preview       | JA                | JA         |
+| ML gesteunde labels (afbeeldings classificatie en object detectie)           | Openbare preview       | JA                | JA         |
 | **Verantwoordelijke ML** |   | | |
-| Uitleg bij de gebruikers interface                                                       | Open bare preview       | NO                 | NO          |
+| Uitleg bij de gebruikers interface                                                       | Openbare preview       | NO                 | NO          |
 | Differentiële privacybeleid WhiteNoise Toolkit                                    | OSS                  | NO                 | NO          |
 | aangepaste labels in Azure Machine Learning voor het implementeren van gegevens bladen              | Algemene beschikbaarheid                   | NO                 | NO          |
-| Verdeling AzureML-integratie                                               | Open bare preview       | NO                 | NO          |
+| Verdeling AzureML-integratie                                               | Openbare preview       | NO                 | NO          |
 | Coninterpreter-SDK                                                      | Algemene beschikbaarheid                   | JA                | JA         |
 | **Training** |   | | |
 | Streaming logboek streamen                                              | Algemene beschikbaarheid                   | JA                | JA         |
-| Leer versterking                                                     | Open bare preview       | NO                 | NO          |
+| Leer versterking                                                     | Openbare preview       | NO                 | NO          |
 | Gebruikers interface voor experimenten                                                         | Algemene beschikbaarheid                   | JA                | JA         |
 | .NET-integratie ML.NET 1,0                                                | Algemene beschikbaarheid                   | JA                | JA         |
 | **Deductie** |   | | |
 | Batch-deinterferentie                                                          | Algemene beschikbaarheid                   | JA                | JA         |
-| Data Box Edge met FPGA                                                    | Open bare preview       | NO                 | NO          |
+| Data Box Edge met FPGA                                                    | Openbare preview       | NO                 | NO          |
 | **Overige** |   | | |
-| Open Datasets                                                              | Open bare preview       | JA                | JA         |
-| Aangepaste Cognitive Search                                                    | Open bare preview       | JA                | JA         |
-| Veel modellen                                                                | Open bare preview       | NO                 | NO          |
+| Open Datasets                                                              | Openbare preview       | JA                | JA         |
+| Aangepaste Cognitive Search                                                    | Openbare preview       | JA                | JA         |
+| Veel modellen                                                                | Openbare preview       | NO                 | NO          |
 
 
 ### <a name="azure-government-scenarios"></a>Azure Government scenario's
 
-| Scenario                                                    | VS-Virginia | VS-Arizona| Beperkingen  |
+| Scenario                                                    | US-Virginia | US-Arizona| Beperkingen  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **Algemene beveiligings instellingen** |   | | |
 | Particuliere netwerk communicatie tussen services                                     | NO | NO | Er is momenteel geen persoonlijke koppeling | 
@@ -122,7 +122,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | Basis-en SSH-toegang tot reken resources.                                          | JA | JA |  |
 | De beveiliging van geïmplementeerde systemen (instanties, eind punten, enz.) onderhouden, inclusief Endpoint Protection, patches en logboek registratie |  GEDEELTELIJKE|  GEDEELTELIJKE |ACI achter VNet en privé-eind punt is momenteel niet beschikbaar |                                  
 | Beheer (het gebruik van ACI/AKS-integratie uitschakelen/beperken)                    | GEDEELTELIJKE| GEDEELTELIJKE |ACI achter VNet en privé-eind punt is momenteel niet beschikbaar|
-| Op rollen gebaseerd Access Control (RBAC)-aangepaste rol gemaakte rollen                           | JA | JA |  |
+| Role-Based Access Control (RBAC)-aangepaste gemaakte rollen                           | JA | JA |  |
 | Toegang tot ACR-installatie kopieën beheren die worden gebruikt door de ML-service (door Azure aangestuurd/onderhouden versus aangepast)  |GEDEELTELIJKE|  GEDEELTELIJKE | ACR achter persoonlijk eind punt en VNet niet ondersteund in Azure Government |
 | **Algemeen Machine Learning service gebruik** |  | | |
 | De mogelijkheid om een model te maken voor een ontwikkel omgeving, het model te trainen, te hosten als een eind punt en dit te gebruiken via een webapp     | JA | JA |  |
@@ -134,7 +134,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 ### <a name="additional-azure-government-limitations"></a>Aanvullende Azure Government beperkingen
 
 * Voor Azure Machine Learning Compute-instanties is de mogelijkheid om een token te vernieuwen dat langer is dan 24 uur niet beschikbaar in Azure Government.
-* Model profilering biedt geen ondersteuning voor vier Cpu's in de regio US-Arizona.   
+* Model profilering biedt geen ondersteuning voor vier Cpu's in de US-Arizona regio.   
 * Voorbeeld notitieblokken werken mogelijk niet in Azure Government als deze toegang nodig heeft tot open bare gegevens.
 * IP-adressen: de CLI-opdracht die wordt gebruikt in de instructies [VNet en geforceerde tunneling](how-to-secure-training-vnet.md#forced-tunneling) retourneert geen IP-bereiken. Gebruik in plaats daarvan de [Azure IP-bereiken en-service tags voor Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) .
 * Voor geplande pijp lijnen bieden we ook een activerings mechanisme op basis van een blob. Dit mechanisme wordt niet ondersteund voor CMK-werk ruimten. Voor het inschakelen van een op BLOB gebaseerde trigger voor CMK-werk ruimten, moet u aanvullende installatie uitvoeren. Zie [een uitvoering van een machine learning-pijp lijn activeren vanuit een logische app](how-to-trigger-published-pipeline.md)voor meer informatie.
@@ -151,10 +151,10 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Geautomatiseerde Machine Learning** |    | | |
 | Experimenten maken en uitvoeren in notitie blokken                                    | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Experimenten maken en uitvoeren in Studio Web Experience                        | Open bare preview   | JA       | N.v.t.        |
+| Experimenten maken en uitvoeren in Studio Web Experience                        | Openbare preview   | JA       | N.v.t.        |
 | Toonaangevende prognose mogelijkheden                                  | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Ondersteuning voor diep gaande lessen en andere geavanceerde kennissen                      | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Ondersteuning voor grote gegevens (Maxi maal 100 GB)                                          | Open bare preview   | JA       | N.v.t.        |
+| Ondersteuning voor grote gegevens (Maxi maal 100 GB)                                          | Openbare preview   | JA       | N.v.t.        |
 | Integratie van Azure Databricks                                              | Algemene beschikbaarheid               | NO        | N.v.t.        |
 | SQL-, CosmosDB-en HDInsight-integraties                                   | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | **Machine Learning pijp lijnen** |    | | |
@@ -168,59 +168,59 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 | **Geïntegreerde notebooks** |   | | |
 | Werkruimte notitieblokken en delen van bestanden                                        | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Ondersteuning voor R en python                                                       | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Ondersteuning voor virtuele netwerken                                                    | Open bare preview   | NO        | N.v.t.        |
+| Ondersteuning voor virtuele netwerken                                                    | Openbare preview   | NO        | N.v.t.        |
 | **Rekenproces** |    | | |
 | Beheerde Compute-instanties voor geïntegreerde notebooks                         | Algemene beschikbaarheid               | NO        | N.v.t.        |
 | Jupyter, Jjupyterlab-integratie                                            | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Ondersteuning voor Virtual Network (VNet)                                             | Open bare preview   | JA       | N.v.t.        |
+| Ondersteuning voor Virtual Network (VNet)                                             | Openbare preview   | JA       | N.v.t.        |
 | **SDK-ondersteuning** |    | | |
-| R SDK-ondersteuning                                                              | Open bare preview   | JA       | N.v.t.        |
+| R SDK-ondersteuning                                                              | Openbare preview   | JA       | N.v.t.        |
 | Ondersteuning voor python-SDK                                                         | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | **Beveiliging** |   | | |
 | Virtual Network-ondersteuning (VNet) voor training                                | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Virtual Network-ondersteuning (VNet) voor demijnen                               | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Score endpoint-verificatie                                            | Open bare preview   | JA       | N.v.t.        |
-| Persoonlijke werkplek koppeling                                                     | Open bare preview   | NO        | N.v.t.        |
-| ACI achter VNet                                                            | Open bare preview   | NO        | N.v.t.        |
-| ACR achter VNet                                                            | Open bare preview   | NO        | N.v.t.        |
-| Persoonlijk IP-adres van AKS-cluster                                                  | Open bare preview   | NO        | N.v.t.        |
+| Score endpoint-verificatie                                            | Openbare preview   | JA       | N.v.t.        |
+| Persoonlijke werkplek koppeling                                                     | Openbare preview   | NO        | N.v.t.        |
+| ACI achter VNet                                                            | Openbare preview   | NO        | N.v.t.        |
+| ACR achter VNet                                                            | Openbare preview   | NO        | N.v.t.        |
+| Persoonlijk IP-adres van AKS-cluster                                                  | Openbare preview   | NO        | N.v.t.        |
 | **Compute** |   | | |
 | quota beheer in werk ruimten                                         | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | **Gegevens voor machine learning** | | | |
 | Gegevens sets en gegevens opslag maken, weer geven of bewerken vanuit de SDK                  | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Gegevens sets en gegevens opslag maken, weer geven of bewerken vanuit de gebruikers interface                   | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Videodrijf monitors voor gegevensset weer geven, bewerken of verwijderen uit de SDK                   | Open bare preview   | JA       | N.v.t.        |
-| Het maken, bewerken of verwijderen van de gegevensset voor het maken van gegevens sets vanuit de gebruikers interface                    | Open bare preview   | JA       | N.v.t.        |
+| Videodrijf monitors voor gegevensset weer geven, bewerken of verwijderen uit de SDK                   | Openbare preview   | JA       | N.v.t.        |
+| Het maken, bewerken of verwijderen van de gegevensset voor het maken van gegevens sets vanuit de gebruikers interface                    | Openbare preview   | JA       | N.v.t.        |
 | **Machine learning-levens cyclus** |    | | |
 | Model profilering                                                            | Algemene beschikbaarheid               | GEDEELTELIJKE   | N.v.t.        |
 | De Azure DevOps-extensie voor Machine Learning & de Azure ML CLI         | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Modellen met hardwareversnelling op basis van FPGA                                     | Algemene beschikbaarheid               | NO        | N.v.t.        |
-| Integratie van Visual Studio code                                             | Open bare preview   | NO        | N.v.t.        |
-| Event Grid-integratie                                                     | Open bare preview   | JA       | N.v.t.        |
-| Azure Stream Analytics integreren met Azure Machine Learning               | Open bare preview   | NO        | N.v.t.        |
+| Integratie van Visual Studio code                                             | Openbare preview   | NO        | N.v.t.        |
+| Event Grid-integratie                                                     | Openbare preview   | JA       | N.v.t.        |
+| Azure Stream Analytics integreren met Azure Machine Learning               | Openbare preview   | NO        | N.v.t.        |
 | **Labels** |    | | |
 | Labelen project Beheerportal                                        | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Labeler-Portal                                                            | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | Labelen met privé personeel                                          | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| ML gesteunde labels (afbeeldings classificatie en object detectie)           | Open bare preview   | JA       | N.v.t.        |
+| ML gesteunde labels (afbeeldings classificatie en object detectie)           | Openbare preview   | JA       | N.v.t.        |
 | **Verantwoordelijke ML** |    | | |
-| Uitleg bij de gebruikers interface                                                       | Open bare preview   | NO        | N.v.t.        |
+| Uitleg bij de gebruikers interface                                                       | Openbare preview   | NO        | N.v.t.        |
 | Differentiële privacybeleid WhiteNoise Toolkit                                    | OSS              | NO        | N.v.t.        |
 | aangepaste labels in Azure Machine Learning voor het implementeren van gegevens bladen              | Algemene beschikbaarheid               | NO        | N.v.t.        |
-| Verdeling AzureML-integratie                                               | Open bare preview   | NO        | N.v.t.        |
+| Verdeling AzureML-integratie                                               | Openbare preview   | NO        | N.v.t.        |
 | Coninterpreter-SDK                                                      | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | **Training** |    | | |
 | Streaming logboek streamen                                              | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Leer versterking                                                     | Open bare preview   | NO        | N.v.t.        |
+| Leer versterking                                                     | Openbare preview   | NO        | N.v.t.        |
 | Gebruikers interface voor experimenten                                                         | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | .NET-integratie ML.NET 1,0                                                | Algemene beschikbaarheid               | JA       | N.v.t.        |
 | **Deductie** |   | | |
 | Batch-deinterferentie                                                          | Algemene beschikbaarheid               | JA       | N.v.t.        |
-| Data Box Edge met FPGA                                                    | Open bare preview   | NO        | N.v.t.        |
+| Data Box Edge met FPGA                                                    | Openbare preview   | NO        | N.v.t.        |
 | **Overige** |    | | |
-| Open Datasets                                                              | Open bare preview   | JA       | N.v.t.        |
-| Aangepaste Cognitive Search                                                    | Open bare preview   | JA       | N.v.t.        |
-| Veel modellen                                                                | Open bare preview   | NO        | N.v.t.        |
+| Open Datasets                                                              | Openbare preview   | JA       | N.v.t.        |
+| Aangepaste Cognitive Search                                                    | Openbare preview   | JA       | N.v.t.        |
+| Veel modellen                                                                | Openbare preview   | NO        | N.v.t.        |
 
 
 
@@ -229,7 +229,7 @@ We streven ernaar maximale pariteit te bieden tussen onze open bare Cloud en soe
 * Azure China heeft een beperkte VM-SKU, met name voor GPU-SKU. Het heeft alleen NCv3 Family (V100).
 * REST API-eind punten verschillen van de wereld wijde Azure. Gebruik de volgende tabel om het REST API-eind punt te vinden voor regio's van Azure China:
 
-    | REST-eind punt                 | Wereld wijd Azure                                 | China-overheid                           |
+    | REST-eind punt                 | Wereld wijd Azure                                 | China-Government                           |
     |------------------|--------------------------------------------|--------------------------------------------|
     | Beheerlaag | `https://management.azure.com/`              | `https://management.chinacloudapi.cn/`       |
     | Gegevenslaag       | `https://{location}.experiments.azureml.net` | `https://{location}.experiments.ml.azure.cn` |

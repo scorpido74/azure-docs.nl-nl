@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661105"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969973"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Problemen met de Azure Image Builder-service oplossen
 
@@ -522,7 +522,7 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 De Image Builder-service maakt gebruik van poort 22 (Linux) of 5986 (Windows) om verbinding te maken met de build-VM. dit gebeurt wanneer de service wordt losgekoppeld van de build-VM tijdens het bouwen van een installatie kopie. De redenen voor het verbreken van de verbinding kunnen variëren, maar het inschakelen of configureren van firewalls in script kan de bovenstaande poorten blok keren.
 
 #### <a name="solution"></a>Oplossing
-Controleer uw scripts voor het wijzigen van de firewall, het aanbrengen van wijzigingen in SSH of WinRM, en zorg ervoor dat er wijzigingen zijn toegestaan voor constante connectiviteit tussen de service en het bouwen van virtuele machine op de bovenstaande poorten. Raadpleeg de [vereisten](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)voor meer informatie over Image Builder-netwerken.
+Controleer uw scripts voor het wijzigen van de firewall, het aanbrengen van wijzigingen in SSH of WinRM, en zorg ervoor dat er wijzigingen zijn toegestaan voor constante connectiviteit tussen de service en het bouwen van virtuele machine op de bovenstaande poorten. Raadpleeg de [vereisten](./image-builder-networking.md)voor meer informatie over Image Builder-netwerken.
 
 ## <a name="devops-task"></a>DevOps-taak 
 
@@ -547,7 +547,7 @@ Ga naar het opslag account > blobs > containers > Logboeken.
 ### <a name="troubleshooting-successful-builds"></a>Problemen oplossen met geslaagde builds
 Er zijn mogelijk situaties waarin u een geslaagde build moet onderzoeken en het logboek wilt controleren. Als de installatie kopie is gemaakt, wordt de tijdelijke resource groep die de logboeken bevat, verwijderd als onderdeel van het opschonen. Wat u wel kunt doen, wordt echter een slaap stand geïntroduceerd na de inline-opdracht en vervolgens de logboeken ophalen wanneer de build wordt onderbroken. Voer hiertoe de volgende stappen uit:
  
-1. Werk de inline opdracht bij en voeg het volgende toe: write-host/echo "slaap stand" – Hiermee kunt u in het logboek zoeken
+1. Werk de inline opdracht bij en voeg het volgende toe: Write-Host/echo "slaap stand": Hiermee kunt u in het logboek zoeken
 2. Een slaap stand voor ten minste 10mins toevoegen, kunt u de opdracht [Start-slaap stand](/powershell/module/microsoft.powershell.utility/start-sleep)of `Sleep` Linux gebruiken.
 3. Gebruik de bovenstaande methode voor het identificeren van de logboek locatie en blijf het downloaden/controleren van het logboek totdat de slaap stand wordt geactiveerd.
 
@@ -586,7 +586,7 @@ Er zijn mogelijk situaties waarin u een geslaagde build moet onderzoeken en het 
 
 Als de build niet is geannuleerd door een gebruiker, is deze geannuleerd door de Azure DevOps-gebruikers agent. Waarschijnlijk is de time-out van 1 uur opgetreden vanwege Azure DevOps-mogelijkheden. Als u een persoonlijk project en een agent gebruikt, krijgt u 60 minuten tijd om te bouwen. Als de build de time-out overschrijdt, wordt de actieve taak door DevOps geannuleerd.
 
-Zie door [micro soft gehoste agents](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations) voor meer informatie over de mogelijkheden en beperkingen van Azure DevOps
+Zie door [micro soft gehoste agents](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations) voor meer informatie over de mogelijkheden en beperkingen van Azure DevOps
  
 #### <a name="solution"></a>Oplossing
 
@@ -601,7 +601,7 @@ Please wait for the Windows Modules Installer
 ```
 
 #### <a name="solution"></a>Oplossing
-In eerste versie van de installatie kopie moet u controleren of er geen openstaande opnieuw opgestart hoeft te worden door een Windows-aanpassings programma voor opnieuw opstarten toe te voegen als de laatste aanpassing en dat alle software-installatie is voltooid. Voeg ten slotte [/mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) -optie toe aan de standaard-Sysprep die AIB gebruikt. Zie hieronder voor ' vm's die zijn gemaakt op basis van AIB installatie kopieën worden niet gemaakt ' > ' de opdrachten worden overschreven '  
+In eerste versie van de installatie kopie moet u controleren of er geen openstaande opnieuw opgestart hoeft te worden door een Windows-aanpassings programma voor opnieuw opstarten toe te voegen als de laatste aanpassing en dat alle software-installatie is voltooid. Voeg ten slotte [/mode: VM](/windows-hardware/manufacture/desktop/sysprep-command-line-options) -optie toe aan de standaard-Sysprep die AIB gebruikt. Zie hieronder voor ' vm's die zijn gemaakt op basis van AIB installatie kopieën worden niet gemaakt ' > ' de opdrachten worden overschreven '  
 
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>Vm's die zijn gemaakt op basis van AIB-installatie kopieën worden niet gemaakt

@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086399"
+ms.locfileid: "91874591"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Aanbevolen procedures voor Azure Maps route service
 
 De route richtingen en route matrix-Api's in Azure Maps [route service](https://docs.microsoft.com/rest/api/maps/route) kunnen worden gebruikt om de geschatte aankomst tijden (ETAs) voor elke aangevraagde route te berekenen. Router-Api's beschouwen factoren als realtime verkeers gegevens en historische verkeers gegevens, zoals de standaard snelheden op de gewenste dag van de week en het tijdstip van de dag. De API's retourneren de kortste of snelste routes die beschikbaar zijn voor meerdere bestemmingen tegelijk in een reeks of in een geoptimaliseerde volgorde, op basis van tijd of afstand. Gebruikers kunnen ook specifieke routes en Details aanvragen voor walkie, fietsers en commerciële Voer tuigen, zoals vracht wagens. In dit artikel delen we de aanbevolen procedures voor het aanroepen van Azure Maps [route service](https://docs.microsoft.com/rest/api/maps/route)en leert u het volgende:
 
-> [!div class="checklist"]
-> * Kiezen tussen de route richtingen Api's en de API voor de matrix routering
-> * Historische en voorspelde reistijden aanvragen, op basis van real-time en historische verkeersgegevens
-> * Routerings gegevens, zoals tijd en afstand, voor de hele route en elk poot van de route aanvragen
-> * Vraag route voor een bedrijfs voertuig, zoals een truck
-> * Informatie over verkeer aanvragen via een route, zoals storingen en informatie over de telefoon
-> * Een route aanvragen die bestaat uit een of meer stop (waypoints)
-> * Optimaliseer een route van een of meer stops om de beste volg orde te verkrijgen om elke Stop (waypoint) te bezoeken.
-> * Optimaliseer alternatieve routes met ondersteunende punten. U kunt bijvoorbeeld alternatieve routes aanbieden die een elektriciteits station voor het laden van het Voer tuig door geven.
-> * De [route service](https://docs.microsoft.com/rest/api/maps/route) gebruiken met de Azure Maps Web-SDK
+ * Kiezen tussen de route richtingen Api's en de API voor de matrix routering
+ * Historische en voorspelde reistijden aanvragen, op basis van real-time en historische verkeersgegevens
+ * Routerings gegevens, zoals tijd en afstand, voor de hele route en elk poot van de route aanvragen
+ * Vraag route voor een bedrijfs voertuig, zoals een truck
+ * Informatie over verkeer aanvragen via een route, zoals storingen en informatie over de telefoon
+ * Een route aanvragen die bestaat uit een of meer stop (waypoints)
+ * Optimaliseer een route van een of meer stops om de beste volg orde te verkrijgen om elke Stop (waypoint) te bezoeken.
+ * Optimaliseer alternatieve routes met ondersteunende punten. U kunt bijvoorbeeld alternatieve routes aanbieden die een elektriciteits station voor het laden van het Voer tuig door geven.
+ * De [route service](https://docs.microsoft.com/rest/api/maps/route) gebruiken met de Azure Maps Web-SDK
 
 ## <a name="prerequisites"></a>Vereisten
 

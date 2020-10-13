@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360783"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Back-ups maken en herstellen voor SQL Server op virtuele machines in azure
@@ -104,7 +104,7 @@ Vanaf SQL Server 2012 SP1 CU2 kunt u rechtstreeks een back-up maken en herstelle
 | 2016-uitbrei ding | Details |
 | --- | --- |
 | **Striping** |Bij het maken van een back-up naar Microsoft Azure Blob-opslag biedt SQL Server 2016 ondersteuning voor het maken van back-ups naar meerdere blobs voor het inschakelen van back-ups van grote data bases tot Maxi maal 12,8 TB. |
-| **Back-up van moment opname** |Dankzij het gebruik van Azure snap shots biedt SQL Server back-up van bestanden moment opnamen bijna momentane back-ups en snelle herstel bewerkingen voor database bestanden die zijn opgeslagen met behulp van de Azure Blob Storage-service. Met deze mogelijkheid kunt u uw back-up-en herstel beleid vereenvoudigen. Back-ups van bestands momentopnamen bieden ook ondersteuning voor herstel naar een bepaald tijdstip. Zie [moment opnamen van back-ups voor database bestanden in azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)voor meer informatie. |
+| **Back-up van moment opname** |Dankzij het gebruik van Azure snap shots biedt SQL Server File-Snapshot Backup een back-up van bijna onmiddellijk back-ups en worden er snel herstel bewerkingen voor database bestanden opgeslagen met behulp van de Azure Blob Storage-service. Met deze mogelijkheid kunt u uw back-up-en herstel beleid vereenvoudigen. Back-ups van bestands momentopnamen bieden ook ondersteuning voor herstel naar een bepaald tijdstip. Zie [moment opnamen van back-ups voor database bestanden in azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)voor meer informatie. |
 
 Zie voor meer informatie de een van de volgende artikelen op basis van uw versie van SQL Server:
 

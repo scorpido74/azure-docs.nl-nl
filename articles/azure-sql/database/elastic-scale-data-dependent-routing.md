@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 2e6efc08cb7d38a856098395aff363d9d7ec2bab
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442979"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>Gegevens afhankelijke route ring gebruiken om een query naar een geschikte data base te routeren
@@ -25,7 +25,7 @@ ms.locfileid: "91442979"
 
 De toepassing hoeft geen verschillende verbindings reeksen of DB-locaties te volgen die zijn gekoppeld aan verschillende gegevens segmenten in de Shard omgeving. In plaats daarvan opent [Shard-toewijzings beheer](elastic-scale-shard-map-management.md) verbindingen met de juiste data bases wanneer dit nodig is, op basis van de gegevens in de Shard-toewijzing en de waarde van de sharding-sleutel die het doel is van de aanvraag van de toepassing. De sleutel is doorgaans de *Customer_ID*, *tenant_id*, *date_key*of een andere specifieke id die een fundamentele para meter van de database aanvraag is.
 
-Zie [Uitschalen SQL Server met gegevens afhankelijke route ring](https://technet.microsoft.com/library/cc966448.aspx)voor meer informatie.
+Zie [SQL Server uitschalen met Data-Dependent route ring](https://technet.microsoft.com/library/cc966448.aspx)voor meer informatie.
 
 ## <a name="download-the-client-library"></a>De client bibliotheek downloaden
 
@@ -118,7 +118,7 @@ De **methode OpenConnectionForKeyAsync** ([Java](/java/api/com.microsoft.azure.e
 
 Een best practice in het ontwikkelen van toepassingen voor gegevens toegang in de Cloud is om ervoor te zorgen dat tijdelijke fouten worden onderschept door de app, en dat de bewerkingen meerdere keren opnieuw worden geprobeerd voordat een fout optreedt. Tijdelijke fout afhandeling voor Cloud toepassingen wordt beschreven op tijdelijke fout afhandeling ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.net](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))).
 
-Tijdelijke fout afhandeling kan natuurlijk worden gecombineerd met het gegevensafhankelijk routerings patroon. De belangrijkste vereiste is om de volledige aanvraag voor gegevens toegang opnieuw uit te voeren, met inbegrip van het blok **gebruiken** dat de gegevens afhankelijke routerings verbinding heeft verkregen. Het vorige voor beeld kan als volgt worden herschreven.
+Tijdelijke fout afhandeling kan natuurlijk worden gecombineerd met het Data-Dependent-routerings patroon. De belangrijkste vereiste is om de volledige aanvraag voor gegevens toegang opnieuw uit te voeren, met inbegrip van het blok **gebruiken** dat de gegevens afhankelijke routerings verbinding heeft verkregen. Het vorige voor beeld kan als volgt worden herschreven.
 
 ### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Voor beeld: gegevens afhankelijke route ring met tijdelijke fout afhandeling
 

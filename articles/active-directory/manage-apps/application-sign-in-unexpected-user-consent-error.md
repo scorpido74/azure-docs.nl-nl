@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321943"
+ms.locfileid: "91874540"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Er is een onverwachte fout opgetreden bij het uitvoeren van de toestemming voor een toepassing
 
@@ -79,10 +79,12 @@ Deze fouten treden allemaal op wanneer de toepassing een gebruiker probeert toes
     -   De toepassing toevoegen vanuit de Azure AD-toepassings galerie
 
 ## <a name="risky-app-error-and-warning"></a>Fout met Risk ante app en waarschuwing
+* **AADSTS900941:** Toestemming van de beheerder is vereist. De app wordt beschouwd als riskant. (AdminConsentRequiredDueToRiskyApp)
 * Deze app kan riskant zijn. Als u deze app vertrouwt, vraagt u uw beheerder om toegang te verlenen.
+* **AADSTS900981:** Er is een aanvraag voor een beheerder ontvangen voor een Risk ante app. (AdminConsentRequestRiskyAppWarning)
 * Deze app kan riskant zijn. Ga alleen door als u deze app vertrouwt.
 
-Beide berichten worden weer gegeven wanneer micro soft heeft vastgesteld dat de aanvraag voor toestemming mogelijk riskant is. Onder een aantal andere factoren kan dit gebeuren als een [geverifieerde Uitgever](../develop/publisher-verification-overview.md) niet is toegevoegd aan de app-registratie. Het eerste bericht wordt weer gegeven voor eind gebruikers wanneer de [beheerder toestemming werk stroom](configure-admin-consent-workflow.md) is uitgeschakeld. Het tweede bericht wordt weer gegeven voor eind gebruikers wanneer de beheerder toestemming werk stroom is ingeschakeld en aan beheerders. 
+Beide berichten worden weer gegeven wanneer micro soft heeft vastgesteld dat de aanvraag voor toestemming mogelijk riskant is. Onder een aantal andere factoren kan dit gebeuren als een [geverifieerde Uitgever](../develop/publisher-verification-overview.md) niet is toegevoegd aan de app-registratie. De eerste fout code en het volgende bericht worden weer gegeven voor eind gebruikers wanneer de [beheerder de toestemming werk stroom](configure-admin-consent-workflow.md) is uitgeschakeld. De tweede code en het bericht worden weer gegeven aan eind gebruikers wanneer de beheerder de werk stroom voor het beheer van toestemming heeft ingeschakeld en beheerders. 
 
 Eind gebruikers kunnen geen toestemming verlenen voor apps die zijn gedetecteerd als riskant. Beheerders zijn in staat om de app zeer zorgvuldig te evalueren en voorzichtig te gaan. Als de app verdacht lijkt te zijn bij verdere beoordeling, kan deze worden gerapporteerd aan micro soft vanuit het venster voor toestemming. 
 

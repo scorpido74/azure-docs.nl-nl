@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318587"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969911"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Groeps eigenaren toevoegen aan of verwijderen uit Azure Active Directory
 Azure Active Directory-groepen (Azure AD) zijn eigendom van en worden beheerd door groeps eigenaren. Groeps eigenaren kunnen gebruikers of service-principals zijn en kunnen de groep met inbegrip van lidmaatschap beheren. Alleen bestaande groeps eigenaren of groep-Beheerders kunnen groeps eigenaren toewijzen. Groeps eigenaren hoeven geen lid te zijn van de groep.
@@ -52,7 +52,7 @@ Een eigenaar verwijderen uit een groep met behulp van Azure AD.
 
 3. Selecteer op de pagina **MDM-beleid-West-overzicht** de optie **eigen aren**.
 
-    ![MDM-beleid-overzichts pagina met de eigen aars-optie gemarkeerd](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![MDM-beleid-overzichts pagina met de optie voor het verwijderen van eigen aars gemarkeerd](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
 4. Selecteer op de pagina **MDM-beleid-West-eigen aars** de gebruiker die u wilt verwijderen als groeps eigenaar, kies **verwijderen** op de pagina gegevens van de gebruiker en selecteer **Ja** om uw beslissing te bevestigen.
 

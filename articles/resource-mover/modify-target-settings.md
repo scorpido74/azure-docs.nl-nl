@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604475"
 ---
-# <a name="modify-target-settings"></a>Doel instellingen wijzigen
+# <a name="modify-target-settings"></a>Doelinstelling wijzigen
 
 In dit artikel wordt beschreven hoe u doel instellingen kunt wijzigen bij het verplaatsen van resources tussen Azure-regio's met [Azure resource](overview.md)-overschakeling.
 
@@ -41,7 +41,7 @@ De configuratie-instellingen die u kunt wijzigen, worden in de tabel samenvatten
 **VM-SKU** | Het [VM-type](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (beschikbaar in de doel regio) dat wordt gebruikt voor de doel-VM.<br/><br/> De geselecteerde doel-VM mag niet kleiner zijn dan de bron-VM.
 **Netwerk bronnen** | Opties voor virtuele netwerken (VNets)/Network-beveiligings groepen/netwerk interfaces:<br/><br/> -Maak een nieuwe resource met dezelfde naam in de doel regio.<br/><br/> -Maak een nieuwe resource met een andere naam in de doel regio.<br/><br/> -Gebruik een bestaande netwerk bron in de doel regio.<br/><br/> Als u een nieuwe doel bron maakt, met uitzonde ring van de instellingen die u wijzigt, worden dezelfde instellingen toegewezen als voor de bron resource.
 **Naam openbaar IP-adres** | Geef de naam op.
-**SKU openbaar IP-adres** | Geef de [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)op.
+**Openbaar IP-adres SKU** | Geef de [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)op.
 **Zone openbaar IP-adres** | Geef de [zone](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) op voor standaard open bare IP-adressen.<br/><br/> Als u het zone redundant wilt maken, voert u in als **zone redundant**.
 **Naam van load balancer** | Geef de naam op.
 **Load Balancer-SKU** | Basic of Standard. We raden u aan om standaard te gebruiken.
