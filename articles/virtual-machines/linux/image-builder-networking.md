@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dfd0929ea03cd99033482f71579e91aaf6fc131c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068147"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969634"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure Image Builder service-netwerk opties
 
@@ -33,7 +33,7 @@ Zie een van de volgende voor beelden voor meer informatie:
 
 ### <a name="what-is-azure-private-link"></a>Wat is Azure Private Link?
 
-Persoonlijke Azure-koppeling biedt een persoonlijke verbinding van een virtueel netwerk naar Azure Platform as a Service (PaaS), klant-eigendom of micro soft partner services. Het vereenvoudigt de netwerk architectuur en beveiligt de verbinding tussen de eind punten in azure door de bloot stelling van gegevens aan het open bare Internet te elimineren. Zie de documentatie van de [persoonlijke koppeling](https://docs.microsoft.com/azure/private-link)voor meer informatie.
+Persoonlijke Azure-koppeling biedt een persoonlijke verbinding van een virtueel netwerk naar Azure Platform as a Service (PaaS), klant-eigendom of micro soft partner services. Het vereenvoudigt de netwerk architectuur en beveiligt de verbinding tussen de eind punten in azure door de bloot stelling van gegevens aan het open bare Internet te elimineren. Zie de documentatie van de [persoonlijke koppeling](../../private-link/index.yml)voor meer informatie.
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>Vereiste machtigingen voor een bestaand VNET
 
@@ -68,7 +68,7 @@ De geïmplementeerde VM-grootte van de proxy is naast de VM bouwen standaard A1_
 | subnetName | De naam van het subnet binnen het opgegeven virtuele netwerk. Moet worden opgegeven als en alleen als de *naam* is opgegeven. |
 | resourceGroupName | De naam van de resource groep met het opgegeven virtuele netwerk. Moet worden opgegeven als en alleen als de *naam* is opgegeven. |
 
-Voor de service voor persoonlijke koppelingen is een IP-adres van het opgegeven VNET en subnet vereist. Op dit moment ondersteunt Azure geen netwerk beleid op deze IP-adressen. Het netwerk beleid moet daarom worden uitgeschakeld op het subnet. Zie de documentatie van de [persoonlijke koppeling](https://docs.microsoft.com/azure/private-link)voor meer informatie.
+Voor de service voor persoonlijke koppelingen is een IP-adres van het opgegeven VNET en subnet vereist. Op dit moment ondersteunt Azure geen netwerk beleid op deze IP-adressen. Het netwerk beleid moet daarom worden uitgeschakeld op het subnet. Zie de documentatie van de [persoonlijke koppeling](../../private-link/index.yml)voor meer informatie.
 
 ### <a name="checklist-for-using-your-vnet"></a>Controle lijst voor het gebruik van uw VNET
 

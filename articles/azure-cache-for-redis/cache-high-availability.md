@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: yegu
 ms.openlocfilehash: 145be11436eb4d0c4f6b892e5239ccacd838d780
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91654128"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hoge Beschik baarheid voor Azure cache voor redis
@@ -23,7 +23,7 @@ Azure cache voor redis implementeert hoge Beschik baarheid door gebruik te maken
 | ------------------- | ------- | ------- | :------: | :---: |
 | [Standaard replicatie](#standard-replication)| Configuratie met twee knoop punten gerepliceerd in één Data Center of beschikbaarheids zone (AZ), met automatische failover | 99,9% |✔|✔|
 | [Meerdere replica's](#multiple-replicas) | Gerepliceerde configuratie met meerdere knoop punten in een of meer AZs, met automatische failover | 99,95% (met zone redundantie) |-|✔|
-| [Zone redundantie](#zone-redundancy) | Gerepliceerde configuratie met meerdere knoop punten op AZs, met automatische failover | 99,95% (met meerdere replica's) |-|✔|
+| [Zoneredundantie](#zone-redundancy) | Gerepliceerde configuratie met meerdere knoop punten op AZs, met automatische failover | 99,95% (met meerdere replica's) |-|✔|
 | [Geo-replicatie](#geo-replication) | Gekoppelde cache-instanties in twee regio's met door de gebruiker beheerde failover | 99,9% (voor een enkele regio) |-|✔|
 
 ## <a name="standard-replication"></a>Standaard replicatie

@@ -13,10 +13,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279292"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: De machtigingen van een AD DS Connector-account configureren 
@@ -119,7 +119,7 @@ Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>'
 
 ## <a name="configure-ad-ds-connector-account-permissions"></a>De machtigingen van een AD DS Connector-account configureren 
  
-### <a name="configure-basic-read-only-permissions"></a>Basis machtigingen voor alleen-lezen configureren 
+### <a name="configure-basic-read-only-permissions"></a>Basis Read-Only machtigingen configureren 
 Als u basis machtigingen voor alleen-lezen wilt instellen voor de AD DS Connector-account wanneer u geen Azure AD Connect-functie gebruikt, voert u de volgende handelingen uit: 
 
 ``` powershell

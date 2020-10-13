@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 2dbfc2173f6631aff2d65c770a5204bbd72d3ed1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3c3dac8c8798b9c56b746a2e4e232f43ef967ebe
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818804"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960300"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>De aangepaste scriptextensie van Azure versie 2 gebruiken met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -45,7 +45,7 @@ De aangepaste script extensie voor Linux wordt uitgevoerd op de extensie die wor
 U kunt de extensie gebruiken om uw Azure Blob Storage-referenties te gebruiken voor toegang tot Azure Blob-opslag. Het is ook mogelijk dat de locatie van het script een wille keurige waar is, zolang de virtuele machine kan worden doorgestuurd naar dat eind punt, zoals GitHub, interne bestands server, enzovoort.
 
 ### <a name="internet-connectivity"></a>Internet verbinding
-Als u een script extern moet downloaden, zoals GitHub of Azure Storage, moeten er extra poorten voor de firewall/netwerk beveiligings groep worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](../../virtual-network/security-overview.md#service-tags).
+Als u een script extern moet downloaden, zoals GitHub of Azure Storage, moeten er extra poorten voor de firewall/netwerk beveiligings groep worden geopend. Als uw script zich bijvoorbeeld in Azure Storage bevindt, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](../../virtual-network/network-security-groups-overview.md#service-tags).
 
 Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extra firewall-of netwerk beveiligings groep poorten openen.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89447810"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969599"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows Boot Manager-fout: 0xC0000428-status ongeldige afbeeldings-hash
 
@@ -28,7 +28,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij een preview-in
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname de Windows-opstart beheer wordt weer gegeven met het volgende bericht:
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname de Windows-opstart beheer wordt weer gegeven met het volgende bericht:
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -66,7 +66,7 @@ U kunt de vervaldatum van een preview-installatiekopie niet verlengen. Zodra de 
 
 ## <a name="solution"></a>Oplossing
 
-Als uw installatie kopie een voorbeeld afbeelding is, is er geen manier om de verval datum voor de gebruikte installatie kopie uit te breiden, moet u [een nieuwe VM implementeren](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) met een niet-preview-installatie kopie. De volgende stappen helpen u bij het identificeren van een voorbeeld installatie kopie en het leveren van resources die u kunnen helpen bij het overbrengen van gegevens van deze VM naar een nieuwe VM. Als u de afbeelding hebt geïdentificeerd als een preview-afbeelding, kan de afbeelding niet worden hersteld, omdat deze nu is verlopen.
+Als uw installatie kopie een voorbeeld afbeelding is, is er geen manier om de verval datum voor de gebruikte installatie kopie uit te breiden, moet u [een nieuwe VM implementeren](../windows/quick-create-portal.md) met een niet-preview-installatie kopie. De volgende stappen helpen u bij het identificeren van een voorbeeld installatie kopie en het leveren van resources die u kunnen helpen bij het overbrengen van gegevens van deze VM naar een nieuwe VM. Als u de afbeelding hebt geïdentificeerd als een preview-afbeelding, kan de afbeelding niet worden hersteld, omdat deze nu is verlopen.
 
 Afhankelijk van uw voor keur kunt u Azure PowerShell of Azure CLI gebruiken om uw installatie kopie op te vragen om te bepalen of het een preview-installatie kopie is. U kunt deze opdrachten gebruiken om te bevestigen dat de afbeelding een voorbeeld afbeelding is.
 
@@ -103,7 +103,7 @@ Afhankelijk van uw voor keur kunt u Azure PowerShell of Azure CLI gebruiken om u
 
 ### <a name="query-using-the-azure-cli"></a>Query's uitvoeren met de Azure CLI
 
-1. Als u dat nog niet hebt gedaan, moet u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+1. Als u dat nog niet hebt gedaan, moet u [de Azure cli installeren](/cli/azure/install-azure-cli).
 1. Nadat het is gedownload, gebruikt u een opdracht prompt of Power shell om de `az login` opdracht in te voeren en meldt u zich aan met uw account referenties.
 1. Wanneer u bent aangemeld, voert u de volgende opdrachten in:
 

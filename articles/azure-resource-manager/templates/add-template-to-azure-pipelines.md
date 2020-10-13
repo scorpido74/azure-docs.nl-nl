@@ -4,13 +4,13 @@ description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp 
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653397"
 ---
-# <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sjablonen integreren met Azure-pijp lijnen
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>Resource Manager-sjablonen integreren met Azure-pijplijnen
 
 U kunt Azure Resource Manager sjablonen (ARM-sjablonen) integreren met Azure-pijp lijnen voor continue integratie en continue implementatie (CI/CD). De zelf studie [doorlopende integratie van arm-sjablonen met Azure-pijp lijnen](deployment-tutorial-pipeline.md) laat zien hoe u de [implementatie taak arm-sjabloon](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) kunt gebruiken om een sjabloon te implementeren vanuit uw github opslag plaats. Deze aanpak werkt wanneer u een sjabloon rechtstreeks vanuit een opslag plaats wilt implementeren.
 

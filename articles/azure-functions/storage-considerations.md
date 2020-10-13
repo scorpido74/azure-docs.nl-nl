@@ -4,10 +4,10 @@ description: Meer informatie over de opslag vereisten van Azure Functions en ove
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318178"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Aandachtspunten voor de opslag van Azure Functions
@@ -19,7 +19,7 @@ Azure Functions moet een Azure Storage-account zijn wanneer u een exemplaar van 
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Status-en functie sleutels van bindingen onderhouden.  <br/>Wordt ook gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md). |
 | [Azure Files](../storage/files/storage-files-introduction.md)  | Bestands share gebruikt om de code van uw functie-app op te slaan en uit te voeren in een [verbruiks abonnement](functions-scale.md#consumption-plan) en een [Premium-abonnement](functions-scale.md#premium-plan). |
-| [Azure-wachtrij opslag](../storage/queues/storage-queues-introduction.md)     | Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).   |
+| [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ Het is mogelijk dat meerdere functie-apps hetzelfde opslag account delen zonder 
 
 U kunt bestaande Azure Files-shares koppelen aan uw Linux-functie-apps. Door een share te koppelen aan uw Linux-functie-app, kunt u gebruikmaken van bestaande machine learning-modellen of andere gegevens in uw functies. U kunt de [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) opdracht gebruiken om een bestaande share te koppelen aan uw Linux-functie-app. 
 
-In deze opdracht `share-name` is de naam van de bestaande Azure Files share en `custom-id` kan elke wille keurige teken reeks zijn die een unieke definitie vormt van de share wanneer deze wordt gekoppeld aan de functie-app. Het `mount-path` is ook het pad van waaruit de share wordt geopend in uw functie-app. `mount-path`moet de indeling `/dir-name` hebben en kan niet beginnen met `/home` .
+In deze opdracht `share-name` is de naam van de bestaande Azure Files share en `custom-id` kan elke wille keurige teken reeks zijn die een unieke definitie vormt van de share wanneer deze wordt gekoppeld aan de functie-app. Het `mount-path` is ook het pad van waaruit de share wordt geopend in uw functie-app. `mount-path` moet de indeling `/dir-name` hebben en kan niet beginnen met `/home` .
 
 Zie de scripts in [een python-functie-app maken en een Azure Files share koppelen](scripts/functions-cli-mount-files-storage-linux.md)voor een volledig voor beeld. 
 

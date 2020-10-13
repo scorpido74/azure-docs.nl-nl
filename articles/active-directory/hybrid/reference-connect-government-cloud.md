@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89276181"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Overwegingen voor hybride identiteit voor de Azure Government Cloud
@@ -74,9 +74,9 @@ Als u Pass-Through-verificatie gebruikt als uw aanmeldings methode, is er geen a
 
   Als dat niet het geval is, verleent u toegang tot de IP-bereiken van het Azure-Data Center, die wekelijks worden bijgewerkt. Deze vereiste is alleen van toepassing wanneer u de functie inschakelt. Het is niet vereist voor de werkelijke gebruikers aanmeldingen.
 
-### <a name="roll-out-seamless-single-sign-on"></a>Naadloze eenmalige aanmelding implementeren
+### <a name="roll-out-seamless-single-sign-on"></a>Naadloze single Sign-On implementeren
 
-U kunt met behulp van de volgende instructies de naadloze eenmalige aanmelding van Azure AD naar uw gebruikers samen vouwen. U begint door de Azure AD-URL toe te voegen `https://autologon.microsoft.us` aan de intranet zone-instellingen van alle of geselecteerde gebruikers met behulp van Groepsbeleid in Active Directory.
+U kunt met behulp van de volgende instructies de naadloze single Sign-On van Azure AD naar uw gebruikers samen vouwen. U begint door de Azure AD-URL toe te voegen `https://autologon.microsoft.us` aan de intranet zone-instellingen van alle of geselecteerde gebruikers met behulp van Groepsbeleid in Active Directory.
 
 U moet ook de beleids instelling intranet zone inschakelen **updates op status balk via script toestaan via Groepsbeleid**.
 

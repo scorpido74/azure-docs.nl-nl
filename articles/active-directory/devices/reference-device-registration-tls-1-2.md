@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268754"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>TLS 1,2 afdwingen voor de Azure AD-registratie service
@@ -37,13 +37,13 @@ Voor Windows-servers die gebruikmaken van de Azure AD Device Registration servic
 
 Zorg ervoor dat de volgende register teken reeksen zijn geconfigureerd:
 
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client
   - "DisabledByDefault" = dword: 00000000
   - "Ingeschakeld" = dword: 00000001
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2-server
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2-server
   - "DisabledByDefault" = dword: 00000000
   - "Ingeschakeld" = dword: 00000001
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\. NETFramework\v4.0.30319
   - "Schusestrongcrypto toe" = dword: 00000001
 
 ## <a name="update-non-windows-proxies"></a>Niet-Windows-proxy's bijwerken

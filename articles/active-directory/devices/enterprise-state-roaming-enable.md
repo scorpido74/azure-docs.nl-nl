@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268601"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Enterprise state roaming inschakelen in Azure Active Directory
@@ -66,7 +66,7 @@ Volg deze stappen om een synchronisatie status rapport per gebruiker-apparaat we
   
    ![afbeelding van kolom met synchronisatie gegevens van apparaat](./media/enterprise-state-roaming-enable/device-status-row.png)
 
-## <a name="data-retention"></a>Gegevensretentie
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 
 Gegevens die zijn gesynchroniseerd met de micro soft-Cloud met Enterprise State Roaming worden bewaard totdat deze hand matig wordt verwijderd of totdat de betreffende gegevens verouderd zijn. 
 

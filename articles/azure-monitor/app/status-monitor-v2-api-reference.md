@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318994"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>API-naslag informatie over Azure Monitor Application Insights agent
@@ -83,11 +83,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voorbeeld:
-- `MachineFilter`komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
-- `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
-- `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
-- `AppFilter='WebAppTwo'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+In dit voorbeeld geldt het volgende:
+- `MachineFilter` komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
+- `AppFilter='WebAppExclude'` biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
+- `AppFilter='WebAppOne'` Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+- `AppFilter='WebAppTwo'` Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
 - Ten slotte `AppFilter` gebruikt het `'.*'` Joker teken ook om alle web-apps te zoeken die niet overeenkomen met de eerdere regels en een standaard instrumentatie sleutel toe te wijzen.
 - Spaties worden toegevoegd voor de Lees baarheid.
 
@@ -475,11 +475,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
-In dit voorbeeld:
-- `MachineFilter`komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
-- `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
-- `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
-- `AppFilter='WebAppTwo'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+In dit voorbeeld geldt het volgende:
+- `MachineFilter` komt overeen met de huidige computer met behulp van het `'.*'` Joker teken.
+- `AppFilter='WebAppExclude'` biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
+- `AppFilter='WebAppOne'` Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+- `AppFilter='WebAppTwo'` Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
 - Ten slotte `AppFilter` gebruikt het `'.*'` Joker teken ook om alle web-apps te zoeken die niet overeenkomen met de eerdere regels en een standaard instrumentatie sleutel toe te wijzen.
 - Spaties worden toegevoegd voor de Lees baarheid.
 

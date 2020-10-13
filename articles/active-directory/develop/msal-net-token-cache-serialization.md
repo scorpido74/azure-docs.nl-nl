@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c44c99016f507214869e45a66bdd27c0a5efec75
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4a0d5af8faafac8b733bd2daa9655e663da6fe71
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982917"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873520"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisatie van token cache in MSAL.NET
 Nadat een [token is verkregen](msal-acquire-cache-tokens.md), wordt het in de cache opgeslagen door micro soft Authentication Library (MSAL).  De toepassings code moet proberen een token op te halen uit de cache voordat een token wordt verkregen met een andere methode.  In dit artikel wordt de standaard-en aangepaste serialisatie van de token cache in MSAL.NET beschreven.
@@ -86,7 +86,7 @@ static class TokenCacheHelper
   /// <summary>
   /// Path to the token cache. Note that this could be something different for instance for MSIX applications:
   /// private static readonly string CacheFilePath =
-$"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
+  /// $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
   /// </summary>
   public static readonly string CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin3";
 
@@ -281,7 +281,7 @@ MSAL.NET biedt aangepaste token cache-serialisatie in .NET Framework en .NET cor
 
 De [micro soft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) -bibliotheek biedt een preview NuGet-pakket [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) met de token cache-serialisatie:
 
-| Extensie methode | Micro soft. Identity. Web-sub-naam ruimte | Description  |
+| Extensie methode | Micro soft. Identity. Web-sub-naam ruimte | Beschrijving  |
 | ---------------- | --------- | ------------ |
 | `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | In geheugen token cache-serialisatie. Deze implementatie is geweldig in voor beelden. Het is ook handig in productie toepassingen die u niet bedenkt als de token cache verloren gaat wanneer de web-app opnieuw wordt gestart. `AddInMemoryTokenCaches` neemt een optionele para meter van `MsalMemoryTokenCacheOptions` het type waarmee u de duur kunt opgeven waarna de cache vermelding verloopt, tenzij deze wordt gebruikt.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | De token cache is gebonden aan de gebruikers sessie. Deze optie is niet ideaal als het ID-token veel claims bevat omdat de cookie te groot wordt.

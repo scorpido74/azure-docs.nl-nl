@@ -6,10 +6,10 @@ author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
 ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321918"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Controle toepassings bewaking van nul voor Kubernetes-gehoste toepassingen met Istio-DEPRECATED
@@ -30,7 +30,7 @@ Azure Monitor maakt nu gebruik van de teching van service-net op uw Kubernetes-c
 - Een [Application Insight-resource](create-new-resource.md)
 - Een service-net hebben. Als er in uw cluster geen Istio is geïmplementeerd, kunt u leren hoe u [Istio in azure Kubernetes service installeert en gebruikt](../../aks/servicemesh-istio-install.md).
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 
 Door het gebruik van een controle toepassings bewaking van nul voor Kubernetes gehoste apps kunt u het volgende gebruiken:
 

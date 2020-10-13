@@ -4,10 +4,10 @@ description: In dit artikel leest u hoe de Azure Backup-service een back-up maak
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371504"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
@@ -76,7 +76,7 @@ Azure Backup maakt moment opnamen volgens het back-upschema.
 
 In de volgende tabel ziet u de verschillende soorten consistentie van moment opnamen:
 
-**Momentopname** | **Details** | **Herstel** | **Overweging**
+**Snapshot** | **Details** | **Herstel** | **Overweging**
 --- | --- | --- | ---
 **Toepassings consistent** | Met app-consistente back-ups worden geheugen inhoud en I/O-bewerkingen in behandeling vastgelegd. App-consistente moment opnamen maken gebruik van een VSS Writer (of pre/post scripts voor Linux) om de consistentie van de app-gegevens te garanderen voordat een back-up wordt uitgevoerd. | Wanneer u een virtuele machine herstelt met een app-consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. De apps beginnen met een consistente status. | Windows: alle VSS-schrijvers zijn geslaagd<br/><br/> Linux: vóór/post-scripts zijn geconfigureerd en geslaagd
 **Bestands systeem consistent** | Bestandssysteem consistente back-ups bieden consistentie door een moment opname van alle bestanden tegelijk te maken.<br/><br/> | Wanneer u een virtuele machine herstelt met een bestandssysteem consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. Apps moeten hun eigen mechanisme ' herstellen ' implementeren om ervoor te zorgen dat de herstelde gegevens consistent zijn. | Windows: sommige VSS-schrijvers zijn mislukt <br/><br/> Linux: standaard (als er vooraf/post-scripts niet zijn geconfigureerd of mislukt)
@@ -92,7 +92,7 @@ In de volgende tabel ziet u de verschillende soorten consistentie van moment opn
 **Schijf** | Back-ups van VM-schijven zijn parallel. Als een virtuele machine bijvoorbeeld vier schijven heeft, probeert de back-upservice tegelijkertijd een back-up te maken van alle vier de schijven. De back-up is incrementeel (alleen gewijzigde gegevens).
 **Planning** |  Als u het back-upverkeer wilt verminderen, maakt u op verschillende tijdstippen van de dag een back-up van verschillende Vm's en zorgt u ervoor dat de tijden niet overlappen. Als op hetzelfde moment back-ups worden gemaakt van VM's, treden er netwerkproblemen op.
 **Back-ups voorbereiden** | Houd de tijd die nodig is om de back-up voor te bereiden. De voorbereidingstijd omvat het installeren of bijwerken van de back-upextensie en het activeren van een schaduwkopie volgens het back-upschema.
-**Gegevens overdracht** | Bedenk de tijd die nodig is om Azure Backup de incrementele wijzigingen van de vorige back-up te identificeren.<br/><br/> In een incrementele back-up worden de wijzigingen door Azure Backup bepaald door de controlesom van het blok te berekenen. Als een blok wordt gewijzigd, wordt het gemarkeerd voor overdracht naar de kluis. De service analyseert de geïdentificeerde blokken om de hoeveelheid gegevens die moet worden overgedragen, verder te minimaliseren. Nadat alle gewijzigde blokken zijn geëvalueerd, worden de wijzigingen in de kluis door Azure Backup overgedragen.<br/><br/> Er kan een vertraging optreden tussen het maken van de schaduwkopie en het kopiëren ervan naar de kluis. Het kan Maxi maal acht uur duren voordat de moment opnamen worden overgebracht naar de kluis. De back-uptijd voor een virtuele machine is minder dan 24 uur voor de dagelijkse back-up.
+**Gegevensoverdracht** | Bedenk de tijd die nodig is om Azure Backup de incrementele wijzigingen van de vorige back-up te identificeren.<br/><br/> In een incrementele back-up worden de wijzigingen door Azure Backup bepaald door de controlesom van het blok te berekenen. Als een blok wordt gewijzigd, wordt het gemarkeerd voor overdracht naar de kluis. De service analyseert de geïdentificeerde blokken om de hoeveelheid gegevens die moet worden overgedragen, verder te minimaliseren. Nadat alle gewijzigde blokken zijn geëvalueerd, worden de wijzigingen in de kluis door Azure Backup overgedragen.<br/><br/> Er kan een vertraging optreden tussen het maken van de schaduwkopie en het kopiëren ervan naar de kluis. Het kan Maxi maal acht uur duren voordat de moment opnamen worden overgebracht naar de kluis. De back-uptijd voor een virtuele machine is minder dan 24 uur voor de dagelijkse back-up.
 **Eerste back-up** | Hoewel de totale back-uptijd voor incrementele back-ups minder dan 24 uur is, is dit mogelijk niet het geval voor de eerste back-up. De tijd die nodig is om de initiële back-up te maken, is afhankelijk van de grootte van de gegevens en wanneer de back-up wordt verwerkt.
 **Wachtrij herstellen** | Met Azure Backup worden herstel taken van meerdere opslag accounts tegelijk verwerkt en worden herstel aanvragen in een wachtrij geplaatst.
 **Kopie terugzetten** | Tijdens het herstel proces worden gegevens van de kluis naar het opslag account gekopieerd.<br/><br/> De totale herstel tijd is afhankelijk van de I/O-bewerkingen per seconde (IOPS) en de door Voer van het opslag account.<br/><br/> Als u de Kopieer tijd wilt beperken, selecteert u een opslag account dat niet is geladen met andere schrijf bewerkingen en lees bewerkingen van de toepassing.

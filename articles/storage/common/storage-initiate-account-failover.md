@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610055"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Failover van een opslag account initiëren
@@ -91,7 +91,7 @@ Voer de volgende opdracht uit om een account-failover te initiëren vanuit Power
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name>
 ```
 
-## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u Azure CLI wilt gebruiken om een account-failover te initiëren, voert u de volgende opdrachten uit:
 

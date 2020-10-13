@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869419"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics uitvoer naar Azure SQL Database
@@ -39,7 +39,7 @@ Hier vindt u enkele configuraties binnen elke service die de algehele door Voer 
 
 - **Vermijd unieke sleutel schendingen** : als u [waarschuwingen met meerdere sleutel overtredingen](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) ontvangt in het activiteiten logboek van Azure stream Analytics, moet u ervoor zorgen dat uw taak niet wordt beïnvloed door de schendingen van unieke beperkingen die waarschijnlijk optreden tijdens herstel cases. Dit kan worden vermeden door [de \_ \_ sleutel optie dubbele negeren](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) in te stellen op uw indexen.
 
-## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory-en in-Memory-tabellen
+## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory-en In-Memory tabellen
 
 - **In-Memory tabel als tijdelijke tabel** - [in-Memory tabellen](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) kunnen zeer snelle gegevens worden geladen, maar gegevens moeten in het geheugen passen. Benchmarks tonen het bulksgewijs laden van een in-Memory tabel naar een tabel op basis van een schijf is ongeveer tien keer sneller dan het rechtstreeks invoegen van een enkele schrijver in de op schijven gebaseerde tabel met een identiteits kolom en een geclusterde index. Als u gebruik wilt maken van deze bulksgewijs ingevoegde prestaties, stelt u een [Kopieer taak in met Azure Data Factory](../data-factory/connector-azure-sql-database.md) waarmee gegevens uit de tabel in het geheugen worden gekopieerd naar de tabel op basis van de schijf.
 
@@ -48,10 +48,10 @@ Bulksgewijs invoegen van gegevens is veel sneller dan het laden van gegevens met
 
 Als de frequentie van binnenkomende gebeurtenissen laag is, kan het eenvoudig batch formaten maken die kleiner zijn dan 100 rijen, waardoor bulksgewijs inefficiënt inactief kan worden ingevoegd en te veel schijf ruimte gebruikt. Als u deze beperking wilt omzeilen, kunt u een van de volgende acties uitvoeren:
 * Maak een in plaats van een [trigger](/sql/t-sql/statements/create-trigger-transact-sql) om eenvoudig invoegen te gebruiken voor elke rij.
-* Gebruik een tijdelijke tabel in het geheugen zoals beschreven in de vorige sectie.
+* Gebruik een In-Memory tijdelijke tabel zoals beschreven in de vorige sectie.
 
 Een ander scenario treedt op tijdens het schrijven naar een niet-geclusterde column store-index (NCCI), waarbij kleinere bulk toevoegingen te veel segmenten kunnen maken, waardoor de index kan vastlopen. In dit geval is de aanbeveling een geclusterde column store-index te gebruiken.
 
 ## <a name="summary"></a>Samenvatting
 
-In samen vatting, met de gepartitioneerde uitvoer functie in Azure Stream Analytics voor SQL-uitvoer, wordt uitgelijnde parallel Lise ring van uw taak met een gepartitioneerde tabel in SQL Azure u aanzienlijke verbeteringen in de door voer geven. Het gebruik van Azure Data Factory voor het indelen van gegevens verplaatsing vanuit een tabel in het geheugen in op schijven gebaseerde tabellen kan een volg orde van omvang van de doorvoer snelheid bieden. Als dat mogelijk is, kan het verbeteren van de bericht dichtheid ook een belang rijke factor zijn bij het verbeteren van de algehele door voer.
+In samen vatting, met de gepartitioneerde uitvoer functie in Azure Stream Analytics voor SQL-uitvoer, wordt uitgelijnde parallel Lise ring van uw taak met een gepartitioneerde tabel in SQL Azure u aanzienlijke verbeteringen in de door voer geven. Het gebruik van Azure Data Factory voor het indelen van gegevens verplaatsing vanuit een In-Memory tabel in op schijven gebaseerde tabellen kan een volg orde van omvang van de doorvoer snelheid bieden. Als dat mogelijk is, kan het verbeteren van de bericht dichtheid ook een belang rijke factor zijn bij het verbeteren van de algehele door voer.

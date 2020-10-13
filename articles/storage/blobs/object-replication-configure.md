@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715629"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939410"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Object replicatie configureren voor blok-blobs
 
@@ -45,7 +45,7 @@ Als u toegang hebt tot de bron-en doel opslag accounts, kunt u het object replic
 
 Voordat u object replicatie configureert in de Azure Portal, maakt u de bron-en doel containers in hun respectieve opslag accounts, als deze nog niet bestaan. Schakel ook BLOB-versie beheer in en wijzig de feed voor het bron account en schakel BLOB-versie beheer in op het doel account.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 De Azure Portal maakt automatisch het beleid voor het bron account nadat u dit hebt geconfigureerd voor het doel account.
 
@@ -272,7 +272,7 @@ In het volgende voor beeld wordt een replicatie beleid gedefinieerd voor het doe
 }
 ```
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om de object replicatie te configureren voor het doel account met een JSON-bestand in de Azure Portal:
 
@@ -349,11 +349,45 @@ az storage account or-policy create \
 
 ---
 
+## <a name="check-the-replication-status-of-a-blob"></a>De replicatie status van een BLOB controleren
+
+U kunt de replicatie status voor een BLOB in het bron account controleren met behulp van de Azure Portal, Power shell of Azure CLI. Eigenschappen van object replicatie worden pas ingevuld nadat de replicatie is voltooid of mislukt.
+
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+
+Voer de volgende stappen uit om de replicatie status voor een BLOB in het bron account in de Azure Portal te controleren:
+
+1. Navigeer naar het bron account in de Azure Portal.
+1. Zoek de container die de bron-BLOB bevat.
+1. Selecteer de blob om de eigenschappen ervan weer te geven. Als de blob is gerepliceerd, ziet u in de sectie **object replicatie** dat de status is ingesteld op *voltooid*. De ID van het replicatie beleid en de ID voor de regel voor object replicatie voor deze container worden ook weer gegeven.
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N.v.t.
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Als u de replicatie status voor een BLOB in het bron account met Azure CLI wilt controleren, haalt u de waarde van de eigenschap object replicatie **status** op, zoals wordt weer gegeven in het volgende voor beeld:
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
+```
+
+---
+
 ## <a name="remove-a-replication-policy"></a>Een replicatie beleid verwijderen
 
 Als u een replicatie beleid en de bijbehorende regels wilt verwijderen, gebruikt u Azure Portal, Power shell of CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om een replicatie beleid te verwijderen in de Azure Portal:
 

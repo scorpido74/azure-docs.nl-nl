@@ -4,10 +4,10 @@ description: Automatisch configureren van Azure Diagnostics om gegevens te pipee
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320354"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Power shell gebruiken voor het instellen van Application Insights voor Azure Cloud Services
@@ -37,7 +37,7 @@ Als de web-app in Azure wordt uitgevoerd en u uw resources maakt met een Azure R
 ``` 
 
 * `nameOfAIAppResource`: een naam voor de Application Insights-resource
-* `myWebAppName`-de ID van de web-app
+* `myWebAppName` -de ID van de web-app
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>De extensie voor diagnostische gegevens inschakelen als onderdeel van het implementeren van een cloudservice
 De cmdlet `New-AzureDeployment` bevat de parameter `ExtensionConfiguration`, die overweg kan met vele configuraties voor diagnostische gegevens. Deze kunnen worden gemaakt met de cmdlet `New-AzureServiceDiagnosticsExtensionConfig`. Bijvoorbeeld:
@@ -123,7 +123,7 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Azure Cloud Services-apps bewaken met Application Insights](./cloudservices.md)
 * [Diagnostische Azure-gegevens verzenden naar Application Insights](../platform/diagnostics-extension-to-application-insights.md)
 * [Het configureren van waarschuwingen automatiseren](powershell-alerts.md)

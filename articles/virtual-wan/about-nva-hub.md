@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
 ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313770"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Over virtuele netwerk apparaten in een virtuele WAN-hub van Azure (preview)
@@ -50,7 +50,7 @@ NVA-partners kunnen verschillende resources maken, afhankelijk van hun toestel-i
 * **Resource groep van klant** : dit bevat een tijdelijke aanduiding voor de toepassing voor de beheerde toepassing. Partners kunnen deze gebruiken om te zien welke klant eigenschappen ze hier kiezen.
 * **Beheerde resource groep** : klanten kunnen resources in deze resource groep niet rechtstreeks configureren of wijzigen, omdat dit wordt bepaald door de uitgever van de beheerde toepassing. Deze resource groep bevat de **NetworkVirtualAppliances** -resource.
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="Resource groepen voor beheerde toepassingen":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="Overzicht van het proces":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA-infrastructuur eenheden
 

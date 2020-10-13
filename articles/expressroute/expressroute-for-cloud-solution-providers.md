@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653635"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute voor Cloud Solution Providers (CSP)
@@ -112,7 +112,7 @@ De standaardroutetabel bevat de volgende routes:
 ![Diagram waarin de standaard routerings opties worden weer gegeven.](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Door de gebruiker gedefinieerde routering
-Door de gebruiker gedefinieerde routes geven u controle over het uitgaande verkeer vanuit het toegewezen subnet naar andere subnetten in het virtuele netwerk of via een van de andere vooraf gedefinieerde gateways (ExpressRoute; internet of VPN). De standaardrouteringstabel kan worden vervangen door een door de gebruiker gedefinieerde routeringstabel. Hiermee wordt de standaardrouteringstabel vervangen door aangepaste routes. Met door de gebruiker gedefinieerde routering kunnen klanten specifieke routes maken voor apparaten, zoals firewalls of inbraakdetectieapparaten. Daarnaast kunnen klanten de toegang tot specifieke subnetten blokkeren vanuit het subnet dat de door de gebruiker gedefinieerde route host. Bekijk [hier](../virtual-network/virtual-networks-udr-overview.md)voor een overzicht van door de gebruiker gedefinieerde routes. 
+Door de gebruiker gedefinieerde routes geven u controle over het uitgaande verkeer vanuit het toegewezen subnet naar andere subnetten in het virtuele netwerk of via een van de andere vooraf gedefinieerde gateways (ExpressRoute; internet of VPN). De standaardrouteringstabel kan worden vervangen door een door de gebruiker gedefinieerde routeringstabel. Hiermee wordt de standaardrouteringstabel vervangen door aangepaste routes. Met door de gebruiker gedefinieerde routering kunnen klanten specifieke routes maken voor apparaten, zoals firewalls of inbraakdetectieapparaten. Daarnaast kunnen klanten de toegang tot specifieke subnetten blokkeren vanuit het subnet dat de door de gebruiker gedefinieerde route host. [Hier](../virtual-network/virtual-networks-udr-overview.md)vindt u een overzicht van User-Defined routes. 
 
 ## <a name="security"></a>Beveiliging
 Afhankelijk van het model dat uw klant gebruikt ('Verbinden met' of 'Doorverbinden'), kan hij of zij de beveiligingsregels in het vNet definiëren of deze regels doorgeven aan de CSP, zodat deze de vNets kan definiëren. De volgende beveiligingscriteria kunnen worden gedefinieerd:

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
 ms.openlocfilehash: 489a1afd8e247b69761d521f51e16310176e31f5
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564080"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Noodherstel implementeren met back-up en herstellen van services in Azure API Management
@@ -55,7 +55,7 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 
 ### <a name="create-an-azure-active-directory-application"></a>Een Azure Active Directory-toepassing maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga met het abonnement dat uw API Management service-exemplaar bevat naar het tabblad **app-registraties** in **Azure Active Directory** (Azure Active Directory > beheer/app-registraties).
 
     > [!NOTE]
@@ -68,7 +68,7 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 4. Voer een naam in voor de toepassing.
 5. Selecteer **systeem eigen**voor het toepassings type.
 6. Voer een URL voor de tijdelijke aanduiding in `http://resources` , zoals voor de **omleidings-URI**, omdat het een vereist veld is, maar de waarde niet later wordt gebruikt. Klik op het selectie vakje om de toepassing op te slaan.
-7. Klik op **Create**.
+7. Klik op **Maken**.
 
 ### <a name="add-an-application"></a>Een toepassing toevoegen
 

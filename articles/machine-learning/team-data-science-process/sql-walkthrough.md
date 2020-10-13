@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d7c02e413fdaa54db431cdac7a3cf7af0bddeb98
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331893"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Het proces van de team data Science in actie: met behulp van SQL Server
@@ -83,7 +83,7 @@ In deze zelf studie wordt gebruikgemaakt van de parallelle bulkimportbewerking v
 Uw Azure data Science-omgeving instellen:
 
 1. [Een opslagaccount maken](../../storage/common/storage-account-create.md)
-2. [Een Azure Machine Learning-werk ruimte maken](../classic/create-workspace.md)
+2. [Een Azure Machine Learning-werkruimte maken](../classic/create-workspace.md)
 3. [Richt een Data Science virtual machine](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)in dat een SQL Server en een IPython notebook server biedt.
    
    > [!NOTE]
@@ -431,7 +431,7 @@ plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
 ![#8 afzetten][8]
 
-### <a name="sub-sampling-the-data-in-sql"></a>Subsampling van de gegevens in SQL
+### <a name="sub-sampling-the-data-in-sql"></a>De gegevens in SQL Sub-Sampling
 Wanneer u gegevens voorbereidt voor het maken van modellen in [Azure machine learning Studio](https://studio.azureml.net), kunt u ervoor kiezen **om de SQL-query rechtstreeks te gebruiken in de module gegevens importeren** of de ontworpen en voorbeeld gegevens in een nieuwe tabel te bewaren, die u in de module [gegevens importeren][import-data] kunt gebruiken met een eenvoudige **Select * van <de \_ nieuwe \_ tabel \_ naam>**.
 
 In deze sectie maakt u een nieuwe tabel voor de bemonsterde en engineerde gegevens. Een voor beeld van een rechtstreekse SQL-query voor het maken van modellen is te vinden in de sectie [voor het verkennen van gegevens en functies in SQL Server](#dbexplore) .
