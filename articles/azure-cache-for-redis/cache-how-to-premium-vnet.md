@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 34e4781d1437b34607a6d9e4f99ec5bd2ef9b46d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205559"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999980"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -28,22 +28,38 @@ De implementatie van [azure Virtual Network (VNet)](https://azure.microsoft.com/
 ## <a name="virtual-network-support"></a>Ondersteuning voor virtuele netwerken
 Virtual Network-ondersteuning (VNet) is geconfigureerd op de Blade **nieuwe Azure-cache voor redis** tijdens het maken van de cache. 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Als u een Premium-cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. Naast het maken van caches in de Azure Portal, kunt u ze ook maken met behulp van Resource Manager-sjablonen, Power shell of Azure CLI. Zie [Create a cache](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)(Engelstalig) voor meer informatie over het maken van een Azure-cache voor redis.
 
-Zodra u een premium-prijs categorie hebt geselecteerd, kunt u redis VNet-integratie configureren door een VNet te selecteren dat zich in hetzelfde abonnement en dezelfde locatie als uw cache bevindt. Als u een nieuw VNet wilt gebruiken, maakt u het eerst door de stappen te volgen in [een virtueel netwerk maken met](../virtual-network/manage-virtual-network.md#create-a-virtual-network) behulp van de Azure portal of [een virtueel netwerk (klassiek) te maken met behulp van de Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) en vervolgens terug te keren naar de Blade **nieuwe Azure-cache voor redis** om uw Premium-cache te maken en te configureren.
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Resource maken.":::
+   
+2. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-Als u het VNet voor uw nieuwe cache wilt configureren, klikt u op **Virtual Network** op de Blade **nieuwe Azure-cache voor redis** en selecteert u de gewenste vnet in de vervolg keuzelijst.
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Resource maken.":::
 
-![Virtueel netwerk][redis-cache-vnet]
+3. Configureer op de pagina **nieuw redis cache** de instellingen voor uw nieuwe Premium-cache.
+   
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
+   | **Abonnement** | Vervolg keuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
+   | **Resourcegroep** | Vervolg keuzelijst en selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
+   | **Locatie** | Vervolg keuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
+   | **Cache type** | En selecteer een Premium-cache om Premium-functies te configureren. Zie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/)voor meer informatie. |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
 
-Selecteer het gewenste subnet in de vervolg keuzelijst **subnet** .  Geef desgewenst een **statisch IP-adres**op. Het veld **statisch IP-adres** is optioneel en als er geen is opgegeven, wordt er een gekozen uit het geselecteerde subnet.
+4. Selecteer het tabblad **Netwerken** of klik op de knop **Netwerken** onderaan de pagina.
+
+5. Op het tabblad **netwerken** selecteert u **virtuele netwerken** als verbindings methode. Als u een nieuw virtueel netwerk wilt gebruiken, maakt u het eerst door de stappen te volgen in [een virtueel netwerk maken met](../virtual-network/manage-virtual-network.md#create-a-virtual-network) behulp van de Azure portal of [een virtueel netwerk (klassiek) maken met behulp van de Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) en vervolgens terugkeren naar de **nieuwe Azure-cache voor redis** -Blade om uw Premium-cache te maken en te configureren.
 
 > [!IMPORTANT]
 > Wanneer u een Azure-cache voor redis implementeert voor een resource manager VNet, moet de cache zich in een toegewijd subnet bevinden dat geen andere resources bevat behalve Azure cache voor redis-exemplaren. Als er een poging wordt gedaan om een Azure-cache te implementeren voor redis naar een resource manager-VNet naar een subnet dat andere bronnen bevat, mislukt de implementatie.
 > 
 > 
 
-![Virtueel netwerk][redis-cache-vnet-ip]
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Virtual Network** | Vervolg keuzelijst en selecteer uw virtuele netwerk. | Selecteer een virtueel netwerk dat zich in hetzelfde abonnement en dezelfde locatie als uw cache bevindt. | 
+   | **Subnet** | Vervolg keuzelijst en selecteer uw subnet. | Het adres bereik van het subnet moet de CIDR-notatie hebben (bijvoorbeeld 192.168.1.0/24). Het moet deel uitmaken van de adres ruimte van het virtuele netwerk. | 
+   | **Statisch IP-adres** | Beschrijving Voer een statisch IP-adres in. | Als u geen statisch IP-adres opgeeft, wordt automatisch een IP-adressen gekozen. | 
 
 > [!IMPORTANT]
 > Azure reserveert een aantal IP-adressen binnen elk subnet en deze adressen kunnen niet worden gebruikt. Het eerste en laatste IP-adres van de subnetten zijn gereserveerd voor protocol conformiteit, samen met drie meer adressen die worden gebruikt voor Azure-Services. Zie [zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) voor meer informatie.
@@ -52,7 +68,19 @@ Selecteer het gewenste subnet in de vervolg keuzelijst **subnet** .  Geef desgew
 > 
 > 
 
-Nadat de cache is gemaakt, kunt u de configuratie voor het VNet bekijken door te klikken op **Virtual Network** in het **menu resource**.
+6. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
+
+7. Configureer op het tabblad **Geavanceerd** voor een Premium-cache-exemplaar de instellingen voor niet-TLS-poort, clustering en gegevens persistentie. 
+
+8. Selecteer het tabblad **Volgende: Tags** of klik op de knop **Volgende: Tags** onderaan de pagina.
+
+9. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
+
+10. Selecteer  **Beoordelen + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
+
+11. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
+
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. Nadat de cache is gemaakt, kunt u de configuratie voor het VNet bekijken door te klikken op **Virtual Network** in het **menu resource**.
 
 ![Virtueel netwerk][redis-cache-vnet-info]
 

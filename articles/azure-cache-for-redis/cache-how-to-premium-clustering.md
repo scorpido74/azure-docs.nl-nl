@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/13/2018
-ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 9545dd1480b9d16285d936787cf37fc087e882e1
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004769"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000044"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis-clustering configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u clustering configureert in een Premium Azure-cache voor redis-exemplaar.
@@ -31,19 +31,51 @@ In azure wordt redis-cluster aangeboden als een primair/replica-model, waarbij e
 ## <a name="clustering"></a>Clustering
 Clustering is ingeschakeld op de Blade **nieuwe Azure-cache voor redis** tijdens het maken van de cache. 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Als u een Premium-cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. U kunt caches niet alleen in Azure Portal maken. U kunt ze ook maken met Resource Manager-sjablonen, PowerShell of Azure CLI. Zie [Create a cache](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)(Engelstalig) voor meer informatie over het maken van een Azure-cache voor redis.
 
-Clustering is geconfigureerd op de Blade **redis-cluster** .
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Resource maken.":::
+   
+2. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-![Clustering][redis-cache-clustering]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Resource maken.":::
 
-U kunt Maxi maal 10 Shards in het cluster hebben. Klik op **ingeschakeld** en schuif de schuif regelaar of typ een getal tussen 1 en 10 voor **Shard aantal** en klik op **OK**.
+3. Configureer op de pagina **nieuw redis cache** de instellingen voor uw nieuwe Premium-cache.
+   
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
+   | **Abonnement** | Vervolg keuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
+   | **Resourcegroep** | Vervolg keuzelijst en selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
+   | **Locatie** | Vervolg keuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
+   | **Cache type** | En selecteer een Premium-cache om Premium-functies te configureren. Zie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/)voor meer informatie. |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
 
-Elke Shard is een primair/replica-cache paar dat wordt beheerd door Azure en de totale grootte van de cache wordt berekend door het aantal Shards te vermenigvuldigen met de cache grootte die is geselecteerd in de prijs categorie. 
+4. Selecteer het tabblad **Netwerken** of klik op de knop **Netwerken** onderaan de pagina.
 
-![Clustering][redis-cache-clustering-selected]
+5. Selecteer uw verbindingsmethode op het tabblad **Netwerk**. Voor Premium-cache-instanties kunt u openbaar, via open bare IP-adressen of service-eind punten, of privé, verbinding maken met behulp van een persoonlijk eind punt.
 
-Nadat de cache is gemaakt, maakt u er verbinding mee en gebruikt u deze net als een niet-geclusterde cache en redis distribueert de gegevens in de cache-Shards. Als diagnostische gegevens zijn [ingeschakeld](cache-how-to-monitor.md#enable-cache-diagnostics), worden metrische gegevens afzonderlijk voor elk Shard vastgelegd en kunnen ze worden [weer gegeven](cache-how-to-monitor.md) in de Blade Azure-cache voor redis. 
+6. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
+
+7. Configureer op het tabblad **Geavanceerd** voor een Premium-cache-exemplaar de instellingen voor niet-TLS-poort, clustering en gegevens persistentie. Als u Clustering wilt inschakelen, klikt u op **inschakelen**.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Resource maken.":::
+
+    U kunt Maxi maal 10 Shards in het cluster hebben. Nadat u op **inschakelen**hebt geklikt, schuift u de schuif regelaar of typt u een getal tussen 1 en 10 voor **Shard aantal** en klikt u op **OK**.
+
+    Elke Shard is een primair/replica-cache paar dat wordt beheerd door Azure en de totale grootte van de cache wordt berekend door het aantal Shards te vermenigvuldigen met de cache grootte die is geselecteerd in de prijs categorie.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Resource maken.":::
+
+    Nadat de cache is gemaakt, maakt u er verbinding mee en gebruikt u deze net als een niet-geclusterde cache en redis distribueert de gegevens in de cache-Shards. Als diagnostische gegevens zijn [ingeschakeld](cache-how-to-monitor.md#enable-cache-diagnostics), worden metrische gegevens afzonderlijk voor elk Shard vastgelegd en kunnen ze worden [weer gegeven](cache-how-to-monitor.md) in de Blade Azure-cache voor redis. 
+
+8. Selecteer het tabblad **Volgende: Tags** of klik op de knop **Volgende: Tags** onderaan de pagina.
+
+9. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
+
+10. Selecteer  **Beoordelen + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
+
+11. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
+
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. 
 
 > [!NOTE]
 > 

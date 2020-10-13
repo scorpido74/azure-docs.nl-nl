@@ -3,12 +3,12 @@ title: Veelvoorkomende fouten oplossen
 description: Meer informatie over het oplossen van problemen met het maken van beleids definities, de verschillende SDK en de invoeg toepassing voor Kubernetes.
 ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743434"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999893"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Fouten oplossen met behulp van Azure Policy
 
@@ -68,7 +68,7 @@ Volg deze stappen om de beleids definitie op te lossen:
 
 1. Wacht eerst de juiste hoeveelheid tijd om een evaluatie uit te voeren en de resultaten van naleving beschikbaar te stellen in Azure Portal of SDK. Zie [evaluatie scan op aanvraag](../how-to/get-compliance-data.md#on-demand-evaluation-scan)om een nieuwe evaluatie scan te starten met Azure PowerShell of rest API.
 1. Controleer of de toewijzings parameters en het toewijzings bereik correct zijn ingesteld.
-1. Controleer de [beleids definitie modus](../concepts/definition-structure.md#mode):
+1. Selecteer de [beleidsdefinitiemodus](../concepts/definition-structure.md#mode):
    - Modus all voor alle resource typen.
    - Modus ' geïndexeerd ' als de beleids definitie controleert op Tags of locatie.
 1. Controleer of het bereik van de resource niet wordt [uitgesloten](../concepts/assignment-structure.md#excluded-scopes) of [uitgezonderd](../concepts/exemption-structure.md).
@@ -96,11 +96,11 @@ Voer de volgende stappen uit om het afdwingen van uw beleids toewijzing op te lo
 
 1. Wacht eerst de juiste hoeveelheid tijd om een evaluatie uit te voeren en de resultaten van naleving beschikbaar te stellen in Azure Portal of SDK. Zie [evaluatie scan op aanvraag](../how-to/get-compliance-data.md#on-demand-evaluation-scan)om een nieuwe evaluatie scan te starten met Azure PowerShell of rest API.
 1. Controleer of de toewijzings parameters en het toewijzings bereik correct zijn ingesteld en of **enforcementMode** is _ingeschakeld_. 
-1. Controleer de [beleids definitie modus](../concepts/definition-structure.md#mode):
+1. Selecteer de [beleidsdefinitiemodus](../concepts/definition-structure.md#mode):
    - Modus all voor alle resource typen.
    - Modus ' geïndexeerd ' als de beleids definitie controleert op Tags of locatie.
 1. Controleer of het bereik van de resource niet wordt [uitgesloten](../concepts/assignment-structure.md#excluded-scopes) of [uitgezonderd](../concepts/exemption-structure.md).
-1. Controleer of de resource lading overeenkomt met de beleids logica. U kunt dit doen door [een har-tracering](../../../azure-portal/capture-browser-trace.md) vast te leggen of door de eigenschappen van de arm-sjabloon te controleren.
+1. Controleer of de resourcepayload overeenkomt met de beleidslogica. U kunt dit doen door [een har-tracering](../../../azure-portal/capture-browser-trace.md) vast te leggen of door de eigenschappen van de arm-sjabloon te controleren.
 1. Controle [problemen oplossen: naleving niet zoals verwacht](#scenario-compliance-not-as-expected) voor andere veelvoorkomende problemen en oplossingen.
 
 Als u nog steeds een probleem met uw gedupliceerde en aangepaste ingebouwde beleids definitie of aangepaste definitie hebt, maakt u een ondersteunings ticket onder het **ontwerpen van een beleid** om het probleem correct te routeren.
@@ -169,6 +169,24 @@ Het helm-diagram met de naam `azure-policy-addon` is al geïnstalleerd of gedeel
 #### <a name="resolution"></a>Oplossing
 
 Volg de instructies om [de Azure Policy voor de invoeg toepassing Kubernetes te verwijderen](../concepts/policy-for-kubernetes.md#remove-the-add-on)en voer de `helm install azure-policy-addon` opdracht opnieuw uit.
+
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Scenario: door de gebruiker toegewezen identiteiten van de virtuele Azure-machine worden vervangen door door het systeem toegewezen beheerde identiteiten
+
+#### <a name="issue"></a>Probleem
+
+Nadat gast configuratie beleids initiatieven zijn toegewezen aan controle-instellingen binnen machines, worden door de gebruiker toegewezen beheerde identiteiten die aan de computer zijn toegewezen, niet meer toegewezen. Er wordt alleen een door het systeem toegewezen beheerde identiteit toegewezen.
+
+#### <a name="cause"></a>Oorzaak
+
+De beleids definities die eerder zijn gebruikt in de DeployIfNotExists-definities van de gast configuratie zorgen ervoor dat een door het systeem toegewezen identiteit wordt toegewezen aan de computer, maar ook door de gebruiker toegewezen identiteits toewijzingen zijn verwijderd.
+
+#### <a name="resolution"></a>Oplossing
+
+De definities die eerder het probleem hebben veroorzaakt, worden weer gegeven als \[ afgeschaft \] en worden vervangen door beleids definities waarmee de vereisten worden beheerd zonder dat door de gebruiker toegewezen beheerde identiteit wordt verwijderd. Er is een hand matige stap vereist. Verwijder bestaande beleids toewijzingen die zijn gemarkeerd \[ als afgeschaft \] en vervang deze door het bijgewerkte vereisten beleid en beleids definities die dezelfde naam hebben als de oorspronkelijke.
+
+Zie het volgende blog bericht voor een gedetailleerde beschrijving:
+
+[Belang rijke wijziging die is uitgebracht voor controle beleid voor gast configuratie](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="next-steps"></a>Volgende stappen
 

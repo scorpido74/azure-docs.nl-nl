@@ -5,16 +5,16 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/24/2017
-ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004799"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000021"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Gegevens persistentie configureren voor een Premium Azure-cache voor redis
-Azure cache voor redis heeft verschillende cache aanbiedingen die flexibiliteit bieden bij het kiezen van cache grootte en-functies, waaronder functies voor de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u persistentie configureert in een Premium Azure-cache voor redis-instantie.
+In dit artikel vindt u informatie over het configureren van persistentie in een Premium Azure-cache voor een redis-exemplaar via de Azure Portal. Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. 
 
 ## <a name="what-is-data-persistence"></a>Wat is gegevens persistentie?
 Met [redis persistentie](https://redis.io/topics/persistence) kunt u gegevens bewaren die zijn opgeslagen in redis. U kunt ook moment opnamen maken en back-ups maken van de gegevens, die u in het geval van een hardwarestoring kunt laden. Dit is een enorm voor deel van de Basic-of Standard-laag waarbij alle gegevens worden opgeslagen in het geheugen en er mogelijk gegevens verlies kan optreden in het geval van een storing waarbij cache knooppunten niet beschikbaar zijn. 
@@ -32,54 +32,62 @@ Met persistentie worden redis-gegevens naar een Azure Storage-account geschreven
 > 
 > 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Als u een Premium-cache wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com) en selecteert u **een resource maken**. U kunt caches niet alleen in Azure Portal maken. U kunt ze ook maken met Resource Manager-sjablonen, PowerShell of Azure CLI. Zie [Create a cache](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)(Engelstalig) voor meer informatie over het maken van een Azure-cache voor redis.
 
-Zodra een premium-prijs categorie is geselecteerd, klikt u op **redis persistentie**.
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Resource maken.":::
+   
+2. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-![Redis-persistentie][redis-cache-persistence]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Resource maken.":::
 
-In de stappen in de volgende sectie wordt beschreven hoe u redis Persistence kunt configureren voor uw nieuwe Premium-cache. Zodra de redis-persistentie is geconfigureerd, klikt u op **maken** om uw nieuwe Premium-cache met redis-persistentie te maken.
+3. Configureer op de pagina **nieuw redis cache** de instellingen voor uw nieuwe Premium-cache.
+   
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cache naam moet een teken reeks zijn tussen 1 en 63 tekens die alleen cijfers, letters of afbreek streepjes bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
+   | **Abonnement** | Vervolg keuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
+   | **Resourcegroep** | Vervolg keuzelijst en selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
+   | **Locatie** | Vervolg keuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
+   | **Cache type** | En selecteer een Premium-cache om Premium-functies te configureren. Zie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/)voor meer informatie. |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
 
-## <a name="enable-redis-persistence"></a>Redis-persistentie inschakelen
+4. Selecteer het tabblad **Netwerken** of klik op de knop **Netwerken** onderaan de pagina.
 
-Redis-persistentie wordt ingeschakeld op de Blade **gegevens persistentie** door ofwel **RDB** ofwel **AOF** persistentie te kiezen. Voor nieuwe caches is deze Blade toegankelijk tijdens het proces voor het maken van de cache, zoals beschreven in de vorige sectie. Voor bestaande caches wordt de Blade **gegevens persistentie** geopend vanuit het **resource menu** voor uw cache.
+5. Selecteer uw verbindingsmethode op het tabblad **Netwerk**. Voor Premium-cache-instanties kunt u openbaar, via open bare IP-adressen of service-eind punten, of privé, verbinding maken met behulp van een persoonlijk eind punt.
 
-![Redis-instellingen][redis-cache-settings]
+6. Selecteer het tabblad **Volgende: Geavanceerd** of klik op de knop **Volgende: Geavanceerd** onderaan de pagina.
 
+7. Configureer op het tabblad **Geavanceerd** voor een Premium-cache-exemplaar de instellingen voor niet-TLS-poort, clustering en gegevens persistentie. Voor gegevens persistentie kunt u een **RDB** -of **AOF** -persistentie kiezen. 
 
-## <a name="configure-rdb-persistence"></a>RDB-persistentie configureren
+8. Als u RDB-persistentie wilt inschakelen, klikt u op **RDB** en configureert u de instellingen. 
+   
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Back-upfrequentie** | Vervolg keuzelijst en selecteer een back-upinterval, met de volgende opties: **15 minuten**, **30 minuten**, **60 minuten**, **6 uur**, **12 uur**en **24 uur**. | Dit interval begint met tellen nadat de vorige back-upbewerking is voltooid en wanneer wordt gewacht tot een nieuwe back-up wordt gestart. | 
+   | **Opslagaccount** | Vervolg keuzelijst en selecteer uw opslag account. | U moet een opslag account in dezelfde regio kiezen als de cache en een **Premium Storage** account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft.  | 
+   | **Opslagsleutel** | En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** . | 
 
-Klik op **RDB**om RDB-persistentie in te scha kelen. Als u de RDB-persistentie wilt uitschakelen voor een eerder ingeschakelde Premium-cache, klikt u op **uitgeschakeld**.
+    De eerste back-up wordt gestart zodra het interval voor de back-upfrequentie is verstreken.
 
-![Redis RDB-persistentie][redis-cache-rdb-persistence]
+9. Als u AOF-persistentie wilt inschakelen, klikt u op **AOF** en configureert u de instellingen. 
+   
+   | Instelling      | Voorgestelde waarde  | Beschrijving |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Eerste opslag account** | Vervolg keuzelijst en selecteer uw opslag account. | Dit opslag account moet zich in dezelfde regio bevinden als de cache en een **Premium Storage** -account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft. | 
+   | **Eerste opslag sleutel** | En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** . | 
+   | **Tweede opslag account** | Beschrijving En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | U kunt optioneel een extra opslag account configureren. Als er een tweede opslag account is geconfigureerd, worden de schrijf bewerkingen naar de replica cache naar dit tweede opslag account geschreven. | 
+   | **Tweede opslag sleutel** | Beschrijving En kies de **primaire** of **secundaire sleutel** die u wilt gebruiken. | Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** . | 
 
-Als u het back-upinterval wilt configureren, selecteert u een **back-upfrequentie** in de vervolg keuzelijst. U kunt kiezen uit **15 minuten**, **30 minuten**, **60 minuten**, **6 uur**, **12 uur**en **24 uur**. Dit interval begint met tellen nadat de vorige back-upbewerking is voltooid en wanneer wordt gewacht tot een nieuwe back-up wordt gestart.
+    Wanneer AOF-persistentie is ingeschakeld, worden schrijf bewerkingen naar de cache opgeslagen in het toegewezen opslag account (of de accounts als u een tweede opslag account hebt geconfigureerd). In het geval van een onherstelbare fout die zowel de primaire als de replica cache inneemt, wordt het opgeslagen AOF-logboek gebruikt om de cache opnieuw op te bouwen.
 
-Klik op **opslag account** om het opslag account te selecteren dat u wilt gebruiken en kies ofwel de **primaire sleutel** of **secundaire sleutel** die u wilt gebruiken in de vervolg keuzelijst **opslag sleutel** . U moet een opslag account in dezelfde regio kiezen als de cache en een **Premium Storage** account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft. 
+10. Selecteer het tabblad **Volgende: Tags** of klik op de knop **Volgende: Tags** onderaan de pagina.
 
-> [!IMPORTANT]
-> Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** .
-> 
-> 
+11. Voer desgewenst in het tabblad **Tags** de naam en waarde in om de resource te categoriseren. 
 
-Klik op **OK** om de persistentie configuratie op te slaan.
+12. Selecteer  **Beoordelen + maken**. Het tabblad Beoordelen + maken wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
-De volgende back-up (of de eerste back-up voor nieuwe caches) wordt gestart zodra het interval voor de back-upfrequentie is verstreken.
+13. Selecteer **Maken** nadat het groene bericht Validatie geslaagd verschijnt.
 
-## <a name="configure-aof-persistence"></a>AOF-persistentie configureren
-
-Als u AOF-persistentie wilt inschakelen, klikt u op **AOF**. Als u AOF-persistentie wilt uitschakelen voor een eerder ingeschakelde Premium-cache, klikt u op **uitgeschakeld**.
-
-![Redis AOF-persistentie][redis-cache-aof-persistence]
-
-Als u AOF-persistentie wilt configureren, geeft u een **eerste opslag account**op. Dit opslag account moet zich in dezelfde regio bevinden als de cache en een **Premium Storage** -account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft. U kunt optioneel een extra opslag account met de naam **tweede opslag account**configureren. Als er een tweede opslag account is geconfigureerd, worden de schrijf bewerkingen naar de replica cache naar dit tweede opslag account geschreven. Voor elk geconfigureerd opslag account kiest u de **primaire sleutel** of **secundaire sleutel** die u wilt gebruiken in de vervolg keuzelijst **opslag sleutel** . 
-
-> [!IMPORTANT]
-> Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** .
-> 
-> 
-
-Wanneer AOF-persistentie is ingeschakeld, worden schrijf bewerkingen naar de cache opgeslagen in het toegewezen opslag account (of de accounts als u een tweede opslag account hebt geconfigureerd). In het geval van een onherstelbare fout die zowel de primaire als de replica cache inneemt, wordt het opgeslagen AOF-logboek gebruikt om de cache opnieuw op te bouwen.
+Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de  **overzichtspagina**  van Azure Cache voor Redis. Wanneer  **Status** wordt weergegeven als  **Wordt uitgevoerd**, is de cache klaar voor gebruik. 
 
 ## <a name="persistence-faq"></a>Veelgestelde vragen over persistentie
 De volgende lijst bevat antwoorden op veelgestelde vragen over Azure cache voor redis persistentie.
@@ -148,7 +156,7 @@ AOF persistentie is van invloed op de door Voer met ongeveer 15% – 20% wanneer
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>Hoe kan ik het tweede opslag account verwijderen?
 
-U kunt het secundaire opslag account AOF Persistence verwijderen door het tweede opslag account in te stellen op hetzelfde als het eerste opslag account. Zie [AOF-persistentie configureren](#configure-aof-persistence)voor instructies.
+U kunt het secundaire opslag account AOF Persistence verwijderen door het tweede opslag account in te stellen op hetzelfde als het eerste opslag account. Voor bestaande caches wordt de Blade **gegevens persistentie** geopend vanuit het **resource menu** voor uw cache. Als u AOF-persistentie wilt uitschakelen, klikt u op **uitgeschakeld**.
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Wat is een herschrijf bewerking en wat is van invloed op mijn cache?
 

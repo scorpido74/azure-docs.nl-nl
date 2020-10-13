@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840248"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000183"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -31,7 +31,7 @@ Azure cache voor redis-instellingen worden weer gegeven en geconfigureerd op de 
 U kunt de volgende instellingen weer geven en configureren met behulp van het **resource menu**.
 
 * [Overzicht](#overview)
-* [Activiteitenlogboek](#activity-log)
+* [Activiteiten logboek](#activity-log)
 * [Toegangsbeheer (IAM)](#access-control-iam)
 * [Tags](#tags)
 * [Problemen vaststellen en oplossen](#diagnose-and-solve-problems)
@@ -214,7 +214,7 @@ Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u 
 
 
 ### <a name="redis-data-persistence"></a>Redis-gegevenspersistentie
-Klik op **gegevens persistentie** om gegevens persistentie voor uw Premium-cache in te scha kelen, uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van [RDB-persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF-persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Klik op **gegevens persistentie** om gegevens persistentie voor uw Premium-cache in te scha kelen, uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van RDB-persistentie of AOF-persistentie.
 
 Zie [Persistentie configureren voor een Premium Azure Cache voor Redis](cache-how-to-premium-persistence.md) voor meer informatie.
 

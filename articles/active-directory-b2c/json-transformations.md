@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961286"
+ms.locfileid: "91998441"
 ---
 # <a name="json-claims-transformations"></a>JSON-claim transformaties
 
@@ -112,7 +112,7 @@ In het volgende voor beeld wordt een JSON-teken reeks gegenereerd op basis van d
 </ClaimsTransformation>
 ```
 
-De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoofd tekst van de aanvraag is die naar een REST API wordt verzonden. De structuur van het JSON-object wordt gedefinieerd door de Id's in punt notatie van de invoer parameters en de TransformationClaimTypes van de InputClaims. Getallen in de punt notatie impliceren matrices. De waarden zijn afkomstig van de waarden van de InputClaims en de waarde van de eigenschap input parameters.
+De volgende claim transformatie voert een JSON-teken reeks claim uit die de hoofd tekst van de aanvraag is die naar een REST API wordt verzonden. De structuur van het JSON-object wordt gedefinieerd door de Id's in punt notatie van de invoer parameters en de TransformationClaimTypes van de InputClaims. De waarden zijn afkomstig van de waarden van de InputClaims en de waarde van de eigenschap input parameters.
 
 - Invoer claims:
   - **e-mail**, transformatie claim type **customerEntity. email**: john.s@contoso.com

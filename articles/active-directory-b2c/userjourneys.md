@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 296f396f3c2aacdfe32ea2ee800190d0a91d353f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda57ae152efbb04a793c6acf63465fe8d406a1a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602163"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998658"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,7 +64,7 @@ Het **OrchestrationStep** -element bevat de volgende kenmerken:
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | `Order` | Ja | De volg orde van de Orchestration-stappen. |
-| `Type` | Ja | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**GetClaims** : Hiermee geeft u op dat met de indelings stap claim gegevens moeten worden verwerkt die via de configuratie van de Relying Party naar Azure AD B2C worden verzonden `InputClaims` .</li><li>**InvokeSubJourney** : geeft aan dat de Orchestration Step claims met een subtraject (in open bare preview) uitwisselt.</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> |
+| `Type` | Ja | Het type van de Orchestration-stap. Mogelijke waarden: <ul><li>**ClaimsProviderSelection** : geeft aan dat de indelings stap verschillende claim providers aan de gebruiker geeft om er een te selecteren.</li><li>**CombinedSignInAndSignUp** : geeft aan dat de indelings stap een gecombineerde aanmeldings pagina voor sociale providers en een lokale account bevat.</li><li>**ClaimsExchange** : geeft aan dat de Orchestration-stap claims met een claim provider uitwisselt.</li><li>**GetClaims** : Hiermee geeft u op dat met de indelings stap claim gegevens moeten worden verwerkt die via de configuratie van de Relying Party naar Azure AD B2C worden verzonden `InputClaims` .</li><li>**InvokeSubJourney** : geeft aan dat de Orchestration Step claims met een [subtraject](subjourneys.md) (in open bare preview) uitwisselt.</li><li>**SendClaims** : geeft aan dat de indelings stap de claims verzendt naar de Relying Party met een token dat is uitgegeven door een claim verlener.</li></ul> |
 | ContentDefinitionReferenceId | Nee | De id van de [inhouds definitie](contentdefinitions.md) die aan deze Orchestration-stap is gekoppeld. Normaal gesp roken wordt de verwijzings-id van de inhouds definitie gedefinieerd in het zelfondertekende technische profiel. Er zijn echter enkele gevallen waarin Azure AD B2C iets zonder technisch profiel moet weer geven. Er zijn twee voor beelden: als het type indelings stap een van de volgende is `ClaimsProviderSelection`  `CombinedSignInAndSignUp` , moet Azure AD B2C de selectie van de identiteits provider weer geven zonder een technisch profiel. |
 | CpimIssuerTechnicalProfileReferenceId | Nee | Het type van de Orchestration-stap is `SendClaims` . Met deze eigenschap wordt de technische profiel-id gedefinieerd van de claim provider die het token voor de Relying Party verleent.  Als dat niet het geval is, wordt er geen Relying Party token gemaakt. |
 
@@ -247,4 +247,4 @@ Het element **kandidaat** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| SubJourneyReferenceId | Ja | De id van de subtraject die moet worden uitgevoerd. |
+| SubJourneyReferenceId | Ja | De id van de [subtraject](subjourneys.md) die moet worden uitgevoerd. |

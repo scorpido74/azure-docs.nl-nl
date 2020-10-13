@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8f0a40e30cc58a01a66ba808076fe1d42c31c326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978880"
+ms.locfileid: "91999681"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
@@ -23,7 +23,7 @@ De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u inform
 
 ## <a name="october-2020"></a>Oktober 2020
 
-* Hindi-ondersteuning voor Sentimentanalyse, te beginnen met model versie `2020-04-01` . 
+* Hindi-ondersteuning voor Sentimentanalyse v3. x, te beginnen met model versie `2020-04-01` . 
 
 ## <a name="september-2020"></a>September 2020
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999741"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheer oplossing in azure (preview-versie)
 
@@ -104,9 +104,9 @@ ms.locfileid: "86498794"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>V: wat gebeurt er dan 31 oktober? Moet ik het vooraf niet meer vrijgeven?
 > 
-> - U kunt geen gegevens ontvangen van de **Office365** -oplossing. De oplossing is niet meer beschikbaar op Marketplace
+> - U kunt geen gegevens ontvangen van de **Office365** -oplossing. De oplossing wordt verwijderd uit uw werk ruimte en is niet meer beschikbaar in de Marketplace.
 > - Voor Azure Sentinel-klanten wordt de Log Analytics werkruimte oplossing **Office365** opgenomen in de Azure Sentinel **SecurityInsights** -oplossing.
-> - Als u uw oplossing niet hand matig niet meer vrijgeven, worden uw gegevens automatisch op 31 oktober losgekoppeld.
+> - Als u uw oplossing niet hand matig niet meer vrijgeven op 31 oktober, worden uw gegevens automatisch losgekoppeld en wordt de **OfficeActivity** -tabel verwijderd. U kunt de tabel zelfs herstellen als u de Office 365-connector inschakelt in azure Sentinel, zoals hieronder wordt uitgelegd.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>V: zullen mijn gegevens worden overgedragen naar de nieuwe oplossing?
 > Ja. Wanneer u de **Office 365** -oplossing uit uw werk ruimte verwijdert, worden de bijbehorende gegevens tijdelijk niet beschikbaar omdat het schema wordt verwijderd. Wanneer u de nieuwe **Office 365** -connector inschakelt in Sentinel, wordt het schema teruggezet naar de werk ruimte en worden alle gegevens die al zijn verzameld, beschikbaar. 
@@ -226,7 +226,7 @@ U kunt de Office 365-beheer oplossing verwijderen met behulp van het proces in [
 
 U wordt gevraagd om referenties. Geef de referenties op voor uw Log Analytics-werk ruimte.
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 
 Het kan enkele uren duren voordat gegevens worden verzameld. Zodra het verzamelen begint, verzendt Office 365 een [webhook-melding](/office/office-365-management-api/office-365-management-activity-api-reference#receiving-notifications) met gedetailleerde gegevens om Azure monitor telkens wanneer een record wordt gemaakt. Deze record is binnen een paar minuten na ontvangst beschikbaar in Azure Monitor.
 

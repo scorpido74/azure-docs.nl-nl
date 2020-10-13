@@ -1,68 +1,68 @@
 ---
 title: ID-Broker (preview-versie) gebruiken voor referentie beheer-Azure HDInsight
-description: Meer informatie over HDInsight ID Broker voor het vereenvoudigen van de verificatie voor Apache Hadoop clusters die lid zijn van een domein.
+description: Meer informatie over Azure HDInsight ID Broker voor het vereenvoudigen van de verificatie voor Apache Hadoop clusters die lid zijn van een domein.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 24f15b8a4d5a5afd3a2794fe686d3acb0036cdd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565323"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999950"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview-versie)
 
-In dit artikel wordt beschreven hoe u de functie HDInsight ID Broker (HIB) in azure HDInsight instelt en gebruikt. U kunt deze functie gebruiken voor het ophalen van moderne OAuth-authenticatie voor Apache Ambari tijdens het afdwingen van Multi-Factor Authentication (MFA) zonder verouderde wachtwoord hashes in Azure Active Directory Domain Services (AAD-DS).
+In dit artikel wordt beschreven hoe u de functie Azure HDInsight ID Broker kunt instellen en gebruiken. U kunt deze functie gebruiken voor het ophalen van moderne OAuth-authenticatie voor Apache Ambari terwijl multi-factor Authentication wordt afgedwongen zonder dat verouderde wachtwoord-hashes nodig zijn in Azure Active Directory Domain Services (Azure AD DS).
 
 ## <a name="overview"></a>Overzicht
 
-HIB vereenvoudigt complexe verificatie-instellingen in de volgende scenario's:
+HDInsight ID Broker vereenvoudigt complexe verificatie-instellingen in de volgende scenario's:
 
-* Uw organisatie is afhankelijk van Federatie om gebruikers te verifiëren voor het openen van cloud resources. Voor het gebruik van HDInsight-clusters (ESP Enterprise Security Package) moest u voorheen wachtwoord hash-synchronisatie inschakelen vanuit uw on-premises omgeving tot Azure Active Directory (Azure AD). Deze vereiste kan moeilijk of onwenselijk zijn voor sommige organisaties.
+* Uw organisatie is afhankelijk van Federatie om gebruikers te verifiëren voor het openen van cloud resources. Voorheen moest u voor het gebruik van HDInsight-Enterprise Security Package clusters de wachtwoord-hash-synchronisatie inschakelen vanuit uw on-premises omgeving tot Azure Active Directory (Azure AD). Deze vereiste kan moeilijk of onwenselijk zijn voor sommige organisaties.
+* Uw organisatie wil multi-factor Authentication afdwingen voor toegang tot Apache Ambari en andere cluster bronnen op basis van Internet of HTTP.
 
-* Uw organisatie wil MFA afdwingen voor toegang via internet/HTTP op basis van Apache Ambari en andere cluster resources.
+HDInsight ID Broker biedt de verificatie-infra structuur waarmee protocol overgang van OAuth (modern) naar Kerberos (verouderd) kan worden ingeschakeld zonder dat wacht woord-hashes moeten worden gesynchroniseerd met Azure AD DS. Deze infra structuur bestaat uit onderdelen die worden uitgevoerd op een virtuele Windows Server-machine (VM) waarbij het knoop punt HDInsight ID Broker is ingeschakeld, samen met cluster gateway-knoop punten.
 
-HIB biedt de verificatie-infra structuur die protocol overgang van OAuth (modern) naar Kerberos (verouderd) mogelijk maakt zonder dat wacht woord-hashes moeten worden gesynchroniseerd met AAD-DS. Deze infra structuur bestaat uit onderdelen die worden uitgevoerd op een Windows Server-VM (ID Broker-knoop punt), samen met cluster gateway-knoop punten.
-
-Gebruik de volgende tabel om de beste verificatie optie te bepalen op basis van de behoeften van uw organisatie:
+Gebruik de volgende tabel om de beste verificatie optie te bepalen op basis van de behoeften van uw organisatie.
 
 |Verificatieopties |HDInsight-configuratie | Factoren om rekening mee te houden |
 |---|---|---|
-| Volledig OAuth | ESP + HIB | 1. de veiligste optie (MFA wordt ondersteund) 2.    Hash-synchronisatie is niet vereist. 3.  Geen SSH/kinit/keytab-toegang voor on-premises accounts, die geen wacht woord-hash in AAD-DS hebben. 4.   Alleen Cloud accounts kunnen nog wel SSH/kinit/keytab. 5. Webgebaseerde toegang tot Ambari via OAuth 6.  Vereist het bijwerken van verouderde apps (JDBC/ODBC, etc.) voor de ondersteuning van OAuth.|
-| OAuth + Basic auth | ESP + HIB | 1. webgebaseerde toegang tot Ambari via OAuth 2. Oudere apps blijven de basis verificatie gebruiken. 3. MFA moet zijn uitgeschakeld voor toegang tot basis verificatie. 4. Hash-synchronisatie is niet vereist. 5. Geen SSH/kinit/keytab-toegang voor on-premises accounts, die geen wacht woord-hash in AAD-DS hebben. 6. Alleen Cloud accounts kunnen nog SSH-kinit. |
-| Volledige basis verificatie | PROTOCOLSPECIFIEKE | 1. Dit is vergelijkbaar met on-premises Setup. 2. Wachtwoord hash-synchronisatie met AAD-DS is vereist. 3. On-premises accounts kunnen SSH-kinit of keytab gebruiken. 4. MFA moet worden uitgeschakeld als de back-upopslag ADLS Gen2 |
+| Volledig OAuth | Enterprise Security Package + HDInsight-ID Broker | Veiligste optie. (Multi-factor Authentication wordt ondersteund.) Hash-synchronisatie is *niet* vereist. Geen SSH/kinit/keytab-toegang voor on-premises accounts, waarvoor geen wacht woord-hash in azure AD DS is. Cloud-only-accounts kunnen nog wel SSH/kinit/keytab. Webgebaseerde toegang tot Ambari via OAuth. Vereist het bijwerken van verouderde apps (bijvoorbeeld JDBC/ODBC) voor de ondersteuning van OAuth.|
+| OAuth + Basic auth | Enterprise Security Package + HDInsight-ID Broker | Webgebaseerde toegang tot Ambari via OAuth. Verouderde apps blijven gebruikmaken van basis verificatie. Multi-factor Authentication moet worden uitgeschakeld voor toegang tot basis verificatie. Hash-synchronisatie is *niet* vereist. Geen SSH/kinit/keytab-toegang voor on-premises accounts, waarvoor geen wacht woord-hash in azure AD DS is. Cloud-only-accounts kunnen nog steeds SSH-kinit. |
+| Volledige basis verificatie | Enterprise Security Package | Vergelijkbaar met on-premises instellingen. Wacht woord-hash synchroniseren met Azure AD DS is vereist. On-premises accounts kunnen SSH-kinit of keytab gebruiken. Multi-factor Authentication moet worden uitgeschakeld als de back-upopslag Azure Data Lake Storage Gen2 is. |
 
-Het volgende diagram toont de moderne op OAuth gebaseerde verificatie stroom voor alle gebruikers, waaronder federatieve gebruikers, nadat de ID Broker is ingeschakeld:
+Het volgende diagram toont de moderne op OAuth gebaseerde verificatie stroom voor alle gebruikers, waaronder federatieve gebruikers, nadat HDInsight-ID Broker is ingeschakeld:
 
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Verificatie stroom met ID-Broker":::
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagram waarin de verificatie stroom met HDInsight ID Broker wordt weer gegeven.":::
 
-In dit diagram moet de client (ofwel browser of apps) eerst het OAuth-token verkrijgen en vervolgens het token aan de gateway in een HTTP-aanvraag presen teren. Als u zich al hebt aangemeld bij andere Azure-Services, zoals de Azure Portal, kunt u zich aanmelden bij uw HDInsight-cluster met een SSO-ervaring (eenmalige aanmelding).
+In dit diagram moet de-client (dat wil zeggen, een browser of app) eerst het OAuth-Token ophalen. Vervolgens wordt het token in een HTTP-aanvraag aan de gateway gepresenteerd. Als u zich al hebt aangemeld bij andere Azure-Services, zoals de Azure Portal, kunt u zich aanmelden bij uw HDInsight-cluster met eenmalige aanmelding.
 
-Er zijn nog steeds veel oudere toepassingen die alleen basis authenticatie ondersteunen (bijvoorbeeld gebruikers naam/wacht woord). Voor deze scenario's kunt u HTTP-basis verificatie blijven gebruiken om verbinding te maken met de cluster gateways. In deze installatie moet u ervoor zorgen dat de netwerk verbinding van de gateway knooppunten naar het Federatie-eind punt (AD FS-eind punt) wordt voor een directe regel voor het controleren van Gateway knooppunten. 
+Er zijn nog steeds veel oudere toepassingen die alleen basis verificatie ondersteunen (dat wil zeggen, gebruikers naam en wacht woord). Voor deze scenario's kunt u HTTP-basis verificatie blijven gebruiken om verbinding te maken met de cluster gateways. In deze installatie moet u ervoor zorgen dat de netwerk verbinding van de gateway knooppunten naar het Active Directory Federation Services-eind punt (AD FS) wordt voor een directe regel van het gezichts vermogen van Gateway knooppunten.
 
-In het volgende diagram ziet u de basis verificatie stroom voor federatieve gebruikers. Ten eerste probeert de gateway de verificatie te volt ooien met behulp van de [ROPC-stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) . als er geen wacht woord-hashes zijn gesynchroniseerd met Azure AD, valt deze weer op het detecteren van AD FS-eind punt en de verificatie te volt ooien door het AD FS-eind punt te gebruiken.
+In het volgende diagram ziet u de basis verificatie stroom voor federatieve gebruikers. Eerst probeert de gateway de verificatie te volt ooien met behulp van de [ROPC-stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc). Als er geen wacht woord-hashes zijn gesynchroniseerd met Azure AD, valt deze weer op het detecteren van het AD FS-eind punt en wordt de verificatie voltooid door toegang te krijgen tot het AD FS-eind punt.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Verificatie stroom met ID-Broker":::
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram waarin de verificatie stroom met HDInsight ID Broker wordt weer gegeven.":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight ID Broker inschakelen
 
-Voer de volgende stappen uit om een ESP-cluster met de ID-Broker te maken:
+Een Enterprise Security Package cluster maken waarbij HDInsight ID Broker is ingeschakeld:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Volg de basis stappen voor het maken van een ESP-cluster. Zie [een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
+1. Volg de basis stappen voor het maken van een Enterprise Security Package cluster. Zie [een HDInsight-cluster maken met Enterprise Security Package](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
 1. Selecteer **HDINSIGHT id Broker inschakelen**.
 
-Met de functie ID Broker wordt één extra virtuele machine aan het cluster toegevoegd. Deze VM is het ID Broker-knoop punt en bevat Server onderdelen ter ondersteuning van de verificatie. Het knoop punt ID Broker is een domein dat is gekoppeld aan het Azure AD DS-domein.
+Met de functie HDInsight ID Broker wordt één extra virtuele machine aan het cluster toegevoegd. Deze VM is het knoop punt HDInsight ID Broker en bevat Server onderdelen ter ondersteuning van verificatie. Het knoop punt HDInsight ID Broker is een domein dat is gekoppeld aan het Azure AD DS-domein.
 
-![Optie voor het inschakelen van ID-Broker](./media/identity-broker/identity-broker-enable.png)
+![Diagram waarin de optie wordt weer gegeven voor het inschakelen van HDInsight ID Broker.](./media/identity-broker/identity-broker-enable.png)
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
-Als u een nieuwe rol `idbrokernode` met de naam met de volgende kenmerken aan het reken Profiel van uw sjabloon toevoegt, wordt het cluster gemaakt met het id Broker-knoop punt ingeschakeld:
+### <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
+
+Als u een nieuwe rol met de naam `idbrokernode` met de volgende kenmerken aan het reken Profiel van uw sjabloon toevoegt, wordt het cluster gemaakt met het knoop punt HDInsight-id Broker ingeschakeld:
 
 ```json
 .
@@ -103,31 +103,31 @@ Als u een nieuwe rol `idbrokernode` met de naam met de volgende kenmerken aan he
 
 ## <a name="tool-integration"></a>Integratie van hulp programma
 
-HDIsngith-hulpprogram ma's zijn bijgewerkt naar systeem eigen ondersteuning voor OAuth. We raden u aan deze hulpprogram ma's te gebruiken voor moderne, op OAuth gebaseerde toegang tot de clusters. De HDInsight [IntelliJ-invoeg toepassing](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) kan worden gebruikt voor toepassingen op basis van Java, zoals scala. [Spark-& Hive-Hulpprogram ma's voor VS code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) kunnen worden gebruikt voor PySpark en Hive-taken. Ze ondersteunen zowel batch-als interactieve taken.
+HDInsight-hulpprogram ma's worden bijgewerkt naar systeem eigen ondersteuning voor OAuth. Gebruik deze hulpprogram ma's voor moderne, op OAuth gebaseerde toegang tot de clusters. De HDInsight [IntelliJ-invoeg toepassing](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) kan worden gebruikt voor toepassingen op basis van Java, zoals scala. [Spark-en Hive-Hulpprogram ma's voor Visual Studio code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) kunnen worden gebruikt voor PySpark en Hive-taken. De hulpprogram ma's ondersteunen zowel batch-als interactieve taken.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-toegang zonder wacht woord-hash in azure AD DS
 
 |SSH-opties |Factoren om rekening mee te houden |
 |---|---|
-| Lokaal VM-account (bijvoorbeeld sshuser) | 1. u hebt dit account bij de aanmaak tijd van het cluster gemaakt. 2.  Er is geen Kerberos-authication voor dit account |
-| Alleen Cloud account (bijvoorbeeld alice@contoso.onmicrosoft.com ) | 1. de wacht woord-hash is beschikbaar in AAD-DS 2. Kerberos-verificatie is mogelijk via SSH Kerberos |
-| On-premises account (bijvoorbeeld alice@contoso.com ) | 1. SSH Kerberos-verificatie is alleen mogelijk als wacht woord-hash beschikbaar is in AAD-DS anders kan deze gebruiker geen SSH-bewerking naar het cluster doen |
+| Lokaal VM-account (bijvoorbeeld sshuser) | U hebt dit account bij de aanmaak tijd van het cluster ingevoerd. Er is geen Kerberos-verificatie voor dit account. |
+| Alleen-Cloud account (bijvoorbeeld alice@contoso.onmicrosoft.com ) | De wacht woord-hash is beschikbaar in azure AD DS. Kerberos-verificatie is mogelijk via SSH Kerberos. |
+| On-premises account (bijvoorbeeld alice@contoso.com ) | SSH Kerberos-verificatie is alleen mogelijk als er een wacht woord-hash beschikbaar is in azure AD DS. Anders kan deze gebruiker geen SSH-verbinding met het cluster. |
 
-Als u SSH wilt maken naar een VM die lid is van een domein of als u de opdracht wilt uitvoeren `kinit` , moet u een wacht woord opgeven. Voor SSH Kerberos-authenticatie moet de hash beschikbaar zijn in AAD-DS. Als u SSH alleen wilt gebruiken voor beheer scenario's, kunt u één alleen-Cloud account maken en gebruiken om te SSHen naar het cluster. Andere on-premises gebruikers kunnen nog steeds gebruikmaken van de hulpprogram ma's Ambari of HDInsight of HTTP Basic auth zonder dat de wacht woord-hash beschikbaar is in AAD-DS.
+Als u SSH wilt maken naar een virtuele machine die lid is van een domein of als u de opdracht wilt uitvoeren `kinit` , moet u een wacht woord opgeven. Voor SSH Kerberos-authenticatie moet de hash beschikbaar zijn in azure AD DS. Als u SSH alleen wilt gebruiken voor beheer scenario's, kunt u één Cloud account maken en dit gebruiken om te SSHen naar het cluster. Andere on-premises gebruikers kunnen nog steeds gebruikmaken van de hulpprogram ma's Ambari of HDInsight of HTTP Basic auth zonder dat de wacht woord-hash beschikbaar is in azure AD DS.
 
-Als uw organisatie geen wacht woord-hashes synchroniseert met AAD-DS als best practice, maakt u één Cloud alleen gebruiker in azure AD en wijst u deze toe als cluster beheerder bij het maken van het cluster en gebruikt u dit voor beheer doeleinden, inclusief het verkrijgen van toegang tot de hoofdmap via SSH.
+Als uw organisatie geen wacht woord-hashes synchroniseert met Azure AD DS, kunt u als best practice één Cloud gebruiker maken in azure AD. Wijs deze vervolgens als cluster beheerder toe wanneer u het cluster maakt en gebruik dat voor beheer doeleinden. U kunt deze gebruiken om toegang te krijgen tot de virtuele machines via SSH.
 
-Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)voor informatie over het oplossen van problemen met verificatie.
+Zie [deze hand leiding](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)voor informatie over het oplossen van problemen met verificatie.
 
-## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-hib"></a>Clients die gebruikmaken van OAuth om verbinding te maken met de HDInsight-gateway met HIB
+## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>Clients die gebruikmaken van OAuth om verbinding te maken met een HDInsight-gateway met HDInsight ID Broker
 
-In de HIB-installatie kunnen aangepaste apps en clients die verbinding maken met de gateway, worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. U kunt de stappen in dit [document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) volgen om het token te verkrijgen met de volgende informatie:
+In het installatie programma voor de HDInsight-ID-Broker kunnen aangepaste apps en clients die verbinding maken met de gateway, worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. Volg de stappen in [dit document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) om het token te verkrijgen met de volgende informatie:
 
 *   OAuth-resource-URI: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   Machtiging: (naam: cluster. ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
-Na het verkrijgen van het OAuth-token kunt u dit gebruiken in de autorisatie-header van de HTTP-aanvraag voor de cluster gateway (bijvoorbeeld https:// <clustername> -int.azurehdinsight.net). Een voor beeld van een krul opdracht naar Apache livy API kan er als volgt uitzien:
+Nadat u het OAuth-token hebt verkregen, gebruikt u het in de autorisatie-header van de HTTP-aanvraag voor de cluster gateway (bijvoorbeeld https:// <clustername> -int.azurehdinsight.net). Een voor beeld van een krul opdracht naar Apache livy API kan er als volgt uitzien:
     
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"

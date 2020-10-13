@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961320"
+ms.locfileid: "91998118"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -454,7 +454,7 @@ Een SAML-token is een beveiligings token dat is uitgegeven door Azure AD B2C nad
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Het tijdstip waarop het token geldig wordt. De tijd waarde wordt gecodeerd in UTC. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. Als u de instellingen voor de levens duur van uw tokens wilt wijzigen, stelt u de `TokenNotBeforeSkewInSeconds` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token probleem technisch profiel in. |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Het tijdstip waarop het token ongeldig wordt. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. De waarde is 15 minuten na de `NotBefore` en kan niet worden gewijzigd.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Een URI-verwijzing waarmee een beoogde doel groep wordt geïdentificeerd. Hiermee wordt de beoogde ontvanger van het token geïdentificeerd. De waarde is gelijk aan de SAML-aanvraag `AssertionConsumerServiceURL` .|
-|`<Response>``<Assertion>` `<saml:AttributeStatement>` verzameling van`<Attribute>` | | Beweringen verzameling (claims), zoals geconfigureerd in de [Relying Party technische profiel](relyingparty.md#technicalprofile) uitvoer claims. U kunt de naam van de bewering configureren door de `PartnerClaimType` van de uitvoer claim in te stellen. |
+|`<Response>``<Assertion>` `<AttributeStatement>` verzameling van`<Attribute>` | | Beweringen verzameling (claims), zoals geconfigureerd in de [Relying Party technische profiel](relyingparty.md#technicalprofile) uitvoer claims. U kunt de naam van de bewering configureren door de `PartnerClaimType` van de uitvoer claim in te stellen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
