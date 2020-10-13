@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
 ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439013"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
@@ -31,7 +31,7 @@ Adaptieve toepassings besturings elementen zijn een intelligente en geautomatise
 
 Organisaties hebben vaak verzamelingen machines die regel matig dezelfde processen uitvoeren. Security Center gebruikt machine learning voor het analyseren van de toepassingen die worden uitgevoerd op uw computers en het maken van een lijst met bekende veilige software. Lijsten toestaan worden gebaseerd op uw specifieke Azure-workloads en u kunt de aanbevelingen verder aanpassen met behulp van de onderstaande instructies.
 
-Wanneer u besturings elementen voor adaptieve toepassingen hebt ingeschakeld en geconfigureerd, ontvangt u beveiligings waarschuwingen als een andere toepassing dan de toepassingen die u hebt gedefinieerd als veilig worden uitgevoerd.
+Wanneer u adaptieve toepassingsregelaars hebt ingeschakeld en geconfigureerd, krijgt u beveiligingswaarschuwingen als er andere toepassingen worden uitgevoerd dan degene die u als veilig hebt gedefinieerd.
 
 
 ## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>Wat zijn de voor delen van adaptieve toepassings besturings elementen?
@@ -50,11 +50,11 @@ Door lijsten met bekende veilige toepassingen te definiëren en waarschuwingen t
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
 |Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -machines|
 |Vereiste rollen en machtigingen:|**Beveiligings lezers** en **lezers** rollen kunnen zowel groepen als de lijsten met bekende veilige toepassingen weer geven<br>**Inzender** -en **beveiligings beheerders** rollen kunnen zowel groepen bewerken als de lijsten met bekende veilige toepassingen|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
 
 

@@ -3,12 +3,12 @@ title: Beleidsregels voor gastconfiguratie voor Windows maken
 description: Meer informatie over het maken van een Azure Policy-gast configuratie beleid voor Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728927"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893115"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Beleidsregels voor gastconfiguratie voor Windows maken
 
@@ -88,7 +88,7 @@ Wanneer een gast configuratie een computer controleert, is de volg orde van de g
 
 Para meters in Azure Policy die waarden door geven aan gast configuratie toewijzingen moeten een _teken reeks_ type zijn. Het is niet mogelijk matrices door te geven via para meters, zelfs als de DSC-resource matrices ondersteunt.
 
-### <a name="get-targetresource-requirements"></a>Vereisten voor Get-TargetResource
+### <a name="get-targetresource-requirements"></a>Get-TargetResource vereisten
 
 De functie `Get-TargetResource` heeft speciale vereisten voor gast configuratie die niet nodig is voor de configuratie van de desired state van Windows.
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u het pakket testen vanaf uw werk station of CI/CD-omgeving. De GuestConfiguration-cmdlet `Test-GuestConfigurationPackage` bevat dezelfde agent in uw ontwikkel omgeving als wordt gebruikt binnen Azure-machines. Met deze oplossing kunt u integratie lokaal testen voordat u overbrengt naar gefactureerde Cloud omgevingen.
+Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u het pakket testen vanaf uw werk station of doorlopende integratie-en continue implementatie (CI/CD)-omgeving. De GuestConfiguration-cmdlet `Test-GuestConfigurationPackage` bevat dezelfde agent in uw ontwikkel omgeving als wordt gebruikt binnen Azure-machines. Met deze oplossing kunt u integratie lokaal testen voordat u overbrengt naar gefactureerde Cloud omgevingen.
 
 Omdat de agent de lokale omgeving werkelijk evalueert, moet u in de meeste gevallen de test-cmdlet uitvoeren op hetzelfde OS-platform als u wilt controleren. De test maakt alleen gebruik van modules die zijn opgenomen in het inhouds pakket.
 
@@ -233,7 +233,7 @@ De cmdlet ondersteunt ook invoer van de Power shell-pijp lijn. Pipet de uitvoer 
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-De volgende stap is het publiceren van het bestand naar de Blob-opslag. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Voor de opdrachten die in de functie worden gebruikt, `publish` is de `Az.Storage` module vereist.
+De volgende stap is het publiceren van het bestand naar Azure Blob Storage. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Voor de opdrachten die in de functie worden gebruikt, `publish` is de `Az.Storage` module vereist.
 
 ```azurepowershell-interactive
 function publish {

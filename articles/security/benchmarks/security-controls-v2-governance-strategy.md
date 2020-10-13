@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403523"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Beveiligings controle v2: governance en strategie
@@ -255,7 +255,7 @@ Deze strategie moet gedocumenteerde richt lijnen, beleid en standaarden bevatten
 Zie voor meer informatie de volgende verwijzingen:
 - [Azure Security Bench Mark-back-up en herstel](security-controls-v2-backup-recovery.md)
 
-- [Azure goed architectuur Framework: back-up en herstel na nood gevallen voor Azure-toepassingen](/azure/architecture/framework/resiliency/backup-and-recovery)
+- [Azure Well-Architecture Framework: back-up en herstel na nood gevallen voor Azure-toepassingen](/azure/architecture/framework/resiliency/backup-and-recovery)
 
 - [Azure-acceptatie Framework-bedrijfs continuïteit en herstel na nood gevallen](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 

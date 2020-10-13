@@ -4,18 +4,19 @@ description: Meer informatie over nieuwe en recente updates in de Azure Migrate-
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 019c04c5820a82b7910b6755ff69e5dfbe7eb66c
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: a46519d434061ebfdedbabe70a3e044cb69ca552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322220"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe functies in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) helpt u bij het detecteren, evalueren en migreren van on-premises servers, apps en gegevens naar de Microsoft Azure-cloud. In dit artikel vindt u een overzicht van nieuwe releases en functies in Azure Migrate.
 ## <a name="update-september-2020"></a>Update (september 2020)
-- Met Azure Migrate kunt u nu servers migreren naar beschikbaarheidszones
+- Met Azure Migrate kunt u nu servers migreren naar beschikbaarheidszones.
+- Met Azure Migrate kunt u nu op UEFI gebaseerde VM's en fysieke servers migreren naar Azure-VM's van Generatie 2. 
 
 ## <a name="update-august-2020"></a>Update (augustus 2020)
 

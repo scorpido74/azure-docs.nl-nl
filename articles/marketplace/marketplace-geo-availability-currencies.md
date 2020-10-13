@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
 ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91759076"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
@@ -196,7 +196,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het invoeren van prijz
 
 - [Een Azure-toepassingsaanbieding maken](partner-center-portal/create-new-azure-apps-offer.md)
 - [Een Azure-container aanbieding maken](partner-center-portal/create-azure-container-offer.md)
-- [Een Azure virtual machine-aanbieding maken](partner-center-portal/azure-vm-create-offer.md)
+- [Een Azure Virtual Machine-aanbieding maken](partner-center-portal/azure-vm-create-offer.md)
 - [Een adviesservice-aanbieding maken](partner-center-portal/create-consulting-service-offer.md)
 - [Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Een Dynamics 365 for Operations-aanbieding maken](partner-center-portal/create-new-operations-offer.md)

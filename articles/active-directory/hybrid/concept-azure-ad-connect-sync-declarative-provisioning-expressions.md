@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280210"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: uitleg over declaratieve inrichtings expressies
@@ -41,7 +41,7 @@ De kenmerken zijn sterk getypeerd. Een functie accepteert alleen kenmerken van h
 * Booleaanse waarden worden uitgedrukt met constanten: True, false.
 * Ingebouwde constanten en letterlijke waarden worden alleen met hun naam weer gegeven: NULL, CRLF, IgnoreThisFlow
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Functies
 In declaratieve inrichting wordt gebruikgemaakt van een groot aantal functies waarmee u kenmerk waarden kunt transformeren. Deze functies kunnen worden genest, zodat het resultaat van de ene functie wordt door gegeven aan een andere functie.
 
 `Function1(Function2(Function3()))`

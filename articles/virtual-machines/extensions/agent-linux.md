@@ -9,10 +9,10 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279700"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
@@ -101,7 +101,7 @@ Installatie met behulp van een RPM-of een DEB-pakket uit de opslag plaats van uw
 
 Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](https://github.com/Azure/WALinuxAgent) voor geavanceerde installatie opties, zoals het installeren van bron of naar aangepaste locaties of voor voegsels.
 
-## <a name="command-line-options"></a>Opdracht regel opties
+## <a name="command-line-options"></a>Command-Line opties
 ### <a name="flags"></a>Markering
 * uitgebreid: Verhoog de uitgebreide waarde van de opgegeven opdracht
 * geforceerd: interactieve bevestiging voor sommige opdrachten overs Laan

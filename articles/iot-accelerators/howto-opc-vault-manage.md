@@ -9,16 +9,16 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281912"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>De OPC-kluis certificaat service beheren
 
 > [!IMPORTANT]
-> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
+> Zie [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
 
 In dit artikel worden de beheer taken voor de OPC kluis Certificate Management-service in azure beschreven. Het bevat informatie over het vernieuwen van CA-certificaten voor uitgevers, het vernieuwen van de certificaatintrekkingslijst (CRL) en het verlenen en intrekken van gebruikers toegang.
 

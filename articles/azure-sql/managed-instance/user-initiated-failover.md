@@ -11,10 +11,10 @@ ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
 ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617754"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Door de gebruiker geïnitieerde hand matige failover op een SQL-beheerd exemplaar
@@ -125,7 +125,7 @@ De bewerkings status kan worden gevolgd door de API-antwoorden in de reactie hea
 
 ## <a name="monitor-the-failover"></a>De failover bewaken
 
-Als u de voortgang van de door de gebruiker gestarte hand matige failover wilt bewaken, voert u de volgende T-SQL-query uit in uw favoriete client (bijvoorbeeld SSMS) op SQL Managed instance. De systeem weergave sys. dm_hadr_fabric_replica_states wordt gelezen en er worden rapport replica's weer gegeven die beschikbaar zijn op het exemplaar. Vernieuw dezelfde query na het initiëren van de hand matige failover.
+Als u de voortgang van de door de gebruiker gestarte hand matige failover wilt bewaken, voert u de volgende T-SQL-query uit in uw favoriete client (bijvoorbeeld SSMS) op SQL Managed instance. De weer gave systeem sys.dm_hadr_fabric_replica_states en rapport replica's die beschikbaar zijn op het exemplaar worden gelezen. Vernieuw dezelfde query na het initiëren van de hand matige failover.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states

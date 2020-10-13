@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
 ms.openlocfilehash: 4afd6f0cc3b4b5e135d80b420d8260c50d9ca46c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488844"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
@@ -516,7 +516,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
     
     * Op het tabblad **Unicode** , voor **communicatie type met doel systeem**, selecteert u **Unicode**.
 
-1. Sla de wijzigingen op.
+1. Sla uw wijzigingen op.
 
 1. Registreer uw nieuwe **programma-id** bij Azure Logic apps.
 
@@ -530,7 +530,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Voor **RFC-doel**voert u de id in voor [het test-SAP-systeem](#create-rfc-destination).
 
-1. Sla de wijzigingen op.
+1. Sla uw wijzigingen op.
 
 1. Als u de verbinding wilt testen, selecteert u **verbindings test**.
 
@@ -540,11 +540,11 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
 
-1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer een **naam**in voor de test poort. Sla de wijzigingen op.
+1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer een **naam**in voor de test poort. Sla uw wijzigingen op.
 
 1. In de instellingen voor uw nieuwe ontvanger poort, voor **RFC-doel**, voert u de id in voor [de test-RFC-bestemming](#create-rfc-destination).
 
-1. Sla de wijzigingen op.
+1. Sla uw wijzigingen op.
 
 #### <a name="create-sender-port"></a>Poort van afzender maken
 
@@ -552,11 +552,11 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
 
-1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer voor uw test poort een **naam** in die begint met **SAP**. Alle poort namen van de afzender moeten beginnen met de letters **SAP**, bijvoorbeeld **SAPTEST**. Sla de wijzigingen op.
+1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer voor uw test poort een **naam** in die begint met **SAP**. Alle poort namen van de afzender moeten beginnen met de letters **SAP**, bijvoorbeeld **SAPTEST**. Sla uw wijzigingen op.
 
 1. Voer in de instellingen voor de nieuwe zender poort voor **RFC-doel**de id in voor [uw ABAP-verbinding](#create-abap-connection).
 
-1. Sla de wijzigingen op.
+1. Sla uw wijzigingen op.
 
 #### <a name="create-logical-system-partner"></a>Een logische systeem partner maken
 
@@ -566,7 +566,7 @@ Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende mini
 
 1. Selecteer in de lijst met de bestaande logische systemen **nieuwe vermeldingen**.
 
-1. Voer voor het nieuwe logische systeem een **Log.System** -id en een korte **naam** beschrijving in. Sla de wijzigingen op.
+1. Voer voor het nieuwe logische systeem een **Log.System** -id en een korte **naam** beschrijving in. Sla uw wijzigingen op.
 
 1. Wanneer de **prompt voor Workbench** wordt weer gegeven, maakt u een nieuwe aanvraag door een beschrijving op te geven, of als u al een aanvraag hebt gemaakt, slaat u deze stap over.
 
@@ -588,7 +588,7 @@ Voor productie omgevingen moet u twee partner profielen maken. Het eerste profie
 
     * Voer voor **agent**de id in voor het SAP-gebruikers account dat moet worden gebruikt wanneer u programma-id's registreert voor Azure Logic apps of andere niet-SAP-systemen.
 
-1. Sla de wijzigingen op. Als u [de logische systeem partner](#create-logical-system-partner)nog niet hebt gemaakt, krijgt u de fout melding **een geldig partner nummer**.
+1. Sla uw wijzigingen op. Als u [de logische systeem partner](#create-logical-system-partner)nog niet hebt gemaakt, krijgt u de fout melding **een geldig partner nummer**.
 
 1. Selecteer in de instellingen van uw partner profiel onder **uitgaande parmtrs.** de optie **uitgaande para meter maken**.
 
@@ -600,7 +600,7 @@ Voor productie omgevingen moet u twee partner profielen maken. Het eerste profie
 
     * Voer een IDoc-grootte in voor het **pakket. Grootte**. Als u [IDocs een voor een wilt verzenden vanuit SAP](#receive-idoc-packets-from-sap), selecteert u **onmiddellijk door geven IDOC**.
 
-1. Sla de wijzigingen op.
+1. Sla uw wijzigingen op.
 
 #### <a name="test-sending-messages"></a>Testen van berichten verzenden
 

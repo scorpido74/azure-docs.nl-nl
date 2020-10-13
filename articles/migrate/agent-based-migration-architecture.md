@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357162"
 ---
 # <a name="agent-based-migration-architecture"></a>Migratiearchitectuur op basis van een agent
@@ -115,7 +115,7 @@ Als u een scale-out proces server wilt implementeren, gebruikt u deze tabel om d
 
 VMware-verkeer dat wordt gerepliceerd naar Azure, loopt via een specifieke proces server. U kunt de door Voer van een upload beperken door de band breedte op de computers die worden uitgevoerd als proces servers te beperken. U kunt de band breedte beïnvloeden met behulp van de volgende register sleutel:
 
-- Met de register waarde HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM geeft u het aantal threads op dat wordt gebruikt voor gegevens overdracht (initiële of Delta replicatie) van een schijf. Een hogere waarde verhoogt de netwerk bandbreedte die wordt gebruikt voor replicatie. De standaard waarde is vier. De maximum waarde is 32. Houd het verkeer in de gaten om de waarde te optimaliseren.
+- Met de register waarde HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM geeft u het aantal threads op dat wordt gebruikt voor gegevens overdracht (initiële of Delta replicatie) van een schijf. Een hogere waarde verhoogt de netwerk bandbreedte die wordt gebruikt voor replicatie. De standaard waarde is vier. De maximum waarde is 32. Houd het verkeer in de gaten om de waarde te optimaliseren.
 - Daarnaast kunt u de band breedte op de proces Server computer als volgt beperken:
 
     1. Open de Azure Backup MMC-module op de computer met de proces server. Er is een snelkoppeling op het bureau blad of in de map C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760250"
+ms.locfileid: "91893761"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -322,7 +322,6 @@ We zoeken het IP-adres (IPv4 of IPv6) van de webclient met behulp van [GeoLite2]
 * Server-telemetrie: de Application Insights-module verzamelt het client-IP-adres. Als is ingesteld, wordt deze niet verzameld `X-Forwarded-For` .
 * Raadpleeg dit [artikel](./app/ip-collection.md)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
 
-
 U kunt de configureren `ClientIpHeaderTelemetryInitializer` om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP` . [Meer informatie](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 U kunt [Power bi gebruiken](app/export-power-bi.md ) om uw aanvraag-telemetrie weer te geven op een kaart.
@@ -398,6 +397,29 @@ Elk item dat wordt verzonden `itemCount` , bevat een eigenschap die laat zien ho
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Hoe kan ik een Application Insights resource verplaatsen naar een nieuwe regio?
+
+Het verplaatsen van bestaande Application Insights resources van de ene naar de andere regio wordt **momenteel niet ondersteund**. Historische gegevens die u hebt verzameld, kunnen niet naar een nieuwe regio **worden gemigreerd** . De enige gedeeltelijke tijdelijke oplossing is het volgende:
+
+1. Maak een gloed nieuwe Application Insights resource ([klassiek](app/create-new-resource.md) of [werk ruimte gebaseerd](/app/create-workspace-resource.md)) in de nieuwe regio.
+2. Maak alle unieke aanpassingen die specifiek zijn voor de oorspronkelijke resource in de nieuwe resource opnieuw.
+3. Wijzig uw toepassing voor gebruik van de nieuwe regio bron [instrumentatie sleutel](app/create-new-resource.md#copy-the-instrumentation-key) of [Connection String](app/sdk-connection-string.md).  
+4. Test om te bevestigen dat alles naar verwachting werkt met uw nieuwe Application Insights-resource. 
+5. Op dit moment kunt u de oorspronkelijke resource verwijderen, waardoor **alle historische gegevens verloren gaan**. Of behoud de oorspronkelijke resource voor historische rapportage doeleinden voor de duur van de instellingen voor het bewaren van gegevens.
+
+Unieke aanpassingen die vaak hand matig moeten worden gemaakt of moeten worden bijgewerkt voor de resource in de nieuwe regio, zijn onder andere, maar zijn niet beperkt tot:
+
+- Aangepaste Dash boards en werkmappen opnieuw maken. 
+- Het bereik van aangepaste logboek-en metrische waarschuwingen opnieuw maken of bijwerken. 
+- Beschikbaarheids waarschuwingen opnieuw maken.
+- Maak de instellingen voor aangepaste Role-Based Access Control (RBAC) opnieuw die vereist zijn voor uw gebruikers om toegang te krijgen tot de nieuwe resource. 
+- Replicatie-instellingen met betrekking tot opname steekproef, gegevens retentie, dagelijks Cap en aangepaste metrische gegevens activering. Deze instellingen worden bepaald via het deel venster **gebruik en geschatte kosten** .
+- Een integratie die afhankelijk is van API-sleutels zoals [release annotaties](/app/annotations.md), [Live Metrics Channel Secure Control](app/live-stream.md#secure-the-control-channel) , enzovoort. U moet nieuwe API-sleutels genereren en de bijbehorende integratie bijwerken. 
+- Continue export in klassieke resources moet opnieuw worden geconfigureerd.
+- Diagnostische instellingen in op werk ruimte gebaseerde resources moeten opnieuw worden geconfigureerd.
+
+> [!NOTE]
+> Als de resource die u in een nieuwe regio maakt, een klassieke resource vervangt, raden we u aan om de voor delen van het [maken van een nieuwe resource op basis van een werk ruimte](app/create-workspace-resource.md) te verkennen of [om uw bestaande resource naar een andere werk ruimte te migreren](app/convert-classic-resource.md). 
 
 ### <a name="automation"></a>Automation
 

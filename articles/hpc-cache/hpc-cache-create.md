@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: bed158fb99654bd48184073b1266ae630255558b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613166"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
@@ -98,7 +98,7 @@ Wanneer het maken is voltooid, wordt er een melding weer gegeven met een koppeli
 > [!NOTE]
 > Als uw cache door de klant beheerde versleutelings sleutels gebruikt, kan de cache worden weer gegeven in de lijst met resources voordat de implementatie status wordt gewijzigd in voltooid. Zodra de status van de cache wacht op de sleutel, kunt u [deze machtigen](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) voor het gebruik **van** de sleutel kluis.
 
-## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ## <a name="create-the-cache-with-azure-cli"></a>De cache maken met Azure CLI
 
@@ -192,11 +192,11 @@ Het bericht bevat nuttige informatie, waaronder de volgende items:
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 > [!CAUTION]
-> De Power shell-module AZ. HPCCache is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. Het wordt niet aanbevolen voor productie werkbelastingen. Sommige functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> De Power shell-module AZ. HPCCache is momenteel beschikbaar als open bare preview. Deze preview-versie wordt geleverd zonder Service Level Agreement. Dit wordt niet aanbevolen voor productieworkloads. Sommige functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="requirements"></a>Vereisten
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell. Zie [overzicht van Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie als u ervoor kiest om Cloud shell te gebruiken.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell. Als u Cloud Shell gebruikt, raadpleegt u [Overzicht van Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie.
 
 > [!IMPORTANT]
 > Hoewel de Power shell-module **AZ. HPCCache** in preview is, moet u deze afzonderlijk installeren met behulp van de `Install-Module` cmdlet. Nadat deze Power shell-module algemeen beschikbaar is, zal deze deel uitmaken van toekomstige AZ Power shell-module releases en beschikbaar zijn vanuit Azure Cloud Shell.

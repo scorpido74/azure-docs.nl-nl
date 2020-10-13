@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
 ms.openlocfilehash: a7e3ade66aa4ebf7584e03b75f85c48b44537d97
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995856"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Overzicht van virtuele machines (Vm's) van Azure vertrouwelijk computing
@@ -48,5 +48,5 @@ Bij het ontwikkelen van toepassingen kunt u [softwarehulpprogramma's](applicatio
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Lees de aanbevolen procedures](virtual-machine-solutions.md) voor het implementeren van oplossingen op virtuele machines van Azure voor vertrouwelijke computing.
-- [Een virtuele machine uit de DCsv2-serie implementeren](quick-create-portal.md)
+- [Een DCsv2-Series virtuele machine implementeren](quick-create-portal.md)
 - [Een enclave-toepassing ontwikkelen](application-development.md) met behulp van de OE SDK
