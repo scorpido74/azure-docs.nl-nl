@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562516"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Een Internet gerichte Load Balancer-oplossing met IPv6 implementeren met behulp van een sjabloon
@@ -103,7 +103,7 @@ Wanneer de sjabloon is geïmplementeerd, kunt u de connectiviteit valideren door
 4. Start vanaf elke virtuele machine een uitgaande verbinding naar een IPv6-of IPv4-verbonden Internet apparaat. In beide gevallen is het bron-IP-adres dat wordt weer gegeven door het doel apparaat het open bare IPv4-of IPv6-adressen van de load balancer.
 
 > [!NOTE]
-> ICMP voor IPv4 en IPv6 wordt geblokkeerd in het Azure-netwerk. Als gevolg hiervan zijn ICMP-hulpprogram ma's zoals ping altijd mislukt. Als u de connectiviteit wilt testen, gebruikt u een TCP-alternatief zoals TCPing of de Power shell-cmdlet test-NetConnection. Houd er rekening mee dat de IP-adressen die in het diagram worden weer gegeven, voor beelden zijn van waarden die u mogelijk ziet. Aangezien de IPv6-adressen dynamisch worden toegewezen, worden de adressen die u ontvangt, verschillend en kunnen per regio verschillen. Het is ook gebruikelijk dat het open bare IPv6-adres op het load balancer begint met een ander voor voegsel dan de privé-IPv6-adressen in de back-end-pool.
+> ICMP voor IPv4 en IPv6 wordt geblokkeerd in het Azure-netwerk. Als gevolg hiervan zijn ICMP-hulpprogram ma's zoals ping altijd mislukt. Als u de connectiviteit wilt testen, gebruikt u een TCP-alternatief zoals TCPing of de Power shell Test-NetConnection-cmdlet. Houd er rekening mee dat de IP-adressen die in het diagram worden weer gegeven, voor beelden zijn van waarden die u mogelijk ziet. Aangezien de IPv6-adressen dynamisch worden toegewezen, worden de adressen die u ontvangt, verschillend en kunnen per regio verschillen. Het is ook gebruikelijk dat het open bare IPv6-adres op het load balancer begint met een ander voor voegsel dan de privé-IPv6-adressen in de back-end-pool.
 
 ## <a name="template-parameters-and-variables"></a>Sjabloon parameters en variabelen
 
@@ -111,7 +111,7 @@ Een Azure Resource Manager sjabloon bevat meerdere variabelen en para meters die
 
 De voorbeeld sjabloon die in dit artikel wordt gebruikt, bevat de volgende variabelen en para meters:
 
-| Para meter/variabele | Opmerkingen |
+| Para meter/variabele | Notities |
 | --- | --- |
 | adminUsername |Geef de naam op van het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |
 | adminPassword |Geef het wacht woord op voor het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |

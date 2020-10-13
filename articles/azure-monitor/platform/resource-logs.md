@@ -8,10 +8,10 @@ ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87800497"
 ---
 # <a name="azure-resource-logs"></a>Azure-resourcelogboeken
@@ -54,7 +54,7 @@ De tabel AzureDiagnostics ziet er als volgt uit:
 | ... |
 
 ### <a name="resource-specific"></a>Resource-specifiek
-In deze modus worden afzonderlijke tabellen in de geselecteerde werk ruimte gemaakt voor elke categorie die in de diagnostische instelling is geselecteerd. Deze methode wordt aanbevolen omdat het veel gemakkelijker is om met de gegevens in logboek query's te werken, een betere detectie van schema's en hun structuur te bieden, de prestaties te verbeteren voor zowel opname latentie als query tijden, en de mogelijkheid om RBAC-rechten te verlenen aan een specifieke tabel. Alle Azure-Services worden uiteindelijk naar de resource-specifieke modus gemigreerd. 
+In deze modus worden afzonderlijke tabellen in de geselecteerde werk ruimte gemaakt voor elke categorie die in de diagnostische instelling is geselecteerd. Deze methode wordt aanbevolen omdat het veel gemakkelijker is om met de gegevens in logboek query's te werken, een betere detectie van schema's en hun structuur te bieden, de prestaties te verbeteren voor zowel opname latentie als query tijden, en de mogelijkheid om RBAC-rechten te verlenen aan een specifieke tabel. Alle Azure-Services worden uiteindelijk naar de Resource-Specific modus gemigreerd. 
 
 Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
  
@@ -85,7 +85,7 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
 
 
 ### <a name="select-the-collection-mode"></a>De verzamelings modus selecteren
-Met de meeste Azure-resources worden gegevens naar de werk ruimte geschreven in **Azure Diagnostic** of de **resource-specifieke modus** zonder dat u daarvoor een keuze hoeft te doen. Zie de [documentatie voor elke service](./resource-logs-schema.md) voor meer informatie over de modus die wordt gebruikt. Alle Azure-Services zullen uiteindelijk gebruikmaken van de resource-specifieke modus. Als onderdeel van deze overgang kunt u met sommige resources een modus selecteren in de diagnostische instelling. Geef de resource-specifieke modus op voor nieuwe diagnostische instellingen, omdat hierdoor de gegevens eenvoudiger te beheren zijn en u mogelijk complexe migraties op een later tijdstip kunt voor komen.
+Met de meeste Azure-resources worden gegevens naar de werk ruimte geschreven in **Azure Diagnostic** of de **resource-specifieke modus** zonder dat u daarvoor een keuze hoeft te doen. Zie de [documentatie voor elke service](./resource-logs-schema.md) voor meer informatie over de modus die wordt gebruikt. Alle Azure-Services zullen uiteindelijk Resource-Specific modus gebruiken. Als onderdeel van deze overgang kunt u met sommige resources een modus selecteren in de diagnostische instelling. Geef de resource-specifieke modus op voor nieuwe diagnostische instellingen, omdat hierdoor de gegevens eenvoudiger te beheren zijn en u mogelijk complexe migraties op een later tijdstip kunt voor komen.
   
    ![Selector voor de modus Diagnostische instellingen](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
@@ -95,7 +95,7 @@ Met de meeste Azure-resources worden gegevens naar de werk ruimte geschreven in 
 
 U kunt een bestaande diagnostische instelling wijzigen in de resource-specifieke modus. In dit geval blijven de gegevens die al zijn verzameld in de tabel _AzureDiagnostics_ totdat deze is verwijderd volgens de Bewaar instelling voor de werk ruimte. Nieuwe gegevens worden verzameld in de toegewezen tabel. Gebruik de operator [Union](/azure/kusto/query/unionoperator) om gegevens op te vragen over beide tabellen.
 
-Ga door met het bekijken van [Azure updates](https://azure.microsoft.com/updates/) blog voor aankondigingen over Azure-Services die ondersteuning bieden voor de resource-specifieke modus.
+Ga door met het bekijken van [Azure updates](https://azure.microsoft.com/updates/) blog voor aankondigingen over Azure-services die Resource-Specific modus ondersteunen.
 
 ### <a name="column-limit-in-azurediagnostics"></a>Kolom limiet in AzureDiagnostics
 Er is een limiet van 500 eigenschappen voor een tabel in Azure Monitor Logboeken. Zodra deze limiet is bereikt, worden alle rijen met gegevens die zich buiten de eerste 500 bevinden, verwijderd op de opname tijd. De *AzureDiagnostics* -tabel is met name vatbaar voor deze limiet omdat deze eigenschappen bevat voor alle Azure-Services die ernaar schrijven.

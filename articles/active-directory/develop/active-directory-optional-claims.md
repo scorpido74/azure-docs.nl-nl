@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436847"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Procedure: optionele claims voor uw app opgeven
@@ -38,7 +38,7 @@ Hoewel optionele claims worden ondersteund in de indelings tokens v 1.0 en v 2.0
 | Accounttype               | v 1.0-tokens | v 2.0-tokens |
 |----------------------------|-------------|-------------|
 | Persoonlijke Microsoft-account | N.v.t.         | Ondersteund   |
-| Azure AD-account           | Ondersteund   | Ondersteund   |
+| Microsoft Azure Active Directory-account           | Ondersteund   | Ondersteund   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>optionele claim sets v 1.0 en v 2.0
 
@@ -124,7 +124,7 @@ Dit OptionalClaims-object zorgt ervoor dat het ID-token dat naar de client wordt
 
 U kunt optionele claims voor uw toepassing configureren via de gebruikers interface of het toepassings manifest.
 
-1. Ga naar [Azure Portal](https://portal.azure.com). Zoek en selecteer de optie **Azure Active Directory**.
+1. Ga naar de [Azure Portal](https://portal.azure.com). Zoek en selecteer de optie **Azure Active Directory**.
 1. Selecteer in de sectie **beheren** de optie **app-registraties**.
 1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
 
@@ -206,7 +206,7 @@ Als dit wordt ondersteund door een specifieke claim, kunt u ook het gedrag van d
 
 Naast de optionele standaard claim sets, kunt u ook tokens configureren voor het insluiten van extensies. Zie [de Microsoft Graph extensionProperty-documentatie](/graph/api/resources/extensionproperty?view=graph-rest-1.0)voor meer informatie.
 
-De extensies schema en open worden niet ondersteund door optionele claims, alleen de Directory-extensies van het type AAD-Graph. Deze functie is handig voor het koppelen van aanvullende gebruikers informatie die uw app kan gebruiken, bijvoorbeeld een extra id of een belang rijke configuratie optie die de gebruiker heeft ingesteld. Zie de onderkant van deze pagina voor een voor beeld.
+De extensies schema en open worden niet ondersteund door optionele claims, alleen de AAD-Graph stijl Directory-extensies. Deze functie is handig voor het koppelen van aanvullende gebruikers informatie die uw app kan gebruiken, bijvoorbeeld een extra id of een belang rijke configuratie optie die de gebruiker heeft ingesteld. Zie de onderkant van deze pagina voor een voor beeld.
 
 > [!NOTE]
 > Directory schema-uitbrei dingen zijn een Azure AD-functie. Als uw toepassings manifest een aangepaste extensie aanvraagt en een MSA-gebruiker zich aanmeldt bij uw app, worden deze uitbrei dingen niet geretourneerd.

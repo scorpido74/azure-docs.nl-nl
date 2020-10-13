@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f79ff9af1272ca908c7a5ba35fbaa1e8bb87fc50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506705"
 ---
 # <a name="connect-with-power-bi"></a>Verbinden met Power BI
@@ -25,7 +25,7 @@ Zodra u een server in azure hebt gemaakt en een tabellair model hebt geïmplemen
   
 ## <a name="connect-in-power-bi-desktop"></a>Verbinden maken in Power BI Desktop
 
-1. Klik in Power bi Desktop op **gegevens ophalen**  >  **Azure**  >  **Azure Analysis Services Data Base**.
+1. Klik in Power BI Desktop op **Gegevens ophalen** > **Azure** > **Azure Analysis Services-database**.
 
 2. Voer bij **Server**de naam van de server in. Zorg ervoor dat u de volledige URL opgeeft. bijvoorbeeld asazure://westcentralus.asazure.windows.net/advworks.
 
@@ -49,7 +49,7 @@ Zodra u een server in azure hebt gemaakt en een tabellair model hebt geïmplemen
 1. Maak een Power BI Desktop-bestand dat een live verbinding heeft met uw model op uw server.
 2. Klik in [Power bi](https://powerbi.microsoft.com)op **gegevens**  >  **bestanden**ophalen, zoek en selecteer uw pbix-bestand.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 [Verbinding maken met Azure Analysis Services](analysis-services-connect.md)   
 [Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 

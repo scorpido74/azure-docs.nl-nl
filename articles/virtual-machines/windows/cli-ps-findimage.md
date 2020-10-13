@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288346"
 ---
 # <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>VM-installatie kopieën zoeken en gebruiken in azure Marketplace met Azure PowerShell
@@ -28,9 +28,9 @@ U kunt ook bladeren in beschik bare installatie kopieën en aanbiedingen met beh
 
 In deze tabel ziet u een subset van beschik bare Sku's voor de aangegeven uitgevers en aanbiedingen.
 
-| Publisher | Aanbieding | Sku |
+| Uitgever | Aanbieding | Sku |
 |:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019-Data Center |
+| MicrosoftWindowsServer |WindowsServer |2019-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center-core |
 | MicrosoftWindowsServer |WindowsServer |2019-Data Center-met-containers |
 | MicrosoftWindowsServer |WindowsServer |2016-Data Center |

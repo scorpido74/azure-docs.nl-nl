@@ -4,10 +4,10 @@ description: In dit artikel wordt stapsgewijs uitgelegd hoe u een Lab maakt met 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 09999c5b0187f924f9cfbbc2afad8954adee0fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481252"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Een lab maken in Azure DevTest Labs
@@ -41,7 +41,7 @@ In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te ma
         ![De sectie Een lab maken van DevTest Labs](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
     8. Als u klaar bent, selecteert u in de melding **naar resource** . U kunt ook de pagina **DevTest Labs** vernieuwen om de zojuist gemaakte Lab weer te geven in de lijst met Labs.  Selecteer de test omgeving in de lijst. U ziet de start pagina voor uw Lab. 
 
-        ![Start pagina voor het lab](./media/devtest-lab-create-lab/lab-home-page.png)
+        ![Startpagina voor het lab](./media/devtest-lab-create-lab/lab-home-page.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

@@ -12,10 +12,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: celested
 ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549463"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Zelf studie: asana configureren voor automatische gebruikers inrichting
@@ -24,7 +24,7 @@ Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoer
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
 * Een Azure AD-Tenant
 * Een asana-Tenant met een [ondernemings](https://www.asana.com/pricing) plan of beter in te scha kelen
@@ -84,7 +84,7 @@ In deze sectie wordt u begeleid bij het verbinden van uw Azure AD to asana user 
 
 1. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met asana**.
 
-1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die moeten worden gesynchroniseerd van Azure AD naar asana. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in asana voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren. Zie [aangepaste kenmerk toewijzingen voor gebruikers inrichten aanpassen](../app-provisioning/customize-application-attributes.md)voor meer informatie.
+1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die moeten worden gesynchroniseerd van Azure AD naar asana. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in asana voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen. Zie [aangepaste kenmerk toewijzingen voor gebruikers inrichten aanpassen](../app-provisioning/customize-application-attributes.md)voor meer informatie.
 
 1. Als u de Azure AD-inrichtings service voor asana wilt inschakelen, wijzigt u de **inrichtings status** in het gedeelte **instellingen** in **op aan**.
 

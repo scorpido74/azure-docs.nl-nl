@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171598"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Zelf studie: gebeurtenissen door sturen naar Event Grid Cloud
@@ -36,8 +36,8 @@ Maak een event grid-onderwerp en-abonnement in de Cloud door [deze zelf studie](
 
 Als u bijvoorbeeld een onderwerp hebt gemaakt `testegcloudtopic` met de naam in VS West, zien de waarden er ongeveer als volgt uit:
 
-* **TopicUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **Onderwerpnaam**:`testegcloudtopic`
+* **TopicUrl**: `https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
+* **Onderwerpnaam**: `testegcloudtopic`
 * **SasKey**: beschikbaar onder **accessKey** van uw onderwerp. Gebruik **key1**.
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Event grid-onderwerp maken aan de rand

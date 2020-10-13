@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536263"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor-logboeken instellen en diagnostische gegevens verzamelen voor B2B-berichten in Azure Logic Apps
@@ -190,7 +190,7 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk AS2-bericht.
 | **Richting** | De richting van het AS2-bericht |
 | **Tracerings-ID** | De ID die overeenkomt met alle triggers en acties in een logische app |
 | **Bericht-id** | De AS2 bericht-ID van de AS2-bericht koppen |
-| **Timestamp** | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
+| **Tijdstempel** | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
 |||
 
 <!--
@@ -225,7 +225,7 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk X12-bericht.
 | **Msg-type** | Het EDI X12-bericht type |
 | **ICN** | Het uitwisselings controle nummer voor het X12-bericht |
 | **TSCN** | Het controle nummer voor de Transactieset voor het X12-bericht |
-| **Timestamp** | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
+| **Tijdstempel** | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
 |||
 
 <!--
@@ -260,7 +260,7 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk EDIFACT-bericht.
 | **Msg-type** | Het EDIFACT-bericht type |
 | **ICN** | Het uitwisselings controle nummer voor het EDIFACT-bericht |
 | **TSCN** | Het controle nummer voor de Transactieset voor het EDIFACT-bericht |
-| **Timestamp** | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
+| **Tijdstempel** | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
 |||
 
 <!--

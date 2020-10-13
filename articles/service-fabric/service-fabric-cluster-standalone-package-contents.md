@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261023"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Inhoud van Service Fabric zelfstandig pakket voor Windows Server
@@ -29,7 +29,7 @@ In het zelfstandige pakket [gedownloade](https://go.microsoft.com/fwlink/?LinkId
 | Readme.txt |Een koppeling naar de release opmerkingen en de basis installatie-instructies. Het is een subset van de instructies in dit document. |
 | ThirdPartyNotice. RTF |Kennisgeving van software van derden die deel uitmaakt van het pakket. |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe die op aanvraag wordt uitgevoerd om traceer logboeken te verzamelen en uploaden naar micro soft voor ondersteunings doeleinden. |
-| Tools\ServiceFabricUpdateService.zip |Een hulp programma dat wordt gebruikt om automatische code-upgrade in te scha kelen voor clusters die geen toegang tot internet hebben. Meer informatie vindt u [hier](service-fabric-cluster-upgrade-windows-server.md)|
+| Tools\ServiceFabricUpdateService.zip |Een hulp programma dat wordt gebruikt om automatische code-upgrade in te scha kelen voor clusters die geen toegang tot internet hebben. [Hier](service-fabric-cluster-upgrade-windows-server.md) vindt u meer informatie|
 
 **Sjablonen** 
 

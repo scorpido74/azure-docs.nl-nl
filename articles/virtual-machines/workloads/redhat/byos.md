@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
 ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87052168"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
@@ -34,7 +34,7 @@ Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn beschikbaar in azure v
 - De installatie kopieën volgen het huidige beleid dat wordt beschreven in [Red Hat Enterprise Linux installatie kopieën op Azure](./redhat-images.md).
 - Standaard ondersteunings beleid is van toepassing op Vm's die zijn gemaakt op basis van deze installatie kopieën.
 - De Vm's die zijn ingericht op basis van Red Hat Gold-installatie kopieën, bevatten geen RHEL-vergoedingen die zijn gekoppeld aan RHEL-afbeeldingen met betalen per gebruik.
-- De installatie kopieën hebben geen recht. U moet Red Hat Subscription-Manager gebruiken om de Vm's te registreren en te abonneren op het rechtstreeks downloaden van updates van Red Hat.
+- De installatie kopieën hebben geen recht. U moet Red Hat Subscription-Manager gebruiken om de Vm's te registreren en bij te werken om direct updates van Red Hat te krijgen.
 - Het is momenteel niet mogelijk om dynamisch te scha kelen tussen BYOS en betalen naar gebruik-facturerings modellen voor Linux-installatie kopieën. Als u het facturerings model wilt wijzigen, moet u de virtuele machine opnieuw implementeren vanuit de respectieve installatie kopie.
 
 >[!NOTE]
@@ -120,7 +120,7 @@ De volgende instructies begeleiden u bij het eerste implementatie proces voor ee
     az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. SSH in uw virtuele machine en controleer of u een onrechtse installatie kopie hebt. Voer uit om deze stap uit te voeren `sudo yum repolist` . Gebruik voor RHEL 8 `sudo dnf repolist` . Met de uitvoer wordt u gevraagd om abonnement-manager te gebruiken voor het registreren van de virtuele machine met Red Hat.
+1. SSH in uw virtuele machine en controleer of u een onrechtse installatie kopie hebt. Voer uit om deze stap uit te voeren `sudo yum repolist` . Gebruik voor RHEL 8 `sudo dnf repolist` . Met de uitvoer wordt u gevraagd Subscription-Manager te gebruiken voor het registreren van de virtuele machine met Red Hat.
 
 >[!NOTE]
 >Op RHEL 8 `dnf` en `yum` zijn uitwisselbaar. Zie de [RHEL 8-beheer handleiding](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)voor meer informatie.

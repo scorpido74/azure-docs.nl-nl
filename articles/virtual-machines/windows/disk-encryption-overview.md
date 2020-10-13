@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4650df71acb088fafc1280d31d9abfb398e06741
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284486"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption voor Windows-Vm's 
@@ -86,7 +86,7 @@ In de volgende tabel worden enkele algemene termen gedefinieerd die worden gebru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Quick Start: een Windows-VM maken en versleutelen met Azure CLI](disk-encryption-cli-quickstart.md)
+- [Quick Start: een Windows-VM maken en versleutelen met Azure CLI ](disk-encryption-cli-quickstart.md)
 - [Quick Start: een Windows-VM maken en versleutelen met Azure Power shell](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption-scenario's voor Windows-VM's](disk-encryption-windows.md)
 - [SysteemAzure Disk Encryption vereisten CLI-script](https://github.com/ejarvi/ade-cli-getting-started)

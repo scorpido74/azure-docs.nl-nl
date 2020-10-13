@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: 4ea2f88b02738645af3f8fc32d5fdb99168a1122
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82997379"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Aan de slag met spraak assistenten in Windows
@@ -25,8 +25,8 @@ In deze hand leiding worden de stappen beschreven voor het ontwikkelen van een t
 
 Als u een spraak assistent voor Windows wilt gaan ontwikkelen, moet u ervoor zorgen dat u de juiste ontwikkel omgeving hebt.
 
-- **Visual Studio:** u moet [micro soft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition of hoger installeren
-- **Windows-versie**: een PC met een Windows Insider Fast ring-build van Windows en de Windows Insider-versie van de Windows SDK.Deze voorbeeld code wordt geverifieerd als werk op Windows Insider release build 19025. vb_release_analog .191112-1600 met Windows SDK 19018.Alle builds of SDK boven de opgegeven versies moeten compatibel zijn.
+- **Visual Studio:**   U moet [micro soft Visual Studio 2017](https://visualstudio.microsoft.com/), de Community Edition of hoger installeren
+- **Windows-versie**: een PC met een Windows Insider Fast ring-build van Windows en de Windows Insider-versie van de Windows SDK.Deze voorbeeld code wordt gecontroleerd als werken op Windows Insider release-build 19025.vb_release_analog .191112-1600 met Windows SDK 19018.Alle builds of SDK boven de opgegeven versies moeten compatibel zijn.
 - **UWP Development tools**: de universeel Windows-platform development-werk belasting in Visual Studio.Zie de pagina UWP [ophalen instellen](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) om uw machine gereed te maken voor het ontwikkelen van UWP-toepassingen.
 - **Een werkende microfoon en audio-uitvoer**
 
@@ -34,7 +34,7 @@ Als u een spraak assistent voor Windows wilt gaan ontwikkelen, moet u ervoor zor
 
 Voor sommige resources die nodig zijn voor een volledig aangepaste spraak agent in Windows, zijn resources van micro soft vereist. Het [UWP Voice Assistant](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) -voor beeld bevat een aantal voor beelden van deze bronnen voor de eerste ontwikkeling en tests, waardoor deze sectie niet nodig is voor de eerste ontwikkeling.
 
-- **Trefwoord model:** voor spraak activering is een trefwoord model van micro soft vereist in de vorm van een bin-bestand. Het. bin-bestand in het voor beeld van de UWP Voice Assistant is getraind op het tref woord ' Contoso '.
+- **Trefwoord model:**   Voor spraak activering is een trefwoord model van micro soft vereist in de vorm van een bin-bestand. Het. bin-bestand in het voor beeld van de UWP Voice Assistant is getraind op het tref woord ' Contoso '.
 - **Token voor beperkte toegang:** Omdat de ConversationalAgent-Api's toegang bieden tot de microfoon audio, worden ze beschermd onder beperkingen voor beperkte toegang.Als u een beperkte toegangs functie wilt gebruiken, moet u een token met beperkte toegang verkrijgen dat is verbonden met de pakket-id van uw toepassing van micro soft.
 
 ## <a name="establish-a-dialog-service"></a>Een dialoog service maken

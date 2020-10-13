@@ -1,6 +1,6 @@
 ---
 title: 'Concepten: sjablonen toewijzen in azure IoT connector voor FHIR-functie (preview) van Azure API voor FHIR'
-description: Meer informatie over het maken van twee typen toewijzings sjablonen in azure IoT connector voor FHIR (preview). Met de toewijzings sjabloon voor apparaten worden apparaatgegevens getransformeerd naar een genormaliseerd schema. Met de sjabloon FHIR-toewijzing wordt een genormaliseerd bericht getransformeerd naar een op FHIR gebaseerde observatie resource.
+description: Meer informatie over het maken van twee typen toewijzings sjablonen in azure IoT connector voor FHIR (preview). Met de sjabloon voor apparaattoewijzing worden apparaatgegevens getransformeerd tot een genormaliseerd schema. Met de sjabloon voor FHIR-toewijzing wordt een genormaliseerd bericht getransformeerd tot een op FHIR gebaseerde observatieresource.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
 ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553644"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Sjablonen voor toewijzing van Azure IoT connector voor FHIR (preview)
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Toewijzingssjablonen in Azure IoT Connector for FHIR (preview)
 In dit artikel vindt u informatie over het configureren van Azure IoT connector voor FHIR * met toewijzings sjablonen.
 
 De Azure IoT connector voor FHIR vereist twee typen toewijzings sjablonen op basis van JSON. Het eerste type, **apparaattoewijzing**, is verantwoordelijk voor het toewijzen van de nettoladingen van apparaten die zijn verzonden naar het `devicedata` eind punt van de Azure Event hub. Het extraheert typen, apparaat-id's, meting datum en meet waarde (n). Het tweede type, **FHIR-toewijzing**, bepaalt de toewijzing voor FHIR-resource. Hiermee kunt u de lengte van de observatie periode, het gegevens type FHIR dat wordt gebruikt voor het opslaan van de waarden en terminologie code (s), configureren. 
@@ -39,7 +39,7 @@ Hieronder ziet u een conceptueel voor beeld van wat er gebeurt tijdens normalisa
 
 ![Voor beeld van normalisatie](media/concepts-iot-mapping-templates/normalization-example.png)
 
-De nettolading voor inhoud zelf is een Azure Event hub-bericht, dat bestaat uit drie delen: Body, Properties en SystemProperties. De `Body` is een byte matrix die een UTF-8-gecodeerde teken reeks vertegenwoordigt. Tijdens de evaluatie van de sjabloon wordt de byte matrix automatisch geconverteerd naar de teken reeks waarde. `Properties`is een sleutel waarde-verzameling voor gebruik door de maker van het bericht. `SystemProperties`is ook een sleutel waarde-verzameling die door het Azure Event hub-Framework is gereserveerd met vermeldingen die automatisch door de service worden ingevuld.
+De nettolading voor inhoud zelf is een Azure Event hub-bericht, dat bestaat uit drie delen: Body, Properties en SystemProperties. De `Body` is een byte matrix die een UTF-8-gecodeerde teken reeks vertegenwoordigt. Tijdens de evaluatie van de sjabloon wordt de byte matrix automatisch geconverteerd naar de teken reeks waarde. `Properties` is een sleutel waarde-verzameling voor gebruik door de maker van het bericht. `SystemProperties` is ook een sleutel waarde-verzameling die door het Azure Event hub-Framework is gereserveerd met vermeldingen die automatisch door de service worden ingevuld.
 
 ```json
 {
@@ -332,7 +332,7 @@ De veronderstelling bij het gebruik van deze sjabloon is dat de berichten die wo
 }
 ```
 
-## <a name="fhir-mapping"></a>FHIR toewijzing
+## <a name="fhir-mapping"></a>FHIR-toewijzing
 Zodra de inhoud van het apparaat is geëxtraheerd naar een genormaliseerd model, worden de gegevens verzameld en gegroepeerd op basis van de apparaat-id, het meet type en de tijds periode. De uitvoer van deze groepering wordt verzonden voor conversie naar een FHIR-resource (huidige[waarneming](https://www.hl7.org/fhir/observation.html) ). Hier wordt de FHIR-toewijzings sjabloon bepaalt hoe de gegevens worden toegewezen aan een FHIR-waarneming. Moet er een waarneming worden gemaakt voor een punt in de tijd of gedurende een periode van een uur? Welke codes moeten worden toegevoegd aan de observatie? Moet de waarde worden weer gegeven als [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) of een [hoeveelheid](https://www.hl7.org/fhir/datatypes.html#Quantity)? Deze gegevens typen zijn allemaal opties voor de configuratie besturings elementen voor FHIR toewijzing.
 
 ### <a name="codevaluefhirtemplate"></a>CodeValueFhirTemplate
@@ -352,7 +352,7 @@ De CodeValueFhirTemplate is momenteel de enige sjabloon die op dit moment wordt 
 |**Onderdelen []. Verdelen**|Een of meer [code ringen](http://hl7.org/fhir/datatypes-definitions.html#coding) die moeten worden toegepast op het onderdeel.
 |**Onderdelen []. Value**|De waarde die moet worden opgehaald en weer gegeven in het onderdeel. Zie [waardetype-sjablonen](#valuetypes)voor meer informatie.
 
-### <a name="value-type-templates"></a>Value type-sjablonen<a name="valuetypes"></a>
+### <a name="value-type-templates"></a>Value type-sjablonen <a name="valuetypes"></a>
 Hieronder worden de momenteel ondersteunde typen waardetype-sjablonen beschreven. In de toekomst kunnen verdere sjablonen worden toegevoegd.
 #### <a name="sampleddata"></a>SampledData
 Vertegenwoordigt het [SampledData](http://hl7.org/fhir/datatypes.html#SampledData) FHIR-gegevens type. Waarnemingen worden geschreven naar een waardestroom, te beginnen op een bepaald moment en worden verder verhoogd met de gedefinieerde periode. Als er geen waarde aanwezig is, `E` wordt er een geschreven naar de gegevens stroom. Als de periode zodanig is dat twee meer waarden dezelfde positie in de gegevens stroom innemen, wordt de meest recente waarde gebruikt. Dezelfde logica wordt toegepast wanneer een observatie met behulp van de SampledData wordt bijgewerkt.
@@ -362,7 +362,7 @@ Vertegenwoordigt het [SampledData](http://hl7.org/fhir/datatypes.html#SampledDat
 |**DefaultPeriod**|De standaard periode in milliseconden die moet worden gebruikt. 
 |**Eenheid**|De eenheid die moet worden ingesteld op de oorsprong van de SampledData. 
 
-#### <a name="quantity"></a>Aantal
+#### <a name="quantity"></a>Hoeveelheid
 Hiermee wordt het gegevens type [hoeveelheid](http://hl7.org/fhir/datatypes.html#Quantity) FHIR. Als er meer dan één waarde in de groepering aanwezig is, wordt alleen de eerste waarde gebruikt. Wanneer een nieuwe waarde arriveert die is toegewezen aan dezelfde observatie, wordt de oude waarde overschreven.
 
 | Eigenschap | Beschrijving 
@@ -567,6 +567,6 @@ Bekijk veelgestelde vragen over Azure IoT connector voor FHIR (preview).
 >[!div class="nextstepaction"]
 >[Veelgestelde vragen over Azure IoT connector voor FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
-* In de Azure Portal wordt de Azure IoT-connector voor FHIR aangeduid als IoT-connector (preview).
+*In Azure Portal wordt Azure IoT Connector for FHIR aangeduid als IoT Connector (preview).
 
 FHIR is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.

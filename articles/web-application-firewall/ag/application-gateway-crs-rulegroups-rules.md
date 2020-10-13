@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85052019"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-regel groepen en-regels voor Web Application firewall
@@ -43,7 +43,7 @@ CRS 3,1 bevat 13 regel groepen, zoals wordt weer gegeven in de volgende tabel. E
 > [!NOTE]
 > CRS 3,1 is alleen beschikbaar op de WAF_v2 SKU.
 
-|Regelgroep|Description|
+|Regelgroep|Beschrijving|
 |---|---|
 |**[Algemeen](#general-31)**|Algemene groep|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Vergrendelings methoden (PUT, PATCH)|
@@ -63,7 +63,7 @@ CRS 3,1 bevat 13 regel groepen, zoals wordt weer gegeven in de volgende tabel. E
 
 CRS 3,0 bevat 12 regel groepen, zoals wordt weer gegeven in de volgende tabel. Elke groep bevat meerdere regels die kunnen worden uitgeschakeld.
 
-|Regelgroep|Description|
+|Regelgroep|Beschrijving|
 |---|---|
 |**[Algemeen](#general-30)**|Algemene groep|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Vergrendelings methoden (PUT, PATCH)|
@@ -82,7 +82,7 @@ CRS 3,0 bevat 12 regel groepen, zoals wordt weer gegeven in de volgende tabel. E
 
 Geautomatiseerd 2.2.9 bevat tien regel groepen, zoals wordt weer gegeven in de volgende tabel. Elke groep bevat meerdere regels die kunnen worden uitgeschakeld.
 
-|Regelgroep|Description|
+|Regelgroep|Beschrijving|
 |---|---|
 |**[crs_20_protocol_violations](#crs20)**|Beveiligen tegen protocol schendingen (zoals ongeldige tekens of een GET met een aanvraag tekst)|
 |**[crs_21_protocol_anomalies](#crs21)**|Beveiligen tegen onjuiste header gegevens|
@@ -99,35 +99,35 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 # <a name="owasp-31"></a>[OWASP 3,1](#tab/owasp31)
 
-## <a name="rule-sets"></a><a name="owasp31"></a>Regel sets
+## <a name="rule-sets"></a><a name="owasp31"></a> Regel sets
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">Algemeen</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |200004|Mogelijke meerdelige niet-overeenkomende grens.|
 
 ### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-31"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |911100|De methode is niet toegestaan door het beleid|
 
 
 ### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-31"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
-|913100|Gebruikers agent gevonden die aan beveiligings scanner is gekoppeld|
-|913101|Gebruikers agent gevonden die is gekoppeld aan scripting/algemene HTTP-client|
-|913102|Gebruikers agent gevonden die is gekoppeld aan web crawler/bot|
+|913100|Gevonden User-Agent gekoppeld aan beveiligings scanner|
+|913101|User-Agent gekoppeld aan scripting/algemene HTTP-client|
+|913102|Gevonden User-Agent gekoppeld aan web-crawler/bot|
 |913110|De aanvraag header is gevonden die is gekoppeld aan de beveiligings scanner|
 |913120|Bestands naam/argument van aanvraag gevonden die is gekoppeld aan beveiligings scanner|
 
 
 ### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |920100|Ongeldige regel voor HTTP-aanvraag|
 |920120|Poging tot meerdelige/formulier-data bypass|
@@ -179,7 +179,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |921110|HTTP-aanvraag smuggling-aanval|
 |921120|HTTP-antwoord voor het splitsen van een aanval|
@@ -193,7 +193,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |930100|Pad overs passage (/. /)|
 |930110|Pad overs passage (/. /)|
@@ -202,16 +202,16 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-31"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |931100|Mogelijke RFI-aanval (Remote File Include) = URL-para meter met IP-adres|
 |931110|Mogelijke RFI-aanval (Remote File Include) = algemene RFI-kwets bare parameter naam die wordt gebruikt met de URL-nettolading|
 |931120|Mogelijke RFI-aanval (Remote File Include) = URL Payload gebruikt met het vraag teken (?)|
-|931130|Mogelijke RFI-aanval (Remote File Include) = niet-domein referentie/koppeling|
+|931130|Mogelijke RFI-aanval (Remote File Include) = Off-Domain referentie/koppeling|
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |932100|Externe opdrachten uitvoeren: UNIX-opdracht injectie|
 |932105|Externe opdrachten uitvoeren: UNIX-opdracht injectie|
@@ -230,7 +230,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |933100|PHP-injectie aanval = openen/sluiten tag gevonden|
 |933110|PHP-injectie aanval = PHP-script bestand gevonden|
@@ -239,17 +239,17 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |933130|PHP-injectie aanval = variabelen gevonden|
 |933131|PHP-injectie aanval: variabelen gevonden|
 |933140|PHP-injectie aanval: I/O-stroom gevonden|
-|933150|Een PHP-injectie aanval = High-Risk PHP-functie naam gevonden|
-|933151|Inbreker voor PHP-injectie: naam van PHP-functie met gemiddeld risico gevonden|
-|933160|PHP-injectie aanval = een PHP-functie aanroep met een hoog risico gevonden|
-|933161|PHP-injectie aanval: lage waarde PHP-functie aanroep gevonden|
+|933150|PHP-injectie aanval = High-Risk PHP-functie naam gevonden|
+|933151|PHP-injectie aanval: Medium-Risk PHP-functie naam gevonden|
+|933160|PHP-injectie aanval = High-Risk PHP-functie aanroep gevonden|
+|933161|PHP-injectie aanval: Low-Value PHP-functie aanroep gevonden|
 |933170|Een PHP-injectie aanval: geserialiseerde object injectie|
 |933180|PHP-injectie aanval = variabele functie aanroep gevonden|
 |933190|PHP-injectie aanval: PHP-afsluit code gevonden|
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |941100|XSS-aanval gedetecteerd via libinjection|
 |941101|XSS-aanval gedetecteerd via libinjection|
@@ -259,7 +259,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |941150|XSS-filter-categorie 5 = niet-toegestane HTML-kenmerken|
 |941160|NoScript XSS InjectionChecker: HTML-injectie|
 |941170|NoScript XSS InjectionChecker: kenmerk injectie|
-|941180|Knooppunt: validatie van zwarte woorden lijst|
+|941180|Tref woorden Node-Validator zwarte lijst|
 |941190|XSS met Style Sheets|
 |941200|XSS met behulp van VML-frames|
 |941210|XSS met verborgen java script|
@@ -281,7 +281,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |942100|SQL-injectie aanval gedetecteerd via libinjection|
 |942110|SQL-injectie aanval: gemeen schappelijke injectie tests gedetecteerd|
@@ -324,22 +324,22 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |942432|Beperkte afwijkings detectie voor SQL-tekens (argumenten): aantal speciale tekens is overschreden (2)|
 |942440|SQL-commentaar reeks gedetecteerd.|
 |942450|SQL hex-code ring geïdentificeerd|
-|942460|Waarschuwing voor anomalie detectie van meta tekens-terugkerende niet-woord tekens|
+|942460|Waarschuwing voor detectie van afwijkings Meta-Character-terugkerende niet-woord tekens|
 |942470|SQL-injectie aanval|
 |942480|SQL-injectie aanval|
 |942490|Detecteert de klassieke SQL-injectie in protestes 3/3|
 
 ### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |943100|Mogelijke sessie-bindings aanval = cookie waarden instellen in HTML|
-|943110|Mogelijke sessie-bindings aanval = SessionID-parameter naam met niet-domein verwijzing|
+|943110|Mogelijke sessie-bindings aanval = SessionID-parameter naam met Off-Domain verwijzings-id|
 |943120|Mogelijke sessie-bindings aanval = SessionID-parameter naam zonder verwijzing|
 
 ### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-session-javap"></a><a name="crs944-31"></a> <p x-ms-format-detection="none">AANVRAAG-944-TOEPASSING-AANVAL-SESSIE-JAVA</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |944120|Mogelijke Payload-uitvoering en uitvoering van externe opdrachten|
 |944130|Verdachte Java-klassen|
@@ -347,34 +347,34 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 # <a name="owasp-30"></a>[OWASP 3,0](#tab/owasp30)
 
-## <a name="rule-sets"></a><a name="owasp30"></a>Regel sets
+## <a name="rule-sets"></a><a name="owasp30"></a> Regel sets
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">Algemeen</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |200004|Mogelijke meerdelige niet-overeenkomende grens.|
 
 ### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-30"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |911100|De methode is niet toegestaan door het beleid|
 
 
 ### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-30"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
-|913100|Gebruikers agent gevonden die aan beveiligings scanner is gekoppeld|
+|913100|Gevonden User-Agent gekoppeld aan beveiligings scanner|
 |913110|De aanvraag header is gevonden die is gekoppeld aan de beveiligings scanner|
 |913120|Bestands naam/argument van aanvraag gevonden die is gekoppeld aan beveiligings scanner|
-|913101|Gebruikers agent gevonden die is gekoppeld aan scripting/algemene HTTP-client|
-|913102|Gebruikers agent gevonden die is gekoppeld aan web crawler/bot|
+|913101|User-Agent gekoppeld aan scripting/algemene HTTP-client|
+|913102|Gevonden User-Agent gekoppeld aan web-crawler/bot|
 
 ### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |920100|Ongeldige regel voor HTTP-aanvraag|
 |920130|De aanvraag tekst kan niet worden geparseerd.|
@@ -420,7 +420,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |921100|HTTP-aanvraag smuggling-aanval.|
 |921110|HTTP-aanvraag smuggling-aanval|
@@ -435,7 +435,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |930100|Pad overs passage (/. /)|
 |930110|Pad overs passage (/. /)|
@@ -444,16 +444,16 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-30"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |931100|Mogelijke RFI-aanval (Remote File Include) = URL-para meter met IP-adres|
 |931110|Mogelijke RFI-aanval (Remote File Include) = algemene RFI-kwets bare parameter naam die wordt gebruikt met de URL-nettolading|
 |931120|Mogelijke RFI-aanval (Remote File Include) = URL Payload gebruikt met het vraag teken (?)|
-|931130|Mogelijke RFI-aanval (Remote File Include) = niet-domein referentie/koppeling|
+|931130|Mogelijke RFI-aanval (Remote File Include) = Off-Domain referentie/koppeling|
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |932120|Externe opdracht uitvoering = Windows Power shell-opdracht gevonden|
 |932130|Externe opdracht uitvoering = Unix-shell-expressie gevonden|
@@ -464,30 +464,30 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-30"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |933100|PHP-injectie aanval = openen/sluiten tag gevonden|
 |933110|PHP-injectie aanval = PHP-script bestand gevonden|
 |933120|PHP-injectie aanval = configuratie-instructie gevonden|
 |933130|PHP-injectie aanval = variabelen gevonden|
-|933150|Een PHP-injectie aanval = High-Risk PHP-functie naam gevonden|
-|933160|PHP-injectie aanval = een PHP-functie aanroep met een hoog risico gevonden|
+|933150|PHP-injectie aanval = High-Risk PHP-functie naam gevonden|
+|933160|PHP-injectie aanval = High-Risk PHP-functie aanroep gevonden|
 |933180|PHP-injectie aanval = variabele functie aanroep gevonden|
-|933151|PHP-injectie aanval = middel grote risico PHP-functie naam gevonden|
+|933151|PHP-injectie aanval = Medium-Risk PHP-functie naam gevonden|
 |933131|PHP-injectie aanval = variabelen gevonden|
-|933161|PHP-injectie aanval = lage waarde PHP-functie aanroep gevonden|
+|933161|PHP-injectie aanval = Low-Value PHP-functie aanroep gevonden|
 |933111|PHP-injectie aanval = PHP-script bestand gevonden|
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |941100|XSS-aanval gedetecteerd via libinjection|
 |941110|XSS-filter-categorie 1 = script label vector|
 |941130|XSS-filter-categorie 3 = kenmerk vector|
 |941140|XSS-filter-categorie 4 = java script-URI-vector|
 |941150|XSS-filter-categorie 5 = niet-toegestane HTML-kenmerken|
-|941180|Knooppunt: validatie van zwarte woorden lijst|
+|941180|Tref woorden Node-Validator zwarte lijst|
 |941190|XSS met Style Sheets|
 |941200|XSS met behulp van VML-frames|
 |941210|XSS met verborgen java script|
@@ -507,7 +507,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 
 ### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |942100|SQL-injectie aanval gedetecteerd via libinjection|
 |942110|SQL-injectie aanval: gemeen schappelijke injectie tests gedetecteerd|
@@ -535,23 +535,23 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |942440|SQL-commentaar reeks gedetecteerd.|
 |942450|SQL hex-code ring geïdentificeerd|
 |942251|Detecteert of er injecties zijn|
-|942460|Waarschuwing voor anomalie detectie van meta tekens-terugkerende niet-woord tekens|
+|942460|Waarschuwing voor detectie van afwijkings Meta-Character-terugkerende niet-woord tekens|
 
 ### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |943100|Mogelijke sessie-bindings aanval = cookie waarden instellen in HTML|
-|943110|Mogelijke sessie-bindings aanval = SessionID-parameter naam met niet-domein verwijzing|
+|943110|Mogelijke sessie-bindings aanval = SessionID-parameter naam met Off-Domain verwijzings-id|
 |943120|Mogelijke sessie-bindings aanval = SessionID-parameter naam zonder verwijzing|
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="rule-sets"></a><a name="owasp229"></a>Regel sets
+## <a name="rule-sets"></a><a name="owasp229"></a> Regel sets
 
-### <a name="crs_20_protocol_violations"></a><a name="crs20"></a>crs_20_protocol_violations
+### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |960911|Ongeldige regel voor HTTP-aanvraag|
 |981227|Apache-fout = ongeldige URI in aanvraag.|
@@ -563,7 +563,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |960012|POST-aanvraag mist header content-length.|
 |960902|Ongeldig gebruik van id-code ring.|
 |960022|De verwachte header is niet toegestaan voor HTTP 1,0.|
-|960020|De header Pragma vereist Cache-Control voor HTTP/1.1-aanvragen.|
+|960020|Voor de Pragma-header is Cache-Control header vereist voor HTTP/1.1-aanvragen.|
 |958291|Het veld Range = bestaat en begint met 0.|
 |958230|Range = ongeldige waarde voor laatste byte.|
 |958295|Er zijn meerdere/conflicterende header gegevens gevonden.|
@@ -575,9 +575,9 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |960901|Ongeldig teken in de aanvraag|
 |960018|Ongeldig teken in de aanvraag|
 
-### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a>crs_21_protocol_anomalies
+### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a> crs_21_protocol_anomalies
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |960008|Aanvraag voor ontbrekende host-header|
 |960007|Lege host-header|
@@ -588,9 +588,9 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |960904|Aanvraag met inhoud, maar ontbrekende content-type-header|
 |960017|Host-header is een numeriek IP-adres|
 
-### <a name="crs_23_request_limits"></a><a name="crs23"></a>crs_23_request_limits
+### <a name="crs_23_request_limits"></a><a name="crs23"></a> crs_23_request_limits
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |960209|Argument naam is te lang|
 |960208|Argument waarde te lang|
@@ -599,9 +599,9 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |960342|Geüploade bestands grootte te groot|
 |960343|Totale grootte van geüploade bestanden te groot|
 
-### <a name="crs_30_http_policy"></a><a name="crs30"></a>crs_30_http_policy
+### <a name="crs_30_http_policy"></a><a name="crs30"></a> crs_30_http_policy
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |960032|De methode is niet toegestaan door het beleid|
 |960010|Het inhouds type van de aanvraag is niet toegestaan door het beleid|
@@ -609,20 +609,20 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |960035|De extensie van het URL-bestand wordt beperkt door het beleid|
 |960038|De HTTP-header wordt beperkt door het beleid|
 
-### <a name="crs_35_bad_robots"></a><a name="crs35"></a>crs_35_bad_robots
+### <a name="crs_35_bad_robots"></a><a name="crs35"></a> crs_35_bad_robots
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |990002|Aanvraag geeft aan dat een beveiligings scanner de site heeft gescand|
 |990901|Aanvraag geeft aan dat een beveiligings scanner de site heeft gescand|
 |990902|Aanvraag geeft aan dat een beveiligings scanner de site heeft gescand|
 |990012|Webcrawler voor Rogue web site|
 
-### <a name="crs_40_generic_attacks"></a><a name="crs40"></a>crs_40_generic_attacks
+### <a name="crs_40_generic_attacks"></a><a name="crs40"></a> crs_40_generic_attacks
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
-|960024|Waarschuwing voor anomalie detectie van meta tekens-terugkerende niet-woord tekens|
+|960024|Waarschuwing voor detectie van afwijkings Meta-Character-terugkerende niet-woord tekens|
 |950008|Injectie van niet-gedocumenteerde ColdFusion-Tags|
 |950010|LDAP-injectie aanval|
 |950011|SSI-injectie aanval|
@@ -634,7 +634,7 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |950117|Aanval op externe bestands opname|
 |950118|Aanval op externe bestands opname|
 |950119|Aanval op externe bestands opname|
-|950120|Mogelijke RFI-aanval (Remote File Include) = niet-domein referentie/koppeling|
+|950120|Mogelijke RFI-aanval (Remote File Include) = Off-Domain referentie/koppeling|
 |981133|Regel 981133|
 |981134|Regel 981134|
 |950009|Aanval op sessie binding|
@@ -647,9 +647,9 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |958976|PHP-injectie aanval|
 |958977|PHP-injectie aanval|
 
-### <a name="crs_41_sql_injection_attacks"></a><a name="crs41sql"></a>crs_41_sql_injection_attacks
+### <a name="crs_41_sql_injection_attacks"></a><a name="crs41sql"></a> crs_41_sql_injection_attacks
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |981231|SQL-commentaar reeks gedetecteerd.|
 |981260|SQL hex-code ring geïdentificeerd|
@@ -684,9 +684,9 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |981253|Detecteert MySQL en opgeslagen procedure/functie-injecties van PostgreSQL|
 |981251|Detecteert MySQL UDF-injectie en andere pogingen tot het manipuleren van gegevens/structuren|
 
-### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a>crs_41_xss_attacks
+### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a> crs_41_xss_attacks
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |973336|XSS-filter-categorie 1 = script label vector|
 |973338|XSS-filter-categorie 3 = java script-URI-vector|
@@ -789,15 +789,15 @@ De volgende regel groepen en regels zijn beschikbaar wanneer Web Application fir
 |973329|IE-XSS-filters-aanval gedetecteerd.|
 |973328|IE-XSS-filters-aanval gedetecteerd.|
 
-### <a name="crs_42_tight_security"></a><a name="crs42"></a>crs_42_tight_security
+### <a name="crs_42_tight_security"></a><a name="crs42"></a> crs_42_tight_security
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |950103|Inbreuk op pad|
 
-### <a name="crs_45_trojans"></a><a name="crs45"></a>crs_45_trojans
+### <a name="crs_45_trojans"></a><a name="crs45"></a> crs_45_trojans
 
-|RuleId|Description|
+|RuleId|Beschrijving|
 |---|---|
 |950110|Back-uptoegang|
 |950921|Back-uptoegang|

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514277"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Webproxy configureren voor uw StorSimple-apparaat
@@ -143,7 +143,7 @@ Als de webproxy-instellingen onjuist zijn geconfigureerd, worden er fout bericht
 |:--- |:--- |:--- |:--- |
 | 1. |0x80070001 |De opdracht wordt uitgevoerd vanaf de passieve controller en kan niet communiceren met de actieve controller. |Voer de opdracht uit op de actieve controller. Als u de opdracht vanaf de passieve controller wilt uitvoeren, moet u de verbinding van passieve naar actieve controller verhelpen. U moet Microsoft Ondersteuning als deze verbinding is verbroken. |
 | 2. |0x800710dd-de bewerkings-id is ongeldig |Proxy-instellingen worden niet ondersteund op StorSimple Cloud Appliance. |Proxy-instellingen worden niet ondersteund op StorSimple Cloud Appliance. Deze kunnen alleen worden geconfigureerd op een fysiek StorSimple-apparaat. |
-| 3. |0x80070057-ongeldige para meter |Een van de opgegeven para meters voor de proxy-instellingen is ongeldig. |De URI is niet in de juiste indeling opgenomen. Gebruik de volgende indeling:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 3. |0x80070057-ongeldige para meter |Een van de opgegeven para meters voor de proxy-instellingen is ongeldig. |De URI is niet in de juiste indeling opgenomen. Gebruik de volgende indeling: `http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
 | 4. |0x800706ba-RPC-server niet beschikbaar |De hoofd oorzaak is een van de volgende:</br></br>Het cluster is niet actief. </br></br>De DataPath-service wordt niet uitgevoerd.</br></br>De opdracht wordt uitgevoerd vanaf de passieve controller en kan niet communiceren met de actieve controller. |Zorg Microsoft Ondersteuning om ervoor te zorgen dat het cluster actief is en dat de DataPath-service wordt uitgevoerd.</br></br>Voer de opdracht uit vanaf de actieve controller. Als u de opdracht van de passieve controller wilt uitvoeren, moet u ervoor zorgen dat de passieve controller kan communiceren met de actieve controller. U moet Microsoft Ondersteuning als deze verbinding is verbroken. |
 | 5. |0x800706be-RPC-aanroep is mislukt |Het cluster is niet beschikbaar. |Zorg Microsoft Ondersteuning om ervoor te zorgen dat het cluster actief is. |
 | 6. |0x8007138f-cluster bron niet gevonden |De cluster bron van de platform service is niet gevonden. Dit kan gebeuren wanneer de installatie niet de juiste is. |Mogelijk moet u de fabrieks instellingen herstellen op het apparaat. Mogelijk moet u een platform bron maken. Neem contact op met Microsoft Ondersteuning voor volgende stappen. |

@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86507944"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Ondersteunde scenario's voor HANA grote instanties
@@ -27,7 +27,7 @@ In dit artikel worden de ondersteunde scenario's en de details van de architectu
 >Als uw vereiste scenario niet in dit artikel wordt vermeld, neemt u contact op met het micro soft service management-team om uw vereisten te beoordelen.
 Voordat u de HLI-eenheid instelt, valideert u het ontwerp met SAP of uw service-implementatie partner.
 
-## <a name="terms-and-definitions"></a>Voorwaarden en definities
+## <a name="terms-and-definitions"></a>Termen en definities
 Laten we de termen en definities begrijpen die in dit artikel worden gebruikt:
 
 - **Sid**: een systeem-id voor het Hana-systeem
@@ -50,7 +50,7 @@ Het afgeleide architectuur ontwerp is uitsluitend gebaseerd op een infrastructuu
 In dit artikel worden de details van de twee onderdelen in elke ondersteunde architectuur beschreven:
 
 - Ethernet
-- Opslag
+- Storage
 
 ### <a name="ethernet"></a>Ethernet
 
@@ -61,7 +61,7 @@ Elke ingerichte server is vooraf geconfigureerd met sets van Ethernet-interfaces
 - **C**: wordt gebruikt voor connectiviteit tussen knoop punten.
 - **D**: wordt gebruikt voor de verbinding van knoop punt-naar-iSCSI-apparaat voor STONITH-installatie. Deze interface wordt alleen geconfigureerd wanneer een HSR-installatie wordt aangevraagd.  
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Knoop punt-naar-knoop punt|
@@ -96,7 +96,7 @@ Voor de implementatie van HANA-systeem replicatie of HANA-uitschalen is een Blad
 - Ethernet "D" mag alleen worden gebruikt voor toegang tot STONITH-apparaten voor pacemaker. Deze interface is vereist bij het configureren van HANA-systeem replicatie en het maken van een automatische failover van het besturings systeem met behulp van een op SBD gebaseerd apparaat.
 
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 Opslag is vooraf geconfigureerd op basis van de aangevraagde topologie. De grootte van het volume en de koppel punten variëren, afhankelijk van het aantal servers, het aantal Sku's en de geconfigureerde topologie. Raadpleeg de vereiste scenario's (verderop in dit artikel) voor meer informatie. Als u meer opslag ruimte nodig hebt, kunt u deze kopen in stappen van 1 TB.
 
 >[!NOTE]
@@ -133,7 +133,7 @@ Deze topologie ondersteunt één knoop punt in een scale-up configuratie met é�
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -144,10 +144,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |/hana/shared/SID | HANA-installatie | 
 |/hana/data/SID/mnt00001 | Gegevens bestanden installeren | 
@@ -168,7 +168,7 @@ Deze topologie ondersteunt één knoop punt in een scale-up configuratie met mee
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -179,10 +179,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |/hana/shared/SID1 | HANA-installatie voor SID1 | 
 |/hana/data/SID1/mnt00001 | Installatie van gegevens bestanden voor SID1 | 
@@ -208,7 +208,7 @@ Deze topologie ondersteunt één knoop punt in een scale-up configuratie met een
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -219,10 +219,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |/hana/shared/SID | HANA-installatie voor SID | 
 |/hana/data/SID/mnt00001 | Installatie van gegevens bestanden voor SID | 
@@ -249,7 +249,7 @@ Deze topologie ondersteunt één knoop punt in een scale-up configuratie met een
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -260,10 +260,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op de primaire site**|
 |/hana/shared/SID | HANA-installatie voor productie-SID | 
@@ -304,7 +304,7 @@ Deze topologie ondersteunt twee knoop punten voor de configuratie van HANA-syste
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -315,10 +315,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Gebruikt voor STONITH |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op het primaire knoop punt**|
 |/hana/shared/SID | HANA-installatie voor productie-SID | 
@@ -350,7 +350,7 @@ In het diagram wordt een scenario met meerdere doel einden weer gegeven op de DR
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -361,10 +361,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Gebruikt voor STONITH |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op het primaire knoop punt op de primaire site**|
 |/hana/shared/SID | HANA-installatie voor productie-SID | 
@@ -409,7 +409,7 @@ Deze topologie ondersteunt twee knoop punten in een automatische failover-config
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten |
@@ -420,10 +420,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op de Master-en standby-knoop punten**|
 |/hana/shared | HANA-installatie voor productie-SID | 
@@ -450,7 +450,7 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out configuratie. 
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten |
@@ -461,10 +461,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op de knoop punten Master, Worker en stand-by**|
 |/hana/shared | HANA-installatie voor productie-SID | 
@@ -486,7 +486,7 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out configuratie. 
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten |
@@ -497,10 +497,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op de Master-en worker-knoop punten**|
 |/hana/shared | HANA-installatie voor productie-SID | 
@@ -525,7 +525,7 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out met een DR. Zo
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten |
@@ -536,10 +536,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op het primaire knoop punt**|
 |/hana/shared | HANA-installatie voor productie-SID | 
@@ -570,7 +570,7 @@ Deze topologie ondersteunt één knoop punt in een scale-up configuratie met é�
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI/HSR |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -581,10 +581,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd op de HLI-eenheden (primair en DR):
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |/hana/shared/SID | HANA-installatie voor SID | 
 |/hana/data/SID/mnt00001 | Installatie van gegevens bestanden voor SID | 
@@ -611,7 +611,7 @@ De volgende koppel punten zijn vooraf geconfigureerd op de HLI-eenheden (primair
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI/HSR |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -622,10 +622,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op de primaire site**|
 |/hana/shared/SID | HANA-installatie voor productie-SID | 
@@ -661,7 +661,7 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI/HSR |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -672,10 +672,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op de primaire site**|
 |/hana/shared/SID | HANA-installatie voor productie-SID | 
@@ -706,7 +706,7 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI/HSR |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Geconfigureerd maar niet in gebruik |
@@ -717,10 +717,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op de primaire site**|
 |/hana/shared/SID | HANA-installatie voor productie-SID | 
@@ -757,7 +757,7 @@ Deze topologie ondersteunt meerdere knoop punten in een scale-out met een DR. U 
 ### <a name="ethernet"></a>Ethernet
 De volgende netwerk interfaces zijn vooraf geconfigureerd:
 
-| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Toepassing|
+| Logische NIC-interface | SKU-type | Naam met SUSE-besturings systeem | Naam met RHEL-besturings systeem | Gebruiksvoorbeeld|
 | --- | --- | --- | --- | --- |
 | A | TYPE I | ETH0. Tenant | eno1. Tenant | Client-naar-HLI/HSR |
 | B | TYPE I | eth2. Tenant | eno3. Tenant | Communicatie tussen knoop punten |
@@ -768,10 +768,10 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 De volgende koppel punten zijn vooraf geconfigureerd:
 
-| Koppel punt | Toepassing | 
+| Koppel punt | Gebruiksvoorbeeld | 
 | --- | --- |
 |**Op het primaire knoop punt**|
 |/hana/shared | HANA-installatie voor productie-SID | 

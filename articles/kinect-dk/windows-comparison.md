@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, Comparison, SDK, verschillen, hardware, software
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87031572"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Vergelijking van Azure Kinect en Kinect Windows v2
@@ -32,7 +32,7 @@ In de volgende tabel worden de belangrijkste verschillen tussen de Azure Kinect 
 |                   |            | 512 x 512 PX @30 fps |                       |
 |                   |            | 1024x1024 PX @15 fps |                       |
 | **Connectiviteit** | Gegevens | USB 3.1 gen 1 met type USB-C  | USB 3,1 gen 1|
-|  | Stroom | Externe PSU of USB-C | Externe PSU |
+|  | Voeding | Externe PSU of USB-C | Externe PSU |
 |  | Synchronisatie | RGB-& diepte intern, extern apparaat-naar-apparaat| RGB-& diepte alleen intern |
 | **Kunde** | Dimensies | 103 x 39 x 126 mm | 249 x 66 x 67 mm |
 |  | Kansdichtheids | 440 g | 970 g |
@@ -47,7 +47,7 @@ De volgende tabel bevat een vergelijking van de toegangs mogelijkheden op laag n
 | **Functionaliteit**| **Azure Kinect** | **Kinect voor Windows** | **Opmerkingen** |
 |---------|---------|------------|---------|
 | **Diepga** | ✔️ | ✔️ |    |   |
-| **IR** | ✔️ | ✔️ |  |
+| **FO** | ✔️ | ✔️ |  |
 | **Kleur** | ✔️ | ✔️ | Kleur indeling ondersteunt verschillen, Azure Kinect DK ondersteunt de volgende camera besturings elementen: bloot stelling, witbalans, helderheid, contrast, verzadiging, scherpte en controle |
 | **Audio** | ✔️ | ✔️ | Azure Kinect DK mics wordt geopend via Speech SDK of Windows native API |
 | **IMU** | ✔️ |  | Azure Kinect DK heeft een volledige IMU voor 6 assen en Kinect voor Windows biedt alleen 1-as |

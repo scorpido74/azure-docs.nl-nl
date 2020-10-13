@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86112109"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computer groepen in Azure Monitor-logboek query's
@@ -23,13 +23,13 @@ U kunt een computer groep maken in Azure Monitor met behulp van een van de metho
 
 | Methode | Beschrijving |
 |:--- |:--- |
-| Logboek query |Een logboek query maken waarmee een lijst met computers wordt geretourneerd. |
+| Logboekquery |Een logboek query maken waarmee een lijst met computers wordt geretourneerd. |
 | API voor zoeken in logboeken |Gebruik de API voor zoeken in Logboeken om programmatisch een computer groep te maken op basis van de resultaten van een logboek query. |
 | Active Directory |Automatisch het groepslid maatschap scannen van alle agent computers die lid zijn van een Active Directory domein en een groep in Azure Monitor maken voor elke beveiligings groep. (Alleen Windows-computers)|
 | Configuration Manager | Importeer verzamelingen van micro soft endpoint Configuration Manager en maak een groep in Azure Monitor voor elk. |
 | Windows Server Update Services |Automatisch WSUS-servers of-clients scannen voor doel groepen en een groep maken in Azure Monitor voor elk. |
 
-### <a name="log-query"></a>Logboek query
+### <a name="log-query"></a>Logboekquery
 Computer groepen die zijn gemaakt op basis van een logboek query bevatten alle computers die worden geretourneerd door een query die u definieert.  Deze query wordt uitgevoerd telkens wanneer de computer groep wordt gebruikt, zodat alle wijzigingen die zijn aangebracht sinds de groep is gemaakt, worden weer gegeven.  
 
 U kunt elke query voor een computer groep gebruiken, maar deze moet een afzonderlijke set computers retour neren met behulp van `distinct Computer` .  Hier volgt een typisch voor beeld van een query die u als computer groep zou kunnen gebruiken.
@@ -50,7 +50,7 @@ In de volgende tabel worden de eigenschappen beschreven die een computer groep d
 
 | Eigenschap | Beschrijving |
 |:---|:---|
-| Naam   | De naam van de query die moet worden weer gegeven in de portal. |
+| Name   | De naam van de query die moet worden weer gegeven in de portal. |
 | Functiealias | Een unieke alias die wordt gebruikt om de computer groep in een query te identificeren. |
 | Categorie       | Categorie voor het ordenen van de query's in de portal. |
 
@@ -122,7 +122,7 @@ let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Gro
 ## <a name="computer-group-records"></a>Records computer groep
 Er wordt een record gemaakt in de werk ruimte Log Analytics voor elk lidmaatschap van de computer groep dat is gemaakt op basis van Active Directory of WSUS.  Deze records hebben het type **ComputerGroup** en hebben de eigenschappen in de volgende tabel.  Er worden geen records gemaakt voor computer groepen op basis van logboek query's.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |
