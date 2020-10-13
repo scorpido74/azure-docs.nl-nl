@@ -1,18 +1,25 @@
 ---
 title: Bridge migreren naar Kubernetes
 services: azure-dev-spaces
-ms.date: 09/21/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Bridge to Kubernetes
-ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995520"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962850"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Bridge migreren naar Kubernetes
+
+> [!IMPORTANT]
+> Azure dev Spaces worden op 31 oktober 2023 ingetrokken. Ontwikkel aars moeten overstappen op het gebruik van Bridge naar Kubernetes, een hulp programma voor ontwikkel aars van clients.
+>
+> Het doel van Azure dev Spaces is het versnellen van ontwikkel aars tot het ontwikkelen op Kubernetes. Een aanzienlijke afweging van de aanpak van Azure dev Spaces is een extra last voor ontwikkel aars voor het verkrijgen van docker-en Kubernetes-configuraties en Kubernetes-implementatie concepten. In de loop van de tijd werd ook duidelijk dat de aanpak van Azure dev Spaces de snelheid van de interne herhalings ontwikkeling op Kubernetes niet effectief vermindert. Bridge to Kubernetes verlaagt effectief de snelheid van de interne loop-ontwikkeling en vermijdt overbodige last van ontwikkel aars.
+>
+> De kern missie blijft ongewijzigd: bouw de beste ervaring voor ontwikkel aars voor het ontwikkelen, testen en fout opsporing van micro service-code in de context van de grotere toepassing.
 
 Bridge to Kubernetes biedt een lichtere gewicht alternatief voor veel van de ontwikkelings scenario's die werken met Azure dev Spaces. Bridge to Kubernetes is een client-side ervaring met het gebruik van extensies in [Visual Studio][vs]   en [Visual Studio code][vsc].  
 
@@ -51,7 +58,7 @@ Azure dev Spaces en Bridge to Kubernetes hebben vergelijk bare functies, maar ze
 | Werkt op Windows 10  | Ja  | Ja  |
 | Werkt op Linux  | Ja  | Ja  |
 | Werkt op macOS  | Ja  | Ja  |
-| **Functies** |
+| **Functionaliteit** |
 | Isolatie van ontwikkel aars of team ontwikkeling  | Ja  | Ja  |
 | Omgevings variabelen selectief overschrijven  | Nee  | Ja  |
 | Dockerfile-en helm-grafiek maken  | Ja  | Nee  |

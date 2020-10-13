@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692268"
+ms.locfileid: "91931833"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Aanbevelingen van prestatiebenchmarks voor Azure NetApp Files
 
@@ -24,7 +24,7 @@ Als u de prestatie kenmerken van een Azure NetApp Files volume wilt weten, kunt 
 
 ### <a name="vm-instance-sizing"></a>Grootte van VM-exemplaar
 
-Zorg ervoor dat u een VM-exemplaar (virtuele machine) gebruikt dat de juiste grootte heeft voor het uitvoeren van de tests voor de beste resultaten. In de volgende voor beelden wordt een Standard_D32s_v3-exemplaar gebruikt. Zie [grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) voor Windows-Vm's en [grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor Vm's op basis van Linux voor meer informatie over de grootte van VM-exemplaren.
+Zorg ervoor dat u een VM-exemplaar (virtuele machine) gebruikt dat de juiste grootte heeft voor het uitvoeren van de tests voor de beste resultaten. In de volgende voor beelden wordt een Standard_D32s_v3-exemplaar gebruikt. Zie [grootten voor virtuele Windows-machines in azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) voor Windows-Vm's en [grootten voor virtuele Linux-machines in azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) voor Vm's op basis van Linux voor meer informatie over de grootte van VM-exemplaren.
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Volume grootte Azure NetApp Files
 
@@ -113,7 +113,7 @@ U kunt ook een dash board maken in Azure Monitor voor Azure NetApp Files door na
 
 ### <a name="azure-monitor-api-access"></a>Azure Monitor API-toegang
 
-U kunt toegang krijgen tot Azure NetApp Files meter items door gebruik te maken van REST API-aanroepen. Zie [ondersteunde metrische gegevens met Azure monitor: micro soft. NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) voor tellers voor capaciteits Pools en volumes.
+U kunt toegang krijgen tot Azure NetApp Files meter items door gebruik te maken van REST API-aanroepen. Zie [ondersteunde metrische gegevens met Azure monitor: micro soft. NetApp/netAppAccounts/capacityPools/volumes](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) voor tellers voor capaciteits Pools en volumes.
 
 In het volgende voor beeld wordt een GET URL weer gegeven voor het weer geven van logische volume grootte:
 

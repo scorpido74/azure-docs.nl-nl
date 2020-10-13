@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e401fb35e6524e8a32cbe09bf5b9c7feafbf5da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331264"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974733"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
 
@@ -55,9 +55,9 @@ Raadpleeg SAP Note [1928533]voor informatie over ondersteunde SAP-producten en t
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM Db2 voor Linux-, UNIX-en Windows-configuratie richtlijnen voor SAP-installaties in azure-Vm's
 ### <a name="storage-configuration"></a>Opslagconfiguratie
-Raadpleeg het artikel [Azure Storage typen voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) voor een overzicht van Azure Storage-typen voor SAP-werk belasting. alle database bestanden moeten worden opgeslagen op gekoppelde schijven van Azure Block Storage (Windows: NFFS, Linux: xfs, ext4 of ext3). Elk type netwerk station of externe shares zoals de volgende Azure-Services worden **niet** ondersteund voor database bestanden: 
+Raadpleeg het artikel [Azure Storage typen voor SAP-workload](./planning-guide-storage.md) voor een overzicht van Azure Storage-typen voor SAP-werk belasting. alle database bestanden moeten worden opgeslagen op gekoppelde schijven van Azure Block Storage (Windows: NFFS, Linux: xfs, ext4 of ext3). Elk type netwerk station of externe shares zoals de volgende Azure-Services worden **niet** ondersteund voor database bestanden: 
 
-* [Microsoft Azure-bestands service](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Microsoft Azure-bestands service](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
@@ -87,9 +87,9 @@ Hieronder volgt een basislijn configuratie voor verschillende grootten en het ge
 | VM-naam/-grootte |Db2-koppel punt |Azure Premium Disk |Aantal schijven |IOPS |Door Voer [MB/s] |Grootte [GB] |Burst IOPS |Burst-Passthr [GB] | Stripe-grootte | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3500  |170  ||  |
-|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1000  |200  |256  |7.000  |340  |256 kB |ReadOnly |
+|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1000  |200  |256  |7\.000  |340  |256 kB |ReadOnly |
 |RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3500  |170  | ||
-| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7.000  |340  |64 kB ||
+| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7\.000  |340  |64 kB ||
 | |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Small SAP-systeem: data base grootte 200-750 GB: Small Business Suite
@@ -97,8 +97,8 @@ Hieronder volgt een basislijn configuratie voor verschillende grootten en het ge
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3500  |170  || |
 |vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4.400  |500  |1,024  |14.000  |680  |256 kB |ReadOnly |
-|RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7.000  |340  |128 kB ||
-| |/DB2/ <SID> /log_dir |P15 |2 |2200  |250  |512  |7.000  |340  |64 kB ||
+|RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7\.000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P15 |2 |2200  |250  |512  |7\.000  |340  |64 kB ||
 | |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Gemiddeld SAP-systeem: database grootte 500-1000 GB: Small Business Suite
@@ -106,8 +106,8 @@ Hieronder volgt een basislijn configuratie voor verschillende grootten en het ge
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3500  |170  || |
 |vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10.000  |400  |2,048  |10.000  |400  |256 kB |ReadOnly |
-|RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1000  |200  |256  |7.000  |340  |128 kB ||
-| |/DB2/ <SID> /log_dir |P20 |2 |4.600  |300  |1,024  |7.000  |340  |64 kB ||
+|RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1000  |200  |256  |7\.000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P20 |2 |4.600  |300  |1,024  |7\.000  |340  |64 kB ||
 | |/DB2/ <SID> /offline_log_dir |P15 |1 |1100  |125  |256  |3500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Groot SAP-systeem: data base grootte 750-2000 GB: Business Suite
@@ -115,7 +115,7 @@ Hieronder volgt een basislijn configuratie voor verschillende grootten en het ge
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3500  |170  || |
 |vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20.000  |800  |4,096  |20.000  |800  |256 kB |ReadOnly |
-|RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2200  |250  |512  |7.000  |340  |128 kB ||
+|RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2200  |250  |512  |7\.000  |340  |128 kB ||
 | |/DB2/ <SID> /log_dir |P20 |4 |9.200  |600  |2,048  |14.000  |680  |64 kB ||
 | |/DB2/ <SID> /offline_log_dir |P20 |1 |2\.300  |150  |512  |3500  |170  || |
 
@@ -124,7 +124,7 @@ Hieronder volgt een basislijn configuratie voor verschillende grootten en het ge
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3500  |170  || |
 |vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30.000  |1,000  |8,192  |30.000  |1,000  |256 kB |ReadOnly |
-|RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4.600  |300  |1,024  |7.000  |340  |128 kB ||
+|RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4.600  |300  |1,024  |7\.000  |340  |128 kB ||
 | |/DB2/ <SID> /log_dir |P30 |4 |20.000  |800  |4,096  |20.000  |800  |64 kB |Write Accelerator |
 | |/DB2/ <SID> /offline_log_dir |P30 |1 |5\.000  |200  |1,024  |5\.000  |200  || |
 
@@ -177,7 +177,7 @@ Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's m
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overige
 Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking, zijn van toepassing zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) voor implementaties van vm's met de IBM-data base.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

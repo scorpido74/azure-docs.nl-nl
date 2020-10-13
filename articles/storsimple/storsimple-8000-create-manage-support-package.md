@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182012"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973866"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Een ondersteunings pakket voor de StorSimple 8000-serie maken en beheren
 
@@ -60,7 +60,7 @@ U kunt uw hand matig gegenereerde ondersteunings pakket delen met Microsoft Onde
      
        Het ondersteunings pakket wordt gemaakt voor beide controllers in de standaardmap. Het pakket is een versleuteld, gecomprimeerd bestand dat naar Microsoft Ondersteuning kan worden verzonden voor het oplossen van problemen. Zie [contact opnemen met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md)voor meer informatie.
 
-### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>De para meters van de cmdlet Export-HcsSupportPackage
+### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>De cmdlet-para meters voor Export-HcsSupportPackage
 
 U kunt de volgende para meters gebruiken met de cmdlet Export-HcsSupportPackage.
 
@@ -108,7 +108,7 @@ Als u een ondersteunings pakket wilt bewerken voordat u het uploadt op de Micros
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![Ondersteunings pakket bewerken](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![Ondersteunings pakket 2 bewerken](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. Wanneer u hierom wordt gevraagd, geeft u een wachtwoordzin voor versleuteling op voor het gewijzigde ondersteunings pakket.
    
     ```powershell

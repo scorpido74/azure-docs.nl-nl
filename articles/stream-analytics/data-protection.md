@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812859"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Gegevens beveiliging in Azure Stream Analytics 
@@ -33,7 +33,7 @@ Azure Stream Analytics blijven de volgende meta gegevens en gegevens behouden om
 
 U kunt meer te weten komen over de [nalevings aanbiedingen van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)om u te helpen te voldoen aan uw nalevings verplichtingen in een gereguleerde branche of omgeving. 
 
-## <a name="in-region-data-residency"></a>Gegevens locatie in de regio
+## <a name="in-region-data-residency"></a>In-Region data locatie
 Azure Stream Analytics klant gegevens en andere meta gegevens die hierboven worden beschreven, worden opgeslagen. Klant gegevens worden standaard opgeslagen door Azure Stream Analytics in één regio, zodat deze service automatisch voldoet aan de vereisten van de regio gegevens locatie, inclusief die in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net/).
 Daarnaast kunt u ervoor kiezen om alle gegevensassets (klant gegevens en andere meta gegevens) op te slaan die betrekking hebben op uw stream Analytics-taak in één regio door ze te versleutelen in een opslag account van uw keuze.
 

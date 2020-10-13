@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b2dea32163fbb2827daed616087c893631429aea
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0709152631037e7561094082c8ce02b860fd4edc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400848"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951556"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure-beveiligings basislijn voor Azure Cognitive Search
 
-Deze beveiligings basislijn is van toepassing op richt lijnen van de [Azure Security Bench Mark versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview) naar Azure Cognitive Search. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op basis van de **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op Azure Cognitive Search. **Besturings elementen** die niet van toepassing zijn op Azure Cognitive Search, of de klant is uitgesloten.
+Deze beveiligings basislijn is van toepassing op richt lijnen van de [Azure Security Bench Mark versie 1,0](../security/benchmarks/overview.md) naar Azure Cognitive Search. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op basis van de **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op Azure Cognitive Search. **Besturings elementen** die niet van toepassing zijn op Azure Cognitive Search, of de klant is uitgesloten.
 
 Zie het [volledige azure Cognitive Search Security Baseline-toewijzings bestand](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)voor meer informatie over de manier waarop Azure Cognitive Search volledig is toegewezen aan de beveiligings benchmark van Azure.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [Azure Security Bench Mark: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Network Security](../security/benchmarks/security-control-network-security.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
@@ -30,9 +30,9 @@ Zie het [volledige azure Cognitive Search Security Baseline-toewijzings bestand]
 
 Cognitive Search biedt ook ondersteuning voor extra netwerk beveiligings functies voor het beheren van netwerk toegangs beheer lijsten. Configureer uw zoek service zo dat alleen communicatie met vertrouwde bronnen wordt toegestaan door de toegang te beperken tot specifieke open bare IP-adresbereiken met de firewall mogelijkheid.
 
-- [Privé-eind punten configureren voor Azure Cognitive Search](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Privé-eind punten configureren voor Azure Cognitive Search](./service-create-private-endpoint.md)
 
-- [De Azure Cognitive Search-firewall configureren](https://docs.microsoft.com/azure/search/service-configure-firewall)
+- [De Azure Cognitive Search-firewall configureren](./service-configure-firewall.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -42,11 +42,11 @@ Cognitive Search biedt ook ondersteuning voor extra netwerk beveiligings functie
 
 **Richt lijnen**: Cognitive Search kunnen niet rechtstreeks in een virtueel netwerk worden geïmplementeerd. Als uw client toepassing of gegevens bron zich echter in een virtueel netwerk bevindt, kunt u verkeer bewaken en registreren voor deze in-Network-onderdelen, waaronder aanvragen die worden verzonden naar een zoek service in de Cloud. Standaard aanbevelingen zijn het inschakelen van een stroom logboek van een netwerk beveiligings groep en het verzenden van logboeken naar een Azure Storage of een Log Analytics-werk ruimte. U kunt eventueel Traffic Analytics gebruiken om inzicht te krijgen in verkeers patronen.
 
-- [Stroom logboeken van netwerk beveiligings groepen inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Stroom logboeken van netwerk beveiligings groepen inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Traffic Analytics inschakelen en gebruiken](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [Traffic Analytics inschakelen en gebruiken](../network-watcher/traffic-analytics.md)
 
-- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -64,7 +64,7 @@ Cognitive Search biedt ook ondersteuning voor extra netwerk beveiligings functie
 
 **Hulp**: Cognitive Search biedt geen specifieke functie voor het bestrijden van een gedistribueerde Denial-of-service-aanval, maar u kunt DDoS Protection standaard inschakelen op de virtuele netwerken die zijn gekoppeld aan uw Cognitive Search-service voor algemene beveiliging.
 
-- [DDoS-beveiliging configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -76,9 +76,9 @@ Cognitive Search biedt ook ondersteuning voor extra netwerk beveiligings functie
 
 Schakel Network Watcher pakket opname in als dit nodig is voor het onderzoeken van afwijkende activiteiten.
 
-- [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [NSG-stroom logboeken inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Network Watcher inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [Network Watcher inschakelen](../network-watcher/network-watcher-create.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -88,9 +88,9 @@ Schakel Network Watcher pakket opname in als dit nodig is voor het onderzoeken v
 
 **Richt lijnen**: Cognitive Search biedt geen ondersteuning voor het detecteren van inbreuken op het netwerk, maar als indringings beperking kunt u firewall regels configureren om de IP-adressen op te geven die worden geaccepteerd door de Cognitive Search-service. Configureer een persoonlijk eind punt om zoeken naar verkeer van het open bare Internet te blijven.
 
-- [Door de klant beheerde sleutels configureren voor gegevens versleuteling](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [Door de klant beheerde sleutels configureren voor gegevens versleuteling](./search-security-manage-encryption-keys.md)
 
-- [Informatie over door de klant beheerde sleutels ophalen van indexen en synoniemen toewijzingen](https://docs.microsoft.com/azure/search/search-security-get-encryption-keys)
+- [Informatie over door de klant beheerde sleutels ophalen van indexen en synoniemen toewijzingen](./search-security-get-encryption-keys.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -110,7 +110,7 @@ Schakel Network Watcher pakket opname in als dit nodig is voor het onderzoeken v
 
 Verkeer naar resources toestaan of weigeren door de naam van de servicetag (bijvoorbeeld AzureCognitiveSearch) op te geven in het juiste bron-of doel veld van een regel. 
 
-- [Service tags van virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Service tags van virtueel netwerk](../virtual-network/service-tags-overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -132,13 +132,13 @@ Gebruik een van de ingebouwde Azure Policy definities met betrekking tot labelin
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren. 
 
-- [Een persoonlijk eind punt maken voor Cognitive Search](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Een persoonlijk eind punt maken voor Cognitive Search](./service-create-private-endpoint.md)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-- [Een Azure-Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Een Azure-Virtual Network maken](../virtual-network/quick-create-portal.md)
 
-- [Netwerk verkeer filteren met regels voor netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Netwerk verkeer filteren met regels voor netwerk beveiligings groepen](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -154,7 +154,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie [Azure Security Bench Mark: Logging and monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Logging and monitoring](../security/benchmarks/security-control-logging-monitoring.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -171,9 +171,9 @@ U kunt deze gegevens ook in-of uitschakelen voor Azure Sentinel of een SIEM van 
 
 - [Aan de slag met Azure Monitor en integratie van SIEM van derden](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -183,9 +183,9 @@ U kunt deze gegevens ook in-of uitschakelen voor Azure Sentinel of een SIEM van 
 
 **Richt lijnen**: diagnose-en operationele logboeken bieden inzicht in de gedetailleerde bewerkingen van Cognitive Search en zijn nuttig voor het bewaken van de service en voor werk belastingen die toegang hebben tot uw service.  Schakel logboek registratie in om diagnostische gegevens vast te leggen door op te geven waar de logboek gegevens worden opgeslagen.
 
-- [Logboek gegevens verzamelen en analyseren voor Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Logboek gegevens verzamelen en analyseren voor Azure Cognitive Search](./search-monitor-logs.md)
 
-- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
 **Azure Security Center bewaking**: Ja
 
@@ -205,9 +205,9 @@ U kunt deze gegevens ook in-of uitschakelen voor Azure Sentinel of een SIEM van 
 
 Stel in Azure Monitor de Bewaar periode voor uw Log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage accounts voor lange termijn-en archiverings opslag. 
 
-- [De Bewaar periode voor gegevens wijzigen in Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [De Bewaar periode voor gegevens wijzigen in Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Bewaar beleid configureren voor logboeken van Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Bewaar beleid configureren voor logboeken van Azure Storage-account](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Azure Security Center bewaking**: Ja
 
@@ -217,15 +217,15 @@ Stel in Azure Monitor de Bewaar periode voor uw Log Analytics werk ruimte in vol
 
 **Richt lijnen**: Logboeken analyseren en bewaken vanuit uw Cognitive Search-service voor afwijkend gedrag. Gebruik de Log Analytics van Azure Monitor om logboeken te controleren en query's uit te voeren op logboek gegevens. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
-- [Logboek gegevens voor Cognitive Search verzamelen en analyseren](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Logboek gegevens voor Cognitive Search verzamelen en analyseren](./search-monitor-logs.md)
 
-- [Zoek logboek gegevens in Power BI visualiseren](https://docs.microsoft.com/azure/search/search-monitor-logs-powerbi)
+- [Zoek logboek gegevens in Power BI visualiseren](./search-monitor-logs-powerbi.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-- [Meer informatie over Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [Meer informatie over Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 
-- [Aangepaste query's uitvoeren in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Aangepaste query's uitvoeren in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -235,11 +235,11 @@ Stel in Azure Monitor de Bewaar periode voor uw Log Analytics werk ruimte in vol
 
 **Hulp**: gebruik Security Center met log Analytics werk ruimte voor bewaking en waarschuwingen over afwijkende activiteiten die in beveiligings logboeken en gebeurtenissen zijn gevonden. U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-- [Waarschuwingen beheren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Waarschuwingen beheren in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Een waarschuwing over logboek gegevens van log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Een waarschuwing over logboek gegevens van log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -271,7 +271,7 @@ Stel in Azure Monitor de Bewaar periode voor uw Log Analytics werk ruimte in vol
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [Azure Security Bench Mark: identiteits-en toegangs beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [Azure Security Bench Mark: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
@@ -279,12 +279,12 @@ Stel in Azure Monitor de Bewaar periode voor uw Log Analytics werk ruimte in vol
 
 Cognitive Search rollen zijn gekoppeld aan machtigingen die beheer taken op service niveau ondersteunen.  Deze rollen verlenen geen toegang tot het service-eind punt. Toegang tot bewerkingen op het eind punt (zoals index beheer, index populatie en query's op zoek gegevens). Gebruik de API-sleutels om de aanvraag te verifiëren.
 
-- [Rollen instellen voor beheerders toegang tot Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Rollen instellen voor beheerders toegang tot Azure Cognitive Search](./search-security-rbac.md)
 
-- [API-sleutels voor een Azure Cognitive Search-service maken en beheren](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [API-sleutels voor een Azure Cognitive Search-service maken en beheren](./search-security-api-keys.md)
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -304,9 +304,9 @@ Cognitive Search rollen zijn gekoppeld aan machtigingen die beheer taken op serv
 
 Gebruik de ingebouwde Azure AD-rollen die expliciet moeten worden toegewezen voor beheer bewerkingen. Roep de Azure AD Power shell-module aan om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-- [Rollen gebruiken voor beheerders toegang in Cognitive Search](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Rollen gebruiken voor beheerders toegang in Cognitive Search](./search-security-rbac.md)
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -318,7 +318,7 @@ Gebruik de ingebouwde Azure AD-rollen die expliciet moeten worden toegewezen voo
 
 Stel een proces in om het aantal identiteiten en referenties te verminderen door eenmalige aanmelding in te scha kelen voor de service met de bestaande identiteiten van uw organisatie.
 
-- [Informatie over eenmalige aanmelding met Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Informatie over eenmalige aanmelding met Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -328,9 +328,9 @@ Stel een proces in om het aantal identiteiten en referenties te verminderen door
 
 **Hulp**bij het inschakelen van de functie voor het maken van Azure Active Directory (Azure AD) multi-factor Authentication (MFA) en het volgen van de aanbevelingen voor de identiteit en toegang van Security Center.
 
-- [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) 
+- [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md) 
 
-- [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
+- [Identiteit en toegang bewaken in Azure Security Center](../security-center/security-center-identity-access.md) 
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -340,10 +340,10 @@ Stel een proces in om het aantal identiteiten en referenties te verminderen door
 
 **Hulp**: gebruik een privileged Access-werk station (Paw) met multi-factor Authentication (MFA) dat is geconfigureerd om u aan te melden bij en toegang te krijgen tot Azure-resources.
 
-- [Meer informatie over veilige, door Azure beheerde werk stations](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+- [Meer informatie over veilige, door Azure beheerde werk stations](../active-directory/devices/concept-azure-managed-workstation.md)
  
 
-- [Azure AD MFA inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure AD MFA inschakelen](../active-directory/authentication/howto-mfa-getstarted.md)
  
 
 **Azure Security Center bewaking**: niet van toepassing
@@ -354,9 +354,9 @@ Stel een proces in om het aantal identiteiten en referenties te verminderen door
 
 **Hulp**: gebruik Azure Active Directory (Azure AD) beveiligings rapporten en-bewaking om te detecteren wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Security Center om identiteits-en toegangs activiteiten te bewaken.
 
-- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -374,9 +374,9 @@ Stel een proces in om het aantal identiteiten en referenties te verminderen door
 
 **Hulp**: gebruik Azure Active Directory (Azure AD) als het centrale verificatie-en autorisatie systeem voor beheer taken op service niveau in azure Cognitive Search. Azure AD-identiteiten verlenen geen toegang tot het eind punt van de zoek service.  Toegang tot bewerkingen, zoals index beheer, index populatie en query's op zoek gegevens, zijn beschikbaar via API-sleutels.
 
-- [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Een Azure AD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [API-sleutels voor een Azure Cognitive Search-service maken en beheren](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [API-sleutels voor een Azure Cognitive Search-service maken en beheren](./search-security-api-keys.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -388,11 +388,11 @@ Stel een proces in om het aantal identiteiten en referenties te verminderen door
 
 Bekijk de diagnostische logboeken van Cognitive Search voor activiteit in het eind punt van de zoek service, zoals index beheer, index populatie en query's.
 
-- [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
-- [Azure AD-identiteits-en toegangs beoordelingen gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Azure AD-identiteits-en toegangs beoordelingen gebruiken](../active-directory/governance/access-reviews-overview.md)
 
-- [Bewerkingen en activiteiten van Azure Cognitive Search bewaken](https://docs.microsoft.com/azure/search/search-monitor-usage)
+- [Bewerkingen en activiteiten van Azure Cognitive Search bewaken](./search-monitor-usage.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -404,7 +404,7 @@ Bekijk de diagnostische logboeken van Cognitive Search voor activiteit in het ei
 
 Stroom lijn dit proces door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. Gewenste waarschuwingen configureren in Log Analytics werk ruimte.
 
-- [Azure-activiteiten logboeken integreren met Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) 
+- [Azure-activiteiten logboeken integreren met Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -414,11 +414,11 @@ Stroom lijn dit proces door Diagnostische instellingen voor Azure AD-gebruikers 
 
 **Hulp**: gebruik Azure Active Directory-functies (Azure AD) voor identiteits beveiliging om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. Gegevens opnemen in azure Sentinel voor verder onderzoek, indien nodig.
 
-- [Risk ante aanmeldingen voor Azure AD weer geven](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies) 
+- [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md) 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -434,7 +434,7 @@ Stroom lijn dit proces door Diagnostische instellingen voor Azure AD-gebruikers 
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [Azure Security Bench Mark: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Data Protection](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
@@ -448,11 +448,11 @@ Stroom lijn dit proces door Diagnostische instellingen voor Azure AD-gebruikers 
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Resources moeten worden gescheiden door het virtuele netwerk/subnet, op de juiste wijze worden gelabeld en beveiligd in een netwerk beveiligings groep of Azure Firewall. Resources die gevoelige gegevens opslaan of verwerken, moeten worden geïsoleerd. Gebruik een persoonlijke koppeling om een persoonlijk eind punt te configureren voor Cognitive Search.
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md) 
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-- [Een persoonlijk eind punt maken voor Cognitive Search](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Een persoonlijk eind punt maken voor Cognitive Search](./service-create-private-endpoint.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -464,7 +464,7 @@ Stroom lijn dit proces door Diagnostische instellingen voor Azure AD-gebruikers 
 
 Micro soft beheert het onderliggende platform en behandelt alle inhoud van de klant als gevoelig en bescherming tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data) 
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md) 
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -474,7 +474,7 @@ Micro soft beheert het onderliggende platform en behandelt alle inhoud van de kl
 
 **Hulp**: Cognitive Search versleutelt gegevens tijdens de overdracht met Transport Layer Security 1,2 en dwingt te allen tijde VERSLEUTELING (SSL/TLS) af voor alle verbindingen. Dit zorgt ervoor dat alle gegevens worden versleuteld in transit tussen de client en de service.
 
-- [Meer informatie over versleuteling in transit met Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) 
+- [Meer informatie over versleuteling in transit met Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -486,7 +486,7 @@ Micro soft beheert het onderliggende platform en behandelt alle inhoud van de kl
 
 Micro soft beheert het onderliggende platform en behandelt alle inhoud van de klant als gevoelig en bescherming tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -495,10 +495,10 @@ Micro soft beheert het onderliggende platform en behandelt alle inhoud van de kl
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
 **Richt lijnen**: voor Service beheer gebruikt u Azure RBAC (op rollen gebaseerd toegangs beheer) voor het beheren van de toegang tot sleutels en configuratie. Voor inhouds bewerkingen, zoals indexering en query's, gebruikt Cognitive Search sleutels in plaats van een model voor toegangs beheer op basis van een identiteit. Gebruik Azure RBAC om de toegang tot sleutels te beheren.
-- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 
+- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md) 
 
  
-- [Rollen gebruiken voor beheerders toegang tot Cognitive Search](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Rollen gebruiken voor beheerders toegang tot Cognitive Search](./search-security-rbac.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -510,7 +510,7 @@ Micro soft beheert het onderliggende platform en behandelt alle inhoud van de kl
 
 Micro soft beheert de onderliggende infra structuur voor Cognitive Search en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -520,9 +520,9 @@ Micro soft beheert de onderliggende infra structuur voor Cognitive Search en hee
 
 **Hulp**: Cognitive Search automatisch geïndexeerde inhoud versleutelen met door micro soft beheerde sleutels. Als er meer beveiliging nodig is, kunt u standaard versleuteling aanvullen met een tweede versleutelings laag met behulp van sleutels die u in Azure Key Vault maakt en beheert.
 
-- [Door de klant beheerde sleutels voor gegevens versleuteling configureren in azure Cognitive Search](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [Door de klant beheerde sleutels voor gegevens versleuteling configureren in azure Cognitive Search](./search-security-manage-encryption-keys.md)
 
-- [Meer informatie over versleuteling in de rest van Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Meer informatie over versleuteling in de rest van Azure](../security/fundamentals/encryption-atrest.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -532,9 +532,9 @@ Micro soft beheert de onderliggende infra structuur voor Cognitive Search en hee
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in productie-exemplaren van Cognitive Search en andere essentiële of gerelateerde resources.
 
-- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
-- [Waarschuwingen voor Cognitive Search activiteiten maken](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Waarschuwingen voor Cognitive Search activiteiten maken](./search-monitor-logs.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -542,7 +542,7 @@ Micro soft beheert de onderliggende infra structuur voor Cognitive Search en hee
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie voor meer informatie de [Azure Security Bench Mark: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Zie voor meer informatie de [Azure Security Bench Mark: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -586,7 +586,7 @@ Micro soft beheert de onderliggende infra structuur voor Cognitive Search en hee
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie [Azure Security Bench Mark: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Inventory and Asset Management](../security/benchmarks/security-control-inventory-asset-management.md)voor meer informatie.*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
@@ -594,11 +594,11 @@ Micro soft beheert de onderliggende infra structuur voor Cognitive Search en hee
 
 Zorg ervoor dat de juiste (Lees-) machtigingen voor uw Tenant zijn en alle Azure-abonnementen en de resources in uw abonnementen inventariseren.  
 
-- [Query's maken met Azure resource Graph Explorer](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [Query's maken met Azure resource Graph Explorer](../governance/resource-graph/first-query-portal.md) 
 
-- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
 
-- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -608,7 +608,7 @@ Zorg ervoor dat de juiste (Lees-) machtigingen voor uw Tenant zijn en alle Azure
 
 **Richt lijnen**: Tags Toep assen op Azure-resources met meta gegevens om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -617,11 +617,11 @@ Zorg ervoor dat de juiste (Lees-) machtigingen voor uw Tenant zijn en alle Azure
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: niet-geautoriseerde Azure-resources verwijderen
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, indien van toepassing, om assets te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md) 
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md) 
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) 
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md) 
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -639,9 +639,9 @@ Zorg ervoor dat de juiste (Lees-) machtigingen voor uw Tenant zijn en alle Azure
 
 **Richt lijnen**: het wordt aanbevolen een inventaris te definiëren van Azure-resources die zijn goedgekeurd voor gebruik volgens uw organisatie beleid en standaarden, en vervolgens te controleren op niet-goedgekeurde Azure-resources met Azure Policy of Azure resource Graph.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [Query's maken met Azure Graph](../governance/resource-graph/first-query-portal.md) 
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -682,9 +682,9 @@ Het is raadzaam dat u beschikt over een inventarisatie van software toepassingen
 
 Gebruik Azure resource Graph om resources binnen uw abonnement (en) te doorzoeken of te detecteren. Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types) 
+- [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md) 
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -726,7 +726,7 @@ Beheer de toegang tot de sleutels die worden gebruikt voor het verifiëren van a
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [Azure Security Bench Mark: Secure Configuration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Secure Configuration](../security/benchmarks/security-control-secure-configuration.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
@@ -738,9 +738,9 @@ Azure Resource Manager kunt de sjabloon in JavaScript Object Notation (JSON) exp
 
 U kunt ook de aanbevelingen van Azure Security Center gebruiken als een veilige configuratie basislijn voor uw Azure-resources. 
 
-- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](./security-controls-policy.md)
 
-- [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -760,13 +760,13 @@ U kunt ook de aanbevelingen van Azure Security Center gebruiken als een veilige 
 
 Azure Resource Manager sjablonen kunnen worden gebruikt voor het onderhouden van de beveiligings configuratie van uw Azure-resources die uw organisatie nodig heeft. 
 
-- [Azure Policy effecten begrijpen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy effecten begrijpen](../governance/policy/concepts/effects.md)
 
-- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](./security-controls-policy.md)
 
-- [Beleidsregels voor het afdwingen van naleving maken en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Overzicht van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Overzicht van Azure Resource Manager sjablonen](../azure-resource-manager/templates/overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -784,9 +784,9 @@ Azure Resource Manager sjablonen kunnen worden gebruikt voor het onderhouden van
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -808,9 +808,9 @@ Gebruik aliassen om aangepast beleid te maken om de netwerk configuraties te con
 
 Daarnaast kunt u Azure Automation gebruiken om configuratie wijzigingen te implementeren en beleids uitzonderingen te beheren. 
 
-- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](./security-controls-policy.md)
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -828,9 +828,9 @@ Daarnaast kunt u Azure Automation gebruiken om configuratie wijzigingen te imple
 
 **Hulp**: gebruik Security Center voor het uitvoeren van basislijn scans van uw Cognitive Search-service resources.  Gebruik Azure Policy bovendien om uw resource configuraties te waarschuwen en te controleren. 
 
-- [Aanbevelingen herstellen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [Aanbevelingen herstellen in Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Besturingselementen voor Naleving van Azure Policy-regelgeving voor Azure Cognitive Search](./security-controls-policy.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -847,10 +847,10 @@ Daarnaast kunt u Azure Automation gebruiken om configuratie wijzigingen te imple
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure-geheimen veilig beheren
 
 **Hulp**: Azure Managed identiteiten gebruiken in combi natie met Azure Key Vault om het geheime beheer voor uw Cloud toepassingen te vereenvoudigen.
-- [Beheerde identiteiten gebruiken voor Azure-resources](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity) 
-- [Een Key Vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal) 
+- [Beheerde identiteiten gebruiken voor Azure-resources](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
+- [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md) 
 
-- [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity) 
+- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/assign-access-policy-portal.md) 
 
 **Azure Security Center bewaking**: Ja
 
@@ -860,9 +860,9 @@ Daarnaast kunt u Azure Automation gebruiken om configuratie wijzigingen te imple
 
 **Hulp**: een door Azure beheerde identiteit gebruiken om Cognitive Search toegang te geven tot andere Azure-Services, zoals Key Vault en Indexeer functie gegevens bronnen met behulp van een automatisch beheerde identiteit in azure Active Directory (Azure AD). Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Azure Key Vault, zonder dat u referenties in uw code hoeft op te geven. 
 
-- [Een Indexeer functie verbinding met een gegevens bron instellen met behulp van een beheerde identiteit](https://docs.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
+- [Een Indexeer functie verbinding met een gegevens bron instellen met behulp van een beheerde identiteit](./search-howto-managed-identities-data-sources.md)
 
-- [Door de klant beheerde sleutels configureren voor gegevens versleuteling met behulp van een beheerde identiteit](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#3---create-a-service-identity)
+- [Door de klant beheerde sleutels configureren voor gegevens versleuteling met behulp van een beheerde identiteit](./search-security-manage-encryption-keys.md#3---create-a-service-identity)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -878,7 +878,7 @@ Daarnaast kunt u Azure Automation gebruiken om configuratie wijzigingen te imple
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie voor meer informatie de [Azure Security Bench Mark: beveiliging tegen schadelijke software](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Zie voor meer informatie de [Azure Security Bench Mark: beveiliging tegen schadelijke software](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8,1: centraal beheerde antimalware-software gebruiken
 
@@ -912,7 +912,7 @@ Voor alle reken resources die eigendom zijn van uw organisatie en worden gebruik
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [Azure Security Bench Mark: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Data Recovery](../security/benchmarks/security-control-data-recovery.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
@@ -928,9 +928,9 @@ Voor alle reken resources die eigendom zijn van uw organisatie en worden gebruik
 
 **Hulp**: Cognitive Search biedt momenteel geen ondersteuning voor automatische back-ups voor gegevens in een zoek service en waarvan u een back-up moet maken via een hand matig proces.  U kunt ook een back-up van door de klant beheerde sleutels in Azure Key Vault. 
 
-- [Back-ups van een Azure Cognitive Search-index maken en deze herstellen](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Back-ups van een Azure Cognitive Search-index maken en deze herstellen](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Back-ups maken van Key Vault sleutels in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Back-ups maken van Key Vault sleutels in azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -940,9 +940,9 @@ Voor alle reken resources die eigendom zijn van uw organisatie en worden gebruik
 
 **Hulp**: Cognitive Search biedt momenteel geen ondersteuning voor automatische back-ups voor gegevens in een zoek service. u moet een back-up maken en deze herstellen via een hand matig proces.  Maak regel matig een back-up van de inhoud die u hand matig hebt gemaakt om de end-to-end integriteit van uw back-upproces te controleren.
 
-- [Back-ups van een Azure Cognitive Search-index maken en deze herstellen](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Back-ups van een Azure Cognitive Search-index maken en deze herstellen](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Key Vault sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -954,11 +954,11 @@ Voor alle reken resources die eigendom zijn van uw organisatie en worden gebruik
 
 Schakel de beveiliging van zacht verwijderen en opschonen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering. Als Azure Storage wordt gebruikt om hand matige back-ups op te slaan, kunt u met de optie voor het uitvoeren van de functie voor voorlopig verwijderen uw gegevens opslaan en herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. 
 
-- [Back-ups van een Azure Cognitive Search-index maken en deze herstellen](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Back-ups van een Azure Cognitive Search-index maken en deze herstellen](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Zacht verwijderen en beveiliging opschonen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Zacht verwijderen en beveiliging opschonen inschakelen in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Zacht verwijderen voor Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Zacht verwijderen voor Azure Blob Storage](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -966,7 +966,7 @@ Schakel de beveiliging van zacht verwijderen en opschonen in Key Vault in om sle
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie [Azure Security Bench Mark: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Incident Response](../security/benchmarks/security-control-incident-response.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
@@ -988,9 +988,9 @@ Schakel de beveiliging van zacht verwijderen en opschonen in Key Vault in om sle
 
 Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het identificeren en categoriseren van Azure-resources, met name voor de verwerking van gevoelige gegevens. Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
 
-- [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources)
+- [Labels gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
-- [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1010,7 +1010,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-- [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1020,9 +1020,9 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Richt lijnen**: uw Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende basis exporteren. U kunt de Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen.
 
-- [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Continue export configureren](../security-center/continuous-export.md)
 
-- [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1032,7 +1032,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
 
-- [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [Werk stroom automatisering en Logic Apps configureren](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1040,7 +1040,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie [Azure Security Bench Mark: Indringings tests en rode team oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Indringings tests en rode team oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)voor meer informatie.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
@@ -1054,5 +1054,5 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

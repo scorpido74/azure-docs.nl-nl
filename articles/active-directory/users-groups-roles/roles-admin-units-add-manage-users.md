@@ -15,10 +15,10 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818159"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Gebruikers toevoegen en beheren in een beheer eenheid in Azure Active Directory
@@ -106,7 +106,7 @@ In de Azure Portal kunt u een gebruikers profiel openen door:
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-Opmerking: standaard retourneert Get-AzureADAdministrativeUnitMember alleen 100 leden, kunt u '-alle $true ' toevoegen om meer leden op te halen.
+Opmerking: standaard geeft Get-AzureADAdministrativeUnitMember alleen 100 leden, kunt u '-alle $true ' toevoegen om meer leden op te halen.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

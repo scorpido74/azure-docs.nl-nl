@@ -3,12 +3,12 @@ title: Azure-toepassing gateway gebruiken voor het beveiligen van uw web-apps op
 description: Configureer Azure-toepassing gateway zo dat uw web-apps die worden uitgevoerd op een Azure VMware-oplossing, veilig zichtbaar zijn.
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: ad7cd36d77da41d75ea9dcc18a51d0ffc5540d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579817"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951448"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure-toepassing gateway gebruiken voor het beveiligen van uw web-apps op de Azure VMware-oplossing
 
@@ -146,4 +146,4 @@ U kunt Azure-toepassing gateway gebruiken om op URL-pad gebaseerde routerings re
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie over Azure-toepassing gateway](https://docs.microsoft.com/azure/application-gateway/) voor meer configuratie voorbeelden.
+Raadpleeg de [documentatie over Azure-toepassing gateway](../application-gateway/index.yml) voor meer configuratie voorbeelden.

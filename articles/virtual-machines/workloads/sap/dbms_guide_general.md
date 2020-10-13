@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c0158e4bdaff5400404b290e27837bfb3b95419
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331349"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974818"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -273,7 +273,7 @@ Er zijn andere redundantie methoden. Zie [Azure Storage-replicatie](../../../sto
 
 
 ## <a name="vm-node-resiliency"></a>Tolerantie van VM-knoop punt
-Azure biedt een aantal verschillende Sla's voor Vm's. Zie de meest recente release van [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)voor meer informatie. Omdat de DBMS-laag essentieel is voor Beschik baarheid in een SAP-systeem, moet u inzicht hebben in beschikbaarheids sets, Beschikbaarheidszones en onderhouds gebeurtenissen. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../windows/manage-availability.md) en [de beschik baarheid van virtuele Linux-machines beheren in azure](../../linux/manage-availability.md)voor meer informatie over deze concepten.
+Azure biedt een aantal verschillende Sla's voor Vm's. Zie de meest recente release van [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)voor meer informatie. Omdat de DBMS-laag essentieel is voor Beschik baarheid in een SAP-systeem, moet u inzicht hebben in beschikbaarheids sets, Beschikbaarheidszones en onderhouds gebeurtenissen. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../manage-availability.md) en [de beschik baarheid van virtuele Linux-machines beheren in azure](../../manage-availability.md)voor meer informatie over deze concepten.
 
 De minimale aanbeveling voor productie DBMS-scenario's met een SAP-werk belasting is:
 
@@ -295,7 +295,7 @@ Deze aanbevolen procedures zijn het resultaat van honderden implementaties van k
 - De virtuele netwerken waarmee de SAP-toepassing wordt geïmplementeerd, hebben geen toegang tot internet.
 - De data base-Vm's worden uitgevoerd in hetzelfde virtuele netwerk als de toepassingslaag, gescheiden in een ander subnet van de SAP-toepassingslaag.
 - De virtuele machines in het virtuele netwerk hebben een statische toewijzing van het privé-IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../../../virtual-network/public-ip-addresses.md)voor meer informatie.
-- Routerings beperkingen van en naar de DBMS-Vm's zijn *niet* ingesteld met firewalls die zijn geïnstalleerd op de lokale DBMS-vm's. In plaats daarvan wordt verkeers routering gedefinieerd met [netwerk beveiligings groepen (nsg's)](../../../virtual-network/security-overview.md).
+- Routerings beperkingen van en naar de DBMS-Vm's zijn *niet* ingesteld met firewalls die zijn geïnstalleerd op de lokale DBMS-vm's. In plaats daarvan wordt verkeers routering gedefinieerd met [netwerk beveiligings groepen (nsg's)](../../../virtual-network/network-security-groups-overview.md).
 - Wijs verschillende Nic's toe aan de virtuele machine om verkeer te scheiden en te isoleren naar de DBMS-VM. Elke NIC krijgt een ander IP-adres en elke NIC wordt toegewezen aan een ander subnet van het virtuele netwerk. Elk subnet heeft verschillende NSG-regels. De isolatie of schei ding van netwerk verkeer is een meting voor route ring. Het wordt niet gebruikt voor het instellen van quota's voor netwerk doorvoer.
 
 > [!NOTE]
@@ -304,7 +304,7 @@ Deze aanbevolen procedures zijn het resultaat van honderden implementaties van k
 
 
 > [!WARNING]
-> Het configureren van [virtuele netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver-, hybris-of S/4HANA SAP-systeem wordt niet ondersteund. Deze beperking is voor functionaliteits-en prestatie redenen. Het communicatie-pad tussen de SAP-toepassingslaag en de DBMS-laag moet direct een. De beperking bevat geen [toepassings beveiligings groep (ASG) en NSG regels](../../../virtual-network/security-overview.md) als de regels ASG en NSG een direct communicatie traject toestaan. 
+> Het configureren van [virtuele netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver-, hybris-of S/4HANA SAP-systeem wordt niet ondersteund. Deze beperking is voor functionaliteits-en prestatie redenen. Het communicatie-pad tussen de SAP-toepassingslaag en de DBMS-laag moet direct een. De beperking bevat geen [toepassings beveiligings groep (ASG) en NSG regels](../../../virtual-network/network-security-groups-overview.md) als de regels ASG en NSG een direct communicatie traject toestaan. 
 >
 > Andere scenario's waarin virtuele netwerk apparaten niet worden ondersteund, zijn in:
 >
@@ -333,7 +333,7 @@ Als er een failover van het database knooppunt is, hoeft de SAP-toepassing niet 
 
 Azure biedt twee verschillende [Load Balancer sku's](../../../load-balancer/load-balancer-overview.md): een basis-SKU en een standaard-SKU. Op basis van de voor delen van Setup en functionaliteit moet u de standaard-SKU van de Azure-load balancer gebruiken. Een van de grote voor delen van de standaard versie van de load balancer is dat het gegevens verkeer niet via de load balancer zelf wordt gerouteerd.
 
-Een voor beeld van hoe u een interne load balancer kunt configureren, vindt u in de zelf studie over het artikel [: een SQL Server beschikbaarheids groep in azure hand matig configureren virtual machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial#create-an-azure-load-balancer)
+Een voor beeld van hoe u een interne load balancer kunt configureren, vindt u in de zelf studie over het artikel [: een SQL Server beschikbaarheids groep in azure hand matig configureren virtual machines](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer)
 
 > [!NOTE]
 > Er zijn verschillen in gedrag van de basis-en standaard-SKU met betrekking tot de toegang tot open bare IP-adressen. De manier waarop de beperkingen van de standaard-SKU worden omzeild om toegang te krijgen tot open bare IP-adressen, wordt beschreven in de [open bare eindpunt connectiviteit van het document voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)

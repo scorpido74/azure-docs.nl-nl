@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/27/2020
-ms.openlocfilehash: feb186fbe216305039fcc0a23a10419c44fd0483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/07/2020
+ms.openlocfilehash: 616e3e6c37faa3c085b8531173b557973e09fbf8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535607"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974563"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -23,31 +23,20 @@ Dit artikel bevat informatie over de **meest recente** updates voor Azure HDInsi
 
 Azure HDInsight is een van de populairste services van zakelijke klanten voor open-source analyses op Azure.
 
-## <a name="release-date-09282020"></a>Release datum: 09/28/2020
+## <a name="release-date-10082020"></a>Release datum: 10/08/2020
 
 Deze versie is van toepassing op zowel HDInsight 3,6 als HDInsight 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
 
 ## <a name="new-features"></a>Nieuwe functies
-### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Automatisch schalen voor interactieve Query's met HDInsight 4,0 is nu algemeen beschikbaar
-Automatisch schalen voor interactief query cluster type is nu algemeen beschikbaar (GA) voor HDInsight 4,0. Alle interactieve query 4,0-clusters die zijn gemaakt na 27 augustus 2020, hebben ondersteuning voor automatisch schalen.
-
-### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase-cluster ondersteunt Premium-ADLS Gen2
-HDInsight ondersteunt nu Premium ADLS Gen2 als primair opslag account voor HDInsight HBase 3,6-en 4,0-clusters. In combi natie met [versnelde schrijf bewerkingen](./hbase/apache-hbase-accelerated-writes.md)kunt u betere prestaties voor uw HBase-clusters krijgen.
-
-### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Distributie van Kafka-partities in azure-fout domeinen
-Een foutdomein is een logische groepering van de onderliggende hardware in een Azure-datacenter. Elk foutdomein deelt een algemene voedingsbron en netwerkswitch. Voordat HDInsight Kafka alle partitie replica's in hetzelfde fout domein kan opslaan. Vanaf deze release ondersteunt HDInsight nu automatisch de distributie van Kafka-partities op basis van Azure-fout domeinen. 
-
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
-Klanten kunnen versleuteling in transit tussen cluster knooppunten inschakelen met behulp van IPSec-versleuteling met door het platform beheerde sleutels. Deze optie kan worden ingeschakeld op het moment dat het cluster wordt gemaakt. Zie meer informatie over [het inschakelen van versleuteling tijdens de overdracht](./domain-joined/encryption-in-transit.md).
-
-### <a name="encryption-at-host"></a>Versleuteling op de host
-Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host zijn opgeslagen, versleuteld op rest en stromen die zijn versleuteld naar de opslag service. Vanuit deze release kunt u versleuteling op de **tijdelijke gegevens schijf op de host inschakelen** bij het maken van het cluster. Versleuteling op host wordt alleen ondersteund op [bepaalde VM-sku's in beperkte regio's](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal). HDInsight ondersteunt de [volgende knooppunt configuratie en sku's](./hdinsight-supported-node-configuration.md). Zie meer informatie over [het inschakelen van versleuteling op de host](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>Persoonlijke HDInsight-clusters zonder open bare IP-en privé-koppeling (preview-versie)
+HDInsight ondersteunt nu het maken van clusters zonder open bare IP-en privé koppelings toegang tot de clusters als preview. Klanten kunnen de nieuwe geavanceerde netwerk instellingen gebruiken voor het maken van een volledig geïsoleerd cluster zonder openbaar IP-adres en hun eigen privé-eind punten gebruiken om toegang te krijgen tot het cluster. 
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Verplaatsen naar schaal sets voor virtuele Azure-machines
 HDInsight maakt nu gebruik van virtuele machines van Azure om het cluster in te richten. Vanaf deze release wordt de service geleidelijk naar [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)gemigreerd. Het hele proces kan maanden duren. Nadat uw regio's en abonnementen zijn gemigreerd, worden nieuw gemaakte HDInsight-clusters uitgevoerd op virtuele-machine schaal sets zonder klant acties. Er wordt geen breuk wijziging verwacht.
 
 ## <a name="deprecation"></a>Afschaffing
-Geen afschaffing voor deze release.
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Afschaffing van HDInsight 3,6 ML Services-cluster
+Het cluster type van HDInsight 3,6 ML-Services is einde van ondersteuning door DEC 31 2020. Klanten maken hierna geen nieuwe 3,6 ML-Services-clusters. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Controleer [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions)het ondersteunings verloop voor HDInsight-versies en cluster typen.
 
 ## <a name="behavior-changes"></a>Gedrags wijzigingen
 Er is geen wijziging van het gedrag voor deze versie.
@@ -55,8 +44,8 @@ Er is geen wijziging van het gedrag voor deze versie.
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
 De volgende wijzigingen worden uitgevoerd in toekomstige releases.
 
-### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Mogelijkheid om verschillende Zookeeper-SKU'S te selecteren voor Spark-, Hadoop-en ML-Services
-HDInsight biedt geen ondersteuning voor het wijzigen van Zookeeper SKU voor cluster typen van Spark, Hadoop en ML Services. Er wordt gebruikgemaakt van A2_v2/a2 SKU voor Zookeeper knooppunten en klanten worden niet in rekening gebracht. In de aanstaande release kunnen klanten de Zookeeper-SKU voor Spark-, Hadoop-en ML-Services indien nodig wijzigen. Zookeeper-knoop punten met een andere SKU dan A2_v2/a2 worden in rekening gebracht. De standaard-SKU wordt nog steeds A2_V2/a2 en gratis.
+### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Mogelijkheid om verschillende Zookeeper van virtuele machines te selecteren voor Spark-, Hadoop-en ML-Services
+HDInsight biedt geen ondersteuning voor het aanpassen van de grootte van Zookeeper-knoop punten voor de cluster typen Spark, Hadoop en ML Services. De standaard instelling is dat de grootte van de virtuele machines van/a2 wordt A2_v2, die gratis worden meegeleverd. In de aanstaande release kunt u de grootte van een virtuele Zookeeper-machine selecteren die het meest geschikt is voor uw scenario. Zookeeper-knoop punten met een andere grootte dan A2_v2/a2 worden in rekening gebracht. A2_v2 en a2 virtuele machines worden nog gratis beschikbaar gesteld.
 
 ## <a name="bug-fixes"></a>Opgeloste fouten
 HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 

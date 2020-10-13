@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 9266a5efb7156367dfa0d6036f5876337098c143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743927"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963513"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Een NFSv3-en SMB-volume (Dual-Protocol) maken voor Azure NetApp Files
 
@@ -28,7 +28,7 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
 
 ## <a name="before-you-begin"></a>Voordat u begint 
 
-* U dient al een capaciteitspool te hebben ingesteld.  
+* U moet al een capaciteits groep hebben gemaakt.  
     Zie [een capaciteits pool instellen](azure-netapp-files-set-up-capacity-pool.md).   
 * Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.  
     Zie [een subnet delegeren aan Azure NetApp files](azure-netapp-files-delegate-subnet.md).
@@ -38,9 +38,19 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
 * Zorg ervoor dat u voldoet aan de [vereisten voor Active Directory verbindingen](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Maak een zone voor reverse lookup op de DNS-server en voeg vervolgens een PTR-record (pointer) van de AD-hostcomputer toe aan de zone voor reverse lookup. Als dat niet het geval is, mislukt het maken van het volume met twee protocollen.
 * Zorg ervoor dat de NFS-client up-to-date is en de meest recente updates voor het besturings systeem uitvoert.
-* Zorg ervoor dat de Active Directory (AD) LDAP-server op de AD actief is. Dit doet u door de functie [Active Directory Lightweight Directory Services (AD LDS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) op de AD-machine te installeren en configureren.
-* Zorg ervoor dat er een certificerings instantie (CA) wordt gemaakt in de AD met behulp van de functie voor het [Active Directory Certificate Services (AD CS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) om het zelfondertekende basis-CA-certificaat te genereren en te exporteren.   
+* Zorg ervoor dat de Active Directory (AD) LDAP-server op de AD actief is. U kunt dit doen door de functie [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) op de AD-machine te installeren en configureren.
+* Zorg ervoor dat er een certificerings instantie (CA) wordt gemaakt in de AD met behulp van de functie voor het [Active Directory Certificate Services (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) om het zelfondertekende basis-CA-certificaat te genereren en te exporteren.   
 * Dual-protocol volumes bieden momenteel geen ondersteuning voor Azure Active Directory Domain Services (AADDS).  
+* De NFS-versie die door een volume met dubbele protocollen wordt gebruikt, is NFSv3. Daarom gelden de volgende overwegingen:
+    * Het dubbele protocol biedt geen ondersteuning voor de uitgebreide kenmerken van Windows-ACL'S `set/get` van NFS-clients.
+    * NFS-clients kunnen geen machtigingen wijzigen voor de NTFS-beveiligings stijl en Windows-clients kunnen geen machtigingen wijzigen voor volumes met UNIX-stijl Dual-protocol.   
+
+    In de volgende tabel worden de beveiligings stijlen en hun effecten beschreven:  
+    
+    | Beveiligings stijl    | Clients die machtigingen kunnen wijzigen   | Machtigingen die clients kunnen gebruiken  | Resulterende effectief beveiligings stijl    | Clients die toegang hebben tot bestanden     |
+    |-  |-  |-  |-  |-  |
+    | UNIX  | NFS   | NFSv3 modus-bits   | UNIX  | NFS en Windows   |
+    | NTFS  | Windows   | NTFS-Acl's     | NTFS  |NFS en Windows|
 
 ## <a name="create-a-dual-protocol-volume"></a>Een volume met dubbele protocollen maken
 
@@ -113,9 +123,9 @@ Azure NetApp Files biedt ondersteuning voor het maken van volumes met behulp van
 
 ## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Openbaar basis certificaat voor Active Directory certificerings instantie uploaden  
 
-1.  Volg [de installatie van de certificerings instantie](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) die u wilt installeren en configureren certificerings instantie toevoegen. 
+1.  Volg [de installatie van de certificerings instantie](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) die u wilt installeren en configureren certificerings instantie toevoegen. 
 
-2.  Volg [certificaten weer geven met de MMC-module](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) om de MMC-module en het hulp programma certificaat beheer te gebruiken.  
+2.  Volg [certificaten weer geven met de MMC-module](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) om de MMC-module en het hulp programma certificaat beheer te gebruiken.  
     Gebruik de module certificaat beheer om het basis-of verlenings certificaat voor het lokale apparaat te zoeken. U moet de opdrachten van de module certificaat beheer uitvoeren vanuit een van de volgende instellingen:  
     * Een Windows-client die lid is van het domein en waarop het basis certificaat is geïnstalleerd 
     * Een andere computer in het domein met het basis certificaat  
@@ -152,4 +162,4 @@ Volg de instructies in [een NFS-client configureren voor Azure NetApp files](con
 ## <a name="next-steps"></a>Volgende stappen  
 
 * [Veelgestelde vragen over dual-Protocol](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [Een NFS-client voor Azure NetApp Files configureren](configure-nfs-clients.md) 
+* [Een NFS-client voor Azure NetApp Files configureren](configure-nfs-clients.md)

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819432"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948620"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
@@ -89,9 +89,9 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | --- | --- | --- | --- | --- | --- |
 | Levens duur van toegangs token |AccessTokenLifetime<sup>2</sup> |Toegangs tokens, ID-tokens, SAML2-tokens |1 uur |10 minuten |1 dag |
 | Maximum aantal inactieve tijd voor het vernieuwen van token |MaxInactiveTime |Tokens vernieuwen |90 dagen |10 minuten |90 dagen |
-| Maximum leeftijd van het token voor eenmalige vernieuwing |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van Single-Factor vernieuwings token |MaxAgeSingleFactor |Tokens vernieuwen (voor alle gebruikers) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
 | Maximum leeftijd van multi-factor Refresh-token |MaxAgeMultiFactor |Tokens vernieuwen (voor alle gebruikers) | 180 dagen |10 minuten |180 dagen<sup>1</sup> |
-| Maximum leeftijd van het token voor één factor-sessie |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
+| Maximum leeftijd van Single-Factor sessie token |MaxAgeSessionSingleFactor |Sessie tokens (permanent en niet permanent) |Until-ingetrokken |10 minuten |Until-ingetrokken<sup>1</sup> |
 | Maximale leeftijds duur multi-factor Session-token |MaxAgeSessionMultiFactor |Sessie tokens (permanent en niet permanent) | 180 dagen |10 minuten | 180 dagen<sup>1</sup> |
 
 * <sup>1</sup>365 dagen is de maximale expliciete lengte die voor deze kenmerken kan worden ingesteld.
@@ -160,11 +160,11 @@ Zie [een beleid voor webaanmelding maken](configure-token-lifetimes.md#create-a-
 
 Dit beleid dwingt gebruikers die niet actief zijn geweest op hun client om opnieuw te verifiëren om een nieuw vernieuwings token op te halen.
 
-De eigenschap Max. voor het vernieuwings token van de inactieve tijd moet worden ingesteld op een lagere waarde dan de maximale leeftijd van het token met één factor en de maximale leeftijds eigenschappen voor multi-factor Refresh-tokens.
+De eigenschap voor het vernieuwings token voor de maximale inactieve tijd moet worden ingesteld op een lagere waarde dan het Single-Factor maximum leeftijd van het token en de eigenschappen van de maximale leeftijds token voor multi-factor refresh.
 
 Zie voor een voor beeld [een beleid maken voor een systeem eigen app die een web-API aanroept](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-refresh-token-max-age"></a>Maximum leeftijd van het token voor eenmalige vernieuwing
+### <a name="single-factor-refresh-token-max-age"></a>Maximum leeftijd van Single-Factor vernieuwings token
 **Teken reeks:** MaxAgeSingleFactor
 
 **Van invloed op:** Tokens vernieuwen
@@ -182,11 +182,11 @@ Zie voor een voor beeld [een beleid maken voor een systeem eigen app die een web
 
 **Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker een vernieuwings token kan gebruiken om een nieuw toegangs-en vernieuwings token paar te verkrijgen nadat het voor het laatst is geverifieerd met behulp van meerdere factoren. Nadat een gebruiker een nieuw vernieuwings token heeft geverifieerd en ontvangen, kan de gebruiker de stroom voor het vernieuwen van tokens gebruiken voor de opgegeven periode. (Dit geldt zo lang het huidige vernieuwings token niet is ingetrokken en niet langer dan de inactieve tijd niet wordt gebruikt.) Op dat moment worden gebruikers gedwongen opnieuw te verifiëren om een nieuw vernieuwings token te ontvangen.
 
-Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de eigenschap Max Age van het token voor het vernieuwen van één factor.
+Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de Single-Factor eigenschap voor het vernieuwen van het token maximum leeftijd.
 
 Zie voor een voor beeld [een beleid maken voor een systeem eigen app die een web-API aanroept](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-session-token-max-age"></a>Maximum leeftijd van het token voor één factor-sessie
+### <a name="single-factor-session-token-max-age"></a>Maximum leeftijd van Single-Factor sessie token
 **Teken reeks:** MaxAgeSessionSingleFactor
 
 **Van invloed op:** Sessie tokens (permanent en niet permanent)
@@ -204,7 +204,7 @@ Zie [een beleid voor webaanmelding maken](configure-token-lifetimes.md#create-a-
 
 **Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker met behulp van meerdere factoren een sessie token kan gebruiken om een nieuw ID-en sessie token te verkrijgen. Nadat een gebruiker een nieuw sessie token heeft geverifieerd en ontvangen, kan de gebruiker de sessie token stroom voor de opgegeven periode gebruiken. (Dit geldt zo lang het token van de huidige sessie niet is ingetrokken en niet is verlopen.) Na de opgegeven periode moet de gebruiker opnieuw worden geverifieerd om een nieuw sessie token te ontvangen.
 
-Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de eigenschap Max Age van het token met één factor-sessie.
+Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de eigenschap Max Age van het Single-Factor sessie token.
 
 ## <a name="cmdlet-reference"></a>Cmdlet-naslaginformatie
 
