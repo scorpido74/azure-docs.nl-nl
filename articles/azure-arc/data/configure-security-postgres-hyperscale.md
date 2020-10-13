@@ -1,6 +1,6 @@
 ---
-title: Beveiliging configureren voor uw PostgreSQL grootschalige-Server groep voor Azure Arc ingeschakeld
-description: Beveiliging configureren voor uw PostgreSQL grootschalige-Server groep voor Azure Arc ingeschakeld
+title: Beveiliging configureren voor uw PostgreSQL Hyperscale-servergroep met Azure Arc
+description: Beveiliging configureren voor uw PostgreSQL Hyperscale-servergroep met Azure Arc
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273197"
 ---
-# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Beveiliging configureren voor uw PostgreSQL grootschalige-Server groep voor Azure Arc ingeschakeld
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Beveiliging configureren voor uw PostgreSQL Hyperscale-servergroep met Azure Arc
 
 In dit document worden verschillende aspecten van de beveiliging van uw server groep beschreven:
 - Versleuteling 'at rest'
@@ -150,7 +150,7 @@ Dit kleine voor beeld laat zien dat u gegevens in rust kunt versleutelen (versle
 
 ## <a name="user-management"></a>Gebruikersbeheer
 ### <a name="general-perspectives"></a>Algemene perspectieven
-U kunt de standaard post gres manier gebruiken om gebruikers of rollen te maken. Als u dit wel doet, zijn deze artefacten echter alleen beschikbaar voor de rol van de coördinator. Tijdens de preview-periode hebben deze gebruikers/rollen nog geen toegang meer tot gegevens die zijn gedistribueerd buiten het coördinator knooppunt en op de worker-knoop punten van uw server groep. De reden hiervoor is dat de gebruikers definitie in de preview-versie niet wordt gerepliceerd naar de worker-knoop punten.
+U kunt de standaard post gres manier gebruiken om gebruikers of rollen te maken. Als u dit doet, zijn deze artefacten echter alleen beschikbaar op de coördinatorrol. Tijdens de preview hebben deze gebruikers/rollen nog geen toegang tot gegevens die zijn gedistribueerd buiten het coördinatorknooppunt en op de werkknooppunten van uw servergroep. De reden hiervoor is dat de gebruikersdefinitie in de preview niet wordt gerepliceerd naar de werkknooppunten.
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>Het wacht woord van de gebruiker met beheerders rechten voor _post gres_ wijzigen
 Azure Arc enabled PostgreSQL grootschalige wordt geleverd met de standaard post gres administratieve gebruiker _post gres_ waarvoor u het wacht woord instelt wanneer u de Server groep maakt.

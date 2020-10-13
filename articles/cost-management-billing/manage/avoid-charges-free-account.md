@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 203a3b93f200a54ec40c96ee79c7fc822fac140b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270607"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermijd kosten met uw gratis Azure-account
 
@@ -31,7 +31,7 @@ U ontvangt een beperkt aantal gratis services per maand met uw gratis Azure-acco
 
 ## <a name="you-used-some-services-that-arent-free"></a>U hebt bepaalde services gebruikt die niet gratis zijn
 
-Na de upgrade van uw account krijgt u betalen-naar-gebruik-tarieven voor het gebruik van services die niet gratis zijn opgenomen in uw gratis Azure-account. Zie de [Veelgestelde vragen over het gratis Azure-account](https://azure.microsoft.com/free/free-account-faq/) voor meer informatie over de services die zijn opgenomen in uw gratis account. U kunt het gebruik van de service controleren in de Azure-portal. Zie [Regelmatig de portal controleren voor een kostenanalyse en verbruikstarieven](getting-started.md#costs) voor meer informatie.
+Na de upgrade van uw account krijgt u betalen-naar-gebruik-tarieven voor het gebruik van services die niet gratis zijn opgenomen in uw gratis Azure-account. Zie de [Veelgestelde vragen over het gratis Azure-account](https://azure.microsoft.com/free/free-account-faq/) voor meer informatie over de services die zijn opgenomen in uw gratis account. U kunt het gebruik van de service controleren in de Azure-portal. Zie [Onverwachte kosten analyseren](../understand/analyze-unexpected-charges.md) voor meer informatie.
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>U hebt het einde van uw gratis 12 maanden bereikt
 

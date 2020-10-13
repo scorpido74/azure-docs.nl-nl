@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280297"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Voorlopig verwijderen voor containers inschakelen en beheren (preview-versie)
@@ -86,7 +86,7 @@ Voer de volgende stappen uit om de verwijderde containers in het Azure Portal we
 1. Navigeer naar uw opslag account in de Azure Portal en Bekijk de lijst met containers.
 1. Schakel de optie verwijderde containers weer geven in of uit om verwijderde containers op te laten opnemen in de lijst.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Scherm afbeelding die laat zien hoe u de voorlopig verwijderde containers in de Azure Portal kunt weer geven":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Scherm afbeelding die laat zien hoe u een tijdelijke verwijdering van een container in Azure Portal kunt inschakelen":::
 
 ## <a name="restore-a-soft-deleted-container"></a>Een voorlopig verwijderde container herstellen
 
@@ -95,7 +95,7 @@ U kunt een voorlopig verwijderde container en de inhoud ervan herstellen binnen 
 1. Navigeer naar uw opslag account in de Azure Portal en Bekijk de lijst met containers.
 1. Geef het context menu weer voor de container die u wilt herstellen en kies **verwijderen ongedaan** maken in het menu.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Scherm afbeelding die laat zien hoe u een voorlopig verwijderde container kunt herstellen in Azure Portal":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Scherm afbeelding die laat zien hoe u een tijdelijke verwijdering van een container in Azure Portal kunt inschakelen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
