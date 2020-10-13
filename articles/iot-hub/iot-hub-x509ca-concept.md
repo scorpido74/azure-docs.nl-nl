@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308109"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Conceptuele uitleg van X. 509 CA-certificaten in de IoT-industrie
@@ -69,9 +69,9 @@ Het aanschaffen van een CA-certificaat heeft als voor deel dat een bekende basis
 
 Als u een X. 509 CA-certificaat wilt kopen, kiest bedrijf-X een service provider basis certificerings instanties. Een zoek opdracht op internet naar de zin ' basis-CA ' levert goede leads. De basis-CA leidt bedrijf-X over het maken van het open bare/persoonlijke sleutel paar en het genereren van een aanvraag voor certificaat ondertekening (CSR) voor hun services. Een CSR is het formele proces voor het Toep assen van een certificaat van een certificerings instantie. Het resultaat van deze aankoop is een certificaat voor gebruik als een CA-certificaat. Gezien de alomtegenwoordigheid van X. 509-certificaten is het certificaat waarschijnlijk correct ingedeeld in de IETF RFC 5280-standaard.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Een zelfondertekend X. 509-CA-certificaat maken
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Een Self-Signed X. 509-CA-certificaat maken
 
-Het proces voor het maken van een zelfondertekende X. 509 CA-certificaat is vergelijkbaar met het kopen, met uitzonde ring van een aanmelding van derden, zoals de basis certificerings instantie. In ons voor beeld wordt het CA-certificaat door bedrijf-X ondertekend in plaats van een basis certificerings instantie. Bedrijf-X kan deze optie kiezen om te testen totdat ze klaar zijn om een CA-certificaat aan te schaffen. Bedrijf-X kan ook gebruikmaken van een zelfondertekend X. 509 CA-certificaat in productie als Smart-X-widget niet is bedoeld om verbinding te maken met services van derden buiten de IoT Hub.
+Het proces voor het maken van een Self-Signed X. 509 CA-certificaat is vergelijkbaar met het aanschaffen van een ondertekenaar van derden, zoals de basis certificerings instantie. In ons voor beeld wordt het CA-certificaat door bedrijf-X ondertekend in plaats van een basis certificerings instantie. Bedrijf-X kan deze optie kiezen om te testen totdat ze klaar zijn om een CA-certificaat aan te schaffen. Bedrijf-X kan ook gebruikmaken van een zelfondertekend X. 509 CA-certificaat in productie als Smart-X-widget niet is bedoeld om verbinding te maken met services van derden buiten de IoT Hub.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Het X. 509-certificaat registreren bij IoT Hub
 

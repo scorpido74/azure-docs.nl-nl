@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87266891"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973254"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een virtuele Windows-machine maken vanaf een speciale schijf met PowerShell
 
@@ -27,7 +27,7 @@ U hebt verschillende mogelijkheden:
 
 U kunt ook de Azure Portal gebruiken om [een nieuwe VM te maken op basis van een gespecialiseerde VHD](create-vm-specialized-portal.md).
 
-In dit artikel wordt beschreven hoe u beheerde schijven gebruikt. Zie [een virtuele machine maken op basis van een speciale VHD in een opslag account](sa-create-vm-specialized.md)als u een oudere implementatie hebt waarvoor een opslag account is vereist.
+In dit artikel wordt beschreven hoe u beheerde schijven gebruikt. Zie [een virtuele machine maken op basis van een speciale VHD in een opslag account](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)als u een oudere implementatie hebt waarvoor een opslag account is vereist.
 
 We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines vanaf één VHD of moment opname. 
 

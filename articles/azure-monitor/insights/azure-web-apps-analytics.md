@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/02/2018
 ms.openlocfilehash: e8f70563e54718c7714c21e27be2bacfe81a4439
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318008"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Analytische gegevens weer geven voor gegevens over alle Azure web app-resources
@@ -21,5 +21,5 @@ ms.locfileid: "87318008"
 > De analyse oplossing van Azure web app is verplaatst naar ondersteuning van de community.  
 >- De oplossing is niet meer beschikbaar op de Azure Marketplace, maar kan worden geïnstalleerd vanuit [Azure Quick](https://azure.microsoft.com/resources/templates/101-webappazure-oms-monitoring/) start-sjablonen, waar deze worden ondersteund door de community.
 >- Klanten die de oplossing al hebben geïnstalleerd, kunnen deze blijven gebruiken met wijzigingen.  
->- Micro soft raadt u aan [Application Insights](../app/app-insights-overview.md) te gebruiken voor het bewaken van uw webtoepassingen.
+>- Micro soft raadt u aan  [Application Insights](../app/app-insights-overview.md) te gebruiken voor het bewaken van uw webtoepassingen.
 

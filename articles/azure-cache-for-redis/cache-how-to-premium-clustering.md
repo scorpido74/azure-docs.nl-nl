@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004769"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis-clustering configureren voor een Premium Azure-cache voor redis
@@ -24,7 +24,7 @@ Azure cache voor redis biedt redis-cluster zoals [geïmplementeerd in redis](htt
 * Meer door Voer: de door Voer wordt lineair verhoogd naarmate u het aantal Shards verhoogt. 
 * Meer geheugen grootte: er wordt lineair verhoogd naarmate u het aantal Shards verhoogt.  
 
-Bij clustering wordt het aantal beschik bare verbindingen voor een geclusterde cache niet verhoogd. Zie [de juiste laag kiezen](cache-overview.md#choosing-the-right-tier) voor meer informatie over de grootte, de door Voer en de band breedte met Premium-caches.
+Bij clustering wordt het aantal beschikbare verbindingen voor een geclusterde cache niet verhoogd. Zie [de juiste laag kiezen](cache-overview.md#choosing-the-right-tier) voor meer informatie over de grootte, de door Voer en de band breedte met Premium-caches.
 
 In azure wordt redis-cluster aangeboden als een primair/replica-model, waarbij elke Shard een primair/replica-paar heeft met replicatie waarbij de replicatie wordt beheerd door Azure cache voor de redis-service. 
 
@@ -62,7 +62,7 @@ Als u de cluster grootte wilt wijzigen voor een actieve Premium-cache met cluste
 
 Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u een getal tussen 1 en 10 in het tekstvak **Shard aantal** en klikt u op **OK** om op te slaan.
 
-Het verg Roten van de cluster grootte neemt de maximale doorvoer-en cache grootte toe. Als u de cluster grootte verhoogt, wordt het maximum niet verhoogd. verbindingen die beschikbaar zijn voor clients.
+Het verg Roten van de cluster grootte neemt de maximale doorvoer-en cache grootte toe. Als u de cluster grootte verhoogt, wordt het maximum aantal verbindingen dat beschikbaar is voor clients niet verhoogd.
 
 > [!NOTE]
 > Wanneer u een cluster schaalt, wordt de [migratie](https://redis.io/commands/migrate) opdracht uitgevoerd. Dit is een dure opdracht, zodat u deze bewerking kunt uitvoeren tijdens niet-piek uren. Tijdens het migratie proces ziet u een piek in de belasting van de server. Het schalen van een cluster is een langlopend proces en de hoeveelheid tijd die nodig is, is afhankelijk van het aantal sleutels en de grootte van de waarden die aan deze sleutels zijn gekoppeld.
@@ -106,7 +106,7 @@ Zie voor meer informatie [sleutels Distribution model](https://redis.io/topics/c
 Zie het gedeelte [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) van het [Hallo wereld](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) voor beeld van code over het werken met clustering en het vinden van sleutels in dezelfde Shard met de client stack Exchange. redis.
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>Wat is de grootste cache grootte die ik kan maken?
-De grootste Premium-cache grootte is 120 GB. U kunt Maxi maal 10 Shards maken met een maximale grootte van 1,2 TB GB. Als u een grotere grootte nodig hebt, kunt u [meer aanvragen](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/).
+De grootste Premium-cache grootte is 120 GB. U kunt Maxi maal 10 Shards maken met een maximale grootte van 1,2 TB GB. Als u een grotere grootte nodig hebt, kunt u [meer aanvragen](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Zie [Prijzen van Azure Cache voor Redis](https://azure.microsoft.com/pricing/details/cache/) voor meer informatie.
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Ondersteunen alle redis-clients clusteren?
 Niet alle clients bieden ondersteuning voor redis-clustering. Raadpleeg de documentatie voor de bibliotheek die u gebruikt om te controleren of u een bibliotheek en versie gebruikt die ondersteuning biedt voor clustering. Stack Exchange. redis is een bibliotheek die clustering ondersteunt in de nieuwere versies. Zie de sectie [afspelen met het cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) in de [redis-cluster zelf studie](https://redis.io/topics/cluster-tutorial)voor meer informatie over andere clients. 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317175"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Gegevens verzamelen van de Azure Diagnostics-extensie naar Azure Monitor-logboeken
@@ -24,13 +24,13 @@ Met de Azure Diagnostics-extensie worden gegevens opgeslagen in een Azure Storag
 
 | Logboek type | Resourcetype | Locatie |
 | --- | --- | --- |
-| IIS-logboeken |Virtuele machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
-| Syslog |Virtuele machines |LinuxsyslogVer2v0 (Table Storage) |
+| IIS-logboeken |Virtual Machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
+| Syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
 | Operationele gebeurtenissen Service Fabric |Service Fabric knooppunten |WADServiceFabricSystemEventTable |
 | Service Fabric betrouw bare actor gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableActorEventTable |
 | Service Fabric betrouw bare service gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableServiceEventTable |
-| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
-| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtuele machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
+| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Gegevens typen worden niet ondersteund
 
@@ -47,7 +47,7 @@ Gebruik de volgende procedure om het verzamelen van gegevens van diagnostische u
 
 1. Ga in het Azure Portal naar **log Analytics-werk ruimten** en selecteer uw werk ruimte.
 1. Klik op **Logboeken voor opslag accounts** in de sectie **werkruimte gegevens bronnen** van het menu.
-2. Klik op **toevoegen**.
+2. Klik op  **toevoegen**.
 3. Selecteer het **opslag account** dat de gegevens bevat die u wilt verzamelen.
 4. Selecteer het **gegevens type** dat u wilt verzamelen.
 5. De waarde voor de bron wordt automatisch ingevuld op basis van het gegevens type.

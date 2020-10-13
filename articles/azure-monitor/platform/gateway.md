@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305207"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
@@ -140,7 +140,7 @@ Voer de volgende stappen uit als u een gateway wilt installeren met de wizard Se
 
    ![Scherm opname van configuratie voor de gateway proxy](./media/gateway/gateway-wizard02.png)
 
-1. Als Microsoft Update niet is ingeschakeld, wordt de pagina Microsoft Update weer gegeven en kunt u ervoor kiezen om deze in te scha kelen. Maak een selectie en selecteer **volgende**. Als dat niet het geval is, gaat u verder met de volgende stap.
+1. Als Microsoft Update niet is ingeschakeld, wordt de pagina Microsoft Update weer gegeven en kunt u ervoor kiezen om deze in te scha kelen. Maak een selectie en selecteer **volgende**. Anders gaat u verder met de volgende stap.
 1. Accepteer op de pagina **doelmap** de standaardmap C:\Program Files\OMS gateway of voer de locatie in waar u de gateway wilt installeren. Selecteer vervolgens **Volgende**.
 1. Selecteer **installeren**op de pagina **gereed voor installatie** . Selecteer **Ja**als u wilt dat Gebruikersaccountbeheer toestemming heeft om te installeren.
 1. Nadat de installatie is voltooid, selecteert u **volt ooien**. Als u wilt controleren of de service wordt uitgevoerd, opent u de module Services. msc en controleert u of de **OMS-gateway** wordt weer gegeven in de lijst met Services en of de status wordt **uitgevoerd**.
@@ -153,7 +153,7 @@ Het gedownloade bestand voor de gateway is een Windows Installer-pakket dat een 
  
 De volgende tabel geeft een overzicht van de para meters die door Setup worden ondersteund.
 
-|Parameters| Opmerkingen|
+|Parameters| Notities|
 |----------|------| 
 |PORTNUMBER | TCP-poort nummer voor de gateway waarop moet worden geluisterd |
 |WEBTOEPASSINGSPROXY | IP-adres van proxy server |
@@ -270,7 +270,7 @@ Nadat de integratie met Log Analytics is voltooid, verwijdert u de wijziging doo
 
    ![Scherm opname van Operations Manager, met het proxyserver adres](./media/gateway/scom02.png)
 
-1. Selecteer **Voltooien**. Uw Operations Manager-beheer groep is nu geconfigureerd om te communiceren via de gateway server naar de Log Analytics-service.
+1. Selecteer **Finish**. Uw Operations Manager-beheer groep is nu geconfigureerd om te communiceren via de gateway server naar de Log Analytics-service.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Operations Manager configureren, waarbij specifieke agenten een proxy server gebruiken
 
@@ -306,7 +306,7 @@ Raadpleeg de sectie [uw netwerk configureren](../../automation/automation-hybrid
 Als uw computer automatisch is geregistreerd als Hybrid Runbook Worker, bijvoorbeeld als de Updatebeheer oplossing is ingeschakeld voor een of meer virtuele machines, volgt u deze stappen:
 
 1. Voeg de Url's van de taak runtime gegevens service toe aan de lijst met toegestane hosts op de Log Analytics gateway. Bijvoorbeeld: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. Start de Log Analytics Gateway Service opnieuw met behulp van de volgende Power shell-cmdlet:`Restart-Service OMSGatewayService`
+1. Start de Log Analytics Gateway Service opnieuw met behulp van de volgende Power shell-cmdlet: `Restart-Service OMSGatewayService`
 
 Als uw computer is toegevoegd aan Azure Automation met behulp van de Hybrid Runbook Worker registratie-cmdlet, volgt u deze stappen:
 
@@ -321,7 +321,7 @@ U kunt cmdlets gebruiken om de taken uit te voeren om de configuratie-instelling
 
 1. Installeer de Log Analytics-gateway (Microsoft Windows Installer).
 1. Open een Power shell-console venster.
-1. Importeer de module door de volgende opdracht te typen:`Import-Module OMSGateway`
+1. Importeer de module door de volgende opdracht te typen: `Import-Module OMSGateway`
 1. Als er in de vorige stap geen fout is opgetreden, is de module met succes geïmporteerd en kunnen de cmdlets worden gebruikt. Voer `Get-Module OMSGateway` in
 1. Nadat u de cmdlets hebt gebruikt om wijzigingen aan te brengen, start u de OMS-Gateway Service opnieuw.
 
@@ -332,7 +332,7 @@ Een fout in stap 3 betekent dat de module niet is geïmporteerd. De fout kan opt
 | `Get-OMSGatewayConfig` |Sleutel |Hiermee wordt de configuratie van de service opgehaald |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Sleutel (vereist) <br> Waarde |Hiermee wordt de configuratie van de service gewijzigd |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |Hiermee wordt het adres van de relay-proxy (upstream) opgehaald |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Adres<br> Gebruikersnaam<br> Wacht woord (beveiligde teken reeks) |Hiermee stelt u het adres (en de referentie) van de relay-proxy (upstream) in |1. een doorstuur proxy en referentie instellen:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. een relay-proxy instellen waarvoor geen authenticatie is vereist:`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Wis de instelling voor de relay-proxy:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |Adres<br> Gebruikersnaam<br> Wacht woord (beveiligde teken reeks) |Hiermee stelt u het adres (en de referentie) van de relay-proxy (upstream) in |1. een doorstuur proxy en referentie instellen:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. een relay-proxy instellen waarvoor geen authenticatie is vereist: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Wis de instelling voor de relay-proxy:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |Hiermee wordt de momenteel toegestane host opgehaald (alleen de lokaal geconfigureerde host, niet automatisch gedownloade hosts) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |Host (vereist) |De host wordt toegevoegd aan de lijst met toegestane hosts |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |Host (vereist) |Hiermee verwijdert u de host uit de lijst met toegestane hosts |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  

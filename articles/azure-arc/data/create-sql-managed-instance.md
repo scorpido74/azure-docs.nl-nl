@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2a931b1a3c3f88af1abec4fd1810aae09c849c48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936833"
 ---
 # <a name="create-an-azure-sql-managed-instance-on-azure-arc"></a>Een door Azure SQL beheerd exemplaar maken op Azure Arc
@@ -62,7 +62,7 @@ azdata arc sql mi create -n sqldemo --storage-class-data managed-premium --stora
 >
 >  Wanneer u geheugen toewijzing en vCore toewijzing opgeeft, gebruikt u deze formule om te controleren of het maken is geslaagd. voor elke 1 vCore hebt u ten minste 4 GB RAM-geheugen van de beschik bare capaciteit op het Kubernetes-knoop punt waar het SQL Managed instance pod wordt uitgevoerd.
 >
->  Bij het maken van een SQL-exemplaar wordt bij het inrichten in azure geen hoofd letters in de naam gebruikt
+>  Bij het maken van een SQL-exemplaar worden bij het inrichten in Azure geen hoofdletters in de naam gebruikt
 >
 >  Beschik bare opslag klassen in uw Kubernetes-cluster uitvoeren `kubectl get storageclass` 
 

@@ -4,10 +4,10 @@ description: Meer informatie over het koppelen of ontkoppelen van een gegevens s
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328510"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Een gegevens schijf koppelen aan of loskoppelen van een virtuele machine in Azure DevTest Labs
@@ -24,7 +24,7 @@ Lees de volgende tips voordat u een gegevens schijf aan een virtuele machine kop
 ### <a name="attach-a-new-disk"></a>Een nieuwe schijf koppelen
 Volg deze stappen om een nieuwe beheerde gegevens schijf te maken en te koppelen aan een virtuele machine in Azure DevTest Labs.
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs het gewenste Lab. 
 1. Selecteer in de lijst met **mijn virtuele machines**een actieve virtuele machine.

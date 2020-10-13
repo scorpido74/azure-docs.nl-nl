@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082831"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Gegevens verplaatsen van PostgreSQL met behulp van Azure Data Factory
@@ -72,14 +72,14 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesPostgreSql** |Yes |
-| server |De naam van de PostgreSQL-server. |Yes |
-| database |De naam van de PostgreSQL-data base. |Yes |
-| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |No |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Yes |
-| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |No |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |No |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises PostgreSQL-data base. |Yes |
+| type |De eigenschap type moet worden ingesteld op: **OnPremisesPostgreSql** |Ja |
+| server |De naam van de PostgreSQL-server. |Ja |
+| database |De naam van de PostgreSQL-data base. |Ja |
+| schema |De naam van het schema in de data base. De schema naam is hoofdletter gevoelig. |Nee |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de PostgreSQL-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
+| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises PostgreSQL-data base. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties, zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON, zijn vergelijkbaar voor alle typen gegevensset.
@@ -309,7 +309,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | bigserial |serial8 |Int64 |
 | bits [(n)] | |Byte [], teken reeks |
 | bits variërend [(n)] |varbit |Byte [], teken reeks |
-| boolean |booleaans |Boolean |
+| booleaans |booleaans |Booleaans |
 | keuzelijst | |Byte [], teken reeks |
 | bytea | |Byte [], teken reeks |
 | teken [(n)] |teken [(n)] |Tekenreeks |
@@ -317,7 +317,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | Cid | |Tekenreeks |
 | cidr | |Tekenreeks |
 | cirkel | |Byte [], teken reeks |
-| date | |Datum/tijd |
+| datum | |Datum/tijd |
 | daterange | |Tekenreeks |
 | dubbele precisie |float8 |Dubbel |
 | inet | |Byte [], teken reeks |
@@ -331,8 +331,8 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | lijn | |Byte [], teken reeks |
 | lseg | |Byte [], teken reeks |
 | macaddr | |Byte [], teken reeks |
-| money | |Decimal |
-| numeriek [(p, s)] |decimaal [(p, s)] |Decimal |
+| money | |Decimaal |
+| numeriek [(p, s)] |decimaal [(p, s)] |Decimaal |
 | numrange | |Tekenreeks |
 | nogmaals | |Int32 |
 | leertraject | |Byte [], teken reeks |

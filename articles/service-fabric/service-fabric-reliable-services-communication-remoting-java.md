@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87316121"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Externe service in Java met Reliable Services
@@ -26,7 +26,7 @@ Voor services die niet zijn gekoppeld aan een bepaald communicatie protocol of s
 Het instellen van externe toegang voor een service geschiedt in twee eenvoudige stappen:
 
 1. Maak een interface voor uw service die u wilt implementeren. Deze interface definieert de methoden die beschikbaar zijn voor een externe procedure aanroep voor uw service. De methoden moeten asynchrone methoden van het taak resultaat hebben. De interface moet `microsoft.serviceFabric.services.remoting.Service` worden geïmplementeerd om aan te geven dat de service een interface voor externe toegang heeft.
-2. Gebruik een externe listener in uw service. Dit is een `CommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie. `FabricTransportServiceRemotingListener`kan worden gebruikt om een externe listener te maken met behulp van het standaard externe transport protocol.
+2. Gebruik een externe listener in uw service. Dit is een `CommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie. `FabricTransportServiceRemotingListener` kan worden gebruikt om een externe listener te maken met behulp van het standaard externe transport protocol.
 
 De volgende stateless service biedt bijvoorbeeld een enkele methode om Hallo wereld te verkrijgen via een externe procedure aanroep.
 
@@ -86,7 +86,7 @@ Het maken van een ServiceProxy is een licht gewicht bewerking, zodat u zoveel mo
 ### <a name="serviceproxyfactory-lifetime"></a>Levens duur ServiceProxyFactory
 [FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) is een Factory waarmee proxy voor verschillende externe interfaces wordt gemaakt. Als u API gebruikt `ServiceProxyBase.create` voor het maken van een proxy, maakt Framework een `FabricServiceProxyFactory` .
 Het is handig om een hand matig te maken wanneer u [ServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) -eigenschappen wilt overschrijven.
-Factory is een dure bewerking. `FabricServiceProxyFactory`onderhoudt cache van communicatie-clients.
+Factory is een dure bewerking. `FabricServiceProxyFactory` onderhoudt cache van communicatie-clients.
 De aanbevolen procedure is om zo lang mogelijk in de cache te plaatsen `FabricServiceProxyFactory` .
 
 ## <a name="remoting-exception-handling"></a>Afhandeling van externe uitzonde ringen

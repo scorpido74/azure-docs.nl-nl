@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
 ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442381"
 ---
 # <a name="archived-release-notes"></a>Gearchiveerde releaseopmerkingen
@@ -751,7 +751,7 @@ Deze release bevat component 1.2.1 en hive 2.1.0 naast de volgende patches:
 
 -   [*Hive-18189*](https://issues.apache.org/jira/browse/HIVE-18189): de Hive-query retourneert onjuiste resultaten wanneer Hive. GroupBy. OrderBy. position. alias is ingesteld op True.
 
--   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): VECTORIZATION: groep voor verkleinen van MERGEPARTIAL met dubbele kolommen is verbroken.
+-   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vectorization: Reduce-Side groep door MERGEPARTIAL met dubbele kolommen is verbroken.
 
 -   [*Hive-18293*](https://issues.apache.org/jira/browse/HIVE-18293): de Hive kan geen tabellen bevatten die zijn opgenomen in een map die geen eigendom is van de identiteit waarop HiveMetaStore wordt uitgevoerd.
 
@@ -859,7 +859,7 @@ Deze release bevat component 1.2.1 en hive 2.1.0 naast de volgende patches:
 
 -   [*Hive-18189*](https://issues.apache.org/jira/browse/HIVE-18189): order by-positie werkt niet wanneer CBO is uitgeschakeld.
 
--   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): VECTORIZATION: groep voor verkleinen van MERGEPARTIAL met dubbele kolommen is verbroken.
+-   [*Hive-18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vectorization: Reduce-Side groep door MERGEPARTIAL met dubbele kolommen is verbroken.
 
 -   [*Hive-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: Fast LLAP io met trage verwerkings pijplijn kan leiden tot oom.
 
@@ -981,7 +981,7 @@ In HDP-2.3. x en 2,4. x, in plaats van een specifieke Apache-release van mahout 
 
 Het revisie punt dat is gekozen voor mahout in HDP 2.3. x en 2,4. x is van de ' mahout-0,10. x ' vertakking van Apache mahout, vanaf 19 december 2014, Revision 0f037cb03e77c096 in GitHub.
 
-In HDP-2.5. x en 2.6. x is de bibliotheek ' commons-httpclient maakt ' van mahout verwijderd omdat deze wordt weer gegeven als een verouderde bibliotheek met mogelijke beveiligings problemen en de Hadoop-client in mahout is bijgewerkt naar versie 2.7.3, dezelfde versie die wordt gebruikt in HDP-2,5. Als gevolg hiervan:
+In HDP-2.5. x en 2.6. x is de bibliotheek ' commons-httpclient maakt ' verwijderd uit mahout omdat we deze weer geven als een verouderde bibliotheek met mogelijke beveiligings problemen en een upgrade van de Hadoop-Client in mahout naar versie 2.7.3, dezelfde versie die wordt gebruikt in HDP-2,5. Als gevolg hiervan:
 
 -   Eerder gecompileerde mahout-taken moeten opnieuw worden gecompileerd in de HDP-2,5-of 2,6-omgeving.
 
@@ -1139,7 +1139,7 @@ Deze release biedt Spark 2.3.0 en de volgende Apache-patches:
 
 -   [Spark-23598](https://issues.apache.org/jira/browse/SPARK-23598): Maak methoden in BufferedRowIterator openbaar om runtime fout voor een grote query te voor komen.
 
--   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): Voeg een uuid-Generator toe uit pseudo-wille keurige getallen.
+-   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): Voeg een uuid-Generator toe uit Pseudo-Random getallen.
 
 -   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): gebruik RandomUUIDGenerator in uuid-expressie.
 
@@ -1358,7 +1358,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 | BUG-92957              | [HIVE-11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | aantal ( \* ) onjuist resultaat op basis van tabel statistieken voor externe tabellen                                                   |
 | BUG-93097              | [ZWERVER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Actie filter voor controle van beheerder werkt niet                                                                           |
 | BUG-93335              | [HIVE-12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | vectorization \_ Short \_ Regress. q heeft een onjuist resultaat voor een dubbele berekening                                      |
-| BUG-93415              | [Hive-18258](https://issues.apache.org/jira/browse/HIVE-18258), [Hive-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vectorization: groep voor verkleinen van MERGEPARTIAL met dubbele kolommen is verbroken                                      |
+| BUG-93415              | [Hive-18258](https://issues.apache.org/jira/browse/HIVE-18258), [Hive-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vectorization: Reduce-Side GROUP BY MERGEPARTIAL met dubbele kolommen is verbroken                                      |
 | BUG-93939              | [ATLAS-2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Er is een extra para meter "Description" toegevoegd bij het maken van een type                                                               |
 | BUG-94007              | [Phoenix-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [Phoenix-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | Phoenix-Query's retour neren Null-waarden vanwege gedeeltelijke rijen van HBase                                                          |
 | BUG-94266              | [HIVE-12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | Het overschrijven van een bestand in dezelfde versleutelde zone op de achtergrond wordt niet ongedaan gemaakt.                                   |
@@ -1751,7 +1751,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 |**Kafka 1,0**|**N.v.t.**|**Wijzigingen zoals beschreven in de opmerkingen bij de Apache Spark-release** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/zwerver** | |Extra zwerver-Hive-beleids regels die vereist zijn voor het OVERSCHRIJVEN van de toevoeging |**Scenario:** Extra zwerver-Hive-beleids regels die vereist zijn voor het OVERSCHRIJVEN van de **toevoeging**<br /><br />**Vorig gedrag:** Het negeren van query's voor Hive- **invoegingen** slaagt zoals gebruikelijk.<br /><br />**Nieuw gedrag:** Het **overschrijven** van Hive-query's van het onderdeel is onverwacht mislukt na een upgrade naar HDP-2.6. x met de volgende fout:<br /><br />Fout bij het compileren van de instructie: mislukt: de HiveAccessControlException toestemming is geweigerd: de gebruiker jdoe heeft geen schrijf bevoegdheid op/tmp/ \* (status = 42000, code = 40000)<br /><br />Net als bij HDP-2.6.0 is voor het **overschrijven** van Hive-query's vereist een ZWERVER-URI-beleid om schrijf bewerkingen toe te staan, zelfs als de gebruiker schrijf bevoegdheid heeft verleend via HDFS-beleid.<br /><br />**Tijdelijke oplossing/verwachte klant actie:**<br /><br />1. Maak een nieuw beleid onder Hive-opslag.<br />2. Selecteer URI in de vervolg keuzelijst waar u de data base ziet.<br />3. het pad bijwerken (voor beeld:/tmp/*)<br />4. Voeg de gebruikers en groep toe en sla het op.<br />5. Voer de query INSERT opnieuw uit.|
 |**HDFS**|**N.v.t.** |HDFS moet ondersteuning bieden voor meerdere KMS-Uri's |**Gedrag vorige:** DFS. encryption. key. provider. URI is gebruikt voor het configureren van het pad van de KMS-provider.<br /><br />**Nieuw gedrag:** DFS. encryption. key. provider. URI is nu voor het configureren van het pad van de KMS-provider vervangen door Hadoop. Security. key. provider. Path.|
-|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Optie voor het uitschakelen van scheduler |**Betrokken onderdeel:** Zeppelin-server<br /><br />**Vorig gedrag:** In eerdere releases van Zeppelin was er geen optie voor het uitschakelen van scheduler.<br /><br />**Nieuw gedrag:** Standaard wordt scheduler niet meer weer geven voor gebruikers, omdat deze standaard is uitgeschakeld.<br /><br />**Tijdelijke oplossing/verwachte klant actie:** Als u scheduler wilt inschakelen, moet u azeppelin. notebook. cron. enable met de waarde True toevoegen onder de aangepaste Zeppelin-site in Zeppelin instellingen van Ambari.|
+|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Optie voor het uitschakelen van scheduler |**Betrokken onderdeel:** Zeppelin-Server<br /><br />**Vorig gedrag:** In eerdere releases van Zeppelin was er geen optie voor het uitschakelen van scheduler.<br /><br />**Nieuw gedrag:** Standaard wordt scheduler niet meer weer geven voor gebruikers, omdat deze standaard is uitgeschakeld.<br /><br />**Tijdelijke oplossing/verwachte klant actie:** Als u scheduler wilt inschakelen, moet u azeppelin. notebook. cron. enable met de waarde True toevoegen onder de aangepaste Zeppelin-site in Zeppelin instellingen van Ambari.|
 
 ### <a name="known-issues"></a>Bekende problemen
 
