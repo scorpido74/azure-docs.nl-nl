@@ -1,25 +1,27 @@
 ---
-title: De contactgegevens voor uw Azure-account wijzigen
-description: Beschrijft hoe u de contactgegevens voor uw Azure-beheersaccount kunt wijzigen.
+title: Contactgegevens voor een Azure-factureringsaccount wijzigen
+description: Beschrijft hoe u de contactgegevens voor uw Azure-factureringsaccount kunt wijzigen
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6045afba230fa204dd5f93adc11b67ff0e3e209f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperfq1
+ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297722"
 ---
-# <a name="change-the-contact-information-for-your-azure-account"></a>De contactgegevens voor uw Azure-account wijzigen
+# <a name="change-contact-information-for-an-azure-billing-account"></a>Contactgegevens voor een Azure-factureringsaccount wijzigen
 
-Dit artikel helpt u om de contactgegevens voor uw account bij te werken in het Azure-portal. De instructies voor het bijwerken van de contactgegevens variëren per type naargelang het type factureringsaccount. Zie [Uw factureringsrekeningen weergeven in de Azure-portal](view-all-accounts.md) voor meer informatie over factureringsrekeningen en het bepalen van uw type factureringsrekening.
+Dit artikel helpt u bij het bijwerken van de contactgegevens voor een *factureringsaccount* in Azure Portal. De instructies voor het bijwerken van de contactgegevens variëren per type naargelang het type factureringsaccount. Zie [Uw factureringsrekeningen weergeven in de Azure-portal](view-all-accounts.md) voor meer informatie over factureringsrekeningen en het bepalen van uw type factureringsrekening. Een Azure-facturerings account is gescheiden van uw Azure-gebruikersaccount en [Microsoft-account](https://account.microsoft.com/).
+
+Als u de gegevens van uw Azure Active Directory-gebruikersprofiel wilt bijwerken, kan alleen een gebruikersbeheerder de wijzigingen aanbrengen. Neem contact op met de gebruikersbeheerder als u zelf niet de gebruikersbeheerdersrol hebt. Zie [Profielgegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-users-profile-azure-portal.md) voor meer informatie over het wijzigen van het profiel van een gebruiker.
 
 *Verkoopadres*: het verkoopadres is het adres en de contactinformatie van de organisatie of de persoon die verantwoordelijk is voor een factureringsaccount. Dit wordt weergegeven op alle facturen die gegenereerd worden voor het factureringsaccount.
 
@@ -31,21 +33,21 @@ Dit artikel helpt u om de contactgegevens voor uw account bij te werken in het A
 
 1. Meld u aan bij het [Azure-portal](https://portal.azure.com/) met het e-mailadres dat de beheerdersmachtigingen voor het account heeft.
 1. Zoek naar **Kostenbeheer en facturering**.  
-    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/change-azure-account-profile/search-cmb.png)
+    ![Schermopname die laat zien waar u kunt zoeken naar kostenbeheer en facturering in Azure Portal](./media/change-azure-account-profile/search-cmb.png)
 1. Selecteer **Eigenschappen** aan de linkerkant.  
-    ![Schermafbeelding met de pagina adres bijwerken](./media/change-azure-account-profile/update-contact-information-select-properties.png)
+    ![Schermopname van MOSP-factureringsaccounteigenschappen](./media/change-azure-account-profile/update-contact-information-select-properties.png)
 1. Selecteer **Factureringsadres bijwerken** om het verkoopadres en het factureringsadres bij te werken. Voer het nieuwe adres in en selecteer vervolgens **Opslaan**.  
-    ![Schermafbeelding met de pagina adres bijwerken](./media/change-azure-account-profile/update-contact-information-mosp.png)
+    ![Schermopname van het bijwerken van het adres voor het MOSP-factureringsaccount](./media/change-azure-account-profile/update-contact-information-mosp.png)
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>Een verkoopadres van een MCA-factureringsaccount bijwerken
 
 1. Meld u aan bij het [Azure-portal](https://portal.azure.com/) met het e-mailadres dat geregistreerd staat als eigenaar of bijdrager voor de factureringsaccount voor een Microsoft-klantovereenkomst.
 1. Zoek naar **Kostenbeheer en facturering**.  
-    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/change-azure-account-profile/search-cmb.png)
+    ![Schermopname die laat zien waar u kunt zoeken in Azure Portal](./media/change-azure-account-profile/search-cmb.png)
 1. Selecteer **Eigenschappen** aan de linkerkant en selecteer vervolgens **Verkocht-aan bijwerken**.  
-    ![Schermafbeelding waarom verkocht-aan bijwerken wordt geselecteerd](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
+    ![Schermopname die de eigenschappen laat zien voor een MCA-factureringsaccount waar het 'verkocht aan'-adres kan worden gewijzigd](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
 1. Voer het nieuwe adres in en selecteer **Opslaan**.  
-    ![Schermafbeelding waarop het adres wordt bijgewerkt](./media/change-azure-account-profile/update-sold-to-save-mca.png)
+    ![Schermopname van het bijwerken van het 'verkocht aan'-adres voor een MCA-account](./media/change-azure-account-profile/update-sold-to-save-mca.png)
 
     > [!IMPORTANT]
     > Voor sommige accounts is aanvullende verificatie nodig voor de verkocht-aan kan worden bijgewerkt. Als er handmatige goedkeuring nodig is voor uw account, dan wordt u gevraagd om contact op te nemen met Azure-ondersteuning.
@@ -54,15 +56,14 @@ Dit artikel helpt u om de contactgegevens voor uw account bij te werken in het A
 
 1. Meld u aan bij het [Azure-portal](https://portal.azure.com/) met het e-mailadres dat geregistreerd staat als eigenaar of bijdrager voor de factureringsaccount of factureringsprofiel voor een MCA.
 1. Zoek naar **Kostenbeheer en facturering**.  
-    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/change-azure-account-profile/search-cmb.png)
 1. Selecteer aan de linkerkant de optie **Factureringsprofielen**.
 1. Selecteer een factureringsprofiel om het factureringsadres bij te werken.  
-    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
+    ![Schermopname van de pagina Factureringsprofielen waar u een factureringsprofiel selecteert](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
 1. Selecteer **Eigenschappen** aan de linkerkant.
 1. Selecteer **Adres bijwerken**.  
-    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
+    ![Schermopname die laat zien waar het adres wordt bijgewerkt](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. Voer het nieuwe adres in en selecteer vervolgens **Opslaan**.  
-    ![Schermafbeelding waarop een adres wordt bijgewerkt](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+    ![Schermopname van het bijwerken van het adres](./media/change-azure-account-profile/update-bill-to-save-mca.png)
 
 ## <a name="service-and-marketing-emails"></a>E-mail voor service en marketing
 
@@ -83,11 +84,9 @@ Voer het e-mail adres in waarop u communicatie over uw account wilt ontvangen. D
 
 U kunt uw e-mailadres voor contactpersonen wijzigen met behulp van een van de volgende methoden. Als u het e-mailadres van uw contactpersoon bijwerkt, wordt het e-mailadres waarmee u zich aanmeldt niet automatisch mee bijgewerkt.
 
-* Als u een accountbeheerder bent voor een MOSP-account, volg dan de instructies in [Het adres van een MOSP-factureringsaccount bijwerken](#update-an-mosp-billing-account-address) en selecteer **Contactgegevens bijwerken**in de laatste stap. Voer vervolgens het nieuwe e-mailadres in.
-
-* Ga naar het gedeelte [Contactgegevens](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) in het Azure-portal en voer het nieuwe e-mailadres in. 
-
-* Selecteer in de [Azure-portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) het pictogram met uw initialen of afbeelding. Selecteer vervolgens het contextmenu ( **...** ). Selecteer vervolgens **Mijn contactgegevens** uit het menu en voer het nieuwe e-mailadres in.
+1. Als u een accountbeheerder bent voor een MOSP-account, volg dan de instructies in [Het adres van een MOSP-factureringsaccount bijwerken](#update-an-mosp-billing-account-address) en selecteer **Contactgegevens bijwerken**in de laatste stap. Voer vervolgens het nieuwe e-mailadres in.
+1. Ga naar het gedeelte [Contactgegevens](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) in het Azure-portal en voer het nieuwe e-mailadres in. 
+1. Selecteer in de [Azure-portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) het pictogram met uw initialen of afbeelding. Selecteer vervolgens het contextmenu ( **...** ). Selecteer vervolgens **Mijn contactgegevens** uit het menu en voer het nieuwe e-mailadres in.
 
 ![Voorbeeld van het bijwerken van een e-mailadres in Azure](./media/change-azure-account-profile/azure-contact-information.png)
 

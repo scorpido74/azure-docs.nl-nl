@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298708"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Een FCI maken met een Premium-bestands share (SQL Server op Azure Vm's)
@@ -41,7 +41,7 @@ Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig
 
 ## <a name="mount-premium-file-share"></a>Premium-bestands share koppelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). en ga naar uw opslag account.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). en ga naar uw opslag account.
 1. Ga naar **Bestands shares** onder **File Service**en selecteer vervolgens de Premium-bestands share die u wilt gebruiken voor uw SQL-opslag.
 1. Selecteer **verbinding** om de Connection String voor uw bestands share weer te geven.
 1. Selecteer in de vervolg keuzelijst de stationsletter die u wilt gebruiken en Kopieer beide code blokken naar Klad blok.
@@ -96,17 +96,7 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u 
 1. Selecteer **Next**.
 1. Selecteer onder **selectie testen**alle tests, met uitzonde ring van **opslag** en **opslagruimten direct**, zoals hier wordt weer gegeven:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Cluster validatie tests selecteren":::
-
-1. Selecteer **Next**.
-1. Klik onder **bevestiging**op **volgende**.
-
-Met de wizard **een configuratie valideren** worden de validatie tests uitgevoerd.
-
-Als u het cluster wilt valideren met behulp van Power shell, voert u het volgende script uit vanuit een Power shell-beheer sessie op een van de virtuele machines:
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Beide Power shell-opdrachten kopiëren van de bestands share Connect Portal"
    ```
 
 Nadat u het cluster hebt gevalideerd, maakt u het failovercluster.
@@ -151,7 +141,7 @@ Configureer de quorum oplossing die het beste past bij uw bedrijfs behoeften. U 
 
 Test de failover van het cluster. Klik in **Failoverclusterbeheer**met de rechter muisknop op uw cluster, selecteer **meer acties**  >  **basis cluster resource verplaatsen**  >  **knoop punt selecteren**en selecteer vervolgens het andere knoop punt van het cluster. Verplaats de kern cluster bron naar elk knoop punt van het cluster en verplaats deze vervolgens terug naar het primaire knoop punt. Als u het cluster kunt verplaatsen naar elk knoop punt, bent u klaar om SQL Server te installeren.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Cluster-Failover testen door de kern bron te verplaatsen naar de andere knoop punten":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Beide Power shell-opdrachten kopiëren van de bestands share Connect Portal":::
 
 
 ## <a name="create-sql-server-fci"></a>SQL Server FCI maken
@@ -172,7 +162,7 @@ Nadat u het failovercluster hebt geconfigureerd, kunt u de SQL Server FCI maken.
 
    De FCI-gegevens directory's moeten zich op de Premium-bestands share bestaan. Voer het volledige pad van de share in, in deze indeling: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Er wordt een waarschuwing weer gegeven met de mede deling dat u een bestands server hebt opgegeven als de data directory. Deze waarschuwing wordt verwacht. Zorg ervoor dat het gebruikers account dat u hebt gebruikt voor toegang tot de virtuele machine via RDP wanneer u de bestands share persistent maakt, hetzelfde account is dat door de SQL Server-service wordt gebruikt om mogelijke storingen te voor komen.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Bestands share gebruiken als SQL-gegevens mappen":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Beide Power shell-opdrachten kopiëren van de bestands share Connect Portal":::
 
 1. Nadat u de stappen in de wizard hebt voltooid, installeert Setup een SQL Server FCI op het eerste knoop punt.
 

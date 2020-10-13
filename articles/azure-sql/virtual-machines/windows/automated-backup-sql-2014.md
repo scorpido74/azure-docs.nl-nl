@@ -14,10 +14,10 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565119"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatische back-up voor virtuele SQL Server 2014-machines (Resource Manager)
@@ -258,14 +258,14 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 Als u automatische back-ups wilt bewaken op SQL Server 2014, hebt u twee belang rijke opties. Omdat automatische back-up gebruikmaakt van de SQL Server beheerde back-upfunctie, zijn dezelfde bewakings technieken van toepassing op beide.
 
-Eerst kunt u de status navragen door [msdb. smart_admin. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql)aan te roepen. Of query's uitvoeren op de functie [msdb. smart_admin. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
+Eerst kunt u de status navragen door [msdb. smart_admin. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql)te roepen. Of query's uitvoeren op de functie van de tabel [msdb. smart_admin. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
 
 > [!NOTE]
-> Het schema voor beheerde back-up in SQL Server 2014 is **msdb. smart_admin**. In SQL Server 2016 is dit gewijzigd in **msdb. managed_backup**en de referentie onderwerpen gebruiken dit nieuwere schema. Voor SQL Server 2014 moet u echter het **smart_admin** schema blijven gebruiken voor alle beheerde back-upobjecten.
+> Het schema voor beheerde back-up in SQL Server 2014 is **msdb.smart_admin**. In SQL Server 2016 is dit gewijzigd in **msdb.managed_backup**en de referentie onderwerpen gebruiken dit nieuwere schema. Voor SQL Server 2014 moet u echter het **smart_admin** schema blijven gebruiken voor alle beheerde back-upobjecten.
 
 Een andere optie is om te profiteren van de ingebouwde Database Mail functie voor meldingen.
 
-1. Roep de procedure [msdb. smart_admin. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) aan om een e-mail adres toe te wijzen aan de para meter **SSMBackup2WANotificationEmailIds** . 
+1. Roep de opgeslagen procedure [msdb. smart_admin. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) aan om een e-mail adres toe te wijzen aan de para meter **SSMBackup2WANotificationEmailIds** . 
 1. Schakel [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) in om de e-mail berichten van de Azure-VM te verzenden.
 1. Gebruik de SMTP-server en de gebruikers naam om Database Mail te configureren. U kunt Database Mail configureren in SQL Server Management Studio of met Transact-SQL-opdrachten. Zie [database mail](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail)voor meer informatie.
 1. [Configureer SQL Server Agent om database mail te gebruiken](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).

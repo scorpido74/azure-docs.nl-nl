@@ -12,13 +12,13 @@ ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667690"
 ---
-# <a name="get-started-with-custom-keyword"></a>Aan de slag met aangepast tref woord
+# <a name="get-started-with-custom-keyword"></a>Aan de slag met Aangepast sleutelwoord
 
 In deze Quick Start leert u de basis beginselen van het werken met aangepaste tref woorden, met behulp van speech Studio en de Speech SDK. Een tref woord is een woord of korte woord groep waarmee uw product spraak kan worden geactiveerd. Trefwoord modellen maakt u in speech Studio en vervolgens exporteert u een model bestand dat u gebruikt met de spraak-SDK in uw toepassingen.
 

@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361922"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
@@ -417,7 +417,7 @@ De Azure-Services van micro soft worden verzameld in azure-regio's. Een Azure-re
 Voor een lijst van de verschillende Azure-regio's raadpleegt u het artikel [Azure-geografs](https://azure.microsoft.com/global-infrastructure/geographies/). Niet alle Azure-regio's bieden dezelfde services. Afhankelijk van het SAP-product dat u wilt uitvoeren en het besturings systeem en het DBMS dat erin is gerelateerd, kunt u een situatie ontvangen dat een bepaalde regio niet de VM-typen bevat die u nodig hebt. Dit geldt met name voor het uitvoeren van SAP HANA, waarbij u doorgaans Vm's van de M/Mv2 VM-serie nodig hebt. Deze VM-families worden alleen geïmplementeerd in een subset van de regio's. U kunt meer informatie vinden over de exacte VM, typen, Azure-opslag typen of andere Azure-Services die beschikbaar zijn in welke regio's, met behulp van de [beschik bare site producten per regio](https://azure.microsoft.com/global-infrastructure/services/). Wanneer u de planning start en bepaalde regio's in acht neemt als primaire regio en uiteindelijk secundaire regio, moet u eerst onderzoeken of de benodigde services in die regio's beschikbaar zijn.
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
-Verschillende Azure-regio's hebben een concept geïmplementeerd met de naam Beschikbaarheidszones. Beschikbaarheidszones zijn fysiek gescheiden locaties binnen een Azure-regio. Elke beschikbaarheidszone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Als u bijvoorbeeld twee virtuele machines in twee Beschikbaarheidszones van Azure implementeert en een Framework met hoge Beschik baarheid implementeert voor uw SAP DBMS-systeem of de SAP Central-Services, beschikt u over de beste SLA in Azure. Voor deze specifieke SLA voor virtuele machines in azure, controleert u de meest recente versie van de service overeenkomst van de [virtuele](https://azure.microsoft.com/support/legal/sla/virtual-machines/)machine. Omdat Azure-regio's snel in de afgelopen jaren zijn ontwikkeld en uitgebreid, kan de topologie van de Azure-regio's, het aantal fysieke data centers, de afstand tussen deze data centers en de afstand tussen de Azure-beschikbaarheidszones verschillend zijn. En met de netwerk latentie.
+Verschillende Azure-regio's hebben een concept geïmplementeerd met de naam Beschikbaarheidszones. Beschikbaarheidszones zijn fysiek gescheiden locaties binnen een Azure-regio. Elke beschikbaarheidszone bestaat uit een of meer datacentra die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Als u bijvoorbeeld twee virtuele machines in twee Beschikbaarheidszones van Azure implementeert en een Framework met hoge Beschik baarheid implementeert voor uw SAP DBMS-systeem of de SAP Central-Services, beschikt u over de beste SLA in Azure. Voor deze specifieke SLA voor virtuele machines in azure, controleert u de meest recente versie van de service overeenkomst van de [virtuele](https://azure.microsoft.com/support/legal/sla/virtual-machines/)machine. Omdat Azure-regio's snel in de afgelopen jaren zijn ontwikkeld en uitgebreid, kan de topologie van de Azure-regio's, het aantal fysieke data centers, de afstand tussen deze data centers en de afstand tussen de Azure-beschikbaarheidszones verschillend zijn. En met de netwerk latentie.
 
 Het principe van Beschikbaarheidszones is niet van toepassing op de HANA-specifieke service van [Hana grote instanties](./hana-overview-architecture.md). Service overeenkomsten voor HANA grote instanties vindt u in het artikel [Sla voor SAP Hana on Azure large instances](https://azure.microsoft.com/support/legal/sla/sap-hana-large/)
 
@@ -890,7 +890,7 @@ In dit geval willen we een VHD uploaden, hetzij met ofwel zonder een besturings 
 * Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 * Een gegevens schijf toevoegen aan een nieuwe virtuele machine met *add-AzVMDataDisk* -Zie <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
 
-**Azure CLI**
+**Azure-CLI**
 
 * Meld u aan bij uw abonnement met *AZ login*
 * Selecteer uw abonnement met *AZ account set--Subscription `<subscription name or id` > *
@@ -918,7 +918,7 @@ Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt 
   * Beheerde schijf installatie kopie *instellen-AzVMSourceImage* -Zie <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
 * Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 
-**Azure CLI**
+**Azure-CLI**
 
 * Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10)) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * Meld u aan bij uw abonnement met *AZ login*
@@ -963,7 +963,7 @@ Tijdens de download tijd kan de Vhd's of de Managed Disks niet actief zijn. Zelf
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Zie hier voor meer informatie over de cmdlet Save-AzVhd <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
+  Zie hier voor meer informatie over de Save-AzVhd-cmdlet <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
 #### <a name="azure-cli"></a>Azure CLI
 * Als u een beheerde schijf wilt downloaden, moet u eerst toegang krijgen tot de onderliggende blob van de beheerde schijf. Vervolgens kunt u de onderliggende BLOB kopiëren naar een nieuw opslag account en de BLOB downloaden van dit opslag account.
@@ -998,7 +998,7 @@ Gegevens schijven kunnen ook worden Managed Disks. In dit geval wordt de beheerd
 
 ##### <a name="powershell"></a>PowerShell
 
-U kunt Azure PowerShell-cmdlets gebruiken om een VHD te kopiëren zoals wordt weer gegeven in [dit artikel][storage-powershell-guide-full-copy-vhd]. Als u een nieuwe beheerde schijf wilt maken, gebruikt u New-AzDiskConfig en New-AzDisk, zoals wordt weer gegeven in het volgende voor beeld.
+U kunt Azure PowerShell-cmdlets gebruiken om een VHD te kopiëren zoals wordt weer gegeven in [dit artikel][storage-powershell-guide-full-copy-vhd]. Als u een nieuwe beheerde schijf wilt maken, gebruikt u New-AzDiskConfig en New-AzDisk, zoals in het volgende voor beeld wordt weer gegeven.
 
 ```powershell
 $config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
@@ -1168,7 +1168,7 @@ Ervaar de ervaring van SAP-implementaties in de afgelopen twee jaar. Dit zijn en
 >
 
 ---
-* Premium Storage worden aanzienlijk betere prestaties weer gegeven, met name voor het schrijven van kritieke transactie Logboeken. Voor SAP-scenario's die naar verwachting productie leveren, zoals prestaties, is het raadzaam om gebruik te maken van VM-serie die gebruikmaakt van Azure Premium Storage.
+* Premium Storage worden aanzienlijk betere prestaties weer gegeven, met name voor het schrijven van kritieke transactie Logboeken. Voor SAP-scenario's die naar verwachting productie leveren, zoals prestaties, is het raadzaam om VM-Series te gebruiken die gebruikmaken van Azure Premium Storage.
 
 Houd er wel van uit dat de schijf, die het besturings systeem bevat, wordt aanbevolen, de binaire bestanden van SAP en de data base (basis-VM) ook niet langer beperkt tot 127 GB. Het kan nu Maxi maal 1 TB groot zijn. Dit moet voldoende ruimte zijn om alle benodigde bestanden op te slaan, waaronder bijvoorbeeld SAP batch-taak Logboeken.
 
@@ -1219,7 +1219,7 @@ Azure geo-replicatie werkt lokaal op elke VHD in een VM en repliceert het I/O's 
 >
 > Als u de automatisch koppelen wilt instellen, raadpleegt u de documentatie van het uitvoer bare bestand van de opdracht regel diskpart.exe hier:
 >
-> * [Opdracht regel opties voor Disk Part](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
+> * [Opties voor Disk Part Command-Line](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
 > * [Automount](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc753703(v=ws.11))
 >
 > Het Windows-opdracht regel venster moet als beheerder worden geopend.
@@ -1738,7 +1738,7 @@ De algemene architectuur van de Azure-extensie voor SAP ziet er als volgt uit:
 
 SAP-exemplaren die worden uitgevoerd in azure, moeten ook toegankelijk zijn vanuit SAProuter.
 
-![SAP-router-netwerk verbinding][planning-guide-figure-2600]
+![SAP-Router netwerk verbinding][planning-guide-figure-2600]
 
 Een SAProuter maakt de TCP/IP-communicatie tussen deelnemende systemen mogelijk als er geen directe IP-verbinding is. Dit biedt het voor deel dat er geen end-to-end-verbinding tussen de communicatie partners nodig is op het netwerk niveau. De SAProuter luistert standaard op poort 3299.
 Als u SAP-exemplaren wilt verbinden via een SAProuter, moet u de teken reeks en hostnaam van de SAProuter voorzien van elke poging om verbinding te maken.
@@ -1936,7 +1936,7 @@ Zie hier voor meer informatie over automatisch starten voor SAP-instanties:
 * [Automatisch starten van HANA-data base inschakelen](http://sapbasisinfo.com/blog/2016/08/15/enabling-autostart-of-sap-hana-database-on-server-boot-situation/)
 
 ### <a name="larger-3-tier-sap-systems"></a>Grotere SAP-systemen met 3 lagen
-Aspecten van een hoge Beschik baarheid van SAP-configuraties met drie lagen komen al in eerdere secties aan bod. Maar hoe weet het systeem waar de vereisten voor de DBMS-server te groot zijn om deze te hebben in azure, maar de SAP-toepassingslaag kan in Azure worden geïmplementeerd?
+High-Availability aspecten van 3-tier SAP-configuraties zijn al besproken in eerdere secties. Maar hoe weet het systeem waar de vereisten voor de DBMS-server te groot zijn om deze te hebben in azure, maar de SAP-toepassingslaag kan in Azure worden geïmplementeerd?
 
 #### <a name="location-of-3-tier-sap-configurations"></a>Locatie van de 3-tier SAP-configuraties
 Het wordt niet ondersteund om de toepassingslaag zelf of de toepassing en de DBMS-laag te splitsen tussen on-premises en Azure. Een SAP-systeem is volledig geïmplementeerd op locatie of in Azure. Het is ook niet mogelijk om sommige toepassings servers on-premises en andere in azure uit te voeren. Dat is het begin punt van de discussie. We ondersteunen ook niet dat de DBMS-onderdelen van een SAP-systeem en de SAP Application Server-laag in twee verschillende Azure-regio's zijn geïmplementeerd. Bijvoorbeeld: DBMS in VS-West en SAP-toepassingslaag in VS-midden. De reden voor het niet ondersteunen van dergelijke configuraties is de latentie gevoeligheid van de SAP NetWeaver-architectuur.

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.openlocfilehash: a09989e57729862cb18f148f95eb83f81a775b7d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542220"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ’s) over Language Understanding
@@ -318,17 +318,17 @@ Zie [API v2 naar v3 migratie handleiding voor Luis-apps](luis-migration-api-v3.m
 
 ## <a name="build-2019-conference-announcements"></a>Build 2019-conferentie aankondigingen
 
-De volgende functies zijn uitgebracht op de build 2019-conferentie:
+De volgende functies zijn uitgebracht op de Build 2019 Conference:
 
-* [Preview van de V3 API-migratie handleiding](luis-migration-api-v3.md)
-* [Verbeterd analyse dashboard](luis-how-to-use-dashboard.md)
-* [Verbeterde, vooraf ontwikkelde domeinen](luis-reference-prebuilt-domains.md)
-* [Dynamische lijst entiteiten](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+* [Preview van de V3 API-migratiehandleiding](luis-migration-api-v3.md)
+* [Verbeterd analysedashboard](luis-how-to-use-dashboard.md)
+* [Verbeterde vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md)
+* [Dynamische lijstentiteiten](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [Externe entiteiten](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 Video's:
 
-* [Azure-conversatie AI gebruiken om uw bedrijf te schalen voor de volgende generatie](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+* [Gespreks-AI van Azure gebruiken om uw bedrijf te schalen voor de volgende generatie](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>Volgende stappen
 

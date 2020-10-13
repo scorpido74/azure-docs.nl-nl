@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9468b9c2c906ffe26bae400dc9e4746630a66e0e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401092"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970313"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-beveiligings basislijn voor Linux Virtual Machines
 
@@ -32,7 +32,7 @@ Zie [overzicht van Azure Security-basis lijnen](../../security/benchmarks/securi
 
 Als u een specifieke use-case voor een gecentraliseerde firewall hebt, kunt Azure Firewall ook worden gebruikt om aan deze vereisten te voldoen.
 
-* [Virtuele netwerken en virtuele machines in azure](../windows/network-overview.md)
+* [Virtuele netwerken en virtuele machines in azure](../network-overview.md)
 
 * [Een Virtual Network maken](../../virtual-network/quick-create-portal.md)
 
@@ -64,7 +64,7 @@ U kunt ook Azure Web Application firewall (WAF) voor essentiële webtoepassingen
 
 * [Een toepassings gateway met een Web Application firewall maken met behulp van de Azure Portal](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-* [Virtuele netwerken en virtuele machines in azure](../windows/network-overview.md)
+* [Virtuele netwerken en virtuele machines in azure](../network-overview.md)
 
 * [Informatie over netwerk beveiligings groepen](../../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -82,7 +82,7 @@ U kunt de just-in-time-netwerk toegang van Azure Security Center gebruiken om de
 
 * [Azure Firewall implementeren](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../../security-center/threat-protection.md)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../../security-center/azure-defender.md)
 
 * [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -148,7 +148,7 @@ U kunt de just-in-time-netwerk toegang van Azure Security Center gebruiken om de
 
 * [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network)
+* [Voor beelden Azure Policy voor netwerken](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Een Azure Blueprint maken](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -182,7 +182,7 @@ Gebruik Azure Policy om configuraties te valideren (en/of te herstellen) voor ne
 
 * [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network)
+* [Voor beelden Azure Policy voor netwerken](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Security Center bewaking**: niet beschikbaar
 
@@ -306,7 +306,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 **Richt lijnen**: u hebt een hulp programma van derden nodig voor de detectie van zwakke plekken in het Linux-besturings systeem.
 
-* [Instructies voor het voorbereiden van Linux-servers naar Azure Security Center](../../security-center/quick-onboard-linux-computer.md)
+* [Instructies voor het voorbereiden van Linux-servers naar Azure Security Center](../../security-center/quickstart-onboard-machines.md)
 
 * [Volgende koppeling bevat de aanbevolen beveiligings richtlijnen van micro soft, die kunnen dienen als een lijst met criteria voor de geselecteerde beveiligings software](./security-recommendations.md)
 
@@ -514,7 +514,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 * [Aanvullende Azure-abonnementen maken](../../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../../governance/management-groups/create.md)
+* [Beheergroepen maken](../../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
@@ -616,7 +616,7 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 **Richt lijnen**: u hebt een hulp programma van derden nodig voor de detectie van zwakke plekken in het Linux-besturings systeem.
 
-* [Instructies voor het voorbereiden van Linux-servers naar Azure Security Center](../../security-center/quick-onboard-linux-computer.md)
+* [Instructies voor het voorbereiden van Linux-servers naar Azure Security Center](../../security-center/quickstart-onboard-machines.md)
 
 * [Aanbevolen beveiligings richtlijnen voor micro soft](./security-recommendations.md)
 
@@ -700,7 +700,7 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 * [Aanvullende Azure-abonnementen maken](../../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../../governance/management-groups/create.md)
+* [Beheergroepen maken](../../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../../azure-resource-manager/management/tag-resources.md)
 
@@ -784,7 +784,7 @@ Naast het gebruik van Wijzigingen bijhouden voor het bewaken van software toepas
 
 * [Azure Policy configureren en beheren](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -824,13 +824,13 @@ Naast het gebruik van Wijzigingen bijhouden voor het bewaken van software toepas
 
 **Hulp**: toepassingen met een hoog risico die zijn geïmplementeerd in uw Azure-omgeving, kunnen worden geïsoleerd met virtuele netwerken, subnetten, abonnementen, beheer groepen en voldoende beveiligd met een Azure firewall, Web Application firewall (WAF) of netwerk beveiligings groep (NSG).
 
-* [Virtuele netwerken en virtuele machines in azure](../windows/network-overview.md)
+* [Virtuele netwerken en virtuele machines in azure](../network-overview.md)
 
 * [Overzicht van Azure Firewall](../../firewall/overview.md)
 
 * [Overzicht van Web Application firewall](../../web-application-firewall/overview.md)
 
-* [Overzicht van netwerkbeveiliging](../../virtual-network/security-overview.md)
+* [Overzicht van netwerkbeveiliging](../../virtual-network/network-security-groups-overview.md)
 
 * [Overzicht van Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)
 

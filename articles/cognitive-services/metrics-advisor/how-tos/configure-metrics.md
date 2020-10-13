@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91446345"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Informatie over het configureren van metrische gegevens en het afstemmen van de configuratie van detectie
@@ -143,7 +143,7 @@ De sectie **cyclus gebeurtenis** kan in sommige scenario's worden gebruikt om on
  
 Niet alle opties kunnen voor elke granulatie worden geselecteerd. Hieronder vindt u de beschik bare opties per granulatie:
 
-| Granulariteit | YoY | Mama | WoW | DoD |
+| Granulariteit | YoY | Geen. | WoW | DoD |
 |:-|:-|:-|:-|:-|
 | Jaarlijks | X | X | X | X |
 | Maandelijks | X | X | X | X |

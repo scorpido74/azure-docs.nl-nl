@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362126"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replicatie naar Azure SQL Database
@@ -54,8 +54,8 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Yes | 
-| [**Momentopname**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
+| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja | 
+| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
 | [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
 | [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|

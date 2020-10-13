@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568898"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een IR bewaken in Azure Data Factory
@@ -47,12 +47,12 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 
 | Eigenschap | Beschrijving |
 -------- | ------------- | 
-| Name | De naam van de Azure Integration runtime. |  
-| Staat | Status van de Azure Integration runtime. | 
+| Naam | De naam van de Azure Integration runtime. |  
+| Status | Status van de Azure Integration runtime. | 
 | Locatie | Locatie van de Azure Integration runtime. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure Integration runtime. |
 | DataFactoryName | De naam van de data factory waarvan de Azure Integration runtime deel uitmaakt. | 
 | ResourceGroupName | De naam van de resource groep waartoe de data factory behoort.  |
-| Description | Beschrijving van de Integration runtime.  |
+| Beschrijving | Beschrijving van de Integration runtime.  |
 
 ### <a name="status"></a>Status
 
@@ -65,7 +65,7 @@ De volgende tabel bevat mogelijke statussen van een Azure Integration runtime:
 
 ## <a name="self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime
 
-Deze sectie bevat beschrijvingen voor eigenschappen die door de cmdlet Get-AzDataFactoryV2IntegrationRuntime worden geretourneerd. 
+Deze sectie bevat beschrijvingen voor eigenschappen die door de Get-AzDataFactoryV2IntegrationRuntime-cmdlet worden geretourneerd. 
 
 > [!NOTE] 
 > De geretourneerde eigenschappen en status bevatten informatie over de algehele zelf-hostende Integration runtime en elk knoop punt in de runtime.  
@@ -76,7 +76,7 @@ De volgende tabel bevat beschrijvingen van de bewakings eigenschappen voor **elk
 
 | Eigenschap | Beschrijving | 
 | -------- | ----------- | 
-| Name | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
+| Naam | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
 | Status | De status van de algemene zelf-hostende Integration runtime en elk knoop punt. Voor beeld: online/offline/beperkt/etc. Zie de volgende sectie voor meer informatie over deze statussen. | 
 | Versie | De versie van de zelf-hostende Integration runtime en elk knoop punt. De versie van de zelf-hostende Integration runtime wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de zelf-hostende Integration runtime-installatie zijn, worden alleen de knoop punten met hetzelfde versie nummer als de logische zelf-hostende Integration runtime-functie correct uitgevoerd. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt). | 
 | Beschikbaar geheugen | Beschikbaar geheugen op een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. | 
@@ -175,13 +175,13 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 De volgende tabel bevat beschrijvingen van eigenschappen die door de bovenstaande cmdlet voor een Azure-SSIS IR worden geretourneerd.
 
-| Eigenschap/status              | Description                  |
+| Eigenschap/status              | Beschrijving                  |
 | ---------------------------- | ---------------------------- |
 | CreateTime                   | De UTC-tijd waarop uw Azure-SSIS IR is gemaakt. |
 | Knooppunten                        | De toegewezen/beschik bare knoop punten van uw Azure-SSIS IR met knooppunt-specifieke statussen (starten/beschikbaar/recyclen/niet beschikbaar) en fouten die kunnen optreden. |
 | OtherErrors                  | De niet-knooppunt specifieke actie fouten op uw Azure-SSIS IR. |
 | LastOperation                | Het resultaat van de laatste start-en stop bewerking op uw Azure-SSIS IR met een actie bare fout (en) als deze is mislukt. |
-| Staat                        | De algehele status van uw Azure-SSIS IR (begin/start/gestart/gestopt). |
+| Status                        | De algehele status van uw Azure-SSIS IR (begin/start/gestart/gestopt). |
 | Locatie                     | De locatie van uw Azure-SSIS IR. |
 | NodeSize                     | De grootte van elk knoop punt in uw Azure-SSIS IR. |
 | NodeCount                    | Het aantal knoop punten in uw Azure-SSIS IR. |
@@ -196,8 +196,8 @@ De volgende tabel bevat beschrijvingen van eigenschappen die door de bovenstaand
 | Type                         | Het IR-type (beheerd/zelf-Hostend) van uw Azure-SSIS IR. |
 | ResourceGroupName            | De naam van uw Azure-resource groep waarin uw ADF en Azure-SSIS IR zijn gemaakt. |
 | DataFactoryName              | De naam van de ADF. |
-| Name                         | De naam van uw Azure-SSIS IR. |
-| Description                  | De beschrijving van uw Azure-SSIS IR. |
+| Naam                         | De naam van uw Azure-SSIS IR. |
+| Beschrijving                  | De beschrijving van uw Azure-SSIS IR. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Status (per Azure-SSIS IR knoop punt)
 
@@ -214,7 +214,7 @@ De volgende tabel bevat mogelijke statussen van een Azure-SSIS IR knoop punt:
 
 De volgende tabel bevat mogelijke algemene statussen van een Azure-SSIS IR. De algemene status is afhankelijk van de gecombineerde status van alle knoop punten die deel uitmaken van de Azure-SSIS IR. 
 
-| Algemene status | Description | 
+| Algemene status | Beschrijving | 
 | -------------- | ----------- | 
 | Eerste        | De knoop punten van uw Azure-SSIS IR zijn niet toegewezen/voor bereid. | 
 | Starten       | De knoop punten van uw Azure-SSIS IR worden toegewezen/voor bereid en de facturering is gestart. |
@@ -246,7 +246,7 @@ Als u een project implementatie model gebruikt waarbij pakketten worden opgeslag
 
 #### <a name="proxy--staging-tile"></a>Tegel voor PROXY/fase ring
 
-Als u zelf-Hostende IR (SHIR) downloadt, installeert en configureert als proxy voor uw Azure-SSIS IR om toegang te krijgen tot gegevens on-premises, ziet u de tegel **proxy/STAGING** op uw Azure-SSIS IR monitoring-pagina (Zie [SHIR configureren als proxy voor uw Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Op deze tegel kunt u een koppeling selecteren die uw SHIR aanwijst om de controle pagina ervan te openen. U kunt ook een andere koppeling selecteren om uw Azure-Blob Storage aan te wijzen voor fase ring om de gekoppelde service opnieuw te configureren.
+Als u Self-Hosted IR (SHIR) downloadt, installeert en configureert als een proxy voor uw Azure-SSIS IR om toegang te krijgen tot gegevens on-premises, ziet u de tegel **proxy/STAGING** op uw Azure-SSIS IR bewakings pagina (Zie [SHIR configureren als proxy voor uw Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Op deze tegel kunt u een koppeling selecteren die uw SHIR aanwijst om de controle pagina ervan te openen. U kunt ook een andere koppeling selecteren om uw Azure-Blob Storage aan te wijzen voor fase ring om de gekoppelde service opnieuw te configureren.
 
 #### <a name="validate-vnet--subnet-tile"></a>De tegel VNET/SUBNET valideren
 

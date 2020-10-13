@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
 ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542424"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Een Azure Database for MariaDB-server naar een andere regio verplaatsen met behulp van de Azure Portal
@@ -33,7 +33,7 @@ U kunt een Azure Database for MariaDB [Kruis regio lezen replica](concepts-read-
 
 Als u in de doel regio een cross-Region replica server wilt maken met behulp van de Azure Portal, gebruikt u de volgende stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als de bron server. Met deze actie wordt de pagina **overzicht** geopend.
 1. Selecteer **replicatie** in het menu onder **instellingen**.
 1. Selecteer **replica toevoegen**.

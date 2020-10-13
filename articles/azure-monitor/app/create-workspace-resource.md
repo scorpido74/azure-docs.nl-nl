@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894535"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Application Insights resources op basis van een werk ruimte
 
 Resources op basis van een werk ruimte ondersteunen volledige integratie tussen Application Insights en Log Analytics. U kunt nu uw Application Insights telemetrie naar een gemeen schappelijke Log Analytics-werk ruimte verzenden, zodat u volledige toegang hebt tot alle functies van Log Analytics terwijl logboeken voor toepassings-, infra structuur-en platform bestanden in één geconsolideerde locatie worden bewaard.
 
-Dit biedt ook algemene op rollen gebaseerde Access Control (RBAC) in uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
+Dit biedt ook algemene Role-Based Access Control (RBAC) in uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
 
 > [!NOTE]
 > Gegevens opname en retentie voor op werk ruimte gebaseerde Application Insights resources worden gefactureerd via de Log Analytics werk ruimte waarin de gegevens zich bevinden. Meer [informatie]( ./pricing.md#workspace-based-application-insights) over facturering voor op werk ruimte gebaseerde Application Insights resources.

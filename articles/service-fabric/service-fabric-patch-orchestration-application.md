@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445889"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Het Windows-besturings systeem in uw Service Fabric cluster bijwerken
@@ -166,7 +166,7 @@ U kunt POA-gedrag configureren om te voldoen aan uw behoeften. De standaard waar
 | WURescheduleCount     | Int <br> (Standaard: *5*)                  | Het maximum aantal keren dat de service de Windows-Update opnieuw plant als een bewerking permanent mislukt.          |
 | WURescheduleTimeInMinutes | Int <br>(Standaard: *30*) | Het interval waarmee de Windows-updates opnieuw worden gepland als de fout zich blijft voordoen. |
 | WUFrequency           | Door komma's gescheiden teken reeks (standaard: *wekelijks, woensdag, 7:00:00*)     | De frequentie voor het installeren van Windows-updates. De notatie en mogelijke waarden zijn: <br>-Maandelijks, DD, uu: MM: SS (voor beeld: *Monthly, 5, 12:22:32*). Toegestane waarden voor het veld _dd_ (dag) zijn getallen van 1 tot en met 28 en _laatste_. <br>-Wekelijks, dag, uu: MM: SS (voor beeld: *wekelijks, dinsdag, 12:22:32*)  <br>-Dagelijks, uu: MM: SS (voor beeld: *dagelijks, 12:22:32*)  <br>-Week, dag, uu: MM: SS (voor beeld: *2, vrijdag, 21:00:00* geeft 9:00 uur UTC op vrijdag van de 2e week van elke maand) <br>- *Geen* geeft aan dat Windows-updates niet mogen worden uitgevoerd.  <br><br> Tijden zijn UTC.|
-| AcceptWindowsUpdateEula | Booleaans <br>(Standaard: *True*) | Door deze vlag in te stellen, accepteert de toepassing de gebruiksrecht overeenkomst voor Windows Update namens de eigenaar van de computer.              |
+| AcceptWindowsUpdateEula | Booleaans <br>(Standaard: *True*) | Door deze vlag in te stellen, accepteert de toepassing de End-User gebruiksrecht overeenkomst voor Windows Update namens de eigenaar van de computer.              |
 
 > [!TIP]
 > Als u wilt dat Windows-updates onmiddellijk worden uitgevoerd, stelt u `WUFrequency` in ten opzichte van de implementatie tijd van de toepassing. Stel dat u een test cluster met vijf knoop punten hebt en u de app op ongeveer 5:00 uur UTC wilt implementeren. Als u ervan uitgaat dat de upgrade of implementatie van de toepassing 30 minuten Maxi maal duurt, stelt u de WUFrequency als dagelijks in op *17:30:00*.
@@ -439,7 +439,7 @@ A: POA gebruikt Service Fabric Repair Manager om herstel taken voor knoop punten
 
 ## <a name="disclaimers"></a>Disclaimers
 
-- POA accepteert de gebruiksrecht overeenkomst voor Windows Update namens de gebruiker. De instelling kan eventueel worden uitgeschakeld in de configuratie van de toepassing.
+- POA accepteert de End-User gebruiksrecht overeenkomst voor Windows Update namens de gebruiker. De instelling kan eventueel worden uitgeschakeld in de configuratie van de toepassing.
 
 - POA verzamelt telemetrie om het gebruik en de prestaties bij te houden. De telemetrie van de toepassing volgt de instelling van de telemetrie-instelling van de Service Fabric runtime (deze is standaard ingeschakeld).
 

@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91666429"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen
@@ -46,7 +46,7 @@ Voordat u uw abonnement kunt koppelen of toevoegen, moet u de volgende taken uit
 - Bekijk de volgende lijst met wijzigingen die zich voordoen nadat u uw abonnement hebt gekoppeld of toegevoegd, en hoe u dit kunt beïnvloeden:
 
   - Gebruikers die rollen hebben toegewezen met Azure RBAC, raken hun toegang kwijt
-  - Service beheerder en mede beheerders hebben geen toegang meer
+  - Service beheerder en Co-Administrators verliezen geen toegang
   - Als u sleutel kluizen hebt, zijn ze niet toegankelijk en moet u deze na de koppeling oplossen
   - Als u beheerde identiteiten hebt voor resources zoals Virtual Machines of Logic Apps, moet u deze opnieuw inschakelen of opnieuw maken na de koppeling
   - Als u een geregistreerde Azure Stack hebt, moet u deze na de koppeling opnieuw registreren
