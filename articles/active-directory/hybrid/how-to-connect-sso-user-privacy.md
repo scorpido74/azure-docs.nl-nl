@@ -1,5 +1,5 @@
 ---
-title: Privacy van gebruikers en Azure AD naadloze eenmalige aanmelding | Microsoft Docs
+title: Privacy van gebruikers en Azure AD naadloze single Sign-On | Microsoft Docs
 description: In dit artikel worden Azure Active Directory (Azure AD) naadloze SSO-en AVG-naleving besproken.
 services: active-directory
 keywords: Wat is Azure AD Connect, AVG, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278595"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Gebruikersprivacy en naadloze eenmalige aanmelding van Azure AD

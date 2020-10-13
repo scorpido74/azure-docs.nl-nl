@@ -12,10 +12,10 @@ ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536236"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Lees de OCR docker-containers configureren
@@ -120,7 +120,7 @@ Vervang {_argument_name_} door uw eigen waarden:
 De volgende docker-voor beelden zijn voor de Lees-container.
 
 
-# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1-preview](#tab/version-3-1)
 
 ### <a name="basic-example"></a>Basis voorbeeld
 
@@ -144,7 +144,7 @@ ApiKey={API_KEY}
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
 
 ### <a name="basic-example"></a>Basis voorbeeld
 

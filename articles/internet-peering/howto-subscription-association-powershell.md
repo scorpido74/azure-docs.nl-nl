@@ -10,10 +10,10 @@ ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: aed079c467139ac5819951c5895ba753ee38ae2d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89067736"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Peer-ASN koppelen aan een Azure-abonnement met behulp van Power shell
@@ -108,6 +108,6 @@ Het is momenteel niet mogelijk om een PeerASN te verwijderen. Als u PeerASN moet
 * [Uitwisseling van peering maken of wijzigen](howto-exchange-powershell.md)
 * [Een verouderde Exchange-peering converteren in een Azure-resource](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Ga voor meer informatie naar [Veelgestelde vragen over Internet peering](faqs.md)

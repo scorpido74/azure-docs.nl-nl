@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754970"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969701"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Back-ups en herstel na nood gevallen voor Azure IaaS-schijven
 
@@ -48,7 +48,7 @@ Deze architectuur heeft ervoor gezorgd dat Azure consistente duurzaamheid op bed
 
 Lokale hardwarestoringen op de compute-host of het opslagplatform kunnen soms leiden tot de tijdelijke onbeschikbaarheid van de virtuele machine die wordt gedekt door de [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) voor VM-beschikbaarheid. Azure biedt ook een toonaangevende SLA voor afzonderlijke VM-instanties die gebruikmaken van Azure Premium SSD's.
 
-Om toepassingsworkloads te beschermen tegen downtime vanwege de tijdelijke onbeschikbaarheid van een schijf of virtuele machine, kunnen klanten [beschikbaarheidssets gebruiken](windows/manage-availability.md). Twee of meer virtuele machines in een beschikbaarheidsset bieden redundantie voor de toepassing. Azure maakt deze virtuele machines en schijven vervolgens in afzonderlijke foutdomeinen met verschillende stroom-, netwerk- en serveronderdelen.
+Om toepassingsworkloads te beschermen tegen downtime vanwege de tijdelijke onbeschikbaarheid van een schijf of virtuele machine, kunnen klanten [beschikbaarheidssets gebruiken](./manage-availability.md). Twee of meer virtuele machines in een beschikbaarheidsset bieden redundantie voor de toepassing. Azure maakt deze virtuele machines en schijven vervolgens in afzonderlijke foutdomeinen met verschillende stroom-, netwerk- en serveronderdelen.
 
 Vanwege deze afzonderlijke foutdomeinen hebben lokale hardwarestoringen doorgaans geen invloed op meerdere virtuele machines in de set tegelijkertijd. Afzonderlijke foutdomeinen bieden een hoge beschikbaarheid voor uw toepassing. Het is een goede gewoonte om beschikbaarheidssets te gebruiken wanneer hoge beschikbaarheid is vereist. In de volgende sectie wordt herstel na noodgevallen beschreven.
 
@@ -77,7 +77,7 @@ Overweeg een productiedatabaseserver, zoals SQL Server of Oracle, die hoge besch
 - De gegevens moeten worden beveiligd en herstelbaar zijn.
 - De server moet beschikbaar zijn voor gebruik.
 
-Het plan voor herstel na noodgevallen vereist mogelijk dat een replica van de database in een andere regio wordt bewaard als back-up. Afhankelijk van de vereisten voor serverbeschikbaarheid en gegevensherstel, kan de oplossing variëren van een active-active of active-passive replicasite tot periodieke offline back-ups van de gegevens. Relationele databases, zoals SQL Server en Oracle, bieden verschillende opties voor replicatie. Gebruik voor SQL Server [SQL Server AlwaysOn-beschikbaarheidsgroepen](https://msdn.microsoft.com/library/hh510230.aspx) voor maximale beschikbaarheid.
+Het plan voor herstel na noodgevallen vereist mogelijk dat een replica van de database in een andere regio wordt bewaard als back-up. Afhankelijk van de vereisten voor serverbeschikbaarheid en gegevensherstel, kan de oplossing variëren van een active-active of active-passive replicasite tot periodieke offline back-ups van de gegevens. Relationele databases, zoals SQL Server en Oracle, bieden verschillende opties voor replicatie. Gebruik voor SQL Server [SQL Server AlwaysOn-beschikbaarheidsgroepen](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) voor maximale beschikbaarheid.
 
 NoSQL-databases, zoals MongoDB, ondersteunen ook [replica's](https://docs.mongodb.com/manual/replication/) voor redundantie. De replica's voor hoge beschikbaarheid worden gebruikt.
 
@@ -201,7 +201,7 @@ Een andere optie voor het maken van consistente back-ups is het afsluiten van de
 
 1. Maak een momentopname van elke virtuele harde schijf-blob. Dit neemt slechts een paar seconden in beslag.
 
-    Als u een momentopname wilt maken, kunt u gebruikmaken van [Power shell](https://docs.microsoft.com/powershell/module/az.storage), de [Azure Storage REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/), of een van de Azure Storage-clientbibliotheken, zoals [de Storage-clientbibliotheek voor .NET](https://msdn.microsoft.com/library/azure/hh488361.aspx).
+    Als u een momentopname wilt maken, kunt u gebruikmaken van [Power shell](/powershell/module/az.storage), de [Azure Storage REST API](/rest/api/storageservices/Snapshot-Blob), [Azure CLI](/cli/azure/), of een van de Azure Storage-clientbibliotheken, zoals [de Storage-clientbibliotheek voor .NET](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 1. Start de virtuele machine om de downtime te beëindigen. Normaal gesproken is het hele proces binnen een paar minuten voltooid.
 
@@ -224,7 +224,7 @@ Als u uw incrementele momentopnames op efficiënte wijze wilt kopiëren voor her
 
 ### <a name="recovery-from-snapshots"></a>Herstel van momentopnames
 
-Als u een momentopname wilt ophalen, moet u deze kopiëren om een nieuwe blob te maken. Als u de momentopname van het primaire account kopieert, kunt u de momentopname kopiëren naar de basis-blob van de momentopname. Met dit proces wordt de schijf teruggezet naar de momentopname. Dit proces staat bekend als het promoten van de momentopname. Als u de back-up van de momentopname van een secundair account kopieert, moet u deze naar een primair account kopiëren in het geval van een geografisch redundant opslagaccount met leestoegang. U kunt een momentopname kopiëren door [PowerShell](https://docs.microsoft.com/powershell/module/az.storage) te gebruiken of door het AzCopy-hulpprogramma te gebruiken. Zie [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) voor meer informatie.
+Als u een momentopname wilt ophalen, moet u deze kopiëren om een nieuwe blob te maken. Als u de momentopname van het primaire account kopieert, kunt u de momentopname kopiëren naar de basis-blob van de momentopname. Met dit proces wordt de schijf teruggezet naar de momentopname. Dit proces staat bekend als het promoten van de momentopname. Als u de back-up van de momentopname van een secundair account kopieert, moet u deze naar een primair account kopiëren in het geval van een geografisch redundant opslagaccount met leestoegang. U kunt een momentopname kopiëren door [PowerShell](/powershell/module/az.storage) te gebruiken of door het AzCopy-hulpprogramma te gebruiken. Zie [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](../storage/common/storage-use-azcopy-v10.md) voor meer informatie.
 
 Voor virtuele machines met meerdere schijven moet u alle momentopnames kopiëren die deel uitmaken van hetzelfde gecoördineerde herstelpunt. Nadat u de momentopnames naar schrijfbare VHD-blobs hebt gekopieerd, kunt u de blobs gebruiken om de virtuele machine opnieuw te maken met behulp van de sjabloon voor de virtuele machine.
 
@@ -265,4 +265,3 @@ Zie [back-ups maken van niet-beheerde virtuele machines van Azure met incremente
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
-
