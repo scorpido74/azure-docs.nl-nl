@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7554993025d8f64a80c1b223586f856eedf9e964
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766609"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854304"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Een virtuele netwerkgateway configureren voor ExpressRoute met behulp van PowerShell
+# <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Zelfstudie: Een virtuele netwerkgateway configureren voor ExpressRoute met behulp van PowerShell
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -30,8 +30,6 @@ In deze zelfstudie leert u het volgende:
 > - Een gatewaysubnet maken.
 > - De virtuele-netwerkgateway maken.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="configuration-reference-list"></a>Configuratiereferentielijst
@@ -42,7 +40,7 @@ In de stappen voor deze taak gebruiken we een VNet dat is gebaseerd op de waarde
 | ---                       | ---                                                |
 | Naam van virtueel netwerk | *TestVNet* |    
 | Adresruimte van virtueel netwerk | *192.168.0.0/16* |
-| Resourcegroep | *TestRG* |
+| Resource Group | *TestRG* |
 | Naam van Subnet1 | *FrontEnd* |   
 | Adresruimte van Subnet1 | *192.168.1.0/24* |
 | Naam van Subnet1 | *FrontEnd* |
@@ -52,7 +50,7 @@ In de stappen voor deze taak gebruiken we een VNet dat is gebaseerd op de waarde
 | Naam van de gateway | *GW* |   
 | IP-adres van gateway | *GWIP* |
 | Naam van IP-configuratie gateway | *gwipconf* |
-| Type  | *ExpressRoute* |
+| Type | *ExpressRoute* |
 | Naam van openbare IP van gateway  | *gwpip* |
 
 ## <a name="add-a-gateway"></a>Een gateway toevoegen
@@ -94,7 +92,7 @@ In de stappen voor deze taak gebruiken we een VNet dat is gebaseerd op de waarde
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
-1. Definieer de configuratie voor uw gateway. De gatewayconfiguratie bepaalt welk subnet en openbaar IP-adres moeten worden gebruikt. In deze stap geeft u de configuratie op die wordt gebruikt bij het maken van de gateway. Met deze stap wordt het gatewayobject nog niet gemaakt. Gebruik het volgende voorbeeld om de gatewayconfiguratie te maken.
+1. Definieer de configuratie voor uw gateway. De gatewayconfiguratie bepaalt welk subnet en openbaar IP-adres moeten worden gebruikt. In deze stap geeft u de configuratie op die wordt gebruikt bij het maken van de gateway. Gebruik het volgende voorbeeld om de gatewayconfiguratie te maken.
 
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
