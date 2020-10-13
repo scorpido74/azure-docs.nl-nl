@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf70d4381a7d128f7a2716540b1318b39cd729b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1e300f2e18d7103cde374c5eba6877602ac3721
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602129"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961218"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webaanmelding met OpenID Connect Connect in Azure Active Directory B2C
 
@@ -274,13 +274,17 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
 | verslaggev | Ja | De gebruikers stroom die u wilt gebruiken voor het ondertekenen van de gebruiker uit uw toepassing. |
-| id_token_hint| Nee | Een eerder uitgegeven ID-token om aan het afmeldings eindpunt door te geven als hint voor de huidige geverifieerde sessie van de eind gebruiker met de client. Het `id_token_hint` zorgt ervoor dat de `post_logout_redirect_uri` URL van een geregistreerd antwoord in uw Azure AD B2C toepassings instellingen is. |
+| id_token_hint| Nee | Een eerder uitgegeven ID-token om aan het afmeldings eindpunt door te geven als hint voor de huidige geverifieerde sessie van de eind gebruiker met de client. Het `id_token_hint` zorgt ervoor dat de `post_logout_redirect_uri` URL van een geregistreerd antwoord in uw Azure AD B2C toepassings instellingen is. Zie [uw afleiding voor afmelding beveiligen](#secure-your-logout-redirect)voor meer informatie. |
 | client_id | Geen | De toepassings-ID die de [Azure Portal](https://portal.azure.com/) toegewezen aan uw toepassing.<br><br>\**Dit is vereist bij het gebruik `Application` van de SSO-configuratie voor isolatie en het vereisen van een _id-token_ in de afmeldings aanvraag is ingesteld op `No` .* |
 | post_logout_redirect_uri | Nee | De URL waarnaar de gebruiker wordt omgeleid na een geslaagde afmelding. Als deze niet is opgenomen, wordt in Azure AD B2C de gebruiker een Gene riek bericht weer gegeven. Tenzij u een opgeeft `id_token_hint` , moet u deze URL niet als antwoord-URL registreren in uw Azure AD B2C toepassings instellingen. |
 | staat | Nee | Als een `state` para meter in de aanvraag is opgenomen, moet dezelfde waarde in het antwoord worden weer gegeven. De toepassing moet controleren of de `state` waarden in de aanvraag en het antwoord identiek zijn. |
 
 ### <a name="secure-your-logout-redirect"></a>Uw afmeldings omleiding beveiligen
 
-Na afmelden wordt de gebruiker omgeleid naar de URI die is opgegeven in de `post_logout_redirect_uri` para meter, ongeacht de antwoord-url's die zijn opgegeven voor de toepassing. Als er echter een geldig `id_token_hint` wordt door gegeven, wordt door Azure AD B2C gecontroleerd of de waarde `post_logout_redirect_uri` overeenkomt met een van de geconfigureerde omleidings-uri's van de toepassing voordat de omleiding wordt uitgevoerd. Als er geen overeenkomende antwoord-URL voor de toepassing is geconfigureerd, wordt een fout bericht weer gegeven en wordt de gebruiker niet omgeleid.
+Na afmelden wordt de gebruiker omgeleid naar de URI die is opgegeven in de `post_logout_redirect_uri` para meter, ongeacht de antwoord-url's die zijn opgegeven voor de toepassing. Als er echter een geldig `id_token_hint` wordt door gegeven en het **token voor het vereisen van een id in afmeldings aanvragen** is ingeschakeld, wordt door Azure AD B2C gecontroleerd of de waarde `post_logout_redirect_uri` overeenkomt met een van de geconfigureerde omleidings-uri's van de toepassing voordat de omleiding wordt uitgevoerd. Als er geen overeenkomende antwoord-URL voor de toepassing is geconfigureerd, wordt een fout bericht weer gegeven en wordt de gebruiker niet omgeleid.
 
+Voor het instellen van het vereiste ID-token bij afmeldings aanvragen raadpleegt u [sessie gedrag configureren in azure Active Directory B2C](session-behavior-custom-policy.md#secure-your-logout-redirect)en het [gedrag van sessies configureren met aangepaste beleids regels in azure Active Directory B2C](session-behavior-custom-policy.md#secure-your-logout-redirect).
 
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over [Azure AD B2C sessie](session-overview.md).

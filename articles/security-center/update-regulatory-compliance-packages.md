@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445852"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>De set normen aanpassen in uw nalevings dashboard voor regelgeving
@@ -43,7 +43,7 @@ U kunt standaarden toevoegen zoals NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK O
 
 Daarnaast kunt u **Azure Security Bench Mark**, de door micro soft ontworpen, specifieke Azure-richt lijnen voor beveiliging en naleving aanbevolen procedures toevoegen op basis van algemene nalevings kaders. (Meer[informatie over Azure Security Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
 
-Er worden extra standaarden ondersteund in het dash board, zodra deze beschikbaar komen. 
+Er worden extra standaarden ondersteund in het dashboard zodra deze beschikbaar komen. 
 
 
 ## <a name="add-a-regulatory-standard-to-your-dashboard"></a>Een regelgevings norm toevoegen aan uw dash board

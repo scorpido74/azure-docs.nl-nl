@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299992"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Kemp LoadMaster Azure AD Integration
 
@@ -197,11 +197,11 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 ### <a name="ssl-acceleration"></a>SSL-versnelling
  
-1. Ga naar de webgebruikersinterface van Kemp LoadMaster > Virtual Services > Virtual Services.
+1. Ga naar de webgebruikersinterface van Kemp LoadMaster > Virtual Services > View/Modify Services.
 
 1. Klik onder Operation op Modify.
 
-1. Klik onder Properties for tcp/x.x.x.:443 (ID:6) - Operating at Layer 7, op SSL Properties.
+1. Klik op SSL-eigenschappen (die werkt op laag 7).
     
     ![Webserver voor Kemp LoadMaster Azure AD Integration](./media/kemp-tutorial/kemp-3.png)
     

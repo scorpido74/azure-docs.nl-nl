@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88860942"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970398"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en Azure Shared Disk
 
@@ -34,13 +34,13 @@ In dit artikel wordt uitgelegd hoe u vanuit één ASCS/SCS-installatie overstapt
 
 Momenteel kunt u Azure Premium-SSD-schijven gebruiken als een gedeelde Azure-schijf voor het SAP ASCS/SCS-exemplaar. De volgende beperkingen zijn van kracht:
 
--  [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) wordt niet ondersteund als een gedeelde Azure-schijf voor SAP-workloads. Het is momenteel niet mogelijk om virtuele Azure-machines te plaatsen met behulp van Azure Ultra disk in de Beschikbaarheidsset
--  Een [gedeelde Azure-schijf](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) met Premium-SSD schijven wordt alleen ondersteund met vm's in de beschikbaarheidsset. Het wordt niet ondersteund in Beschikbaarheidszones-implementatie. 
--  De waarde [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) voor de gedeelde Azure-schijf bepaalt hoeveel cluster knooppunten de gedeelde schijf kunnen gebruiken. Normaal gesp roken kunt u met het SAP ASCS/SCS-exemplaar twee knoop punten in een Windows-failovercluster configureren. Daarom moet de waarde voor `maxShares` zijn ingesteld op twee.
--  Alle SAP-ASCS/SCS-cluster-Vm's moeten worden geïmplementeerd in dezelfde [plaatsings groep voor Azure nabijheid](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups).   
+-  [Azure Ultra Disk](../../disks-types.md#ultra-disk) wordt niet ondersteund als een gedeelde Azure-schijf voor SAP-workloads. Het is momenteel niet mogelijk om virtuele Azure-machines te plaatsen met behulp van Azure Ultra disk in de Beschikbaarheidsset
+-  Een [gedeelde Azure-schijf](../../windows/disks-shared.md) met Premium-SSD schijven wordt alleen ondersteund met vm's in de beschikbaarheidsset. Het wordt niet ondersteund in Beschikbaarheidszones-implementatie. 
+-  De waarde [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) voor de gedeelde Azure-schijf bepaalt hoeveel cluster knooppunten de gedeelde schijf kunnen gebruiken. Normaal gesp roken kunt u met het SAP ASCS/SCS-exemplaar twee knoop punten in een Windows-failovercluster configureren. Daarom moet de waarde voor `maxShares` zijn ingesteld op twee.
+-  Alle SAP-ASCS/SCS-cluster-Vm's moeten worden geïmplementeerd in dezelfde [plaatsings groep voor Azure nabijheid](../../windows/proximity-placement-groups.md).   
    Hoewel u Windows-cluster-Vm's kunt implementeren in de Beschikbaarheidsset met een gedeelde Azure-schijf zonder PPG, zorgt PPG ervoor dat de fysieke nabijheid van Azure gedeelde schijven en de cluster-Vm's worden gesloten, waardoor er minder latentie tussen de virtuele machines en de opslaglaag kan worden bereikt.    
 
-Raadpleeg het gedeelte over [beperkingen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) van de documentatie van de gedeelde schijf van Azure voor meer informatie over de beperkingen voor een gedeelde Azure-schijf.  
+Raadpleeg het gedeelte over [beperkingen](../../linux/disks-shared.md#limitations) van de documentatie van de gedeelde schijf van Azure voor meer informatie over de beperkingen voor een gedeelde Azure-schijf.  
 
 > [!IMPORTANT]
 > Wanneer u een Windows-failovercluster met SAP ASCS/SCS implementeert met een gedeelde Azure-schijf, moet u er rekening mee houden dat uw implementatie met één gedeelde schijf in één opslag cluster wordt uitgevoerd. Uw SAP ASCS/SCS-exemplaar wordt beïnvloed, in het geval van problemen met het opslag cluster, waar de gedeelde Azure-schijf wordt geïmplementeerd.  
@@ -111,7 +111,7 @@ Er worden naast het **bestaande geclusterde** SAP **PR1** ASCS/SCS-exemplaar een
 
 ### <a name="create-azure-internal-load-balancer"></a>Interne Azure-load balancer maken
 
-SAP ASCS, SAP SCS en de nieuwe SAP ERS2, gebruiken virtuele hostnamen en virtuele IP-adressen. In Azure is een [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) vereist voor het gebruik van een virtueel IP-adres. Het is raadzaam om [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)te gebruiken. 
+SAP ASCS, SAP SCS en de nieuwe SAP ERS2, gebruiken virtuele hostnamen en virtuele IP-adressen. In Azure is een [Load Balancer](../../../load-balancer/load-balancer-overview.md) vereist voor het gebruik van een virtueel IP-adres. Het is raadzaam om [standaard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)te gebruiken. 
 
 U moet een configuratie toevoegen aan de bestaande load balancer voor de tweede SAP SID ASCS/SCS/ERS-instantie **PR2**. De configuratie voor de eerste SAP-SID **PR1** moet al aanwezig zijn.  
 

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8b18629a776dd98950f49b1f607cbc876abcd9c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91628882"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Een nieuwe configuratie maken voor Azure AD Connect inrichting op basis van de Cloud
@@ -62,7 +62,7 @@ U kunt het bereik van de agent voor het synchroniseren van specifieke gebruikers
 ## <a name="attribute-mapping"></a>Kenmerktoewijzing
 Met Azure AD Connect Cloud inrichting kunt u eenvoudig kenmerken toewijzen tussen uw on-premises gebruikers-en groeps objecten en de objecten in azure AD.  U kunt de standaard kenmerk toewijzingen aanpassen op basis van de behoeften van uw bedrijf. U kunt dus bestaande kenmerk toewijzingen wijzigen of verwijderen, of nieuwe kenmerk toewijzingen maken.  Zie [kenmerk toewijzing](how-to-attribute-mapping.md)voor meer informatie.
 
-## <a name="on-demand-provisioning"></a>Inrichting op aanvraag
+## <a name="on-demand-provisioning"></a>Inrichting on-demand
 Met Azure AD Connect Cloud inrichting kunt u configuratie wijzigingen testen door deze wijzigingen toe te passen op één gebruiker of groep.  U kunt dit gebruiken om te valideren en te controleren of de wijzigingen die zijn aangebracht in de configuratie correct zijn toegepast en correct worden gesynchroniseerd met Azure AD.  Zie [on-demand inrichten](how-to-on-demand-provision.md)voor meer informatie.
 
 ## <a name="restart-provisioning"></a>Inrichting opnieuw starten 

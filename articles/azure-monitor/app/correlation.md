@@ -8,10 +8,10 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827609"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
@@ -62,7 +62,7 @@ Application Insights wordt overgezet naar [W3C-tracering-context](https://w3c.gi
 - `traceparent`: Hiermee wordt de wereld wijde unieke bewerkings-ID en de unieke id van de aanroep uitgevoerd.
 - `tracestate`: Bevat systeemspecifieke tracerings context.
 
-De nieuwste versie van de Application Insights SDK ondersteunt het Trace-context protocol, maar u moet er mogelijk voor kiezen. (Achterwaartse compatibiliteit met het vorige correlatie protocol dat wordt ondersteund door de Application Insights SDK wordt behouden.)
+De nieuwste versie van de Application Insights SDK ondersteunt het Trace-Context-protocol, maar u moet er mogelijk voor kiezen. (Achterwaartse compatibiliteit met het vorige correlatie protocol dat wordt ondersteund door de Application Insights SDK wordt behouden.)
 
 Het [correlatie-HTTP-protocol, ook wel de aanvraag-id genoemd](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), wordt afgeschaft. Dit protocol definieert twee headers:
 
@@ -84,7 +84,7 @@ Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/dat
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Ondersteuning voor gedistribueerde tracering van W3C inschakelen voor .NET-Apps
 
-Op W3C tracering voor gebaseerde gedistribueerde tracering is standaard ingeschakeld in alle recente Sdk's van .NET Framework/. NET core, samen met achterwaartse compatibiliteit met verouderd aanvraag-id-protocol.
+Op W3C tracering voor gebaseerde gedistribueerde tracering is standaard ingeschakeld in alle recente Sdk's van .NET Framework/. NET core, samen met achterwaartse compatibiliteit met verouderd Request-Id protocol.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering inschakelen voor java-apps
 
@@ -170,7 +170,7 @@ Als referentie kunt u het gegevens model opentelling [hier](https://github.com/c
 
 ### <a name="incoming-request-correlation"></a>Correlatie van binnenkomende aanvragen
 
-Met opentellingen python worden W3C-tracering context headers van binnenkomende aanvragen afgestemd op de reeksen die worden gegenereerd op basis van de aanvragen. Met opentellingen wordt dit automatisch gedaan met integraties voor deze populaire Web Application Frameworks: kolf, Django en piramide. U hoeft alleen de header van de W3C-tracerings context in te vullen met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) en deze te verzenden met de aanvraag. Hier volgt een voor beeld van een kolf toepassing waarin dit wordt gedemonstreerd:
+Met opentellingen python worden de W3C-Trace-Context headers van binnenkomende aanvragen gecorreleerd aan de-reeksen die worden gegenereerd op basis van de aanvragen zelf. Met opentellingen wordt dit automatisch gedaan met integraties voor deze populaire Web Application Frameworks: kolf, Django en piramide. U hoeft alleen de W3C-Trace-Context headers in te vullen met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) en deze te verzenden met de aanvraag. Hier volgt een voor beeld van een kolf toepassing waarin dit wordt gedemonstreerd:
 
 ```python
 from flask import Flask

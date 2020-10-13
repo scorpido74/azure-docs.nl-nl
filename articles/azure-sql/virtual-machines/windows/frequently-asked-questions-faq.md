@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566989"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Veelgestelde vragen over SQL Server op virtuele Azure-machines
@@ -56,7 +56,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Hoe kan ik generaliseer SQL Server op Azure VM en gebruiken om nieuwe virtuele machines te implementeren?**
 
-   U kunt een Windows Server-VM implementeren (zonder SQL Server geïnstalleerd) en het [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) -proces gebruiken om SQL Server op Azure VM (Windows) met de SQL Server installatie media te generaliseren. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie.
+   U kunt een Windows Server-VM implementeren (zonder SQL Server geïnstalleerd) en het [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) -proces gebruiken om SQL Server op Azure VM (Windows) met de SQL Server installatie media te generaliseren. Klanten die beschikken over [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun installatiemedia downloaden van het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie.
 
    U kunt ook een van de SQL Server-installatie kopieën van Azure Marketplace gebruiken om SQL Server op Azure VM te generaliseren. Houd er rekening mee dat u de volgende register sleutel in de bron installatie kopie moet verwijderen voordat u uw eigen installatie kopie maakt. Als u dit niet doet, kan dit ertoe leiden dat de SQL Server Setup Boots trap-map en/of de SQL IaaS-extensie in de status mislukt.
 
@@ -93,7 +93,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Kan ik een VM wijzigen zodat mijn eigen SQL Server-licentie wordt gebruikt, wanneer de VM is gemaakt vanuit een van de Betalen per gebruik-installatiekopieën uit de galerie?**
 
-   Ja. U kunt eenvoudig een PAYG-galerie (betalen naar gebruik) overschakelen naar uw eigen licentie (BYOL) door de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)in te scha kelen.  Zie [How to Change the License model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md)(Engelstalig) voor meer informatie. Deze faciliteit is momenteel alleen beschikbaar voor open bare en Azure Government Cloud-klanten.
+   Ja. U kunt eenvoudig een PAYG-galerie (betalen naar gebruik) overschakelen naar uw eigen licentie (BYOL) door de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)in te scha kelen.  Raadpleeg [Het licentiemodel voor een SQL Server-VM wijzigen](licensing-model-azure-hybrid-benefit-ahb-change.md) voor meer informatie. Deze faciliteit is momenteel alleen beschikbaar voor open bare en Azure Government Cloud-klanten.
 
 1. **Treedt er downtime op voor SQL Server tijdens het schakelen tussen licentiemodellen?**
 
@@ -202,7 +202,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Waar kan ik de installatiemedia downloaden om de editie of versie van SQL Server te wijzigen?**
 
-   Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie.
+   Klanten die beschikken over [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) kunnen hun installatiemedia downloaden van het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie.
    
 1. **Hoe worden updates en servicepacks toegepast op een VM met SQL Server?**
 
@@ -255,4 +255,4 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 * [Overzicht van SQL Server op een Linux-VM](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [SQL Server inrichten op een Linux-VM](../linux/sql-vm-create-portal-quickstart.md)
 * [Veelgestelde vragen (Linux)](../linux/frequently-asked-questions-faq.md)
-* [Documentatie over SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Documentatie voor SQL Server op Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
