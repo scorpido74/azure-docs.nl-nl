@@ -10,15 +10,15 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574315"
 ---
-# <a name="iot-plug-and-play-architecture"></a>IoT-Plug en Play architectuur
+# <a name="iot-plug-and-play-architecture"></a>IoT Plug and Play-architectuur
 
-Met IoT Plug en Play kunnen bouwers van oplossingen slimme apparaten integreren met hun oplossingen zonder hand matige configuratie. De kern van IoT Plug en Play is een _model_ apparaat waarmee de mogelijkheden van een apparaat worden beschreven in een IoT-Plug en Play toepassing. Dit model is gestructureerd als een reeks interfaces die het volgende definiëren:
+Met IoT Plug en Play kunnen ontwikkelaars slimme apparaten in hun oplossingen integreren zonder handmatige configuratie. De kern van IoT Plug en Play is een _model_ apparaat waarmee de mogelijkheden van een apparaat worden beschreven in een IoT-Plug en Play toepassing. Dit model is gestructureerd als een reeks interfaces die het volgende definiëren:
 
 - _Eigenschappen_ die de alleen-lezen- of schrijfbare status van apparaat of andere entiteit vertegenwoordigen. Een serienummer van een apparaat kan bijvoorbeeld een alleen-lezeneigenschap zijn en een doeltemperatuur op een thermostaat kan een schrijfbare eigenschap zijn.
 - _Telemetrie_ ofwel de gegevens die door een apparaat worden verzonden, ongeacht of het gaat om gegevens van een normale stroom met sensorwaarden, een incidentele fout of een informatiebericht.
@@ -28,7 +28,7 @@ Elk model en elke interface heeft een unieke ID.
 
 In het volgende diagram ziet u de belangrijkste elementen van een IoT Plug en Play-oplossing:
 
-:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT-Plug en Play architectuur":::
+:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT Plug and Play-architectuur":::
 
 ## <a name="model-repository"></a>Modelopslagplaats
 

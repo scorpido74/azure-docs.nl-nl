@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3e50a6a34a6588ecce8b9ecc3c6b358fddc38b7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530473"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948711"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -101,6 +101,10 @@ Net als we weten, moeten alle back-upoplossingen die gebruikmaken van VMware VAD
 
 Omdat deze back-upoplossingen worden geïnstalleerd en beheerd door klanten, kunnen ze contact met de desbetreffende ISV vinden voor ondersteuning. 
 
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Wat is het juiste opslag beleid voor het instellen van de ontdubbeling?
+
+Gebruik het *thin_provision* -opslag beleid voor uw VM-sjabloon.  De standaard waarde is *thick_provision*.
+
 ## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privéclouds
 
 #### <a name="is-the-underlying-infrastructure-shared"></a>Wordt de onderliggende infra structuur gedeeld?
@@ -174,6 +178,8 @@ Nee. Netwerk verkeer van het Internet rechtstreeks naar persoonlijke Clouds is n
 
 Ja. U moet NSX-T-beheer gebruiken om een firewall te maken waarmee de toegang tot internet wordt beperkt.
 
+
+
 ## <a name="accounts-and-privileges"></a>Accounts en bevoegdheden
 
 #### <a name="what-accounts-and-privileges-will-i-get-with-my-new-azure-vmware-solution-private-cloud"></a>Welke accounts en bevoegdheden krijg ik bij mijn nieuwe Azure VMware-oplossing privécloud?
@@ -211,7 +217,7 @@ U hebt een Azure-account in een Azure-abonnement nodig.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hoe kan ik een toename voor een quotum van een host voor een Azure VMware-oplossing aanvragen?
 
-* U hebt een [Azure Enterprise Agreement (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) met micro soft nodig.
+* U hebt een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) met micro soft nodig.
 * U hebt een Azure-account in een Azure-abonnement nodig.
 
 Voordat u uw Azure VMware-oplossings resource maakt, moet u een ondersteunings ticket indienen om uw knoop punten toe te wijzen. Zodra het ondersteunings team uw aanvraag heeft ontvangen, duurt het Maxi maal vijf werk dagen om uw aanvraag te bevestigen en uw knoop punten toe te wijzen. Als u een bestaande privécloud van Azure VMware-oplossing hebt en u meer knoop punten wilt toewijzen, gaat u door hetzelfde proces.

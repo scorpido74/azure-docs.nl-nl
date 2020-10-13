@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575517"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor logboeken toegewezen clusters
@@ -116,12 +116,12 @@ Moet 200 OK en een kop zijn.
 
 Het inrichten van het Log Analytics cluster duurt enige tijd. U kunt de inrichtings status op verschillende manieren controleren:
 
-- Voer de opdracht Get-AzOperationalInsightsCluster Power shell uit met de naam van de resource groep en controleer de eigenschap ProvisioningState. De waarde is *ProvisioningAccount* *tijdens het inrichten en voltooid* .
+- Voer Get-AzOperationalInsightsCluster Power shell-opdracht uit met de naam van de resource groep en controleer de eigenschap ProvisioningState. De waarde is *ProvisioningAccount* *tijdens het inrichten en voltooid* .
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
 
-- Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de asynchrone bewerkings status.
+- Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de asynchrone bewerkings status.
 
 - Verzend een GET-aanvraag op de *cluster* resource en kijk naar de waarde *provisioningState* . De waarde is *ProvisioningAccount* *tijdens het inrichten en voltooid* .
 
@@ -218,7 +218,7 @@ Content-type: application/json
 
 Het duurt enkele minuten om de doorgifte van de sleutel-id uit te voeren. U kunt de status van de update op twee manieren controleren:
 
-- Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de asynchrone bewerkings status. 
+- Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de asynchrone bewerkings status. 
 
    OF
 
@@ -319,7 +319,7 @@ Als u door de klant beheerde sleutels gebruikt, worden opgenomen gegevens na de 
 
 U kunt de status van de werkruimte koppeling op twee manieren controleren:
 
-- Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de asynchrone bewerkings status.
+- Kopieer de Azure-AsyncOperation URL-waarde uit het antwoord en volg de controle op de asynchrone bewerkings status.
 
 - Een [werk ruimte verzenden – aanvraag ophalen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) en het antwoord bekijken. De gekoppelde werk ruimte bevat een clusterResourceId onder ' features '.
 

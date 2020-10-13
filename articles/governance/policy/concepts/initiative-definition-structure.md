@@ -1,14 +1,14 @@
 ---
 title: Details van de definitie structuur van het initiatief
 description: Hierin wordt beschreven hoe beleids initiatieven worden gebruikt voor het groeperen van beleids definities voor implementatie naar Azure-resources in uw organisatie.
-ms.date: 08/17/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048496"
+ms.locfileid: "91876172"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Definitie structuur van Azure Policy initiatief
 
@@ -248,19 +248,18 @@ Hier volgt een voor beeld van `policyDefinitions` met twee opgenomen beleids def
 ]
 ```
 
-## <a name="policy-definitions-groups-preview"></a><a name="policy-definition-groups"></a>Groep beleids definities (preview-versie)
+## <a name="policy-definition-groups"></a>Beleids definitie groepen
 
-Als onderdeel van de functie [regelgevende naleving](./regulatory-compliance.md) (preview) van Azure Policy kunnen beleids definities in een initiatief definitie worden gegroepeerd. Deze informatie wordt gedefinieerd in de `policyDefinitionGroups` _matrix_ eigenschap. Deze groeperingen bevatten aanvullende informatie, zoals het **beheer** -en **nalevings domein** waarvan de beleids definitie dekking biedt.
-Meer informatie over de groepering vindt u in een **policyMetadata** -object dat door micro soft is gemaakt. Zie [meta gegevens objecten](#metadata-objects)voor meer informatie.
+Beleids definities in een initiatief definitie kunnen worden gegroepeerd en gecategoriseerd. De functie [compliance Conformion](./regulatory-compliance.md) (preview) van Azure Policy gebruikt deze eigenschap om definities te groeperen in **besturings elementen** en **nalevings domeinen**. Deze informatie wordt gedefinieerd in de `policyDefinitionGroups` _matrix_ eigenschap. Meer informatie over de groepering vindt u in een **policyMetadata** -object dat door micro soft is gemaakt. Zie [meta gegevens objecten](#metadata-objects)voor meer informatie.
 
 ### <a name="policy-definition-groups-parameters"></a>Para meters voor beleids definitie groepen
 
 Elk _matrix_ element in `policyDefinitionGroups` moet de volgende eigenschappen hebben:
 
-- `name` (teken reeks) \[ vereist \] : de korte naam voor het **besturings element**. De waarde van deze eigenschap wordt gebruikt door `groupNames` in `policyDefinitions` .
-- `category` (teken reeks): het **domein van naleving** van het besturings element.
-- `displayName` (teken reeks): de beschrijvende naam voor het **besturings element**. Gebruikt door de portal.
-- `description` (teken reeks): een beschrijving van wat het **besturings element** doet.
+- `name` (teken reeks) \[ vereist \] : de korte naam voor de **groep**. In naleving van regelgeving, het **besturings element**. De waarde van deze eigenschap wordt gebruikt door `groupNames` in `policyDefinitions` .
+- `category` (teken reeks): de hiërarchie waartoe de groep behoort. In naleving van regelgeving, het **nalevings domein** van het besturings element.
+- `displayName` (teken reeks): de beschrijvende naam voor de **groep** of het **besturings element**. Gebruikt door de portal.
+- `description` (teken reeks): een beschrijving van wat betreft de **groep** of het **besturings element** .
 - `additionalMetadataId` (teken reeks): de locatie van het [policyMetadata](#metadata-objects) -object met aanvullende details over het **besturings element** en het **nalevings domein**.
 
   > [!NOTE]
