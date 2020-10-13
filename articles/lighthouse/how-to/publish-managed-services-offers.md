@@ -3,16 +3,16 @@ title: Een beheerde service aanbieding naar Azure Marketplace publiceren
 description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten naar Azure Lighthouse worden geleid.
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589721"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974359"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een beheerde service aanbieding naar Azure Marketplace publiceren
 
-In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde services publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com) met behulp van het [commerciële Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) -programma in Partner Center. Klanten die de aanbieding kopen, worden vervolgens abonnementen of resource groepen gedelegeerd, zodat u ze kunt beheren via [Azure Lighthouse](../overview.md).
+In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde services publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com) met behulp van het [commerciële Marketplace](../../marketplace/overview.md) -programma in Partner Center. Klanten die de aanbieding kopen, worden vervolgens abonnementen of resource groepen gedelegeerd, zodat u ze kunt beheren via [Azure Lighthouse](../overview.md).
 
 ## <a name="publishing-requirements"></a>Publicatie vereisten
 
@@ -40,7 +40,7 @@ Aan de hand van de volgende tabel kunt u bepalen of u klanten wilt vrijgeven doo
 
 Zie [een beheerde service aanbieding maken](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)voor gedetailleerde instructies voor het maken van uw aanbieding, inclusief alle informatie en assets die u moet opgeven.
 
-Zie de [publicatie handleiding voor Azure Marketplace en AppSource](../../marketplace/marketplace-publishers-guide.md)voor meer informatie over het algemene publicatie proces. U moet ook het [beleid voor commerciële Marketplace-certificerings](/legal/marketplace/certification-policies)instanties, met name de sectie [Managed Services](/legal/marketplace/certification-policies#700-managed-services) , bekijken.
+Zie de [publicatie handleiding voor Azure Marketplace en AppSource](../../marketplace/overview.md)voor meer informatie over het algemene publicatie proces. U moet ook het [beleid voor commerciële Marketplace-certificerings](/legal/marketplace/certification-policies)instanties, met name de sectie [Managed Services](/legal/marketplace/certification-policies#700-managed-services) , bekijken.
 
 Zodra een klant uw aanbieding heeft toegevoegd, kunnen ze een of meer abonnementen of resource groepen delegeren, die vervolgens worden uitgevoerd [voor Azure Lighthouse](#the-customer-onboarding-process).
 
@@ -64,6 +64,6 @@ Zodra de klant een abonnement (of een of meer resource groepen binnen een abonne
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [commerciële Marketplace](../../marketplace/partner-center-portal/commercial-marketplace-overview.md).
+- Meer informatie over de [commerciële Marketplace](../../marketplace/overview.md).
 - Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).
 - [Bekijk en beheer klanten](view-manage-customers.md) door naar **mijn klanten** te gaan in de Azure Portal.

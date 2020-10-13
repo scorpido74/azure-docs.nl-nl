@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617873"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973305"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worde
 
 ### <a name="distributed-transactions"></a>Gedistribueerde transacties
 
-MSDTC-en [elastische trans acties](../database/elastic-transactions-overview.md) worden momenteel niet ondersteund in een SQL Managed instance.
+Gedeeltelijke ondersteuning voor [gedistribueerde trans acties](../database/elastic-transactions-overview.md) is momenteel beschikbaar als open bare preview. Ondersteunde scenario's zijn:
+* Trans acties waarbij deel nemers alleen Azure SQL Managed instances zijn die deel uitmaken van de [vertrouwens groep](https://aka.ms/mitrusted-groups)van de server.
+* Trans acties die worden geïnitieerd vanuit .NET (TransactionScope-klasse) en Transact-SQL.
+
+Azure SQL Managed instance biedt momenteel geen ondersteuning voor andere scenario's die regel matig worden ondersteund door MSDTC on-premises of in azure Virtual Machines.
 
 ### <a name="extended-events"></a>Uitgebreide gebeurtenissen
 

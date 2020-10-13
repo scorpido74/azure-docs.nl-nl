@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 61620a8497765c4d8f90a3d616bd2f4b932f8dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629026"
+ms.locfileid: "91930914"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Algoritme voor Azure Load Balancer
 
@@ -54,16 +54,6 @@ Load Balancer communiceert niet rechtstreeks met TCP of UDP of met de toepassing
 - Elk eindpunt wordt beantwoord door een virtuele machine. Zo treedt een TCP-handshake bijvoorbeeld op tussen de client en de geselecteerde back-end-VM. Een reactie op een aanvraag naar een front-end is een antwoord dat is gegenereerd door een back-end-VM. Wanneer u de verbinding met een front-end valideert, valideert u de algehele connectiviteit met ten minste één back-end-VM.
 - Toepassingsnettoladingen zijn transparant voor de load balancer. Elke UDP- of TCP-toepassing kan worden ondersteund.
 - Omdat de load balancer geen interactie heeft met de TCP-nettolading en TLS-offload levert, kunt u uitgebreide versleutelde scenario's maken. Door load balancer te gebruiken, wordt grote scale-out voor TLS-toepassingen mogelijk door de TLS-verbinding op de VM zelf te beëindigen. De sleutelcapaciteit van de TLS-sessie wordt bijvoorbeeld alleen beperkt door het type en het aantal VM's dat u aan de back-endpool toevoegt.
-
-## <a name="limitations"></a><a name = "limitations"></a>Beperkingen
-
-- Een regel voor een load balancer kan niet twee virtuele netwerken omvatten.  Front-ends en de bijbehorende back-endinstanties moeten zich in hetzelfde virtuele netwerk bevinden.  
-
-- Voor deze specifieke TCP- of UDP-protocollen biedt Load Balancer taakverdeling en port forwarding. Taakverdelingsregels en inkomende NAT-regels bieden ondersteuning voor TCP en UDP, maar niet voor andere IP-protocollen, waaronder ICMP.
-
-- Uitgaande stroom van een back-end-VM naar een front-end van een interne Load Balancer mislukt.
-
-- Het doorsturen van IP-fragmenten wordt niet ondersteund voor taakverdelingsregels. IP-fragmentatie van UDP- en TCP-pakketten wordt niet ondersteund in taakverdelingsregels. De taakverdelingsregels voor HA-poorten kunnen worden gebruikt voor het doorsturen van bestaande IP-fragmenten. Zie [Overzicht van poorten met hoge beschikbaarheid](load-balancer-ha-ports-overview.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

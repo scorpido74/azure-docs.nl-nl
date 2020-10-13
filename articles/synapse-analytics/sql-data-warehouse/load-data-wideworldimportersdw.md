@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369090"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Zelf studie: gegevens laden naar Azure Synapse Analytics SQL-groep
@@ -536,7 +536,7 @@ In deze sectie worden de externe tabellen gebruikt die u hebt gedefinieerd voor 
 
 Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de SELECT-instructie uit een externe tabel selecteert, worden de gegevens in een relationele tabel in het Data Warehouse geïmporteerd.
 
-Met dit script worden geen gegevens geladen in de tabellen WWI. dimension_Date en WWI. fact_Sale. Deze tabellen worden gegenereerd in een latere stap om de tabellen te maken die een aanzienlijk aantal rijen bevatten.
+Met dit script worden geen gegevens geladen in de tabellen wwi.dimension_Date en wwi.fact_Sale. Deze tabellen worden gegenereerd in een latere stap om de tabellen te maken die een aanzienlijk aantal rijen bevatten.
 
 1. Voer het volgende script uit om de gegevens in de nieuwe tabellen in uw datawarehouse te laden.
 
@@ -732,7 +732,7 @@ Met dit script worden geen gegevens geladen in de tabellen WWI. dimension_Date e
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Tabellen en procedures maken voor het genereren van de datum- en verkooptabellen
 
-In deze sectie worden de tabellen WWI. dimension_Date en WWI. fact_Sale gemaakt. Er worden ook opgeslagen procedures gemaakt waarmee miljoenen rijen kunnen worden gegenereerd in de tabellen WWI. dimension_Date en WWI. fact_Sale.
+In deze sectie worden de tabellen wwi.dimension_Date en wwi.fact_Sale gemaakt. Er worden ook opgeslagen procedures gemaakt waarmee miljoenen rijen kunnen worden gegenereerd in de wwi.dimension_Date en wwi.fact_Sale tabellen.
 
 1. Maak de tabellen dimension_Date en fact_Sale.  
 
@@ -876,7 +876,7 @@ In deze sectie worden de tabellen WWI. dimension_Date en WWI. fact_Sale gemaakt.
     END;
     ```
 
-4. Maak deze procedure waarmee de tabellen WWI. dimension_Date en WWI. fact_Sale worden gevuld. Hiermee wordt [wwi].[PopulateDateDimensionForYear] aangeroepen om wwi.dimension_Date te vullen.
+4. Maak deze procedure waarmee de wwi.dimension_Date-en wwi.fact_Sale tabellen worden gevuld. Hiermee wordt [wwi].[PopulateDateDimensionForYear] aangeroepen om wwi.dimension_Date te vullen.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +933,7 @@ In deze sectie worden de tabellen WWI. dimension_Date en WWI. fact_Sale gemaakt.
 
 ## <a name="generate-millions-of-rows"></a>Miljoenen rijen genereren
 
-Gebruik de opgeslagen procedures die u hebt gemaakt voor het genereren van miljoenen rijen in de tabel WWI. fact_Sale en de bijbehorende gegevens in de tabel WWI. dimension_Date.
+Gebruik de opgeslagen procedures die u hebt gemaakt voor het genereren van miljoenen rijen in de wwi.fact_Sale tabel en de bijbehorende gegevens in de tabel wwi.dimension_Date.
 
 1. Voer deze procedure uit om [wwi].[seed_Sale] met meer rijen te seeden.
 
@@ -941,7 +941,7 @@ Gebruik de opgeslagen procedures die u hebt gemaakt voor het genereren van miljo
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Voer deze procedure uit om WWI. fact_Sale te vullen met 100.000 rijen per dag voor elke dag in het jaar 2000.
+2. Voer deze procedure uit om wwi.fact_Sale met 100.000 rijen per dag in te vullen voor elke dag in het jaar 2000.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000

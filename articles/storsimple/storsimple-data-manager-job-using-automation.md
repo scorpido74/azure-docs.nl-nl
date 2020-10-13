@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743604"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation gebruiken om een taak te activeren
@@ -50,7 +50,7 @@ Voordat u begint, moet u ervoor zorgen dat:
    3. Maak een nieuwe resource groep of Selecteer deze uit een bestaande resource groep.
    4. Selecteer een **locatie**.
    5. Zorg ervoor dat de optie standaard **uitvoeren als-account maken** is geselecteerd.
-   6. Als u een koppeling voor snelle toegang wilt krijgen op het dash board, controleert **u het vastmaken aan dash board**. Klik op **Create**.
+   6. Als u een koppeling voor snelle toegang wilt krijgen op het dash board, controleert **u het vastmaken aan dash board**. Klik op **Maken**.
 
       ![Run as Automation-account 3 maken](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -86,7 +86,7 @@ Voer de volgende stappen uit om het runbook te importeren, te publiceren en uit 
 
 2. Klik in **Runbook toevoegen**op **een bestaand runbook importeren**.
 
-3. Ga naar het Azure PowerShell script bestand `Trigger-DataTransformation-Job.ps1` voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **Create**.
+3. Ga naar het Azure PowerShell script bestand `Trigger-DataTransformation-Job.ps1` voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **Maken**.
 
     ![Runbook 2 toevoegen](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

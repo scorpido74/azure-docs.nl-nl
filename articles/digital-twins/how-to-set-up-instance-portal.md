@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280023"
+ms.locfileid: "91932108"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -123,12 +123,13 @@ Selecteer vanuit de portal pagina voor de registratie van uw app *API-machtiging
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
-Schakel op de pagina *API-machtigingen voor aanvragen* de volgende opdracht uit naar de api's die *Mijn organisatie gebruikt* en zoek naar *Azure Digital apparaatdubbels*. Selecteer *Azure Digital apparaatdubbels* in de zoek resultaten om machtigingen toe te wijzen voor de Azure Digital Apparaatdubbels-api's.
+Schakel op de pagina *API-machtigingen voor aanvragen* de volgende opdracht uit naar de api's die *Mijn organisatie gebruikt* en zoek naar *Azure Digital apparaatdubbels*. Selecteer _**Azure Digital apparaatdubbels**_ in de zoek resultaten om machtigingen toe te wijzen voor de Azure Digital Apparaatdubbels-api's.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 >[!NOTE]
-> Als u een bestaand exemplaar van Azure Digital Apparaatdubbels hebt van de vorige open bare preview van de service (vóór 2020 juli) in uw abonnement, moet u in plaats daarvan naar de *Azure Smart Spaces-service* zoeken. Dit is een oudere naam voor dezelfde set Api's en zal uw ervaring buiten deze stap niet wijzigen.
+> Als uw abonnement nog steeds een bestaand exemplaar van Azure Digital Apparaatdubbels uit de vorige open bare preview van de service heeft (vóór 2020 juli), moet u in plaats daarvan de _**Azure Smart Spaces-service**_ zoeken en selecteren. Dit is een oudere naam voor dezelfde set Api's (Let op: de *client-id* is hetzelfde als in de bovenstaande scherm afbeelding) en uw ervaring wordt niet meer gewijzigd dan in deze stap.
+> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
 Vervolgens selecteert u de machtigingen die u voor deze Api's wilt verlenen. Vouw de machtiging **Read (1)** uit en schakel het selectie vakje *lezen. schrijven* in om deze app-registratie lezer en schrijf machtigingen te verlenen.
 
@@ -163,7 +164,7 @@ Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** p
 ## <a name="next-steps"></a>Volgende stappen
 
 Test afzonderlijke REST API-aanroepen voor uw exemplaar met behulp van de Azure Digital Apparaatdubbels CLI-opdrachten: 
-* [AZ DT-referentie](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [AZ DT-referentie](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*Instructies: De Azure Digital Twins-CLI gebruiken*](how-to-use-cli.md)
 
 U kunt ook zien hoe u uw client toepassing verbindt met uw instantie door de verificatie code van de client-app te schrijven:
