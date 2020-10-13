@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540571"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights gebruiken om telemetrie te visualiseren die wordt verzonden vanuit de apparaat simulatie oplossings versneller
@@ -21,7 +21,7 @@ Met de Device simulatie Solution Accelerator kunt u telemetrie genereren op basi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in deze hand leiding wilt volgen, hebt u een actief Azure-abonnement nodig. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u de stappen in deze hand leiding wilt volgen, hebt u een actief Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 In de stappen in deze hand leiding wordt ervan uitgegaan dat u de apparaat simulatie oplossings versneller hebt geïmplementeerd in uw Azure-abonnement. Als u de oplossings versneller nog niet hebt geïmplementeerd, volgt u de stappen in de Snelstartgids [een simulatie van een Cloud oplossing implementeren en uitvoeren](quickstart-device-simulation-deploy.md) .
 

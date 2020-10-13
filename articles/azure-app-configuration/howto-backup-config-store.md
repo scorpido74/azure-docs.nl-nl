@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
 ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207136"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisch back-ups maken van app-configuratie archieven
@@ -40,7 +40,7 @@ In deze zelf studie maakt u een secundair archief in de `centralus` regio en all
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement. [Maak er gratis een](https://azure.microsoft.com/free/). 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) met de werk belasting Azure Development.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) met de workload Azure Development.
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
 - Nieuwste versie van de Azure CLI (2.3.1 of hoger). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI gebruikt, moet u zich eerst aanmelden met `az login` . U kunt eventueel Azure Cloud Shell gebruiken.
 

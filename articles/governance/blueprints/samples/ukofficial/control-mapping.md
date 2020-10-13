@@ -3,12 +3,12 @@ title: Beheeropties voor UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden
 description: Toewijzing van beheeropties voor de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078985"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540384"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Toewijzing van beheeropties voor de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden
 
@@ -76,7 +76,7 @@ Met deze blauwdruk kunt u informatiesysteemassets beveiligen door [Azure Policy]
 
 ## <a name="9-secure-user-management"></a>9 Beveiligd gebruikersbeheer 
 
-In Azure wordt op rollen gebaseerde toegangsbeheer (RBAC) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk kunt u toegangsrechten beperken en beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen voor de controle van externe accounts met eigenaars- en/of lees-/schrijfrechten en accounts met eigenaars-, lees- en/of schrijfrechten waarvoor geen meervoudige verificatie is ingeschakeld.
+Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) helpt u te beheren wie toegang heeft tot Azure-resources. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk kunt u toegangsrechten beperken en beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen voor de controle van externe accounts met eigenaars- en/of lees-/schrijfrechten en accounts met eigenaars-, lees- en/of schrijfrechten waarvoor geen meervoudige verificatie is ingeschakeld.
 
 - MFA moet zijn ingeschakeld voor accounts met eigenaarsmachtigingen voor uw abonnement
 - MFA moet zijn ingeschakeld voor accounts met schrijfmachtigingen voor uw abonnement

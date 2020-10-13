@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210357"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Externe services van de Azure API Management-service gebruiken
@@ -65,7 +65,7 @@ De toegestane vertraging is het principe van inkomende webhooks. Bij het configu
 ### <a name="is-fire-and-forget-good-enough"></a>Is de brand-en vergeet goed genoeg?
 Er zijn bepaalde afwegingen bij het gebruik van een brand-en-vergeet-stijl voor de aanvraag. Als de aanvraag om een of andere reden mislukt, wordt de fout niet gerapporteerd. In deze specifieke situatie is de complexiteit van het gebruik van een secundair systeem voor fout rapportage en de extra prestatie kosten voor het reageren op het antwoord niet gerechtvaardigd. Voor scenario's waarbij het van essentieel belang is om het antwoord te controleren, is het beleid voor het [verzenden van aanvragen](./api-management-advanced-policies.md#SendRequest) een betere optie.
 
-## <a name="send-request"></a>Verzenden/aanvragen
+## <a name="send-request"></a>Send-Request
 `send-request`Met het beleid kunt u een externe service gebruiken om complexe verwerkings functies uit te voeren en gegevens te retour neren naar de API Management-service die kan worden gebruikt voor verdere beleids verwerking.
 
 ### <a name="authorizing-reference-tokens"></a>Referentie tokens autoriseren
@@ -123,7 +123,7 @@ U kunt een `<choose>` beleid gebruiken om te detecteren of het token ongeldig is
 </choose>
 ```
 
-Conform [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , waarin wordt beschreven hoe `bearer` tokens moeten worden gebruikt, retourneert API Management ook een `WWW-Authenticate` header met het 401-antwoord. De WWW-verificatie is bedoeld om een client te instrueren om een goed geautoriseerde aanvraag te maken. Vanwege de grote verscheidenheid aan benaderingen van het OAuth2-Framework is het moeilijk om alle benodigde informatie te communiceren. Gelukkig zijn er inspanningen om clients te helpen [detecteren hoe ze op de juiste wijze aanvragen aan een bron server kunnen autoriseren](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Conform [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , waarin wordt beschreven hoe `bearer` tokens moeten worden gebruikt, retourneert API Management ook een `WWW-Authenticate` header met het 401-antwoord. De WWW-Authenticate is bedoeld om een client te instrueren om een goed geautoriseerde aanvraag te maken. Vanwege de grote verscheidenheid aan benaderingen van het OAuth2-Framework is het moeilijk om alle benodigde informatie te communiceren. Gelukkig zijn er inspanningen om clients te helpen [detecteren hoe ze op de juiste wijze aanvragen aan een bron server kunnen autoriseren](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Laatste oplossing
 Aan het einde krijgt u het volgende beleid:

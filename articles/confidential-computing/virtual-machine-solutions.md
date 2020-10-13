@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245849"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Oplossingen op virtuele machines van Azure
@@ -23,9 +23,9 @@ Dit artikel bevat informatie over het implementeren van Azure vertrouwelijk comp
 
 Azure vertrouwelijk computing virtual machines zijn ontworpen om de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen tijdens de verwerking in de Cloud 
 
-[DCsv2-serie](../virtual-machines/dcv2-series.md) Vm's zijn de nieuwste en meest recente familie voor vertrouwelijke computing-grootte. Deze Vm's ondersteunen een groter aantal implementatie mogelijkheden, hebben twee maal de enclave-pagina cache (EPC) en een grotere selectie van grootten vergeleken met onze Vm's van de DC-serie. De vm's van de [DC-serie](../virtual-machines/sizes-previous-gen.md#preview-dc-series) zijn momenteel beschikbaar als preview-versie en worden afgeschaft en zijn niet opgenomen in de algemene Beschik baarheid.
+[DCsv2-serie](../virtual-machines/dcv2-series.md) Vm's zijn de nieuwste en meest recente familie voor vertrouwelijke computing-grootte. Deze Vm's ondersteunen een groter aantal implementatie mogelijkheden, hebben twee maal de enclave-pagina cache (EPC) en een grotere selectie van grootten vergeleken met onze DC-Series Vm's. De vm's van de [DC-serie](../virtual-machines/sizes-previous-gen.md#preview-dc-series) zijn momenteel beschikbaar als preview-versie en worden afgeschaft en zijn niet opgenomen in de algemene Beschik baarheid.
 
-Begin met het implementeren van een virtuele machine uit de DCsv2-serie via de micro soft Commercial Marketplace door de [Snelstartgids zelf](quick-create-marketplace.md)te volgen.
+Begin met het implementeren van een DCsv2-Series-VM via de micro soft Commercial Marketplace door de [Snelstartgids zelf](quick-create-marketplace.md)te volgen.
 
 ### <a name="current-available-sizes-and-regions"></a>Huidige beschik bare grootten en regio's
 
@@ -47,16 +47,16 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Vereisten voor speciale host
-Het implementeren van een **Standard_DC8_v2** grootte van virtuele machines in de VM-familie van de DCSv2-serie neemt de volledige host in beslag en wordt niet gedeeld met andere tenants of abonnementen. Deze VM-SKU-serie biedt de isolatie die u mogelijk nodig hebt om te voldoen aan nalevings-en beveiligings voorschriften die normaal gesp roken worden voldaan door een speciale host-service te hebben. Wanneer u **Standard_DC8_v2** SKU kiest, wijst de fysieke hostserver alle beschik bare hardwarebronnen, inclusief EPC-geheugen, toe aan uw virtuele machine. Houd er rekening mee dat deze functionaliteit bestaat door het ontwerpen van de infra structuur en dat alle functies van de **Standard_DC8_v2** worden ondersteund. Deze implementatie is niet hetzelfde als de [Azure dedicated host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) -service die wordt verschaft door andere Azure VM-families.
+Het implementeren van een **Standard_DC8_v2** grootte van een virtuele machine in de DCSv2-Series VM-familie neemt de volledige host in beslag en wordt niet gedeeld met andere tenants of abonnementen. Deze VM-SKU-serie biedt de isolatie die u mogelijk nodig hebt om te voldoen aan nalevings-en beveiligings voorschriften die normaal gesp roken worden voldaan door een speciale host-service te hebben. Wanneer u **Standard_DC8_v2** SKU kiest, wijst de fysieke hostserver alle beschik bare hardwarebronnen, inclusief EPC-geheugen, toe aan uw virtuele machine. Houd er rekening mee dat deze functionaliteit bestaat door het ontwerpen van de infra structuur en dat alle functies van de **Standard_DC8_v2** worden ondersteund. Deze implementatie is niet hetzelfde als de [Azure dedicated host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) -service die wordt verschaft door andere Azure VM-families.
 
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 
-Volg een zelf studie over het uitvoeren van een Snelstartgids voor het implementeren van een virtuele machine uit de DCsv2-serie van minder dan 10 minuten. 
+Volg een zelf studie over het uitvoeren van een Snelstartgids voor het implementeren van een DCsv2-Series virtuele machine in minder dan 10 minuten. 
 
 - **Azure-abonnement** : als u een exemplaar van een vertrouwelijk computing-VM wilt implementeren, kunt u een abonnement op basis van betalen naar gebruik of een andere aanschaf optie gebruiken. Als u een [gratis Azure-account](https://azure.microsoft.com/free/)gebruikt, hebt u geen quota voor de juiste hoeveelheid Azure-reken kernen.
 
-- **Prijzen en regionale Beschik baarheid** : Zoek de prijzen voor vm's uit de DCsv2-serie op de [pagina met prijzen voor virtuele machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). Controleer of de beschik [bare producten per regio beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) in azure-regio's.
+- **Prijzen en regionale Beschik baarheid** : Zoek de prijzen voor DCsv2-Series vm's op de [pagina met prijzen voor virtuele machines](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). Controleer of de beschik [bare producten per regio beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) in azure-regio's.
 
 
 - **Quotum voor kernen** : u moet mogelijk het quotum voor kernen in uw Azure-abonnement verhogen van de standaard waarde. Uw abonnement kan ook het aantal kernen beperken dat u kunt implementeren in bepaalde VM-grootte families, met inbegrip van de DCsv2-serie. Als u een quotum toename wilt aanvragen, opent u gratis [een aanvraag voor een online klant ondersteuning](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) . Opmerking: de standaard limieten kunnen variëren, afhankelijk van de categorie van uw abonnement.
@@ -84,7 +84,7 @@ Azure Resource Manager is de implementatie- en beheersservice voor Azure. Er wor
 
 Zie [Sjabloonimlementatie Overview](../azure-resource-manager/templates/overview.md)(Engelstalig) voor meer informatie over arm-sjablonen.
 
-Als u een DCsv2-serie in een ARM-sjabloon wilt implementeren, gebruikt u de [resource van de virtuele machine](../virtual-machines/windows/template-description.md). Zorg ervoor dat u de juiste eigenschappen voor **vmSize** en voor uw **imageReference**opgeeft.
+Als u een DCsv2-Series-VM in een ARM-sjabloon wilt implementeren, gebruikt u de resource van de [virtuele machine](../virtual-machines/windows/template-description.md). Zorg ervoor dat u de juiste eigenschappen voor **vmSize** en voor uw **imageReference**opgeeft.
 
 ### <a name="vm-size"></a>VM-grootte
 
@@ -132,7 +132,7 @@ Onder **Eigenschappen**moet u ook verwijzen naar een installatie kopie onder **s
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-In dit artikel hebt u geleerd over de kwalificaties en configuraties die nodig zijn bij het maken van een virtuele machine met vertrouwelijke computing. U kunt nu de Microsoft Azure Marketplace gebruiken om een virtuele machine uit de DCsv2-serie te implementeren.
+In dit artikel hebt u geleerd over de kwalificaties en configuraties die nodig zijn bij het maken van een virtuele machine met vertrouwelijke computing. U kunt nu de Microsoft Azure Marketplace gebruiken om een DCsv2-Series virtuele machine te implementeren.
 
 > [!div class="nextstepaction"]
-> [Een virtuele machine uit de DCsv2-serie implementeren in azure Marketplace](quick-create-marketplace.md)
+> [Een DCsv2-Series virtuele machine implementeren in azure Marketplace](quick-create-marketplace.md)

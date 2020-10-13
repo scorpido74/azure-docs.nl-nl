@@ -4,10 +4,10 @@ description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om 
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069829"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
@@ -345,7 +345,7 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
     ![Methode voor gegevensbeveiliging selecteren](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
-1. Geef in **doel stellingen voor de korte termijn**op hoe lang u een back-up van de gegevens wilt laten maken op schijf.
+1. In **Short-Term doelen opgeven**geeft u op hoe lang u een back-up van gegevens wilt opslaan op schijf.
    - Geef in **Bewaar termijn**op hoeveel dagen schijf herstel punten moeten worden bewaard.
    - Geef bij **synchronisatie frequentie**op hoe vaak schijf herstel punten worden gemaakt.
        - Als u geen back-upinterval wilt instellen, kunt u **net vóór een herstel punt** controleren of een back-up wordt uitgevoerd vlak voordat elk herstel punt is gepland.
