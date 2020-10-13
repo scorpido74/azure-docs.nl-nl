@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536627"
 ---
 # <a name="densenet"></a>DenseNet
@@ -56,9 +56,9 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 | Naam             | Bereik | Type    | Standaard     | Beschrijving                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Modelnaam       | Elk   | Modus    | densenet201 | Naam van een bepaalde DenseNet-structuur     |
-| Voortraind       | Elk   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
-| Geheugen efficiënt | Elk   | Booleaans | Niet waar       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
+| Modelnaam       | Alle   | Modus    | densenet201 | Naam van een bepaalde DenseNet-structuur     |
+| Voortraind       | Alle   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
+| Geheugen efficiënt | Alle   | Booleaans | False       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
 
 ###  <a name="output"></a>Uitvoer  
 

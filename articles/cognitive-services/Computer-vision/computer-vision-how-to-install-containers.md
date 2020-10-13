@@ -13,10 +13,10 @@ ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: on-premises, OCR, docker, container
 ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536372"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Lees de OCR docker-containers (preview) installeren 
@@ -57,7 +57,7 @@ U moet voldoen aan de volgende vereisten voordat u de containers gebruikt:
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.| 
 |Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht**|
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="request-approval-to-run-the-container"></a>Goed keuring aanvragen om de container uit te voeren
 
@@ -93,20 +93,20 @@ Er zijn container installatie kopieën voor lezen beschikbaar.
 | Container | Container Registry/opslagplaats/naam van installatie kopie |
 |-----------|------------|
 | Lees 2,0-Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Lees 3,0-Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
-| Lees 3,1-Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
+| Read 3.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
+| Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden.
 
 ### <a name="docker-pull-for-the-read-container"></a>Docker-pull voor de Lees container
 
-# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1-preview](#tab/version-3-1)
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
 ```
 
-# <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
@@ -135,7 +135,7 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 
 [Voor beelden](computer-vision-resource-container-config.md#example-docker-run-commands) van de `docker run` opdracht zijn beschikbaar.
 
-# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1-preview](#tab/version-3-1)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
@@ -152,7 +152,7 @@ Met deze opdracht gebeurt het volgende:
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
 
-# <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
@@ -215,11 +215,11 @@ Ga als volgt te connection string:
 
 De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling. 
 
-# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1-preview](#tab/version-3-1)
 
 Gebruik de host, `http://localhost:5000`, voor container-API's. U kunt het Swagger-pad weer geven op: `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` .
 
-# <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
 
 Gebruik de host, `http://localhost:5000`, voor container-API's. U kunt het Swagger-pad weer geven op: `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` .
 
@@ -232,7 +232,7 @@ Gebruik de host, `http://localhost:5000`, voor container-API's. U kunt het Swagg
 ### <a name="asynchronous-read"></a>Asynchroon lezen
 
 
-# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1-preview](#tab/version-3-1)
 
 U kunt de- `POST /vision/v3.1/read/analyze` en- `GET /vision/v3.1/read/operations/{operationId}` bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
 
@@ -310,7 +310,7 @@ De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk vi
 }
 ```
 
-# <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
 
 U kunt de- `POST /vision/v3.0/read/analyze` en- `GET /vision/v3.0/read/operations/{operationId}` bewerkingen in concert gebruiken om asynchroon een installatie kopie te lezen, vergelijkbaar met de manier waarop de computer vision-service die bijbehorende rest-bewerkingen gebruikt. De asynchrone POST-methode retourneert een `operationId` die wordt gebruikt als id voor de HTTP GET-aanvraag.
 
@@ -449,11 +449,11 @@ De `operation-location` is de volledig gekwalificeerde URL en is toegankelijk vi
 
 U kunt de volgende bewerking gebruiken om een installatie kopie synchroon te lezen. 
 
-# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1-preview](#tab/version-3-1)
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+# <a name="version-30-preview"></a>[Versie 3.0-preview](#tab/version-3)
 
 `POST /vision/v3.0/read/syncAnalyze`
 
@@ -512,8 +512,8 @@ In dit artikel hebt u concepten en werk stromen geleerd om Computer Vision conta
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Containers voor configuratie-instellingen [configureren](computer-vision-resource-container-config.md) controleren
-* Bekijk [Computer Vision overzicht](overview.md) voor meer informatie over het herkennen van gedrukte en handgeschreven tekst
+* Controleer [Containers configureren](computer-vision-resource-container-config.md) voor configuratie-instellingen
+* Bekijk [Overzicht van Computer Vision ](overview.md) voor meer informatie over het herkennen van gedrukte en handgeschreven tekst
 * Raadpleeg de [Computer Vision-API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) voor meer informatie over de methoden die door de container worden ondersteund.
-* Raadpleeg Veelgestelde [vragen (FAQ)](FAQ.md) voor het oplossen van problemen met betrekking tot de functionaliteit van computer vision.
-* Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken
+* Raadpleeg [Veelgestelde vragen (FAQ)](FAQ.md) voor het oplossen van problemen met betrekking tot de functionaliteit van Computer Vision.
+* Gebruik meer [Cognitive Services-containers](../cognitive-services-container-support.md)

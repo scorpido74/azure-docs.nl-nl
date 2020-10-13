@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 1a89ce873c53e94036aa4f8ac2c2870365924187
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537205"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Een directe peering maken of wijzigen met behulp van de Azure Portal
@@ -79,6 +79,6 @@ Als Internet provider of provider van Internet Exchange kunt u een nieuwe aanvra
 * [Exchange-peering maken of wijzigen met behulp van de portal](howto-exchange-portal.md)
 * [Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van de portal](howto-legacy-exchange-portal.md)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Zie [Veelgestelde vragen over Internet peering](faqs.md)voor meer informatie.

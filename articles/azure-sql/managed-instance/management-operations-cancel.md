@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995556"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>De Azure SQL Managed instance Management-bewerkingen worden geannuleerd
@@ -38,14 +38,14 @@ De volgende tabel bevat een overzicht van de beheer bewerkingen, ongeacht of u d
 
 Categorie  |Bewerking  |Geannuleerd  |Geschatte annulerings duur  |
 |---------|---------|---------|---------|
-|Implementatie |Instantie maken |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |No |  |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Verwijderen |Verwijdering van exemplaar |No |  |
-|Verwijderen |Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking) |No |  |
+|Implementatie |Instantie maken |Ja |90% van de bewerkingen is binnen 5 minuten voltooid. |
+|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |Nee |  |
+|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen is binnen 5 minuten voltooid. |
+|Bijwerken |Rekenkracht van instantie (vCores) omhoog en omlaag schalen (Algemeen) |Ja |90% van de bewerkingen is binnen 5 minuten voltooid. |
+|Bijwerken |Rekenkracht van instantie (vCores) omhoog en omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen is binnen 5 minuten voltooid. |
+|Bijwerken |Wijziging van de servicelaag van de instantie (van Algemeen naar Bedrijfskritiek en omgekeerd) |Ja |90% van de bewerkingen is binnen 5 minuten voltooid. |
+|Verwijderen |Verwijdering van exemplaar |Nee |  |
+|Verwijderen |Verwijderen van virtueel cluster (als een door de gebruiker geïnitieerde bewerking) |Nee |  |
 
 ## <a name="cancel-management-operation"></a>Beheer bewerking annuleren
 
@@ -61,7 +61,7 @@ Voer de volgende stappen uit om beheer bewerkingen te annuleren met de Azure Por
 
 1. Selecteer **de bewerking annuleren** onder aan de pagina. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Selecteer Annuleren om de bewerking te annuleren.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Selecteer het vak actieve bewerking om de pagina actieve bewerking te openen.":::
 
 1. Bevestig dat u de bewerking wilt annuleren. 
 
@@ -131,8 +131,8 @@ Instanties die niet zijn gemaakt, zijn nog steeds aanwezig als resource en:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Quick Start Guide (Engelstalig](instance-create-quickstart.md)) voor meer informatie over het maken van uw eerste beheerde exemplaar.
-- Zie [algemene SQL-functies](../database/features-comparison.md)voor een lijst met functies en vergelijkingen.
-- Zie [vnet-configuratie voor SQL Managed instance](connectivity-architecture-overview.md)voor meer informatie over vnet-configuraties.
-- Zie [een beheerd exemplaar maken](instance-create-quickstart.md)voor een Snelstartgids die een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-upbestand.
-- Voor een zelf studie over het gebruik van Azure Database Migration Service voor migratie raadpleegt u [migratie van SQL-beheerde exemplaren met behulp van database Migration service](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Zie de [Quickstart-gids](instance-create-quickstart.md) voor meer informatie over het maken van uw eerste beheerde exemplaar.
+- Zie [Veelvoorkomende SQL-functies](../database/features-comparison.md) voor een lijst met functies en vergelijkingen.
+- Zie [VNet-configuratie van SQL Managed Instance](connectivity-architecture-overview.md) voor meer informatie over VNet-configuratie.
+- Zie [Beheerd exemplaar maken](instance-create-quickstart.md) voor een quickstart waarmee u een beheerd exemplaar kunt maken en een database vanuit een back-upbestand kunt herstellen.
+- Zie [Migratie van SQL Managed Instance met behulp van Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) voor een zelfstudie over Azure Database Migration Service voor migratie.
