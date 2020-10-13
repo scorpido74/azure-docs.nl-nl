@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598075"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA omhoog schalen met Azure NetApp Files op Red Hat Enterprise Linux
@@ -80,13 +80,13 @@ Lees eerst de volgende SAP-opmerkingen en-documenten:
 - [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
 - [SAP HANA systeem replicatie in pacemaker-cluster.](https://access.redhat.com/articles/3004101)
 - Algemene documentatie voor RHEL
-    - [Overzicht van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-    - [Beheer van Maxi maal beschik bare invoeg toepassingen.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [SAP HANA systeem replicatie in een pacemaker-cluster configureren wanneer de HANA-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571)
+    - [Overzicht van Add-On met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+    - [Add-On beheer met hoge Beschik baarheid.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [Referentie voor maximale Beschik baarheid Add-On.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [SAP HANA systeem replicatie configureren in Scale-Up in een pacemaker-cluster wanneer de HANA-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571)
 - Documentatie voor Azure-specifieke RHEL:
     - [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden.](https://access.redhat.com/articles/3131341)
-    - [Het installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure.](https://access.redhat.com/articles/3252491)
+    - [Het installeren en configureren van een Red Hat Enterprise Linux 7,4 (en hoger) High-Availability cluster op Microsoft Azure.](https://access.redhat.com/articles/3252491)
     - [Installeer SAP HANA op Red Hat Enterprise Linux voor gebruik in Microsoft Azure.](https://access.redhat.com/solutions/3193782)
     - [SAP HANA scale-up systeem replicatie configureren pacemaker-cluster wanneer de HANA-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571)
 - [NetApp SAP-toepassingen op Microsoft Azure met behulp van Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
@@ -219,7 +219,7 @@ Om te voldoen aan de SAP-vereisten voor minimale door Voer voor/Hana/data en/Han
 
 Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende stappen uit:
 
-1.  Een resourcegroep maken.
+1.  Maak een resourcegroep.
 2.  Maak een virtueel netwerk.
 3.  Maak een beschikbaarheidsset. Stel het maximale update domein in.
 4.  Maak een load balancer (intern). Standaard load balancer worden aanbevolen.
@@ -308,7 +308,7 @@ Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende st
 Lees voor meer informatie over de vereiste poorten voor SAP HANA de hoofdstuk [verbindingen met Tenant databases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) in de hand leiding voor [SAP Hana Tenant-data bases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) of SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694).
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie. Zie ook SAP-opmerking [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net.IPv4.tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie. Zie ook SAP-opmerking [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Het Azure NetApp Files volume koppelen
 
@@ -536,7 +536,7 @@ In dit voor beeld heeft elk cluster knooppunt een eigen HANA NFS-bestands systee
     ```
 
    > [!TIP]
-   > Als uw configuratie bestands systemen bevat, buiten groep `hanadb1_nfs` of `hanadb2_nfs` , neemt u de `sequential=false` optie op, zodat er geen volg orde van afhankelijkheden tussen de bestands systemen bestaat. Alle bestands systemen moeten vóór `hana_nfs1_active` worden gestart, maar ze hoeven niet in een wille keurige volg orde ten opzichte van elkaar te beginnen. Zie [Hoe kan ik SAP Hana systeem replicatie in scale-up in een pacemaker-cluster configureren wanneer de Hana-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571) voor meer informatie.
+   > Als uw configuratie bestands systemen bevat, buiten groep `hanadb1_nfs` of `hanadb2_nfs` , neemt u de `sequential=false` optie op, zodat er geen volg orde van afhankelijkheden tussen de bestands systemen bestaat. Alle bestands systemen moeten vóór `hana_nfs1_active` worden gestart, maar ze hoeven niet in een wille keurige volg orde ten opzichte van elkaar te beginnen. Zie [Hoe kan ik SAP Hana systeem replicatie in Scale-Up configureren in een pacemaker-cluster wanneer de Hana-bestands systemen zich op NFS-shares bevinden](https://access.redhat.com/solutions/5156571) voor meer informatie.
 
 ### <a name="configure-sap-hana-cluster-resources"></a>SAP HANA cluster resources configureren
 

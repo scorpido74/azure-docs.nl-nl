@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2d6d00ea06bb362d82b5fbdff658b729eed17cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 091704fabb7b50a0c83625c6ae46d9a807f01ffc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258981"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961031"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Sessie gedrag in Azure Active Directory B2C configureren
 
@@ -46,6 +46,24 @@ U kunt de volgende eigenschappen gebruiken voor het beheren van sessies van webt
     ![Instellingen voor de eigenschappen van sessie gedrag in de Azure Portal](./media/session-behavior/session-behavior.png)
 
 8. Klik op **Opslaan**.
+
+## <a name="configure-sign-out-behavior"></a>Afmeldings gedrag configureren
+
+### <a name="secure-your-logout-redirect"></a>Uw afmeldings omleiding beveiligen
+
+Na afmelden wordt de gebruiker omgeleid naar de URI die is opgegeven in de `post_logout_redirect_uri` para meter, ongeacht de antwoord-url's die zijn opgegeven voor de toepassing. Als er echter een geldig `id_token_hint` wordt door gegeven en het token voor het **vereisen van een id in afmeldings aanvragen** is ingeschakeld, wordt door Azure AD B2C gecontroleerd of de waarde `post_logout_redirect_uri` overeenkomt met een van de geconfigureerde omleidings-uri's van de toepassing voordat de omleiding wordt uitgevoerd. Als er geen overeenkomende antwoord-URL voor de toepassing is geconfigureerd, wordt een fout bericht weer gegeven en wordt de gebruiker niet omgeleid. Een ID-token vereisen bij afmeldings aanvragen:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD B2C Tenant bevat.
+1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
+1. Selecteer **gebruikers stromen**.
+1. Open de gebruikers stroom die u eerder hebt gemaakt.
+1. Selecteer **Eigenschappen**.
+1. Schakel het **token vereisen een id in voor afmeldings aanvragen**.
+1. Ga terug naar  **Azure AD B2C**.
+1. Selecteer **app-registraties**en selecteer vervolgens uw toepassing.
+1. Selecteer **Verificatie**.
+1. Typ in het tekstvak **Afmeldings-URL** de omleidings-URI voor post afmelden en selecteer vervolgens **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

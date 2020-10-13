@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710903"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939865"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Overzicht van bedrijfs continuïteit met Azure Database for PostgreSQL-één server
 
@@ -29,10 +29,9 @@ De volgende tabel vergelijkt RTO en RPO in een typisch scenario:
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Herstel naar een bepaald tijdstip vanuit back-up | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode |
 | Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | RTO-varieert <br/>RPO < 1 uur | RTO-varieert <br/>RPO < 1 uur |
-| Leesreplica's | RTO-minuten <br/>RPO < 5 min | RTO-minuten <br/>RPO < 5 min| RTO-minuten <br/>RPO < 5 min|
+| Leesreplica's | RTO-minuten <br/>RPO < 5 min * | RTO-minuten <br/>RPO < 5 min *| RTO-minuten <br/>RPO < 5 min *|
 
-> [!IMPORTANT]
-> De verwachte RTO en RPO die hier worden vermeld, zijn alleen bedoeld ter referentie. Voor deze metrische gegevens worden geen service overeenkomsten aangeboden.
+\* RPO kan in sommige gevallen hoger zijn, afhankelijk van verschillende factoren, waaronder de werk belasting en latentie tussen regio's van de primaire data base. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Een server herstellen na een gebruikers-of toepassings fout
 

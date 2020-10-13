@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398575"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Werk stromen gebruiken om uw Azure IoT Central-toepassing te integreren met andere Cloud Services
@@ -75,7 +75,7 @@ De **Azure IOT Central v3-preview-** connector toevoegen als actie in azure Logi
 1. Selecteer in de lijst met acties de IoT Central actie die u wilt gebruiken.
 1. Voer in de stap actie de configuratie uit voor de actie die u hebt gekozen. Selecteer vervolgens **Opslaan**.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Zoek de Azure IoT Central v3-connector en kies een actie":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Zoek de Azure IoT Central-preview-connector en kies de trigger":::
 
 ## <a name="list-of-actions"></a>Lijst met acties
 

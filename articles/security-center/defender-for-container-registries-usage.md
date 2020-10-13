@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532598"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender gebruiken voor container registers om uw installatie kopieën te scannen op beveiligings problemen
@@ -26,15 +26,15 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|**Azure Defender voor container registers** wordt gefactureerd, zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|**Azure Defender voor container registers** wordt gefactureerd, zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
 |Ondersteunde registers en installatie kopieën:|![Ja ](./media/icons/yes-icon.png) door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.<br>![Geen door ](./media/icons/no-icon.png) Windows gehoste ACR-registers.<br>![Geen ](./media/icons/no-icon.png) persoonlijke registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Security Center kan momenteel geen verbinding maken met, of scannen, registers met toegang beperkt met een firewall, een service-eind punt of persoonlijke eind punten zoals een persoonlijke Azure-koppeling.<br>![Geen ](./media/icons/no-icon.png) minimale afbeeldings afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of "Distroless"-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.|
 |Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
 |||
 
 
-## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Beveiligings problemen in installatie kopieën in azure-container registers identificeren 
+## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Beveiligingsproblemen met installatiekopieën in Azure-containerregisters identificeren 
 
 1. Voor het inschakelen van beveiligings problemen met installatie kopieën die zijn opgeslagen in uw op Azure Resource Manager gebaseerde Azure Container Registry:
 
@@ -43,7 +43,7 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
         Security Center is nu gereed voor het scannen van afbeeldingen in uw registers.
 
         >[!NOTE]
-        > Deze functie wordt per afbeelding in rekening gebracht.
+        > Deze functie wordt in rekening gebracht per installatiekopie.
 
 1. Scans van afbeeldingen worden geactiveerd tijdens elke push-of import bewerking, en als de installatie kopie in de afgelopen 30 dagen is getrokken. 
 
@@ -115,9 +115,9 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
 
 ## <a name="disable-specific-findings-preview"></a>Specifieke bevindingen uitschakelen (preview-versie)
 
-Als u een organisatie nodig hebt om een zoek functie te negeren in plaats van deze te herstellen, kunt u deze eventueel uitschakelen. Uitgeschakelde bevindingen hebben geen invloed op uw beveiligde Score of genereren ongewenste ruis.
+Als u een organisatorische behoefte hebt om een resultaat te negeren in plaats van dit te herstellen, kunt u het eventueel uitschakelen. Uitgeschakelde resultaten hebben geen invloed op uw beveiligingsscore en genereren geen ongewenste ruis.
 
-Wanneer een Zoek resultaat overeenkomt met de criteria die u hebt gedefinieerd in de regels voor uitschakelen, worden deze niet weer gegeven in de lijst met bevindingen. Typische scenario's zijn onder andere:
+Wanneer een resultaat overeenkomt met de criteria die u hebt gedefinieerd in de regels voor uitschakelen, wordt dit niet weergegeven in de lijst met resultaten. Typische scenario's zijn onder andere:
 
 - Schakel de resultaten met Ernst kleiner dan gemiddeld uit
 - Uitkomsten uitschakelen die niet-patchbaar zijn
