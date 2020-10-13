@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256965"
 ---
 # <a name="azure-service-fabric-support-options"></a>Ondersteunings opties voor Azure Service Fabric
@@ -45,7 +45,7 @@ Meer informatie over:
 
 We hebben een GitHub-opslag plaats ingesteld voor het melden van Service Fabric problemen.  De volgende forums worden ook actief bewaakt.
 
-### <a name="github-repo"></a>GitHub-opslagplaats 
+### <a name="github-repo"></a>GitHub opslag plaats 
 
 Meld problemen met Azure Service Fabric op [service-Fabric-problemen Git opslag plaats](https://github.com/Azure/service-fabric-issues). Deze opslag plaats is bedoeld voor rapportage-en tracerings problemen met Azure Service Fabric en voor het maken van kleine functie aanvragen. **Gebruik deze niet om problemen met Live-sites te melden**.
 

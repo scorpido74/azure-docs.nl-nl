@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326117"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netwerkprestatiemeter oplossing: prestatie bewaking
@@ -26,7 +26,7 @@ Met de functie prestatie meter in [Netwerkprestatiemeter](network-performance-mo
 
 ![Netwerkprestatiemeter](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter-oplossing](network-performance-monitor.md)en selecteert **u configureren**.
 
 ![Netwerkprestatiemeter configureren](media/network-performance-monitor-performance-monitor/npm-configure-button.png)

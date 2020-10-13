@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936109"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Aangepaste entiteit opzoeken cognitieve vaardigheid (preview-versie)
@@ -69,7 +69,7 @@ Als de definitie inline wordt vermeld, moet deze als inline worden verschaft als
 
 ### <a name="csv-format"></a>CSV-indeling
 
-U kunt de definitie van de aangepaste entiteiten opgeven om te zoeken in een bestand met door Komma's gescheiden waarden (CSV) door het pad naar het bestand op te geven en in te stellen in de para meter *entitiesDefinitionUri*  . Het pad moet zich op een HTTPS-locatie bevinden. Het definitie bestand kan Maxi maal 10 MB groot zijn.
+U kunt de definitie van de aangepaste entiteiten die moeten worden gezocht in een CSV-bestand (Comma-Separated waarde) door het pad naar het bestand op te geven en het in te stellen in de para meter *entitiesDefinitionUri*  . Het pad moet zich op een HTTPS-locatie bevinden. Het definitie bestand kan Maxi maal 10 MB groot zijn.
 
 De CSV-indeling is eenvoudig. Elke regel vertegenwoordigt een unieke entiteit, zoals hieronder wordt weer gegeven:
 

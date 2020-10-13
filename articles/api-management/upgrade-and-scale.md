@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86205761"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Een Azure API Management-exemplaar bijwerken en schalen  
@@ -33,7 +33,7 @@ De prijs van elke eenheid en de beschik bare functies (bijvoorbeeld implementati
 
 Als u de stappen in dit artikel wilt volgen, moet u het volgende doen:
 
-+ Een actief Azure-abonnement hebben.
++ Een actief Azure-abonnement.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Als u de stappen in dit artikel wilt volgen, moet u het volgende doen:
 
 ## <a name="upgrade-and-scale"></a>Upgraden en de schaal aanpassen  
 
-U kunt kiezen uit vier lagen: **Developer**, **Basic**, **Standard**en **Premium**. De **Developer** -laag moet worden gebruikt om de service te evalueren; het mag niet worden gebruikt voor productie. De **Developer** -laag heeft geen sla en u kunt deze laag niet schalen (eenheden toevoegen/verwijderen). 
+U kunt kiezen uit vier lagen: **Developer**, **Basic**,  **Standard**en **Premium**. De **Developer** -laag moet worden gebruikt om de service te evalueren; het mag niet worden gebruikt voor productie. De **Developer** -laag heeft geen sla en u kunt deze laag niet schalen (eenheden toevoegen/verwijderen). 
 
 **Basic**, **Standard**en **Premium** zijn productie lagen met sla en kunnen worden geschaald. De laag **basis** is de goedkoopste-laag met een sla en kan Maxi maal twee eenheden worden uitgebreid. de **standaard** laag kan worden geschaald tot Maxi maal vier eenheden. U kunt een wille keurig aantal eenheden toevoegen aan de **Premium** -laag.
 

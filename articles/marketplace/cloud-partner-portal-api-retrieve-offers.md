@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271957"
 ---
 # <a name="retrieve-offers"></a>Aanbiedingen ophalen
@@ -27,11 +27,11 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 
 | **Naam**         |  **Beschrijving**                         |  **Gegevenstype** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks    |
+|  publisherId     | Uitgevers-id, bijvoorbeeld `contoso` |   Tekenreeks    |
 |  api-versie     | Nieuwste versie van API                    |    Date        |
 |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 
 |  **Naam**        |         **Waarde**       |
 |  --------------- |       ----------------  |
@@ -41,7 +41,7 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 
 ## <a name="body-example"></a>Voor beeld van tekst
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 ``` json
   200 OK 
@@ -77,10 +77,10 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 
 | **Code**  |  **Beschrijving**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`-De aanvraag is verwerkt en alle aanbiedingen onder de uitgever zijn geretourneerd naar de client.  |
-|  400      | `Bad/Malformed request`-De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                    |
-|  403      | `Forbidden`-De client heeft geen toegang tot de opgegeven naam ruimte.                                          |
-|  404      | `Not found`-De opgegeven entiteit bestaat niet.                                                                 |
+|  200      | `OK` -De aanvraag is verwerkt en alle aanbiedingen onder de uitgever zijn geretourneerd naar de client.  |
+|  400      | `Bad/Malformed request` -De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                    |
+|  403      | `Forbidden` -De client heeft geen toegang tot de opgegeven naam ruimte.                                          |
+|  404      | `Not found` -De opgegeven entiteit bestaat niet.                                                                 |
 |  |  |
 
 ### <a name="offer-status"></a>Status van aanbieding
@@ -90,7 +90,7 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 |  NeverPublished              | De aanbieding is nooit gepubliceerd.                  |
 |  NotStarted                  | De aanbieding is nieuw, maar is niet gestart.                 |
 |  WaitingForPublisherReview   | Aanbieding wacht op goed keuring van de uitgever.         |
-|  In uitvoering                     | Verzen ding van aanbieding wordt verwerkt.             |
+|  Wordt uitgevoerd                     | Verzen ding van aanbieding wordt verwerkt.             |
 |  Geslaagd                   | Het verzenden van aanbiedingen is voltooid.       |
 |  Geannuleerd                    | Het verzenden van het aanbod is geannuleerd.                   |
 |  Mislukt                      | Kan de aanbieding niet verzenden.                         |

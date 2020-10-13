@@ -7,15 +7,15 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935633"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Naslag informatie voor C#-REST van aangepaste provider
 
-Dit artikel is een basis referentie voor een gerust eind punt in de C# van een aangepaste provider. Als u niet bekend bent met aangepaste Azure-providers, raadpleegt u [het overzicht van aangepaste resource providers](overview.md).
+Dit artikel is een basis referentie voor een gerust eind punt in de C# van een aangepaste provider. Raadpleeg [het overzicht van aangepaste resourceproviders](overview.md) als u niet bekend bent met Azure Custom-providers.
 
 ## <a name="azure-function-app-restful-endpoint"></a>REST-eind punt van Azure function-app
 

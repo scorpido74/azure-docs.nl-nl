@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75775496"
 ---
 # <a name="internet-peering---faqs"></a>Internet peering-Veelgestelde vragen
@@ -27,10 +27,10 @@ Peering-service is een service die de open bare IP-connectiviteit van een ondern
 
 Peering-verbinding die is ingesteld met behulp van Azure PowerShell, wordt beheerd als een Azure-resource. Peering-verbindingen die in het verleden zijn ingesteld, worden in ons systeem opgeslagen als verouderde peering, die u eventueel kunt converteren om te beheren als een Azure-resource.
 
-**Wanneer New-AzPeeringDirectConnectionObject wordt aangeroepen, welke IP-adressen worden er aan micro soft-en peer-apparaten gegeven?**
+**Welke IP-adressen worden er aan micro soft-en peer-apparaten gegeven wanneer New-AzPeeringDirectConnectionObject wordt aangeroepen?**
 
-Bij het aanroepen van de cmdlet New-AzPeeringDirectConnectionObject wordt een/31-adres (a. b. c. d/31) of een/30-adres (a. b. c. d/30) ingevoerd. Het eerste IP-adres (a. b. c. d + 0) wordt gegeven aan het apparaat van de peer en het tweede IP-adres (a. b. c. d + 1) wordt gegeven aan micro soft-apparaat.
+Bij het aanroepen van New-AzPeeringDirectConnectionObject cmdlet, wordt een/31-adres (a. b. c. d/31) of een/30-adres (a. b. c. d/30) ingevoerd. Het eerste IP-adres (a. b. c. d + 0) wordt gegeven aan het apparaat van de peer en het tweede IP-adres (a. b. c. d + 1) wordt gegeven aan micro soft-apparaat.
 
-**Wat zijn MaxPrefixesAdvertisedIPv4-en MaxPrefixesAdvertisedIPv6-para meters in de cmdlet New-AzPeeringDirectConnectionObject?**
+**Wat zijn MaxPrefixesAdvertisedIPv4-en MaxPrefixesAdvertisedIPv6-para meters in New-AzPeeringDirectConnectionObject-cmdlet?**
 
 De para meters MaxPrefixesAdvertisedIPv4 en MaxPrefixesAdvertisedIPv6 vertegenwoordigen het maximum aantal IPv4-en IPv6-voor voegsels dat door micro soft wordt geaccepteerd. Deze para meters kunnen op elk gewenst moment worden gewijzigd.

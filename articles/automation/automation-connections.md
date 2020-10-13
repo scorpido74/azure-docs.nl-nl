@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186653"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Verbindingen in Azure Automation beheren
@@ -31,9 +31,9 @@ Wanneer u een verbinding maakt, moet u een verbindings type opgeven. Het verbind
 
 Azure Automation maakt de volgende ingebouwde verbindings typen beschikbaar:
 
-* `Azure`-Vertegenwoordigt een verbinding die wordt gebruikt om klassieke resources te beheren.
-* `AzureServicePrincipal`-Vertegenwoordigt een verbinding die wordt gebruikt door het uitvoeren als-account van Azure.
-* `AzureClassicCertificate`-Vertegenwoordigt een verbinding die wordt gebruikt door het klassieke uitvoeren als-account van Azure.
+* `Azure` -Vertegenwoordigt een verbinding die wordt gebruikt om klassieke resources te beheren.
+* `AzureServicePrincipal` -Vertegenwoordigt een verbinding die wordt gebruikt door het uitvoeren als-account van Azure.
+* `AzureClassicCertificate` -Vertegenwoordigt een verbinding die wordt gebruikt door het klassieke uitvoeren als-account van Azure.
 
 In de meeste gevallen hoeft u geen verbindings bron te maken omdat deze wordt gemaakt wanneer u een [uitvoeren als-account](manage-runas-account.md)maakt.
 

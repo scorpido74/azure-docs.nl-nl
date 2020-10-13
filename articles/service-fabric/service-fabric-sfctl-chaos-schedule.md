@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: dd911574cd37c18e3043cfc2482bd1fcd5f3857b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260857"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -37,8 +37,8 @@ Hiermee haalt u de versie van de chaos-planning in gebruik en het chaos-schema d
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
@@ -57,14 +57,14 @@ Chaos wordt automatisch gepland op basis van het chaos-schema. Het chaos-schema 
 | --taken | JSON-gecodeerde lijst met ChaosScheduleJobs die aangeeft wanneer chaos moet worden uitgevoerd en met welke para meters chaos moeten worden uitgevoerd. |
 | --begin datum-UTC | De datum en tijd waarop het schema moet worden gebruikt om chaos te plannen.  Standaard \: 1601-01-01T00 \: 00 \: 00.000 z. |
 | --time-out-t | Standaard \: 60. |
-| --versie | Het versie nummer van het schema. |
+| --version | Het versie nummer van het schema. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
-| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --help -h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
 | --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |

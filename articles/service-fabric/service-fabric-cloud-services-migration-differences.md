@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836731"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Meer informatie over de verschillen tussen Cloud Services en Service Fabric voordat u toepassingen migreert.
@@ -91,7 +91,7 @@ Hetzelfde communicatie model kan worden gebruikt in Service Fabric. Dit kan hand
 | RoleInstance. GetUpgradeDomain | FabricClient. QueryManager. GetNodeList | Filteren op knooppunt naam en de eigenschap upgrade gebruiken |
 | RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationContext of Naming (ResolveService) | CodePackageActivationContext die wordt weer gegeven door FabricRuntime. GetActivationContext en binnen de replica's via ServiceInitializationParameters. CodePackageActivationContext dat is gegeven tijdens. Initialiseren |
 | RoleEnvironment.GetRoles | FabricClient. QueryManager. GetNodeList | Als u hetzelfde Sorteer filter op type wilt uitvoeren, kunt u de lijst met knooppunt typen uit het cluster manifest ophalen via FabricClient. ClusterManager. GetClusterManifest en daar de rol/knooppunt typen uit te pakken. |
-| RoleEnvironment.GetIsAvailable | Connect-WindowsFabricCluster of maak een FabricRuntime punt naar een bepaald knoop punt | * |
+| RoleEnvironment.GetIsAvailable | Connect-WindowsFabricCluster of een FabricRuntime punt maken naar een bepaald knoop punt | * |
 | RoleEnvironment.GetLocalResource | CodePackageActivationContext. log/temp/werk | * |
 | RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext. log/temp/werk | * |
 | LocalResource.GetRootPath | CodePackageActivationContext. log/temp/werk | * |
