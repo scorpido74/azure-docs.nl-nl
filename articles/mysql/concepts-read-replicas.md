@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627564"
+ms.locfileid: "91876546"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -93,11 +93,9 @@ Voer bij de prompt het wacht woord voor het gebruikers account in.
 
 ## <a name="monitor-replication"></a>Replicatie controleren
 
-Azure Database for MySQL levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's.
+Azure Database for MySQL levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's. Deze metrische gegevens worden berekend met behulp van de `seconds_behind_master` beschik bare metrische gegevens in de opdracht van MySQL `SHOW SLAVE STATUS` . Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
 
-Deze metrische gegevens worden berekend met behulp van de `seconds_behind_master` beschik bare metrische gegevens in de opdracht van MySQL `SHOW SLAVE STATUS` .
-
-Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
+Als u de replicatie vertraging toeneemt, raadpleegt u [problemen met replicatie latentie oplossen](howto-troubleshoot-replication-latency.md) om problemen op te lossen en mogelijke oorzaken te achterhalen.
 
 ## <a name="stop-replication"></a>Replicatie stoppen
 

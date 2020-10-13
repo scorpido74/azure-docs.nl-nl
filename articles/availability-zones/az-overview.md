@@ -8,10 +8,10 @@ ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773736"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regio's en beschikbaarheidszones in Azure
@@ -99,10 +99,10 @@ Zoals eerder vermeld, classificeert Azure Services in drie categorieën: basis, 
 > | Azure ExpressRoute | Azure Bastion | Azure toegewezen HSM |
 > | Azure SQL Database | Azure Cache voor Redis | Azure Dev Spaces |
 > | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
-> | Cloud Services: Av2-serie | Azure Data Explorer | Azure Lab-Services |
-> | Cloud Services: dv2-serie | Azure Data Share | Azure NetApp Files |
-> | Cloud Services: Dv3-serie | Azure Database for MySQL | Azure-Quantum |
-> | Cloud Services: Ev3-serie | Azure Database for PostgreSQL | Azure lente-Cloud service |
+> | Cloud Services: Av2-Series | Azure Data Explorer | Azure Lab-Services |
+> | Cloud Services: Dv2-Series | Azure Data Share | Azure NetApp Files |
+> | Cloud Services: Dv3-Series | Azure Database for MySQL | Azure-Quantum |
+> | Cloud Services: Ev3-Series | Azure Database for PostgreSQL | Azure lente-Cloud service |
 > | Cloud Services: Ip's op exemplaar niveau | Azure Database Migration Service | Azure Time Series Insights |
 > | Cloud Services: Gereserveerd IP | Azure Databricks | Azure VMware Solution by CloudSimple |
 > | Disk Storage | Azure DDoS Protection | Cloud Services: G-serie |
@@ -111,49 +111,49 @@ Zoals eerder vermeld, classificeert Azure Services in drie categorieën: basis, 
 > | Load balancer | Azure Firewall Manager | Cognitive Services: Speaker Recognition |
 > | Service Bus | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | Data Catalog |
-> | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory v1 |
+> | Virtuele-machineschaalsets | Azure IoT Hub | Data Factory: Data Factory v1 |
 > | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | Virtual Machines: Av2-serie | Azure Machine Learning | Azure Machine Learning Studio (klassiek)|
-> | Virtual Machines: BS-serie | Azure Private Link | Microsoft Genomics |
-> | Virtual Machines: DSv2-serie | Azure Red Hat OpenShift | Remote Rendering |
-> | Virtual Machines: DSv3-serie | Azure SignalR-service | Spatial Anchors |
-> | Virtual Machines: dv2-serie | Azure Site Recovery | StorSimple |
-> | Virtual Machines: Dv3-serie | Azure Stack Hub | Video Indexer |
-> | Virtual Machines: ESv3-serie | Azure Stream Analytics | Virtual Machines: DASv4-serie |
-> | Virtual Machines: Ev3-serie | Azure Synapse Analytics | Virtual Machines: DAv4-serie |
+> | Virtual Machines: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klassiek)|
+> | Virtual Machines: Bs-Series | Azure Private Link | Microsoft Genomics |
+> | Virtual Machines: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
+> | Virtual Machines: DSv3-Series | Azure SignalR-service | Spatial Anchors |
+> | Virtual Machines: Dv2-Series | Azure Site Recovery | StorSimple |
+> | Virtual Machines: Dv3-Series | Azure Stack Hub | Video Indexer |
+> | Virtual Machines: ESv3-Series | Azure Stream Analytics | Virtual Machines: DASv4-Series |
+> | Virtual Machines: Ev3-Series | Azure Synapse Analytics | Virtual Machines: DAv4-Series |
 > | Virtual Machines: F-serie | Batch | Virtual Machines: DCsv2-serie |
-> | Virtual Machines: FS-serie | Cloud Services: M-serie | Virtual Machines: EASv4-serie |
-> | Virtual Machines: Ip's op exemplaar niveau | Cognitive Services | Virtual Machines: EAv4-serie |
+> | Virtual Machines: FS-Series | Cloud Services: M-serie | Virtual Machines: EASv4-Series |
+> | Virtual Machines: Ip's op exemplaar niveau | Cognitive Services | Virtual Machines: EAv4-Series |
 > | Virtual Machines: Gereserveerd IP | Cognitive Services: Computer Vision | Virtual Machines: G-serie |
-> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS-serie |
-> | VPN Gateway | Cognitive Services: Face | Virtual Machines: HBv1-serie |
-> |  | Cognitive Services: formulier herkenning | Virtual Machines: HBv2-serie |
-> |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-serie |
+> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS-Series |
+> | VPN Gateway | Cognitive Services: Face | Virtual Machines: HBv1-Series |
+> |  | Cognitive Services: formulier herkenning | Virtual Machines: HBv2-Series |
+> |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-Series |
 > |  | Cognitive Services: QnA Maker | Virtual Machines: H-serie |
-> |  | Cognitive Services: spraak Services | Virtual Machines: LS-serie |
-> |  | Container Instances | Virtual Machines: LSv2-serie |
-> |  | Container Registry | Virtual Machines: Mv2-serie |
-> |  | Data Factory | Virtual Machines: NC-serie |
-> |  | Event Grid | Virtual Machines: NCv2-serie |
-> |  | HDInsight | Virtual Machines: NCv3-serie |
-> |  | Logic Apps | Virtual Machines: NDs-serie |
-> |  | Media Services | Virtual Machines: NDv2-serie |
-> |  | Network Watcher | Virtual Machines: NV-serie |
-> |  | Notification Hubs | Virtual Machines: NVv3-serie |
-> |  | Power BI Embedded | Virtual Machines: NVv4-serie |
+> |  | Cognitive Services: spraak Services | Virtual Machines: LS-Series |
+> |  | Container Instances | Virtual Machines: LSv2-Series |
+> |  | Container Registry | Virtual Machines: Mv2-Series |
+> |  | Data Factory | Virtual Machines: NC-Series |
+> |  | Event Grid | Virtual Machines: NCv2-Series |
+> |  | HDInsight | Virtual Machines: NCv3-Series |
+> |  | Logic Apps | Virtual Machines: NDs-Series |
+> |  | Media Services | Virtual Machines: NDv2-Series |
+> |  | Network Watcher | Virtual Machines: NV-Series |
+> |  | Notification Hubs | Virtual Machines: NVv3-Series |
+> |  | Power BI Embedded | Virtual Machines: NVv4-Series |
 > |  | Premium-Blob Storage | Virtual Machines: SAP HANA on Azure Large Instances |
 > |  | Premium files-opslag | Visual Studio App Center |
 > |  | Opslag: Archive Storage |  |
 > |  | Ultra Disk Storage |  |
-> |  | Virtual Machines: Ddsv4-serie |  |
-> |  | Virtual Machines: Ddv4-serie |  |
-> |  | Virtual Machines: Dsv4-serie |  |
-> |  | Virtual Machines: Dv4-serie |  |
-> |  | Virtual Machines: Edsv4-serie |  |
-> |  | Virtual Machines: Edv4-serie |  |
-> |  | Virtual Machines: Esv4-serie |  |
-> |  | Virtual Machines: Ev4-serie |  |
-> |  | Virtual Machines: Fsv2-serie |  |
+> |  | Virtual Machines: Ddsv4-Series |  |
+> |  | Virtual Machines: Ddv4-Series |  |
+> |  | Virtual Machines: Dsv4-Series |  |
+> |  | Virtual Machines: Dv4-Series |  |
+> |  | Virtual Machines: Edsv4-Series |  |
+> |  | Virtual Machines: Edv4-Series |  |
+> |  | Virtual Machines: Esv4-Series |  |
+> |  | Virtual Machines: Ev4-Series |  |
+> |  | Virtual Machines: Fsv2-Series |  |
 > |  | Virtual Machines: M-serie |  |
 > |  | Virtual WAN |  |
 

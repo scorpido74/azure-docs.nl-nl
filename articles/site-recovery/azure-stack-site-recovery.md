@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van herstel na nood gevallen voo
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448978"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Virtuele Azure-machines repliceren naar Azure
@@ -97,9 +97,9 @@ Op elke VM die u wilt repliceren, moet de Mobility-service zijn geïnstalleerd. 
     - U geeft dit account op wanneer u Site Recovery instelt. De proces server gebruikt dit account voor het installeren van de Mobility-service wanneer replicatie is ingeschakeld.
     - Dit account wordt alleen gebruikt door Site Recovery voor de push-installatie en bij het bijwerken van de Mobility-service.
     - Als u geen domein account gebruikt, moet u toegangs beheer voor externe gebruikers uitschakelen op de virtuele machine:
-        - Maak in het REGI ster een DWORD-waarde **LocalAccountTokenFilterPolicy** onder HKEY_LOCAL_MACHINE \Software\Microsoft\Windows\CurrentVersion\Policies\System.
+        - Maak in het REGI ster DWORD-waarde **LocalAccountTokenFilterPolicy** onder HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System.
         - Stel de waarde in op 1.
-        - Als u dit wilt doen vanaf de opdracht prompt, typt u het volgende: **REG ADD HKEY_LOCAL_MACHINE \Software\Microsoft\Windows\CurrentVersion\Policies\System/V LocalAccountTokenFilterPolicy/t REG_DWORD/d 1**.
+        - Als u dit wilt doen vanaf de opdracht prompt, typt u het volgende: **REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/V LocalAccountTokenFilterPolicy/t REG_DWORD/d 1**.
 - In de Windows Firewall op de virtuele machine die u wilt repliceren, kunt u bestands-en printer deling en WMI toestaan.
     - U doet dit door **WF. msc** uit te voeren om de Windows Firewall-console te openen. Klik met de rechter muisknop op **inkomende regels**  >  **nieuwe regel**. Selecteer **vooraf gedefinieerd**en kies **Bestands-en printer deling** in de lijst. Voltooi de wizard en selecteer deze om de verbinding toe > **volt ooien**.
     - Voor domein computers kunt u een groeps beleidsobject gebruiken om dit te doen.
@@ -287,7 +287,7 @@ Voer als volgt een testfailover uit voor een virtuele machine:
 3. Selecteer in **failover testen**het doel-Azure-netwerk.
 4. Klik op **OK** om te beginnen met de failover.
 5. Houd de voortgang bij door te klikken op de virtuele machine om de eigenschappen te openen. U kunt ook op de taak **failover testen** in *kluis naam*  >  **instellingen**  >  **taken**  > **site Recovery taken**.
-6. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in de Azure Portal > **Virtuele machines**. Controleer of de virtuele machine de juiste grootte heeft, is verbonden met het juiste netwerk en wordt uitgevoerd.
+6. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de virtuele machine de juiste grootte heeft, is verbonden met het juiste netwerk en wordt uitgevoerd.
 7. Nu moet u verbinding maken met de gerepliceerde virtuele machine in Azure. [Meer informatie](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 8. Als u VM's van Azure wilt verwijderen die tijdens de failovertest zijn gemaakt, klikt u in de VM op **Failovertest opschonen**. Sla in **notities**alle opmerkingen op die zijn gekoppeld aan de testfailover.
 
@@ -305,7 +305,7 @@ Voer een failover als volgt uit:
 3. Selecteer in **failover testen**het doel-Azure-netwerk.
 4. Selecteer **Sluit de computer af voordat de failover wordt gestart**. Met deze instelling probeert Site Recovery de bron machine af te sluiten voordat de failover wordt gestart. Failover wordt echter voortgezet, zelfs als afsluiten mislukt.
 5. Klik op **OK** om te beginnen met de failover. U kunt de voortgang van de failover volgen op de pagina **Taken**.
-6. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in de Azure Portal > **Virtuele machines**. Als u hebt voor bereid om verbinding te maken na een failover, controleert u of de virtuele machine de juiste grootte heeft, is verbonden met het juiste netwerk en wordt uitgevoerd.
+6. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Als u hebt voor bereid om verbinding te maken na een failover, controleert u of de virtuele machine de juiste grootte heeft, is verbonden met het juiste netwerk en wordt uitgevoerd.
 7. Nadat u de virtuele machine hebt geverifieerd, klikt u op **door voeren** om de failover te volt ooien. Hiermee worden alle beschik bare herstel punten verwijderd.
 
 > [!WARNING]

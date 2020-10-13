@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 3ee0a376b28676e3f74ac2e53010c2c953ad9d7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317817"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Beveiligings frame: gevoelige gegevens | Oplossingen 
@@ -34,7 +34,7 @@ ms.locfileid: "91317817"
 | **Grens van Azure IaaS VM-vertrouwens relatie** | <ul><li>[Azure Disk Encryption gebruiken voor het versleutelen van schijven die worden gebruikt door Virtual Machines](#disk-vm)</li></ul> | 
 | **Grens van Service Fabric vertrouwen** | <ul><li>[Geheimen in Service Fabric toepassingen versleutelen](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Beveiligings modellen uitvoeren en waar nodig bedrijfs eenheden/teams gebruiken](#modeling-teams)</li><li>[Beperk de toegang tot de share functie op essentiële entiteiten](#entities)</li><li>[Train gebruikers over de Risico's die zijn gekoppeld aan de Dynamics CRM-share functie en goede beveiligings procedures](#good-practices)</li><li>[Een regel voor het ontwikkelen van normen bevatten met betrekking tot configuratie details in uitzonderings beheer](#exception-mgmt)</li></ul> | 
-| **Azure Storage** | <ul><li>[Azure Storage-service versleuteling (SSE) gebruiken voor Data-at-rest (preview-versie)](#sse-preview)</li><li>[Versleuteling aan de client zijde gebruiken om gevoelige gegevens op te slaan in Azure Storage](#client-storage)</li></ul> | 
+| **Azure Storage** | <ul><li>[Azure Storage-service versleuteling (SSE) gebruiken voor Data-at-rest (preview-versie)](#sse-preview)</li><li>[Client-Side versleuteling gebruiken om gevoelige gegevens op te slaan in Azure Storage](#client-storage)</li></ul> | 
 | **Mobiele client** | <ul><li>[Gevoelige of PII-gegevens versleutelen die zijn geschreven naar lokale opslag voor telefoons](#pii-phones)</li><li>[Gegenereerde binaire bestanden voor het distribueren naar eind gebruikers](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[ClientCredentialType instellen op certificaat of Windows](#cert)</li><li>[WCF-beveiligings modus is niet ingeschakeld](#security)</li></ul> | 
 
@@ -332,7 +332,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **Referenties**              | [Azure Storage-service versleuteling voor Data-at-rest (preview-versie)](https://azure.microsoft.com/documentation/articles/storage-service-encryption/) |
 | **Stappen** | <p>Azure Storage service Encryption (SSE) voor Data-at-rest helpt u bij het beveiligen en beschermen van uw gegevens om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Met deze functie worden uw gegevens automatisch versleuteld door Azure Storage voordat deze worden opgeslagen en ontsleutelt voordat ze weer worden opgehaald. De versleuteling, ontsleuteling en sleutel beheer zijn volledig transparant voor gebruikers. SSE is alleen van toepassing op blok-blobs, pagina-blobs en toevoeg-blobs. De andere typen gegevens, met inbegrip van tabellen, wacht rijen en bestanden, worden niet versleuteld.</p><p>Werk stroom voor versleuteling en ontsleuteling:</p><ul><li>De klant schakelt versleuteling in voor het opslag account</li><li>Wanneer de klant nieuwe gegevens schrijft (PUT-blob, PUT-blok, PUT-pagina enz.) naar de Blob-opslag; elke schrijf bewerking wordt versleuteld met 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn</li><li>Wanneer de klant toegang moet krijgen tot gegevens (GET blob, enz.), worden de gegevens automatisch ontsleuteld voordat deze naar de gebruiker worden geretourneerd.</li><li>Als versleuteling is uitgeschakeld, worden nieuwe schrijf bewerkingen niet langer versleuteld en blijven bestaande versleutelde gegevens versleuteld totdat ze door de gebruiker worden herschreven. Wanneer versleuteling is ingeschakeld, worden schrijf bewerkingen naar de Blob-opslag versleuteld. De status van de gegevens verandert niet wanneer de gebruiker in-of uitschakelt tussen het in-en uitschakelen van versleuteling voor het opslag account</li><li>Alle versleutelings sleutels worden opgeslagen, versleuteld en beheerd door micro soft</li></ul><p>Op dit moment worden de sleutels die worden gebruikt voor de versleuteling, beheerd door micro soft. Micro soft genereert de sleutels oorspronkelijk en beheert de veilige opslag van de sleutels, evenals de normale draaiing zoals gedefinieerd door intern micro soft-beleid. In de toekomst krijgen klanten de mogelijkheid om hun eigen >versleutelings sleutels te beheren en een migratie traject te bieden van door micro soft beheerde sleutels naar door de klant beheerde sleutels.</p>| 
 
-## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Versleuteling aan de client zijde gebruiken om gevoelige gegevens op te slaan in Azure Storage
+## <a name="use-client-side-encryption-to-store-sensitive-data-in-azure-storage"></a><a id="client-storage"></a>Client-Side versleuteling gebruiken om gevoelige gegevens op te slaan in Azure Storage
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |

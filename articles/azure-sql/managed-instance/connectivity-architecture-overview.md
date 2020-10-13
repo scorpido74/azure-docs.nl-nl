@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
 ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283374"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Connectiviteitsarchitectuur van Azure SQL Managed Instance
@@ -111,7 +111,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
@@ -121,7 +121,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -331,15 +331,15 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Naam       |Poort                        |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Elk              |MI-SUBNET  |Toestaan |
+|beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 |health_probe|Alle                         |Alle     |AzureLoadBalancer|MI-SUBNET  |Toestaan |
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Naam       |Poort          |Protocol|Bron           |Doel|Actie|
+| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |

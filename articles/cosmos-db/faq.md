@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570365"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
@@ -177,7 +177,7 @@ De SQL-API ondersteunt aggregatie met lage latentie op elke schaal via statistis
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Hoe biedt de SQL-API gelijktijdigheid?
 
-De SQL API ondersteunt optimistische gelijktijdigheids beheer (OCC) via HTTP-entiteit Tags of ETags. Elke SQL-API-resource heeft een ETag en de ETag wordt ingesteld op de server telkens wanneer een document wordt bijgewerkt. De ETag-kop en de huidige waarde zijn opgenomen in alle antwoord berichten. ETags kan worden gebruikt met de if-match-header om de server toe te staan om te bepalen of een resource moet worden bijgewerkt. De if-match-waarde is de ETag-waarde die moet worden gecontroleerd. Als de ETag-waarde overeenkomt met de server ETag-waarde, wordt de resource bijgewerkt. Als de ETag niet langer actueel is, wordt de bewerking door de server geweigerd met de respons code ' HTTP 412-voor waarde voor fout '. De client haalt de resource vervolgens opnieuw op om de huidige ETag-waarde voor de resource te verkrijgen. Daarnaast kan ETags worden gebruikt in combi natie met de If-None-Match-header om te bepalen of een resource opnieuw moet worden opgehaald.
+De SQL API ondersteunt optimistische gelijktijdigheids beheer (OCC) via HTTP-entiteit Tags of ETags. Elke SQL-API-resource heeft een ETag en de ETag wordt ingesteld op de server telkens wanneer een document wordt bijgewerkt. De ETag-kop en de huidige waarde zijn opgenomen in alle antwoord berichten. ETags kan worden gebruikt met de If-Match-header om de server toe te staan om te bepalen of een resource moet worden bijgewerkt. De If-Match waarde is de ETag-waarde die moet worden gecontroleerd. Als de ETag-waarde overeenkomt met de server ETag-waarde, wordt de resource bijgewerkt. Als de ETag niet langer actueel is, wordt de bewerking door de server geweigerd met de respons code ' HTTP 412-voor waarde voor fout '. De client haalt de resource vervolgens opnieuw op om de huidige ETag-waarde voor de resource te verkrijgen. Daarnaast kan ETags worden gebruikt in combi natie met de If-None-Match-header om te bepalen of een resource opnieuw moet worden opgehaald.
 
 Als u optimistische gelijktijdigheid wilt gebruiken in .NET, gebruikt u de [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) -klasse. Zie [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) in het DocumentManagement-voor beeld op github voor een .net-voor beeld.
 

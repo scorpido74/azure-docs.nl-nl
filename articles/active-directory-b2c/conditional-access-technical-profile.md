@@ -12,10 +12,10 @@ ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91459826"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor voorwaardelijke toegang definiëren in een Azure Active Directory B2C aangepast beleid
@@ -63,8 +63,8 @@ Het **InputClaims** -element bevat een lijst met claims die naar voorwaardelijke
 | --------- | -------- | ----------- |----------- |
 | UserId | Ja | tekenreeks | De id van de gebruiker die zich aanmeldt. |
 | AuthenticationMethodsUsed | Ja |stringCollection | De lijst met methoden waarmee de gebruiker zich heeft aangemeld. Mogelijke waarden: `Password` , en `OneTimePasscode` . |
-| IsFederated | Ja |boolean | Hiermee wordt aangegeven of een gebruiker zich heeft aangemeld met een federatief account. De waarde moet zijn `false` . |
-| IsMfaRegistered | Ja |boolean | Hiermee wordt aangegeven of de gebruiker al een telefoon nummer heeft inge schreven voor multi-factor Authentication. |
+| IsFederated | Ja |booleaans | Hiermee wordt aangegeven of een gebruiker zich heeft aangemeld met een federatief account. De waarde moet zijn `false` . |
+| IsMfaRegistered | Ja |booleaans | Hiermee wordt aangegeven of de gebruiker al een telefoon nummer heeft inge schreven voor multi-factor Authentication. |
 
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat ze worden verzonden naar de service voor voorwaardelijke toegang.

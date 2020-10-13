@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894584"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945738"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
@@ -46,7 +46,7 @@ Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Securi
 
 1. Selecteer in het **Security Center** -dash board **beveiligings beleid**.
 
-    ![Het deelvenster Beleidsbeheer](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="De pagina beleids beheer&quot;:::
 
    In het scherm **beleids beheer** ziet u het aantal beheer groepen, abonnementen en werk ruimten, evenals de structuur van uw beheer groep.
 
@@ -57,7 +57,7 @@ Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Securi
    ![pagina beleid](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Als er naast het standaard beleid een label "MG inherited" is, betekent dit dat het beleid is toegewezen aan een beheer groep en dat is overgenomen door het abonnement dat u bekijkt.
+    > Als er naast het standaard beleid een label &quot;MG inherited" is, betekent dit dat het beleid is toegewezen aan een beheer groep en dat is overgenomen door het abonnement dat u bekijkt.
 
 
 1. Kies uit de beschik bare opties op deze pagina:
@@ -68,8 +68,19 @@ Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Securi
 
     1. Als u het standaard beleid wilt weer geven en bewerken, selecteert u **effectief beleid weer geven** en gaat u verder, zoals hieronder wordt beschreven. 
 
-       ![scherm beleid](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="De pagina beleids beheer&quot;:::
+
+   In het scherm **beleids beheer** ziet u het aantal beheer groepen, abonnementen en werk ruimten, evenals de structuur van uw beheer groep.
+
+1. Selecteer het abonnement of de beheer groep waarvan u het beleid wilt weer geven.
+
+1. De pagina beveiligings beleid voor het abonnement of de beheer groep wordt weer gegeven. Het beschik bare en toegewezen beleid wordt weer gegeven.
+
+   ![pagina beleid](./media/tutorial-security-policy/security-policy-page.png)
+
+    > [!NOTE]
+    > Als er naast het standaard beleid een label &quot;MG inherited":::
+
        Dit scherm van het **beveiligings beleid** toont de actie die wordt uitgevoerd door het beleid dat is toegewezen aan het abonnement of de beheer groep die u hebt geselecteerd.
        
        * Gebruik de koppelingen aan de bovenkant om een beleids **toewijzing** te openen die van toepassing is op het abonnement of de beheer groep. Met deze koppelingen krijgt u toegang tot de toewijzing en kunt u het beleid bewerken of uitschakelen. Als u bijvoorbeeld ziet dat een bepaalde beleids toewijzing de eindpunt beveiliging effectief weigert, gebruikt u de koppeling om het beleid te bewerken of uit te scha kelen.
@@ -131,8 +142,7 @@ Zie [beveiligings aanbevelingen beheren](security-center-recommendations.md)voor
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel wordt het beveiligings beleid uitgelegd. Raadpleeg de volgende artikelen voor verwante informatie:
 
-* Zie [Quick Start: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van de module Azure PowerShell](../governance/policy/assign-policy-powershell.md) voor instructies over het instellen van beleids regels met behulp van Power shell
-
-* Zie [beleid maken en beheren om naleving af te dwingen](../governance/policy/tutorials/create-and-manage.md)voor instructies over het bewerken van een beveiligings beleid in azure Policy.
-
-* Zie [Wat is Azure Policy?](../governance/policy/overview.md) voor instructies over het instellen van een beleid in abonnementen of op beheer groepen met behulp van Azure Policy.
+- [Meer informatie over het instellen van beleid met behulp van Power shell](../governance/policy/assign-policy-powershell.md) - 
+- [Meer informatie over het bewerken van een beveiligings beleid in Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 
+- [Meer informatie over het instellen van een beleid in abonnementen of op beheer groepen met behulp van Azure Policy](../governance/policy/overview.md).
+- [Meer informatie over het inschakelen van Security Center voor alle abonnementen in een beheer groep](onboard-management-group.md)

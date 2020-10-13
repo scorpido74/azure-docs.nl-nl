@@ -10,10 +10,10 @@ ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757592"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met behulp van SQL serverloze koppeling in azure Synapse (preview)
@@ -242,7 +242,7 @@ Azure Cosmos DB-accounts van de SQL-API (core) ondersteunen JSON-eigenschaps typ
 
 | Azure Cosmos DB eigenschaps type | SQL-kolom Type |
 | --- | --- |
-| Boolean | bit |
+| Booleaans | bit |
 | Geheel getal | bigint |
 | Decimaal | float |
 | Tekenreeks | varchar (UTF8-database sortering) |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577336"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play"></a>Verklarende woorden lijst voor IoT-Plug en Play
@@ -81,7 +81,7 @@ Een [opbouw](#device-builder) functie voor apparaten of [module](#module-builder
 
 Een digitale dubbele is een model van een [IOT-Plug en Play apparaat](#iot-plug-and-play-device). Een digitale dubbele is gemodelleerd met behulp van de [taal Digital Apparaatdubbels definition](#digital-twins-definition-language). U kunt de Sdk's van het [Azure IOT-apparaat](#azure-iot-device-sdk) gebruiken om te communiceren met Digital apparaatdubbels tijdens de uitvoering. U kunt bijvoorbeeld een eigenschaps waarde instellen in een digitaal, twee op een apparaat en de SDK communiceert deze wijziging naar uw IoT-oplossing in de Cloud.
 
-## <a name="digital-twin-change-events"></a>Digitale dubbele wijzigings gebeurtenissen
+## <a name="digital-twin-change-events"></a>Gebeurtenissen met wijziging van dubbel
 
 Wanneer een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) is verbonden met een [IOT-hub](#azure-iot-hub), kan de hub de route ring gebruiken om meldingen van digitale dubbele wijzigingen te verzenden. Wanneer bijvoorbeeld een [eigenschaps](#properties) waarde op een apparaat wordt gewijzigd, kan IOT hub een melding verzenden naar een eind punt zoals een event hub.
 
@@ -101,7 +101,7 @@ Een interface beschrijft gerelateerde mogelijkheden die worden geïmplementeerd 
 
 De IoT Hub query taal wordt gebruikt voor meerdere doel einden. U kunt bijvoorbeeld de taal gebruiken om te zoeken naar apparaten die zijn geregistreerd bij uw IoT-hub of om het [digitale dubbele routerings](#digital-twin-route) gedrag te verfijnen.
 
-## <a name="iot-plug-and-play-bridge"></a>IoT Plug en Play-brug
+## <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-brug
 
 IoT Plug en Play Bridge is een open-source toepassing waarmee bestaande Sens oren en rand apparatuur die zijn gekoppeld aan Windows-of Linux-gateways, verbinding kunnen maken als [IoT Plug en Play-apparaten](#iot-plug-and-play-device).
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 28a1990155e1406bf9b79572b3e5307cadfb8076
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665919"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Een IoT hub-gebeurtenis bron toevoegen aan uw Azure time series Insight-omgeving
@@ -50,7 +50,7 @@ Een nieuwe consumenten groep toevoegen aan uw IoT-hub:
 
 ## <a name="add-a-new-event-source"></a>Een nieuwe gebeurtenis bron toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Alle resources** in het menu aan de linkerkant. Selecteer uw Azure time series Insight-omgeving.
 

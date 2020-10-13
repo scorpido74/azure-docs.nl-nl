@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 68b5946cb21bef1c8979a94c8780682cfe9defa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 518865f78c170f1fbe4e65b96dc149c1b449a88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377256"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91631359"
 ---
-Gebruik de parameter `@StartTime` in de query om metrische gegevens voor een bepaald tijdstempel op te halen. Dit wordt vervangen door een tekenreeks in de indeling `yyyy-MM-ddTHH:mm:ss`. 
+Gebruik de parameter `@StartTime` in de query om metrische gegevens voor een enkele tijdstempel op te halen. Met Metrics Advisor wordt de parameter vervangen door een tekenreeks `yyyy-MM-ddTHH:mm:ss` wanneer de query wordt uitgevoerd.
 
 > [!IMPORTANT]
-> Zorg ervoor dat alleen metrische gegevens van **één tijdstempel** door de query worden geretourneerd. Metrics Advisor voert de query uit op elk tijdstempel om de bijbehorende metrische gegevens op te halen. Een query voor een metriek met *dagelijkse* granulatie mag bijvoorbeeld slechts één tijdstempel bevatten, zoals `2020-06-21T00:00:00Z` wanneer de query één keer wordt uitgevoerd. 
+> Met de query wordt maximaal één record per dimensiecombinatie geretourneerd voor elke tijdstempel. En alle records die zijn geretourneerd met de query, moeten dezelfde tijdstempels hebben. In Metrics Advisor wordt deze query uitgevoerd voor elke tijdstempel om uw gegevens op te nemen. Raadpleeg de sectie [Veelgestelde vragen over query's](../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data) voor meer informatie en voorbeelden. 

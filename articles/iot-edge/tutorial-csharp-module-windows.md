@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: b904fcd03247f6e6ae01f51c5048c29826bb8e5a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 24a63a167f640646b9e07126a038663f4da3e23b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018464"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449594"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Zelfstudie: Een C#-module ontwikkelen voor Windows-apparaten met IoT Edge
 
@@ -311,11 +311,11 @@ In de vorige sectie hebt u een IoT Edge-oplossing gemaakt en code toegevoegd aan
 
 ## <a name="deploy-modules-to-device"></a>Modules op het apparaat implementeren
 
-Gebruik Visual Studio Code Explorer en de Azure IoT Tools-extensie om het moduleproject op uw IoT Edge-apparaat te implementeren. U hebt al een implementatiemanifest voorbereid voor uw scenario, namelijk het bestand **deployment.windows-amd64.json** in de map config. U hoeft nu alleen nog maar een apparaat te selecteren dat de implementatie moet ontvangen.
+Gebruik Cloud Explorer van Visual Studio en de Azure IoT Tools-extensie om het moduleproject op uw IoT Edge-apparaat te implementeren. U hebt al een implementatiemanifest voorbereid voor uw scenario, namelijk het bestand **deployment.windows-amd64.json** in de map config. U hoeft nu alleen nog maar een apparaat te selecteren dat de implementatie moet ontvangen.
 
 Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
-1. Vouw in de Cloud Explorer van Visual Studio de resources uit om de lijst met IoT-apparaten weer te geven.
+1. Vouw in Cloud Explorer van Visual Studio de resources uit om de lijst met IoT-apparaten weer te geven.
 
 2. Klik met de rechtermuisknop op de naam van het IoT Edge-apparaat waarvan u de implementatie wilt ontvangen.
 
@@ -323,7 +323,7 @@ Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
 4. Ga in de bestandsverkenner naar de configuratiemap van uw oplossing en selecteer vervolgens het bestand **deployment.windows-amd64.json**.
 
-5. Vernieuw de Cloud Explorer om de geïmplementeerde modules onder uw apparaat weer te geven.
+5. Vernieuw Cloud Explorer om de geïmplementeerde modules onder uw apparaat weer te geven.
 
 ## <a name="view-generated-data"></a>Gegenereerde gegevens weergeven
 
@@ -331,7 +331,7 @@ Als u het implementatiemanifest op uw IoT Edge-apparaat toepast, verzamelt de Io
 
 U kunt de IoT Edge Tools-extensie gebruiken om berichten weer te geven als ze arriveren in uw IoT Hub.
 
-1. Selecteer in de Cloud Explorer van Visual Studio de naam van het IoT Edge-apparaat.
+1. Selecteer in Cloud Explorer van Visual Studio de naam van het IoT Edge-apparaat.
 
 2. Selecteer in de lijst **Actions** de optie **Start Monitoring Built-in Event Endpoint**.
 

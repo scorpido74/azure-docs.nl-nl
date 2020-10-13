@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec5aeaac6f39a106899094e674864d3bd10dc02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036434"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966335"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Problemen met toepassingsverbindingen op virtuele machines in Azure oplossen
 
@@ -122,7 +122,7 @@ Als u geen toegang hebt tot de toepassing, controleert u de volgende instellinge
   
   * Controleer of de configuratie van de binnenkomende NAT-regel voor de virtuele machine het binnenkomende verkeer, met name het Protocol (TCP of UDP) en de open bare en particuliere poort nummers toestaat.
   * Controleer of de netwerk beveiligings groepen de inkomende aanvraag en het uitgaande antwoord verkeer toestaan.
-  * Zie [Wat is een netwerk beveiligings groep?](../../virtual-network/security-overview.md) voor meer informatie.
+  * Zie [Wat is een netwerk beveiligings groep?](../../virtual-network/network-security-groups-overview.md) voor meer informatie.
 
 Als de virtuele machine of het eind punt lid is van een set met gelijke taak verdeling:
 
@@ -140,7 +140,7 @@ Als u toegang hebt tot de toepassing, moet u ervoor zorgen dat het Internet edge
 
 Zie overzicht van Azure- [netwerk bewaking](../../network-watcher/network-watcher-monitoring-overview.md)voor meer informatie. 
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 [Problemen met Extern bureaublad verbindingen met een virtuele Azure-machine op Windows oplossen](troubleshoot-rdp-connection.md)
 
 [Problemen met SSH-verbindingen (Secure Shell) met een op Linux gebaseerde Azure Virtual Machine oplossen](troubleshoot-ssh-connection.md)
