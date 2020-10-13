@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265388"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect installeren met behulp van een bestaande ADSync-database
@@ -96,7 +96,7 @@ Gebruik de onderstaande tabel om eventuele extra stappen te controleren die vere
 |-----|-----|
 |Wachtwoord hash-synchronisatie| de instellingen voor wachtwoord hash synchronisatie en wacht woord terugschrijven worden volledig hersteld voor versies van Azure AD Connect die beginnen met 1.2.65.0.  Als u een oudere versie van Azure AD Connect herstelt, controleert u de instellingen voor synchronisatie opties voor deze functies om te controleren of ze overeenkomen met uw actieve synchronisatie server.  Er hoeven geen andere configuratie stappen te worden uitgevoerd.|
 |Federatie met AD FS|Azure-authenticaties blijven het AD FS beleid gebruiken dat is geconfigureerd voor de actieve synchronisatie server.  Als u Azure AD Connect gebruikt voor het beheren van uw AD FS-Farm, kunt u eventueel de aanmeldings methode wijzigen in AD FS federatie in voor bereiding voor de stand-by-server die het actieve synchronisatie-exemplaar wordt.   Als de opties voor het apparaat zijn ingeschakeld op de actieve synchronisatie server, configureert u deze opties op deze server door de taak ' Device-opties configureren ' uit te voeren.|
-|Pass-Through-verificatie en eenmalige aanmelding op het bureau blad|Werk de aanmeldings methode bij om overeen te komen met de configuratie op uw actieve synchronisatie server.  Als dit niet wordt gevolgd voordat de server wordt bevorderd tot de primaire, Pass-Through-verificatie en naadloze eenmalige aanmelding, worden uitgeschakeld en kan uw Tenant worden vergrendeld als u geen wacht woord-hash synchroniseert als back-upaanmeld optie. Houd er ook rekening mee dat als u Pass-Through-verificatie inschakelt in de faserings modus, een nieuwe verificatie agent wordt geïnstalleerd, wordt geregistreerd en wordt uitgevoerd als een agent met hoge Beschik baarheid waarmee aanmeldings aanvragen worden geaccepteerd.|
+|Pass-Through-verificatie en desktop-Sign-On op één computer|Werk de aanmeldings methode bij om overeen te komen met de configuratie op uw actieve synchronisatie server.  Als dit niet wordt gevolgd voordat de server wordt bevorderd tot de primaire, Pass-Through-verificatie en naadloze eenmalige aanmelding, worden uitgeschakeld en kan uw Tenant worden vergrendeld als u geen wacht woord-hash synchroniseert als back-upaanmeld optie. Houd er ook rekening mee dat als u Pass-Through-verificatie inschakelt in de faserings modus, een nieuwe verificatie agent wordt geïnstalleerd, wordt geregistreerd en wordt uitgevoerd als een agent met hoge Beschik baarheid waarmee aanmeldings aanvragen worden geaccepteerd.|
 |Federatie met PingFederate|Azure-verificaties blijven gebruikmaken van het PingFederate-beleid dat is geconfigureerd voor de actieve synchronisatie server.  U kunt desgewenst de aanmeldings methode wijzigen in PingFederate ter voor bereiding op de stand-by-server die het actieve synchronisatie-exemplaar wordt.  Deze stap kan worden uitgesteld totdat u extra domeinen moet door lopen met PingFederate.|
 
 ## <a name="next-steps"></a>Volgende stappen

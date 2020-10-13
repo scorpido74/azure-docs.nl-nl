@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269570"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: de implementatie van uw hybride Azure Active Directory-koppeling plannen
@@ -162,7 +162,7 @@ Soms kunnen de UPN-namen van uw on-premises AD-gebruikers afwijken van uw Azure 
 
 De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor deze on-premises AD-Upn's in Windows 10 Hybrid Azure AD-deelname
 
-| Type on-premises AD-UPN | Domeintype | Windows 10-versie | Description |
+| Type on-premises AD-UPN | Domeintype | Windows 10-versie | Beschrijving |
 | ----- | ----- | ----- | ----- |
 | Bare | Federatief | Van 1703 release | Algemeen beschikbaar |
 | Niet-routeerbaar | Federatief | Van 1803 release | Algemeen beschikbaar |

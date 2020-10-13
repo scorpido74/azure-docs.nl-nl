@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276489"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
@@ -102,16 +102,16 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 
 | Eigenschap              | Beschrijving                              | Vereist |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Naam van de activiteit in de pijp lijn     | Yes      |
-| description           | Tekst die beschrijft wat de activiteit doet.  | No       |
-| type                  | Voor aangepaste activiteit is het type activiteit **aangepast**. | Yes      |
-| linkedServiceName     | Gekoppelde service aan Azure Batch. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  | Yes      |
-| command               | Opdracht van de aangepaste toepassing die moet worden uitgevoerd. Als de toepassing al beschikbaar is op het Azure Batch groeps knooppunt, kunnen de resourceLinkedService en folderPath worden overgeslagen. U kunt bijvoorbeeld de opdracht opgeven `cmd /c dir` , die wordt ondersteund door het knoop punt Windows Batch-groep. | Yes      |
+| naam                  | Naam van de activiteit in de pijp lijn     | Ja      |
+| description           | Tekst die beschrijft wat de activiteit doet.  | Nee       |
+| type                  | Voor aangepaste activiteit is het type activiteit **aangepast**. | Ja      |
+| linkedServiceName     | Gekoppelde service aan Azure Batch. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.  | Ja      |
+| command               | Opdracht van de aangepaste toepassing die moet worden uitgevoerd. Als de toepassing al beschikbaar is op het Azure Batch groeps knooppunt, kunnen de resourceLinkedService en folderPath worden overgeslagen. U kunt bijvoorbeeld de opdracht opgeven `cmd /c dir` , die wordt ondersteund door het knoop punt Windows Batch-groep. | Ja      |
 | resourceLinkedService | Azure Storage gekoppelde service naar het opslag account waarin de aangepaste toepassing is opgeslagen | Geen &#42;       |
 | folderPath            | Pad naar de map van de aangepaste toepassing en alle bijbehorende afhankelijkheden<br/><br/>Als er afhankelijkheden zijn opgeslagen in submappen, dat wil zeggen, in een hiërarchische mappen structuur onder *FolderPath* : de mapstructuur wordt op dit moment afgevlakt wanneer de bestanden worden gekopieerd naar Azure batch. Dat wil zeggen dat alle bestanden naar één map zonder submappen worden gekopieerd. U kunt dit probleem omzeilen door de bestanden te comprimeren, het gecomprimeerde bestand te kopiëren en deze vervolgens te uitgepakt met aangepaste code op de gewenste locatie. | Geen &#42;       |
-| referenceObjects      | Een matrix met bestaande gekoppelde services en gegevens sets. De gekoppelde services en gegevens sets waarnaar wordt verwezen, worden door gegeven aan de aangepaste toepassing in JSON-indeling zodat uw aangepaste code kan verwijzen naar resources van de Data Factory | No       |
-| extendedProperties    | Door de gebruiker gedefinieerde eigenschappen die kunnen worden door gegeven aan de aangepaste toepassing in JSON-indeling zodat uw aangepaste code kan verwijzen naar aanvullende eigenschappen | No       |
-| retentionTimeInDays | De retentie tijd voor de bestanden die zijn verzonden voor aangepaste activiteit. De standaard waarde is 30 dagen. | No |
+| referenceObjects      | Een matrix met bestaande gekoppelde services en gegevens sets. De gekoppelde services en gegevens sets waarnaar wordt verwezen, worden door gegeven aan de aangepaste toepassing in JSON-indeling zodat uw aangepaste code kan verwijzen naar resources van de Data Factory | Nee       |
+| extendedProperties    | Door de gebruiker gedefinieerde eigenschappen die kunnen worden door gegeven aan de aangepaste toepassing in JSON-indeling zodat uw aangepaste code kan verwijzen naar aanvullende eigenschappen | Nee       |
+| retentionTimeInDays | De retentie tijd voor de bestanden die zijn verzonden voor aangepaste activiteit. De standaard waarde is 30 dagen. | Nee |
 
 &#42; de eigenschappen `resourceLinkedService` en `folderPath` moet beide worden opgegeven of beide worden wegge laten.
 
@@ -302,7 +302,7 @@ Als u de inhoud van stdout.txt in stroomafwaartse activiteiten wilt gebruiken, k
 
 > [!IMPORTANT]
 > - De activity.jsop, linkedServices.jsop en datasets.jsop worden opgeslagen in de map runtime van de batch-taak. Voor dit voor beeld worden de activity.jsop, linkedServices.json en datasets.json opgeslagen in het `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` pad. Als dat nodig is, moet u deze afzonderlijk opschonen.
-> - Voor gekoppelde services die gebruikmaken van de zelf-Hostende Integration Runtime, worden gevoelige gegevens, zoals sleutels of wacht woorden, versleuteld door de zelf-Hostende Integration Runtime om ervoor te zorgen dat referenties blijven bestaan in door de klant gedefinieerde particuliere netwerk omgeving. Er ontbreken mogelijk enkele gevoelige velden wanneer ernaar wordt verwezen door uw aangepaste toepassings code. Gebruik SecureString in extendedProperties in plaats van een gekoppelde service verwijzing zo nodig te gebruiken.
+> - Voor gekoppelde services die gebruikmaken van de Self-Hosted Integration Runtime, de gevoelige informatie zoals sleutels of wacht woorden worden versleuteld door de Self-Hosted Integration Runtime om ervoor te zorgen dat de referenties blijven bestaan in een door de klant gedefinieerde particuliere netwerk omgeving. Er ontbreken mogelijk enkele gevoelige velden wanneer ernaar wordt verwezen door uw aangepaste toepassings code. Gebruik SecureString in extendedProperties in plaats van een gekoppelde service verwijzing zo nodig te gebruiken.
 
 ## <a name="pass-outputs-to-another-activity"></a>Uitvoer door geven aan een andere activiteit
 

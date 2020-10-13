@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653244"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 en 8600 migratie naar Azure File Sync
@@ -427,7 +427,7 @@ Raadpleeg de Robocopy-logboek bestand (en) om te zien of er bestanden achterblij
 
 Het is waarschijnlijk nodig om de SMB-shares te maken op de Windows-Server die u eerder had voor de StorSimple-gegevens. U kunt deze stap vooraan laden en eerder geen tijd kwijt raken, maar u moet er wel voor zorgen dat de bestanden niet worden gewijzigd op de Windows-Server.
 
-Als u een DFS-N-implementatie hebt, kunt u de DFN-naam ruimten naar de nieuwe locatie van de servermap wijzen. Als u geen DFS-N-implementatie hebt en u uw 8100 8600-apparaat lokaal hebt gefronteerd met een Windows Server, kunt u die server uit het domein halen en uw nieuwe Windows-Server met AFS toevoegen aan het domein, het domein dezelfde server naam geven als de oude server en dezelfde share namen, waarna de afgesneden naar de nieuwe server transparant blijft voor uw gebruikers , groeps beleid of scripts.
+Als u een DFS-N-implementatie hebt, kunt u de DFN-Namespaces naar de nieuwe locatie van de servermap wijzen. Als u geen DFS-N-implementatie hebt en u uw 8100 8600-apparaat lokaal hebt gefronteerd met een Windows Server, kunt u die server uit het domein halen en uw nieuwe Windows-Server met AFS toevoegen aan het domein, het domein dezelfde server naam geven als de oude server en dezelfde share namen, waarna de afgesneden naar de nieuwe server transparant blijft voor uw gebruikers , groeps beleid of scripts.
 
 ## <a name="phase-7-deprovision"></a>Fase 7: inrichting opheffen
 

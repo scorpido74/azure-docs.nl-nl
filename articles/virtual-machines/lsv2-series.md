@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652921"
 ---
 # <a name="lsv2-series"></a>Lsv2-serie
@@ -75,7 +75,7 @@ voor <sup>6</sup> vm's met meer dan 64 vcpu's is een van de volgende ondersteund
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

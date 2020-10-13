@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743723"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Prestatie lagen voor beheerde schijven (preview-versie)
@@ -20,7 +20,7 @@ ms.locfileid: "91743723"
 Azure Disk Storage biedt momenteel ingebouwde burst-mogelijkheden om betere prestaties te bieden voor het verwerken van onverwacht verkeer op korte termijn. Premium-Ssd's hebben de flexibiliteit om de schijf prestaties te verbeteren zonder de daad werkelijke schijf grootte te verg Roten. Met deze mogelijkheid kunt u voldoen aan de prestatie behoeften van uw werk belasting en de kosten verlagen. 
 
 > [!NOTE]
-> Deze functie is momenteel in preview. 
+> Deze functie is momenteel beschikbaar als preview-product. 
 
 Deze functie is ideaal voor gebeurtenissen waarvoor tijdelijk een consistent hoger prestatie niveau is vereist, zoals het kopen van vakantie dagen, het testen van prestaties of het uitvoeren van een trainings omgeving. Als u deze gebeurtenissen wilt verwerken, kunt u een hogere prestatie laag gebruiken, zolang u deze nodig hebt. U kunt vervolgens terugkeren naar de oorspronkelijke laag wanneer u de extra prestaties niet meer nodig hebt.
 

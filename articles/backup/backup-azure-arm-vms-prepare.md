@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-mac
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986500"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
@@ -45,7 +45,7 @@ Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/s
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
 * U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) gebruiken voor een goedkopere optie.
-* [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij de gegevens locatie en tolerantie in dezelfde regio worden gegarandeerd.
+* [Zone-redundante opslag (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliceert uw gegevens in [beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones), waarbij gegevenslocatie en gegevenstolerantie in dezelfde regio worden gegarandeerd.
 
 Wijzig het type opslag replicatie als volgt:
 

@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8a3a51644f61d4a1e118798986f9c6fb6c52d0e5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264161"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Uw inhoud versleutelen met opslag versleuteling
@@ -47,11 +47,11 @@ Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en
 
 ### <a name="storage-side-encryption"></a>Versleuteling van opslag side
 
-|Versleutelings optie|Description|Media Services v2|Media Services v3|
+|Versleutelings optie|Beschrijving|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Opslag versleuteling Media Services|AES-256-versleuteling, sleutel beheerd door Media Services|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
 |[Storage Service Encryption voor Data-at-rest](../../storage/common/storage-service-encryption.md)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant|Ondersteund|Ondersteund|
-|[Versleuteling van de opslag aan de client zijde](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault|Niet ondersteund|Niet ondersteund|
+|[Versleuteling van opslag Client-Side](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault|Niet ondersteund|Niet ondersteund|
 
 <sup>1</sup> hoewel Media Services het verwerken van inhoud in de Clear/zonder vorm van versleuteling ondersteunt, wordt dit niet aanbevolen.
 
@@ -114,7 +114,7 @@ Hieronder vindt u algemene stappen voor het genereren van inhouds sleutels die u
 
     Voor opslag versleuteling moeten de volgende eigenschappen worden opgenomen in de hoofd tekst van de aanvraag.
 
-    Eigenschap aanvraag hoofdtekst    | Description
+    Eigenschap aanvraag hoofdtekst    | Beschrijving
     ---|---
     Id | De ContentKey-ID wordt gegenereerd met de volgende indeling, "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | Het type inhouds sleutel is een geheel getal dat de sleutel definieert. Voor de indeling van opslag versleuteling is de waarde 1.

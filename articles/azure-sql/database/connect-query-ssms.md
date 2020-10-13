@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
-ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461135"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91598273"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Verbinding maken met en query uitvoeren in Azure SQL Database of Azure SQL Managed Instance met behulp van SSMS
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met uw da
 
 ## <a name="connect-to-your-database"></a>Verbinding maken met uw database
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 Maak een verbinding met de server in SSMS.
 
 > [!IMPORTANT]
@@ -85,7 +87,7 @@ Maak een verbinding met de server in SSMS.
    ![verbinding maken met server](./media/connect-query-ssms/connect.png)  
 
 > [!NOTE]
-> In deze zelfstudie wordt gebruikgemaakt van SQL Server-verificatie.  Als u echter verbinding wilt maken via Azure Active Directory met MFA, moet u [SSMS 18.6 of hoger](https://aka.ms/ssms) gebruiken. 
+> In deze zelfstudie wordt gebruikgemaakt van SQL Server-verificatie.
 
 3. Selecteer **Opties** in het dialoogvenster **Verbinding maken met server**. In de vervolgkeuzelijst **Verbinding maken met database** selecteert u **mySampleDatabase**. Het voltooien van de quickstart in het [gedeelte Vereisten](#prerequisites) maakt een AdventureWorksLT-database met de naam mySampleDatabase. Als uw werkende kopie van de AdventureWorks-database een andere naam heeft dan mySampleDatabase, selecteert u deze in plaats daarvan.
 

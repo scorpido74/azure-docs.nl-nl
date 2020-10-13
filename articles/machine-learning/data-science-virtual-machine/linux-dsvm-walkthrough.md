@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275979"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Data Wetenschappen met een Ubuntu-Data Science Virtual Machine in azure
@@ -480,7 +480,7 @@ De verbinding met de lokale server instellen:
 1. Voer uw gebruikersnaam en wachtwoord in.
 1. Selecteer **OK**.
 1. Als u het venster **verbinding** wilt openen, dubbelklikt u op de alias voor de **spam-data base** .
-1. Selecteer **Verbinden**.
+1. Selecteer **Verbinding maken**.
 
 Enkele query's uitvoeren:
 

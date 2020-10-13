@@ -12,10 +12,10 @@ ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266561"
 ---
 # <a name="workday-attribute-reference"></a>Verwijzing naar Workday-kenmerk
@@ -63,7 +63,7 @@ In de volgende tabel wordt de lijst met workday-kenmerken en bijbehorende XPATH-
 | 29 | LocationIdentifier                    | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: positiongegevens \_ /WD: Business \_ site \_ Summary \_ Data/WD: locatie \_ verwijzing/WD: id \[ @wd:type = ' locatie \_ -id ' \] /Text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | Word: worker/WD: worker \_ Data/WD: Management \_ Chain \_ Data/WD: worker \_ beheer keten \_ \_ \_ gegevens \[ positie \( \) = 1 \] /WD: beheer \_ keten \_ gegevens \[ laatst \( \) = positie \( \) \] /WD: Manager \_ Reference/WD: id \[ @wd:type = ' wid ' \] /Text\(\)                                                                                                                                                                            |
 | 31 | Middelste naam                            | Word: worker/WD: worker \_ Data/WD: persoons \_ gegevens/WD: naam \_ gegevens/WD: juridisch \_ naam \_ gegevens/WD: naam \_ detail \_ gegevens/WD: middelste \_ naam/tekst\(\)                                                                                                                                                                                                                                                                                |
-| 32 | Mobiele telefoon                                | Word: worker/WD: worker \_ Data/WD: persoons gegevens \_ /WD: contact \_ gegevens/WD: telefoon \_ gegevens \[ vertalen \( teken reeks \( WD: \_ type telefoon apparaat \_ \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' Mobiel ' en vertalen \( teken reeks \( WD: gebruiks \_ gegevens/WD: type \_ gegevens/WD: type \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' \] /@wd:Formatted \_ telefoon van het werk    |
+| 32 | Mobiel                                | Word: worker/WD: worker \_ Data/WD: persoons gegevens \_ /WD: contact \_ gegevens/WD: telefoon \_ gegevens \[ vertalen \( teken reeks \( WD: \_ type telefoon apparaat \_ \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' Mobiel ' en vertalen \( teken reeks \( WD: gebruiks \_ gegevens/WD: type \_ gegevens/WD: type \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' \] /@wd:Formatted \_ telefoon van het werk    |
 | 33 | Gemeenschap                          | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: Position \_ Data/WD: Business \_ site \_ Summary \_ Data/WD: address \_ Data/WD: gemeente/text\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: Position \_ Data/WD: positie \_ -id/tekst\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: Position \_ Data/WD: positie \_ titel/tekst\(\)                                                                                                                                                                                                                                                                                                                  |
@@ -117,7 +117,7 @@ In de volgende tabel wordt de lijst met workday-kenmerken en bijbehorende XPATH-
 
 Als u WWS API v 30.0 of hoger gebruikt in de verbindings-URL, zoals hieronder wordt weer gegeven:
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Informatie over workday-versie":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday geen versie gegevens":::
 
 ... voordat u de inrichtings taak inschakelt, moet u de **API-expressies van XPath** bijwerken onder **kenmerk toewijzing-> geavanceerde opties-> kenmerk lijst bewerken voor werkdag** voor het gebruik van de waarden die in de tabel worden weer gegeven. 
 
@@ -158,7 +158,7 @@ Raadpleeg de sectie [zelf studie: uw configuratie beheren](../saas-apps/workday-
 | 29 | LocationIdentifier                    | Word: worker/WD: worker \_ Data/WD: dienstverband \_ gegevens/WD: worker- \_ taak \_ gegevens \[ @wd:Primary_Job = 1]/WD: Positioning \_ Data/WD: Business \_ site \_ Summary \_ Data/WD: locatie \_ verwijzing/WD: id \[ @wd:type = ' locatie \_ -id ' \] /Text\(\)                                                                                                                                                                           |
 | 30 | ManagerReference                      | Word: worker/WD: worker \_ Data/WD: Management \_ Chain \_ Data/WD: worker \_ beheer keten \_ \_ \_ gegevens \[ positie \( \) = 1 \] /WD: beheer \_ keten \_ gegevens \[ laatst \( \) = positie \( \) \] /WD: Manager \_ Reference/WD: id \[ @wd:type = ' wid ' \] /Text\(\)                                                                                                                                                      |
 | 31 | Middelste naam                            | Word: worker/WD: worker \_ Data/WD: persoons \_ gegevens/WD: naam \_ gegevens/WD: juridisch \_ naam \_ gegevens/WD: naam \_ detail \_ gegevens/WD: middelste \_ naam/tekst\(\)                                                                                                                                                                                                                                                          |
-| 32 | Mobiele telefoon                                | Word: worker/WD: worker- \_ gegevens/WD: Personal \_ Data/WD: contact \_ gegevens/WD: telefoon \_ gegevens \[ WD: Usage \_ Data/@wd:Public = ' 1 ' en teken reeks \( WD: gebruiks \_ gegevens/WD: type \_ Data/WD: type \_ verwijzing/WD: id \[ @wd:type = ' communicatie \_ gebruiks \_ type \_ -id ' \] \) = ' werk ' en teken reeks \( WD: \_ \_ type \_ referentie/WD: id \[ @wd:type = ' telefoon \_ apparaat \_ \_ -id ' \] \) = ' Mobiel '\]/@wd:Workday_Traditional_Formatted_Phone   |
+| 32 | Mobiel                                | Word: worker/WD: worker- \_ gegevens/WD: Personal \_ Data/WD: contact \_ gegevens/WD: telefoon \_ gegevens \[ WD: Usage \_ Data/@wd:Public = ' 1 ' en teken reeks \( WD: gebruiks \_ gegevens/WD: type \_ Data/WD: type \_ verwijzing/WD: id \[ @wd:type = ' communicatie \_ gebruiks \_ type \_ -id ' \] \) = ' werk ' en teken reeks \( WD: \_ \_ type \_ referentie/WD: id \[ @wd:type = ' telefoon \_ apparaat \_ \_ -id ' \] \) = ' Mobiel '\]/@wd:Workday_Traditional_Formatted_Phone   |
 | 33 | Gemeenschap                          | Word: worker/WD: worker \_ Data/WD: dienstverband \_ gegevens/WD: worker- \_ taak \_ gegevens \[ @wd:Primary_Job = 1]/WD: Position \_ Data/WD: Business \_ site \_ Summary \_ Data/WD: address \_ Data/WD: gemeente/text\(\)                                                                                                                                                                                                  |
 | 34 | PositionID                            | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: worker \_ \_ -taak gegevens \[ @wd:Primary_Job = 1]/WD: Positioning \_ Data/WD: positie \_ -id/tekst\(\)                                                                                                                                                                                                                                                    |
 | 35 | PositionTitle                         | Word: worker/WD: worker data \_ /WD: dienstverband \_ gegevens/WD: worker \_ \_ -taak gegevens \[ @wd:Primary_Job = 1]/WD: Positioning \_ Data/WD: positie \_ titel/tekst\(\)                                                                                                                                                                                                                                                 |
@@ -226,7 +226,7 @@ Als u meer kenmerken aan de XPATH-tabel wilt toevoegen voor het voor deel van kl
 ## <a name="supported-xpath-functions"></a>Ondersteunde XPATH-functies
 Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Microsoft .net XPath-bibliotheek](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , die u kunt gebruiken tijdens het maken van de XPath API-expressie. 
 
-* name
+* naam
 * duren
 * position
 * tekenreeks
@@ -239,10 +239,10 @@ Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Micros
 * translate
 * normaliseren-ruimte
 * subtekenreeks-vóór
-* boolean
+* booleaans
 * true
 * not
-* false
+* onjuist
 * getal
 * maximum
 * eind

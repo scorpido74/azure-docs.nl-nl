@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
 ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653652"
 ---
 # <a name="m-series"></a>M-serie
 
 De M-serie biedt een hoog aantal vCPU (Maxi maal 128 Vcpu's) en een grote hoeveelheid geheugen (Maxi maal 3,8 TiB). Het is ook ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoog aantal vCPU en grote hoeveel heden geheugen. Groottes uit de M-serie worden ondersteund door zowel de Intel &reg; Xeon &reg; CPU E7-8890 v3 @ 2,50 GHz als op de Intel &reg; Xeon &reg; Platinum 8280M (Cascade Lake).
 
-De Intel &reg; Hyper-Threading-technologie van de M-serie onderdeel.
+Intel Hyper-Threading-technologie van de M-serie-VM &reg; .
 
 [ACU](acu.md): 160-180<br>
 [Premium Storage](premium-storage-performance.md): ondersteund<br>
@@ -54,7 +54,7 @@ De Intel &reg; Hyper-Threading-technologie van de M-serie onderdeel.
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen gebruik](sizes-general.md)
+- [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

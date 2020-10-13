@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266056"
 ---
 # <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
@@ -156,7 +156,7 @@ Als dit scenario in uw omgeving bestaat om oneindige lussen te voor komen, geeft
 
 | Kanaal voor Office-updates | DisableADALatopWAMOverride | DisableAADWAM |
 | --- | --- | --- |
-| Semi-Annual-kanaal voor ondernemingen | Als deze instelling is ingeschakeld of is ingesteld op 1, wordt CAE niet ondersteund. | Als deze instelling is ingeschakeld of is ingesteld op 1, wordt CAE niet ondersteund. |
+| Semi-Annual Enter prise-kanaal | Als deze instelling is ingeschakeld of is ingesteld op 1, wordt CAE niet ondersteund. | Als deze instelling is ingeschakeld of is ingesteld op 1, wordt CAE niet ondersteund. |
 | Huidig kanaal <br> of <br> Maandelijks bedrijfs kanaal | CAE wordt ondersteund ongeacht de instelling | CAE wordt ondersteund ongeacht de instelling |
 
 Zie [overzicht van update kanalen voor Microsoft 365-apps](https://docs.microsoft.com/deployoffice/overview-update-channels)voor een uitleg van de Office Update-kanalen. Het wordt aanbevolen dat organisaties web account manager (WAM) niet uitschakelen.

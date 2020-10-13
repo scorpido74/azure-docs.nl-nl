@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 93f5e4d659b94bd79345a5e687de14ab6a5e8ba6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267969"
 ---
 # <a name="create-a-media-services-account"></a>Een Media Services-account kunt maken
@@ -36,7 +36,7 @@ Als u wilt beginnen met het versleutelen, coderen, analyseren, beheren en stream
 
 ## <a name="portal"></a>[Portal](#tab/portal/)
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 <!-- Move this section. This section should be moved to conceptual.  It doesn't belong in task based -->
 De Azure Portal biedt een manier om snel een Azure Media Services-account te maken. U kunt uw account gebruiken voor toegang tot Media Services waarmee u media-inhoud in Azure kunt opslaan, versleutelen, coderen, beheren en streamen.

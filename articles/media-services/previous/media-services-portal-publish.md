@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1f9f1b51ce09577bf17fa4d92273348665987848
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266609"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Inhoud publiceren in de Azure Portal
@@ -73,7 +73,7 @@ Als u een verval datum van een Locator wilt bijwerken, kunt u gebruikmaken van e
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>De portal gebruiken om een asset te publiceren
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **instellingen**  >  **assets**. Selecteer de asset die u wilt publiceren.
+2. Selecteer **Instellingen** > **Assets**. Selecteer de asset die u wilt publiceren.
 3. Selecteer de knop **Publiceren**.
 4. Selecteer het type locator.
 5. Selecteer **Toevoegen**.

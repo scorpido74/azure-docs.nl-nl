@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88918788"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Intenties herkennen vanuit spraak met de Speech SDK voor C #
@@ -51,30 +51,30 @@ LUIS maakt gebruik van drie soorten sleutels:
 
 | Type sleutel  | Doel                                               |
 | --------- | ----------------------------------------------------- |
-| Ontwerpen | Hiermee kunt u LUIS-apps programmatisch maken en wijzigen |
+| Ontwerpen | Hiermee kunt u via programmacode LUIS-apps maken en wijzigen |
 | Starter   | Hiermee kunt u uw LUIS-toepassing testen met alleen tekst   |
-| Eindpunt  | Hiermee wordt toegang tot een bepaalde LUIS-app geautoriseerd            |
+| Eindpunt  | Hiermee kunt u toegang verlenen tot een bepaalde LUIS-app            |
 
-Voor deze hand leiding hebt u het sleutel type van het eind punt nodig. In deze hand leiding wordt gebruikgemaakt van de voor beeld-app Home Automation LUIS, die u kunt maken door de Snelstartgids voor het [gebruik van vooraf ontwikkelde Home Automation-apps](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) te volgen. Als u zelf een LUIS-app hebt gemaakt, kunt u deze gebruiken in plaats daarvan.
+Voor deze hand leiding hebt u het sleutel type van het eind punt nodig. In deze hand leiding wordt gebruikgemaakt van de voor beeld-app Home Automation LUIS, die u kunt maken door de Snelstartgids voor het [gebruik van vooraf ontwikkelde Home Automation-apps](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) te volgen. Als u de beschikking hebt over een eigen LUIS-app, kunt u die ook gebruiken.
 
-Wanneer u een LUIS-app maakt, wordt door LUIS automatisch een start sleutel gegenereerd zodat u de app kunt testen met behulp van tekst query's. Met deze sleutel wordt de integratie van de spraak service niet ingeschakeld en werkt deze niet met deze hand leiding. Maak een LUIS-resource in het Azure-dash board en wijs deze toe aan de LUIS-app. U kunt de gratis Subscription-laag voor deze hand leiding gebruiken.
+Wanneer u een LUIS-app maakt, wordt er automatisch een starter-sleutel gegenereerd, zodat u de app kunt testen met tekstquery's. Met deze sleutel wordt de integratie van de spraak service niet ingeschakeld en werkt deze niet met deze hand leiding. Maak een LUIS-resource in het Azure-dashboard en wijs deze toe aan de LUIS-app. U kunt de gratis Subscription-laag voor deze hand leiding gebruiken.
 
-Nadat u de LUIS-resource hebt gemaakt in het Azure-dash board, meldt u zich aan bij de [Luis-Portal](https://www.luis.ai/home), kiest u uw toepassing op de pagina **mijn apps** en gaat u naar de pagina **beheren** van de app. Ten slotte selecteert u de **toetsen en eind punten** in de zijbalk.
+Als u de LUIS-resource in het Azure-dashboard hebt gemaakt, meldt u zich aan bij de [LUIS-portal](https://www.luis.ai/home), kiest u uw toepassing op de pagina **My Apps** en gaat u naar de pagina **Manage** van de app. Ten slotte selecteert u **Keys and Endpoints** in de zijbalk.
 
 ![Instellingen voor sleutels en eindpunten in de LUIS-portal](media/sdk/luis-keys-endpoints-page.png)
 
-Op de pagina **sleutels en eindpunt instellingen** :
+Ga als volgt te werk op de pagina **Keys and Endpoints settings**:
 
-1. Schuif omlaag naar de sectie **resources en sleutels** en selecteer **resource toewijzen**.
-1. Breng in het dialoog venster **een sleutel toewijzen aan uw app** de volgende wijzigingen aan:
+1. Scrol omlaag naar het gedeelte **Resources and Keys** en selecteer **Assign resource**.
+1. In het dialoogvenster **Assign a key to your app** brengt u de volgende wijzigingen aan:
 
-   - Onder **Tenant**kiest u **micro soft**.
-   - Kies onder **abonnements naam**het Azure-abonnement met de Luis-resource die u wilt gebruiken.
-   - Kies onder **sleutel**de Luis-resource die u wilt gebruiken met de app.
+   - Onder **Tenant** kiest u **Microsoft**.
+   - Onder **Subscription Name** kiest u het Azure-abonnement met de LUIS-resource die u wilt gebruiken.
+   - Kies onder **Key** de LUIS-resource die u voor de app wilt gebruiken.
 
    Na korte tijd wordt het nieuwe abonnement weergegeven in de tabel onderaan de pagina.
 
-1. Selecteer het pictogram naast een sleutel om het naar het klem bord te kopiëren. (U kunt beide sleutels gebruiken.)
+1. Selecteer het pictogram naast een sleutel om deze naar het klembord te kopiëren. (U kunt beide sleutels gebruiken.)
 
 ![Abonnementssleutels voor LUIS-app](media/sdk/luis-keys-assigned.png)
 

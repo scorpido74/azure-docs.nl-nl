@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049414"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Inzichten en rapportage voor voorwaardelijke toegang
@@ -46,7 +46,7 @@ Als u geen Azure AD-Logboeken hebt geïntegreerd met Azure Monitor-logboeken, mo
 1. [Een log Analytics-werk ruimte maken in azure monitor](../../azure-monitor/learn/quick-create-workspace.md).
 1. [Integreer Azure AD-logboeken met Azure monitor-logboeken](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
-## <a name="how-it-works"></a>Hoe het werkt 
+## <a name="how-it-works"></a>Uitleg 
 
 Voor toegang tot de werkmap inzichten en rapportage:  
 
@@ -108,7 +108,7 @@ Een beleid voor voorwaardelijke toegang configureren in de modus alleen rapport:
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer een bestaand beleid of maak een nieuw beleid.
 1. Stel onder **beleid inschakelen** de modus voor **alleen rapport** in.
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan**
 
 > [!TIP]
 > Als u de **beleids status inschakelen** van een bestaand beleid **van aan aan** **rapporteert,** wordt bestaande beleids afdwinging uitgeschakeld. 

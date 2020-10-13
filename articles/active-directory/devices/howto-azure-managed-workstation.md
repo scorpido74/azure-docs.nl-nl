@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269553"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Een beveiligd, door Azure beheerd werk station implementeren
@@ -29,20 +29,20 @@ Selecteer een profiel voordat u de oplossing implementeert. U kunt meerdere prof
 > [!NOTE]
 > Pas een van de profielen toe die nodig zijn voor uw vereisten. U kunt overstappen op een ander profiel door het toe te wijzen in Microsoft Intune.
 
-| Profiel | Laag | Verbeterd | Hoog | Gespecialiseerd | Beveiligd | Geïsoleerd |
+| Profiel | Beperkt | Verbeterd | Hoog | Gespecialiseerd | Beveiligd | Geïsoleerd |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Gebruiker in azure AD | Ja | Ja | Ja | Ja | Ja | Ja |
 | Door intune beheerde | Ja | Ja | Ja | Ja | Ja | Ja |
-| Apparaat-Azure AD geregistreerd | Yes |  |  |  |  | |   |
+| Apparaat-Azure AD geregistreerd | Ja |  |  |  |  | |   |
 | Apparaat-Azure AD toegevoegd |   | Ja | Ja | Ja | Ja | Ja |
-| Basis lijn voor beveiliging van intune toegepast |   | Yes <br> Intensievere | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Gesteld | NA |
+| Basis lijn voor beveiliging van intune toegepast |   | Ja <br> Intensievere | Ja <br> (HighSecurity) | Ja <br> (NCSC) | Ja <br> Gesteld | NA |
 | Hardware voldoet aan de veilige Windows 10-standaarden |   | Ja | Ja | Ja | Ja | Ja |
 | Micro soft Defender ATP is ingeschakeld |   | Ja  | Ja | Ja | Ja | Ja |
 | Beheer rechten verwijderen |   |   | Ja  | Ja | Ja | Ja |
 | Implementatie met micro soft auto pilot |   |   | Ja  | Ja | Ja | Ja |
 | Apps die alleen door intune zijn geïnstalleerd |   |   |   | Ja | Ja |Ja |
 | Url's die zijn beperkt tot goedgekeurde lijst |   |   |   | Ja | Ja |Ja |
-| Internet geblokkeerd (inkomend/uitgaand) |   |   |   |  |  |Yes |
+| Internet geblokkeerd (inkomend/uitgaand) |   |   |   |  |  |Ja |
 
 > [!NOTE]
 > Op de **apparaten** voor beveiligde werk stations worden toegewezen aan profielen en beleid. Gebruikers worden niet rechtstreeks op deze beleids regels toegepast, waardoor het delen van apparaten (gedeelde apparaten) van kracht wordt. Als een beveiligd werk station niet wordt gedeeld in uw implementatie, of als het individuele gebruikers beleid nodig is, kan de toewijzing van de gebruikers beleids profielen worden toegewezen aan de gebruiker en het apparaat. 
@@ -129,7 +129,7 @@ Van de Azure Portal:
 
 Met deze stappen kunt u apparaten beheren met intune. Zie voor meer informatie de [Snelstartgids voor intune: automatische inschrijving instellen voor Windows 10-apparaten](/Intune/quickstart-setup-auto-enrollment). In een toekomstige stap maakt u een intune-configuratie en nalevings beleid.
 
-#### <a name="azure-ad-conditional-access"></a>Voorwaardelijke toegang voor Azure AD
+#### <a name="azure-ad-conditional-access"></a>Voorwaardelijke toegang van Azure AD
 
 Voorwaardelijke toegang van Azure AD kan helpen om geprivilegieerde beheer taken te beperken tot compatibele apparaten. Vooraf gedefinieerde leden van de groep **beveiligde werk Station-gebruikers** zijn vereist om multi-factor Authentication uit te voeren wanneer ze zich aanmelden bij Cloud toepassingen. Een best practice is het uitsluiten van toegangs accounts voor nood gevallen van het beleid. Zie [accounts voor nood toegang beheren in azure AD](../users-groups-roles/directory-emergency-access.md)voor meer informatie.
 
@@ -166,13 +166,13 @@ In intune in de Azure Portal:
    * In het vak **toevoegen aan Azure AD** moet het **lid van Azure AD zijn opgenomen** en grijs worden weer gegeven.
    * Selecteer uw taal (regio), type **standaard**gebruikers account. 
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 
    * Selecteer een scope-tag als u deze vooraf hebt geconfigureerd.
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Kies **toewijzingen**  >  **toewijzen aan**  >  **geselecteerde groepen**. Kies **werk stations beveiligen**in **groepen selecteren die u wilt toevoegen**.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Selecteer **Maken** om het profiel te maken. Het Autopilot-implementatieprofiel is nu klaar om te worden toegewezen aan apparaten.
 
 Registratie van apparaten in auto pilot biedt een andere gebruikers ervaring op basis van apparaattype en rol. In het voor beeld van de implementatie illustreren we een model waarin de beveiligde apparaten bulksgewijs worden geïmplementeerd en kunnen worden gedeeld, maar wanneer het apparaat voor de eerste keer wordt gebruikt, wordt het aan een gebruiker toegewezen. Zie [intune auto pilot Device Enrollment](/intune/device-enrollment)(Engelstalig) voor meer informatie.
@@ -443,7 +443,7 @@ Vervolgens moet u Log Analytics instellen om de nieuwe logboeken te ontvangen
    * ' Micro soft-Windows-AppLocker/MSI en script ' **> selectie** opheffen
    * ' Micro soft-Windows-AppLocker/verpakte app-implementatie ' > **selectie** opheffen
    * ' Micro soft-Windows-AppLocker/verpakte app-Execution ' > **selectie** opheffen
-1. Selecteer **Opslaan**.
+1. Selecteer **Opslaan**
 
 Toepassings Logboeken is beschikbaar in uw geselecteerde Log Analytics-werk ruimte.
 
