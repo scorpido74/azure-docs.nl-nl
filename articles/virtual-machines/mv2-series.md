@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4de2ec68d3cd10dfc4e95c6c2232837a7fca626
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653550"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975753"
 ---
 # <a name="mv2-series"></a>Mv2-serie
 
@@ -35,7 +35,7 @@ Mv2-serie VM-functie Intel® Hyper-Threading technologie
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 | 32000 |
 
-<sup>1</sup> virtuele machines uit de Mv2-serie zijn alleen van de tweede generatie en ondersteunen een subset van met generatie 2 ondersteunde installatie kopieën. Zie hieronder voor de volledige lijst met ondersteunde installatie kopieën voor Mv2-Series. Als u Linux gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de tweede generatie op Azure](./linux/generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. Als u Windows gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de 2e generatie op Azure](./windows/generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. 
+<sup>1</sup> virtuele machines uit de Mv2-serie zijn alleen van de tweede generatie en ondersteunen een subset van met generatie 2 ondersteunde installatie kopieën. Zie hieronder voor de volledige lijst met ondersteunde installatie kopieën voor Mv2-Series. Als u Linux gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de tweede generatie op Azure](./generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. Als u Windows gebruikt, raadpleegt u [ondersteuning voor virtuele machines van de 2e generatie op Azure](./generation-2.md) voor instructies over het zoeken en selecteren van een installatie kopie. 
 
 - Windows Server 2019 of hoger
 - SUSE Linux Enterprise Server 12 SP4 en hoger of SUSE Linux Enterprise Server 15 SP1 en hoger

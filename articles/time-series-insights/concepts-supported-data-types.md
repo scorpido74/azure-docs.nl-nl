@@ -10,10 +10,10 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: 11199e5a283459d7d97f649322f9d41fc7b3e11d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650791"
 ---
 # <a name="supported-data-types"></a>Ondersteunde gegevenstypen
@@ -26,7 +26,7 @@ De volgende tabel bevat de gegevens typen die worden ondersteund door Azure Time
 | **datum/tijd** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. Datetime-eigenschappen worden altijd opgeslagen in UTC-indeling. Tijd zone-offsets worden toegepast en vervolgens wordt de waarde opgeslagen in UTC. Zie [deze](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) sectie voor meer informatie over de omgeving tijds tempel eigenschap en datum/tijd verschuivingen | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Als ' eventProcessedLocalTime ' de tijds tempel van de gebeurtenis bron is: `$event.$ts` . Als het een andere JSON-eigenschap is: `$event.eventProcessedLocalTime.DateTime` of `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | Een 64-bits getal met dubbele precisie  | `"value": 31.0482941` | `$event.value.Double` of `$event['value'].Double` |  `value_double`
 | **long** | Een ondertekend 64-bits geheel getal  | `"value" : 31` | `$event.value.Long` of `$event['value'].Long` |  `value_long`
-| **tekenreeks** | Tekst waarden moeten bestaan uit geldige UTF-8. Null en lege teken reeksen worden op dezelfde manier behandeld. |  `"site": "DIM_MLGGG"`| `$event.site.String` of `$event['site'].String`| `site_string`
+| **tekenreeksexpressie** | Tekst waarden moeten bestaan uit geldige UTF-8. Null en lege teken reeksen worden op dezelfde manier behandeld. |  `"site": "DIM_MLGGG"`| `$event.site.String` of `$event['site'].String`| `site_string`
 | **dynamisch** | Een complex (niet-primitieve) type dat bestaat uit een matrix of eigenschappen verzameling (Dictionary). Momenteel worden alleen stringified JSON-matrices van primitieven of matrices met objecten die de TS-ID of tijds tempel eigenschap (s) bevatten, opgeslagen als dynamisch. Lees dit [artikel](./concepts-json-flattening-escaping-rules.md) voor meer informatie over hoe objecten worden afgevlakt en matrices kunnen niet worden gerollt. Payload-eigenschappen die zijn opgeslagen als dit type zijn alleen toegankelijk door te selecteren `Explore Events` in de time series Insights Explorer om onbewerkte gebeurtenissen weer te geven of via de [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)   query-API voor het parseren van de client. |  `"values": "[197, 194, 189, 188]"` | Het verwijzen naar dynamische typen in een time series-expressie wordt nog niet ondersteund | `values_dynamic`
 
 > [!NOTE]

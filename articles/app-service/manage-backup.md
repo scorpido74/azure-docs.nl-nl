@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
 ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827457"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
@@ -66,7 +66,7 @@ De volgende database oplossingen worden ondersteund met de back-upfunctie:
 
 2. Selecteer op de pagina **back-up** de optie **back-up is niet geconfigureerd. Klik hier om een back-up voor uw app te configureren**.
 
-    ![Klik op configureren](./media/manage-backup/configure-start.png)
+    ![Klik op Configureren](./media/manage-backup/configure-start.png)
 
 3. Klik op de pagina **back-upconfiguratie** op **opslag is niet geconfigureerd** voor het configureren van een opslag account.
 
