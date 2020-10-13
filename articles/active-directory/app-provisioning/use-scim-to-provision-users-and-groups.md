@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd534443c56612d0c0d67c228cba154fb1db18c3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266646"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967049"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -747,7 +747,7 @@ Minimale staaf voor TLS 1,2-coderings suites:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-bereiken
-De Azure AD-inrichtings service werkt momenteel met de IP-bereiken voor AzureActiveDirectory zoals [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)wordt vermeld. U kunt de IP-bereiken onder het label AzureActiveDirectory toevoegen om verkeer van de Azure AD-inrichtings service toe te staan in uw toepassing. 
+De Azure AD-inrichtings service werkt momenteel met de IP-bereiken voor AzureActiveDirectory zoals [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)wordt vermeld. U kunt de IP-bereiken onder het label AzureActiveDirectory toevoegen om verkeer van de Azure AD-inrichtings service toe te staan in uw toepassing. Houd er rekening mee dat u de lijst met IP-adres bereik zorgvuldig moet controleren op berekende adressen. Een adres zoals ' 40.126.25.32 ' kan worden weer gegeven in de lijst met IP-bereiken als ' 40.126.0.0/18 '. U kunt de lijst met IP-adres bereik ook programmatisch ophalen met behulp van de volgende [API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list).
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Stap 3: een SCIM-eind punt bouwen
 

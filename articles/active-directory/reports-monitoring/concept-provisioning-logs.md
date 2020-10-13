@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812553"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
@@ -61,7 +61,7 @@ De inrichtings logboeken bieden antwoorden op de volgende vragen:
 
 U kunt toegang krijgen tot de inrichtings logboeken door **inrichtings logboeken** te selecteren in de sectie **bewaking** van de Blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Het kan Maxi maal twee uur duren voordat bepaalde inrichtings records worden weer gegeven in de portal.
 
-![Inrichtingslogboeken](./media/concept-provisioning-logs/access-provisioning-logs.png "Inrichtingslogboeken")
+![Inrichtings logboeken](./media/concept-provisioning-logs/access-provisioning-logs.png "Inrichtingslogboeken")
 
 
 Een inrichtings logboek heeft een standaard lijst weergave waarin het volgende wordt weer gegeven:
@@ -86,7 +86,7 @@ Hiermee kunt u extra velden weergeven of velden verwijderen die al worden weerge
 
 Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
-![Gedetailleerde informatie](./media/concept-provisioning-logs/steps.png "Filteren")
+![Gedetailleerde informatie](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ## <a name="filter-provisioning-activities"></a>Inrichtings activiteiten filteren
@@ -100,7 +100,7 @@ In de standaard weergave kunt u de volgende filters selecteren:
 - Bewerking
 
 
-![Filters toevoegen](./media/concept-provisioning-logs/default-filter.png "Filteren")
+![Filters toevoegen](./media/concept-provisioning-logs/default-filter.png "Filter")
 
 Met het **identiteits** filter kunt u de naam of de identiteit opgeven die u bevalt. Deze identiteit kan een gebruiker, een groep, een rol of een ander object zijn. U kunt zoeken op de naam of ID van het object. De ID is afhankelijk van het scenario. Wanneer u bijvoorbeeld een object inricht vanuit Azure AD naar Sales Force, is de bron-ID de object-ID van de gebruiker in azure AD terwijl de TargetID de ID van de gebruiker in Sales Force is. Bij het inrichten van workday naar Active Directory, is de bron-ID de werk nemer-ID van de werkdag. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de identiteits kolom. Er wordt altijd één ID weer. 
 
@@ -119,7 +119,7 @@ Wanneer u een aangepast tijds bestek selecteert, kunt u een begin-en eind datum 
 
 Met het **status** filter kunt u het volgende selecteren:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 - Overgeslagen
@@ -132,7 +132,7 @@ Met het **actie** filter kunt u het volgende filteren:
 - Bijwerken
 - Verwijderen
 - Uitschakelen
-- Overige
+- Anders
 
 Daarnaast kunt u aan de filters van de standaard weergave ook de volgende filters instellen:
 
@@ -191,7 +191,7 @@ Het tabblad **stappen** bevat een overzicht van de stappen voor het inrichten va
 
 
 
-![Scherm afbeelding toont het tabblad stappen, waarin de inrichtings stappen worden weer gegeven.](./media/concept-provisioning-logs/steps.png "Filteren")
+![Scherm afbeelding toont het tabblad stappen, waarin de inrichtings stappen worden weer gegeven.](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Problemen oplossen en aanbevelingen

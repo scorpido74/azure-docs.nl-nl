@@ -1,5 +1,5 @@
 ---
-title: Een Synapse SQL-pool maken en query uitvoeren (Azure-portal)
+title: 'Quickstart: Een Synapse SQL-pool maken en query uitvoeren (Azure-portal)'
 description: Een Synapse SQL-pool maken en query uitvoeren met behulp van de Azure-portal
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 878b272e2a1a0e1d5a00a9c2028a6803b6d95383
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459382"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91568962"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Quickstart: Een Synapse SQL-pool maken en query uitvoeren met behulp van de Azure-portal
 
@@ -78,7 +78,7 @@ Volg de stappen om een SQL-pool te maken die de voorbeelddatabase **AdventureWor
 
 7. Selecteer **Meldingen** op de werkbalk om het implementatieproces te bewaken.
 
-   ![melding](./media/create-data-warehouse-portal/notification.png)
+   ![Schermopname van Meldingen met De implementatie wordt uitgevoerd.](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 

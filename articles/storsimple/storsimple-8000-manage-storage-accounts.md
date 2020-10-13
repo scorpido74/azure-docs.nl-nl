@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515033"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978710"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van uw referenties voor het opslag account
 
@@ -33,7 +33,7 @@ In de **configuratie** sectie van de Blade StorSimple Apparaatbeheer service wor
 
 In deze zelf studie wordt uitgelegd hoe u referenties voor het opslag account kunt toevoegen, bewerken of verwijderen, of hoe u de beveiligings sleutels voor een opslag account kunt draaien.
 
- ![Lijst met opslagaccountreferenties](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![Lijst met referenties voor het opslag account 1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 Opslag accounts bevatten de referenties die het StorSimple-apparaat gebruikt voor toegang tot uw opslag account met uw Cloud serviceprovider. Voor Microsoft Azure opslag accounts zijn dit referenties zoals de account naam en de primaire toegangs sleutel. 
 
@@ -102,7 +102,7 @@ U kunt een opslag account bewerken dat wordt gebruikt door een volume container.
 
 1. Ga naar uw StorSimple-apparaatbeheerservice. Klik in de sectie **Configuratie** op **Opslagaccountreferenties**.
 
-    ![Opslagaccountreferenties](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![Referenties voor het opslag account 2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. Selecteer op de Blade referenties voor het **opslag account** in de lijst met referenties voor het opslag account de optie die u wilt bewerken. 
 
@@ -159,11 +159,11 @@ Als u de StorSimple-Apparaatbeheer service van de wijziging wilt inlichten, moet
 
 3. Klik op **... Meer** en selecteer vervolgens **synchronisatie toegangs sleutel om te roteren**.   
 
-    ![sleutels synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![sleutels synchroniseren 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. In de StorSimple-Apparaatbeheer service moet u de sleutel bijwerken die eerder in de Microsoft Azure Storage-service is gewijzigd. Als de primaire toegangs sleutel is gewijzigd (opnieuw gegenereerd), selecteert u **primaire** sleutel. Selecteer **secundaire** sleutel als de secundaire sleutel is gewijzigd. Klik op **synchronisatie sleutel**.
       
-      ![sleutels synchroniseren](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![sleutels synchroniseren 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 U wordt gewaarschuwd nadat de sleutel is gesynchroniseerd.
 

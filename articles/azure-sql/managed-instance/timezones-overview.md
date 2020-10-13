@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617912"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978353"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Tijd zones in Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ Het gebruik van dezelfde tijd zone in een primair en secundair exemplaar in een 
 
 ## <a name="limitations"></a>Beperkingen
 
-- De tijd zone van het bestaande beheerde exemplaar kan niet worden gewijzigd.
+- De tijd zone van het bestaande beheerde exemplaar kan niet worden gewijzigd. Als tijdelijke oplossing maakt u een nieuw beheerd exemplaar met de juiste tijd zone en voert u vervolgens hand matig een back-up-en herstel bewerking uit. u kunt ook het beste een [herstel punt voor meerdere exemplaren](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database)uitvoeren.
 - Externe processen die vanuit de SQL Server Agent taken worden gestart, hebben geen tijd zone van het exemplaar.
 
 ## <a name="list-of-supported-time-zones"></a>Lijst met ondersteunde tijd zones

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72c574779d63a3629ea3c99529686b7d3247fe25
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961061"
+ms.locfileid: "91931203"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>Ontwikkel voor Azure NetApp Files met REST API met behulp van Power shell
 
@@ -34,9 +34,9 @@ De REST API-specificatie voor Azure NetApp Files wordt gepubliceerd via [github]
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Toegang tot de Azure NetApp Files REST API  
 
-1. [Installeer de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u dit nog niet hebt gedaan.
+1. [Installeer de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) als u dit nog niet hebt gedaan.
 2. Een service-principal maken in uw Azure Active Directory (Azure AD):
-   1. Controleer of u [voldoende machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)hebt.
+   1. Controleer of u [voldoende machtigingen](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)hebt.
 
    2. Voer de volgende opdracht in Azure CLI in:  
 
@@ -437,4 +437,4 @@ In deze sectie worden voorbeeld scripts voor Power shell weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zie de naslag informatie voor Azure NetApp Files REST API](https://docs.microsoft.com/rest/api/netapp/)
+[Zie de naslag informatie voor Azure NetApp Files REST API](/rest/api/netapp/)

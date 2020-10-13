@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949028"
+ms.locfileid: "91929639"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Voer een upgrade uit naar de nieuwste REST API in azure Cognitive Search
 
@@ -40,13 +40,19 @@ Als een van deze situaties op u van toepassing is, moet u de code mogelijk dieno
 
 ## <a name="upgrade-to-2020-06-30"></a>Voer een upgrade uit naar 2020-06-30
 
-Versie 2020-06-30 is de nieuwe, algemeen beschik bare versie van de REST API. Er zijn geen wijzigingen, maar er zijn enkele gedrags verschillen. 
+Versie 2020-06-30 is de nieuwe, algemeen beschik bare versie van de REST API. Er zijn één belang rijke wijziging en verschillende gedrags verschillen. 
 
 Functies zijn nu algemeen beschikbaar in deze API-versie:
 
 * [Kennis archief](knowledge-store-concept-intro.md), permanente opslag van verrijkte inhoud die is gemaakt via vaardig heden, gemaakt voor downstream-analyse en verwerking via andere toepassingen. Met deze mogelijkheid kan een door de Indexeer functie opgestuurde AI-verrijkings pijplijn een kennis archief vullen naast een zoek index. Als u de preview-versie van deze functie hebt gebruikt, is deze gelijk aan de algemeen beschik bare versie. De enige vereiste code wijziging is het wijzigen van de API-versie.
 
-De volgende gedrags wijzigingen zijn van toepassing:
+### <a name="breaking-change"></a>Laatste wijziging
+
+Bestaande code die wordt geschreven ten opzichte van eerdere API-versies, verbreekt op API-Version = 2020-06-30 en hoger als code de volgende functionaliteit bevat:
+
+* Wille keurige EDM. datum-en letterlijke waarden (een datum die bestaat uit jaar-maand-dag, zoals `2020-12-12` ) in filter expressies moeten de notatie EDM. date time offset hebben: `2020-12-12T00:00:00Z` . Deze wijziging is nood zakelijk om onjuiste of onverwachte query resultaten te verwerken vanwege verschillen in de tijd zone.
+
+### <a name="behavior-changes"></a>Gedrags wijzigingen
 
 * [BM25-classificatie algoritme](index-ranking-similarity.md) vervangt het vorige classificatie algoritme met nieuwere technologie. Nieuwe services gebruiken dit algoritme automatisch. Voor bestaande services moet u para meters instellen voor het gebruik van het nieuwe algoritme.
 

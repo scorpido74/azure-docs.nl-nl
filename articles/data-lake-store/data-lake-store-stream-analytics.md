@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576214"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Gegevens streamen van Azure Storage Blob naar Azure Data Lake Storage Gen1 met behulp van Azure Stream Analytics
@@ -58,7 +58,7 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
    * Selecteer **Tab**voor **scheidings teken**.
    * Voor **code ring**selecteert u **UTF-8**.
 
-     Klik op **Create**. De Portal voegt nu de invoer toe en test de verbinding.
+     Klik op **Maken**. De Portal voegt nu de invoer toe en test de verbinding.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Een Data Lake Storage Gen1 uitvoer voor de taak maken
@@ -86,7 +86,7 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
    * Selecteer **Tab**voor **scheidings teken**.
    * Voor **code ring**selecteert u **UTF-8**.
     
-     Klik op **Create**. De Portal voegt nu de uitvoer toe en test de verbinding.
+     Klik op **Maken**. De Portal voegt nu de uitvoer toe en test de verbinding.
     
 ## <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
 

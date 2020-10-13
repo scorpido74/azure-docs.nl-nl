@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3e3dce20f447b47ad78deea617b513c50f552733
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 24229c331d0c7c4b2327e8e609e9d75b6654868f
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893625"
+ms.locfileid: "91931973"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
@@ -47,14 +47,14 @@ WHERE ...
 
 ### <a name="count-items"></a>Items tellen
 
-U kunt het aantal apparaatdubbels in een resultatenset tellen met behulp van de- `Select COUNT` component:
+U kunt het aantal items in een resultatenset tellen met behulp van de- `Select COUNT` component:
 
 ```sql
 SELECT COUNT() 
 FROM DIGITALTWINS
 ``` 
 
-Voeg een- `WHERE` component toe om het aantal apparaatdubbels te tellen dat aan een bepaald criterium voldoet. Hier volgen enkele voor beelden van tellingen met een toegepast filter op basis van het type dubbele model (Zie voor meer informatie over deze syntaxis [*query per model*](#query-by-model) ):
+Voeg een- `WHERE` component toe om het aantal items te tellen dat aan een bepaald criterium voldoet. Hier volgen enkele voor beelden van tellingen met een toegepast filter op basis van het type dubbele model (Zie voor meer informatie over deze syntaxis [*query per model*](#query-by-model) ):
 
 ```sql
 SELECT COUNT() 
@@ -68,7 +68,7 @@ WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
 U kunt ook `COUNT` samen met de- `JOIN` component gebruiken. Hier volgt een query waarmee alle gloei lampen in de lichte deel Vensters van de kamers 1 en 2 worden geteld:
 
 ```sql
-SELECT COUNT(LightBulb)  
+SELECT COUNT()  
 FROM DIGITALTWINS Room  
 JOIN LightPanel RELATED Room.contains  
 JOIN LightBulb RELATED LightPanel.contains  

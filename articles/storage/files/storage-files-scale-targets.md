@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d04fff069e7cd7d766125bc7364cf4648911ad
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496176"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948344"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Schaalbaarheids- en prestatiedoelen in Azure Files
 
@@ -87,10 +87,17 @@ Om u te helpen bij het plannen van uw implementatie voor elk van de fasen, zijn 
 | Aantal objecten | 25.000.000-objecten |
 | Grootte van gegevensset| ~ 4,7 TiB |
 | Gemiddelde bestands grootte | ~ 200 KiB (grootste bestand: 100 GiB) |
+| Initiële inventarisatie van wijzigingen in de Cloud | 7 objecten per seconde  |
 | Upload doorvoer | 20 objecten per seconde per synchronisatie groep |
-| Door Voer van naam ruimte downloaden * | 400 objecten per seconde |
+| Door Voer van naam ruimte downloaden | 400 objecten per seconde |
 
-* Wanneer een nieuw server eindpunt wordt gemaakt, wordt de bestands inhoud niet gedownload door de Azure File Sync-agent. Eerst wordt de volledige naam ruimte gesynchroniseerd en vervolgens wordt de achtergrond terugroepen geactiveerd om de bestanden te downloaden, in hun geheel of, als Cloud lagen zijn ingeschakeld, naar het beleid voor Cloud lagen dat is ingesteld op het server eindpunt.
+### <a name="initial-one-time-provisioning"></a>Eerste eenmalige inrichting
+
+**Initiële inventarisatie van de Cloud wijziging**: wanneer er een nieuwe synchronisatie groep wordt gemaakt, is de eerste stap in de inventarisatie voor het wijzigen van de Cloud. In dit proces worden alle items in de Azure-bestands share geïnventariseerd. Tijdens dit proces zijn er geen synchronisatie-activiteiten, dat wil zeggen dat er geen items worden gedownload van het Cloud-eind punt naar het server eindpunt en dat er geen items worden geüpload van het server eindpunt naar het eind punt in de Cloud. De synchronisatie activiteit wordt hervat zodra de oorspronkelijke inventarisatie van wijzigingen in de Cloud is voltooid.
+De snelheid van prestaties is 7 objecten per seconde. Klanten kunnen een schatting maken van de tijd die nodig is om de initiële inventarisatie van de Cloud wijziging te volt ooien door het aantal items in de Cloud share te bepalen en de volgende formule te gebruiken om de tijd in dagen te berekenen. Tijd (in dagen) voor de initiële Cloud inventarisatie = (aantal objecten in het Cloud eindpunt)/(7*60*60 * 24)
+
+**Door Voer van naam ruimte downloaden** Wanneer een nieuw server eindpunt wordt toegevoegd aan een bestaande synchronisatie groep, downloadt de Azure File Sync-agent geen bestands inhoud van het eind punt in de Cloud. Eerst wordt de volledige naam ruimte gesynchroniseerd en vervolgens wordt de achtergrond terugroepen geactiveerd om de bestanden te downloaden, in hun geheel of, als Cloud lagen zijn ingeschakeld, naar het beleid voor Cloud lagen dat is ingesteld op het server eindpunt.
+
 
 | Voortdurende synchronisatie  | Details  |
 |-|--|

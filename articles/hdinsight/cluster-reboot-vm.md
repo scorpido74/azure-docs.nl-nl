@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 149a82526263f5e372db81b5a92a9ee90a2c76f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089969"
+ms.locfileid: "91928976"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Vm's voor HDInsight-clusters opnieuw opstarten
 
@@ -31,8 +31,8 @@ Wanneer een knoop punt opnieuw wordt opgestart, wordt het cluster mogelijk besch
 - De tijdelijke schijf is vol op het knoop punt.
 - De proces tabel op de VM bevat veel vermeldingen waar het proces is voltooid, maar het wordt weer gegeven met de status afgesloten.
 
-> [!WARNING]
-> Wees voorzichtig bij het opnieuw opstarten van Vm's voor **HBase** -en **Kafka** -clusters, omdat het opnieuw opstarten mogelijk dat er gegevens verloren gaan.
+> [!NOTE]
+> Het opnieuw opstarten van virtuele machines wordt niet ondersteund voor **HBase** -en **Kafka** -clusters, omdat het opnieuw opstarten mogelijk dat er gegevens verloren gaan.
 
 ## <a name="use-powershell-to-reboot-vms"></a>Power shell gebruiken voor het opnieuw opstarten van Vm's
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649683"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978778"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
 Dit document bevat richt lijnen voor het configureren van Azure-infra structuur en-besturings SAP HANA systemen die zijn geïmplementeerd op Azure native virtual machines (Vm's). Het document bevat ook configuratie-informatie voor SAP HANA scale-out voor de M128s VM-SKU. Dit document is niet bedoeld als vervanging van de Standard SAP-documentatie, die de volgende inhoud bevat:
@@ -79,7 +79,7 @@ Lees het document [SAP Hana Azure virtual machine-opslag configuraties](./hana-v
 Wanneer u een site-naar-site-verbinding hebt met Azure via VPN of ExpressRoute, moet u ten minste één virtueel Azure-netwerk hebben dat is verbonden via een virtuele gateway naar het VPN-of ExpressRoute-circuit. In eenvoudige implementaties kan de virtuele gateway worden geïmplementeerd in een subnet van het virtuele Azure-netwerk (VNet) dat als host fungeert voor de SAP HANA exemplaren. Als u SAP HANA wilt installeren, maakt u twee extra subnetten in het virtuele Azure-netwerk. Eén subnet fungeert als host voor de virtuele machines om de SAP HANA-exemplaren uit te voeren. Het andere subnet voert JumpBox of Management-Vm's uit voor het hosten van SAP HANA Studio, andere beheer software of uw toepassings software.
 
 > [!IMPORTANT]
-> Buiten de functionaliteit, maar belang rijker vanwege de prestaties wordt niet ondersteund voor het configureren van [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver, hybris of S/4HANA SAP-systeem. De communicatie tussen de SAP-toepassingslaag en de DBMS-laag moet direct een van beide zijn. De beperking omvat geen [Azure ASG-en NSG-regels](../../../virtual-network/security-overview.md) zolang deze ASG-en NSG-regels directe communicatie toestaan. Andere scenario's waarbij Nva's niet worden ondersteund, zijn in communicatie paden tussen Azure-Vm's die Linux pacemaker-cluster knooppunten en SBD-apparaten vertegenwoordigen, zoals wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md). Of in communicatie paden tussen virtuele machines van Azure en Windows Server SOFS, zoals beschreven in een [SAP ASCS/SCS-exemplaar op een Windows-failovercluster in een cluster met behulp van een bestands share in azure](./sap-high-availability-guide-wsfc-file-share.md). Nva's in communicatie paden kunnen eenvoudig de netwerk latentie tussen twee communicatie partners verdubbelen, kan de door Voer beperken tot kritieke paden tussen de SAP-toepassingslaag en de DBMS-laag. In sommige scenario's met klanten kan Nva's ertoe leiden dat pacemaker Linux-clusters mislukken wanneer de communicatie tussen de Linux pacemaker-cluster knooppunten via een NVA moet communiceren met hun SBD-apparaat.  
+> Buiten de functionaliteit, maar belang rijker vanwege de prestaties wordt niet ondersteund voor het configureren van [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver, hybris of S/4HANA SAP-systeem. De communicatie tussen de SAP-toepassingslaag en de DBMS-laag moet direct een van beide zijn. De beperking omvat geen [Azure ASG-en NSG-regels](../../../virtual-network/network-security-groups-overview.md) zolang deze ASG-en NSG-regels directe communicatie toestaan. Andere scenario's waarbij Nva's niet worden ondersteund, zijn in communicatie paden tussen Azure-Vm's die Linux pacemaker-cluster knooppunten en SBD-apparaten vertegenwoordigen, zoals wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md). Of in communicatie paden tussen virtuele machines van Azure en Windows Server SOFS, zoals beschreven in een [SAP ASCS/SCS-exemplaar op een Windows-failovercluster in een cluster met behulp van een bestands share in azure](./sap-high-availability-guide-wsfc-file-share.md). Nva's in communicatie paden kunnen eenvoudig de netwerk latentie tussen twee communicatie partners verdubbelen, kan de door Voer beperken tot kritieke paden tussen de SAP-toepassingslaag en de DBMS-laag. In sommige scenario's met klanten kan Nva's ertoe leiden dat pacemaker Linux-clusters mislukken wanneer de communicatie tussen de Linux pacemaker-cluster knooppunten via een NVA moet communiceren met hun SBD-apparaat.  
 > 
 
 > [!IMPORTANT]
@@ -108,7 +108,7 @@ Zie [IP-adres typen en toewijzings methoden in azure](../../../virtual-network/p
 
 Voor Vm's met SAP HANA moet u werken met vaste IP-adressen die zijn toegewezen. Reden is dat sommige configuratie kenmerken voor HANA-referentie-IP-adressen.
 
-[Azure-netwerk beveiligings groepen (nsg's)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) worden gebruikt voor het omleiden van verkeer dat wordt doorgestuurd naar het SAP Hana-exemplaar of de JumpBox. De Nsg's en uiteindelijk [toepassings beveiligings groepen](../../../virtual-network/security-overview.md#application-security-groups) zijn gekoppeld aan de SAP Hana subnet en het beheer subnet.
+[Azure-netwerk beveiligings groepen (nsg's)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) worden gebruikt voor het omleiden van verkeer dat wordt doorgestuurd naar het SAP Hana-exemplaar of de JumpBox. De Nsg's en uiteindelijk [toepassings beveiligings groepen](../../../virtual-network/network-security-groups-overview.md#application-security-groups) zijn gekoppeld aan de SAP Hana subnet en het beheer subnet.
 
 De volgende afbeelding toont een overzicht van een ruwe implementatie schema voor SAP HANA na een hub-en spoke-VNet-architectuur:
 
@@ -324,4 +324,3 @@ Vertrouwd raken met de artikelen zoals vermeld
 - [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server](./sap-hana-high-availability.md)
 - [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md)
 
- 

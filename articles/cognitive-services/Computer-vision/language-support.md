@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530196"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976875"
 ---
 # <a name="language-support-for-computer-vision"></a>Taal ondersteuning voor Computer Vision
 
@@ -25,7 +25,7 @@ Sommige functies van Computer Vision ondersteunen meerdere talen; alle functies 
 
 De OCR-Api's van Computer Vision ondersteunen verschillende talen. U hoeft geen taal code op te geven. Zie [optische teken herkenning (OCR)](concept-recognizing-text.md) voor meer informatie.
 
-|Taal| Taalcode | OCR-API | V 3.0 lezen | Lees de open bare preview van v 3.1 |
+|Taal| Taalcode | OCR-API | V 3.1 lezen | Lees v 3.1-Preview. 2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arabisch | `ar`|✔ | | |
 |Chinees (Vereenvoudigd) | `zh-Hans`|✔ | |✔ |

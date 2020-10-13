@@ -16,13 +16,13 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450728"
 ---
-# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v 4.1-volumes op Azure NetApp Files voor SAP HANA
+# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-volumes in Azure NetApp Files voor SAP HANA
 
 Azure NetApp Files biedt native NFS-shares die kunnen worden gebruikt voor **/Hana/Shared**-, **/Hana/data**-en **/Hana/log** -volumes. Voor het gebruik van ANF NFS-shares voor de **/Hana/data** -en **/Hana/log** -volumes is het gebruik van het v 4.1 NFS-protocol vereist. Het NFS-protocol v3 wordt niet ondersteund voor het gebruik van **/Hana/data** -en **/Hana/log** -volumes bij het baseren van de shares op ANF. 
 

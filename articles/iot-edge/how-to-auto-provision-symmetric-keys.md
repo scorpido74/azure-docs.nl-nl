@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c44ad91b4fb8581a67ea67e09faca4a9d96df91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 791aadf349654e1e62c3ac2b98a955de7b46c0b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447761"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966114"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest
 
@@ -156,7 +156,13 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 De IoT Edge-runtime wordt op alle IoT Edge-apparaten geïmplementeerd. De onderdelen worden in containers uitgevoerd en bieden u de mogelijkheid om extra containers op het apparaat te implementeren, zodat u code aan de rand kunt uitvoeren.
 
-U hebt de volgende informatie nodig bij het inrichten van uw apparaat:
+Volg de stappen in [install the Azure IOT Edge runtime](how-to-install-iot-edge.md)en ga vervolgens terug naar dit artikel om het apparaat in te richten.
+
+## <a name="configure-the-device-with-provisioning-information"></a>Het apparaat configureren met inrichtings gegevens
+
+Zodra de runtime op uw apparaat is geïnstalleerd, configureert u het apparaat met de informatie die wordt gebruikt om verbinding te maken met Device Provisioning Service en IoT Hub.
+
+De volgende informatie is gereed:
 
 * De waarde voor het bereik van de DPS **-id**
 * De **registratie-id** van het apparaat dat u hebt gemaakt
@@ -167,50 +173,49 @@ U hebt de volgende informatie nodig bij het inrichten van uw apparaat:
 
 ### <a name="linux-device"></a>Linux-apparaat
 
-Volg de instructies voor de architectuur van uw apparaat. Zorg ervoor dat u de IoT Edge-runtime configureert voor automatisch, niet hand matig, inrichten.
+1. Open het configuratie bestand op het IoT Edge-apparaat.
 
-[Installeer de Azure IoT Edge runtime op Linux](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-De sectie in het configuratie bestand voor het inrichten van symmetrische sleutels ziet er als volgt uit:
+1. Zoek de sectie inrichtings configuraties van het bestand. Verwijder de opmerkingen van de regels voor de inrichting van de symmetrische DPS-sleutel en zorg ervoor dat alle andere inrichtings regels worden afgemeld.
 
-```yaml
-# DPS symmetric key provisioning configuration
-provisioning:
-   source: "dps"
-   global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "<SCOPE_ID>"
-   attestation:
-      method: "symmetric_key"
-      registration_id: "<REGISTRATION_ID>"
-      symmetric_key: "<SYMMETRIC_KEY>"
-```
+   De `provisioning:` regel mag geen voor gaande witruimte hebben en geneste items moeten worden inge sprongen met twee spaties.
 
-Vervang de waarden van de tijdelijke aanduidingen voor `<SCOPE_ID>` , `<REGISTRATION_ID>` en `<SYMMETRIC_KEY>` met de gegevens die u eerder hebt verzameld. Zorg ervoor dat het **inrichten:** de regel heeft geen voorafgaande spatie en dat geneste items met twee spaties worden inge sprongen.
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "symmetric_key"
+       registration_id: "<REGISTRATION_ID>"
+       symmetric_key: "<SYMMETRIC_KEY>"
+   ```
+
+1. De waarden van `scope_id` , `registration_id` en `symmetric_key` met uw DPS en apparaatgegevens bijwerken.
+
+1. Start de IoT Edge-runtime opnieuw zodat alle configuratie wijzigingen die u op het apparaat hebt aangebracht, worden opgehaald.
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Windows-apparaat
 
-Installeer de IoT Edge runtime op het apparaat waarvoor u een afgeleide-apparaatwachtwoord hebt gegenereerd. U configureert de IoT Edge runtime voor automatisch, niet hand matig, provisioning.
-
-Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-windows.md)(Engelstalig) voor meer informatie over het installeren van IOT Edge op Windows, inclusief vereisten en instructies voor taken zoals het beheren van containers en het bijwerken van IOT Edge.
-
 1. Open een Power shell-venster in de beheerders modus. Zorg ervoor dat u een AMD64-sessie van Power shell gebruikt bij het installeren van IoT Edge, niet in Power shell (x86).
 
-1. Met de opdracht **Deploy-IoTEdge** wordt gecontroleerd of de Windows-computer een ondersteunde versie heeft, wordt de functie containers ingeschakeld, waarna de Moby-runtime en de IOT Edge-runtime worden gedownload. De opdracht wordt standaard ingesteld op het gebruik van Windows-containers.
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
-
-1. Met de opdracht **Initialize-IoTEdge** configureert u de IoT Edge-runtime op uw machine. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers, tenzij u de `-Dps` vlag gebruikt om automatische inrichting te gebruiken.
+1. Met de opdracht **Initialize-IoTEdge** configureert u de IoT Edge-runtime op uw machine. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers. Gebruik daarom de `-DpsSymmetricKey` vlag voor het gebruik van automatische inrichting met symmetrische sleutel verificatie.
 
    Vervang de waarden van de tijdelijke aanduidingen voor `{scope_id}` , `{registration_id}` en `{symmetric_key}` met de gegevens die u eerder hebt verzameld.
 
+   Voeg de `-ContainerOs Linux` para meter toe als u Linux-containers in Windows gebruikt.
+
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   Initialize-IoTEdge -DpsSymmetricKey -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
 
 ## <a name="verify-successful-installation"></a>Geslaagde installatie controleren

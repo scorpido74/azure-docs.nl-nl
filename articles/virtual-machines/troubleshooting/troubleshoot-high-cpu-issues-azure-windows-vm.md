@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596842"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977252"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Problemen met hoge CPU oplossen voor virtuele Azure Windows-machines
 
@@ -90,11 +90,11 @@ PerfInsights is het aanbevolen hulp programma van Azure-ondersteuning voor prest
 
 #### <a name="run-perfinsights"></a>PerfInsights uitvoeren
 
-PerfInsights is beschikbaar voor het [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) -besturings systeem. Dit zijn de opties voor Windows.
+PerfInsights is beschikbaar voor het [Windows](./how-to-use-perfinsights.md) -en [Linux](./how-to-use-perfinsights-linux.md) -besturings systeem. Dit zijn de opties voor Windows.
 
 #### <a name="run-and-analyze-reports-through-azure-portal"></a>Rapporten uitvoeren en analyseren via Azure Portal
 
-Wanneer deze is [geïnstalleerd via de Azure Portal](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics), wordt in feite een extensie op de VM geïnstalleerd. Gebruikers kunnen ook PerfInsights als een uitbrei ding installeren door rechtstreeks naar [uitbrei dingen in de VM-Blade](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics-vm-extension)te gaan en vervolgens de optie prestatie diagnostiek te kiezen.
+Wanneer deze is [geïnstalleerd via de Azure Portal](./performance-diagnostics.md), wordt in feite een extensie op de VM geïnstalleerd. Gebruikers kunnen ook PerfInsights als een uitbrei ding installeren door rechtstreeks naar [uitbrei dingen in de VM-Blade](./performance-diagnostics-vm-extension.md)te gaan en vervolgens de optie prestatie diagnostiek te kiezen.
 
 #### <a name="azure-portal-option-1"></a>Azure Portal optie 1
 
@@ -132,7 +132,7 @@ Het rapport wordt opgeslagen op een van de opslag accounts in uw abonnement. Het
 
 #### <a name="run-perfinsights-from-within-the-vm"></a>PerfInsights uitvoeren vanuit de VM
 
-Deze methode kan worden gebruikt als u van plan bent om PerfInsights uit te voeren voor langere duur. Het [PerfInsights-artikel](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights#how-do-i-run-perfinsights) bevat een gedetailleerd overzicht van de verschillende opdrachten en vlaggen die nodig zijn om PerfInsights uit te voeren als uitvoerbaar bestand. Voor een hoog CPU-gebruik hebt u een van de volgende modi nodig:
+Deze methode kan worden gebruikt als u van plan bent om PerfInsights uit te voeren voor langere duur. Het [PerfInsights-artikel](./how-to-use-perfinsights.md#how-do-i-run-perfinsights) bevat een gedetailleerd overzicht van de verschillende opdrachten en vlaggen die nodig zijn om PerfInsights uit te voeren als uitvoerbaar bestand. Voor een hoog CPU-gebruik hebt u een van de volgende modi nodig:
 
 - Geavanceerde scenario
 
@@ -289,7 +289,7 @@ Nadat de instellingen zijn ingeschakeld, kunt u deze **gast** items weer geven i
 
   ![Metrische naam ruimte](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-Zie [virtuele machines van Azure bewaken met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-vm-azure)voor meer informatie over het gebruik van Azure monitor voor het beheren van Azure-vm's.
+Zie [virtuele machines van Azure bewaken met Azure monitor](../../azure-monitor/insights/monitor-vm-azure.md)voor meer informatie over het gebruik van Azure monitor voor het beheren van Azure-vm's.
 
 ### <a name="reactive-troubleshooting"></a>Reactief probleem oplossen
 
@@ -311,7 +311,7 @@ Voor **beeld** (inclusief modus voor externe verzameling)
 
 Logman.exe kan ook worden gestart vanaf een computer met een virtuele machine van Azure in hetzelfde VNET.
 
-Zie [logman create counter](https://docs.microsoft.com/windows-server/administration/windows-commands/logman-create-counter)voor meer informatie over deze para meters.
+Zie [logman create counter](/windows-server/administration/windows-commands/logman-create-counter)voor meer informatie over deze para meters.
 
 Nadat de prestatie gegevens zijn verzameld terwijl het probleem zich voordoet, zijn de resterende stappen voor het analyseren van de gegevens hetzelfde als hierboven beschreven.
 

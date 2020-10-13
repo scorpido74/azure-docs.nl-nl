@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 82d482cd0a1b3a5b6028b9249030b7b1a093d22d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570554"
 ---
 # <a name="enable-shared-disk"></a>Gedeelde schijf inschakelen
@@ -46,7 +46,7 @@ Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf
 > [!IMPORTANT]
 > De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku Premium_LRS --max-shares 2
@@ -76,7 +76,7 @@ Als u een beheerde schijf met de functie gedeelde schijf wilt implementeren, wij
 > De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ##### <a name="regional-disk-example"></a>Voor beeld van regionale schijf
 
