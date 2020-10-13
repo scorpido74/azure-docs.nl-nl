@@ -3,12 +3,13 @@ title: Aanbevolen beleid voor Azure-Services
 description: Hierin wordt beschreven hoe u aanbevolen beleids regels voor Azure-Services, zoals Azure Virtual Machines, kunt zoeken en Toep assen.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 919d09a569fd950ab2061ba3452a4a940d25cb5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.customer: generated
+ms.openlocfilehash: 5c297bcedd29fa8d9a2712850a57b66630cb52d9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89447816"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951516"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Aanbevolen beleid voor Azure-Services
 

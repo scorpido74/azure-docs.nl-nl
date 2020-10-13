@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 408f58b44bbe1ff8be7498b33a1209f4488c2ccc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332148"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951975"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in azure Synapse Analytics (voorheen SQL Data Warehouse) kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -564,7 +564,7 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
 
 Als uw bron gegevens niet systeem eigen compatibel zijn met poly Base, kunt u het kopiëren van gegevens inschakelen via een tijdelijke Azure-Blob of-Azure Data Lake Storage Gen2 (dit kan niet Premium Storage van Azure zijn). In dit geval worden de gegevens in Azure Data Factory automatisch geconverteerd om te voldoen aan de vereisten voor gegevens formaat van poly base. Vervolgens wordt poly base aangeroepen om gegevens te laden in azure Synapse Analytics. Ten slotte worden de tijdelijke gegevens uit de opslag opgeschoond. Zie [gefaseerde kopie](copy-activity-performance-features.md#staged-copy) voor informatie over het kopiëren van gegevens via een fase ring.
 
-Als u deze functie wilt gebruiken, moet u een [gekoppelde azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2 gekoppelde service](connector-azure-data-lake-storage.md#linked-service-properties) maken die verwijst naar het Azure Storage-account met de tijdelijke opslag. Geef vervolgens de `enableStaging` `stagingSettings` Eigenschappen en op voor de Kopieer activiteit, zoals in de volgende code wordt weer gegeven.
+Als u deze functie wilt gebruiken, maakt u een [gekoppelde azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2 gekoppelde service](connector-azure-data-lake-storage.md#linked-service-properties) met **account sleutel of beheerde identiteits verificatie** die verwijst naar het Azure Storage-account als tijdelijke opslag.
 
 >[!IMPORTANT]
 >Als uw staging-Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken. Zie de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)voor meerwaarde ring. Meer informatie over de vereiste configuraties in Data Factory van [Azure Blob-beheerde identiteits verificatie](connector-azure-blob-storage.md#managed-identity) en door [Azure data Lake Storage Gen2 beheerde identiteits verificatie](connector-azure-data-lake-storage.md#managed-identity).
@@ -824,13 +824,13 @@ Wanneer u gegevens kopieert vanuit of naar Azure Synapse Analytics, worden de vo
 | binair                                | Byte []                         |
 | bit                                   | Booleaans                        |
 | char                                  | Teken reeks, char []                 |
-| datum                                  | DateTime                       |
+| date                                  | DateTime                       |
 | Datum/tijd                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | Date time offset                        | Date time offset                 |
 | Decimaal                               | Decimaal                        |
 | FILESTREAM-kenmerk (varbinary (max)) | Byte []                         |
-| Float                                 | Dubbel                         |
+| Drijvendekommagetal                                 | Dubbel                         |
 | image                                 | Byte []                         |
 | int                                   | Int32                          |
 | money                                 | Decimaal                        |

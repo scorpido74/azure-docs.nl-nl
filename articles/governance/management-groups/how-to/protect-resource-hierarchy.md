@@ -3,12 +3,12 @@ title: Uw resource hiërarchie beveiligen-Azure governance
 description: Meer informatie over het beveiligen van uw resource hiërarchie met hiërarchie-instellingen, zoals het instellen van de standaard beheer groep.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533976"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951890"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Uw resource hiërarchie beveiligen
 
@@ -115,5 +115,5 @@ Als u de instelling wilt uitschakelen, gebruikt u hetzelfde eind punt en stelt u
 
 Voor meer informatie over beheergroepen gaat u naar:
 
-- [Beheergroepen maken om Azure-resources te ordenen](../create.md)
+- [Beheergroepen maken om Azure-resources te ordenen](../create-management-group-portal.md)
 - [Uw beheergroepen wijzigen, verwijderen of beheren](../manage.md)

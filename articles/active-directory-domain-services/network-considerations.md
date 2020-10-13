@@ -2,20 +2,20 @@
 title: Netwerk planning en verbindingen voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over een aantal overwegingen voor het ontwerpen van virtuele netwerken en bronnen die worden gebruikt voor connectiviteit wanneer u Azure Active Directory Domain Services uitvoert.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396328"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968086"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure Active Directory Domain Services
 
@@ -104,7 +104,7 @@ Een beheerd domein maakt sommige netwerk bronnen tijdens de implementatie. Deze 
 
 ## <a name="network-security-groups-and-required-ports"></a>Netwerk beveiligings groepen en de vereiste poorten
 
-Een [netwerk beveiligings groep (NSG)](../virtual-network/security-overview.md) bevat een lijst met regels waarmee netwerk verkeer naar verkeer in een virtueel Azure-netwerk wordt toegestaan of geweigerd. Er wordt een netwerk beveiligings groep gemaakt wanneer u een beheerd domein implementeert dat een set regels bevat waarmee de service verificatie-en beheer functies kan bieden. Deze standaard netwerk beveiligings groep is gekoppeld aan het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
+Een [netwerkbeveiligingsgroep](../virtual-network/security-overview.md) (NSG: Network Security Group) bevat een lijst met beveiligingsregels waarmee netwerkverkeer naar verkeer in een virtueel Azure-netwerk wordt toegestaan of geweigerd. Er wordt een netwerk beveiligings groep gemaakt wanneer u een beheerd domein implementeert dat een set regels bevat waarmee de service verificatie-en beheer functies kan bieden. Deze standaard netwerk beveiligings groep is gekoppeld aan het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 
 De volgende regels voor de netwerk beveiligings groep zijn vereist voor het beheerde domein voor het leveren van verificatie-en beheer Services. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 

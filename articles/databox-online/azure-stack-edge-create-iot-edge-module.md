@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8acbc7eec7581adcf0d73ffcd4bb2aa7ab2dd572
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883499"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951142"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Een C# IoT Edge-module ontwikkelen om bestanden te verplaatsen op Azure Stack Edge Pro
+# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Een C# IoT Edge-module ontwikkelen om bestanden met Azure Stack Edge Pro te verplaatsen
 
 In dit artikel wordt stapsgewijs beschreven hoe u een IoT Edge module maakt voor implementatie met uw Azure Stack Edge Pro-apparaat. Azure Stack Edge Pro is een opslag oplossing waarmee u gegevens kunt verwerken en verzenden via een netwerk naar Azure.
 
@@ -65,7 +65,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 Een Azure-containerregister is een persoonlijk Docker-register in Azure waar u uw persoonlijke installatiekopieën van de Docker-container kunt opslaan en beheren. De twee populaire docker-register services die beschikbaar zijn in de Cloud, zijn Azure Container Registry en docker hub. In dit artikel wordt gebruikgemaakt van de Container Registry.
 
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
-2. Selecteer **een resource maken > Containers > container Registry**. Klik op **Maken**.
+2. Selecteer **een resource maken > Containers > container Registry**. Klik op **Create**.
 3. Geleverd
 
    1. Een unieke **register naam** in azure die 5 tot 50 alfanumerieke tekens bevat.
@@ -259,7 +259,7 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
  
 3. Zodra de referenties zijn opgegeven, kunt u de module-installatie kopie pushen naar uw Azure container Registry. Klik in de VS code Explorer met de rechter muisknop op het **module.js** bestand en selecteer **Build and push IOT Edge Solution**.
 
-    ![IoT Edge-oplossingen bouwen en pushen](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![IoT Edge oplossing 2 bouwen en pushen](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Wanneer u Visual Studio code voor het bouwen van uw oplossing vertelt, worden er twee opdrachten uitgevoerd in de geïntegreerde terminal: docker-build en docker-push. Met deze twee opdrachten wordt uw code gebouwd, wordt de CSharpModule.dll in een container opgeslagen en wordt de code vervolgens naar het containerregister gepusht dat u hebt opgegeven toen u de oplossing initialiseerde.
 

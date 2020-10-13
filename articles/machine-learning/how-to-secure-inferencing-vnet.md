@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2020
+ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630845"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972506"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -81,11 +81,17 @@ Voer de volgende stappen uit om AKS toe te voegen aan uw werk ruimte in een virt
 
    ![Azure Machine Learning: Machine Learning Compute instellingen van het virtuele netwerk](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Zorg ervoor dat de NSG-groep die het virtuele netwerk beheert, een binnenkomende beveiligings regel voor het Score-eind punt heeft ingeschakeld, zodat deze kan worden aangeroepen buiten het virtuele netwerk.
+1. Wanneer u een model als een webservice implementeert op AKS, wordt er een score-eind punt gemaakt voor het afhandelen van aanvragen voor het denemen van interferenties. Zorg ervoor dat de NSG-groep die het virtuele netwerk beheert, een binnenkomende beveiligings regel voor het IP-adres van het Score-eind punt heeft ingeschakeld als u deze wilt aanroepen buiten het virtuele netwerk.
+
+    Als u het IP-adres van het Score-eind punt wilt vinden, kijkt u naar de Score-URI voor de geïmplementeerde service. Zie voor meer informatie over het weer geven van scores-URI [een model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md#connection-information).
+
    > [!IMPORTANT]
    > Behoud de standaard regels voor uitgaande verbindingen voor de NSG. Zie de standaard beveiligings regels in [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)voor meer informatie.
 
    [![Een regel voor binnenkomende beveiliging](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
+
+    > [!IMPORTANT]
+    > Het IP-adres dat wordt weer gegeven in de afbeelding voor het Score-eind punt, verschilt voor uw implementaties. Hoewel hetzelfde IP-adres wordt gedeeld door alle implementaties naar één AKS-cluster, heeft elk AKS-cluster een ander IP-adressen.
 
 U kunt ook de Azure Machine Learning SDK gebruiken om de Azure Kubernetes-service toe te voegen aan een virtueel netwerk. Als u al een AKS-cluster in een virtueel netwerk hebt, koppelt u dit aan de werk ruimte, zoals wordt beschreven in [Deploying to aks](how-to-deploy-and-where.md). Met de volgende code wordt een nieuw AKS-exemplaar gemaakt in het `default` subnet van een virtueel netwerk met de naam `mynetwork` :
 

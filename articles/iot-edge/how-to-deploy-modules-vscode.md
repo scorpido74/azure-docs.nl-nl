@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e4ac1a6e56cdbf47fd174d5244fc6ab51c63fb07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb3c03b16ae05d3e5e78378e88b9337842e3d98d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82133884"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972625"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modules implementeren vanuit Visual Studio code
 
@@ -25,7 +25,10 @@ In dit artikel wordt beschreven hoe u een JSON-implementatie manifest maakt en d
 ## <a name="prerequisites"></a>Vereisten
 
 * Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
-* Een [IOT edge apparaat](how-to-register-device.md#register-with-visual-studio-code) waarop de IOT Edge-runtime is geïnstalleerd.
+* Een IoT Edge apparaat
+
+  Als u geen IoT Edge apparaat hebt ingesteld, kunt u er een maken in een virtuele Azure-machine. Volg de stappen in een van de Quick Start-artikelen voor het [maken van een virtueel Linux-apparaat](quickstart-linux.md) of [het maken van een virtueel Windows-apparaat](quickstart.md).
+
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) voor Visual Studio code.
 

@@ -3,15 +3,15 @@ title: Taak verdeling van hostgroep voor Windows Virtual Desktop-Azure
 description: Meer informatie over methoden voor het verdelen van de hostgroep voor een Windows-omgeving met virtueel bureau blad.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd8f9e4a3ef63cd97f96af3d4f96a2bb65c3cd09
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461116"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951856"
 ---
 # <a name="host-pool-load-balancing-methods"></a>Taakverdelingsmethoden voor hostpool
 
@@ -41,3 +41,6 @@ Met de methode breedte-eerste wordt eerst een query uitgevoerd op sessie-hosts d
 Met de functie voor diepte en eerste taak verdeling kunt u één sessie-host op een moment verzadigen om te optimaliseren voor dit scenario. Deze methode is ideaal voor prijs bewuste organisaties die meer nauw keuriger willen controleren op het aantal virtuele machines dat ze voor een hostgroep hebben toegewezen.
 
 De methode depth-first voert eerst een query uit op sessie-hosts die nieuwe verbindingen toestaan en de maximale sessie limiet niet hebben overschreden. De-methode selecteert vervolgens de sessiehost met het hoogste aantal sessies. Als er sprake is van een das, selecteert de-methode de eerste sessie-host in de query.
+
+>[!IMPORTANT]
+>Met het algoritme voor het gelijkmatige taak verdeling worden sessies gedistribueerd naar sessie-hosts op basis van de maximum limiet voor de sessie-host. Deze para meter is vereist wanneer u het algoritme voor de taak verdeling van de diepte eerste gebruikt. Voor de best mogelijke gebruikers ervaring moet u de maximum limiet voor de sessie-hostparameters wijzigen in een getal dat het beste bij uw omgeving past.

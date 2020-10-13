@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f64b5a186c026bf752d7975ac4337535ca64458e
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418582"
+ms.locfileid: "91876529"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -71,7 +71,7 @@ Er zijn twee soorten herstel beschikbaar:
 De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, het transactie logboek, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment in dezelfde regio wordt hersteld. De herstel tijd is doorgaans minder dan 12 uur.
 
 > [!IMPORTANT]
-> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
+> Verwijderde servers kunnen alleen binnen **vijf dagen** na de verwijdering worden hersteld, waarna de back-ups worden verwijderd. De back-up van de data base kan worden geopend en alleen worden teruggezet vanuit het Azure-abonnement dat als host fungeert voor de server. Raadpleeg [gedocumenteerde stappen](howto-restore-dropped-server.md)om een verwijderde server te herstellen. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
 
 ### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 

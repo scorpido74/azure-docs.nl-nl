@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759067"
+ms.locfileid: "91932580"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -52,8 +52,11 @@ Een veelvoorkomende use-case is het gebruik van een ACL voor het uitvoeren van t
 
 Dit type autorisatie is gebruikelijk voor daemons en service accounts die toegang nodig hebben tot gegevens die eigendom zijn van consumenten gebruikers met persoonlijke micro soft-accounts. Voor gegevens die eigendom zijn van organisaties, raden we u aan de vereiste autorisatie te verkrijgen via toepassings machtigingen.
 
-> [!NOTE]
-> Als u dit verificatie patroon op basis van toegangs beheer lijst wilt inschakelen, is voor Azure AD niet vereist dat toepassingen worden gemachtigd om tokens voor een andere toepassing op te halen, zodat alleen app-tokens kunnen worden uitgegeven zonder een `roles` claim. Toepassingen die Api's beschikbaar stellen, moeten controle van machtigingen implementeren om tokens te accepteren.
+#### <a name="controlling-tokens-without-the-roles-claim"></a>Tokens beheren zonder de `roles` claim
+
+Om dit autorisatie patroon op basis van een toegangs beheer lijst in te scha kelen, is voor Azure AD niet vereist dat toepassingen worden gemachtigd om tokens voor een andere toepassing op te halen. Daarom kunnen alleen app-tokens worden uitgegeven zonder een `roles` claim. Toepassingen die Api's beschikbaar stellen, moeten controle van machtigingen implementeren om tokens te accepteren.
+
+Als u wilt voor komen dat toepassingen alleen voor de app verstuurde toegangs tokens voor uw toepassing worden ontvangen, moet u [ervoor zorgen dat de vereisten voor de gebruikers toewijzing zijn ingeschakeld voor uw app](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Hiermee kunnen gebruikers en toepassingen zonder toegewezen rollen een token voor deze toepassing ophalen. 
 
 ### <a name="application-permissions"></a>Toepassings machtigingen
 

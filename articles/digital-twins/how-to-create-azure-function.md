@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 11034a585db6ef3a3e1e445bbed8a1e51f83948d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bf2894cc30873e3cbf7f379e22078dbb863ac179
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949783"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970432"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -232,18 +232,18 @@ Noteer ook de **object-id** die wordt weer gegeven op de pagina _identiteit_ , z
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Toegangs rollen toewijzen met behulp van Azure Portal
 
-Selecteer de knop _Azure-roltoewijzingen_ , waarmee u de pagina met Azure-functie toewijzingen opent. Selecteer vervolgens _+ roltoewijzing toevoegen (preview)_.
+Selecteer de knop _Azure Role Assignments_ , waarmee de pagina met *Azure-roltoewijzingen* wordt geopend. Selecteer vervolgens _+ roltoewijzing toevoegen (preview)_.
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 
-Selecteer in het venster _roltoewijzing toevoegen (preview)_ dat wordt geopend:
+Selecteer op de pagina _roltoewijzing toevoegen (preview)_ die wordt geopend:
 
 * _Bereik_: resourcegroep
 * _Abonnement_: Selecteer uw Azure-abonnement
 * _Resource groep_: Selecteer de resource groep in de vervolg keuzelijst
 * _Rol_: Selecteer de _Azure Digital apparaatdubbels-eigenaar (preview)_ in de vervolg keuzelijst
 
-Sla uw gegevens op door de knop _Opslaan_ te selecteren.
+Sla uw gegevens vervolgens op door te klikken op de knop _Opslaan_ .
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: dialoog venster Nieuw project":::
 

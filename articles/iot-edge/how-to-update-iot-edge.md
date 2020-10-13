@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85299004"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971746"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>De IoT Edge-beveiligingsdaemon en -runtime bijwerken
 
@@ -117,7 +117,7 @@ Als u wilt bijwerken naar een specifieke versie van de beveiligings-daemon, zoek
 >[!NOTE]
 >De `-OfflineInstallationPath` para meter zoekt naar een bestand met de naam **Microsoft-Azure-IoTEdge.cab** in de opgegeven map. Vanaf IoT Edge versie 1.0.9-RC4 zijn er twee cab-bestanden beschikbaar voor gebruik, één voor AMD64-apparaten en één voor ARM32. Down load het juiste bestand voor uw apparaat en wijzig de naam van het bestand om het structuur achtervoegsel te verwijderen.
 
-Voor meer informatie over Update opties gebruikt u de opdracht `Get-Help Update-IoTEdge -full` of raadpleegt u [alle installatie parameters](how-to-install-iot-edge-windows.md#all-installation-parameters).
+Voor meer informatie over Update opties gebruikt u de opdracht `Get-Help Update-IoTEdge -full` of raadpleegt u het [Power shell-script voor IOT Edge in Windows](reference-windows-scripts.md).
 
 ## <a name="update-the-runtime-containers"></a>De runtime-containers bijwerken
 
@@ -160,7 +160,7 @@ Als u specifieke tags in uw implementatie gebruikt (bijvoorbeeld mcr.microsoft.c
 
    ![Runtime-instellingen configureren](./media/how-to-update-iot-edge/configure-runtime.png)
 
-1. Werk in **runtime-instellingen**de **afbeeldings** waarde voor **Edge hub** bij met de gewenste versie. Selecteer nog niets **Opslaan** .
+1. Werk in **runtime-instellingen**de **afbeeldings** waarde voor **Edge hub** bij met de gewenste versie. Selecteer nog niet **Opslaan** .
 
    ![Versie van Edge hub-installatie kopie bijwerken](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
 
@@ -213,10 +213,7 @@ Als previews worden versies van release Candi date niet opgenomen als de meest r
 
 Gebruik de secties in dit artikel voor meer informatie over het bijwerken van een IoT Edge apparaat naar een specifieke versie van de Security daemon of runtime-modules.
 
-Als u IoT Edge installeert op een nieuwe computer, gebruikt u de volgende koppelingen om te leren hoe u een specifieke versie installeert, afhankelijk van het besturings systeem van uw apparaat:
-
-* [Linux](how-to-install-iot-edge-linux.md#install-runtime-using-release-assets)
-* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
+Als u IoT Edge installeert in plaats van een bestaande installatie te upgraden, gebruikt u de stappen in de [installatie van offline of specifieke versie](how-to-install-iot-edge.md#offline-or-specific-version-installation).
 
 ## <a name="next-steps"></a>Volgende stappen
 

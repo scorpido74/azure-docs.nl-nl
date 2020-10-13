@@ -1,6 +1,6 @@
 ---
-title: Waarschuwings validatie (EICAR-test bestand) in Azure Security Center | Microsoft Docs
-description: In dit document leest u hoe u de beveiligingswaarschuwingen in Azure Security Center valideert.
+title: Validatie van waarschuwingen in Azure Security Center | Microsoft Docs
+description: Meer informatie over hoe u kunt controleren of uw beveiligings waarschuwingen correct zijn geconfigureerd in Azure Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438809"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971605"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Validatie van waarschuwingen in Azure Security Center
 In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier is geconfigureerd voor waarschuwingen van Azure Security Center.
@@ -26,12 +26,6 @@ In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier
 ## <a name="what-are-security-alerts"></a>Wat zijn beveiligingswaarschuwingen?
 Waarschuwingen zijn de meldingen die Security Center genereert wanneer het bedreigingen op uw resources detecteert. Er worden prioriteiten gegeven en de waarschuwingen worden vermeld samen met de informatie die nodig is om snel het probleem te onderzoeken. Security Center geeft ook aanbevelingen voor hoe u een aanval kunt oplossen.
 Zie [beveiligings waarschuwingen in Security Center](security-center-alerts-overview.md) en [beheren en reageren op beveiligings waarschuwingen](security-center-managing-and-responding-alerts.md) voor meer informatie.
-
-## <a name="alert-validation"></a>Waarschuwingen valideren
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>Waarschuwingen op Windows-Vm's valideren <a name="validate-windows"></a>
 

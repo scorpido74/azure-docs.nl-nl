@@ -2,20 +2,20 @@
 title: Replica sets-concepten voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over de replica sets in Azure Active Directory Domain Services en hoe ze redundantie bieden voor toepassingen waarvoor identiteits Services zijn vereist.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 698009ee8a57ed5d30e01376b4f2c63b0a27ead8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87505729"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961065"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Replica sets-concepten en functies voor Azure Active Directory Domain Services (preview-versie)
 

@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: Meer informatie over het instellen van continue integratie/continue implementatie met Azure DevOps met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080263"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960385"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD gebruiken met Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 In dit artikel vindt u instructies voor het instellen van continue integratie/continue implementatie (CI/CD) naar Azure Kubernetes service (AKS) met ontwikkel ruimten ingeschakeld. Met CI/CD naar AKS kunnen app-updates automatisch worden geïmplementeerd wanneer toegezegde code naar uw bron opslagplaats wordt gepusht. Het gebruik van CI/CD in combi natie met een cluster met ontwikkel ruimten is nuttig omdat het een basis lijn van de toepassing kan houden zodat het team kan werken met.
 
@@ -119,7 +121,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Klik op **Opslaan** in de rechter bovenhoek en **OK**.
 1. Klik op **+ release** (naast de knop Opslaan) en **Maak een release**.
 1. Controleer onder **artefacten**de meest recente build van uw build-pijp lijn is geselecteerd.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 Er wordt nu een geautomatiseerd release proces gestart, waarbij de *mywebapi* -en Webfront- *End* grafieken worden geïmplementeerd in uw Kubernetes-cluster in de _ontwikkel_ ruimte op het hoogste niveau. U kunt de voortgang van uw release bewaken in de Azure DevOps-webportal:
 
