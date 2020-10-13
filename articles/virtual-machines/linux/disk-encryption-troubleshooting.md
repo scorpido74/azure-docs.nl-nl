@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ca6431531f8cebf1205aa555c5545f4dc44abd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a1bdce0478961b27bde7dd32733d95c58ba2361
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372209"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972234"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Probleemoplossings gids voor Azure Disk Encryption voor Linux Vm's
 
@@ -135,5 +135,5 @@ Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryp
 
 In dit document hebt u meer geleerd over enkele veelvoorkomende problemen in Azure Disk Encryption en hoe u deze problemen oplost. Raadpleeg de volgende artikelen voor meer informatie over deze service en de mogelijkheden ervan:
 
-- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/asset-inventory.md)
 - [Versleuteling van inactieve gegevens in Azure](../../security/fundamentals/encryption-atrest.md)

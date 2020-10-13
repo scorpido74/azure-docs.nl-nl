@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404716"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946141"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>De indeling Parquet in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -156,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>Ondersteuning voor gegevens typen
 
-Parquet complexe gegevens typen worden momenteel niet ondersteund (bijvoorbeeld kaart, lijst, STRUCT).
+Complexe gegevens typen van Parquet (bijvoorbeeld kaart, lijst, STRUCT) worden momenteel alleen ondersteund in gegevens stromen, niet in de Kopieer activiteit. Als u complexe typen in gegevens stromen wilt gebruiken, moet u het bestands schema niet importeren in de gegevensset, waardoor het schema leeg blijft in de gegevensset. Importeer vervolgens in de bron transformatie de projectie.
 
 ## <a name="using-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime gebruiken
 

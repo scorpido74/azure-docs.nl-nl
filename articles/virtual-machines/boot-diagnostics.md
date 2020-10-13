@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 52a2b5e27cd5857416343e559237d08ea9a591be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813233"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972387"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostische gegevens over Azure-opstarten
 
@@ -39,9 +39,9 @@ De optie diagnostische gegevens over opstarten bevindt zich op de Blade van de v
 - Diagnostische gegevens over opstarten zijn alleen beschikbaar voor Azure Resource Manager-Vm's. 
 - Diagnostische gegevens over het opstarten bieden geen ondersteuning voor Premium Storage-accounts. als een Premium Storage-account wordt gebruikt voor diagnostische gegevens over opstarten, treedt er een `StorageAccountTypeNotSupported` fout op bij het starten van de virtuele machine. 
 - Beheerde opslag accounts worden ondersteund in de Resource Manager API-versie 2020-06-01 en hoger.
-- De seriële console van Azure is momenteel niet compatibel met een beheerd opslag account voor diagnostische gegevens over opstarten. Meer informatie over [Azure Serial console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview).
+- De seriële console van Azure is momenteel niet compatibel met een beheerd opslag account voor diagnostische gegevens over opstarten. Meer informatie over [Azure Serial console](./troubleshooting/serial-console-overview.md).
 - Diagnostische gegevens over opstarten met behulp van een opslag account beheren kunnen momenteel alleen worden toegepast via de Azure Portal. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [Azure Serial console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview) en over het gebruik van diagnostische gegevens over opstarten voor het [oplossen van problemen met virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics).
+Meer informatie over de [Azure Serial console](./troubleshooting/serial-console-overview.md) en over het gebruik van diagnostische gegevens over opstarten voor het [oplossen van problemen met virtuele machines in azure](./troubleshooting/boot-diagnostics.md).

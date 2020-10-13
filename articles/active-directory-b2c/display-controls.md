@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202293"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961354"
 ---
 # <a name="display-controls"></a>Besturings elementen weer geven
 
@@ -55,9 +55,9 @@ Het element **DisplayControl** bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** worden gebruikt om vooraf de waarde in te vullen van de claims die moeten worden verzameld van de gebruiker. |
-| DisplayClaims | 0:1 | **DisplayClaims** worden gebruikt om claims weer te geven die van de gebruiker moeten worden verzameld. |
-| OutputClaims | 0:1 | **OutputClaims** worden gebruikt om claims weer te geven die tijdelijk moeten worden opgeslagen voor dit **besturings element**. |
+| InputClaims | 0:1 | **InputClaims** worden gebruikt om vooraf de waarde in te vullen van de claims die moeten worden verzameld van de gebruiker. Zie het element [InputClaims](technicalprofiles.md#inputclaims) voor meer informatie. |
+| DisplayClaims | 0:1 | **DisplayClaims** worden gebruikt om claims weer te geven die van de gebruiker moeten worden verzameld. Zie het element [DisplayClaim](technicalprofiles.md#displayclaim) voor meer informatie.|
+| OutputClaims | 0:1 | **OutputClaims** worden gebruikt om claims weer te geven die tijdelijk moeten worden opgeslagen voor dit **besturings element**. Zie het element [OutputClaims](technicalprofiles.md#outputclaims) voor meer informatie.|
 | Acties | 0:1 | **Acties** worden gebruikt om de technische profielen voor validatie weer te geven die moeten worden aangeroepen voor gebruikers acties die worden uitgevoerd op de front-end. |
 
 ### <a name="input-claims"></a>Invoer claims
@@ -98,7 +98,90 @@ De **acties** van een weergave besturings element zijn procedures die zich voord
 
 Een actie definieert een lijst met **technische profielen voor validatie**. Ze worden gebruikt voor het valideren van enkele of alle weer gave claims van het besturings element voor weer gave. Het validatie-technische profiel valideert de gebruikers invoer en retourneert mogelijk een fout naar de gebruiker. U kunt **ContinueOnError**, **ContinueOnSuccess**en **voor waarden** in de actie voor het weer geven van besturings elementen gebruiken die vergelijkbaar zijn met de manier waarop ze worden gebruikt bij [validatie van technische profielen](validation-technical-profile.md) in een zelf bevestigd technisch profiel.
 
-In het volgende voor beeld wordt een code verzonden via e-mail of SMS op basis van de selectie van de **mfaType** claim van de gebruiker.
+#### <a name="actions"></a>Acties
+
+Het element **Actions** bevat het volgende element:
+
+| Element | Instanties | Beschrijving |
+| ------- | ----------- | ----------- |
+| Actie | 1: n | Lijst met acties die moeten worden uitgevoerd. |
+
+#### <a name="action"></a>Bewerking
+
+Het element **Action** bevat het volgende kenmerk:
+
+| Kenmerk | Vereist | Beschrijving |
+| --------- | -------- | ----------- |
+| Id | Ja | Het type bewerking. Mogelijke waarden: `SendCode` of `VerifyCode` . De `SendCode` waarde verzendt een code naar de gebruiker. Deze actie kan twee technische profielen voor validatie bevatten: één om een code te genereren en één om deze te verzenden. De `VerifyCode` waarde controleert de code die de gebruiker in het tekstvak invoer heeft getypt. |
+
+Het element **Action** bevat het volgende element:
+
+| Element | Instanties | Beschrijving |
+| ------- | ----------- | ----------- |
+| ValidationClaimsExchange | 1:1 | De id's van de technische profielen die worden gebruikt voor het valideren van enkele of alle weergave claims van het referentie-technische profiel. Alle invoer claims van het technische profiel waarnaar wordt verwezen, moeten worden weer gegeven in de weer gave claims van het technische profiel waarnaar wordt verwezen. |
+
+#### <a name="validationclaimsexchange"></a>ValidationClaimsExchange
+
+Het element **ValidationClaimsExchange** bevat het volgende element:
+
+| Element | Instanties | Beschrijving |
+| ------- | ----------- | ----------- |
+| ValidationTechnicalProfile | 1: n | Een technisch profiel dat moet worden gebruikt voor het valideren van een aantal of alle weer gave claims van het referentie-technische profiel. |
+
+Het **ValidationTechnicalProfile** -element bevat de volgende kenmerken:
+
+| Kenmerk | Vereist | Beschrijving |
+| --------- | -------- | ----------- |
+| ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
+|ContinueOnError|Nee| Geeft aan of validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (de standaard instelling voor de verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
+|ContinueOnSuccess | Nee | Geeft aan of validatie van volgende validatie profielen moet worden voortgezet als het technische profiel voor de validatie is geslaagd. Mogelijke waarden: `true` of `false` . De standaard waarde is `true` , wat inhoudt dat de verwerking van verdere validatie profielen zal worden voortgezet. |
+
+Het element **ValidationTechnicalProfile** bevat het volgende element:
+
+| Element | Instanties | Beschrijving |
+| ------- | ----------- | ----------- |
+| Voor waarden | 0:1 | Een lijst met voor waarden waaraan moet worden voldaan om het technische profiel voor validatie te kunnen uitvoeren. |
+
+Het element **voor waarde** bevat de volgende kenmerken:
+
+| Kenmerk | Vereist | Beschrijving |
+| --------- | -------- | ----------- |
+| `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. Mogelijke waarden: `ClaimsExist` of `ClaimEquals` . `ClaimsExist` Hiermee geeft u op dat de acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker. `ClaimEquals` Hiermee geeft u op dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
+| `ExecuteActionsIf` | Ja | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |
+
+Het element **voor waarde** bevat de volgende elementen:
+
+| Element | Instanties | Beschrijving |
+| ------- | ----------- | ----------- |
+| Waarde | 1: n | De gegevens die worden gebruikt door de controle. Als het type van deze controle is `ClaimsExist` , geeft dit veld een ClaimTypeReferenceId op die moet worden opgevraagd. Als het type controle is `ClaimEquals` , specificeert dit veld een ClaimTypeReferenceId om op te vragen. Geef de waarde op die moet worden ingecheckt in een ander element value.|
+| Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een Orchestration-stap. De waarde van de **actie** wordt ingesteld op `SkipThisValidationTechnicalProfile` , waarmee wordt aangegeven dat het bijbehorende technische profiel voor validatie niet moet worden uitgevoerd. |
+
+In het volgende voor beeld wordt het e-mail adres verzonden en geverifieerd met behulp van het [technische profiel van Azure AD SSPR](aad-sspr-technical-profile.md).
+
+```xml
+<DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
+  <InputClaims></InputClaims>
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="email" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="verificationCode" ControlClaimType="VerificationCode" Required="true" />
+  </DisplayClaims>
+  <OutputClaims></OutputClaims>
+  <Actions>
+    <Action Id="SendCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-SendCode" />
+      </ValidationClaimsExchange>
+    </Action>
+    <Action Id="VerifyCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-VerifyCode" />
+      </ValidationClaimsExchange>
+    </Action>
+  </Actions>
+</DisplayControl>
+```
+
+In het volgende voor beeld wordt een code verzonden via e-mail of SMS op basis van de selectie van de **mfaType** claim met de voor waarden van de gebruiker.
 
 ```xml
 <Action Id="SendCode">
@@ -141,3 +224,10 @@ Bijvoorbeeld:
     <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
     <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
 ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie voor voor beelden van het gebruik van weergave besturings element: 
+
+- [Aangepaste e-mail verificatie met Mailjet](custom-email-mailjet.md)
+- [Aangepaste e-mail verificatie met SendGrid](custom-email-sendgrid.md)

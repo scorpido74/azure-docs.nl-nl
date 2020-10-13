@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569877"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzing van gegevens stromen
@@ -38,7 +38,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 Het bestand dat u in deze zelf studie transformeert, is MoviesDB.csv, dat u [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)kunt vinden. Als u het bestand wilt ophalen uit GitHub, kopieert u de inhoud naar een tekst editor van uw keuze om lokaal op te slaan als een CSV-bestand. Als u het bestand naar uw opslag account wilt uploaden, raadpleegt u [blobs uploaden met Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). De voor beelden verwijzen naar een container met de naam ' Sample-Data '.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 In deze stap maakt u een data factory en opent u de Data Factory UX om een pijp lijn te maken in de data factory.
 
@@ -95,10 +95,10 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 1. Geef uw bron **MoviesDB**een naam. Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
 
     ![Scherm afbeelding die laat zien waar u nieuw selecteert nadat u de naam van uw bron hebt gewijzigd.](media/tutorial-data-flow/dataflow3.png)
-1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
+1. Kies **Azure data Lake Storage Gen2**. Klik op Doorgaan.
 
     ![Scherm opname van de Azure Data Lake Storage Gen2 tegel.](media/tutorial-data-flow/dataset1.png)
-1. Kies **DelimitedText**. Klik op door gaan.
+1. Kies **DelimitedText**. Klik op Doorgaan.
 
     ![Scherm afbeelding waarin de tegel DelimitedText wordt weer gegeven.](media/tutorial-data-flow/dataset2.png)
 1. Geef uw gegevensset een naam **MoviesDB**. Kies in de vervolg keuzelijst gekoppelde service de optie **Nieuw**.
@@ -163,10 +163,10 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 1. Geef **uw Sink een naam.** Klik op **Nieuw** om uw Sink-gegevensset te maken.
 
     ![Scherm afbeelding die laat zien waar u uw Sink kunt benoemen en een nieuwe Sink-gegevensset maakt.](media/tutorial-data-flow/sink2.png)
-1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
+1. Kies **Azure data Lake Storage Gen2**. Klik op Doorgaan.
 
     ![Scherm opname van de Azure Data Lake Storage Gen2 tegel die u kunt kiezen.](media/tutorial-data-flow/dataset1.png)
-1. Kies **DelimitedText**. Klik op door gaan.
+1. Kies **DelimitedText**. Klik op Doorgaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset2.png)
 1. Geef uw Sink-gegevensset een naam **MoviesSink**. Voor gekoppelde service kiest u de gekoppelde ADLS Gen2-service die u in stap 6 hebt gemaakt. Voer een uitvoermap in om uw gegevens naar te schrijven. In deze zelf studie schrijven we naar map ' uitvoer ' in container ' voor beeld-gegevens '. De map hoeft niet vooraf te bestaan en kan dynamisch worden gemaakt. Stel de **eerste rij als koptekst** in op True en selecteer **geen** voor het **import schema**. Klik op Voltooien.

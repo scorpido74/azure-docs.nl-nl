@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681920"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447875"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Meer informatie over het gebruik van Azure-reserveringen voor uw afzonderlijke abonnement met tarieven op basis van betalen-naar-gebruik
 
@@ -74,7 +74,7 @@ Stel dat u een SQL Database Gen 4 in de regio VS-Oost gebruikt en dat uw reserve
 
 Filter op meternaam **Gebruik gereserveerde instanties** en kies de vereiste **Metercategorie** - Azure SQL Database of Azure Cosmos DB. Er verschijnt uitvoer die er ongeveer als volgt uitziet:
 
-![CSV-bestand voor gereserveerde SQL Database-capaciteit](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![Schermopname van een Metercategorie-vermelding.](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 De regel **Gebruik gereserveerde instanties** bevat het totale aantal core-uren waarop de reservering betrekking heeft. Het tarief voor deze regel is $ 0 als de reservering de kosten dekt.
 
@@ -82,7 +82,7 @@ De regel **Gebruik gereserveerde instanties** bevat het totale aantal core-uren 
 
 Filter op **Extra gegevens** en typ uw **Reserverings-id**. De volgende schermopname toont de velden die zijn gerelateerd aan de in SQL Database gereserveerde capaciteitsreservering.
 
-![CSV-bestand voor gereserveerde SQL Database-capaciteit](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![Schermopname met details van een CSV-bestand voor gereserveerde capaciteit.](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. **ReservationId** in het veld **Aanvullende informatie** is de in SQL Database gereserveerde capaciteitsreservering die wordt toegepast op de SQL Database-resource.
 2. **ConsumptionMeter** is de meter-id voor de SQL Database-resource.

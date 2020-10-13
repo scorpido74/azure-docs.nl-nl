@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Zelf studie: integratie Azure Active Directory met Amazon Web Services (AWS) (verouderde zelf studie)
@@ -116,7 +116,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
 4. In het gedeelte **basis configuratie van SAML** hoeft de gebruiker geen stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure en op **Opslaan**klikt.
 
-5. Amazon Web Services (AWS) verwacht de SAML-asserties in een specifieke notatie. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken en claims** op de integratiepagina van de toepassing-beheren. Klik op de pagina **eenmalige aanmelding met SAML instellen** op de knop **bewerken** om **gebruikers kenmerken** te openen & dialoog venster claims.
+5. Amazon Web Services (AWS) verwacht de SAML-asserties in een specifieke notatie. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken en claims** op de integratiepagina van de toepassing-beheren. Klik op de pagina **eén Sign-On met SAML instellen** op de knop **bewerken** om **gebruikers kenmerken** te openen & dialoog venster claims.
 
     ![Scherm afbeelding toont gebruikers kenmerken met het bewerkings besturings element.](common/edit-attribute.png)
 
@@ -146,7 +146,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     g. Klik op **Opslaan**.
 
-7. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op **downloaden** om de **federatieve meta gegevens-XML** te downloaden en op uw computer op te slaan.
+7. Klik op de pagina **eén Sign-On met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op **downloaden** om de **federatieve meta gegevens-XML** te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 

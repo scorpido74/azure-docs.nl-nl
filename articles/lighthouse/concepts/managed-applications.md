@@ -3,12 +3,12 @@ title: Azure Lighthouse en door Azure beheerde toepassingen
 description: Krijg inzicht in de manier waarop Azure Lighthouse en door Azure beheerde toepassingen verschillende scenario's kunnen ondersteunen en hoe ze samen kunnen worden gebruikt.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078361ba3cff80a5fff03e3d9ca767afcc3ca029
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483844"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970755"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse en door Azure beheerde toepassingen
 
@@ -35,7 +35,7 @@ In een beheerde toepassing worden de resources die door de toepassing worden geb
 
 Beheerde toepassingen ondersteunen aangepaste [Azure Portal ervaringen](../../azure-resource-manager/managed-applications/concepts-view-definition.md) en [integratie met aangepaste providers](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md). Deze opties kunnen worden gebruikt om een meer aangepaste en geïntegreerde ervaring te bieden, waardoor klanten eenvoudiger een aantal beheer taken kunnen uitvoeren.
 
-Beheerde toepassingen kunnen worden [gepubliceerd naar Azure Marketplace](../../azure-resource-manager/managed-applications/publish-marketplace-app.md), hetzij als een persoonlijke aanbieding voor het gebruik van een specifieke klant, hetzij als een openbaar aanbod dat meerdere klanten kunnen kopen. Ze kunnen ook worden afgeleverd aan gebruikers binnen uw organisatie door [het publiceren van beheerde toepassingen naar uw service catalogus](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). U kunt zowel Service catalogus-als Marketplace-instanties implementeren met ARM-sjablonen, die een unieke id van een commerciële Marketplace-partner kunnen bevatten om de [toewijzing van klant gebruik](../../marketplace/azure-partner-customer-usage-attribution.md)bij te houden.
+Beheerde toepassingen kunnen worden [gepubliceerd naar Azure Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md), hetzij als een persoonlijke aanbieding voor het gebruik van een specifieke klant, hetzij als een openbaar aanbod dat meerdere klanten kunnen kopen. Ze kunnen ook worden afgeleverd aan gebruikers binnen uw organisatie door [het publiceren van beheerde toepassingen naar uw service catalogus](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). U kunt zowel Service catalogus-als Marketplace-instanties implementeren met ARM-sjablonen, die een unieke id van een commerciële Marketplace-partner kunnen bevatten om de [toewijzing van klant gebruik](../../marketplace/azure-partner-customer-usage-attribution.md)bij te houden.
 
 Door Azure beheerde toepassingen worden doorgaans gebruikt voor een specifieke klant behoefte die kan worden bereikt via een kant-en-klare oplossing die volledig wordt beheerd door de service provider.
 
