@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707537"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Maak en beheer Lees replica's vanuit Azure CLI, REST API
@@ -65,7 +65,7 @@ De opdracht [AZ post gres Server replica Create](/cli/azure/postgres/server/repl
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| name | mydemoserver-replica | De naam van de nieuwe replica server die wordt gemaakt. |
+| naam | mydemoserver-replica | De naam van de nieuwe replica server die wordt gemaakt. |
 | source-server | mydemoserver | De naam of bron-ID van de bestaande primaire server waaruit moet worden gerepliceerd. Gebruik de resource-ID als u wilt dat de replica en de resource groepen van de hoofd groep verschillend zijn. |
 
 In het CLI-voor beeld hieronder wordt de replica gemaakt in dezelfde regio als de Master.
