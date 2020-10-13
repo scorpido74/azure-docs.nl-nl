@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683297"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447701"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Taken van accountbeheerders in de Azure-portal
 
@@ -35,14 +35,14 @@ U moet de accountbeheerder zijn om deze taken te kunnen uitvoeren.
 
 1. Selecteer het abonnement waar u de creditcard aan wilt toevoegen in de lijst **Mijn abonnementen**.
 
-   ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![Schermopname van de pagina Kostenbeheer en facturering waar u een abonnement kunt selecteren.](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > Als u sommige van uw abonnementen hier niet ziet, kan het zijn dat u de map voor het abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
 
 1. Selecteer **Betalingswijzen**.
 
-    ![Schermopname waarin Betalingswijzen is geselecteerd.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![Schermopname van de pagina Betalingswijzen waar u een betalingswijze kunt toevoegen.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 Hier kunt u een nieuwe creditcard toevoegen, de actieve betalingswijze wijzigen, creditcardgegevens bewerken en creditcards verwijderen.
 
@@ -100,7 +100,7 @@ Als u in aanmerking komt voor betalingen via factuur (cheque/overschrijving), ku
 
 1. Selecteer **Betalen via factuur** in de opdrachtbalk.
 
-    ![Schermopname waarin Betalingswijzen is geselecteerd.](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![Schermopname van de pagina Betalingswijzen met Betalen via factuur geselecteerd.](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. Voer het adres in voor de factuurbetalingswijze.
 1. Klik op **Volgende**.
@@ -124,7 +124,7 @@ De bestedingslimiet is niet beschikbaar voor abonnementen met toezeggingsplannen
 
 1. Selecteer uw Visual Studio Enterprise-abonnement in de lijst **Mijn abonnementen**.
 
-   ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![Schermopname van het gebied Mijn abonnementen waar u uw Visual Studio Enterprise-abonnement kunt kiezen.](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Als u sommige van uw Visual Studio-abonnementen hier niet ziet, kan het zijn dat u de map voor een abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
@@ -152,7 +152,7 @@ Als u een abonnement voor Azure in Open Licensing hebt, kunt u in de Azure-porta
 
 1. Selecteer uw Azure in Open-abonnement in de lijst **Mijn abonnementen**.
 
-    ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![Schermopname van het gebied Mijn abonnementen waar u uw Azure in Open-abonnement kunt kiezen.](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Als u uw abonnement hier niet ziet, kan het zijn dat u de map voor het abonnement op een bepaald moment hebt gewijzigd. U moet weer de oorspronkelijke map voor het abonnement instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
@@ -183,4 +183,4 @@ Als u een abonnement voor Azure in Open Licensing hebt, kunt u in de Azure-porta
 We bieden geen ondersteuning voor virtuele of prepaidkaarten. Als u fouten krijgt bij het toevoegen of bijwerken van een geldige creditcard, probeer dan uw browser te openen in de privémodus.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [analyseren en voorkomen van onverwachte kosten met de Azure-portal](getting-started.md)
+- Meer informatie over [het analyseren van onverwachte kosten](../understand/analyze-unexpected-charges.md)

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea10ee5b6fb14558e6bb93b83da0d5c46cff330
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654647"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977643"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in virtuele Azure-machines
 Dit document bevat richt lijnen voor het implementeren van SAP Business One in azure Virtual Machines. De documentatie is geen vervanging voor de installatie documentatie van Business One voor SAP. De documentatie moet betrekking hebben op elementaire plannings-en implementatie richtlijnen voor de Azure-infra structuur voor het uitvoeren van één toepassing op.
@@ -95,7 +95,7 @@ De netwerk infrastructuur die u nodig hebt om te implementeren in azure, is afha
 De weer gegeven vereenvoudigde configuratie introduceert diverse beveiligings instanties waarmee route ring kan worden beheerd en beperkt. Deze begint met 
 
 - De router/firewall voor de on-premises kant van de klant.
-- De volgende instantie is de [Azure-netwerk beveiligings groep](../../../virtual-network/security-overview.md) die u kunt gebruiken om routerings-en beveiligings regels in te voeren voor Azure VNet dat u uw SAP Business One-configuratie uitvoert in.
+- De volgende instantie is de [Azure-netwerk beveiligings groep](../../../virtual-network/network-security-groups-overview.md) die u kunt gebruiken om routerings-en beveiligings regels in te voeren voor Azure VNet dat u uw SAP Business One-configuratie uitvoert in.
 - Als u wilt voor komen dat gebruikers van bedrijven één client ook de server kunnen zien waarop het bedrijf één server uitvoert, waarmee de data base wordt uitgevoerd, moet u de virtuele machine die als host fungeert voor het bedrijf met één client en het bedrijf één server in twee verschillende subnetten binnen het VNet, scheiden.
 - U gebruikt Azure NSG opnieuw toegewezen aan de twee verschillende subnetten om de toegang tot het bedrijf één server te beperken.
 
@@ -111,7 +111,7 @@ SQL Server en SAP HANA zijn beschikbaar voor het database type. Onafhankelijk va
 
 Hoewel er al een nadruk is gelegd op de specifieke en algemene database documenten, moet u vertrouwd zijn met:
 
-- [De beschik baarheid van virtuele Windows-machines in azure beheren](../../windows/manage-availability.md) en [de beschik baarheid van virtuele Linux-machines in azure beheren](../../linux/manage-availability.md)
+- [De beschik baarheid van virtuele Windows-machines in azure beheren](../../manage-availability.md) en [de beschik baarheid van virtuele Linux-machines in azure beheren](../../manage-availability.md)
 - [SLA voor virtuele machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Deze documenten moeten u helpen bij het bepalen van de selectie van opslag typen en de configuratie met een hoge Beschik baarheid.

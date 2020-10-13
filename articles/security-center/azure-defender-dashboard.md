@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 35469c7a11d47e586187b55bde1e8ad8a0c94f5f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448408"
 ---
 # <a name="the-azure-defender-dashboard"></a>Het Azure Defender-dash board
@@ -27,13 +27,13 @@ Om toegang te krijgen tot het Azure Defender-dash board, selecteert u **Azure De
 
 ## <a name="whats-shown-on-the-dashboard"></a>Wat wordt er op het dash board weer gegeven?
 
-:::image type="content" source="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png" alt-text="Een voor beeld van het dash board van Azure Defender" lightbox="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png":::
+:::image type="content" source="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png" alt-text="Een voorbeeld van het Azure Defender-dashboard" lightbox="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png":::
 
 Het dash board bevat de volgende secties:
 
 1. **Azure Defender-dekking** : hier kunt u de typen resources zien die zich in uw abonnement bevinden en die in aanmerking komen voor beveiliging door Azure Defender. U kunt waar nodig ook een upgrade uitvoeren. Als u alle mogelijk in aanmerking komende resources wilt bijwerken, selecteert u **Alles bijwerken**.
 
-1. **Gebied voor beveiligings waarschuwingen** : wanneer Azure Defender een bedreiging in een wille keurig gebied van uw omgeving detecteert, wordt er een waarschuwing gegenereerd. Deze waarschuwingen beschrijven de details van de betrokken resources, voorgestelde herstels tappen en in sommige gevallen een logische app activeren als reactie. Als u ergens in deze grafiek selecteert, wordt de **pagina beveiligings waarschuwingen**geopend.
+1. **Gebied voor beveiligings waarschuwingen** : wanneer Azure Defender een bedreiging in een wille keurig gebied van uw omgeving detecteert, wordt er een waarschuwing gegenereerd. Deze waarschuwingen bevatten details over de relevante bronnen, voorgestelde stappen voor herstel en soms ook de optie om een logische app te activeren. Als u ergens in deze grafiek selecteert, wordt de **pagina beveiligings waarschuwingen**geopend.
 
 1. **Geavanceerde beveiliging** : Azure Defender bevat veel geavanceerde mogelijkheden voor beveiliging tegen bedreigingen voor virtuele machines, SQL-data bases, containers, webtoepassingen, uw netwerk en meer. In deze sectie over geavanceerde beveiliging ziet u de status van de resources in de geselecteerde abonnementen voor elk van deze beveiligingen. Selecteer een van de gewenste items om rechtstreeks naar het configuratie gebied voor dat beveiligings type te gaan.
 

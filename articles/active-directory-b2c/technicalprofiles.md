@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 295c6376d555585d58f7c0b57c3ac4ba682e9bd5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203143"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948269"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,8 +84,8 @@ De **TechnicalProfile** bevat de volgende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | De domein naam voor het technische profiel. Als uw technische profiel bijvoorbeeld de Facebook-ID-provider opgeeft, is de domein naam Facebook.com. |
-| DisplayName | 1:1 | De naam van het technische profiel dat voor gebruikers kan worden weer gegeven. |
-| Beschrijving | 0:1 | De beschrijving van het technische profiel dat kan worden weer gegeven voor gebruikers. |
+| DisplayName | 1:1 | De weergave naam van het technische profiel. |
+| Beschrijving | 0:1 | De beschrijving van het technische profiel. |
 | Protocol | 0:1 | Het protocol dat wordt gebruikt voor communicatie met de andere partij. |
 | Metagegevens | 0:1 | Een verzameling sleutel/waarde-paren die worden gebruikt door het protocol voor communicatie met het eind punt in de loop van een trans actie. |
 | InputTokenFormat | 0:1 | De indeling van het invoer token. Mogelijke waarden: `JSON` , `JWT` , `SAML11` of `SAML2` . De `JWT` waarde vertegenwoordigt een JSON Web token volgens IETF-specificatie. De `SAML11` waarde vertegenwoordigt een SAML 1,1-beveiligings token conform de Oasis-specificatie.  De `SAML2` waarde vertegenwoordigt een SAML 2,0-beveiligings token conform de Oasis-specificatie. |

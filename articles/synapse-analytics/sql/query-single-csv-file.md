@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288287"
 ---
 # <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
@@ -131,7 +131,7 @@ De volgende query laat zien hoe u een bestand zonder koprij, met een nieuwe UNIX
 
 Bestands voorbeeld:
 
-![Eerste tien rijen van het CSV-bestand zonder veldnamenrij en met de nieuwe regel UNIX-style.](./media/query-single-csv-file/population-unix.png)
+![De eerste tien rijen van het CSV-bestand zonder veldnamenrij en met Unix-Style nieuwe regel.](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -159,7 +159,7 @@ De volgende query laat zien hoe een bestand wordt gelezen met een veldnamenrij, 
 
 Bestands voorbeeld:
 
-![Eerste tien rijen van het CSV-bestand met veldnamenrij en met de nieuwe regel UNIX-style.](./media/query-single-csv-file/population-unix-hdr.png)
+![De eerste tien rijen van het CSV-bestand met veldnamenrij en met Unix-Style nieuwe regel.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -187,7 +187,7 @@ De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen me
 
 Bestands voorbeeld:
 
-![De eerste tien rijen van het CSV-bestand met de koprij en de nieuwe regel voor de UNIX-stijl en de geciteerde waarden.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![Eerste tien rijen van het CSV-bestand met veldnamenrij en met Unix-Style nieuwe regel en geciteerde waarden.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -220,7 +220,7 @@ De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen me
 
 Bestands voorbeeld:
 
-![De eerste tien rijen van het CSV-bestand met veldnamenrij en met een nieuwe regel en escape-teken voor de UNIX-stijl die wordt gebruikt voor veld scheiding.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![Eerste tien rijen van het CSV-bestand met veldnamenrij en met Unix-Style nieuwe regel en escape-teken gebruikt voor veld scheidings tekens.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -283,7 +283,7 @@ De volgende query laat zien hoe u een bestand met een veldnamenrij, met een nieu
 
 Bestands voorbeeld:
 
-![Eerste tien rijen van het CSV-bestand met veldnamenrij en met de UNIX-stijl nieuwe regel en het scheidings teken.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![De eerste tien rijen van het CSV-bestand met veldnamenrij en met Unix-Style nieuwe regel en scheidings teken.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *

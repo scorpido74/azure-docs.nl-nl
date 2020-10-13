@@ -14,10 +14,10 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322612"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens transformeren door U-SQL-scripts uit te voeren in Azure Data Lake Analytics 
@@ -48,9 +48,9 @@ De volgende tabel bevat beschrijvingen van de algemene eigenschappen die in de J
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| **type** |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Yes |
-| **accountName** |Azure Data Lake Analytics account naam. |Yes |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |No |
+| **type** |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Ja |
+| **accountName** |Azure Data Lake Analytics account naam. |Ja |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |Nee |
 | **Abonnements** |Azure-abonnements-id |Nee (als dit niet wordt opgegeven, wordt het abonnement van de data factory gebruikt). |
 | **resourceGroupName** |Naam van Azure-resourcegroep |Nee (als dit niet is opgegeven, wordt de resource groep van de data factory gebruikt). |
 
@@ -64,9 +64,9 @@ Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Geef de client-ID van de toepassing op. | Yes |
-| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Yes |
-| **tenant** | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Yes |
+| **servicePrincipalId** | Geef de client-ID van de toepassing op. | Ja |
+| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Ja |
+| **tenant** | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
 
 **Voor beeld: Service-Principal-verificatie**
 ```json
@@ -92,8 +92,8 @@ U kunt ook verificatie van de gebruikers referenties voor Data Lake Analytics ge
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Yes |
-| **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Yes |
+| **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Ja |
+| **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Ja |
 
 **Voor beeld: verificatie van de gebruikers referenties**
 ```json
@@ -208,16 +208,16 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 
 | Eigenschap            | Beschrijving                              | Vereist                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | De eigenschap type moet worden ingesteld op **DataLakeAnalyticsU-SQL**. | Yes                                      |
-| linkedServiceName   | Verwijzing naar de Azure Data Lake Analytics geregistreerd als een gekoppelde service in Data Factory | Yes                                      |
+| type                | De eigenschap type moet worden ingesteld op **DataLakeAnalyticsU-SQL**. | Ja                                      |
+| linkedServiceName   | Verwijzing naar de Azure Data Lake Analytics geregistreerd als een gekoppelde service in Data Factory | Ja                                      |
 | scriptPath          | Pad naar de map die het U-SQL-script bevat. De naam van het bestand is hoofdletter gevoelig. | Nee (als u script gebruikt)                   |
 | scriptLinkedService | Gekoppelde service die de opslag met het script koppelt aan de data factory | Nee (als u script gebruikt)                   |
 | script              | Geef inline-script op in plaats van scriptPath en scriptLinkedService op te geven. Bijvoorbeeld: `"script": "CREATE DATABASE test"`. | Nee (als u scriptPath en scriptLinkedService gebruikt) |
-| degreeOfParallelism | Het maximum aantal knoop punten dat tegelijkertijd wordt gebruikt om de taak uit te voeren. | No                                       |
-| priority            | Hiermee wordt bepaald welke taken uit de wachtrij moeten worden geselecteerd om eerst te worden uitgevoerd. Hoe lager het getal, des te hoger de prioriteit. | No                                       |
-| parameters          | Para meters voor het U-SQL-script          | No                                       |
-| runtimeVersion      | Te gebruiken runtime versie van de U-SQL-engine | No                                       |
-| compilationMode     | <p>De compilatie modus van U-SQL. Moet een van de volgende waarden zijn:</p> <ul><li>**Semantisch:** Voer alleen semantische controles en benodigde Sanity controles uit.</li><li>**Volledig:** Voer de volledige compilatie uit, inclusief syntaxis controle, optimalisatie, het genereren van code, enzovoort.</li><li>**SingleBox:** Voer de volledige compilatie uit met de instelling target type ingesteld op SingleBox.</li></ul><p>Als u geen waarde opgeeft voor deze eigenschap, bepaalt de server de optimale compilatie modus. </p> | No                                       |
+| degreeOfParallelism | Het maximum aantal knoop punten dat tegelijkertijd wordt gebruikt om de taak uit te voeren. | Nee                                       |
+| priority            | Hiermee wordt bepaald welke taken uit de wachtrij moeten worden geselecteerd om eerst te worden uitgevoerd. Hoe lager het getal, des te hoger de prioriteit. | Nee                                       |
+| parameters          | Para meters voor het U-SQL-script          | Nee                                       |
+| runtimeVersion      | Te gebruiken runtime versie van de U-SQL-engine | Nee                                       |
+| compilationMode     | <p>De compilatie modus van U-SQL. Moet een van de volgende waarden zijn:</p> <ul><li>**Semantisch:** Voer alleen semantische controles en benodigde Sanity controles uit.</li><li>**Volledig:** Voer de volledige compilatie uit, inclusief syntaxis controle, optimalisatie, het genereren van code, enzovoort.</li><li>**SingleBox:** Voer de volledige compilatie uit met de instelling target type ingesteld op SingleBox.</li></ul><p>Als u geen waarde opgeeft voor deze eigenschap, bepaalt de server de optimale compilatie modus. </p> | Nee                                       |
 
 Zie [SearchLogProcessing.txt script definitie](#sample-u-sql-script) voor de script definitie. 
 

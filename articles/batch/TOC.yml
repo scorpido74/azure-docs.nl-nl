@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: Gebeurtenis formaat pool wijzigen voltooid
           href: batch-pool-resize-complete-event.md
+        - name: Gebeurtenis voor pool maken voor automatisch schalen
+          href: batch-pool-autoscale-event.md
         - name: Gebeurtenis taak starten
           href: batch-task-start-event.md
         - name: Gebeurtenis taak voltooid
           href: batch-task-complete-event.md
         - name: Gebeurtenis taak mislukt
           href: batch-task-fail-event.md
+        - name: Foutgebeurtenis voor taakplanning
+          href: batch-task-schedule-fail-event.md
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

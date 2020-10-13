@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91303005"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Containerinstanties implementeren in een virtueel Azure-netwerk
@@ -34,7 +34,7 @@ Als u wilt implementeren in een nieuw virtueel netwerk en Azure de netwerk resou
 * Subnetnaam
 * Adres voorvoegsel van het subnet in CIDR-indeling
 
-Met de voor voegsels voor het virtuele netwerk en het subnet adres worden de adres ruimten voor het virtuele netwerk en het subnet opgegeven. Deze waarden worden weer gegeven in een CIDR-notatie (Classless Inter-Domain Routing), bijvoorbeeld `10.0.0.0/16` . Zie [een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen](../virtual-network/virtual-network-manage-subnet.md)voor meer informatie over het werken met subnetten.
+Met de voor voegsels voor het virtuele netwerk en het subnet adres worden de adres ruimten voor het virtuele netwerk en het subnet opgegeven. Deze waarden worden weer gegeven in de CIDR-notatie (Classable Inter-Domain Routing), bijvoorbeeld `10.0.0.0/16` . Zie [een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen](../virtual-network/virtual-network-manage-subnet.md)voor meer informatie over het werken met subnetten.
 
 Wanneer u uw eerste container groep met deze methode hebt geïmplementeerd, kunt u in hetzelfde subnet implementeren door het virtuele netwerk en de subnetnaam op te geven, of het netwerk profiel dat door Azure automatisch voor u wordt gemaakt. Omdat Azure het subnet delegeert naar Azure Container Instances, kunt u *alleen* container groepen implementeren naar het subnet.
 

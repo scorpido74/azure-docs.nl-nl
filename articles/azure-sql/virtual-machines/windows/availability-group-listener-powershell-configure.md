@@ -14,10 +14,10 @@ ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 3a715538afba181a067e4cecd8c1941a76ae36d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298833"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Een of meer listeners voor Always on-beschikbaarheids groep configureren-Resource Manager
@@ -195,34 +195,34 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Start SQL Server Management Studio en maak verbinding met de primaire replica.
 
-1. Navigeer naar **AlwaysOn**-beschikbaarheids groepen voor Beschik baarheid van de beschikbaarheids  >  **Availability Groups**  >  **groep**. 
+1. Ga naar **Hoge beschikbaarheid met AlwaysOn** > **Beschikbaarheidsgroepen** > **Listeners voor beschikbaarheidsgroep**. 
 
-1. U ziet nu de naam van de listener die u hebt gemaakt in Failoverclusterbeheer. Klik met de rechter muisknop op de naam van de listener en selecteer **Eigenschappen**.
+1. U ziet nu de naam van de listener die u hebt gemaakt in Failoverclusterbeheer. Klik met de rechtermuisknop op de naam en selecteer **Eigenschappen**.
 
 1. Geef in het vak **poort** het poort nummer voor de beschikbaarheids groep-listener op met behulp van de $EndpointPort die u eerder hebt gebruikt (1433 was de standaard instelling) en selecteer **OK**.
 
 ## <a name="test-the-connection-to-the-listener"></a>De verbinding met de listener testen
 
-De verbinding testen:
+Test als volgt de verbinding:
 
 1. Gebruik Remote Desktop Protocol (RDP) om verbinding te maken met een SQL Server die zich in hetzelfde virtuele netwerk bevindt, maar geen eigenaar is van de replica. Dit kan de andere SQL Server in het cluster zijn.
 
-1. Gebruik het **Sqlcmd** -hulp programma om de verbinding te testen. Met het volgende script wordt bijvoorbeeld een **Sqlcmd** -verbinding met de primaire replica tot stand gebracht via de listener met Windows-verificatie:
+1. Gebruik het **Sqlcmd** -hulp programma om de verbinding te testen. Met het volgende script wordt bijvoorbeeld met Windows-verificatie een **sqlcmd**-verbinding met de primaire replica tot stand gebracht via de listener:
    
     ```
     sqlcmd -S <listenerName> -E
     ```
    
-    Als de listener een andere poort dan de standaard poort (1433) gebruikt, geeft u de poort op in het connection string. De volgende Sqlcmd-opdracht maakt bijvoorbeeld verbinding met een listener op poort 1435: 
+    Als de listener een andere poort dan de standaardpoort (1433) gebruikt, geeft u de poort op in de verbindingsreeks. De volgende Sqlcmd-opdracht maakt bijvoorbeeld verbinding met een listener op poort 1435: 
    
     ```
     sqlcmd -S <listenerName>,1435 -E
     ```
 
-De SQLCMD-verbinding maakt automatisch verbinding met het exemplaar van SQL Server als host voor de primaire replica. 
+De SQLCMD-verbinding maakt automatisch verbinding met het exemplaar van SQL Server dat als host voor de primaire replica fungeert. 
 
 > [!NOTE]
-> Zorg ervoor dat de poort die u opgeeft, is geopend op de firewall van beide SQL-servers. Beide servers vereisen een regel voor binnenkomende verbindingen voor de TCP-poort die u gebruikt. Zie [firewall regel toevoegen of bewerken](https://technet.microsoft.com/library/cc753558.aspx)voor meer informatie. 
+> Zorg ervoor dat de poort die u opgeeft, geopend is op de firewall van beide SQL-servers. Voor beide servers is een regel voor binnenkomende verbindingen vereist voor de TCP-poort die u gebruikt. Zie [Add or Edit Firewall Rule](https://technet.microsoft.com/library/cc753558.aspx) (Firewallregel toevoegen of bewerken) voor meer informatie. 
 > 
 
 ## <a name="guidelines-and-limitations"></a>Richt lijnen en beperkingen
