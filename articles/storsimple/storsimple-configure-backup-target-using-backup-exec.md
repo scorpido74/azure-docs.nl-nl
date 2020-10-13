@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710376"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als back-updoel met Backup Exec
@@ -302,7 +302,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 > [!NOTE]
 > Het terugzetten van gegevens vanuit een back-up die is getiert in de Cloud, vindt plaats op Cloud snelheden.
 
-In de volgende afbeelding ziet u de toewijzing van een typisch volume aan een back-uptaak. In dit geval worden alle wekelijkse back-ups met de volledige zaterdag-schijf en de incrementele back-ups toegewezen aan incrementele schijven van maandag t/m vrijdag. Alle back-ups en herstel bewerkingen zijn afkomstig uit een StorSimple gelaagd volume.
+In de volgende afbeelding ziet u de toewijzing van een typisch volume aan een back-uptaak. In dit geval worden alle wekelijkse back-ups met de volledige zaterdag-schijf en de incrementele back-ups toegewezen aan Monday-Friday incrementele schijven. Alle back-ups en herstel bewerkingen zijn afkomstig uit een StorSimple gelaagd volume.
 
 ![Logisch diagram van configuratie van primaire back-updoel](./media/storsimple-configure-backup-target-using-backup-exec/primarybackuptargetdiagram.png)
 
@@ -312,7 +312,7 @@ Hier volgt een voor beeld van een GFS-rotatie schema voor vier weken, maandelijk
 
 | Type frequentie/back-up | Volledig | Incrementeel (dagen 1-5)  |   
 |---|---|---|
-| Wekelijks (weken 1-4) | Saturday | Maandag t/m vrijdag |
+| Wekelijks (weken 1-4) | Saturday | Monday-Friday |
 | Maandelijks  | Saturday  |   |
 | Jaarlijks | Saturday  |   |
 
@@ -478,7 +478,7 @@ Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel g
 | Backup Exec-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Bouw de back-upserver opnieuw op en voer data base terugzetten uit, zoals beschreven in [een hand matige back-up en herstel van de data base Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | U moet de Backup Exec-server opnieuw samen stellen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde data base van Backup Exec niet synchroon is met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05da5a21fb558b7d936b7569a69578eda06e11cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666616"
+ms.locfileid: "91875271"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties virtuele machine grootten
 
@@ -61,30 +61,9 @@ MBps = 10^6 bytes per seconde en GiB = 1024^3 bytes.
 
 <sup>1</sup> de maximale schijf doorvoer (IOPS of Mbps) die mogelijk is met een virtuele machine uit de FS-serie kan worden beperkt door het aantal, de grootte en de striping van de gekoppelde schijven.  Zie voor meer informatie [ontwerp voor hoge prestaties](premium-storage-performance.md).
 
-
-## <a name="nvv2-series"></a>NVv2-serie
-
-**Aanbeveling voor nieuwere grootte**: [NVv3-serie](nvv3-series.md)
-
-De virtuele machines uit de NVv2-serie worden aangedreven door [Nvidia Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu's en de NVIDIA Grid-technologie met Intel Broadwell cpu's. Deze virtuele machines zijn gericht op GPU-versnelde grafische toepassingen en virtuele Bureau bladen waar klanten hun gegevens willen visualiseren, de resultaten kunnen simuleren om te bekijken, te werken met CAD of inhoud te genereren en te streamen. Daarnaast kunnen deze virtuele machines single Precision-werk belastingen uitvoeren, zoals code ring en rendering. Virtuele machines van NVv2 ondersteunen Premium Storage en komen twee maal zoveel systeem geheugen (RAM) te staan in vergelijking met de bijbehorende voorafgaande NV-serie.  
-
-Elke GPU in NVv2-exemplaren wordt geleverd met een GRID-licentie. Deze licentie geeft u de flexibiliteit om een NV-exemplaar te gebruiken als een virtueel werk station voor één gebruiker, of 25 gelijktijdige gebruikers kunnen verbinding maken met de virtuele machine voor een virtuele-toepassings scenario.
-
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Max. aantal NIC's | Virtuele werk stations | Virtuele toepassingen |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
-| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
-| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
-## <a name="older-generations-of-virtual-machine-sizes"></a>Oudere generaties virtuele-machine grootten
-
-Deze sectie bevat informatie over oudere generaties virtuele machine grootten. Deze grootten worden nog steeds ondersteund, maar er is geen aanvullende capaciteit. Er zijn nieuwe nieuwere of alternatieve grootten die algemeen beschikbaar zijn. Zie [grootten voor virtuele Linux-machines in azure](./sizes.md) om te kiezen welke VM-grootten het meest geschikt is voor uw behoeften.  
-
-Zie [het formaat van een virtuele Linux-machine wijzigen](linux/change-vm-size.md)voor meer informatie over het wijzigen van het formaat van een virtuele Linux-machine.  
-
 <br>
+
+
 
 ### <a name="basic-a"></a>Basic A  
 
@@ -366,6 +345,106 @@ Updates voor het behouden van geheugen: niet ondersteund
 | Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
 
 1 GPU = halve M60-kaart.
+<br>
+
+
+## <a name="nvv2-series"></a>NVv2-serie
+
+**Aanbeveling voor nieuwere grootte**: [NVv3-serie](nvv3-series.md)
+
+De virtuele machines uit de NVv2-serie worden aangedreven door [Nvidia Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu's en de NVIDIA Grid-technologie met Intel Broadwell cpu's. Deze virtuele machines zijn gericht op GPU-versnelde grafische toepassingen en virtuele Bureau bladen waar klanten hun gegevens willen visualiseren, de resultaten kunnen simuleren om te bekijken, te werken met CAD of inhoud te genereren en te streamen. Daarnaast kunnen deze virtuele machines single Precision-werk belastingen uitvoeren, zoals code ring en rendering. Virtuele machines van NVv2 ondersteunen Premium Storage en komen twee maal zoveel systeem geheugen (RAM) te staan in vergelijking met de bijbehorende voorafgaande NV-serie.  
+
+Elke GPU in NVv2-exemplaren wordt geleverd met een GRID-licentie. Deze licentie geeft u de flexibiliteit om een NV-exemplaar te gebruiken als een virtueel werk station voor één gebruiker, of 25 gelijktijdige gebruikers kunnen verbinding maken met de virtuele machine voor een virtuele-toepassings scenario.
+
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Max. aantal NIC's | Virtuele werk stations | Virtuele toepassingen |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6s_v2  | 6  | 112 | 320  | 1 | 8  | 12 | 4 | 1 | 25  |
+| Standard_NV12s_v2 | 12 | 224 | 640  | 2 | 16 | 24 | 8 | 2 | 50  |
+| Standard_NV24s_v2 | 24 | 448 | 1280 | 4 | 32 | 32 | 8 | 4 | 100 |
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+<br>
+
+## <a name="nc-series"></a>NC-serie
+**Nieuwere grootte aanbeveling**: [NC T4 v3-serie](nct4-v3-series.md)
+
+Virtuele machines in de NC-serie worden aangedreven door de [Nvidia Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) -kaart en de Intel Xeon E5-2690 v3-processor (Haswell). Gebruikers kunnen sneller gegevens belichten door gebruik te maken van CUDA voor energie onderzoek toepassingen, crash simulaties, Ray traceed rendering, dieper leren en meer. De NC24r-configuratie biedt een netwerk interface met lage latentie en hoge door Voer die is geoptimaliseerd voor nauw gekoppelde werk belastingen op parallelle computers.
+
+[Premium Storage](premium-storage-performance.md): niet ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): niet ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
+[Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
+
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Max. aantal NIC's |
+|---|---|---|---|---|---|---|---|
+| Standard_NC6    | 6  | 56  | 340  | 1 | 12 | 24 | 1 |
+| Standard_NC12   | 12 | 112 | 680  | 2 | 24 | 48 | 2 |
+| Standard_NC24   | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+| Standard_NC24r* | 24 | 224 | 1440 | 4 | 48 | 64 | 4 |
+
+1 GPU = halve K80-kaart.
+
+*RDMA-compatibel
+
+
+<br>
+
+
+## <a name="ncv2-series"></a>NCv2-serie
+**Nieuwere grootte aanbeveling**: [NC T4 v3-Series](nct4-v3-series.md) en [NC V100 v3-serie](ncv3-series.md)
+
+Virtuele machines uit de NCv2-serie worden aangedreven door NVIDIA Tesla P100 Gpu's. Deze Gpu's kunnen meer dan twee maal de reken prestaties van de NC-serie bieden. Klanten kunnen profiteren van deze bijgewerkte Gpu's voor traditionele HPC-workloads, zoals het maken van tank modellen, DNA-sequentiëren, eiwithoudende analyse, Monte Carlo-simulaties en andere. Naast de Gpu's worden de virtuele machines uit de NCv2-serie ook aangedreven door de Intel Xeon E5-2690 v4-Cpu's (Broadwell).
+
+De NC24rs v2-configuratie biedt een netwerk interface met lage latentie en hoge door Voer die is geoptimaliseerd voor nauw gekoppelde werk belastingen voor parallelle berekeningen.
+
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
+[Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1 en 2<br>
+
+> Voor deze VM-serie wordt het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../azure-portal/supportability/resource-manager-core-quotas-request.md) aan voor deze reeks in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
+>
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's |
+|---|---|---|---|---|---|---|---|---|
+| Standard_NC6s_v2    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
+| Standard_NC12s_v2   | 12 | 224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
+| Standard_NC24s_v2   | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+| Standard_NC24rs_v2 * | 24 | 448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
+
+1 GPU = One P100-kaart.
+
+*RDMA-compatibel
+
+<br>
+
+## <a name="nd-series"></a>ND-serie
+**Nieuwere grootte aanbeveling**: [NDv2-Series](ndv2-series.md) en [NC V100 v3-serie](ncv3-series.md)
+
+De virtuele machines uit de ND-serie vormen een nieuwe toevoeging aan de GPU-familie die is ontworpen voor AI en diep gaande werk belastingen. Ze bieden uitstekende prestaties voor training en demijnen. ND-instanties worden aangedreven door [Nvidia Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) -Gpu's en Intel Xeon E5-2690 v4-Cpu's (Broadwell). Deze instanties bieden uitstekende prestaties voor drijvende-komma bewerkingen met één precisie, voor AI-workloads die gebruikmaken van Microsoft Cognitive Toolkit, tensor flow, Caffe en andere frameworks. De ND-serie biedt ook een veel grotere GPU-geheugen grootte (24 GB), waardoor u veel grotere Neural net-modellen kunt aanpassen. Net als de NC-serie biedt de ND-serie een configuratie met een secundaire netwerk met lage latentie en een hoge door Voer via RDMA en InfiniBand-connectiviteit, zodat u grootschalige trainings taken kunt uitvoeren die veel Gpu's bespannen.
+
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
+[Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1 en 2<br>
+
+> Voor deze VM-serie wordt het vCPU (kern quotum) per regio in uw abonnement in eerste instantie ingesteld op 0. [Vraag een toename van een vCPU-quotum](../azure-portal/supportability/resource-manager-core-quotas-request.md) aan voor deze reeks in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
+>
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's |
+|---|---|---|---|---|---|---|---|---|
+| Standard_ND6s    | 6  | 112 | 736  | 1 | 24 | 12 | 20000/200 | 4 |
+| Standard_ND12s   | 12 | 224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 |
+| Standard_ND24s   | 24 | 448 | 2948 | 4 | 24 | 32 | 80000/800 | 8 |
+| Standard_ND24rs * | 24 | 448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
+
+1 GPU = One P40-kaart.
+
+*RDMA-compatibel
+
 <br>
 
 ## <a name="other-sizes"></a>Andere grootten

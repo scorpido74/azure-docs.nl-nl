@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
 ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440728"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Beveilig uw beheer poorten met Just-in-time-toegang
@@ -33,11 +33,11 @@ Op deze pagina leert u hoe u JIT kunt toevoegen in uw beveiligings programma. U 
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
 |Ondersteunde Vm's:|![Ja ](./media/icons/yes-icon.png) virtuele machines die via Azure Resource Manager worden geïmplementeerd.<br>![Er zijn geen ](./media/icons/no-icon.png) vm's geïmplementeerd met klassieke implementatie modellen. Meer [informatie over deze implementatie modellen](../azure-resource-manager/management/deployment-models.md).<br>![Geen ](./media/icons/no-icon.png) vm's die worden beveiligd door Azure-firewalls die worden beheerd door [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)|
 |Vereiste rollen en machtigingen:|Met de rollen **lezer** en **SECURITYREADER** kunnen de JIT-status en-para meters worden weer gegeven.<br>Als u aangepaste rollen wilt maken die met JIT kunnen werken, raadpleegt u de [machtigingen die nodig zijn voor het configureren en gebruiken van JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Gebruik het [script set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) op de pagina's van de Security Center github-Community om een rol met een beperkte bevoegdheid te maken voor gebruikers die JIT-toegang moeten aanvragen voor een virtuele machine en geen andere JIT-bewerkingen kunnen uitvoeren.|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) Nationaal/onafhankelijk (Overheid van de VS, China, andere overheden)|
 |||
 
 

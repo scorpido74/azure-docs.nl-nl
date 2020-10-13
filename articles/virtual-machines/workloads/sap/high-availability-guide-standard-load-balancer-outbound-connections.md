@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3ecae17ae14effe48f5a7a0ee3f73d3054a220
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836119"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961473"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -67,12 +67,12 @@ Lees eerst de volgende documenten:
   * [Overzicht van Azure firewall](../../../firewall/overview.md)-overzicht van Azure firewall
   * [Zelf studie: Azure firewall implementeren en configureren](../../../firewall/tutorial-firewall-deploy-portal.md) -instructies voor het configureren van Azure Firewall via Azure Portal
 * [Virtuele netwerken-door de gebruiker gedefinieerde regels](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) : Azure-routerings concepten en-regels  
-* [Service tags voor beveiligings groepen](../../../virtual-network/security-overview.md#service-tags) : Vereenvoudig uw netwerk beveiligings groepen en firewall configuratie met Service Tags
+* [Service tags voor beveiligings groepen](../../../virtual-network/network-security-groups-overview.md#service-tags) : Vereenvoudig uw netwerk beveiligings groepen en firewall configuratie met Service Tags
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Extra externe Azure-Standard Load Balancer voor uitgaande verbindingen met Internet
 
 Een optie voor het behalen van uitgaande connectiviteit met open bare eind punten, zonder inkomende connectiviteit met de virtuele machine vanaf een openbaar eind punt toe te staan, is het maken van een tweede load balancer met een openbaar IP-adres, het toevoegen van de virtuele machines aan de back-end-pool van de tweede load balancer en alleen [Uitgaande regels](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)definiëren.  
-Gebruik [netwerk beveiligings groepen](../../../virtual-network/security-overview.md) om de open bare eind punten te beheren die toegankelijk zijn voor uitgaande oproepen van de virtuele machine.  
+Gebruik [netwerk beveiligings groepen](../../../virtual-network/network-security-groups-overview.md) om de open bare eind punten te beheren die toegankelijk zijn voor uitgaande oproepen van de virtuele machine.  
 Zie scenario 2 in [uitgaande verbindingen](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)voor documenten voor meer informatie.  
 De configuratie zou er als volgt uitzien:  
 
@@ -81,11 +81,11 @@ De configuratie zou er als volgt uitzien:
 ### <a name="important-considerations"></a>Belangrijke overwegingen
 
 - U kunt één extra open bare Load Balancer voor meerdere Vm's in hetzelfde subnet gebruiken om uitgaande connectiviteit naar het open bare eind punt te verzorgen en de kosten te optimaliseren  
-- Gebruik [netwerk beveiligings groepen](../../../virtual-network/security-overview.md) om te bepalen welke open bare eind punten toegankelijk zijn vanaf de vm's. U kunt de netwerk beveiligings groep toewijzen aan het subnet of aan elke virtuele machine. Gebruik waar mogelijk [service Tags](../../../virtual-network/security-overview.md#service-tags) om de complexiteit van de beveiligings regels te reduceren.  
+- Gebruik [netwerk beveiligings groepen](../../../virtual-network/network-security-groups-overview.md) om te bepalen welke open bare eind punten toegankelijk zijn vanaf de vm's. U kunt de netwerk beveiligings groep toewijzen aan het subnet of aan elke virtuele machine. Gebruik waar mogelijk [service Tags](../../../virtual-network/network-security-groups-overview.md#service-tags) om de complexiteit van de beveiligings regels te reduceren.  
 - Met de Azure Standard Load Balancer met een openbaar IP-adres en de uitgaande regels is directe toegang tot het open bare eind punt toegestaan. Als u beveiligings vereisten hebt om al het uitgaande verkeer door te geven via gecentraliseerde bedrijfs oplossing voor controle en logboek registratie, kunt u mogelijk niet aan de vereisten voldoen met dit scenario.  
 
 >[!TIP]
->Gebruik waar mogelijk [service Tags](../../../virtual-network/security-overview.md#service-tags) om de complexiteit van de netwerk beveiligings groep te verminderen. 
+>Gebruik waar mogelijk [service Tags](../../../virtual-network/network-security-groups-overview.md#service-tags) om de complexiteit van de netwerk beveiligings groep te verminderen. 
 
 ### <a name="deployment-steps"></a>Implementatiestappen
 
@@ -117,7 +117,7 @@ De configuratie zou er als volgt uitzien:
 
    ![Uitgaande verbinding met tweede Load Balancer met een openbaar IP-adres](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Zie [beveiligings groepen ](../../../virtual-network/security-overview.md)voor meer informatie over Azure-netwerk beveiligings groepen. 
+   Zie [beveiligings groepen ](../../../virtual-network/network-security-groups-overview.md)voor meer informatie over Azure-netwerk beveiligings groepen. 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Azure Firewall voor uitgaande verbindingen met Internet
 
@@ -137,7 +137,7 @@ De architectuur ziet er als volgt uit:
 - Als de oplossing bedrijfs firewall niet Azure Firewall is en u beveiligings vereisten hebt om al het uitgaande verkeer uit te geven als gecentraliseerde bedrijfs oplossing, is deze oplossing mogelijk niet praktisch.  
 
 >[!TIP]
->Gebruik waar mogelijk [service Tags](../../../virtual-network/security-overview.md#service-tags) om de complexiteit van de Azure firewall regels te verminderen.  
+>Gebruik waar mogelijk [service Tags](../../../virtual-network/network-security-groups-overview.md#service-tags) om de complexiteit van de Azure firewall regels te verminderen.  
 
 ### <a name="deployment-steps"></a>Implementatiestappen
 

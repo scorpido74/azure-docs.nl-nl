@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 09/30/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739728"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970636"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -35,10 +35,12 @@ U kunt Beheer taken op gedelegeerde resources rechtstreeks uitvoeren in de porta
 
 De Azure PowerShell [Get-AzSubscription-cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription) toont `HomeTenantId` de `ManagedByTenantIds` kenmerken en voor elk abonnement, zodat u kunt bepalen of een geretourneerd abonnement behoort tot een beheerde Tenant of met uw Tenant beheren.
 
-Net als bij Azure CLI-opdrachten, zoals [AZ account list](/cli/azure/account#az-account-list) , worden de-en-kenmerken weer gegeven `homeTenantId` `managedByTenants` .
+Net als bij Azure CLI-opdrachten, zoals [AZ account list](/cli/azure/account#az-account-list) , worden de-en-kenmerken weer gegeven `homeTenantId` `managedByTenants` . Als u deze waarden niet ziet wanneer u Azure CLI gebruikt, probeert u de cache te wissen door uit te voeren, `az account clear` gevolgd door `az login --identity` .
 
-> [!TIP]
-> Als u deze waarden niet ziet wanneer u Azure CLI gebruikt, probeert u de cache te wissen door uit te voeren, `az account clear` gevolgd door `az login --identity` .
+In de Azure REST API zijn de opdrachten [abonnementen ophalen](/rest/api/resources/subscriptions/get) en [abonnementen lijst](/rest/api/resources/subscriptions/list) opnemen `ManagedByTenant` .
+
+> [!NOTE]
+> Naast de Tenant informatie met betrekking tot Azure Lighthouse kunnen tenants die door deze Api's worden weer gegeven ook partner tenants weer spie gelen voor Azure Databricks of door Azure beheerde toepassingen.
 
 We bieden ook Api's die specifiek zijn voor het uitvoeren van Azure Lighthouse-taken. Zie de sectie **Naslag informatie** voor meer informatie.
 

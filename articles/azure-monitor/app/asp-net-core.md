@@ -4,12 +4,12 @@ description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestati
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839007"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875118"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -134,7 +134,7 @@ Voer de toepassing uit en maak er aanvragen aan. Telemetrie moet nu stromen naar
 
 ### <a name="ilogger-logs"></a>ILogger-logboeken
 
-Logboeken `ILogger` die worden verzonden via Ernst `Warning` en hoger worden automatisch vastgelegd. Volg de [ILogger-documenten](ilogger.md#control-logging-level) om aan te passen welke logboek niveaus worden vastgelegd door Application Insights.
+In de standaard configuratie worden `ILogger` Logboeken met Ernst `Warning` en bovenstaande gegevens verzameld. Deze configuratie kan worden [aangepast](#how-do-i-customize-ilogger-logs-collection).
 
 ### <a name="dependencies"></a>Afhankelijkheden
 

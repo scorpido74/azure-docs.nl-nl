@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 2b98b11d85bde8dd49b6bbde5d048493493b73f5
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620236"
 ---
-# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Beheerde API-verwijzing voor Azure SQL Managed instance
+# <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Beheerde API-verwijzing voor Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 U kunt beheerde exemplaren van een Azure SQL Managed instance maken en configureren met behulp van de Azure Portal, Power shell, Azure CLI, REST API en Transact-SQL. In dit artikel vindt u een overzicht van de functies en de API die u kunt gebruiken om beheerde exemplaren te maken en te configureren.

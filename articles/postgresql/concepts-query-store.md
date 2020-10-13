@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710529"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Prestaties bewaken met de query Store
@@ -116,7 +116,7 @@ Query's worden genormaliseerd door de structuur te bekijken na het verwijderen v
 ### <a name="query_storeqs_view"></a>query_store query_store.qs_view
 In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID en query-ID. 
 
-|**Naam**   |**Type** | **Verwijzingen**  | **Beschrijving**|
+|**Naam**   |**Type** | **Referenties**  | **Beschrijving**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID uit de runtime_stats_entries tabel|
 |user_id    |nogmaals    |pg_authid. OID  |OID van de gebruiker die de instructie heeft uitgevoerd|
@@ -157,7 +157,7 @@ Deze weer gave retourneert query tekst gegevens in query Store. Er is één rij 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 
-|**Naam**|  **Type**|   **Verwijzingen**| **Beschrijving**|
+|**Naam**|  **Type**|   **Referenties**| **Beschrijving**|
 |---|---|---|---|
 |user_id    |nogmaals    |pg_authid. OID  |OID van de gebruiker die de instructie heeft uitgevoerd|
 |db_id  |nogmaals    |pg_database. OID    |De OID van de Data Base waarin de instructie is uitgevoerd|
@@ -167,7 +167,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 |rpc's  |Geheel getal        ||Nummer van dezelfde gebeurtenis vastgelegd|
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Functies
 Query_store Query_store.qs_reset () retourneert void
 
 `qs_reset` Hiermee worden alle statistische gegevens verwijderd die tot nu toe zijn verzameld door de query Store. Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.

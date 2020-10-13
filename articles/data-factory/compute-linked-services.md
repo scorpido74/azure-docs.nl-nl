@@ -11,10 +11,10 @@ ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
 ms.openlocfilehash: 5f02a38059ebd27879a3c8d44eee7e473711d0e7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776507"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Reken omgevingen die worden ondersteund door Azure Data Factory
@@ -69,7 +69,7 @@ Houd rekening met de volgende **belang rijke** punten over gekoppelde HDInsight-
 > [!IMPORTANT]
 > Het vergt meestal **20 minuten** of meer om een Azure HDInsight-cluster op aanvraag in te richten.
 
-#### <a name="example"></a>Voorbeeld:
+#### <a name="example"></a>Voorbeeld
 
 De volgende JSON definieert een gekoppelde HDInsight-service op aanvraag van Linux. De Data Factory-service maakt automatisch een HDInsight-cluster op **basis van Linux** om de vereiste activiteit te verwerken. 
 
@@ -269,7 +269,7 @@ Dit type configuratie wordt ondersteund voor de volgende reken omgevingen:
 ## <a name="azure-hdinsight-linked-service"></a>Gekoppelde Azure HDInsight-service
 U kunt een gekoppelde Azure HDInsight-service maken om uw eigen HDInsight-cluster te registreren bij Data Factory.
 
-### <a name="example"></a>Voorbeeld:
+### <a name="example"></a>Voorbeeld
 
 ```json
 {
@@ -327,7 +327,7 @@ Zie de volgende artikelen als u geen ervaring hebt met Azure Batch-service:
 * De cmdlet [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) om een Azure batch-account (of) te maken [Azure Portal](../batch/batch-account-create-portal.md) het Azure batch-account te maken met behulp van Azure Portal. Zie het artikel over het [beheren van Azure batch-account met](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) behulp van Power shell voor gedetailleerde instructies voor het gebruik van de cmdlet.
 * De cmdlet [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) om een Azure batch groep te maken.
 
-### <a name="example"></a>Voorbeeld:
+### <a name="example"></a>Voorbeeld
 
 ```json
 {
@@ -370,7 +370,7 @@ Zie de volgende artikelen als u geen ervaring hebt met Azure Batch-service:
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Gekoppelde service Azure Machine Learning Studio (klassiek)
 U maakt een gekoppelde Azure Machine Learning Studio-Service (klassiek) om een Machine Learning Studio (klassiek) batch Score-eind punt te registreren voor een data factory.
 
-### <a name="example"></a>Voorbeeld:
+### <a name="example"></a>Voorbeeld
 
 ```json
 {
@@ -410,7 +410,7 @@ U maakt een Azure Machine Learning gekoppelde service om een Azure Machine Learn
 > [!NOTE]
 > Momenteel wordt alleen Service-Principal-verificatie ondersteund voor de Azure Machine Learning gekoppelde service.
 
-### <a name="example"></a>Voorbeeld:
+### <a name="example"></a>Voorbeeld
 
 ```json
 {
@@ -441,7 +441,7 @@ U maakt een Azure Machine Learning gekoppelde service om een Azure Machine Learn
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Type                   | De eigenschap type moet worden ingesteld op: **AzureMLService**. | Ja                                      |
 | subscriptionId         | Azure-abonnements-ID              | Ja                                      |
-| resourceGroupName      | name | Ja                                      |
+| resourceGroupName      | naam | Ja                                      |
 | mlWorkspaceName        | Naam van Azure Machine Learning werkruimte | Ja  |
 | servicePrincipalId     | Geef de client-ID van de toepassing op.     | Nee |
 | servicePrincipalKey    | Geef de sleutel van de toepassing op.           | Nee |
@@ -451,7 +451,7 @@ U maakt een Azure Machine Learning gekoppelde service om een Azure Machine Learn
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics gekoppelde service
 U maakt een **Azure data Lake Analytics** gekoppelde service om een Azure data Lake Analytics compute-service aan een Azure Data Factory te koppelen. De Data Lake Analytics U-SQL-activiteit in de pijp lijn verwijst naar deze gekoppelde service. 
 
-### <a name="example"></a>Voorbeeld:
+### <a name="example"></a>Voorbeeld
 
 ```json
 {
@@ -544,7 +544,7 @@ U kunt **Azure Databricks gekoppelde service** maken om de Databricks-werk ruimt
 
 | Eigenschap             | Beschrijving                              | Vereist                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | De naam van de gekoppelde service               | Ja   |
+| naam                 | De naam van de gekoppelde service               | Ja   |
 | type                 | De eigenschap type moet worden ingesteld op: **Azure Databricks**. | Ja                                      |
 | domein               | Geef de Azure-regio op op basis van de regio van de Databricks-werk ruimte. Voorbeeld: https://eastus.azuredatabricks.net | Ja                                 |
 | accessToken          | Er is een toegangs token vereist om Data Factory te verifiëren bij Azure Databricks. Het toegangs token moet worden gegenereerd op basis van de databricks-werk ruimte. Meer gedetailleerde stappen om het toegangs token te vinden, vindt u [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Ja                                       |

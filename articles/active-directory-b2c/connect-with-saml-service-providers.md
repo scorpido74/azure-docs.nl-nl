@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740374"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961320"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -437,6 +437,24 @@ De volgende opties voor SAML-Relying Party (RP) worden ondersteund via uw eigen 
 
 De volgende opties voor SAML-Relying Party (RP) worden momenteel niet ondersteund:
 * De ID-provider heeft zich aangemeld, waarbij de ID-provider een externe ID-provider is, bijvoorbeeld ADFS.
+
+## <a name="saml-token"></a>SAML-token
+
+Een SAML-token is een beveiligings token dat is uitgegeven door Azure AD B2C nadat het aanmelden is geslaagd. Het bevat informatie over de gebruiker, de service provider waarvoor het token is bedoeld, de hand tekening en de geldigheids duur. De volgende tabel geeft een lijst van de claims en eigenschappen die u kunt verwachten in een SAML-token dat is uitgegeven door Azure AD B2C.
+
+|Element  |Eigenschap  |Opmerkingen  |
+|---------|---------|---------|
+|`<Response>`| `ID` | Een automatisch gegenereerde unieke id van het antwoord. | 
+|`<Response>`| `InResponseTo` | De ID van de SAML-aanvraag waarnaar dit bericht wordt gestuurd. | 
+|`<Response>` | `IssueInstant` | Het tijdstip waarop het antwoord zich niet meer heeft voordoen. De tijd waarde wordt gecodeerd in UTC.Als u de instellingen voor de levens duur van uw tokens wilt wijzigen, stelt u de `TokenNotBeforeSkewInSeconds` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token voor de uitgever van het technische profiel in. | 
+|`<Response>` | `Destination`| Een URI-verwijzing die het adres aangeeft waarnaar deze reactie is verzonden. De waarde is gelijk aan de SAML-aanvraag `AssertionConsumerServiceURL` . | 
+|`<Response>` `<Issuer>` | |Identificeert de uitgever van het token. Dit is een wille keurige URI die is gedefinieerd door de `IssuerUri` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token probleem     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |De principal over welke het token informatie bedient, zoals de gebruikers object-ID. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt voor toegang tot een bron. Standaard wordt de subject claim gevuld met de object-ID van de gebruiker in de Directory.|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Een URI-verwijzing voor de classificatie van gegevens op basis van teken reeks-id's. Deze eigenschap wordt standaard wegge laten. U kunt de Relying Party [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) instellen om de indeling op te geven `NameID` , zoals `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Het tijdstip waarop het token geldig wordt. De tijd waarde wordt gecodeerd in UTC. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. Als u de instellingen voor de levens duur van uw tokens wilt wijzigen, stelt u de `TokenNotBeforeSkewInSeconds` [meta gegevens](saml-issuer-technical-profile.md#metadata) van het SAML-token probleem technisch profiel in. |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Het tijdstip waarop het token ongeldig wordt. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. De waarde is 15 minuten na de `NotBefore` en kan niet worden gewijzigd.|
+|`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Een URI-verwijzing waarmee een beoogde doel groep wordt geïdentificeerd. Hiermee wordt de beoogde ontvanger van het token geïdentificeerd. De waarde is gelijk aan de SAML-aanvraag `AssertionConsumerServiceURL` .|
+|`<Response>``<Assertion>` `<saml:AttributeStatement>` verzameling van`<Attribute>` | | Beweringen verzameling (claims), zoals geconfigureerd in de [Relying Party technische profiel](relyingparty.md#technicalprofile) uitvoer claims. U kunt de naam van de bewering configureren door de `PartnerClaimType` van de uitvoer claim in te stellen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

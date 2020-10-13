@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541336"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Wijzigingen in het Voorspellings eindpunt voor v3
@@ -108,7 +108,7 @@ Als u een query wilt uitvoeren op versie, moet u eerst [via API publiceren](http
 |`dynamicLists`|matrix|Alleen v3|Niet vereist.|Met [dynamische lijsten](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) kunt u een bestaande getrainde en gepubliceerde lijst entiteit uitbreiden, al in de Luis-app.|
 |`externalEntities`|matrix|Alleen v3|Niet vereist.|[Externe entiteiten](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) bieden uw Luis-app de mogelijkheid om entiteiten tijdens runtime te identificeren en te labelen, die kunnen worden gebruikt als functies voor bestaande entiteiten. |
 |`options.datetimeReference`|tekenreeks|Alleen v3|Geen standaard waarde|Wordt gebruikt om de [datetimeV2-offset](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)te bepalen. De indeling voor de datetimeReference is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
-|`options.preferExternalEntities`|boolean|Alleen v3|false|Hiermee wordt aangegeven of de externe entiteit van de gebruiker [(met dezelfde naam als bestaande entiteit)](schema-change-prediction-runtime.md#override-existing-model-predictions) wordt gebruikt of dat de bestaande entiteit in het model wordt gebruikt voor de voor spelling. |
+|`options.preferExternalEntities`|booleaans|Alleen v3|onjuist|Hiermee wordt aangegeven of de externe entiteit van de gebruiker [(met dezelfde naam als bestaande entiteit)](schema-change-prediction-runtime.md#override-existing-model-predictions) wordt gebruikt of dat de bestaande entiteit in het model wordt gebruikt voor de voor spelling. |
 |`query`|tekenreeks|Alleen v3|Vereist.|**In v2**bevindt de utterance die moet worden voor speld in de `q` para meter. <br><br>**In v3**wordt de functionaliteit door gegeven in de `query` para meter.|
 
 ## <a name="response-changes"></a>Reactie wijzigingen
