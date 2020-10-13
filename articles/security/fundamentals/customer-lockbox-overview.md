@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
 ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331655"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Klanten-lockbox voor Microsoft Azure
@@ -20,7 +20,7 @@ ms.locfileid: "91331655"
 > [!NOTE]
 > Als u deze functie wilt gebruiken, moet uw organisatie een [ondersteunings abonnement voor Azure](https://azure.microsoft.com/support/plans/) hebben met een mini maal **ontwikkel**niveau.
 
-Klanten-lockbox voor Microsoft Azure biedt klanten een interface om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen. Dit wordt gebruikt in gevallen waarin een micro soft-Engineer toegang heeft tot klant gegevens tijdens een ondersteunings aanvraag.
+Klanten-lockbox voor Microsoft Azure biedt klanten een interface om aanvragen voor toegang tot klantgegevens te controleren en goed te keuren of af te wijzen. Dit wordt gebruikt in gevallen waarin een Microsoft-engineer toegang heeft tot klant gegevens tijdens een ondersteuningsaanvraag.
 
 In dit artikel wordt beschreven hoe Klanten-lockbox aanvragen worden gestart, bijgehouden en opgeslagen voor latere beoordelingen en controles.
 
@@ -46,9 +46,9 @@ De volgende services zijn nu beschikbaar als preview-versie voor Klanten-lockbox
 - Azure Monitor
 - Azure Storage
 - Azure SQL Database
-- Azure-abonnements overdrachten
+- Transfers voor Azure-abonnementen
 - Azure Synapse Analytics
-- Virtuele machines (nu ook de toegang tot geheugen dumps en beheerde schijven best rijken)
+- Virtuele machines (bestrijken nu ook de toegang tot geheugendumps en beheerde schijven)
 
 Als u Klanten-lockbox wilt inschakelen voor deze preview-aanbiedingen voor uw organisatie, kunt u zich registreren voor [klanten-lockbox voor de open bare preview van Azure](https://aka.ms/customerlockbox/insiderprogram).
 
@@ -56,19 +56,19 @@ Als u Klanten-lockbox wilt inschakelen voor deze preview-aanbiedingen voor uw or
 
 De volgende services en scenario's zijn momenteel in algemene Beschik baarheid voor Klanten-lockbox.
 
-### <a name="remote-desktop-access-to-virtual-machines"></a>Externe toegang tot virtuele machines met extern bureau blad
+### <a name="remote-desktop-access-to-virtual-machines"></a>Externe bureaubladtoegang naar virtuele machines
 
-Klanten-lockbox is momenteel ingeschakeld voor toegangs aanvragen van extern bureau blad op virtuele machines. De volgende werk belastingen worden ondersteund:
-- Platform as a Service (PaaS)-Azure Cloud Services (webrol en werk rollen)
-- Infrastructure as a Service (IaaS)-Windows en Linux (alleen Azure Resource Manager)
-- Schaalset voor virtuele machines-Windows en Linux
+Klanten-lockbox is nu algemeen beschikbaar en is momenteel ingeschakeld voor toegang tot virtuele machines met extern bureaublad. De volgende workloads worden ondersteund:
+- Platform as a Service (PaaS) - Azure Cloud Services (webrol en werkrollen)
+- Infrastructure as a Service (IaaS) - Windows en Linux (alleen Azure Resource Manager)
+- Schaalset voor virtuele machines - Windows en Linux
 
 > [!NOTE]
-> Klassieke IaaS-instanties worden niet ondersteund door Klanten-lockbox. Als u werk belastingen hebt die worden uitgevoerd op klassieke IaaS-instanties, raden we u aan om ze te migreren van het klassieke naar het Resource Manager-implementatie model. Zie voor instructies de door [het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+> Klassieke IaaS-instanties worden niet ondersteund door Klanten-lockbox. Als u werk belastingen hebt die worden uitgevoerd op klassieke IaaS-instanties, raden we u aan om ze te migreren van het klassieke naar het Resource Manager-implementatie model. Zie [Door het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)voor instructies.
 
-#### <a name="detailed-audit-logs"></a>Gedetailleerde audit logboeken
+#### <a name="detailed-audit-logs"></a>Gedetailleerde audit-logboeken
 
-Voor scenario's waarbij toegang tot extern bureau blad is vereist, kunt u Windows-gebeurtenis Logboeken gebruiken om de acties te bekijken die door de micro soft-Engineer worden uitgevoerd. Overweeg het gebruik van Azure Security Center om uw gebeurtenis logboeken te verzamelen en de gegevens naar uw werk ruimte te kopiëren voor analyse. Zie [gegevens verzameling in azure Security Center](../../security-center/security-center-enable-data-collection.md)voor meer informatie.
+Voor scenario's waarbij toegang tot extern bureaublad is vereist, kunt u Windows-gebeurtenislogboeken gebruiken om de acties te bekijken die door de Microsoft-engineer worden uitgevoerd. Overweeg het gebruik van Azure Security Center om uw gebeurtenislogboeken te verzamelen en de gegevens naar uw werkruimte te kopiëren voor analyse. Ga voor meer informatie naar [Gegevensverzameling in het Azure Security Center](../../security-center/security-center-enable-data-collection.md).
 
 ## <a name="workflow"></a>Werkstroom
 
@@ -123,29 +123,29 @@ De volgende stappen beschrijven een typische werk stroom voor een Klanten-lockbo
 
 Voor controle doeleinden worden de acties die in deze werk stroom worden uitgevoerd, geregistreerd in [klanten-lockbox aanvraag logboeken](#auditing-logs).
 
-## <a name="auditing-logs"></a>Controle logboeken
+## <a name="auditing-logs"></a>Controlelogboeken
 
-Klanten-lockbox logboeken worden opgeslagen in activiteiten Logboeken. Selecteer in de Azure Portal **activiteiten logboeken** om controle-informatie te bekijken die betrekking heeft op klanten-lockbox aanvragen. U kunt filteren op specifieke acties, zoals:
+Logboeken van de Klanten-lockbox worden opgeslagen in activiteitenlogboeken. Selecteer in de Azure Portal **activiteiten logboeken** om controle-informatie te bekijken die betrekking heeft op klanten-lockbox aanvragen. U kunt filteren op specifieke acties, zoals:
 - **Lockbox-aanvraag weigeren**
 - **Lockbox-aanvraag maken**
-- **Lockbox-aanvraag goed keuren**
+- **Lockbox-aanvraag goedkeuren**
 - **Verval datum lockbox-aanvraag**
 
 Bijvoorbeeld:
 
 ![Azure Klanten-lockbox-activiteiten logboeken](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Integratie met Azure Security-benchmark Klanten-lockbox
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Klanten-lockbox-integratie met Azure Security Benchmark
 
 We hebben een nieuw basislijn besturings element ([3,13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) geïntroduceerd in azure Security Bench mark dat klanten-lockbox toepas baarheid dekt. Klanten kunnen nu benchmarks gebruiken om Klanten-lockbox toepasselijkheid van een service te controleren.
 
 ## <a name="exclusions"></a>Uitsluitingen
 
-Klanten-lockbox aanvragen worden niet geactiveerd in de volgende technische ondersteunings scenario's:
+Klanten-lockbox aanvragen worden niet geactiveerd in de volgende technische ondersteuningsscenario's:
 
-- Een micro soft-Engineer moet een activiteit uitvoeren die buiten de standaardwerk procedures valt. U kunt bijvoorbeeld services herstellen of herstellen in onverwachte of onvoorspelbare scenario's.
+- Een Microsoft-engineer moet een activiteit uitvoeren die buiten de standaard werkprocedures valt. U kunt bijvoorbeeld services herstellen of terugzetten in onverwachte of onvoorspelbare scenario's.
 
-- Een micro soft-Engineer heeft toegang tot het Azure-platform als onderdeel van het oplossen van problemen en per ongeluk toegang tot klant gegevens. Zo voert het team van het Azure-netwerk problemen op te lossen dat resulteert in het vastleggen van pakketten op een netwerk apparaat. Als de klant echter de gegevens versleutelde tijdens de overdracht, kan de engineer de gegevens niet lezen.
+- Een Microsoft-engineer heeft toegang tot het Azure-platform als onderdeel van het oplossen van problemen en daardoor per ongeluk toegang tot klantgegevens. Als voorbeeld, het team van het Azure-netwerk voert probleemoplossing uit, wat resulteert in het vastleggen van pakketten op een netwerkapparaat. Als de klant echter de gegevens tijdens de overdracht versleutelde, kan de engineer de gegevens niet lezen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

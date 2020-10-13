@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499389"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profileer productie toepassingen in azure met Application Insights
@@ -91,7 +91,7 @@ Methoden als **SqlCommand.Exeschattige** geven aan dat de code wacht tot de data
 
 ### <a name="unmanaged-async"></a>Niet-beheerde async
 
-.NET Framework verzendt ETW-gebeurtenissen en geeft activiteit-id's door aan tussen threads zodat asynchrone aanroepen kunnen worden getraceerd tussen threads. Niet-beheerde code (systeem eigen code) en sommige oudere stijlen van asynchrone code ontbreken deze gebeurtenissen en activiteit-id's, waardoor de Profiler niet kan zien welke thread en welke functies op de thread worden uitgevoerd. Dit is het label ' niet-beheerde async ' in de aanroep stack. Als u het ETW-bestand downloadt, kunt u [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) gebruiken om meer inzicht te krijgen in wat er gebeurt.
+.NET Framework verzendt ETW-gebeurtenissen en geeft activiteit-id's door aan tussen threads zodat asynchrone aanroepen kunnen worden getraceerd tussen threads. Niet-beheerde code (systeem eigen code) en sommige oudere stijlen van asynchrone code ontbreken deze gebeurtenissen en activiteit-id's, waardoor de Profiler niet kan zien welke thread en welke functies op de thread worden uitgevoerd. Dit is het label ' niet-beheerde async ' in de aanroep stack. Als u het ETW-bestand downloadt, kunt u [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)  gebruiken om meer inzicht te krijgen in wat er gebeurt.
 
 ### <a name="cpu-time"></a><a id="cpu"></a>CPU-tijd
 

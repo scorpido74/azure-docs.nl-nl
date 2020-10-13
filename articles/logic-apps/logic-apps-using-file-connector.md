@@ -7,13 +7,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/13/2019
-ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659923"
+ms.locfileid: "91873231"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Verbinding maken met on-premises bestandssystemen met Azure Logic Apps
 
@@ -22,6 +22,9 @@ Met Azure Logic Apps en de File System-connector kunt u geautomatiseerde taken e
 - Bestanden maken, ophalen, toevoegen, bijwerken en verwijderen.
 - Bestanden in mappen of hoofd mappen weer geven.
 - Bestands inhoud en meta gegevens ophalen.
+
+  > [!IMPORTANT]
+  > De bestandssysteem connector ondersteunt momenteel alleen Windows-bestands systemen op Windows-besturings systemen.  
 
 In dit artikel wordt uitgelegd hoe u verbinding kunt maken met een on-premises bestands systeem, zoals wordt beschreven in dit voorbeeld scenario: Kopieer een bestand dat is geüpload naar Dropbox naar een bestands share en verzend vervolgens een e-mail bericht. Logic apps gebruiken de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-connection.md)om veilig verbinding te maken en toegang te krijgen tot on-premises systemen. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md). Zie Naslag informatie over de [File System-connector](/connectors/filesystem/)voor connector-specifieke technische gegevens.
 

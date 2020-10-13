@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509083"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Externe hulpprogram ma's gebruiken voor het oplossen van problemen met Azure VM
@@ -180,7 +180,7 @@ Voer de volgende opdracht uit op basis van de locatie van de client computer:
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Voor een Azure Resource Manager virtuele machine voegt u eerst een DNS-naam toe aan het open bare IP-adres. Zie [een Fully Qualified Domain name maken in de Azure portal voor een Windows-VM](../windows/portal-create-fqdn.md)voor gedetailleerde stappen. Voer daarna de volgende opdracht uit:
+  * Voor een Azure Resource Manager virtuele machine voegt u eerst een DNS-naam toe aan het open bare IP-adres. Zie [een Fully Qualified Domain name maken in de Azure portal voor een Windows-VM](../windows/portal-create-fqdn.md)voor gedetailleerde stappen. Voer vervolgens de volgende opdracht uit:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -197,7 +197,7 @@ Voer de volgende opdracht uit op basis van de locatie van de client computer:
 >[!NOTE] 
 >Als u de vlag SkipCaCheck instelt, wordt de vereiste voor het importeren van een certificaat naar de VM tijdens het starten van de sessie omzeild.
 
-U kunt ook de cmdlet invoke-opdracht gebruiken om op afstand een script uit te voeren op de virtuele machine.
+U kunt ook de cmdlet Invoke-Command gebruiken om op afstand een script uit te voeren op de virtuele machine.
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
@@ -251,7 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1)voor meer informatie over de cmdlet Enter-PSSession.
+- Zie voor meer informatie over de Enter-PSSession-cmdlet [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1).
 - Zie [aangepaste script extensie voor Windows](../extensions/custom-script-windows.md)voor meer informatie over de aangepaste script extensie voor Windows met behulp van het klassieke implementatie model.
 - PsExec maakt deel uit van de [PSTools-Suite](https://download.sysinternals.com/files/PSTools.zip).
 - Zie [PSTools](/sysinternals/downloads/pstools)voor meer informatie over de PSTools-Suite.

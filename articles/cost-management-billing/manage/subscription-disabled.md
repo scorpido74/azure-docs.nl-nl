@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308959"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Een uitgeschakeld Azure-abonnement opnieuw activeren
 
@@ -32,7 +32,7 @@ Op Azure-abonnementen met tegoed zoals Gratis proefversie en Visual Studio Enter
 > [!NOTE]
 > Als u een abonnement voor een gratis proefversie hebt en u de bestedingslimiet verwijdert, wordt uw abonnement omgezet in een afzonderlijk abonnement met tarieven voor betalen per gebruik zodra de gratis proefversie is beëindigd. U behoudt uw resterende tegoed voor de volledige 30 dagen nadat u het abonnement hebt gemaakt. U hebt ook gedurende 12 maanden toegang tot gratis services.
 
-Zie [Onverwachte kosten voorkomen met Azure-facturering en kostenbeheer](getting-started.md) om de factureringsactiviteit voor Azure te bewaken en beheren.
+Zie [Plannen om Azure-kosten te beheren](../understand/plan-manage-costs.md) voor informatie over het bewaken en beheren van factureringsactiviteit voor Azure.
 
 
 ## <a name="your-bill-is-past-due"></a>De vervaldatum van de factuur is verstreken
@@ -60,4 +60,4 @@ Voor andere abonnementstypen [neemt u contact op met de ondersteuning](https://p
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ontdek op welke manier u [factureringsactiviteit voor Azure bewaakt en beheert](getting-started.md).
+- Leer hoe u kunt [plannen om Azure-kosten te beheren](../understand/plan-manage-costs.md).

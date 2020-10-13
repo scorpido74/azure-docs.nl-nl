@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: chrpap
 ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163574"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Een Service Fabric knooppunt type verwijderen
@@ -183,7 +183,7 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
     - Verwijder de virtuele-machine schaalset en andere resources die zijn gerelateerd aan het knooppunt type uit de sjabloon.
     - Implementeer de wijzigingen.
 
-    Vervolgens:
+    Daarna kunt u het volgende doen:
     - Wacht tot de implementatie is voltooid.
     
 10. Verwijder resources met betrekking tot het knooppunt type die niet meer worden gebruikt. Voor beeld Load Balancer en een openbaar IP-adres. 

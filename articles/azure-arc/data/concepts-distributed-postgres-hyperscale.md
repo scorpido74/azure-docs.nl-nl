@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936380"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Concepten voor het distribueren van gegevens met PostgreSQL grootschalige-Server groep met Arc-functionaliteit
@@ -23,7 +23,7 @@ In dit artikel worden de belangrijkste concepten beschreven die belang rijk zijn
 De onderstaande artikelen verwijzen naar de concepten die worden beschreven voor Azure Database for PostgreSQL grootschalige (Citus). Het is dezelfde technologie als Azure Arc enabled PostgreSQL grootschalige, zodat dezelfde concepten en perspectieven van toepassing zijn.
 
 **Wat is het verschil tussen deze?**
-- _Azure Database for PostgreSQL grootschalige (Citus)_
+- _Azure Database for PostgreSQL Hyperscale (Citus)_
 
 Dit is de grootschalige vorm factor van de post gres-data base-engine die beschikbaar is als Database as a Service in azure (PaaS). Het wordt aangestuurd door de Citus-extensie waarmee de grootschalige-ervaring wordt ingeschakeld. In deze vorm factor wordt de service uitgevoerd in de micro soft-data centers en wordt beheerd door micro soft.
 
@@ -46,7 +46,7 @@ Meer informatie vindt u op [knoop punten en tabellen in azure database for Postg
 ## <a name="determine-the-application-type"></a>Het toepassings type bepalen
 Het is belang rijk om het type toepassing dat u bouwt duidelijk te identificeren. Hoe komt dat? Omdat het uitvoeren van efficiënte query's voor een Azure-PostgreSQL grootschalige-Server groep vereist dat tabellen goed worden gedistribueerd over servers. De aanbevolen distributie is afhankelijk van het type toepassing en de bijbehorende query patronen. Er zijn in ruime mate twee soorten toepassingen die goed werken op Azure Arc enabled post gres grootschalige:
 - Multi tenant-toepassingen
-- Realtime-toepassingen
+- Real-Time toepassingen
 
 De eerste stap bij het model leren van gegevens is om te identificeren welke van de toepassingen er beter uitziet dan uw toepassing.
 

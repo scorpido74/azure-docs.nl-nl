@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf03dffe82d611f10639af2a147bc2d9e9316621
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052771"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>How it works: Azure AD self-service password reset (Hoe het werkt: selfservice voor wachtwoordherstel in Azure AD)
@@ -52,7 +52,7 @@ Nadat de SSPR-Portal in de vereiste taal wordt weer gegeven, wordt de gebruiker 
     * Als de verificatie methoden niet zijn geconfigureerd, wordt de gebruiker geadviseerd contact op te nemen met de beheerder om hun wacht woord opnieuw in te stellen.
   * Als voor het beleid twee methoden zijn vereist, controleert u of de gebruiker de juiste gegevens heeft gedefinieerd voor ten minste twee van de verificatie methoden die door het beheerders beleid zijn ingeschakeld.
     * Als de verificatie methoden niet zijn geconfigureerd, wordt de gebruiker geadviseerd contact op te nemen met de beheerder om hun wacht woord opnieuw in te stellen.
-  * Als een rol van Azure-beheerder aan de gebruiker is toegewezen, wordt het sterke wachtwoord beleid voor twee poorten afgedwongen. Zie [verschillen in beleids regels voor beheerders instellen](concept-sspr-policy.md#administrator-reset-policy-differences)voor meer informatie.
+  * Als een rol van Azure-beheerder aan de gebruiker is toegewezen, wordt het sterke wachtwoord beleid voor twee poorten afgedwongen. Zie [Verschillen in beleid voor het opnieuw instellen van beheerders](concept-sspr-policy.md#administrator-reset-policy-differences) voor meer informatie.
 * Hiermee wordt gecontroleerd of het wacht woord van de gebruiker on-premises wordt beheerd, bijvoorbeeld als de Azure AD-Tenant gebruikmaakt van federatieve, Pass-Through-verificatie of synchronisatie van wacht woord-hash:
   * Als SSPR write-back is geconfigureerd en het wacht woord van de gebruiker on-premises wordt beheerd, mag de gebruiker door gaan met het verifiëren en opnieuw instellen van hun wacht woord.
   * Als SSPR write-back niet wordt geïmplementeerd en het wacht woord van de gebruiker on-premises wordt beheerd, wordt de gebruiker gevraagd contact op te nemen met de beheerder om hun wacht woord opnieuw in te stellen.

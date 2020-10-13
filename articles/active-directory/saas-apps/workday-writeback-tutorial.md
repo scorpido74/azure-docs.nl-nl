@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017469"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Zelf studie: kenmerk terugschrijven van Azure AD naar workday configureren
@@ -133,7 +133,7 @@ In deze sectie configureert u hoe terugschrijf kenmerken stromen van Azure AD na
      Replace([mobile], , "[()\\s-]+", , "", , )
      ```
 
-6. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
+6. Als u uw toewijzingen wilt opslaan, klikt u boven aan de sectie Attribute-Mapping op **Opslaan** .
 
 ## <a name="enable-and-launch-user-provisioning"></a>Gebruikers inrichting inschakelen en starten
 

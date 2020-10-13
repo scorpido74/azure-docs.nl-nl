@@ -4,10 +4,10 @@ description: Stel Application Insights bewaking hand matig in voor een nieuwe Li
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323125"
 ---
 # <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
@@ -28,7 +28,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Applicatio
    | ------------- |:-------------|:-----|
    | **Naam**      | `Unique value` | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
    | **Resourcegroep**     | `myResourceGroup`      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
-   | **Regio** | `East US` | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
+   | **Regio** | `East US` | Kies een locatie in uw buurt of in de buurt van waar de app wordt gehost. |
    | **Resource modus** | `Classic` of `Workspace-based` | Resources op basis van een werk ruimte zijn momenteel beschikbaar als open bare preview-versie en u kunt uw Application Insights telemetrie verzenden naar een algemene Log Analytics-werk ruimte. Zie het [artikel over resources op basis van werk ruimte](create-workspace-resource.md)voor meer informatie.
 
 > [!NOTE]
@@ -103,7 +103,7 @@ Als u toegang wilt krijgen tot de preview-Application Insights Azure CLI-opdrach
  az extension add -n application-insights
 ```
 
-Als u de opdracht niet uitvoert `az extension add` , wordt een fout bericht weer gegeven waarin staat:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Als u de opdracht niet uitvoert `az extension add` , wordt een fout bericht weer gegeven waarin staat: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 U kunt nu het volgende uitvoeren om uw Application Insights-resource te maken:
 

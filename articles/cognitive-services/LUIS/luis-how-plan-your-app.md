@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
 ms.openlocfilehash: 69f2048da0b4690d9de72e96e296edbd55c4cd9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309452"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Uw LUIS-app-schema plannen met onderwerp domein en gegevens extractie
@@ -69,7 +69,7 @@ In plaats van twee afzonderlijke intenties te maken, maakt u één intentie met 
 De `FlightAction` entiteit zou worden gestructureerd in het volgende pseudo-schema van machine learning entiteit en subentiteiten:
 
 * FlightAction
-    * Actie
+    * Bewerking
     * Oorsprong
     * Doel
 

@@ -4,10 +4,10 @@ description: Meer informatie over het weer geven, onderhouden, bijwerken en verw
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531017"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheergroepen
@@ -127,7 +127,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen Azure-ro
 
 ### <a name="view-in-powershell"></a>Weer geven in Power shell
 
-U gebruikt de opdracht Get-AzManagementGroup voor het ophalen van alle groepen. Zie [AZ. resources](/powershell/module/az.resources/Get-AzManagementGroup) -modules voor de volledige lijst van beheer groepen Get Power shell-opdrachten.  
+U gebruikt de opdracht Get-AzManagementGroup om alle groepen op te halen. Zie [AZ. resources](/powershell/module/az.resources/Get-AzManagementGroup) -modules voor de volledige lijst van beheer groepen Get Power shell-opdrachten.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -304,7 +304,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ### <a name="move-management-groups-in-powershell"></a>Beheer groepen verplaatsen in Power shell
 
-Gebruik de opdracht update-AzManagementGroup in Power shell om een beheer groep te verplaatsen naar een andere groep.
+Gebruik de opdracht Update-AzManagementGroup in Power shell om een beheer groep te verplaatsen naar een andere groep.
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName ContosoIT
