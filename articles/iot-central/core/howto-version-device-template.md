@@ -10,10 +10,10 @@ services: iot-central
 manager: peterpr
 ms.custom: device-developer
 ms.openlocfilehash: 2025b127a428afa478cfe839c7619df2d7d688d3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015956"
 ---
 # <a name="create-a-new-device-template-version"></a>Een nieuwe sjabloon versie voor een apparaat maken
@@ -106,7 +106,7 @@ Een sjabloon voor een apparaat versie:
 1. Ga naar de pagina met **Apparaatinstellingen** .
 1. Selecteer de sjabloon voor het apparaat dat u wilt versieren.
 1. Klik boven aan de pagina op de knop **versie** en geef de sjabloon een nieuwe naam. IoT Central stelt een nieuwe naam voor die u kunt bewerken.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Uw sjabloon voor het apparaat bevindt zich nu in de concept modus. U kunt zien dat uw interfaces nog steeds zijn vergrendeld. De versie van de interfaces die u wilt wijzigen.
 
 ## <a name="version-an-interface"></a>Een interface versie
@@ -119,7 +119,7 @@ Een interface versie:
 1. Selecteer de Device-sjabloon die u in een concept modus hebt.
 1. Selecteer de interface in de gepubliceerde modus die u wilt versie en bewerken.
 1. Klik boven aan de interface pagina op de knop **versie** .
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Uw interface bevindt zich nu in de concept modus. U kunt mogelijkheden aan uw interface toevoegen of deze bewerken zonder bestaande aanpassingen en weer gaven te verbreken.
 
 ## <a name="migrate-a-device-across-versions"></a>Een apparaat migreren over versies

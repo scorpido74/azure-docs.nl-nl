@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 7f400d6959a40361ea3beff8bd21c2fa9ef2996a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052627"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service
@@ -39,16 +39,16 @@ In de onderstaande tabel staat een item dat is gemarkeerd als vast, dat het juis
 
 | **Compatibiliteits probleem met SCIM 2,0** |  **Vaste?** | **Datum herstellen**  |  **Achterwaartse compatibiliteit** |
 |---|---|---|
-| Voor Azure AD moet '/scim ' zich in de hoofdmap van de SCIM-eind punt-URL van de toepassing bevindt  | Yes  |  18 december 2018 | downgrade naar customappSSO |
-| Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Yes  | 18 december 2018  | downgrade naar customappSSO |
-| Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Yes  |  18 december 2018  | downgrade naar customappSSO |
-| Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Yes  |  18 december 2018  |  downgrade naar customappSSO |
-| Update van PATCH-gedrag om te zorgen voor naleving (bijvoorbeeld actief als Booleaanse en de juiste verwijdering van groepslid maatschappen) | No | NOG TE BEPALEN| Preview-vlag gebruiken |
+| Voor Azure AD moet '/scim ' zich in de hoofdmap van de SCIM-eind punt-URL van de toepassing bevindt  | Ja  |  18 december 2018 | downgrade naar customappSSO |
+| Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Ja  | 18 december 2018  | downgrade naar customappSSO |
+| Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Ja  |  18 december 2018  | downgrade naar customappSSO |
+| Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Ja  |  18 december 2018  |  downgrade naar customappSSO |
+| Update van PATCH-gedrag om te zorgen voor naleving (bijvoorbeeld actief als Booleaanse en de juiste verwijdering van groepslid maatschappen) | Nee | NOG TE BEPALEN| Preview-vlag gebruiken |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>Vlaggen voor het wijzigen van het SCIM-gedrag
 Gebruik de onderstaande vlaggen in de Tenant-URL van uw toepassing om het standaard gedrag van de SCIM-client te wijzigen.
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM markeert tot later gedrag.":::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM markeert tot later gedrag.&quot;:::
 
 * Gebruik de volgende URL om het PATCH gedrag bij te werken en te zorgen voor SCIM-naleving (bijvoorbeeld actief als Booleaanse en de juiste verwijdering van groepslid maatschappen). Dit gedrag is momenteel alleen beschikbaar wanneer u de vlag gebruikt, maar zal de standaard instelling in de komende maanden worden. Opmerking deze preview-vlag werkt momenteel niet met inrichten op aanvraag. 
   * **URL (scim-compatibel):** AzureAdScimPatch062020
@@ -58,29 +58,29 @@ Gebruik de onderstaande vlaggen in de Tenant-URL van uw toepassing om het standa
   ```json
    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "remove",
-            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+            &quot;op&quot;: &quot;remove&quot;,
+            &quot;path&quot;: &quot;members[value eq \&quot;16b083c0-f1e8-4544-b6ee-27a28dc98761\&quot;]&quot;
         }
     ]
    }
 
     PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "add",
-            "path": "members",
-            "value": [
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;path&quot;: &quot;members&quot;,
+            &quot;value&quot;: [
                 {
-                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
+                    &quot;value&quot;: &quot;10263a6910a84ef9a581dd9b8dcc0eae&quot;
                 }
             ]
         }
@@ -89,25 +89,25 @@ Gebruik de onderstaande vlaggen in de Tenant-URL van uw toepassing om het standa
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].value",
-            "value": "someone@contoso.com"
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].value&quot;,
+            &quot;value&quot;: &quot;someone@contoso.com&quot;
         },
         {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].primary",
-            "value": true
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].primary&quot;,
+            &quot;value&quot;: true
         },
         {
-            "op": "replace",
-            "value": {
-                "active": false,
-                "userName": "someone"
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;value&quot;: {
+                &quot;active&quot;: false,
+                &quot;userName&quot;: &quot;someone&quot;
             }
         }
     ]
@@ -115,28 +115,28 @@ Gebruik de onderstaande vlaggen in de Tenant-URL van uw toepassing om het standa
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "replace",
-            "path": "active",
-            "value": false
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;active&quot;,
+            &quot;value&quot;: false
         }
     ]
     }
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
     ],
-    "Operations": [
+    &quot;Operations&quot;: [
         {
-            "op": "add",
-            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
-            "value": "Tech Infrastructure"
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;path&quot;: &quot;urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department&quot;,
+            &quot;value&quot;: &quot;Tech Infrastructure"
         }
     ]
     }

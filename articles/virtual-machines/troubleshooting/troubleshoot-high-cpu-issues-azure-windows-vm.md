@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
 ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596842"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Problemen met hoge CPU oplossen voor virtuele Azure Windows-machines
@@ -35,7 +35,7 @@ Afgezien van de problemen met de I/O-en netwerk latentie, vereisen de probleem o
 
 De meeste bestaande hulpprogram ma's voor probleem oplossing, zoals perfmon of ProcMon, die worden gebruikt voor on-premises servers, werken op Azure Windows-Vm's. PerfInsights is echter expliciet ontworpen voor Azure-Vm's om meer inzichten te bieden, waaronder aanbevolen procedures van Azure, SQL best practices, I/O-latentie grafieken met hoge resolutie, de CPU-en geheugen tabbladen, enzovoort.
 
-Of de service wordt uitgevoerd als gebruikers modus of kernelmodus, een thread van een actief proces vereist CPU-cycli om de code uit te voeren waarvan deze is opgebouwd. Veel problemen zijn direct gerelateerd aan de werk belasting. Het type werk belasting dat op de server is opgenomen, is afhankelijk van het CPU-gebruik.
+Of de toepassing wordt uitgevoerd als User-Mode of kernelmodus, een thread van een actief proces vereist CPU-cycli om de code uit te voeren waarvan deze is opgebouwd. Veel problemen zijn direct gerelateerd aan de werk belasting. Het type werk belasting dat op de server is opgenomen, is afhankelijk van het CPU-gebruik.
 
 #### <a name="common-factors"></a>Algemene factoren
 
@@ -184,7 +184,7 @@ Als u de gebeurtenis **bevindingen** uitvouwt, ziet u enkele belang rijke gegeve
 
 Er is een toegewezen subtabblad onder **CPU** die kan worden gebruikt voor gedetailleerde patroon analyse, per kern geheugen of per proces.
 
-Het tabblad **Top CPU-consumenten** heeft twee afzonderlijke gedeelten van belang en u kunt hier per processor statistieken weer geven. Het ontwerp van de toepassing is vaak enkelvoudige of pincodes voor één processor. In dit scenario worden een of enkele kern geheugens uitgevoerd om 100 procent, terwijl andere kernen op de verwachte niveaus worden uitgevoerd. Deze scenario's zijn complexere omdat de gemiddelde CPU op de server lijkt te worden uitgevoerd zoals verwacht, maar de processen die zijn vastgemaakt aan kernen met een hoog gebruik, zijn langzamer dan verwacht.
+Het tabblad **Top CPU-consumenten** heeft twee afzonderlijke gedeelten van belang en u kunt hier per processor statistieken weer geven. Het ontwerp van de toepassing is vaak Single-Threaded of pincodes voor één processor. In dit scenario worden een of enkele kern geheugens uitgevoerd om 100 procent, terwijl andere kernen op de verwachte niveaus worden uitgevoerd. Deze scenario's zijn complexere omdat de gemiddelde CPU op de server lijkt te worden uitgevoerd zoals verwacht, maar de processen die zijn vastgemaakt aan kernen met een hoog gebruik, zijn langzamer dan verwacht.
 
   ![hoog CPU-gebruik](./media/troubleshoot-high-cpu-issues-azure-windows-vm/9-high-cpu-usage.png)
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285159"
 ---
 # <a name="change-the-style-of-the-map"></a>Stijl van de kaart wijzigen
@@ -101,7 +101,7 @@ In de onderstaande afbeelding ziet u het besturings element stijl kiezer dat wor
 
 In de onderstaande afbeelding ziet u het besturings element stijl kiezer dat wordt weer gegeven in de `list` indeling.
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Indeling van lijst met stijl kiezer":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Pictogram indeling stijl kiezer":::
 
 > [!IMPORTANT]
 > Standaard wordt in het besturings element stijl kiezer een lijst weer gegeven met alle stijlen die beschikbaar zijn in de prijs categorie S0 van Azure Maps. Als u het aantal stijlen in deze lijst wilt beperken, geeft u een matrix van de stijlen die u wilt weer geven in de lijst in de `mapStyle` optie van de stijl kiezer. Als u S1 gebruikt en alle beschik bare stijlen wilt weer geven, stelt u de `mapStyles` optie van de stijl kiezer in op `"all"` .
@@ -118,7 +118,7 @@ De volgende code laat zien hoe u de standaard `mapStyles` basisstijl lijst overs
 Voor meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)

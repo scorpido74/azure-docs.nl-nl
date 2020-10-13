@@ -15,10 +15,10 @@ ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652955"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
@@ -307,7 +307,7 @@ De volgende nieuwe functies zijn aangekondigd:
 ## <a name="april-2015-release"></a><a id="april_changes_15"></a>Release van april 2015
 ### <a name="general-media-services-updates"></a>Algemene Media Services updates
 * [Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/) is aangekondigd.
-* Met ingang van de Media Services REST 2,10 worden kanalen die zijn geconfigureerd voor het opnemen van een real-time Messa ging Protocol (RTMP) gemaakt met primaire en secundaire opname-Url's. Zie voor meer informatie [kanaal opname configuraties](media-services-live-streaming-with-onprem-encoders.md#channel_input).
+* Met ingang van de Media Services REST 2,10 worden kanalen die zijn geconfigureerd om een Real-Time Messa ging Protocol (RTMP) op te nemen, gemaakt met primaire en secundaire opname-Url's. Zie voor meer informatie [kanaal opname configuraties](media-services-live-streaming-with-onprem-encoders.md#channel_input).
 * Azure Media Indexer is bijgewerkt.
 * Ondersteuning voor Spaanse taal is toegevoegd.
 * Er is een nieuwe configuratie voor de XML-indeling toegevoegd.

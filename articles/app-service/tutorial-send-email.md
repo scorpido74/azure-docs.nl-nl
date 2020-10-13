@@ -4,12 +4,12 @@ description: Leer hoe u bedrijfsprocessen kunt aanroepen vanuit uw App Service-a
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962193"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397433"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Zelfstudie: E-mail verzenden en andere bedrijfsprocessen aanroepen vanuit App Service
 
@@ -84,7 +84,8 @@ Implementeer een app naar App Service met het taalframework van uw keuze. Zie hi
 1. Klik onderaan de Designer op **Nieuwe stap**, typ **Gmail** in het zoekvak voor acties en selecteer **E-mail verzenden (v2)** .
     
     > [!TIP]
-    > U kunt zoeken naar andere typen integraties, zoals SendGrid, MailChimp, Office 365 en Sales Force. Zie de [Logic Apps-documentatie](../logic-apps/index.yml) voor meer informatie.
+    > U kunt zoeken naar andere typen integraties, zoals SendGrid, MailChimp, Microsoft 365 en Sales Force. Zie de [Logic Apps-documentatie](../logic-apps/index.yml) voor meer informatie.
+
 1. Selecteer **Aanmelden** in het dialoogvenster **Gmail** en meld u aan bij het Gmail-account van waaruit u het e-mailbericht wilt verzenden.
 
     ![Schermopname van het dialoogvenster Gmail dat u gebruikt om u aan te melden bij het Gmail-account van waaruit u e-mail wilt verzenden.](./media/tutorial-send-email/gmail-sign-in.png)

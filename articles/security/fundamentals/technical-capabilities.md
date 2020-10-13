@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399530"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
@@ -78,7 +78,7 @@ Hier volgen de belangrijkste mogelijkheden van Azure Identity Management:
 
 - Privileged Identity Management
 
-- Identiteitsbeveiliging
+- Identiteitsbescherming
 
 #### <a name="single-sign-on"></a>Eenmalige aanmelding
 
@@ -140,7 +140,7 @@ Met Azure AD Privileged Identity Management kunt u het volgende doen:
 
 - Waarschuwingen ontvangen over toegang tot een bevoorrechte rol
 
-#### <a name="identity-protection"></a>Identiteitsbeveiliging
+#### <a name="identity-protection"></a>Identiteitsbescherming
 
 [Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van de bestaande Azure Active Directory afwijkingen detectie mogelijkheden (beschikbaar via de afwijkende activiteiten van Azure AD) en introduceert nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
@@ -150,7 +150,7 @@ Toegangs beheer in azure wordt gestart vanuit een facturerings perspectief. De e
 
 ![Beveiligde toegang tot bronnen in azure](./media/technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
-Abonnementen hebben ook een koppeling met een map. De map definieert een aantal gebruikers. Deze kunnen gebruikers zijn van het werk of de school waarmee de Directory is gemaakt, of ze kunnen externe gebruikers (micro soft-accounts) zijn. Abonnementen zijn toegankelijk voor een subset van de Directory-gebruikers die zijn toegewezen als service beheerder (SA) of mede beheerder (CA). de enige uitzonde ring hierop is dat micro soft-accounts (voorheen Windows Live ID), om verouderde redenen, kunnen worden toegewezen als SA of CA zonder dat ze in de Directory aanwezig zijn.
+Abonnementen hebben ook een koppeling met een map. De map definieert een aantal gebruikers. Deze kunnen gebruikers zijn van het werk of de school waarmee de Directory is gemaakt, of ze kunnen externe gebruikers (micro soft-accounts) zijn. Abonnementen zijn toegankelijk voor een subset van de Directory-gebruikers die zijn toegewezen als service beheerder (SA) of Co-Administrator (CA). de enige uitzonde ring hierop is dat micro soft-accounts (voorheen Windows Live ID), om verouderde redenen, kunnen worden toegewezen als SA of CA zonder dat ze in de Directory aanwezig zijn.
 
 Beveiligings gerichte bedrijven moeten zich richten op het geven van werk nemers de exacte machtigingen die ze nodig hebben. Te veel machtigingen kunnen een account bloot stellen aan kwaadwillende personen. Te weinig machtigingen betekenen dat werk nemers hun werk niet efficiënt kunnen uitvoeren. Met [op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](../../role-based-access-control/overview.md) kunt u dit probleem oplossen door het bieden van nauw keurig toegang tot Azure.
 
@@ -339,7 +339,7 @@ Met deze methode kunt u gegevens uit verschillende bronnen consolideren, zodat u
 
 Security Center analyseert de beveiligingsstatus van uw Azure-resources om mogelijke beveiligingsproblemen op te sporen. Een lijst met aanbevelingen begeleidt u bij het configureren van benodigde besturingselementen.
 
-Enkele voorbeelden:
+Voorbeelden zijn:
 
 - Inrichting van antimalware om schadelijke software te identificeren en te verwijderen
 

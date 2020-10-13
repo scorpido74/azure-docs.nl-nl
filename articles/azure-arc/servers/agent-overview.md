@@ -4,10 +4,10 @@ description: Dit artikel bevat een gedetailleerd overzicht van de beschik bare A
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822195"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Overzicht van de agent voor servers met Azure Arc ingeschakeld
@@ -23,7 +23,7 @@ Het pakket met de Azure Connected machine agent bevat verschillende logische ond
 
 * Met de HIMDS (Hybrid instance meta data service) wordt de verbinding met Azure en de Azure-identiteit van de verbonden machine beheerd.
 
-* De gast configuratie agent biedt in-gast beleid en gast configuratie functionaliteit, zoals de beoordeling of de computer voldoet aan het vereiste beleid.
+* De gast configuratie agent biedt In-Guest beleid en gast configuratie functionaliteit, zoals het controleren of de computer voldoet aan het vereiste beleid.
 
     Let op het volgende gedrag met Azure Policy [gast configuratie](../../governance/policy/concepts/guest-configuration.md) voor een niet-verbonden computer:
 
@@ -173,7 +173,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
     |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
-    |DscService |Gast configuratie service |dsc_service.exe |De code basis die voor desired state Configuration (DSC v2) in azure wordt gebruikt voor het implementeren van beleid in de gast.|
+    |DscService |Gast configuratie service |dsc_service.exe |De code basis die voor desired state Configuration (DSC v2) in azure wordt gebruikt om In-Guest beleid te implementeren.|
 
 * De volgende omgevings variabelen worden tijdens de installatie van de agent gemaakt.
 
@@ -224,7 +224,7 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
     |Servicenaam |Weergavenaam |Procesnaam |Beschrijving |
     |-------------|-------------|-------------|------------|
     |himdsd. service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Deze service implementeert de Azure instance meta data service (IMDS) voor het beheren van de verbinding met Azure en de Azure-identiteit van de verbonden machine.|
-    |dscd. service |Gast configuratie service |/opt/DSC/dsc_linux_service |Dit is de configuratie code van de desired state Configuration (DSC v2) die in azure wordt gebruikt voor het implementeren van beleid in de gast.|
+    |dscd. service |Gast configuratie service |/opt/DSC/dsc_linux_service |Dit is de configuratie code van de desired state Configuration (DSC v2) die in azure wordt gebruikt om In-Guest beleid te implementeren.|
 
 * Er zijn verschillende logboek bestanden beschikbaar voor het oplossen van problemen. Deze worden beschreven in de volgende tabel.
 

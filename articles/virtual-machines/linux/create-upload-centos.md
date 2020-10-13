@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
 ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533055"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Een op CentOS gebaseerde virtuele Azure-machine voorbereiden
@@ -231,7 +231,7 @@ Het voorbereiden van een virtuele machine voor CentOS 7 voor Azure lijkt sterk o
 * GRUB2 wordt nu gebruikt als de standaard-bootloader, dus de procedure voor het bewerken van kernel-para meters is gewijzigd (zie hieronder).
 * XFS is nu het standaard bestandssysteem. Het ext4-bestands systeem kan nog steeds worden gebruikt, indien gewenst.
 
-**Configuratie stappen**
+**Configuratiestappen**
 
 1. Selecteer de virtuele machine in Hyper-V-beheer.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285938"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Zelf studie: StarLeaf configureren voor automatische gebruikers inrichting
@@ -44,7 +44,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan StarLeaf om de configuratie van automatische gebruikers inrichting te testen. U kunt later extra gebruikers en groepen toewijzen.
 
-* Wanneer u een gebruiker toewijst aan StarLeaf, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan StarLeaf, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
 
 ## <a name="set-up-starleaf-for-provisioning"></a>StarLeaf instellen voor inrichting
 
