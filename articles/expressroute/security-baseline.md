@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231381"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure-beveiligings basislijn voor ExpressRoute
@@ -242,7 +242,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken om toegangs beheer op basis van rollen (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory.
 
-Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API op rollen gebaseerde Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
+Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API Role-Based Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
 * [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -459,7 +459,7 @@ Site-naar-site-IPSEC configureren via ExpressRoute: https://docs.microsoft.com/a
 
 Azure ExpressRoute heeft ook de eigenaar van circuits en circuit gebruikers rollen. Circuit gebruikers zijn eigen aren van virtuele netwerk gateways die zich niet in hetzelfde abonnement bevinden als het ExpressRoute-circuit. De eigenaar van het circuit heeft de bevoegdheid om autorisaties op elk gewenst moment te wijzigen en in te trekken. Het intrekken van een autorisatie resulteert in alle koppelings verbindingen die worden verwijderd uit het abonnement waarvan de toegang is ingetrokken. Circuit gebruikers kunnen autorisaties inwisselen (één autorisatie per virtueel netwerk).
 
-Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API op rollen gebaseerde Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
+Daarnaast kunnen partners die gebruikmaken van de ExpressRoute partner Resource Manager-API Role-Based Access Control Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
 * [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -891,9 +891,9 @@ Het is uw verantwoordelijkheid om vooraf te scannen op inhoud die wordt geüploa
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
 
-**Hulp**: Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
+**Hulp**: Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-* [Zacht verwijderen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Soft-Delete in Key Vault inschakelen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 

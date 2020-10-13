@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187163"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Problemen met gedeelde bronnen oplossen
@@ -97,7 +97,7 @@ Het is niet gebruikelijk dat alle AzureRM-of AZ-modules zijn vereist in hetzelfd
 > [!NOTE]
 > Vermijd het importeren van het hele `Az.Automation` of `AzureRM.Automation` -module, waardoor alle opgenomen modules worden geïmporteerd.
 
-Als het update proces wordt onderbroken, voegt `SimultaneousModuleImportJobCount` u de para meter toe aan het **Update-AzureModules.ps1** script en geeft u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, kunt u beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount`is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
+Als het update proces wordt onderbroken, voegt `SimultaneousModuleImportJobCount` u de para meter toe aan het **Update-AzureModules.ps1** script en geeft u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, kunt u beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount` is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
 
  ```powershell
          $Body = @"

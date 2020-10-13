@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
 ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309996"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
@@ -111,10 +111,10 @@ De volgende tabel geeft een lijst van de proxy-en firewall configuratie gegevens
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Yes |
-|*.azure-automation.net |Poort 443 |Uitgaand|Yes |
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |
+|*.azure-automation.net |Poort 443 |Uitgaand|Ja |
 
 Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)voor informatie over de firewall die vereist is voor Azure Government. 
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
 ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603047"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>big data Analytics versnellen met behulp van de Apache Spark om de connector te Azure Cosmos DB
@@ -31,7 +31,7 @@ U kunt de connector gebruiken met [Azure Databricks](https://azure.microsoft.com
 > Voor Cosmos DB Cassandra-API gebruikt u de [Cassandra Spark-connector](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Snelstartgids
+## <a name="quickstart"></a>Snelstart
 
 * Volg de stappen in aan [de slag met de Java SDK](sql-api-async-java-get-started.md) om een Cosmos DB account in te stellen en een aantal gegevens in te vullen.
 * Volg de stappen in [Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) aan de slag om een Azure Databricks-werk ruimte en-cluster in te stellen.
@@ -224,9 +224,9 @@ U kunt de connector bouwen vanuit een bron in GitHub of de uber-potten downloade
 | Spark | Scala | Nieuwste versie |
 |---|---|---|
 | 2.4.0 | 2,11 | [Azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)
-| 2.3.0 | 2,11 | [Azure-cosmosdb-spark_2.3.0 _ 2.11 _ 1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
-| 2.2.0 | 2,11 | [Azure-cosmosdb-spark_2.2.0 _ 2.11 _ 1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
-| 2.1.0 | 2,11 | [Azure-cosmosdb-spark_2.1.0 _ 2.11 _ 1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
+| 2.3.0 | 2,11 | [Azure-cosmosdb-spark_2.3.0 _2.11_1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
+| 2.2.0 | 2,11 | [Azure-cosmosdb-spark_2.2.0 _2.11_1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
+| 2.1.0 | 2,11 | [Azure-cosmosdb-spark_2.1.0 _2.11_1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
 
 ### <a name="using-databricks-notebooks"></a>Databricks-notebooks gebruiken
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
 ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073925"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van Power shell
@@ -159,7 +159,7 @@ In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele mac
    ```
 
    >[!NOTE]
-   >Alle configuraties worden toegewezen aan één NIC in dit artikel, maar u kunt meerdere IP-configuraties toewijzen aan elke NIC die is gekoppeld aan de virtuele machine. Lees het artikel [een VM met meerdere Nic's maken](../virtual-machines/windows/multiple-nics.md) voor meer informatie over het maken van een virtuele machine met meerdere nic's.
+   >Alle configuraties worden toegewezen aan één NIC in dit artikel, maar u kunt meerdere IP-configuraties toewijzen aan elke NIC die is gekoppeld aan de virtuele machine. Voor meer informatie over hoe u een VM met meerdere NIC's maakt, leest u het artikel [Een VM met meerdere NIC's maken](../virtual-machines/windows/multiple-nics.md).
 
 9. Voer de volgende opdrachten in om de virtuele machine te maken:
 
