@@ -9,10 +9,10 @@ ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716099"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
@@ -67,7 +67,7 @@ Zie een van de volgende artikelen voor het instellen van machtigingen voor besta
 
 | Omgeving | Artikel |
 |--------|-----------|
-|Azure Opslagverkenner |[Azure Storage Explorer gebruiken voor het beheren van adreslijsten, bestanden en ACL's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|Azure Storage Explorer |[Azure Storage Explorer gebruiken voor het beheren van adreslijsten, bestanden en ACL's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
 |.NET |[.NET gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[Java gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
@@ -347,6 +347,6 @@ Acl's nemen niet over. Standaard-Acl's kunnen echter worden gebruikt om Acl's in
 * [POSIX ACL in Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL met behulp van toegangs beheer lijsten op Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Overzicht van Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527826"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972013"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Een StorSimple-volume herstellen op basis van een back-upset
 
@@ -115,7 +115,7 @@ U kunt de Blade **back-up** van de catalogus gebruiken om uw StorSimple-volume t
    
 4. Ga terug naar het tabblad **back-upcatalogus** en selecteer een back-upset. Klik met de rechter muisknop en selecteer vervolgens **herstellen**in het context menu.
 
-    ![Lijst met back-upsets](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Lijst met back-upsets 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. U wordt gevraagd om een bevestiging. Controleer de herstel gegevens en schakel vervolgens het selectie vakje bevestiging in.
    
@@ -123,7 +123,7 @@ U kunt de Blade **back-up** van de catalogus gebruiken om uw StorSimple-volume t
 
 7. Klik op **herstellen**. Hiermee initieert u een herstel taak die u kunt weer geven door de pagina **taken** te openen.
 
-   ![Bevestigingspagina](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Bevestigings pagina 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Nadat het herstellen is voltooid, controleert u of de inhoud van uw volumes worden vervangen door volumes van de back-up.
 

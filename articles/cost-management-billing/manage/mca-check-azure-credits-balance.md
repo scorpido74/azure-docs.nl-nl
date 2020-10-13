@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690575"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447623"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Saldo van Azure-tegoed voor Microsoft-klantovereenkomst bijhouden
 
@@ -35,11 +35,11 @@ Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klan
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in Azure Portal.](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. Selecteer op de pagina met factureringsbereiken het factureringsaccount waarvoor u het tegoedsaldo wilt bijhouden. Het factureringsaccount moet van het type **Microsoft-klantovereenkomst** zijn.
 
-    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![Schermopname van factureringsbereiken.](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -47,7 +47,7 @@ Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klan
 
 3. Selecteer aan de linkerkant **Betalingswijzen** en selecteer vervolgens **Azure-tegoed**.
 
-   ![Schermopname van tegoedsaldo voor een factureringsprofiel](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![Schermopname van het geschatte saldo en het huidige saldo.](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. De pagina Azure-tegoed bevat de volgende secties:
 

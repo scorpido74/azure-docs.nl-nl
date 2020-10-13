@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 06/15/2020
-ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 10728a5500d8ad36c006bac9176422c6afb9bf1a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836680"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945988"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparante gegevens versleuteling voor SQL Database, SQL Managed instance en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Voor Azure SQL Database en Azure Synapse wordt de TDE-Protector ingesteld op [Se
 > Alle nieuw gemaakte data bases in SQL Database worden standaard versleuteld met behulp van door de service beheerde transparante gegevens versleuteling. Bestaande SQL-data bases die zijn gemaakt vóór 2017 en SQL-data bases die zijn gemaakt via Restore, geo-replicatie en database kopie, worden niet standaard versleuteld. Bestaande data bases van SQL Managed instances die vóór februari 2019 zijn gemaakt, worden niet standaard versleuteld. SQL Managed instance-data bases die zijn gemaakt via herstellen, nemen versleutelings status van de bron over.
 
 > [!NOTE]
-> TDE kan niet worden gebruikt voor het versleutelen van de **hoofd** database in SQL database.  De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
+> TDE kan niet worden gebruikt voor het versleutelen van de **hoofd** database in Azure SQL database en Azure SQL Managed instance. De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
 
 ## <a name="service-managed-transparent-data-encryption"></a>Door service beheerde transparante gegevens versleuteling
 

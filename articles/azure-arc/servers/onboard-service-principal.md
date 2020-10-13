@@ -4,10 +4,10 @@ description: In dit artikel leert u hoe u met behulp van een Service-Principal c
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713415"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal aansluiten op Azure
@@ -22,7 +22,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Aan het einde van dit proces hebt u uw hybride computers verbonden met servers waarop Azure Arc is ingeschakeld.
 
-## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Een service-principal maken voor onboarding op schaal
+## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Een service-principal voor onboarding op schaal
 
 U kunt [Azure PowerShell](/powershell/azure/install-az-ps) gebruiken om een service-principal te maken met de cmdlet [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) . U kunt ook de stappen volgen die worden vermeld onder [een service-principal maken met behulp van de Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) om deze taak te volt ooien.
 
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc, gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc-servers, gaat u naar Azure Portal om te controleren of de server verbinding heeft gemaakt. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

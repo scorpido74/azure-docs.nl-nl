@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450263"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Rolling upgrades van Cloud toepassingen beheren door gebruik te maken van SQL Database actieve geo-replicatie
@@ -151,7 +151,7 @@ De twee upgrade methoden die in het artikel worden beschreven, verschillen in co
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [overzicht van bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md)voor een overzicht en scenario's voor bedrijfs continuïteit.
+* Raadpleeg [Overzicht van bedrijfscontinuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md) voor een bedrijfscontinuïteitsoverzicht en bedrijfscontinuïteitsscenario's.
 * Zie voor meer informatie over Azure SQL Database actieve geo-replicatie, [Lees bare secundaire data bases maken met behulp van actieve geo-replicatie](active-geo-replication-overview.md).
 * Zie voor meer informatie over Azure SQL Database groepen voor automatische failover de [optie groepen voor automatische failover gebruiken om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken](auto-failover-group-overview.md).
 * Zie [faserings omgevingen instellen in azure app service](../../app-service/deploy-staging-slots.md)voor meer informatie over faserings omgevingen in azure app service.

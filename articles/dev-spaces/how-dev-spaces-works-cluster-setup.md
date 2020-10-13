@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin wordt beschreven hoe u een Azure Kubernetes-service cluster instelt voor Azure dev Spaces werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207963"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972676"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Hoe instellen van een cluster voor Azure dev Spaces werkt
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing voor Kubernetes-toepassingen en samen werken met uw team op een AKS-cluster (Azure Kubernetes service). Een van de manieren is om Azure dev-ruimten in uw AKS-cluster in te scha kelen, zodat u [Services rechtstreeks op uw cluster kunt uitvoeren][how-it-works-up] en [aanvullende netwerk-en routerings mogelijkheden][how-it-works-routing]gebruikt. In dit artikel wordt beschreven wat er gebeurt wanneer u uw cluster voorbereidt en Azure dev Spaces inschakelt.
 

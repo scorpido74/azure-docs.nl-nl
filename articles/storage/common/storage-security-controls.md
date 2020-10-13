@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 3b4d74e7ba869e0438a936817d824e841823d472
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715721"
 ---
 # <a name="security-controls-for-azure-storage"></a>Beveiligings controles voor Azure Storage
@@ -22,14 +22,14 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Notities |
 |---|---|--|
 | Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja |  |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Zie [Storage service Encryption door de klant beheerde sleutels gebruiken in azure Key Vault](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).|
 | Versleuteling op kolom niveau (Azure Data Services)| N.v.t. |  |
-| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Ondersteuning voor standaard HTTPS/TLS-mechanismen.  Gebruikers kunnen ook gegevens versleutelen voordat deze naar de service worden verzonden. |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet versleuteling)| Ja | Ondersteuning voor standaard HTTPS/TLS-mechanismen.  Gebruikers kunnen ook gegevens versleutelen voordat deze naar de service worden verzonden. |
 | Versleutelde API-aanroepen| Ja |  |
 
 ## <a name="network"></a>Netwerk

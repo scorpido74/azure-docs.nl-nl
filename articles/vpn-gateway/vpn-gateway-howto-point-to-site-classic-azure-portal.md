@@ -1,18 +1,18 @@
 ---
-title: 'Via een computer verbinding maken met een virtueel netwerk met behulp van een punt-naar-site-verbinding en verificatie via een certificaat: klassieke Azure Portal | Microsoft Docs'
+title: 'Een computer verbinden met een virtueel netwerk met behulp van punt-naar-site-en verificatie van certificaten: Azure Portal klassiek | Microsoft Docs'
 description: Maak een klassieke punt-naar-site VPN-gatewayverbinding met Azure Portal.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0618c120a7fe572aa55b423d36dce3ef5656da
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984796"
+ms.locfileid: "91876189"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Een punt-naar-site-verbinding configureren met behulp van verificatie via een certificaat (klassiek)
 
@@ -79,31 +79,11 @@ Controleer eerst of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement
 
 ### <a name="part-1-create-a-virtual-network"></a>Stap 1: Een virtueel netwerk maken
 
-Als u nog geen virtueel netwerk (VNet) hebt, maakt u er een. De schermafbeeldingen dienen alleen als voorbeeld. Zorg dat u de waarden vervangt door die van uzelf. Volg de volgende stappen om een VNet te maken met behulp van Azure Portal:
+Als u al beschikt over een VNet, controleert u of de instellingen compatibel zijn met het ontwerp van de VPN-gateway. Let vooral op eventuele subnetten die met andere netwerken overlappen.
 
-1. Selecteer in het menu van [Azure Portal](https://portal.azure.com) of op de **startpagina** de optie **Een resource maken**. De pagina **Nieuw** wordt geopend.
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
 
-2. Voer in het veld **Search the marketplace***virtueel netwerk* in en selecteer **Virtueel netwerk** in de geretourneerde lijst. De pagina **Virtueel netwerk** wordt geopend.
-
-3. Selecteer in de lijst **Select a deployment model** de optie **Klassiek** en selecteer vervolgens **Maken**. De pagina **Virtueel netwerk maken** wordt geopend.
-
-4. Configureer de VNet-instellingen op de pagina **Virtueel netwerk maken**. Voeg op deze pagina de eerste adresruimte en één adresbereik voor het subnet toe. Nadat u het VNet hebt aangemaakt, kunt u terugkeren en aanvullende subnets en adresruimten toevoegen.
-
-   ![De pagina Virtueel netwerk maken](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png)
-
-5. Selecteer in de vervolgkeuzelijst het **abonnement** dat u wilt gebruiken.
-
-6. Selecteer een bestaande **resource groep**. Of maak een nieuwe resourcegroep door **Nieuwe maken** te selecteren en een naam in te voeren. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden wanneer u een nieuwe resourcegroep maakt. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie over resourcegroepen.
-
-7. Selecteer een **locatie** voor uw VNet. Deze instelling bepaalt de geografische locatie van de resources die u voor dit VNet implementeert.
-
-8. Selecteer **Maken** om het VNet te maken. Op de pagina **Meldingen** ziet u het bericht **Deployment in progress**.
-
-8. Nadat het virtuele netwerk is gemaakt, verandert het bericht op de pagina **Meldingen** in **Implementatie voltooid**. Selecteer **Vastmaken aan dashboard** als u uw VNet gemakkelijk wilt terugvinden op het dashboard. 
-
-10. Voeg een DNS-server toe (optioneel). Nadat u uw virtuele netwerk hebt gemaakt, kunt u het IP-adres van een DNS-server voor naamomzetting toevoegen. Het IP-adres dat u opgeeft voor de DNS-server, moet het adres zijn van een DNS-server die de namen van de resources in uw VNet kan omzetten.
-
-    Als u een DNS-server wilt toevoegen, selecteert u **DNS-servers** op de VNet-pagina. Voer vervolgens het IP-adres in van de DNS-server die u wilt gebruiken en selecteer **Opslaan**.
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>Deel 2: een gateway-subnet en een gateway voor dynamische route ring maken
 

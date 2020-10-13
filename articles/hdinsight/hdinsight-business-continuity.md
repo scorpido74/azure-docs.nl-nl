@@ -8,12 +8,12 @@ keywords: Hadoop hoge Beschik baarheid
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857772"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893642"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight-bedrijfs continuïteit
 
@@ -84,7 +84,7 @@ Het is niet altijd een onherstelbare gebeurtenis die invloed heeft op de bedrijf
 
 ### <a name="hdinsight-metastore"></a>HDInsight-meta Store
 
-HDInsight gebruikt [Azure SQL database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) als meta Store, die een SLA van 99,99% vormt. Drie replica's van gegevens blijven binnen een Data Center met asynchrone replicatie. Als er sprake is van een replica verlies, wordt een alternatieve replica probleemloos afgehandeld. [Actieve geo-replicatie](../azure-sql/database/active-geo-replication-overview.md) wordt niet ondersteund in het vak met een maximum van vier data centers. Als er een failover is, hetzij hand matig of Data Center, wordt de eerste replica in de hiërarchie automatisch lees-schrijf mogelijkheden. Zie [Azure SQL database bedrijfs continuïteit](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)voor meer informatie.
+HDInsight gebruikt [Azure SQL database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) als meta Store, die een SLA van 99,99% vormt. Drie replica's van gegevens blijven binnen een Data Center met synchrone replicatie. Als er sprake is van een replica verlies, wordt een alternatieve replica probleemloos afgehandeld. [Actieve geo-replicatie](../azure-sql/database/active-geo-replication-overview.md) wordt niet ondersteund in het vak met een maximum van vier data centers. Als er een failover is, hetzij hand matig of Data Center, wordt de eerste replica in de hiërarchie automatisch lees-schrijf mogelijkheden. Zie [Azure SQL database bedrijfs continuïteit](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)voor meer informatie.
 
 ### <a name="hdinsight-storage"></a>HDInsight Storage
 
@@ -112,7 +112,7 @@ Het verbeteren van de bedrijfs continuïteit met een nood herstel voor hoge Besc
 |----|------------------------|-----------------------|
 |Gegevensopslag|Primaire gegevens/tabellen in een secundaire regio dupliceren|Alleen gegevens met curator repliceren|
 |Gegevens uitgang|Uitgaande gegevens overdrachten voor meerdere regio's zijn tegen een prijs. Richt lijnen voor bandbreedte prijzen bekijken|Alleen gegevens met een curator repliceren om de regio afzwakken te verminderen|
-|Cluster compute|Extra HDInsight-cluster/s in secundaire regio|Automatische scripts gebruiken voor het implementeren van een secundaire Compute na een primaire fout. < \br>< \br>automatisch schalen gebruiken om de grootte van de secundaire cluster naar een minimum te beperken. < \br>< \br>gebruik goedkopere VM-Sku's. < \br>< \br> Maak secundaire zones in regio's waar VM-Sku's kunnen worden gedisconteerd.|
+|Cluster compute|Extra HDInsight-cluster/s in secundaire regio|Gebruik geautomatiseerde scripts voor het implementeren van secundaire Compute na een primaire storing. Gebruik automatisch schalen om de grootte van het secundaire cluster tot een minimum te beperken. Gebruik goedkopere VM-Sku's. Maak secundaire zones in regio's waar VM-Sku's kunnen worden gedisconteerd.|
 |Verificatie |Met scenario's voor meerdere gebruikers in de secundaire regio worden extra Azure AD DS-installaties in rekening gebracht|Vermijd het instellen van meerdere gebruikers in een secundaire regio.|
 
 ### <a name="complexity-optimizations"></a>Complexiteits optimalisaties

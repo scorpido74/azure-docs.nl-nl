@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: bceaa8fd2f47476d6b6ea6dafb88576c8bcc9712
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91367883"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Een Azure Machine Learning Studio-webservice (klassiek) gebruiken vanuit Excel
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 Met Azure Machine Learning Studio (klassiek) kunt u eenvoudig webservices rechtstreeks vanuit Excel aanroepen zonder dat u code hoeft te schrijven.
 

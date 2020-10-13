@@ -3,18 +3,18 @@ title: Documentatie voor Microsoft Identity Platform
 summary: Het Microsoft Identity Platform bestaat uit een verificatieservice, opensourcebibliotheken en hulpprogramma's voor toepassingsbeheer. Leer hoe u moderne, op standaarden gebaseerde verificatieoplossingen maakt met onze quickstarts, zelfstudies en codevoorbeelden. Bouw toepassingen waarbij uw gebruikers en klanten zich aanmelden met hun Microsoft-identiteiten of sociale accounts en toegang verkrijgen tot uw API's of Microsoft-API's, zoals Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/26/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
-  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/28/2020
-  ms.locfileid: "91403140"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91801882"
 landingContent:
 - title: Over het Microsoft Identity Platform
   linkLists:
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Overzicht van Microsoft Identity Web-bibliotheek
+      url: microsoft-identity-web.md
     - text: 'Zelfstudie: Blazor Server'
       url: tutorial-blazor-server.md
     - text: 'Quickstart: Een ASP.NET Core-web-API beveiligen'

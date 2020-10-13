@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e1a08af1be3d9b5cfb011516d00a8c0548994bf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440589"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946163"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
@@ -142,7 +142,7 @@ De volgende sjabloon van een Kopieer activiteit bevat een volledige lijst met on
 | enableStaging<br/>stagingSettings | Geef op of de tussenliggende gegevens in Blob Storage moeten worden gestage in plaats van gegevens rechtstreeks van bron naar sink te kopiëren.<br/>Zie voor meer informatie over nuttige scenario's en configuratie Details [gefaseerde kopie](copy-activity-performance-features.md#staged-copy). | Nee |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u incompatibele rijen wilt verwerken wanneer u gegevens kopieert van bron naar sink.<br/>Zie [fout tolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | Nee |
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 U kunt het uitvoeren van de Kopieer activiteit in de Azure Data Factory zowel visueel als programmatisch controleren. Zie [copy-activiteit controleren](copy-activity-monitoring.md)voor meer informatie.
 

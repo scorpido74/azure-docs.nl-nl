@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368716"
 ---
 # <a name="buy-a-reservation"></a>Een reservering kopen
 
@@ -123,7 +123,7 @@ Afhankelijk van de manier waarop u voor uw Azure-abonnement betaalt, worden er r
 Voor klanten met EA-abonnementen:
 
 - Meldingen worden alleen naar contactpersonen voor EA-meldingen verzonden.
-- Gebruikers die aan een reservering zijn toegevoegd met behulp van de machtiging voor RBAC (IAM), krijgen geen enkele e-mailmelding.
+- Gebruikers die aan een reservering zijn toegevoegd met behulp van de machtiging voor Azure RBAC (IAM), krijgen geen enkele e-mailmelding.
 
 Voor klanten met afzonderlijk abonnementen:
 

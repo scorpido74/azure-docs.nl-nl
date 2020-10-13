@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 09/22/2020
 author: jluk
 ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91368852"
 ---
-# <a name="secure-pods-with-azure-policy"></a>Alles beveiligen met Azure Policy
+# <a name="secure-pods-with-azure-policy"></a>Pods beveiligen met Azure Policy
 
 Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u bepalen welke functies er worden verleend en of er iets wordt uitgevoerd op basis van het bedrijfs beleid. Deze toegang wordt gedefinieerd via ingebouwd beleid dat is opgegeven door de [Azure Policy-invoeg toepassing voor AKS][kubernetes-policy-reference]. Door extra controle over de beveiligings aspecten van de specificatie van uw Pod te bieden, zoals root-bevoegdheden, kunt u strenger beveiliging en inzicht krijgen in wat er in uw cluster wordt geïmplementeerd. Als een pod niet voldoet aan de voor waarden die zijn opgegeven in het beleid, kan Azure Policy de pod niet toestaan om een schending te starten of te markeren. In dit artikel leest u hoe u Azure Policy kunt gebruiken om de implementatie van een Peul in AKS te beperken.
 
@@ -108,8 +108,8 @@ Beide ingebouwde initiatieven zijn gebaseerd op definities die worden gebruikt i
 |Gebruik van het host-bestands systeem beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ja | Ja
 |Linux-mogelijkheden beperken tot de [standaardset](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ja | Ja
 |Gebruik van gedefinieerde volume typen beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Ja, toegestane volume typen zijn `configMap` , `emptyDir` , `projected` , `downwardAPI` , `persistentVolumeClaim`|
-|Escalatie van bevoegdheden naar hoofdmap|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
-|De gebruikers-en groeps-Id's van de container beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
+|Escalatie van bevoegdheden naar hoofdmap|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Ja |
+|De gebruikers-en groeps-Id's van de container beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja|
 |Het toewijzen van een FSGroup die eigenaar is van de volumes van de pod beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja, toegestane regels zijn `runAsUser: mustRunAsNonRoot` , `supplementalGroup: mustRunAs 1:65536` , `fsGroup: mustRunAs 1:65535` , `runAsGroup: mustRunAs 1:65535` .  |
 |Vereist seccomp-profiel|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Ja, allowedProfiles zijn * `docker/default` of `runtime/default` |
 

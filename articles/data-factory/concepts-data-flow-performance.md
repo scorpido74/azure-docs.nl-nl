@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
 ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370875"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
@@ -109,7 +109,7 @@ Gegevens stromen distribueren de gegevens verwerking over verschillende knoop pu
 
 De standaard cluster grootte is vier Stuur knooppunten en vier werk knooppunten.  Bij het verwerken van meer gegevens worden grotere clusters aanbevolen. Hieronder ziet u de mogelijke opties voor de grootte:
 
-| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Opmerkingen |
+| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Notities |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Niet beschikbaar voor berekenings optimalisatie |
 | 8 | 8 | 16 | |
@@ -173,7 +173,7 @@ Hoewel gegevens stromen ondersteuning bieden voor verschillende bestands typen, 
 
 Als u dezelfde gegevens stroom uitvoert voor een set bestanden, raden we u aan een map te lezen met behulp van joker tekens of het lezen van een lijst met bestanden. Met een activiteit voor het uitvoeren van één gegevens stroom kan al uw bestanden in batch worden verwerkt. Meer informatie over het instellen van deze instellingen vindt u in de documentatie van de connector, zoals [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
 
-Vermijd het gebruik van de for-each-activiteit voor het uitvoeren van gegevens stromen over een set bestanden, indien mogelijk. Dit zorgt ervoor dat elke herhaling van de voor-elk als een eigen Spark-cluster draait, wat vaak niet nodig is en duur kan zijn. 
+Vermijd het gebruik van de For-Each activiteit voor het uitvoeren van gegevens stromen over een set bestanden, indien mogelijk. Dit zorgt ervoor dat elke herhaling van de voor-elk als een eigen Spark-cluster draait, wat vaak niet nodig is en duur kan zijn. 
 
 ## <a name="optimizing-sinks"></a>Sinks optimaliseren
 

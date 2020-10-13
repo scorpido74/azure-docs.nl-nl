@@ -9,12 +9,12 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc059cae927c1aaa057080172313f5720f483bdb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82134362"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972574"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>IoT Edge-modules op schaal implementeren met behulp van Visual Studio code
 
@@ -27,7 +27,10 @@ In dit artikel stelt u Visual Studio code en de IoT-uitbrei ding in. Vervolgens 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
-* Een [IOT edge apparaat](how-to-register-device.md#register-with-visual-studio-code) waarop de IOT Edge-runtime is geïnstalleerd.
+* Een of meer IoT Edge apparaten.
+
+  Als u geen IoT Edge apparaat hebt ingesteld, kunt u er een maken in een virtuele Azure-machine. Volg de stappen in een van de Quick Start-artikelen voor het [maken van een virtueel Linux-apparaat](quickstart-linux.md) of [het maken van een virtueel Windows-apparaat](quickstart.md).
+
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) voor Visual Studio code.
 

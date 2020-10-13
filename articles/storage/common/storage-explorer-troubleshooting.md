@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
 ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714449"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor probleemoplossing voor Azure Storage Explorer
@@ -63,7 +63,7 @@ Als u toegang wilt krijgen tot BLOB-containers of-wacht rijen, kunt u deze resou
 1. Open het dialoog venster verbinding maken.
 2. Selecteer een resource toevoegen via Azure Active Directory (Azure AD). Klik op Volgende.
 3. Selecteer het gebruikers account en de Tenant die zijn gekoppeld aan de resource waaraan u wilt koppelen. Klik op Volgende.
-4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op verbinden.
+4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op Verbinding maken.
 
 Voor andere resource typen hebben we momenteel geen oplossing met betrekking tot Azure RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
@@ -176,7 +176,7 @@ Als u uw abonnementen niet kunt ophalen nadat u zich hebt aangemeld, kunt u de v
 Als u een gekoppeld account of opslag resource niet kunt verwijderen via de gebruikers interface, kunt u alle gekoppelde resources hand matig verwijderen door de volgende mappen te verwijderen:
 
 * Windows `%AppData%/StorageExplorer`
-* MacOS `/Users/<your_name>/Library/Application Support/StorageExplorer`
+* macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Spreek `~/.config/StorageExplorer`
 
 > [!NOTE]
@@ -329,7 +329,7 @@ Voor Storage Explorer moet .NET Core zijn geïnstalleerd op uw systeem. U wordt 
 > [!NOTE]
 > Voor Storage Explorer versie 1.7.0 en eerder is .NET Core 2,0 vereist. Als u een nieuwere versie van .NET core hebt geïnstalleerd, moet u een [patch Storage Explorer](#patching-storage-explorer-for-newer-versions-of-net-core). Als u Storage Explorer 1.8.0 of hoger gebruikt, hebt u ten minste .NET Core 2,1 nodig.
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20,04](#tab/2004)
+# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Down load het bestand Storage Explorer. tar. gz.
 2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):

@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566785"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis-preview"></a>Replica's toevoegen aan Azure cache voor redis (preview-versie)
@@ -36,7 +36,7 @@ Voer de volgende stappen uit om een cache te maken:
   
 1. Selecteer op de pagina **Nieuw** de optie **Databases** en selecteer vervolgens **Azure Cache voor Redis**.
 
-    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure Cache voor Redis.":::
    
 1. Configureer de instellingen voor de nieuwe cache op de pagina **basis beginselen** .
    
@@ -50,7 +50,7 @@ Voer de volgende stappen uit om een cache te maken:
    
 1. Kies op de pagina **Geavanceerd** de optie **aantal replica's**.
    
-    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Selecteer Azure-cache voor redis.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Selecteer Azure Cache voor Redis.":::
 
 1. Wijzig de standaard instellingen van andere opties. 
 
@@ -58,9 +58,9 @@ Voer de volgende stappen uit om een cache te maken:
     > Ondersteuning voor meerdere replica's werkt momenteel alleen met niet-geclusterde caches.
     >
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
    
-    Het duurt even voordat de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
+    Het duurt even voor de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
 
     > [!NOTE]
     > Het aantal replica's in een cache kan niet worden gewijzigd nadat het is gemaakt.

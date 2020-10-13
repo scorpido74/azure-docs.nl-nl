@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369481"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Tags voor Azure Cognitive Services container installatie kopieën
@@ -29,7 +29,7 @@ De [afwijkende detector][ad-containers] container installatie kopie vindt u in h
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 
@@ -39,7 +39,7 @@ De [Computer Vision][cv-containers] OCR-container installatie kopie lezen kan wo
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest ( (2.0.013250001-amd64-preview)` | • Verminder het geheugen gebruik voor de container verder. |
 |                                          | • Externe cache is vereist voor het instellen van meerdere peulen. Stel bijvoorbeeld redis in voor caching. |
@@ -68,7 +68,7 @@ De [Face][fa-containers] -container installatie kopie vindt u in het `containerp
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -86,7 +86,7 @@ De container installatie kopie voor de [formulier herkenning][fr-containers] vin
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -99,7 +99,7 @@ De [Luis][lu-containers] -container installatie kopie vindt u in het `mcr.micros
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -117,7 +117,7 @@ De [Custom speech-naar-tekst][sp-cstt] container installatie kopie vindt u in he
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags            | Opmerkingen |
+| Afbeeldings Tags            | Notities |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.5.0-amd64`         |       |
@@ -136,7 +136,7 @@ De [aangepaste tekst-naar-spraak-][sp-ctts] container installatie kopie vindt u 
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags            | Opmerkingen |
+| Afbeeldings Tags            | Notities |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.7.0-amd64`         |       |
@@ -153,7 +153,7 @@ Spraak-naar-tekst v 2.5.0-installatie kopieën worden ondersteund in de *Amerika
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                  | Opmerkingen                                    |
+| Afbeeldings Tags                  | Notities                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Container installatie kopie met de `en-US` land instelling. |
 | `2.5.0-amd64-ar-ae`         | Container installatie kopie met de `ar-AE` land instelling. |
@@ -631,7 +631,7 @@ De [tekst-naar-spraak][sp-tts] container installatie kopie vindt u in het `conta
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                                  | Opmerkingen                                                                      |
+| Afbeeldings Tags                                  | Notities                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaRUS` stem.         |
 | `1.7.0-amd64-ar-eg-hoda`                    | Container installatie kopie met de `ar-EG` land instellingen en de `ar-EG-Hoda` stem.            |
@@ -1128,7 +1128,7 @@ De container installatie kopie [Neural text-to-speech] [SP-ntts] is te vinden in
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                                  | Opmerkingen                                                                      |
+| Afbeeldings Tags                                  | Notities                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaNeural` stem.      |
 | `1.2.0-amd64-de-de-katjaneural-preview`     | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-KatjaNeural` stem.     |
@@ -1154,7 +1154,7 @@ De [Sleuteltermextractie][ta-kp] container installatie kopie vindt u in het `mcr
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -1169,7 +1169,7 @@ De [taaldetectie][ta-la] container installatie kopie vindt u in het `mcr.microso
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags                    | Opmerkingen |
+| Afbeeldings Tags                    | Notities |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -1184,7 +1184,7 @@ De [sentimentanalyse][ta-se] container installatie kopie vindt u in het `mcr.mic
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
-| Afbeeldings Tags | Opmerkingen                                         |
+| Afbeeldings Tags | Notities                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
 | `3.0-en`   | Sentimentanalyse v3 (Engels)               |

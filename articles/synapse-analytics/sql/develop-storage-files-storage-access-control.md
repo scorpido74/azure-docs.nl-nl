@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987134"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91449457"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Toegang tot opslagaccounts beheren voor SQL on-demand (preview)
 
@@ -53,7 +53,7 @@ U kunt een SAS-token verkrijgen door te navigeren naar de **Azure-portal > Opsla
 >
 > SAS-token: ?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
-U moet de referenties binnen het database- of serverbereik maken om toegang met behulp van een SAS-token mogelijk te maken.
+U moet de referenties binnen het database- of serverbereik maken om toegang met behulp van een SAS-token mogelijk te maken 
 
 ### <a name="managed-identity"></a>[Beheerde identiteit](#tab/managed-identity)
 
@@ -119,7 +119,7 @@ Om een soepele Pass-Through Azure AD-ervaring te garanderen, hebben alle gebruik
 
 ## <a name="server-scoped-credential"></a>Referentie binnen serverbereik
 
-Referenties binnen het bereik van de server worden gebruikt wanneer de SQL-aanmelding de functie `OPENROWSET` aanroept zonder `DATA_SOURCE` om bestanden te lezen in een opslagaccount. De naam van de referentie binnen serverbereik **moet** overeenkomen met de URL van Azure Storage. U kunt een referentie toevoegen door [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) uit te voeren. U moet als argument een naam voor de referentie opgeven. Deze moet overeenkomen met een deel van het pad of het volledige pad naar gegevens in Storage (zie hieronder).
+Referenties binnen het bereik van de server worden gebruikt wanneer de SQL-aanmelding de functie `OPENROWSET` aanroept zonder `DATA_SOURCE` om bestanden te lezen in een opslagaccount. De naam van de referentie binnen serverbereik **moet** overeenkomen met de URL van Azure Storage. U kunt een referentie toevoegen door [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) uit te voeren. U moet als argument een naam voor de referentie opgeven. Deze moet overeenkomen met een deel van het pad of het volledige pad naar gegevens in Storage (zie hieronder).
 
 > [!NOTE]
 > Het argument `FOR CRYPTOGRAPHIC PROVIDER` wordt niet ondersteund.
@@ -170,7 +170,7 @@ Referenties in het databasebereik zijn niet vereist om toegang te geven tot open
 
 ## <a name="database-scoped-credential"></a>Referenties in databasebereik
 
-Referenties in databasebereik worden gebruikt wanneer een principal de functie `OPENROWSET` aanroept met `DATA_SOURCE` of gegevens selecteert uit een [externe tabel](develop-tables-external-tables.md) die geen toegang heeft tot openbare bestanden. De referentie in het databasebereik hoeft niet overeen te komen met de naam van het opslagaccount, omdat deze expliciet wordt gebruikt in de gegevensbron (DATA SOURCE) die de locatie van de opslag definieert.
+Referenties in databasebereik worden gebruikt wanneer een principal de functie `OPENROWSET` aanroept met `DATA_SOURCE` of gegevens selecteert uit een [externe tabel](develop-tables-external-tables.md) die geen toegang heeft tot openbare bestanden. De referentie voor het databasebereik hoeft niet overeen te komen met de naam van het opslagaccount. Deze wordt expliciet gebruikt in DATA SOURCE om de locatie van de opslag te definiëren.
 
 Met de referenties binnen databasebereik wordt toegang tot Azure-opslag verleend met behulp van de volgende verificatietypen:
 
@@ -268,7 +268,7 @@ Een databasegebruiker kan de inhoud van de bestanden uit de gegevensbron lezen m
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
-                                DATA_SOURCE = [mysample],
+                                DATA_SOURCE = 'mysample',
                                 FORMAT='PARQUET') as rows;
 GO
 ```
@@ -314,7 +314,7 @@ Een databasegebruiker kan de inhoud van de bestanden uit de gegevensbron lezen m
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = 'mysample', FORMAT='PARQUET') as rows;
 GO
 ```
 
