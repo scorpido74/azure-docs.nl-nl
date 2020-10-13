@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 6/10/2020
 ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84730137"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
@@ -50,7 +50,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Maak een container met de naam **Destination**.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster. Selecteer **Analytics**  >  **Data Factory**:
 
@@ -96,7 +96,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     d. Voer onder **terugkeer patroon** **15 minuut/minuten**in.
 
-    e. Selecteer **Volgende**.
+    e. Selecteer **Next**.
 
     Data Factory maakt een pijp lijn met de opgegeven taak naam.
 
@@ -104,7 +104,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 3. Voer de volgende stappen uit op de pagina **brongegevens archief** :
 
-    a. Selecteer **nieuwe verbinding maken** om een verbinding toe te voegen.
+    a. Selecteer  **nieuwe verbinding maken** om een verbinding toe te voegen.
 
     b. Selecteer **Azure Blob Storage** in de galerie en selecteer vervolgens **door gaan**:
 
@@ -136,7 +136,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![De pagina voor het uitvoer bestand of de map kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 
-    b. Selecteer **Volgende**.
+    b. Selecteer **Next**.
 
 7. Selecteer op de pagina **Instellingen** de optie **Volgende**.
 

@@ -6,10 +6,10 @@ ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88944490"
 ---
 :::row:::
@@ -40,7 +40,7 @@ Voor invoer van de microfoon moeten de Media Foundation-bibliotheken zijn geïns
 
 De vereiste spraak-SDK-bestanden kunnen worden geïmplementeerd in dezelfde map als uw toepassing. Op deze manier kan uw toepassing rechtstreeks toegang krijgen tot de bibliotheken. Zorg ervoor dat u de juiste versie (x86/x64) selecteert die overeenkomt met uw toepassing.
 
-| Name                                            | Functie                                             |
+| Naam                                            | Functie                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | Core-SDK, vereist voor systeem eigen en beheerde implementatie |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Vereist voor beheerde implementatie                      |

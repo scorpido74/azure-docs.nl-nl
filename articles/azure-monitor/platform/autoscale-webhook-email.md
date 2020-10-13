@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86505516"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Acties voor automatisch schalen gebruiken voor het verzenden van e-mail berichten en waarschuwingen voor webhooks in Azure Monitor
@@ -58,7 +58,7 @@ Wanneer u de REST API-of Resource Manager-sjabloon gebruikt, neemt u het element
 
 | Veld | Ingevuld? | Beschrijving |
 | --- | --- | --- |
-| schijf |ja |de waarde moet ' Scale ' zijn |
+| bewerking |ja |de waarde moet ' Scale ' zijn |
 | sendToSubscriptionAdministrator |ja |de waarde moet ' waar ' of ' onwaar ' zijn |
 | sendToSubscriptionCoAdministrators |ja |de waarde moet ' waar ' of ' onwaar ' zijn |
 | customEmails |ja |de waarde kan null [] of een teken reeks matrix met e-mail berichten zijn |
@@ -102,7 +102,7 @@ Wanneer de melding over automatisch schalen wordt gegenereerd, worden de volgend
 | Veld | Ingevuld? | Beschrijving |
 | --- | --- | --- |
 | status |ja |De status die aangeeft dat er een actie voor automatisch schalen is gegenereerd |
-| schijf |ja |Voor een verhoging van de instanties wordt het ' uitschalen ' en voor een afname van de instanties de waarde ' schaalt in ' |
+| bewerking |ja |Voor een verhoging van de instanties wordt het ' uitschalen ' en voor een afname van de instanties de waarde ' schaalt in ' |
 | context |ja |De actie context voor automatisch schalen |
 | tijdstempel |ja |Tijds tempel wanneer de actie voor automatisch schalen is geactiveerd |
 | id |Ja |Resource Manager-ID van de instelling voor automatisch schalen |

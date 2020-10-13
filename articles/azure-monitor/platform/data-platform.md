@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325573"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor gegevens platform
@@ -32,7 +32,7 @@ Azure-resources genereren een aanzienlijke hoeveelheid bewakings gegevens. Azure
 
 
 ### <a name="metrics"></a>Metrische gegevens
-[Metrische gegevens](data-platform-metrics.md) zijn numeriek waarden waarmee een bepaald aspect van een systeem op een bepaald tijdstip wordt beschreven. Ze worden regel matig verzameld en worden geïdentificeerd met een tijds tempel, een naam, een waarde en een of meer labels definiëren. Metrische gegevens kunnen worden geaggregeerd met behulp van verschillende algoritmen, vergeleken met andere metrische gegevens, en gedurende een bepaalde periode geanalyseerd. 
+[Metrische gegevens](data-platform-metrics.md) zijn numeriek waarden waarmee een bepaald aspect van een systeem op een bepaald tijdstip wordt beschreven. Deze gegevens worden regelmatig verzameld en worden aangeduid met een tijdstempel, een naam, een waarde en een of meer omschrijvende labels. Metrische gegevens kunnen worden samengevoegd met behulp van verschillende algoritmen, worden vergeleken met andere metrische gegevens en gedurende een bepaalde periode worden geanalyseerd. 
 
 Metrische gegevens in Azure Monitor worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van tijdgebonden data. Dit maakt metrische gegevens bijzonder geschikt voor waarschuwingen en snelle detectie van problemen. Ze kunnen u vertellen hoe uw systeem wordt uitgevoerd, maar normaal gesp roken moet worden gecombineerd met Logboeken om de hoofd oorzaak van problemen te identificeren.
 
@@ -41,7 +41,7 @@ Metrische gegevens zijn beschikbaar voor interactieve analyse in de Azure Portal
 Lees meer over de metrische gegevens van Azure Monitor, inclusief de brongegevens in [metrieken in azure monitor](data-platform-metrics.md).
 
 ### <a name="logs"></a>Logboeken
-[Logboeken](data-platform-logs.md) zijn gebeurtenissen die in het systeem hebben plaatsgevonden. Ze kunnen verschillende soorten gegevens bevatten en kunnen worden gestructureerd of vrije tekst met een tijds tempel. Ze kunnen sporadisch worden gemaakt als gebeurtenissen in de omgeving logboek vermeldingen genereren en een systeem onder zware belasting genereert normaal gesp roken meer logboek volume.
+[Logboeken](data-platform-logs.md) zijn gebeurtenissen die in het systeem hebben plaatsgevonden. Ze kunnen verschillende soorten gegevens bevatten en kunnen worden gestructureerd of vrije tekst met een tijds tempel. Metrische gegevens kunnen sporadisch worden gemaakt wanneer gebeurtenissen in de omgeving logboekvermeldingen genereren en een systeem dat zwaar wordt belast, genereert normaal gesproken een groter logboekvolume.
 
 Logboeken in Azure Monitor worden opgeslagen in een Log Analytics werk ruimte die is gebaseerd op [Azure Data Explorer](/azure/data-explorer/) en die een krachtige analyse-engine en een [uitgebreide query taal](/azure/kusto/query/)biedt. Logboeken bevatten doorgaans voldoende informatie om te voorzien in de volledige context van het probleem dat wordt geïdentificeerd en zijn waardevol voor het identificeren van het hoofd geval van problemen.
 

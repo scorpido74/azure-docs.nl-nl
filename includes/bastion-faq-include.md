@@ -9,78 +9,78 @@ ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86276108"
 ---
-### <a name="which-regions-are-available"></a><a name="regions"></a>Welke regio's zijn er beschikbaar?
+### <a name="which-regions-are-available"></a><a name="regions"></a>Welke regio's zijn beschikbaar?
 
 [!INCLUDE [region](bastion-regions-include.md)]
 
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine"></a><a name="publicip"></a>Heb ik een openbaar IP-adres nodig op mijn virtuele machine?
 
-Wanneer u verbinding maakt met een virtuele machine met behulp van Azure Bastion, hebt u geen openbaar IP-adres nodig op de virtuele machine van Azure waarmee u verbinding maakt. De Bastion-service opent de RDP/SSH-sessie/verbinding met uw virtuele machine via het privé-IP-adres van uw virtuele machine in het virtuele netwerk.
+Wanneer u verbinding maakt met een VM met behulp van Azure Bastion, hebt u GEEN openbaar IP-adres nodig op de virtuele Azure-machine waarmee u verbinding maakt. De Bastion-service opent de sessie/verbinding via RDP/SSH met uw virtuele machine via het privé-IP-adres van uw virtuele machine, binnen uw virtuele netwerk.
 
 ### <a name="is-ipv6-supported"></a>Wordt IPv6 ondersteund?
 
 Op dit moment wordt IPv6 niet ondersteund. Azure Bastion ondersteunt alleen IPv4.
 
-### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>Heb ik een RDP-of SSH-client?
+### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>Heb ik een RDP- of SSH-client nodig?
 
-U hebt geen RDP-of SSH-client nodig om toegang te krijgen tot de RDP/SSH-verbinding met uw virtuele Azure-machine in uw Azure Portal. Met de [Azure Portal](https://portal.azure.com) kunt u RDP/SSH-toegang tot uw virtuele machine rechtstreeks in de browser krijgen.
+U hebt geen RDP- of SSH-client nodig om toegang te krijgen tot uw virtuele Azure-machine in de Azure-portal. Gebruik de [Azure-portal](https://portal.azure.com) om via RDP/SSH rechtstreeks toegang te krijgen tot uw virtuele machine.
 
-### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Heb ik een agent nodig die wordt uitgevoerd op de virtuele machine van Azure?
+### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Heb ik een agent nodig die wordt uitgevoerd op de virtuele Azure-machine?
 
-U hoeft geen agent of software in uw browser of uw Azure virtual machine te installeren. De Bastion-service is zonder agent en er is geen aanvullende software voor RDP/SSH vereist.
+U hoeft geen agent of software te installeren in uw browser of op uw virtual Azure-machine. De Bastion-service werkt zonder agenten en er is geen aanvullende software vereist voor RDP/SSH.
 
-### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>Hoeveel gelijktijdige RDP-en SSH-sessies worden elk ondersteund door Azure Bastion?
+### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>Hoeveel gelijktijdige RDP- en SSH-sessies worden ondersteund door Azure Bastion?
 
-Zowel RDP als SSH zijn een protocol op basis van gebruik. Een hoog gebruik van sessies zorgt ervoor dat de bastion-host een lager totaal aantal sessies ondersteunt. De onderstaande nummers gaan uitgaan van de normale dagelijkse werk stromen.
+Zowel RDP als SSH is een op gebruik gebaseerde protocol. Intensief gebruik van sessies heeft tot gevolg dat de Bastion-host een lager totaal aantal sessies ondersteunt. De onderstaande cijfers gaan uit van normale dagelijkse workflows.
 
 [!INCLUDE [limits](bastion-limits.md)]
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Welke functies worden ondersteund in een RDP-sessie?
 
-Op dit moment wordt alleen tekst kopiëren/plakken ondersteund. Functies zoals het kopiëren van bestanden worden niet ondersteund. U kunt uw feedback over nieuwe functies op de [Azure Bastion-feedback pagina](https://feedback.azure.com/forums/217313-networking?category_id=367303)delen.
+Momenteel wordt alleen het kopiëren en plakken van tekst ondersteund. Functies zoals het kopiëren van bestanden worden niet ondersteund. U kunt uw feedback over nieuwe functies delen op de pagina [Feedback over Azure Bastion](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Welke browsers worden ondersteund?
 
-Gebruik de micro soft Edge-browser of Google Chrome in Windows. Voor Apple Mac gebruikt u Google Chrome-browser. Chroom van micro soft Edge wordt ook ondersteund in respectievelijk Windows en Mac.
+Gebruik Microsoft Edge of Google Chrome in Windows. Voor Apple Mac gebruikt u Google Chrome. Microsoft Edge Chromium wordt ook ondersteund voor zowel Windows als Mac.
 
-### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Waar worden klant gegevens opgeslagen in azure Bastion?
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Waar worden klantgegevens opgeslagen door Azure Bastion?
 
-Azure Bastion verplaatst of opslaat geen klant gegevens uit de regio waarin deze is geïmplementeerd.
+Er worden door Azure Bastion geen klantgegevens verplaatst of opgeslagen buiten de regio waarin de service is geïmplementeerd.
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>Zijn er rollen vereist voor toegang tot een virtuele machine?
 
-De volgende rollen zijn vereist om een verbinding te maken:
+De volgende rollen zijn vereist om verbinding te maken:
 
-* Rol van lezer op de virtuele machine
-* De rol van lezer op de NIC met het privé-IP-adres van de virtuele machine
-* Rol van lezer in de Azure Bastion-resource
+* De rol van Lezer op de virtuele machine
+* De rol van Lezer op de NIC met het privé-IP-adres van de virtuele machine
+* De rol van Lezer in de Azure Bastion-resource
 
 ### <a name="what-is-the-pricing"></a><a name="pricingpage"></a>Wat zijn de prijzen?
 
 Zie de pagina [prijzen](https://aka.ms/BastionHostPricing) voor meer informatie.
 
-### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Is voor Azure Bastion een RDS CAL vereist voor beheer doeleinden op Vm's die door Azure worden gehost?
-Nee, voor toegang tot Windows Server-Vm's door Azure Bastion is geen [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) vereist wanneer uitsluitend voor administratieve doel einden wordt gebruikt.
+### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Is voor Azure Bastion een RDS CAL vereist voor administratieve doeleinden op VM's die door Azure worden gehost?
+Nee, voor toegang tot VM's met Windows Server door Azure Bastion is geen [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) vereist wanneer dit uitsluitend voor administratieve doeleinden is.
 
-### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Welke toetsenbord indelingen worden ondersteund tijdens de externe sessie van Bastion?
+### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Welke toetsenbordindelingen worden ondersteund tijdens de externe sessie met Bastion?
 
-Azure Bastion ondersteunt momenteel de toetsenbord indeling en-US-QWERTY in de VM.  Ondersteuning voor andere land instellingen voor toetsenbord indeling wordt uitgevoerd.
+Azure Bastion ondersteunt momenteel de toetsenbordindeling en-us-qwerty op de VM.  Er wordt gewerkt aan ondersteuning voor andere landinstellingen voor toetsenbordindelingen.
 
-### <a name="is-user-defined-routing-udr-supported-on-an-azure-bastion-subnet"></a><a name="udr"></a>Wordt door de gebruiker gedefinieerde route ring (UDR) ondersteund op een Azure Bastion-subnet?
+### <a name="is-user-defined-routing-udr-supported-on-an-azure-bastion-subnet"></a><a name="udr"></a>Wordt door de gebruiker gedefinieerde routering (UDR) ondersteund in een subnet van Azure Bastion?
 
-Nee. UDR wordt niet ondersteund in een Azure Bastion-subnet.
-Voor scenario's met zowel Azure Bastion als Azure Firewall/netwerk virtueel apparaat (NVA) in hetzelfde virtuele netwerk, hoeft u geen verkeer van een Azure Bastion-subnet af te dwingen naar Azure Firewall omdat de communicatie tussen Azure Bastion en uw virtuele machines privé is. Zie [toegang tot vm's achter Azure Firewall met Bastion](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)voor meer informatie.
+Nee. UDR wordt niet ondersteund in een subnet van Azure Bastion.
+Voor scenario's met zowel Azure Bastion als Azure Firewall/Network Virtual Appliance (NVA) in hetzelfde virtuele netwerk, hoeft u verkeer van een Azure Bastion-subnet niet om te leiden naar Azure Firewall omdat de communicatie tussen Azure Bastion en uw VM's privé is. Zie voor meer informatie het artikel over [toegang tot VM's achter Azure Firewall met Bastion](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
-### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Waarom krijg ik het fout bericht ' uw sessie is verlopen ' voordat de Bastion-sessie wordt gestart?
+### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Waarom krijg ik een foutbericht dat mijn sessie is verlopen voordat de Bastion-sessie is gestart?
 
-Een sessie moet alleen worden gestart vanuit de Azure Portal. Meld u aan bij de Azure Portal en start de sessie opnieuw. Als u rechtstreeks vanuit een andere browser sessie of tabblad naar de URL gaat, wordt deze fout verwacht. Het helpt ervoor te zorgen dat uw sessie veiliger is en dat de sessie alleen via de Azure Portal kan worden geopend.
+Een sessie mag alleen worden gestart vanuit de Azure-portal. Meld u aan bij de Azure-portal en start de sessie opnieuw. Als u rechtstreeks vanuit een andere sessie of ander tabblad in de browser naar de URL gaat, is deze fout te verwachten. De fout helpt ervoor te zorgen dat uw sessie veiliger is en dat de sessie alleen via de Azure-portal kan worden geopend.
 
-### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Implementatie fouten Hoe kan ik verwerken?
+### <a name="how-do-i-handle-deployment-failures"></a><a name="udr">Wat doe ik met implementatiefouten?</a>
 
-Bekijk eventuele fout berichten en [verhoog zo nodig een ondersteunings aanvraag in de Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Implementatie fouten kunnen het gevolg [zijn van limieten, quota's en beperkingen voor Azure-abonnementen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Klanten kunnen met name een limiet voor het aantal open bare IP-adressen hebben die zijn toegestaan per abonnement dat ervoor zorgt dat de implementatie van Azure Bastion mislukt.
+Bekijk de foutberichten goed en [dien een ondersteuningsaanvraag in de Azure-portal in](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request), als dat nog nodig is. Implementatiefouten kunnen het gevolg zijn van [limieten voor Azure-abonnementen, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Klanten kunnen met name te maken krijgen met de limiet voor het aantal openbare IP-adressen dat is toegestaan per abonnement. Hierdoor kan de implementatie van Azure Bastion mislukken.

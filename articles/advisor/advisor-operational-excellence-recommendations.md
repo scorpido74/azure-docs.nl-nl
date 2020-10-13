@@ -4,10 +4,10 @@ description: Gebruik Azure Advisor om uw operationele uitmuntendheid voor uw Azu
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258488"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Behaal de operationele uitmuntendheid met behulp van Azure Advisor
@@ -57,7 +57,7 @@ Azure Policy is een service in azure die u kunt gebruiken om beleid te maken, to
 ## <a name="no-validation-environment-enabled"></a>Geen validatieomgeving ingeschakeld
 Azure Advisor bepaalt dat er geen validatie omgeving is ingeschakeld in het huidige abonnement. Wanneer u uw hostgroepen maakt, hebt u \" Nee \" voor \" validatie omgeving geselecteerd \" op het tabblad Eigenschappen. Als er ten minste één hostgroep is waarvoor een validatie omgeving is ingeschakeld, zorgt u ervoor dat de bedrijfs continuïteit via Windows Virtual Desktop service-implementaties met vroegtijdige detectie van potentiële problemen. [Meer informatie](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
 
-## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Zorg ervoor dat de productie omgeving (niet-validatie) afneemt van stabiele functionaliteit
+## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Zorgen dat de productieomgeving (niet-validatie) profiteert van stabiele functionaliteit
 Azure Advisor detecteert dat er voor een of meer hostgroepen een validatie omgeving is ingeschakeld. Om validatie omgevingen het beste te kunnen gebruiken, moet u ten minste één, maar nooit meer dan de helft van uw hostgroepen in de validatie omgeving hebben. Als u een goede balans hebt tussen uw hostgroepen waarvoor de validatie omgeving is ingeschakeld en de groepen waarvoor deze functie is uitgeschakeld, kunt u het beste profiteren van de voor delen van de implementaties met meerdere fases die door Windows Virtual Desktop worden aangeboden met bepaalde updates. Om dit probleem op te lossen, opent u de eigenschappen van uw hostgroep en selecteert \" \" u niet naast de \" instelling validatie omgeving \" .
 
 ## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Traffic Analytics inzicht geven in verkeerspatronen in Azure-resources

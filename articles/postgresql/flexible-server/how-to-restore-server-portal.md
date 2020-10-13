@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935894"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>Herstel naar een bepaald tijdstip van een flexibele server
@@ -40,7 +40,7 @@ Volg deze stappen om uw flexibele server te herstellen met een eerste bestaande 
 
 4.  Selecteer het **oudste herstel punt** en geef een nieuwe server naam op in het veld **herstellen naar nieuwe server** . De vroegste tijds tempel waarnaar u kunt herstellen, wordt weer gegeven. 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Vroegste herstel tijd":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Overzicht van herstellen":::
 
 5.  Klik op **OK**.
 
@@ -61,7 +61,7 @@ Volg deze stappen om uw flexibele server te herstellen met een eerste bestaande 
 
 5.  Selecteer datum en tijd en geef een nieuwe server naam op in het veld **herstellen naar nieuwe server** . 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Aangepaste herstel tijd":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Overzicht van herstellen":::
  
 6.  Klik op **OK**.
 

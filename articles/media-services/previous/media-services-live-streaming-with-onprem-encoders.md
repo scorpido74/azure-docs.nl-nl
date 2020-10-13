@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269621"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die een multi-bitrate live stream van on-premises encoders ontvangen
@@ -189,9 +189,9 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Kanaal status | UI-indica toren van portal | Gefactureerd? |
 | --- | --- | --- |
 | **Starten** |**Starten** |Nee (tijdelijke status) |
-| **Wordt uitgevoerd** |**Gereed** (geen actieve Program ma's)<p><p>of<p>**Streaming** (ten minste één programma dat wordt uitgevoerd) |Yes |
+| **Wordt uitgevoerd** |**Gereed** (geen actieve Program ma's)<p><p>of<p>**Streaming** (ten minste één programma dat wordt uitgevoerd) |Ja |
 | **Stoppen** |**Stoppen** |Nee (tijdelijke status) |
-| **Gestopt** |**Gestopt** |No |
+| **Gestopt** |**Gestopt** |Nee |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Ondertiteling en AD-invoeging
 De volgende tabel bevat de ondersteunde standaarden voor ondertiteling en het invoegen van advertenties.

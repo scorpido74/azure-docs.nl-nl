@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: juliako
 ms.openlocfilehash: 4cdc3efc766daff38b566e71f06dc4db0f38fe7a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255508"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Postman configureren voor Media Services v2-REST API-aanroepen
@@ -43,14 +43,14 @@ Deze omgeving en verzameling wordt in artikelen gebruikt die laten zien hoe u ve
 2. Open de **Postman**.
 3. Selecteer rechts van het scherm de optie **Manage environment**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-env.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-env.png)
 4. Klik in het dialoogvenster **Manage environment** op **Import**.
 5. Blader en selecteer de **AzureMediaServices.postman_environment.jsin** het bestand.
 6. De **Media** -omgeving wordt toegevoegd.
 7. Sluit het dialoogvenster.
 8. Selecteer de **Media** -omgeving.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-choose-env.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-choose-env.png)
 
 ## <a name="configure-the-collection"></a>De collectie configureren
 
@@ -58,7 +58,7 @@ Deze omgeving en verzameling wordt in artikelen gebruikt die laten zien hoe u ve
 2. Klik op **Import** om het verzamelingbestand te importeren.
 3. Kies de **AzureMediaServicesOperations.postman_collection.jsin** het bestand.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-import-collection.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-import-collection.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

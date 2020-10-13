@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
 ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596499"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL Replicatie van inkomende gegevens configureren
@@ -62,7 +62,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
       ```bash
       mysql> SELECT @@global.redirect_server_host;
       ```
-      Hieronder ziet u een voor beeld van uitvoer:
+      Hieronder ziet u een voorbeeld van uitvoer:
       ```bash 
       +-----------------------------------------------------------+
       | @@global.redirect_server_host                             |

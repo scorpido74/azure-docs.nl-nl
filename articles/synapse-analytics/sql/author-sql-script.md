@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
 ms.openlocfilehash: 9d130c2a2db9ccead7180b6248398a84fcb34c3f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441235"
 ---
 # <a name="using-sql-script-in-azure-synapse-studio-preview"></a>SQL-script gebruiken in azure Synapse Studio (preview-versie)
@@ -73,7 +73,7 @@ Als u het menu **acties** onder gegevens selecteert, kunt u verschillende acties
 
 - Nieuw SQL-script
 - BOVENSTE 1000 rijen selecteren
-- CREËREN
+- CREATE
 - NEERZETten en maken 
  
 Verken de beschik bare penbeweging door met de rechter muisknop te klikken op de knoop punten van SQL-groep en SQL op aanvraag.

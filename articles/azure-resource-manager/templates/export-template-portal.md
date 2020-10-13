@@ -4,10 +4,10 @@ description: Gebruik Azure Portal om een Azure Resource Manager sjabloon te expo
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423232"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eén en meerdere resources exporteren naar een sjabloon in Azure Portal
@@ -55,7 +55,7 @@ Als u resources wilt exporteren die zijn gemaakt via het klassieke implementatie
 
 Als er een waarschuwing wordt weer gegeven bij het exporteren van een sjabloon die aangeeft dat een resource type niet is geëxporteerd, kunt u nog steeds de eigenschappen voor die resource detecteren. Zie [Eigenschappen van bronnen ontdekken](view-resources.md)voor meer informatie over de verschillende opties voor het weer geven van resource-eigenschappen. U kunt ook de Azure- [rest API](/rest/api/azure/) voor het resource type bekijken.
 
-## <a name="export-template-from-a-resource-group"></a>Sjabloon exporteren van een resource groep
+## <a name="export-template-from-a-resource-group"></a>Sjabloon exporteren vanuit een resourcegroep
 
 Een of meer resources uit een resource groep exporteren:
 
@@ -66,11 +66,11 @@ Een of meer resources uit een resource groep exporteren:
    ![Alle resources exporteren](./media/export-template-portal/select-all-resources.png)
 
     Alleen het opslag account is geselecteerd op de scherm opname.
-1. Selecteer **sjabloon exporteren**.
+1. Selecteer **Sjabloon exporteren**.
 
 1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd.
 
-   ![Sjabloon weer geven](./media/export-template-portal/show-template.png)
+   ![Sjabloon weergeven](./media/export-template-portal/show-template.png)
 
    **Para meters zijn** standaard geselecteerd.  Als deze para meter is geselecteerd, worden alle sjabloon parameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen para meters wilt maken, schakelt u dit selectie vakje in om ze niet op te geven.
 

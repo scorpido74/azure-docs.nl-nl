@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89270120"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Gegevens delen en ontvangen van Azure Blob Storage en Azure Data Lake Storage
@@ -45,7 +45,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
-1. Selecteer de menu knop in de linkerbovenhoek van de portal en selecteer vervolgens **een resource maken** (+).
+1. Selecteer de menuknop in de linkerbovenhoek van de portal, en selecteer vervolgens **Een resource maken** (+).
 
 1. Zoek naar *Data Share*.
 
@@ -58,10 +58,10 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
     | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevensshare-account.|
     | Resourcegroep | *test-resource-group* | Gebruik een bestaande resourcegroep of maak een nieuwe. |
     | Locatie | *US - oost 2* | Geef een regio op voor uw gegevensshare-account.
-    | Name | *datashareaccount* | Geef een naam op voor uw gegevensshare-account. |
+    | Naam | *datashareaccount* | Geef een naam op voor uw gegevensshare-account. |
     | | |
 
-1. Selecteer **controleren + maken**en vervolgens **maken** om uw gegevens share-account in te richten. Het inrichten van een nieuw gegevensshare-account duurt doorgaans 2 minuten of minder. 
+1. Selecteer **Beoordelen en maken** en vervolgens **Maken** om uw gegevensshare-account in te richten. Het inrichten van een nieuw gegevensshare-account duurt doorgaans 2 minuten of minder. 
 
 1. Nadat de implementatie is voltooid, selecteert u **Ga naar resource**.
 
@@ -81,9 +81,9 @@ Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
 1. Selecteer **Doorgaan**.
 
-1. Als u gegevens sets wilt toevoegen aan uw share, selecteert u **gegevens sets toevoegen**. 
+1. Selecteer **Gegevenssets toevoegen** om gegevenssets toe te voegen aan de share. 
 
-    ![Gegevens sets toevoegen aan uw share](./media/datasets.png "Gegevenssets")
+    ![Gegevenssets toevoegen aan de share](./media/datasets.png "Gegevenssets")
 
 1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. 
 
@@ -155,33 +155,33 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    In het veld **Ontvangen sharenaam** kunt u de standaardwaarde laten staan die is opgegeven door de gegevensprovider. U kunt er ook voor kiezen een nieuwe naam op te geven voor de ontvangen share. 
 
-   Wanneer u akkoord gaat met de gebruiks voorwaarden en een gegevens share-account hebt opgegeven voor het beheren van uw ontvangen share, selecteert u **accepteren en configureren**. Er wordt een shareabonnement gemaakt. 
+   Zodra u akkoord bent gegaan met de gebruiksvoorwaarden en een Data Share-account hebt opgegeven voor het beheren van de ontvangen share, selecteert u **Accepteren en configureren**. Er wordt een shareabonnement gemaakt. 
 
    ![Opties voor accepteren](./media/accept-options.png "Opties voor accepteren") 
 
-   Hiermee gaat u naar de ontvangen share in uw gegevens share-account. 
+   U ziet de ontvangen share nu in uw Data Share-account. 
 
    Als u de uitnodiging niet wilt accepteren, selecteert u *Weigeren*. 
 
 ### <a name="configure-received-share"></a>Ontvangen share configureren
 Volg de onderstaande stappen om te configureren waar u gegevens wilt ontvangen.
 
-1. Selecteer tabblad **gegevens sets** . Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **+ toewijzen aan doel** om een doel gegevens archief te kiezen. 
+1. Selecteer het tabblad **Gegevenssets**. Schakel het selectievakje in van de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **+ Toewijzen aan doel** om een doelgegevensarchief te kiezen. 
 
    ![Toewijzen aan doel](./media/dataset-map-target.png "Toewijzen aan doel") 
 
 1. Selecteer een doel gegevens archief waarvan u wilt dat de gegevens binnenkomen. Alle gegevens bestanden in het doel gegevens archief met hetzelfde pad en dezelfde naam worden overschreven. 
 
-   ![Doel opslag account](./media/map-target.png "Doelopslag") 
+   ![Doelopslagaccount](./media/map-target.png "Doelopslag") 
 
-1. Als de gegevens provider een momentopname schema voor het delen van gegevens op basis van moment opnamen heeft gemaakt om regel matig een update voor de data te bieden, kunt u ook het schema voor moment opnamen inschakelen door het tabblad **momentopname schema** te selecteren. Schakel het selectie vakje naast het schema voor moment opnamen in en selecteer **+ inschakelen**.
+1. Als u wilt delen met behulp van momentopnamen, en de gegevensprovider een schema heeft opgesteld voor het maken van momentopnamen om de gegevens regelmatig bij te werken, kunt u het schema voor het maken van momentopnamen ook inschakelen door het tabblad **Schema voor momentopnamen** te selecteren. Schakel het selectievakje naast het schema voor momentopnamen in en selecteer **+ Inschakelen**.
 
-   ![Momentopname schema inschakelen](./media/enable-snapshot-schedule.png "Momentopname schema inschakelen")
+   ![Schema voor momentopnamen inschakelen](./media/enable-snapshot-schedule.png "Schema voor momentopnamen inschakelen")
 
 ### <a name="trigger-a-snapshot"></a>Een momentopname activeren
 Deze stappen zijn alleen van toepassing bij delen op basis van momentopnamen.
 
-1. U kunt een moment opname activeren door het tabblad **Details** te selecteren, gevolgd door een **moment opname**van de trigger. Hier kunt u een volledige of incrementele momentopname van uw gegevens activeren. Als dit de eerste keer is dat u gegevens van uw gegevensprovider ontvangt, selecteert u volledig kopiëren. 
+1. U kunt een momentopname activeren door **Momentopname activeren** te selecteren op het tabblad **Details**. Hier kunt u een volledige of incrementele momentopname van uw gegevens activeren. Als dit de eerste keer is dat u gegevens van uw gegevensprovider ontvangt, selecteert u volledig kopiëren. 
 
    ![Momentopname activeren](./media/trigger-snapshot.png "Momentopname activeren") 
 
@@ -190,7 +190,7 @@ Deze stappen zijn alleen van toepassing bij delen op basis van momentopnamen.
    ![Gegevenssets van consumenten](./media/consumer-datasets.png "Toewijzing voor gegevenssets van consumenten") 
 
 ### <a name="view-history"></a>Geschiedenis weergeven
-Deze stap is alleen van toepassing op het delen op basis van moment opnamen. Selecteer het tabblad **geschiedenis** om de geschiedenis van uw moment opnamen weer te geven. Hier vindt u een overzicht van alle moment opnamen die zijn gegenereerd voor de afgelopen 30 dagen. 
+Deze stap geldt alleen voor delen op basis van momentopnamen. Selecteer het tabblad **Geschiedenis** om de geschiedenis van uw momentopnamen weer te geven. Hier vindt u een geschiedenis van alle momentopnamen die zijn gegenereerd voor de afgelopen dertig dagen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt geleerd hoe u gegevens kunt delen en ontvangen van een opslag account met behulp van de Azure data share-service. Voor meer informatie over het delen van andere gegevens bronnen gaat u verder met [ondersteunde gegevens archieven](supported-data-stores.md).

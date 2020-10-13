@@ -4,10 +4,10 @@ description: Stel uw Azure VMware-oplossings omgeving in om een back-up te maken
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 37fd74f9859813061ff5653fd2c2b0b6cad319e3
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91580010"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server voor de Azure VMware-oplossing instellen
@@ -140,7 +140,7 @@ Een Recovery Services kluis is een opslag entiteit waarin de herstel punten word
 
 1. Selecteer in het menu links **Alle services**.
 
-   ![Selecteer in het menu links Alle services.](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![Selecteer in het menu links alle services.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. Voer in het dialoog venster **alle services** het **Recovery Services** in en selecteer **Recovery Services kluizen** in de lijst.
 
@@ -190,7 +190,7 @@ Volg de stappen in deze sectie om het software pakket te downloaden, uit te pakk
 
 ### <a name="download-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Als er al een Recovery Services kluis is geopend, gaat u verder met de volgende stap. Als er geen Recovery Services-kluis is geopend, maar u zich in de Azure Portal bevindt, selecteert u in het hoofd menu **Bladeren**.
 

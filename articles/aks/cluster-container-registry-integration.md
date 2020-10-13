@@ -6,10 +6,10 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87406500"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Verifiëren bij Azure Container Registry vanuit Azure Kubernetes Service
@@ -25,7 +25,7 @@ Voor de volgende voor beelden is vereist:
 * De rol van **eigenaar** of **Azure-account beheerder** voor het **Azure-abonnement**
 * Azure CLI-versie 2.7.0 of hoger
 
-Om te voor komen dat een **eigenaar** of een rol beheerder van een **Azure-account** nodig is, kunt u een Service-Principal hand matig configureren of een bestaande Service-Principal gebruiken om ACR van AKS te verifiëren. Zie [ACR-verificatie met Service-principals](../container-registry/container-registry-auth-service-principal.md) of verificatie [van Kubernetes met een pull-geheim](../container-registry/container-registry-auth-kubernetes.md)voor meer informatie.
+Om te voor komen dat een **eigenaar** of een rol beheerder van een **Azure-account** nodig is, kunt u een Service-Principal hand matig configureren of een bestaande Service-Principal gebruiken om ACR van AKS te verifiëren. Zie [ACR-verificatie met service-principals](../container-registry/container-registry-auth-service-principal.md) of [Verifiëren vanaf Kubernetes met pullgeheim](../container-registry/container-registry-auth-kubernetes.md) voor meer informatie.
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Een nieuw AKS-cluster maken met ACR-integratie
 
