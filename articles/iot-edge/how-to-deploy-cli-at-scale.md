@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 8b9c8107c102409b717da0a277b7cdd360e9c8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ad4e72f8992c8798ce17faec6c47b753c10cfc4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439675"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978829"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>IoT Edge modules op schaal implementeren en bewaken met behulp van de Azure CLI
 
@@ -25,11 +25,14 @@ Zie [informatie over IOT Edge automatische implementaties voor één apparaat of
 
 In dit artikel stelt u Azure CLI en de IoT-uitbrei ding in. U leert hoe u modules implementeert op een set IoT Edge-apparaten en de voortgang kunt controleren met behulp van de beschik bare CLI-opdrachten.
 
-## <a name="cli-prerequisites"></a>CLI-vereisten
+## <a name="prerequisites"></a>Vereisten
 
 * Een [IOT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement.
-* [IOT edge apparaten](how-to-register-device.md#prerequisites-for-the-azure-cli) waarop de IOT Edge-runtime is geïnstalleerd.
-* [Azure cli](/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
+* Een of meer IoT Edge apparaten.
+
+  Als u geen IoT Edge apparaat hebt ingesteld, kunt u er een maken in een virtuele Azure-machine. Volg de stappen in een van de Quick Start-artikelen voor het [maken van een virtueel Linux-apparaat](quickstart-linux.md) of [het maken van een virtueel Windows-apparaat](quickstart.md).
+
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
 * De [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren

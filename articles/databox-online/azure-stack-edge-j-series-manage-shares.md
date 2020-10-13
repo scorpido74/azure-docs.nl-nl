@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 44f22f365699ddc345849df78d6e27c2703d785b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fbf765168fd848a2ae349badf4017289b5a4380
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904683"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952264"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Gebruik de Azure Portal om shares te beheren op uw Azure Stack Edge Pro
+# <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure Portal gebruiken om shares te beheren op uw Azure Stack Edge Pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -59,13 +59,13 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 7. Gebruik het lokale koppel punt om eenvoudig toegang te krijgen tot de shares van Edge Compute-modules. Selecteer **de berekening delen met Edge gebruiken** zodat de share automatisch wordt gekoppeld nadat deze is gemaakt. Als deze optie is geselecteerd, kan de module Edge ook de compute met het lokale koppel punt gebruiken.
 
-8. Klik op **Maken** om de share te maken. U ontvangt een melding als wordt begonnen met het maken van de share. Als de share met de opgegeven instellingen is gemaakt, wordt de blade **Shares** bijgewerkt in overeenstemming met de nieuwe share.
+8. Klik op **maken** om de share te maken. U ontvangt een melding als wordt begonnen met het maken van de share. Nadat de share is gemaakt met de opgegeven instellingen, wordt de Blade **shares** bijgewerkt zodat deze overeenkomen met de nieuwe share.
 
 ## <a name="add-a-local-share"></a>Een lokale share toevoegen
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **Gateway > shares**. Selecteer **+ share toevoegen** op de opdracht balk.
 
-    ![Selecteer share toevoegen](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
+    ![Selecteer share 2 toevoegen](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
 2. Geef in **Share toevoegen** de instellingen voor de share op. Geef een unieke naam voor de share op.
     
@@ -86,7 +86,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
     ![Lokale share maken](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
-    U ziet een melding dat de share wordt gemaakt. Als de share met de opgegeven instellingen is gemaakt, wordt de blade **Shares** bijgewerkt in overeenstemming met de nieuwe share.
+    U ziet een melding dat de share wordt gemaakt. Nadat de share is gemaakt met de opgegeven instellingen, wordt de Blade **shares** bijgewerkt zodat deze overeenkomen met de nieuwe share.
 
     ![Blade met updates shares weer geven](media/azure-stack-edge-j-series-manage-shares/add-local-share-3.png)
     
@@ -125,7 +125,7 @@ Voer de volgende stappen uit in de Azure Portal om een share te ontkoppelen.
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **Gateway > shares**.
 
-    ![Share selecteren](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
+    ![Share 2 selecteren](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
 2. Selecteer in de lijst met shares de share die u wilt ontkoppelen. U wilt er zeker van zijn dat de share die u ontkoppelt, niet wordt gebruikt door modules. Als de share wordt gebruikt door een module, worden er problemen met de bijbehorende module weer geven. Selecteer **ontkoppelen**.
 
@@ -145,7 +145,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te verwijderen.
 
 1. Klik in de lijst met shares op de share die u wilt verwijderen.
 
-    ![Share selecteren](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
+    ![Share 3 selecteren](media/azure-stack-edge-j-series-manage-shares/delete-share-1.png)
 
 2. Klik op **Verwijderen**.
 
@@ -169,7 +169,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 
 1.  Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
 
-    ![Share selecteren](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
+    ![Share 4 selecteren](media/azure-stack-edge-j-series-manage-shares/refresh-share-1.png)
 
 2.  Klik op **Vernieuwen**. 
 

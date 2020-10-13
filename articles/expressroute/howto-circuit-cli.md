@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eebb2693d3bc0f65059c6c3c377f1afb7ae7eccd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757568"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969055"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Snelstart: Een ExpressRoute-circuit maken en wijzigen met behulp van de Azure CLI
 
@@ -347,7 +347,7 @@ Als u het inrichten van een ExpressRoute-circuit ongedaan wilt maken om het circ
 * Als de serviceprovider van het circuit de inrichtingsstatus **Inrichten** of **Ingericht** heeft, moet u contact opnemen met de serviceprovider om de inrichting van het circuit aan hun zijde ongedaan te maken. We blijven resources reserveren en kosten in rekening brengen, totdat de serviceprovider de inrichting van het circuit helemaal ongedaan heeft gemaakt en ons op de hoogte heeft gesteld.
 * Als de serviceprovider dit heeft gedaan (de inrichtingsstatus bij de serviceprovider is ingesteld op **NotProvisioned**), kunt u het circuit verwijderen. De facturering voor het circuit wordt dan gestopt.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Resources opschonen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 U kunt uw ExpressRoute-circuit verwijderen door de volgende opdracht uit te voeren:
 

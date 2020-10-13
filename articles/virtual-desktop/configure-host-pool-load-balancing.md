@@ -3,15 +3,15 @@ title: Virtuele Windows-bureau blad-taak verdeling configureren-Azure
 description: De taakverdelings methode configureren voor een virtuele Windows-desktop omgeving.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b133f4cfcb86119687d0d9be1ce91d9207af32a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010103"
+ms.locfileid: "91932512"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>De taakverdelingsmethode voor Windows Virtual Desktop configureren
 
@@ -51,7 +51,10 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 
 ## <a name="configure-depth-first-load-balancing"></a>Diepte configureren-eerste taak verdeling
 
-Diepte: voor de taak verdeling worden nieuwe gebruikers sessies gedistribueerd naar een beschik bare sessiehost met het hoogste aantal verbindingen, maar de drempel waarde voor de maximale sessie limiet is niet bereikt. Bij het configureren van diepte-eerste taak verdeling moet u een maximum aantal sessies per sessiehost instellen in de hostgroep.
+Diepte: voor de taak verdeling worden nieuwe gebruikers sessies gedistribueerd naar een beschik bare sessiehost met het hoogste aantal verbindingen, maar de drempel waarde voor de maximale sessie limiet is niet bereikt.
+
+>[!IMPORTANT]
+>Bij het configureren van diepte-eerste taak verdeling moet u een maximum aantal sessies per sessiehost instellen in de hostgroep.
 
 Voer de volgende Power shell-cmdlet uit om een hostgroep te configureren voor het uitvoeren van diepte-eerste taak verdeling:
 

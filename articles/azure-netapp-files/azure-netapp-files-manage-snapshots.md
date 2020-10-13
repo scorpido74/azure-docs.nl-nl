@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f2a1f9125d25caa9506e954cab3b94dfcb5c24
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325686"
+ms.locfileid: "91932274"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
@@ -65,7 +65,7 @@ De functie voor het **momentopname beleid** is momenteel beschikbaar als preview
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
+U kunt ook [Azure cli-opdrachten](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
 
 ### <a name="create-a-snapshot-policy"></a>Een momentopname beleid maken 
 

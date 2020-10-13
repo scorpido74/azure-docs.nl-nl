@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/21/2020
-ms.openlocfilehash: 7cfb47ad4cad600f06aba2039f4b6a4b04722085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7072adfcfd276d6420d8ffd7331c59ead7edd288
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332131"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952043"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -43,6 +43,8 @@ Voor kopieer activiteit ondersteunt deze Azure SQL Database-Connector de volgend
 - Kopiëren van gegevens met behulp van SQL-verificatie en Azure Active Directory (Azure AD) verificatie van het toepassings token met een service-principal of beheerde identiteiten voor Azure-resources.
 - Als bron, waarbij gegevens worden opgehaald met behulp van een SQL-query of een opgeslagen procedure. U kunt er ook voor kiezen om een parallelle kopie te kopiëren van een Azure SQL Database bron. Zie de sectie [parallelle kopie van SQL database](#parallel-copy-from-sql-database) voor meer informatie.
 - Als sink wordt er automatisch een doel tabel gemaakt als deze niet bestaat op basis van het bron schema. het toevoegen van gegevens aan een tabel of het aanroepen van een opgeslagen procedure met aangepaste logica tijdens het kopiëren.
+
+Als u Azure SQL Database [serverloze laag](../azure-sql/database/serverless-tier-overview.md)gebruikt, Let er dan op dat de uitvoering van de-server is onderbroken. U kunt opnieuw proberen om een activiteit toe te voegen of extra activiteiten te ketenen om ervoor te zorgen dat de server actief is op de daad werkelijke uitvoering.
 
 >[!NOTE]
 > Azure SQL Database [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) wordt nu niet ondersteund door deze connector. U kunt een [algemene ODBC-Connector](connector-odbc.md) en een SQL Server ODBC-stuur programma gebruiken via een zelf-hostende Integration runtime. Meer informatie over het [gebruik van always encrypted](#using-always-encrypted) sectie. 
@@ -691,13 +693,13 @@ Wanneer gegevens worden gekopieerd van of naar Azure SQL Database, worden de vol
 | binair |Byte [] |
 | bit |Booleaans |
 | char |Teken reeks, char [] |
-| datum |DateTime |
+| date |DateTime |
 | Datum/tijd |DateTime |
 | datetime2 |DateTime |
 | Date time offset |Date time offset |
 | Decimaal |Decimaal |
 | FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
-| Float |Dubbel |
+| Drijvendekommagetal |Dubbel |
 | image |Byte [] |
 | int |Int32 |
 | money |Decimaal |

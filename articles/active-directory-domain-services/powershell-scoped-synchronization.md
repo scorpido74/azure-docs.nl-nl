@@ -2,20 +2,20 @@
 title: Scoped synchronisatie met Power shell voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over hoe u met Azure AD Power shell scoped Synchronization van Azure AD configureert in een door Azure Active Directory Domain Services beheerd domein
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: iainfou
-ms.openlocfilehash: 197ae37b0c63b19ebe4dcdf2732169be0f357a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: dc6ebb88440ecdccc3ea78d85f0b6186100da01a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294079"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967880"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Scoped Synchronization from Azure AD configureren voor Azure Active Directory Domain Services met behulp van Azure AD Power shell
 

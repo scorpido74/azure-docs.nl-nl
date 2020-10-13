@@ -2,7 +2,7 @@
 title: E-mail meldingen voor Azure AD Domain Services | Microsoft Docs
 description: Meer informatie over het configureren van e-mail meldingen om u te waarschuwen over problemen in een Azure Active Directory Domain Services beheerd domein
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 149de14ed2430613e9ca6d5d12f8dce6ba425dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: c273b1a6c497ec8dcb8c5bc5f50ccfccc9fce155
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039990"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968014"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail meldingen configureren voor problemen in Azure Active Directory Domain Services
 

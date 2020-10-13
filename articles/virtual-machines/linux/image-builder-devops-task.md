@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068163"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968664"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder service DevOps-taak
 
@@ -31,8 +31,8 @@ Er zijn twee taken voor Azure VM Image Builder (AIB) DevOps:
 * De [stabiele DevOps-taak installeren vanuit Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * U moet een VSTS DevOps-account hebben en een build-pijp lijn gemaakt
 * Registreer en schakel de functie vereisten voor Image Builder in het abonnement in dat door de pijp lijnen wordt gebruikt:
-    * [AZ Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [AZ CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [AZ Power shell](../windows/image-builder-powershell.md#register-features)
+    * [AZ CLI](../windows/image-builder.md#register-the-features)
     
 * Maak een standaard Azure Storage account in de resource groep bron afbeelding, kunt u andere resource groep-of opslag accounts gebruiken. Het opslag account wordt gebruikt om de build-artefacten van de DevOps-taak naar de installatie kopie te verplaatsen.
 
@@ -65,20 +65,20 @@ Stel de volgende taak eigenschappen in:
 
 Selecteer in de vervolg keuzelijst welk abonnement u wilt gebruiken om de opbouw functie voor installatie kopieën uit te voeren. Gebruik hetzelfde abonnement waar uw bron installatie kopieën zich bevinden en waar de installatie kopieën moeten worden gedistribueerd. U moet de functie voor het intrekken van de Image Builder-bijdrager toegang tot het abonnement of de resource groep autoriseren.
 
-### <a name="resource-group"></a>Resource Group
+### <a name="resource-group"></a>Resourcegroep
 
 Gebruik de resource groep waarin de sjabloon artefact van de tijdelijke afbeelding wordt opgeslagen. Wanneer u een sjabloon artefact maakt, wordt er een extra resource groep voor de tijdelijke installatie kopie `IT_<DestinationResourceGroup>_<TemplateName>_guid` gemaakt. De tijdelijke resource groep slaat de meta gegevens van de installatie kopie, zoals scripts, op. Aan het einde van de taak wordt de resource groep afbeeldings sjabloon artefact en tijdelijke afbeeldings opbouw verwijderd.
  
 ### <a name="location"></a>Locatie
 
-De locatie is de regio waar de opbouw functie voor installatie kopieën wordt uitgevoerd. Alleen een set-aantal [regio's](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) wordt ondersteund. De bron installatie kopieën moeten aanwezig zijn op deze locatie. Als u bijvoorbeeld galerie met gedeelde afbeeldingen gebruikt, moet er een replica in die regio bestaan.
+De locatie is de regio waar de opbouw functie voor installatie kopieën wordt uitgevoerd. Alleen een set-aantal [regio's](../windows/image-builder-overview.md#regions) wordt ondersteund. De bron installatie kopieën moeten aanwezig zijn op deze locatie. Als u bijvoorbeeld galerie met gedeelde afbeeldingen gebruikt, moet er een replica in die regio bestaan.
 
 ### <a name="managed-identity-required"></a>Beheerde identiteit (vereist)
-Voor de opbouw functie voor installatie kopieën is een beheerde identiteit vereist, die wordt gebruikt om aangepaste bron afbeeldingen te lezen, verbinding te maken met Azure Storage en aangepaste installatie kopieën te maken. Klik [hier](https://aka.ms/azvmimagebuilder#permissions) voor meer informatie.
+Voor de opbouw functie voor installatie kopieën is een beheerde identiteit vereist, die wordt gebruikt om aangepaste bron afbeeldingen te lezen, verbinding te maken met Azure Storage en aangepaste installatie kopieën te maken. Klik [hier](./image-builder-overview.md#permissions) voor meer informatie.
 
 ### <a name="vnet-support"></a>VNET-ondersteuning
 
-Op dit moment biedt de DevOps-taak geen ondersteuning voor het opgeven van een bestaand subnet. dit gebeurt op het schema, maar als u een bestaand VNET wilt gebruiken, kunt u met een ARM-sjabloon, waarbij een installatie kopie Builder-sjabloon is genest in, de Windows-installatie kopie maken voor beelden van de sjabloon om te zien hoe dit wordt bereikt, of gebruik [AZ AIB Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell).
+Op dit moment biedt de DevOps-taak geen ondersteuning voor het opgeven van een bestaand subnet. dit gebeurt op het schema, maar als u een bestaand VNET wilt gebruiken, kunt u met een ARM-sjabloon, waarbij een installatie kopie Builder-sjabloon is genest in, de Windows-installatie kopie maken voor beelden van de sjabloon om te zien hoe dit wordt bereikt, of gebruik [AZ AIB Power shell](../windows/image-builder-powershell.md).
 
 ### <a name="source"></a>Bron
 
@@ -194,7 +194,7 @@ In het volgende voor beeld wordt uitgelegd hoe dit werkt:
     
 #### <a name="total-length-of-image-build"></a>Totale lengte van de afbeeldings opbouw
 
-De totale lengte kan nog niet worden gewijzigd in de pijplijn taak DevOps. De standaard instelling is 240 minuten. Als u de [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes)wilt verhogen, kunt u een AZ cli-taak gebruiken in de release pijplijn. Configureer de taak om een sjabloon te kopiëren en in te dienen. Zie deze [oplossing](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)voor een voor beeld of gebruik AZ Power shell.
+De totale lengte kan nog niet worden gewijzigd in de pijplijn taak DevOps. De standaard instelling is 240 minuten. Als u de [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)wilt verhogen, kunt u een AZ cli-taak gebruiken in de release pijplijn. Configureer de taak om een sjabloon te kopiëren en in te dienen. Zie deze [oplossing](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)voor een voor beeld of gebruik AZ Power shell.
 
 
 #### <a name="storage-account"></a>Opslagaccount

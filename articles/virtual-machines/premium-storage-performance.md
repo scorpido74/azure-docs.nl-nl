@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776150"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978659"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 
@@ -130,7 +130,7 @@ De prestatie meter items zijn beschikbaar voor processor, geheugen en, elke logi
 | **Max. geheugen** |Hoeveelheid geheugen die nodig is om de toepassing probleemloos uit te voeren |Percentage toegewezen bytes in gebruik |Vmstat gebruiken |
 | **Max. CPU** |Hoeveelheid CPU vereist om toepassing probleemloos uit te voeren |Percentage processor tijd |% util |
 
-Meer informatie over [iostat gebruiken](https://linux.die.net/man/1/iostat) en [perfmon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal).
+Meer informatie over [iostat gebruiken](https://linux.die.net/man/1/iostat) en [perfmon](/windows/win32/perfctrs/performance-counters-portal).
 
 
 
@@ -222,7 +222,7 @@ Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een klei
 
 Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario voor Standard en Premium Storage.
 
-| &nbsp; | **Standaard** | **Premium** |
+| &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
 | **Kosten van VM per maand** |$1.570,58 (standaard \_ D14) |$1.003,66 (standaard \_ DS13) |
 | **Kosten van schijven per maand** |$1.638,40 (32 x 1 TB schijven) |$544,34 (4 x P30 schijven) |
@@ -343,7 +343,7 @@ Er zijn configuratie-instellingen die u kunt wijzigen om deze multi-threading of
 
 Stel bijvoorbeeld dat uw toepassing gebruikmaakt van SQL Server een grote query en een index bewerking tegelijk uitvoert. We gaan ervan uit dat u wilt dat de index bewerking meer presteert vergeleken met de grote query. In een dergelijk geval kunt u de MAXDOP-waarde van de index bewerking hoger instellen dan de waarde voor MAXDOP voor de query. Op deze manier heeft SQL Server een groter aantal processors dat het kan gebruiken voor de index bewerking vergeleken met het aantal processors dat kan worden gebruikt voor de grote query. Houd er rekening mee dat u het aantal threads dat SQL Server gebruikt voor elke bewerking, niet beheert. U kunt het maximum aantal processors bepalen dat specifiek is voor meerdere threads.
 
-Meer informatie over de [mate van parallelle](https://technet.microsoft.com/library/ms188611.aspx) uitvoering in SQL Server. Lees deze instellingen die van invloed zijn op meerdere threads in uw toepassing en de bijbehorende configuraties om de prestaties te optimaliseren.
+Meer informatie over de [mate van parallelle](/previous-versions/sql/sql-server-2008-r2/ms188611(v=sql.105)) uitvoering in SQL Server. Lees deze instellingen die van invloed zijn op meerdere threads in uw toepassing en de bijbehorende configuraties om de prestaties te optimaliseren.
 
 ## <a name="queue-depth"></a>Wachtrij diepte
 

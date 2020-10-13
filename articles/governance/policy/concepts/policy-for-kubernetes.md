@@ -3,12 +3,12 @@ title: Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540248"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951533"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Azure Policy voor Kubernetes-clusters
 
@@ -57,6 +57,7 @@ De volgende algemene beperkingen zijn van toepassing op de Azure Policy-invoeg t
 - Installatie van gate keeper buiten de Azure Policy-invoeg toepassing wordt niet ondersteund. Verwijder onderdelen die door een eerdere gate keeper-installatie zijn geïnstalleerd voordat u de invoeg toepassing Azure Policy inschakelt.
 - [Redenen voor niet-naleving](../how-to/determine-non-compliance.md#compliance-reasons) zijn niet beschikbaar voor de modus van de `Microsoft.Kubernetes.Data` 
    [resource provider](./definition-structure.md#resource-provider-modes). [Onderdeel gegevens](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)gebruiken.
+- [Uitzonde ringen](./exemption-structure.md) worden niet ondersteund voor [resource provider modi](./definition-structure.md#resource-provider-modes).
 
 De volgende beperkingen gelden alleen voor de Azure Policy-invoeg toepassing voor AKS:
 

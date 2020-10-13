@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e80332b172eeb4c49ae068e1781ffcaf1657f13
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650690"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978217"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -60,8 +60,8 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
     - Het gebruik van multi-SID cluster configuraties voor SAP Central Services wordt ondersteund op Windows-, SLES-en RHEL-gast besturingssystemen in Azure. Houd er wel van uit dat de krachtige RADIUS de meer ASCS/SCS die u op een multi-SID-cluster plaatst kan verg Roten. Raadpleeg de volgende artikelen voor informatie over het scenario voor het respectieve gast besturingssysteem:
         - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en gedeelde schijf op Azure](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en file share op Azure](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
-        - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor de multi-SID-hand leiding voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-        - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op Red Hat Enterprise Linux voor de multi-SID-hand leiding voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+        - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor de multi-SID-hand leiding voor SAP-toepassingen](./high-availability-guide-suse-multi-sid.md)
+        - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op Red Hat Enterprise Linux voor de multi-SID-hand leiding voor SAP-toepassingen](./high-availability-guide-rhel-multi-sid.md)
     - Architectuur met hoge Beschik baarheid en herstel na nood gevallen.
         - Bepaal op basis van RTO en RPO hoe de architectuur voor hoge Beschik baarheid en herstel na nood gevallen moet worden weer geven.
         - Voor maximale Beschik baarheid binnen een zone, controleert u wat de gewenste DBMS in azure moet aanbieden. De meeste DBMS-pakketten bieden synchrone methoden van een synchrone hot stand-by, die we aanraden voor productie systemen. Raadpleeg ook de SAP-gerelateerde documentatie voor verschillende data bases, te beginnen met [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belastingen](./dbms_guide_general.md) en gerelateerde documenten.
@@ -109,7 +109,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
            -  [Grootten voor virtuele Windows-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
            -  [Grootten voor virtuele Linux-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
    2. Opslag.
-        - Controleer het document [Azure Storage typen voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
+        - Controleer het document [Azure Storage typen voor SAP-workload](./planning-guide-storage.md)
         - Gebruik ten minste [Azure Standard-SSD Storage](../../disks-types.md#standard-ssd) voor virtuele machines die een SAP-toepassings lagen vertegenwoordigen en voor de implementatie van DBMSs die geen prestatie gevoelig zijn.
         - In het algemeen wordt het gebruik van [Azure Standard-HDD-schijven](../../disks-types.md#standard-hdd)niet aangeraden.
         - Gebruik [Azure Premium Storage](../../disks-types.md#premium-ssd) voor alle DBMS-vm's die op afstand gevoelig zijn.
@@ -127,7 +127,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
         - Evalueer en test het gegevenspad tussen de SAP-toepassingslaag en de SAP DBMS-laag.
             -  Plaatsing van [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van SAP-systemen op basis van SAP NetWeaver, hybris of S/4HANA wordt niet ondersteund.
             -  Plaatsing van de SAP-toepassingslaag en SAP DBMS in verschillende virtuele netwerken van Azure die niet worden gekoppeld, wordt niet ondersteund.
-            -  U kunt [toepassings beveiligings groep en regels voor netwerk beveiligings groepen](../../../virtual-network/security-overview.md) gebruiken om routes te definiëren tussen de SAP-toepassingslaag en de SAP-DBMS-laag.
+            -  U kunt [toepassings beveiligings groep en regels voor netwerk beveiligings groepen](../../../virtual-network/network-security-groups-overview.md) gebruiken om routes te definiëren tussen de SAP-toepassingslaag en de SAP-DBMS-laag.
         - Zorg ervoor dat [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machines die worden gebruikt in de SAP-toepassingslaag en de SAP-DBMS-laag. Houd er bij dat er verschillende besturingssysteem niveaus nodig zijn voor de ondersteuning van versneld netwerken in Azure:
             - Windows Server 2012 R2 of nieuwer.
             - SUSE Linux 12 SP3 of hoger.
@@ -138,7 +138,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
         - Als u Azure Load Balancer samen met Linux-gast besturingssystemen gebruikt, controleert u of de para meter van het Linux-netwerk **net.IPv4.tcp_timestamps** is ingesteld op **0**. Deze aanbeveling is in conflict met aanbevelingen in oudere versies van [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). De SAP-notitie wordt nu bijgewerkt met de status dat deze para meter moet worden ingesteld op **0** om te kunnen werken met Azure load balancers.
         - Overweeg het gebruik van [Azure proximity placement groups](../../linux/co-location.md) om een optimale netwerk latentie te verkrijgen. Zie voor meer informatie [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
    4. Hoge Beschik baarheid en implementaties voor herstel na nood gevallen.
-        - Als u de SAP-toepassingslaag implementeert zonder een specifieke Azure-beschikbaarheids zone te definiëren, moet u ervoor zorgen dat alle virtuele machines waarop SAP-dialoog instanties of middleware-exemplaren van één SAP-systeem worden uitgevoerd, worden geïmplementeerd in een [beschikbaarheidsset](../../windows/manage-availability.md).
+        - Als u de SAP-toepassingslaag implementeert zonder een specifieke Azure-beschikbaarheids zone te definiëren, moet u ervoor zorgen dat alle virtuele machines waarop SAP-dialoog instanties of middleware-exemplaren van één SAP-systeem worden uitgevoerd, worden geïmplementeerd in een [beschikbaarheidsset](../../manage-availability.md).
         - Als u geen hoge Beschik baarheid voor SAP Central-Services en het DBMS nodig hebt, kunt u deze Vm's implementeren in dezelfde beschikbaarheidsset als de SAP-toepassingslaag.
         - Als u SAP Central-Services en de DBMS-laag voor hoge Beschik baarheid beveiligt met behulp van passieve replicatie, plaatst u de twee knoop punten voor SAP Central-Services in één afzonderlijke beschikbaarheidsset en de twee DBMS-knoop punten in een andere beschikbaarheidsset.
         - Als u in Azure-beschikbaarheidszones implementeert, kunt u geen beschikbaarheids sets gebruiken. Maar u moet ervoor zorgen dat u de knoop punten actief en passieve centrale Services implementeert in twee verschillende Beschikbaarheidszones. Gebruik Beschikbaarheidszones die de laagste latentie ertussen hebben.
@@ -179,7 +179,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
    4. De DR-functionaliteit en-architectuur van meerdere regio's testen.
 1. Beveiligings controles.
    1. Test de geldigheid van uw Azure RBAC-architectuur (op rollen gebaseerd toegangs beheer). Het doel is om de toegang en machtigingen van verschillende teams te scheiden en te beperken. SAP-team leden moeten bijvoorbeeld Vm's kunnen implementeren en schijven toewijzen van Azure Storage in een bepaald Azure Virtual Network. Het SAP-basis team mag echter geen eigen virtuele netwerken maken of de instellingen van bestaande virtuele netwerken wijzigen. Leden van het netwerk team mogen geen Vm's implementeren in virtuele netwerken waarin SAP-toepassingen en DBMS-Vm's worden uitgevoerd. Ook kunnen leden van dit team kenmerken van Vm's wijzigen of zelfs Vm's of schijven verwijderen.  
-   1.  Controleer of de [netwerk beveiligings groep en de ASC](../../../virtual-network/security-overview.md) -regels naar behoren werken en de beveiligde resources afschermen.
+   1.  Controleer of de [netwerk beveiligings groep en de ASC](../../../virtual-network/network-security-groups-overview.md) -regels naar behoren werken en de beveiligde resources afschermen.
    1.  Zorg ervoor dat alle resources die moeten worden versleuteld, zijn versleuteld. Definieer en implementeer processen voor het maken van back-ups van certificaten, opslag en toegang tot die certificaten en herstel de versleutelde entiteiten.
    1.  Gebruik [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) voor besturingssysteem schijven waar mogelijk vanuit een besturings systeem-ondersteunings punt wordt weer gegeven.
    1.  Zorg ervoor dat u niet te veel versleutelings lagen gebruikt. In sommige gevallen is het zinvol om Azure Disk Encryption samen met een van de DBMS-Transparent Data Encryption methoden te gebruiken om verschillende schijven of onderdelen op dezelfde server te beveiligen.  Op een SAP-DBMS-server kan bijvoorbeeld de Azure Disk Encryption (ADE) worden ingeschakeld op de opstart schijf van het besturings systeem (als het besturings systeem ADE ondersteunt) en die gegevens schijven die niet worden gebruikt door de bestanden met DBMS-gegevens persistentie.  Een voor beeld hiervan is het gebruik van ADE op de schijf met de DBMS TDE-versleutelings sleutels.

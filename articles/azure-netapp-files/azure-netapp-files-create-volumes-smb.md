@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: e2c487b62813bc4480786daa08666fe6471bd18d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325705"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932342"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -62,9 +62,9 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     De adres ruimte voor het virtuele netwerk waar Azure NetApp Files wordt geïmplementeerd, moet worden toegevoegd aan een nieuwe of bestaande Active Directory site (waarbij een domein controller bereikbaar is voor Azure NetApp Files). 
 
-* De opgegeven DNS-servers moeten bereikbaar zijn vanaf het [overgedragen subnet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) van Azure NetApp files.  
+* De opgegeven DNS-servers moeten bereikbaar zijn vanaf het [overgedragen subnet](./azure-netapp-files-delegate-subnet.md) van Azure NetApp files.  
 
-    Zie de [richt lijnen voor het Azure NetApp files-netwerk planning](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) voor ondersteunde netwerk topologieën.
+    Zie de [richt lijnen voor het Azure NetApp files-netwerk planning](./azure-netapp-files-network-topologies.md) voor ondersteunde netwerk topologieën.
 
     De netwerk beveiligings groepen (Nsg's) en firewalls moeten de juiste geconfigureerde regels hebben om Active Directory-en DNS-verkeers aanvragen toe te staan. 
 
@@ -72,7 +72,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     Als u domein controllers hebt die niet bereikbaar zijn voor het Azure NetApp Files overgedragen subnet, kunt u een Active Directory site opgeven tijdens het maken van de Active Directory verbinding.  Azure NetApp Files moet alleen communiceren met domein controllers in de site waar de Azure NetApp Files adres ruimte van het subnet is overgedragen.
 
-    Zie [de site topologie ontwerpen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en-services. 
+    Zie [de site topologie ontwerpen](/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en-services. 
     
 * U kunt AES-versleuteling inschakelen voor een SMB-volume door het selectie vakje **AES-versleuteling** in het venster [lid worden Active Directory](#create-an-active-directory-connection) te controleren. Azure NetApp Files ondersteunt DES-, Kerberos AES 128-en Kerberos AES 256-versleutelings typen (van het minst veilig tot het veiligst). Als u AES-versleuteling inschakelt, moeten de gebruikers referenties die worden gebruikt om lid te worden van Active Directory de hoogste overeenkomende account optie ingeschakeld hebben die overeenkomt met de mogelijkheden die zijn ingeschakeld voor uw Active Directory.    
 
@@ -82,21 +82,21 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     ![MMC-Active Directory gebruikers en computers](../media/azure-netapp-files/ad-users-computers-mmc.png)
 
-* Azure NetApp Files ondersteunt [LDAP-ondertekening](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), waarmee het LDAP-verkeer tussen de Azure NetApp files-service en de doel [Active Directory domein controllers](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)veilig kan worden verzonden. Als u de richt lijnen van micro soft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) voor LDAP-ondertekening volgt, moet u de functie voor LDAP-ondertekening inschakelen in azure NetApp files door het selectie vakje **LDAP** in het venster [lid worden van Active Directory](#create-an-active-directory-connection) in te scha kelen. 
+* Azure NetApp Files ondersteunt [LDAP-ondertekening](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), waarmee het LDAP-verkeer tussen de Azure NetApp files-service en de doel [Active Directory domein controllers](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)veilig kan worden verzonden. Als u de richt lijnen van micro soft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) voor LDAP-ondertekening volgt, moet u de functie voor LDAP-ondertekening inschakelen in azure NetApp files door het selectie vakje **LDAP** in het venster [lid worden van Active Directory](#create-an-active-directory-connection) in te scha kelen. 
 
     Configuratie van [LDAP-kanaal binding](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) heeft geen invloed op de Azure NetApp files-service. 
 
-Zie Azure NetApp Files [SMB Veelgestelde vragen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) over extra AD-informatie. 
+Zie Azure NetApp Files [SMB Veelgestelde vragen](./azure-netapp-files-faqs.md#smb-faqs) over extra AD-informatie. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Beslissen welke domein Services u wilt gebruiken 
 
-Azure NetApp Files ondersteunt zowel [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (toevoegen) als Azure Active Directory Domain Services (AADDS) voor AD-verbindingen.  Voordat u een AD-verbinding maakt, moet u beslissen of u toevoegt of AADDS wilt gebruiken.  
+Azure NetApp Files ondersteunt zowel [Active Directory Domain Services](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (toevoegen) als Azure Active Directory Domain Services (AADDS) voor AD-verbindingen.  Voordat u een AD-verbinding maakt, moet u beslissen of u toevoegt of AADDS wilt gebruiken.  
 
-Zie voor meer informatie [zelf beheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
+Zie voor meer informatie [zelf beheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken](../active-directory-domain-services/compare-identity-solutions.md). 
 
 ### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-U kunt uw favoriete [Active Directory-sites en-services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) -bereik gebruiken voor Azure NetApp files. Met deze optie schakelt u lees-en schrijf bewerkingen naar Active Directory Domain Services (toevoegen) domein controllers die [toegankelijk zijn via Azure NetApp files](azure-netapp-files-network-topologies.md). Ook wordt voor komen dat de service communiceert met domein controllers die zich niet in de opgegeven Active Directory sites en Services-site. 
+U kunt uw favoriete [Active Directory-sites en-services](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) -bereik gebruiken voor Azure NetApp files. Met deze optie schakelt u lees-en schrijf bewerkingen naar Active Directory Domain Services (toevoegen) domein controllers die [toegankelijk zijn via Azure NetApp files](azure-netapp-files-network-topologies.md). Ook wordt voor komen dat de service communiceert met domein controllers die zich niet in de opgegeven Active Directory sites en Services-site. 
 
 Als u wilt zoeken naar de naam van uw site wanneer u toevoegt, kunt u contact opnemen met de beheer groep in uw organisatie die verantwoordelijk is voor Active Directory Domain Services. In het onderstaande voor beeld ziet u de Active Directory-invoeg toepassing sites en services waar de site naam wordt weer gegeven: 
 
@@ -106,7 +106,7 @@ Wanneer u een AD-verbinding voor Azure NetApp Files configureert, geeft u de sit
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
 
-Zie [Azure AD Domain Services documentatie](https://docs.microsoft.com/azure/active-directory-domain-services/)voor Azure Active Directory Domain Services (AADDS) configuratie en richt lijnen.
+Zie [Azure AD Domain Services documentatie](../active-directory-domain-services/index.yml)voor Azure Active Directory Domain Services (AADDS) configuratie en richt lijnen.
 
 Er zijn aanvullende AADDS-overwegingen van toepassing op Azure NetApp Files: 
 
@@ -184,10 +184,10 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
+        U kunt ook [Azure cli-opdrachten](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
 
     * **LDAP-ondertekening**   
-        Schakel dit selectie vakje in om LDAP-ondertekening in te scha kelen. Deze functionaliteit maakt beveiligde LDAP-zoek acties mogelijk tussen de Azure NetApp Files-service en de door de gebruiker opgegeven [Active Directory Domain Services domein controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). Zie ADV190023 voor meer informatie. [| Micro soft-richt lijnen voor het inschakelen van LDAP-kanaal binding en LDAP-ondertekening](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
+        Schakel dit selectie vakje in om LDAP-ondertekening in te scha kelen. Deze functionaliteit maakt beveiligde LDAP-zoek acties mogelijk tussen de Azure NetApp Files-service en de door de gebruiker opgegeven [Active Directory Domain Services domein controllers](/windows/win32/ad/active-directory-domain-services). Zie ADV190023 voor meer informatie. [| Micro soft-richt lijnen voor het inschakelen van LDAP-kanaal binding en LDAP-ondertekening](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
 
         ![LDAP-ondertekening Active Directory](../media/azure-netapp-files/active-directory-ldap-signing.png) 
 
@@ -206,10 +206,10 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
+        U kunt ook [Azure cli-opdrachten](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
 
      * **Back-upbeleid gebruikers**  
-        U kunt aanvullende accounts toevoegen waarvoor verhoogde bevoegdheden zijn vereist voor het computer account dat is gemaakt voor gebruik met Azure NetApp Files. De opgegeven accounts kunnen de NTFS-machtigingen op bestands-of mapniveau wijzigen. U kunt bijvoorbeeld een niet-privileged service account opgeven dat wordt gebruikt voor het migreren van gegevens naar een SMB-bestands share in Azure NetApp Files.  
+        U kunt aanvullende accounts toevoegen waarvoor verhoogde bevoegdheden zijn vereist voor het computer account dat is gemaakt voor gebruik met Azure NetApp Files. Met de opgegeven accounts kunnen de NTFS-machtigingen op bestands- of mapniveau worden gewijzigd. U kunt bijvoorbeeld een niet-gemachtigd serviceaccount opgeven dat wordt gebruikt voor het migreren van gegevens naar een SMB-bestandsshare in Azure NetApp Files.  
 
         ![Active Directory gebruikers van het back-upbeleid](../media/azure-netapp-files/active-directory-backup-policy-users.png)
 
@@ -228,7 +228,7 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        U kunt ook [Azure cli-opdrachten](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
+        U kunt ook [Azure cli-opdrachten](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) gebruiken `az feature register` `az feature show` om de functie te registreren en de registratie status weer te geven. 
 
     * Referenties, inclusief uw **gebruikers naam** en **wacht woord**
 
@@ -325,6 +325,6 @@ U kunt machtigingen voor een bestand of map instellen met behulp van het tabblad
 
 * [Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Resourcelimieten voor Azure NetApp Files](azure-netapp-files-resource-limits.md)
-* [Veelgestelde vragen over SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
-* Meer informatie over [Integratie van virtuele netwerken voor Azure-services](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [Een nieuw Active Directory-forest installeren met behulp van Azure CLI](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [Veelgestelde vragen over SMB](./azure-netapp-files-faqs.md#smb-faqs)
+* Meer informatie over [Integratie van virtuele netwerken voor Azure-services](../virtual-network/virtual-network-for-azure-services.md)
+* [Een nieuw Active Directory-forest installeren met behulp van Azure CLI](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

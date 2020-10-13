@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25d8c36cc42c3f1d1cc2a8477a7361ba45bec706
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689606"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977915"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure PowerShell
 
@@ -77,7 +77,7 @@ Nu u een SAS hebt voor uw lege beheerde schijf, kunt u deze gebruiken om de behe
 
 Gebruik AzCopy V10 toevoegen om uw lokale VHD-bestand te uploaden naar een beheerde schijf door de SAS-URI op te geven die u hebt gegenereerd.
 
-Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](disks-types.md#standard-hdd). Als u bijvoorbeeld een grootte hebt die gelijk is aan S4, hebt u een door Voer van Maxi maal 60 MiB/s. Maar als u een grootte hebt die gelijk is aan S70, hebt u een door Voer van Maxi maal 500 MiB/s.
+Deze upload heeft dezelfde door Voer als de equivalente [standaard HDD](../disks-types.md#standard-hdd). Als u bijvoorbeeld een grootte hebt die gelijk is aan S4, hebt u een door Voer van Maxi maal 60 MiB/s. Maar als u een grootte hebt die gelijk is aan S70, hebt u een door Voer van Maxi maal 500 MiB/s.
 
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob

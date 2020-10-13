@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440521"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951083"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Prestaties van de Kopieer activiteit oplossen
 
@@ -40,7 +40,7 @@ Als referentie bieden de tips voor het afstemmen van prestaties momenteel sugges
 | Specifiek gegevens archief   | Gegevens laden in **Azure Synpase Analytics (voorheen SQL DW)**: suggesties voor het gebruik van de instructie poly base of Copy als deze niet wordt gebruikt. |
 | &nbsp;                | Gegevens kopiëren van/naar **Azure SQL database**: wanneer DTU onder een hoog gebruik komt, wordt er Voorst Ellen om een upgrade naar een hogere laag te maken. |
 | &nbsp;                | Kopiëren van gegevens van/naar **Azure Cosmos DB**: Wanneer ru onder een hoog gebruik komt, wordt een upgrade naar grotere ru Voorst Ellen. |
-|                       | Gegevens kopiëren uit **SAP-tabel**: bij het kopiëren van een grote hoeveelheid gegevens kunt u de optie voor het gebruik van de SAP-connector gebruiken om parallelle belasting in te scha kelen en het maximum partitie nummer te verhogen. |
+|                       | Gegevens kopiëren uit **SAP-tabel**: bij het kopiëren van grote hoeveel heden gegevens kunt u gebruikmaken van de partitie optie van de SAP-connector om parallelle belasting in te scha kelen en het maximale partitie nummer te verhogen. |
 | &nbsp;                | Gegevens opnemen van **Amazon Redshift**: suggesties voor het gebruik van Unload als dit niet wordt gebruikt. |
 | Beperking van gegevens opslag | Als er tijdens het kopiëren een aantal lees-en schrijf bewerkingen worden beperkt door het gegevens archief, wordt er Voorst Ellen om de toegestane aanvraag snelheid voor het gegevens archief te controleren en te verhogen, of om de gelijktijdige werk belasting te verminderen. |
 | Integration runtime  | Als u een **zelf-hostend Integration runtime (IR)** gebruikt en de Kopieer activiteit lang in de wachtrij wacht totdat de IR beschik bare bron heeft om te worden uitgevoerd, kunt u de infra rood uitschalen. |
@@ -74,7 +74,7 @@ Als de prestaties van de Kopieer activiteit niet voldoen aan uw verwachting, kun
 
     - Controleer of u [bestanden kunt kopiëren op basis van een bestandspad of naam in datum-gepartitioneerd](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Op die manier wordt geen last gegeven van de vermelding van de bron zijde.
 
-    - Controleer of u in plaats daarvan het native filter van het gegevens archief kunt gebruiken, met name voor**voegsel**voor Amazon S3 en Azure Blob. Voorvoegsel filter is een filter aan de server zijde van het gegevens archief en heeft veel betere prestaties.
+    - Controleer of u in plaats daarvan het systeem eigen filter van gegevens archief kunt gebruiken, met name voor**voegsel**voor Amazon S3/Azure Blob/Azure file storage en '**listAfter/listBefore**' voor ADLS gen1. Deze filters zijn een filter aan de gegevens opslag aan de server zijde en hebben veel betere prestaties.
 
     - Overweeg om één grote gegevensset te splitsen in meerdere kleinere gegevens sets, en laat die Kopieer taken gelijktijdig uitvoeren elk deel van de gegevens. U kunt dit doen met lookup/GetMetadata + ForEach + copy. Raadpleeg voor het [kopiëren van bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md) of [het migreren van gegevens van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md) oplossings sjablonen als algemeen voor beeld.
 
@@ -128,7 +128,7 @@ Als de Kopieer prestaties niet voldoen aan uw verwachting, kunt u bij het oploss
 
     - Controleer of u [bestanden kunt kopiëren op basis van een bestandspad of naam in datum-gepartitioneerd](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Op die manier wordt geen last gegeven van de vermelding van de bron zijde.
 
-    - Controleer of u in plaats daarvan het native filter van het gegevens archief kunt gebruiken, met name voor**voegsel**voor Amazon S3 en Azure Blob. Voorvoegsel filter is een filter aan de server zijde van het gegevens archief en heeft veel betere prestaties.
+    - Controleer of u in plaats daarvan het systeem eigen filter van gegevens archief kunt gebruiken, met name voor**voegsel**voor Amazon S3/Azure Blob/Azure file storage en '**listAfter/listBefore**' voor ADLS gen1. Deze filters zijn een filter aan de gegevens opslag aan de server zijde en hebben veel betere prestaties.
 
     - Overweeg om één grote gegevensset te splitsen in meerdere kleinere gegevens sets, en laat die Kopieer taken gelijktijdig uitvoeren elk deel van de gegevens. U kunt dit doen met lookup/GetMetadata + ForEach + copy. Raadpleeg voor het [kopiëren van bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md) of [het migreren van gegevens van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md) oplossings sjablonen als algemeen voor beeld.
 

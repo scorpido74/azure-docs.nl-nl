@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055070"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964465"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
@@ -250,7 +250,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
     * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
 1. Stel de wisselknop **Beleid inschakelen** in op **Aan**.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 

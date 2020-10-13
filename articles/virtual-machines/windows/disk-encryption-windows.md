@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 951c1fd89f9e943b72c32492ff40dae3bd07bb61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf7e596c8ed057a3244ed2b12de59d02c4ba2cae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88794480"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977932"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
@@ -262,7 +262,7 @@ Azure Disk Encryption werkt niet voor de volgende scenario's, functies en techno
 - Versleuteling van gedeelde/gedistribueerde bestands systemen zoals (maar niet beperkt tot) DFS, GFS, DRDB en CephFS.
 - Een versleutelde virtuele machine verplaatsen naar een ander abonnement of nieuwe regio.
 - Een installatie kopie of moment opname van een versleutelde virtuele machine maken en deze gebruiken voor het implementeren van extra Vm's.
-- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
+- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](../generation-2.md#generation-1-vs-generation-2-capabilities))
 - Vm's uit de M-serie met Write Accelerator-schijven.
 - ADE Toep assen op een virtuele machine met schijven die zijn versleuteld met versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md) (SSE + CMK). Het Toep assen van SSE en CMK op een gegevens schijf op een virtuele machine die is versleuteld met ADE, is ook een niet-ondersteund scenario.
 - Migratie van een VM die is versleuteld met ADE of **ooit** is versleuteld met ADE, voor versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md).

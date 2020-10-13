@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829081"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977371"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -70,7 +70,7 @@ Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Stora
 > [!IMPORTANT]
 > Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall of met een proxy, mislukt de extensies, ongeacht het bovenstaande. Poorten 80, 443 en 32526 zijn vereist.
 
-Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage of Azure Active Directory vereist is, kunt u toegang tot opslag of AzureActiveDirectory via de [Azure NSG-service Tags](../../virtual-network/security-overview.md#service-tags) toestaan.
+Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage of Azure Active Directory vereist is, kunt u toegang tot opslag of AzureActiveDirectory via de [Azure NSG-service Tags](../../virtual-network/network-security-groups-overview.md#service-tags) toestaan.
 
 De Windows-gast agent heeft geen proxyserver ondersteuning voor u om aanvragen voor agent verkeer om te leiden via. Dit betekent dat de Windows-gast agent afhankelijk is van uw aangepaste proxy (als u er een hebt) om toegang te krijgen tot bronnen op internet of op de host via IP-168.63.129.16.
 

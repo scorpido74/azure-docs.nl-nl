@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 6f8ec56cc5747921ee786bd4c069070ff865f9fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c403f5381cba03727ad85ff7de7e73fabaab67f9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507922"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977439"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Update 1,1 installeren op de virtuele StorSimple-matrix
 
@@ -101,26 +101,26 @@ Deze procedure duurt circa 4 minuten. Voer de volgende stappen uit om de update 
 
 1. Ga in de lokale web-UI naar **onderhouds**  >  **Software-update**. Noteer de software versie die u uitvoert. **Ga alleen verder met deze update als u update 1 (10.0.10296.0) uitvoert. Als u update 0,6 uitvoert, installeer dan eerst [Update 1](storsimple-virtual-array-install-update-1.md) op uw apparaat en pas vervolgens Update 1,1 toe.**
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update1m.png)
+    ![apparaat 1 bijwerken](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
 2. In **pad van update bestand**voert u de bestands naam in voor de update of de hotfix. U kunt ook naar het installatie bestand van de update of hotfix bladeren als u dit op een netwerk share plaatst. Klik op **Toepassen**.
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update2m.png)
+    ![apparaat 2 bijwerken](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
 3. Er wordt een waarschuwing weer gegeven. Gezien de virtuele matrix is een apparaat met één knoop punt, nadat de update is toegepast, wordt het apparaat opnieuw opgestart en is er downtime. Klik op het vinkje.
    
-   ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update3m.png)
+   ![apparaat 3 bijwerken](./media/storsimple-virtual-array-install-update-11/update3m.png)
 
 4. De update wordt gestart. Nadat het apparaat is bijgewerkt, wordt het opnieuw opgestart. De lokale gebruikers interface is niet toegankelijk in deze duur.
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update5m.png)
+    ![apparaat bijwerken 4](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
 5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10307** zijn voor update 1,1.
    
    > [!NOTE]
    > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10307** en de Azure Portal rapport **10.0.10307.0** voor dezelfde versie.
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update6m.png)
+    ![apparaat 5 bijwerken](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
 6. Herhaal stap 2-4 om de Windows-beveiligings oplossing met behulp van bestand te installeren `Windows8.1-KB4284815-x64` . De virtuele matrix wordt opnieuw opgestart na de installatie en u moet zich aanmelden bij de lokale webgebruikersinterface.
 

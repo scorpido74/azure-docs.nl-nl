@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82133921"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978795"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modules implementeren vanuit de Azure Portal
 
@@ -25,7 +25,9 @@ In dit artikel wordt beschreven hoe de Azure Portal u begeleidt bij het maken va
 ## <a name="prerequisites"></a>Vereisten
 
 * Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
-* Een [IOT edge apparaat](how-to-register-device.md#register-in-the-azure-portal) waarop de IOT Edge-runtime is geïnstalleerd.
+* Een IoT Edge-apparaat.
+
+  Als u geen IoT Edge apparaat hebt ingesteld, kunt u er een maken in een virtuele Azure-machine. Volg de stappen in een van de Quick Start-artikelen voor het [maken van een virtueel Linux-apparaat](quickstart-linux.md) of [het maken van een virtueel Windows-apparaat](quickstart.md).
 
 ## <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren
 

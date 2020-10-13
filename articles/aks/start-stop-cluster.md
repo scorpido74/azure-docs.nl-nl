@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368937"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968780"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Een Azure Kubernetes service (AKS)-cluster stoppen en starten (preview)
 
@@ -30,6 +30,7 @@ Bij het gebruik van de functie voor het starten/stoppen van het cluster gelden d
 - Deze functie wordt alleen ondersteund voor Virtual Machine Scale Sets-back-upclusters.
 - Tijdens de preview-periode wordt deze functie niet ondersteund voor persoonlijke clusters.
 - De cluster status van een gestopt AKS-cluster wordt Maxi maal 12 maanden bewaard. Als uw cluster langer dan 12 maanden wordt gestopt, kan de status van het cluster niet worden hersteld. Zie het [AKS-ondersteunings beleid](support-policies.md)voor meer informatie.
+- Tijdens de preview-periode moet u de cluster-auto Scaler (CA) stoppen voordat u probeert het cluster te stoppen.
 - U kunt een gestopt AKS-cluster alleen starten of verwijderen. Als u een bewerking wilt uitvoeren zoals schalen of upgraden, start u eerst uw cluster.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>De `aks-preview` Azure cli installeren 

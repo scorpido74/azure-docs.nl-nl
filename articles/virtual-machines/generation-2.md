@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322975"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977592"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -89,7 +89,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 |---------|--------------|--------------|
 | Opstarten             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
-| Formaten van virtuele machines         | Alle VM-grootten | [Beschik bare grootten weer geven](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) |
+| Formaten van virtuele machines         | Alle VM-grootten | [Beschik bare grootten weer geven](#generation-2-vm-sizes) |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 
@@ -117,7 +117,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).
@@ -222,4 +222,3 @@ U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over [virtuele machines van de 2e generatie in Hyper-V](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336119"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978336"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -65,7 +65,7 @@ Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Stora
 > [!IMPORTANT]
 > Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall, mislukken uitbrei dingen, ongeacht het bovenstaande.
 
-Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage is vereist, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](../../virtual-network/security-overview.md#service-tags).
+Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage is vereist, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](../../virtual-network/network-security-groups-overview.md#service-tags).
 
 Voor het omleiden van agent verkeers aanvragen heeft de Linux-agent ondersteuning voor de proxy server. De ondersteuning voor deze proxy server is echter niet van toepassing op uitbrei dingen. U moet elke afzonderlijke extensie configureren voor gebruik met een proxy.
 
@@ -221,7 +221,7 @@ De agents en uitbrei dingen delen hetzelfde update mechanisme. Voor sommige upda
 Wanneer er een update beschikbaar is, wordt deze alleen geïnstalleerd op de virtuele machine wanneer er een wijziging is aangebracht in extensies en andere VM-modellen, zoals:
 
 - Gegevensschijven
-- Uitbreidingen
+- Extensies
 - Container voor diagnostische gegevens over opstarten
 - Geheimen voor gast besturingssystemen
 - VM-grootte
