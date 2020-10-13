@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74157616"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Real-time apps bouwen met Azure Functions en Azure signalerings service
@@ -73,5 +73,5 @@ Raadpleeg de volgende bronnen voor meer informatie over het samen gebruiken van 
 
 Volg een van deze snelstartgidsen voor meer informatie.
 
-* [Snelstart voor de serverloze Azure SignalR Service - C#](signalr-quickstart-azure-functions-csharp.md)
+* [Windows signalerings service Serverloze Snelstartgids-C #](signalr-quickstart-azure-functions-csharp.md)
 * [Snelstart voor de serverloze Azure SignalR Service - JavaScript](signalr-quickstart-azure-functions-javascript.md)

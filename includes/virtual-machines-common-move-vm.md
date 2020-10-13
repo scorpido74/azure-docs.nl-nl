@@ -9,16 +9,16 @@ ms.date: 10/19/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: c3f485765e0bbbb91de0938261b587c27bf414bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74875575"
 ---
 ## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>De Azure Portal gebruiken om een virtuele machine naar een ander abonnement te verplaatsen
 U kunt een virtuele machine en de bijbehorende resources naar een ander abonnement verplaatsen met behulp van de Azure Portal.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om de resource groep te beheren met de virtuele machine die u wilt verplaatsen. Zoek en selecteer **resource groepen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om de resource groep te beheren met de virtuele machine die u wilt verplaatsen. Zoek en selecteer **Resourcegroepen**.
 2. Kies de resource groep met de virtuele machine die u wilt verplaatsen.
 3. Selecteer boven aan de pagina voor de resource groep **verplaatsen** en selecteer vervolgens **verplaatsen naar ander abonnement**. De pagina **resources verplaatsen** wordt geopend.
 4. Selecteer elk van de resources die u wilt verplaatsen. In de meeste gevallen moet u alle gerelateerde resources die worden vermeld, verplaatsen.
@@ -29,7 +29,7 @@ U kunt een virtuele machine en de bijbehorende resources naar een ander abonneme
 ## <a name="use-the-azure-portal-to-move-a-vm-to-another-resource-group"></a>De Azure Portal gebruiken om een VM te verplaatsen naar een andere resource groep
 U kunt een virtuele machine en de bijbehorende resources verplaatsen naar een andere resource groep met behulp van de Azure Portal.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om de resource groep te beheren met de virtuele machine die u wilt verplaatsen. Zoek en selecteer **resource groepen**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om de resource groep te beheren met de virtuele machine die u wilt verplaatsen. Zoek en selecteer **Resourcegroepen**.
 2. Kies de resource groep met de virtuele machine die u wilt verplaatsen.
 3. Selecteer boven aan de pagina voor de resource groep **verplaatsen** en selecteer vervolgens **verplaatsen naar een andere resource groep**. De pagina **resources verplaatsen** wordt geopend.
 4. Selecteer elk van de resources die u wilt verplaatsen. In de meeste gevallen moet u alle gerelateerde resources die worden vermeld, verplaatsen.

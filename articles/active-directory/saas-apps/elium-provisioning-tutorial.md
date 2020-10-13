@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544227"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Zelf studie: Elium configureren voor automatische gebruikers inrichting
@@ -100,11 +100,11 @@ Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium
 
     ![Lijst met toepassingen op de Blade bedrijfs toepassingen](common/all-applications.png)
 
-1. Selecteer het tabblad **inrichten** .
+1. Selecteer het tabblad **Inrichten**.
 
     ![Het tabblad inrichten op de Blade bedrijfs toepassingen](common/provisioning.png)
 
-1. Stel de **inrichtings modus** in op **automatisch**.
+1. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
     ![Automatische instelling voor inrichtings modus](common/provisioning-automatic.png)
 
@@ -114,7 +114,7 @@ Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium
 
 1. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen ontvangt. Schakel vervolgens het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 1. Klik op **Opslaan**.
 
@@ -122,7 +122,7 @@ Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium
 
     ![Koppeling synchroniseren voor het toewijzen van Azure AD-gebruikers aan Elium](media/Elium-provisioning-tutorial/usermapping.png)
 
-1. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Elium in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Elium voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren.
+1. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Elium in de sectie **kenmerk toewijzingen** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Elium voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
     ![Kenmerk toewijzingen tussen Azure AD en Elium](media/Elium-provisioning-tutorial/userattribute.png)
 
@@ -151,4 +151,4 @@ Gebruik de sectie **huidige status** om de voortgang te bewaken en koppelingen n
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van logboeken en het ophalen van rapporten over de inrichtingsactiviteit](../app-provisioning/check-status-user-account-provisioning.md)

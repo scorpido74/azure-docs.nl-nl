@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084854"
 ---
 # <a name="restore-an-app-in-azure"></a>Een app in Azure herstellen
@@ -82,7 +82,7 @@ U kunt back-upbeheer automatiseren met scripts met behulp van [Azure cli](/cli/a
 Zie voor voor beelden:
 
 - [Azure CLI-voorbeelden](samples-cli.md)
-- [Azure PowerShell-voorbeelden](samples-powershell.md)
+- [Azure PowerShell-voor beelden](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

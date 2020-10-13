@@ -1,6 +1,6 @@
 ---
 title: In-Memory OLTP verbetert SQL trans actie-prestaties
-description: U kunt in-Memory OLTP gebruiken om de transactionele prestaties in een bestaande data base in Azure SQL Database en Azure SQL Managed instance te verbeteren.
+description: In-Memory OLTP aannemen om de transactionele prestaties in een bestaande data base in Azure SQL Database en Azure SQL Managed instance te verbeteren.
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
@@ -11,13 +11,13 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619743"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>In-Memory OLTP gebruiken om de prestaties van uw toepassingen in Azure SQL Database en Azure SQL Managed instance te verbeteren
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>In-Memory OLTP gebruiken om de prestaties van uw toepassing in Azure SQL Database en Azure SQL Managed instance te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 [In-Memory OLTP](in-memory-oltp-overview.md) kan worden gebruikt voor het verbeteren van de prestaties van transactie verwerking, gegevens opname en tijdelijke gegevens Scenario's in [Premium-en bedrijfskritiek-laag](database/service-tiers-vcore.md) databases zonder de prijs categorie te verhogen.
@@ -25,11 +25,11 @@ ms.locfileid: "91619743"
 > [!NOTE]
 > Meer informatie over hoe [quorum de werk belasting van de Key Data Base verdubbelt tijdens het verlagen van DTU met 70% met Azure SQL database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
-Volg deze stappen voor het aannemen van in-Memory OLTP in uw bestaande data base.
+Volg deze stappen om In-Memory OLTP in uw bestaande Data Base te nemen.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Stap 1: Zorg ervoor dat u een Premium-en Bedrijfskritiek-laag database gebruikt
 
-OLTP in het geheugen wordt alleen ondersteund in data bases van Premium en Bedrijfskritiek. In-memory wordt ondersteund als het geretourneerde resultaat 1 (niet 0) is:
+In-Memory OLTP wordt alleen ondersteund in data bases uit de Premium-en Bedrijfskritiek-laag. In-Memory wordt ondersteund als het geretourneerde resultaat 1 (niet 0) is:
 
 ```sql
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -37,16 +37,16 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 *XTP* staat voor *extreme transactie verwerking*
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Stap 2: objecten identificeren die moeten worden gemigreerd naar in-Memory OLTP
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Stap 2: bepalen welke objecten moeten worden gemigreerd naar In-Memory OLTP
 
-SSMS bevat een **overzichts rapport voor analyse van transactie prestaties** dat u kunt uitvoeren op een Data Base met een actieve werk belasting. Het rapport bevat tabellen en opgeslagen procedures die kandidaten zijn voor migratie naar in-Memory OLTP.
+SSMS bevat een **overzichts rapport voor analyse van transactie prestaties** dat u kunt uitvoeren op een Data Base met een actieve werk belasting. Het rapport bevat tabellen en opgeslagen procedures die kandidaten zijn voor migratie naar In-Memory OLTP.
 
 In SSMS, om het rapport te genereren:
 
 * Klik in de **objectverkenner**met de rechter muisknop op uw database knooppunt.
 * Klik op **rapporten**  >  **standaard rapporten**  >  **transactie prestatie analyse overzicht**.
 
-Zie [bepalen of een tabel of opgeslagen procedure moet worden getransporteerd naar in-Memory OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp)voor meer informatie.
+Zie [bepalen of een tabel of opgeslagen procedure moet worden getransporteerd naar In-Memory OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp)voor meer informatie.
 
 ## <a name="step-3-create-a-comparable-test-database"></a>Stap 3: een vergelijk bare test database maken
 
@@ -83,8 +83,8 @@ Deze migratie optie gebruiken:
 3. Klik in de wizard op **migratie validatie** (of op de knop **volgende** ) om te zien of de tabel niet-ondersteunde functies bevat die niet worden ondersteund in tabellen die zijn geoptimaliseerd voor geheugen. Zie voor meer informatie:
 
    * De *controle lijst voor geheugen optimalisatie* in [geheugen optimalisatie Advisor](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor).
-   * De [Transact-SQL-constructs worden niet ondersteund door de in-Memory OLTP](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
-   * [Migreren naar in-Memory OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
+   * [Transact-SQL-constructs worden niet ondersteund door In-Memory OLTP](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
+   * [Migreren naar In-Memory OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
 4. Als de tabel geen niet-ondersteunde functies heeft, kan de Advisor het werkelijke schema en de gegevens migratie voor u uitvoeren.
 
 ### <a name="manual-t-sql"></a>Hand matig T-SQL
@@ -109,7 +109,7 @@ INSERT INTO <new_memory_optimized_table>
 
 ## <a name="step-5-optional-migrate-stored-procedures"></a>Stap 5 (optioneel): opgeslagen procedures migreren
 
-De functie in het geheugen kan ook een opgeslagen procedure wijzigen voor betere prestaties.
+De functie In-Memory kan ook een opgeslagen procedure wijzigen voor betere prestaties.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Overwegingen met systeem eigen, gecompileerde, opgeslagen procedures
 
@@ -157,7 +157,7 @@ De migratie stappen zijn:
 
 ## <a name="step-6-run-your-workload-in-test"></a>Stap 6: Voer de werk belasting uit in de test
 
-Voer een workload in uw test database uit die vergelijkbaar is met de werk belasting die wordt uitgevoerd in uw productie database. Hiermee wordt de prestatie verbetering onthuld die wordt behaald door het gebruik van de functie in het geheugen voor tabellen en opgeslagen procedures.
+Voer een workload in uw test database uit die vergelijkbaar is met de werk belasting die wordt uitgevoerd in uw productie database. Hiermee wordt de prestatie verbetering onthuld die wordt behaald door uw gebruik van de functie In-Memory voor tabellen en opgeslagen procedures.
 
 De belangrijkste kenmerken van de werk belasting zijn:
 
@@ -170,9 +170,9 @@ Als u de netwerk latentie wilt minimaliseren, voert u uw test uit in dezelfde Az
 
 ## <a name="step-7-post-implementation-monitoring"></a>Stap 7: bewaking na de implementatie
 
-Overweeg de prestatie-effecten van uw in-Memory implementaties in productie te controleren:
+Overweeg de prestatie-effecten van uw In-Memory implementaties in productie te controleren:
 
-* [Controleer de opslag in het geheugen](in-memory-oltp-monitor-space.md).
+* [In-Memory opslag bewaken](in-memory-oltp-monitor-space.md).
 * [Bewaken met dynamische beheer weergaven](database/monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Verwante koppelingen

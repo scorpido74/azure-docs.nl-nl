@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543330"
 ---
 # <a name="azure-operational-security"></a>Operationele Azure-beveiliging
@@ -71,7 +71,7 @@ De kern functionaliteit van Azure Monitor Logboeken wordt verschaft door een set
 | Azure Monitor-logboeken | Bewaak en analyseer de beschikbaarheid en prestaties van verschillende resources, met inbegrip van fysieke en virtuele machines. |
 |Automation | Automatiseer handmatige processen en dwing configuraties af voor fysieke en virtuele machines. |
 | Backup | Back-ups maken van essentiële gegevens en deze herstellen. |
-| Site Recovery | Bied hoge beschikbaarheid voor kritieke toepassingen. |
+| Siteherstel | Bied hoge beschikbaarheid voor kritieke toepassingen. |
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
@@ -128,7 +128,7 @@ In Security Center definieert u de beleidsregels op grond van de beveiligingsver
 Beleids regels die zijn ingeschakeld in het abonnements niveau, worden automatisch door gegeven aan alle resource groepen binnen het abonnement, zoals wordt weer gegeven in het diagram aan de rechter kant:
 
 
-### <a name="data-collection"></a>Gegevens verzamelen
+### <a name="data-collection"></a>Gegevensverzameling
 
 Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om de beveiligingsstatus van de VM's te beoordelen, aanbevelingen voor beveiliging te geven en u te waarschuwen bij bedreigingen. Wanneer u voor het eerst toegang Security Center, wordt gegevens verzameling ingeschakeld op alle virtuele machines in uw abonnement. Gegevensverzameling wordt aanbevolen, maar u kunt gegevensverzameling indien gewenst ook uitschakelen in het Security Center-beleid.
 
@@ -228,7 +228,7 @@ Network Watcher heeft momenteel de volgende mogelijkheden:
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Audit logboeken</a>**: bewerkingen die worden uitgevoerd als onderdeel van de configuratie van netwerken, worden vastgelegd. Deze logboeken kunnen worden weer gegeven in de Azure Portal of worden opgehaald met micro soft-hulpprogram ma's, zoals Power BI of hulpprogram ma's van derden. Audit logboeken zijn beschikbaar via de portal, Power shell, CLI en rest-API. Zie bewerkingen controleren met Resource Manager voor meer informatie over audit Logboeken. Audit logboeken zijn beschikbaar voor bewerkingen die op alle netwerk bronnen worden uitgevoerd.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-stroom wordt geverifieerd</a>** : controleert of een pakket is toegestaan of geweigerd op basis van de stroom informatie 5-tuple Packet para meters (doel-IP, bron-IP, doel poort, bron poort en Protocol). Als het pakket wordt geweigerd door een netwerk beveiligings groep, wordt de regel en netwerk beveiligings groep die het pakket heeft geweigerd, geretourneerd.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-stroom wordt geverifieerd </a>** : controleert of een pakket is toegestaan of geweigerd op basis van de stroom informatie 5-tuple Packet para meters (doel-IP, bron-IP, doel poort, bron poort en Protocol). Als het pakket wordt geweigerd door een netwerk beveiligings groep, wordt de regel en netwerk beveiligings groep die het pakket heeft geweigerd, geretourneerd.
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Volgende hop</a>** : bepaalt de volgende hop voor pakketten die worden gerouteerd in de Azure-netwerk infrastructuur, zodat u eventuele onjuist geconfigureerde, door de gebruiker gedefinieerde routes kunt vaststellen.
 
@@ -325,7 +325,7 @@ In dit artikel wordt uitgelegd
 <ul>
 <li>Verzamel beveiligings gebeurtenissen, audit en schendings analyse om uw activa te sluiten:</li>
 <ul>
-<li>Beveiligings postuur</li>
+<li>Beveiligingspostuur</li>
 <li>Belang rijk probleem</li>
 <li>Samen vattingen van bedreigingen</li>
 </ul>

@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408365"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Beveiligings beheer: inventarisatie en activa beheer
@@ -38,7 +38,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.2 | 1.5 | Klant |
+| 6,2 | 1.5 | Klant |
 
 Pas Tags toe op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
@@ -94,7 +94,7 @@ Gebruik Azure virtual machine Inventory om het verzamelen van informatie over al
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6.7 | 2.5 | Klant |
+| 6.7 | 2,5 | Klant |
 
 Gebruik Azure Security Center File Integrity Monitoring (Wijzigingen bijhouden) en virtual machine Inventory om alle software te identificeren die op Virtual Machines is geïnstalleerd. U kunt uw eigen proces voor het verwijderen van onbevoegde software implementeren. U kunt ook een oplossing van derden gebruiken om niet-goedgekeurde software te identificeren.
 
@@ -118,7 +118,7 @@ Gebruik Azure Security Center adaptieve toepassings controles om ervoor te zorge
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6,9 | 2,6 | Klant |
+| 6.9 | 2,6 | Klant |
 
 Gebruik Azure Policy om te beperken welke services u in uw omgeving kunt inrichten.
 
@@ -130,7 +130,7 @@ Gebruik Azure Policy om te beperken welke services u in uw omgeving kunt inricht
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 6,10 | 2.7 | Klant |
+| 6.10 | 2.7 | Klant |
 
 Gebruik Azure Security Center adaptieve toepassings besturings elementen om op te geven welke bestands typen een regel kan of niet van toepassing is op.
 

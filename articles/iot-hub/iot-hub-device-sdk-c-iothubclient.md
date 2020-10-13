@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81732602"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT Device SDK voor C: meer informatie over IoTHubClient
@@ -256,7 +256,7 @@ Het lijkt erop dat u **IoTHubClient \_ API createfromconnectionstring** wilt geb
 
 ## <a name="configuration-options"></a>Configuratie-opties
 
-Tot nu toe is alles wat wordt beschreven in de manier waarop de **IoTHubClient** -bibliotheek het standaard gedrag weerspiegelt. Er zijn echter enkele opties die u kunt instellen om de werking van de bibliotheek te wijzigen. Dit wordt bereikt door gebruik te maken van de **IoTHubClient \_ ll \_ SetOption** API. Bekijk dit voor beeld:
+Tot nu toe is alles wat wordt beschreven in de manier waarop de **IoTHubClient** -bibliotheek het standaard gedrag weerspiegelt. Er zijn echter enkele opties die u kunt instellen om de werking van de bibliotheek te wijzigen. Dit wordt bereikt door gebruik te maken van de **IoTHubClient \_ ll \_ SetOption** API. Kijk eens naar dit voorbeeld:
 
 ```C
 unsigned int timeout = 30000;

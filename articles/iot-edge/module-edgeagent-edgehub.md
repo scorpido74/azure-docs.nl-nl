@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80546193"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschappen van de IoT Edge agent en IoT Edge hub-module apparaatdubbels
@@ -55,7 +55,7 @@ De module voor de IoT Edge-agent wordt aangeroepen `$edgeAgent` en coördineert 
 | modules. {moduleId}. status | {"uitvoeren" \| "gestopt"} | Ja |
 | modules. {moduleId}. restartPolicy | {"Never" \| "on-failure" \| " \| " altijd "} | Ja |
 | modules. {moduleId}. imagePullPolicy | {"on-Create" \| ' Never '} | Nee |
-| modules. {moduleId}. env | Een lijst met omgevings variabelen die moeten worden door gegeven aan de module. Neemt de indeling`"<name>": {"value": "<value>"}` | Nee |
+| modules. {moduleId}. env | Een lijst met omgevings variabelen die moeten worden door gegeven aan de module. Neemt de indeling `"<name>": {"value": "<value>"}` | Nee |
 | modules. {moduleId}. settings. image | De URI naar de module afbeelding. | Ja |
 | modules. {moduleId}. settings. createOptions | Een stringified-JSON met de opties voor het maken van de module container. [Opties voor het maken van docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nee |
 | modules. {moduleId}. configuratie.-id | De ID van de implementatie die deze module heeft geïmplementeerd. | IoT Hub stelt deze eigenschap in wanneer het manifest wordt toegepast met behulp van een implementatie. Maakt geen deel uit van een implementatie manifest. |
@@ -80,8 +80,8 @@ De volgende tabel bevat niet de informatie die uit de gewenste eigenschappen is 
 | lastDesiredVersion | Dit geheel getal verwijst naar de laatste versie van de gewenste eigenschappen die worden verwerkt door de IoT Edge agent. |
 | lastDesiredStatus. code | Deze status code verwijst naar de laatste gewenste eigenschappen die worden weer gegeven door de IoT Edge agent. Toegestane waarden: `200` geslaagd, `400` Ongeldige configuratie, `412` Ongeldige schema versie, `417` de gewenste eigenschappen zijn leeg, `500` mislukt |
 | lastDesiredStatus. Description | Tekst beschrijving van de status |
-| deviceHealth | `healthy`Als de runtime status van alle modules ofwel `running` of `stopped` `unhealthy` anders is |
-| configurationHealth. {deploymentId}. status | `healthy`Als de runtime status van alle modules die zijn ingesteld door de implementatie {deploymentId} `running` `stopped` , of `unhealthy` anders |
+| deviceHealth | `healthy` Als de runtime status van alle modules ofwel `running` of `stopped` `unhealthy` anders is |
+| configurationHealth. {deploymentId}. status | `healthy` Als de runtime status van alle modules die zijn ingesteld door de implementatie {deploymentId} `running` `stopped` , of `unhealthy` anders |
 | runtime. platform. OS | Melden van het besturings systeem dat op het apparaat wordt uitgevoerd |
 | runtime. platform. Architecture | Rapportage van de architectuur van de CPU op het apparaat |
 | systemModules.edgeAgent.runtimeStatus | De gerapporteerde status van de IoT Edge-agent: {"wordt uitgevoerd" \| "is beschadigd"} |

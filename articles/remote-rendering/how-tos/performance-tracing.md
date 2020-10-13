@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021157"
 ---
 # <a name="create-client-side-performance-traces"></a>Prestatietracering aan de clientzijde maken
@@ -81,7 +81,7 @@ Als u een tracering op een HoloLens wilt vastleggen, start u uw apparaat op en v
 
 1. Ga aan de linkerkant naar *prestaties > prestatie tracering*.
 1. **Aangepaste profielen** selecteren
-1. Schakel**:::no-loc text="Browse...":::**
+1. Schakel **:::no-loc text="Browse...":::**
 1. Selecteer het bestand *AzureRemoteRenderingNetworkProfiling. wprp*. U kunt dit bestand vinden in de ARR SDK onder *tools/ETLProfiles*.
 1. Klik op **Tracering starten**
 1. De HoloLens is nu bezig met het vastleggen van een tracering. Zorg ervoor dat de prestatie problemen die u wilt onderzoeken, worden geactiveerd. Klik vervolgens op **tracering stoppen**.

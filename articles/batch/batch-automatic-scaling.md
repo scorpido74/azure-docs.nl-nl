@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
 ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91849789"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
@@ -163,7 +163,7 @@ Formules voor automatisch schalen ondersteunen de volgende typen:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 
 Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige sectie.
 
@@ -188,7 +188,7 @@ Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige s
 
 Bij het testen van een dubbele met een ternaire operator ( `double ? statement1 : statement2` ), is niet nul **waar**en is nul **False**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 U kunt deze vooraf gedefinieerde **functies** gebruiken voor het definiëren van een formule voor automatisch schalen.
 

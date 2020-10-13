@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74324512"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integratie van Azure Block Chain Workbench-berichten
@@ -401,7 +401,7 @@ Bevat informatie over afzonderlijke blokken. De *BlockMessage* bevat een sectie 
 | transactionId      | De unieke id voor de trans actie in azure Block Chain workbench |
 | transactionHash    | De hash van de trans actie in het groot boek |
 | from               | Unieke id in het groot boek voor de oorsprong van de trans actie |
-| tot                 | Unieke id in het groot boek voor het doel van de trans actie |
+| in op                 | Unieke id in het groot boek voor het doel van de trans actie |
 | provisioningStatus | Identificeert de huidige status van het inrichtings proces voor de trans actie. Mogelijke waarden zijn: </br>0: de trans actie is gemaakt door de API in de data base</br>1: de trans actie is naar het groot boek verzonden</br>2: de trans actie is doorgevoerd voor het groot boek</br>3 of 4: de trans actie kan niet worden doorgevoerd in het groot boek</br>5: de trans actie is doorgevoerd naar het groot boek |
 
 Voor beeld van een *BlockMessage* van Block Chain Workbench:
@@ -463,7 +463,7 @@ Bevat informatie over een contract. Het bericht bevat een sectie met contract ei
 | transactionId | De unieke id voor de trans actie in azure Block Chain workbench |
 | transactionHash | De hash van de trans actie in het groot boek |
 | from | Unieke id in het groot boek voor de oorsprong van de trans actie |
-| tot | Unieke id in het groot boek voor het doel van de trans actie |
+| in op | Unieke id in het groot boek voor het doel van de trans actie |
 
 #### <a name="contract-properties"></a>Eigenschappen van contract
 
@@ -591,7 +591,7 @@ Bevat informatie over het aanroepen van een contract functie, zoals de functie n
 | transactionId      | De unieke id voor de trans actie in azure Block Chain workbench |
 | transactionHash    | De hash van de trans actie in het groot boek |
 | from               | Unieke id in het groot boek voor de oorsprong van de trans actie |
-| tot                 | Unieke id in het groot boek voor het doel van de trans actie |
+| in op                 | Unieke id in het groot boek voor het doel van de trans actie |
 
 Voor beeld van een *EventMessage-ContractFunctionInvocation* van Block Chain Workbench:
 

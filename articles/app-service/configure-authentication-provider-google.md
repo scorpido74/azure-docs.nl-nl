@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80519949"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Uw App Service-of Azure Functions-app configureren voor het gebruik van Google-aanmelding
@@ -24,7 +24,7 @@ Als u de procedure in dit onderwerp wilt volt ooien, moet u een Google-account h
 
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Uw toepassing registreren bij Google
 
-1. Volg de Google-documentatie bij [Google-aanmelding voor apps aan de server zijde](https://developers.google.com/identity/sign-in/web/server-side-flow) om een client-id en client geheim te maken. U hoeft geen code wijzigingen aan te brengen. Gebruik hiervoor de volgende informatie:
+1. Volg de Google-documentatie op [google Sign-In voor apps aan de server zijde](https://developers.google.com/identity/sign-in/web/server-side-flow) om een client-id en client geheim te maken. U hoeft geen code wijzigingen aan te brengen. Gebruik hiervoor de volgende informatie:
     - Gebruik met de naam van uw app in voor **geautoriseerde java script-oorsprong** `https://<app-name>.azurewebsites.net` *\<app-name>* .
     - Gebruik voor **geautoriseerde omleidings-URI** `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Kopieer de App-ID en de geheime waarden van de app.

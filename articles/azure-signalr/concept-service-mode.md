@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514811"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Service modus in azure signalerings service
@@ -21,7 +21,7 @@ Service modus is een belang rijk concept in de Azure signalerings service. Wanne
 
 U kunt deze later ook wijzigen in het menu instellingen:
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="Service modus bijwerken":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="Service modus kiezen bij maken":::
 
 De Azure signalerings service ondersteunt momenteel drie service modi: **standaard**, **serverloos** en **klassiek**. Uw signaal bron werkt anders in verschillende modi. In dit artikel leert u wat de verschillen zijn en hoe u de juiste service modus kiest op basis van uw scenario.
 
@@ -29,7 +29,7 @@ De Azure signalerings service ondersteunt momenteel drie service modi: **standaa
 
 De standaard modus is de standaard waarde voor de service modus wanneer u een nieuwe signalerings bron maakt. In deze modus werkt uw toepassing als een typische ASP.NET Core-signaal toepassing (of ASP.NET), waarin u een webserver hebt die als host fungeert voor een hub (hierna hub-server genoemd) en clients in realtime-communicatie met de hub-server kunnen communiceren. Het enige verschil is dat u de client en de server niet rechtstreeks verbindt, de client en server verbinding maken met de signalerings service en de service als een proxy gebruiken. Hieronder ziet u een diagram waarin de typische toepassings structuur in de standaard modus wordt geïllustreerd:
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="Toepassings structuur in de standaard modus":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="Service modus kiezen bij maken":::
 
 Als u dus een seingevings toepassing hebt en wilt integreren met de seingevings service, moet de standaard modus de juiste keuze zijn voor de meeste gevallen.
 
@@ -59,7 +59,7 @@ Zie dit [document](https://docs.microsoft.com/azure/azure-signalr/concept-upstre
 
 Hieronder ziet u een diagram dat laat zien hoe de serverloze modus werkt:
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Toepassings structuur in serverloze modus":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Service modus kiezen bij maken":::
 
 > [!NOTE]
 > Let op: in de standaard modus kunt u ook gebruikmaken van REST API/Management SDK/functie binding om berichten rechtstreeks naar de client te sturen als u niet via de hub-server wilt door gaan. Client verbindingen in de standaard modus worden echter nog steeds verwerkt door de hub-servers en de upstream werkt niet in deze modus.
