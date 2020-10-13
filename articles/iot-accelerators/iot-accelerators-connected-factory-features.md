@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261597"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Wat is de verbonden Factory IoT-oplossings versneller?
 
 > [!IMPORTANT]
-> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
+> Zie [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
 
 Connected Factory is een implementatie van de Azure Industrial IoT-referentie architectuur van micro soft, verpakt als een open-source oplossing. U kunt deze gebruiken als uitgangs punt voor een commercieel product. U kunt een vooraf ontwikkelde versie van de oplossing Connected Factory implementeren in uw Azure-abonnement van [Azure IOT-oplossings Accelerators](https://www.azureiotsolutions.com/#solutions/types/CF).
 
@@ -58,7 +58,7 @@ Verbonden Factory bevat de volgende functies:
 
 ## <a name="end-to-end-security"></a>End-to-end beveiliging
 
-- Configureer beveiligings machtigingen voor gebruikers met behulp van op rollen gebaseerde Access Control (RBAC).
+- Configureer beveiligings machtigingen voor gebruikers met behulp van Role-Based Access Control (RBAC).
 - End-to-end-versleuteling wordt geïmplementeerd met behulp van de OPC UA-verificatie (met behulp van X. 509-certificaten) en beveiligings tokens.
 
 ## <a name="customizability"></a>Aanpassings mogelijkheden

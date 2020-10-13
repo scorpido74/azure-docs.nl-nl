@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306562"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Implementatie van Azure Active Directory Access beoordelingen plannen
@@ -246,7 +246,7 @@ Als u een toegangs beoordelings beleid wilt maken, moet u de volgende informatie
 | **Te controleren resources**| Toegang tot micro soft Dynamics |
 | **Beoordelings frequentie**| Maandelijks |
 | **Wie beoordeling uitvoert**| Dynamics bedrijfs groep programma managers |
-| **Melding**| E-mail berichten 24 uur voorafgaand aan de alias dynamiek-PMS<p>Intrekken van een aangepast bericht aan revisoren voor het beveiligen van hun aankoop |
+| **Melding**| 24 uur per e-mail verzenden naar alias Dynamics-Pms<p>Intrekken van een aangepast bericht aan revisoren voor het beveiligen van hun aankoop |
 | **Tijdlijn**| 48 uur vanaf melding |
 |**Automatische acties**| Verwijder de toegang van een account zonder interactieve aanmelding binnen 90 dagen door de gebruiker te verwijderen uit de beveiligings groep Dynamics-toegang. <p>*Acties uitvoeren als deze niet binnen de tijd lijn worden gecontroleerd.* |
 | **Hand matige acties**| Revisoren kunnen, indien gewenst, de goed keuring van verwijderingen uitvoeren vóór een automatische actie. |
@@ -361,7 +361,7 @@ U kunt de resultaten van een toegangs beoordeling gebruiken voor on-premises gro
 
 * Het gebruik van Microsoft Graph om programmatisch toegang te krijgen tot resultaten en beslissingen in voltooide toegangs Beoordelingen.
 
-Als u bijvoorbeeld toegang wilt krijgen tot resultaten voor een door Windows AD beheerde groep, gebruikt u dit [Power shell-voorbeeld script](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises). Het script geeft een overzicht van de vereiste grafiek aanroepen en exporteert de Windows AD-Power shell-opdrachten om de wijzigingen uit te voeren.
+Als u bijvoorbeeld toegang wilt krijgen tot resultaten voor een door Windows AD beheerde groep, gebruikt u dit [Power shell-voorbeeld script](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises). Het script geeft een overzicht van de vereiste grafiek aanroepen en exporteert de Windows AD-PowerShell-opdrachten om de wijzigingen uit te voeren.
 
 ## <a name="plan-access-reviews-for-applications"></a>Toegangs Beoordelingen voor toepassingen plannen 
 

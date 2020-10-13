@@ -13,10 +13,10 @@ ms.workload: tbd
 ms.date: 9/29/2020
 ms.author: yohaddad
 ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531153"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
@@ -1438,7 +1438,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-147 |[3204063]   |Beveiligings update voor micro soft Uniscribe|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-149 |[3205655]   |Beveiligings update voor micro soft Windows|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-150 |[3205642]   |Beveiligings update voor beveiligde kernelmodus |5.4 |13 december 2016 |
-| MS16-151 |[3205651]   |Beveiligings update voor Stuur Programma's in kernelmodus|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
+| MS16-151 |[3205651]   |Beveiligings update voor Kernel-Mode Stuur Programma's|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-152 |[3199709]   |Beveiligings update voor Windows-kernel |5.4 |13 december 2016 |
 | MS16-153 |[3207328] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
 | MS16-155 |[3205640]   |Beveiligings update voor .NET Framework |5.4 |13 december 2016 |
@@ -1454,7 +1454,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-131 |[3199151]   |Beveiligings update voor micro soft video Control |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-132 |[3199120] |Beveiligings update voor micro soft-onderdeel |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-134 |[3193706] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-135 |[3199135] |Beveiligings update voor Stuur Programma's in kernelmodus |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
+| MS16-135 |[3199135] |Beveiligings update voor Kernel-Mode Stuur Programma's |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-137 |[3199173]   |Beveiligings update voor Windows-verificatie methoden |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
 | MS16-138 |[3199647] |Beveiligings update voor de virtuele harde schijf van micro soft |5,3, 4,38, 3,45 |8 november 2016 |
 | MS16-139 |[3199720] |Beveiligings update voor Windows-kernel |2,57 |Nov 8,2016 |
@@ -1476,7 +1476,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | --- | --- | --- | --- | --- |
 | MS16-118 |[3192887] |Cumulatieve beveiligings update voor Internet Explorer |4,37, 3,44, 2,56 |11 oktober 2016 |
 | MS16-120 |[3192884] |Beveiligings update voor micro soft graphics-onderdeel |4,37, 3,44, 2,56 |11 oktober 2016 |
-| MS16-123 |[3192892] |Beveiligings update voor Stuur Programma's in kernelmodus |4,37, 3,44, 2,56 |11 oktober 2016 |
+| MS16-123 |[3192892] |Beveiligings update voor Kernel-Mode Stuur Programma's |4,37, 3,44, 2,56 |11 oktober 2016 |
 | MS16-124 |[3193227] |Beveiligings update voor Windows-REGI ster |4,37, 3,44, 2,56 |11 oktober 2016 |
 | MS16-126 |[3196067] |Beveiligings update voor micro soft Internet Messa ging API |2,56 |11 oktober 2016 |
 | MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4,37, 3,44, 2,56 |11 oktober 2016 |
@@ -1497,7 +1497,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-114 |[3185879] |Beveiligings update voor Windows SMB server |4,36, 3,43, 2,55 |Sept 13, 2016 |
 | MS16-115 |[3188733] |Beveiligings update voor PDF |4,35, 3,43 |Sept 13, 2016 |
 | MS16-116 |[3188724] |Beveiligings update in OLE Automation voor VBScript Scripting Engine |4,36, 3,43, 2,55 |Sept 13, 2016 |
-| N.v.t. |[3174644] |Ondersteuning voor Diffie-Hellman-sleutel uitwisseling is bijgewerkt |4,36, 3,43, 2,55 |Sept 13, 2016 |
+| N.v.t. |[3174644] |Ondersteuning voor Diffie-Hellman sleutel uitwisseling is bijgewerkt |4,36, 3,43, 2,55 |Sept 13, 2016 |
 | N.v.t. |[3177723] |Update van tijd zone-Egypte annuleert zomer tijd |4,36, 3,43, 2,55 |Sept 13, 2016 |
 | N.v.t. |[3179573] |Update pakket van augustus 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.55 |Sept 13, 2016 |
 | N.v.t. |[3179575] |Update pakket van augustus 2016 voor Windows Server 2012 |3,43 |Sept 13, 2016 |
@@ -1508,11 +1508,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | --- | --- | --- | --- | --- |
 | MS16-095 |[3177356] |Cumulatieve beveiligings update voor Internet Explorer |4,35, 3,42, 2,54 |9 augustus 2016 |
 | MS16-097 |[3177393] |Beveiligings update voor micro soft graphics-onderdeel |4,35, 3,42, 2,54 |9 augustus 2016 |
-| MS16-098 |[3178466] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's |4,35, 3,42, 2,54 |9 augustus 2016 |
+| MS16-098 |[3178466] |Beveiligings update voor Windows Kernel-Mode-Stuur Programma's |4,35, 3,42, 2,54 |9 augustus 2016 |
 | MS16-100 |[3179577] |Beveiligings update voor beveiligd opstarten |4,35, 3,42 |9 augustus 2016 |
 | MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4,35, 3,42, 2,54 |9 augustus 2016 |
 | MS16-102 |[3182248] |Beveiligings update voor micro soft Windows PDF-bibliotheek |4,35, 3,42 |9 augustus 2016 |
-| MS16-077 opnieuw uitgeven |[3165191] |Beveiligings update voor Web Proxy AutoDiscovery (WPAD) |4,35, 3,42, 2,54 |9 augustus 2016 |
+| MS16-077 Re-Release |[3165191] |Beveiligings update voor Web Proxy AutoDiscovery (WPAD) |4,35, 3,42, 2,54 |9 augustus 2016 |
 | N.v.t. |[3172605] |Update pakket van juli 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,54 |9 augustus 2016 |
 | N.v.t. |[3172615] |Update pakket van juli 2016 voor Windows Server 2012 |3,42 |9 augustus 2016 |
 | N.v.t. |[3172614] |Update pakket van juli 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4,35 |9 augustus 2016 |
@@ -1600,7 +1600,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-031 |[3140410] |Beveiligings update voor micro soft Windows om het uitbrei ding van bevoegdheden te verhelpen |2,49 |8 maart 2016 |
 | MS16-032 |[3143141] |Beveiligings update voor secundaire aanmelding om uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
 | MS16-033 |[3143142] |Beveiligings update voor USB-klassestuurprogramma voor massa opslag om uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-034 |[3143145] |Beveiligings updates voor het kernelmodus-stuur programma om de uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
+| MS16-034 |[3143145] |Beveiligings updates voor Kernel-Mode stuur programma om de uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
 
 ## <a name="february-2016-guest-os"></a>Februari 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1609,20 +1609,20 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-013 |[3134811] |Beveiligings update voor Windows Journal om uitvoering van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-014 |[3134228] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-016 |[3136041] |Beveiligings update naar WebDAV om misbruik van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-018 |[3136082] |Beveiligings update voor Windows-kernelmodus-stuur programma voor het uitpakken van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
+| MS16-018 |[3136082] |Beveiligings update voor Windows Kernel-Mode-stuur programma om uitbrei ding van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-019 |[3137893] |Beveiligings update voor .NET Framework om het uitvoeren van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
 | MS16-021 |[3133043] |Beveiligings update voor NPS RADIUS-server voor denial-of-service |4,29, 3,36, 2,48 |9 februari 2016 |
 | Micro soft-beveiligings advies |[3109853] |Update voor het verbeteren van TLS-interoperabiliteit |4,29, 3,36 |9 februari 2016 |
-| Nieuwe release-MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
-| Nieuwe versie-MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| Nieuwe versie-MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4,29, 3,36, 2,48 |9 februari 2016 |
+| Re-Release-MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
+| Re-Release-MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
+| Re-Release-MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4,29, 3,36, 2,48 |9 februari 2016 |
 
 ## <a name="january-2016-guest-os"></a>Januari 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | MS16-001 |[3124903] |Cumulatieve beveiligings update voor Internet Explorer |4,28, 3,35, 2,47 |12 januari 2016 |
 | MS16-003 |[3125540] |Cumulatieve beveiligings update voor JScript en VBScript |2,47 |12 januari 2016 |
-| MS16-005 |[3124584] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's voor het uitvoeren van externe code-uitvoering |4,28, 3,35, 2,47 |12 januari 2016 |
+| MS16-005 |[3124584] |Beveiligings update voor Windows Kernel-Mode-Stuur Programma's om het uitvoeren van externe code te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
 | MS16-007 |[3124901] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
 | MS16-008 |[3124605] |Beveiligings update voor kernel om uitbrei ding van bevoegdheden te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
 | Revisie van micro soft-beveiligings advies |[2755801] |Update voor beveiligings problemen in Adobe Flash Player in Internet Explorer (pakket KB: TBD)-Aanbevelings aanduiding |4,28, 3,35 |12 januari 2016 |
@@ -1699,7 +1699,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-069 |[3072631] |Beveiligings problemen in Windows kunnen leiden tot uitvoering van externe code |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-071 |[3068457] |Beveiligings probleem in NETLOGON kan leiden tot spoofing |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-072 |[3069392] |Beveiligings probleem in grafisch stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-073 |[3070102] |Beveiligings problemen in het kernelmodusstuurprogramma kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
+| MS15-073 |[3070102] |Beveiligings problemen in Kernel-Mode stuur programma kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-074 |[3072630] |Beveiligings probleem in Windows Installer service kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-075 |[3072633] |Beveiligings problemen in OLE kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-076 |[3067505] |Beveiligings probleem in Windows Remote Procedure Call kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
@@ -1712,7 +1712,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-056 |[3058515] |Cumulatieve beveiligings update voor Internet Explorer |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-057 |[3033890] |Beveiligings probleem in Windows Media Player kan leiden tot uitvoering van externe code |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-060 |[3059317] |Beveiligings probleem in micro soft common controls kan leiden tot uitvoering van externe code |4,21, 3,28, 2,40 |9 juni 2015 |
-| MS15-061 |[3057839] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
+| MS15-061 |[3057839] |Beveiligings problemen in Windows-Kernel-Mode Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-062 |[3062577] |Beveiligings probleem in Active Directory Federation Services kan leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
 | MS15-063 |[3063858] |Beveiligings probleem in Windows-kernel kan leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
 
@@ -1724,7 +1724,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-045 |[3046002] |Beveiligings probleem in Windows Journal kan leiden tot uitvoering van externe code |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-048 |[3057134] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-050 |[3055642] |Beveiligings probleem in service besturings beheer kan leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-051 |[3057191] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
+| MS15-051 |[3057191] |Beveiligings problemen in Windows-Kernel-Mode Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-052 |[3050514] |Beveiligings probleem in Windows-kernel kan leiden tot het omzeilen van functies |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-053 |[3057263] |Beveiligings problemen in JScript en VBScript Scripting Engine kunnen leiden tot het omzeilen van beveiligings functies |4,20, 3,27, 2,39 |12 mei 2015 |
 | MS15-054 |[3051768] |Beveiligings probleem in micro soft Management Console-bestands indeling kan denial-of-service tot gevolg hebben |4,20, 3,27, 2,39 |12 mei 2015 |

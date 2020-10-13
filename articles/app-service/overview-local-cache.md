@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080708"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
@@ -54,7 +54,7 @@ U kunt de lokale cache configureren met behulp van een combi natie van gereserve
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Lokale cache configureren met behulp van de Azure Portal
 <a name="Configure-Local-Cache-Portal"></a>
 
-U schakelt lokale cache per web-app in met behulp van deze app-instelling:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+U schakelt lokale cache per web-app in met behulp van deze app-instelling: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
 ![App-instellingen Azure Portal: lokale cache](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
@@ -94,7 +94,7 @@ U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [stag
 * Wanneer u klaar bent, kunt u een [swap bewerking](../app-service/deploy-staging-slots.md#Swap) uitgeven tussen uw staging-en productie-sleuven.  
 * Plak instellingen bevatten naam en plak een sleuf. Als de Faserings sleuf wordt gewisseld naar productie, neemt deze de instellingen van de lokale cache-app over. De zojuist verwisselde productie sleuf wordt na een paar minuten uitgevoerd op de lokale cache en wordt na de wisseling opwarmen als onderdeel van de sleuf opwarm. Wanneer de wisseling van de sleuf is voltooid, wordt uw productie sleuf uitgevoerd op basis van de lokale cache.
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ's)
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hoe kan ik zien of de lokale cache van toepassing is op mijn app?
 Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het inhouds archief niet gebruikt voor het schrijven van kritieke gegevens tijdens runtime. Dit is minder dan 2 GB in totale grootte. het antwoord is "ja"! Als u de totale grootte van uw/site-en/siteextensions-mappen wilt ophalen, kunt u de site-extensie ' Azure Web Apps Disk Usage ' gebruiken.
@@ -102,7 +102,7 @@ Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Hoe kan ik zien of mijn site is overgeschakeld naar het gebruik van een lokale cache?
 Als u de functie lokale cache gebruikt met Faserings omgevingen, wordt de wissel bewerking niet voltooid totdat de lokale cache wordt opgewarmd. Als u wilt controleren of uw site wordt uitgevoerd op de lokale cache, kunt u de variabele voor de werk proces omgeving controleren `WEBSITE_LOCALCACHE_READY` . Gebruik de instructies op de pagina [omgevings variabele van werk processen](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) voor toegang tot de omgevings variabele werk processen op meerdere exemplaren.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Waarom?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Hoe komt dat?
 Als uw app gebruikmaakt van lokale cache, moet u de site opnieuw opstarten om de laatste wijzigingen op te halen. Wilt u geen wijzigingen publiceren naar een productie site? Zie de sleuf opties in het gedeelte eerder best practices.
 
 > [!NOTE]

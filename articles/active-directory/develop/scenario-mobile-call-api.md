@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83771737"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Een web-API aanroepen vanuit een mobiele app
@@ -29,17 +29,17 @@ In dit artikel kijken we eerst naar het MSAL-resultaat. Vervolgens gaan we kijke
 ## <a name="msal-result"></a>MSAL resultaat
 MSAL biedt de volgende waarden: 
 
-- `AccessToken`Hiermee worden beveiligde web-Api's aangeroepen in een HTTP Bearer-aanvraag.
-- `IdToken`bevat nuttige informatie over de aangemelde gebruiker. Deze informatie omvat de naam van de gebruiker, de thuis Tenant en een unieke id voor opslag.
-- `ExpiresOn`is de verloop tijd van het token. MSAL verwerkt de automatische vernieuwing van een app.
-- `TenantId`is de id van de Tenant waarbij de gebruiker zich heeft aangemeld. Voor gast gebruikers in Azure Active Directory (Azure AD) B2B, wordt met deze waarde de Tenant geïdentificeerd waar de gebruiker zich heeft aangemeld. Met de waarde wordt niet de thuis Tenant van de gebruiker geïdentificeerd.  
-- `Scopes`Hiermee worden de bereiken aangegeven die met uw token zijn verleend. De toegekende bereiken kunnen een subset zijn van de bereiken die u hebt aangevraagd.
+- `AccessToken` Hiermee worden beveiligde web-Api's aangeroepen in een HTTP Bearer-aanvraag.
+- `IdToken` bevat nuttige informatie over de aangemelde gebruiker. Deze informatie omvat de naam van de gebruiker, de thuis Tenant en een unieke id voor opslag.
+- `ExpiresOn` is de verloop tijd van het token. MSAL verwerkt de automatische vernieuwing van een app.
+- `TenantId` is de id van de Tenant waarbij de gebruiker zich heeft aangemeld. Voor gast gebruikers in Azure Active Directory (Azure AD) B2B, wordt met deze waarde de Tenant geïdentificeerd waar de gebruiker zich heeft aangemeld. Met de waarde wordt niet de thuis Tenant van de gebruiker geïdentificeerd.  
+- `Scopes` Hiermee worden de bereiken aangegeven die met uw token zijn verleend. De toegekende bereiken kunnen een subset zijn van de bereiken die u hebt aangevraagd.
 
 MSAL biedt ook een abstractie voor een `Account` waarde. Een `Account` waarde vertegenwoordigt het aangemelde account van de huidige gebruiker:
 
-- `HomeAccountIdentifier`identificeert de thuis Tenant van de gebruiker.
-- `UserName`de voorkeurs gebruikersnaam van de gebruiker. Deze waarde kan leeg zijn voor gebruikers van Azure AD B2C.
-- `AccountIdentifier`Hiermee wordt de aangemelde gebruiker geïdentificeerd. In de meeste gevallen is deze waarde hetzelfde als de `HomeAccountIdentifier` waarde tenzij de gebruiker een gast in een andere Tenant is.
+- `HomeAccountIdentifier` identificeert de thuis Tenant van de gebruiker.
+- `UserName` de voorkeurs gebruikersnaam van de gebruiker. Deze waarde kan leeg zijn voor gebruikers van Azure AD B2C.
+- `AccountIdentifier` Hiermee wordt de aangemelde gebruiker geïdentificeerd. In de meeste gevallen is deze waarde hetzelfde als de `HomeAccountIdentifier` waarde tenzij de gebruiker een gast in een andere Tenant is.
 
 ## <a name="call-an-api"></a>Een API aanroepen
 
@@ -87,7 +87,7 @@ Nadat u het toegangs token hebt, kunt u een web-API aanroepen. In uw app wordt h
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL voor iOS en macOS
 
-De methoden voor het verkrijgen van tokens retour neren een `MSALResult` object. `MSALResult`beschrijft een `accessToken` eigenschap. U kunt gebruiken `accessToken` om een web-API aan te roepen. Voeg deze eigenschap toe aan de HTTP-autorisatie-header voordat u aanroept om toegang te krijgen tot de beveiligde web-API.
+De methoden voor het verkrijgen van tokens retour neren een `MSALResult` object. `MSALResult` beschrijft een `accessToken` eigenschap. U kunt gebruiken `accessToken` om een web-API aan te roepen. Voeg deze eigenschap toe aan de HTTP-autorisatie-header voordat u aanroept om toegang te krijgen tot de beveiligde web-API.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -160,4 +160,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-mobile-production.md)
+> [Verplaatsen naar productie](scenario-mobile-production.md)

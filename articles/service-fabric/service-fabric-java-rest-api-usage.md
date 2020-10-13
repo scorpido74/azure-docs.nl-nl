@@ -7,10 +7,10 @@ ms.date: 11/27/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
 ms.openlocfilehash: 24ee4a3d8109626bf93e01fbd10c00140762c9c6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324621"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Api's van Azure Service Fabric Java-client
@@ -40,7 +40,7 @@ Volg de onderstaande stappen om Service Fabric Java-client code te genereren met
     npm install -g autorest
     ```
 
-3. Fork en kloon de opslag plaats [Azure-rest-API-specificaties](https://github.com/Azure/azure-rest-api-specs) op uw lokale machine en ga naar de gekloonde locatie vanaf de terminal van uw computer.
+3. Fork en kloon de opslag plaats [Azure-rest-API-specificaties](https://github.com/Azure/azure-rest-api-specs)  op uw lokale machine en ga naar de gekloonde locatie vanaf de terminal van uw computer.
 
 
 4. Ga naar de hieronder vermelde locatie in de gekloonde opslag plaats.
@@ -63,7 +63,7 @@ Volg de onderstaande stappen om Service Fabric Java-client code te genereren met
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Met de volgende opdracht wordt een ``servicefabric.json`` specificatie bestand gebruikt als invoer en wordt Java-client code in ``java-rest-api-     code`` map gegenereerd en wordt de code in de ``servicefabricrest`` naam ruimte Inge sloten. Na deze stap vindt u twee mappen ``models`` ``implementation`` en twee bestanden die ``ServiceFabricClientAPIs.java`` ``package-info.java`` in de map zijn gegenereerd ``java-rest-api-code`` .
+   Met de volgende opdracht wordt een ``servicefabric.json`` specificatie bestand gebruikt als invoer en wordt Java-client code in ``java-rest-api-     code`` map gegenereerd en wordt de code in de  ``servicefabricrest`` naam ruimte Inge sloten. Na deze stap vindt u twee mappen ``models`` ``implementation`` en twee bestanden die ``ServiceFabricClientAPIs.java`` ``package-info.java`` in de map zijn gegenereerd ``java-rest-api-code`` .
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>De gegenereerde client in uw project insluiten en gebruiken

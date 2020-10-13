@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578475"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure-Sentinel uitbreiden in werkruimten en tenants
@@ -37,7 +37,7 @@ U kunt het volledige voordeel van de Azure Sentinel-ervaring verkrijgen wanneer 
 | Gedetailleerde controle over gegevenstoegang | Een organisatie moet mogelijk verschillende groepen binnen of buiten de organisatie toestaan om toegang te krijgen tot een aantal van de gegevens die worden verzameld door Azure Sentinel. Bijvoorbeeld:<br><ul><li>Resource-eigen aren hebben toegang tot gegevens met betrekking tot hun resources</li><li>Regionale of subsidiaire SOCs toegang tot gegevens die relevant zijn voor hun delen van de organisatie</li></ul> | [Resource RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) of [tabel niveau RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) gebruiken |
 | Gedetailleerde instellingen voor retentie | In het verleden waren meerdere werk ruimten de enige manier om verschillende Bewaar perioden voor verschillende gegevens typen in te stellen. Dit is in veel gevallen niet langer nodig, dankzij de introductie van instellingen voor het bewaren van een tabel niveau. | Instellingen voor het [bewaren van tabel niveau](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) gebruiken of [gegevens verwijdering](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatiseren |
 | Gesplitste facturering | Door werk ruimten in afzonderlijke abonnementen te plaatsen, kunnen ze worden gefactureerd aan verschillende partijen. | Gebruiksrapportages en doorberekening |
-| Verouderde architectuur | Het gebruik van meerdere werk ruimten kan van een historisch ontwerp zijn dat rekening houdt met de beperkingen of aanbevolen procedures die niet meer waar zijn. Het kan ook een willekeurige ontwerpkeuze zijn geweest, die kan worden aangepast voor een betere aansluiting op Azure Sentinel.<br><br>Enkele voorbeelden:<br><ul><li>Een standaard werkruimte per abonnement gebruiken bij het implementeren van Azure Security Center</li><li>De nood zaak van nauw keurigere toegangs beheer-of Bewaar instellingen, de oplossingen waarvoor relatief nieuwe</li></ul> | Werkruimten opnieuw ontwerpen |
+| Verouderde architectuur | Het gebruik van meerdere werk ruimten kan van een historisch ontwerp zijn dat rekening houdt met de beperkingen of aanbevolen procedures die niet meer waar zijn. Het kan ook een willekeurige ontwerpkeuze zijn geweest, die kan worden aangepast voor een betere aansluiting op Azure Sentinel.<br><br>Voorbeelden zijn:<br><ul><li>Een standaard werkruimte per abonnement gebruiken bij het implementeren van Azure Security Center</li><li>De nood zaak van nauw keurigere toegangs beheer-of Bewaar instellingen, de oplossingen waarvoor relatief nieuwe</li></ul> | Werkruimten opnieuw ontwerpen |
 
 ### <a name="managed-security-service-provider-mssp"></a>MSSP (Managed Security service provider)
 

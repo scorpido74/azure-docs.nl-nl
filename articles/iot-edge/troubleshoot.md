@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902453"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Problemen met uw IoT Edge apparaat oplossen
@@ -71,7 +71,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="check-your-iot-edge-version"></a>Controleer uw IoT Edge versie
 
-Als u een oudere versie van IoT Edge hebt, kunt u het probleem mogelijk oplossen door een upgrade uit te voeren. Het `iotedge check` hulp programma controleert of de IOT Edge Security daemon de meest recente versie is, maar controleert niet de versies van de modules IOT Edge hub en agent. Als u de versie van de runtime modules op uw apparaat wilt controleren, gebruikt u de opdrachten `iotedge logs edgeAgent` en `iotedge logs edgeHub` . Het versie nummer wordt in de logboeken gedeclareerd wanneer de module wordt gestart.
+Als u een oudere versie van IoT Edge hebt, kunt u het probleem mogelijk oplossen door een upgrade uit te voeren. Het `iotedge check` hulp programma controleert of de IOT Edge Security daemon de meest recente versie is, maar controleert niet de versies van de modules IOT Edge hub en agent. Als u de versie van de runtime modules op uw apparaat wilt controleren, gebruikt u de opdrachten `iotedge logs edgeAgent` en `iotedge logs edgeHub` . Het versienummer staat in de logboeken vermeld wanneer de module wordt gestart.
 
 Zie [IOT Edge Security daemon en runtime bijwerken](how-to-update-iot-edge.md)voor instructies voor het bijwerken van uw apparaat.
 

@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 46a65720c9998a7a56d0ca269c344f85c5955546
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086140"
 ---
-# <a name="overview-of-apache-spark-structured-streaming"></a>Overzicht van Apache Spark Structured streaming
+# <a name="overview-of-apache-spark-structured-streaming"></a>Overzicht van Gestructureerde streaming van Apache Spark
 
 [Apache Spark](https://spark.apache.org/) Met Structured streaming kunt u schaal bare en fout tolerante toepassingen implementeren voor het verwerken van gegevens stromen. Structured streaming is gebaseerd op de Spark SQL-engine en verbetert de constructies van Spark SQL-gegevens frames en gegevens sets, zodat u streaming query's op dezelfde manier kunt schrijven als batch-query's.  
 

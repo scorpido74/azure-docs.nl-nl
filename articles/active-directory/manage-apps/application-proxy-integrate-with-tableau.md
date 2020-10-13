@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764499"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-toepassingsproxy en tableau 
@@ -42,7 +42,7 @@ Toepassings proxy biedt ondersteuning voor de OAuth 2,0-toekennings stroom, die 
 
 Als u tableau wilt publiceren, moet u een toepassing publiceren in azure Portal.
 
-Zo
+Voor:
 
 - Gedetailleerde instructies voor stap 1-8, Zie [toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md). 
 - Zie de tableau-documentatie voor informatie over het zoeken naar tableau-waarden voor de app-proxy velden.  

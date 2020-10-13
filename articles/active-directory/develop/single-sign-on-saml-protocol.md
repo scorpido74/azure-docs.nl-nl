@@ -1,7 +1,7 @@
 ---
 title: Azure-SAML-protocol voor eenmalige aanmelding
 titleSuffix: Microsoft identity platform
-description: In dit artikel wordt het SAML-protocol voor eenmalige aanmelding (SSO) in Azure Active Directory beschreven
+description: In dit artikel wordt het SAML-protocol single Sign-On (SSO) beschreven in Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: kenwith
@@ -15,19 +15,19 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118447"
 ---
-# <a name="single-sign-on-saml-protocol"></a>SAML-protocol voor eenmalige aanmelding
+# <a name="single-sign-on-saml-protocol"></a>Enkelvoudig Sign-On SAML-Protocol
 
-In dit artikel worden de SAML 2,0-verificatie aanvragen en antwoorden beschreven die Azure Active Directory (Azure AD) ondersteunt voor eenmalige aanmelding (SSO).
+In dit artikel worden de SAML 2,0-verificatie aanvragen en antwoorden beschreven die Azure Active Directory (Azure AD) ondersteunt voor single Sign-On (SSO).
 
 In het onderstaande protocol diagram wordt de volg orde van eenmalige aanmelding beschreven. De Cloud service (de service provider) gebruikt een binding voor HTTP-omleiding om een- `AuthnRequest` element (verificatie aanvraag) door te geven aan Azure AD (de ID-provider). Azure AD maakt vervolgens gebruik van een HTTP Post-binding om een- `Response` element te posten naar de Cloud service.
 
-![Eenmalige aanmelding (SSO)-werk stroom](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![SSO-werk stroom (single Sign-On)](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u SAML gebruikt voor eenmalige aanmelding. Zie [eenmalige aanmelding bij toepassingen in azure Active Directory](../manage-apps/what-is-single-sign-on.md)voor meer informatie over andere manieren voor het afhandelen van eenmalige aanmelding (bijvoorbeeld met behulp van OpenID Connect Connect of geïntegreerde Windows-verificatie).
@@ -273,7 +273,7 @@ Dit bevat claims over het onderwerp of de gebruiker. Het volgende fragment bevat
 ```        
 
 * **Claim naam** : de waarde van het `Name` kenmerk ( `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ) is de User Principal name van de geverifieerde gebruiker, zoals `testuser@managedtenant.com` .
-* **Claim van ObjectIdentifier** : de waarde van het `ObjectIdentifier` kenmerk ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ) is het `ObjectId` van het Directory-object dat de geverifieerde gebruiker in azure AD vertegenwoordigt. `ObjectId`is een onveranderbare, wereld wijd unieke en hergebruikte veilige id van de geverifieerde gebruiker.
+* **Claim van ObjectIdentifier** : de waarde van het `ObjectIdentifier` kenmerk ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ) is het `ObjectId` van het Directory-object dat de geverifieerde gebruiker in azure AD vertegenwoordigt. `ObjectId` is een onveranderbare, wereld wijd unieke en hergebruikte veilige id van de geverifieerde gebruiker.
 
 #### <a name="authnstatement"></a>AuthnStatement
 

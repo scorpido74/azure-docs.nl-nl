@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925308"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
@@ -68,7 +68,7 @@ Azure AD omvat ook een volledige reeks [mogelijkheden voor identiteits beheer](/
 - [Wachtwoordbeheer via selfservice](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Self-service groeps beheer](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Privileged account management](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](/azure/role-based-access-control/overview)
+- [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](/azure/role-based-access-control/overview)
 - [Bewaking van toepassings gebruik](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Uitgebreide controle](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Beveiligings bewaking en waarschuwingen](/azure/operations-management-suite/oms-security-responding-alerts)
@@ -89,7 +89,7 @@ Met Azure Active Directory hebben alle toepassingen die u publiceert voor uw par
 
 Security Center maakt gebruik [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC biedt [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Security Center evalueert de configuratie van uw resources om beveiligings problemen en beveiligings lekken te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
+In Azure Security Center wordt de configuratie van uw resources beoordeeld om beveiligingsproblemen en kwetsbaarheden te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
 
 >[!Note]
 >Zie voor meer informatie over rollen en toegestane acties in Security Center [machtigingen in azure Security Center](/azure/security-center/security-center-permissions).

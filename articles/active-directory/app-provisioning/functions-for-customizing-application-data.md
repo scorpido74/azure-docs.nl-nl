@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235669"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Instructies: expressies schrijven voor kenmerk toewijzingen in azure AD
@@ -86,7 +86,7 @@ BitAnd (&HF, &HF7)
 
 | Naam | Vereist/herhalend | Type | Notities |
 | --- | --- | --- | --- |
-| **expressie** |Vereist | expressie | Een geldige expressie |
+| **expression** |Vereist | expression | Een geldige expressie |
 
 **Voorbeeld:**<br>
 CBool ([attribute1] = [attribute2])                                                                    
@@ -251,7 +251,7 @@ Evalueert tot 7
 
 | Naam | Vereist/herhalend | Type | Notities |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
+| **expression** |Vereist |expression |Expressie die moet worden geëvalueerd |
 
 **Voorbeeld:**<br>
 IsNull ([displayName])                                                                                                
@@ -268,7 +268,7 @@ De inverse van deze functie heeft de naam IsPresent.
 
 | Naam | Vereist/herhalend | Type | Notities |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
+| **expression** |Vereist |expression |Expressie die moet worden geëvalueerd |
 
 **Voorbeeld:**<br>
 IsNullOrEmpty ([displayName])                                               
@@ -284,7 +284,7 @@ Retourneert waar als het kenmerk niet aanwezig is of een lege teken reeks is
 
 | Naam | Vereist/herhalend | Type | Notities |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
+| **expression** |Vereist |expression |Expressie die moet worden geëvalueerd |
 
 **Voorbeeld:**<br>
 Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManager]), [skiplevelManager], IsPresent ([Director]), [Director])
@@ -299,7 +299,7 @@ Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManag
 
 | Naam | Vereist/herhalend | Type | Notities |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
+| **expression** |Vereist |expression |Expressie die moet worden geëvalueerd |
 
 ---
 ### <a name="item"></a>Item
@@ -363,8 +363,8 @@ Retourneert "Joh"
 | Naam | Vereist/herhalend | Type | Notities |
 | --- | --- | --- | --- |
 | **Bron** |Vereist |Tekenreeks |Meestal naam van het kenmerk. |
-| **starten** |Vereist |integer |Index in de **bron** teken reeks waarin de subtekenreeks moet worden gestart. Het eerste teken in de teken reeks heeft index 1, tweede teken heeft index 2, enzovoort. |
-| **lange** |Vereist |integer |Lengte van de subtekenreeks. Als de lengte van de **bron** teken reeks eindigt, wordt met de functie subtekenreeks geretourneerd vanuit **Start** index tot het einde van de **bron** teken reeks. |
+| **starten** |Vereist |geheel getal |Index in de **bron** teken reeks waarin de subtekenreeks moet worden gestart. Het eerste teken in de teken reeks heeft index 1, tweede teken heeft index 2, enzovoort. |
+| **length** |Vereist |geheel getal |Lengte van de subtekenreeks. Als de lengte van de **bron** teken reeks eindigt, wordt met de functie subtekenreeks geretourneerd vanuit **Start** index tot het einde van de **bron** teken reeks. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -507,7 +507,7 @@ Vervangt waarden binnen een teken reeks. Het werkt anders afhankelijk van de opg
 | Naam | Vereist/herhalend | Type | Notities |
 | --- | --- | --- | --- |
 | **Bron** |Vereist |Tekenreeks |**bron** waarde die moet worden bijgewerkt. |
-| **vorm** |Vereist |Tekenreeks |Hiermee geeft u het teken op dat wordt gebruikt om de teken reeks te splitsen (bijvoorbeeld: ",") |
+| **scheidingsteken** |Vereist |Tekenreeks |Hiermee geeft u het teken op dat wordt gebruikt om de teken reeks te splitsen (bijvoorbeeld: ",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -735,4 +735,4 @@ U wilt het kenmerk mail stroomren als het aanwezig is. Als dat niet het geval is
 * [Filters voor het inrichten van gebruikers in bereik](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Using SCIM to enable automatic provisioning of users and groups from Azure Active Directory to applications](../app-provisioning/use-scim-to-provision-users-and-groups.md) (SCIM gebruiken om in te stellen dat gebruikers en groepen van Azure Active Directory automatisch worden ingericht voor toepassingen)
 * [Meldingen over accountinrichting](../app-provisioning/user-provisioning.md)
-* [Lijst met handleidingen voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
+* [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

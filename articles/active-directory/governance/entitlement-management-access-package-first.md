@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306511"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelfstudie: Uw eerste toegangspakket maken in Azure AD-rechtenbeheer
 
@@ -29,7 +29,7 @@ Het beheren van toegang tot alle resources die werknemers nodig hebben, zoals gr
 
 In deze zelfstudie werkt u als IT-beheerder voor de Woodgrove Bank. U bent gevraagd om een pakket met resources te maken voor een marketingcampagne waarvoor interne gebruikers een selfserviceaanvraag kunnen indienen. Voor aanvragen is geen goedkeuring nodig en de toegang van gebruikers verloopt na 30 dagen. Voor deze zelfstudie zijn de resources van de marketingcampagne lid van slechts één groep, maar dit kan een verzameling van groepen, toepassingen of SharePoint Online-sites zijn.
 
-![Overzicht van scenario's](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![Diagram met een overzicht van het scenario.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 In deze zelfstudie leert u het volgende:
 
@@ -110,7 +110,7 @@ Een *toegangspakket* is een bundel resources die een team of project nodig heeft
 
      Standaard ziet u groepen binnen de catalogus Algemeen. Wanneer u een groep buiten de catalogus Algemeen selecteert, zoals u kunt zien als u het selectievakje **Alles weergeven** inschakelt, wordt deze toegevoegd aan de catalogus Algemeen.
 
-    ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![Schermopname van het tabblad Nieuw toegangspakket - Resourcerollen en het venster Groepen selecteren.](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. Klik op **Selecteren** om de groep aan de lijst toe te voegen.
 

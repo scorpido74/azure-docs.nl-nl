@@ -1,6 +1,6 @@
 ---
-title: Azure Portal Dash boards delen door gebruik te maken van Access Control op basis van rollen
-description: In dit artikel wordt uitgelegd hoe u een dash board kunt delen in de Azure Portal door gebruik te maken van op rollen gebaseerde Access Control.
+title: Azure Portal Dash boards delen met behulp van Role-Based Access Control
+description: In dit artikel wordt uitgelegd hoe u een dash board in de Azure Portal kunt delen met behulp van Role-Based Access Control.
 services: azure-portal
 documentationcenter: ''
 author: mgblythe
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87923880"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-dashboards delen met behulp van op rollen gebaseerd toegangsbeheer
@@ -33,7 +33,7 @@ Alle gepubliceerde Dash boards worden geïmplementeerd als Azure-resources. Ze b
 
 ## <a name="understanding-access-control-for-dashboards"></a>Meer informatie over toegangs beheer voor dash boards
 
-Met Access Control op basis van rollen (RBAC) kunt u gebruikers toewijzen aan rollen op drie verschillende niveaus van bereik:
+Met Role-Based Access Control (RBAC) kunt u gebruikers toewijzen aan rollen op drie verschillende niveaus van bereik:
 
 * abonnement
 * resourcegroep

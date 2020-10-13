@@ -4,10 +4,10 @@ description: Meer informatie over het gebruik van de Azure Policy extensie voor 
 ms.date: 06/16/2020
 ms.topic: how-to
 ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89648336"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-extensie voor Visual Studio code gebruiken
@@ -23,7 +23,7 @@ Azure Policy extensie voor Visual Studio code kan worden geïnstalleerd op alle 
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende items zijn vereist voor het volt ooien van de stappen in dit artikel:
+De volgende items zijn vereist voor het voltooien van de stappen in dit artikel:
 
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 - [Visual Studio Code](https://code.visualstudio.com).
@@ -40,7 +40,7 @@ Nadat u aan de vereisten hebt voldaan, kunt u Azure Policy extensie voor Visual 
 
 1. Selecteer **Azure Policy** in de zoek resultaten en selecteer vervolgens **installeren**.
 
-1. Selecteer **opnieuw laden** wanneer dit nodig is.
+1. Selecteer zo nodig **Opnieuw laden**.
 
 ## <a name="set-the-azure-environment"></a>De Azure-omgeving instellen
 
@@ -64,13 +64,13 @@ Als u resources en lookup-aliassen wilt evalueren, moet u verbinding maken met u
 
      Selecteer in de Azure Policy-extensie **Aanmelden bij Azure**.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Scherm opname van Visual Studio code en het pictogram voor de uitbrei ding van de Azure Policy." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Scherm opname van het selecteren van de Azure-Cloud aanmelding voor Visual Studio-code." border="false":::
 
    - Opdracht palet
 
      Ga in de menu balk naar het **View**  >  **opdracht palet**weer geven en voer **Azure in: Meld**u aan.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Scherm opname van de Azure Cloud-aanmeld opties voor Visual Studio code vanuit het opdracht palet." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Scherm opname van het selecteren van de Azure-Cloud aanmelding voor Visual Studio-code." border="false":::
 
 1. Volg de instructies voor aanmelden om u aan te melden bij Azure. Nadat u verbinding hebt gemaakt, wordt de naam van uw Azure-account weer gegeven op de status balk onder aan het venster Visual Studio code.
 
@@ -125,7 +125,7 @@ Wanneer een resource is geselecteerd, hetzij via de Zoek interface, hetzij door 
 
 Zodra een resource is geopend, wordt met de muis aanwijzer over de naam van de Resource Manager-eigenschap of de waarde de Azure Policy alias weer gegeven als er een bestaat. In dit voor beeld is de resource een `Microsoft.Compute/virtualMachines` resource type en de eigenschap **Properties. StorageProfile. imageReference. offer.** Met de muis aanwijzer worden de overeenkomende aliassen weer gegeven.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Scherm afbeelding van de uitbrei ding van de Azure Policy voor Visual Studio code die een eigenschap aanwijst om de alias namen weer te geven." border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Scherm opname van het selecteren van de Azure-Cloud aanmelding voor Visual Studio-code." border="false":::
 
 > [!NOTE]
 > De VS Code-extensie geeft alleen de eigenschappen van de Resource Manager-modus weer en geeft geen eigenschappen van de [Resource Provider-modu ](../concepts/definition-structure.md#mode) weer.

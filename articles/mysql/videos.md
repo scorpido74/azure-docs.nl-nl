@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 2c2fbb3352b159ce9f5231c56399638a1d393366
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513856"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Video's Azure Database for MySQL
@@ -43,4 +43,4 @@ Azure Database for PostgreSQL en Azure Database for MySQL de data base-engines v
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
 [Openen in Channel 9](https://channel9.msdn.com/events/Build/2017/B8045)
 
-In deze video van de mei 2017 micro soft build-conferentie leert u meer over de beheerde MySQL-aanbieding van micro soft in Azure. De video gaat over de strategie van micro soft voor het ondersteunen van open-source database systemen in Azure. In de video wordt uitgelegd wat het voor u is als een ontwikkelaar bij het ontwikkelen of implementeren van toepassingen die gebruikmaken van MySQL in Azure. In deze video ziet u een overzicht van de architectuur van de service en ziet u Azure Database for MySQL is geïntegreerd met andere Azure-Services, zoals Web Apps.
+In deze video van de mei 2017 micro soft build-conferentie leert u meer over de beheerde MySQL-aanbieding van micro soft in Azure. De video gaat over de strategie van micro soft voor het ondersteunen van Open-Source-database systemen in Azure. In de video wordt uitgelegd wat het voor u is als een ontwikkelaar bij het ontwikkelen of implementeren van toepassingen die gebruikmaken van MySQL in Azure. In deze video ziet u een overzicht van de architectuur van de service en ziet u Azure Database for MySQL is geïntegreerd met andere Azure-Services, zoals Web Apps.

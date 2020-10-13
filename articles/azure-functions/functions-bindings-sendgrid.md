@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212184"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindingen
@@ -101,7 +101,7 @@ public class OutgoingEmail
 
 U kunt de instelling van de eigenschap van het kenmerk weglaten `ApiKey` Als u uw API-sleutel hebt in een app-instelling met de naam ' AzureWebJobsSendGridApiKey '.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een SendGrid-uitvoer binding in eenfunction.jsin een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt *van* de binding.
 
@@ -131,7 +131,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```csharp
 #r "SendGrid"
@@ -184,7 +184,7 @@ Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function (context, input) {
@@ -333,17 +333,17 @@ public static void Run(
 
 Zie C#-voor [beeld](#example)voor een volledig voor beeld.
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -357,11 +357,11 @@ De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die
 
 | *function.jsbij* eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
 |--------------------------|-------------------------------|-------------|----------|
-| type |N.v.t.| Moet worden ingesteld op `sendGrid` .| Nee |
-| richting |N.v.t.| Moet worden ingesteld op `out` .| Nee |
-| naam |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` wanneer er slechts één retour waarde is. | Nee |
+| type |N.v.t.| Moet worden ingesteld op `sendGrid`.| Nee |
+| richting |N.v.t.| Moet worden ingesteld op `out`.| Nee |
+| naam |n.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` wanneer er slechts één retour waarde is. | Nee |
 | apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| Nee |
-| in| Tot | Het e-mail adres van de ontvanger. | Ja |
+| in op| Tot | Het e-mail adres van de ontvanger. | Ja |
 | from| Van | Het e-mail adres van de afzender. |  Ja |
 | Onderwerp| Onderwerp | Het onderwerp van het e-mail bericht. | Ja |
 | tekst| Tekst | De inhoud van het e-mail bericht. | Ja |
@@ -392,7 +392,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
+|from|n.v.t.|Het e-mail adres van de afzender over alle functies.| 
 
 
 ## <a name="next-steps"></a>Volgende stappen

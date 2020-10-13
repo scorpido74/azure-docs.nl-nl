@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u Azure Service Bus kunt gebrui
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067100"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Gebruik Service Bus van .NET met AMQP 1,0
@@ -52,7 +52,7 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 
 | Object type .NET-tekst | Type toegewezen AMQP | AMQP tekst sectie Type |
 | --- | --- | --- |
-| booleaans |boolean |Waarde AMQP |
+| booleaans |booleaans |Waarde AMQP |
 | DBCS |ubyte |Waarde AMQP |
 | USHORT |USHORT |Waarde AMQP |
 | uint |uint |Waarde AMQP |
@@ -70,15 +70,15 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 | byte [] |binair |Waarde AMQP |
 | tekenreeks |tekenreeks |Waarde AMQP |
 | System. Collections. IList |list |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
-| System. matrix |array |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
+| System. matrix |matrix |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
 | System. Collections. IDictionary |map |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. Opmerking: alleen teken reeks sleutels worden ondersteund. |
 | URI |Beschrijving van de teken reeks (Zie de volgende tabel) |Waarde AMQP |
 | Date time offset |Lange beschrijving (Zie de volgende tabel) |Waarde AMQP |
 | TimeSpan |Lange beschrijving (Zie het volgende) |Waarde AMQP |
-| Stroom |binair |AMQP-gegevens (mogelijk meerdere). De gegevens secties bevatten de onbewerkte bytes die zijn gelezen van het Stream-object. |
+| Streamen |binair |AMQP-gegevens (mogelijk meerdere). De gegevens secties bevatten de onbewerkte bytes die zijn gelezen van het Stream-object. |
 | Ander object |binair |AMQP-gegevens (mogelijk meerdere). Bevat het geserialiseerde binaire bestand van het object dat gebruikmaakt van de DataContractSerializer of een serialisatiefunctie die door de toepassing wordt geleverd. |
 
-| .NET-type | Type beschrijving van toegewezen AMQP | Opmerkingen |
+| .NET-type | Type beschrijving van toegewezen AMQP | Notities |
 | --- | --- | --- |
 | URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |URI. AbsoluteUri |
 | Date time offset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |Date time offset. UtcTicks |
@@ -89,7 +89,7 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 Er zijn enkele kleine verschillen in het gedrag van de Service Bus .NET API bij het gebruik van AMQP, vergeleken met het standaard Protocol:
 
 * De eigenschap [OperationTimeout][OperationTimeout] wordt genegeerd.
-* `MessageReceiver.Receive(TimeSpan.Zero)`wordt geïmplementeerd als `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
+* `MessageReceiver.Receive(TimeSpan.Zero)` wordt geïmplementeerd als `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
 * Het volt ooien van berichten door de vergrendelings tokens kan alleen worden uitgevoerd door de ontvangers van het bericht waarin de berichten voor het eerst zijn ontvangen.
 
 ## <a name="control-amqp-protocol-settings"></a>Instellingen voor AMQP-protocol bepalen

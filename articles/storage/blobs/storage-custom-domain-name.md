@@ -1,5 +1,5 @@
 ---
-title: Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt
+title: Een aangepast domein toewijzen aan een Azure Blob Storage-eindpunt
 titleSuffix: Azure Storage
 description: Een aangepast domein toewijzen aan een Blob Storage-of Web-eind punt in een Azure-opslag account.
 author: normesta
@@ -10,13 +10,13 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88053623"
 ---
-# <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt
+# <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Een aangepast domein toewijzen aan een Azure Blob Storage-eindpunt
 
 U kunt een aangepast domein toewijzen aan een BLOB service-eind punt of een [statisch website](storage-blob-static-website.md) -eind punt. 
 
@@ -113,9 +113,9 @@ Maak een CNAME-record die verwijst naar de hostnaam. Een CNAME-record is een soo
 
 #### <a name="step-4-test-your-custom-domain"></a>Stap 4: uw aangepaste domein testen
 
-Om te bevestigen dat uw aangepaste domein is toegewezen aan het eind punt van de BLOB-service, maakt u een BLOB in een open bare container in uw opslag account. Ga in een webbrowser naar de blob met behulp van een URI in de volgende indeling:`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
+Om te bevestigen dat uw aangepaste domein is toegewezen aan het eind punt van de BLOB-service, maakt u een BLOB in een open bare container in uw opslag account. Ga in een webbrowser naar de blob met behulp van een URI in de volgende indeling: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Als u bijvoorbeeld toegang wilt krijgen tot een webformulier in de *myForms* -container in het aangepaste subdomein *Photos.contoso.com* , kunt u de volgende URI gebruiken:`http://photos.contoso.com/myforms/applicationform.htm`
+Als u bijvoorbeeld toegang wilt krijgen tot een webformulier in de *myForms* -container in het aangepaste subdomein *Photos.contoso.com* , kunt u de volgende URI gebruiken: `http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
@@ -225,9 +225,9 @@ Maak een tijdelijke CNAME-record die verwijst naar de naam van uw host.
 
 #### <a name="step-5-test-your-custom-domain"></a>Stap 5: uw aangepaste domein testen
 
-Om te bevestigen dat uw aangepaste domein is toegewezen aan het eind punt van de BLOB-service, maakt u een BLOB in een open bare container in uw opslag account. Ga in een webbrowser naar de blob met behulp van een URI in de volgende indeling:`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
+Om te bevestigen dat uw aangepaste domein is toegewezen aan het eind punt van de BLOB-service, maakt u een BLOB in een open bare container in uw opslag account. Ga in een webbrowser naar de blob met behulp van een URI in de volgende indeling: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Als u bijvoorbeeld toegang wilt krijgen tot een webformulier in de *myForms* -container in het aangepaste subdomein *Photos.contoso.com* , kunt u de volgende URI gebruiken:`http://photos.contoso.com/myforms/applicationform.htm`
+Als u bijvoorbeeld toegang wilt krijgen tot een webformulier in de *myForms* -container in het aangepaste subdomein *Photos.contoso.com* , kunt u de volgende URI gebruiken: `http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>Een aangepaste domein toewijzing verwijderen
 

@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0c9edaf3356ea4c1a521a89f2ec60a4b6ba1a5ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87481492"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Selfservice voor wacht woord opnieuw instellen instellen voor uw klanten
@@ -31,7 +31,7 @@ Voor uw directory is standaard niet de selfservice voor wachtwoord herstel inges
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als abonnements beheerder. Dit is hetzelfde werk-of school account of hetzelfde Microsoft-account dat u hebt gebruikt om uw map te maken.
 2. Open **Azure Active Directory** (in de navigatie balk aan de linkerkant).
 3. Schuif omlaag op de Blade opties en selecteer **wacht woord opnieuw instellen**.
-4. Stel **selfservice voor wachtwoord herstel** in op **alle**.
+4. Stel **selfservice voor wachtwoord herstel**  in op **alle**.
 5. Klik bovenaan de pagina op **Opslaan**. U bent klaar!
 
 Als u wilt testen, gebruikt u de functie nu uitvoeren op elke aanmeldings stroom van de gebruiker die lokale accounts heeft als een id-provider. Klik op de aanmeldings pagina voor het lokale account (waar u een e-mail adres en wacht woord of een gebruikers naam en wacht woord invoert) op **geen toegang tot uw account?** om de klant ervaring te controleren.
