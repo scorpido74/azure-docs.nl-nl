@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855840"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969837"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Veelgestelde vragen over de migratie van klassiek naar Azure Resource Manager
 
@@ -26,7 +26,7 @@ Het woord ' klassiek ' in IaaS VM (klassiek) verwijst naar Vm's die worden behee
 
 ## <a name="what-is-azure-resource-manager"></a>Wat is Azure Resource Manager?
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) is het laatste controle vlak van Azure dat verantwoordelijk is voor het maken, beheren, verwijderen van vm's en het uitvoeren van andere beheer bewerkingen. 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) is het laatste controle vlak van Azure dat verantwoordelijk is voor het maken, beheren, verwijderen van vm's en het uitvoeren van andere beheer bewerkingen. 
 
 ## <a name="what-is-the-time-required-for-migration"></a>Wat is de tijd die nodig is voor de migratie?
 
@@ -42,7 +42,7 @@ Klanten die actief of gestopt zijn, maar toegewezen IaaS Vm's (klassiek) in hun 
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Waarom krijg ik een fout melding met de mede deling "NewClassicVMCreationNotAllowedForSubscription"?
 
-Als onderdeel van het pensioen proces zijn IaaS VM (klassiek) niet langer beschikbaar voor nieuwe klanten. We hebben u geïdentificeerd als nieuwe klanten en daarom is uw bewerking niet geautoriseerd. Het is raadzaam om [Azure virtual machines te gebruiken met behulp van arm](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Als u geen gebruik kunt maken van Azure Vm's met ARM, neemt u contact op met de ondersteuning om uw abonnement toe te voegen aan de acceptatie lijst.
+Als onderdeel van het pensioen proces zijn IaaS VM (klassiek) niet langer beschikbaar voor nieuwe klanten. We hebben u geïdentificeerd als nieuwe klanten en daarom is uw bewerking niet geautoriseerd. Het is raadzaam om [Azure virtual machines te gebruiken met behulp van arm](./windows/quick-create-powershell.md). Als u geen gebruik kunt maken van Azure Vm's met ARM, neemt u contact op met de ondersteuning om uw abonnement toe te voegen aan de acceptatie lijst.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Is dit migratieplan van invloed op mijn bestaande services en toepassingen die worden uitgevoerd op virtuele Azure-machines? 
 
@@ -105,7 +105,7 @@ Het wordt aanbevolen om de migratie af te breken en daarna een ondersteuningsaan
 
 ## <a name="how-do-i-report-an-issue"></a>Hoe meld ik een probleem? 
 
-Post uw problemen en vragen over de migratie naar onze [micro soft Q&een vraag pagina voor de virtuele machine](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html), met het tref woord tag classiciaasmigration. Het wordt aanbevolen om al uw vragen op dit forum te plaatsen. Als u een ondersteuningscontract hebt, kunt u ook een ondersteuningsticket aanmaken.
+Post uw problemen en vragen over de migratie naar onze [micro soft Q&een vraag pagina voor de virtuele machine](/answers/topics/azure-virtual-machines.html), met het tref woord tag classiciaasmigration. Het wordt aanbevolen om al uw vragen op dit forum te plaatsen. Als u een ondersteuningscontract hebt, kunt u ook een ondersteuningsticket aanmaken.
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Wat kan ik doen als ik de resourcenamen niet leuk vind die het platform heeft gekozen tijdens de migratie? 
 

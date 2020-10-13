@@ -4,7 +4,7 @@
   items:
     - name: Wat is Kostenbeheer en facturering?
       href: cost-management-billing-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Beginnen met analyseren van kosten

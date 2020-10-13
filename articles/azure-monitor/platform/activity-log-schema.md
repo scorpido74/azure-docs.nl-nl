@@ -8,10 +8,10 @@ ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612758"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure-gebeurtenisschema in het activiteitenlogboek
@@ -810,7 +810,7 @@ Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Even
 > De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](./resource-logs-blob-format.md) voor meer informatie over deze indelings wijziging.
 
 
-| Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
+| Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Notities |
 | --- | --- | --- |
 | tijd | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId, resource type, resourceGroupName zijn alle uitgestelde van de resourceId. |

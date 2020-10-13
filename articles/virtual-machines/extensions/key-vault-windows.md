@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ab89e0da3d4512cef9741ec97e9d772c852beb4b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 1e7a58ba5e858b44f137834b2e1ab5472b9d0965
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804092"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970075"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Key Vault voor Windows
 
@@ -31,6 +31,11 @@ De Key Vault VM-extensie ondersteunt de volgende versies van Windows:
 
 - PKCS #12
 - PEM
+
+## <a name="prerequisities"></a>Prerequisities
+  - Key Vault-exemplaar met het certificaat. Zie [een Key Vault maken](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+  - VM/VMSS moet toegewezen [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) hebben
+  - Het Key Vault toegangs beleid moet zijn ingesteld met geheimen `get` en `list` machtigingen voor de door de virtuele machine/VMSS beheerde identiteit om een geheim gedeelte van het certificaat op te halen. Zie [verifiëren bij Key Vault](/azure/key-vault/general/authentication) en [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-cli).
 
 ## <a name="extension-schema"></a>Extensieschema
 
@@ -88,7 +93,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
 | Naam certificaat archief | MY | tekenreeks |
-| linkOnRenewal | false | booleaans |
+| linkOnRenewal | onjuist | booleaans |
 | certificateStoreLocation  | LocalMachine of CurrentUser (hoofdletter gevoelig) | tekenreeks |
 | requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
@@ -206,8 +211,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
 Houd rekening met de volgende beperkingen/vereisten:
 - Key Vault beperkingen:
   - Deze moet op het moment van de implementatie bestaan 
-  - Het Key Vault toegangs beleid moet worden ingesteld voor de virtuele machine-VMSS met behulp van een beheerde identiteit. Zie [verifiëren bij Key Vault](/azure/key-vault/general/authentication) en [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-cli).
-
+  - Het Key Vault toegangs beleid moet worden ingesteld voor de virtuele machine-VMSS met behulp van een beheerde identiteit. Zie [verifiëren bij Key Vault](../../key-vault/general/authentication.md) en [een Key Vault toegangs beleid toewijzen](../../key-vault/general/assign-access-policy-cli.md).
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 

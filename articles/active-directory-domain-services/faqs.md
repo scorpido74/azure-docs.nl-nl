@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: iainfou
 ms.openlocfilehash: 6e2daa60e99eb7aab34b11f240a2e2fb03c98582
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612401"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Veelgestelde vragen over Azure Active Directory (AD) Domain Services
@@ -143,7 +143,7 @@ Op domein controllers in een beheerd domein worden automatisch de vereiste Windo
 * [In welke Azure-regio's is de service beschikbaar?](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Is er Azure AD Domain Services een betaalde service?
-Ja. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/)voor meer informatie.
+Ja. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/) voor meer informatie.
 
 ### <a name="is-there-a-free-trial-for-the-service"></a>Is er een gratis proef versie voor de service?
 Azure AD Domain Services is opgenomen in de gratis proef versie voor Azure. U kunt zich registreren voor een [gratis proef versie van Azure voor één maand](https://azure.microsoft.com/pricing/free-trial/).

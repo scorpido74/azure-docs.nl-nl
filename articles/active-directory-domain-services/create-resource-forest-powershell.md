@@ -1,20 +1,20 @@
 ---
 title: Een Azure AD Domain Services resource-forest maken met behulp van Azure PowerShell | Microsoft Docs
 description: In dit artikel vindt u informatie over het maken en configureren van een Azure Active Directory Domain Services bron-forest en een uitgaand forest naar een on-premises Active Directory Domain Services omgeving met behulp van Azure PowerShell.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.author: iainfou
-ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960946"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Een Azure Active Directory Domain Services resource-forest en een uitgaand forest-vertrouwens relatie met een on-premises domein maken met behulp van Azure PowerShell
 
@@ -105,7 +105,7 @@ Gebruik het script om een resource forest voor een beheerd domein te maken `New-
     | Naam                         | Script parameter          | Beschrijving |
     |:-----------------------------|---------------------------|:------------|
     | Abonnement                 | *-azureSubscriptionId*    | Abonnements-ID die wordt gebruikt voor Azure AD DS-facturering. U kunt de lijst met abonnementen ophalen met behulp van de cmdlet [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
-    | Resource Group               | *-aaddsResourceGroupName* | De naam van de resource groep voor het beheerde domein en de gekoppelde resources. |
+    | Resourcegroep               | *-aaddsResourceGroupName* | De naam van de resource groep voor het beheerde domein en de gekoppelde resources. |
     | Locatie                     | *-aaddsLocation*          | De Azure-regio voor het hosten van uw beheerde domein. Zie [ondersteunde regio's voor Azure AD DS](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) voor beschik bare regio's. |
     | Beheerder van Azure AD DS    | *-aaddsAdminUser*         | De user principal name van de eerste beheerde domein beheerder. Dit account moet een bestaand Cloud gebruikers account in uw Azure Active Directory zijn. De gebruiker en de gebruiker die het script uitvoert, worden toegevoegd aan de groep *Aad DC-Administrators* . |
     | Domein naam van Azure AD DS      | *-aaddsDomainName*        | De FQDN-naam van het beheerde domein, op basis van de vorige richt lijnen voor het kiezen van een Forestnaam. |

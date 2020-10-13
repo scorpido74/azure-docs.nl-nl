@@ -9,10 +9,10 @@ ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: ac7879590424fa921425dcd077503733affeb634
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361744"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB Java-SDK v2 synchroniseren
@@ -72,7 +72,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen, in dezelfde regio als de Azure Cosmos-data base. Voor een benadering van een vergelijking worden de aanroepen naar Azure Cosmos DB binnen dezelfde regio binnen 1-2 MS uitgevoerd, maar de latentie tussen de West-en Oost kust van de Verenigde Staten is >50 MS. Deze latentie kan waarschijnlijk variëren van aanvraag om aan te vragen, afhankelijk van de route die door de aanvraag wordt door gegeven aan de limiet van de client naar de grens van het Azure-Data Center. De laagst mogelijke latentie wordt bereikt door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
-    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="In het diagram worden de aanvragen en antwoorden in twee regio's weer gegeven, waarbij computers verbinding maken met een Cosmos D B-account via mid-tier Services." border="false":::
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Diagram toont het Azure Cosmos D B-verbindings beleid." border="false":::
    
 ## <a name="sdk-usage"></a>SDK-gebruik
 1. **De meest recente SDK installeren**

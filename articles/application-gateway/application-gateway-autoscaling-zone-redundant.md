@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826623"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
@@ -100,7 +100,7 @@ In deze sectie worden de functies en beperkingen beschreven van de v2-SKU die ve
 |--|--|
 |Verificatie certificaat|Niet ondersteund.<br>Zie [overzicht van end-to-end-TLS met Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)voor meer informatie.|
 |Standard_v2 en standaard Application Gateway op hetzelfde subnet mengen|Niet ondersteund|
-|Door de gebruiker gedefinieerde route (UDR) op Application Gateway subnet|Ondersteund (specifieke scenario's). In de preview-versie.<br> Zie [Application Gateway configuratie-overzicht](configuration-infrastructure.md#supported-user-defined-routes)voor meer informatie over ondersteunde scenario's.|
+|User-Defined route (UDR) op Application Gateway subnet|Ondersteund (specifieke scenario's). In de preview-versie.<br> Zie [Application Gateway configuratie-overzicht](configuration-infrastructure.md#supported-user-defined-routes)voor meer informatie over ondersteunde scenario's.|
 |NSG voor binnenkomend poort bereik| -65200 tot 65535 voor Standard_v2 SKU<br>-65503 tot 65534 voor standaard-SKU.<br>Raadpleeg de [Veelgestelde vragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)voor meer informatie.|
 |Prestatie Logboeken in azure Diagnostics|Niet ondersteund.<br>De metrische gegevens van Azure moeten worden gebruikt.|
 |Billing|De facturering is gepland om te beginnen op 1 juli 2019.|

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: 850db53cbf88968a413d72527d76463e17aa8f5d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361701"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Zelf studie: 8X8 configureren voor automatische gebruikers inrichting
@@ -37,7 +37,7 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 * Een gebruikersaccount in Azure AD met [machtigingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassingsbeheerder, cloud-toepassingsbeheerder, toepassingseigenaar of globale beheerder).
 * Een 8X8 X-serie abonnement van elk niveau.
 * Een 8X8-gebruikers account met Administrator-machtiging in [Configuration Manager](https://vo-cm.8x8.com).
-* [Eenmalige aanmelding met Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial) is al geconfigureerd.
+* [Enkele Sign-On met Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/8x8virtualoffice-tutorial) is al geconfigureerd.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Implementatie van de inrichting plannen
 1. Lees [hoe de inrichtingsservice werkt](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
@@ -116,7 +116,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar 8X8 in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in 8X8 voor bijwerk bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de 8X8-API het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-   |Kenmerk|Type|Opmerkingen|
+   |Kenmerk|Type|Notities|
    |---|---|---|
    |userName|Tekenreeks|Gebruikers naam en Federatie-ID instellen|
    |externalId|Tekenreeks||

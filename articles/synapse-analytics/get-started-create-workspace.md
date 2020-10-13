@@ -9,14 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300102"
 ---
-# <a name="create-a-synapse-workspace"></a>Een Synapse-werkruimte maken
+# <a name="prerequisites"></a>Vereisten
+
+Om alle stappen van deze zelfstudie te kunnen voltooien, moet u toegang hebben tot een resourcegroep waarvoor de rol **Eigenaar** aan u is toegewezen. Maak de Synapse-werkruimte in deze resourcegroep.
+
+## <a name="create-a-synapse-workspace"></a>Een Synapse-werkruimte maken
 
 In deze zelfstudie leert u hoe u een Synapse-werkruimte, een SQL-pool en een Apache Spark-pool maakt. 
 

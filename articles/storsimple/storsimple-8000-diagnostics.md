@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300442"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Het hulp programma StorSimple Diagnostics gebruiken om problemen met de 8000 Series-apparaten op te lossen
@@ -440,6 +440,6 @@ Hier volgt een tabel met een beschrijving van de verschillende Windows Power she
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [syntaxis van de cmdlet invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
+* Meer informatie over de [syntaxis van de cmdlet Invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
 
 * Meer informatie over het [oplossen van implementatie problemen](storsimple-troubleshoot-deployment.md) op uw StorSimple-apparaat.
