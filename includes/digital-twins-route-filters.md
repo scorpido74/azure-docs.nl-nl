@@ -6,16 +6,16 @@ ms.topic: include
 ms.date: 8/3/2020
 ms.author: baanders
 ms.openlocfilehash: a1098088a38b23ec1074434e5424e261e60bcd55
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779502"
 ---
 | Bestandsnaam | Beschrijving | Filter tekst schema | Ondersteunde waarden | 
 | --- | --- | --- | --- |
 | Waar/onwaar | Hiermee kunt u een route maken zonder te filteren, of een route uitschakelen zodat er geen gebeurtenissen worden verzonden | `<true/false>` | `true` = route is ingeschakeld zonder filtering <br> `false` = route is uitgeschakeld |
-| Type  | Het [type gebeurtenis dat](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) door uw digitale dubbele instantie wordt doorlopend | `type = '<eventType>'` | Dit zijn de mogelijke gebeurtenis type waarden: <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
+| Type | Het [type gebeurtenis dat](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) door uw digitale dubbele instantie wordt doorlopend | `type = '<eventType>'` | Dit zijn de mogelijke gebeurtenis type waarden: <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Bron | Naam van het Azure Digital Apparaatdubbels-exemplaar | `source = '<hostname>'`| Dit zijn de mogelijke hostnamen: <br> **Voor meldingen**: `<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Voor telemetrie**: `<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
 | Onderwerp | Een beschrijving van de gebeurtenis in de context van de bovenstaande gebeurtenis bron | `subject = '<subject>'` | Dit zijn de mogelijke waarden voor het onderwerp: <br>**Voor meldingen**: het onderwerp is `<twinid>` <br> of een URI-indeling voor onderwerpen, die uniek worden geïdentificeerd door meerdere onderdelen of Id's:<br>`<twinid>/relationships/<relationshipid>`<br> **Voor telemetrie**: het onderwerp is het pad van het onderdeel (als de telemetrie wordt verzonden vanuit een twee ledig onderdeel), zoals `comp1.comp2` . Als de telemetrie niet vanuit een onderdeel wordt verzonden, is het veld onderwerp leeg. |
 | Gegevens schema | DTDL-model-ID | `dataschema = '<model-dtmi-ID>'` | **Voor telemetrie**: het gegevens schema is de model-id van de dubbele of het onderdeel dat de telemetrie verzendt. Bijvoorbeeld: `dtmi:example:com:floor4;2` <br>**Voor meldingen**: gegevens schema kan worden geopend in de hoofd tekst van het bericht op `$body.$metadata.$model`|
@@ -25,17 +25,17 @@ ms.locfileid: "91779502"
 
 De volgende gegevens typen worden ondersteund als waarden die worden geretourneerd door verwijzingen naar de bovenstaande gegevens:
 
-| Gegevenstype | Voorbeeld: |
+| Gegevenstype | Voorbeeld |
 |-|-|-|
 |**Tekenreeks**| `STARTS_WITH($body.$metadate.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
-|**Geheeltallige**|`$body.errorCode > 200`|
+|**Geheel getal**|`$body.errorCode > 200`|
 |**Dubbelklik**|`$body.temperature <= 5.5`|
 |**BOOL**|`$body.poweredOn = true`|
 |**Null**|`$body.prop != null`|
 
 De volgende Opera tors worden ondersteund bij het definiëren van route filters:
 
-|Familie|Operators|Voorbeeld:|
+|Familie|Operators|Voorbeeld|
 |-|-|-|
 |Logisch|EN, OF, ()|`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
 |Vergelijking|<, <=, >, >=, =,! =|`$body.temperature <= 5.5`

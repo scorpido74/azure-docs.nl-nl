@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: 8fba55dcca46b313c7b9a847412615215ad57c72
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86118576"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Problemen met gegevens versleuteling in Azure Database for MySQL oplossen
 
 In dit artikel wordt beschreven hoe u veelvoorkomende problemen kunt identificeren en oplossen die zich in Azure Database for MySQL voordoen wanneer met gegevens versleuteling wordt geconfigureerd met behulp van een door de klant beheerde sleutel.
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 Wanneer u gegevens versleuteling configureert om een door de klant beheerde sleutel te gebruiken in Azure Key Vault, hebben servers voortdurende toegang tot de sleutel nodig. Als de server de toegang tot de door de klant beheerde sleutel in Azure Key Vault kwijtraakt, worden alle verbindingen geweigerd, wordt het juiste fout bericht weer gegeven en wordt de status gewijzigd in niet ***toegankelijk*** in de Azure Portal.
 

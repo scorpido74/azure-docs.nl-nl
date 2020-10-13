@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
 ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121908"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure Blob-opslag gebruiken om leads voor commerciële Marketplace te beheren
@@ -59,7 +59,7 @@ ms.locfileid: "86121908"
 
 7. Selecteer de knop **+ container** op de pagina blobs.
 
-8. Voer een **naam** in voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [containers, blobs en meta gegevens benoemen en hiernaar verwijzen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)voor meer informatie over container-en BLOB-namen.
+8. Voer een **naam** in voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [Naamgeving van en verwijzen naar containers, blobs en metagegevens](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de namen van containers en blobs.
 
     Sla deze waarde op omdat dit de waarde voor de *container naam* is die u in de portal voor publiceren moet opgeven om leads voor uw Marketplace-aanbieding te ontvangen.
 
@@ -84,7 +84,7 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 4. Geef de **container naam** en de **verbindings reeks voor het opslag account** op die u hebt gevolgd door deze instructies.
 
-    * Container naam voor beeld:`marketplaceleadcontainer`
+    * Container naam voor beeld: `marketplaceleadcontainer`
     * Voor beeld van verbindings reeks voor opslag account: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ Details van verbinding](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Selecteer **Opslaan**.

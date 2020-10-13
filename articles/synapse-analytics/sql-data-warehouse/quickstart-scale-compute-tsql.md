@@ -1,5 +1,5 @@
 ---
-title: Rekenkracht opschalen in Azure Synapse Analytics - T-SQL
+title: 'Quickstart: Rekenkracht opschalen in Azure Synapse Analytics - T-SQL'
 description: Schaal de rekenkracht op in Azure Synapse Analytics met behulp van T-SQL en SSMS (SQL Server Management Studio). De schaal van rekenkracht vergroten voor betere prestaties of de schaal juist verkleinen om kosten te besparen.
 services: synapse-analytics
 author: Antvgski
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212918"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91569898"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Quickstart: Rekenschaal aanpassen in Azure Synapse Analytics met T-SQL
 

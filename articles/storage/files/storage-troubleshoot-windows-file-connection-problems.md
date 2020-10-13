@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715985"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Problemen met Azure Files oplossen in Windows (SMB)
@@ -332,7 +332,7 @@ Zorg er eerst voor dat u alle vier de stappen hebt gevolgd om [Azure files AD-ve
 
 Probeer vervolgens de [Azure-bestands share te koppelen met de sleutel van het opslag account](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Als u de koppeling niet hebt gemaakt, downloadt u [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) om u te helpen bij het valideren van de client omgeving, detecteert u de niet-compatibele client configuratie die toegang zou hebben tot de Azure files, bevat prescriptieve richt lijnen voor zelf herstel en worden de diagnostische traceringen verzameld.
 
-Ten derde kunt u de cmdlet debug-AzStorageAccountAuth uitvoeren om een set basis controles uit te voeren op uw AD-configuratie met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund met [versie AzFilesHybrid v 0.1.2 en hoger](https://github.com/Azure-Samples/azure-files-samples/releases). U moet deze cmdlet uitvoeren met een AD-gebruiker die de machtiging Eigenaar heeft voor het doelopslagaccount.  
+Ten derde kunt u de Debug-AzStorageAccountAuth cmdlet uitvoeren om een set basis controles uit te voeren op uw AD-configuratie met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund met [versie AzFilesHybrid v 0.1.2 en hoger](https://github.com/Azure-Samples/azure-files-samples/releases). U moet deze cmdlet uitvoeren met een AD-gebruiker die de machtiging Eigenaar heeft voor het doelopslagaccount.  
 ```PowerShell
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
@@ -360,7 +360,7 @@ U kunt de volgende symptomen ondervinden bij het configureren van Windows-Acl's 
 
 U wordt aangeraden om het [icacls-hulp programma](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) te gebruiken om de machtigingen voor het Directory/bestands niveau als tijdelijke oplossing te configureren. 
 
-## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Fouten bij het uitvoeren van de cmdlet voor samen voegen AzStorageAccountForAuth
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Fouten bij het uitvoeren van Join-AzStorageAccountForAuth cmdlet
 
 ### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Fout: de Directory service kan geen relatieve id toewijzen.
 

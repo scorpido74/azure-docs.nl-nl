@@ -2,14 +2,14 @@
 title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met behulp van .NET (meest recente versie)
 description: Dit artikel bevat een overzicht van het maken van een .NET Core-toepassing die gebeurtenissen verzend/ontvangt naar/van Azure Event Hubs met behulp van het meest recente Azure.Messaging.EventHubs-pakket.
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1bf41eb5ef5b43a59330d1735086ca595d7604b5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 170484b5a24367eb19e69f0a72918d99b6595fca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334222"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91728502"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Gebeurtenissen verzenden naar en ontvangen van Azure Event Hubs - .NET (Azure.Messaging.EventHubs) 
 In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van de .NET-bibliotheek **Azure.Messaging.EventHubs**. 
@@ -109,8 +109,11 @@ In deze sectie wordt beschreven hoe u een .NET Core-consoletoepassing maakt voor
 In deze sectie ziet u hoe u een .NET Core-consoletoepassing schrijft die met gebeurtenisprocessor berichten ontvangt van een Event Hub. De gebeurtenisprocessor vereenvoudigt het ontvangen van gebeurtenissen van Event Hubs door permanente controlepunten en parallelle ontvangst van deze Event Hubs te beheren. Een gebeurtenisprocessor is gekoppeld aan een specifieke Event hub en een consumentengroep. Er worden gebeurtenissen van meerdere partities in de Event Hub ontvangen en de worden aan een handler-gemachtigde doorgegeven voor verwerking met code die u opgeeft. 
 
 
-> [!NOTE]
-> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Zie [dit voorbeeld op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) voor een voorbeeld van hoe u een specifieke versie van Storage-API instelt. Voor meer informatie over de versies van de Azure Storage-service die op Azure Stack Hub worden ondersteund raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](/azure-stack/user/azure-stack-acs-differences).
+> [!WARNING]
+> Als u deze code op Azure Stack Hub uitvoert, treden er runtimefouten op tenzij u zich richt op een specifieke versie van de Storage-API. Dat komt doordat de Event Hubs-SDK de meest recente Azure Storage-API gebruikt die beschikbaar is in Azure maar die niet beschikbaar is op uw Azure Stack Hub-platform. Azure Stack Hub biedt mogelijk ondersteuning voor een andere versie van de Storage Blob-SDK dan de versies die doorgaans in Azure beschikbaar zijn. Als u Azure Blob-opslag gebruikt als controlepuntopslag, controleert u de [ondersteunde versie van de Azure Storage-API voor uw build van Azure Stack Hub](/azure-stack/user/azure-stack-acs-differences?#api-version) en stelt u die versie in uw code als doel in. 
+>
+> Als u bijvoorbeeld op Azure Stack Hub versie 2005 uitvoert, is de hoogste beschikbare versie van de Storage-service versie 2019-02-02. De Event Hubs-SDK-clientbibliotheek maakt standaard gebruik van de hoogste beschikbare versie op Azure (2019-07-07 op het moment van de release van de SDK). In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2019-02-02. Zie [dit voorbeeld op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) voor een voorbeeld van hoe u een specifieke versie van Storage-API instelt. 
+ 
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Een Azure Storage en een blobcontainer maken
 In deze quickstart gebruikt u Azure Storage als controlepuntopslag. Volg deze stappen om een Azure Storage-account te maken. 
