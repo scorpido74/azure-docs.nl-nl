@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320265"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>DNS doorsturen configureren voor Azure Files
@@ -152,6 +152,6 @@ Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCP
 ```
 
 ## <a name="see-also"></a>Zie ook
-- [Een Azure Files-implementatie plannen](storage-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
 - [Azure Files networking considerations](storage-files-networking-overview.md) (Aandachtspunten voor Azure Files-netwerken)
 - [Azure Files-netwerkeindpunten configureren](storage-files-networking-endpoints.md)

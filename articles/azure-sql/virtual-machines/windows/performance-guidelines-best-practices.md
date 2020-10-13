@@ -16,10 +16,10 @@ ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d720fdd05a4356b8fec2c007a4e5a3d1ea1cf00b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293302"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Prestatierichtlijnen voor SQL Server op Azure Virtual Machines
@@ -196,7 +196,7 @@ Als u opslag ruimten gebruikt, schakelt u bij het toevoegen van knoop punten aan
 
 ![De selectie van de in aanmerking komende opslag uitschakelen](./media/performance-guidelines-best-practices/uncheck-eligible-cluster-storage.png)
 
-Als u opslag ruimten gebruikt en de optie **alle in aanmerking komende opslag toevoegen**niet uitschakelt aan het cluster, worden de virtuele schijven tijdens het cluster losgekoppeld. Als gevolg hiervan worden ze niet weer gegeven in schijf beheer of Explorer totdat de opslag ruimten uit het cluster worden verwijderd en opnieuw zijn gekoppeld met Power shell. Met opslag ruimten worden meerdere schijven in opslag groepen gegroepeerd. Zie [opslag ruimten](/windows-server/storage/storage-spaces/overview)voor meer informatie.
+Als u opslagruimten gebruikt en het selectievakje **Voeg alle in aanmerking komende opslag aan het cluster toe** niet uitschakelt, worden de virtuele schijven tijdens het clusterproces ontkoppelt. Als gevolg hiervan worden ze niet weer gegeven in schijf beheer of Explorer totdat de opslag ruimten uit het cluster worden verwijderd en opnieuw zijn gekoppeld met Power shell. Er worden meerdere schijven in opslaggroepen gegroepeerd. Zie [Opslagruimten](/windows-server/storage/storage-spaces/overview) voor meer informatie.
 
 ## <a name="multiple-instances"></a>Meerdere exemplaren 
 

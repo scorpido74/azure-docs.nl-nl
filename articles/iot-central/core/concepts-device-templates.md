@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91813165"
 ---
 # <a name="what-are-device-templates"></a>Wat zijn apparaatsjablonen?
@@ -184,7 +184,7 @@ Met IoT Central kunt u telemetrie in dash boards en grafieken weer geven en rege
 
 U kunt de functie gegevens export van IoT Central gebruiken om telemetrie te streamen naar andere bestemmingen, zoals opslag of Event Hubs.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 Opdrachten zijn ofwel synchroon of asynchroon. Een synchrone opdracht moet standaard binnen 30 seconden worden uitgevoerd en het apparaat moet zijn verbonden als de opdracht binnenkomt. Als het apparaat op tijd reageert of als het apparaat niet is verbonden, mislukt de opdracht.
 

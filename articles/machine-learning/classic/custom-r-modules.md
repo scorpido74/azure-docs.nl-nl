@@ -10,15 +10,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 7b5881651312e69ed840eb50388d497258ddeb27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362449"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Aangepaste R-modules voor Machine Learning Studio definiëren (klassiek)
 
-**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:**  ![Van toepassing op.](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![Niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) ontwerpt en implementeert. Hierin wordt uitgelegd wat aangepaste R-modules zijn en welke bestanden worden gebruikt om ze te definiëren. Hierin ziet u hoe u de bestanden kunt samen stellen die een module definiëren en hoe u de module kunt registreren voor implementatie in een Machine Learning-werk ruimte. De elementen en kenmerken die worden gebruikt in de definitie van de aangepaste module, worden vervolgens uitgebreid beschreven. Het gebruik van de hulp functionaliteit en bestanden en meerdere uitvoer wordt ook besproken. 
 

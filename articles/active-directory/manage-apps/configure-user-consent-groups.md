@@ -12,10 +12,10 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: e590981fabcd20f23f25d12b4176b6730cb0fc3c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804323"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Toestemming van groeps eigenaar configureren voor apps die toegang hebben tot groeps gegevens
@@ -75,7 +75,7 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
 
     | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Boolean-waarde | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
+    | _EnableGroupSpecificConsent_   | Booleaans | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Als _EnableGroupSpecificConsent_ is ingesteld op ' True ' en deze waarde is ingesteld op de object-id van een groep, worden leden van de geïdentificeerde groep gemachtigd om groeps-specifieke machtigingen te verlenen aan de groepen waarvan ze eigenaar zijn. |
 
 1. Update-instellingen waarden voor de gewenste configuratie:

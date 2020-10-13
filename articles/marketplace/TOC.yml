@@ -115,7 +115,7 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: Technische assets voor Azure-VM maken
               items:
-                - name: 'Certificering van virtuele machines: problemen en oplossingen'
+                - name: Certificeringsproblemen met virtuele machines
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Een technische asset voor een Azure-VM maken
                   href: partner-center-portal/create-azure-vm-technical-asset.md
@@ -328,6 +328,8 @@
       href: partner-center-portal/support.md
     - name: Geografische beschikbaarheid en valuta's
       href: marketplace-geo-availability-currencies.md
+    - name: Tenant- en object-id's zoeken
+      href: find-tenant-object-id.md
     - name: Ondersteunde landen en regio's
       href: sell-from-countries.md
     - name: Ondersteunde HTML-tags

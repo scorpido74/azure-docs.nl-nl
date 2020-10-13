@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319789"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Configuratie van Application Gateway-infra structuur
@@ -23,7 +23,7 @@ De infra structuur van de toepassings Gateway omvat het virtuele netwerk, subnet
 Een toepassings gateway is een speciale implementatie in uw virtuele netwerk. In het virtuele netwerk is een toegewezen subnet vereist voor de toepassings gateway. U kunt meerdere exemplaren van een bepaalde toepassings gateway-implementatie in een subnet hebben. U kunt ook andere toepassings gateways implementeren in het subnet. Maar u kunt geen andere resources implementeren in het subnet van de toepassings gateway. U kunt Standard_v2 en de standaard Azure-toepassing gateway niet op hetzelfde subnet combi neren.
 
 > [!NOTE]
-> [Beleids regels voor het virtuele netwerk service-eind punten](../virtual-network/virtual-network-service-endpoint-policies-overview.md) worden momenteel niet ondersteund in een Application Gateway subnet.
+> [Het beleid voor eindpunten van virtuele netwerken](../virtual-network/virtual-network-service-endpoint-policies-overview.md) wordt momenteel niet ondersteund in een Application Gateway-subnet.
 
 ### <a name="size-of-the-subnet"></a>Grootte van het subnet
 

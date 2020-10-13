@@ -4,10 +4,10 @@ description: In dit artikel vindt u de stappen voor het opslaan van aangepaste i
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476237"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Aangepaste installatiekopieën opslaan en distribueren naar meerdere labs
@@ -78,7 +78,7 @@ Aan de hand van de stappen die u eerder in dit artikel hebt gezien, voegt u een 
 
 ![Taak voor het distribueren van installatie kopieën maken](./media/save-distribute-custom-images/second-build-task-powershell.png)
 
-De para meters zijn:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
+De para meters zijn: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
 
 Deze taak neemt alle aangepaste installatie kopieën in de installatie kopie van de fabriek op en pusht ze naar een wille keurige weer gave in de Labs.jsin het bestand.
 

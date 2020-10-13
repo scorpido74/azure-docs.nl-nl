@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
 ms.openlocfilehash: b125ae506a9811b8e80a9114e31effc1933c114d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821199"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Deel 1: Schakel AD DS verificatie in voor uw Azure-bestands shares 
@@ -32,7 +32,7 @@ Met de cmdlets in de AzFilesHybrid Power shell-module worden de nodige wijziging
 - Installeer en voer de module uit in een domein dat is gekoppeld aan een on-premises AD DS met AD DS referenties die machtigingen hebben voor het maken van een account voor service aanmelding of een computer account in de doel-AD.
 -  Voer het script uit met behulp van een on-premises AD DS referentie die is gesynchroniseerd met uw Azure AD. De referenties van de on-premises AD DS moeten de eigenaar van het opslag account of de Azure-rol van de Inzender hebben.
 
-### <a name="run-join-azstorageaccountforauth"></a>Deelname uitvoeren-AzStorageAccountForAuth
+### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth uitvoeren
 
 De `Join-AzStorageAccountForAuth` cmdlet voert het equivalent van een offline domein deelname uit namens het opgegeven opslag account uit. Het script maakt gebruik van de cmdlet voor het maken van een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) in uw AD-domein. Als u om welke reden dan ook geen computer account kunt gebruiken, kunt u het script wijzigen om in plaats daarvan een [service-aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) te maken. Als u ervoor kiest om de opdracht hand matig uit te voeren, moet u het account selecteren dat het meest geschikt is voor uw omgeving.
 
@@ -132,7 +132,7 @@ Set-AzStorageAccount `
 
 ### <a name="debugging"></a>Foutopsporing
 
-U kunt de cmdlet debug-AzStorageAccountAuth uitvoeren om een set basis controles uit te voeren op uw AD-configuratie met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund met versie AzFilesHybrid v 0.1.2 en hoger. Zie voor meer informatie over de controles die worden uitgevoerd in deze cmdlet [kan geen Azure files koppelen aan AD-referenties](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) in de gids voor probleem oplossing voor Windows.
+U kunt de Debug-AzStorageAccountAuth cmdlet uitvoeren om een set basis controles uit te voeren op uw AD-configuratie met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund met versie AzFilesHybrid v 0.1.2 en hoger. Zie voor meer informatie over de controles die worden uitgevoerd in deze cmdlet [kan geen Azure files koppelen aan AD-referenties](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) in de gids voor probleem oplossing voor Windows.
 
 ```PowerShell
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose

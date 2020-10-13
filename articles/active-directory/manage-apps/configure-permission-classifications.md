@@ -12,13 +12,13 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: 0add5001e2e62e26d448b06927210c14f17729f1
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804312"
 ---
-# <a name="configure-permission-classifications"></a>Machtigings classificaties configureren
+# <a name="configure-permission-classifications"></a>Machtigingsclassificaties configureren
 
 Met machtigings classificaties kunt u de invloed identificeren die verschillende machtigingen hebben volgens het beleid van uw organisatie en risico-evaluaties. U kunt bijvoorbeeld machtigings classificaties in toestemming beleid gebruiken om de set machtigingen te identificeren die gebruikers mogen toestemming geven.
 
