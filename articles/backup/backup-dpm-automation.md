@@ -4,10 +4,10 @@ description: Meer informatie over het implementeren en beheren van Azure Backup 
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968307"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor Data Protection Manager (DPM)-servers
@@ -340,7 +340,7 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>De grootte van het herstel punt volume van de DPM-replica & wijzigen
 
-U kunt ook de grootte van het DPM-replica volume en het schaduw kopie volume wijzigen met de cmdlet [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) , zoals in het volgende voor beeld: Get-DatasourceDiskAllocation-data source $DS set-DatasourceDiskAllocation-data source $DS-ProtectionGroup $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2GB)
+U kunt ook de grootte van het DPM-replica volume en het schaduw kopie volume wijzigen met de cmdlet [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) , zoals in het volgende voor beeld: Get-DatasourceDiskAllocation-data source $DS Set-DatasourceDiskAllocation-data source $DS-ProtectionGroup $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>De wijzigingen door voeren in de beveiligings groep
 

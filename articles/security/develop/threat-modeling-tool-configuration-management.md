@@ -18,10 +18,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9a68ec82ea5e924916cbe8b07c11a4f8f62199a7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317953"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Beveiligings frame: configuratie beheer | Oplossingen 
@@ -214,7 +214,7 @@ De functie voor het valideren van aanvragen wordt niet ondersteund en maakt geen
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Beveiligings deel van IE8 V: uitgebreide beveiliging](https://docs.microsoft.com/archive/blogs/ie/ie8-security-part-v-comprehensive-protection), [MIME-type](https://en.wikipedia.org/wiki/Mime_type) |
-| **Stappen** | De X-content-type-Options-header is een HTTP-header waarmee ontwikkel aars kunnen opgeven dat hun inhoud niet MIME-sniffing mag zijn. Deze header is ontworpen om aanvallen met MIME-sniffing te verhelpen. Voor elke pagina die door de gebruiker te raden inhoud kan bevatten, moet u de HTTP-header X-content-type-Options: sniffe gebruiken. Als u de vereiste header globaal wilt inschakelen voor alle pagina's in de toepassing, kunt u een van de volgende handelingen uitvoeren:|
+| **Stappen** | De X-content-type-Options-header is een HTTP-header waarmee ontwikkel aars kunnen opgeven dat hun inhoud niet MIME-sniffing mag zijn. Deze header is ontworpen om MIME-Sniffing-aanvallen te verhelpen. Voor elke pagina die door de gebruiker te raden inhoud kan bevatten, moet u de HTTP-header X-content-type-Options: sniffe gebruiken. Als u de vereiste header globaal wilt inschakelen voor alle pagina's in de toepassing, kunt u een van de volgende handelingen uitvoeren:|
 
 ### <a name="example"></a>Voorbeeld
 Voeg de header in het web.config-bestand toe als de toepassing wordt gehost door Internet Information Services (IIS) 7 en hoger. 

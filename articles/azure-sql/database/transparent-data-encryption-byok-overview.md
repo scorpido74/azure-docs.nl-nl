@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
 ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602666"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels
@@ -187,11 +187,11 @@ Aanvullende overwegingen voor logboek bestanden: back-ups van logboek bestanden 
 
 Zelfs als er geen geo-redundantie is geconfigureerd voor de server, wordt het ten zeerste aanbevolen om de server te configureren voor het gebruik van twee verschillende sleutel kluizen in twee verschillende regio's met hetzelfde sleutel materiaal. U kunt dit doen door een TDE-Protector te maken met behulp van de primaire sleutel kluis die zich in dezelfde regio bevindt als de-server en de sleutel te klonen in een sleutel kluis in een andere Azure-regio, zodat de server toegang heeft tot een tweede sleutel kluis als de primaire sleutel kluis een storing ondervindt terwijl de data base actief is.
 
-Gebruik de cmdlet backup-AzKeyVaultKey om de sleutel in een versleutelde indeling op te halen uit de primaire sleutel kluis en gebruik vervolgens de cmdlet Restore-AzKeyVaultKey en geef in de tweede regio een sleutel kluis op om de sleutel te klonen. U kunt ook de Azure Portal gebruiken om een back-up te maken van de sleutel en deze te herstellen. De sleutel in de secundaire sleutel kluis in de andere regio mag niet worden gemarkeerd als TDE-Protector en is niet zelfs toegestaan.
+Gebruik de cmdlet Backup-AzKeyVaultKey om de sleutel in een versleutelde indeling op te halen uit de primaire sleutel kluis en gebruik vervolgens de Restore-AzKeyVaultKey cmdlet en geef een sleutel kluis in de tweede regio op om de sleutel te klonen. U kunt ook de Azure Portal gebruiken om een back-up te maken van de sleutel en deze te herstellen. De sleutel in de secundaire sleutel kluis in de andere regio mag niet worden gemarkeerd als TDE-Protector en is niet zelfs toegestaan.
 
 Als er een storing optreedt in de primaire sleutel kluis en alleen dan wordt het systeem automatisch overgeschakeld naar de andere gekoppelde sleutel met dezelfde vinger afdruk in de secundaire sleutel kluis als deze bestaat. Houd er rekening mee dat de switch niet wordt uitgevoerd als TDE-Protector niet toegankelijk is vanwege ingetrokken toegangs rechten, of omdat de sleutel of sleutel kluis is verwijderd, omdat dit kan erop wijzen dat de klant opzettelijk de toegang tot de sleutel wil beperken.
 
-![HA met één server](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
+![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>Geo-DR en door de klant beheerde TDE
 

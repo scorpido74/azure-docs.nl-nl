@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603336"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
@@ -158,8 +158,8 @@ In de volgende sectie worden de vereisten beschreven voor het configureren van u
 Micro soft biedt een zelf studie voor alle vooraf geïntegreerde SaaS-apps en u hebt deze informatie niet nodig. Als de toepassing zich niet in onze toepassings Marketplace/-galerie bevindt, moet u mogelijk de volgende gegevens verzamelen:
 
 - **Huidige ID-provider die de toepassing gebruikt voor SSO indien van toepassing** , bijvoorbeeld: AD FS, PingFederate, okta
-- **Protocollen die worden ondersteund door de doel toepassing** , bijvoorbeeld SAML 2,0, OpenID Connect Connect, OAuth, op formulieren gebaseerde auth, WS-in, WS-Trust
-- Het **protocol wordt geconfigureerd met Azure AD** , zoals SAML 2,0 of 1,1, OpenID Connect Connect, OAuth, op formulieren gebaseerde, WS-voeder
+- **Protocollen die worden ondersteund door de doel toepassing** , bijvoorbeeld SAML 2,0, OpenID Connect Connect, OAuth, Forms-Based auth, WS-inbrengen, WS-Trust
+- Het **protocol wordt geconfigureerd met Azure AD** , zoals SAML 2,0 of 1,1, OpenID Connect Connect, OAuth, op formulieren gebaseerde, WS-Fed
 
 ### <a name="attribute-requirements"></a>Kenmerk vereisten
 
@@ -313,11 +313,11 @@ De volgende koppelingen geven scenario's voor het oplossen van problemen. U kunt
 
 [SAML-protocol voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-[SAML-protocol voor eenmalige afmelding](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[Enkelvoudig Sign-Out SAML-Protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (voor externe gebruikers, zoals partners en leveranciers)
 
-[Voorwaardelijke toegang voor Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Voorwaardelijke toegang van Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
 [Azure Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 

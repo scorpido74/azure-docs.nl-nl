@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950490"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
@@ -124,7 +124,7 @@ U kunt overschakelen op de beheerde identiteit van de Recovery Services-kluis do
   - [Inzender voor Storage Blob-gegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Op Resource Manager gebaseerde opslag accounts (Premium-type):
   - [Inzender](../role-based-access-control/built-in-roles.md#contributor)
-  - [Eigenaar van gegevens van opslag-BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+  - [Eigenaar van opslagblobgegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 - Klassieke opslag accounts:
   - [Inzender voor klassieke opslag accounts](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
   - [Service functie voor de sleutel operator voor klassieke opslag accounts](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)

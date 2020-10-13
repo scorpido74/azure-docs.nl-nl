@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 03bc41a0159253359b4f87fd35d4de055b294cc4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961785"
 ---
 # <a name="create-an-external-app-service-environment"></a>Een externe App Service omgeving maken
@@ -65,7 +65,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 2. Selecteer uw abonnement. De app en de ASE worden gemaakt in dezelfde abonnementen.
 
-3. Selecteer of maak een resourcegroep. Met resource groepen kunt u gerelateerde Azure-resources beheren als een eenheid. Resource groepen zijn ook nuttig wanneer u Access Control regels op basis van rollen instelt voor uw apps. Zie [Overzicht van Azure Resource Manager][ARMOverview] voor meer informatie.
+3. Selecteer of maak een resourcegroep. Met resource groepen kunt u gerelateerde Azure-resources beheren als een eenheid. Resource groepen zijn ook handig wanneer u Role-Based Access Control regels voor uw apps instelt. Zie [Overzicht van Azure Resource Manager][ARMOverview] voor meer informatie.
 
 4. Selecteer uw besturings systeem (Windows, Linux of docker). 
 
@@ -103,7 +103,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 1. Selecteer uw abonnement. De app en de ASE worden gemaakt in dezelfde abonnementen.
 
-1. Selecteer of maak een resourcegroep. Met resource groepen kunt u gerelateerde Azure-resources beheren als een eenheid. Resource groepen zijn ook nuttig wanneer u Access Control regels op basis van rollen instelt voor uw apps. Zie [Overzicht van Azure Resource Manager][ARMOverview] voor meer informatie.
+1. Selecteer of maak een resourcegroep. Met resource groepen kunt u gerelateerde Azure-resources beheren als een eenheid. Resource groepen zijn ook handig wanneer u Role-Based Access Control regels voor uw apps instelt. Zie [Overzicht van Azure Resource Manager][ARMOverview] voor meer informatie.
 
 1. Selecteer het App Service plan en selecteer vervolgens **nieuwe maken**. Linux-web-apps en Windows Web apps kunnen zich niet in hetzelfde App Service plan bevindt, maar kunnen zich in dezelfde App Service Environment. 
 

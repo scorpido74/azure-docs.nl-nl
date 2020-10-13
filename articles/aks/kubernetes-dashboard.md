@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
 ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570816"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes Web dash board in azure Kubernetes service (AKS)
@@ -30,7 +30,7 @@ Voor meer informatie over het Kubernetes-dash board raadpleegt u [Kubernetes Web
 
 Voor de stappen die in dit document worden beschreven, wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt en een `kubectl` verbinding met het cluster tot stand hebt gebracht. Als u een AKS-cluster moet maken, raadpleegt u [Quick Start: een Azure Kubernetes service-cluster implementeren met behulp van de Azure cli][aks-quickstart].
 
-Ook moet de Azure CLI-versie 2.6.0 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version`  uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.6.0 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version`  uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
 ## <a name="disable-the-kubernetes-dashboard"></a>Het Kubernetes-dash board uitschakelen
 

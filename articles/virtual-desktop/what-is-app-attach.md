@@ -1,6 +1,6 @@
 ---
 title: Overzicht van de MSIX-app voor Windows Virtual Desktop-Azure
-description: Wat is de MSIX-app koppelen? In dit artikel vindt u meer informatie.
+description: Wat is een MSIX-app-koppeling? In dit artikel vindt u meer informatie.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,13 +9,13 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c6bf296b5173a662b1e9dd7b025648e3f16d23c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556278"
 ---
-# <a name="what-is-msix-app-attach"></a>Wat is de MSIX-app koppelen?
+# <a name="what-is-msix-app-attach"></a>Wat is een MSIX-app-koppeling?
 
 MSIX is een nieuwe verpakkings indeling die veel functies biedt die zijn gericht op het verbeteren van de ervaring van het pakket voor alle Windows-apps. Zie het [overzicht van MSIX](/windows/msix/overview)voor meer informatie over MSIX.
 
@@ -45,7 +45,7 @@ MSIX app attach moet worden toegepast buiten VDI of SBC.
 
 De volgende tabel vergelijkt de belangrijkste functie van de MSIX-app voor koppelen en app-lagen.
 
-| Functie | Traditionele app-laag  | MSIX-app koppelen  |
+| Functie | Traditionele app-laag  | MSIX-app-koppeling  |
 |-----|-----------------------------|--------------------|
 | Indeling               | Voor verschillende technologieën voor app-lagen zijn verschillende eigen indelingen vereist. | Werkt met de systeem eigen MSIX-verpakkings indeling.        |
 | Overhead opnieuw bepakken | Voor eigen indelingen moeten sequentiëren en opnieuw verpakken per update worden vereist.         | Apps die als MSIX zijn gepubliceerd, hoeven niet opnieuw te worden verpakt. Als het MSIX-pakket echter niet beschikbaar is, is de overhead van de verpakking nog steeds van toepassing. |

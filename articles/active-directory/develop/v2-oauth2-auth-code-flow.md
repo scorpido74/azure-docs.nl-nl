@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88612313"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
@@ -136,7 +136,7 @@ In de volgende tabel worden de verschillende fout codes beschreven die kunnen wo
 | `login_required` | Er zijn te veel of geen gebruikers gevonden | De client heeft authenticatie op de achtergrond ( `prompt=none` ) aangevraagd, maar er is geen enkele gebruiker gevonden. Dit kan betekenen dat er meerdere gebruikers actief zijn in de sessie of dat er zich geen gebruikers bevinden. Hierbij wordt rekening gehouden met de gekozen Tenant (bijvoorbeeld als er twee Azure AD-accounts actief zijn en een Microsoft-account, en `consumers` wordt gekozen, wordt de stille verificatie uitgevoerd). |
 | `interaction_required` | De aanvraag vereist een gebruikers interactie. | Er is een extra verificatie stap of toestemming vereist. Voer de aanvraag zonder uit `prompt=none` . |
 
-## <a name="request-an-access-token"></a>Een toegangs token aanvragen
+## <a name="request-an-access-token"></a>Een toegangstoken aanvragen
 
 Nu u een authorization_code hebt aangeschaft en toestemming hebt gegeven door de gebruiker, kunt u de `code` voor een `access_token` naar de gewenste resource inwisselen. Doe dit door een `POST` aanvraag naar het `/token` eind punt te verzenden:
 

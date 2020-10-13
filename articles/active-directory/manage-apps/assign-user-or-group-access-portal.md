@@ -12,10 +12,10 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604322"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Gebruikers toewijzing voor een app in Azure Active Directory beheren
@@ -28,7 +28,7 @@ Voor meer controle kunnen bepaalde typen bedrijfs toepassingen worden geconfigur
 > Wanneer u een groep toewijst aan een toepassing, hebben alleen gebruikers in de groep toegang. De toewijzing verloopt niet trapsgewijs naar geneste groepen.
 
 > [!NOTE]
-> Voor een toewijzing op basis van een groep is de editie Azure Active Directory Premium P1 of P2 vereist. Toewijzing op basis van een groep wordt alleen ondersteund voor beveiligingsgroepen. Geneste groepslid maatschappen en Microsoft 365 groepen worden momenteel niet ondersteund. Raadpleeg de [pagina met Azure Active Directory-prijzen](https://azure.microsoft.com/pricing/details/active-directory) voor meer licentievereisten voor de functies die in dit artikel worden besproken. 
+> Voor een toewijzing op basis van een groep is de editie Azure Active Directory Premium P1 of P2 vereist. Toewijzing op basis van een groep wordt alleen ondersteund voor beveiligingsgroepen. Lidmaatschap van geneste groepen en Microsoft 365-groepen wordt momenteel niet ondersteund. Raadpleeg de [pagina met Azure Active Directory-prijzen](https://azure.microsoft.com/pricing/details/active-directory) voor meer licentievereisten voor de functies die in dit artikel worden besproken. 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>Een toepassing configureren voor het vereisen van gebruikers toewijzing
 
