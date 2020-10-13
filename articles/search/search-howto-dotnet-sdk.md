@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bedb619d77d9e5a88fdc16d0fbd066fa092e0765
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020793"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950785"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>Micro soft. Azure. Search (v10 toevoegen) gebruiken in een .NET-toepassing
 
@@ -44,7 +44,7 @@ Als u feedback wilt geven voor een toekomstige update van de SDK, raadpleegt u o
 
 De .NET SDK streeft naar de versie `2019-05-06` van de [Azure Cognitive Search rest API](/rest/api/searchservice/). Deze versie bevat ondersteuning voor [complexe typen](search-howto-complex-data-types.md), [AI-verrijking](cognitive-search-concept-intro.md), [automatisch aanvullen](/rest/api/searchservice/autocomplete)en [JsonLines-parserings modus bij het indexeren van](search-howto-index-json-blobs.md) Azure-blobs. 
 
-Deze SDK biedt geen ondersteuning voor [beheer bewerkingen](/rest/api/searchmanagement/) , zoals het maken en schalen van zoek services en het beheren van API-sleutels. Als u uw Zoek resources wilt beheren vanuit een .NET-toepassing, kunt u de [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)gebruiken.
+Deze SDK biedt geen ondersteuning voor [beheer bewerkingen](/rest/api/searchmanagement/) , zoals het maken en schalen van zoek services en het beheren van API-sleutels. Als u uw Zoek resources wilt beheren vanuit een .NET-toepassing, kunt u de [Azure Cognitive Search .net Management SDK](/dotnet/api/overview/azure/search)gebruiken.
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Upgraden naar de nieuwste versie van de SDK
 Als u al een oudere versie van de Azure Cognitive Search .NET SDK gebruikt en u een upgrade wilt uitvoeren naar de meest recente, algemeen beschik bare versie, wordt in [dit artikel](search-dotnet-sdk-migration-version-9.md) uitgelegd hoe dat werkt.

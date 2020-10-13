@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090513"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938335"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps community-open-source projecten
 
@@ -39,8 +39,10 @@ Hier volgt een lijst van open-source projecten die de mogelijkheden van de Azure
 |-|-|
 | [Module Azure Maps animatie](https://github.com/Azure-Samples/azure-maps-animations) | Een uitgebreide bibliotheek met animaties voor gebruik met de Azure Maps Web-SDK. |
 | [Beheer module voor geolocatie Azure Maps](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Een Azure Maps Web SDK-module die een besturings element biedt dat de geolocatie-API van de browser gebruikt om de gebruiker op de kaart te vinden. |
+| [Gridded-gegevens bron module Azure Maps](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Een module voor de Web-SDK van Azure Maps die een gegevens bron bevat waarmee gegevens punten in cellen van een raster gebied worden geclusterd. Deze bewerking is ook bekend bij veel namen als tessellations, data binning of hex-opslag locaties.  |
 | [Azure Maps module fullscreen Control](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Een Azure Maps Web SDK-module die een besturings element biedt om de kaart weer te geven in de modus volledig scherm. |
 | [Module voor selectie besturings elementen Azure Maps](https://github.com/Azure-Samples/azure-maps-selection-control) | Een Azure Maps Web SDK-module die besturings elementen biedt voor het selecteren van gegevens in een gegevens bron met behulp van teken hulpprogramma's of door het aanvragen van een polygoon voor een route bereik. |
+| [Module Azure Maps-swipe kaart](https://github.com/Azure-Samples/azure-maps-swipe-map) | Een module voor de Azure Maps Web-SDK waarmee kan worden geswiped tussen twee overlappende kaarten, ideaal voor het vergelijken van twee overlappende gegevens sets. |
 | [Module synchronisatie toewijzing Azure Maps](https://github.com/Azure-Samples/azure-maps-sync-maps) | Een Azure Maps Web-SDK-module die de camera's van twee of meer kaarten synchroniseert. |
 | [GEBRUIKERSINTERFACE module Azure Maps Services](https://github.com/Azure-Samples/azure-maps-services-ui) | Een reeks web-UI-besturings elementen die de Azure Maps REST-services verpakken. |
 

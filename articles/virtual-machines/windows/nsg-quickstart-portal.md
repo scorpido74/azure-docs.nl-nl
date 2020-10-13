@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 12db42b0edb3d3e27756593f3dfb079804a4145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06f682bc697f93d436e2cd71b161c01e1360944a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84170027"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973985"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Poorten openen voor een virtuele machine met de Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -78,4 +78,4 @@ In dit artikel hebt u een netwerk beveiligings groep gemaakt, een regel voor bin
 
 In de volgende artikelen vindt u informatie over het maken van meer gedetailleerde omgevingen:
 - [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- [Beveiligingsgroepen](../../virtual-network/security-overview.md)
+- [Beveiligingsgroepen](../../virtual-network/network-security-groups-overview.md)

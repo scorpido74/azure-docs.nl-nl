@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49c389170e9d586a2001009226c6542d4d152f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7705792e58a50371a11d0b733b36ffa325681045
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87418216"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968630"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Gebruikers instellingen voor Azure Multi-Factor Authentication beheren
 
@@ -26,7 +26,7 @@ Als u de gebruikers van Azure Multi-Factor Authentication wilt beheren, kunt u v
 
 Als u de rol *authenticatie beheerder* hebt toegewezen, kunt u vereisen dat gebruikers hun wacht woord opnieuw instellen, zich opnieuw registreren voor MFA of de bestaande MFA-sessies van hun gebruikers object intrekken. Voer de volgende stappen uit om gebruikers instellingen te beheren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer aan de linkerkant **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
 1. Kies de gebruiker waarvoor u een actie wilt uitvoeren en selecteer **verificatie methoden**. Selecteer boven aan het venster een van de volgende opties voor de gebruiker:
    - **Wacht woord opnieuw instellen** stelt het wacht woord van de gebruiker opnieuw in en wijst een tijdelijk wacht woord toe dat moet worden gewijzigd bij de volgende aanmelding.
@@ -45,7 +45,7 @@ Als dat nodig is, kunt u alle app-wacht woorden verwijderen die een gebruiker he
 
 Voer de volgende stappen uit om de app-wacht woorden van een gebruiker te verwijderen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer aan de linkerkant **Azure Active Directory**  >  **gebruikers**  >  **alle gebruikers**.
 1. Selecteer **Multi-Factor Authentication**. Mogelijk moet u naar rechts schuiven om deze menu optie weer te geven. Selecteer de onderstaande scherm afbeelding om het volledige Azure Portal venster en de menu locatie te bekijken: [ ![ Selecteer multi-factor Authentication in het venster gebruikers in azure AD.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Schakel het selectie vakje in naast de gebruiker of gebruikers die u wilt beheren. Er wordt aan de rechter kant een lijst met opties voor snelle stappen weer gegeven.

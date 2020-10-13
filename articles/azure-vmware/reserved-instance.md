@@ -3,12 +3,12 @@ title: Bespaar kosten met het gereserveerde exemplaar van Azure VMware-oplossing
 description: Meer informatie over het kopen van een gereserveerde instantie voor de Azure VMware-oplossing.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91492425"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951414"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Bespaar kosten met de Azure VMware-oplossing
 
@@ -22,7 +22,7 @@ Gereserveerde instanties zijn beschikbaar met enkele uitzonde ringen.
 
 -   **Onvoldoende quotum**   -Een reserve ring die is toegewezen aan een enkel/gedeeld abonnement moet hosts quota hebben die beschikbaar zijn in het abonnement voor het nieuwe gereserveerde exemplaar. U kunt een [aanvraag voor quotum verhoging maken](enable-azure-vmware-solution.md) om dit probleem op te lossen.
 
--   **Aanbiedings recht**: u hebt een [Azure Enterprise Agreement (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)   met micro soft nodig.
+-   **Aanbiedings recht**: u hebt een [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md)   met micro soft nodig.
 
 -   **Capaciteits beperkingen**   -In zeldzame gevallen beperkt Azure de aanschaf van nieuwe reserve ringen voor Azure VMware Solution host Sku's, vanwege een geringe capaciteit in een regio.
 
@@ -57,7 +57,7 @@ Een instantie kopen:
    | Regio       | De Azure-regio die wordt gedekt door de reserve ring.   |
    | Grootte van de host    | AV36    |
    | Termijn         | Eén jaar of drie jaar.  |
-   | Hoeveelheid     | Het aantal exemplaren dat wordt aangeschaft binnen de reserve ring. De hoeveelheid is het aantal actieve Azure VMware-oplossings hosts dat de facturerings korting kan krijgen.    |
+   | Aantal     | Het aantal exemplaren dat wordt aangeschaft binnen de reserve ring. De hoeveelheid is het aantal actieve Azure VMware-oplossings hosts dat de facturerings korting kan krijgen.    |
 
 ## <a name="usage-data-and-reservation-utilization"></a>Gebruiks gegevens en reserverings gebruik
 
@@ -82,7 +82,7 @@ U kunt ook een reserve ring in kleinere segmenten splitsen of reserve ringen sam
 >
 > - Een bestaande reserverings regio
 > - SKU
-> - Hoeveelheid
+> - Aantal
 > - Duur
 >
 >U kunt echter wel *exchange*   een reserve ring uitwisselen als u wijzigingen wilt aanbrengen.

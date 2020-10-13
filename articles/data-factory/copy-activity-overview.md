@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8e1a08af1be3d9b5cfb011516d00a8c0548994bf
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 5eade0ad48dcdd1f0c18ef6e65e498a7b9c79c15
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946163"
+ms.locfileid: "91951674"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
@@ -142,7 +142,7 @@ De volgende sjabloon van een Kopieer activiteit bevat een volledige lijst met on
 | enableStaging<br/>stagingSettings | Geef op of de tussenliggende gegevens in Blob Storage moeten worden gestage in plaats van gegevens rechtstreeks van bron naar sink te kopiëren.<br/>Zie voor meer informatie over nuttige scenario's en configuratie Details [gefaseerde kopie](copy-activity-performance-features.md#staged-copy). | Nee |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u incompatibele rijen wilt verwerken wanneer u gegevens kopieert van bron naar sink.<br/>Zie [fout tolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | Nee |
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 U kunt het uitvoeren van de Kopieer activiteit in de Azure Data Factory zowel visueel als programmatisch controleren. Zie [copy-activiteit controleren](copy-activity-monitoring.md)voor meer informatie.
 
@@ -186,10 +186,11 @@ Zie [schema en gegevens type toewijzing](copy-activity-schema-and-type-mapping.m
 Naast het kopiëren van gegevens uit de brongegevens opslag naar sink, kunt u ook configureren om extra gegevens kolommen toe te voegen, samen met de sink. Bijvoorbeeld:
 
 - Bij kopiëren van bron op basis van een bestand slaat u het relatieve bestandspad op als een extra kolom om op te sporen van welk bestand de gegevens afkomstig zijn.
+- Dupliceer de opgegeven bron kolom als een andere kolom. 
 - Voeg een kolom met een ADF-expressie toe om ADF-systeem variabelen als pijplijn naam/pijplijn-ID te koppelen, of sla andere dynamische waarden op van de uitvoer van de upstream-activiteit.
 - Voeg een kolom toe met een statische waarde om te voldoen aan de behoeften van het stroomafwaartse verbruik.
 
-U vindt de volgende configuratie op het tabblad Bron van Kopieer activiteit: 
+U vindt de volgende configuratie op het tabblad Bron van Kopieer activiteit. U kunt deze extra kolommen ook toewijzen in [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping) voor kopieer activiteiten zoals gebruikelijk door gebruik te maken van uw gedefinieerde kolom namen. 
 
 ![Aanvullende kolommen toevoegen in de Kopieer activiteit](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
 
@@ -200,7 +201,7 @@ Als u het programma wilt configureren, voegt u de eigenschap toe aan de `additio
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| additionalColumns | Voeg aanvullende gegevens kolommen toe om te kopiëren naar sink.<br><br>Elk object onder de `additionalColumns` matrix vertegenwoordigt een extra kolom. `name`Hiermee wordt de naam van de kolom gedefinieerd en `value` wordt de waarde van de gegevens van die kolom aangegeven.<br><br>Toegestane gegevens waarden zijn:<br>- **`$$FILEPATH`** -een gereserveerde variabele geeft aan dat het relatieve pad van de bron bestanden moet worden opgeslagen in het mappad dat is opgegeven in de gegevensset. Toep assen op de bron op basis van een bestand.<br>- **Expressie**<br>- **Statische waarde** | Nee |
+| additionalColumns | Voeg aanvullende gegevens kolommen toe om te kopiëren naar sink.<br><br>Elk object onder de `additionalColumns` matrix vertegenwoordigt een extra kolom. `name`Hiermee wordt de naam van de kolom gedefinieerd en `value` wordt de waarde van de gegevens van die kolom aangegeven.<br><br>Toegestane gegevens waarden zijn:<br>- **`$$FILEPATH`** -een gereserveerde variabele geeft aan dat het relatieve pad van de bron bestanden moet worden opgeslagen in het mappad dat is opgegeven in de gegevensset. Toep assen op de bron op basis van een bestand.<br>- **$ $Column: <source_column_name>** -een gereserveerd variabele patroon geeft aan dat de opgegeven bron kolom moet worden gedupliceerd als een andere kolom<br>- **Expressie**<br>- **Statische waarde** | Nee |
 
 **Voorbeeld:**
 
@@ -218,6 +219,10 @@ Als u het programma wilt configureren, voegt u de eigenschap toe aan de `additio
                     {
                         "name": "filePath",
                         "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "newColName",
+                        "value": "$$COLUMN:SourceColumnA"
                     },
                     {
                         "name": "pipelineName",
