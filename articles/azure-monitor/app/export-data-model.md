@@ -4,10 +4,10 @@ description: Beschrijft de eigenschappen die zijn geëxporteerd uit continue exp
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324383"
 ---
 # <a name="application-insights-export-data-model"></a>Gegevens model Application Insights exporteren
@@ -17,9 +17,9 @@ Ze worden ook weer gegeven in eigenschaps filters in [metrische Explorer](../pla
 
 Punten om te noteren:
 
-* `[0]`in deze tabellen geeft u een punt op in het pad waar u een index wilt invoegen. maar dit is niet altijd 0.
+* `[0]` in deze tabellen geeft u een punt op in het pad waar u een index wilt invoegen. maar dit is niet altijd 0.
 * De tijds duur ligt in tienden van een micro seconde, dus 10000000 = = 1 seconde.
-* Datums en tijden zijn UTC en worden uitgedrukt in de ISO-notatie`yyyy-MM-DDThh:mm:ss.sssZ`
+* Datums en tijden zijn UTC en worden uitgedrukt in de ISO-notatie `yyyy-MM-DDThh:mm:ss.sssZ`
 
 ## <a name="example"></a>Voorbeeld
 
@@ -107,12 +107,12 @@ Punten om te noteren:
 ## <a name="context"></a>Context
 Alle soorten telemetrie zijn vergezeld van een context sectie. Niet al deze velden worden met elk gegevens punt verzonden.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | context. custom. Dimensions [0] |object [] |Sleutel-waarde teken reeks paren die zijn ingesteld met de para meter aangepaste eigenschappen. Maximum lengte van de sleutel 100, waarden met een maximale lengte van 1024. Meer dan 100 unieke waarden, de eigenschap kan worden doorzocht, maar kan niet worden gebruikt voor segmentatie. Maxi maal 200 sleutels per iKey. |
 | context. custom. Metrics [0] |object [] |Sleutel-waardeparen ingesteld op basis van de para meter voor aangepaste metingen en door TrackMetrics. Maximum lengte van de sleutel 100, waarden kunnen numeriek zijn. |
 | context. data. eventTime |tekenreeks |UTC |
-| context. data. isSynthetic |boolean |De aanvraag lijkt afkomstig te zijn van een bot of Webtest. |
+| context. data. isSynthetic |booleaans |De aanvraag lijkt afkomstig te zijn van een bot of Webtest. |
 | context. data. samplingRate |getal |Het percentage van de telemetrie dat is gegenereerd door de SDK en dat naar de portal wordt verzonden. Bereik 0.0-100,0. |
 | context. apparaat |object |Client apparaat |
 | context. device. browser |tekenreeks |IE, Chrome,... |
@@ -138,23 +138,23 @@ Alle soorten telemetrie zijn vergezeld van een context sectie. Niet al deze veld
 | context.operation.id |tekenreeks |Items die hetzelfde zijn, `operation id` worden weer gegeven als verwante items in de portal. Normaal gesp roken de `request id` . |
 | context.operation.name |tekenreeks |URL of aanvraag naam |
 | context. Operation. parentId |tekenreeks |Hiermee staat u geneste gerelateerde items toe. |
-| context.session.id |tekenreeks |`Id`van een groep bewerkingen uit dezelfde bron. Een periode van 30 minuten zonder een bewerking signaleert het einde van een sessie. |
-| context. Session. isFirst |boolean | |
+| context.session.id |tekenreeks |`Id` van een groep bewerkingen uit dezelfde bron. Een periode van 30 minuten zonder een bewerking signaleert het einde van een sessie. |
+| context. Session. isFirst |booleaans | |
 | context. User. accountAcquisitionDate |tekenreeks | |
 | context. User. accountId |tekenreeks | |
 | context. User. anonAcquisitionDate |tekenreeks | |
 | context. User. anonId |tekenreeks | |
 | context. User. authAcquisitionDate |tekenreeks |[Geverifieerde gebruiker](./api-custom-events-metrics.md#authenticated-users) |
 | context. User. authId |tekenreeks | |
-| context. User. isAuthenticated |boolean | |
+| context. User. isAuthenticated |booleaans | |
 | context. User. storeRegion |tekenreeks | |
 | internal.data.documentVersion |tekenreeks | |
-| internal.data.id |tekenreeks | `Unique id`die wordt toegewezen wanneer een item wordt opgenomen in Application Insights |
+| internal.data.id |tekenreeks | `Unique id` die wordt toegewezen wanneer een item wordt opgenomen in Application Insights |
 
 ## <a name="events"></a>Gebeurtenissen
 Aangepaste gebeurtenissen gegenereerd door [track Event ()](./api-custom-events-metrics.md#trackevent).
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | aantal gebeurtenissen [0] |geheel getal |100/([sampling](./sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | gebeurtenis [0] naam |tekenreeks |Gebeurtenis naam.  Maximale lengte van 250. |
@@ -165,7 +165,7 @@ Aangepaste gebeurtenissen gegenereerd door [track Event ()](./api-custom-events-
 ## <a name="exceptions"></a>Uitzonderingen
 Rapporteert [uitzonde ringen](./asp-net-exceptions.md) op de server en in de browser.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | basicException [0]-Assembly |tekenreeks | |
 | aantal basicException [0] |geheel getal |100/([sampling](./sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
@@ -174,8 +174,8 @@ Rapporteert [uitzonde ringen](./asp-net-exceptions.md) op de server en in de bro
 | basicException [0] failedUserCodeMethod |tekenreeks | |
 | basicException [0] failedUserCodeAssembly |tekenreeks | |
 | basicException [0] handledAt |tekenreeks | |
-| basicException [0] hasFullStack |boolean | |
-| basicException [0]`id` |tekenreeks | |
+| basicException [0] hasFullStack |booleaans | |
+| basicException [0] `id` |tekenreeks | |
 | basicException [0]-methode |tekenreeks | |
 | basicException [0] bericht |tekenreeks |Uitzonderings bericht. Maximale lengte van 10k. |
 | basicException [0] outerExceptionMessage |tekenreeks | |
@@ -194,7 +194,7 @@ Rapporteert [uitzonde ringen](./asp-net-exceptions.md) op de server en in de bro
 ## <a name="trace-messages"></a>Berichten traceren
 Verzonden door [TrackTrace](./api-custom-events-metrics.md#tracktrace)en door de [logboek registratie-adapters](./asp-net-trace-logs.md).
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | bericht [0] logger logboek |tekenreeks | |
 | bericht [0] para meters |tekenreeks | |
@@ -204,18 +204,18 @@ Verzonden door [TrackTrace](./api-custom-events-metrics.md#tracktrace)en door de
 ## <a name="remote-dependency"></a>Externe afhankelijkheid
 Verzonden door TrackDependency. Wordt gebruikt voor het rapporteren van de prestaties en het gebruik van [aanroepen naar afhankelijkheden](./asp-net-dependencies.md) in de server en Ajax-aanroepen in de browser.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
-| remoteDependency [0] async |boolean | |
+| remoteDependency [0] async |booleaans | |
 | remoteDependency [0] basenaam |tekenreeks | |
 | remoteDependency [0] opdrachtnaam |tekenreeks |Bijvoorbeeld ' home/index ' |
 | aantal remoteDependency [0] |geheel getal |100/([sampling](./sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | remoteDependency [0] dependencyTypeName |tekenreeks |HTTP, SQL,... |
 | remoteDependency [0] durationMetric. waarde |getal |Tijd van oproep tot voltooiing van antwoord door afhankelijkheid |
-| remoteDependency [0]`id` |tekenreeks | |
+| remoteDependency [0] `id` |tekenreeks | |
 | remoteDependency [0] naam |tekenreeks |URL. Maximale lengte van 250. |
 | remoteDependency [0] resultCode |tekenreeks |van HTTP-afhankelijkheid |
-| remoteDependency [0] geslaagd |boolean | |
+| remoteDependency [0] geslaagd |booleaans | |
 | remoteDependency [0] type |tekenreeks |Http, SQL,... |
 | remoteDependency [0] URL |tekenreeks |Maximale lengte van 2000 |
 | remoteDependency [0] urlData. base |tekenreeks |Maximale lengte van 2000 |
@@ -225,14 +225,14 @@ Verzonden door TrackDependency. Wordt gebruikt voor het rapporteren van de prest
 ## <a name="requests"></a>Aanvragen
 Verzonden door [TrackRequest](./api-custom-events-metrics.md#trackrequest). De standaard modules gebruiken dit om de reactie tijd van de server te rapporteren, gemeten op de server.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | aantal aanvragen [0] |geheel getal |100/([sampling](./sampling.md) frequentie). Bijvoorbeeld: 4 = &gt; 25%. |
 | aanvraag [0] durationMetric. waarde |getal |Tijd van aanvraag die inkomt bij antwoord. 1e7 = = 1S |
-| aanvraag [0]`id` |tekenreeks |`Operation id` |
+| aanvraag [0] `id` |tekenreeks |`Operation id` |
 | naam van aanvraag [0] |tekenreeks |GET/POST + URL-basis.  Maximale lengte van 250 |
 | aanvraag [0] responseCode |geheel getal |HTTP-antwoord verzonden naar client |
-| de aanvraag [0] is voltooid |boolean |Standaard instelling = = (responseCode &lt; 400) |
+| de aanvraag [0] is voltooid |booleaans |Standaard instelling = = (responseCode &lt; 400) |
 | URL van aanvraag [0] |tekenreeks |Geen host |
 | aanvraag [0] urlData. base |tekenreeks | |
 | aanvraag [0] urlData. hashTag |tekenreeks | |
@@ -243,7 +243,7 @@ Verzonden door de browser. Hiermee wordt de tijd gemeten voor het verwerken van 
 
 Met context waarden wordt het client besturingssysteem en de browser versie weer gegeven.
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess. waarde |geheel getal |De tijd vanaf het moment dat de HTML wordt ontvangen om de pagina weer te geven. |
 | clientPerformance [0] naam |tekenreeks | |
@@ -260,7 +260,7 @@ Met context waarden wordt het client besturingssysteem en de browser versie weer
 ## <a name="page-views"></a>Paginaweergaven
 Verzonden door trackPageView () of [stopTrackPage](./api-custom-events-metrics.md#page-views)
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | aantal weer geven [0] |geheel getal |100/([sampling](./sampling.md) frequentie). Bijvoorbeeld 4 = &gt; 25%. |
 | weer gave [0] durationMetric. waarde |geheel getal |De waarde is optioneel ingesteld in trackPageView () of door startTrackPage ()-stopTrackPage (). Niet hetzelfde als clientPerformance-waarden. |
@@ -273,7 +273,7 @@ Verzonden door trackPageView () of [stopTrackPage](./api-custom-events-metrics.m
 ## <a name="availability"></a>Beschikbaarheid
 Rapporten over [Beschik baarheid van webtests](./monitor-web-app-availability.md).
 
-| Pad | Type | Opmerkingen |
+| Pad | Type | Notities |
 | --- | --- | --- |
 | Beschik baarheid [0] availabilityMetric.name |tekenreeks |availability |
 | Beschik baarheid [0] availabilityMetric. waarde |getal |1,0 of 0,0 |
@@ -350,7 +350,7 @@ In plaats van vooraf aggregatie van metrische gegevens, kunt u [steek proeven](.
 ### <a name="durations"></a>Duur
 Tenzij anders aangegeven, worden de duursen weer gegeven in tienden van een micro seconde, zodat 10000000,0 betekent 1 seconde.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Application Insights](./app-insights-overview.md)
 * [Continue export](export-telemetry.md)
 * [Codevoorbeelden](export-telemetry.md#code-samples)

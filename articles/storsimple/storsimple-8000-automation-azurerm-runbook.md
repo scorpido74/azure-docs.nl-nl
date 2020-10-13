@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744029"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation runbooks gebruiken voor het beheren van StorSimple-apparaten
@@ -182,7 +182,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
    3. Maak een nieuwe resource groep of Selecteer deze uit een bestaande resource groep.
    4. Selecteer een **locatie** (indien mogelijk hetzelfde als waar uw service wordt uitgevoerd).
    5. Zorg ervoor dat de optie standaard **uitvoeren als-account maken** is geselecteerd.
-   6. Controleer eventueel **vastmaken aan dash board**. Klik op **Create**.
+   6. Controleer eventueel **vastmaken aan dash board**. Klik op **Maken**.
 
        ![Scherm afbeelding toont het deel venster Automation-account toevoegen met waarden voor abonnement, een uitvoeren als-account voor Azure maken en 2 maken](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -198,7 +198,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
 
     ![Scherm afbeelding toont het deel venster module toevoegen met een waarde voor het uploaden van bestanden en OK](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Ga naar **proces automatisering > Runbooks en klik op + een Runbook toevoegen**. Klik op **een bestaand Runbook importeren**op de Blade **runbook toevoegen** . Ga naar het Windows Power shell-script bestand voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **Create**.
+6. Ga naar **proces automatisering > Runbooks en klik op + een Runbook toevoegen**. Klik op **een bestaand Runbook importeren**op de Blade **runbook toevoegen** . Ga naar het Windows Power shell-script bestand voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **Maken**.
 
     ![invoeg module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

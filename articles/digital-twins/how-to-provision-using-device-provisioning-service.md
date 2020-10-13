@@ -8,10 +8,10 @@ ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90561428"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Apparaten in azure Digital Apparaatdubbels automatisch beheren met behulp van de Device Provisioning Service (DPS)
@@ -52,7 +52,7 @@ Zie de afzonderlijke secties verderop in dit artikel voor een diep gaande uitleg
 
 In deze sectie voegt u Device Provisioning Service toe aan Azure Digital Apparaatdubbels om apparaten automatisch in te richten via het onderstaande pad. Dit is een uittreksel van de volledige architectuur die [eerder](#solution-architecture)is weer gegeven.
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Inrichtings stroom: een fragment van het diagram van de oplossings architectuur, met cijfers voor de secties van de stroom. Gegevens stromen terug en tussen een thermo staat-apparaat en DPS (1 voor Device > DPS en 5 voor DPS >-apparaat). Gegevens stromen ook van DPS naar IoT Hub (4) en naar Azure Digital Apparaatdubbels (3) via een Azure-functie met het label ' toewijzing ' (2).":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Een weer gave van een apparaat en verschillende Azure-Services in een end-to-end-scenario. Gegevens stromen terug en tussen een thermo staat-apparaat en DPS. Gegevens stromen ook van DPS naar IoT Hub en naar Azure Digital Apparaatdubbels via een Azure-functie met het label ' toewijzing '. Gegevens van een hand matige actie voor het verwijderen van een apparaat stromen via IoT Hub > Event Hubs > Azure Functions > Azure Digital Apparaatdubbels.":::
 
 Hier volgt een beschrijving van de proces stroom:
 1. Apparaat neemt contact op met het DPS-eind punt, waarbij identificatie gegevens worden door gegeven om de identiteit ervan te bewijzen.
@@ -287,7 +287,7 @@ node .\adt_custom_register.js
 ```
 
 U ziet het apparaat dat wordt geregistreerd en verbonden met IoT Hub en vervolgens begint met het verzenden van berichten.
-:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Opdrachtvenster weer geven van apparaatregistratie en verzenden van berichten":::
+:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Een weer gave van een apparaat en verschillende Azure-Services in een end-to-end-scenario. Gegevens stromen terug en tussen een thermo staat-apparaat en DPS. Gegevens stromen ook van DPS naar IoT Hub en naar Azure Digital Apparaatdubbels via een Azure-functie met het label ' toewijzing '. Gegevens van een hand matige actie voor het verwijderen van een apparaat stromen via IoT Hub > Event Hubs > Azure Functions > Azure Digital Apparaatdubbels.":::
 
 ### <a name="validate"></a>Valideren
 
@@ -298,13 +298,13 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 U ziet het dubbele apparaat dat wordt gevonden in het Azure Digital Apparaatdubbels-exemplaar.
-:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Opdrachtvenster met nieuw gemaakte dubbele":::
+:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Een weer gave van een apparaat en verschillende Azure-Services in een end-to-end-scenario. Gegevens stromen terug en tussen een thermo staat-apparaat en DPS. Gegevens stromen ook van DPS naar IoT Hub en naar Azure Digital Apparaatdubbels via een Azure-functie met het label ' toewijzing '. Gegevens van een hand matige actie voor het verwijderen van een apparaat stromen via IoT Hub > Event Hubs > Azure Functions > Azure Digital Apparaatdubbels.":::
 
 ## <a name="auto-retire-device-using-iot-hub-lifecycle-events"></a>Apparaat automatisch buiten gebruik stellen met IoT Hub levenscyclus gebeurtenissen
 
 In deze sectie gaat u IoT Hub levenscyclus gebeurtenissen toevoegen aan Azure Digital Apparaatdubbels om apparaten automatisch buiten gebruik te stellen via het onderstaande pad. Dit is een uittreksel van de volledige architectuur die [eerder](#solution-architecture)is weer gegeven.
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Apparaat stroom buiten gebruik stellen: een fragment van het diagram van de oplossings architectuur, met nummers die secties van de stroom bevatten. Het Thermo staat-apparaat wordt weer gegeven zonder verbindingen met de Azure-Services in het diagram. Gegevens van een hand matige actie voor het verwijderen van een apparaat stromen via IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure Digital Apparaatdubbels (3).":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Een weer gave van een apparaat en verschillende Azure-Services in een end-to-end-scenario. Gegevens stromen terug en tussen een thermo staat-apparaat en DPS. Gegevens stromen ook van DPS naar IoT Hub en naar Azure Digital Apparaatdubbels via een Azure-functie met het label ' toewijzing '. Gegevens van een hand matige actie voor het verwijderen van een apparaat stromen via IoT Hub > Event Hubs > Azure Functions > Azure Digital Apparaatdubbels.":::
 
 Hier volgt een beschrijving van de proces stroom:
 1. Een extern of hand matig proces activeert het verwijderen van een apparaat in IoT Hub.
@@ -470,7 +470,7 @@ Instructies voor het maken van een IoT Hub route worden beschreven in dit artike
 De stappen die u moet door lopen voor deze installatie zijn:
 1. Een aangepaste IoT Hub Event Hub eind punt maken. Dit eind punt moet gericht zijn op de Event Hub die u hebt gemaakt in de sectie [*een event hub maken*](#create-an-event-hub) .
 2. Een route voor *levenscyclus gebeurtenissen* van een apparaat toevoegen. Gebruik het eind punt dat u in de vorige stap hebt gemaakt. U kunt de levens cyclus gebeurtenissen van het apparaat beperken tot het verzenden van gebeurtenissen door de routerings query toe te voegen `opType='deleteDeviceIdentity'` .
-    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Een route toevoegen":::
+    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Een weer gave van een apparaat en verschillende Azure-Services in een end-to-end-scenario. Gegevens stromen terug en tussen een thermo staat-apparaat en DPS. Gegevens stromen ook van DPS naar IoT Hub en naar Azure Digital Apparaatdubbels via een Azure-functie met het label ' toewijzing '. Gegevens van een hand matige actie voor het verwijderen van een apparaat stromen via IoT Hub > Event Hubs > Azure Functions > Azure Digital Apparaatdubbels.":::
 
 Zodra u deze stroom hebt door lopen, is alles zo ingesteld dat apparaten end-to-end buiten gebruik worden gesteld.
 
@@ -491,7 +491,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 U ziet dat de dubbele van het apparaat niet meer kan worden gevonden in het Azure Digital Apparaatdubbels-exemplaar.
-:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Opdrachtvenster met dubbele niet gevonden":::
+:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Een weer gave van een apparaat en verschillende Azure-Services in een end-to-end-scenario. Gegevens stromen terug en tussen een thermo staat-apparaat en DPS. Gegevens stromen ook van DPS naar IoT Hub en naar Azure Digital Apparaatdubbels via een Azure-functie met het label ' toewijzing '. Gegevens van een hand matige actie voor het verwijderen van een apparaat stromen via IoT Hub > Event Hubs > Azure Functions > Azure Digital Apparaatdubbels.":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

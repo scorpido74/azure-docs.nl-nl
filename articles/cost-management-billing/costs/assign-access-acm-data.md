@@ -9,20 +9,20 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: c69dc63af6bacb4aaf1beda1a0846a98b06ec209
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371963"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Toegang tot gegevens van Cost Management toewijzen
 
-Voor gebruikers met Azure Enterprise-overeenkomsten wordt het toegangsniveau van gebruikers tot gegevens van Azure Cost Management bepaald door een combinatie van machtigingen die in de Azure-portal en de Enterprise-portal (EA) worden verleend. Voor gebruikers met andere typen Azure-accounts kunt u het toegangsniveau van gebruikers tot gegevens van Cost Management eenvoudiger definiëren met behulp van op rollen gebaseerd toegangsbeheer. In dit artikel wordt uitgelegd hoe u toegang tot gegevens van Cost Management toewijst. Nadat de combinatie van machtigingen is toegewezen, kunnen de gebruikers gegevens in Cost Management weergeven op basis van hun toegangsbereik en het bereik dat ze selecteren in de Azure-portal.
+Voor gebruikers met Azure Enterprise-overeenkomsten wordt het toegangsniveau van gebruikers tot gegevens van Azure Cost Management bepaald door een combinatie van machtigingen die in de Azure-portal en de Enterprise-portal (EA) worden verleend. Voor gebruikers met andere typen Azure-accounts kunt u het toegangsniveau van gebruikers tot gegevens van Cost Management eenvoudiger definiëren met behulp van op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC). In dit artikel wordt uitgelegd hoe u toegang tot gegevens van Cost Management toewijst. Nadat de combinatie van machtigingen is toegewezen, kunnen de gebruikers gegevens in Cost Management weergeven op basis van hun toegangsbereik en het bereik dat ze selecteren in de Azure-portal.
 
 Het bereik dat een gebruiker selecteert wordt door Cost Management gebruikt om gegevens te bundelen en toegang tot de kostengegevens te beheren. Wanneer u bereiken gebruikt, kunnen gebruikers er niet meerdere selecteren. In plaats daarvan selecteren gebruikers een groter bereik waarin onderliggende bereiken worden getotaliseerd en filteren ze het bereik op wat ze willen weergeven. Het is belangrijk om te begrijpen hoe gegevens worden gebundeld, omdat bepaalde personen geen toegang mogen hebben tot een bovenliggend bereik waartoe een onderliggend bereik behoort.
 
-Bekijk de video [Toegangsbeheer met Cost Management ](https://www.youtube.com/watch?v=_uQzQ9puPyM) voor meer informatie over het toewijzen van toegang voor het weergeven van kosten met op rollen gebaseerd toegangsbeheer van Azure. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+Bekijk de video [Toegangsbeheer met Cost Management ](https://www.youtube.com/watch?v=_uQzQ9puPyM) voor meer informatie over het toewijzen van toegang voor het weergeven van kosten met op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC). Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
@@ -71,7 +71,7 @@ Een optie inschakelen in de Azure-portal:
 1. Selecteer onder **Instellingen** het menu-item **Beleid**, en configureer vervolgens de instelling.  
     ![Beleid voor factureringsbereik met opties voor weergavekosten](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 
-Nadat de opties voor het weergeven van kosten zijn ingeschakeld, moet voor de meeste bereiken ook de machtiging voor op rollen gebaseerd toegangsbeheer (RBAC) worden geconfigureerd in de Azure-portal.
+Nadat de opties voor het weergeven van kosten zijn ingeschakeld, moet voor de meeste bereiken ook de machtiging voor op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) worden geconfigureerd in Azure Portal.
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Toegang tot kosten in de EA-portal inschakelen
 
@@ -84,7 +84,7 @@ Een optie inschakelen in de EA-portal:
 3. Stel de kostenoptie in op **DA-kosten weergeven** en/of **AO-kosten weergeven** voor de Cost Management-bereiken waartoe u toegang wilt verlenen.  
     ![tabblad Inschrijving met de opties DA-kosten weergeven en AO-kosten weergeven](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-Nadat de opties voor het weergeven van kosten zijn ingeschakeld, moet voor de meeste bereiken ook de machtiging voor op rollen gebaseerd toegangsbeheer (RBAC) worden geconfigureerd in de Azure-portal.
+Nadat de opties voor het weergeven van kosten zijn ingeschakeld, moet voor de meeste bereiken ook de machtiging voor op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) worden geconfigureerd in Azure Portal.
 
 ## <a name="enterprise-administrator-role"></a>Rol van ondernemingsbeheerder
 
@@ -182,9 +182,9 @@ Voor toegang tot een resourcegroep is ten minste de machtiging Lezer Cost Manage
 
 ## <a name="cross-tenant-authentication-issues"></a>Problemen met verificatie tussen tenants
 
-Momenteel biedt Azure Cost Management beperkte ondersteuning voor verificatie tussen tenants. In sommige gevallen kan het voorkomen dat de fout **Toegang geweigerd** in de kostenanalyse wordt weergegeven. Dit probleem kan optreden als u op rollen gebaseerd toegangsbeheer (RBAC) configureert voor het abonnement van een andere tenant en vervolgens probeert kostengegevens weer te geven.
+Momenteel biedt Azure Cost Management beperkte ondersteuning voor verificatie tussen tenants. In sommige gevallen kan het voorkomen dat de fout **Toegang geweigerd** in de kostenanalyse wordt weergegeven. Dit probleem kan optreden als u op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) configureert voor het abonnement van een andere tenant en vervolgens probeert kostengegevens weer te geven.
 
-*U kunt dit probleem als volgt omzeilen*: Wacht een uur nadat u op rollen gebaseerd toegangsbeheer tussen tenants hebt geconfigureerd. Probeer vervolgens kosten in kostenanalyse weer te geven of toegang tot Cost Management te verlenen aan gebruikers in beide tenants.  
+*U kunt dit probleem als volgt omzeilen*: Wacht een uur nadat u Azure RBAC tussen tenants hebt geconfigureerd. Probeer vervolgens kosten in kostenanalyse weer te geven of toegang tot Cost Management te verlenen aan gebruikers in beide tenants.  
 
 
 ## <a name="next-steps"></a>Volgende stappen

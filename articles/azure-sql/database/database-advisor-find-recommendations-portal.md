@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443896"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
@@ -29,7 +29,7 @@ Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de jui
 
 Gebruik de volgende stappen om aanbevelingen voor prestaties te vinden op het Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar **alle services**  >  **SQL-data bases**en selecteer uw data base.
 3. Navigeer naar **Aanbevolen prestaties** om de beschik bare aanbevelingen voor de geselecteerde Data Base weer te geven.
 
@@ -171,5 +171,5 @@ Controleer uw aanbevelingen en pas deze toe om de prestaties te verfijnen. Data 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
-* [INDEX MAKEN](https://msdn.microsoft.com/library/ms188783.aspx)
+* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
 * [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/overview.md)

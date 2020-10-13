@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
 ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167756"
 ---
 # <a name="long-audio-api-preview"></a>Lange audio-API (preview-versie)
@@ -277,7 +277,7 @@ De volgende tabel bevat een overzicht van de HTTP-antwoord codes en berichten va
 |        | 400 | Het invoer bestand moet langer zijn dan 400 tekens. | Zorg ervoor dat uw invoer bestand langer is dan 400 tekens. |
 |        | 404 | Het model dat is gedeclareerd in de definitie van de audio-synthese, is niet gevonden: {modelID}. | Controleer of {modelID} juist is. |
 |        | 429 | De limiet voor actieve audio-synthese overschrijdt. Wacht tot sommige aanvragen zijn voltooid. | De server mag Maxi maal 120 aanvragen voor elk Azure-account uitvoeren en in de wachtrij plaatsen. Wacht tot er nieuwe aanvragen zijn verzonden totdat sommige aanvragen zijn voltooid. |
-| Alle       | 429 | Er zijn te veel aanvragen. | De client mag Maxi maal 5 aanvragen voor de server per seconde indienen voor elk Azure-account. Verminder de aanvraag hoeveelheid per seconde. |
+| Alles       | 429 | Er zijn te veel aanvragen. | De client mag Maxi maal 5 aanvragen voor de server per seconde indienen voor elk Azure-account. Verminder de aanvraag hoeveelheid per seconde. |
 | Verwijderen    | 400 | De stem synthese taak is nog in gebruik. | U kunt alleen **voltooide** of **mislukte**aanvragen verwijderen. |
 | GetByID   | 404 | De opgegeven entiteit is niet gevonden. | Controleer of de synthese-ID juist is. |
 
@@ -295,7 +295,7 @@ De lange audio-API is beschikbaar in meerdere regio's met unieke eind punten.
 | Azië - zuidoost | `https://southeastasia.customvoice.api.speech.microsoft.com` |
 | Verenigd Koninkrijk Zuid | `https://uksouth.customvoice.api.speech.microsoft.com` |
 | Europa -west | `https://westeurope.customvoice.api.speech.microsoft.com` |
-| VS - west 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
+| West US 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
 
 ## <a name="audio-output-formats"></a>Indelingen audio-uitvoer
 

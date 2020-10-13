@@ -12,13 +12,13 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167399"
 ---
-# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway
+# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Een IoT Edge apparaat configureren om te fungeren als transparante gateway
 
 In dit artikel vindt u gedetailleerde instructies voor het configureren van een IoT Edge apparaat om te werken als een transparante gateway zodat andere apparaten kunnen communiceren met IoT Hub. In dit artikel wordt de term *IOT Edge gateway* gebruikt om te verwijzen naar een IOT edge apparaat dat is geconfigureerd als een transparante gateway. Zie [How a IOT edge-apparaten kunnen worden gebruikt als een gateway](./iot-edge-as-gateway.md)voor meer informatie.
 
@@ -34,7 +34,7 @@ Er zijn drie algemene stappen voor het instellen van een geslaagde transparante 
 2. Maak een apparaat-id voor het downstream-apparaat, zodat het kan worden geverifieerd met IoT Hub. Configureer het downstream-apparaat om berichten te verzenden via het gateway apparaat. Zie [een downstream-apparaat verifiëren voor Azure IOT hub](how-to-authenticate-downstream-device.md)voor meer informatie.
 3. Verbind het downstream-apparaat met het gateway apparaat en begin met het verzenden van berichten. Zie [verbinding maken tussen een downstream-apparaat en een Azure IOT Edge-gateway](how-to-connect-downstream-device.md)voor meer informatie.
 
-Een apparaat kan alleen als gateway fungeren als het een veilige verbinding met de downstream-apparaten heeft. Met Azure IoT Edge kunt u een open bare-sleutel infrastructuur (PKI) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval kunnen we een downstream-apparaat verbinding laten maken met een IoT Edge apparaat dat als transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het gateway-apparaat bevestigen. Met deze identiteits controle voor komt u dat uw apparaten verbinding maken met mogelijk schadelijke gateways.
+Een apparaat kan alleen als gateway fungeren als het een veilige verbinding met de downstream-apparaten heeft. Met Azure IoT Edge kunt u een PKI (Public Key Infrastructure) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval kunnen we een downstream-apparaat verbinding laten maken met een IoT Edge apparaat dat als transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het gateway-apparaat bevestigen. Met deze identiteits controle voor komt u dat uw apparaten verbinding maken met mogelijk schadelijke gateways.
 
 Een downstream-apparaat kan een toepassing of platform zijn met een identiteit die is gemaakt met de [Azure IOT hub](https://docs.microsoft.com/azure/iot-hub) -Cloud service. In deze toepassingen wordt vaak gebruikgemaakt van de [Azure IOT Device SDK](../iot-hub/iot-hub-devguide-sdks.md). Een downstream-apparaat kan zelfs een toepassing zijn die wordt uitgevoerd op het IoT Edge gateway-apparaat zelf. Een IoT Edge apparaat kan echter niet worden downstream van een IoT Edge gateway.
 
@@ -73,14 +73,14 @@ Voor productie scenario's moet u deze bestanden met uw eigen certificerings inst
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    2. [IOT Edge CA-certificaat voor het apparaat maken](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Aan het einde van deze instructies hebt u twee bestanden, een CA-certificaat en de persoonlijke sleutel van het apparaat:
-      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`maar
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` maar
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
 2. Als u deze bestanden op een andere computer hebt gemaakt, kopieert u deze naar uw IoT Edge-apparaat.
 
 3. Open het configuratie bestand van de beveiligings-daemon op uw IoT Edge-apparaat.
-   * Windows`C:\ProgramData\iotedge\config.yaml`
-   * Spreek`/etc/iotedge/config.yaml`
+   * Windows `C:\ProgramData\iotedge\config.yaml`
+   * Spreek `/etc/iotedge/config.yaml`
 
 4. Zoek de sectie **certificaten** van het bestand en geef de bestands-uri's op uw drie bestanden op als waarden voor de volgende eigenschappen:
    * **device_ca_cert**: CA-certificaat van apparaat
@@ -90,8 +90,8 @@ Voor productie scenario's moet u deze bestanden met uw eigen certificerings inst
 5. Sla het bestand op en sluit het.
 
 6. Start IoT Edge opnieuw.
-   * Windows`Restart-Service iotedge`
-   * Spreek`sudo systemctl restart iotedge`
+   * Windows `Restart-Service iotedge`
+   * Spreek `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub en router berichten implementeren
 
@@ -120,12 +120,12 @@ Voer de volgende stappen uit om de IoT Edge hub-module te implementeren en te co
 6. Zorg er op de pagina **routes** voor dat er een route is voor het afhandelen van berichten die afkomstig zijn van downstream-apparaten. Bijvoorbeeld:
 
    * Een route waarmee alle berichten, of van een module of van een downstream-apparaat, worden verzonden naar IoT Hub:
-       * **Naam**:`allMessagesToHub`
-       * **Waarde**:`FROM /messages/* INTO $upstream`
+       * **Naam**: `allMessagesToHub`
+       * **Waarde**: `FROM /messages/* INTO $upstream`
 
    * Een route waarmee alle berichten van alle downstream-apparaten naar IoT Hub worden verzonden:
-      * **Naam**:`allDownstreamToHub`
-      * **Waarde**:`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+      * **Naam**: `allDownstreamToHub`
+      * **Waarde**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
 
       Deze route werkt omdat, in tegens telling tot berichten uit IoT Edge modules, er geen module-ID aan de berichten van downstream-apparaten is gekoppeld. Door gebruik te maken van de component **where** van de route kunnen we berichten met die systeem eigenschap filteren.
 

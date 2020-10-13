@@ -9,10 +9,10 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441775"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
@@ -72,7 +72,7 @@ Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https:
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure Opslagverkenner
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 Gebruik alleen versies  `1.6.0`   of hoger.
 

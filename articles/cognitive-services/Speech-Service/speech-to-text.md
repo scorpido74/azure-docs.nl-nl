@@ -13,10 +13,10 @@ ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: spraak naar tekst, spraak naar tekst software
 ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359933"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak-naar-tekst?
@@ -46,7 +46,7 @@ Voorbeeld code voor de Speech SDK is beschikbaar op GitHub. Deze voorbeelden heb
 - [Voorbeelden van batchtranscriptie (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 - [Evaluatie voorbeelden van uitspraak (REST)](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
-## <a name="customization"></a>Aanpassing
+## <a name="customization"></a>Aanpassen
 
 Naast het standaard spraak service model kunt u aangepaste modellen maken. Aanpassing helpt de obstakels voor spraak herkenning, zoals spreek stijl, vocabulaire en achtergrond ruis, te overwinnen [Custom speech](how-to-custom-speech.md). Aanpassings opties variëren per taal/land instelling. Zie [ondersteunde talen](supported-languages.md) voor het controleren van de ondersteuning.
 

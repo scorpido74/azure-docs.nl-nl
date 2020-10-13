@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360686"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Factureringsaccounts en -bereiken in de Azure-portal
 
@@ -80,11 +80,11 @@ Een bereik is een knooppunt binnen een factureringsaccount waar u facturen kunt 
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van de zoekopdracht in de Azure-portal](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering.](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. Selecteer op de overzichtspagina de optie **Schakelen tussen bereiken**.
 
-   ![Schermopname van factureringsbereiken](./media/view-all-accounts/overview-select-scopes.png)
+   ![Schermopname van factureringsbereiken.](./media/view-all-accounts/overview-select-scopes.png)
 
    > [!Note]
     >
@@ -92,7 +92,7 @@ Een bereik is een knooppunt binnen een factureringsaccount waar u facturen kunt 
 
 4. Selecteer een bereik om meer details weer te geven.
 
-   ![Schermopname van factureringsbereiken](./media/view-all-accounts/list-of-scopes.png)
+   ![Schermopname van factureringsbereiken, die u kunt selecteren voor meer details.](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>Controleer uw accounttype
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
