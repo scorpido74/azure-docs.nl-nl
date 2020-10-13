@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: c80462707d3dccbb8fccff244017053c25ad46e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463583"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950190"
 ---
 # <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>IP-firewall regels instellen om toegang tot de Indexeer functie in te scha kelen
 
@@ -89,6 +89,6 @@ De firewall regels nemen 5-10 minuten in beslag, waarna de Indexeer functies de 
 
 Nu u weet hoe u de twee sets met IP-adressen kunt ophalen voor het toestaan van toegang voor indexen, gebruikt u de volgende koppelingen om de IP-firewall regels voor een aantal algemene gegevens bronnen bij te werken.
 
-- [Azure Storage firewalls configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security)
-- [IP-Firewall configureren voor CosmosDB](https://docs.microsoft.com/azure/cosmos-db/firewall-support)
-- [IP-Firewall configureren voor Azure SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)
+- [Azure Storage firewalls configureren](../storage/common/storage-network-security.md)
+- [IP-Firewall configureren voor CosmosDB](../cosmos-db/firewall-support.md)
+- [IP-Firewall configureren voor Azure SQL Server](../azure-sql/database/firewall-configure.md)

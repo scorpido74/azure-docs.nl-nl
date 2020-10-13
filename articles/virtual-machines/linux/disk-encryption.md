@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d2c1103ab58379781aa13bd9e90e01c474c3b6e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4636bacafd9f643a62657196746cef0d6006f6d1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279753"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952060"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
@@ -76,7 +76,7 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ### <a name="supported-regions"></a>Ondersteunde regio’s
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+Dubbele versleuteling is beschikbaar in alle regio's die beheerde schijven beschikbaar zijn.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Versleuteling aan de server zijde versus Azure Disk Encryption
 

@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 72a224d4ad1807d095baa8db819878bf2e22e133
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802715"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java-bibliotheek voor bulksgewijs laden: Download informatie
@@ -28,7 +28,7 @@ ms.locfileid: "91802715"
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
-> * [Lente gegevens v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)

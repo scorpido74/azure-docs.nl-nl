@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460085"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner

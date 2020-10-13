@@ -6,14 +6,14 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18e3f29a90ae2c6c66858e14ee91fb447a4a0045
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435606"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968647"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Toegang Azure Storage als een netwerk share vanuit een container in App Service
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Toegang tot Azure Storage als een netwerkshare vanuit een container in App Service
 
 ::: zone pivot="container-windows"
 
@@ -65,7 +65,6 @@ In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan een L
 
 - Azure Storage in App Service is **in Preview** voor app service in Linux en Web App for containers. Het wordt **niet ondersteund** voor **productie scenario's**.
 - Azure Storage in App Service ondersteunt het koppelen van **Azure files containers** (lezen/schrijven) en **Azure Blob-containers** (alleen-lezen)
-- Azure Storage in App Service biedt **geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
 - Met Azure Storage in App Service kunt u **Maxi maal vijf** koppel punten per app opgeven.
 - Azure Storage die aan een app zijn gekoppeld, is niet toegankelijk via App Service FTP-en FTPs-eind punten. Gebruik [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 

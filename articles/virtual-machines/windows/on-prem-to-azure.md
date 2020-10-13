@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835478"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973900"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migreren van Amazon Web Services (AWS) en andere platforms naar Managed Disks in azure
 
@@ -41,7 +41,7 @@ U kunt zowel gegeneraliseerde als speciale Vhd's uploaden.
 ## <a name="overview-of-managed-disks"></a>Overzicht van Managed Disks
 
 Azure Managed Disks vereenvoudigt het beheer van VM'S door de nood zaak om opslag accounts te beheren te verwijderen. Managed Disks Profiteer ook van betere betrouw baarheid van Vm's in een Beschikbaarheidsset. Zo zorgt u ervoor dat de schijven van verschillende virtuele machines in een Beschikbaarheidsset voldoende van elkaar zijn geïsoleerd om een Single Point of Failure te voor komen. Er worden automatisch schijven van verschillende virtuele machines in een Beschikbaarheidsset in verschillende opslag schaal eenheden (stempels) geplaatst, waardoor de impact van de enkelvoudige opslag schaal eenheid wordt beperkt als gevolg van hardware-en software fouten.
-Op basis van uw behoeften kunt u kiezen uit vier typen opslag opties. Zie voor meer informatie over de beschik bare schijf typen ons artikel [een schijf type selecteren](disks-types.md).
+Op basis van uw behoeften kunt u kiezen uit vier typen opslag opties. Zie voor meer informatie over de beschik bare schijf typen ons artikel [een schijf type selecteren](../disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Plannen voor de migratie naar Managed Disks
 

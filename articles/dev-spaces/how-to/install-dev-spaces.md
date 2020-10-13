@@ -5,14 +5,16 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het inschakelen van Azure dev Spaces in een AKS-cluster en het installeren van de hulpprogram ma's aan de client zijde.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
-ms.openlocfilehash: eb7c9b4d3d03b6f4f1f21e6fb2b2a60aa303b181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ebfd8de59ae096e6cee87509bc19e0d161fcaa7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212440"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972982"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Azure dev Spaces inschakelen op een AKS-cluster en de hulpprogram ma's aan de client zijde installeren
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimten kunt inschakelen op een AKS-cluster en hoe u de hulpprogram ma's aan de client zijde installeert.
 

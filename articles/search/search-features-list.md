@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604186"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951380"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Functies van Azure Cognitive Search
 
@@ -64,11 +64,11 @@ Azure Cognitive Search biedt een zoek machine in volledige tekst, een permanente
 
 | Rubriek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Functies |
 |-------------------|----------|
-| REST | [**Service rest API**](https://docs.microsoft.com/rest/api/searchservice/) is voor gegevensvlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Beheer rest API**](https://docs.microsoft.com/rest/api/searchmanagement/) is voor het maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten.|
-| Azure-SDK voor .NET | [**Azure.Search.Documents**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) is voor gegevens vlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Micro soft. Azure. Management. Search**](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search) is voor het maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten.|
-| Azure SDK voor Java | [**com.azure.search.documents**](https://docs.microsoft.com/java/api/com.azure.search.documents) is voor gegevens vlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**com. micro soft. Azure. Management. Search**](https://docs.microsoft.com/java/api/overview/azure/search/management) is voor het maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten.|
-| Azure-SDK voor Python | [**Azure-Search-documenten**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) is voor gegevensvlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Azure-beheer-Zoek opdrachten voor het**](https://docs.microsoft.com/python/api/overview/azure/search/management) maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten. |
-| Azure SDK voor Java script/type script | [**Azure/Search-documenten**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) is voor gegevensvlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Azure/arm-Zoek opdrachten voor het**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten. |
+| REST | [**Service rest API**](/rest/api/searchservice/) is voor gegevensvlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Beheer rest API**](/rest/api/searchmanagement/) is voor het maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten.|
+| Azure-SDK voor .NET | [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) is voor gegevens vlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Micro soft. Azure. Management. Search**](/dotnet/api/microsoft.azure.management.search) is voor het maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten.|
+| Azure SDK voor Java | [**com.azure.search.documents**](/java/api/com.azure.search.documents) is voor gegevens vlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**com. micro soft. Azure. Management. Search**](/java/api/overview/azure/search/management) is voor het maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten.|
+| Azure-SDK voor Python | [**Azure-Search-documenten**](/python/api/overview/azure/search-documents-readme) is voor gegevensvlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Azure-beheer-Zoek opdrachten voor het**](/python/api/overview/azure/search/management) maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten. |
+| Azure SDK voor Java script/type script | [**Azure/Search-documenten**](/javascript/api/@azure/search-documents/) is voor gegevensvlak bewerkingen, inclusief alle bewerkingen met betrekking tot indexering, QUERY'S en AI-verrijking. U kunt deze client bibliotheek ook gebruiken om systeem gegevens en-statistieken op te halen. <br/><br/>[**Azure/arm-Zoek opdrachten voor het**](/javascript/api/@azure/arm-search/) maken en opschonen van services via Azure Resource Manager. U kunt deze API ook gebruiken om sleutels te beheren en een service in te richten. |
 
 ## <a name="see-also"></a>Zie ook
 

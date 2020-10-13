@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311883"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976008"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Een Java-app voor Azure App Service configureren
 
@@ -29,8 +29,6 @@ U kunt de [Azure web app-invoeg toepassing voor maven](/java/api/overview/azure/
 
 Anders is uw implementatie methode afhankelijk van het type archief:
 
-::: zone pivot="platform-windows"  
-
 ### <a name="java-se"></a>Java SE
 
 Gebruik het `/api/zipdeploy/` eind punt van de kudu-site om jar-bestanden te implementeren in Java SE. Raadpleeg [deze documentatie](./deploy-zip.md#rest)voor meer informatie over deze API.
@@ -39,7 +37,6 @@ Gebruik het `/api/zipdeploy/` eind punt van de kudu-site om jar-bestanden te imp
 
 Als u een WAR-bestand wilt implementeren in Tomcat, gebruikt u het `/api/wardeploy/` eind punt om het archief bestand te plaatsen. Raadpleeg [deze documentatie](./deploy-zip.md#deploy-war-file)voor meer informatie over deze API.
 
-::: zone-end
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP

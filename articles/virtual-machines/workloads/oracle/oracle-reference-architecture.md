@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e13add778ae372ea90361c094238668752fe2af
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274432"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977694"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentie architecturen voor Oracle Database Enterprise Edition op Azure
 
@@ -33,7 +33,7 @@ Zie [architect a Oracle DB](oracle-design.md)als u meer wilt weten over het maxi
 
 ## <a name="high-availability-for-oracle-databases"></a>Hoge Beschik baarheid voor Oracle-data bases
 
-Het bereiken van hoge Beschik baarheid in de Cloud is een belang rijk onderdeel van de planning en het ontwerp van elke organisatie. Microsoft Azure biedt [beschikbaarheids zones](../../../availability-zones/az-overview.md) en beschikbaarheids sets (worden gebruikt in regio's waar beschikbaarheids zones niet beschikbaar zijn). Lees meer over het [beheren van de beschik baarheid van uw virtuele machines](../../../virtual-machines/linux/manage-availability.md) om te ontwerpen voor de Cloud.
+Het bereiken van hoge Beschik baarheid in de Cloud is een belang rijk onderdeel van de planning en het ontwerp van elke organisatie. Microsoft Azure biedt [beschikbaarheids zones](../../../availability-zones/az-overview.md) en beschikbaarheids sets (worden gebruikt in regio's waar beschikbaarheids zones niet beschikbaar zijn). Lees meer over het [beheren van de beschik baarheid van uw virtuele machines](../../manage-availability.md) om te ontwerpen voor de Cloud.
 
 Naast de Cloud-systeem eigen hulpprogram ma's en aanbiedingen biedt Oracle oplossingen voor hoge Beschik baarheid, zoals [Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [Data Guard met FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)en [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) die op Azure kunnen worden ingesteld. Deze hand leiding bevat referentie architecturen voor elk van deze oplossingen.
 
@@ -43,7 +43,7 @@ Ten slotte is het belang rijk dat u bij het migreren of maken van toepassingen v
 
 Oracle Real Application Cluster (RAC) is een oplossing van Oracle waarmee klanten hoge door Voer kunnen bereiken door veel instanties die toegang hebben tot één database opslag (gedeeld patroon van alle architectuur). Hoewel Oracle RAC ook on-premises kan worden gebruikt voor hoge Beschik baarheid, kan Oracle RAC alleen worden gebruikt voor hoge Beschik baarheid in de Cloud omdat het alleen bescherming biedt tegen storingen op exemplaar niveau en niet tegen storingen op het niveau van het rek of het Data Center. Daarom raadt Oracle aan Oracle Data Guard te gebruiken met uw data base (of één exemplaar of RAC) voor hoge Beschik baarheid. Klanten hebben doorgaans een hoge SLA nodig voor het uitvoeren van hun essentiële toepassingen. Oracle RAC is momenteel niet gecertificeerd of wordt niet ondersteund door Oracle in Azure. Azure biedt echter functies als Azure biedt Beschikbaarheidszones en geplande onderhouds Vensters om te helpen beschermen tegen storingen op exemplaar niveau. Klanten kunnen daarnaast gebruikmaken van technologieën als Oracle Data Guard, Oracle Golden Gate en Oracle sharding voor hoge prestaties en meer flexibiliteit door hun data bases te beschermen tegen rack niveau en op datacenter niveau en geo-politieke fouten.
 
-Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](../../../availability-zones/az-overview.md) in combi natie met Oracle Data Guard of Golden Gate, kunnen klanten een sla voor de uptime van 99,99% ophalen. In azure-regio's waar beschikbaarheids zones nog niet aanwezig zijn, kunnen klanten [beschikbaarheids sets](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) gebruiken en een sla voor de uptime van 99,95% verzorgen.
+Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](../../../availability-zones/az-overview.md) in combi natie met Oracle Data Guard of Golden Gate, kunnen klanten een sla voor de uptime van 99,99% ophalen. In azure-regio's waar beschikbaarheids zones nog niet aanwezig zijn, kunnen klanten [beschikbaarheids sets](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) gebruiken en een sla voor de uptime van 99,95% verzorgen.
 
 >Opmerking: u kunt een doel voor de uptime hebben die veel hoger is dan de SLA voor de uptime van micro soft.
 
@@ -209,7 +209,7 @@ Tijdens de eerste aanvraag verbindt de toepassings server met de Shard Director 
 
 ## <a name="patching-and-maintenance"></a>Patches en onderhoud
 
-Wanneer u uw Oracle-workloads op Azure implementeert, zorgt micro soft voor alle patches op het niveau van de host-OS. Elk gepland onderhoud op besturingssysteem niveau wordt vooraf aan klanten meegedeeld om de klant in staat te stellen voor dit geplande onderhoud. Twee servers van twee verschillende Beschikbaarheidszones worden nooit tegelijkertijd patches uitgevoerd. Zie [de beschik baarheid van virtuele machines beheren](../../../virtual-machines/linux/manage-availability.md) voor meer informatie over het onderhoud en de reparatie van de VM. 
+Wanneer u uw Oracle-workloads op Azure implementeert, zorgt micro soft voor alle patches op het niveau van de host-OS. Elk gepland onderhoud op besturingssysteem niveau wordt vooraf aan klanten meegedeeld om de klant in staat te stellen voor dit geplande onderhoud. Twee servers van twee verschillende Beschikbaarheidszones worden nooit tegelijkertijd patches uitgevoerd. Zie [de beschik baarheid van virtuele machines beheren](../../manage-availability.md) voor meer informatie over het onderhoud en de reparatie van de VM. 
 
 Het patchen van het besturings systeem van de virtuele machine kan worden geautomatiseerd met behulp van [Azure Automation updatebeheer](../../../automation/update-management/update-mgmt-overview.md). Het patchen en onderhouden van uw Oracle-data base kan worden geautomatiseerd en gepland met behulp van [Azure-pijp lijnen](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) of [Azure Automation updatebeheer](../../../automation/update-management/update-mgmt-overview.md) om de downtime te minimaliseren. Zie [continue levering en Blue/groen-implementaties](/azure/devops/learn/what-is-continuous-delivery) om te begrijpen hoe deze kunnen worden gebruikt in de context van uw Oracle-data bases.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82db48690f8cfa48ebf3a6fdc81cb4e467c159d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331366"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977677"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle-VM-installatie kopieën en hun implementatie op Microsoft Azure
 
@@ -132,7 +132,7 @@ Met Oracle Data Guard kan hoge Beschik baarheid worden bereikt met een primaire 
 
 In de zelf studie wordt [Oracle Golden Gate in azure geïmplementeerd](configure-oracle-golden-gate.md) , wordt u begeleid bij de basis installatie procedure van Azure.
 
-Naast een oplossing van HA en DR in azure, moet u een back-upstrategie hebben om uw data base te herstellen. In de zelf studie [back-up en herstellen van een Oracle database](oracle-backup-recovery.md) wordt u begeleid bij de basis procedure voor het instellen van een consistente back-up.
+Naast een oplossing van HA en DR in azure, moet u een back-upstrategie hebben om uw data base te herstellen. In de zelf studie [back-up en herstellen van een Oracle database](./oracle-overview.md) wordt u begeleid bij de basis procedure voor het instellen van een consistente back-up.
 
 ## <a name="support-for-jd-edwards"></a>Ondersteuning voor JD Edwards
 

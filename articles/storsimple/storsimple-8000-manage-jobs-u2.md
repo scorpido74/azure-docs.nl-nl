@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513929"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949425"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>De StorSimple Apparaatbeheer-service gebruiken voor het weer geven en beheren van taken (update 3 en hoger)
 
@@ -59,11 +59,11 @@ Voer de volgende stappen uit om de details van een taak weer te geven.
 
 2. Geef op de Blade **taken** de gewenste taak (s) weer door een query uit te voeren met de juiste filters. U kunt zoeken naar voltooide, actieve of geannuleerde taken.
 
-    ![Taak blad](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+    ![Taak Blade 2](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
 2. Selecteer en klik op een taak.
 
-    ![Taak blad](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
+    ![Taak Blade 3](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
 3. Op de Blade taak Details kunt u de status, Details, tijd statistieken en gegevens statistieken weer geven.
    
@@ -81,7 +81,7 @@ Voer de volgende stappen uit om een actieve taak te annuleren.
 
 2. Klik met de rechter muisknop op de geselecteerde taak om het context menu aan te roepen en klik op **Annuleren**.
 
-    ![Taakdetails](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
+    ![Taak Details 2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. Klik op **Ja** als u om bevestiging wordt gevraagd. Deze taak is nu geannuleerd.
 

@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967505"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951550"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -58,62 +59,106 @@ Met Traffic Analytics worden de onbewerkte NSG-stroom logboeken onderzocht en wo
 ## <a name="supported-regions-nsg"></a>Ondersteunde regio's: NSG 
 
 U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteunde regio's:
-
-* Canada - midden
-* VS - west-centraal
-* VS - oost
-* VS - oost 2
-* VS - noord-centraal
-* South Central US
-* Central US
-* VS - west
-* VS - west 2
-* Frankrijk - centraal
-* Europa -west
-* Europa - noord
-* Brazil South
-* Verenigd Koninkrijk West
-* Verenigd Koninkrijk Zuid
-* Australië - oost
-* Australië - zuidoost
-* Azië - oost
-* Azië - zuidoost
-* Korea - centraal
-* India - centraal
-* India - zuid
-* Japan - oost 
-* Japan - west
-* VS (overheid) - Virginia
-* China - oost 2
+:::row:::
+   :::column span="":::
+      Australië - centraal  
+      Australië - oost  
+      Australië - zuidoost  
+      Brazilië - zuid  
+      Canada - midden  
+      Canada - oost  
+      India - centraal  
+      Central US  
+      China - oost 2  
+      China - noord 2  
+   :::column-end:::
+   :::column span="":::
+      Azië - oost  
+      VS - oost  
+      VS - oost 2  
+      VS-Oost 2 EUAP  
+      Frankrijk - centraal  
+      Japan - oost  
+      Japan - west  
+      Korea - centraal  
+      Korea - zuid  
+      VS - noord-centraal  
+   :::column-end:::
+   :::column span="":::
+      Europa - noord  
+      Zuid-Afrika - noord  
+      South Central US  
+      India - zuid  
+      Azië - zuidoost  
+      Zwitserland - noord  
+      Zwitserland - west  
+      Verenigd Koninkrijk Zuid  
+      Verenigd Koninkrijk West  
+      USGov Arizona  
+   :::column-end:::
+   :::column span="":::
+      USGov Texas  
+      USGov Virginia  
+      USNat-Oost  
+      USNat-West  
+      USSec-Oost  
+      USSec-West  
+      VS - west-centraal  
+      Europa -west  
+      VS - west  
+      VS - west 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Ondersteunde regio's: Log Analytics werk ruimten
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
-* Canada - midden
-* VS - west-centraal
-* VS - oost
-* VS - oost 2
-* VS - noord-centraal
-* South Central US
-* Central US
-* VS - west
-* VS - west 2
-* Central US
-* Frankrijk - centraal
-* Europa -west
-* Europa - noord
-* Brazil South
-* Verenigd Koninkrijk West
-* Verenigd Koninkrijk Zuid
-* Australië - oost
-* Australië - zuidoost
-* Azië - oost
-* Azië - zuidoost
-* Korea - centraal
-* India - centraal
-* Japan East
-* VS (overheid) - Virginia
-* China - oost 2
+:::row:::
+   :::column span="":::
+      Australië - centraal  
+      Australië - oost  
+      Australië - zuidoost  
+      Brazilië - zuid  
+      Canada - midden  
+      India - centraal  
+      Central US  
+      China - oost 2  
+      Azië - oost  
+      VS - oost  
+   :::column-end:::
+   :::column span="":::
+      VS - oost 2  
+      VS-Oost 2 EUAP  
+      Frankrijk - centraal  
+      Duitsland - west-centraal  
+      Japan East  
+      Korea - centraal  
+      VS - noord-centraal  
+      Europa - noord  
+      Zuid-Afrika - noord  
+      South Central US  
+   :::column-end:::
+   :::column span="":::
+      Azië - zuidoost  
+      Zwitserland - noord  
+      Zwitserland - west  
+      UAE - centraal  
+      Verenigd Koninkrijk Zuid  
+      Verenigd Koninkrijk West  
+      USGov Arizona  
+      USGov Virginia  
+      USNat-Oost  
+      USNat-West  
+   :::column-end:::
+   :::column span="":::
+      USSec-Oost  
+      USSec-West  
+      VS - west-centraal  
+      Europa -west  
+      VS - west  
+      VS - west 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="prerequisites"></a>Vereisten
 

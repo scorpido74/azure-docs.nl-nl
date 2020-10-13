@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: caad78bf61c9ad470464d69c7320aa1d08dcee09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4afb6844512bd59a5c377d826267a748837ed855
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435368"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951992"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer
 
@@ -42,7 +42,7 @@ Zie de onderstaande video voor een gedetailleerde uitleg van deze toegangs contr
 
 ## <a name="allow-azure-services"></a>Azure-Services toestaan
 
-Bij het maken van een nieuwe logische SQL-Server [vanuit de Azure Portal](single-database-create-quickstart.md), wordt deze instelling uitgeschakeld.
+Bij het maken van een nieuwe logische SQL-Server [vanuit het Azure Portal](single-database-create-quickstart.md), is deze instelling standaard ingesteld op **uit**. Deze instelling wordt weer gegeven wanneer connectiviteit is toegestaan met behulp van een openbaar service-eind punt.
 
 U kunt deze instelling ook wijzigen via het deel venster Firewall nadat de logische SQL-Server als volgt is gemaakt.
   
@@ -82,7 +82,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 > [!TIP]
 > Get-AzNetworkServiceTag retourneert het globale bereik voor SQL service-tag ondanks het opgeven van de locatie parameter. Zorg ervoor dat u deze filtert op de regio die de hub-data base host die door de synchronisatie groep wordt gebruikt
 
-Houd er rekening mee dat de uitvoer van het Power shell-script zich in CIDR-notatie (Classless Inter-Domain Routing) bevindt. Dit moet worden geconverteerd naar een indeling van het begin-en eind-IP-adres met [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) als volgt:
+Houd er rekening mee dat de uitvoer van het Power shell-script zich in CIDR-notatie (Classloos Inter-Domain Routing) bevindt. Dit moet worden geconverteerd naar een indeling van het begin-en eind-IP-adres met [Get-IPrangeStartEnd.ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) als volgt:
 
 ```powershell
 PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26

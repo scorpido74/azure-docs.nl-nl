@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742970"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service-plan
 
-In App Service (Web Apps, API Apps of Mobile Apps) wordt een app altijd uitgevoerd in een _app service plan_. Daarnaast heeft [Azure functions](../azure-functions/functions-scale.md#app-service-plan) ook de mogelijkheid om in een _app service-abonnement_te worden uitgevoerd. Een App Service-plan definieert een set rekenresources waarmee een web-app kan worden uitgevoerd. Deze reken bronnen zijn vergelijkbaar met de [_server farm_](https://wikipedia.org/wiki/Server_farm) in conventionele webhosting. Een of meer apps kunnen worden geconfigureerd om te worden uitgevoerd op dezelfde computer bronnen (of in hetzelfde App Service-abonnement).
+In App Service (Web Apps, API Apps of Mobile Apps) wordt een app altijd uitgevoerd in een _app service plan_. Daarnaast heeft [Azure functions](../azure-functions/functions-scale.md#app-service-plan) ook de mogelijkheid om in een _app service-abonnement_te worden uitgevoerd. Een App Service-plan definieert een set rekenresources waarmee een web-app kan worden uitgevoerd. Deze reken bronnen zijn vergelijkbaar met de [_server farm_](https://wikipedia.org/wiki/Server_farm) in conventionele webhosting. Een of meer apps kunnen worden geconfigureerd om te worden uitgevoerd op dezelfde rekenresources (of in hetzelfde App Service-plan).
 
 Wanneer u in een bepaalde regio een App Service plan maakt (bijvoorbeeld Europa-west), wordt er een set reken bronnen gemaakt voor dat plan in die regio. De apps die u in dit App Service plan plaatst, worden uitgevoerd op deze reken resources, zoals gedefinieerd in uw App Service plan. In elk App Service-plan wordt het volgende gedefinieerd:
 

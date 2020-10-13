@@ -11,7 +11,7 @@ ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91857806"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services documenten: wat is er nieuw voor 1 september 2020-30 september 2020
@@ -80,7 +80,7 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 september 2020 to
 - [Quickstart: De REST API's gebruiken om uw oplossing aan te passen](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
 - [Instructies: waarschuwingen configureren en meldingen ontvangen met behulp van een hook](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
 
-## <a name="text-analytics"></a>Tekstanalyse
+## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 

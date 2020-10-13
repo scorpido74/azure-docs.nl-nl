@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4792e73f6326bb9ac67ce3aabe10b8314bb826
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 053a489993c31344b96e83253c88eed93b27b145
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568200"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964822"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aanmelding zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)
 
@@ -61,7 +61,7 @@ Voer de volgende stappen uit om de verificatie methode in te scha kelen voor aan
 
 Als de verificatie methode zonder wacht woord beschikbaar is voor gebruik in azure AD, moeten gebruikers zich nu registreren voor de verificatie methode met een wacht woord, met behulp van de volgende stappen:
 
-1. Ga naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) .
+1. Blader naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo).
 1. Meld u aan en voeg de verificator-app toe door **methode toevoegen > verificator-app**te selecteren en vervolgens **toe te voegen**.
 1. Volg de instructies voor het installeren en configureren van de Microsoft Authenticator-app op het apparaat.
 1. Selecteer **gereed** om de configuratie van de verificator te volt ooien.

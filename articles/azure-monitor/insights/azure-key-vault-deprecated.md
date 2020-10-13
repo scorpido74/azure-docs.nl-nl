@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: f6d8929c8fd59836ff297f226851890892c10acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445127"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938828"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -75,7 +75,7 @@ De volgende tabel toont methoden voor gegevens verzameling en andere informatie 
 | Azure |  |  |&#8226; |  |  | bij aankomst |
 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault gebruiken
-Nadat u [de oplossing hebt geïnstalleerd](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview), bekijkt u de Key Vault gegevens door te klikken op de tegel **Key Vault-analyse** van de Azure monitor **overzichts** pagina. Open deze pagina in het menu **Azure monitor** door te klikken op **meer** onder het gedeelte **inzichten** . 
+Nadat u [de oplossing hebt geïnstalleerd](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview), bekijkt u de Key Vault gegevens door te klikken op de tegel **Key Vault-analyse** van de Azure monitor **overzichts** pagina. Open deze pagina in het menu **Azure monitor** door te klikken op **meer** onder het gedeelte **inzichten** . 
 
 ![Scherm afbeelding van de Key Vault-analyse tegel op de pagina overzicht van Azure Monitor met een grafiek van het volume van de sleutel kluis in de loop van de tijd.](media/azure-key-vault/log-analytics-keyvault-tile.png)
 

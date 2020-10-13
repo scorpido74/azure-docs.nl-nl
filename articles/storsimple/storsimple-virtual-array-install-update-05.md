@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a992e432a6111b5da02187bcf6592587c4d31bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300596"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977507"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Update 0,5 installeren op de virtuele StorSimple-matrix
 
@@ -92,26 +92,26 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
 
 1. Ga in de lokale web-UI naar **onderhouds**  >  **Software-update**.
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![apparaat 1 bijwerken](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
 2. In **pad van update bestand**voert u de bestands naam in voor de update of de hotfix. U kunt ook naar het installatie bestand van de update of hotfix bladeren als u dit op een netwerk share plaatst. Klik op **Toepassen**.
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![apparaat 2 bijwerken](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. Er wordt een waarschuwing weer gegeven. Gezien dit is een apparaat met één knoop punt, nadat de update is toegepast, het apparaat opnieuw wordt opgestart en er uitval tijd is. Klik op het vinkje.
    
-   ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![apparaat 3 bijwerken](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. De update wordt gestart. Nadat het apparaat is bijgewerkt, wordt het opnieuw opgestart. De lokale gebruikers interface is niet toegankelijk in deze duur.
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![apparaat bijwerken 4](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10290.0** zijn voor Update 0,5.
    
    > [!NOTE]
    > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10290** en de Azure Portal rapport **10.0.10290.0** voor dezelfde versie.
    
-    ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update6m.png)
+    ![apparaat 5 bijwerken](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
 6. De volgende stap is het bijwerken van de MDS-agent. Ga op de pagina **Software-update** naar het pad naar het **update bestand** en blader naar het `GenevaMonitoringAgentPackageInstaller.msi` bestand. Herhaal stap 2-4. Nadat de virtuele matrix opnieuw is opgestart, meldt u zich aan bij de lokale web-UI.
 

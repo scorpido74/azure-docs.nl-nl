@@ -11,7 +11,7 @@ ms.openlocfilehash: 888365e04566f18e5a73454fea4c96c321f5ce52
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858384"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Regio's die ondersteuning bieden voor Beschikbaarheidszones in azure
@@ -140,7 +140,7 @@ Services die beschikbaar zijn in elke regio, samen met een gepland schema voor B
 
 
 
-## <a name="other"></a>Overige
+## <a name="other"></a>Anders
 
 Azure biedt ook Beschikbaarheidszones ondersteuning in de volgende regio's: • US Gov-Virginia • Zuid-Afrika-noord • zuid-centraal VS
 
