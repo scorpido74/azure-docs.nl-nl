@@ -2,13 +2,13 @@
 title: Sjabloon functies-matrices
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon voor het werken met matrices.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: a5cf73203cf59a0b9f2b5f49c923d0a077c065fc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677845"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979135"
 ---
 # <a name="array-functions-for-arm-templates"></a>Matrix functies voor ARM-sjablonen
 
@@ -24,7 +24,7 @@ Resource Manager biedt verschillende functies voor het werken met matrices in uw
 * [duren](#last)
 * [length](#length)
 * [aantal](#max)
-* [min.](#min)
+* [Haal](#min)
 * [bereik](#range)
 * [verdergaan](#skip)
 * [take](#take)
@@ -278,12 +278,11 @@ Hiermee wordt een matrix gemaakt op basis van de para meters.
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |Teken reeks, geheel getal, matrix of object |De eerste waarde in de matrix. |
-| aanvullende argumenten |Nee |Teken reeks, geheel getal, matrix of object |Aanvullende waarden in de matrix. |
+| argumenten |Nee |Teken reeks, geheel getal, matrix of object |De waarden in de matrix. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een matrix.
+Een matrix. Als er geen para meters zijn opgegeven, wordt een lege matrix geretourneerd.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -321,6 +320,10 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
         "arrayArray": {
             "type": "array",
             "value": "[createArray(parameters('arrayToTest'))]"
+        },
+        "emptyArray": {
+            "type": "array",
+            "value": "[createArray()]"
         }
     }
 }
@@ -334,6 +337,7 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 | intArray | Matrix | [1, 2, 3] |
 | objectArray | Matrix | [{"een": "a", "twee": "b", "drie": "c"}] |
 | arrayArray | Matrix | [[' een ', ' twee ', ' drie ']] |
+| emptyArray | Matrix | [] |
 
 ## <a name="empty"></a>leeg
 

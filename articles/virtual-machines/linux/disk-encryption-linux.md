@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797612"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977762"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor virtuele Linux-machines
 
@@ -408,7 +408,7 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 - Een installatie kopie of moment opname van een versleutelde virtuele machine maken en deze gebruiken voor het implementeren van extra Vm's.
 - Kernel-crash dump (kdump).
 - Oracle-ACFS (ASM-cluster bestands systeem).
-- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
+- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - De NVMe-schijven van virtuele machines uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md)).
 - Een virtuele machine met ' geneste koppel punten '; dat wil zeggen, meerdere koppel punten in één pad (zoals "/1stmountpoint/data/2stmountpoint").
 - Een virtuele machine met een gegevens station die boven op een map van het besturings systeem is geplaatst.

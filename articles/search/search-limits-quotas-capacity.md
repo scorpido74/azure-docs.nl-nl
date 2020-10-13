@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843427"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949847"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Servicelimieten in Azure Cognitive Search
 
@@ -104,7 +104,7 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 ### <a name="shared-private-link-resource-limits"></a>Resource limieten voor gedeelde persoonlijke koppelingen
 
 > [!NOTE]
-> Indexeer functies kunnen veilig toegang krijgen tot bronnen via privé-eind punten die worden beheerd via de resource-API van de [gedeelde persoonlijke koppeling](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) zoals beschreven in [deze hand leiding](search-indexer-howto-access-private.md)
+> Indexeer functies kunnen veilig toegang krijgen tot bronnen via privé-eind punten die worden beheerd via de resource-API van de [gedeelde persoonlijke koppeling](/rest/api/searchmanagement/sharedprivatelinkresources) zoals beschreven in [deze hand leiding](search-indexer-howto-access-private.md)
 
 | Resource | Gratis | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

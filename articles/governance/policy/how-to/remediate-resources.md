@@ -1,14 +1,14 @@
 ---
 title: Niet-compatibele resources herstellen
 description: Deze hand leiding helpt u bij het herstellen van resources die niet compatibel zijn met beleids regels in Azure Policy.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269842"
+ms.locfileid: "91876325"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Niet-compatibele resources herstellen met Azure Policy
 
@@ -17,7 +17,7 @@ Resources die niet compatibel zijn met een **deployIfNotExists** -of **Modify** 
 ## <a name="how-remediation-security-works"></a>Hoe herstel beveiliging werkt
 
 Als Azure Policy de sjabloon uitvoert in de **deployIfNotExists** -beleids definitie, wordt een [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md)gebruikt.
-Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet informatie over de rollen hebben om de beheerde identiteit te verlenen. Als de beheerde identiteit ontbrekende rollen heeft, wordt deze fout weer gegeven tijdens het toewijzen van het beleid of een initiatief. Wanneer u de portal gebruikt, wordt de beheerde identiteit door Azure Policy automatisch verleend aan de vermelde rollen zodra de toewijzing is gestart. Wanneer u SDK gebruikt, moeten de rollen hand matig worden verleend aan de beheerde identiteit. De _locatie_ van de beheerde identiteit heeft geen invloed op de werking van Azure Policy.
+Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet informatie over de rollen hebben om de beheerde identiteit te verlenen. Als de beheerde identiteit geen rollen bevat, wordt er een fout bericht weer gegeven tijdens de toewijzing van het beleid of een initiatief. Wanneer u de portal gebruikt, wordt de beheerde identiteit door Azure Policy automatisch verleend aan de vermelde rollen zodra de toewijzing is gestart. Wanneer u SDK gebruikt, moeten de rollen hand matig worden verleend aan de beheerde identiteit. De _locatie_ van de beheerde identiteit heeft geen invloed op de werking van Azure Policy.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Scherm opname van een deployIfNotExists-beleid waarvoor een gedefinieerde machtiging voor de beheerde identiteit ontbreekt." border="false":::
 

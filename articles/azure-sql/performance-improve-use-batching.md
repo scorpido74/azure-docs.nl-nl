@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91840486"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Batch verwerking gebruiken om de prestaties van Azure SQL Database en Azure SQL Managed instance-toepassingen te verbeteren
@@ -99,7 +99,7 @@ In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezel
 
 **On-premises naar Azure**:
 
-| Bewerkingen | Geen trans actie (MS) | Trans actie (MS) |
+| Operations | Geen trans actie (MS) | Trans actie (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -108,7 +108,7 @@ In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezel
 
 **Azure naar Azure (hetzelfde Data Center)**:
 
-| Bewerkingen | Geen trans actie (MS) | Trans actie (MS) |
+| Operations | Geen trans actie (MS) | Trans actie (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -195,7 +195,7 @@ In de meeste gevallen hebben para meters met een tabel waarde dezelfde of betere
 
 In de volgende tabel ziet u de resultaten van ad hoc tests voor het gebruik van para meters met tabel waarden in milliseconden.
 
-| Bewerkingen | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ Er zijn enkele gevallen waarin bulksgewijs kopiëren de voor keur geeft aan de p
 
 De volgende ad hoc test resultaten tonen de prestaties van batching met **SqlBulkCopy** in milliseconden.
 
-| Bewerkingen | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Dit voor beeld is bedoeld om het basis concept weer te geven. In een realistisch
 
 De volgende resultaten van ad hoc tests geven de prestaties van dit type instructie INSERT in milliseconden weer.
 
-| Bewerkingen | Tabelwaardeparameter (MS) | INSERT met één instructie (MS) |
+| Operations | Tabelwaardeparameter (MS) | INSERT met één instructie (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |

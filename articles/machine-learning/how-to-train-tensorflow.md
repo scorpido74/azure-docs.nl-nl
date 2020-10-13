@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 21a0672db5a7038fbcdeb01e4cf07bcd760cf7ef
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742992"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Tensor flow-modellen op schaal trainen met Azure Machine Learning
@@ -193,7 +193,7 @@ Zie [software omgevingen maken en gebruiken in azure machine learning](how-to-us
 
 ### <a name="create-a-scriptrunconfig"></a>Een ScriptRunConfig maken
 
-Maak een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) -object om de configuratie gegevens van uw trainings taak op te geven, met inbegrip van het trainings script, de omgeving die u wilt gebruiken en het reken doel om uit te voeren. Eventuele argumenten voor uw trainings script worden door gegeven via de opdracht regel indien opgegeven in de `arguments` para meter.
+Maak een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)-object om de configuratiegegevens van uw trainingstaak op te geven, inclusief het trainingsscript, de omgeving die u wilt gebruiken en het rekendoel om uit te voeren. Eventuele argumenten voor uw trainings script worden door gegeven via de opdracht regel indien opgegeven in de `arguments` para meter.
 
 ```python
 from azureml.core import ScriptRunConfig

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653593"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978234"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-werkbelastingconfiguraties met Azure-beschikbaarheidszones
 [Azure-beschikbaarheidszones](../../../availability-zones/az-overview.md) is een van de functies voor hoge Beschik baarheid die Azure biedt. Met Beschikbaarheidszones verbetert u de algehele Beschik baarheid van SAP-workloads op Azure. Deze functie is al beschikbaar in sommige [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In de toekomst is het beschikbaar in meer regio's.
@@ -30,7 +30,7 @@ In deze afbeelding wordt de basis architectuur van SAP-hoge Beschik baarheid wee
 
 ![Standaard configuratie voor hoge Beschik baarheid](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-De SAP-toepassingslaag wordt geïmplementeerd in één Azure- [beschikbaarheidsset](../../windows/manage-availability.md). Voor een hoge Beschik baarheid van SAP Central-Services kunt u twee Vm's implementeren in een afzonderlijke beschikbaarheidsset. Gebruik Windows Server failover clustering of pacemaker (Linux) als een Framework met hoge Beschik baarheid met automatische failover in het geval van een infra structuur of software probleem. Zie voor meer informatie over deze implementaties:
+De SAP-toepassingslaag wordt geïmplementeerd in één Azure- [beschikbaarheidsset](../../manage-availability.md). Voor een hoge Beschik baarheid van SAP Central-Services kunt u twee Vm's implementeren in een afzonderlijke beschikbaarheidsset. Gebruik Windows Server failover clustering of pacemaker (Linux) als een Framework met hoge Beschik baarheid met automatische failover in het geval van een infra structuur of software probleem. Zie voor meer informatie over deze implementaties:
 
 - [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share](./sap-high-availability-guide-wsfc-file-share.md)

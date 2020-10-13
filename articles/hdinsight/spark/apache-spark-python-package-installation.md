@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823412"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978068"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -81,7 +81,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
     - Of gebruik PyPi opslag plaats, Wijzig `seaborn` en `py35new` dienovereenkomstig:
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     Gebruik de onderstaande opdracht als u een bibliotheek met een specifieke versie wilt installeren:
@@ -98,7 +98,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
     - Of gebruik PyPi opslag plaats, Wijzig `numpy==1.16.1` en `py35new` dienovereenkomstig:
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     Als u de naam van de virtuele omgeving niet weet, kunt u SSHen naar het hoofd knooppunt van het cluster en uitvoeren `/usr/bin/anaconda/bin/conda info -e` om alle virtuele omgevingen weer te geven.

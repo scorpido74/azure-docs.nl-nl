@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375874"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976436"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Een aanbieding bekijken en publiceren naar de commerciële Marketplace
 
@@ -170,6 +170,84 @@ Nu u ervoor hebt gekozen om live te gaan met uw aanbieding, waardoor deze beschi
     We zorgen ervoor dat uw aanbieding openbaar beschikbaar wordt op Marketplace.
 
 Nadat deze validatie controles zijn voltooid, is uw aanbieding Live in de Marketplace.
+
+## <a name="publishing-history"></a>Publicatie geschiedenis
+
+De **geschiedenis** pagina in partner centrum toont de publicatie gebeurtenissen voor uw commerciële Marketplace-aanbiedingen. Voor elke gebeurtenis wordt op de pagina de gebruiker weer gegeven die de actie heeft gestart, het type gebeurtenis en de datum en tijd van de gebeurtenis. De [validatie-en publicatie stappen](#validation-and-publishing-steps) worden weer gegeven met de datum en tijd van voltooiing.
+
+De geschiedenis van uw aanbieding bekijken:
+
+1.    Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+2.    Selecteer in het navigatie menu aan de linkerkant de optie **commerciële Marketplace**-  >  **overzicht**.
+3.    Selecteer uw aanbieding.
+4.    Selecteer het tabblad **geschiedenis** in het navigatie menu aan de linkerkant. Op de pagina vindt u informatie over de volgende gebeurtenissen, zoals van toepassing op uw aanbieding:
+
+|Gebeurtenis    |Beschrijving    |
+|---------|---------------|
+|Aanbieding gemaakt    |De aanbieding is gemaakt in het partner centrum. Een gebruiker heeft het aanbiedings type, aanbiedings-id en aanbiedings alias geselecteerd in **commercieel Marketplace**-  >  **overzicht**.    |
+|Gemaakt plan: *naam van abonnement*    |Een gebruiker heeft een nieuw plan gemaakt door de plan-ID en plan naam op te geven op het tabblad Overzicht van het **plan** .</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
+|Verwijderd plan    |Een gebruiker heeft een concept abonnement verwijderd dat niet is gepubliceerd door **concept verwijderen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
+|Gestart plan stoppen verkoop: *plan naam*    |Een gebruiker heeft een plan voor stoppen en verkopen gestart door **stoppen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
+|Plan voor ongedaan maken stoppen verkoop: *plan naam*    |Een gebruiker heeft een plan voor stoppen en verkopen geannuleerd door de optie **ongedaan maken stoppen** te selecteren op de **overzichts** pagina van het abonnement.</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die ondersteuning bieden voor abonnementen*.    |
+|Aangeboden aanbieding voor preview    |Een gebruiker heeft de aanbieding aangeboden als preview door **publiceren** te selecteren op de pagina **controleren en publiceren** .    |
+|Verzenden geïnitieerd om de preview-versie te annuleren    |Een gebruiker heeft gevraagd de aanbiedings publicatie te annuleren als preview door te klikken op **Publiceren annuleren** op de **overzichts** pagina van de aanbieding na de verzen ding naar de preview-versie.</br>*Deze gebeurtenis wordt weer gegeven als de annulerings aanvraag wordt verwerkt*.    |
+|De verzen ding is geannuleerd voor de preview-versie    |Een gebruiker heeft de aanbiedings publicatie geannuleerd als voor beeld door de selectie van de pagina **aanbieding** **Annuleren** te selecteren na de verzen ding naar de preview-versie.</br>*Deze gebeurtenis wordt weer gegeven nadat de annulerings aanvraag is verwerkt*.    |
+|Meld u aan om live te gaan    |Een gebruiker heeft de aanbieding op commerciële Marketplace gepubliceerd door **Live go** te selecteren op de **overzichts** pagina van de aanbieding.    |
+|Publicatie van publiceren op Marketplace is geïnitieerd    |Een gebruiker heeft de aanbiedings publicatie geannuleerd door na de afmelding **Annuleren** te selecteren op de pagina **overzicht van aanbieding** .</br>*Deze gebeurtenis wordt weer gegeven als de annulerings aanvraag wordt verwerkt*.    |
+|Het publiceren naar de commerciële Marketplace is geannuleerd    |Een gebruiker heeft de aanbiedings publicatie geannuleerd door na de afmelding **Annuleren** te selecteren op de pagina **overzicht van aanbieding** .</br>*Deze gebeurtenis wordt weer gegeven nadat de annulerings aanvraag is verwerkt*.    |
+|Persoonlijke doel groep synchroniseren    |Een gebruiker heeft de persoonlijke doel groep bijgewerkt en gesynchroniseerd door **persoonlijke doel groep** te selecteren op de pagina overzicht van het **abonnement** of de pagina **prijs & Beschik baarheid plannen** .</br>*Deze gebeurtenis geldt alleen voor aanbiedings typen die persoonlijke plannen ondersteunen*.    |
+|Verkoop aanbieding stoppen    |Een gebruiker heeft de aanbieding niet meer verkocht door te klikken op **verkopen stoppen** op de **overzichts** pagina van de aanbieding.    |
+
+> [!NOTE]
+> De pagina geschiedenis geeft geen melding wanneer een concept van een aanbieding is opgeslagen.
+
+### <a name="filter-options"></a>Filteropties
+
+U kunt filters gebruiken om de volledige geschiedenis van uw aanbieding te verfijnen tot specifieke publicatie gebeurtenissen:
+
+1.    Selecteer de filter knop in de rechter bovenhoek van de pagina.
+2.    Kies een filter en selecteer vervolgens **Toep assen** om te zien welke geschiedenis gebeurtenissen overeenkomen met de criteria die u hebt geselecteerd.
+3.    Selecteer **filters wissen** om terug te keren naar de volledige geschiedenis van uw aanbieding.
+
+Er zijn vier filters:
+* Gebeurtenissen
+* Gebruikers
+* Date
+* Pages
+
+Wanneer u het filter **Pages** kiest, kunt u een van de partner centrum-pagina's selecteren die van toepassing zijn op uw aanbiedings type. Wanneer u **dit toepast,** worden in het filter alle **ingediende aanbiedingen** weer gegeven met wijzigingen aan de pagina die u hebt geselecteerd.
+
+* Voor alle aanbiedingen is de pagina **aanbieding instellen** standaard opgenomen voor elke indienings gebeurtenis.
+* Voor aanbiedingen die ondersteuning bieden voor abonnementen, wordt de **overzichts** pagina van het abonnement opgenomen voor elke indienings gebeurtenis.
+* Voor aanbiedingen die test drive ondersteunen, wordt de pagina **test drive** opgenomen voor elke indienings gebeurtenis.
+
+### <a name="users"></a>Gebruikers
+
+Als een gebeurtenis is geïnitieerd door een gebruiker, toont de pagina geschiedenis de gebruiker aan de hand van de volgende scenario's:
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>De gebeurtenis is geïnitieerd door de uitgever
+
+Voor gebruikers met publicatie machtigingen voor een aanbieding wordt de naam weer gegeven voor de publicatie gebeurtenissen die ze initiëren.
+
+[![Op de pagina geschiedenis wordt de naam weer gegeven van gebruikers met publicatie machtigingen.](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>De gebeurtenis is geïnitieerd door micro soft
+
+U kunt micro soft-beheerders machtigingen geven om namens u acties te initiëren of om corrigerende maat regelen te nemen na een onverwachte systeem fout. De micro soft-naam en het logo worden weer gegeven voor het publiceren van gebeurtenissen die door micro soft zijn geïnitieerd namens uw account.
+
+[![Voor beeld van hoe de geschiedenis pagina gebeurtenissen weergeeft die door micro soft zijn geïnitieerd.](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>De gebeurtenis is geïnitieerd door een niet-geïdentificeerde gebruiker
+
+Gebruikers die niet meer aan een account zijn gekoppeld, krijgen hun naam uit de kolom **gestart door te** verwijderen nadat hun publicatie machtigingen zijn ingetrokken.
+
+[![Voor beeld van hoe de geschiedenis pagina gebeurtenissen weergeeft die worden geïnitieerd door onbekende gebruikers.](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>Validatie-en publicatie stappen
+
+Er wordt geen gebruiker weer gegeven voor systeem processen die overeenkomen met de [stappen voor validatie en publiceren](#validation-and-publishing-steps). Deze gebeurtenissen worden gekleurd op basis van de voltooiings status van de gebeurtenis.
+
+[![Voor beeld van hoe de geschiedenis pagina validatie-en publicatie stappen weergeeft.](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

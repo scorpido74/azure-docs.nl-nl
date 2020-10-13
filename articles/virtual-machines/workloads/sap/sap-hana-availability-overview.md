@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 691b7c2890d29d390abbe8151fe66dbd99c5bc60
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653542"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978183"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA hoge Beschik baarheid voor virtuele machines van Azure
 
@@ -52,7 +52,7 @@ Het is ook een goed idee om vertrouwd te raken met deze artikelen over SAP HANA:
 - [Automatisch opnieuw starten van SAP HANA-service](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA systeem replicatie configureren](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Naast het implementeren van Vm's in azure, wordt u aangeraden [de beschik baarheid van virtuele Windows-machines in azure te beheren](../../windows/manage-availability.md)voordat u uw beschikbaarheids architectuur in azure definieert.
+Naast het implementeren van Vm's in azure, wordt u aangeraden [de beschik baarheid van virtuele Windows-machines in azure te beheren](../../manage-availability.md)voordat u uw beschikbaarheids architectuur in azure definieert.
 
 ## <a name="service-level-agreements-for-azure-components"></a>Service overeenkomst voor Azure-onderdelen
 
@@ -85,4 +85,3 @@ Meet uw beschikbaarheids vereisten met betrekking tot de Sla's die Azure-onderde
 
 
 
-  

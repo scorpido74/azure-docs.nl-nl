@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.date: 08/4/2020
 ms.custom: avverma
-ms.openlocfilehash: c57025346a9f623e3fe5536b36820ea62f355cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6ee4179dce905d637e933743ade7452a2484077
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344641"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978557"
 ---
 # <a name="put-calls-for-creation-or-updates-on-compute-resources"></a>Aanroepen voor het maken of bijwerken van reken bronnen
 
@@ -66,5 +66,4 @@ Dit is belang rijk wanneer u update bewerkingen naar een resource verzendt met d
 `
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het maken of bijwerken van aanroepen voor [virtual machines](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) en [Virtual Machine Scale sets](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)
-
+Meer informatie over het maken of bijwerken van aanroepen voor [virtual machines](/rest/api/compute/virtualmachines/createorupdate) en [Virtual Machine Scale sets](/rest/api/compute/virtualmachinescalesets/createorupdate)

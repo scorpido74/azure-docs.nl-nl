@@ -8,16 +8,16 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fbffaa7bc68bb32bd07b657f4b769e5af4302bf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320469"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950021"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Beveiligde toegang tot gegevens in opslag accounts via een vertrouwde service-uitzonde ring
 
-Indexeer functies die toegang hebben tot gegevens in opslag accounts, kunnen gebruikmaken van de mogelijkheid van een [vertrouwde service-uitzonde ring](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) om veilig toegang te krijgen tot gegevens. Dit mechanisme biedt klanten die geen toegang tot de [Indexeer functie kunnen verlenen via IP-firewall regels](search-indexer-howto-access-ip-restricted.md) , een eenvoudig, veilig en gratis alternatief voor toegang tot gegevens in opslag accounts.
+Indexeer functies die toegang hebben tot gegevens in opslag accounts, kunnen gebruikmaken van de mogelijkheid van een [vertrouwde service-uitzonde ring](../storage/common/storage-network-security.md#exceptions) om veilig toegang te krijgen tot gegevens. Dit mechanisme biedt klanten die geen toegang tot de [Indexeer functie kunnen verlenen via IP-firewall regels](search-indexer-howto-access-ip-restricted.md) , een eenvoudig, veilig en gratis alternatief voor toegang tot gegevens in opslag accounts.
 
 > [!NOTE]
 > Ondersteuning voor het openen van gegevens in opslag accounts via een vertrouwde service-uitzonde ring is beperkt tot Azure Blob-opslag en Azure Data Lake Gen2-opslag. Azure-tabel opslag wordt niet ondersteund.

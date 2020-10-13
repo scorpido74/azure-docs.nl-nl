@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869266"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978625"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -152,7 +152,7 @@ az vm create \
 
 Wanneer de virtuele machine is gemaakt, toont de Azure CLI informatie die specifiek is voor uw implementatie. Noteer het `publicIpAddress`. Dit adres wordt gebruikt voor toegang tot de virtuele machine.  Het duurt enige tijd voordat de virtuele machine is gemaakt, de pakketten die moeten worden geïnstalleerd en de app worden gestart. Er zijn achtergrondtaken die nog worden uitgevoerd nadat u door de Azure CLI bent teruggeleid naar de prompt. U kunt een SSH-verbinding met de virtuele machine uitvoeren en de stappen volgen die worden beschreven in de sectie probleem oplossing om de Cloud-init-logboeken te bekijken. 
 
-U kunt ook een virtuele machine die is ingeschakeld voor Cloud initialisatie implementeren door de [para meters in arm-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)door te geven.
+U kunt ook een virtuele machine die is ingeschakeld voor Cloud initialisatie implementeren door de [para meters in arm-sjabloon](../../azure-resource-manager/templates/deploy-cli.md#inline-parameters)door te geven.
 
 ## <a name="troubleshooting-cloud-init"></a>Problemen met Cloud-init oplossen
 Zodra de VM is ingericht, wordt de Cloud-init uitgevoerd via alle modules en het script dat is gedefinieerd in om `--custom-data` de virtuele machine te configureren.  Als u fouten of omissies van de configuratie moet oplossen, moet u zoeken naar de module naam ( `disk_setup` of `runcmd` bijvoorbeeld) in het Cloud-init-logboek dat zich bevindt in **/var/log/Cloud-init.log**.
@@ -173,4 +173,3 @@ Raadpleeg de volgende documenten voor voor beelden van configuratie wijzigingen 
 - [Een pakket beheer programma uitvoeren om bestaande pakketten bij de eerste keer opstarten bij te werken](cloudinit-update-vm.md)
 - [Lokale hostnaam van VM wijzigen](cloudinit-update-vm-hostname.md) 
 - [Een toepassings pakket installeren, configuratie bestanden bijwerken en sleutels invoeren](tutorial-automate-vm-deployment.md)
- 

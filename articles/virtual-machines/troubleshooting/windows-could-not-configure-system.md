@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90078803"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977045"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Windows-probleemoplossing kon de configuratie van het systeem niet voltooien
 
@@ -28,7 +28,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij het Sysprep-pr
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname een Windows-fout tijdens de installatie wordt weer gegeven tijdens het starten van de service. Met de fout wordt het volgende bericht weer gegeven:
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname een Windows-fout tijdens de installatie wordt weer gegeven tijdens het starten van de service. Met de fout wordt het volgende bericht weer gegeven:
 
 `Windows could not finish configuring the system. To attempt to resume configuration, restart the computer. Setup is starting services`
 
@@ -36,8 +36,8 @@ Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azu
 
 ## <a name="cause"></a>Oorzaak
 
-Deze fout wordt veroorzaakt wanneer het [Sysprep-proces](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-process-overview)niet kan worden voltooid door het besturings systeem. Deze fout treedt op wanneer u een gegeneraliseerde VM het eerst probeert op te starten. Als u dit probleem ondervindt, moet u de algemene installatie kopie opnieuw maken, omdat de installatie kopie een niet-Implementeer bare status heeft en niet kan worden hersteld.
+Deze fout wordt veroorzaakt wanneer het [Sysprep-proces](/windows-hardware/manufacture/desktop/sysprep-process-overview)niet kan worden voltooid door het besturings systeem. Deze fout treedt op wanneer u een gegeneraliseerde VM het eerst probeert op te starten. Als u dit probleem ondervindt, moet u de algemene installatie kopie opnieuw maken, omdat de installatie kopie een niet-Implementeer bare status heeft en niet kan worden hersteld.
 
 ## <a name="solution"></a>Oplossing
 
-U kunt dit probleem oplossen door de [Azure-richt lijnen voor het voorbereiden/vastleggen van een installatie kopie](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) te volgen en een nieuwe gegeneraliseerde installatie kopie voor te bereiden.
+U kunt dit probleem oplossen door de [Azure-richt lijnen voor het voorbereiden/vastleggen van een installatie kopie](../windows/upload-generalized-managed.md) te volgen en een nieuwe gegeneraliseerde installatie kopie voor te bereiden.

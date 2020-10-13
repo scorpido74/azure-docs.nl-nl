@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508862"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965757"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Meer informatie over het opnieuw opstarten van het systeem voor Azure VM
 
@@ -30,7 +30,7 @@ De beste manier om een toepassing die wordt uitgevoerd op Azure te beveiligen te
 
 U wordt aangeraden twee of meer virtuele machines in een beschikbaarheidsset te groeperen om dit niveau van redundantie voor uw toepassing te bieden. Deze configuratie zorgt ervoor dat tijdens een geplande of ongeplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan het 99,95 procent van [Azure Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
 
-Zie [de beschik baarheid van virtuele machines beheren](../windows/manage-availability.md) voor meer informatie over beschikbaarheids sets.
+Zie [de beschik baarheid van virtuele machines beheren](../manage-availability.md) voor meer informatie over beschikbaarheids sets.
 
 ## <a name="resource-health-information"></a>Resource Health informatie
 
@@ -72,7 +72,7 @@ Andere scenario's die doorgaans ertoe leiden dat de virtuele machine opnieuw wor
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center en Windows Update
 
-Azure Security Center bewaakt dagelijks Windows-en Linux-Vm's voor ontbrekende updates van het besturings systeem. Security Center haalt een lijst met beschik bare beveiligings-en essentiële updates op van Windows Update of Windows Server Update Services (WSUS), afhankelijk van welke service is geconfigureerd op een Windows-VM. Security Center controleert ook op de nieuwste updates voor Linux-systemen. Als op uw virtuele machine een systeem update ontbreekt, wordt Security Center aanbevolen om systeem updates toe te passen. De toepassing van deze systeem updates wordt beheerd via de Security Center in de Azure Portal. Nadat u een aantal updates hebt toegepast, is het mogelijk dat het opnieuw opstarten van de VM vereist is. Zie [systeem updates Toep assen in azure Security Center](../../security-center/security-center-virtual-machine-protection.md)voor meer informatie.
+Azure Security Center bewaakt dagelijks Windows-en Linux-Vm's voor ontbrekende updates van het besturings systeem. Security Center haalt een lijst met beschik bare beveiligings-en essentiële updates op van Windows Update of Windows Server Update Services (WSUS), afhankelijk van welke service is geconfigureerd op een Windows-VM. Security Center controleert ook op de nieuwste updates voor Linux-systemen. Als op uw virtuele machine een systeem update ontbreekt, wordt Security Center aanbevolen om systeem updates toe te passen. De toepassing van deze systeem updates wordt beheerd via de Security Center in de Azure Portal. Nadat u een aantal updates hebt toegepast, is het mogelijk dat het opnieuw opstarten van de VM vereist is. Zie [systeem updates Toep assen in azure Security Center](../../security-center/asset-inventory.md)voor meer informatie.
 
 Net als bij on-premises servers pusht Azure geen updates van Windows Update naar Windows-Vm's, omdat deze machines zijn bedoeld om te worden beheerd door hun gebruikers. U wordt echter aangemoedigd om de instelling automatische Windows Update ingeschakeld te laten. Automatische installatie van updates van Windows Update kan er ook voor zorgen dat de computer opnieuw wordt opgestart nadat de updates zijn toegepast. Zie [Windows Update Veelgestelde vragen](https://support.microsoft.com/help/12373/windows-update-faq)voor meer informatie.
 

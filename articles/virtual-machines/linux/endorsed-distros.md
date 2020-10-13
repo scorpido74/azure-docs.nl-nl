@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893404"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978931"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
 
@@ -39,7 +39,7 @@ De Azure Linux-agent is al vooraf geïnstalleerd op Azure Marketplace-installati
 | Debian door credativ |8.x, 9.x |In kernel |Pakket: in opslag plaats onder waagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 |Flatcar container Linux door Kinvolk| Pro, stabiel, bèta| In kernel | WA-Linux-agent is al geïnstalleerd in/usr/share/OEM/bin/waagent |
 | Oracle Linux door Oracle |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat Enterprise Linux door Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat Enterprise Linux door Red Hat](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enter prise door SUSE |SLES/SLES voor SAP 11. x, 12. x, 15. x <br/> [Levenscyclus van de open bare Cloud installatie kopie van SUSE](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |In kernel |Pakket<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE door SUSE |openSUSE Leap 15.x |In kernel |Pakket: in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats onder ' python-Azure-agent ' <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu op canonieke |Ubuntu Server en Pro. 16. x, 18. x, 20. x<p>Informatie over uitgebreide ondersteuning voor Ubuntu 12,04 en 14,04 vindt u hier: [Ubuntu Extended Security Maintenance](https://www.ubuntu.com/esm). |In kernel |Pakket: in opslag plaats onder walinuxagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |

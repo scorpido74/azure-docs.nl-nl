@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1b3e12bcf744ad0d762f686a908a01239fc4323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87428117"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949238"
 ---
 # <a name="localization-string-ids"></a>Id's van lokalisatiereeksen
 
@@ -25,7 +25,7 @@ Het **lokalisatie** -element biedt ondersteuning voor meerdere land instellingen
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Registratie-of aanmeldings pagina-elementen
 
-De volgende Id's worden gebruikt voor een inhouds definitie met de ID `api.signuporsignin` .
+De volgende Id's worden gebruikt voor een inhouds definitie met een ID van `api.signuporsignin` en een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md).
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -93,7 +93,7 @@ In het volgende voor beeld wordt de Facebook-ID-provider naar Arabisch gelokalis
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Gebruikers interface-elementen voor het registreren en zelf bevestigingen van pagina's
 
-Hier volgen de Id's voor een inhouds definitie met een ID van `api.localaccountsignup` of een inhouds definitie die begint met `api.selfasserted` , zoals `api.selfasserted.profileupdate` en `api.localaccountpasswordreset` .
+Hieronder ziet u de Id's voor een inhouds definitie met een ID van `api.localaccountsignup` of een inhouds definitie die begint met `api.selfasserted` , zoals `api.selfasserted.profileupdate` en `api.localaccountpasswordreset` , en een [zelfondertekend technisch profiel](self-asserted-technical-profile.md).
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -155,7 +155,7 @@ In het volgende voor beeld ziet u het gebruik van enkele van de elementen van de
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>Gebruikers interface-elementen van de pagina telefoon Factor Authentication
 
-Hier volgen de Id's voor een inhouds definitie met de ID van `api.phonefactor` .
+Hier volgen de Id's voor een inhouds definitie met de ID en het `api.phonefactor` [technische profiel van de telefoon factor](phone-factor-technical-profile.md).
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -197,11 +197,11 @@ Hier volgen de Id's voor een inhouds definitie met de ID van `api.phonefactor` .
 
 In het volgende voor beeld ziet u het gebruik van een aantal van de elementen van de gebruikers interface op de pagina MFA-inschrijving:
 
-![Aanmeldings pagina e-mail verificatie UX-elementen](./media/localization-string-ids/localization-mfa1.png)
+![UX-elementen voor inschrijving van telefoon factor authenticatie](./media/localization-string-ids/localization-mfa1.png)
 
 In het volgende voor beeld ziet u het gebruik van enkele van de elementen van de gebruikers interface op de pagina MFA-validatie:
 
-![Aanmeldings pagina e-mail verificatie UX-elementen](./media/localization-string-ids/localization-mfa2.png)
+![UX-elementen voor validatie van telefoon factor authenticatie](./media/localization-string-ids/localization-mfa2.png)
 
 ## <a name="verification-display-control-user-interface-elements"></a>Gebruikers interface-elementen voor controle weergave
 

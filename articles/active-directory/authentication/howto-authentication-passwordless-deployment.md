@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527000"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964873"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een authenticatie-implementatie met een wacht woord plannen in Azure Active Directory
 
@@ -100,7 +100,7 @@ De volgende tabel bevat een overzicht van de use cases die tijdens dit project m
 | **Beheer** | De levens cyclus van gebruikers toewijzingen aan de juiste verificatie methode en de bijbehorende groepen wordt gedefinieerd en bewaakt. |
 | **Beveiliging** | Toegang tot de juiste verificatie methode wordt geregeld via gebruikers-en groeps toewijzingen. <br> Alleen geautoriseerde gebruikers kunnen aanmelden zonder wacht woord gebruiken. |
 | **Prestaties** | De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. <br> Aanmeldings tijden worden gemeten voor gebruiks gemak. |
-| **Gebruikerservaring** | Gebruikers zijn op de hoogte van Mobile-compatibiliteit. <br> Gebruikers kunnen het aanmeldings wachtwoord voor de verificator-app configureren. |
+| **Gebruikers ervaring** | Gebruikers zijn op de hoogte van Mobile-compatibiliteit. <br> Gebruikers kunnen het aanmeldings wachtwoord voor de verificator-app configureren. |
 | **Ondersteuning** | Gebruikers weten hoe ze ondersteuning kunnen vinden voor aanmeld problemen met een wacht woord. |
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen

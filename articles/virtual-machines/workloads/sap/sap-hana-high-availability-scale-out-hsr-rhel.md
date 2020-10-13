@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
-ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744786"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978102"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA scale-out systeem op Red Hat Enterprise Linux 
 
@@ -100,7 +100,7 @@ In de weer gegeven configuratie ziet u drie HANA-knoop punten op elke site, plus
 Het HANA gedeelde bestands systeem `/hana/shared` in de weer gegeven architectuur wordt geleverd door [Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-introduction.md). Het wordt gekoppeld via NFSv 4.1 op elk HANA-knoop punt in dezelfde HANA-systeem replicatie site. Bestands systemen `/hana/data` en `/hana/log` zijn lokale bestands systemen en worden niet gedeeld tussen de Hana DB-knoop punten. SAP HANA wordt geïnstalleerd in niet-gedeelde modus. 
 
 > [!TIP]
-> Zie [SAP Hana Azure vm's Storage-configuraties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)voor aanbevolen SAP Hana Storage-configuraties.   
+> Zie [SAP Hana Azure vm's Storage-configuraties](./hana-vm-operations-storage.md)voor aanbevolen SAP Hana Storage-configuraties.   
 
 [![SAP HANA scale-out met HSR-en pacemaker-cluster](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel.png)](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel-detail.png#lightbox)
 
@@ -128,7 +128,7 @@ Voor de configuratie die in dit document wordt weer gegeven, implementeert u zev
   
    Voor het hoofd knooppunt van de Maker kunt u een kleine virtuele machine implementeren, omdat deze VM geen van de SAP HANA resources uitvoert. De meerderheid van de VM van de Maker wordt gebruikt in de cluster configuratie om een oneven aantal cluster knooppunten te krijgen in een split-hersenen scenario. De meerderheid van de VM van de hoofd Maker heeft alleen één virtuele netwerk interface in het `client` subnet in dit voor beeld nodig.        
 
-   Implementeer lokale beheerde schijven voor `/hana/data` en `/hana/log` . De mini maal Aanbevolen opslag configuratie voor `/hana/data` en `/hana/log` wordt beschreven in [SAP Hana Azure vm's Storage-configuraties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+   Implementeer lokale beheerde schijven voor `/hana/data` en `/hana/log` . De mini maal Aanbevolen opslag configuratie voor `/hana/data` en `/hana/log` wordt beschreven in [SAP Hana Azure vm's Storage-configuraties](./hana-vm-operations-storage.md).
 
    Implementeer de primaire netwerk interface voor elke virtuele machine in het subnet van het `client` virtuele netwerk.  
    Wanneer de virtuele machine wordt geïmplementeerd via Azure Portal, wordt de naam van de netwerk interface automatisch gegenereerd. In deze instructies voor de eenvoud verwijzen we naar de automatisch gegenereerde primaire netwerk interfaces, die zijn gekoppeld aan het `client` subnet van het virtuele netwerk van Azure als **Hana-S1-db1-client**, **Hana-S1-DB2-client**, **Hana-S1-db3-client**, enzovoort.  
@@ -229,7 +229,7 @@ Voor de configuratie die in dit document wordt weer gegeven, implementeert u zev
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>De Azure NetApp Files-infra structuur implementeren 
 
-Implementeer de ANF-volumes voor het `/hana/shared` Bestands systeem. U hebt `/hana/shared` voor elke Hana-systeem replicatie site een afzonderlijk volume nodig. Zie [de Azure NetApp files-infra structuur instellen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel#set-up-the-azure-netapp-files-infrastructure)voor meer informatie.
+Implementeer de ANF-volumes voor het `/hana/shared` Bestands systeem. U hebt `/hana/shared` voor elke Hana-systeem replicatie site een afzonderlijk volume nodig. Zie [de Azure NetApp files-infra structuur instellen](./sap-hana-scale-out-standby-netapp-files-rhel.md#set-up-the-azure-netapp-files-infrastructure)voor meer informatie.
 
 In dit voor beeld zijn de volgende Azure NetApp Files volumes gebruikt: 
 
@@ -1160,7 +1160,7 @@ Neem alle virtuele machines op, met inbegrip van de hoofd Maker in het cluster.
       ```
 
 
-We raden u aan om de SAP HANA-cluster configuratie grondig te testen door ook de tests uit te voeren, zoals beschreven in [ha voor SAP Hana op Azure-vm's op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup).
+We raden u aan om de SAP HANA-cluster configuratie grondig te testen door ook de tests uit te voeren, zoals beschreven in [ha voor SAP Hana op Azure-vm's op RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup).
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -4,12 +4,12 @@ description: Opslagplaats referenties configureren voor het downloaden van insta
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a3fb39693bf6143d4033eed437f65b7e63eabb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421421"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978676"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Opslagplaats referenties voor uw toepassing configureren om container installatie kopieën te downloaden
 
@@ -96,6 +96,9 @@ Service Fabric ondersteunt het gebruik van tokens als referenties voor het downl
 1. Zorg ervoor dat door het *systeem toegewezen beheerde identiteit* is ingeschakeld voor de virtuele machine.
 
     ![Azure Portal: identiteits optie voor schaal sets voor virtuele machines maken](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+
+> [!NOTE]
+> Sla deze stap over voor door de gebruiker toegewezen beheerde identiteit. De overige stappen hieronder werken hetzelfde, zolang de schaalset alleen is gekoppeld aan één door de gebruiker toegewezen beheerde identiteit.
 
 2. Ken machtigingen toe aan de schaalset voor virtuele machines voor het ophalen/lezen van installatie kopieën uit het REGI ster. Voeg op de Blade Access Control (IAM) van uw Azure Container Registry in de Azure Portal een *roltoewijzing* voor uw virtuele machine toe:
 

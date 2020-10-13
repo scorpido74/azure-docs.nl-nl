@@ -6,12 +6,12 @@ ms.service: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e32e4960776084669c8f2f7743b66b9d0f9a6ae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744267"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978472"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Het formaat van apparaten voor beheer van logische volumes aanpassen die gebruikmaken van Azure Disk Encryption
 
@@ -37,7 +37,7 @@ In dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 
 - Ervaring met Linux en LVM.
 
-- Ervaring met het gebruik van */dev/disk/SCSI1/* -paden voor gegevens schijven in Azure. Zie [problemen met de naam van Linux VM-apparaten oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems)voor meer informatie. 
+- Ervaring met het gebruik van */dev/disk/SCSI1/* -paden voor gegevens schijven in Azure. Zie [problemen met de naam van Linux VM-apparaten oplossen](../troubleshooting/troubleshoot-device-names-problems.md)voor meer informatie. 
 
 ## <a name="scenarios"></a>Scenario's
 

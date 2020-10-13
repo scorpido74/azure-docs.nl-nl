@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259540"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949289"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
 
@@ -178,7 +178,6 @@ Houd bij het configureren van de huis stijl van het bedrijf in Azure AD B2C de v
 
 * De huis stijl van het bedrijf in Azure AD B2C is momenteel beperkt tot de **achtergrond afbeelding**, het **vaandel logo**en de aanpassing van de **achtergrond kleur** . De andere eigenschappen in het deel venster huis stijl van het bedrijf, bijvoorbeeld in **Geavanceerde instellingen**, worden *niet ondersteund*.
 * Op de pagina's van de gebruikers stroom wordt de achtergrond kleur weer gegeven voordat de achtergrond afbeelding wordt geladen. We raden u aan een achtergrond kleur te kiezen die nauw keurig overeenkomt met de kleuren in de achtergrond afbeelding voor een probleemloze laad ervaring.
-* Het banner logo wordt weer gegeven in de verificatie-e-mail berichten die worden verzonden naar uw gebruikers wanneer ze een registratie gebruikers stroom initiëren.
 
 ### <a name="enable-branding-in-user-flow-pages"></a>Huis stijl inschakelen op pagina's van gebruikers stroom
 

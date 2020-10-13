@@ -5,14 +5,16 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981068"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979116"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Deze hand leiding bevat informatie over veelvoorkomende problemen die zich kunnen voordoen bij het gebruik van Azure dev Spaces.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962533"
+ms.locfileid: "91875730"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerkoverwegingen voor een App Service-omgeving #
 
@@ -161,7 +161,7 @@ De vereiste vermeldingen in een NSG om een ASE te kunnen gebruiken, zijn verkeer
 * UDP naar alle IP-adressen op poort 53
 * UDP naar alle IP-adressen op poort 123
 * TCP naar alle IP-adressen op poort 80, 443
-* TCP naar het IP-service label SQL op poort 1433
+* TCP naar het IP-service label `Sql` op poort 1433
 * TCP naar alle IP-adressen op poort 12000
 * naar het ASE-subnet op alle poorten
 

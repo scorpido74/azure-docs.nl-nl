@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2db91bd1968f816eb2a9320ee81019aeec5d2449
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: bb5eb3de1723ab75b2585c2fe62c395231455f37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873996"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949374"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -114,7 +114,7 @@ De volgende resource provider modi worden momenteel ondersteund als een **Previe
 - `Microsoft.KeyVault.Data` voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
-> De modi van de resource provider ondersteunen alleen ingebouwde beleids definities.
+> De modi van de resource provider ondersteunen alleen ingebouwde beleids definities en bieden geen ondersteuning voor [uitzonde ringen](./exemption-structure.md).
 
 ## <a name="metadata"></a>Metagegevens
 
@@ -231,7 +231,7 @@ In de **blok kering** definieert u het effect dat optreedt wanneer aan de voor w
 }
 ```
 
-### <a name="logical-operators"></a>Logische operators
+### <a name="logical-operators"></a>Logische operatoren
 
 Ondersteunde logische Opera tors zijn:
 
@@ -435,7 +435,7 @@ Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/te
 
 Met de gereviseerde beleids regel `if()` controleert u de lengte van de **naam** voordat u probeert een `substring()` waarde op te halen die korter is dan drie tekens. Als de **naam** te kort is, wordt de waarde ' niet beginnend met ABC ' geretourneerd in plaats van **ABC**. Een resource met een korte naam die niet met **ABC** begint, mislukt nog steeds de beleids regel, maar veroorzaakt geen fout meer tijdens de evaluatie.
 
-### <a name="count"></a>Aantal
+### <a name="count"></a>Count
 
 Voor waarden die tellen hoeveel leden van een matrix in de resource-nettolading voldoen aan een voor waarde-expressie, kunnen worden gevormd met de expressie **Count** . Bij algemene scenario's wordt gecontroleerd of ten minste één van ', ' precies één van ', ' alle of ' geen van ' de matrix leden voldoen aan de voor waarde. met **Count** wordt elk lid van een [ \[ \* \] alias](#understanding-the--alias) matrix geëvalueerd voor een voorwaarde expressie en worden de _werkelijke_ resultaten opgeteld, die vervolgens worden vergeleken met de operator voor expressies. Expressies met **aantallen** kunnen Maxi maal drie keer worden toegevoegd aan een enkele **policyRule** -definitie.
 

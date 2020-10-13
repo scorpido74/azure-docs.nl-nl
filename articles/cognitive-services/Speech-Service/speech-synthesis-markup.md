@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8dfae58b9910504a11bf3986380398499e3357
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666344"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949595"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -112,7 +112,7 @@ Afhankelijk van de taal van de Speech SDK, stelt u de `"SpeechServiceResponse_Sy
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Zie <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
+<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```csharp
 speechConfig.SetProperty(
@@ -121,7 +121,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Zie <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
+<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```cpp
 speechConfig->SetProperty(
@@ -130,7 +130,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-Zie <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
+<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```java
 speechConfig.setProperty(
@@ -139,7 +139,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-Zie <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
+<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```python
 speech_config.set_property_by_name(
@@ -148,7 +148,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Zie <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
+<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```javascript
 speechConfig.setProperty(
@@ -157,7 +157,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-Zie <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
+<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -165,7 +165,7 @@ Zie <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spx
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-Zie <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` <span class="docon docon-navigate-external x-hidden-focus"></span></a> voor meer informatie.
+<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -196,6 +196,8 @@ Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behul
 
 Op dit moment worden de volgende Neural stemmen ondersteund:
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
@@ -228,6 +230,10 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 |                         | `style="chat"`            | Een informe en een ongeforceerde Toon                         |
 |                         | `style="cheerful"`        | Een positieve en fijne Toon                         |
 |                         | `style="empathetic"`      | Een idee van caring en inzicht               |
+| `en-US-JennyNeural`     | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  |
+|                         | `style="chat"`            | Een informe en een ongeforceerde Toon                         |
+|                         | `style="assistant"`       | Een warme en beperkte Toon voor digitale assistenten    |
+| `en-US-GuyNeural`       | `style="newscast"`        | Een formele en professionele Toon voor gesp roken nieuws |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Een formele en professionele Toon voor gesp roken nieuws |
 |                         | `style="customerservice"` | Een beschrijvende en handige Toon voor klant ondersteuning  |
 |                         | `style="assistant"`       | Een warme en beperkte Toon voor digitale assistenten    |
