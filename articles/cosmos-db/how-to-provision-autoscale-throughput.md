@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017138"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Automatisch schalen door Voer in te richten op Data Base of container in Azure Cosmos DB
@@ -47,7 +47,7 @@ Als u automatisch schalen wilt inrichten voor een gedeelde doorvoer database, se
 
 1. Onder **schalen**selecteert u de optie voor **automatisch schalen** en **slaat**u deze op.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Automatisch schalen inschakelen voor een bestaande container":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Een container maken en door Voer ingericht voor automatisch schalen configureren":::
 
 > [!NOTE]
 > Wanneer u automatisch schalen inschakelt voor een bestaande data base of container, wordt de begin waarde voor het maximale aantal RU/s bepaald door het systeem, op basis van uw huidige hand matige ingerichte instellingen voor de door Voer en opslag. Nadat de bewerking is voltooid, kunt u indien nodig het maximum aantal RU/s wijzigen. [Meer informatie.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
@@ -135,7 +135,7 @@ ThroughputProperties autoscaleThroughputProperties = ThroughputProperties.create
 CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThroughputProperties).block().getDatabase();
 ```
 
-#### <a name="sync"></a>[Sync](#tab/api-sync)
+#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 ```java
 // Create instance of CosmosClient
@@ -172,7 +172,7 @@ CosmosAsyncContainer container = database.createContainer(autoscaleContainerProp
                                 .getContainer();
 ```
 
-#### <a name="sync"></a>[Sync](#tab/api-sync)
+#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 ```java
 // Get reference to database that container will be created in
@@ -207,7 +207,7 @@ int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThrough
 int currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
-#### <a name="sync"></a>[Sync](#tab/api-sync)
+#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 ```java
 // Get a reference to the resource
@@ -234,7 +234,7 @@ int currentThroughput = autoscaleContainerThroughput.Throughput;
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput)).block();
 ```
 
-#### <a name="sync"></a>[Sync](#tab/api-sync)
+#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 ```java
 // Change the autoscale max throughput (RU/s)

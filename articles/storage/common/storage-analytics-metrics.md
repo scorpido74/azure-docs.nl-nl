@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
 ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021150"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Opslaganalyse metrische gegevens (klassiek)
@@ -146,7 +146,7 @@ In de sectie **bewaking (klassiek)** van het menu venster van het opslag account
 
 Als u de metrische gegevens wilt downloaden voor lange termijn opslag of als u ze lokaal wilt analyseren, moet u een hulp programma gebruiken of code schrijven om de tabellen te lezen. U moet de metrische gegevens over minuten voor analyse downloaden. De tabellen worden niet weer gegeven als u alle tabellen in uw opslag account vermeld, maar u kunt ze rechtstreeks op naam openen. Veel hulp middelen voor opslag bladeren zijn op de hoogte van deze tabellen en u kunt ze rechtstreeks weer geven. Zie [Azure Storage-client hulpprogramma's](/azure/storage/storage-explorers)voor een lijst met beschik bare hulpprogram ma's.
 
-|Metrische gegevens|Tabel namen|Opmerkingen| 
+|Metrische gegevens|Tabel namen|Notities| 
 |-|-|-|  
 |Metrische gegevens per uur|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|In versies voorafgaand aan 15 augustus 2013 zijn deze tabellen bekend als:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> Metrische gegevens voor de bestands service zijn beschikbaar vanaf versie april 2015.|  
 |Metrische gegevens over minuten|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Kan alleen worden ingeschakeld met Power shell of via een programma.<br /><br /> Metrische gegevens voor de bestands service zijn beschikbaar vanaf versie april 2015.|  

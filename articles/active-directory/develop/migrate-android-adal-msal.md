@@ -13,12 +13,12 @@ ms.date: 09/6/2019
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77084051"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965995"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Migratie handleiding voor ADAL naar MSAL voor Android
 
@@ -238,19 +238,16 @@ public interface SilentAuthenticationCallback {
 In ADAL is er één uitzonderings type, `AuthenticationException` met een methode voor het ophalen van de `ADALError` Enum-waarde.
 In MSAL is er een hiërarchie met uitzonde ringen en elke groep heeft een eigen set gerelateerde specifieke fout codes.
 
-Lijst met MSAL-uitzonde ringen
-
-|Uitzondering  | Beschrijving  |
-|---------|---------|
-| `MsalException`     | Standaard ingeschakelde uitzonde ring veroorzaakt door MSAL.  |
-| `MsalClientException`     | Wordt gegenereerd als de fout aan de kant van de client is. |
-| `MsalArgumentException`     | Deze wordt gegenereerd als een of meer invoer argumenten ongeldig zijn. |
-| `MsalClientException`     | Wordt gegenereerd als de fout aan de kant van de client is. |
-| `MsalServiceException`     | Wordt gegenereerd als de fout aan de server zijde is. |
-| `MsalUserCancelException`     | Wordt gegenereerd als de gebruiker de verificatie stroom heeft geannuleerd.  |
-| `MsalUiRequiredException`     | Wordt gegenereerd als het token niet op de achtergrond kan worden vernieuwd.  |
-| `MsalDeclinedScopeException`     | Wordt gegenereerd als een of meer aangevraagde bereiken door de server zijn geweigerd.  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | Dit wordt gegenereerd als het beveiligings beleid van de resource is ingeschakeld voor de bron. |
+| Uitzondering                                        | Beschrijving                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalException`                                  | Standaard ingeschakelde uitzonde ring veroorzaakt door MSAL.                           |
+| `MsalClientException`                            | Wordt gegenereerd als de fout aan de kant van de client is.                                 |
+| `MsalArgumentException`                          | Deze wordt gegenereerd als een of meer invoer argumenten ongeldig zijn.                 |
+| `MsalServiceException`                           | Wordt gegenereerd als de fout aan de server zijde is.                                 |
+| `MsalUserCancelException`                        | Wordt gegenereerd als de gebruiker de verificatie stroom heeft geannuleerd.                |
+| `MsalUiRequiredException`                        | Wordt gegenereerd als het token niet op de achtergrond kan worden vernieuwd.                    |
+| `MsalDeclinedScopeException`                     | Wordt gegenereerd als een of meer aangevraagde bereiken door de server zijn geweigerd. |
+| `MsalIntuneAppProtectionPolicyRequiredException` | Dit wordt gegenereerd als het beveiligings beleid van de resource is ingeschakeld voor de bron.         |
 
 ### <a name="adalerror-to-msalexception-errorcode"></a>ADALError naar MsalException error code
 

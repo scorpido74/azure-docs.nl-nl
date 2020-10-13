@@ -10,10 +10,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319164"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>De externe controle oplossings versneller implementeren lokaal-IntelliJ
@@ -191,10 +191,10 @@ Elke webservice opent een opdracht prompt venster en webbrowser venster. Bij de 
 
 Als u toegang wilt krijgen tot de status van de services, gaat u naar de volgende Url's:
 
-* IoT-hub-beheer:`http://localhost:9002/v1/status`
-* Telemetrie van apparaat:`http://localhost:9004/v1/status`
-* configuraties`http://localhost:9005/v1/status`
-* opslag adapter:`http://localhost:9022/v1/status`
+* IoT-Hub Manager: `http://localhost:9002/v1/status`
+* Telemetrie van apparaat: `http://localhost:9004/v1/status`
+* configuraties `http://localhost:9005/v1/status`
+* opslag adapter: `http://localhost:9022/v1/status`
 
 ### <a name="start-the-stream-analytics-job"></a>De Stream Analytics-taak starten
 
@@ -229,7 +229,7 @@ Zie [nginx voor Windows](https://nginx.org/en/docs/windows.html)voor meer inform
 
 Ga naar in uw browser om toegang te krijgen tot het dash board van de oplossing voor externe controle `http://localhost:9000` .
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Verwijder de Cloud Services uit uw Azure-abonnement nadat u klaar bent met testen om onnodige kosten te voor komen. Als u de services wilt verwijderen, gaat u naar de [Azure Portal](https://ms.portal.azure.com)en verwijdert u de resource groep waarin het script **Start. cmd** is gemaakt.
 

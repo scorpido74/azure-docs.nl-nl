@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
 ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627222"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
@@ -33,7 +33,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, wordt elke storing die invloed heeft op data bases op een server of een beheerd exemplaar, automatisch failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure-portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: failover-groep](scripts/add-database-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/add-database-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -184,7 +184,7 @@ Een typische Azure-toepassing maakt gebruik van meerdere Azure-Services en besta
 Als er een storing wordt gedetecteerd, wacht Azure voor de periode die u hebt opgegeven door `GracePeriodWithDataLossHours` . De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u ervoor zorgen dat `GracePeriodWithDataLossHours` het een voldoende groot getal is, bijvoorbeeld 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
 
 > [!IMPORTANT]
-> Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
+> Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
 
 ### <a name="changing-secondary-region-of-the-failover-group"></a>Secundaire regio van de failovergroep wijzigen
 
@@ -235,7 +235,7 @@ Zie [een secundaire beheerde instantie maken](../managed-instance/failover-group
 
 ### <a name="using-geo-paired-regions"></a>Geografisch gekoppelde regio's gebruiken
 
-Implementeer beide beheerde instanties in [gekoppelde regio's](../../best-practices-availability-paired-regions.md) om prestatie redenen. Beheerde instanties die zich in geografische paar regio's bevinden, hebben veel betere prestaties ten opzichte van niet-gekoppelde regio's. 
+Implementeer beide beheerde exemplaren in [gekoppelde regio's](../../best-practices-availability-paired-regions.md), om prestatieredenen. Beheerde exemplaren die zich in geografisch gekoppelde regio's bevinden, presteren veel beter dan die in niet-gekoppelde regio's. 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Replicatie verkeer tussen twee instanties inschakelen
 
@@ -425,11 +425,11 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 | Opdracht | Beschrijving |
 | --- | --- |
-| [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt een failovergroep van de server verwijderd |
 | [AZ SQL failover-Group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Hiermee wordt een configuratie van een failovergroep opgehaald |
 | [AZ SQL failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Hiermee wordt de configuratie van een failovergroep gewijzigd en/of worden een of meer data bases toegevoegd aan een failovergroep|
-| [AZ SQL failover-groeps Set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
@@ -463,11 +463,11 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 | Opdracht | Beschrijving |
 | --- | --- |
-| [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt een failovergroep van de server verwijderd |
 | [AZ SQL failover-Group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Hiermee wordt een configuratie van een failovergroep opgehaald |
 | [AZ SQL failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Hiermee wordt de configuratie van een failovergroep gewijzigd en/of worden een of meer data bases toegevoegd aan een failovergroep|
-| [AZ SQL failover-groeps Set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 

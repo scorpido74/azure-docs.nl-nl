@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358284"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>De prestaties verbeteren door bestanden in Azure CDN te comprimeren
@@ -139,7 +139,7 @@ Deze profielen ondersteunen alleen gzip-compressie codering. Wanneer een profiel
 In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario beschreven:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Compressie is uitgeschakeld of het bestand komt niet in aanmerking voor compressie
-| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | Het CDN-antwoord naar de client | &nbsp; &nbsp; &nbsp; &nbsp; Opmerkingen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Door de client aangevraagde indeling (via Accept-Encoding header) | Cache-bestands indeling | Het CDN-antwoord naar de client | &nbsp; &nbsp; &nbsp; &nbsp; Opmerkingen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Gecomprimeerd |Gecomprimeerd |Gecomprimeerd | |
 | Gecomprimeerd |Gecomprimeerde |Gecomprimeerde | |
@@ -149,7 +149,7 @@ In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario besc
 | Gecomprimeerde |Niet in cache |Gecomprimeerde | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Compressie is ingeschakeld en het bestand komt in aanmerking voor compressie
-| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | CDN-antwoord naar de client | Opmerkingen |
+| Door de client aangevraagde indeling (via Accept-Encoding header) | Cache-bestands indeling | CDN-antwoord naar de client | Notities |
 | --- | --- | --- | --- |
 | Gecomprimeerd |Gecomprimeerd |Gecomprimeerd |CDN transcodeert tussen ondersteunde indelingen. |
 | Gecomprimeerd |Gecomprimeerde |Gecomprimeerd |CDN voert een compressie uit. |
