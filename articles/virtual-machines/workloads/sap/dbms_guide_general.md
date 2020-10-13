@@ -1,26 +1,18 @@
 ---
 title: Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workload | Microsoft Docs
 description: Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: bburns
-editor: ''
-tags: azure-resource-manager
-keywords: SAP, DBMS, opslag, Ultra disk, Premium-opslag
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c0158e4bdaff5400404b290e27837bfb3b95419
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974818"
+ms.locfileid: "91993278"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181

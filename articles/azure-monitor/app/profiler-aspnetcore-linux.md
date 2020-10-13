@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930380"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992772"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profiel ASP.NET Core Azure Linux-web-apps met Application Insights Profiler
 
@@ -107,7 +107,7 @@ De volgende instructies zijn van toepassing op alle ontwikkel omgevingen van Win
 
     ![De Git-opslag plaats instellen](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Zie [app service-documentatie](https://docs.microsoft.com/azure/app-service)voor meer implementatie opties.
+Zie [app service-documentatie](../../app-service/index.yml)voor meer implementatie opties.
 
 ## <a name="deploy-your-project"></a>Uw project implementeren
 
@@ -172,4 +172,3 @@ Zie [app service-documentatie](https://docs.microsoft.com/azure/app-service)voor
 Als u aangepaste containers gebruikt die worden gehost door Azure App Service, volgt u de instructies in [ enable service Profiler for a ASP.net core toepassing in een container](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) om Application Insights Profiler in te scha kelen.
 
 Meld eventuele problemen of suggesties voor de Application Insights GitHub-opslag plaats: [ApplicationInsights-Profiler-AspNetCore: issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
-

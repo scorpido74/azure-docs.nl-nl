@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 10/12/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9b5bc3f87296ea1af5de28178df6d8f27c965476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116071"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993171"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C-logboeken met Application Insights verzamelen
 
@@ -89,7 +89,7 @@ Als u er nog geen hebt, maakt u een instantie van Application Insights in uw abo
 Er is een korte vertraging, meestal minder dan vijf minuten, voordat u nieuwe logboeken in Application Insights kunt zien.
 
 1. Open de Application Insights resource die u hebt gemaakt in de [Azure Portal](https://portal.azure.com).
-1. Selecteer in het menu **overzicht** de optie **analyse**.
+1. Selecteer op de pagina **overzicht** de optie **Logboeken**.
 1. Open een nieuw tabblad in Application Insights.
 
 Hier volgt een lijst met query's die u kunt gebruiken om de logboeken weer te geven:

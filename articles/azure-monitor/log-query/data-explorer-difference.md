@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
-ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfa27b0df7febbfb8c97f11f69f87c352810699b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585700"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993188"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Verschillen in de query taal van Azure Monitor-logboek
 
@@ -33,7 +33,7 @@ In de volgende secties worden elementen beschreven van de Kusto-query taal die n
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current (), current_cursor ()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [Data Base ()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -56,5 +56,5 @@ De volgende Opera tors ondersteunen specifieke Azure Monitor functies en zijn ni
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Verwijzingen naar verschillende [bronnen ophalen voor het schrijven van Azure monitor logboek query's](query-language.md).
+- Verwijzingen naar verschillende [bronnen ophalen voor het schrijven van Azure monitor logboek query's](/azure/data-explorer/kusto/query/).
 - Open de volledige [referentie documentatie voor de Kusto-query taal](/azure/kusto/query/).

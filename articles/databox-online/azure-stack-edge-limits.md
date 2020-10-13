@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904449"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992759"
 ---
 # <a name="azure-stack-edge-pro-limits"></a>Limieten voor Azure Stack Edge Pro R
 
@@ -27,12 +27,16 @@ Houd rekening met deze beperkingen wanneer u uw Microsoft Azure Stack Edge Pro-o
 
 In de volgende tabel worden de limieten voor het Azure Stack Edge Pro-apparaat beschreven. 
 
+In de volgende tabel worden de limieten voor het Azure Stack edge-apparaat beschreven.
+
 | Beschrijving | Waarde |
 |---|---|
 |Nee. bestanden per apparaat |100.000.000 |
-|Nee. van shares per apparaat |24 |
 |Nee. van shares per container |1 |
+|Maximum aantal van share-eind punten en REST-eind punten per apparaat| 24 |
+|Maximum aantal van gelaagde opslag accounts per apparaat| 24|
 |De maximale bestands grootte die naar een share is geschreven| 5 TB |
+|Maximum aantal resource groepen per apparaat| 800 |
 
 ## <a name="azure-storage-limits"></a>Limieten voor Azure Storage
 

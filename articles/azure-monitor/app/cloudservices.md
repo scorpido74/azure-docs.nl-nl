@@ -4,12 +4,12 @@ description: Controleer uw web- en werkrollen op een effectieve manier met Appli
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759370"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992851"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
 [Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](../platform/diagnostics-extension-overview.md) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
@@ -67,7 +67,7 @@ Om deze situatie te voor komen, maakt u afzonderlijke resources voor elke config
 
 Als u de telemetrie naar de juiste resources wilt verzenden, kunt u de Application Insights SDK zo instellen dat er een andere instrumentatie sleutel wordt gekozen, afhankelijk van de configuratie van de build. 
 
-Meer informatie over hoe u [de instrumentatie sleutel](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) voor verschillende fasen dynamisch kunt instellen. 
+Meer informatie over hoe u [de instrumentatie sleutel](./separate-resources.md#dynamic-ikey) voor verschillende fasen dynamisch kunt instellen. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Een Application Insights-resource maken voor elke rol
 
@@ -290,4 +290,3 @@ Hebt u uw app ontwikkeld voor .NET 4.6? .NET 4,6 wordt niet automatisch onderste
 [qna]: ../faq.md
 [redfield]: ./monitor-performance-live-website-now.md
 [start]: ./app-insights-overview.md
-

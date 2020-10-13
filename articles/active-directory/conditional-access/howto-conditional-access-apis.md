@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d681eba53aa85fe5df05f8404bcddb7c6877477
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007996"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992797"
 ---
 # <a name="conditional-access-programmatic-access"></a>Voorwaardelijke toegang: programmatische toegang
 
@@ -62,7 +62,7 @@ In dit voor beeld wordt een mechanisme geboden voor het uitvoeren van een gefase
 
 - [Beleid voor voorwaardelijke toegang implementeren in productie omgevingen met goedkeurings werk stromen](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Controleren
 
 Dit voor beeld biedt een mechanisme voor het bewaken van de wijzigingen van het beleid voor voorwaardelijke toegang gedurende een bepaalde periode en kan waarschuwingen activeren wanneer het sleutel beleid wordt gewijzigd.
 
@@ -78,7 +78,7 @@ U automatiseert het maken en herstellen van beleids regels voor voorwaardelijke 
 
 ### <a name="emergency-access-accounts"></a>Accounts voor toegang in nood gevallen
 
-Meerdere beheerders kunnen beleid voor voorwaardelijke toegang maken en kunnen verg eten om uw [accounts voor toegang in nood gevallen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) toe te voegen als een uitsluiting van die beleids regels. In dit voor beeld wordt ervoor gezorgd dat alle beleids regels worden bijgewerkt met de aangewezen accounts voor toegang in nood gevallen.
+Meerdere beheerders kunnen beleid voor voorwaardelijke toegang maken en kunnen verg eten om uw [accounts voor toegang in nood gevallen](../users-groups-roles/directory-emergency-access.md) toe te voegen als een uitsluiting van die beleids regels. In dit voor beeld wordt ervoor gezorgd dat alle beleids regels worden bijgewerkt met de aangewezen accounts voor toegang in nood gevallen.
 
 - [De toewijzing van accounts voor toegang in nood gevallen met behulp van Microsoft Graph API-aanroepen beheren in beleid voor voorwaardelijke toegang](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/05-manage/02-emergency-access)
 

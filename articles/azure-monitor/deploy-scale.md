@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: 4ec7cd2b0f573a9a74f82546da2367edcf721539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441460"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993244"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor op schaal implementeren met behulp van Azure Policy
 Hoewel sommige Azure Monitor functies eenmaal of een beperkt aantal keren worden geconfigureerd, moeten andere worden herhaald voor elke resource die u wilt bewaken. In dit artikel worden methoden beschreven voor het gebruik van Azure Policy om Azure Monitor op schaal te implementeren om ervoor te zorgen dat de bewaking consistent en correct is geconfigureerd voor al uw Azure-resources.
@@ -33,7 +33,7 @@ Azure Policy bestaat uit de objecten in de volgende tabel. Zie [Azure Policy obj
 | Toewijzing | Een beleids definitie of-initiatief wordt pas van kracht nadat het is toegewezen aan een bereik. U kunt bijvoorbeeld een beleid toewijzen aan een resource groep om dit toe te passen op alle resources die zijn gemaakt in die resource, of dit Toep assen op een abonnement om het toe te passen op alle resources in dat abonnement.  Zie [Azure Policy toewijzings structuur](../governance/policy/concepts/assignment-structure.md)voor meer informatie. |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Ingebouwde beleidsdefinities voor Azure Monitor
-Azure Policy bevat verschillende vooraf gedefinieerde definities die betrekking hebben op Azure Monitor. U kunt deze beleids definities toewijzen aan uw bestaande abonnement of ze gebruiken als basis voor het maken van uw eigen aangepaste definities. Zie [Azure Policy ingebouwde beleids definities voor Azure monitor](samples/policy-samples.md)voor een volledige lijst van de ingebouwde politiek in de categorie **bewaking** .
+Azure Policy bevat verschillende vooraf gedefinieerde definities die betrekking hebben op Azure Monitor. U kunt deze beleids definities toewijzen aan uw bestaande abonnement of ze gebruiken als basis voor het maken van uw eigen aangepaste definities. Zie [Azure Policy ingebouwde beleids definities voor Azure monitor](./samples/policy-reference.md)voor een volledige lijst van de ingebouwde politiek in de categorie **bewaking** .
 
 Als u de ingebouwde beleids definities wilt weer geven die betrekking hebben op bewaking, voert u de volgende handelingen uit:
 

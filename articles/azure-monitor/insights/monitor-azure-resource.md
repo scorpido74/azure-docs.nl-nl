@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030341"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993704"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-resources bewaken met Azure Monitor
 Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure-resources en hoe u de functies van Azure Monitor kunt gebruiken om deze gegevens te analyseren en te waarschuwen.
@@ -80,7 +80,7 @@ Diagnostische instellingen bepalen waar bron logboeken en metrische gegevens voo
 - [Event hubs](../platform/resource-logs.md#send-to-azure-event-hubs) voor het streamen van gegevens naar externe systemen, zoals siem's van derden en andere log Analytics-oplossingen. 
 - [Azure Storage-account](../platform/resource-logs.md#send-to-azure-storage) dat nuttig is voor controle, statische analyses of back-ups.
 
-Volg de procedure in [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../platform/diagnostic-settings.md) voor het maken en beheren van diagnostische instellingen via de Azure Portal. Zie [Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon](../platform/diagnostic-settings-template.md) om deze in een sjabloon te definiëren en volledige bewaking in te scha kelen voor een resource wanneer deze wordt gemaakt.
+Volg de procedure in [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../platform/diagnostic-settings.md) voor het maken en beheren van diagnostische instellingen via de Azure Portal. Zie [Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon](../samples/resource-manager-diagnostic-settings.md) om deze in een sjabloon te definiëren en volledige bewaking in te scha kelen voor een resource wanneer deze wordt gemaakt.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Bewaking in de Azure Portal
@@ -160,5 +160,4 @@ Verschillende soorten bewakings gegevens worden gebruikt voor verschillende soor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [ondersteunde services, schema's en categorieën voor Azure-resource logboeken](../platform/resource-logs-schema.md) voor meer informatie over resource logboeken voor verschillende Azure-Services.  
-
+* Zie [ondersteunde services, schema's en categorieën voor Azure-resource logboeken](../platform/resource-logs-schema.md) voor meer informatie over resource logboeken voor verschillende Azure-Services.

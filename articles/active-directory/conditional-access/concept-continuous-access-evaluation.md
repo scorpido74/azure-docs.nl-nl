@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266056"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992813"
 ---
 # <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
 
@@ -103,7 +103,7 @@ Als u geen gebruik maakt van CAE-compatibele clients, blijft de standaard levens
 
 1. Een client met CAE-ondersteuning geeft referenties of een vernieuwings token door aan Azure AD die vraagt om een toegangs token voor een bepaalde resource.
 1. Een toegangs token wordt samen met andere artefacten naar de client geretourneerd.
-1. Een beheerder [trekt expliciet alle vernieuwings tokens voor de gebruiker in](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Er wordt een intrekkings gebeurtenis verzonden naar de resource provider vanuit Azure AD.
+1. Een beheerder [trekt expliciet alle vernieuwings tokens voor de gebruiker in](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Er wordt een intrekkings gebeurtenis verzonden naar de resource provider vanuit Azure AD.
 1. Er wordt een toegangs token aan de resource provider door gegeven. De resource provider evalueert de geldigheid van het token en controleert of er een intrekkings gebeurtenis voor de gebruiker is. De resource provider gebruikt deze informatie om te bepalen of u toegang wilt verlenen aan de resource.
 1. In dit geval weigert de resource provider de toegang en stuurt een 401 + claim-Challenge terug naar de client.
 1. De-client die geschikt is voor CAE, begrijpt de 401 + claim Challenge. Het omzeilt de caches en gaat terug naar stap 1, verzendt het vernieuwings token samen met de claim uitdaging terug naar Azure AD. Azure AD evalueert vervolgens alle voor waarden en vraagt de gebruiker in dit geval opnieuw te verifiëren.
@@ -159,7 +159,7 @@ Als dit scenario in uw omgeving bestaat om oneindige lussen te voor komen, geeft
 | Semi-Annual Enter prise-kanaal | Als deze instelling is ingeschakeld of is ingesteld op 1, wordt CAE niet ondersteund. | Als deze instelling is ingeschakeld of is ingesteld op 1, wordt CAE niet ondersteund. |
 | Huidig kanaal <br> of <br> Maandelijks bedrijfs kanaal | CAE wordt ondersteund ongeacht de instelling | CAE wordt ondersteund ongeacht de instelling |
 
-Zie [overzicht van update kanalen voor Microsoft 365-apps](https://docs.microsoft.com/deployoffice/overview-update-channels)voor een uitleg van de Office Update-kanalen. Het wordt aanbevolen dat organisaties web account manager (WAM) niet uitschakelen.
+Zie [overzicht van update kanalen voor Microsoft 365-apps](/deployoffice/overview-update-channels)voor een uitleg van de Office Update-kanalen. Het wordt aanbevolen dat organisaties web account manager (WAM) niet uitschakelen.
 
 ### <a name="policy-change-timing"></a>Timing van beleids wijzigingen
 
