@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037453"
 ---
 # <a name="extended-geojson-geometries"></a>Uitgebreide geojson-geometrie
@@ -47,7 +47,7 @@ Een `Circle` geometrie die wordt weer gegeven met behulp van het `GeoJSON Featur
 
     De cirkel `radius` wordt weer gegeven met behulp `GeoJSON Feature` van de eigenschappen. De RADIUS-waarde is in _meters_ en moet van het type zijn `double` .
 
-- SubType
+- Subtype
 
     De geometrie van de cirkel moet ook de `subType` eigenschap bevatten. Deze eigenschap moet een deel van de `GeoJSON Feature` eigenschappen zijn en de waarde moet een _cirkel_ zijn
 
@@ -79,7 +79,7 @@ Een `Rectangle` geometrie die wordt weer gegeven met behulp van het `GeoJSON Pol
 
     De hoeken van de rechthoek worden weer gegeven met behulp van de coördinaten van een `GeoJSON Polygon` object. Er moeten vijf coördinaten zijn: één voor elke hoek. En, een vijfde coördinaat die gelijk is aan de eerste coördinaat, om de polygoon ring te sluiten. Er wordt van uitgegaan dat deze coördinaten worden uitgelijnd en de ontwikkelaar kan deze naar wens draaien.
 
-- SubType
+- Subtype
 
     De geometrie van de rechthoek moet ook de `subType` eigenschap bevatten. Deze eigenschap moet onderdeel zijn van de `GeoJSON Feature` Eigenschappen en de waarde moet _rechthoekig_ zijn
 
