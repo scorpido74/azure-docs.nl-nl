@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4c4ee5fa6281b0a137bd46a9d3a82db22adc77ea
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306171"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760764"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory (AD) met F5
 
@@ -146,38 +146,38 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. U moet het metagegevenscertificaat importeren in F5 (geavanceerde Kerberos); dit wordt later gebruikt in het installatieproces. Ga naar **Systeem > Certificaatbeheer > Verkeerscertificaatbeheer >> Lijst met SSL-certificaten**. Klik op **Importeren** in de rechterhoek.
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure01.png)
+    ![Schermopname waarin de knop Import (Importeren) voor het importeren van het metagegevenscertificaat is gemarkeerd.](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. Voor het instellen van de SAML IDP gaat u naar **Toegang > Federation > SAML-serviceprovider > Maken > Uit metagegevens**.
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure02.png)
+    ![Schermopname die laat zien hoe u de SAML IDP maakt uit metagegevens.](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure03.png)
+    ![Schermopname van het scherm Create New SAML IdP Connector (Nieuwe SAML IdP-connector maken).](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure05.png)
+    ![Schermopname van het scherm Single Sign On Service Settings (Instellingen voor eenmalige-aanmeldingsservice). ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. Het certificaat opgeven dat bij taak 3 is geüpload
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure06.png)
+    ![Schermopname van het scherm Edit SAML IdP Connector (SAML IdP-connector bewerken).](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure07.png)
+    ![Schermopname van het scherm Single Logout Service Settings (Instellingen voor eenmalige-afmeldingsservice).](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. Voor het instellen van de SAML SP gaat u naar **Toegang > Federation > SAML Service Federation > Lokale SP-services > Maken**.
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure08.png)
+    ![Schermopname van het scherm waarin u een lokale SP-service maakt.](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. Klik op **OK**.
 
 1. Selecteer de SP-configuratie en klik op **IdP-connectors verbinden/verbinding verbreken**.
 
-     ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure09.png)
+     ![Schermopname van de SAML-serviceprovider.](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. Klik op **Nieuwe rij toevoegen** en selecteer de **Externe IdP-connector** die u in de vorige stap hebt gemaakt.
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure10.png)
+    ![Schermopname met de knop Add New Row (Nieuwe rij toevoegen) gemarkeerd.](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. Voor het configureren van Kerberos SSO gaat u naar **Toegang > Eenmalige aanmelding > Kerberos**
 
@@ -188,54 +188,54 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     •   Bron voor gebruikersrealm `session.logon.last.domain`
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure11.png)
+    ![Schermopname met Access (Toegang) > Single Sign On (Eenmalige aanmelding) gemarkeerd.](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. Voor het configureren van een toegangsprofiel gaat u naar **Toegang > Profiel/Beleid > Toegangsprofiel (beleidsregels per sessie)** .
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure12.png)
+    ![Schermopname met het tabblad Properties (Eigenschappen) onder de menuoptie Profiles/Policies (Profielen/Beleid) geselecteerd.](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure13.png)
+    ![Schermopname van het tabblad SSO/Auth Domains (SSO/Verficatiedomeinen).](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure14.png)
+    ![Schermopname van het tabblad Access Policy (Toegangsbeleid).](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure15.png)
+    ![Scherm opname van het tabblad Properties (Eigenschappen) van het toegangsbeleid.](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure16.png)
+    ![Scherm opname van de eigenschappen voor Variable Assign (Variabele toewijzen).](./media/advance-kerbf5-tutorial/configure16.png)
  
     * session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}
 
     * session.ad.lastactualdomain  TEXT superdemo.live
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure17.png)
+    ![Schermopname van de eigenschappen van de AD-query.](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName=%{session.logon.last.usernameUPN})
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure18.png)
+    ![Schermopname van het tabblad Branch Rules (Vertakkingsregels) en de regel Check Account (Account controleren).](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure19.png)
+    ![Schermopname met de tekstvakken Custom Variable (Aangepaste variabele) en Custom Expression (Aangepaste expressie).](./media/advance-kerbf5-tutorial/configure19.png)
 
     * session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure20.png)
+    ![Schermopname van de waarden in de velden SSO Token Name (Naam SSO-token) en SSO Token Password (Wachtwoord SSO-token).](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {session.logon.last.username}
     * mcget {session.logon.last.password}
 
 1. Voor het toevoegen van een nieuw knooppunt gaat u naar **Lokaal verkeer > Knooppunten > Lijst met knooppunten > +** .
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure21.png)
+    ![Schermopname met Local Traffic (Lokaal verkeer) > Nodes (Knooppunten) gemarkeerd.](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. Voor het maken van een nieuwe pool gaat u naar **Lokaal verkeer > Pools > Lijst met pools > Maken**.
 
-     ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure22.png)
+     ![Schermopname met Local Traffic (Lokaal verkeer) > Pools gemarkeerd.](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. Voor het maken van een nieuwe virtuele server gaat u naar **Lokaal verkeer > Virtuele servers > Lijst met virtuele servers > +** .
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure23.png)
+    ![Schermopname met Local Traffic (Lokaal verkeer) > Virtual Servers (Virtuele servers) gemarkeerd.](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. Geef het toegangsprofiel op dat in de vorige stap is gemaakt.
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![Schermopname die laat zien waar u het toegangsprofiel opgeeft dat u hebt gemaakt.](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>Kerberos-delegatie instellen 
 
@@ -264,15 +264,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     * Stel de juiste delegatie voor het F5-delegatieaccount in.
     * In het onderstaande voorbeeld wordt een APM-delegatieaccount geconfigureerd voor KCD voor de app FRP-App1.superdemo.live.
 
-        ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure25.png)
+        ![Schermopname van APM Delegation Account Properties (Eigenschappen delegatieaccount) > tabblad Delegation (Delegatie).](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. Geef de details op zoals [hier](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) in het bovenstaande referentiedocument wordt vermeld
 
 1. Bijlage - Toewijzingen van SAML – F5 BIG-IP-variabelen wordt hieronder weergegeven:
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure26.png)
+    ![Schermopname van het tabblad Overview (Overzicht) > Active Sessions (Actieve sessies).](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![Schermopname van de variabelen en sessiesleutels.](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. Hieronder ziet u de hele lijst met SAML-standaardkenmerken. GivenName wordt weergegeven met behulp van de volgende tekenreeks.
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`

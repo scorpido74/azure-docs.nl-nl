@@ -50,7 +50,7 @@
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender voor Kubernetes
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: Azure Defender voor containerregisters
           displayName: 'ACR, registry, images'
@@ -58,7 +58,7 @@
         - name: Aanvullende bedreigingsbeveiligingen
           href: other-threat-protections.md
     - name: Beveiligingsfuncties voor containers van Security Center
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: Prijzen
       href: security-center-pricing.md
@@ -79,6 +79,8 @@
           href: quickstart-onboard-gcp.md
     - name: Onboarding automatiseren met PowerShell
       href: security-center-powershell-onboarding.md
+    - name: Security Center inschakelen voor een beheergroep
+      href: onboard-management-group.md
     - name: Gegevensverzameling configureren
       href: security-center-enable-data-collection.md
     - name: E-mailmeldingen instellen
@@ -140,8 +142,6 @@
             - name: Reacties op aanbevelingen automatiseren
               displayName: workflow
               href: workflow-automation.md
-            - name: Aanbevelingen exporteren
-              href: continuous-export.md
             - name: Een resource uitsluiten van een aanbeveling
               href: exempt-resource.md
     - name: Azure Defender-waarschuwingen
@@ -180,6 +180,9 @@
             - name: Beveiligingsproblemen in uw VM's beoordelen en oplossen
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: Specifieke ontdekkingen van beveiligingsproblemen uitschakelen
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Beheerpoorten beveiligen met Just-in-time-toegang voor VM's
           items:
             - name: Overzicht van Just-In-time-toegang voor VM's
@@ -213,6 +216,15 @@
     - name: Azure Defender voor containerregisters gebruiken
       displayName: 'ACR, registry, images'
       href: defender-for-container-registries-usage.md
+    - name: Meldingen en aanbevelingen exporteren
+      items:
+        - name: 'Exporteren naar een SIEM, SOAR of ITSM'
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: Exporteren naar een Log Analytics-werkruimte of Azure Event Hub
+          href: continuous-export.md
+        - name: Een CSV-rapport van alle waarschuwingen downloaden
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
     - name: Azure Defender-waarschuwingen verwerken
       items:
         - name: Beveiligingswaarschuwingen beheren
@@ -226,16 +238,14 @@
           href: security-center-incident.md
         - name: Bedreigingsinformatierapporten genereren
           href: security-center-threat-report.md
-        - name: Uw waarschuwingsconfiguratie (EICAR-testbestand) valideren
+        - name: Uw waarschuwingsconfiguratie valideren
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: Reacties op waarschuwingen automatiseren
           displayName: workflow
           href: workflow-automation.md
-        - name: Waarschuwingen exporteren
-          displayName: continuous
-          href: continuous-export.md
     - name: Kubernetes-workloads beveiligen
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: Onderzoek gebruikersgegevens beheren
       href: security-center-investigation-user-data.md

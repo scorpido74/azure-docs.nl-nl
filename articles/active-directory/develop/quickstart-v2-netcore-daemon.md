@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf9a2232a04b929d716d3b2412f1b2c666b29f62
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257820"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767286"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Quickstart: Verkrijg een token en roep Microsoft Graph-API aan met behulp van de id van de console-app
 
@@ -25,7 +25,7 @@ In deze quickstart leert u hoe u een .NET Core-toepassing schrijft die een toega
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze quickstart is [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) vereist.
+Voor deze quickstart is [.NET Core 3.1](https://www.microsoft.com/net/download/dotnet-core) vereist.
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
@@ -48,12 +48,12 @@ Voor deze quickstart is [.NET Core 2.2](https://www.microsoft.com/net/download/d
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 > 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
-> 1. Ga naar de pagina [App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) in het Microsoft-identiteitsplatform voor ontwikkelaars.
+> 1. Ga in het Microsoft-identiteitsplatform naar de pagina [App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) voor ontwikkelaars door te zoeken naar **App-registraties** in de Azure Portal-zoekbalk.
 > 1. Selecteer **Nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in.
 > 1. Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die wordt weergegeven voor gebruikers van de app, zoals `Daemon-console`. Selecteer vervolgens **Registreren** om de toepassing te maken.
 > 1. Na het registreren opent u het menu **Certificaten en geheimen**.
-> 1. Onder **Clientgeheimen** selecteert u **+ Nieuw clientgeheim**. Geef het clientgeheim een naam en selecteer **Toevoegen**. Kopieer het geheim naar een veilige locatie. U hebt dit nodig voor gebruik in uw code.
+> 1. Onder **Clientgeheimen** selecteert u **+ Nieuw clientgeheim**. Geef het clientgeheim een naam en selecteer **Toevoegen**. Kopieer het geheim naar een veilige locatie. Die moet u gebruiken in uw code en wordt niet weergegeven in de portal.
 > 1. Open nu het menu **API-machtigingen**, selecteer de knop **+ Een geheim toevoegen** en selecteer **Microsoft Graph**.
 > 1. Selecteer **Toepassingsmachtigingen**.
 > 1. Selecteer onder het knooppunt **Gebruiker** de optie **User.Read.All** en selecteer vervolgens **Machtigingen toevoegen**
@@ -73,6 +73,11 @@ Voor deze quickstart is [.NET Core 2.2](https://www.microsoft.com/net/download/d
 
 > [!div renderon="docs"]
 > [Download het Visual Studio-project](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+
+> [!div renderon="docs"]
+> > [!NOTE]
+> > U kunt het opgegeven project uitvoeren in Visual Studio of Visual Studio voor Mac
+
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Voer het project uit met Visual Studio 2019.
@@ -115,7 +120,7 @@ Als u op dit moment probeert de toepassing uit te voeren, krijgt u de foutmeldin
 ##### <a name="global-tenant-administrator"></a>Globale tenantbeheerder
 
 > [!div renderon="docs"]
-> Als u een globale tenantbeheerder bent, gaat u naar de pagina **API-machtigingen** in de registratie van toepassingen (preview) in de Azure-portal en selecteer **Beheerder toestemming verlenen voor {tenantnaam}** (waarbij {tenantnaam} de naam van uw map is).
+> Als u een globale tenantbeheerder bent, gaat u in de Azure Portal naar **Enterprise-toepassingen** > klik op uw app-registratie > kies **Machtigingen** uit het gedeelte beveiliging in het linkernavigatievenster. Klik op de grote knop met de naam **Beheerderstoestemming geven voor {tenantnaam}** (waar {tenantnaam} de naam van uw map is).
 
 > [!div renderon="portal" class="sxs-lookup"]
 > Als u een globale beheerder bent, gaat u naar de pagina **API-machtigingen** en selecteert u **Beheerder toestemming verlenen voor Enter_the_Tenant_Name_Here**
@@ -144,10 +149,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>Stap 5: De toepassing uitvoeren
 
-Als u Visual Studio gebruikt, drukt u op **F5** om de toepassing uit te voeren. Voer anders de toepassing uit via de opdrachtprompt of de console:
+Als u Visual Studio of Visual Studio voor Mac gebruikt, drukt u op **F5** om de toepassing uit te voeren. Voer anders de toepassing uit via de opdrachtprompt, console of terminal:
 
 ```console
-cd {ProjectFolder}\daemon-console\1-Call-Graph
+cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 

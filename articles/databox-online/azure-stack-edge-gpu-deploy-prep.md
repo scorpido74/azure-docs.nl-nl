@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: e1cb4555b1eab930286e7a27988b3b372b109070
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570895"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743255"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Voorbereidingen voor de implementatie van Azure Stack Edge Pro met GPU 
 
@@ -70,9 +70,9 @@ Zorg voordat u begint voor het volgende:
 - U hebt toegang als eigenaar of inzender op het niveau van de resourcegroep voor de Azure Stack Edge Pro-/Data Box Gateway-, IoT Hub- en Azure Storage-resources.
 
     - Als u een Azure Stack Eedge / Data Box Gateway resource wilt maken, moet u machtigingen hebben als inzender (of hoger) op het niveau van de resourcegroep. 
-    - U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Als u een IoT Hub-resource wilt maken, moet u de provider `Microsoft.Devices` registreren. 
+    - U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` en `MicrosoftKeyVault`-resourceproviders zijn geregistreerd. Als u een IoT Hub-resource wilt maken, moet u de provider `Microsoft.Devices` registreren. 
         - Als u een resourceprovider wilt registreren, gaat u in de Azure Portal naar **Home > Abonnementen > Uw abonnement > Resourceproviders**. 
-        - Zoek naar `Microsoft.DataBoxEdge` en registreer de resourceprovider. 
+        - Zoek naar de specifieke resourceprovider, bijvoorbeeld `Microsoft.DataBoxEdge`, en registreer de resourceprovider. 
     - Als u een resource voor een Storage-account wilt maken, moet u een toegangsbereik van een inzender of hoger hebben op het niveau van de resourcegroep. Azure Storage is standaard een geregistreerde resourceprovider.
 - U hebt beheerders- of gebruikerstoegang tot Azure Active Directory Graph API voor het genereren van bewerkingen voor een activeringssleutel of een referentie, zoals het maken van een share die gebruikmaakt van een opslagaccount. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) voor meer informatie.
 
@@ -152,11 +152,15 @@ Voer de volgende stappen uit in de Azure-portal om een Azure Stack Edge-resource
 
 10. Bekijk op het tabblad **Controleren en maken** de **Prijsdetails**, **Gebruiksvoorwaarden** en de details van uw resource. Selecteer de keuzelijst met invoervak voor **Ik heb de privacyvoorwaarden gecontroleerd**.
 
-    ![Een resource maken 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+    ![Een resource maken 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
+
+    U wordt ook gewaarschuwd wanneer er een Managed Service Identity (MSI) wordt gemaakt, waarmee u zich kunt verifiëren bij cloudservices. Deze identiteit bestaat zolang de resource bestaat.
 
 11. Selecteer **Maken**.
 
-Het maken van de resource duurt enkele minuten. Nadat de resource succesvol is gemaakt en geïmplementeerd, wordt u daarvan op de hoogte gebracht. Selecteer **Ga naar resource**.
+Het maken van de resource duurt enkele minuten. Er wordt ook een MSI gemaakt waarmee het Azure Stack Edge-apparaat kan communiceren met de resourceprovider in Azure.
+
+Nadat de resource succesvol is gemaakt en geïmplementeerd, wordt u daarvan op de hoogte gebracht. Selecteer **Ga naar resource**.
 
 ![Ga naar de Azure Stack Edge Pro-resource](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
@@ -174,9 +178,16 @@ Nadat de Azure Stack Edge-resource is geactiveerd, hebt u de activeringssleutel 
 
     ![Apparaatinstallatie selecteren](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
 
-2. Selecteer **Sleutel genereren** op de tegel **Activeren** om een activeringssleutel te maken. Selecteer het kopieerpictogram om de sleutel te kopiëren en op te slaan voor later gebruik.
+2. Geef op de tegel **Activeren** een naam op voor de Azure Key Vault of accepteer de standaardnaam. De naam van de sleutelkluis mag tussen de 3 en 24 tekens lang zijn. 
+
+    Er wordt een sleutelkluis gemaakt voor elke Azure Stack Edge-resource die met uw apparaat wordt geactiveerd. Met de sleutelkluis kunt u geheimen opslaan en openen, de CIK (Channel Integrity Key) voor de service wordt bijvoorbeeld opgeslagen in de sleutelkluis. 
+
+    Wanneer u een naam voor de sleutelkluis hebt opgegeven, selecteert u **Sleutel genereren** om een activeringssleutel te maken. 
 
     ![Activeringssleutel ophalen](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
+
+    Wacht enkele minuten terwijl de sleutelkluis en de activeringssleutel worden gemaakt. Selecteer het kopieerpictogram om de sleutel te kopiëren en op te slaan voor later gebruik.
+
 
 > [!IMPORTANT]
 > - De activeringssleutel verloopt drie dagen nadat deze is gegenereerd.

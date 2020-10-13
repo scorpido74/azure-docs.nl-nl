@@ -6,8 +6,12 @@
       href: bastion-overview.md
 - name: Snelstartgidsen
   items:
-    - name: Een bastionhost maken op basis van VM-instellingen
+    - name: Een host met VM-instellingen maken
       href: quickstart-host-portal.md
+- name: Zelfstudies
+  items:
+    - name: Een Windows VM maken en er verbinding mee maken
+      href: tutorial-create-host-portal.md
 - name: Concepten
   items:
     - name: Ondersteuning voor op afstand werken
@@ -16,7 +20,7 @@
       href: work-remotely-support.md
 - name: Instructiegidsen
   items:
-    - name: Een Bastion-host maken
+    - name: Een host maken
       items:
         - name: Azure Portal
           href: bastion-create-host-portal.md

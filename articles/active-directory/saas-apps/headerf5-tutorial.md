@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 60c699e35cb182c6a90ae60efe93303569a35014
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540768"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817356"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Zelfstudie: Eenmalige aanmelding (SSO) configureren tussen Azure Active Directory en F5
 
@@ -73,15 +73,15 @@ U hebt het volgende nodig om aan de slag te gaan:
 
 1. Klik op de pagina **Guided Configuration** op **Upgrade Guided Configuration** in de linkerbovenhoek.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure14.png) 
+    ![Schermopname van de pagina Guided Configuration met de koppeling Update Guided Configuration.](./media/headerf5-tutorial/configure14.png) 
 
 1. Selecteer in het pop-upvenster Upgrade Guide Configuration op de optie **Choose File** om het gedownloade gebruiksscenariopakket te uploaden en klik op de knop **Upload and Install**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure15.png) 
+    ![Schermopname van het dialoogvenster Upgrade Guided Configuration met Choose File geselecteerd.](./media/headerf5-tutorial/configure15.png) 
 
 1. Wanneer de upgrade is voltooid, klikt u op de knop **Continue**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure16.png)
+    ![Schermopname van het dialoogvenster Upgrade Guided Configuration met een voltooiingsbericht.](./media/headerf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -211,39 +211,39 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Navigeer naar **System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek. Geef een **certificaatnaam op** (verderop in de configuratie wordt hiernaar verwezen). Selecteer bij **Certificate Source** de optie Upload File en geef het certificaat op dat u van Azure hebt gedownload tijdens het configureren van eenmalige aanmelding met SAML. Klik op **Import**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure12.png)
+    ![Schermopname van de lijst met S S L-certificaten waar u de certificaatnaam en -bron selecteert.](./media/headerf5-tutorial/configure12.png)
  
 1. Daarnaast hebt u het **SSL-certificaat voor de hostnaam van de toepassing nodig. Navigeer naar System > Certificate Management > Traffic Certificate Management > SSL Certificate List**. Selecteer **Import** in de rechterhoek. Het **Import Type** wordt **PKCS 12 (IIS)** . Geef een **Key Name** op (verderop in de configuratie wordt hiernaar verwezen) en geef het PFX-bestand op. Geef het **Password** voor de PFX op. Klik op **Import**.
 
     >[!NOTE]
     >In het voorbeeld is `Headerapp.superdemo.live` de naam van onze app. We gebruiken een wildcardcertificaat en onze keyname is `WildCard-SuperDemo.live`.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure13.png)
+    ![Schermopname van de pagina S S L Certificate/Key Source.](./media/headerf5-tutorial/configure13.png)
 
 1. We gebruiken de begeleide ervaring voor het instellen van de Azure AD-federatie en -toepassingstoegang. Ga naar F5 BIG-IP **Main** en selecteer **Access > Guided Configuration > Federation > SAML Service Provider**. Klik op **Next** klik vervolgens op **Next** om de configuratie te starten.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure01.png)
+    ![Schermopname van de pagina Guided Configuration met Federation geselecteerd.](./media/headerf5-tutorial/configure01.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure02.png)
+    ![Schermopname van de pagina SAML Service Provider.](./media/headerf5-tutorial/configure02.png)
  
 1. Geef een **Configuration Name** op. Geef de **Entity ID** op (dezelfde als die u hebt geconfigureerd in de configuratie van de Azure AD-toepassing). Geef de **Host name** op. Voeg een **Description** toe ter referentie. Accepteer de overige standaardgegevens en selecteer en klik op **Save & Next**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure03.png) 
+    ![Schermopname van de pagina Service Provider Properties.](./media/headerf5-tutorial/configure03.png) 
 
 1. In dit voorbeeld maken we een nieuwe virtuele server als 192.168.30.20 met poort 443. Geef het IP-adres van de virtuele server op bij **Destination Address**. Selecteer het **SSL Profile** van de client en selecteer Create new. Geef het eerder geüploade toepassingscertificaat (het wildcardcertificaat in dit voorbeeld) en de bijbehorende sleutel op en klik op **Save & Next**.
 
     >[!NOTE]
     >In dit voorbeeld wordt onze interne webserver uitgevoerd op poort 888 en willen we deze publiceren met 443.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure04.png) 
+    ![Schermopname van de pagina Virtual Server Properties.](./media/headerf5-tutorial/configure04.png) 
 
 1. Geef bij **Select method to configure your IdP connector** de optie Metadata op, klik op Choose File en upload het XML-bestand met metagegevens dat u eerder hebt gedownload van Azure AD. Geef een unieke **naam** op voor de SAML IDP-connector. Kies het **Metadata Signing Certificate** dat eerder is geüpload. Klik op **Save & Next**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure05.png)
+    ![Schermopname van de pagina External Identity Provider Connector Settings.](./media/headerf5-tutorial/configure05.png)
  
 1. Selecteer onder **Select a Pool** de optie **Create New** (u kunt ook een pool selecteren die al bestaat). Laat andere waarden op de standaardwaarde ingesteld. Typ onder Pool Servers het IP-adres onder **IP Address/Node Name**. Geef de **Port** op. Klik op **Save & Next**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure06.png)
+    ![Schermopname van de pagina Pool Properties.](./media/headerf5-tutorial/configure06.png)
 
 1. Selecteer in het scherm Single Sign-On Settings de optie **Enable Single Sign-On**. Kies onder Selected Single Sign-On Type de optie **HTTP header-based**. Vervang **session.saml.last.Identity** door **session.saml.last.attr.name.Identity** onder Username Source (deze variabele is ingesteld met behulp van claimtoewijzing in Azure AD). Onder SSO Headers.
 
@@ -258,21 +258,21 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     >[!NOTE]
     >Account Name is het F5-delegatieaccount dat is gemaakt (raadpleeg de documentatie van F5).
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure07.png) 
+    ![Schermopname van de pagina Single Sign-On Settings.](./media/headerf5-tutorial/configure07.png) 
 
 1. In het kader van deze richtlijnen slaan we eindpuntcontroles over.  Raadpleeg de documentatie van F5 voor meer informatie. Selecteer **Save & Next**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure08.png)
+    ![Schermopname van de pagina Endpoint Checks Properties.](./media/headerf5-tutorial/configure08.png)
 
 1. Accepteer de standaardwaarden voor schijven en klik op **Save & Next**. Raadpleeg de documentatie van F5 voor meer informatie over de instellingen voor het beheer van SAML-sessies.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure09.png)
+    ![Schermopname van de pagina Timeout Settings.](./media/headerf5-tutorial/configure09.png)
 
 1. Bekijk het overzichtsscherm en selecteer **Deploy** om de BIG-IP te configureren. Klik op **Finish**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure10.png)
+    ![Schermopname van de pagina Your application is ready to be deployed.](./media/headerf5-tutorial/configure10.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure11.png)
+    ![Schermopname van de pagina Your application is deployed.](./media/headerf5-tutorial/configure11.png)
 
 ## <a name="advanced-configuration"></a>Geavanceerde configuratie
 
@@ -283,7 +283,7 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
     >[!NOTE]
     >In het voorbeeld is `Headerapp.superdemo.live` de naam van onze app. We gebruiken een wildcardcertificaat en onze keyname is `WildCard-SuperDemo.live`.
   
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure17.png)
+    ![Schermopname van de pagina S S L Certificate/Key Source voor geavanceerde configuratie.](./media/headerf5-tutorial/configure17.png)
 
 ### <a name="adding-a-new-web-server-to-bigip-f5"></a>Een nieuwe webserver toevoegen aan BigIP-F5
 
@@ -291,7 +291,7 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
 1. Geef de **naam** op en kies onder **Template** de optie **f5.http**.
  
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure18.png)
+    ![Schermopname van de pagina Application Services met Template Selection.](./media/headerf5-tutorial/configure18.png)
 
 1. We gaan in dit geval onze HeaderApp2 extern publiceren als HTTPS, **hoe moet het BIG-IP-systeem SSL-verkeer afhandelen**? We geven **Terminate SSL from Client, Plaintext to servers (SSL Offload)** op. Geef uw certificaat en sleutel op onder **Which SSL certificate do you want to use?** en **Which SSL private key do you want to use?** . Geef het IP-adres van de virtuele server op onder **What IP Address do you want to use for the Virtual Server?** . 
 
@@ -303,15 +303,15 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
         * Als u een nieuwe app-server maakt, geeft u het **interne IP-adres** en **poortnummer** op.
 
-        ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure19.png) 
+        ![Schermopname van het deelvenster waar u deze detail kunt opgeven.](./media/headerf5-tutorial/configure19.png) 
 
 1. Klik op **Finished**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure20.png) 
+    ![Schermopname van de pagina na voltooiing.](./media/headerf5-tutorial/configure20.png) 
 
 1. Zorg ervoor dat de app-eigenschappen kunnen worden gewijzigd. Klik op **Main > IApps > Application Services: Applications >> HeaderApp2**. Schakel het selectievakje **Strict Updates** uit (er worden enkele instellingen buiten de gebruikersinterface gewijzigd). Klik op de knop **Update**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure21.png) 
+    ![Schermopname van de pagina Application Services met het tabblad Properties geselecteerd.](./media/headerf5-tutorial/configure21.png) 
 
 1. Op dit moment moet u kunnen bladeren naar de virtuele server.
 
@@ -319,27 +319,27 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
 1.  Klik op **Access > Federation> SAML Service Provider > Local SP Service > klik op Create of het +-teken**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure22.png)
+    ![Schermopname van de pagina About this BIG I P. ](./media/headerf5-tutorial/configure22.png)
 
 1. Geef details op voor de serviceproviderservice. Geef de **naam** op die de SP-configuratie van F5 vertegenwoordigt. Geef de **entiteit-ID** op (meestal hetzelfde als de URL van de toepassing).
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure23.png)
+    ![Schermopname van de pagina SAML Service Provider met het dialoogvenster Create New SAML S P Service.](./media/headerf5-tutorial/configure23.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure24.png)
+    ![Schermopname van het dialoogvenster Create New SAML S P Service met Endpoint Settings geselecteerd.](./media/headerf5-tutorial/configure24.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure25.png)
+    ![Schermopname van het dialoogvenster Create New SAML S P Service met Security Settings geselecteerd.](./media/headerf5-tutorial/configure25.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure26.png)
+    ![Schermopname van het dialoogvenster Create New SAML S P Service met Authentication Context geselecteerd.](./media/headerf5-tutorial/configure26.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure27.png)
+    ![Schermopname van het dialoogvenster Create New SAML S P Service met Requested Attributes geselecteerd.](./media/headerf5-tutorial/configure27.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure28.png)
+    ![Schermopname van het dialoogvenster Edit New SAML S P Service met Advanced Settings geselecteerd.](./media/headerf5-tutorial/configure28.png)
 
 ### <a name="create-idp-connector"></a>IdP-connector maken
 
 1. Klik op de knop **Bind/Unbind IdP Connectors**, selecteer **Create New IdP Connector** en maak een keuze bij de optie **Metadata**. Voer vervolgens de volgende stappen uit:
  
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure29.png)
+    ![Schermopname van het dialoogvenster Edit SAML I d Ps that use this S P met Create New I d P Connector geselecteerd.](./media/headerf5-tutorial/configure29.png)
 
     a. Blader naar het bestand metadata.xml dat u hebt gedownload van Azure AD en geef een **Identity Provider Name** op.
 
@@ -347,7 +347,7 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
     c. De connector wordt gemaakt en het certificaat is automatisch gereed vanuit het bestand metadata.xml.
     
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure30.png)
+    ![Schermopname van het dialoogvenster Create New SAML I d P Connector.](./media/headerf5-tutorial/configure30.png)
 
     d. Configureer F5BIG-IP om alle aanvragen naar Azure AD te verzenden.
 
@@ -363,7 +363,7 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
     j. **Het instellen van SAML IDP is voltooid**
     
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure31.png)
+    ![Schermopname van het dialoogvenster Edit SAML I d Ps that use this S P.](./media/headerf5-tutorial/configure31.png)
 
 ### <a name="configure-f5-policy-to-redirect-users-to-azure-saml-idp"></a>F5-beleid configureren om gebruikers om te leiden naar Azure SAML IDP
 
@@ -373,39 +373,39 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
     b. Klik op de knop **Create**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure32.png)
+    ![Schermopname van de pagina Access Profiles.](./media/headerf5-tutorial/configure32.png)
  
     c. Geef de **naam** op (HeaderAppAzureSAMLPolicy in het voorbeeld).
 
     d. U kunt andere instellingen aanpassen. Raadpleeg de documentatie van F5.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure33.png)
+    ![Schermopname van de pagina General Properties.](./media/headerf5-tutorial/configure33.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure34.png) 
+    ![Schermopname van het vervolg van de pagina General Properties.](./media/headerf5-tutorial/configure34.png) 
 
     e. Klik op **Finished**.
 
     f. Nadat het beleid is gemaakt, klikt u op het beleid en gaat u naar het tabblad **Access Policy**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure35.png)
+    ![Schermopname van het tabblad Access Policy met General Properties.](./media/headerf5-tutorial/configure35.png)
  
     g. Klik op de **Visual Policy editor** en bewerk de koppeling **Access Policy for Profile**.
 
     h. Klik op het plusteken in de Visual Policy editor en kies **SAML Auth**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure36.png)
+    ![Schermopname van een toegangsbeleid.](./media/headerf5-tutorial/configure36.png)
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure37.png)
+    ![Schermopname van een zoekvenster waarin SAML Auth is geselecteerd.](./media/headerf5-tutorial/configure37.png)
  
     i. Klik op **Add Item**.
 
     j. Geef onder **Properties** een **naam** op en selecteer onder **AAA Server** de eerder geconfigureerde SP. Klik op **SAVE**.
  
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure38.png)
+    ![Schermopname van de eigenschappen van het item, waaronder de A A A-server.](./media/headerf5-tutorial/configure38.png)
 
     k. Het basisbeleid is gereed. U kunt het beleid aanpassen om extra bronnen/kenmerkarchieven op te nemen.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure39.png)
+    ![Schermopname van het aangepaste beleid.](./media/headerf5-tutorial/configure39.png)
  
     l. Zorg ervoor dat u op de koppeling **Apply Access Policy** bovenaan klikt.
 
@@ -415,21 +415,21 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
     a. Klik op **Main** > **Local Traffic** > **Virtual Servers**.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure40.png)
+    ![Schermopname van de pagina Virtual Servers List.](./media/headerf5-tutorial/configure40.png)
  
     b. Klik op de virtuele server, blader naar de sectie **Access Policy** in de vervolgkeuzelijst **Access Profile** en selecteer het SAML-beleid dat is gemaakt (in het voorbeeld HeaderAppAzureSAMLPolicy)
 
     c. Klik op **Update**
  
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure41.png)
+    ![Schermopname van het deelvenster Access Policy.](./media/headerf5-tutorial/configure41.png)
 
     d. Maak een F5-iRule® voor het extraheren van de aangepaste SAML-kenmerken van de binnenkomende bevestiging en geef ze door als HTTP-headers voor de testtoepassing voor de back-end. Klik op **Main > Local Traffic > iRules > iRule List > klik op Create**
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure42.png)
+    ![Schermopname van de Local Traffic iRule List.](./media/headerf5-tutorial/configure42.png)
  
     e. Plak de tekst van F5 BIG-IP iRule hieronder in het definitievenster.
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure43.png)
+    ![Schermopname van de pagina New iRule.](./media/headerf5-tutorial/configure43.png)
  
     when RULE_INIT {  set static::debug 0  }  when ACCESS_ACL_ALLOWED {
 
@@ -441,7 +441,7 @@ Gebruik deze sectie als u de begeleide configuratie niet kunt gebruiken of als u
 
     **Voorbeelduitvoer hieronder**
 
-    ![Configuratie van F5 (gebaseerd op header)](./media/headerf5-tutorial/configure44.png)
+    ![Schermopname van de voorbeelduitvoer.](./media/headerf5-tutorial/configure44.png)
  
 ### <a name="create-f5-test-user"></a>Een F5-testgebruiker maken
 

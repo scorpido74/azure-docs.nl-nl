@@ -111,28 +111,26 @@
       href: iot-edge-glossary.md
 - name: Instructiegidsen
   items:
-    - name: Een IoT Edge-apparaat registreren
-      href: how-to-register-device.md
-    - name: IoT Edge installeren en beheren
+    - name: Een IoT Edge-apparaat maken
       items:
-        - name: Linux
-          href: how-to-install-iot-edge-linux.md
-        - name: Windows
-          href: how-to-install-iot-edge-windows.md
-        - name: Linux-containers in Windows
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: Windows Server-VM
-          href: how-to-install-iot-edge-windows-server-vm.md
-        - name: Ubuntu-VM
-          href: how-to-install-iot-edge-ubuntuvm.md
-        - name: Kubernetes
-          href: how-to-install-iot-edge-kubernetes.md
+        - name: Runtime installeren
+          href: how-to-install-iot-edge.md
+        - name: Apparaat registreren en verifiëren
+          items:
+            - name: Verificatie met symmetrische sleutel
+              href: how-to-manual-provision-symmetric-key.md
+            - name: Verificatie met X.509-certificaat
+              href: how-to-manual-provision-x509.md
+        - name: Runtime bijwerken
+          href: how-to-update-iot-edge.md
         - name: Apparaatcertificaten beheren
           href: how-to-manage-device-certificates.md
         - name: Testcertificaten maken
           href: how-to-create-test-certificates.md
-        - name: Runtime-versie bijwerken
-          href: how-to-update-iot-edge.md
+        - name: IoT Edge in Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
+        - name: Virtuele machine in IoT Edge met een ARM-sjabloon
+          href: how-to-install-iot-edge-ubuntuvm.md
     - name: Automatisch inrichten met DPS
       items:
         - name: TPM-attestation
@@ -183,6 +181,10 @@
           href: how-to-monitor-module-twins.md
         - name: Directe methoden van EdgeAgent
           href: how-to-edgeagent-direct-method.md
+        - name: IoT Edge-logboeken ophalen
+          href: how-to-retrieve-iot-edge-logs.md
+        - name: Ingebouwde metrische gegevens openen
+          href: how-to-access-built-in-metrics.md
     - name: IoT Edge-apparaten als gateways gebruiken
       items:
         - name: Een transparante gateway configureren
@@ -225,6 +227,8 @@
           href: troubleshoot-common-errors.md
 - name: Naslaginformatie
   items:
+    - name: Scripts voor Windows-apparaatbeheer
+      href: reference-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Resources

@@ -38,15 +38,17 @@
 - name: Zelfstudies
   items:
     - name: 1 - Apparaatsets met registratiegroepen inrichten
-      href: how-to-legacy-device-symm-key.md
+      items:
+        - name: Apparaten inrichten met symmetrische sleutels
+          href: how-to-legacy-device-symm-key.md
+        - name: Aangepast toewijzingsbeleid gebruiken
+          href: tutorial-custom-allocation-policies.md
     - name: 2 - Apparaten op meerdere hubs inrichten
       items:
         - name: Meerdere hubs aan DPS koppelen
           href: tutorial-provision-multiple-hubs.md
         - name: Inrichten voor multitenancy
           href: how-to-provision-multitenant.md
-        - name: Aangepast toewijzingsbeleid gebruiken
-          href: tutorial-custom-allocation-policies.md
 - name: Voorbeelden
   items:
     - name: Voorbeeld van een gesimuleerde TPM-apparaatbevestiging
