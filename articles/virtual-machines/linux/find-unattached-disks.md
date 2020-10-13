@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 87fe277bbd2fa618d43ce3274c1d2c05a5d7b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 821ba551dc19f92988a352b8f1bab792ce52207b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660170"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978914"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen met de Azure CLI
 Wanneer u een virtuele machine (VM) in azure verwijdert, worden schijven die zijn gekoppeld aan de VM standaard niet verwijderd. Deze functie helpt gegevens verlies te voor komen vanwege de onbedoelde verwijdering van Vm's. Nadat een virtuele machine is verwijderd, blijft u betalen voor niet-gekoppelde schijven. In dit artikel leest u hoe u niet-gekoppelde schijven kunt zoeken en verwijderen en overbodige kosten kunt verlagen. 
@@ -20,7 +20,7 @@ Wanneer u een virtuele machine (VM) in azure verwijdert, worden schijven die zij
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Managed disks: niet-gekoppelde schijven zoeken en verwijderen 
 
-Het volgende script zoekt naar niet-gekoppelde [beheerde schijven](managed-disks-overview.md) door de waarde van de eigenschap **ManagedBy** te controleren. Wanneer een beheerde schijf is gekoppeld aan een virtuele machine, bevat de eigenschap **ManagedBy** de resource-id van de virtuele machine. Wanneer een beheerde schijf niet is gekoppeld, is de eigenschap **ManagedBy** null. Het script onderzoekt alle beheerde schijven in een Azure-abonnement. Wanneer het script een beheerde schijf zoekt waarvan de eigenschap **ManagedBy** is ingesteld op NULL, wordt door het script bepaald dat de schijf niet is gekoppeld.
+Het volgende script zoekt naar niet-gekoppelde [beheerde schijven](../managed-disks-overview.md) door de waarde van de eigenschap **ManagedBy** te controleren. Wanneer een beheerde schijf is gekoppeld aan een virtuele machine, bevat de eigenschap **ManagedBy** de resource-id van de virtuele machine. Wanneer een beheerde schijf niet is gekoppeld, is de eigenschap **ManagedBy** null. Het script onderzoekt alle beheerde schijven in een Azure-abonnement. Wanneer het script een beheerde schijf zoekt waarvan de eigenschap **ManagedBy** is ingesteld op NULL, wordt door het script bepaald dat de schijf niet is gekoppeld.
 
 >[!IMPORTANT]
 >Voer eerst het script uit door de variabele **deleteUnattachedDisks** in te stellen op 0. Met deze actie kunt u alle niet-gekoppelde beheerde schijven zoeken en weer geven.
@@ -106,5 +106,3 @@ done
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [een opslag account verwijderen](../../storage/common/storage-account-create.md#delete-a-storage-account)voor meer informatie.
-
-

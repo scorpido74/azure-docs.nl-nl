@@ -9,15 +9,15 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577642"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Plug en Play-apparaten certificeren
 
-Het IoT Plug en Play Device-certificerings programma bevat hulpprogram ma's om te controleren of een apparaat voldoet aan de vereisten voor de IoT-Plug en Play certificering. De hulpprogram ma's helpen organisaties ook de beschik baarheid van hun IoT Plug en Play-apparaten te belichten. Deze gecertificeerde apparaten zijn afgestemd op IoT-oplossingen en helpen de time-to-market te verminderen.
+Het IoT Plug en Play-apparaatcertificeringsprogramma bevat hulpprogramma's om te controleren of een apparaat voldoet aan de vereisten voor de IoT-Plug en Play certificering. De hulpprogram ma's helpen organisaties ook de beschik baarheid van hun IoT Plug en Play-apparaten te belichten. Deze gecertificeerde apparaten zijn afgestemd op IoT-oplossingen en helpen de time-to-market te verminderen.
 
 In dit artikel leest u informatie over:
 
@@ -45,7 +45,7 @@ Om aan de certificerings vereisten te voldoen, moet uw apparaat:
 - De model-ID verzenden tijdens de [registratie van DPS](concepts-developer-guide-device-csharp.md#dps-payload) in de nettolading van de DPS-inrichting.
 - De model-ID tijdens de [MQTT-verbinding](concepts-developer-guide-device-csharp.md#model-id-announcement)aankondigen.
 
-## <a name="test-with-the-azure-iot-extension-cli"></a>Testen met de Azure IoT extension-CLI
+## <a name="test-with-the-azure-iot-extension-cli"></a>Testen met de Azure IoT-extensie-CLI
 
 Met de [Azure IOT cli-extensie](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) kunt u controleren of de implementatie van het apparaat overeenkomt met het model voordat u het apparaat verzendt voor certificering via de Azure Certified Device-Portal.
 
@@ -162,7 +162,7 @@ Voorbeeld uitvoer van test uitvoering
             },
 ```
 
-## <a name="test-using-the-azure-certified-device-portal"></a>Testen met behulp van de Azure Certified Device Portal
+## <a name="test-using-the-azure-certified-device-portal"></a>Testen met behulp van het Azure Certified Device-portal
 
 De volgende stappen laten zien hoe u de [Azure-gecertificeerde Apparaatbeheer](https://aka.ms/acdp) kunt gebruiken om de onboarding uit te voeren, product gegevens te registreren, een aan de slag-hand leiding te verzenden en de certificerings tests uit te voeren.
 
@@ -199,7 +199,7 @@ Er zijn drie stappen die moeten worden uitgevoerd:
 
 1. Interfaces verbinden en detecteren. Het apparaat moet via DPS verbinding maken met de Azure IoT-certificerings service. Kies de verificatie methode (X. 509-certificaat, symmetrische sleutels of trusted platform module) om de Device Application te gebruiken en bij te werken met de DPS-informatie.
 1. Interfaces controleren. Controleer de interface en zorg ervoor dat elk een Payload-invoer heeft die zinvol is voor testen.
-1. Proeven. Het systeem test elk apparaat model om te controleren of de telemetrie, eigenschappen en opdrachten die in het model worden beschreven, voldoen aan de IoT Plug en Play-conventies. Wanneer de test is voltooid, selecteert u de koppeling **Logboeken weer geven** om de telemetrie van het apparaat weer te geven en de onbewerkte gegevens die worden verzonden naar IOT hub apparaatspecifieke eigenschappen van het apparaat.
+1. Testen. Het systeem test elk apparaat model om te controleren of de telemetrie, eigenschappen en opdrachten die in het model worden beschreven, voldoen aan de IoT Plug en Play-conventies. Wanneer de test is voltooid, selecteert u de koppeling **Logboeken weer geven** om de telemetrie van het apparaat weer te geven en de onbewerkte gegevens die worden verzonden naar IOT hub apparaatspecifieke eigenschappen van het apparaat.
 
 ### <a name="submit-and-publish"></a>Verzenden en publiceren
 

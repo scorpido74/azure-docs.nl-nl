@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611274"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
@@ -101,7 +101,7 @@ Stappen voor het toevoegen van de Azure-rollen:
 
 ![scherm opname van de gebruikers interface voor roltoewijzing toevoegen](media/hpc-cache-add-role.png)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -140,7 +140,7 @@ Naast de para meters voor de standaard resource groep en de cache naam moet u de
 
 * ``--virtual-namespace-path`` -Het pad naar de client voor dit opslag doel instellen. Plaats paden tussen aanhalings tekens. Raadpleeg [de geaggregeerde naam ruimte plannen](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
-Voor beeld opdracht:
+Voorbeeldopdracht:
 
 ```azurecli
 az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
@@ -215,7 +215,7 @@ Geef deze informatie op voor een opslag doel met NFS-back-ups:
 
 Wanneer u klaar bent, klikt u op **OK** om het opslag doel toe te voegen.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
@@ -248,7 +248,7 @@ Geef naast de cache naam en cache resource groep deze waarden op:
 
   Lees de [geaggregeerde naam ruimte configureren](hpc-cache-namespace.md) voor meer informatie over de functie virtuele naam ruimte.
 
-Voor beeld opdracht:
+Voorbeeldopdracht:
 
 ```azurecli
 
@@ -299,7 +299,7 @@ Klik op de naam van een opslag doel om de detail pagina ervan te openen.
 
 Lees [opslag doelen bewerken](hpc-cache-edit-storage.md) voor meer informatie.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 

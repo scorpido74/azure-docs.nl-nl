@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561258"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977062"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Problemen met Windows Azure Guest agent oplossen
 
-Windows Azure Guest agent is een virtuele machine (VM)-agent. Hiermee kan de virtuele machine communiceren met de infrastructuur controller (de onderliggende fysieke server waarop de virtuele machine wordt gehost) op het IP-adres 168.63.129.16. Dit is een virtueel openbaar IP-adres dat de communicatie vereenvoudigt. Zie [Wat is IP-adres 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)? voor meer informatie.
+Windows Azure Guest agent is een virtuele machine (VM)-agent. Hiermee kan de virtuele machine communiceren met de infrastructuur controller (de onderliggende fysieke server waarop de virtuele machine wordt gehost) op het IP-adres 168.63.129.16. Dit is een virtueel openbaar IP-adres dat de communicatie vereenvoudigt. Zie [Wat is IP-adres 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)? voor meer informatie.
 
- De virtuele machine die wordt gemigreerd naar Azure vanuit on-premises of die is gemaakt met behulp van een aangepaste installatie kopie, heeft geen Windows Azure Guest agent geïnstalleerd. In deze scenario's moet u de VM-agent hand matig installeren. Zie [overzicht van Azure virtual machine agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)voor meer informatie over het installeren van de VM-agent.
+ De virtuele machine die wordt gemigreerd naar Azure vanuit on-premises of die is gemaakt met behulp van een aangepaste installatie kopie, heeft geen Windows Azure Guest agent geïnstalleerd. In deze scenario's moet u de VM-agent hand matig installeren. Zie [overzicht van Azure virtual machine agent](../extensions/agent-windows.md)voor meer informatie over het installeren van de VM-agent.
 
 Nadat de installatie van Windows Azure Guest agent is voltooid, ziet u de volgende services die worden vermeld in Services. msc op de VM:
  
@@ -74,7 +74,7 @@ Ga naar de pagina met eigenschappen van de virtuele machine in Azure Portal en c
 
     Ga in het configuratie scherm naar **Program ma's en onderdelen** om te bepalen of de service Windows Azure Guest agent is geïnstalleerd.
 
-Als er geen pakketten, services en processen worden uitgevoerd en u ziet niet zelfs Windows Azure Guest agent geïnstalleerd onder Program Ma's en onderdelen, installeert u de [Windows Azure Guest Agent-service](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows). Als de gast agent niet correct wordt geïnstalleerd, kunt u [de VM-agent offline installeren](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+Als er geen pakketten, services en processen worden uitgevoerd en u ziet niet zelfs Windows Azure Guest agent geïnstalleerd onder Program Ma's en onderdelen, installeert u de [Windows Azure Guest Agent-service](../extensions/agent-windows.md). Als de gast agent niet correct wordt geïnstalleerd, kunt u [de VM-agent offline installeren](./install-vm-agent-offline.md).
 
 Als u de services ziet en deze worden uitgevoerd, moet u de service opnieuw starten die controleert of het probleem is opgelost. Als de services zijn gestopt, start u deze en wacht u enkele minuten. Controleer vervolgens of de **agent status** **gereed**is voor rapportage. Als u merkt dat deze services vastlopen, kunnen sommige processen van derden ervoor zorgen dat deze services vastlopen. Neem contact op met [Microsoft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)voor meer informatie over het oplossen van deze problemen.
 
@@ -111,7 +111,7 @@ De Windows Azure Guest-agent bevat een functie voor automatisch bijwerken. Er wo
     ```
     Controleer vervolgens of de services van de gast agent correct worden gestart.
  
-    In zeldzame gevallen waarin de gast agent niet correct wordt geïnstalleerd, kunt u [de VM-agent offline installeren](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+    In zeldzame gevallen waarin de gast agent niet correct wordt geïnstalleerd, kunt u [de VM-agent offline installeren](./install-vm-agent-offline.md).
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>Stap 3 Controleer of de virtuele machine verbinding kan maken met de infrastructuur controller
@@ -189,7 +189,7 @@ De virtuele machine kan de wireserver-hostserver niet bereiken.
 1. Als u de URL niet kunt bereiken uit stap 1, controleert u de netwerk interface om te bepalen of deze is ingesteld als DHCP-ingeschakeld en DNS heeft. Als u de DHCP-status van de netwerk interface wilt controleren, voert u de volgende opdracht uit:  `netsh interface ip show config` .
 1. Als DHCP is uitgeschakeld, voert u de volgende handelingen uit om de waarde geel in te stellen op de naam van uw Interface: `netsh interface ip set address name="Name of the interface" source=dhcp` .
 1. Controleer of er problemen zijn die kunnen worden veroorzaakt door een firewall, een proxy of een andere bron die de toegang tot het IP-adres 168.63.129.16 kunnen blok keren.
-1. Controleer of Windows Firewall of een firewall van derden de toegang blokkeert tot de poorten 80, 443 en 32526. Zie [Wat is IP-adres 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)? voor meer informatie over waarom dit adres niet moet worden geblokkeerd.
+1. Controleer of Windows Firewall of een firewall van derden de toegang blokkeert tot de poorten 80, 443 en 32526. Zie [Wat is IP-adres 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)? voor meer informatie over waarom dit adres niet moet worden geblokkeerd.
 
 ### <a name="guest-agent-is-stuck-stopping"></a>De gast agent is vastgelopen  
 

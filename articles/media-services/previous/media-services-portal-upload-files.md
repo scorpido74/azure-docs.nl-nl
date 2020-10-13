@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 00035782a17936405b2b042035220dde87da12b1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89257055"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Bestanden uploaden naar een Media Services-account via Azure Portal
@@ -42,7 +42,7 @@ U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [gratis proe
 
 ## <a name="upload-files"></a>Bestanden uploaden
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
-2. Selecteer **instellingen**  >  **assets**. Selecteer de knop **Uploaden**.
+2. Selecteer **Instellingen** > **Assets**. Selecteer de knop **Uploaden**.
    
     ![Bestanden uploaden](./media/media-services-portal-vod-get-started/media-services-upload.png)
    

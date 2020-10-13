@@ -1,7 +1,7 @@
 ---
-title: 'Neural Network met twee klassen: Naslag informatie over modules'
+title: 'Two-Class Neural Network: module-verwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de Neural-netwerk module met twee klassen in Azure Machine Learning om een Neural-netwerk model te maken dat kan worden gebruikt om een doel te voors pellen met slechts twee waarden.
+description: Meer informatie over het gebruik van de Two-Class Neural-netwerk module in Azure Machine Learning om een Neural-netwerk model te maken dat kan worden gebruikt om een doel te voors pellen met slechts twee waarden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2ad4fc575a6e9d07e4e24c2d570f68edbbea46c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907677"
 ---
-# <a name="two-class-neural-network-module"></a>Neural-netwerk module met twee klassen
+# <a name="two-class-neural-network-module"></a>Neural-netwerk module Two-Class
 
 In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 

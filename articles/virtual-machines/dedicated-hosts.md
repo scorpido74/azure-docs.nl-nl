@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 351b10b68cf1c014d358032f41bb01ac1093bd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373091"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979016"
 ---
 # <a name="azure-dedicated-hosts"></a>Met Azure toegewezen hosts
 
@@ -122,7 +122,7 @@ De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bi
 
 **Onderhouds beheer** biedt klanten een optie voor het overs laan van regel matige platform updates die zijn gepland op hun toegewezen hosts en pas deze toe op het tijdstip van hun keuze in een voortschrijdende periode van 35 dagen.
 
-Zie [platform updates beheren met onderhouds beheer](https://docs.microsoft.com/azure/virtual-machines/maintenance-control)voor meer informatie.
+Zie [platform updates beheren met onderhouds beheer](./maintenance-control.md)voor meer informatie.
 
 ## <a name="capacity-considerations"></a>Overwegingen bij capaciteitsbepaling
 
@@ -142,7 +142,7 @@ Bij het inrichten van een toegewezen host worden zowel een toegewezen host-vCPU 
 
 ![Scherm afbeelding van de pagina gebruik en quota's in de portal](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-Zie [vCPU quota's voor virtuele machines](/azure/virtual-machines/windows/quotas)voor meer informatie.
+Zie [vCPU quota's voor virtuele machines](./windows/quotas.md)voor meer informatie.
 
 De gratis proef versie en MSDN-abonnementen hebben geen quota voor voor Azure toegewezen hosts.
 
@@ -182,7 +182,7 @@ Azure bewaakt en beheert de integriteits status van uw hosts. De volgende status
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U kunt een toegewezen host implementeren met behulp van [Azure PowerShell](./windows/dedicated-hosts-powershell.md), de [Portal](./windows/dedicated-hosts-portal.md)en [Azure cli](./linux/dedicated-hosts-cli.md).
+- U kunt een toegewezen host implementeren met behulp van [Azure PowerShell](./windows/dedicated-hosts-powershell.md), de [Portal](./dedicated-hosts-portal.md)en [Azure cli](./linux/dedicated-hosts-cli.md).
 
 - [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)vindt u een voor beeld van een sjabloon, die zowel zones als fout domeinen gebruikt voor maximale tolerantie in een regio.
 

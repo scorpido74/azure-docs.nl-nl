@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 01/30/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b88b2ca0a420295a7a53608f02923e72045e1c44
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526983"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964737"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten met Azure Active Directory (preview-versie)
 
@@ -91,12 +91,12 @@ Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar **Microsoft intune**  >  **apparaatconfiguratie**  >  **profielen**  >  **profiel maken**.
 1. Configureer het nieuwe profiel met de volgende instellingen:
-   - Naam: beveiligings sleutels voor Windows-aanmelding
+   - Naam: beveiligings sleutels voor Windows Sign-In
    - Beschrijving: Hiermee kunt u FIDO-beveiligings sleutels gebruiken tijdens het aanmelden bij Windows
    - Platform: Windows 10 en hoger
    - Profiel type: aangepast
    - Aangepaste OMA-URI-instellingen:
-      - Naam: Schakel FIDO-beveiligings sleutels voor Windows-aanmelding in
+      - Naam: Schakel FIDO-beveiligings sleutels in voor Windows Sign-In
       - OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Gegevens type: geheel getal
       - Waarde: 1

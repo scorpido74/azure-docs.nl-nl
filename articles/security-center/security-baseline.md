@@ -8,10 +8,10 @@ ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f41dfa0889b7f0c34486eee5d16362f4c3c7360d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894589"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure-beveiligings basislijn voor Security Center
@@ -328,7 +328,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [Azure Security Bench Mark: Data Protection](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -378,7 +378,7 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren 
 
-**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot Azure Security Center gerelateerde gegevens en resources te beheren. Azure Security Center heeft ingebouwde rollen voor ' beveiligings lezer ' of ' beveiliging admin, waarmee gebruikers beveiligings beleid kunnen lezen of bijwerken en waarschuwingen en aanbevelingen kan negeren. De Log Analytics-werk ruimte waarin de gegevens worden opgeslagen die door Security Center zijn verzameld, heeft ook ingebouwde rollen die u kunt toewijzen als Log Analytics Reader, Log Analytics Inzender en anderen. Wijs de minst strikte rol toe die gebruikers nodig hebben om hun vereiste taken uit te voeren. Wijs bijvoorbeeld de rol Lezer toe aan gebruikers die alleen informatie over de beveiligings status van een resource hoeven te bekijken, maar geen actie ondernemen, zoals het Toep assen van aanbevelingen of het bewerken van beleid.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot Azure Security Center gerelateerde gegevens en resources te beheren. Azure Security Center heeft ingebouwde rollen voor ' beveiligings lezer ' of ' beveiliging admin, waarmee gebruikers beveiligings beleid kunnen lezen of bijwerken en waarschuwingen en aanbevelingen kan negeren. De Log Analytics-werk ruimte waarin de gegevens worden opgeslagen die door Security Center zijn verzameld, heeft ook ingebouwde rollen die u kunt toewijzen als Log Analytics Reader, Log Analytics Inzender en anderen. Wijs de minst strikte rol toe die gebruikers nodig hebben om hun vereiste taken uit te voeren. Wijs bijvoorbeeld gebruikers die alleen informatie hoeven te bekijken over de beveiligingsstatus van resources, maar geen maatregelen hoeven te nemen zoals het toepassen van aanbevelingen of het bewerken van beleid, de rol Lezer toe.
 
 - [Machtigingen voor Azure Log Analytics-werk ruimte](../role-based-access-control/built-in-roles.md#log-analytics-reader)
 
@@ -668,13 +668,13 @@ Gebruik Azure resource Graph om bronnen in hun abonnementen op te vragen en te d
 
 **Hulp**: Azure DevOps gebruiken om uw code veilig op te slaan en te beheren, zoals aangepaste Azure Policy definities en Azure Resource Manager sjablonen. Als u resources wilt beveiligen die u beheert in azure DevOps, kunt u machtigingen verlenen of weigeren aan specifieke gebruikers, ingebouwde beveiligings groepen of groepen die zijn gedefinieerd in Azure Active Directory (Azure AD) als deze zijn geïntegreerd met Azure DevOps, of Active Directory als dit is geïntegreerd met TFS. Gebruik op rollen gebaseerd toegangs beheer voor het beveiligen van sleutels die door de klant worden beheerd.
 
-Daarnaast kunt u met voorlopig verwijderen en de beveiliging opschonen in Key Vault sleutels beveiligen tegen onbedoelde of schadelijke verwijdering.  Als Azure Storage wordt gebruikt voor het opslaan van back-ups van Azure Resource Manager-sjablonen, schakelt u de optie zacht verwijderen in om uw gegevens op te slaan en te herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. 
+Daarnaast schakelt u Soft-Delete in Key Vault in om de beveiliging van sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.  Als Azure Storage wordt gebruikt voor het opslaan van back-ups van Azure Resource Manager-sjablonen, schakelt u de optie zacht verwijderen in om uw gegevens op te slaan en te herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. 
 
 - [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [Over machtigingen en groepen in azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-- [Het inschakelen van de functie voor voorlopig verwijderen en het opschonen van beveiliging in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
+- [Soft-Delete inschakelen en beveiliging opschonen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
 
 - [Voorlopig verwijderen voor Azure Storage-blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 

@@ -3,15 +3,15 @@ title: Virtuele Windows-bureau blad-taak verdeling configureren-Azure
 description: De taakverdelings methode configureren voor een virtuele Windows-desktop omgeving.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4b133f4cfcb86119687d0d9be1ce91d9207af32a
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932512"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951652"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>De taakverdelingsmethode voor Windows Virtual Desktop configureren
 
@@ -61,6 +61,9 @@ Voer de volgende Power shell-cmdlet uit om een hostgroep te configureren voor he
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> Met het algoritme voor het gelijkmatige taak verdeling worden sessies gedistribueerd naar sessie-hosts op basis van de maximum limiet voor de sessie-host ( `-MaxSessionLimit` ). De standaard waarde van deze para meter is `999999` . Dit is ook het hoogste mogelijke getal waarmee u deze variabele kunt instellen. Deze para meter is vereist wanneer u het algoritme voor de taak verdeling van de diepte eerste gebruikt. Voor de best mogelijke gebruikers ervaring moet u de maximum limiet voor de sessie-hostparameters wijzigen in een getal dat het beste bij uw omgeving past.
 
 Voer de volgende cmdlet uit om ervoor te zorgen dat de instelling is bijgewerkt:
 

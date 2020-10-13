@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087351"
+ms.locfileid: "91931067"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs configureren
 
@@ -56,7 +56,7 @@ Als u open bare toegang voor een opslag account wilt toestaan of weigeren, confi
 > [!NOTE]
 > De eigenschap **AllowBlobPublicAccess** is niet standaard ingesteld en retourneert geen waarde voordat u deze expliciet hebt ingesteld. Het opslag account staat open bare toegang toe wanneer de waarde van de eigenschap **Null** is of wanneer deze **waar**is.
 >
-> De eigenschap **AllowBlobPublicAccess** is momenteel alleen beschikbaar voor opslag accounts in de open bare Azure-Cloud.
+> De eigenschap **AllowBlobPublicAccess** is beschikbaar voor alle opslag accounts in de open bare Azure-Cloud en in azure Government Clouds.
 
 # <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
