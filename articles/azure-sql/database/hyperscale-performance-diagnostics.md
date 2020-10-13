@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84324386"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostische gegevens voor het oplossen van problemen met SQL grootschalige-prestaties
@@ -26,9 +26,9 @@ Om prestatie problemen in een grootschalige-Data Base op te lossen, is de [algem
 
 Elk Azure SQL Database service niveau heeft limieten voor het genereren van de logboeken die worden afgedwongen via [log rate governance](resource-limits-logical-server.md#transaction-log-rate-governance). In grootschalige is de limiet voor het genereren van het logboek op dit moment ingesteld op 100 MB per seconde, ongeacht het service niveau. Er zijn echter momenten waarop de snelheid waarmee het logboek is gegenereerd op de primaire Compute-replica moet worden beperkt om de bezorgings-Sla's te behouden. Deze beperking treedt op wanneer een [pagina Server of een andere compute replica](service-tier-hyperscale.md#distributed-functions-architecture) significant achter het Toep assen van nieuwe logboek records van de logboek service.
 
-De volgende wacht typen (in [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) beschrijven de redenen waarom de logboek frequentie kan worden beperkt op de primaire Compute replica:
+De volgende wacht typen (in [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) beschrijven de redenen waarom de logboek frequentie kan worden beperkt op de primaire Compute replica:
 
-|Wacht type    |Description                         |
+|Wacht type    |Beschrijving                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | Treedt op wanneer een grootschalige-data base het genereren van de snelheid van het primaire Compute-knooppunt logboek wordt beperkt vanwege een vertraagd logboek verbruik op pagina-Server (s).         |
 |RBIO_RG_DESTAGE        | Treedt op wanneer de snelheid van het genereren van het logboek van de grootschalige-data base wordt beperkt vanwege een vertraagd logboek gebruik door de lange termijn logboek opslag.         |
@@ -45,11 +45,11 @@ Diverse dynamische beheerde weer gaven (Dmv's) en uitgebreide gebeurtenissen heb
 
 - Kolommen voor het rapporteren van pagina-Server zijn beschikbaar in uitvoerings-Dmv's en catalogus weergaven, zoals:
 
-  - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-  - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-  - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-  - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
-  - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
+  - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+  - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+  - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+  - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+  - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Lees bewerkingen voor pagina-Server worden toegevoegd aan de volgende uitgebreide gebeurtenissen:
   - sql_statement_completed
   - sp_statement_completed
@@ -67,11 +67,11 @@ Diverse dynamische beheerde weer gaven (Dmv's) en uitgebreide gebeurtenissen heb
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>Statistieken voor het virtuele bestand en IO-Accounting
 
-In Azure SQL Database is de [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF de belangrijkste manier om SQL database io te controleren. I/o-kenmerken in grootschalige verschillen vanwege de [gedistribueerde architectuur](service-tier-hyperscale.md#distributed-functions-architecture). In deze sectie richten we ons op IO (lees-en schrijf bewerkingen) naar gegevens bestanden zoals deze worden weer gegeven in deze DMF. In grootschalige komt elk gegevens bestand dat zichtbaar is in deze DMF overeen met een externe pagina Server. De RBPEX-cache die hier wordt vermeld, is een lokale SSD-cache, een niet-bedekkende cache op de compute replica.
+In Azure SQL Database is de [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF de belangrijkste manier om SQL database io te controleren. I/o-kenmerken in grootschalige verschillen vanwege de [gedistribueerde architectuur](service-tier-hyperscale.md#distributed-functions-architecture). In deze sectie richten we ons op IO (lees-en schrijf bewerkingen) naar gegevens bestanden zoals deze worden weer gegeven in deze DMF. In grootschalige komt elk gegevens bestand dat zichtbaar is in deze DMF overeen met een externe pagina Server. De RBPEX-cache die hier wordt vermeld, is een lokale SSD-cache, een niet-bedekkende cache op de compute replica.
 
 ### <a name="local-rbpex-cache-usage"></a>Lokaal RBPEX-cache gebruik
 
-Lokale RBPEX-cache bestaat op de berekenings replica, op lokale SSD-opslag. Daarom is IO voor deze cache sneller dan IO voor externe pagina servers. Momenteel bevat [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) in een grootschalige-Data Base een speciale rij waarmee de io wordt gerapporteerd voor de lokale RBPEX-cache op de compute replica. Deze rij heeft de waarde 0 voor zowel `database_id` als `file_id` kolommen. De query hieronder retourneert bijvoorbeeld RBPEX gebruiks statistieken sinds het opstarten van de data base.
+Lokale RBPEX-cache bestaat op de berekenings replica, op lokale SSD-opslag. Daarom is IO voor deze cache sneller dan IO voor externe pagina servers. Op dit moment heeft [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) in een grootschalige-Data Base een speciale rij waarmee de io wordt gerapporteerd voor de lokale RBPEX-cache op de compute replica. Deze rij heeft de waarde 0 voor zowel `database_id` als `file_id` kolommen. De query hieronder retourneert bijvoorbeeld RBPEX gebruiks statistieken sinds het opstarten van de data base.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
@@ -92,18 +92,18 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 
 ### <a name="log-writes"></a>Schrijf bewerkingen vastleggen
 
-- Op de primaire Compute wordt een schrijf bewerking voor het logboek verwerkt in file_id 2 van sys. dm_io_virtual_file_stats. Het schrijven van een logboek op de primaire Compute is een schrijf bewerking naar de registratie zone van het logboek.
+- Op de primaire Compute wordt een schrijf bewerking voor het logboek verwerkt in file_id 2 van sys.dm_io_virtual_file_stats. Het schrijven van een logboek op de primaire Compute is een schrijf bewerking naar de registratie zone van het logboek.
 - Logboek records worden niet op de secundaire replica met een door Voer gehard. In grootschalige wordt log asynchroon door de logboek service toegepast op de secundaire replica's. Omdat de schrijf bewerkingen in het logboek niet echt optreden op secundaire replica's, is de accounting van logboek IOs voor de secundaire replica's alleen bedoeld voor tracerings doeleinden.
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Gegevens-IO in statistieken van resource gebruik
 
-In een niet-grootschalige-Data Base worden de gecombineerde Lees-en schrijf-IOPS voor gegevens bestanden, ten opzichte van de limiet van de [resource governance](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) -gegevens IOPS, gerapporteerd in de kolommen [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats.](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) `avg_data_io_percent` Dezelfde waarde wordt in het Azure Portal gerapporteerd als een _gegevens-io-percentage_.
+In een niet-grootschalige-Data Base worden de gecombineerde Lees-en schrijf-IOPS voor gegevens bestanden, ten opzichte van de limiet van de [resource governance](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) -gegevens IOPS, gerapporteerd in [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) weer gaven in de `avg_data_io_percent` kolom. Dezelfde waarde wordt in het Azure Portal gerapporteerd als een _gegevens-io-percentage_.
 
 In een grootschalige-data base wordt in deze kolom gerapporteerde over gegevensiops-gebruik ten opzichte van de limiet voor lokale opslag op alleen Compute replica, met name IO tegen RBPEX en `tempdb` . Een waarde van 100% in deze kolom geeft aan dat resource governance de IOPS van lokale opslag beperkt. Als dit is gekoppeld aan een prestatie probleem, stemt u de werk belasting af om minder IO te genereren of breidt u de database service doelstelling uit om de maximale [limiet](resource-limits-vcore-single-databases.md)voor _gegevens IOPS_ van de resource governance te verhogen. Voor resource governance van RBPEX Lees-en schrijf bewerkingen telt het systeem afzonderlijke IOs-KB op in plaats van een groter IOs dat kan worden uitgegeven door de SQL Server data base-engine.
 
-Gegevens-IO voor externe pagina servers wordt niet gerapporteerd in weer gaven van resource gebruik of in de portal, maar wordt gerapporteerd in de [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF, zoals eerder is aangegeven.
+Gegevens-IO voor externe pagina servers wordt niet gerapporteerd in weer gaven van resource gebruik of in de portal, maar wordt gerapporteerd in de [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF, zoals eerder is aangegeven.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - Zie [grootschalige vCore service tier VCore limieten](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5) voor resource limieten voor een grootschalige-data base.
 - Zie [query prestaties in Azure SQL database](performance-guidance.md) voor Azure SQL database afstemming van prestaties.

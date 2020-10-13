@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325182"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Logboeken van Azure Monitor voor VM's opvragen
@@ -442,8 +442,8 @@ Records met een type *InsightsMetrics* hebben prestatie gegevens van het gast be
 |Computer | De FQDN van de computer | 
 |Oorsprong | *vm.azm.ms* |
 |Naamruimte | Categorie van het prestatie meter item | 
-|Naam | Naam van het prestatie meter item |
-|Waa | Verzamelde waarde | 
+|Name | Naam van het prestatie meter item |
+|Val | Verzamelde waarde | 
 |Tags | Gerelateerde Details over de record. Zie de onderstaande tabel voor labels die worden gebruikt met verschillende record typen.  |
 |AgentId | Unieke id voor de agent van elke computer |
 |Type | *InsightsMetrics* |

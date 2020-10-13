@@ -4,10 +4,10 @@ description: Hierin wordt beschreven hoe u een initiatief definitie gebruikt om 
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645531"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Naleving van regelgeving in Azure Policy
@@ -40,11 +40,11 @@ Als u een **besturings element** selecteert, wordt er een pagina met details ove
 > [!NOTE]
 > Een evaluatie type van door **micro soft beheerd** is voor een [statische](./definition-structure.md#type) beleids definitie `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Scherm afbeelding van de nalevings Details van de regelgeving voor het grens beveiligings beheer van de ingebouwde definitie van het NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Scherm afbeelding van het overzicht van reglementaire naleving voor de ingebouwde definitie van het NIST SP 800-53 R4 met compatibele en niet-compatibele besturings elementen.":::
 
 Op dezelfde **besturings** pagina kunt u de beleids definities van dit **besturings element**weer geven door te wijzigen in het tabblad **resource naleving** . Er zijn filters beschikbaar voor naam of ID, compatibiliteits status, resource type en locatie.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Scherm afbeelding van de bron compatibiliteit met het grens beveiligings beheer van de ingebouwde definitie van het NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Scherm afbeelding van het overzicht van reglementaire naleving voor de ingebouwde definitie van het NIST SP 800-53 R4 met compatibele en niet-compatibele besturings elementen.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Naleving van regelgeving in SDK
 

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
 ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080009"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Platform updates beheren met onderhouds controle 
@@ -36,7 +36,7 @@ Met onderhouds controle kunt u het volgende doen:
 
 U kunt onderhouds configuraties maken en beheren met een van de volgende opties:
 
-- [Azure CLI](maintenance-control-cli.md)
+- [Azure-CLI](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
 - [Azure-portal](maintenance-control-portal.md)
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86206248"
 ---
 # <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
@@ -38,7 +38,7 @@ Meer informatie over de ontwikkelaars Portal vindt u in het overzicht van de [Az
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 - Importeer en publiceer een Azure API Management-exemplaar. Zie voor meer informatie [importeren en publiceren](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -135,4 +135,4 @@ U moet CORS (cross-Origin Resource Sharing) inschakelen op uw Api's om de bezoek
 
 Meer informatie over de ontwikkelaars portal:
 
-- [Overzicht van Azure API Management-ontwikkelaars Portal](api-management-howto-developer-portal.md)
+- [Overzicht van de Azure API Management-ontwikkelaarsportal](api-management-howto-developer-portal.md)

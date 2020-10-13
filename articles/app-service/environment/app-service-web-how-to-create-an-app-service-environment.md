@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86220572"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Een App Service Environment v1 maken 
@@ -28,7 +28,7 @@ Het is belang rijk dat u op de hoogte bent van de dingen die u niet kunt wijzige
 
 * Locatie
 * Abonnement
-* Resourcegroep
+* Resource Group
 * Gebruikte VNet
 * Subnet gebruikt 
 * Grootte van subnet

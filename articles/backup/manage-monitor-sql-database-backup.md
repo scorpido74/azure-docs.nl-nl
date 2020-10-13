@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u SQL Server-data bases die wor
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146518"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-databases beheren en bewaken
@@ -53,7 +53,7 @@ U kunt op verschillende manieren stoppen met het maken van een back-up van een S
 
 Houd rekening met het volgende als u ervoor kiest de herstelpunten intact te laten:
 
-- Alle herstel punten blijven intact en alle Pruning stopt bij het stoppen van de beveiliging met behoud van gegevens.
+- Alle herstelpunten blijven voor onbepaalde tijd intact en alle verwijderbewerkingen zullen stoppen bij het stoppen van de beveiliging met behoud van gegevens.
 - Er worden kosten in rekening gebracht voor het beveiligde exemplaar en de verbruikte opslag. Zie [Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie.
 - Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups. Oude herstel punten verlopen volgens het beleid, maar het meest recente herstel punt wordt altijd bewaard totdat u de back-ups stopt en de gegevens verwijdert.
 

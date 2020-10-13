@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87986365"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbeter de beveiliging tegen bedreigingen door beveiligings bewerkingen te integreren met Microsoft Graph Security-& Azure Logic Apps
@@ -96,7 +96,7 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
    | **Interval** | `interval` | Ja | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p><p>-Maand: 1-16 maanden <br>-Dag: 1-500 dagen <br>-Uur: 1-12000 uur <br>-Minuut: 1-72000 minuten <br>-Seconde: 1-9999999 seconden <p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
    | **Frequentie** | `frequency` | Ja | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **tweede**, **minuut**, **uur**, **dag**, **week**of **maand** |
    | **Tijdzone** | `timeZone` | Nee | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
-   | **Begintijd** | `startTime` | Nee | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p><p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Begin tijd** | `startTime` | Nee | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p><p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
 1.  Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
@@ -115,7 +115,7 @@ Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *a
 
 Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u de [documentatie over Microsoft Graph Security Alerts](/graph/api/alert-list). Meer informatie over de [schema-eigenschappen](/graph/api/resources/alert) die door de connector worden ondersteund om uitgebreide ervaringen met deze connector te maken.
 
-| Actie | Beschrijving |
+| Bewerking | Beschrijving |
 |--------|-------------|
 | **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer [Eigenschappen van waarschuwingen](/graph/api/resources/alert), bijvoorbeeld `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **Waarschuwing op ID ontvangen** | Een specifieke waarschuwing ophalen op basis van de waarschuwings-ID. | 
@@ -128,7 +128,7 @@ Microsoft Graph ondersteunt [*abonnementen*](/graph/api/resources/subscription)o
 
 `security/alerts?$filter=status eq 'NewAlert'`
 
-| Actie | Beschrijving |
+| Bewerking | Beschrijving |
 |--------|-------------|
 | **Abonnementen maken** | [Maak een abonnement](/graph/api/subscription-post-subscriptions) dat u op de hoogte brengt van eventuele wijzigingen. U kunt dit abonnement filteren op de specifieke waarschuwings typen die u wilt. U kunt bijvoorbeeld een abonnement maken dat u op de hoogte stelt van waarschuwingen met hoge urgentie. |
 | **Actieve abonnementen ophalen** | Niet- [verlopen abonnementen ophalen](/graph/api/subscription-list). | 
@@ -144,9 +144,9 @@ Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *a
 
 Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u [' optionele query parameters ' in de referentie documentatie Microsoft Graph Security Threat Intelligence-indicator](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta). Als u uitgebreide ervaringen met deze connector wilt maken, leest u meer over de [schema-eigenschappen Threat Intelligence-indicator](/graph/api/resources/tiindicator?view=graph-rest-beta) die door de connector wordt ondersteund.
 
-| Actie | Beschrijving |
+| Bewerking | Beschrijving |
 |--------|-------------|
-| **Threat Intelligence-Indica tors ophalen** | Get tiIndicators gefilterd op basis van een of meer [tiIndicator-eigenschappen](/graph/api/resources/tiindicator?view=graph-rest-beta), bijvoorbeeld`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Threat Intelligence-Indica tors ophalen** | Get tiIndicators gefilterd op basis van een of meer [tiIndicator-eigenschappen](/graph/api/resources/tiindicator?view=graph-rest-beta), bijvoorbeeld `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Bedreigings informatie-indicator op ID ophalen** | Een specifieke tiIndicator ophalen op basis van de tiIndicator-ID. | 
 | **Bedreigings informatie-indicator maken** | Maak een nieuwe tiIndicator door te boeken naar de tiIndicators-verzameling. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het maken van tiIndicator](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta). |
 | **Meerdere Threat Intelligence-indica toren verzenden** | Maak meerdere nieuwe tiIndicators door een tiIndicators-verzameling te boeken. Om ervoor te zorgen dat u de vereiste eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [vereiste eigenschappen voor het verzenden van meerdere tiIndicators](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta). |

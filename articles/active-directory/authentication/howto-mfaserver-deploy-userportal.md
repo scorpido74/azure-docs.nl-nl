@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccd1192c7597b5a088b1c50b5367030a616b9d77
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919587"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Gebruikersportal voor de Azure Multi-Factor Authentication-server
@@ -158,7 +158,7 @@ Deze instellingen zijn zichtbaar voor de gebruiker in de portal zodra deze zijn 
 
 ### <a name="self-service-user-enrollment"></a>Selfservice voor gebruikersregistratie
 
-Als u wilt dat uw gebruikers zich kunnen aanmelden en registreren, moet u de opties **gebruikers toestaan zich aan te melden** en **gebruikers registratie toestaan** inschakelen op het tabblad instellingen. Houd er rekening mee dat de instellingen die u selecteert, van invloed zijn op de aanmeldings ervaring van de gebruiker.
+Als u wilt dat uw gebruikers zich kunnen aanmelden en registreren, moet u de opties **gebruikers toestaan om zich aan te melden** en **gebruikers registratie toestaan** te selecteren op het tabblad instellingen. Houd er rekening mee dat de instellingen die u selecteert, van invloed zijn op de aanmeldings ervaring van de gebruiker.
 
 Wanneer bijvoorbeeld een gebruiker zich voor het eerst bij de gebruikersportal aanmeldt, wordt de gebruiker naar de pagina met gebruikersinstellingen van Azure Multi-Factor Authentication geleid. Afhankelijk van hoe u Azure Multi-Factor Authentication hebt geconfigureerd, kan een gebruiker al dan niet de verificatiemethode selecteren.
 

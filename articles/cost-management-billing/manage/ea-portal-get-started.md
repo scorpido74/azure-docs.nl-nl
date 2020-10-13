@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687634"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371946"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Aan de slag met de Azure Enterprise-portal
 
@@ -242,10 +242,10 @@ Houd rekening met deze belangrijke informatie als u accounts gaat overdragen:
 
 - Zodra u een abonnementsoverdracht hebt voltooid, wordt de eigenaar van het account door Microsoft bijgewerkt.
 
-Krijg inzicht in deze beleidsmaatregelen voor op rollen gebaseerd toegangsbeheer (RBAC):
+Krijg inzicht in deze beleidsmaatregelen voor op Azure-rollen gebaseerd toegangsbeheer (Azure RBAC):
 
-- Wanneer u abonnementsoverdrachten tussen twee organisatie-id's in dezelfde tenant uitvoert, blijven het RBAC-beleid en de bestaande servicebeheerders- en co-beheerdersrollen bewaard.
-- Andere abonnementsoverdrachten leiden ertoe dat uw RBAC-beleid en de roltoewijzingen verloren gaan.
+- Wanneer u abonnementsoverdrachten tussen twee organisatie-id's in dezelfde tenant uitvoert, blijven het Azure RBAC-beleid en de bestaande servicebeheerders- en co-beheerdersrollen bewaard.
+- Andere abonnementsoverdrachten leiden ertoe dat uw Azure RBAC-beleid en de roltoewijzingen verloren gaan.
 - Beleidsregels en beheerdersrollen kunnen niet worden overgedragen naar andere mappen. Servicebeheerders worden bijgewerkt naar eigenaar van het doelaccount.
 
 Voordat u de accounteigenaar wijzigt:
@@ -569,7 +569,7 @@ U kunt een bestedingsquotum op afdelingsniveau instellen. U krijgt dan van het s
 
 Selecteer een afdeling en vervolgens het pictogram Bewerken om een bestedingsquotum in te stellen. Nadat u de gegevens voor de bestedingslimiet hebt bewerkt, selecteert u **Opslaan**.
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Ik heb resourcegroepen gebruikt om RBAC te implementeren en gebruik bij te houden. Hoe kan ik de bijbehorende gebruiksgegevens bekijken?
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Ik heb resourcegroepen gebruikt om Azure RBAC te implementeren en gebruik bij te houden. Hoe kan ik de bijbehorende gebruiksgegevens bekijken?
 
 Als u _resourcegroepen_ en _tags_ gebruikt, wordt deze informatie bijgehouden op serviceniveau en kunt u de gegevens raadplegen in het downloadbare CSV-bestand met gedetailleerde gebruiksinformatie. Zie het gedeelte [Gebruiksrapport downloaden](https://ea.azure.com/report/downloadusage) in de Azure Enterprise-portal.
 

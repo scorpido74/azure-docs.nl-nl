@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397998"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute-peering
@@ -68,7 +68,7 @@ U kunt met behulp van een van de volgende technieken (Zie de volg orde van effec
 
 In het volgende diagram ziet u de selectie van het ExpressRoute met behulp van een meer specifieke route advertentie. In het Gedemonstreerde voor beeld wordt het IP-adres van Contoso op locatie/24 geadverteerd als twee/25 adresbereiken via het voorkeurs pad (ExpressRoute 1) en als/24 via het standaard traject (ExpressRoute 2).
 
-[![twee]][2]
+[![2]][2]
 
 Omdat/25 specifiekere, vergeleken met/24, verzendt Azure het verkeer dat is bestemd voor 10.1.11.0/24 via ExpressRoute 1 met de status normaal. Als beide verbindingen van ExpressRoute 1 omlaag gaan, wordt de 10.1.11.0/24 route advertisement alleen weer geven via ExpressRoute 2. en daarom wordt het standby-circuit gebruikt in deze fout status.
 
@@ -124,7 +124,7 @@ U kunt het scenario ontwerpen met behulp van het verbindings gewicht om te beïn
 
 Het scenario 2 wordt geïllustreerd in het volgende diagram. In het diagram geven groene lijnen paden voor de verkeers stroom tussen VNet1 en on-premises netwerken aan. De blauwe lijnen geven paden voor de verkeers stroom tussen VNet2 en on-premises netwerken aan. In de stationaire toestand (ononderbroken lijnen in het diagram) stroomt al het verkeer tussen VNets en on-premises locaties via micro soft backbone voor het grootste deel, en doorloopt de onderlinge verbinding tussen on-premises locaties, alleen in de fout status (stippel lijnen in het diagram) van een ExpressRoute.
 
-[![9]][9]
+[![9,4]][9]
 
 De oplossing wordt geïllustreerd in het volgende diagram. Zoals u ziet, kunt u het scenario architecten met behulp van een specifiekere route (optie 1) of als laten voorafgaan door (optie 2) om de selectie van het VNet-pad te beïnvloeden. Als u de selectie van een on-premises netwerk route wilt beïnvloeden voor afhankelijk Azure-verkeer, moet u de onderlinge verbinding tussen de on-premises locatie zo weinig mogelijk configureren. Howe u de koppeling voor verbinding zoals gewenst configureert, is afhankelijk van het routerings protocol dat in het on-premises netwerk wordt gebruikt. U kunt lokale voor keur gebruiken met iBGP of metric met IGP (OSPF of IS-IS).
 

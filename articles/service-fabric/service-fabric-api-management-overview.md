@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
 ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259297"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Overzicht van Service Fabric met Azure API Management
@@ -79,8 +79,8 @@ In dit voor beeld wordt een nieuw stateless service exemplaar gemaakt voor elke 
 
   Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end-beleid op basis van de `name` waarde die is ingesteld in het URL-verzoek-pad. Bijvoorbeeld:
 
-  - Een aanvraag om `/api/users/foo` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/foo`
-  - Een aanvraag om `/api/users/bar` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/bar`
+  - Een aanvraag om `/api/users/foo` naar het service-exemplaar te worden doorgestuurd `fabric:/app/users/foo`
+  - Een aanvraag om `/api/users/bar` naar het service-exemplaar te worden doorgestuurd `fabric:/app/users/bar`
 
 ![Overzicht van Service Fabric met Azure API Management topologie][sf-apim-dynamic-stateless]
 
@@ -98,8 +98,8 @@ In dit voor beeld wordt een nieuw stateful service exemplaar gemaakt voor elke g
 
   Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end-beleid op basis van de `name` waarde van het URL-aanvraag pad. Bijvoorbeeld:
 
-  - Een aanvraag om `/api/users/foo` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/foo`
-  - Een aanvraag om `/api/users/bar` naar het service-exemplaar te worden doorgestuurd`fabric:/app/users/bar`
+  - Een aanvraag om `/api/users/foo` naar het service-exemplaar te worden doorgestuurd `fabric:/app/users/foo`
+  - Een aanvraag om `/api/users/bar` naar het service-exemplaar te worden doorgestuurd `fabric:/app/users/bar`
 
 Elk service-exemplaar wordt ook gepartitioneerd met behulp van het Int64-partitie schema met twee partities en een belang rijk bereik van `Int64.MinValue` `Int64.MaxValue` . Het back-end-beleid berekent een partitie sleutel binnen dat bereik door de `id` waarde die is verstrekt in het URL-verzoek-pad, te converteren naar een 64-bits geheel getal, hoewel elk algoritme hier kan worden gebruikt om de partitie sleutel te berekenen. 
 

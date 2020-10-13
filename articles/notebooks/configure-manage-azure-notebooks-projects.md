@@ -5,13 +5,13 @@ ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852800"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Projecten beheren en configureren in Azure Notebooks preview
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Projecten beheren en configureren in Azure Notebooks preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -74,9 +74,9 @@ Elk item in de bestands lijst van het project bevat opdrachten via een context m
 
 ![Opdrachten in het context menu van een bestand](media/project-file-commands.png)
 
-| Opdracht | Sneltoets | Actie |
+| Opdracht | Sneltoets | Bewerking |
 | --- | --- | --- |
-| Voer | r (of klik) | Voert een notitieblok bestand uit. Andere bestands typen worden geopend voor weer gave.  |
+| Uitvoeren | r (of klik) | Voert een notitieblok bestand uit. Andere bestands typen worden geopend voor weer gave.  |
 | Koppeling kopiëren | y | Kopieert een koppeling naar het bestand naar het klem bord. |
 | Uitvoeren in Jupyter Lab | v | Voert een notitie blok uit in Jjupyterlab. Dit is een meer ontwikkel gerichte interface dan Jupyter normaal gesp roken. |
 | Preview | p | Hiermee opent u een HTML-voor beeld van het bestand. voor notebooks is de preview een alleen-lezen rendering van het notitie blok. Zie de sectie [Preview](#preview) voor meer informatie. |
@@ -92,11 +92,11 @@ Een voor beeld van een bestand of notitie blok is een alleen-lezen weer gave van
 
 De voorbeeld pagina ondersteunt meerdere werkbalk opdrachten met sneltoetsen:
 
-| Opdracht | Sneltoets | Actie |
+| Opdracht | Sneltoets | Bewerking |
 | --- | --- | --- |
 | Delen | s | Hier wordt de pop-up weer gegeven van waaruit u een koppeling kunt verkrijgen, delen met sociale media, HTML ophalen voor insluiten en een e-mail verzendt. |
 | Klonen | c  | Kopieer het notitie blok naar uw account. |
-| Voer | r | Voert het notitie blok uit als u dit nog niet hebt toegestaan. |
+| Uitvoeren | r | Voert het notitie blok uit als u dit nog niet hebt toegestaan. |
 | Downloaden | d | Hiermee downloadt u een kopie van het notitie blok. |
 
 ## <a name="configure-the-project-environment"></a>De project omgeving configureren
@@ -190,4 +190,4 @@ U kunt ook de opdracht van een code-cel in een python-notebook gebruiken:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Procedure: werken met Project-gegevens bestanden](work-with-project-data-files.md)
-- [Toegang tot cloudgegevens in een notebook](access-data-resources-jupyter-notebooks.md)
+- [Toegang tot Cloud gegevens in een notitie blok](access-data-resources-jupyter-notebooks.md)

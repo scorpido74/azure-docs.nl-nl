@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: aahi
 ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935312"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Procedure: uw gegevensfeeds beheren
@@ -97,7 +97,7 @@ Er zijn verschillende optionele geavanceerde instellingen voor het maken van een
 > Deze instelling heeft geen invloed op de gegevens bron en heeft geen invloed op de gegevens diagrammen die worden weer gegeven op de portal. De automatische vulling vindt alleen plaats tijdens de afwijkings detectie.
 
 Sommige tijd reeksen zijn niet doorlopend. Wanneer er gegevens punten ontbreken, wordt de opgegeven waarde in de Advisor gebruikt voor het opvullen van deze voor afwijkende detectie voor een betere nauw keurigheid.
-De opties zijn: 
+U kunt kiezen uit de volgende opties: 
 
 * De waarde van het vorige werkelijke gegevens punt gebruiken. Dit wordt standaard gebruikt.
 * Een specifieke waarde gebruiken.
@@ -106,7 +106,7 @@ De opties zijn:
 
 Actie koppelings sjablonen worden gebruikt om vooraf bewaarde http-url's te definiëren, die bestaan uit de tijdelijke aanduidingen,,, `%datafeed` `%metric` `%timestamp` `%detect_config` en `%tagset` . U kunt de sjabloon gebruiken om te omleiden van een afwijkend of incident naar een specifieke URL om in te zoomen.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Sjabloon actie koppeling" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Backfill-gegevens invoer" lightbox="../media/action-link-template.png":::
 
 Wanneer u de actie koppeling hebt ingevuld, klikt u op **Ga naar actie koppeling** op de actie optie van de incidenten lijst en klikt u op het snelmenu van de boom structuur. Vervang de tijdelijke aanduidingen in de sjabloon actie koppeling door de overeenkomstige waarden van de anomalie of het incident.
 

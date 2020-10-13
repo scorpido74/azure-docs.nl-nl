@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749081"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
@@ -23,13 +23,13 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |Gegevensbron  |In het geheugen  |DirectQuery  |Opmerkingen |
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL DW)      |   Ja      |   Ja       |<sup>[twee](#azprovider)</sup>|
-|Azure Blob Storage      |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup> |
-|Azure Table Storage     |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Ja        |  Nee        |<sup>[i](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Ja       |    Nee      |<sup>[i](#tab1400a)</sup> |
+|Azure Synapse Analytics (SQL DW)      |   Ja      |   Ja       |<sup>[2](#azprovider)</sup>|
+|Azure Blob Storage      |   Ja       |    Nee      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Ja       |    Nee      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Ja        |  Nee        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Ja       |    Nee      |<sup>[1](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Ja       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight HDFS    |     Ja     |   Nee       |<sup>[i](#tab1400a)</sup> |
+|Azure HDInsight HDFS    |     Ja     |   Nee       |<sup>[1](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Ja       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
@@ -43,7 +43,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 
 ## <a name="other-data-sources"></a>Andere gegevensbronnen
 
-|Gegevensbron | In het geheugen | DirectQuery |Opmerkingen   |
+|Gegevensbron | In het geheugen | DirectQuery |Notities   |
 |  --- | --- | --- | --- |
 |Access-database     |  Ja | Nee |  |
 |Active Directory     |  Ja | Nee | <sup>[6,5](#tab1400b)</sup>  |
@@ -61,7 +61,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |OData-feed      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 |ODBC-query     | Ja | Nee |  |
 |OLE DB     |   Ja | Nee |  |
-|Oracle  | Ja  |Ja  | <sup>[9](#oracle)</sup> |
+|Oracle  | Ja  |Ja  | <sup>[9,4](#oracle)</sup> |
 |PostgreSQL-database   | Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 |Salesforce-objecten|  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 |Salesforce-rapporten |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |

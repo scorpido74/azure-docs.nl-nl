@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371827"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
@@ -151,9 +151,9 @@ Rapporten over de prestaties van cloudproducten zijn voor partners beschikbaar v
 
 Wanneer u de klant niet in de rapporten ziet, kan dit de volgende redenen hebben
 
-1. Het gekoppelde gebruikersaccount biedt geen [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview) op welk Azure-abonnement of welke Azure-resource van die klant ook.
+1. Het gekoppelde gebruikersaccount biedt geen [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) op welk Azure-abonnement of welke Azure-resource van die klant ook.
 
-2. Het Azure-abonnement waarbij de gebruiker [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview) heeft, heeft geen gebruik.
+2. Het Azure-abonnement waarbij de gebruiker [op rollen gebaseerd toegangsbeheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) heeft, heeft geen gebruik.
 
 **Werken gekoppelde partner-id's met Azure Stack?**
 

@@ -12,10 +12,10 @@ ms.date: 07/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88918465"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Speech-Service containers
@@ -407,7 +407,7 @@ Hoeveel gelijktijdige aanvragen wordt een 4-core, 4 GB RAM-ingang? Als we een vo
 |-----------------------|---------------------|---------------------|
 | Custom Speech-naar-tekst | 2 Core, 2 GB geheugen | 4-core, 4 GB geheugen |
 
-# <a name="text-to-speech"></a>[Tekst naar spraak](#tab/tts)
+# <a name="text-to-speech"></a>[Tekst-naar-spraak](#tab/tts)
 
 | Container      | Minimum             | Aanbevolen         |
 |----------------|---------------------|---------------------|
@@ -568,7 +568,7 @@ In C# moet u de functie aanroepen `SpeechConfig.EnableDictation()` .
 | Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-java-stable" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Wordt momenteel niet ondersteund en ook niet gepland. |
+| Javascript | Wordt momenteel niet ondersteund en ook niet gepland. |
 
 <br>
 </details>
@@ -589,7 +589,7 @@ In C# moet u de functie aanroepen `SpeechConfig.EnableDictation()` .
 | Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-java-stable" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Momenteel niet ondersteund |
+| Javascript | Momenteel niet ondersteund |
 
 > Para meters: host (verplicht), abonnements sleutel (optioneel, als u de service zonder IT kunt gebruiken).
 

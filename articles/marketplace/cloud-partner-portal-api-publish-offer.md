@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87272042"
 ---
 # <a name="publish-an-offer"></a>Een aanbieding publiceren
@@ -28,12 +28,12 @@ Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een la
 
 |  **Naam**      |    **Beschrijving**                               |  **Gegevenstype** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Uitgevers-id, bijvoorbeeld`contoso`      |   Tekenreeks       |
+|  publisherId   | Uitgevers-id, bijvoorbeeld `contoso`      |   Tekenreeks       |
 |  offerId       | Aanbiedings-id                                 |   Tekenreeks       |
 |  api-versie   | Nieuwste versie van de API                        |   Date         |
 |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>Koptekst
 ------
 
 |  **Naam**        |    **Waarde**          |
@@ -64,7 +64,7 @@ Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een la
 |  melding-e-mail berichten    | Een door komma's gescheiden lijst met e-mail adressen die moeten worden geïnformeerd over de voortgang van de publicatie bewerking. |
 |  |  |
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 #### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 
@@ -85,8 +85,8 @@ Start het publicatie proces voor de opgegeven aanbieding. Deze aanroep is een la
 
 | **Code** |  **Beschrijving**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted`-De aanvraag is geaccepteerd. Het antwoord bevat een locatie die kan worden gebruikt voor het bijhouden van de bewerking die wordt gestart. |
-| 400   | `Bad/Malformed request`-De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                                               |
-| 422   | `Un-processable entity`-Geeft aan dat de validatie van de entiteit die moet worden gepubliceerd, is mislukt.                                                        |
-| 404   | `Not found`-De entiteit die is opgegeven door de client, bestaat niet.                                                                              |
+| 202   | `Accepted` -De aanvraag is geaccepteerd. Het antwoord bevat een locatie die kan worden gebruikt voor het bijhouden van de bewerking die wordt gestart. |
+| 400   | `Bad/Malformed request` -De hoofd tekst van het fout bericht bevat mogelijk meer informatie.                                                               |
+| 422   | `Un-processable entity` -Geeft aan dat de validatie van de entiteit die moet worden gepubliceerd, is mislukt.                                                        |
+| 404   | `Not found` -De entiteit die is opgegeven door de client, bestaat niet.                                                                              |
 |  |  |
