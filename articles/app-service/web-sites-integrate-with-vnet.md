@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2e17e99208d076d05132638b5161a284b73986f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739903"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018624"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Een app integreren met een virtueel Azure-netwerk
 
@@ -149,6 +149,10 @@ Drie kosten zijn gerelateerd aan het gebruik van de gateway vereiste VNet-integr
 * **Kosten voor VPN-gateway**: er zijn kosten verbonden aan de virtuele netwerk gateway die is vereist voor het punt-naar-site-VPN. Zie [prijzen van VPN gateway][VNETPricing]voor meer informatie.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
+
+> [!NOTE]
+> VNET-integratie wordt niet ondersteund voor docker-scenario's in App Service.
+>
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

@@ -3,12 +3,12 @@ title: 'Concept: een implementatie van een Azure VMware-oplossing integreren in 
 description: Meer informatie over de aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing in een bestaande of een nieuwe hub-en spoke-architectuur in Azure.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: bfd0da4f03eedaf215ddb55facffc2296a9d0b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579892"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019232"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-oplossing integreren in een hub-en spoke-architectuur
 
@@ -28,7 +28,7 @@ Verkeer tussen het on-premises Data Center, de privécloud van Azure VMware-oplo
 
 In het diagram ziet u een voor beeld van een hub-en spoke-implementatie in azure die is verbonden met on-premises en Azure VMware-oplossing via ExpressRoute Global Reach.
 
-:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
+:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png":::
 
 De architectuur heeft de volgende hoofd onderdelen:
 
@@ -65,12 +65,12 @@ Omdat een ExpressRoute-gateway geen transitieve route ring biedt tussen de verbo
 
 * **Verkeers stroom van on-premises naar Azure VMware-oplossing**
 
-  :::image type="content" source="media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware-oplossing voor hub VNET-verkeers stroom**
 
-  :::image type="content" source="media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 Meer informatie over de netwerk-en connectiviteits concepten van Azure VMware Solution vindt u in de [product documentatie van de Azure VMware-oplossing](./concepts-networking.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 223779dfba5faa77e38221d6f6f4e26dbc44b0cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b2454bb0e39f5923af00502367f7b16bb040a4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268380"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018981"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Aan de slag met het leveren van inhoud op aanvraag via Azure Portal
 
@@ -127,7 +127,7 @@ Een Shared Access Signature-URL heeft de volgende indeling:
 > 
 > 
 
-Als u een vervaldatum van een locator wilt bijwerken, kunt u een [REST API](/rest/api/media/operations/locator#update_a_locator) of een [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) gebruiken. 
+Als u een vervaldatum van een locator wilt bijwerken, kunt u een [REST API](/rest/api/media/operations/locator#update_a_locator) of een [.NET API](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator) gebruiken. 
 
 > [!NOTE]
 > Wanneer u de vervaldatum van een Shared Access Signature-locator bijwerkt, wordt de URL gewijzigd.

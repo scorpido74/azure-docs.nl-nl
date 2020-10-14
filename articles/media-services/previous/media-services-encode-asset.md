@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5d5a00488321c9c67dd1469b1d8476636675aa8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e841d1922beb3f0276ff94cacbbdf566b23cdf6e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281011"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017281"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Overzicht van media encoders op aanvraag van Azure
 
@@ -53,7 +53,7 @@ Elke Media Services-account kan standaard één actieve coderings taak tegelijk 
 [Indelingen en codecs](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>Stations
-Media Encoder Standard is geconfigureerd met behulp van een van de [hier](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschreven coderings definities.
+Media Encoder Standard is geconfigureerd met behulp van een van de [hier](./media-services-mes-presets-overview.md)beschreven coderings definities.
 
 ### <a name="input-and-output-metadata"></a>Invoer-en uitvoer meta gegevens
 De coderings Programma's invoeren meta gegevens worden [hier](media-services-input-metadata-schema.md)beschreven.

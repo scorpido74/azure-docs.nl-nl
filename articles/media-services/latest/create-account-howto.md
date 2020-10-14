@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 93f5e4d659b94bd79345a5e687de14ab6a5e8ba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49cac230363750e481e165712bf4f619e5cba7ae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267969"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017842"
 ---
 # <a name="create-a-media-services-account"></a>Een Media Services-account kunt maken
 
@@ -47,7 +47,7 @@ Op dit moment kunt u het [Azure Portal](https://portal.azure.com/) gebruiken voo
 * V3- [assets](assets-concept.md)weer geven (niet beheren), 
 * [krijg informatie over het openen van api's](./access-api-howto.md). 
 
-Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 <!-- Move this section. This section should be moved to conceptual.  It doesn't belong in task based -->
 
 ### <a name="use-the-azure-portal-to-create-a-media-services-account"></a>De Azure Portal gebruiken om een Media Services-account te maken

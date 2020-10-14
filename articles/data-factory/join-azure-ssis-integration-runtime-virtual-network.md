@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec30a14d4c04e1f47c909e829f7388132e64d6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187809"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018185"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS Integration Runtime samenvoegen met een virtueel netwerk
 
@@ -151,7 +151,7 @@ Hieronder vindt u een aanbevolen benadering:
 Zie [naam omzetting die gebruikmaakt van uw eigen DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)voor meer informatie. 
 
 > [!NOTE]
-> Gebruik een Fully Qualified Domain Name (FQDN) voor de naam van uw particuliere host, bijvoorbeeld gebruik `<your_private_server>.contoso.com` in plaats van `<your_private_server>` , omdat Azure-SSIS IR niet automatisch uw eigen DNS-achtervoegsel toevoegt.
+> Gebruik een FQDN-naam (Fully Qualified Domain Name) voor de naam van uw particuliere host (gebruik bijvoorbeeld `<your_private_server>.contoso.com` in plaats van `<your_private_server>` ). U kunt ook een standaard aangepaste installatie op uw Azure-SSIS IR gebruiken om automatisch uw eigen DNS-achtervoegsel toe te voegen (bijvoorbeeld `contoso.com` ) aan een niet-gekwalificeerde domein naam met één label en deze in te scha kelen in een FQDN voordat u deze in DNS-query's gebruikt, Zie [standaard aangepaste installatie voorbeelden](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples). 
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a> Een NSG instellen
 Als u een NSG wilt implementeren voor het subnet dat door uw Azure-SSIS IR wordt gebruikt, kunt u inkomend en uitgaand verkeer via de volgende poorten toestaan: 

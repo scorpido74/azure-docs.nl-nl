@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efbed9ec44bd386a4540c397ca8958fb3ccea807
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842832"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019882"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Veilige toegang tot een sleutel kluis
 
@@ -79,7 +79,7 @@ U maakt een sleutel kluis in een resource groep en beheert de toegang met behulp
 
 Er zijn verschillende vooraf gedefinieerde rollen. Als een vooraf gedefinieerde rol niet aan uw behoeften voldoet, kunt u uw eigen rol definiëren. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie. 
 
-U moet beschikken over `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete` -machtigingen, zoals beheerder of [eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner) van [gebruikers toegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator)
+U moet beschikken over `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete` -machtigingen, zoals beheerder of [eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) van [gebruikers toegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)
 
 > [!IMPORTANT]
 > Als een gebruiker `Contributor` machtigingen heeft voor een sleutel kluis beheer vlak, kan de gebruiker zichzelf toegang verlenen tot het gegevens vlak door een Key Vault toegangs beleid in te stellen. U moet nauw keurig bepalen wie `Contributor` rollen toegang heeft tot uw sleutel kluizen. Zorg ervoor dat alleen geautoriseerde personen uw sleutel kluizen, sleutels, geheimen en certificaten kunnen gebruiken en beheren.

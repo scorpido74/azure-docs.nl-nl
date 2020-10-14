@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: eb809b2dabe2d8b28f05b328877e1a20dbeacbc3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e8ecb0dde2208b367362f26f654ec8eb83c7a777
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977609"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016192"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- en Edsv4-serie
 
-De Edv4-en Edsv4-serie wordt uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake)-processors in een Hyper-Threaded configuratie en is ideaal voor diverse geheugenintensieve bedrijfs toepassingen en-functies tot 504 RAM-geheugen, [Intel &reg; Turbo Boost-technologie 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [Intel &reg; Advanced Vector-uitbrei dingen 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Ze ondersteunen ook [Intel &reg; diepe leer versterking](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Deze nieuwe VM-grootten hebben 50% grotere lokale opslag, evenals een betere lokale schijf-IOPS voor zowel lees-als schrijf bewerkingen in vergelijking met de [Ev3/Esv3-](./ev3-esv3-series.md) grootten met [Gen2-vm's](./generation-2.md). Het bevat alle core Turbo clock-snelheid van 3,4 GHz. 
+De Edv4-en Edsv4-serie wordt uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake)-processors in een Hyper-Threaded configuratie en is ideaal voor diverse geheugenintensieve bedrijfs toepassingen en-functies tot 504 RAM-geheugen, [Intel &reg; Turbo Boost-technologie 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [Intel &reg; Advanced Vector-uitbrei dingen 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Ze ondersteunen ook [Intel &reg; diepe leer versterking](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Deze nieuwe VM-grootten hebben 50% grotere lokale opslag, evenals een betere lokale schijf-IOPS voor zowel lees-als schrijf bewerkingen in vergelijking met de [Ev3/Esv3-](./ev3-esv3-series.md) grootten met [Gen2-vm's](./generation-2.md). Het bevat een kern klok snelheid van 3,4 GHz. 
 
 ## <a name="edv4-series"></a>Edv4-serie
 

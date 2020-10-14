@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885573"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018284"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergelijking van Azure Stream Analytics-functies
 
@@ -44,7 +44,7 @@ Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op 
 |Aangepaste C#-code functie en deserializer|Alleen-lezen modus|Ja|Nee|
 |Java script UDF en UDA     |Ja         |Ja         |Alleen in Windows         |
 |Machine Learning Service     |Ja        |Ja         |Nee         |
-|Machine Learning Studio     |Ja, maar de query kan niet worden getest        |Ja |Nee         |
+|Azure Machine Learning Studio (klassiek)|Ja, maar de query kan niet worden getest        |Ja |Nee         |
 |Compatibiliteitsniveau     |1.0</br>1.1</br>1,2 (standaard)         |1.0</br>1.1</br>1,2 (standaard)           |1.0</br>1.1</br>1,2 (standaard)           |
 |Ingebouwde op ML gebaseerde anomalie detectie functies     |Ja         |Ja         |Ja         |
 |Ingebouwde georuimtelijke functies     |Ja         |Ja         |Ja         |

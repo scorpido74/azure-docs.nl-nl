@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 2c6540513c46307e4bd51b163dd77984395006c5
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b8f6768ebf988ff568739c86303b52ea5b0a9234
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945427"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018709"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- en Esv4-serie
 
-De Ev4-en Esv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, ideaal voor diverse geheugenintensieve bedrijfs toepassingen en-functies tot 504GIB aan RAM-geheugen. Het bevat alle core Turbo clock-snelheid van 3,4 GHz.
+De Ev4-en Esv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, ideaal voor diverse geheugenintensieve bedrijfs toepassingen en-functies tot 504GIB aan RAM-geheugen. Het bevat een kern klok snelheid van 3,4 GHz.
 
 > [!NOTE]
 > Voor veelgestelde vragen raadpleegt u  [Azure VM-grootten zonder lokale tijdelijke schijf](azure-vms-no-temp-disk.md).

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2f18f830b690acdca67058da6ed6a0907406e66c
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 1e27ee2c045404d13b10945ac65484281b0cd967
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945964"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019712"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Grootte van virtuele machines geoptimaliseerd voor geheugen
 
@@ -36,7 +36,7 @@ Voor geheugen geoptimaliseerde VM-grootten bieden een hoge geheugen-naar-CPU-ver
 
 - De [Ev4-en Esv4-serie](ev4-esv4-series.md) wordt uitgevoerd op de tweede generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, ideaal voor diverse geheugenintensieve bedrijfs toepassingen en een functie van Maxi maal 504 RAM-geheugen. Het biedt de [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). De Ev4-en Esv4-serie bevatten geen lokale tijdelijke schijf. Raadpleeg  [Azure VM-grootten zonder lokale tijdelijke schijf](azure-vms-no-temp-disk.md)voor meer informatie.
 
-- De [Edv4-en Edsv4-serie](edv4-edsv4-series.md) wordt uitgevoerd op de 2e generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake), ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoge vCPU aantallen en grote hoeveel heden geheugen. Daarnaast bevatten deze VM-grootten snelle, grotere lokale SSD-opslag voor toepassingen die profiteren van een lage latentie en een hoge snelheid voor lokale opslag. Het bevat alle core Turbo clock-snelheid van 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
+- De [Edv4-en Edsv4-serie](edv4-edsv4-series.md) wordt uitgevoerd op de 2e generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake), ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoge vCPU aantallen en grote hoeveel heden geheugen. Daarnaast bevatten deze VM-grootten snelle, grotere lokale SSD-opslag voor toepassingen die profiteren van een lage latentie en een hoge snelheid voor lokale opslag. Het bevat een kern klok snelheid van 3,4 GHz, [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
 
 - De [M-serie](m-series.md) biedt een hoog aantal vCPU (maxi maal 128 vcpu's) en een grote hoeveelheid geheugen (maxi maal 3,8 TIB). Het is ook ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoog aantal vCPU en grote hoeveel heden geheugen.
 

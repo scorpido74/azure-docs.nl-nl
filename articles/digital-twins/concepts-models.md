@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616547"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019015"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -57,7 +57,7 @@ Hier volgt een aantal aanvullende richt lijnen voor het onderscheiden van DTDL- 
 
 Het verschil tussen eigenschappen en telemetrie voor Azure Digital Apparaatdubbels-modellen is als volgt:
 * Er wordt naar verwachting van de **Eigenschappen** een back-up van de opslag. Dit betekent dat u op elk gewenst moment een eigenschap kunt lezen en de waarde ervan ophaalt. Als de eigenschap schrijfbaar is, kunt u ook een waarde opslaan in de-eigenschap.  
-* **Telemetrie** lijkt meer op een stroom aan gebeurtenissen; het is een set gegevens berichten met korte levens duur. Als u Luis teren niet hebt ingesteld voor de gebeurtenis en de acties die moeten worden uitgevoerd wanneer deze zich voordoen, is het niet mogelijk om de gebeurtenis op een later tijdstip te traceren. U kunt deze niet terugvallen en later lezen. 
+* **Telemetrie** lijkt meer op een stroom aan gebeurtenissen; het is een set gegevens berichten met korte levens duur. Als u Luis teren niet hebt ingesteld voor de gebeurtenis en de acties die moeten worden uitgevoerd wanneer deze zich voordoen, is het niet mogelijk om de gebeurtenis op een later tijdstip te traceren. U kunt er niet meer op terugkeren en deze later lezen. 
   - In C#-termen is telemetrie vergelijkbaar met een C#-gebeurtenis. 
   - In IoT-termen is telemetrie meestal één meting die door een apparaat wordt verzonden.
 

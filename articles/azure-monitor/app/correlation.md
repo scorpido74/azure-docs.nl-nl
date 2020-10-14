@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7df4df1f7c2fbb600b2350940f910f488827804d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 5d8adea95708f4c7bbe3e7113c3e39e0484159ee
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875435"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018046"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -34,7 +34,7 @@ In een micro Services-omgeving kunnen traceringen van onderdelen naar verschille
 
 ## <a name="example"></a>Voorbeeld
 
-We bekijken een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
+We kijken naar een voorbeeld. Een toepassing met de naam aandelen prijzen toont de huidige markt prijs van een aandeel met behulp van een externe API met de naam Stock. De voorraad prijzen toepassing heeft een pagina met de naam Stock pagina die wordt geopend door de webbrowser van de client `GET /Home/Stock` . De toepassing voert een query uit op de voorraad-API met behulp van de HTTP-aanroep `GET /api/stock/value` .
 
 U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
@@ -46,7 +46,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofdmap delen `operation_Id` . Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID ( `qJSXU` ) toegewezen aan de telemetrie van de afhankelijkheid en wordt de id van de pagina weergave gebruikt als `operation_ParentId` . De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId` .
 
-| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
+| Item type   | name                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
@@ -147,7 +147,7 @@ Voeg de volgende configuratie toe:
       distributedTracingMode: 2 // DistributedTracingModes.W3C
   ```
 > [!IMPORTANT] 
-> Zie de documentatie van de [Java script-correlatie](/app/javascript.md#enable-correlation)voor een overzicht van alle configuraties die vereist zijn om correlatie in te scha kelen.
+> Zie de documentatie van de [Java script-correlatie](/azure/azure-monitor/app/javascript#enable-correlation)voor een overzicht van alle configuraties die vereist zijn om correlatie in te scha kelen.
 
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetrie-correlatie in opentellingen python
 

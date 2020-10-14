@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050359"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018191"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services verplaatsen naar een andere regio
 
@@ -88,7 +88,7 @@ Een sjabloon exporteren via de Azure-portal:
 
 Een sjabloon exporteren met behulp van Power shell:
 
-1. Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) en volg de instructies op het scherm:
+1. Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) en volg de instructies op het scherm:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ De sjabloon wijzigen:
 
 #### <a name="regions"></a>Regio's
 
-Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie over Azure-regio's. Als u regio's wilt ophalen met behulp van Power shell, voert u de opdracht [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) uit.
+Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie over Azure-regio's. Als u regio's wilt ophalen met behulp van Power shell, voert u de opdracht [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) uit.
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> Na het volt ooien van een regio, wordt het aanbevolen om de nieuwe doel server een opslag container in dezelfde regio voor back-ups te gebruiken in plaats van de opslag container in de regio van de bron server. 
+> Na het volt ooien van een regio, wordt het aanbevolen om de nieuwe doel server een opslag container in dezelfde regio voor back-ups te gebruiken in plaats van de opslag container in de regio van de bron server.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c21ddd0aacde277f4cf796f133a3169a69798dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264467"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019474"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Aan de slag met het leveren van inhoud op aanvraag met behulp van REST
 
@@ -489,7 +489,7 @@ Date: Mon, 19 Jan 2015 07:54:09 GMT
 ### <a name="create-a-job"></a>Een taak maken
 Elke taak kan een of meer taken bevatten, afhankelijk van het type verwerking dat u wilt uitvoeren. Via de REST API kunt u taken en de bijbehorende taken op een van de volgende twee manieren maken: taken kunnen inline worden gedefinieerd via de taak navigatie-eigenschap op taak entiteiten of via OData batch-verwerking. De Media Services SDK gebruikt batch verwerking. Voor de Lees baarheid van de code voorbeelden in dit artikel, worden de taken echter in line gedefinieerd. Zie voor meer informatie over batch verwerking [Open Data Protocol (OData) batch processing (Engelstalig)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-In het volgende voor beeld ziet u hoe u een taak maakt en post met één Taakset voor het coderen van een video met een specifieke resolutie en kwaliteit. De volgende documentatie sectie bevat de lijst met alle [taak voorinstellingen](/azure/media-services/previous/media-services-mes-presets-overview) die door de Media Encoder Standard-processor worden ondersteund.  
+In het volgende voor beeld ziet u hoe u een taak maakt en post met één Taakset voor het coderen van een video met een specifieke resolutie en kwaliteit. De volgende documentatie sectie bevat de lijst met alle [taak voorinstellingen](./media-services-mes-presets-overview.md) die door de Media Encoder Standard-processor worden ondersteund.  
 
 **HTTP-aanvraag**
 

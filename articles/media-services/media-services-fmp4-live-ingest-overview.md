@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072043"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019508"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services gefragmenteerde MP4 Live opname-specificatie 
 
@@ -39,7 +39,7 @@ In het volgende diagram ziet u de architectuur op hoog niveau van de live stream
 ![opname stroom][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. bitstream-indeling – ISO 14496-12 gefragmenteerde MP4
-De telegram indeling voor live streaming-opname die in dit document wordt besproken, is gebaseerd op [ISO-14496-12]. Zie [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)voor een gedetailleerde beschrijving van gefragmenteerde MP4-indeling en-extensies voor video-on-demand-bestanden en opname van live streamen.
+De telegram indeling voor live streaming-opname die in dit document wordt besproken, is gebaseerd op [ISO-14496-12]. Zie [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)voor een gedetailleerde beschrijving van gefragmenteerde MP4-indeling en-extensies voor video-on-demand-bestanden en opname van live streamen.
 
 ### <a name="live-ingest-format-definitions"></a>Definities van Live opname-indelingen
 In de volgende lijst worden speciale opmaak definities beschreven die van toepassing zijn op Live-opname in Azure Media Services:
@@ -70,7 +70,7 @@ Hier volgen de gedetailleerde vereisten:
 1. Als de HTTP POST-aanvraag wordt beëindigd of een time-out optreedt met een TCP-fout vóór het einde van de stroom, moet het coderings programma een nieuwe POST-aanvraag uitgeven met een nieuwe verbinding en de voor gaande vereisten volgen. Daarnaast moet het coderings programma de vorige twee MP4-fragmenten opnieuw verzenden voor elk spoor in de stroom en wordt hervat zonder een onderbreking in de media tijdlijn te introduceren. Als u de laatste twee MP4-fragmenten opnieuw verzendt voor elk spoor, zorgt u ervoor dat er geen gegevens verloren gaan. Met andere woorden, als een stroom zowel een audio-als een video track bevat en de huidige POST-aanvraag mislukt, moet het coderings programma opnieuw verbinding maken en de laatste twee fragmenten opnieuw verzenden voor het audio spoor, dat eerder is verzonden en de laatste twee fragmenten voor het video spoor, die eerder zijn verzonden, om ervoor te zorgen dat er geen gegevens verloren gaan. Het coderings programma moet een "Forward" buffer van media fragmenten onderhouden, die wordt opnieuw verzonden wanneer er opnieuw verbinding wordt gemaakt.
 
 ## <a name="5-timescale"></a>5. tijd schaal
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) hierin wordt het gebruik van de tijd schaal voor **SmoothStreamingMedia** (sectie 2.2.2.1), **StreamElement** (Section 2.2.2.3), **StreamFragmentElement** (Section 2.2.2.6) en **LiveSMIL** (Section 2.2.7.3.1) beschreven. Als de tijdschaal waarde niet aanwezig is, is de gebruikte standaard waarde 10.000.000 (10 MHz). Hoewel de specificatie van de Smooth Streaming-indeling geen gebruik van andere tijdschaal waarden blokkeert, gebruiken de meeste implementaties van encoders deze standaard waarde (10 MHz) voor het genereren van Smooth Streaming opname gegevens. Als gevolg van de functie voor [dynamische verpakking van Azure media](./previous/media-services-dynamic-packaging-overview.md) , raden we u aan een 90-kHz tijd schaal te gebruiken voor video-streams en 44,1 khz of 48,1 kHz voor audio-streams. Als er verschillende tijdschaal waarden worden gebruikt voor verschillende stromen, moet de tijd schaal van het stroom niveau worden verzonden. Zie [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)voor meer informatie.     
+[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) hierin wordt het gebruik van de tijd schaal voor **SmoothStreamingMedia** (sectie 2.2.2.1), **StreamElement** (Section 2.2.2.3), **StreamFragmentElement** (Section 2.2.2.6) en **LiveSMIL** (Section 2.2.7.3.1) beschreven. Als de tijdschaal waarde niet aanwezig is, is de gebruikte standaard waarde 10.000.000 (10 MHz). Hoewel de specificatie van de Smooth Streaming-indeling geen gebruik van andere tijdschaal waarden blokkeert, gebruiken de meeste implementaties van encoders deze standaard waarde (10 MHz) voor het genereren van Smooth Streaming opname gegevens. Als gevolg van de functie voor [dynamische verpakking van Azure media](./previous/media-services-dynamic-packaging-overview.md) , raden we u aan een 90-kHz tijd schaal te gebruiken voor video-streams en 44,1 khz of 48,1 kHz voor audio-streams. Als er verschillende tijdschaal waarden worden gebruikt voor verschillende stromen, moet de tijd schaal van het stroom niveau worden verzonden. Zie [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)voor meer informatie.     
 
 ## <a name="6-definition-of-stream"></a>6. definitie van stream
 Stream is de basis eenheid van de bewerking in Live opname voor het opstellen van live-presentaties, het verwerken van streaming-failover en redundantie scenario's. Stream is gedefinieerd als één unieke, gefragmenteerde MP4-bitstream die een enkel spoor of meerdere sporen kan bevatten. Een volledige live-presentatie kan een of meer streams bevatten, afhankelijk van de configuratie van de Live coderings Programma's. In de volgende voor beelden ziet u verschillende opties voor het gebruik van stromen voor het samen stellen van een volledige live-presentatie.

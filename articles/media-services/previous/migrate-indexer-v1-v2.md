@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3da6dd877a94da64f85f093ae98a0b8a109ab2e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6b7c8cbcf6685ca2e781789fc508d005bcb5f88
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255100"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018896"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migreren van Media Indexer en Media Indexer 2 naar Video Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](media-services-process-content-with-indexer2.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
+De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](./legacy-components.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
 
 Azure Media Services Video Indexer is gebaseerd op Azure Media Analytics, Azure Cognitive Search, Cognitive Services (zoals de Face-API, micro soft Translator, de Computer Vision-API en Custom Speech Service). Hiermee kunt u inzichten ophalen uit uw video's met Video Indexer-modellen voor audio en video. Zie [video indexer video-en audio modellen](../video-indexer/video-indexer-overview.md)om te zien welke scenario's video indexer kunnen worden gebruikt in, welke functies worden aangeboden en hoe u aan de slag kunt gaan. 
 
@@ -77,7 +77,7 @@ Enkele bekende verschillen zijn onder andere:
 
 * Cognitive Services speech Services biedt geen ondersteuning voor het uitpakken van tref woorden. Video Indexer en Media Services v3 AudioAnalyzerPreset bieden echter een robuustere set sleutel woorden in JSON-bestands indeling. 
 
-## <a name="need-help"></a>Hulp nodig?
+## <a name="need-help"></a>Hebt u hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

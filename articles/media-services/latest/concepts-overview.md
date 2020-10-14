@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dec0503ec369ae473fb592db958c0e30a27a4268
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 897df7f07a349457c49929b69993c75345f52241
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297430"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017808"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Terminologie en concepten Media Services
 
@@ -30,7 +30,7 @@ De basis concepten die in deze onderwerpen worden beschreven, moeten worden geco
 
 > [!NOTE]
 > Op dit moment kunt u de [Azure Portal](https://portal.azure.com/) gebruiken om te: Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, v3- [assets](assets-concept.md)weer geven (niet beheren) en [informatie opvragen over toegang tot api's](./access-api-howto.md).
-> Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> Gebruik voor alle andere beheertaken (bijvoorbeeld [transformaties en taken](transforms-jobs-concept.md) en [inhoudsbeveiliging](content-protection-overview.md)), de [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: a3e50a6a34a6588ecce8b9ecc3c6b358fddc38b7
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 67309aafe5c1bc841399006285a9862f711e4296
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948711"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018556"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -66,6 +66,13 @@ Micro soft en Red Hat delen een geïntegreerd ondersteunings team met co-locatie
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Is VMware HCX Enter prise Edition beschikbaar, en zo ja, hoeveel kost het?
 
 VMware HCX Enterprise Edition (EE) is beschikbaar met Azure VMware Solution als een *preview*-functie/-service. Hoewel VMware HCX EE voor Azure VMware Solution zich in preview bevindt, is het een gratis functie/service en onderhevig aan de servicevoorwaarden van de preview-versie. Zodra de VMware HCX EE-service algemeen beschikbaar wordt, krijgt u een melding dat de facturering over 30 dagen wordt omgeschakeld. U hebt ook de mogelijkheid om de service uit te schakelen of u ervan af te melden.
+
+#### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Kunnen Vm's van Azure VMware-oplossingen worden beheerd door VMRC?
+Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang heeft tot de vCenter van de privécloud en dat deze open bare DNS gebruikt (zodat ESXi hostnamen kan worden omgezet).
+
+#### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Zijn er speciale instructies voor het installeren en gebruiken van VMRC met virtuele machines met Azure VMware-oplossingen?
+Nee, gebruik de [instructies van VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) en voer de vereiste VM-vereisten in deze instructies uit. 
+
 
 ## <a name="compute-network-storage-and-backup"></a>Berekenings-, netwerk-, opslag-en back-ups
 

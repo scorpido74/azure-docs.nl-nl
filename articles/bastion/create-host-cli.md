@@ -2,29 +2,29 @@
 title: Een bastion-host maken met behulp van Azure CLI | Azure-Bastion
 description: In dit artikel leest u hoe u een bastion-host maakt en verwijdert
 services: bastion
-author: mialdrid
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/26/2020
-ms.author: mialdrid
-ms.openlocfilehash: 8ee90d80230f9115946525ede325e874e98e358e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.author: cherylmc
+ms.openlocfilehash: 851ec86feb5244ff43759a7aef2b80876dcfa734
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90024329"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018539"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Een Azure bastion-host maken met behulp van Azure CLI
 
-In dit artikel wordt beschreven hoe u een Azure bastion-host maakt met behulp van Azure CLI. Zodra u de Azure Bastion-service in uw virtuele netwerk hebt ingericht, is de naadloze RDP/SSH-ervaring beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk. De Azure Bastion-implementatie vindt plaats per virtueel netwerk, niet per abonnement/account of virtuele machine.
+In dit artikel wordt beschreven hoe u een Azure bastion-host maakt met behulp van Azure CLI. Na de implementatie van Bastion kunt u via uw browser verbinding maken met een virtuele machine via het bijbehorende privé-IP-adres met behulp van de Azure Portal. Uw VM vereist geen openbaar IP-adres, extra client of speciale software. De Azure Bastion-implementatie vindt plaats per virtueel netwerk, niet per abonnement/account of virtuele machine. De naadloze RDP/SSH-ervaring is beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk.
 
-U kunt desgewenst een Azure bastion-host maken met behulp van de [Azure Portal](bastion-create-host-portal.md), of [Azure PowerShell](bastion-create-host-powershell.md)gebruiken.
+U kunt desgewenst een Azure bastion-host maken met behulp van de [Azure Portal](tutorial-create-host-portal.md), of [Azure PowerShell](bastion-create-host-powershell.md)gebruiken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial).
 
-[!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
+[!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Een Bastion-host maken
 
@@ -53,6 +53,7 @@ Deze sectie helpt u bij het maken van een nieuwe Azure Bastion-resource met behu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [Veelgestelde vragen over Bastion](bastion-faq.md) voor meer informatie.
+* Verbinding maken met een virtuele machine.
+   * [Linux-VM](bastion-connect-vm-ssh.md)
+   * [Windows-VM](bastion-connect-vm-rdp.md)
 
-* Zie [Werken met NSG's](bastion-nsg.md) als u netwerkbeveiligingsgroepen wilt gebruiken met het Azure Bastion-subnet.

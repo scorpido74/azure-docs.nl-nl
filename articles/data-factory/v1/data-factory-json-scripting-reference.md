@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e47f82323919f4fec3f28ec2f7698d734ab72ac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 497765768c208354f6d2b47dbdda8c30aaed8423
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490119"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016924"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Naslag informatie voor JSON-script Azure Data Factory
 > [!NOTE]
@@ -47,7 +47,7 @@ In de volgende tabel worden de eigenschappen in de JSON-definitie van de pijp li
 
 | Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-| naam | Naam van de pijplijn. Geef een naam op die de actie vertegenwoordigt die de activiteit of pijp lijn heeft geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Ja |
+| name | Naam van de pijplijn. Geef een naam op die de actie vertegenwoordigt die de activiteit of pijp lijn heeft geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit of pijp lijn wordt gebruikt | Nee |
 | activities | Bevat een lijst met activiteiten. | Ja |
 | starten |De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00` , die 6 am EST is.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |Nee<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
@@ -85,12 +85,12 @@ De volgende tabel beschrijft de eigenschappen in de JSON-definitie van de activi
 
 | Label | Beschrijving | Vereist |
 | --- | --- | --- |
-| naam |De naam van de activiteit. Geef een naam op die staat voor de actie die door de activiteit wordt geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Ja |
+| name |De naam van de activiteit. Geef een naam op die staat voor de actie die door de activiteit wordt geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt. |Nee |
 | type |Hiermee geeft u het type activiteit op. Zie de secties [data stores](#data-stores) en [Data Transformation activities](#data-transformation-activities) voor verschillende typen activiteiten. |Ja |
 | invoer |Invoer tabellen die worden gebruikt door de activiteit<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Geen voor HDInsightStreaming-en SqlServerStoredProcedure-activiteiten <br/> <br/> Ja voor alle anderen |
 | uitvoer |Uitvoer tabellen die worden gebruikt door de activiteit.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |Ja |
-| linkedServiceName |De naam van de gekoppelde service die door de activiteit wordt gebruikt. <br/><br/>Een activiteit kan vereisen dat u de gekoppelde service opgeeft die is gekoppeld aan de vereiste rekenomgeving. |Ja voor HDInsight-activiteiten, Azure Machine Learning-activiteiten en opgeslagen procedure-activiteiten. <br/><br/>Nee voor alle andere |
+| linkedServiceName |De naam van de gekoppelde service die door de activiteit wordt gebruikt. <br/><br/>Een activiteit kan vereisen dat u de gekoppelde service opgeeft die is gekoppeld aan de vereiste rekenomgeving. |Ja voor HDInsight-activiteiten, Azure Machine Learning Studio (klassieke) activiteiten en opgeslagen procedure-activiteiten. <br/><br/>Nee voor alle andere |
 | typeProperties |De eigenschappen in de sectie typeProperties zijn afhankelijk van het type van de activiteit. |Nee |
 | policy |Beleidsregels die van invloed zijn op het runtimegedrag van de activiteit. Als deze niet is opgegeven, wordt standaard beleid gebruikt. |Nee |
 | scheduler |de eigenschap scheduler wordt gebruikt voor het definiëren van de gewenste planning voor de activiteit. De subeigenschappen zijn hetzelfde als die in de [eigenschap Beschik baarheid in een gegevensset](data-factory-create-datasets.md#dataset-availability). |Nee |
@@ -245,7 +245,7 @@ De volgende tabel beschrijft de eigenschappen in de JSON-definitie van de activi
 
 | Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| naam | De naam van de gekoppelde service. | Ja |
+| name | De naam van de gekoppelde service. | Ja |
 | eigenschappen: type | Het type van de gekoppelde service. Bijvoorbeeld: Azure Storage, Azure SQL Database. |
 | typeProperties | De sectie typeProperties bevat elementen die verschillend zijn voor elke gegevens opslag of COMPUTE-omgeving. Zie de sectie gegevens archieven voor alle gekoppelde Data Store-Services en [reken omgevingen](#compute-environments) voor alle gekoppelde reken Services |
 
@@ -284,7 +284,7 @@ In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
 | Eigenschap | Beschrijving | Vereist | Standaard |
 | --- | --- | --- | --- |
-| naam | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](data-factory-naming-rules.md) voor naamgevings regels. |Ja |NA |
+| name | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](data-factory-naming-rules.md) voor naamgevings regels. |Ja |NA |
 | type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Azure Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). Zie de sectie [gegevens archieven](#data-stores) voor alle gegevens archieven en gegevensset typen die door Data Factory worden ondersteund. |
 | structuur | Schema van de gegevensset. Het bevat kolommen, hun typen, enzovoort. | Nee |NA |
 | typeProperties | Eigenschappen die overeenkomen met het geselecteerde type. Zie de sectie [gegevens archieven](#data-stores) voor ondersteunde typen en de bijbehorende eigenschappen. |Ja |NA |
@@ -296,7 +296,7 @@ Elke kolom in de sectie **structure** bevat de volgende eigenschappen:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| naam |De naam van de kolom. |Ja |
+| name |De naam van de kolom. |Ja |
 | type |Het gegevens type van de kolom.  |Nee |
 | culturele |Op .NET gebaseerde cultuur die moet worden gebruikt wanneer type is opgegeven en .NET-type is `Datetime` of `Datetimeoffset` . De standaardinstelling is `en-us`. |Nee |
 | indeling |Indelings teken reeks die moet worden gebruikt wanneer type is opgegeven en .NET-type `Datetime` of is `Datetimeoffset` . |Nee |
@@ -413,7 +413,7 @@ Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de connectionString-eigenschap. |Ja |
 
 ##### <a name="example"></a>Voorbeeld
 
@@ -430,11 +430,11 @@ Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van
 ```
 
 #### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS-gekoppelde service
-Met de gekoppelde Azure Storage SAS-service kunt u een Azure Storage account koppelen aan een Azure-data factory met behulp van een Shared Access Signature (SAS). Het biedt de data factory met beperkte/gebonden toegang tot alle/specifieke resources (BLOB/container) in de opslag. Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van Shared Access Signature, maakt u een gekoppelde Azure Storage SAS-service. Als u een gekoppelde Azure Storage SAS-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **azurestoragesas zijn**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
+Met de gekoppelde Azure Storage SAS-service kunt u een Azure Storage-account koppelen aan een Azure-data factory met behulp van een Shared Access Signature (SAS). Het biedt de data factory met beperkte/tijdgebonden toegang tot alle/specifieke resources (blob/container) in de opslag. Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van Shared Access Signature, maakt u een gekoppelde Azure Storage SAS-service. Als u een gekoppelde Azure Storage SAS-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **azurestoragesas zijn**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| sasUri |Geef Shared Access Signature-URI op voor de Azure Storage resources, zoals blob, container of table. |Ja |
+| sasUri |Geef Shared Access Signature-URI op voor de Azure Storage-resources, zoals blob, container of tabel. |Ja |
 
 ##### <a name="example"></a>Voorbeeld
 
@@ -1224,7 +1224,7 @@ Als u gegevens naar Azure Synapse Analytics kopieert, stelt u het **sink-type** 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Geef een query op voor de Kopieer activiteit die moet worden uitgevoerd, zodat de gegevens van een specifiek segment worden opgeruimd. |Een query-instructie. |Nee |
-| allowPolyBase |Hiermee wordt aangegeven of poly base (indien van toepassing) moet worden gebruikt in plaats van BULKINSERT-mechanisme. <br/><br/> **Het gebruik van poly Base is de aanbevolen manier om gegevens in Synapse Analytics te laden.** |True <br/>False (standaard) |Nee |
+| allowPolyBase |Hiermee wordt aangegeven of poly base (indien van toepassing) moet worden gebruikt in plaats van BULKINSERT-mechanisme. <br/><br/> **Het gebruik van poly Base is de aanbevolen manier om gegevens in Synapse Analytics te laden.** |Waar <br/>False (standaard) |Nee |
 | polyBaseSettings |Een groep eigenschappen die kan worden opgegeven wanneer de eigenschap **allowPolybase** is ingesteld op **True**. |&nbsp; |Nee |
 | rejectValue |Hiermee geeft u het aantal of percentage rijen op dat kan worden afgewezen voordat de query mislukt. <br/><br/>Meer informatie over de opties voor het afwijzen van poly bases vindt u in de sectie **argumenten** van het onderwerp [externe tabel maken (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (standaard), 1, 2,... |Nee |
 | rejectType |Hiermee wordt aangegeven of de optie rejectValue is opgegeven als een letterlijke waarde of een percentage. |Waarde (standaard), percentage |Nee |
@@ -1398,8 +1398,8 @@ Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op: **opslag** |Ja |
-| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Ja |
+| type |Het type eigenschap moet worden ingesteld op: **AzureStorage** |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de connectionString-eigenschap. |Ja |
 
 **Voorbeeld:**
 
@@ -1416,12 +1416,12 @@ Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van
 ```
 
 #### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS-gekoppelde service
-Met de gekoppelde Azure Storage SAS-service kunt u een Azure Storage account koppelen aan een Azure-data factory met behulp van een Shared Access Signature (SAS). Het biedt de data factory met beperkte/gebonden toegang tot alle/specifieke resources (BLOB/container) in de opslag. Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van Shared Access Signature, maakt u een gekoppelde Azure Storage SAS-service. Als u een gekoppelde Azure Storage SAS-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **azurestoragesas zijn**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
+Met de gekoppelde Azure Storage SAS-service kunt u een Azure Storage-account koppelen aan een Azure-data factory met behulp van een Shared Access Signature (SAS). Het biedt de data factory met beperkte/tijdgebonden toegang tot alle/specifieke resources (blob/container) in de opslag. Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van Shared Access Signature, maakt u een gekoppelde Azure Storage SAS-service. Als u een gekoppelde Azure Storage SAS-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **azurestoragesas zijn**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op: **azurestoragesas zijn** |Ja |
-| sasUri |Geef Shared Access Signature-URI op voor de Azure Storage resources, zoals blob, container of table. |Ja |
+| type |Het type eigenschap moet worden ingesteld op: **AzureStorageSas** |Ja |
+| sasUri |Geef Shared Access Signature-URI op voor de Azure Storage-resources, zoals blob, container of tabel. |Ja |
 
 **Voorbeeld:**
 
@@ -4824,7 +4824,7 @@ De volgende tabel geeft een lijst van de reken omgevingen die worden ondersteund
 | --- | --- |
 | [Hdinsight-cluster op aanvraag](#on-demand-azure-hdinsight-cluster) of [uw eigen hdinsight-cluster](#existing-azure-hdinsight-cluster) |[Aangepaste .net-activiteit](#net-custom-activity), [Hive](#hdinsight-hive-activity)-activiteit, [Pig-activiteit](#hdinsight-pig-activity), [MapReduce activiteit](#hdinsight-mapreduce-activity), Hadoop streaming-activiteit, [Spark-activiteit](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[Aangepaste .NET-activiteit](#net-custom-activity) |
-| [Azure Machine Learning](#azure-machine-learning) | [Machine learning activiteit voor het uitvoeren van batches](#machine-learning-batch-execution-activity) [machine learning resource activiteit bijwerken](#machine-learning-update-resource-activity) |
+| [Azure Machine Learning Studio (klassiek)](#azure-machine-learning-studio-classic) | [Azure machine learning Studio (klassiek) batch uitvoerings activiteit](#azure-machine-learning-studio-classic-batch-execution-activity), [Azure machine learning Studio (klassiek) resource activiteit bijwerken](#azure-machine-learning-studio-classic-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL database](#azure-sql-database), [Azure Synapse Analytics](#azure-synapse-analytics), [SQL Server](#sql-server-stored-procedure) |[Opgeslagen procedure](#stored-procedure-activity) |
 
@@ -4931,11 +4931,11 @@ De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt
 }
 ```
 
-## <a name="azure-machine-learning"></a>Azure Machine Learning
-U maakt een Azure Machine Learning gekoppelde service om een Machine Learning batch Score-eind punt met een data factory te registreren. Twee activiteiten voor gegevens transformatie die op deze gekoppelde service kunnen worden uitgevoerd: [machine learning batch-uitvoerings activiteit](#machine-learning-batch-execution-activity), [machine learning resource activiteit bijwerken](#machine-learning-update-resource-activity).
+## <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klassiek)
+U maakt een gekoppelde Azure Machine Learning Studio-Service (klassiek) om een studio (klassiek) batch Score-eind punt te registreren met een data factory. Twee activiteiten voor gegevens transformatie die op deze gekoppelde service kunnen worden uitgevoerd: [Azure machine learning Studio (klassieke) activiteiten voor batch uitvoering](#azure-machine-learning-studio-classic-batch-execution-activity), [Azure machine learning Studio (klassiek) resource activiteit bijwerken](#azure-machine-learning-studio-classic-update-resource-activity).
 
 ### <a name="linked-service"></a>Gekoppelde service
-De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt in de Azure JSON-definitie van een Azure Machine Learning gekoppelde service.
+De volgende tabel bevat beschrijvingen voor de eigenschappen die in de Azure JSON-definitie van een gekoppelde Studio-Service (klassiek) worden gebruikt.
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
@@ -5064,8 +5064,8 @@ Activiteit | Beschrijving
 [HDInsight MapReduce-activiteit](#hdinsight-mapreduce-activity) | Met de HDInsight MapReduce-activiteit in een Data Factory pijp lijn worden MapReduce-Program ma's uitgevoerd op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux.
 [HDInsight-streamingactiviteit](#hdinsight-streaming-activity) | Met de activiteit HDInsight streaming in een Data Factory pijp lijn worden Hadoop-streaming-Program ma's uitgevoerd op uw eigen of op aanvraag gebaseerd HDInsight-cluster op basis van Windows/Linux.
 [HDInsight Spark-activiteit](#hdinsight-spark-activity) | Met de HDInsight Spark-activiteit in een Data Factory pijp lijn worden Spark-Program ma's uitgevoerd op uw eigen HDInsight-cluster.
-[Machine Learning-batchuitvoeringsactiviteit](#machine-learning-batch-execution-activity) | Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde Azure Machine Learning-webservice voor predictive analytics. U kunt met behulp van de batch Execution-activiteit in een Azure Data Factory-pijp lijn een Machine Learning-webservice aanroepen om voor spellingen te doen op de gegevens in batch.
-[Machine Learning-activiteit resources bijwerken](#machine-learning-update-resource-activity) | De voorspellende modellen in de Machine Learning Score experimenten moeten na verloop van tijd opnieuw worden getraind met nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde Machine Learning model. U kunt de activiteit resource bijwerken gebruiken om de webservice bij te werken met het nieuwe getrainde model.
+[Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)](#azure-machine-learning-studio-classic-batch-execution-activity) | Met Azure Data Factory kunt u eenvoudig pijp lijnen maken die gebruikmaken van een gepubliceerde Studio-webservice (klassiek) voor predictive analytics. Met de activiteit voor batch uitvoering in een Azure Data Factory-pijp lijn kunt u een studio-webservice aanroepen om voor spellingen te maken voor de gegevens in batch.
+[Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)](#azure-machine-learning-studio-classic-update-resource-activity) | Na verloop van tijd moeten de voorspellende modellen in de Azure Machine Learning Studio (klassieke) Score experimenten opnieuw worden getraind met nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde machine learning model. U kunt de activiteit resource bijwerken gebruiken om de webservice bij te werken met het nieuwe getrainde model.
 [Opgeslagen procedureactiviteit](#stored-procedure-activity) | U kunt de opgeslagen procedure-activiteit in een Data Factory pijp lijn gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven: Azure SQL Database, Azure Synapse Analytics, SQL Server data base in uw onderneming of een Azure-VM.
 [Data Lake Analytics U-SQL-activiteit](#data-lake-analytics-u-sql-activity) | Met Data Lake Analytics U-SQL-activiteit wordt een U-SQL-script op een Azure Data Lake Analytics cluster uitgevoerd.
 [Aangepaste .NET-activiteit](#net-custom-activity) | Als u gegevens moet transformeren op een manier die niet wordt ondersteund door Data Factory, kunt u een aangepaste activiteit maken met uw eigen gegevens verwerkings logica en de activiteit in de pijp lijn gebruiken. U kunt de aangepaste .NET-activiteit zodanig configureren dat deze wordt uitgevoerd met behulp van een Azure Batch-service of een Azure HDInsight-cluster.
@@ -5346,14 +5346,14 @@ Houd rekening met de volgende punten:
 
 Zie artikel [Spark-activiteit](data-factory-spark.md) voor meer informatie over de activiteit.
 
-## <a name="machine-learning-batch-execution-activity"></a>Machine Learning-batchuitvoeringsactiviteit
-U kunt de volgende eigenschappen opgeven in een JSON-definitie van een Azure Machine Learning Studio-activiteit. De eigenschap type voor de activiteit moet: **AzureMLBatchExecution**. U moet eerst een Azure Machine Learning gekoppelde service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op AzureMLBatchExecution:
+## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Activiteit voor het uitvoeren van Azure Machine Learning Studio (klassiek)
+U kunt de volgende eigenschappen opgeven in een JSON-definitie voor een Azure Machine Learning Studio (klassieke) batch uitvoering. De eigenschap type voor de activiteit moet: **AzureMLBatchExecution**. U moet eerst een gekoppelde Studio-Service (klassiek) maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op AzureMLBatchExecution:
 
 Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-Webserviceinputactivity | De gegevensset die moet worden door gegeven als invoer voor de web-service van Azure Machine Learning Studio. Deze gegevensset moet ook worden opgenomen in de invoer voor de activiteit. |Gebruik ofwel Webserviceinputactivity of webServiceInputs. |
-webServiceInputs | Geef gegevens sets op die moeten worden door gegeven als invoer voor de web-service van Azure Machine Learning Studio. Als de webservice meerdere invoer heeft, gebruikt u de eigenschap webServiceInputs in plaats van de eigenschap Webserviceinputactivity te gebruiken. Gegevens sets waarnaar wordt verwezen door de **webServiceInputs** moeten ook worden opgenomen in de activiteiten **invoer**. | Gebruik ofwel Webserviceinputactivity of webServiceInputs. |
-webServiceOutputs | De gegevens sets die zijn toegewezen als uitvoer voor de web-service van Azure Machine Learning Studio. De webservice retourneert uitvoer gegevens in deze gegevensset. | Ja |
+Webserviceinputactivity | De gegevensset die moet worden door gegeven als invoer voor de web-service Studio (klassiek). Deze gegevensset moet ook worden opgenomen in de invoer voor de activiteit. |Gebruik ofwel Webserviceinputactivity of webServiceInputs. |
+webServiceInputs | Geef gegevens sets op die moeten worden door gegeven als invoer voor de web-service Studio (klassiek). Als de webservice meerdere invoer heeft, gebruikt u de eigenschap webServiceInputs in plaats van de eigenschap Webserviceinputactivity te gebruiken. Gegevens sets waarnaar wordt verwezen door de **webServiceInputs** moeten ook worden opgenomen in de activiteiten **invoer**. | Gebruik ofwel Webserviceinputactivity of webServiceInputs. |
+webServiceOutputs | De gegevens sets die zijn toegewezen als uitvoer voor de web-service Studio (klassiek). De webservice retourneert uitvoer gegevens in deze gegevensset. | Ja |
 globalParameters | Geef waarden op voor de web service-para meters in deze sectie. | Nee |
 
 ### <a name="json-example"></a>JSON-voor beeld
@@ -5397,13 +5397,13 @@ In dit voor beeld heeft de activiteit de gegevensset **MLSqlInput** als invoer e
 }
 ```
 
-In het JSON-voor beeld gebruikt de geïmplementeerde Azure Machine Learning-webservice een lezer en een schrijver-module voor het lezen/schrijven van gegevens van/naar een Azure SQL Database. Deze webservice bevat de volgende vier para meters: database server naam, database naam, Server gebruikers accountnaam en wacht woord voor Server gebruikers account.
+In het JSON-voor beeld gebruikt de geimplementeerde Studio-webservice (Classic) een lezer en een schrijver-module voor het lezen/schrijven van gegevens van/naar een Azure SQL Database. Deze webservice bevat de volgende vier para meters: database server naam, database naam, Server gebruikers accountnaam en wacht woord voor Server gebruikers account.
 
 > [!NOTE]
 > Alleen invoer en uitvoer van de AzureMLBatchExecution-activiteit kunnen worden door gegeven als para meters voor de webservice. In het bovenstaande JSON-fragment is MLSqlInput bijvoorbeeld een invoer van de AzureMLBatchExecution-activiteit, die wordt door gegeven als invoer voor de webservice via de Webserviceinputactivity-para meter.
 
-## <a name="machine-learning-update-resource-activity"></a>Machine Learning-activiteit resources bijwerken
-U kunt de volgende eigenschappen opgeven in een Azure Machine Learning Studio update resource activity JSON definition. De eigenschap type voor de activiteit moet: **AzureMLUpdateResource**. U moet eerst een Azure Machine Learning gekoppelde service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op AzureMLUpdateResource:
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Resource-activiteit voor het bijwerken van Azure Machine Learning Studio (klassiek)
+U kunt de volgende eigenschappen opgeven in een Azure Machine Learning Studio (klassieke) de JSON-definitie van de resource activiteit bijwerken. De eigenschap type voor de activiteit moet: **AzureMLUpdateResource**. U moet eerst een gekoppelde Studio-Service (klassiek) maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op AzureMLUpdateResource:
 
 Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
@@ -5411,7 +5411,7 @@ trainedModelName | De naam van het opnieuw getrainde model. | Ja |
 trainedModelDatasetName | DataSet die verwijst naar het iLearner-bestand dat wordt geretourneerd door de bewerking voor opnieuw trainen. | Ja |
 
 ### <a name="json-example"></a>JSON-voor beeld
-De pijp lijn heeft twee activiteiten: **AzureMLBatchExecution** en **AzureMLUpdateResource**. De Azure Machine Learning Studio batch Execution-activiteit neemt de trainings gegevens als invoer en produceert een iLearner-bestand als uitvoer. De activiteit roept de training-webservice (trainings experiment beschikbaar als een webservice) aan met de gegevens voor het invoeren van de training en ontvangt het ilearner-bestand van de webservice. De placeholderBlob is slechts een dummy-uitvoer gegevensset die wordt vereist door de Azure Data Factory-service om de pijp lijn uit te voeren.
+De pijp lijn heeft twee activiteiten: **AzureMLBatchExecution** en **AzureMLUpdateResource**. In de activiteit Studio (klassiek) batch execution worden de trainings gegevens als invoer gebruikt en wordt een iLearner-bestand als uitvoer gegenereerd. De activiteit roept de training-webservice (trainings experiment beschikbaar als een webservice) aan met de gegevens voor het invoeren van de training en ontvangt het ilearner-bestand van de webservice. De placeholderBlob is slechts een dummy-uitvoer gegevensset die wordt vereist door de Azure Data Factory-service om de pijp lijn uit te voeren.
 
 
 ```json

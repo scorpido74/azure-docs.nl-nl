@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405238"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019848"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
@@ -127,7 +127,7 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
 
 #### <a name="running-cmdkey-command"></a>Opdracht cmdkey uitvoeren
 
-Als u het **opdracht cmdkey uitvoeren** selecteert voor uw snelle aangepaste installatie, kunt u de Windows cmdkey-opdracht uitvoeren op uw Azure-SSIS IR. Hiertoe voert u de naam van uw doel computer of de domein naam, de gebruikers naam, de accountnaam en het wacht woord of de account sleutel in de tekst vakken **/add**, **/User**en **/Pass** in. Zo kunt u toegangs referenties voor SQL-servers, bestands shares of Azure Files op uw Azure-SSIS IR behouden. Als u bijvoorbeeld toegang wilt krijgen tot Azure Files, kunt `YourAzureStorageAccountName.file.core.windows.net` u `azure\YourAzureStorageAccountName` respectievelijk, en `YourAzureStorageAccountKey` voor **/add**, **/User**en **/Pass**invoeren. Dit is vergelijkbaar met het uitvoeren van de Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) -opdracht op uw lokale computer.
+Als u het **opdracht cmdkey uitvoeren** selecteert voor uw snelle aangepaste installatie, kunt u de Windows cmdkey-opdracht uitvoeren op uw Azure-SSIS IR. Hiertoe voert u de naam van uw doel computer of de domein naam, de gebruikers naam, de accountnaam en het wacht woord of de account sleutel in de tekst vakken **/add**, **/User**en **/Pass** in. Zo kunt u toegangs referenties voor SQL-servers, bestands shares of Azure Files op uw Azure-SSIS IR behouden. Als u bijvoorbeeld toegang wilt krijgen tot Azure Files, kunt `YourAzureStorageAccountName.file.core.windows.net` u `azure\YourAzureStorageAccountName` respectievelijk, en `YourAzureStorageAccountKey` voor **/add**, **/User**en **/Pass**invoeren. Dit is vergelijkbaar met het uitvoeren van de Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) -opdracht op uw lokale computer. Slechts één snelle aangepaste installatie voor het uitvoeren van de opdracht cmdkey wordt nu ondersteund. Als u meerdere cmdkey-opdrachten wilt uitvoeren, gebruikt u in plaats daarvan een aangepaste standaard installatie.
 
 #### <a name="adding-environment-variables"></a>Omgevings variabelen toevoegen
 
@@ -143,7 +143,7 @@ Als u het **onderdeel type licenties installeren** selecteert voor uw snelle aan
 
    * Als u het onderdeel **Task Factory van SentryOne** selecteert, kunt u de [taken fabrieks](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) suite van onderdelen van SentryOne op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **2020.1.3**.
 
-   * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren. ](https://hedda.io/ssis-component/) Het onderdeel io-gegevens kwaliteit/opschoning van oh22 op uw Azure-SSIS IR. Om dit te doen, moet u de service vooraf aanschaffen. De huidige geïntegreerde versie is **1.0.14**.
+   * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren. ](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) Het onderdeel io-gegevens kwaliteit/opschoning van oh22 op uw Azure-SSIS IR. Om dit te doen, moet u de service vooraf aanschaffen. De huidige geïntegreerde versie is **1.0.14**.
 
    * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u het [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/matching-onderdeel van oh22 op uw Azure-SSIS IR installeren. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **1.0.45**.
 
@@ -175,7 +175,7 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService|CData.Standard|CData.Extended or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -242,6 +242,16 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
            $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
        }
+       if($ExpressCustomSetup -eq "CData.Standard")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "CData.Extended")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -288,6 +298,8 @@ Voer de volgende stappen uit om enkele voor beelden van aangepaste standaard ins
       * Een *.NET FRAMEWORK 3,5* -map die een aangepast installatie script (*Main. cmd*) bevat voor de installatie van een eerdere versie van de .NET Framework op elk knoop punt van uw Azure-SSIS IR. Deze versie is mogelijk vereist voor sommige aangepaste onderdelen.
 
       * Een *bcp* -map die een aangepast installatie script (*Main. cmd*) bevat voor het installeren van SQL Server opdracht regel programma's (*MsSqlCmdLnUtils.msi*) op elk knoop punt van uw Azure-SSIS IR. Een van deze hulpprogram ma's is het pakket voor bulksgewijs kopiëren (*bcp*).
+
+      * Een *DNS-achtervoegsel* , dat een aangepast installatie script (*Main. cmd*) bevat om uw eigen DNS-achtervoegsel (bijvoorbeeld *test.com*) toe te voegen aan een niet-gekwalificeerde domein naam met één label en deze in te scha kelen in een FQDN-naam (Fully Qualified Domain Name) voordat u deze in DNS-query's van uw Azure-SSIS IR gebruikt.
 
       * Een *Excel* -map, die een aangepast installatie script (*Main. cmd*) bevat voor het installeren van enkele C#-assembly's en-bibliotheken op elk knoop punt van uw Azure-SSIS IR. U kunt ze gebruiken in script taken om Excel-bestanden dynamisch te lezen en te schrijven. 
       

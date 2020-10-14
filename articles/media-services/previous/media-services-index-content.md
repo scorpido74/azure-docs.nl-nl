@@ -16,12 +16,12 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256443"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018951"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Media bestanden indexeren met Azure Media Indexer
 
@@ -48,7 +48,7 @@ U kunt meer informatie voor uw indexerings taken opgeven met behulp van een taak
 
 U kunt ook meerdere media bestanden tegelijk verwerken door een manifest bestand te gebruiken.
 
-Zie voor meer informatie [taak vooraf instellen voor Azure media indexer](./media-services-analytics-overview.md).
+Zie voor meer informatie [taak vooraf instellen voor Azure media indexer](./legacy-components.md).
 
 ## <a name="index-an-asset"></a>Een Asset indexeren
 Met de volgende methode wordt een media bestand als een Asset geüpload en wordt een taak gemaakt om het activum te indexeren.
@@ -161,7 +161,7 @@ Als niet alle invoer media bestanden zijn geïndexeerd, mislukt de indexerings t
 ## <a name="index-multiple-files"></a>Meerdere bestanden indexeren
 Met de volgende methode uploadt u meerdere media bestanden als een Asset en maakt u een taak voor het indexeren van alle bestanden in een batch.
 
-Een manifest bestand met de extensie '. lst ' wordt gemaakt en geüpload naar de Asset. Het manifest bestand bevat de lijst met alle asset-bestanden. Zie voor meer informatie [taak vooraf instellen voor Azure media indexer](./media-services-analytics-overview.md).
+Een manifest bestand met de extensie '. lst ' wordt gemaakt en geüpload naar de Asset. Het manifest bestand bevat de lijst met alle asset-bestanden. Zie voor meer informatie [taak vooraf instellen voor Azure media indexer](./legacy-components.md).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,6 +278,6 @@ Op dit moment worden de Engelse en Spaanse talen ondersteund.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Verwante koppelingen
-[Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
+[Overzicht van Azure Media Services Analytics](./legacy-components.md)
 
-[Media bestanden indexeren met Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md)
+[Media bestanden indexeren met Azure Media Indexer 2 Preview](./legacy-components.md)

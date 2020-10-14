@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887236"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019576"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -20,7 +20,7 @@ In dit artikel worden de stappen beschreven die u helpen bij het implementeren v
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een x86-64-of een ARM64-apparaat met een van de [ondersteunde Linux-besturings systemen](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)
+* Een x86-64-of een ARM64-apparaat met een van de [ondersteunde Linux-besturings systemen](../../iot-edge/support.md#operating-systems)
 * Azure-abonnement waarvoor u [eigenaars bevoegdheden](../../role-based-access-control/built-in-roles.md#owner) hebt
 * [IoT Hub maken en instellen](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge-apparaat registreren](../../iot-edge/how-to-register-device.md)

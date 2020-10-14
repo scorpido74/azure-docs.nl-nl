@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 030b41e086d700c527107d2246bc7f7df07e860f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e9804eb2af28108572688244d6d7b513454e375b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977711"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018998"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -269,10 +269,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Algemene opmerkingen over API/SDK-gebruik
 
 > [!NOTE]
-> Tijdens de preview-versie biedt Azure Digital Apparaatdubbels geen ondersteuning voor **het delen van cross-Origin-resources (CORS)**. Als u dus een REST API aanroept vanuit een browser-app, een API Management-interface [(APIM)](../api-management/api-management-key-concepts.md) of een [Power apps](https://docs.microsoft.com/powerapps/powerapps-overview) -connector, wordt er mogelijk een beleids fout weer geven.
-> U kunt dit probleem op een van de volgende manieren oplossen:
-> * De CORS-header `Access-Control-Allow-Origin` van het bericht verwijderen. Deze header geeft aan of het antwoord kan worden gedeeld. 
-> * U kunt ook een CORS-proxy maken en de Azure Digital Apparaatdubbels REST API aanvraag door voeren. 
+> Azure Digital Apparaatdubbels ondersteunt momenteel geen **CORS (cross-Origin Resource Sharing)**. Zie de sectie [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) van *concepten: beveiliging voor Azure Digital apparaatdubbels-oplossingen*voor meer informatie over de impact-en oplossings strategieën.
 
 De volgende lijst bevat aanvullende details en algemene richt lijnen voor het gebruik van de Api's en Sdk's.
 

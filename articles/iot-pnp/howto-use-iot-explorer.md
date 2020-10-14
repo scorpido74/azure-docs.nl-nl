@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577574"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019151"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Explorer installeren en gebruiken
 
@@ -28,7 +28,7 @@ In dit artikel leest u informatie over:
 
 Als u het hulp programma Azure IoT Explorer wilt gebruiken, hebt u het volgende nodig:
 
-- Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de IoT hub-connection string nodig om het hulp programma Azure IoT Explorer uit te voeren. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+- Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de IoT hub-connection string nodig om het hulp programma Azure IoT Explorer uit te voeren. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 - Een apparaat dat is geregistreerd in uw IoT-hub. U kunt IoT Explorer gebruiken om apparaatregistratie te maken en te beheren in uw IoT Hub.
 
 ## <a name="install-azure-iot-explorer"></a>Azure IoT Explorer installeren
@@ -36,7 +36,7 @@ Als u het hulp programma Azure IoT Explorer wilt gebruiken, hebt u het volgende 
 Ga naar [Azure IOT Explorer](https://github.com/Azure/azure-iot-explorer/releases) en vouw de lijst met assets uit voor de meest recente release. Down load en installeer de meest recente versie van de toepassing.
 
 >[!Important]
->Vanuit versie 0.11.0 IoT Explorer ondersteunt alleen de IoT Plug en Play GA release (vanaf september 2020). Als u gebruik wilt maken van de functies die beschikbaar zijn in de vorige preview-versie van aug 2019, installeert u een 0,10. x-versie.
+> Bijwerken naar versie 0.13. x voor het omzetten van modellen vanuit elke opslag plaats op basis van [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT Explorer gebruiken
 
@@ -136,4 +136,4 @@ Als u de telemetrie voor de geselecteerde interface wilt weer geven, gaat u naar
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit procedure-artikel hebt u geleerd hoe u Azure IoT Explorer kunt installeren en gebruiken om te communiceren met uw IoT Plug en Play-apparaten. Een voorgestelde volgende stap is informatie over het gebruik van de [Azure cli IoT Plug en Play-opdrachten](./howto-use-iot-pnp-cli.md).
+In dit procedure-artikel hebt u geleerd hoe u Azure IoT Explorer kunt installeren en gebruiken om te communiceren met uw IoT Plug en Play-apparaten. Een voorgestelde volgende stap is om te leren hoe u [de DTDL-hulpprogram ma's voor ontwerpen installeert en gebruikt](howto-use-dtdl-authoring-tools.md).
