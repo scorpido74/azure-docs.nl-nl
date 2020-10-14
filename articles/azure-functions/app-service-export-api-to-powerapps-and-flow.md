@@ -4,16 +4,16 @@ description: Overzicht van het beschikbaar maken van een API die wordt gehost in
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015082"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054794"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Een door Azure gehoste API exporteren naar PowerApps en Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) is een service voor het maken en gebruiken van aangepaste zakelijke apps die verbinding maken met uw gegevens en werken op verschillende platforms. Met [Microsoft flow](/learn/modules/get-started-with-flow/index) kunt u eenvoudig werk stromen en bedrijfs processen automatiseren tussen uw favoriete apps en services. Zowel PowerApps als Microsoft Flow worden geleverd met een aantal ingebouwde connectors voor gegevens bronnen zoals Office 365, Dynamics 365, Sales Force en meer. In sommige gevallen willen app-en flow-Builders ook verbinding maken met gegevens bronnen en Api's die zijn gebouwd door hun organisatie.
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) is een service voor het maken en gebruiken van aangepaste zakelijke apps die verbinding maken met uw gegevens en werken op verschillende platforms. Met [energie automatisering](/learn/modules/get-started-with-flow/index) kunt u eenvoudig werk stromen en bedrijfs processen automatiseren tussen uw favoriete apps en services. Zowel PowerApps als Microsoft Flow worden geleverd met een aantal ingebouwde connectors voor gegevens bronnen zoals Office 365, Dynamics 365, Sales Force en meer. In sommige gevallen willen app-en flow-Builders ook verbinding maken met gegevens bronnen en Api's die zijn gebouwd door hun organisatie.
 
 Op dezelfde manier kunnen ontwikkel aars die hun Api's breed willen weer geven binnen een organisatie, hun Api's beschikbaar maken voor app-en flow-Builders. In dit artikel wordt beschreven hoe u een API exporteert die is gebouwd met [Azure functions](../azure-functions/functions-overview.md) of [Azure app service](../app-service/overview.md). De geëxporteerde API wordt een *aangepaste connector*die wordt gebruikt in PowerApps en Microsoft flow net als een ingebouwde connector.
 

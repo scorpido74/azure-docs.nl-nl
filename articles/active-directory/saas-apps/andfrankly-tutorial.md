@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 71181a30785ba729b87ddd51077d1c07b0b9a8df
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e22b34244e36cf9e4ff421383824377f23009812
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522141"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Zelfstudie: Azure Active Directory-integratie met &frankly
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor &frankly-domein en -URL's](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor &frankly-domein en -URL's](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
 

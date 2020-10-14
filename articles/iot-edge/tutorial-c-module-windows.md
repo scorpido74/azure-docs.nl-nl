@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f6ed981ab0b67aacaca5300dc3f77894805e3d1b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318327"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816371"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Zelfstudie: Een C-module ontwikkelen voor Windows-apparaten met IoT Edge
 
@@ -344,11 +344,12 @@ Uw ontwikkelcomputer heeft nu toegang tot uw containerregister en uw IoT Edge-ap
 
 ## <a name="deploy-modules-to-device"></a>Modules op het apparaat implementeren
 
-Gebruik Visual Studio Code Explorer en de Azure IoT Tools-extensie om het moduleproject op uw IoT Edge-apparaat te implementeren. U hebt al een implementatiemanifest voorbereid voor uw scenario, namelijk het bestand **deployment.windows-amd64.json** in de map config. U hoeft nu alleen nog maar een apparaat te selecteren dat de implementatie moet ontvangen.
+Gebruik Cloud Explorer van Visual Studio en de Azure IoT Tools-extensie om het moduleproject op uw IoT Edge-apparaat te implementeren. U hebt al een implementatiemanifest voorbereid voor uw scenario, namelijk het bestand **deployment.windows-amd64.json** in de map config. U hoeft nu alleen nog maar een apparaat te selecteren dat de implementatie moet ontvangen.
+
 
 Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
-1. Vouw in de Cloud Explorer van Visual Studio de resources uit om de lijst met IoT-apparaten weer te geven.
+1. Vouw in Cloud Explorer van Visual Studio de resources uit om de lijst met IoT-apparaten weer te geven.
 
 2. Klik met de rechtermuisknop op de naam van het IoT Edge-apparaat waarvan u de implementatie wilt ontvangen.
 
@@ -356,7 +357,7 @@ Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
 4. Ga in de bestandsverkenner naar de configuratiemap van uw oplossing en selecteer vervolgens het bestand **deployment.windows-amd64**.
 
-5. Vernieuw de Cloud Explorer om de geïmplementeerde modules onder uw apparaat weer te geven.
+5. Vernieuw Cloud Explorer om de geïmplementeerde modules onder uw apparaat weer te geven.
 
 ## <a name="view-generated-data"></a>Gegenereerde gegevens weergeven
 

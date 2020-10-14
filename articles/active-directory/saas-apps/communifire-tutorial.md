@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: d743785ad5525f582e5cb25df715d8211121e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 898f579446008bd696b4c120a56a960458e5640f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547253"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Zelfstudie: Azure Active Directory-integratie met Communifire
 
@@ -101,7 +101,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Communifir
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor Communifire-domein en -URL's](common/idp-intiated.png)
+    ![Schermopname met de sectie "Standaard S A M L-configuratie" met de actie "Opslaan", het veld "Id" en het veld "Antwoord-U R L" gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<subdomain>.communifire.com`
 

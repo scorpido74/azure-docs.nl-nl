@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/02/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: d49a1120ddda98430f4f9b3c488819829a9fd7b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eee5119336be02621a27b315cb26ca8dd1fd9cb4
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320690"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766263"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box via NFS
 
@@ -58,7 +58,7 @@ Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-
 
 1. Geef de IP-adressen op van de clients die toegang hebben tot de share. Ga in de lokale gebruikersinterface naar de pagina **Verbinding maken en kopiëren**. Klik onder **NFS-instellingen** op **NFS-clienttoegang**. 
 
-    ![NFS-clienttoegang configureren 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
+    ![NFS-clienttoegang configureren](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. Geef het IP-adres op van de NFS-client en klik op **Toevoegen**. U kunt deze stap herhalen om toegang voor meerdere NFS-clients te configureren. Klik op **OK**.
 
@@ -85,7 +85,7 @@ Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-
 Nadat u verbinding met de Data Box-shares hebt gemaakt, moet u de gegevens kopiëren. Neem de volgende punten door voordat u gegevens gaat kopiëren:
 
 * Zorg dat u de gegevens kopieert naar shares die overeenkomen met de juiste gegevensindeling. U moet bijvoorbeeld de blok-blobgegevens naar de share voor blok-blobs kopiëren. Kopieer VHD's naar pagina-blobs. Als de gegevensindeling niet met het betreffende sharetype overeenkomt, zal het uploaden van gegevens naar Azure op een later tijdstip mislukken.
-*  Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die staan beschreven in de [limieten voor Azure-opslag en Data Box](data-box-limits.md).
+*  Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die worden vermeld in de [limieten voor Azure-opslagaccounts](data-box-limits.md#azure-storage-account-size-limits).
 * Als de gegevens die door Data Box worden geüpload gelijktijdig door andere toepassingen buiten Data Box worden geüpload, kan dit tot fouten voor de uploadtaak en beschadigde gegevens leiden.
 * We adviseren u om niet SMB en NFS tegelijk te gebruiken of om dezelfde gegevens naar dezelfde eindbestemming in Azure te kopiëren. In dergelijke gevallen kan de definitieve uitkomst niet worden vastgesteld.
 * **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
@@ -145,11 +145,11 @@ Als er fouten zijn tijdens het kopieerproces, krijgt u een melding.
 
 Selecteer **Lijst met problemen downloaden**.
 
-![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-2.png)
+![De lijst met problemen voor een kopieerfout downloaden](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Open de lijst om de details van de fout weer te geven en selecteer de oplossings-URL om de aanbevolen oplossing weer te geven.
 
-![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-3.png)
+![Problemen in de lijst met problemen voor een kopieerfout](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 

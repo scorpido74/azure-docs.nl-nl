@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 39339803945034765fbc30e6f5fc11e737f750c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f3fa61e7c00dca8cb133ec21ba395d943ebdc956
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538363"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Zelfstudie: Azure Active Directory-integratie met Acadia
 
@@ -100,7 +100,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Acadia, moet u de vo
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-informatie voor eenmalige aanmelding bij Acadia](common/idp-intiated.png)
+    ![Schermopname met de schermelementen die vereist zijn voor het configureren van de toepassing in de door IDP gestarte modus.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
 

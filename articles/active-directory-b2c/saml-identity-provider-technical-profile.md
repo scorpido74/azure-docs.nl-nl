@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/04/2020
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30c64e4cf467f4e505327414e15b23ee2c6d1543
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f2b4d6da8d4d69a44ca3aabd755c72fd87aaa8e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611656"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054896"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een SAML-identiteits provider definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -166,7 +166,7 @@ Het **CryptographicKeys** -element bevat de volgende kenmerken:
 | Kenmerk |Vereist | Beschrijving |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Ja | Het x509-certificaat (RSA key set) dat moet worden gebruikt voor het ondertekenen van SAML-berichten. Azure AD B2C gebruikt deze sleutel om de aanvragen te ondertekenen en te verzenden naar de ID-provider. |
-| SamlAssertionDecryption |Ja | Het x509-certificaat (RSA key set) dat wordt gebruikt voor het ontsleutelen van SAML-berichten. Dit certificaat moet worden verschaft door de ID-provider. Azure AD B2C gebruikt dit certificaat voor het ontsleutelen van de gegevens die zijn verzonden door de ID-provider. |
+| SamlAssertionDecryption |Nee | Het x509-certificaat (RSA key set). Een SAML-ID-provider gebruikt het open bare gedeelte van het certificaat om de bewering van het SAML-antwoord te versleutelen. Azure AD B2C gebruikt het privé gedeelte van het certificaat om de bewering te ontsleutelen. |
 | MetadataSigning |Nee | Het x509-certificaat (RSA key set) dat wordt gebruikt voor het ondertekenen van SAML-meta gegevens. Azure AD B2C gebruikt deze sleutel om de meta gegevens te ondertekenen.  |
 
 ## <a name="saml-entityid-customization"></a>Aanpassing van SAML entityID

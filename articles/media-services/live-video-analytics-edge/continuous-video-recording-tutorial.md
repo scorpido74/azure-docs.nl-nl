@@ -3,12 +3,12 @@ title: Zelfstudie voor continue video-opname in de cloud en afspelen vanuit de c
 description: In deze zelfstudie leert u hoe u Azure Live Video Analytics kunt gebruiken op Azure IoT Edge om continu video in de cloud op te nemen en een deel van die video te streamen met behulp van Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566790"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774025"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Zelfstudie: Continue video-opname in de cloud en afspelen vanuit de cloud
 
@@ -160,58 +160,15 @@ Wanneer u de Live Video Analytics in IoT Edge-module gebruikt om de live videost
 
 ## <a name="run-the-program"></a>Het programma uitvoeren 
 
-1. Ga in Visual Studio Code naar src/cloud-to-device-console-app/operations.json.
-1. Bewerk het volgende onder het knooppunt **GraphTopologySet**:
+1. Open in Visual Studio Code het tabblad **Extensies** (of druk op Ctrl+Shift+X) en zoek naar Azure IoT Hub.
+1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. Controleer vervolgens of op de knooppunten **GraphInstanceSet** en **GraphTopologyDelete** de waarde van **topologyName** overeenkomt met de waarde van de eigenschap **name** in de bovenstaande graaftopologie:
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Mediagrafiek":::
+1. Zoek 'Uitgebreid bericht tonen' en schakel deze optie in.
 
-    `"topologyName" : "CVRToAMSAsset"`  
-1. Open de [topologie](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) in een browser en kijk naar assetNamePattern. Om ervoor te zorgen dat uw asset een unieke naam heeft, kunt u de naam van het graafexemplaar wijzigen in het bestand operations.json (van de standaardwaarde van 'Sample-Graph-1').
-
-    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
-1. Start een foutopsporingssessie door F5 te selecteren. In het **TERMINAL**-venster ziet u enkele berichten verschijnen.
-1. Het bestand operations.json begint met het uitvoeren van aanroepen naar GraphTopologyList en GraphInstanceList. Als u resources hebt opgeschoond na vorige quickstarts of zelfstudies, worden er lege lijsten geretourneerd, waarna wordt gepauzeerd zodat u op **ENTER** kunt drukken, zoals hieronder:
-
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-
-1. Wanneer u op de toets **Enter** drukt in het venster **TERMINAL**, wordt de volgende set met aanroepen met de directe methode gemaakt:
-   * Een aanroep van GraphTopologySet met behulp van topologyUrl hierboven
-   * Een aanroep van GraphInstanceSet met behulp van de volgende hoofdtekst
-     
-     ```
-     {
-       "@apiVersion": "1.0",
-       "name": "Sample-Graph-1",
-       "properties": {
-         "topologyName": "CVRToAMSAsset",
-         "description": "Sample graph description",
-         "parameters": [
-           {
-             "name": "rtspUrl",
-             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-           },
-           {
-             "name": "rtspUserName",
-             "value": "testuser"
-           },
-           {
-             "name": "rtspPassword",
-             "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Mediagrafiek"
            }
          ]
        }
@@ -220,19 +177,19 @@ Wanneer u de Live Video Analytics in IoT Edge-module gebruikt om de live videost
    * Een aanroep van GraphInstanceActivate om het graafexemplaar te starten en de videostream te starten
    * Een tweede aanroep van GraphInstanceList om aan te geven dat het graafexemplaar actief is 
 1. De uitvoer in het **TERMINAL**-venster wordt nu onderbroken met de prompt **Druk op ENTER** om door te gaan. Klik nog niet op **Enter**. Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
-1. Als u nu overschakelt naar het venster **OUTPUT** in Visual Studio Code, worden berichten die worden verzonden naar de IoT Hub, weergegeven door de module Live Video Analytics in IoT Edge.
+1. Als u nu overschakelt naar het **UITVOER**-venster in Visual Studio Code, worden berichten die worden verzonden naar de IoT Hub, weergegeven door de Live Video Analytics in IoT Edge-module.
 
    Deze berichten worden beschreven in de volgende sectie.
-1. Het graafexemplaar blijft de video uitvoeren en opnemen. Via de RTSP-simulator wordt de bronvideo aldoor herhaald. Als u de opname wilt stoppen, gaat u terug naar het **venster TERMINAL** en klikt u op **Enter**. De volgende serie aanroepen wordt gedaan om resources op te schonen:
+1. Het grafiekexemplaar blijft de video uitvoeren en opnemen. Via de RTSP-simulator wordt de bronvideo aldoor herhaald. Als u de opname wilt stoppen, gaat u terug naar het **venster TERMINAL** en klikt u op **Enter**. De volgende serie aanroepen wordt gedaan om resources op te schonen:
 
-   * Een aanroep van GraphInstanceDeactivate om het graafexemplaar te deactiveren.
+   * Een aanroep van GraphInstanceDeactivate om het grafiekexemplaar te deactiveren.
    * Een aanroep van GraphInstanceDelete om het exemplaar te verwijderen.
    * Een aanroep van GraphTopologyDelete om de topologie te verwijderen.
    * Een laatste aanroep van GraphTopologyList om te laten zien dat de lijst nu leeg is.
 
 ## <a name="interpret-the-results"></a>De resultaten interpreteren 
 
-Bij het uitvoeren van de mediagrafiek stuurt de module Live Video Analytics in IoT Edge bepaalde diagnostische en operationele gebeurtenissen naar de IoT Edge-hub. Deze gebeurtenissen zijn de berichten die u ziet in het venster **OUTPUT** van Visual Studio Code. Deze bevatten een sectie body en een sectie applicationProperties. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md)als u wilt weten wat deze secties inhouden.
+Bij het uitvoeren van de mediagrafiek stuurt de Live Video Analytics in IoT Edge-module bepaalde diagnostische en operationele gebeurtenissen naar de IoT Edge-hub. Deze gebeurtenissen zijn de berichten die u ziet in het **UITVOER**-venster van Visual Studio Code. Deze bevatten een hoofdtekstsectie en een sectie applicationProperties. Zie [IoT Hub-berichten maken en lezen](../../iot-hub/iot-hub-devguide-messages-construct.md)als u wilt weten wat deze secties inhouden.
 
 In de volgende berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst door de module Live Video Analytics bepaald.
 
@@ -259,7 +216,7 @@ Wanneer het graafexemplaar wordt geactiveerd, probeert het RTSP-bronknooppunt ve
 ```
 
 * Het bericht is een diagnostische gebeurtenis (MediaSessionEstablished). Het geeft aan dat het RTSP-bronknooppunt (het onderwerp) is verbonden met de RTSP-simulator en is begonnen met het ontvangen van een (gesimuleerde) livefeed.
-* De sectie subject in applicationProperties verwijst naar het knooppunt in de graaftopologie van waaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van het RTSP-bronknooppunt.
+* De onderwerpsectie in applicationProperties verwijst naar het knooppunt in de grafiektopologie van waaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van het RTSP-bronknooppunt.
 * De sectie eventType in applicationProperties geeft aan dat dit een diagnostische gebeurtenis is.
 * De sectie eventTime geeft de tijd aan waarop de gebeurtenis heeft plaatsgevonden.
 * De sectie body bevat gegevens over de diagnostische gebeurtenis, in dit geval de [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)-details.
@@ -289,7 +246,7 @@ Wanneer het knooppunt Assetsink begint met het opnemen van video, wordt de gebeu
 
 De sectie subject in applicationProperties verwijst naar het knooppunt van de Assetsink in de graaf, waardoor dit bericht is gegenereerd.
 
-De sectie hoofdtekst bevat informatie over de uitvoerlocatie. In dit geval is het de naam van het Azure Media Services activum waarin de video wordt vastgelegd. Noteer deze waarde.
+De hoofdtekstsectie bevat informatie over de uitvoerlocatie. In dit geval is het de naam van de Azure Media Services-asset waarin de video wordt vastgelegd. Noteer deze waarde.
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable-gebeurtenis
 
@@ -314,9 +271,9 @@ Zoals de naam al doet vermoeden, wordt de gebeurtenis RecordingStarted verzonden
 
 Deze gebeurtenis geeft aan dat er voldoende gegevens zijn weggeschreven naar de asset opdat afspeelapparaten of clients de video kunnen gaan afspelen.
 
-De sectie subject in applicationProperties verwijst naar het knooppunt van de Assetsink in de graaf, waardoor dit bericht is gegenereerd.
+De onderwerpsectie in applicationProperties verwijst naar het AssetSink-knooppunt in de grafiek, waarop dit bericht is gegenereerd.
 
-De sectie hoofdtekst bevat informatie over de uitvoerlocatie. In dit geval is het de naam van het Azure Media Services activum waarin de video wordt vastgelegd.
+De hoofdtekstsectie bevat informatie over de uitvoerlocatie. In dit geval is het de naam van de Azure Media Services-asset waarin de video wordt vastgelegd.
 
 ### <a name="recordingstopped-event"></a>RecordingStopped-gebeurtenis
 
@@ -364,7 +321,7 @@ U kunt de Media Services-assset die door de mediagrafiek is gemaakt, controleren
 
     > [!TIP]
     > Zorg ervoor dat uw [streaming-eindpunt](../latest/streaming-endpoint-concept.md) wordt uitgevoerd.
-1. De video wordt nu geladen in de speler. Selecteer **afspelen** om deze weer te geven.
+1. De video wordt nu geladen in de speler. Selecteer **Afspelen** om deze weer te geven.
 
 > [!NOTE]
 > Omdat de bron van de video een container is die een camerafeed simuleert, zijn de tijdstempels in de video gerelateerd aan het moment waarop u het graafexemplaar hebt geactiveerd en uitgeschakeld. U kunt de zelfstudie [Opnamen van meerdere dagen afspelen](playback-multi-day-recordings-tutorial.md) bekijken om te zien hoe u door een opname van meerdere dagen kunt bladeren en delen van dat archief kunt bekijken. In dezelfde zelfstudie kunt u ook de tijdstempels zien in de video die op het scherm wordt weergegeven.
@@ -376,4 +333,4 @@ Als u de andere zelfstudies wilt proberen, moet u de gemaakte resources bewaren.
 ## <a name="next-steps"></a>Volgende stappen
 
 * Gebruik een [IP-camera](https://en.wikipedia.org/wiki/IP_camera) met ondersteuning voor RTSP in plaats van de RTSP-simulator. U kunt zoeken naar IP-camera's met RTSP-ondersteuning op de pagina met [ONVIF-compatibele](https://www.onvif.org/conformant-products/) producten door te zoeken naar apparaten die voldoen aan de profielen G, S of T.
-* Gebruik een AMD64-of x64-Linux-apparaat (in plaats van een Azure Linux-VM). Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Volg de instructies in [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](../../iot-edge/quickstart-linux.md) om het apparaat te registreren bij Azure IoT Hub.
+* Gebruik een AMD64-of x64-Linux-apparaat (in plaats van een Azure Linux-VM). Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Volg de instructies in de quickstart [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](../../iot-edge/quickstart-linux.md) om het apparaat te registreren bij Azure IoT Hub.

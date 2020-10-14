@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 2fadfac3fe9e66c3a05e2cceed19def607ff72c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539280"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708999"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met 123FormBuilder SSO
 
@@ -133,7 +133,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Als u eenmalige aanmelding wilt configureren in **123FormBuilder SSO**, gaat u naar [https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) en voert u de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/123formbuilder-tutorial/submit.png) 
+    ![Schermopname van het scherm voor de configuratie van id-provider voor SSO SAML.](./media/123formbuilder-tutorial/submit.png) 
 
     a. Typ in het tekstvak **Email** het e-mailadres van de gebruiker, bijvoorbeeld `B.Simon@Contoso.com`.
 

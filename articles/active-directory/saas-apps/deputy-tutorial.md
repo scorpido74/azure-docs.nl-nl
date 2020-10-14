@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536866"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Zelfstudie: Azure Active Directory-integratie met Deputy
 
@@ -99,7 +99,7 @@ Als u eenmalige aanmelding van Azure AD met Deputy wilt configureren, voert u de
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding van domeinen en URL’s van Deputy](common/idp-intiated.png)
+    ![Schermopname toont de sectie 'Basic SAML-configuratie' waarin de knoppen 'Id', 'Antwoord-URL' en 'Opslaan' zijn gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon:
 
@@ -171,7 +171,7 @@ Als u eenmalige aanmelding van Azure AD met Deputy wilt configureren, voert u de
 
 1. Navigeer naar de volgende URL: `https://(your-subdomain).deputy.com/exec/config/system_config`. Ga naar **Security Settings** (Beveiligingsinstellingen) en klik op **Edit** (Bewerken).
    
-    ![Eenmalige aanmelding configureren](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![Schermopname met de pagina "System Config" met de knop "Security Settings - Edit" geselecteerd.](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. Voer onderstaande stappen uit op deze pagina voor **Security Settings** (Beveiligingsinstellingen).
 

@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 084ba93baa35790da58e7765750bb79de27ed69c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578016"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613659"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Zelfstudie: Een voorbeeld van een IoT Plug and Play-apparaattoepassing met verschillende onderdelen verbinden met IoT Hub (Python)
 
@@ -57,13 +57,13 @@ Met dit voorbeeld wordt een IoT Plug and Play-temperatuurregelingsapparaat geïm
 De map *azure-iot-sdk-python\azure-iot-device\samples\pnp* bevat de voorbeeldcode voor het IoT Plug en Play-apparaat. De bestanden voor het voorbeeld van een temperatuurregeling zijn:
 
 - temp_controller_with_thermostats.py
-- pnp_helper_preview_refresh.py
+- pnp_helper.py
 
 Temperatuurregeling heeft meerdere onderdelen en een standaardcomponent, gebaseerd op het DTDL-model van de temperatuurregeling.
 
 Open het bestand *temp_controller_with_thermostats.py* in een editor naar keuze. De code in dit bestand:
 
-1. Importeert `pnp_helper_preview_refresh.py` om toegang te krijgen tot de hulpmethoden.
+1. Importeert `pnp_helper.py` om toegang te krijgen tot de hulpmethoden.
 
 1. Definieert twee DTMI's (digital twin model identifiers) die twee verschillende interfaces vertegenwoordigen, zoals gedefinieerd in het DTDL-model. De onderdelen van een echte temperatuurregeling moeten deze twee interfaces implementeren. Deze twee interfaces zijn al gepubliceerd in een centrale opslagplaats. Deze DTMI's moeten bekend zijn bij de gebruiker, en variëren in functie van het scenario van de apparaatimplementatie. Voor het huidige voorbeeld vertegenwoordigen deze twee interfaces:
 

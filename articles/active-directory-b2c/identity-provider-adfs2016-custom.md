@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20cb5f70a5844cb2d56fc9ff357fcaf640a6c56b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f6131232d9f6f98095d073672e201cfb591b540
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388575"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054777"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Voeg ADFS toe als een SAML-ID-provider met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ U moet uw certificaat opslaan in uw Azure AD B2C-Tenant.
 6. Kies voor **Opties** `Upload` .
 7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `SamlCert`. Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Blader naar en selecteer het pfx-bestand van het certificaat met de persoonlijke sleutel.
-9. Klik op **Maken**.
+9. Klik op **Create**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
@@ -69,7 +69,6 @@ U kunt een ADFS-account definiëren als een claim provider door deze toe te voeg
             <Item Key="XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
           </CryptographicKeys>
           <OutputClaims>
@@ -198,7 +197,7 @@ Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt e
     | Achternaam | family_name |
     | Given-Name | given_name |
     | E-mail adres | e-mail |
-    | Display-Name | naam |
+    | Display-Name | name |
 
     Houd er rekening mee dat deze namen niet worden weer gegeven in de vervolg keuzelijst uitgaand claim type. U moet deze hand matig invoeren in. (De vervolg keuzelijst kan feitelijk worden bewerkt).
 

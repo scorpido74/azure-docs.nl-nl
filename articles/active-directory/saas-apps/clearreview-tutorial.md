@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544661"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759914"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Zelfstudie: Azure Active Directory-integratie met Clear Review
 
@@ -102,7 +102,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding bij Clear Review](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<customer name>.clearreview.com/sso/metadata/`
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding bij Clear Review](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<customer name>.clearreview.com`
 
@@ -119,15 +119,15 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 6. In de Clear Review-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. In de Clear Review-toepassing wordt verwacht dat **nameidentifier** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die Gebruikerskenmerken toont met het pictogram Bewerken geselecteerd.](common/edit-attribute.png)
 
 7. Voer in het dialoogvenster **Gebruikerskenmerken en claims** de volgende stappen uit:
 
     a. Klik op het **pictogram Bewerken** rechts van de **waarde voor de naam-id**.
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![Schermopname die Gebruikerskenmerken en claims toont met het pictogram Bewerken geselecteerd.](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](./media/clearreview-tutorial/attribute01.png)
+    ![Schermopname die het dialoogvenster Gebruikersclaims beheren toont, waarin u de beschreven waarden kunt invoeren.](./media/clearreview-tutorial/attribute01.png)
 
     b. Selecteer uit de lijst **Bronkenmerken** de kenmerkwaarde **user.mail** voor die rij.
 
@@ -153,15 +153,15 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 2. Selecteer **Admin** in de linkernavigatie.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Schermopname met de portal Clear Review met Admin geselecteerd.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. Klik in de sectie **Integrations** onder aan de pagina op de knop **Change** rechts van **Single Sign-On Settings**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Schermopname met de knop Single Sign-On Settings.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. Voer de volgende stappen uit op de pagina **Single Sign-On Settings**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Schermopname met de pagina Single Sign-On Settings, waarin u de informatie kunt invoeren die in deze stap is beschreven.](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. Plak in het tekstvak **Issuer URL** de waarde van **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 

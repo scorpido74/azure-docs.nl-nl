@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927110"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766836"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,7 @@ Lees de volgende overwegingen voordat u de gegevens naar de schijven kopieert:
 
 Voer de volgende stappen uit om verbinding te maken en gegevens van uw computer naar de Data Box-schijf te kopiëren.
 
-1. Geef de inhoud van het ontgrendelde station weer. De lijst met vooraf gemaakte mappen en submappen in het station verschilt, afhankelijk van de opties die zijn geselecteerd bij het plaatsen van de order voor de Data Box Disk.
+1. Geef de inhoud van het ontgrendelde station weer. De lijst met vooraf gemaakte mappen en submappen in het station verschilt, afhankelijk van de opties die zijn geselecteerd bij het plaatsen van de order voor de Data Box Disk. Als er geen vooraf gemaakte map bestaat, moet u deze niet maken omdat gegevens die worden gekopieerd naar een map die door een gebruiker is gemaakt, niet kunnen worden geüpload naar Azure.
 
     |Geselecteerde opslaglocatie  |Type opslagaccount|Type faseringsopslagaccount |Mappen en submappen  |
     |---------|---------|---------|------------------|
@@ -212,15 +212,15 @@ U kunt deze optionele procedure gebruiken als u meerdere schijven gebruikt en u 
 3. Zoek de brongegevens die u wilt kopiëren. In dit geval bijvoorbeeld:
     - De volgende blok-blobgegevens zijn geïdentificeerd.
 
-         ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![Gegevens splitsen en kopiëren 2](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - De volgende pagina-blobgegevens zijn geïdentificeerd.
 
-         ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![Gegevens splitsen en kopiëren 3](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. Ga naar de map waarin de software is uitgepakt. Zoek het bestand `SampleConfig.json` in die map. Dit is een alleen-lezen-bestand dat u kunt wijzigen en opslaan.
 
-   ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![Gegevens splitsen en kopiëren 4](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. Wijzig het bestand `SampleConfig.json`.
  
@@ -229,11 +229,11 @@ U kunt deze optionele procedure gebruiken als u meerdere schijven gebruikt en u 
    - Voer de stationsletters in voor de doelschijven. De gegevens worden via het bronpad verzameld en gekopieerd naar meerdere schijven.
    - Geef een pad op voor de logboekbestanden. Standaard worden deze naar de huidige map verzonden, waar het `.exe`-bestand zich bevindt.
 
-     ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![Gegevens splitsen en kopiëren 5](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. Ga naar `JSONlint` om de bestandsindeling te controleren. Sla het bestand op als `ConfigFile.json`. 
 
-     ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![Gegevens splitsen en kopiëren 6](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Open een opdrachtpromptvenster. 
 
@@ -241,24 +241,24 @@ U kunt deze optionele procedure gebruiken als u meerdere schijven gebruikt en u 
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![Gegevens splitsen en kopiëren 7](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. Druk op Enter om door te gaan met het script.
 
-    ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![Gegevens splitsen en kopiëren 8](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. Wanneer de gegevensset is gesplitst en gekopieerd, wordt een overzicht van de Split Copy Tool over de kopieersessie weergegeven. Hieronder ziet u een voorbeeld van de uitvoer.
 
-    ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![Gegevens splitsen en kopiëren 9](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. Controleer of de gegevens zijn gesplitst en over de doelschijven zijn verdeeld. 
  
-    ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![Gegevens splitsen en kopiëren 10](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![Gegevens splitsen en kopiëren 11](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
     Als u de inhoud van het station `n:` verder bekijkt, ziet u dat er twee submappen zijn gemaakt, een voor gegevens in de blok-blobindeling en een voor gegevens in de pagina-blobindeling.
     
-     ![Gegevens splitsen en kopiëren](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![Gegevens splitsen en kopiëren 12](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. Als het kopiëren mislukt, voert u een herstel uit en hervat u de bewerking. Gebruik de volgende opdracht:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d0dffe602aef01af2fb2ef8ee9462a0bb99c1ae0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555681"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775062"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Druva
 
@@ -146,7 +146,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op het tabblad **Eenmalige aanmelding** op **Bewerken**.
 
-    ![Instellingen voor eenmalige aanmelding](./media/druva-tutorial/ic795092.png "Instellingen voor eenmalige aanmelding")
+    ![Schermopname met het tabblad "Access Settings - Single Sign-On" met de knop "Edit" geselecteerd.](./media/druva-tutorial/ic795092.png "Instellingen voor eenmalige aanmelding")
 
 1. Voer op de pagina **Instellingen voor eenmalige aanmelding bewerken** de volgende stappen uit:
 

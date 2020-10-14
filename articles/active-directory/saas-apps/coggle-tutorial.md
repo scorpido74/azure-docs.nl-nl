@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ffa4f0ab40e413da78257bde81a00fd3910131b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08a9cbadb86f59cca1f361dc66ee03a300f91968
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555965"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759489"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Coggle
 
@@ -146,19 +146,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Klik op uw **Coggle**-account en selecteer **My Settings**.
 
-    ![Coggle-configuratie](./media/Coggle-tutorial/configure1.png)
+    ![Schermopname van de bedrijfssite van Coggle met My Settings geselecteerd.](./media/Coggle-tutorial/configure1.png)
 
 3. Klik op het volgende **logo** en selecteer **Authentication**.
 
-    ![Coggle-configuratie](./media/Coggle-tutorial/configure2.png)
+    ![Schermopname met een pictogram van een walvis en Authentication geselecteerd.](./media/Coggle-tutorial/configure2.png)
 
 4. Klik op **Edit SAML Config**.
 
-    ![Coggle-configuratie](./media/Coggle-tutorial/configure3.png)
+    ![Schermopname met de pagina SAML Integration met de optie Edit SAML Config.](./media/Coggle-tutorial/configure3.png)
 
 5. Voer in het dialoogvenster **SAML integration** de volgende stappen uit:
 
-    ![Coggle-configuratie](./media/Coggle-tutorial/configure4.png)
+    ![Schermopname met de pagina SAML integration waar u de gegevens voor deze stap kunt invoeren.](./media/Coggle-tutorial/configure4.png)
 
     a. Plak in het tekstvak **Entrypoint (ID Provider SSO URL)** de waarde voor **Aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
 

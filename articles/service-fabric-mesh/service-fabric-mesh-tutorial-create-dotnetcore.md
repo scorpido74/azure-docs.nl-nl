@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011206"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653108"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Zelfstudie: Een Service Fabric Mesh-toepassing met meerdere services bouwen, foutvrij maken, implementeren en upgraden
 
@@ -59,7 +59,7 @@ Typ `todolistapp` in het vak **Name** en stel in het vak **Location** het mappad
 
 Controleer of het selectievakje **Create directory for solution** is ingeschakeld en klik op **OK** om het Service Fabric Mesh-project te maken.
 
-![Dialoogvenster Nieuw project van Service Fabric Mesh in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Schermopname van het maken van een Service Fabric Mesh-project.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 Vervolgens ziet u het dialoogvenster **New Service Fabric Service**.
 
@@ -73,7 +73,7 @@ Stel **Service Name** in op **WebFrontEnd**. Druk op **OK** om de ASP.NET Core-s
 
 Vervolgens ziet u het dialoogvenster ASP.NET Core Web Application. Selecteer **Webtoepassing** en klik op **OK**.
 
-![Nieuwe ASP.NET Core-toepassing in Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Schermafbeelding met de sjabloon Webtoepassing.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 U hebt nu een Service Fabric Mesh-toepassing gemaakt. Vervolgens maakt u het model voor taakinformatie.
 

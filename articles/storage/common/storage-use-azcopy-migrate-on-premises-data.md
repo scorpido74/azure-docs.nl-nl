@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120633"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716097"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Zelfstudie: On-premises gegevens naar de cloudopslag migreren met AzCopy
 
@@ -62,7 +62,7 @@ Plaats het AzCopy-bestand op een willekeurige locatie op de computer. Voeg de lo
 
 ## <a name="authenticate-with-azure-ad"></a>Verifiëren met Azure AD
 
-Wijs eerst de rol [Inzender voor Storage BLOB-gegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) toe aan uw identiteit. Zie [Toegang verlenen tot Azure blob en wachtrijgegevens met RBAC in de Azure-portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Wijs eerst de rol [Inzender voor Storage BLOB-gegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) toe aan uw identiteit. Zie [Use the Azure portal to assign an Azure role for access to blob and queue data](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal) (De Azure-portal gebruiken om een Azure-rol toe te wijzen voor toegang tot blob- en wachtrijgegevens).
 
 Typ de volgende opdracht bij een opdrachtprompt en druk vervolgens op ENTER.
 

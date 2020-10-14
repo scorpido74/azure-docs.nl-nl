@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a9004577fa8d946281df88284139e2e507e485b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 071b311466869321a12626190e894287c28e707b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536424"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-deskradar"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Deskradar
 
@@ -162,7 +162,7 @@ In deze sectie stelt u B.Simon in staat gebruik te maken van eenmalige aanmeldin
 
 1. Voer op het tabblad **SAML 2.0** de volgende stappen uit:
 
-    ![Configuratie van Deskradar](./media/deskradar-tutorial/14-paste-urls.jpg)
+    ![Schermopname met het tabblad "S A M L 2.0" met pijlen die wijzen naar de velden "S A M L S S D U R L" en "Uitgever id-provider".](./media/deskradar-tutorial/14-paste-urls.jpg)
 
     a. Schakel de verificatiemethode **SAML** in.
 

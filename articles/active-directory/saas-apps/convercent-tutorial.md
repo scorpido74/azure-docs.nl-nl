@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f765b950074958f801bef2fdc8e555acf9a47986
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522090"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Zelfstudie: Azure Active Directory-integratie met Convercent
 
@@ -98,7 +98,7 @@ Als u eenmalige aanmelding van Azure AD met Convercent wilt configureren, voert 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor het domein en de URL’s in Convercent](common/both-identifier.png)
+    ![Schermopname met de sectie 'Basic SAML-configuratie' waarin het veld 'Id (entiteits-id)' en de knop 'Opslaan' zijn gemarkeerd.](common/both-identifier.png)
 
     In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<instancename>.convercent.com/`
 

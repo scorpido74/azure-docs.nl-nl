@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921933"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742499"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Zelfstudie: Een Aangepaste zoekopdrachten-webpagina bouwen
 
@@ -118,7 +118,7 @@ Custom Search biedt een gehoste gebruikersinterface voor het weergeven van het J
   
 5. Selecteer uw abonnementssleutels in de vervolgkeuzelijsten. U kunt de abonnementssleutel ook handmatig invoeren.
   
-   ![Schermafbeelding van het opgeven van aanvullende configuraties voor de gehoste gebruikersinterface](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Schermafbeelding van de abonnementssleutel voor de gehoste UI](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +144,7 @@ In de rest van deze zelfstudie wordt het volgende toegelicht: **Optie 1: JavaScr
   
 4. Selecteer in het venster **New ASP.NET Core Web Application** de optie **Web Application** en klik op **OK**.  
   
-   ![Schermafbeelding van het dialoogvenster New Project](./media/custom-search-new-webapp.png)  
+   ![Schermafbeelding van het dialoogvenster New WebApp](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>index.cshtml bewerken
 

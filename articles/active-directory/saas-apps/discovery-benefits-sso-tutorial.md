@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536169"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774094"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Discovery Benefits SSO
 
@@ -86,7 +86,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     a. Klik op het pictogram **Bewerken** om het dialoogvenster **Unieke gebruikers-id (naam-id)** te openen.
 
-    ![Configuratie van Discovery Benefits SSO](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![Schermopname met de sectie 'Gebruikerskenmerken en claims' met het beletselteken naast 'Vereiste claim' geselecteerd aan de rechterkant.](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Configuratie van Discovery Benefits SSO](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     f. We hebben de extra claims die vereist zijn voor de configuratie van eenmalige aanmelding (`SSOInstance` en `SSOID`) automatisch ingevuld. Gebruik het pictogram **Bewerken** om de waarden toe te wijzen volgens uw organisatie.
 
-    ![Configuratie van Discovery Benefits SSO](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    ![Schermopname met "User Attributes & Claims" met de waarden voor "S S O Instance" en "S S O I D" gemarkeerd.](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 

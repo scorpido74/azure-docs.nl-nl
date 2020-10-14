@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1bdda60d3b6f5e763bd31b25ab0fd8c2783f978d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd07370c75ac64fa8e3806fed50a64db90122c76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537921"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708302"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met AcquireIO
 
@@ -134,15 +134,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik aan de linkerkant van het menu op **App Store**.
 
-     ![AcquireIO-configuratie](./media/acquireio-tutorial/config01.png)
+     ![Schermopname waarin App Store is gemarkeerd.](./media/acquireio-tutorial/config01.png)
 
 1. Schuif omlaag naar **Active Directory** en klik op **installeren**.
 
-    ![AcquireIO-configuratie](./media/acquireio-tutorial/config02.png)
+    ![Schermopname waarin de sectie Active Directory en de knop Installeren zijn gemarkeerd.](./media/acquireio-tutorial/config02.png)
 
 1. Voer in het pop-upvenster Active Directory de volgende stappen uit:
 
-    ![AcquireIO-configuratie](./media/acquireio-tutorial/config03.png)
+    ![Schermopname van het scherm Active Directory.](./media/acquireio-tutorial/config03.png)
 
     a. Klik op **Kopiëren** om de Antwoord-URL voor uw exemplaar te kopiëren en plak deze in het tekstvak **Aanmeldings-URL** in de sectie **SAML-basisconfiguratie** in de Azure-portal.
 
@@ -162,7 +162,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij AcquireIO, moeten z
 
 1. Klik aan de linkerkant van het menu op **Profielen** en navigeer naar **Profiel toevoegen**.
 
-     ![AcquireIO-configuratie](./media/acquireio-tutorial/config04.png)
+     ![Schermopname met Profileren gemarkeerd in het menu aan de linkerkant van het scherm en Profiel toevoegen ook gemarkeerd.](./media/acquireio-tutorial/config04.png)
 
 1. Voer de volgende stappen uit in het pop-upvenster **Klant toevoegen**:
 

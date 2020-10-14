@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551282"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760934"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Zelfstudie: Eenmalige aanmelding (SSO) van Azure Active Directory integreren met Cisco Webex Meetings
 
@@ -164,11 +164,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Ga naar **Common Site Setting** (Algemene site-instellingen) en navigeer naar **SSO Configuration** (SSO-configuratie).
  
-    ![Eenmalige aanmelding configureren](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![Schermopname met Cisco Webex Administration met Common Site Settings en S S O Configuration geselecteerd.](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. Voer de volgende stappen uit op de pagina **Webex Administration** (Beheer van Webex):
 
-    ![Eenmalige aanmelding configureren](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![Schermopname met de pagina Webex Administration met de informatie die in deze stap wordt beschreven.](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. Selecteer **SAML 2.0** als **Federation-protocol**.
 

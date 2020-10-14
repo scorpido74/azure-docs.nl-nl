@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5bae2173fc49cb9f41787905be66cf32a99fa03a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ffdc510fd2a0f81fbfa5d9d04c337c99b389110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536954"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Zelfstudie: Azure Active Directory-integratie met Dealpath
 
@@ -128,7 +128,7 @@ Ga als volgt te werk om Azure AD-eenmalige aanmelding met Dealpath te configurer
 
 2. Klik rechtsboven op **Admin Tools** en navigeer naar **Integrations**, en klik in de sectie **SAML 2.0 Authentication** op **Update Settings**:
 
-    ![Dealpath Configuration](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
+    ![Schermopname van de pagina "Admin Tools - Integrations" met de sectie "S A M L 2.0 Authentication" en "Update Settings" geselecteerd.](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
 3. Voer op de pagina **Set up SAML 2.0 authentication** de volgende stappen uit:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 1020dec2069d609cf5f919c5802da906ae172ed2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2b4d3e75f6e2f3e6313541b0b146ff64cc403ce5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550226"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Zelfstudie: Integratie van Azure Active Directory met AuditBoard
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met AuditBo
 
 4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IdP geïnitieerde** modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding van domeinen en URL's van AuditBoard](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
@@ -109,7 +109,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met AuditBo
 
     d. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.auditboardapp.com/`
 
-    ![Informatie over eenmalige aanmelding van domeinen en URL's van AuditBoard](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [Klantondersteuningsteam van AuditBoard](mailto:support@auditboard.com) (Engelstalig) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.

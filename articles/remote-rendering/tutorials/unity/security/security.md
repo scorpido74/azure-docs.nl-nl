@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021320"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650473"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Zelfstudie: Azure Remote Rendering en modelopslag beveiligen
 
@@ -163,7 +163,7 @@ We gaan **RemoteRenderingCoordinator** wijzigen om een aangepast model te laden 
     ```
 
     Met deze code worden drie extra tekenreeksvariabelen toegevoegd aan het onderdeel **RemoteRenderingCoordinator**.
-    ![Gekoppeld model](./media/storage-account-linked-model.png)
+    ![Schermopname waarin de Storage Account Name, Blob Container Name en het Model Path van het onderdeel RemoteRenderingCoordinator zijn gemarkeerd.](./media/storage-account-linked-model.png)
 
 1. Voeg uw waarden toe aan het onderdeel **RemoteRenderingCoordinator**. Als u de [quickstart voor modelconversie](../../../quickstarts/convert-model.md) hebt uitgevoerd, hebt u nu de volgende waarden:
 
@@ -392,12 +392,13 @@ Als AAD-verificatie actief is, moet u zich telkens wanneer u de toepassing start
     * De **Azure-tenant-id** is de *directory-id (tenant-id)* die te vinden is in de registratie van uw AAD-app (zie de onderstaande afbeelding).
     * De **account-id van Azure Remote Rendering** is de **account-id** die u hebt gebruikt voor **RemoteRenderingCoordinator**.
 
-    ![AAD-verificatieonderdeel](./media/app-overview-data.png)
+    ![Schermopname waarin de Application (client) ID en Directory (tenant) ID zijn gemarkeerd.](./media/app-overview-data.png)
 
 1. Druk op Play (Afspelen) in de Unity-editor en verleen toestemming voor het uitvoeren van een sessie.
     Omdat het onderdeel **AADAuthentication** een weergavecontroller heeft, wordt het automatisch gekoppeld om een prompt weer te geven na het scherm voor het sessieverificatiemodel.
 1. Volg de instructies in het scherm rechts van **AppMenu**.
-    U krijgt iets te zien zoals dit: ![AAD-verificatieonderdeel](./media/device-flow-instructions.png) Nadat u de opgegeven code op uw secundaire apparaat (of browser op hetzelfde apparaat) hebt ingevoerd en u zich hebt aangemeld met behulp van uw referenties, wordt een toegangstoken geretourneerd naar de aanvragende toepassing, in dit geval de Unity-editor.
+    U krijgt iets te zien zoals dit: ![Afbeelding met het instructiepaneel dat rechts van het AppMenu wordt weergegeven.](./media/device-flow-instructions.png)
+    Nadat u de opgegeven code op uw secundaire apparaat (of browser op hetzelfde apparaat) hebt ingevoerd en u zich hebt aangemeld met behulp van uw referenties, wordt een toegangstoken geretourneerd naar de aanvragende toepassing, in dit geval de Unity-editor.
 1. Hierna moet alles in de toepassing verder normaal worden uitgevoerd. Controleer de Unity-console op fouten als u de fasen niet op de verwachte wijze doorloopt.
 
 ## <a name="build-to-device"></a>Bouwen naar apparaat

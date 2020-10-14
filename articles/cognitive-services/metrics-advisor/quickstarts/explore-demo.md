@@ -3,19 +3,19 @@ title: De demo van Metrics Advisor verkennen
 titleSuffix: Azure Cognitive Services
 description: Leer meer over de webinterface van Metrics Advisor met behulp van onze demo
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 39748bacf784af0b3f162f960cd7d87cbd03a2eb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90944622"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047587"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>Quickstart: De demo van Metrics Advisor met voorbeeldgegevens verkennen
 

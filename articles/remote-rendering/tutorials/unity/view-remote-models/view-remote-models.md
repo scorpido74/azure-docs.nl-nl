@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006462"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653669"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Zelfstudie: U bekijkt een model dat extern wordt weergegeven
 
@@ -76,10 +76,10 @@ U moet het bestand wijzigen `Packages/manifest.json` dat zich in de Unity-projec
 
 Nadat u het manifest hebt gewijzigd en opgeslagen, wordt Unity automatisch vernieuwd. Controleer of de pakketten zijn geladen in het venster *Project*:
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="invoer van pakketten bevestigen":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="Nieuw Unity-project":::
 
 Als uw pakketten niet laden, controleer dan uw Unity-console op fouten. Als er geen fouten zijn en er nog steeds geen pakketten worden weergeven in de map **Pakketten**, controleer dan de wisselknop voor zichtbaarheid van pakketten.\
-![Eigenschappen van Unity-camera](./media/unity-package-visibility.png)
+![Schermopname met een pijl die verwijst naar de wisselknop voor de zichtbaarheid van pakketten.](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Zorg ervoor dat u de nieuwste versie van het pakket hebt
 
@@ -120,7 +120,7 @@ Volg de volgende stappen om ervoor te zorgen dat uw project de nieuwste versie v
 
 1. Selecteer **Afbeeldingen** in het lijstmenu links
 1. Wijzig de instelling **Scriptbare rendering-pijplijn** in *HybridRenderingPipeline*.
-    ![instellingen voor projectafbeeldingen wijzigen](./media/settings-graphics-render-pipeline.png)\
+    ![Schermopname met pijl die wijst naar plek waar u de instelling Scriptable Rendering Pipeline wijzigt in HybridRenderingPipeline.](./media/settings-graphics-render-pipeline.png)\
     Soms vult de gebruikersinterface de lijst met beschikbare pijplijntypen van de pakketten niet in. Als dit het geval is, moet de *HybridRenderingPipeline*-asset handmatig naar het veld worden gesleept:\
     ![instellingen voor projectafbeeldingen wijzigen](./media/hybrid-rendering-pipeline.png)
 
@@ -597,7 +597,7 @@ Om verder te gaan van **NotAuthorized** naar **NoSession**, presenteren we meest
 1. Sleep de component naar de eigen gebeurtenis om naar zichzelf te verwijzen.\
 ![Verificatie overslaan](./media/bypass-authorization-add-event.png)\
 1. Selecteer in de vervolgkeuzelijst **RemoteRenderingCoordinator-> BypassAuthorization**.\
-![Verificatie overslaan](./media/bypass-authorization-event.png)
+![Schermopname met de geselecteerde optie RemoteRenderingCoordinator.BypassAuthorization.](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>Een externe sessie maken of eraan deelnemen
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 Nu de nodige basis geïmplementeerd is, kunt u een model laden in de externe sessie en frames beginnen ontvangen.
 
-![ARR-stack 4](./media/remote-render-stack-4.png)
+![Diagram waarin de processtroom wordt weergegeven voor het voorbereiden van het laden en het weergeven van een model.](./media/remote-render-stack-4.png)
 
 De methode **LoadModel** is ontworpen om een modelpad, voortgangshandler en bovenliggende transformatie te accepteren. Deze argumenten worden gebruikt om een model te laden in de externe sessie, de gebruiker te informeren over de laadvoortgang en het extern gegenereerde model in te richten op basis van de bovenliggende transformatie.
 

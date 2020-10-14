@@ -3,12 +3,12 @@ title: Een .NET-app in een container implementeren in Azure Service Fabric
 description: Informatie over hoe u een bestaande .NET-toepassing in een container plaatst met behulp van Visual Studio en lokaal fouten opspoort in containers in Service Fabric. De in een container geplaatste toepassing wordt naar een Azure-containerregister gepusht en geïmplementeerd in een Service Fabric-cluster. Wanneer de toepassing is geïmplementeerd in Azure, gebruikt deze Azure SQL DB voor het persistent maken van gegevens.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b841591bb200bca7edbde24744c5b47302816ea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258877"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817636"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Zelfstudie: Een .NET-toepassing in een Windows-container implementeren in Azure Service Fabric
 
@@ -39,13 +39,13 @@ In deze zelfstudie leert u het volgende:
 
 2. Controleer of de toepassing Fabrikam Fiber CallCenter wordt opgebouwd en zonder fouten wordt uitgevoerd.  Start Visual Studio als een **beheerder** en open het bestand [FabrikamFiber.CallCenter.sln][link-fabrikam-github].  Druk op F5 om fouten op te sporen in de toepassing en de toepassing uit te voeren.
 
-   ![Fabrikam-webvoorbeeld][fabrikam-web-page]
+   ![Schermopname van de startpagina van de Fabrikam Fiber CallCenter-toepassing die wordt uitgevoerd op de lokale host. Op de pagina wordt een dashboard weergegeven met een lijst met ondersteuningsoproepen.][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>De toepassing in een container plaatsen
 
 1. Klik met de rechtermuisknop op het project **FabrikamFiber.Web** > **Add**  > **Container Orchestrator Support**.  Selecteer **Service Fabric** als de containerorchestrator en klik op **OK**.
 
-2. Klik op **Ja** om Docker nu over te schakelen naar Windows-containers.
+2. Klik op **Ja** als dat wordt gevraagd om Docker nu over te schakelen naar Windows-containers.
 
    Het nieuwe Service Fabric-toepassingsproject **FabrikamFiber.CallCenterApplication** wordt in de oplossing gemaakt.  Er wordt een Dockerfile toegevoegd aan het bestaande **FabrikamFiber.Web**-project.  Ook wordt de map **PackageRoot** toegevoegd aan het project **FabrikamFiber.Web**, dat het servicemanifest en de instellingen voor de nieuwe FabrikamFiber.Web-service bevat.
 
@@ -109,7 +109,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="update-the-web-config"></a>De webconfiguratie bijwerken
 
-Werk in het project **FabrikamFiber.Web** de verbindingsreeks in het bestand **web.config** bij om te verwijzen naar de SQL Server in de container.  Wijzig het *Server*-gedeelte van de verbindingsreeks in de naam van de server die door het vorige script is gemaakt. Deze moet ongeveer als volgt zijn: fab-fiber-751718376.database.windows.net.
+Werk in het project **FabrikamFiber.Web** de verbindingsreeks in het bestand **web.config** bij om te verwijzen naar de SQL Server in de container.  Wijzig het *Server*-gedeelte van de verbindingsreeks in de naam van de server die door het vorige script is gemaakt. Deze moet ongeveer als volgt zijn: fab-fiber-751718376.database.windows.net. In de volgende XML hoeft u alleen het kenmerk `connectionString` bij te werken. De kenmerken `providerName` en `name` hoeven niet te worden gewijzigd.
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
@@ -235,7 +235,7 @@ Nu de toepassing klaar is, kunt u deze rechtstreeks vanuit Visual Studio impleme
 
 Volg de voortgang van de implementatie in het uitvoervenster. Wanneer de toepassing is geïmplementeerd, opent u een browser en typt u het clusteradres en de toepassingspoort. Bijvoorbeeld `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
-![Fabrikam-webvoorbeeld][fabrikam-web-page-deployed]
+![Schermopname van de startpagina van de Fabrikam Fiber CallCenter-toepassing die wordt uitgevoerd op azure.com. Op de pagina wordt een dashboard weergegeven met een lijst met ondersteuningsoproepen.][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Continue integratie en implementatie (CI/CD) met een Service Fabric-cluster instellen
 

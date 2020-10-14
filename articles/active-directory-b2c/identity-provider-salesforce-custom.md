@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 668bc645edd1be611fe71b8fc1fa81288572e843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b709293360dfaae8b7aa694442e44e9e4ab8a019
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388065"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054675"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Sales Force SAML-provider instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -97,7 +97,7 @@ U moet het certificaat dat u hebt gemaakt in uw Azure AD B2C-Tenant opslaan.
 7. Voer een **naam** in voor het beleid. Bijvoorbeeld SAMLSigningCert. Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Blader naar en selecteer het B2CSigningCert. pfx-certificaat dat u hebt gemaakt.
 9. Voer het **wacht woord** voor het certificaat in.
-3. Klik op **Maken**.
+3. Klik op **Create**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
@@ -124,7 +124,6 @@ U kunt een Sales Force-account definiëren als een claim provider door deze toe 
             <Item Key="PartnerEntity">https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp.xml</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
           </CryptographicKeys>
           <OutputClaims>

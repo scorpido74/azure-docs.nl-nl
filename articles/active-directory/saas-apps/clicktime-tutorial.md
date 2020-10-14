@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549327"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelfstudie: Azure Active Directory-integratie met ClickTime
 
@@ -207,7 +207,7 @@ In het geval van ClickTime is inrichten een handmatige taak.
 
 1. Klik in de werkbalk bovenaan op **Company** en klik vervolgens op **People**.
    
-    ![People](./media/clicktime-tutorial/tic777282.png "People")
+    ![Schermopname met de tenant ClickTime met Company en People geselecteerd.](./media/clicktime-tutorial/tic777282.png "People")
 
 1. Klik op **Add Person**.
    
@@ -215,7 +215,7 @@ In het geval van ClickTime is inrichten een handmatige taak.
 
 1. Voer in de sectie New Person de volgende stappen uit:
    
-    ![People](./media/clicktime-tutorial/tic777284.png "People")
+    ![Schermopname met de sectie Persoon toevoegen, waarin u de informatie kunt invoeren die in deze stap is beschreven.](./media/clicktime-tutorial/tic777284.png "People")
    
     a.  Typ in het tekstvak **full name** de volledige naam van de gebruiker, zoals **Britta Simon**. 
   

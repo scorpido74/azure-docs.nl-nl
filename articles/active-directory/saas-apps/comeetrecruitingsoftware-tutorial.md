@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a47721122456d32cef91de4bd5ef2b92738bf496
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ed68e02be500ebd863eb7d6d54ddffe63873fe61
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520099"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Zelfstudie: Azure Active Directory-integratie met Comeet Recruiting Software
 
@@ -99,7 +99,7 @@ Voor het configureren van eenmalige aanmelding voor Azure AD met Comeet Recruiti
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Eenmalige aanmelding voor Comeet Recruiting Software-domein en -URL's](common/idp-intiated.png)
+    ![Schermopname met de sectie "Standaard S A M L-configuratie" met de actie "Opslaan", het veld "Id" en het veld "Antwoord-U R L" gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
@@ -116,7 +116,7 @@ Voor het configureren van eenmalige aanmelding voor Azure AD met Comeet Recruiti
 
 5. Comeet Recruiting Software verwacht de SAML-asserties in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met de sectie 'Gebruikerskenmerken' met de knop 'Bewerken' geselecteerd.](common/edit-attribute.png)
 
 6. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit: 
 
@@ -127,7 +127,7 @@ Voor het configureren van eenmalige aanmelding voor Azure AD met Comeet Recruiti
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname met de sectie 'Gebruikersclaims' met de acties 'Nieuwe claim toevoegen' en 'Opslaan' gemarkeerd.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

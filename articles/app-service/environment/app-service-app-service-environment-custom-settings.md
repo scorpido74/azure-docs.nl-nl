@@ -4,15 +4,15 @@ description: Instellingen configureren die van toepassing zijn op de hele Azure 
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 10/03/2020
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833499"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713276"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Aangepaste configuratie-instellingen voor App Service Environment-omgevingen
 ## <a name="overview"></a>Overzicht
@@ -67,12 +67,12 @@ De App Service Environment fungeert als een zwarte doossysteem waarin u de inter
 "clusterSettings": [
     {
         "name": "InternalEncryption",
-        "value": "1"
+        "value": "true"
     }
 ],
 ```
+Hiermee versleutelt u het interne netwerkverkeer in uw ASE tussen de front-ends en werkrollen, versleutelt u het wisselbestand en versleutelt u ook de schijven van werkrollen. Nadat de InternalEncryption clusterSetting is ingeschakeld, kan dit gevolgen hebben voor de prestaties van uw systeem. Wanneer u de wijziging aanbrengt om InternalEncryption in te schakelen, heeft uw ASE een instabiele status totdat de wijziging volledig is doorgegeven. Het voltooien van de wijziging kan enkele uren duren, afhankelijk van het aantal instanties dat u in uw ASE hebt. We raden u ten zeerste aan dit niet in te schakelen op een ASE terwijl deze in gebruik is. Als u dit wilt inschakelen op een actief gebruikte ASE, wordt u ten zeerste aangeraden om verkeer door te sturen naar een back-upomgeving totdat de bewerking is voltooid. 
 
-Nadat de InternalEncryption clusterSetting is ingeschakeld, kan dit gevolgen hebben voor de prestaties van uw systeem. Wanneer u de wijziging aanbrengt om InternalEncryption in te schakelen, heeft uw ASE een instabiele status totdat de wijziging volledig is doorgegeven. Het voltooien van de wijziging kan enkele uren duren, afhankelijk van het aantal instanties dat u in uw ASE hebt. We raden u ten zeerste aan dit niet in te schakelen op een ASE terwijl deze in gebruik is. Als u dit wilt inschakelen op een actief gebruikte ASE, wordt u ten zeerste aangeraden om verkeer door te sturen naar een back-upomgeving totdat de bewerking is voltooid. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1.0 en TLS 1.1 uitschakelen
 

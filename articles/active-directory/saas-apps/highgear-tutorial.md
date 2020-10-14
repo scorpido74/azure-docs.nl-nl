@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: af2630b977c1ce34712a582175674277799f105b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550602"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Zelfstudie: Azure Active Directory-integratie met HighGear
 
@@ -99,7 +99,7 @@ Voor de configuratie van eenmalige aanmelding in Azure AD met uw HighGear-systee
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding bij HighGear-domeinen en URL's](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. Plak in het tekstvak **Identifier** de waarde van het veld **Service Provider Entity ID** dat staat vermeld op de pagina met instellingen voor eenmalige aanmelding in uw HighGear-systeem.
 
@@ -116,7 +116,7 @@ Voor de configuratie van eenmalige aanmelding in Azure AD met uw HighGear-systee
 
     c. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-     ![Informatie over eenmalige aanmelding bij HighGear-domeinen en URL's](common/metadata-upload-additional-signon.png)
+     ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
      Plak in het tekstvak **Sign-on URL** de waarde van het veld **Service Provider Entity ID** dat staat vermeld op de pagina met instellingen voor eenmalige aanmelding in uw HighGear-systeem. (Deze entiteits-id is ook de basis-URL van het HighGear-systeem die moet worden gebruikt voor door SP geïnitieerde eenmalige aanmelding.)
 

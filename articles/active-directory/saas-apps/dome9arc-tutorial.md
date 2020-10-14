@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555870"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775135"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Check Point CloudGuard Dome9 Arc
 
@@ -156,11 +156,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Klik op **Profile Settings** in de rechterbovenhoek en vervolgens op **Account Settings**. 
 
-    ![Check Point CloudGuard Dome9 Arc configureren](./media/dome9arc-tutorial/configure1.png)
+    ![Schermopname met het menu "Profile Settings" met "Account Settings" geselecteerd.](./media/dome9arc-tutorial/configure1.png)
 
 3. Navigeer naar **SSO** en klik vervolgens op **ENABLE**.
 
-    ![Check Point CloudGuard Dome9 Arc configureren](./media/dome9arc-tutorial/configure2.png)
+    ![Schermopname met het tabblad "S S O" en "Enable" geselecteerd.](./media/dome9arc-tutorial/configure2.png)
 
 4. Voer in de sectie SSO Configuration de volgende stappen uit:
 
@@ -189,11 +189,11 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Check Point Clo
 
 2. Klik op **Users & Roles** en vervolgens op **Users**.
 
-    ![Werknemer toevoegen](./media/dome9arc-tutorial/user1.png)
+    ![Schermopname met "Users & Roles" met de actie "Users" geselecteerd.](./media/dome9arc-tutorial/user1.png)
 
 3. Klik op **ADD USER**.
 
-    ![Werknemer toevoegen](./media/dome9arc-tutorial/user2.png)
+    ![Schermopname met "Users & Roles" met de knop "ADD USER" geselecteerd.](./media/dome9arc-tutorial/user2.png)
 
 4. Voer in de sectie **Create User** de volgende stappen uit:
 

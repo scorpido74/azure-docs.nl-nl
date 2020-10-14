@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555898"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775617"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Coralogix
 
@@ -95,13 +95,14 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
  1. In de Coralogix-toepassing worden de SAM-beweringen verwacht in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Selecteer op de pagina **Eenmalige aanmelding met SAML instellen** de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met de sectie 'Gebruikerskenmerken' met de knop 'Bewerken' geselecteerd.](common/edit-attribute.png)
 
 1. Bewerk in de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met behulp van het pictogram **Bewerken**. U kunt de claims ook toevoegen via **Nieuwe claim toevoegen** om het SAML-tokenkenmerk te configureren, zoals wordt weergegeven in de vorige afbeelding. Voer dan de volgende stappen uit:
     
     a. Selecteer het **pictogram Bewerken** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![afbeelding](./media/coralogix-tutorial/tutorial_usermail.png) ![afbeelding](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![Schermopname met het dialoogvenster 'Gebruikerskenmerken en claims' met de knop 'Bewerken' gemarkeerd.](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![afbeelding](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. Selecteer in de lijst **Kies een indeling voor de naam-id** de optie **E-mailadres**.
 

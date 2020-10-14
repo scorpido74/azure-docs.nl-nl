@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 47e438b53f6aa3c9bc00da77c3532278b99e7269
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bfc370dbe1f44f353df4140de7a6136de9360423
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530372"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Zelfstudie: Azure Active Directory-integratie met Ceridian Dayforce HCM
 
@@ -127,7 +127,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met Ceridian Dayfo
 
 5. In de toepassing Ceridian Dayforce HCM worden de SAML-asserties in een specifieke indeling verwacht. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die Gebruikerskenmerken toont met het pictogram Bewerken geselecteerd.](common/edit-attribute.png)
 
 6. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** configureert u het kenmerk van het SAML-token zoals wordt weergegeven in de bovenstaande afbeelding en voert u de volgende stappen uit:
     
@@ -137,9 +137,9 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met Ceridian Dayfo
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname die Gebruikersclaims toont met de optie om een nieuwe claim toe te voegen.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Schermopname die het dialoogvenster Gebruikersclaims beheren toont, waarin u de beschreven waarden kunt invoeren.](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
