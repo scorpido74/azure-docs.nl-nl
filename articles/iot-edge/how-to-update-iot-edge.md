@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7cde23372f6a3af0320e2d48c78a0d7fe69a2600
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971746"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045700"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>De IoT Edge-beveiligingsdaemon en -runtime bijwerken
 
@@ -194,7 +194,7 @@ Er worden twee onderdelen gebruikt om een IoT Edge apparaat bij te werken:
 
 3. Als het CAB-bestand dat u hebt gedownload een architectuur achtervoegsel heeft, wijzigt u de naam van het bestand in alleen **Microsoft-Azure-IoTEdge.cab**.
 
-4. Als u wilt bijwerken met offline onderdelen, [punt bron](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) het lokale exemplaar van het Power shell-script. Vervolgens gebruikt u de `-OfflineInstallationPath` para meter als onderdeel van de `Update-IoTEdge` opdracht en geeft u het absolute pad naar de bestands directory op. Bijvoorbeeld:
+4. Als u wilt bijwerken met offline onderdelen, [punt bron](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) het lokale exemplaar van het Power shell-script. Vervolgens gebruikt u de `-OfflineInstallationPath` para meter als onderdeel van de `Update-IoTEdge` opdracht en geeft u het absolute pad naar de bestands directory op. Bijvoorbeeld:
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1

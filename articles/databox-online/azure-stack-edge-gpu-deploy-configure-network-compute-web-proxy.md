@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894031"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952179"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Netwerk configureren voor Azure Stack Edge Pro met GPU
 
@@ -78,7 +78,7 @@ Volg deze stappen voor het configureren van het netwerk voor uw apparaat.
 
     Zodra het apparaatnetwerk is geconfigureerd, wordt de pagina bijgewerkt, zoals hieronder weergegeven.
 
-    ![Pagina 'Netwerkinstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
+    ![Pagina 2, 'Netwerkinstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
      >[!NOTE]
@@ -149,7 +149,7 @@ Dit is een optionele configuratie.
 
     4. Selecteer **Toepassen** om de geconfigureerde webproxy-instellingen te valideren en toe te passen.
     
-   ![Pagina 'Webproxy-instellingen' voor lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![Pagina 2, 'Webproxy-instellingen' voor lokale webgebruikersinterface](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 
 2. Nadat de instellingen zijn toegepast, selecteert u **Volgende: Apparaat**.
 

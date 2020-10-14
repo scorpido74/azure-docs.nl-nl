@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324264"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91448200"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Quickstart: Een Azure-resource bewaken met Azure Monitor
 [Azure Monitor](../overview.md) begint met het verzamelen van gegevens van Azure-resources op het moment dat ze worden gemaakt. In deze quickstart krijgt u een beknopt overzicht van de gegevens die automatisch worden verzameld voor een resource en ziet u hoe u deze kunt weergeven in Azure Portal. U kunt later een configuratie toevoegen voor het verzamelen van aanvullende gegevens. Via het menu van Azure Monitor kunt u ook dezelfde hulpprogramma's gebruiken voor toegang tot gegevens die zijn verzameld voor alle resources in uw abonnement.
@@ -40,11 +40,11 @@ Het activiteitenlogboek biedt inzicht in de bewerkingen op elke Azure-resource i
 1. Selecteer bovenaan het menu voor uw resource **Activiteitenlogboek**.
 2. Het huidige filter is ingesteld op gebeurtenissen met betrekking tot uw resource. Als er geen gebeurtenissen worden weergeven, wijzigt u de **Periode** om het tijdsbereik te vergroten.
 
-    ![Activiteitenlogboek](media/quick-monitor-azure-resource/activity-log-resource.png)
+    ![Schermopname van een activiteitenlogboek voor resources in Azure Portal met een lijst met bewerkingen voor de resource die is gegenereerd met de standaardfiltercriteria.](media/quick-monitor-azure-resource/activity-log-resource.png)
 
 4. Als u gebeurtenissen van andere resources in uw abonnement wilt weergeven, wijzigt u de criteria in het filter of verwijdert u zelfs filtereigenschappen.
 
-    ![Activiteitenlogboek](media/quick-monitor-azure-resource/activity-log-all.png)
+    ![Schermopname van een activiteitenlogboek voor resources in Azure Portal met een lijst met bewerkingen voor de resource die is gegenereerd met gewijzigde filtercriteria.](media/quick-monitor-azure-resource/activity-log-all.png)
 
 
 
@@ -54,15 +54,15 @@ Metrische gegevens zijn numerieke waarden waarmee een bepaald aspect van uw reso
 1. Selecteer in de sectie **Controle** van uw resourcemenu de optie **Metrische gegevens**. Hiermee opent u Metrics Explorer met het bereik om uw resource in te stellen.
 2. Klik op **Metrische waarde toevoegen** om een metrische waarde aan de grafiek toe te voegen.
    
-   ![Metrics-explorer](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Schermopname van Metrics Explorer in Azure Portal, met de metrische gegevens voor een resource. De vervolgkeuzelijst Metrisch is geopend voor het toevoegen van nieuwe metrische gegevens.](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. Selecteer een **metrische waarde** in de vervolgkeuzelijst en vervolgens een **aggregatie**. Hiermee definieert u hoe een steekproef van de verzamelde waarden voor elk tijdsinterval wordt genomen.
 
-    ![Metrics-explorer](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Schermopname van Metrics Explorer in Azure Portal, met de metrische gegevens voor een resource. De vervolgkeuzelijst Aggregatie is geopend en Gem. is geselecteerd.](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. Klik op **Metrische waarde toevoegen** om extra metrische en aggregatiecombinaties aan de grafiek toe te voegen.
 
-    ![Metrics-explorer](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Schermopname van Metrics Explorer in Azure Portal, met de metrische gegevens voor een resource.](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 

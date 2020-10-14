@@ -8,18 +8,18 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975158"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045292"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
 [Azure Logic apps](../logic-apps/logic-apps-overview.md) is een Cloud service die u helpt bij het automatiseren van werk stromen in apps en services. Door Logic Apps te verbinden met de Azure Digital Apparaatdubbels Api's, kunt u dergelijke geautomatiseerde stromen maken rond Azure Digital Apparaatdubbels en hun gegevens.
 
-Azure Digital Apparaatdubbels heeft momenteel geen gecertificeerde (vooraf gebouwde) connector voor Logic Apps. In plaats daarvan is het huidige proces voor het gebruik van Logic Apps met Azure Digital Apparaatdubbels een [**aangepaste Logic Apps-Connector**](../logic-apps/custom-connector-overview.md)te maken met behulp van een [aangepaste Azure Digital apparaatdubbels Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) die is aangepast aan het gebruik van Logic apps.
+Azure Digital Apparaatdubbels heeft momenteel geen gecertificeerde (vooraf gebouwde) connector voor Logic Apps. In plaats daarvan is het huidige proces voor het gebruik van Logic Apps met Azure Digital Apparaatdubbels een [**aangepaste Logic Apps-Connector**](../logic-apps/custom-connector-overview.md)te maken met behulp van een [aangepaste Azure Digital apparaatdubbels Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) die is aangepast aan het gebruik van Logic apps.
 
 > [!NOTE]
 > Er zijn meerdere versies van de Swagger opgenomen in het aangepaste Swagger-voor beeld dat hierboven is gekoppeld. De nieuwste versie vindt u in de submap met de meest recente datum, maar eerdere versies die in het voor beeld zijn opgenomen, worden ook nog steeds ondersteund.
@@ -93,7 +93,7 @@ U wordt naar de implementatie pagina voor de connector geleid. Wanneer de implem
 
 Vervolgens configureert u de connector die u hebt gemaakt om Azure Digital Apparaatdubbels te bereiken.
 
-Down load eerst een aangepaste Apparaatdubbels Swagger van Azure die is gewijzigd om met Logic Apps te werken. Down load het voor beeld met **aangepaste Swagger-apparaatdubbels van Azure** via [**deze koppeling**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) door te klikken op de knop voor het downloaden van het *zip-bestand* . Ga naar de map gedownloade *Azure_Digital_Twins_Custom_Swaggers.zip* en pak deze uit. 
+Down load eerst een aangepaste Apparaatdubbels Swagger van Azure die is gewijzigd om met Logic Apps te werken. Down load het voor beeld met **aangepaste Swagger-apparaatdubbels van Azure** via [**deze koppeling**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) door te klikken op de knop voor het downloaden van het *zip-bestand* . Ga naar de map gedownloade *Azure_Digital_Twins_Custom_Swaggers.zip* en pak deze uit. 
 
 De aangepaste Swagger voor deze zelf studie bevindt zich in de map _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ . Deze map bevat submappen met de naam *stabiel* en *Preview*, die beide verschillende versies van de Swagger bevatten, geordend op datum. De map met de meest recente datum bevat de laatste kopie van de Swagger. Welke versie u selecteert, is het Swagger-bestand _** met de naamdigitaltwins.jsop**_.
 
@@ -213,7 +213,7 @@ U kunt andere bewerkingen kiezen door _+ nieuwe stap_ te selecteren in hetzelfde
 
 Nu uw logische app is gemaakt, moet de gebeurtenis voor dubbele updates die u hebt gedefinieerd in de Logic Apps Designer een herhaling van elke drie seconden plaatsvinden. Dit betekent dat u na drie seconden een query kunt uitvoeren op uw dubbele gegevens en de nieuwe patches weer geven.
 
-U kunt een query uitvoeren op uw dubbele manier via uw keuze methode (zoals een [aangepaste client-app](tutorial-command-line-app.md), de voor [beeld-app van Azure Digital apparaatdubbels Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), de [Sdk's en api's](how-to-use-apis-sdks.md)of de [cli](how-to-use-cli.md)). 
+U kunt een query uitvoeren op uw dubbele manier via uw keuze methode (zoals een [aangepaste client-app](tutorial-command-line-app.md), de voor [beeld-app van Azure Digital apparaatdubbels Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), de [Sdk's en api's](how-to-use-apis-sdks.md)of de [cli](how-to-use-cli.md)). 
 
 Zie [*How-to: query uitvoeren op de dubbele grafiek*](how-to-query-graph.md)voor meer informatie over het uitvoeren van query's op uw Azure Digital apparaatdubbels-exemplaar.
 

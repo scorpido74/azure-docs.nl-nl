@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 67309aafe5c1bc841399006285a9862f711e4296
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: bd75e3d708ddfb9d5545111e7bc4935c8dd50141
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018556"
+ms.locfileid: "92045224"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Veelgestelde vragen over de Azure VMware-oplossing
 
@@ -73,6 +73,9 @@ Ja, op voor waarde dat het systeem waarop het is geïnstalleerd, toegang heeft t
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Zijn er speciale instructies voor het installeren en gebruiken van VMRC met virtuele machines met Azure VMware-oplossingen?
 Nee, gebruik de [instructies van VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) en voer de vereiste VM-vereisten in deze instructies uit. 
 
+#### <a name="is-vmware-hcx-supported-on-vpns"></a>Worden VMware-HCX ondersteund op Vpn's?
+Nee.
+
 
 ## <a name="compute-network-storage-and-backup"></a>Berekenings-, netwerk-, opslag-en back-ups
 
@@ -111,6 +114,10 @@ Omdat deze back-upoplossingen worden geïnstalleerd en beheerd door klanten, kun
 #### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>Wat is het juiste opslag beleid voor het instellen van de ontdubbeling?
 
 Gebruik het *thin_provision* -opslag beleid voor uw VM-sjabloon.  De standaard waarde is *thick_provision*.
+
+#### <a name="are-the-snmp-infrastructure-logs-shared"></a>Worden de logboeken voor de SNMP-infra structuur gedeeld?
+
+Nee.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privéclouds
 

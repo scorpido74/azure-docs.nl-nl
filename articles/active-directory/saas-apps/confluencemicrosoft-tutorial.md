@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892946"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775661"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Confluence SAML SSO by Microsoft
 
@@ -159,11 +159,11 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
 1. Wijs het tandwiel aan met de muisaanwijzer en klik op **Add-ons**.
 
-    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![Schermopname toont het geselecteerde tandwielpictogram. In het vervolgkeuzemenu is 'Invoegtoepassingen' gemarkeerd.](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. Download de invoegtoepassing uit het [Microsoft Downloadcentrum](https://www.microsoft.com/download/details.aspx?id=56503). Upload de invoegtoepassing van Microsoft handmatig via het menu **Upload add-on**. Het downloaden van invoegtoepassingen valt onder de [Microsoft-serviceovereenkomst](https://www.microsoft.com/servicesagreement/).
 
-    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Schermopname toont de pagina 'Invoegtoepassingen beheren' waarin de actie 'invoegtoepassing uploaden' is geselecteerd.](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. Voer de volgende stappen uit voor het uitvoeren van het omgekeerde-proxyscenario of load balancer-scenario van Confluence:
 
@@ -174,19 +174,19 @@ In dit gedeelte gaat u B.Simon toestemming geven voor gebruik van eenmalige aanm
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![Schermopname toont het bestand 'server.xml' met het kenmerk dat wordt toegevoegd aan de poort 'connector'.](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. Wijzig **Base URL** in **System Settings** overeenkomstig de proxy/load balancer.
 
-    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![Schermopname toont de pagina 'Beheer - Instellingen' waarin 'Basis-URL' is gemarkeerd.](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. Zodra de invoegtoepassing is geïnstalleerd, wordt deze weergegeven bij **User Installed** in de sectie **Manage add-ons**. Klik op **Configure** om de nieuwe invoegtoepassing te configureren.
 
-    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![Schermopname toont de sectie 'Gebruiker geïnstalleerd' waarin de knop 'Configureren' is gemarkeerd.](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. Voer de volgende stappen uit op de configuratiepagina:
 
-    ![Eenmalige aanmelding configureren](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![Schermopname toont de configuratiepagina voor eenmalige aanmelding.](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Zorg ervoor dat er maar één certificaat is toegewezen aan de app, zodat er geen fout optreedt bij het omzetten van de metagegevens. Als er meerdere certificaten zijn, krijgt de beheerder een foutmelding bij het omzetten van de metagegevens.
@@ -237,7 +237,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij de on-premises serv
 
 1. Klik onder de sectie Users op het tabblad **Add Users**. Voer de volgende stappen uit in het dialoogvenster **Add a User**:
 
-    ![Werknemer toevoegen](./media/confluencemicrosoft-tutorial/user2.png)
+    ![Schermopname toont het 'Confluence-beheer', waarin het tabblad 'Gebruikers toevoegen' is geselecteerd en de gegevens van 'Een gebruiker toevoegen' zijn toegevoegd.](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. In het tekstvak **Gebruikersnaam** typt u het e-mailadres van de gebruiker, bijvoorbeeld B.Simon.
 

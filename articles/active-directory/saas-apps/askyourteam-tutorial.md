@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549412"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met AskYourTeam
 
@@ -131,19 +131,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **My Organisation**.
 
-    ![Configuratie van AskYourTeam](./media/askyourteam-tutorial/user1.png)
+    ![Schermopname met de koppeling 'Mijn organisatie'.](./media/askyourteam-tutorial/user1.png)
 
 1. Klik op **Integrations**.
 
-    ![Configuratie van AskYourTeam](./media/askyourteam-tutorial/configure1.png)
+    ![Schermopname met de koppeling 'Integraties'.](./media/askyourteam-tutorial/configure1.png)
 
 1. Klik op **Edit Settings**.
 
-    ![Configuratie van AskYourTeam](./media/askyourteam-tutorial/configure2.png)
+    ![Schermopname met het bericht voor eenmalige aanmelding met de knop Instellingen bewerken.](./media/askyourteam-tutorial/configure2.png)
 
 1. Voer op de pagina **Edit Single Sign-On Integration** de volgende stappen uit: 
 
-    ![Configuratie van AskYourTeam](./media/askyourteam-tutorial/configure3.png)
+    ![Schermopname met integratie van eenmalige aanmelding, waar u de waarden voor deze stap kunt invoeren.](./media/askyourteam-tutorial/configure3.png)
 
     a. Plak in het tekstvak **SAML Single Sign-On Service URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
@@ -168,15 +168,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **My Organisation**.
 
-    ![Configuratie van AskYourTeam](./media/askyourteam-tutorial/user1.png)
+    ![Schermopname met de koppeling 'Mijn organisatie', waar u deze taak begint.](./media/askyourteam-tutorial/user1.png)
 
 1. Klik op **Users** en selecteer **New User**.
 
-    ![Configuratie van AskYourTeam](./media/askyourteam-tutorial/user2.png)
+    ![Schermopname met de koppeling 'Gebruikers' met Nieuwe gebruiker.](./media/askyourteam-tutorial/user2.png)
 
 1. Voer in het gedeelte **New user** de volgende stappen uit:
 
-    ![Configuratie van AskYourTeam](./media/askyourteam-tutorial/user3.png)
+    ![Schermopname met een sectie voor nieuwe gebruikers waarin u gebruikersgegevens invoert.](./media/askyourteam-tutorial/user3.png)
 
     1. Voer in het vak **First name** de voornaam van de gebruiker in.
 

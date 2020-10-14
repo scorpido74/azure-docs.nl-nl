@@ -1,6 +1,6 @@
 ---
-title: Latentie in Blob Storage-Azure Storage
-description: Begrijp en meet latentie voor Blob Storage-bewerkingen en leer hoe u uw Blob Storage-toepassingen kunt ontwerpen voor een lage latentie.
+title: Latentie in Blob-opslag - Azure Storage
+description: Begrijp en meet latentie voor Blob-opslagbewerkingen en leer hoe u uw Blob-opslagtoepassingen kunt ontwerpen met een lage latentie.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,63 +9,63 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75749725"
 ---
 # <a name="latency-in-blob-storage"></a>Latentie in Blob-opslag
 
-Een latentie, soms waarnaar wordt verwezen als reactie tijd, is de hoeveelheid tijd die een toepassing moet wachten voordat een aanvraag is voltooid. Latentie kan rechtstreeks van invloed zijn op de prestaties van een toepassing. Lage latentie is vaak belang rijk voor scenario's met mensen in de lus, zoals het uitvoeren van creditcard transacties of het laden van webpagina's. Systemen die binnenkomende gebeurtenissen met hoge tarieven moeten verwerken, zoals telemetrie logboek registratie of IoT-gebeurtenissen, vereisen ook een lage latentie. In dit artikel wordt beschreven hoe u de latentie kunt begrijpen en meten voor bewerkingen op blok-blobs en hoe u uw toepassingen kunt ontwerpen voor een lage latentie.
+Latentie, ook wel reactietijd genoemd, is de tijd die een toepassing moet wachten voordat een aanvraag is voltooid. Latentie kan de prestaties van een toepassing direct beïnvloeden. Lage latentie is vaak belangrijk voor scenario's met mensen in de lus, zoals het uitvoeren van creditcardtransacties of het laden van webpagina's. Voor systemen die op hoge snelheid binnenkomende gebeurtenissen moeten verwerken, zoals de registratie van telemetriegegevens of IoT-gebeurtenissen, is ook een lage latentie vereist. In dit artikel wordt beschreven wat latentie voor bewerkingen op blok-blobs inhoudt en hoe u dit meet. Ook wordt beschreven hoe u uw toepassingen kunt ontwerpen voor een lage latentie.
 
-Azure Storage biedt twee verschillende prestatie opties voor blok-blobs: Premium en Standard. Premium blok-blobs bieden aanzienlijk minder en consistente latentie dan standaard blok-blobs via hoogwaardige SSD-schijven. Zie voor meer informatie **Premium-prestaties blok-blobopslag** in [Azure Blob-opslag: dynamische, coole en archief toegangs lagen](storage-blob-storage-tiers.md).
+Azure Storage biedt twee verschillende prestatieopties voor blok-blobs: premium en standaard. Premium-blok-blobs bieden aanzienlijk lagere en meer consistente latentie dan standaard-blok-blobs via hoogwaardige SSD-schijven. Zie **Blok-blob-opslag met premium-prestaties** in [Azure Blob-opslag: dynamische, statische en archieftoegangslagen](storage-blob-storage-tiers.md) voor meer informatie.
 
-## <a name="about-azure-storage-latency"></a>Over Azure Storage latentie
+## <a name="about-azure-storage-latency"></a>Info over Azure Storage-latentie
 
-Azure Storage latentie is gerelateerd aan aanvraag tarieven voor Azure Storage bewerkingen. Aanvraag tarieven worden ook wel invoer/uitvoer-bewerkingen per seconde (IOPS) genoemd.
+Azure Storage-latentie is gerelateerd aan aanvraagsnelheden voor Azure Storage bewerkingen. Aanvraagsnelheden worden ook wel invoer-/uitvoerbewerkingen per seconde (IOPS) genoemd.
 
-Als u de aanvraag frequentie wilt berekenen, bepaalt u eerst de duur van de voltooiing van elke aanvraag en vervolgens berekent u hoeveel aanvragen per seconde kunnen worden verwerkt. Stel bijvoorbeeld dat een aanvraag 50 milliseconden (MS) moet worden voltooid. Een toepassing die één thread met een openstaande Lees-of schrijf bewerking gebruikt, moet 20 IOPS (1 seconde of 1000 MS/50 MS per aanvraag) bezorgen. Theoretisch, als het aantal threads is verdubbeld naar twee, dan moet de toepassing 40 IOPS kunnen bezorgen. Als de openstaande asynchrone Lees-of schrijf bewerkingen voor elke thread worden verdubbeld naar twee, moet de toepassing 80 IOPS kunnen belopen.
+Als u de aanvraagsnelheid wilt berekenen, bepaalt u eerst hoe lang het voltooien van elke aanvraag duurt en vervolgens berekent u hoeveel aanvragen per seconde kunnen worden verwerkt. Stel bijvoorbeeld dat een aanvraag in 50 milliseconden (ms) wordt voltooid. Een toepassing waarvoor één thread met één openstaande lees- of schrijfbewerking wordt gebruikt, moet 20 IOPS (1 seconde of 1000 ms/50 ms per aanvraag) kunnen behalen. Als het aantal threads wordt verdubbeld naar twee, zou de toepassing in theorie 40 IOPS moeten kunnen behalen. Als de openstaande asynchrone lees- of schrijfbewerkingen voor elke thread worden verdubbeld naar twee, moet de toepassing 80 IOPS kunnen behalen.
 
-In de praktijk worden de aanvraag tarieven niet altijd lineair geschaald als gevolg van de overhead van taken in de client van taak planning, het omschakelen van de context, enzovoort. Aan de kant van de service kan er sprake zijn van een latentie als gevolg van de druk op het Azure Storage systeem, verschillen in de gebruikte opslag media, lawaai van andere werk belastingen, onderhouds taken en andere factoren. Ten slotte kan de netwerk verbinding tussen de client en de server van invloed zijn op Azure Storage latentie als gevolg van congestie, route ring of andere onderbrekingen.
+In de praktijk gaan de aanvraagsnelheden niet altijd zo lineair omhoog vanwege overhead in de client door taakplanning, het wisselen van context enzovoort. Aan de kant van de service kan de latentie variëren als gevolg van de druk op het Azure Storage-systeem, verschillen in de gebruikte opslagmedia, interferentie van andere workloads, onderhoudstaken en andere factoren. Ten slotte kan de netwerkverbinding tussen de client en de server van invloed zijn op de Azure Storage-latentie door congestie, omleidingen of andere onderbrekingen.
 
-Azure Storage band breedte, ook wel door Voer genoemd, is gerelateerd aan de aanvraag snelheid en kan worden berekend door de aanvraag frequentie (IOPS) te vermenigvuldigen met de aanvraag grootte. Als er bijvoorbeeld 160 aanvragen per seconde worden uitgegaan, resulteert elk 256 KiB van gegevens in de door Voer van 40.960 KiB per seconde of een 40 MiB per seconde.
+De Azure Storage-bandbreedte, ook wel doorvoer genoemd, is gerelateerd aan de aanvraagsnelheid en kan worden berekend door de aanvraagsnelheid (IOPS) te vermenigvuldigen met de aanvraaggrootte. Stel bijvoorbeeld dat er 160 aanvragen per seconde zijn, waarbij elke 256 KiB gegevens resulteert in een doorvoer van 40.960 KiB per seconde of 40 MiB per seconde.
 
-## <a name="latency-metrics-for-block-blobs"></a>Metrische latentie gegevens voor blok-blobs
+## <a name="latency-metrics-for-block-blobs"></a>Metrische latentiegegevens voor blok-blobs
 
-Azure Storage biedt twee latentie-metrische gegevens voor blok-blobs. Deze metrische gegevens kunnen worden weer gegeven in de Azure Portal:
+Azure Storage voorziet in twee soorten metrische latentiegegevens voor blok-blobs. Deze gegevens kunnen worden bekeken in Azure Portal:
 
-- **End-to-end (E2E) latentie** meet het interval van wanneer Azure Storage het eerste pakket van de aanvraag ontvangt, totdat Azure Storage een bevestiging van de client ontvangt op het laatste pakket van de reactie.
+- Met **E2E-latentie (end-to-end)** wordt het interval gemeten vanaf het moment waarop Azure Storage het eerste pakket van de aanvraag ontvangt tot het moment waarop Azure Storage een bevestiging van de client ontvangt voor het laatste pakket van de reactie.
 
-- **Server latentie** meet het interval van wanneer Azure Storage het laatste pakket van de aanvraag ontvangt, totdat het eerste pakket van de reactie wordt geretourneerd door Azure Storage.
+- Met **de latentie van de server** wordt het interval gemeten vanaf het moment waarop Azure Storage het laatste pakket van de aanvraag ontvangt tot het moment waarop het eerste pakket van de reactie wordt geretourneerd vanuit Azure Storage.
 
-De volgende afbeelding toont de **gemiddelde E2E-latentie** en de **gemiddelde geslaagde server latentie** voor een voorbeeld workload die `Get Blob` de bewerking aanroept:
+In de volgende afbeelding ziet u het **gemiddelde succes voor E2E-latentie** en het **gemiddelde succes voor de serverlatentie** voor een voorbeeldworkload waarmee de `Get Blob`-bewerking wordt aangeroepen:
 
-![Scherm afbeelding met metrische gegevens over latentie voor Get BLOB-bewerking](media/storage-blobs-latency/latency-metrics-get-blob.png)
+![Schermopname met metrische latentiegegevens voor de bewerking Blob ophalen](media/storage-blobs-latency/latency-metrics-get-blob.png)
 
-Onder normale omstandigheden bevindt zich weinig tussen ruimte tussen end-to-end latentie en server latentie. Dit is de afbeelding die wordt weer gegeven voor de voor beeld-workload.
+Onder normale omstandigheden liggen de end-to-end latentie en serverlatentie dicht bij elkaar. U ziet dit ook bij de voorbeeldworkload in de afbeelding.
 
-Als u de metrische gegevens van uw end-to-end-en server latentie controleert, en u merkt dat de end-to-end-latentie aanzienlijk hoger is dan de latentie van de server, onderzoekt en verhelpt u de bron van de extra latentie.
+Als u de metrische gegevens van uw end-to-end en serverlatentie bekijkt en ziet dat de end-to-end latentie aanzienlijk hoger is dan de serverlatentie, gaat u na wat de bron van de extra latentie kan zien en onderneemt u actie.
 
-Als uw end-to-end-en server latentie vergelijkbaar zijn, maar u een lagere latentie nodig hebt, kunt u overwegen om te migreren naar Premium Block Blob Storage.
+Als uw end-to-end en serverlatentie ongeveer hetzelfde zijn, maar u een lagere latentie wilt, kunt u overwegen om te migreren naar premium-blok-blob-opslag.
 
 ## <a name="factors-influencing-latency"></a>Factoren die van invloed zijn op de latentie
 
-De grootte van de hoofd factor heeft invloed op de bewerking. Het duurt langer om grotere bewerkingen te volt ooien, omdat de hoeveelheid gegevens die via het netwerk worden overgedragen, wordt verwerkt door Azure Storage.
+Latentie wordt het meest beïnvloed door de grootte van de bewerking. Het duurt langer om grotere bewerkingen te voltooien door de hoeveelheid gegevens die via het netwerk moet worden overgedragen en door Azure Storage moet worden verwerkt.
 
-Het volgende diagram toont de totale tijd voor bewerkingen van verschillende grootten. Voor kleine hoeveel heden gegevens is het latentie-interval een hoofd zakelijk besteed aan het verwerken van de aanvraag, in plaats van gegevens over te dragen. Het latentie-interval neemt alleen enigszins toe als de grootte van de bewerking toeneemt (gemarkeerd 1 in het onderstaande diagram). Naarmate de grootte van de bewerking verder toeneemt, wordt er meer tijd besteed aan het overdragen van gegevens, zodat het totale latentie-interval wordt gesplitst tussen de verwerking van aanvragen en gegevens overdracht (gemarkeerde 2 in het diagram hieronder). Met grotere bewerkings grootten wordt het latentie-interval bijna alleen besteed aan het overdragen van gegevens en is de verwerking van aanvragen in het onderstaande diagram grotendeels onbeduidend (gemarkeerd met 3).
+In het volgende diagram ziet u de totale tijd voor bewerkingen van verschillende grootten. Voor kleine hoeveelheden gegevens wordt het latentie-interval hoofdzakelijk veroorzaakt door het verwerken van de aanvraag in plaats van de gegevensoverdracht. Het latentie-interval neemt slechts een klein beetje toe als de grootte van de bewerking toeneemt (gemarkeerd met 1 in het onderstaande diagram). Naarmate de grootte van de bewerking verder toeneemt, wordt er meer tijd besteed aan het overdragen van gegevens, zodat het totale latentie-interval wordt gesplitst tussen de verwerking van de aanvraag en de gegevensoverdracht (gemarkeerd met 2 in het onderstaande diagram). Bij grote bewerkingen wordt het latentie-interval hoofdzakelijk veroorzaakt door de gegevensoverdracht en is het verwerken van de aanvraag niet zo belangrijk (gemarkeerd met 3 in het onderstaande diagram).
 
-![Scherm opname van de totale bewerkings tijd per bewerkings grootte](media/storage-blobs-latency/operation-time-size-chart.png)
+![Schermopname met de totale bewerkingstijd per bewerkingsgrootte](media/storage-blobs-latency/operation-time-size-chart.png)
 
-Client configuratie factoren zoals gelijktijdigheid en threading beïnvloeden ook de latentie. De totale door Voer is afhankelijk van het aantal opslag aanvragen dat zich op een bepaald moment in de vlucht bevindt en over hoe uw toepassing threading verwerkt. Client bronnen met inbegrip van CPU, geheugen, lokale opslag en netwerk interfaces kunnen ook van invloed zijn op latentie.
+Clientconfiguratiefactoren zoals gelijktijdigheid en threading beïnvloeden de latentie ook. De totale doorvoer is afhankelijk van het aantal opslagaanvragen dat op een bepaald moment wordt uitgevoerd en van hoe uw toepassing threading verwerkt. Clientresources, zoals CPU, geheugen, lokale opslag en netwerkinterfaces, beïnvloeden de latentie ook.
 
-De verwerking van Azure Storage aanvragen vereist CPU-en geheugen bronnen van de client. Als de client onder druk staat vanwege een onderbelaste virtuele machine of een onbuitensporig proces in het systeem, zijn er minder resources beschikbaar voor het verwerken van Azure Storage aanvragen. Conflicten of het ontbreken van client bronnen leiden tot een toename van de end-to-end latentie zonder toename van de server latentie, waardoor de kloof tussen de twee metrische gegevens wordt verhoogd.
+Voor de verwerking van Azure Storage-aanvragen zijn vereist CPU- en geheugenresources van de client vereist. Als de client onder druk staat vanwege een virtuele machine die niet krachtig genoeg is, of een runaway-proces in het systeem, zijn er minder resources beschikbaar voor het verwerken van Azure Storage-aanvragen. Conflicten of onvoldoende clientresources leiden tot een toename van de end-to-end latentie zonder dat de serverlatentie toeneemt, waardoor de metrische gegevens van beide steeds verder uit elkaar komen te liggen.
 
-Net zo belang rijk is de netwerk interface en netwerk-pipe tussen de client en Azure Storage. Alleen fysieke afstanden kunnen een aanzienlijke factor zijn, bijvoorbeeld als een virtuele machine van de client zich in een andere Azure-regio of on-premises bevindt. Andere factoren, zoals netwerk-hops, ISP-route ring en Internet status, kunnen invloed hebben op de algehele opslag latentie.
+Net zo belangrijk is de netwerkinterface en netwerk-pipe tussen de client en Azure Storage. Alleen al de fysieke afstand kan een aanzienlijke factor zijn, bijvoorbeeld als een client-VM zich in een andere Azure-regio of on-premises bevindt. Andere factoren, zoals netwerk-hops, ISP-routering en internetstatus, kunnen van invloed zijn op de algehele opslaglatentie.
 
-Als u de latentie wilt beoordelen, stelt u eerst de metrische gegevens voor de basis lijn in voor uw scenario. Met metrische basislijn gegevens krijgt u de verwachte end-to-end-en server latentie in de context van uw toepassings omgeving, afhankelijk van uw werkbelasting profiel, toepassings configuratie-instellingen, client bronnen, netwerk-pipe en andere factoren. Wanneer u metrische gegevens voor de basis lijn hebt, kunt u op eenvoudige wijze abnormale en normale omstandigheden identificeren. Met metrische gegevens van basis lijn kunt u de gevolgen van gewijzigde para meters, zoals toepassings configuratie of VM-grootten, observeren.
+Als u de latentie wilt beoordelen, bepaalt u eerst de metrische basislijngegevens voor uw scenario. Met metrische basislijngegevens krijgt u de verwachte end-to-end en serverlatentie in de context van uw toepassingsomgeving, afhankelijk van uw workloadprofiel, toepassingsconfiguratie-instellingen, clientresources, netwerk-pipe en andere factoren. Wanneer u metrische basislijngegevens hebt, kunt u op eenvoudige wijze abnormale en normale omstandigheden identificeren. U kunt met de metrische basislijngegevens ook bekijken wat de effecten zijn als parameters worden gewijzigd (bijvoorbeeld de toepassingsconfiguratie of VM-grootten).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Schaalbaarheids-en prestatie doelen voor Blob Storage](scalability-targets.md)
-- [Controle lijst voor prestaties en schaal baarheid voor Blob Storage](storage-performance-checklist.md)
+- [Schaalbaarheids- en prestatiedoelen voor Blob-opslag](scalability-targets.md)
+- [Controlelijst voor prestaties en schaalbaarheid voor Blob-opslag](storage-performance-checklist.md)

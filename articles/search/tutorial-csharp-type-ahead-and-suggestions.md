@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
+ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 27437ae1db0ff3a205108638670b058eaaea04bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280722"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739660"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Zelfstudie: Automatisch aanvullen en suggesties toevoegen met de .NET SDK
 
-Ontdek hoe u automatisch aanvullen kunt implementeren (typeahead-query's en voorgestelde documenten) wanneer een gebruiker iets begint te typen in een zoekvak. In deze zelfstudie laten we automatisch aangevulde query's en suggestieresultaten eerst apart en vervolgens samen zien. Een gebruiker hoeft slechts twee of drie tekens te typen om alle beschikbare resultaten te zien.
+Ontdek hoe u automatisch aanvullen kunt implementeren (typeahead-query's en voorgestelde resultaten) wanneer een gebruiker iets begint te typen in een zoekvak. In deze zelfstudie laten we automatisch aangevulde query's en voorgestelde resultaten eerst apart en vervolgens samen zien. Een gebruiker hoeft slechts twee of drie tekens te typen om alle beschikbare resultaten te zien.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -27,15 +27,23 @@ In deze zelfstudie leert u het volgende:
 > * Automatisch aanvullen toevoegen
 > * Automatisch aanvullen en suggesties combineren
 
+## <a name="overview"></a>Overzicht
+
+In deze zelfstudie worden automatisch aanvullen en voorgestelde resultaten toegevoegd aan de vorige zelfstudie [Paginering toevoegen aan zoekresultaten](tutorial-csharp-paging.md).
+
+Een voltooide versie van de code in deze zelfstudie vindt u in het volgende project:
+
+* [3-add-typeahead (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/3-add-typeahead)
+
 ## <a name="prerequisites"></a>Vereisten
 
-Deze zelfstudie maakt deel uit van een reeks en is gebaseerd op het pagineringsproject dat u in de [C#-zelfstudie hebt gemaakt: Zoekresultaten pagineren: Azure Cognitive Search](tutorial-csharp-paging.md).
+* De oplossing [2a-add-paging (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging). Dit project kan uw eigen versie zijn die is gebaseerd op de vorige zelfstudie of een kopie van GitHub.
 
-U kunt ook de oplossing voor deze specifieke zelfstudie downloaden en uitvoeren: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead).
+Deze zelfstudie is bijgewerkt voor het gebruik van het pakket [Azure.Search.Documents (versie 11)](https://www.nuget.org/packages/Azure.Search.Documents/). Zie het [codevoorbeeld Microsoft.Azure.Search (versie 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10) voor een eerdere versie van de .NET SDK.
 
 ## <a name="add-suggestions"></a>Suggesties toevoegen
 
-Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven te bieden: een vervolgkeuzelijst met suggesties.
+Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven bieden: een vervolgkeuzelijst met voorgestelde resultaten.
 
 1. Veranderd in het bestand index.cshtml `@id` van de instructie **TextBoxFor** door **azureautosuggest**.
 
@@ -43,12 +51,12 @@ Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven 
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. Voer na deze instructie, achter de afsluitende **&lt;/div&gt;** dit script in. Dit script maakt gebruik van de [widget Automatisch aanvullen](https://api.jqueryui.com/autocomplete/) uit de opensource-jQuery UI-bibliotheek om een vervolgkeuzelijst met voorgestelde resultaten weer te geven. 
+1. Voer na deze instructie, achter de afsluitende **&lt;/div&gt;** dit script in. Dit script maakt gebruik van de [widget Automatisch aanvullen](https://api.jqueryui.com/autocomplete/) uit de opensource-jQuery UI-bibliotheek om een vervolgkeuzelijst met voorgestelde resultaten weer te geven.
 
     ```javascript
     <script>
         $("#azureautosuggest").autocomplete({
-            source: "/Home/Suggest?highlights=false&fuzzy=false",
+            source: "/Home/SuggestAsync?highlights=false&fuzzy=false",
             minLength: 2,
             position: {
                 my: "left top",
@@ -58,13 +66,13 @@ Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven 
     </script>
     ```
 
-    Het id 'azureautosuggest' verbindt het bovenstaande script met het zoekvak. De bronoptie van de widget is ingesteld op een methode Suggest die de Suggest-API aanroept met twee queryparameters: **markeringen** en **gedeeltelijke overeenkomsten**. Hier zijn beide uitgeschakeld. Er is ook minimaal twee tekens nodig om de zoekopdracht te activeren.
+    De id `"azureautosuggest"` verbindt het bovenstaande script met het zoekvak. De bronoptie van de widget is ingesteld op een methode Suggest die de Suggest-API aanroept met twee queryparameters: **markeringen** en **gedeeltelijke overeenkomsten**. Hier zijn beide uitgeschakeld. Er is ook minimaal twee tekens nodig om de zoekopdracht te activeren.
 
 ### <a name="add-references-to-jquery-scripts-to-the-view"></a>Verwijzingen naar jQuery-scripts toevoegen aan de weergave
 
 1. Om de jQuery-bibliotheek te openen, wijzigt u het onderdeel &lt;head&gt; van het weergavebestand met de volgende code:
 
-    ```cs
+    ```html
     <head>
         <meta charset="utf-8">
         <title>Typeahead</title>
@@ -91,42 +99,42 @@ Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven 
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>De actie Suggest toevoegen aan de controller
 
-1. Voeg in de begincontroller de actie **Suggest** toe (bijvoorbeeld na de actie **Page**).
+1. Voeg in de begincontroller de actie **SuggestAsync** toe (na de actie **Page**).
 
     ```cs
-        public async Task<ActionResult> Suggest(bool highlights, bool fuzzy, string term)
+    public async Task<ActionResult> SuggestAsync(bool highlights, bool fuzzy, string term)
+    {
+        InitSearch();
+
+        // Setup the suggest parameters.
+        var options = new SuggestOptions()
         {
-            InitSearch();
+            UseFuzzyMatching = fuzzy,
+            Size = 8,
+        };
 
-            // Setup the suggest parameters.
-            var parameters = new SuggestParameters()
-            {
-                UseFuzzyMatching = fuzzy,
-                Top = 8,
-            };
-
-            if (highlights)
-            {
-                parameters.HighlightPreTag = "<b>";
-                parameters.HighlightPostTag = "</b>";
-            }
-
-            // Only one suggester can be specified per index. It is defined in the index schema.
-            // The name of the suggester is set when the suggester is specified by other API calls.
-            // The suggester for the hotel database is called "sg", and simply searches the hotel name.
-            DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
-
-            // Convert the suggest query results to a list that can be displayed in the client.
-            List<string> suggestions = suggestResult.Results.Select(x => x.Text).ToList();
-
-            // Return the list of suggestions.
-            return new JsonResult(suggestions);
+        if (highlights)
+        {
+            options.HighlightPreTag = "<b>";
+            options.HighlightPostTag = "</b>";
         }
+
+        // Only one suggester can be specified per index. It is defined in the index schema.
+        // The name of the suggester is set when the suggester is specified by other API calls.
+        // The suggester for the hotel database is called "sg", and simply searches the hotel name.
+        var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", options).ConfigureAwait(false);
+
+        // Convert the suggested query results to a list that can be displayed in the client.
+        List<string> suggestions = suggestResult.Value.Results.Select(x => x.Text).ToList();
+
+        // Return the list of suggestions.
+        return new JsonResult(suggestions);
+    }
     ```
 
-    De parameter **Top** geeft aan hoeveel resultaten er moeten worden geretourneerd (als dit niet is opgegeven, is de standaardwaarde 5). Een _suggester_ wordt opgegeven in de Azure-index. Dat gebeurt wanneer de gegevens worden ingesteld, en niet door een client-app zoals deze zelfstudie. In dit geval heet de suggester 'sg' en zoekt deze het veld **HotelName** - niets anders. 
+    De parameter **Size** geeft aan hoeveel resultaten er moeten worden geretourneerd (als dit niet is opgegeven, is de standaardwaarde 5). Er wordt een _suggester_ opgegeven in de zoekindex wanneer de index wordt gemaakt. In het voorbeeld van een hotelindex die door Microsoft wordt gehost, is de naam van de suggestie 'sg' en wordt alleen gezocht naar voorgestelde overeenkomsten in het veld **HotelName**.
 
-    Met fuzzy overeenkomsten kunnen 'bijna juiste resultaten' opgenomen worden in de uitvoer, tot één bewerkingsafstand. Als de parameter **markeringen** is ingesteld op waar, dan worden HTML-tags voor vette tekst toegevoegd aan de uitvoer. In het volgende onderdeel stellen we deze parameters in op waar.
+    Met fuzzy overeenkomsten kunnen 'bijna juiste resultaten' opgenomen worden in de uitvoer, tot één bewerkingsafstand. Als de parameter **markeringen** is ingesteld op waar, dan worden HTML-tags voor vette tekst toegevoegd aan de uitvoer. In het volgende onderdeel stellen we beide parameters in op waar.
 
 2. Mogelijk zijn er enkele syntaxisfouten. Indien dat het geval is, voeg dan bovenaan het bestand de volgende **using**-instructies toe.
 
@@ -137,13 +145,13 @@ Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven 
 
 3. Voer de app uit. Krijgt u een reeks opties wanneer u bijvoorbeeld 'po' invoert? Probeer nu 'pa'.
 
-    ![Wanneer u 'po' typt, worden er twee suggesties weergegeven](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-po.png" alt-text="Wanneer u *po* typt, worden er twee suggesties weergegeven" border="false":::
 
     Merk op dat de letters die u invoer een woord _moeten_ beginnen, en er niet zomaar deel van mogen uitmaken.
 
-4. Stel in het weergavescript **&fuzzy** in op waard en voer de app opnieuw uit. Voer nu 'po' in. Merk op dat de zoekopdracht ervan uitgaat dat u één letter verkeerd heeft getypt!
+4. Stel in het weergavescript **&fuzzy** in op waard en voer de app opnieuw uit. Voer nu 'po' in. Merk op dat de zoekopdracht ervan uitgaat dat u één letter verkeerd hebt getypt.
  
-    !['Pa' typen wanneer fuzzy is ingesteld op waar](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="Wanneer u *po* typt, worden er twee suggesties weergegeven" border="false":::
 
     Indien u dat wenst, kunt u de [Lucene querysyntaxis in Azure Cognitive Search](./query-lucene-syntax.md) bekijken voor meer gedetailleerde informatie over de logica die gebruikt wordt bij fuzzy zoekopdrachten.
 
@@ -151,7 +159,7 @@ Laten we beginnen met een eenvoudig geval waarbij we de gebruiker alternatieven 
 
 We kunnen de weergave van de suggesties voor de gebruiker verbeteren door de parameter **markeringen** op waar in te stellen. Eerst moeten we echter code toevoegen om de vette tekst weer te geven.
 
-1. Voeg in de weergave (index.cshtml) het volgende script toe na het script **azureautosuggest** dat u hierboven hebt ingevoerd.
+1. Voeg in de weergave (index.cshtml) het volgende script toe na het script `"azureautosuggest"` dat eerder is beschreven.
 
     ```javascript
     <script>
@@ -180,23 +188,23 @@ We kunnen de weergave van de suggesties voor de gebruiker verbeteren door de par
     </script>
     ```
 
-2. Wijzig nu de ID van het tekstvak zodat deze er als volgt uitziet.
+1. Wijzig nu de ID van het tekstvak zodat deze er als volgt uitziet.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azuresuggesthighlights" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. Voer de app opnieuw uit. Normaal gezien ziet u dat uw ingevoerde tekst vetgedrukt staat in de suggesties. Probeer 'pa' te typen.
+1. Voer de app opnieuw uit. Normaal gezien ziet u dat uw ingevoerde tekst vetgedrukt staat in de suggesties. Probeer 'pa' te typen.
  
-    !['Pa' typen met markering](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="Wanneer u *po* typt, worden er twee suggesties weergegeven" border="false":::
 
-4. De logica die gebruikt wordt voor het bovenstaande markeringsscript, is niet onfeilbaar. Als u een term opgeeft die twee keer in dezelfde naam voorkomt, dan zijn de vetgedrukte resultaten niet helemaal wat u wilt. Probeer 'mo' te typen.
+   De logica die gebruikt wordt voor het bovenstaande markeringsscript, is niet onfeilbaar. Als u een term opgeeft die twee keer in dezelfde naam voorkomt, dan zijn de vetgedrukte resultaten niet helemaal wat u wilt. Probeer 'mo' te typen.
 
-    Een van de vragen die een ontwikkelaar zich moet stellen is, wanneer een script 'goed genoeg' werkt en wanneer er onvolmaaktheden zijn die moeten worden opgelost. We gaan niet verder met markeringen in deze zelfstudie, maar een nauwkeurig algoritme zoeken is het overwegen waard als markeringen niet geschikt zijn voor uw gegevens. Zie [Treffers markeren](search-pagination-page-layout.md#hit-highlighting) voor meer informatie.
+   Een van de vragen die een ontwikkelaar zich moet stellen is, wanneer een script 'goed genoeg' werkt en wanneer er onvolmaaktheden zijn die moeten worden opgelost. We gaan niet verder met markeringen in deze zelfstudie, maar een nauwkeurig algoritme zoeken is het overwegen waard als markeringen niet geschikt zijn voor uw gegevens. Zie [Treffers markeren](search-pagination-page-layout.md#hit-highlighting) voor meer informatie.
 
 ## <a name="add-autocomplete"></a>Automatisch aanvullen toevoegen
 
-Een andere variatie, die lichtjes verschilt van suggesties, is automatisch aanvullen. Hiermee vervolledigt u een queryterm. Ook hier gaan we beginnen met de eenvoudigste implementatie, voordat we de gebruikerservaring gaan verbeteren.
+Een andere variatie, die lichtjes verschilt van suggesties, is automatisch aanvullen (soms 'type-ahead') genoemd. Hiermee vervolledigt u een queryterm. Ook hier gaan we beginnen met de eenvoudigste implementatie, voordat we de gebruikerservaring gaan verbeteren.
 
 1. Voer het volgende script in bij de weergave, na uw vorige scripts.
 
@@ -213,103 +221,103 @@ Een andere variatie, die lichtjes verschilt van suggesties, is automatisch aanvu
     </script>
     ```
 
-2. Wijzig nu de ID van het tekstvak zodat deze er als volgt uitziet.
+1. Wijzig nu de ID van het tekstvak zodat deze er als volgt uitziet.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautocompletebasic" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. In de begincontroller moet u de actie **Automatisch aanvullen** invoeren, bijvoorbeeld onder de actie **Voorstellen**.
+1. Voer in de begincontroller de actie **AutocompleteAsync** toe na de actie **SuggestAsync**.
 
     ```cs
-        public async Task<ActionResult> AutoComplete(string term)
+    public async Task<ActionResult> AutoCompleteAsync(string term)
+    {
+        InitSearch();
+
+        // Setup the autocomplete parameters.
+        var ap = new AutocompleteOptions()
         {
-            InitSearch();
+            Mode = AutocompleteMode.OneTermWithContext,
+            Size = 6
+        };
+        var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap).ConfigureAwait(false);
 
-            // Setup the autocomplete parameters.
-            var ap = new AutocompleteParameters()
-            {
-                AutocompleteMode = AutocompleteMode.OneTermWithContext,
-                Top = 6
-            };
-            AutocompleteResult autocompleteResult = await _indexClient.Documents.AutocompleteAsync(term, "sg", ap);
+        // Convert the autocompleteResult results to a list that can be displayed in the client.
+        List<string> autocomplete = autocompleteResult.Value.Results.Select(x => x.Text).ToList();
 
-            // Convert the results to a list that can be displayed in the client.
-            List<string> autocomplete = autocompleteResult.Results.Select(x => x.Text).ToList();
-
-            // Return the list.
-            return new JsonResult(autocomplete);
-        }
+        return new JsonResult(autocomplete);
+    }
     ```
 
     Merk op dat we dezelfde functie *suggester*, met de naam 'sg', gebruiken bij automatisch aanvullen als bij suggesties (we proberen dus enkel de hotelnamen automatisch aan te vullen).
 
     Er zijn verschillende **AutocompleteMode**-instellingen, en wij gebruiken **OneTermWithContext**. Bekijk [Autocomplete API](/rest/api/searchservice/autocomplete) voor een beschrijving van aanvullende opties.
 
-4. Voer de app uit. Merk op dat alle opties die in de vervolgkeuzelijst worden weergegeven, enkele woorden zijn. Probeer woorden te typen die beginnen met 're'. Merk op dat er steeds minder opties zijn wanneer u meer letters typt.
+1. Voer de app uit. Merk op dat alle opties die in de vervolgkeuzelijst worden weergegeven, enkele woorden zijn. Probeer woorden te typen die beginnen met 're'. Merk op dat er steeds minder opties zijn wanneer u meer letters typt.
 
-    ![Typen met eenvoudig automatisch aanvullen](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="Wanneer u *po* typt, worden er twee suggesties weergegeven" border="false":::
 
-    Het script voor suggesties dat u eerder uitvoerde, is waarschijnlijk nuttiger dan dit script voor automatisch aanvullen. Als u automatisch aanvullen gebruikersvriendelijker wilt maken, kunt u het best toevoegen aan de zoekfunctie met suggesties.
+    Het script voor suggesties dat u eerder uitvoerde, is waarschijnlijk nuttiger dan dit script voor automatisch aanvullen. Als u automatisch aanvullen gebruikersvriendelijker wilt maken, kunt u het gebruiken met voorgestelde resultaten.
 
 ## <a name="combine-autocompletion-and-suggestions"></a>Automatisch aanvullen en suggesties combineren
 
 Automatisch aanvullen en suggesties combineren is onze meest complexe optie, en biedt de beste gebruikservaring. Wat we, naast de tekst die getypt wordt, willen weergeven is het eerste resultaat van Azure Cognitive Search voor het automatisch aanvullen van de tekst. We willen ook een reeks suggesties in een vervolgkeuzelijst.
 
-Er zijn bibliotheken die deze functionaliteit bieden. Dit wordt vaak 'Inline automatisch aanvullen' of iets vergelijkbaar genoemd. We gaan deze functie echter zelf implementeren, zodat u kunt zien hoe dit werkt. In dit voorbeeld gaan we eerst aan de controller beginnen werken.
+Er zijn bibliotheken die deze functionaliteit bieden. Dit wordt vaak 'Inline automatisch aanvullen' of iets vergelijkbaar genoemd. We gaan deze functie echter zelf implementeren, zodat u de API's kunt verkennen. In dit voorbeeld gaan we eerst aan de controller beginnen werken.
 
-1. We moeten een actie toevoegen aan de controller die slechts één resultaat voor automatisch aanvullen retourneert, samen en een bepaald aantal suggesties. We noemen deze actie **AutocompleteAndSuggest**. Voeg in uw begincontroller de volgende actie toe na uw andere nieuwe acties.
+1. Voeg een actie toe aan de controller die slechts één resultaat voor automatisch aanvullen retourneert, samen met een bepaald aantal suggesties. We noemen deze actie **AutoCompleteAndSuggestAsync**. Voeg in uw begincontroller de volgende actie toe na uw andere nieuwe acties.
 
     ```cs
-        public async Task<ActionResult> AutocompleteAndSuggest(string term)
+    public async Task<ActionResult> AutoCompleteAndSuggestAsync(string term)
+    {
+        InitSearch();
+
+        // Setup the type-ahead search parameters.
+        var ap = new AutocompleteOptions()
         {
-            InitSearch();
+            Mode = AutocompleteMode.OneTermWithContext,
+            Size = 1,
+        };
+        var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap);
 
-            // Setup the type-ahead search parameters.
-            var ap = new AutocompleteParameters()
-            {
-                AutocompleteMode = AutocompleteMode.OneTermWithContext,
-                Top = 1,
-            };
-            AutocompleteResult autocompleteResult = await _indexClient.Documents.AutocompleteAsync(term, "sg", ap);
+        // Setup the suggest search parameters.
+        var sp = new SuggestOptions()
+        {
+            Size = 8,
+        };
 
-            // Setup the suggest search parameters.
-            var sp = new SuggestParameters()
-            {
-                Top = 8,
-            };
+        // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+        // The suggester for the hotel database is called "sg" and simply searches the hotel name.
+        var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", sp).ConfigureAwait(false);
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
-            // The suggester for the hotel database is called "sg", and it searches only the hotel name.
-            DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", sp);
+        // Create an empty list.
+        var results = new List<string>();
 
-            // Create an empty list.
-            var results = new List<string>();
-
-            if (autocompleteResult.Results.Count > 0)
-            {
-                // Add the top result for type-ahead.
-                results.Add(autocompleteResult.Results[0].Text);
-            }
-            else
-            {
-                // There were no type-ahead suggestions, so add an empty string.
-                results.Add("");
-            }
-            for (int n = 0; n < suggestResult.Results.Count; n++)
-            {
-                // Now add the suggestions.
-                results.Add(suggestResult.Results[n].Text);
-            }
-
-            // Return the list.
-            return new JsonResult(results);
+        if (autocompleteResult.Value.Results.Count > 0)
+        {
+            // Add the top result for type-ahead.
+            results.Add(autocompleteResult.Value.Results[0].Text);
         }
+        else
+        {
+            // There were no type-ahead suggestions, so add an empty string.
+            results.Add("");
+        }
+
+        for (int n = 0; n < suggestResult.Value.Results.Count; n++)
+        {
+            // Now add the suggestions.
+            results.Add(suggestResult.Value.Results[n].Text);
+        }
+
+        // Return the list.
+        return new JsonResult(results);
+    }
     ```
 
     Boven aan de lijst met **resultaten** wordt één optie voor automatisch aanvullen weergegeven, gevolgd door alle suggesties.
 
-2. In de weergave implementeren we eerst een truc, zodat een lichtgrijs automatisch aangevuld woord verschijnt recht onder dikkere tekst die door de gebruiker wordt ingevoerd. HTML bevat hiervoor relatieve positionering. Verander de **TextBoxFor**-instructie (en de omringende &lt;div&gt;-instructies) naar het volgende. Een tweede zoekvak, genaamd **underneath**, bevindt zich recht onder ons normale zoekvak, door dit zoekvak 39 pixels van zijn standaardlocatie te verplaatsen.
+1. In de weergave implementeren we eerst een truc, zodat een lichtgrijs automatisch aangevuld woord verschijnt recht onder dikkere tekst die door de gebruiker wordt ingevoerd. HTML bevat hiervoor relatieve positionering. Verander de **TextBoxFor**-instructie (en de omringende &lt;div&gt;-instructies) naar het volgende. Een tweede zoekvak, genaamd **underneath**, bevindt zich recht onder ons normale zoekvak, door dit zoekvak 39 pixels van zijn standaardlocatie te verplaatsen.
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -322,7 +330,7 @@ Er zijn bibliotheken die deze functionaliteit bieden. Dit wordt vaak 'Inline aut
 
     Merk op dat we de id opnieuw veranderen, in dit geval in **azureautocomplete**.
 
-3. Voer in de weergave ook het volgende script toe, na alle scripts die u tot nu toe hebt ingevoerd. Het is behoorlijk veel.
+1. Voer in de weergave ook het volgende script toe, na alle scripts die u tot nu toe hebt ingevoerd. Het script is lang en complex vanwege de verschillende invoergedragingen die worden afgehandeld.
 
     ```javascript
     <script>
@@ -336,7 +344,7 @@ Er zijn bibliotheken die deze functionaliteit bieden. Dit wordt vaak 'Inline aut
 
             // Use Ajax to set up a "success" function.
             source: function (request, response) {
-                var controllerUrl = "/Home/AutoCompleteAndSuggest?term=" + $("#azureautocomplete").val();
+                var controllerUrl = "/Home/AutoCompleteAndSuggestAsync?term=" + $("#azureautocomplete").val();
                 $.ajax({
                     url: controllerUrl,
                     dataType: "json",
@@ -431,23 +439,23 @@ Er zijn bibliotheken die deze functionaliteit bieden. Dit wordt vaak 'Inline aut
     </script>
     ```
 
-    De functie **interval** is slim ingezet, zowel om de onderliggende tekst te wissen wanneer deze niet meer overeenkomt met wat de gebruiker typt, maar ook om hoofd- of kleine letter te gebruiken terwijl de gebruiker typt ('pa' komt overeen met 'PA', 'pA' en 'Pa' tijdens het zoeken), zodat de overlappende tekst er netjes uitziet.
+    De functie **interval** wordt zowel gebruikt om de onderliggende tekst te wissen wanneer deze niet meer overeenkomt met wat de gebruiker typt, als om hoofd- of kleine letters te gebruiken terwijl de gebruiker typt ('pa' komt overeen met 'PA', 'pA' en 'Pa' tijdens het zoeken), zodat de overlappende tekst er netjes uitziet.
 
     Lees de opmerkingen in het script voor een uitgebreider inzicht.
 
-4. Ten slotte moeten we een kleine aanpassing maken aan twee HTML-klassen om ze transparant te maken. Voeg de volgende regel toe aan de klassen **searchBoxForm** en **searchBox** in het bestand hotels.css.
+1. Ten slotte moeten we een kleine aanpassing maken aan twee HTML-klassen om ze transparant te maken. Voeg de volgende regel toe aan de klassen **searchBoxForm** en **searchBox** in het bestand hotels.css.
 
     ```html
-        background: rgba(0,0,0,0);
+    background: rgba(0,0,0,0);
     ```
 
-5. Voer nu de app uit. Typ 'pa' in het zoekvak. Krijgt u de suggestie 'palace' samen met twee hotels die 'pa' bevatten?
+1. Voer nu de app uit. Typ 'pa' in het zoekvak. Krijgt u de suggestie 'palace' samen met twee hotels die 'pa' bevatten?
 
-    ![Typen met inline automatisch aanvullen en suggesties](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="Wanneer u *po* typt, worden er twee suggesties weergegeven" border="false":::
 
-6. Probeer de tabtoets te gebruiken om de suggestie te accepteren, en probeer suggesties te selecteren met de pijltoetsen en de tabtoets of met de muis. Controleer of het script al deze situaties correct verwerkt.
+1. Probeer de tabtoets te gebruiken om de suggestie te accepteren, en probeer suggesties te selecteren met de pijltoetsen en de tabtoets of met de muis. Controleer of het script al deze situaties correct verwerkt.
 
-    U kunt ervoor kiezen om een bibliotheek te gebruiken waarbij deze functie is ingebouwd, maar nu kent u ten minste één manier om inline automatisch aanvullen in te stellen!
+    U kunt ervoor kiezen om een bibliotheek te gebruiken waarbij deze functie is ingebouwd, maar nu kent u ten minste één manier om inline automatisch aanvullen in te stellen.
 
 ## <a name="takeaways"></a>Opgedane kennis
 

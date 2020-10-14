@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4607d4dfba68ca8f78ec4e3aaa4da36966ea843a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543020"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Zelfstudie: Azure Active Directory-integratie met Adobe Experience Manager
 
@@ -101,7 +101,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Adobe Experience Manager](common/idp-intiated.png)
+    ![Schermopname toont de sectie 'SAML-basisconfiguratie' met de tekstvakken 'Id' en 'Antwoord-URL' gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een unieke waarde die u daarna ook definieert op uw AEM-server.
 
@@ -136,35 +136,35 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 2. Select **Settings** > **Security** > **Users**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![Schermopname toont de gebruikerstegel in Adobe Experience Manager.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
 3. Selecteer **Administrator** of een andere relevante gebruiker.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![Schermopname waarin de Beheergebruiker is gemarkeerd.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. Selecteer **Account settings** > **Manage TrustStore**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![Schermopname toont 'TrustStore beheren' onder 'Accountinstellingen'.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. Klik onder **Add Certificate from CER file** op **Select Certificate File**. Blader naar het certificaatbestand dat u hebt al gedownload uit de Azure-portal en selecteer het bestand.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![Schermopname die de knop 'Certificaatbestand selecteren' uitlicht.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
 6. Het certificaat wordt toegevoegd aan de TrustStore. Noteer de alias van het certificaat.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![Schermopname toont dat het certificaat is toegevoegd aan de TrustStore.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. Selecteer **authentication-service** op de pagina **Users**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![Schermopname waarin de verificatieservice op het scherm is gemarkeerd.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. Selecteer **Account settings** > **Create/Manage KeyStore**. Maak een KeyStore door een wachtwoord op te geven.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![Schermopname waarin 'KeyStore beheren' is gemarkeerd.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. Ga terug naar het beginscherm. Selecteer vervolgens **Settings** > **Operations** > **Web Console**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![Schermopname waarin 'Web-console' onder 'Bewerkingen' binnen de sectie 'Instellingen' is gemarkeerd.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     Hiermee opent u de configuratiepagina.
 
@@ -172,7 +172,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 10. Zoek **Adobe Granite SAML 2.0 Authentication Handler**. Selecteer vervolgens het pictogram **Add**.
 
-    ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![Schermopname waarin Adobe Granite SAML 2.0 Authentication Handler is gemarkeerd.](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. Voer de volgende handelingen uit op deze pagina.
 

@@ -8,16 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287254"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048148"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge
 
-Azure Blob Storage op IoT Edge biedt een [blok-BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) en [voegt een BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) -opslag oplossing toe aan de rand. Een Blob Storage-module op uw IoT Edge-apparaat gedraagt zich als een Azure Blob-service, behalve dat de blobs lokaal op uw IoT Edge apparaat worden opgeslagen. U kunt toegang krijgen tot uw blobs met dezelfde Azure Storage SDK-methoden of BLOB API-aanroepen die u al gebruikt. In dit artikel worden de concepten beschreven die betrekking hebben op Azure Blob Storage op IoT Edge-container waarop een BLOB-service op uw IoT Edge-apparaat wordt uitgevoerd.
+Azure Blob Storage op IoT Edge biedt een [blok-BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) en [voegt een BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) -opslag oplossing toe aan de rand. Een Blob Storage-module op uw IoT Edge-apparaat gedraagt zich als een Azure Blob-service, behalve dat de blobs lokaal op uw IoT Edge apparaat worden opgeslagen. U kunt toegang krijgen tot uw blobs met dezelfde Azure Storage SDK-methoden of BLOB API-aanroepen die u al gebruikt. In dit artikel worden de concepten beschreven die betrekking hebben op Azure Blob Storage op IoT Edge-container waarop een BLOB-service op uw IoT Edge-apparaat wordt uitgevoerd.
 
 Deze module is handig in scenario's:
 
@@ -160,7 +160,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>Logboek bestanden configureren
 
-Zie voor meer informatie over het configureren van logboek bestanden voor uw module deze [Aanbevolen procedures voor productie](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics).
+Zie voor meer informatie over het configureren van logboek bestanden voor uw module deze [Aanbevolen procedures voor productie](./production-checklist.md#set-up-logs-and-diagnostics).
 
 ## <a name="connect-to-your-blob-storage-module"></a>Verbinding maken met de Blob Storage-module
 

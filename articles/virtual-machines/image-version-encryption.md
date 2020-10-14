@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: dd2d42bb83afa5a97bd5bd71d7b1a4bcc506d93e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976161"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048080"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
@@ -41,7 +41,7 @@ Er zijn enkele beperkingen bij het gebruik van door de klant beheerde sleutels v
 
 - Coderings sleutel sets zijn regionale resources, zodat voor elke regio een andere versleutelings sleutel is ingesteld.
 
-- U kunt geen afbeeldingen delen die gebruikmaken van door de klant beheerde sleutels. 
+- U kunt geen afbeeldingen kopiëren of delen die gebruikmaken van door de klant beheerde sleutels. 
 
 - Wanneer u uw eigen sleutels hebt gebruikt om een schijf of installatie kopie te versleutelen, kunt u niet teruggaan naar met een platform beheerde sleutel voor het versleutelen van die schijven of installatie kopieën.
 

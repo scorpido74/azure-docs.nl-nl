@@ -1,24 +1,24 @@
 ---
 title: 'Quickstart: een telefoonnummer aanvragen bij Azure Communication Services'
 description: Meer informatie over het kopen van een telefoonnummer bij Communication Services met behulp van de Azure-portal.
-author: ddematheu2
-manager: nimag
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: dademath
-ms.date: 07/09/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298113"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756872"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Quickstart: Een telefoonnummer aanvragen met behulp van de Azure-portal
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Ga aan de slag met Azure Communication Services om een telefoonnummer te kopen met behulp van de Azure-portal.
 
@@ -41,7 +41,7 @@ Navigeer naar de blade Telefoonnummers in het resourcemenu.
 
 Druk op de knop `Get` om de wizard te starten. De wizard op de blade `Phone numbers` begeleidt u door een reeks vragen die u helpt bij het kiezen van het telefoonnummer dat het beste bij uw scenario past. 
 
-U moet eerst bij `Country/region` kiezen waar u het telefoonnummer wilt inrichten. Nadat u een land/regio hebt geselecteerd, moet u bij `phone plan` het telefoonabonnement selecteren dat het beste bij uw behoeften past. 
+U moet eerst bij `Country/region` kiezen waar u het telefoonnummer wilt inrichten. Nadat u een land/regio hebt geselecteerd, moet u bij `use case` het telefoonabonnement selecteren dat het beste bij uw behoeften past. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Schermopname van de hoofdpagina van een Communicatie Services-resource.":::
 
@@ -50,23 +50,13 @@ U moet eerst bij `Country/region` kiezen waar u het telefoonnummer wilt inrichte
 Het proces voor het selecteren van een telefoonabonnement bestaat uit twee stappen: 
 
 1. De selectie van het [nummertype](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
-2. De selectie van het [abonnement](../../concepts/telephony-sms/plan-solution.md#plans)
+2. De selectie van het [abonnement](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services)
 
 We bieden momenteel twee nummertypen: `Geographic` en `Toll-free`. Wanneer u een nummertype hebt geselecteerd, worden er verschillende abonnementen aangeboden waaruit u kunt kiezen.
 
-> [!NOTE]
-> Momenteel wordt alleen ondersteuning geboden voor het selecteren van telefoonnummers voor binnenkomende of uitgaande gesprekken. U kunt echter een telefoonnummer voor binnenkomende gesprekken kopen, en vervolgens de uitgaande beller-id zo configureren dat deze overeenkomt met het telefoonnummer voor binnenkomende gesprekken (wat gebruikers zien wanneer u hen belt vanuit uw Communication Services-toepassing).
-> Dit is alleen mogelijk bij gesprekken in twee richtingen. Sms-en in twee richtingen wordt systeemeigen ondersteund.
-
-In ons voorbeeld hebben we het nummertype `Toll-free` en het abonnement `Outbound calling` gekozen.
+In ons voorbeeld hebben we het nummertype `Toll-free` en de abonnementen `Outbound calling` en `Inbound and Outbound SMS` gekozen.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Schermopname van de hoofdpagina van een Communicatie Services-resource.":::
-
-### <a name="declare-purpose"></a>Doel aangeven
-
-Vervolgens wordt u in de wizard gevraagd waarvoor u het nummer wilt gebruiken. We verzamelen deze informatie om de juiste belastingen en regelgeving voor noodoproepen te kunnen toepassen.
-
-:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="Schermopname van de hoofdpagina van een Communicatie Services-resource.":::
 
 Klik op de knop `Next: Numbers` onder aan de pagina om de telefoonnummers die u wilt inrichten aan te passen.
 
@@ -106,12 +96,19 @@ Ga naar de Azure Communication Services-resource in de [Azure-portal](https://po
 
 :::image type="content" source="../media/manage-phone-azure-portal-start.png" alt-text="Schermopname van de hoofdpagina van een Communicatie Services-resource.":::
 
-Selecteer het tabblad Telefoonnummers in het menu om uw telefoonnummers te beheren.
+Selecteer de blade Telefoonnummers in het menu om uw telefoonnummers te beheren.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Schermopname van de hoofdpagina van een Communicatie Services-resource.":::
 
 > [!NOTE]
 > Het kan enkele minuten duren voordat de ingerichte nummers op deze pagina worden weergegeven.
+
+### <a name="customizing-phone-number-plans"></a>Abonnementen van telefoonnummers aanpassen
+Op de pagina `Numbers` kunt u het telefoonnummer selecteren door te klikken op het nummer waarvoor u het abonnement wilt aanpassen.
+
+:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Schermopname van de hoofdpagina van een Communicatie Services-resource.":::
+
+Selecteer de mogelijkheden in de lijst met beschikbare mogelijkheden voor bellen en sms en klik op `Confirm` om de selectie toe te passen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -119,7 +116,7 @@ Veelvoorkomende vragen en problemen:
 
 - Op dit moment kunt u alleen telefoonnummers kopen in de Verenigde Staten. Dit is gebaseerd op het factuuradres van het abonnement waaraan de resource is gekoppeld. U kunt de resource op dit moment niet naar een ander abonnement verplaatsen.
 
-- Wanneer een telefoonnummer wordt verwijderd, wordt het telefoonnummer pas vrijgegeven en kan het pas worden teruggekocht aan het einde van de factureringsperiode.
+- Wanneer een telefoonnummer wordt vrijgegeven, wordt het telefoonnummer pas vrijgegeven en kan het pas worden teruggekocht aan het einde van de factureringsperiode.
 
 - Wanneer een Communication Services-resource wordt verwijderd, worden de telefoonnummers die aan die resource zijn gekoppeld, automatisch op hetzelfde moment vrijgegeven.
 

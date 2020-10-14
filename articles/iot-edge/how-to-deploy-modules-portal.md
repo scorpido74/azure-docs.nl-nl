@@ -4,17 +4,16 @@ description: Gebruik uw IoT Hub in de Azure Portal om een IoT Edge module te pus
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/30/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978795"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048029"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modules implementeren vanuit de Azure Portal
 
@@ -35,6 +34,11 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 
 De Azure Portal bevat een wizard die u helpt bij het maken van het implementatie manifest, in plaats van het JSON-document hand matig te bouwen. Er zijn drie stappen: **modules toevoegen**, **routes opgeven**en de **implementatie controleren**.
 
+>[!NOTE]
+>De stappen in dit artikel zijn gebaseerd op de meest recente schema versie van de IoT Edge agent en hub. Schema versie 1,1 is uitgebracht samen met IoT Edge versie 1.0.10 en maakt de module opstart volgorde en de functies voor het door sturen van prioriteit.
+>
+>Als u implementeert op een apparaat waarop versie 1.0.9 of eerder wordt uitgevoerd, bewerkt u de **runtime-instellingen** in de stap **modules** van de wizard om schema versie 1,0 te gebruiken.
+
 ### <a name="select-device-and-add-modules"></a>Apparaat selecteren en modules toevoegen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw IoT Hub.
@@ -43,21 +47,30 @@ De Azure Portal bevat een wizard die u helpt bij het maken van het implementatie
 1. Selecteer op de bovenste balk **Modules instellen**.
 1. Geef in de sectie **container Registry-instellingen** van de pagina de referenties op voor toegang tot persoonlijke container registers die uw module installatie kopieën bevatten.
 1. Selecteer in de sectie **IOT Edge-modules** van de pagina de optie **toevoegen**.
-1. Bekijk de typen modules in de vervolg keuzelijst:
+1. Kies een van de drie typen modules in de vervolg keuzelijst:
 
    * **Module IOT Edge** : u geeft de module naam en URI van de container installatie kopie op. De afbeeldings-URI voor de voor beeld-SimulatedTemperatureSensor-module is bijvoorbeeld `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Als de module installatie kopie is opgeslagen in een persoonlijk container register, voegt u de referenties op deze pagina toe om de installatie kopie te openen.
    * **Marketplace-module** : modules die worden gehost op de Azure Marketplace. Voor sommige Marketplace-modules is aanvullende configuratie vereist. Controleer dus de module gegevens in de lijst met [IOT Edge modules van Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) .
    * **Azure stream Analytics module** : modules die zijn gegenereerd op basis van een Azure stream Analytics workload.
 
-1. Nadat u een module hebt toegevoegd, selecteert u de module naam in de lijst om de module-instellingen te openen. Vul zo nodig de optionele velden in. Zie [EdgeAgent gewenste eigenschappen](module-edgeagent-edgehub.md#edgeagent-desired-properties)voor meer informatie over de opties voor het maken van containers, het opnieuw opstarten van beleid en de gewenste status. Zie voor meer informatie over de module twee [gewenste eigenschappen definiëren of bijwerken](module-composition.md#define-or-update-desired-properties).
-1. Herhaal zo nodig stap 5 tot en met 8 om extra modules toe te voegen aan uw implementatie.
+1. Nadat u een module hebt toegevoegd, selecteert u de module naam in de lijst om de module-instellingen te openen. Vul zo nodig de optionele velden in.
+
+   Zie [module configuratie en-beheer](module-composition.md#module-configuration-and-management)voor meer informatie over de beschik bare module-instellingen.
+
+   Zie voor meer informatie over de module twee [gewenste eigenschappen definiëren of bijwerken](module-composition.md#define-or-update-desired-properties).
+
+1. Herhaal stap 6 tot en met 8 om extra modules toe te voegen aan uw implementatie.
 1. Selecteer **volgende: routes** om door te gaan naar de sectie routes.
 
 ### <a name="specify-routes"></a>Routes opgeven
 
-Op het tabblad **Routes** definieert u hoe berichten tussen modules en de IoT Hub worden uitgewisseld. Berichten worden gemaakt met behulp van naam/waarde-paren. Een route wordt standaard **route ring** genoemd en gedefinieerd als **van/messages/ \* in $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
+Op het tabblad **Routes** definieert u hoe berichten tussen modules en de IoT Hub worden uitgewisseld. Berichten worden gemaakt met behulp van naam/waarde-paren. De eerste implementatie voor een nieuw apparaat bevat standaard een route met de naam **route** en gedefinieerd als **van/messages/ \* in $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
 
-Voeg de routes toe of werk deze bij met informatie van [Declareer routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende: controleren + maken** om door te gaan naar de volgende stap van de wizard.
+De para meters **prioriteit** en **time to Live** zijn optionele para meters die u in een route definitie kunt gebruiken. Met de para meter Priority kunt u kiezen voor welke routes de berichten eerst moeten worden verwerkt of welke routes als laatste moeten worden verwerkt. Prioriteit wordt bepaald door het instellen van een getal van 0-9, waarbij 0 de hoogste prioriteit heeft. Met de para meter time to Live kunt u declareren hoe lang berichten in die route moeten worden bewaard totdat ze worden verwerkt of verwijderd uit de wachtrij.
+
+Zie voor meer informatie over het maken van routes [routes declareren](module-composition.md#declare-routes).
+
+Zodra de routes zijn ingesteld, selecteert u **volgende: controleren + maken** om door te gaan naar de volgende stap van de wizard.
 
 ### <a name="review-deployment"></a>Implementatie controleren
 

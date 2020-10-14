@@ -3,18 +3,21 @@ title: Azure Lab Services in micro soft teams
 description: Biedt een overzicht van het gebruik van Azure Lab Services in micro soft teams.
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 8b70ab3cbf1a342646f6a2897550c4bf8f7601a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946666"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047825"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Azure Lab Services in micro soft teams
 
-Azure Lab Services eigen aren/makers kunnen nu Labs maken in micro soft teams.
+Azure Lab Services kunnen worden gebruikt in micro soft-teams met behulp van **Azure Lab Services** teams-app. Elke team eigenaar met eigenaar/Inzender/Maker toegang tot de Lab-accounts kan Labs maken en virtuele machines inrichten voor iedereen in het team.
 
-In dit artikel vindt u een overzicht van de voor delen van teams-integratie en koppelingen naar andere artikelen met instructies voor het beheren van de Azure Lab Services binnen teams. 
+In dit artikel vindt u een overzicht van de voor delen van het gebruik van Azure Lab Services binnen teams, en koppelingen naar andere artikelen voor meer informatie over het maken en beheren van Labs in teams. 
+
+> [!NOTE]
+>**Azure Lab Services** Teams-app kan alleen worden toegevoegd aan een team en kan niet worden toegevoegd aan individuele chats of chat sessies van groepen.
 
 ## <a name="benefits"></a>Voordelen
 
@@ -31,8 +34,8 @@ Azure Lab Services integratie met micro soft teams helpt docenten bij het instel
 
 Zie de volgende artikelen:
 
-- [Aan de slag en een Lab-service Lab maken op basis van teams](how-to-get-started-create-lab-within-teams.md)
-- [Gebruikers lijsten van Lab-Services beheren vanuit teams](how-to-manage-user-lists-within-teams.md)
-- [Een VM-groep in Lab-Services beheren vanuit teams](how-to-manage-vm-pool-within-teams.md)
-- [Planningen voor Lab-Services maken op basis van teams](how-to-create-schedules-within-teams.md)
-- [Toegang tot een virtuele machine (weer gave student) in Lab-services van teams](how-to-access-vm-for-students-within-teams.md)
+- [Aan de slag en een lab maken in teams](how-to-get-started-create-lab-within-teams.md)
+- [Test gebruikers lijsten in teams beheren](how-to-manage-user-lists-within-teams.md)
+- [De VM-groep van het lab in teams beheren](how-to-manage-vm-pool-within-teams.md)
+- [Lab-schema's maken en beheren in teams](how-to-create-schedules-within-teams.md)
+- [Toegang tot een virtuele machine in teams – student View](how-to-access-vm-for-students-within-teams.md)

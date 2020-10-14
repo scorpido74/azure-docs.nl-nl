@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551027"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817049"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Zelfstudie: Freedcamp integreren met Azure Active Directory
 
@@ -108,11 +108,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 4. Klik in de rechterbovenhoek van de pagina op **profiel** en navigeer vervolgens naar **Mijn account**.
 
-    ![Configuratie van Chargebee](./media/freedcamp-tutorial/config01.png)
+    ![Schermopname waarop 'Profiel' en 'Mijn account' zijn geselecteerd.](./media/freedcamp-tutorial/config01.png)
 
 5. Klik in het linkermenu op **SSO** en voer op de pagina **Uw SSO-verbinding** de volgende stappen uit:
 
-    ![Configuratie van Chargebee](./media/freedcamp-tutorial/config02.png)
+    ![Schermopname waarop 'Eenmalige aanmelding' is geselecteerd in de menubalk aan de linkerkant en die de pagina 'Uw SSO-verbinding' toont met ingevoerde waarden en de knop 'Verzenden' geselecteerd.](./media/freedcamp-tutorial/config02.png)
 
     a. Typ in het tekstvak **Titel** de titel.
 
@@ -168,7 +168,7 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Freedcamp, moet
 
 3. Voer aan de rechterzijde van de pagina Systeem beheren de volgende stappen uit:
 
-    ![Configuratie van Chargebee](./media/freedcamp-tutorial/config04.png)
+    ![Schermopname waarop de knop 'Gebruikers toevoegen of uitnodigen is geselecteerd', het veld 'E-mail' is gemarkeerd en de knop 'Gebruiker toevoegen' is geselecteerd.](./media/freedcamp-tutorial/config04.png)
 
     a. Klik op **Gebruikers toevoegen of uitnodigen**.
 

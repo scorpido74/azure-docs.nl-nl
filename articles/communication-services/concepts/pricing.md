@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460931"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761223"
 ---
 # <a name="pricing-scenarios"></a>Prijsscenario's
 
@@ -59,7 +59,7 @@ Met Communication Services kunt u uw toepassing uitbreiden met de mogelijkheid o
 
 ### <a name="price"></a>Prijs
 
-- Er wordt $0,0008 in rekening gebracht voor elk verzonden chatbericht.
+Er wordt $0,0008 in rekening gebracht voor elk verzonden chatbericht.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Prijsvoorbeeld: Chat tussen twee gebruikers 
 
@@ -77,3 +77,46 @@ Rose ziet de berichten en mengt zich in de chat. Casey ontvangt ondertussen een 
 **Kostenberekeningen** 
 
 - Aantal verzonden berichten (20 + 30 + 18 + 30 + 25 + 35) x $0,0008 = $0,1264
+
+
+## <a name="telephony-and-sms"></a>Telefonie en sms
+
+## <a name="price"></a>Prijs 
+
+Telefoonservices worden per minuut berekend, en sms-berichten worden per bericht berekend. De prijzen zijn afhankelijk van het type en de locatie van het nummer dat u gebruikt, evenals de bestemming van uw oproepen en sms-berichten.
+
+### <a name="telephone-calling"></a>Telefoonoproepen
+
+Traditionele telefonische oproep (oproep die plaatsvindt via het openbare telefoonnetwerk) is beschikbaar met betalen per gebruik voor telefoonnummers in de Verenigde Staten. De prijs wordt per minuut berekend op basis van het type nummer dat wordt gebruikt en de bestemming van de oproep. De prijsinformatie voor de meest populaire belbestemmingen vindt u in de volgende tabel. Raadpleeg de [gedetailleerde prijslijst](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) voor een volledige lijst met bestemmingen.
+
+
+#### <a name="united-states-calling-prices"></a>Prijzen voor bellen in de Verenigde Staten
+
+De volgende prijzen zijn inclusief de vereiste communicatiebelastingen en -kosten tot en met 30 juni 2021:
+
+|Type getal   |Om oproepen te plaatsen   |Om oproepen te ontvangen|
+|--------------|-----------|------------|
+|Lokaal     |Vanaf $0,013/min       |$0,0085/min        |
+|Gratis |$0,013/min   |$0,0220/min |
+
+#### <a name="other-calling-destinations"></a>Overige belbestemmingen
+
+De volgende prijzen zijn inclusief de vereiste communicatiebelastingen en -kosten tot en met 30 juni 2021:
+
+|Bellen naar   |Prijs per minuut|
+|-----------|------------|
+|Canada     |Vanaf $0,013/min   |
+|Verenigd Koninkrijk     |Vanaf $0,015/min   |
+|Duitsland     |Vanaf $0,015/min   |
+|Frankrijk     |Vanaf $0,016/min   |
+
+
+### <a name="sms"></a>Sms
+
+Sms biedt betalen per gebruik. De prijs wordt per bericht in rekening gebracht op basis van de bestemming van het bericht. Berichten kunnen worden verzonden door gratis telefoonnummers naar telefoonnummers die zich binnen de Verenigde Staten bevinden. Houd er rekening mee dat lokale (geografische) telefoonnummers niet kunnen worden gebruikt voor het verzenden van sms-berichten.
+
+De volgende prijzen zijn inclusief de vereiste communicatiebelastingen en -kosten tot en met 30 juni 2021:
+
+|Land   |Berichten verzenden|Berichten ontvangen|
+|-----------|------------|------------|
+|Verenigde Staten (gratis)    |$0,0075/bericht   | $0,0075/bericht |

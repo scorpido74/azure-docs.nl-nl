@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530071"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Zelfstudie: Azure Active Directory-integratie met Cezanne HR Software
 
@@ -130,19 +130,19 @@ Voor het configureren van eenmalige aanmelding voor Azure Active Directory met C
 
 2. Klik in het linkernavigatiedeelvenster op **Systeeminstellingen**. Ga naar **Beveiligingsinstellingen**. Navigeer vervolgens naar **Configuratie voor eenmalige aanmelding**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![Schermopname met de Cezanne HR Software-tenant met Beveiligingsinstellingen en Eenmalige aanmelding geselecteerd.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. Vink in het scherm **Toestaan dat gebruikers zich aanmelden met behulp van de volgende service voor eenmalige aanmelding** het vak **SAML 2.0** aan en selecteer de optie **Geavanceerde configuratie**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![Schermopname met het deelvenster Gebruikers toestaan met SAML 2.0 en Geavanceerde configuratie geselecteerd.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. Klik op de knop **Nieuwe toevoegen**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![Schermopname met de knop Nieuwe toevoegen.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. Voer de volgende stappen uit in de sectie **SAML 2.0 IDENTITY PROVIDERS**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![Schermopname met een deelvenster waarin u de waarden kunt invoeren die in deze stap worden beschreven.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. Voer de naam van uw id-provider in als **Weergavenaam**.
 
@@ -160,7 +160,7 @@ Voor het configureren van eenmalige aanmelding voor Azure Active Directory met C
 
 6. Klik op de knop **Save**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![Schermopname met de knop Save voor configuratie van eenmalige aanmelding.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -223,11 +223,11 @@ Om het mogelijk te maken dat Azure Active Directory-gebruikers zich aanmelden bi
 
 2. Klik in het linkernavigatiedeelvenster op **Systeeminstellingen**. Ga naar **Gebruikers beheren**. Navigeer vervolgens naar **Nieuwe gebruiker toevoegen**.
 
-    ![Nieuwe gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Nieuwe gebruiker")
+    ![Schermopname met de Cezanne HR Software-tenant met Gebruikers beheren en Nieuwe gebruiker toevoegen geselecteerd.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Nieuwe gebruiker")
 
 3. In de sectie **PERSOONLIJKE DETAILS** volgt u onderstaande stappen:
 
-    ![Nieuwe gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Nieuwe gebruiker")
+    ![Schermopname met de sectie PERSOONLIJKE DETAILS waarin u de waarden kunt invoeren die in deze stap worden beschreven.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Nieuwe gebruiker")
 
     a. Stel **Interne gebruiker** in op UIT.
 
@@ -239,7 +239,7 @@ Om het mogelijk te maken dat Azure Active Directory-gebruikers zich aanmelden bi
 
 4. Voer in het gedeelte **Accountinformatie** onderstaande stappen uit:
 
-    ![Nieuwe gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Nieuwe gebruiker")
+    ![Schermopname met Accountinformatie waarin u de waarden kunt invoeren die in deze stap worden beschreven.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Nieuwe gebruiker")
 
     a. In het tekstvak **Gebruikersnaam** typt u het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
 
@@ -251,15 +251,15 @@ Om het mogelijk te maken dat Azure Active Directory-gebruikers zich aanmelden bi
 
 5. Navigeer naar het tabblad **Eenmalige aanmelding** en selecteer **Nieuwe toevoegen** in het vlak **SAML 2.0-id's**.
 
-    ![Gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Gebruiker")
+    ![Schermopname met het tabblad Eenmalige aanmelding waar u Nieuwe toevoegen kunt selecteren.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Gebruiker")
 
 6. Kies uw id-provider voor de **Id-provider** en voer in het tekstvak van **Gebruikers-id** het e-mailadres van het Britta Simon-account in.
 
-    ![Gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Gebruiker")
+    ![Schermopname met SAML 2.0-id's waar u uw Id-provider en Gebruikers-id kunt selecteren.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Gebruiker")
 
 7. Klik op de knop **Save**.
 
-    ![Gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Gebruiker")
+    ![Schermopname met de knop Opslaan voor Gebruikersinstellingen.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Gebruiker")
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 

@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e5cfc1e27bae10a1c67e4506afe9db825664785f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35398d60008ac52ba16dca0a0201f8c2f2101a0f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943681"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758554"
 ---
 # <a name="sms-concepts"></a>Sms-concepten
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Met Azure Communication Services kunt u sms-tekstberichten verzenden en ontvangen met behulp van de sms-clientbibliotheken van Communication Services. Deze clientbibliotheken kunnen worden gebruikt ter ondersteuning van klantenservicescenario's, afspraakherinneringen, tweeledige verificatie en andere communicatie in real time. Met sms in Communication Services kunt u op een betrouwbare manier berichten verzenden en inzicht krijgen in de bezorgings- en responspercentages voor uw campagnes.
 
@@ -29,10 +29,11 @@ De belangrijkste kenmerken van de SMS-clientbibliotheken van Azure Communication
 - **Tweerichtingsgesprekken** voor scenario's zoals klantondersteuning, waarschuwingen en afspraakherinneringen.
 - **Betrouwbare levering** met realtime leveringsrapporten voor berichten die vanuit uw toepassing worden verzonden.
 - **Analytische gegevens** om uw gebruikspatronen en de klantbetrokkenheid bij te houden.
-- **Afmelding**ondersteuning om automatisch afmelding voor gratis nummers te detecteren en te respecteren. Communicatie Services detecteert STOP- en START-berichten en verzendt de volgende standaardantwoorden naar eindgebruikers: 
-  - STOP - *'U bent afgemeld voor berichten van dit nummer. Antwoord met START om u opnieuw aan te melden.'*
-  - START - *'U bent aangemeld voor berichten van dit nummer. Antwoord met STOP om u af te melden.'*
-  - De STOP- en START-berichten worden naar u doorgestuurd. Azure Communication Services moedigt u aan deze afmeldingen te controleren en te implementeren om ervoor te zorgen dat er geen verdere berichten worden verzonden naar ontvangers die zich voor uw communicatie hebben afgemeld.
+- **Afmelding**ondersteuning om automatisch afmelding voor gratis nummers te detecteren en te respecteren. Afmeldingen voor Amerikaanse gratis nummers zijn verplicht en worden afgedwongen door Amerikaanse providers.
+  - STOP - Als de ontvanger van een tekstbericht zich wil afmelden, kan deze 'STOP' versturen naar het gratis nummer. De provider verzendt het volgende standaardantwoord op STOP: *‘NETWORK MSG: U hebt gereageerd met het woord 'stop', waarmee alle tekstberichten worden geblokkeerd die vanaf dit nummer worden verzonden. Stuur ‘unstop’ terug om opnieuw berichten te ontvangen.’*
+  - START/UNSTOP - Als de ontvanger zich opnieuw wil abonneren op sms-berichten van een gratis nummer, kan hij of zij 'START' of 'UNSTOP' naar het gratis nummer verzenden. De provider verzendt het volgende standaardantwoord op START/UNSTOP: *‘NETWORK MSG: U hebt 'unstop' geantwoord en zal opnieuw berichten ontvangen van dit nummer.'*
+  - Azure Communication Services detecteert het STOP-bericht en blokkeert alle verdere berichten aan de ontvanger. Het leveringsrapport geeft een mislukte levering aan met status van het bericht als ‘Afzender geblokkeerd voor deze ontvanger.’
+  - De berichten STOP, UNSTOP en START worden naar u doorgestuurd. Azure Communication Services moedigt u aan deze afmeldingen te controleren en te implementeren om ervoor te zorgen dat er geen verdere verzendpogingen worden gedaan naar ontvangers die zich voor uw communicatie hebben afgemeld.
 
 
 ## <a name="next-steps"></a>Volgende stappen

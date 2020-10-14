@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902453"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046567"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Problemen met uw IoT Edge apparaat oplossen
 
@@ -251,7 +251,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>Controleer uw firewall en poort configuratie regels
 
-Zie [een communicatie protocol kiezen](../iot-hub/iot-hub-devguide-protocols.md)Azure IOT Edge communicatie van een on-premises server naar Azure-Cloud met ondersteunde IOT hub protocollen toestaat. Voor een betere beveiliging worden communicatie kanalen tussen Azure IoT Edge en Azure IoT Hub altijd geconfigureerd als uitgaand verkeer. Deze configuratie is gebaseerd op het [service-ondersteunde communicatie patroon](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), waarmee de kwets baarheid voor een kwaadwillende entiteit wordt geminimaliseerd. Inkomende communicatie is alleen vereist voor specifieke scenario's waarbij Azure-IoT Hub berichten naar het Azure IoT Edge apparaat moet pushen. Cloud-naar-apparaat-berichten worden beveiligd met behulp van beveiligde TLS-kanalen en kunnen verder worden beveiligd met X. 509-certificaten en TPM-apparaat modules. De Azure IoT Edge Security Manager bepaalt hoe deze communicatie tot stand kan worden gebracht. Zie [IOT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Zie [een communicatie protocol kiezen](../iot-hub/iot-hub-devguide-protocols.md)Azure IOT Edge communicatie van een on-premises server naar Azure-Cloud met ondersteunde IOT hub protocollen toestaat. Voor een betere beveiliging worden communicatie kanalen tussen Azure IoT Edge en Azure IoT Hub altijd geconfigureerd als uitgaand verkeer. Deze configuratie is gebaseerd op het [service-ondersteunde communicatie patroon](/archive/blogs/clemensv/service-assisted-communication-for-connected-devices), waarmee de kwets baarheid voor een kwaadwillende entiteit wordt geminimaliseerd. Inkomende communicatie is alleen vereist voor specifieke scenario's waarbij Azure-IoT Hub berichten naar het Azure IoT Edge apparaat moet pushen. Cloud-naar-apparaat-berichten worden beveiligd met behulp van beveiligde TLS-kanalen en kunnen verder worden beveiligd met X. 509-certificaten en TPM-apparaat modules. De Azure IoT Edge Security Manager bepaalt hoe deze communicatie tot stand kan worden gebracht. Zie [IOT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
 Hoewel IoT Edge een verbeterde configuratie biedt voor het beveiligen van Azure IoT Edge runtime en geïmplementeerde modules, is het nog steeds afhankelijk van de onderliggende computer-en netwerk configuratie. Daarom is het van cruciaal belang om ervoor te zorgen dat de juiste netwerk-en firewall regels worden ingesteld voor beveiligde Edge-to-Cloud communicatie. De volgende tabel kan worden gebruikt als richt lijn bij de configuratie van firewall regels voor de onderliggende servers waarop Azure IoT Edge runtime wordt gehost:
 

@@ -3,19 +3,19 @@ title: Gegevensfeeds van verschillende bronnen toevoegen aan metrische gegevens 
 titleSuffix: Azure Cognitive Services
 description: verschillende gegevensfeeds toevoegen aan metrische gegevens Advisor
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.author: aahi
-ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971945"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046907"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Gegevensfeeds van verschillende gegevens bronnen toevoegen aan Metrics Advisor
 
@@ -43,7 +43,7 @@ In dit artikel vindt u informatie over de instellingen en vereisten voor het ver
 |[**Azure Data Explorer (Kusto)**](#kusto) | Basic<br>ManagedIdentity|
 |[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>Service-principal<br>Service-Principal van sleutel kluis<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | Basic<br>ManagedIdentity<br>Service-principal<br>Service-Principal van sleutel kluis<br>AzureSQLConnectionString
-|[**Azure Table Storage**](#table) | Basic | 
+|[**Azure-tabelopslag**](#table) | Basic | 
 |[**ElasticSearch**](#es) | Basic |
 |[**HTTP-aanvraag**](#http) | Basic | 
 |[**InfluxDB (InfluxQL)**](#influxdb) | Basic |
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure-tabelopslag</span>
 
 * **Verbindings reeks**: raadpleeg [een Connection String weer geven en kopiëren](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Ftables%2Ftoc.json&tabs=azure-portal#view-account-access-keys) voor informatie over het ophalen van de Connection String van Azure Table Storage.
 

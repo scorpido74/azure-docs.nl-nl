@@ -1,6 +1,6 @@
 ---
-title: Op de architectuur IoT verbonden logistiek | Microsoft Docs
-description: Een architectuur van IoT Connected logistiek Application Temp late for IoT Central
+title: Architectuur van verbonden IoT-logistiek | Microsoft Docs
+description: Een architectuur van een toepassingssjabloon voor verbonden IoT-logistiek voor IoT Central
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
@@ -9,43 +9,43 @@ ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81686232"
 ---
-# <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architectuur van IoT Central verbonden logistiek-toepassings sjabloon
+# <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architectuur van een toepassingssjabloon voor verbonden logistiek voor IoT Central
 
 
 
-Partners & klant kunnen de app-sjabloon & volgende richt lijnen gebruiken voor het ontwikkelen van end-to-end **verbonden logistiek-oplossingen**.
+Partners en klanten kunnen de toepassingssjabloon en de volgende richtlijnen gebruiken om end-to-end-oplossingen voor **verbonden logistiek** te ontwikkelen.
 
 > [!div class="mx-imgBorder"]
-> ![dash board verbonden logistiek](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
+> ![dashboard voor verbonden logistiek](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
 
-1. Set met IoT-Tags voor het verzenden van telemetriegegevens naar een gateway apparaat
-2. Gateway apparaten die telemetrie en geaggregeerde inzichten verzenden naar IoT Central
-3. Gegevens worden doorgestuurd naar de gewenste Azure-service voor manipulatie
-4. Azure-Services zoals ASA of Azure Functions kunnen worden gebruikt om gegevens stromen opnieuw op te maken en te verzenden naar de gewenste opslag accounts 
-5. Verschillende zakelijke werk stromen kunnen worden aangedreven door zakelijke toepassingen voor eind gebruikers
+1. Set IoT-tags die telemetriegegevens naar een gatewayapparaat verzenden
+2. Gatewayapparaten die telemetrie en geaggregeerde inzichten naar IoT Central verzenden
+3. Gegevens worden gerouteerd naar de gewenste Azure-service voor bewerking
+4. Azure-services zoals ASA of Azure Functions kunnen worden gebruikt om gegevensstromen te transformeren en te verzenden naar de gewenste opslagaccounts 
+5. Zakelijke toepassingen voor eindgebruikers kunnen worden gebruikt in verschillende zakelijke werkstromen
 
 ## <a name="details"></a>Details
-De volgende sectie bevat een overzicht van elk deel van de telemetrie-opname van de conceptuele architectuur van IoT-Tags & gateways
+In het volgende gedeelte worden de verschillende onderdelen van de conceptuele architectuur voor opname van telemetriegegevens van IoT-tags en gateways beschreven.
 
 ## <a name="iot-tags"></a>IoT-Tags
-IoT-Tags bieden fysieke, omgevings-en omgevings sensor mogelijkheden zoals Tempe ratuur, vochtigheid, schokken, kantel &licht. IoT-Tags maken meestal verbinding met het gateway apparaat via ZigBee (802.15.4). Tags zijn goedkopere Sens oren; Daarom kunnen ze aan het einde van een typische logistiek traject worden verwijderd om uitdagingen te voor komen met een omgekeerde logistiek.
+IoT-tags bieden sensormogelijkheden voor fysieke, lucht- en omgevingsomstandigheden zoals temperatuur, luchtvochtigheid, trillingen, kantelhoek en licht. IoT-tags maken doorgaans via Zigbee (802.15.4) verbinding met een gateway-apparaat. Tags zijn een goedkoper alternatief voor sensoren. U kunt ze aan het eind van een logistiektraject wegdoen om uitdagingen op het gebied van omgekeerde logistiek te vermijden.
 
 ## <a name="gateway"></a>Gateway
-Gateways kunnen ook fungeren als IoT-Tags met hun omgevings detectie mogelijkheden. Met de gateway kunt u Azure IoT-Cloud connectiviteit (MQTT) upstreamen met behulp van mobiele, Wi-Fi-kanalen.  De modi Bluetooth, NFC en 802.15.4 Wireless Sensor Network (WSN) worden gebruikt voor downstream-communicatie met IoT-Tags. Gateways bieden end-to-end veilige Cloud connectiviteit, IoT-Tags koppelen, aggregatie van sensor gegevens, gegevens retentie en de mogelijkheid om alarm drempels te configureren.
+Gateways kunnen ook fungeren als IoT-tags omdat ze over mogelijkheden voor omgevingsdetectie beschikken. De gateway maakt upstream connectiviteit met de Azure IoT-cloud (MQTT) mogelijk via mobiele en wifi-kanalen.  De modi voor Bluetooth, NFC en draadloze sensornetwerken op basis van 802.15.4 worden gebruikt voor downstream communicatie met IoT-tags. Gateways bieden volledig beveiligde cloudconnectiviteit, koppeling van IoT-tags, aggregatie van sensorgegevens, gegevensretentie en de mogelijkheid om waarschuwingsdrempels te configureren.
 
 ## <a name="device-management-with-iot-central"></a>Apparaatbeheer met IoT Central 
-Azure IoT Central is een platform voor oplossings ontwikkeling dat de connectiviteit, configuratie en het beheer van IoT-apparaten vereenvoudigt. Het platform vermindert de belasting en de kosten van IoT-Apparaatbeheer,-bewerkingen en gerelateerde ontwikkelingen aanzienlijk. Klanten & partners kunnen een end-to-end bedrijfs oplossingen bouwen om een digitale feedback-lus in logistiek te bereiken.
+Azure IoT Central is een platform voor het ontwikkelen van oplossingen waarmee de connectiviteit, de configuratie en het beheer van IoT-apparaten wordt vereenvoudigd. Het platform vermindert de lasten en de kosten van het beheren en werken met IoT-apparaten en daaraan gerelateerde ontwikkelingen aanzienlijk. Klanten en partners kunnen end-to-end-bedrijfsoplossingen ontwikkelen om digitale feedbacklussen voor logistiek te realiseren.
 
-## <a name="business-insights-and-actions-using-data-egress"></a>Zakelijke inzichten en acties met gegevens uitvoer 
-IoT Central-platform biedt uitgebreide uitbreidings opties door middel van een continue gegevens export (COB) en Api's. Zakelijke inzichten op basis van gegevens verwerking via telemetrie of ruwe telemetrie worden meestal geëxporteerd naar een gewenste LOB-toepassing. Dit kan worden bereikt met behulp van webhook, service bus, Event Hub of blobopslag om machine learning modellen te bouwen, te trainen en te implementeren & meer verrijkend inzicht.
+## <a name="business-insights-and-actions-using-data-egress"></a>Zakelijke inzichten en acties met behulp van uitgaande gegevens 
+Het IoT Central-platform biedt veel uitbreidingsopties door middel van continue gegevensexport en API's. Zakelijke inzichten gebaseerd op telemetriegegevensverwerking of onbewerkte telemetrie worden doorgaans geëxporteerd naar een Line-Of-Business-toepassing van uw voorkeur. Dit kan worden bereikt met webhook, Service Bus, Event Hub of Blob Storage om Machine Learning-modellen te bouwen, te trainen en te implementeren en inzichten verder te verrijken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het implementeren van een sjabloon voor een [verbonden logistiek-oplossing](./tutorial-iot-central-connected-logistics.md)
-* Meer informatie over [IOT Central Retail-sjablonen](./overview-iot-central-retail.md)
-* Raadpleeg [IOT Central Overview](../core/overview-iot-central.md) voor meer informatie over IOT Central
+* Meer informatie over hoe u een [template voor verbonden logistiek](./tutorial-iot-central-connected-logistics.md) kunt implementeren
+* Meer informatie over [IoT Central-retailsjablonen](./overview-iot-central-retail.md)
+* Zie [Overzicht van IoT Central](../core/overview-iot-central.md) voor meer informatie over IoT Central

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985891"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821167"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Zelfstudie: Azure Active Directory-integratie met GitHub voor eenmalige aanmelding
 
@@ -91,7 +91,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 5. In de GitHub-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **Unieke gebruikers-id** is toegewezen aan **user.userprincipalname**. In de GitHub-toepassing wordt verwacht dat **Unieke gebruikers-id (naam-id)** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname die de sectie 'Gebruikerskenmerken' toont met het pictogram 'Bewerken' geselecteerd.](common/edit-attribute.png)
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -149,11 +149,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Ga naar **Settings** en klik op **Security**
 
-    ![Instellingen](./media/github-tutorial/security.png)
+    ![Schermopname die het GitHub-menu 'Organization settings' toont met 'Security' geselecteerd.](./media/github-tutorial/security.png)
 
 3. Schakel het selectievakje **Enable SAML authentication** in. De velden voor het configureren van eenmalige aanmelding worden zichtbaar. voer de volgende stappen uit:
 
-    ![Instellingen](./media/github-tutorial/saml-sso.png)
+    ![Schermopname die de sectie 'Eenmalige aanmelding met SAML' met SAML-verificatie inschakelen' toont met URL-tekstvakken gemarkeerd.](./media/github-tutorial/saml-sso.png)
 
     a. Kopieer de waarde van **URL voor enkele aanmelding** en plak deze waarde in het vak **Aanmeldings-URL** in **Standaard SAML-configuratie** in de Azure-portal.
     
@@ -161,7 +161,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 4. Configureer de volgende velden:
 
-    ![Instellingen](./media/github-tutorial/configure.png)
+    ![Schermopname die de tekstvakken 'Aanmeldings-URL', 'Uitgever' en 'Openbaar certificaat' toont.](./media/github-tutorial/configure.png)
 
     a. Plak in het tekstvak **Sign on URL** de waarde van de **aanmeldings-URL** die u uit de Azure-portal hebt gekopieerd.
 
@@ -208,7 +208,7 @@ Het doel van deze sectie is om in GitHub een gebruiker te maken met de naam Brit
 
     b. Klik op **Send Invitation**.
 
-    ![Invite People](./media/github-tutorial/send-invitation.png "Invite People")
+    ![Schermopname die het dialoogvenster 'Invite member' toont met 'Member' en de knop 'Send invitation' geselecteerd.](./media/github-tutorial/send-invitation.png "Invite People")
 
     > [!NOTE]
     > De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om zijn account te bevestigen voordat het actief wordt.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fcc9ab0811c447cebff825a0c45c9dac877219c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530588"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761733"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Zelfstudie: Carbonite Endpoint Backup integreren met Azure Active Directory
 
@@ -129,19 +129,19 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 4. Klik in het linkerdeelvenster op het **Bedrijf**.
 
-    ![Configuratie Carbonite Endpoint Backup ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![Schermopname met Carbonite-eindpunt waarbij Bedrijf is geselecteerd.](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. Klik op **Eenmalige aanmelding**.
 
-    ![Configuratie Carbonite Endpoint Backup ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![Schermopname met Bedrijf waarbij Eenmalige aanmelding is geselecteerd.](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. Klik op **Inschakelen** en klik vervolgens op **Instellingen bewerken** om te configureren.
 
-    ![Configuratie Carbonite Endpoint Backup ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![Schermopname die het tabblad Eenmalige aanmelding toont en de instellingen voor Inschakelen en Bewerken zijn gemarkeerd.](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. Voer op de pagina instellingen voor **Eenmalige aanmelding** de volgende stappen uit:
 
-    ![Configuratie Carbonite Endpoint Backup ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![Schermopname die het tabblad Eenmalige aanmelding toont met de informatie die in deze stap wordt beschreven.](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. Plak in het tekstvak **Naam van id-provider** de waarde van de **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 
@@ -187,11 +187,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Gebruikers** in het linkerdeelvenster en vervolgens op **Gebruikers toevoegen**.
 
-    ![Gebruiker toevoegen in Carbonite Endpoint Backup](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![Schermopname die de pagina Carbonite-eindpunt toont met Gebruikers en Gebruikers toevoegen geselecteerd.](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. Voer op de pagina **Gebruiker toevoegen** de volgende stappen uit:
 
-    ![Gebruiker toevoegen in Carbonite Endpoint Backup](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![Schermopname die de pagina Gebruiker toevoegen toont, waar u de stappen kunt uitvoeren die hier worden beschreven.](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. Voer **e-mailadres**, **voornaam** en **achternaam** van de gebruiker in en geef de vereiste machtigingen aan de gebruiker op basis van de vereisten van de organisatie.
 

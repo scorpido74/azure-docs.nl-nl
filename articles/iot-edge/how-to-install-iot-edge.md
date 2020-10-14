@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: e5dc5601be5bd6d8003b196b5e7768e66bc48478
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979572"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045683"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>De runtime van Azure IoT Edge installeren of verwijderen
 
@@ -267,7 +267,7 @@ Als uw apparaat offline is tijdens de installatie, of als u een specifieke versi
 
 4. U kunt eventueel ook een installatie programma downloaden voor het herdistribueerbare pakket van Visual C++. Het Power shell-script maakt bijvoorbeeld gebruik van deze versie: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Sla het installatie programma in dezelfde map op uw IoT-apparaat op als de IoT Edge bestanden.
 
-5. Als u wilt installeren met offline onderdelen, [punt bron](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) de lokale kopie van het Power shell-script. 
+5. Als u wilt installeren met offline onderdelen, [punt bron](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) de lokale kopie van het Power shell-script. 
 
 6. Voer de opdracht [Deploy-IoTEdge](reference-windows-scripts.md#deploy-iotedge) uit met de `-OfflineInstallationPath` para meter. Geef het absolute pad naar de bestands directory op. Bijvoorbeeld:
 

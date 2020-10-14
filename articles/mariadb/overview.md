@@ -1,6 +1,6 @@
 ---
-title: Overzicht-Azure Database for MariaDB
-description: Meer informatie over de Azure Database for MariaDB-service, een relationele database service in de micro soft Cloud op basis van de MySQL Community Edition.
+title: 'Overzicht: Azure Database for MariaDB'
+description: Meer informatie over de Azure Database for MariaDB-service, een relationele databaseservice in de Microsoft-cloud die op MySQL Community Edition is gebaseerd.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -8,22 +8,22 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
 ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79535558"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Wat is Azure Database for MariaDB?
 
-Azure Database for MariaDB is een relationele databaseservice in de Microsoft-cloud. Azure Database for MariaDB is gebaseerd op de [MariaDB Community-editie](https://mariadb.org/download/) (beschikbaar onder de GPLv2-licentie) data base-engine versie 10,2 en 10,3.
+Azure Database for MariaDB is een relationele databaseservice in de Microsoft-cloud. Azure Database for MariaDB is gebaseerd op de database-engine van [MariaDB Community Edition](https://mariadb.org/download/) (beschikbaar onder de GPLv2-licentie), versie 10.2 en 10.3.
 
-Azure Database for MariaDB levert:
+Azure Database for MariaDB biedt:
 
 - Ingebouwde hoge beschikbaarheid zonder extra kosten.
 - Voorspelbare prestaties, tegen all-inclusive prijzen op basis van betalen per gebruik.
-- Schalen naar behoefte, binnen enkele seconden.
-- Beveiliging ter bescherming van gevoelige data-at-rest en in-motion.
+- U kunt binnen enkele seconden schalen.
+- Beveiligde bescherming van gevoelige data-at-rest en -in-motion.
 - Automatische back-ups en herstel naar een tijdstip tot 35 dagen geleden.
 - Beveiliging en naleving van bedrijfskwaliteit.
 
@@ -53,7 +53,7 @@ De toonaangevende serviceovereenkomst (SLA) van Azure met 99,99% beschikbaarheid
 
 ## <a name="secure-your-data"></a>Uw gegevens beveiligen
 
-Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. Zie het [overzicht van beveiliging](concepts-security.md)voor meer informatie over Azure database for MariaDB beveiligings functies.
+Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. Zie het [beveiligingsoverzicht](concepts-security.md) voor meer informatie over de beveiligingsfuncties van Azure Database for MariaDB.
 
 ## <a name="contacts"></a>Contactpersonen
 
@@ -67,7 +67,7 @@ U kunt ook contact opnemen met de volgende aanspreekpunten:
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een inleiding tot Azure Database for MariaDB hebt gelezen, bent u klaar voor het volgende:
-- Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/mariadb/) voor kostprijs vergelijkingen en reken machines. 
-- Ga aan de slag door [uw eerste server te maken](quickstart-create-mariadb-server-database-using-azure-portal.md).
+- Dee pagina met [prijzen](https://azure.microsoft.com/pricing/details/mariadb/) bekijken voor kostenvergelijkingen en calculators. 
+- Aan de slag gaan met het [maken van uw eerste server](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 <!--- - Build your first app using your preferred language: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md) --->

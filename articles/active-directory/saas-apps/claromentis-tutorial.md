@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8f91bca3650004472d8fe51d4e92b42ade3122
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520308"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Claromentis
 
@@ -138,19 +138,19 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op het **toepassingspictogram** en selecteer **Beheerder**.
 
-    ![Configuratie van Claromentis](./media/claromentis-tutorial/config1.png)
+    ![Schermopname die de Claromentis-website toont met Beheerder geselecteerd.](./media/claromentis-tutorial/config1.png)
 
 1. Selecteer het tabblad **Aangepaste aanmeldingshandler**.
 
-    ![Configuratie van Claromentis](./media/claromentis-tutorial/config2.png)
+    ![Schermopname die de pagina Beheer toont met Aangepaste aanmeldingshandler geselecteerd.](./media/claromentis-tutorial/config2.png)
 
 1. Selecteer **SAML-configuratie**.
 
-    ![Configuratie van Claromentis](./media/claromentis-tutorial/config3.png)
+    ![Schermopname die de configuratiepagina voor SAML toont.](./media/claromentis-tutorial/config3.png)
 
 1. Schuif in het tabblad **SAML-configuratie** omlaag naar het onderdeel **Configuratie** en voer de volgende stappen uit:
 
-    ![Configuratie van Claromentis](./media/claromentis-tutorial/config4.png)
+    ![Schermopname die de sectie Configuratie van de pagina toont, waar u de informatie kunt invoeren die is beschreven in deze stap.](./media/claromentis-tutorial/config4.png)
 
     a. Voer in het tekstvak **Naam technische contactpersoon** de naam in van de technische contactpersoon.
 
@@ -160,7 +160,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Schuif omlaag naar **Verificatiebronnen** en voor de volgende stappen uit:
 
-    ![Configuratie van Claromentis](./media/claromentis-tutorial/config5.png)
+    ![Schermopname die de sectie Verificatiebronnen toont, waarin u de informatie kunt invoeren die in deze stap is beschreven.](./media/claromentis-tutorial/config5.png)
 
     a. Voer in het tekstvak **IDP** de waarde van de **Azure AD-id** in die u uit het Azure-portal hebt gekopieerd.
 
@@ -172,7 +172,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. U ziet nu dat alle URL's zijn ingevuld onder **Identiteitsprovider** in het onderdeel **SAML-configuratie**.
 
-    ![Configuratie van Claromentis](./media/claromentis-tutorial/config6.png)
+    ![Schermopname die de pagina Identiteitsprovider toont, waarop URL's zijn ingevuld.](./media/claromentis-tutorial/config6.png)
 
     a. Kopieer de waarde van de **Id (Entiteits-id)** en plak deze in het tekstvak voor de **Id** bij het onderdeel **Standaard SAML-configuratie** in het Azure-portal.
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 38e6bae69710dc9e1dbc8789ee9ccb636193c7f7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80671197"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -16,19 +16,19 @@ ms.locfileid: "80671197"
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](~/articles/cognitive-services/speech-service/get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
-> * Een bot maken die is verbonden met het [directe-lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
+> * [Een resource voor de Azure-spraakservice maken](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
+> * Een bot maken die verbonden is met het [Direct Line Speech-kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Ervoor zorgen dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
   > [!NOTE]
-  > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
+  > Raadpleeg [de lijst met ondersteunde regio's voor spraakassistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
 
 ## <a name="create-and-configure-project"></a>Project maken en configureren
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Als u logboek registratie wilt inschakelen, moet u ook het bestand _pom. XML_ bijwerken met de volgende afhankelijkheden:
+Als u logboekregistratie wilt inschakelen, moet u ook het bestand _pom.xml_ bijwerken met de volgende afhankelijkheid:
 
 ```xml
  <dependency>
@@ -40,13 +40,13 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand _pom. XML_ bi
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Als u een nieuwe lege klasse wilt toevoegen aan uw Java-project, selecteert u **bestand** > **nieuwe** > **klasse**.
+1. Om een nieuwe lege klasse aan uw Java-project toe te voegen, selecteert u **Bestand** > **Nieuw** > **Klasse**.
 
-1. Voer in het venster **nieuwe Java** -klasse _speechsdk. Quick_ start in het veld **package** en _Main_ in het veld **name** in.
+1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, _speechsdk.quickstart_ in en voer in het veld **Naam**_Main_ in.
 
    ![Schermopname van het venster Nieuwe Java-klasse](~/articles/cognitive-services/speech-service/media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Open de zojuist gemaakte `Main` klasse en vervang de inhoud van het `Main.java` bestand door de volgende begin code:
+1. Open de zojuist gemaakte klasse `Main`, en vervang de inhoud van het bestand `Main.java` door de volgende begincode:
 
    ```java
    package speechsdk.quickstart;
@@ -113,13 +113,13 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand _pom. XML_ bi
    }
    ```
 
-1. In de `main` -methode configureert u eerst uw `DialogServiceConfig` en gebruikt u deze om een `DialogServiceConnector` exemplaar te maken. Dit exemplaar maakt verbinding met het directe lijn spraak kanaal om te communiceren met uw bot. Er `AudioConfig` wordt ook een exemplaar gebruikt voor het opgeven van de bron voor audio-invoer. In dit voor beeld wordt de standaard microfoon gebruikt met `AudioConfig.fromDefaultMicrophoneInput()`.
+1. Configureer eerst uw `DialogServiceConfig` in de methode `main` en gebruik deze voor het maken van een `DialogServiceConnector`-instantie. Deze instantie maakt verbinding met het Direct Line Speech-kanaal voor de interactie met uw bot. Een `AudioConfig`-instantie wordt ook gebruikt voor het opgeven van de bron voor audio-invoer. In dit voorbeeld wordt de standaardmicrofoon gebruikt met `AudioConfig.fromDefaultMicrophoneInput()`.
 
-   - Vervang de teken `YourSubscriptionKey` reeks door uw abonnements sleutel, die u vanaf [deze website](~/articles/cognitive-services/speech-service/get-started.md)kunt ophalen.
-   - Vervang de teken `YourServiceRegion` reeks door de [regio](~/articles/cognitive-services/speech-service/regions.md) die aan uw abonnement is gekoppeld.
+   - Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel, die u kunt ophalen vanaf [deze website](~/articles/cognitive-services/speech-service/get-started.md).
+   - Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/speech-service/regions.md) die aan uw abonnement is gekoppeld.
 
    > [!NOTE]
-   > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
+   > Raadpleeg [de lijst met ondersteunde regio's voor spraakassistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
 
    ```java
    final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
@@ -133,7 +133,7 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand _pom. XML_ bi
    final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
    ```
 
-1. De connector `DialogServiceConnector` is afhankelijk van verschillende gebeurtenissen voor het communiceren van de bot-activiteiten, de resultaten van spraak herkenning en andere informatie. Voeg deze gebeurtenislisteners toe volgende.
+1. De connector `DialogServiceConnector` is afhankelijk van verschillende gebeurtenissen om de activiteiten van bots, resultaten van spraakherkenning en andere informatie te communiceren. Voeg nu de volgende gebeurtenislisteners toe.
 
    ```java
    // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
@@ -172,7 +172,7 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand _pom. XML_ bi
        });
    ```
 
-1. Verbinding `DialogServiceConnector` maken met directe lijn spraak door de `connectAsync()` methode aan te roepen. Als u uw bot wilt testen, kunt u `listenOnceAsync` de methode aanroepen om audio-invoer van uw microfoon te verzenden. Daarnaast kunt u ook de `sendActivityAsync` methode gebruiken om een aangepaste activiteit te verzenden als een geserialiseerde teken reeks. Deze aangepaste activiteiten kunnen extra gegevens leveren die uw bot in het gesprek gebruikt.
+1. Verbind `DialogServiceConnector` met Direct Line Speech door de methode `connectAsync()` aan te roepen. U kunt de bot testen door de methode `listenOnceAsync` voor het verzenden van audio-invoer van uw microfoon aan te roepen. U kunt ook de methode `sendActivityAsync` gebruiken voor het verzenden van een aangepaste activiteit als een geserialiseerde tekenreeks. Deze aangepaste activiteiten kunnen extra gegevens leveren die uw bot in het gesprek gebruikt.
 
    ```java
    connector.connectAsync();
@@ -183,13 +183,13 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand _pom. XML_ bi
    // connector.sendActivityAsync(...)
    ```
 
-1. Sla de wijzigingen in `Main` het bestand op.
+1. Sla de wijzigingen in het bestand `Main` op.
 
-1. Als u het afspelen van antwoorden wilt ondersteunen, voegt u een extra klasse toe die het PullAudioOutputStream-object transformeert dat is geretourneerd door de getAudio-API naar een Java-InputStream voor een gemakkelijke verwerking. Dit `ActivityAudioStream` is een gespecialiseerde klasse die een audio antwoord afhandelt vanuit het directe spraak kanaal. Het biedt toegangs rechten om informatie over de audio-indeling op te halen die nodig is voor het afhandelen van afspelen. Selecteer hiervoor **bestand** > **nieuwe** > **klasse**.
+1. Als u het afspelen van antwoorden wilt ondersteunen, voegt u een extra klasse toe die het PullAudioOutputStream-object, dat is geretourneerd door de getAudio()-API, transformeert naar een Java-InputStream voor een gemakkelijke verwerking. `ActivityAudioStream` is een speciale klasse die audio-respons van het Direct Line Speech-kanaal. De klasse levert accessors voor het ophalen van audio-indelingsinformatie die vereist is voor het afspelen. Selecteer hiervoor **Bestand** > **Nieuw** > **Klasse**.
 
-1. Voer in het venster **nieuwe Java** -klasse _speechsdk. Quick_ start in het veld **pakket** en _ActivityAudioStream_ in het veld **naam** in.
+1. Voer in het venster **Nieuwe Java-klasse**, in het veld **Pakket**, _speechsdk.quickstart_ in en voer in het veld **Naam**_ActivityAudioStream_ in.
 
-1. Open de zojuist gemaakte `ActivityAudioStream` klasse en vervang deze door de volgende code:
+1. Open de zojuist gemaakte `ActivityAudioStream`-klasse en vervang de inhoud door de volgende code:
 
    ```java
    package com.speechsdk.quickstart;
@@ -430,13 +430,13 @@ Als u logboek registratie wilt inschakelen, moet u ook het bestand _pom. XML_ bi
 
    ```
 
-1. Sla de wijzigingen in `ActivityAudioStream` het bestand op.
+1. Sla de wijzigingen in het bestand `ActivityAudioStream` op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Selecteer F11 of selecteer Debug **uitvoeren** > **Debug**.
-In de-console wordt het bericht ' zeg iets ' weer gegeven.
-Spreek op dit moment een Engelse zin of zin uit die uw bot kan begrijpen. Uw spraak wordt via het directe lijn spraak kanaal naar uw bot verzonden, waar het wordt herkend en verwerkt door uw bot. Het antwoord wordt geretourneerd als een activiteit. Als uw bot spraak retourneert als antwoord, wordt de audio afgespeeld met behulp van de `AudioPlayer` -klasse.
+Druk op F11 of selecteer **Uitvoeren** > **Fouten opsporen**.
+Het bericht 'Zeg iets' wordt weergegeven in de console.
+Zeg op dit moment een Engelse zin of een zin die uw bot kan begrijpen. Uw spraak wordt via het Direct Line Speech-kanaal naar uw bot verzonden, waar het wordt herkend en verwerkt door uw bot. Het antwoord wordt geretourneerd als een activiteit. Als uw bot spraak retourneert als antwoord, wordt de audio afgespeeld met behulp van de klasse `AudioPlayer`.
 
 ![Schermafbeelding van console-uitvoer na geslaagde herkenning](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-08-console-output.png)
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec89b897b4ea2e802188e3aefe9b830d7ff1cf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969174"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047077"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Uw Azure Stack Edge Pro GPU bijwerken 
 
@@ -22,7 +22,7 @@ In dit artikel worden de stappen beschreven die nodig zijn om updates te install
 De in dit artikel beschreven procedure is uitgevoerd met een andere versie van de software, maar het proces blijft hetzelfde voor de huidige software versie.
 
 > [!IMPORTANT]
-> - Update **2009** komt overeen met de **2.1.1364.2110** -software versie op het apparaat. Ga naar [release opmerkingen](azure-stack-edge-gpu-2009-release-notes.md)voor meer informatie over deze update.
+> - Update **2010** komt overeen met de **2.1.1377.2170** -software versie op het apparaat. Ga naar [release opmerkingen](azure-stack-edge-gpu-2009-release-notes.md)voor meer informatie over deze update.
 >
 > - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Voor deze update moet u twee updates sequentieel Toep assen. Eerst past u de software-updates van het apparaat toe en vervolgens Kubernetes-updates. Gezien de Azure Stack Edge Pro is een apparaat met één knoop punt, worden alle I/O-bewerkingen onderbroken en duurt het apparaat een downtime van Maxi maal 30 minuten voor de software-update van het apparaat.
 
@@ -163,9 +163,9 @@ Voer de volgende stappen uit om de update te downloaden uit de Microsoft Update 
 
 2. Voer in het zoekvak van de catalogus van Microsoft Update het Knowledge Base-nummer (KB) in van de hotfix of de voor waarden voor de update die u wilt downloaden. Voer bijvoorbeeld **Azure stack Edge Pro**in en klik vervolgens op **zoeken**.
    
-    De update vermelding wordt weer gegeven als **Azure stack Edge Pro 2006**.
+    De update vermelding wordt weer gegeven als **Azure stack Edge update 2010**.
    
-    ![Zoek catalogus 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
 4. Selecteer **Downloaden**. Er zijn twee bestanden om te downloaden met *SoftwareUpdatePackage.exe* en *Kubernetes_Package.exe* achtervoegsels die overeenkomen met de software-updates voor apparaten en Kubernetes-updates. Down load de bestanden naar een map op het lokale systeem. U kunt de map ook kopiëren naar een netwerk share die bereikbaar is vanaf het apparaat.
 
@@ -198,9 +198,9 @@ Het volt ooien van deze procedure duurt ongeveer 20 minuten. Voer de volgende st
 
 5. De update wordt gestart. Nadat het apparaat is bijgewerkt, wordt het opnieuw opgestart. De lokale gebruikers interface is niet toegankelijk in deze duur.
    
-6. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie in dit voor beeld is **2.0.1257.1591**.
+6. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. Voor de huidige versie moet de weer gegeven software versie **2.1.1377.2170**zijn.
 
-   ![apparaat 6 bijwerken](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 
 7. U gaat nu de versie van de Kubernetes-software bijwerken. Herhaal de bovenstaande stappen. Geef een pad naar het Kubernetes-update bestand met het achtervoegsel van de *Kubernetes_Package.exe* op.  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548137"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Zelfstudie: Azure Active Directory-integratie met Help Scout
 
@@ -89,7 +89,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Help Scout moet u de
 
 1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding bij het Help Scout-domein en Help Scout-URL's](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. **Id** is de **doelgroep-URI (identiteits-id van de serviceprovider)** van Help Scout, die begint met `urn:`
 
@@ -100,7 +100,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Help Scout moet u de
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding bij het Help Scout-domein en Help Scout-URL's](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     Typ een URL in het tekstvak **Aanmeldings-URL**, bijvoorbeeld: `https://secure.helpscout.net/members/login/`
 
@@ -183,15 +183,15 @@ In deze sectie gaat u B.Simon toestemming geven voor gebruik van eenmalige aanme
 
 1. Klik op **Beheren** in het bovenste menu en selecteer vervolgens **Bedrijf** in de vervolgkeuzelijst.
 
-    ![Eenmalige aanmelding configureren](./media/helpscout-tutorial/settings1.png)
+    ![Schermopname die het menu Beheren toont met Bedrijf geselecteerd.](./media/helpscout-tutorial/settings1.png)
 
 1. Selecteer **Verificatie** in het navigatievenster links.
 
-    ![Eenmalige aanmelding configureren](./media/helpscout-tutorial/settings2.png)
+    ![Schermopname waarop Verificatie is geselecteerd.](./media/helpscout-tutorial/settings2.png)
 
 1. De sectie SAML-instellingen wordt weergegeven. Voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/helpscout-tutorial/settings3.png)
+    ![Schermopname met het tabblad Eenmalige aanmelding waarop u de opgegeven informatie invoert.](./media/helpscout-tutorial/settings3.png)
 
     a. Kopieer de waarde van de **terugpost-URL (URL voor Assertion Consumer Service)** en plak deze in het tekstvak **Antwoord-URL** in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
@@ -199,7 +199,7 @@ In deze sectie gaat u B.Simon toestemming geven voor gebruik van eenmalige aanme
 
 1. Schakel **SAML inschakelen** in en voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/helpscout-tutorial/settings4.png)
+    ![Schermopname met het tabblad Eenmalige aanmelding waarop u SAML inschakelt en andere informatie toevoegt.](./media/helpscout-tutorial/settings4.png)
 
     a. Plak in het tekstvak **Eenmalige aanmelding-URL** de waarde van de **Aanmeldings-URL** die u hebt gekopieerd vanuit Azure Portal.
 

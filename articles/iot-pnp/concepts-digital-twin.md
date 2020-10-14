@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578050"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046465"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Meer informatie over IoT Plug en Play digitale apparaatdubbels
 
@@ -307,7 +307,7 @@ De volgende fragmenten tonen de side-by-side JSON-weer gave van het `thermostat1
 
 ## <a name="digital-twin-apis"></a>Digitale dubbele Api's
 
-Azure Digital Apparaatdubbels is uitgerust met het **ophalen van digitale dubbele**, **update digitale dubbele**, **onderdeel opdracht aanroepen** en **opdracht aanroepen** voor het digitaal beheren van apparaten. U kunt de rest- [api's](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) rechtstreeks of via een [Service-SDK](../iot-pnp/libraries-sdks.md)gebruiken.
+Azure Digital Apparaatdubbels is uitgerust met het **ophalen van digitale dubbele**, **update digitale dubbele**, **onderdeel opdracht aanroepen** en **opdracht aanroepen** voor het digitaal beheren van apparaten. U kunt de rest- [api's](/rest/api/iothub/service/digitaltwin) rechtstreeks of via een [Service-SDK](../iot-pnp/libraries-sdks.md)gebruiken.
 
 ## <a name="digital-twin-change-events"></a>Gebeurtenissen met wijziging van dubbel
 
@@ -383,5 +383,5 @@ Nu u over digitale apparaatdubbels hebt geleerd, zijn hier enkele aanvullende br
 
 - [IoT Plug en Play digitale dubbele Api's gebruiken](howto-manage-digital-twin.md)
 - [Interactie met een apparaat vanuit uw oplossing](quickstart-service-node.md)
-- [IoT digitale dubbele REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT digitale dubbele REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

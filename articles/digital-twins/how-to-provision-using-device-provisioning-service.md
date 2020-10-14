@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a2345dce542f941df0122acd12b4acedd3b49a3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561428"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047231"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Apparaten in azure Digital Apparaatdubbels automatisch beheren met behulp van de Device Provisioning Service (DPS)
 
@@ -32,7 +32,7 @@ U hebt de volgende waarden later in dit artikel nodig bij het instellen van uw e
 * Azure Digital Twins-exemplaar **_hostnaam_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure Event Hubs connection string **_Connection String_** ([Zoeken in portal](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
-In dit voor beeld wordt ook een **device Simulator** gebruikt die het inrichten met behulp van de Device Provisioning Service bevat. De Device Simulator bevindt zich hier: [Azure Digital apparaatdubbels-en IOT hub Integration](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)-voor beeld. Down load het voorbeeld project op uw machine door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel. De gedownloade map uitpakken.
+In dit voor beeld wordt ook een **device Simulator** gebruikt die het inrichten met behulp van de Device Provisioning Service bevat. De Device Simulator bevindt zich hier: [Azure Digital apparaatdubbels-en IOT hub Integration](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)-voor beeld. Down load het voorbeeld project op uw machine door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel. De gedownloade map uitpakken.
 
 De Device Simulator is gebaseerd op **Node.js**, versie 10.0. x of hoger. [*Uw ontwikkel omgeving voorbereiden*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) bevat informatie over het installeren van Node.js voor deze zelf studie over Windows of Linux.
 
@@ -69,7 +69,7 @@ Wanneer een nieuw apparaat wordt ingericht met behulp van Device Provisioning Se
 
 Maak een Device Provisioning service-exemplaar dat wordt gebruikt voor het inrichten van IoT-apparaten. U kunt de onderstaande Azure CLI-instructies gebruiken of de Azure Portal: Quick Start [*: Stel de IOT hub Device Provisioning Service in met de Azure Portal*](../iot-dps/quick-setup-auto-provision.md).
 
-Met de volgende Azure CLI-opdracht wordt een Device Provisioning-Service gemaakt. U moet een naam, resource groep en regio opgeven. De opdracht kan worden uitgevoerd in [Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Met de volgende Azure CLI-opdracht wordt een Device Provisioning-Service gemaakt. U moet een naam, resource groep en regio opgeven. De opdracht kan worden uitgevoerd in [Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
@@ -258,7 +258,7 @@ Terwijl u deze stroom doorloopt, koppelt u de registratie aan de functie die u z
 
 ### <a name="set-up-the-device-simulator"></a>De Device Simulator instellen
 
-In dit voor beeld wordt een Device Simulator gebruikt die inrichting bevat met behulp van de Device Provisioning Service. De Device Simulator bevindt zich hier: [Azure Digital apparaatdubbels-en IOT hub Integration](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)-voor beeld. Als u het voor beeld nog niet hebt gedownload, gaat u nu naar de voorbeeld koppeling en selecteert u de knop voor het downloaden van de *zip* onder de titel. De gedownloade map uitpakken.
+In dit voor beeld wordt een Device Simulator gebruikt die inrichting bevat met behulp van de Device Provisioning Service. De Device Simulator bevindt zich hier: [Azure Digital apparaatdubbels-en IOT hub Integration](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)-voor beeld. Als u het voor beeld nog niet hebt gedownload, gaat u nu naar de voorbeeld koppeling en selecteert u de knop voor het downloaden van de *zip* onder de titel. De gedownloade map uitpakken.
 
 Open een opdracht venster en navigeer naar de gedownloade map en vervolgens naar de map *device-Simulator* . Installeer de afhankelijkheden voor het project met behulp van de volgende opdracht:
 
@@ -447,7 +447,7 @@ Sla het project op en publiceer vervolgens de functie-app opnieuw. Zie het gedee
 
 Vervolgens moet u de omgevings variabelen in uw functie-app van eerder instellen, met daarin de verwijzing naar het Azure Digital Apparaatdubbels-exemplaar dat u hebt gemaakt en de Event Hub. Als u de end-to-end zelf studie hebt gebruikt ([*zelf studie: een end-to-end oplossing verbinden*](./tutorial-end-to-end.md)), is de eerste instelling al geconfigureerd.
 
-Voeg de instelling toe met deze Azure CLI-opdracht. De opdracht kan worden uitgevoerd in [Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Voeg de instelling toe met deze Azure CLI-opdracht. De opdracht kan worden uitgevoerd in [Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
@@ -480,7 +480,7 @@ Als u het proces van het buiten gebruik wilt stellen, moet u het apparaat hand m
 
 In de [eerste helft van dit artikel](#auto-provision-device-using-device-provisioning-service)hebt u een apparaat gemaakt in IOT hub en een bijbehorende digitale twee. 
 
-Ga nu naar het IoT Hub en verwijder dat apparaat (u kunt dit doen met een [Azure cli-opdracht](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) of in de [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Ga nu naar het IoT Hub en verwijder dat apparaat (u kunt dit doen met een [Azure cli-opdracht](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) of in de [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Het apparaat wordt automatisch uit Azure Digital Apparaatdubbels verwijderd. 
 
@@ -497,7 +497,7 @@ U ziet dat de dubbele van het apparaat niet meer kan worden gevonden in het Azur
 
 Als u de resources die in dit artikel zijn gemaakt niet meer nodig hebt, volgt u deze stappen om ze te verwijderen.
 
-Met de Azure Cloud Shell of lokale Azure CLI kunt u alle Azure-resources in een resource groep verwijderen met de opdracht [AZ Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Hiermee verwijdert u de resource groep. het Azure Digital Apparaatdubbels-exemplaar; de IoT-hub en de registratie van het hub-apparaat; het event grid-onderwerp en de bijbehorende abonnementen; de Event hubs-naam ruimte en beide Azure Functions-apps, inclusief gekoppelde resources zoals opslag.
+Met de Azure Cloud Shell of lokale Azure CLI kunt u alle Azure-resources in een resource groep verwijderen met de opdracht [AZ Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) . Hiermee verwijdert u de resource groep. het Azure Digital Apparaatdubbels-exemplaar; de IoT-hub en de registratie van het hub-apparaat; het event grid-onderwerp en de bijbehorende abonnementen; de Event hubs-naam ruimte en beide Azure Functions-apps, inclusief gekoppelde resources zoals opslag.
 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 

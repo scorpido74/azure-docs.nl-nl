@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016551"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759234"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Quickstart: Een ExpressRoute-circuit met persoonlijke peering maken met behulp van een ARM-sjabloon
 
@@ -92,11 +92,11 @@ Azure PowerShell wordt gebruikt om de sjabloon te implementeren. Naast Azure Pow
 
 1. De resourcegroep moet de volgende resources bevatten die hier worden weergegeven:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="Resourcegroep voor implementatie van ExpressRoute":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="Uitvoer van ExpressRoute Resource Manager-sjabloon PowerShell-implementatie":::
 
 1. Selecteer het ExpressRoute-circuit **er-ck01** om te controleren of de status van het circuit **Ingeschakeld** is, de status van de provider **Niet ingericht** is en de status voor persoonlijke peering **Ingericht** is.
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute-implementatiecircuit":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="Uitvoer van ExpressRoute Resource Manager-sjabloon PowerShell-implementatie":::
 
 > [!NOTE]
 > U moet de provider aanroepen om het inrichtingsproces te voltooien voordat u het virtuele netwerk kunt koppelen aan het circuit.
@@ -124,7 +124,3 @@ Ga door naar de zelfstudies over ExpressRoute voor meer informatie over het kopp
 
 > [!div class="nextstepaction"]
 > [Zelfstudies voor ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* Voor meer informatie over ExpressRoute-werkstromen raadpleegt u [ExpressRoute workflows](expressroute-workflows.md) (ExpressRoute-werkstromen).
-* Voor meer informatie over circuitpeering raadpleegt u [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-circuits en -routeringsdomeinen).
-* Bekijk het [Virtual network overview](../virtual-network/virtual-networks-overview.md) (Virtual Network-overzicht) voor meer informatie over het gebruik van virtuele netwerken.

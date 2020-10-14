@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579983"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046448"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Plug and Play-brug
 
@@ -67,7 +67,7 @@ U hebt het volgende nodig om de IoT Plug en Play-brug te bouwen, uit te breiden 
 
 ### <a name="azure-iot-products-and-tools"></a>Azure IoT-producten en-Hulpprogram Ma's
 
-- **Azure IOT hub** : u hebt een [Azure IOT-hub](https://docs.microsoft.com/azure/iot-hub/) in uw Azure-abonnement nodig om uw apparaat te verbinden met. Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Als u geen IoT-hub hebt, [volgt u deze instructies om er een te maken](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-using-cli).
+- **Azure IOT hub** : u hebt een [Azure IOT-hub](../iot-hub/index.yml) in uw Azure-abonnement nodig om uw apparaat te verbinden met. Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Als u geen IoT-hub hebt, [volgt u deze instructies om er een te maken](../iot-hub/iot-hub-create-using-cli.md).
 
 > [!Note]
 > IoT Plug en Play is momenteel beschikbaar in IoT-hubs die zijn gemaakt in de regio's VS - centraal, Europa - noord en Japan - oost. IoT Plug en Play-ondersteuning is niet opgenomen in de basislaag van IoT-hubs. Als u wilt communiceren met uw IoT Plug en Play-apparaat, kunt u het hulp programma Azure IoT Explorer gebruiken. [Download en installeer de nieuwste release van Azure IoT Explorer](./howto-use-iot-explorer.md) voor uw besturingssysteem.
