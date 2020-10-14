@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 149656bebac7e8fab24dc1e1847a4e56bf5f3888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547338"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Zelfstudie: Azure Active Directory-integratie met Bime
 
@@ -132,7 +132,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 2. Klik in de werkbalk op **Admin** en vervolgens op **Account**.
   
-    ![Beheerder](./media/bime-tutorial/ic775558.png "Beheerder")
+    ![Schermopname van het geselecteerde beheeritem en het geselecteerde account.](./media/bime-tutorial/ic775558.png "Beheerder")
 
 3. Voer op de configuratiepagina voor accounts de volgende stappen uit:
   
@@ -207,7 +207,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Bime, moeten ze in 
 
 2. Klik in de werkbalk op **Admin** en vervolgens op **Users**.
 
-    ![Beheerder](./media/bime-tutorial/ic775561.png "Beheerder")
+    ![Schermopname van het geselecteerde beheeritem, waarbij 'Gebruikers' is geselecteerd.](./media/bime-tutorial/ic775561.png "Beheerder")
 
 3. Klik in **Users List** op **Add New User** (“+”).
 

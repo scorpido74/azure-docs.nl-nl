@@ -10,18 +10,18 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: b5d2156707d8a4c308ed577b7407d5eae30edc65
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979521"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044195"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Logboeken ophalen uit IoT Edge-implementaties
 
 U kunt Logboeken ophalen uit uw IoT Edge-implementaties zonder dat u fysieke of SSH-toegang tot het apparaat nodig hebt met behulp van de directe methoden die zijn opgenomen in de module IoT Edge agent. Directe methoden worden geïmplementeerd op het apparaat en kunnen vervolgens vanuit de cloud worden aangeroepen. De IoT Edge-agent bevat directe methoden waarmee u uw IoT Edge apparaten op afstand kunt bewaken en beheren. De directe methoden die in dit artikel worden beschreven, zijn in het algemeen beschikbaar in de 1.0.10-release.
 
-Zie voor meer informatie over directe methoden, hoe u deze kunt gebruiken en hoe u deze in uw eigen modules implementeert, [direct methoden begrijpen en aanroepen vanuit IOT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+Zie voor meer informatie over directe methoden, hoe u deze kunt gebruiken en hoe u deze in uw eigen modules implementeert, [direct methoden begrijpen en aanroepen vanuit IOT hub](../iot-hub/iot-hub-devguide-direct-methods.md).
 
 De namen van deze directe methoden worden hoofdletter gevoelig afgehandeld.
 
@@ -67,13 +67,13 @@ Met deze methode wordt een JSON-nettolading met het volgende schema geaccepteerd
 |-|-|-|
 | schemaVersion | tekenreeks | Ingesteld op `1.0` |
 | vermeldingen | JSON-matrix | Een matrix met `id` en `filter` Tuples. |
-| Id | tekenreeks | Een reguliere expressie die de module naam levert. Dit kan overeenkomen met meerdere modules op een edge-apparaat. Indeling van [reguliere .net-expressies](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) wordt verwacht. |
+| Id | tekenreeks | Een reguliere expressie die de module naam levert. Dit kan overeenkomen met meerdere modules op een edge-apparaat. Indeling van [reguliere .net-expressies](/dotnet/standard/base-types/regular-expressions) wordt verwacht. |
 | filter | JSON-sectie | Logboek filters die moeten worden toegepast op de modules die overeenkomen met de `id` reguliere expressie in de tuple. |
 | 13,Arabische | geheel getal | Het aantal logboek regels in het verleden dat moet worden opgehaald vanaf de laatste. Beschrijving. |
 | moment | geheel getal | Als duur (1 d, 90 m, 2 dagen 3 uur 2 minuten), rfc3339-tijds tempel of UNIX-Time Stamp, worden er sinds dit tijdstip alleen logboeken geretourneerd.  Als beide `tail` en `since` worden opgegeven, worden de logboeken opgehaald met de `since` waarde eerst. Vervolgens wordt de `tail` waarde toegepast op het resultaat en wordt het uiteindelijke resultaat geretourneerd. Beschrijving. |
 | totdat | geheel getal | Alleen logboeken retour neren vóór de opgegeven tijd, als rfc3339 Time Stamp, UNIX time stamp of duration (1 d, 90 m, 2 dagen 3 uur 2 minuten). Beschrijving. |
 | logboek niveau | geheel getal | Filter logboek regels die kleiner zijn dan of gelijk zijn aan het opgegeven logboek niveau. Logboek regels moeten de aanbevolen logboek registratie-indeling volgen en standaard [syslog-urgentie niveau](https://en.wikipedia.org/wiki/Syslog#Severity_level) gebruiken. Beschrijving. |
-| reguliere | tekenreeks | Filter logboek regels die inhoud hebben die overeenkomt met de opgegeven reguliere expressie met behulp van de notatie voor [reguliere expressies van .net](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) . Beschrijving. |
+| reguliere | tekenreeks | Filter logboek regels die inhoud hebben die overeenkomt met de opgegeven reguliere expressie met behulp van de notatie voor [reguliere expressies van .net](/dotnet/standard/base-types/regular-expressions) . Beschrijving. |
 | gecodeerd | tekenreeks | `gzip` of `none`. De standaardinstelling is `none`. |
 | Invoer | tekenreeks | `json` of `text`. De standaardinstelling is `text`. |
 
@@ -166,7 +166,7 @@ Deze methode accepteert een JSON-nettolading vergelijkbaar met **GetModuleLogs**
 
 | Naam | Type | Beschrijving |
 |-|-|-|
-| sasURL | teken reeks (URI) | [Shared Access Signature URL met schrijf toegang tot de Azure Blob Storage-container](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/). |
+| sasURL | teken reeks (URI) | [Shared Access Signature URL met schrijf toegang tot de Azure Blob Storage-container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
 Een geslaagde aanvraag voor het uploaden van Logboeken retourneert een **' status ': 200** gevolgd door een Payload met het volgende schema:
 
@@ -259,7 +259,7 @@ In de Azure Portal roept u de methode met de naam van de methode `UploadModuleLo
 
 ## <a name="upload-support-bundle-diagnostics"></a>Diagnostische gegevens over ondersteunings bundel uploaden
 
-Gebruik de **UploadSupportBundle** directe methode om een zip-bestand van IOT Edge module Logboeken te bundelen en te uploaden naar een beschik bare Azure Blob Storage-container. Met deze directe methode voert [`iotedge support-bundle`](https://docs.microsoft.com/azure/iot-edge/troubleshoot#gather-debug-information-with-support-bundle-command) u de opdracht op uw IOT edge-apparaat uit om de logboeken op te halen.
+Gebruik de **UploadSupportBundle** directe methode om een zip-bestand van IOT Edge module Logboeken te bundelen en te uploaden naar een beschik bare Azure Blob Storage-container. Met deze directe methode voert [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) u de opdracht op uw IOT edge-apparaat uit om de logboeken op te halen.
 
 Met deze methode wordt een JSON-nettolading met het volgende schema geaccepteerd:
 
@@ -276,7 +276,7 @@ Met deze methode wordt een JSON-nettolading met het volgende schema geaccepteerd
 | Naam | Type | Beschrijving |
 |-|-|-|
 | schemaVersion | tekenreeks | Ingesteld op `1.0` |
-| sasURL | teken reeks (URI) | [Shared Access Signature URL met schrijf toegang tot de Azure Blob Storage-container](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/) |
+| sasURL | teken reeks (URI) | [Shared Access Signature URL met schrijf toegang tot de Azure Blob Storage-container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | moment | geheel getal | Als duur (1 d, 90 m, 2 dagen 3 uur 2 minuten), rfc3339-tijds tempel of UNIX-Time Stamp, worden er sinds dit tijdstip alleen logboeken geretourneerd. Beschrijving. |
 | totdat | geheel getal | Alleen logboeken retour neren vóór de opgegeven tijd, als rfc3339 Time Stamp, UNIX time stamp of duration (1 d, 90 m, 2 dagen 3 uur 2 minuten). Beschrijving. |
 | edgeRuntimeOnly | booleaans | Indien waar, worden alleen logboeken geretourneerd van de Edge-agent, Edge-hub en de Edge Security daemon. Standaard: onwaar.  Beschrijving. |

@@ -7,16 +7,16 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610072"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042810"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>IoT-Plug en Play op beperkte apparaten implementeren
 
-Als u voor *beperkte apparaten*ontwikkelt, kunt u IoT-Plug en Play gebruiken met de [Azure SDK voor Embedded C IOT-client bibliotheken](https://aka.ms/embeddedcsdk) of met [Azure rto's](https://docs.microsoft.com/azure/rtos/overview-rtos). Dit artikel bevat koppelingen en bronnen voor deze beperkte scenario's.
+Als u voor *beperkte apparaten*ontwikkelt, kunt u IoT-Plug en Play gebruiken met de [Azure SDK voor Embedded C IOT-client bibliotheken](https://aka.ms/embeddedcsdk) of met [Azure rto's](/azure/rtos/overview-rtos). Dit artikel bevat koppelingen en bronnen voor deze beperkte scenario's.
 
 ## <a name="use-the-sdk-for-embedded-c"></a>De SDK voor Embedded C gebruiken
 
@@ -39,7 +39,7 @@ De SDK voor Inge sloten C-opslag plaatsen bevat [verschillende voor beelden](htt
 
 ## <a name="using-azure-rtos"></a>Azure RTO'S gebruiken
 
-Azure RTO'S bevat een licht gewicht laag waarmee systeem eigen connectiviteit kan worden toegevoegd aan Azure IoT-Cloud Services. Deze laag biedt een eenvoudig mechanisme om beperkte apparaten te verbinden met Azure IoT en de geavanceerde functies van Azure RTO'S te gebruiken. Zie [Wat is Microsoft Azure rto's](https://docs.microsoft.com/azure/rtos/overview-rtos)voor meer informatie.
+Azure RTO'S bevat een licht gewicht laag waarmee systeem eigen connectiviteit kan worden toegevoegd aan Azure IoT-Cloud Services. Deze laag biedt een eenvoudig mechanisme om beperkte apparaten te verbinden met Azure IoT en de geavanceerde functies van Azure RTO'S te gebruiken. Zie [Wat is Microsoft Azure rto's](/azure/rtos/overview-rtos)voor meer informatie.
 
 ### <a name="toolchains"></a>Toolchains
 

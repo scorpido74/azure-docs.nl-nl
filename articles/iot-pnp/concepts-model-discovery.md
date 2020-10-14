@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577710"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042912"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT Plug en Play-modellen gebruiken in een IoT-oplossing
 
@@ -40,10 +40,10 @@ Een oplossing kan de model-ID van de IoT-Plug en Play apparaat verkrijgen door e
 
 ### <a name="get-device-twin-api"></a>Dubbele API voor apparaat ophalen
 
-De oplossing kan gebruikmaken van de [dubbele API Get-apparaat](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) om de model-id van de IoT-Plug en Play apparaat op te halen.
+De oplossing kan gebruikmaken van de [dubbele API Get-apparaat](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) om de model-id van de IoT-Plug en Play apparaat op te halen.
 
 > [!TIP]
-> Gebruik [ModuleClient. getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true)voor modules en IOT Edge modules.
+> Gebruik [ModuleClient. getTwin](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable)voor modules en IOT Edge modules.
 
 In het volgende dubbele reactie fragment `modelId` van een apparaat bevat de model-id van een IOT-Plug en Play apparaat:
 
@@ -71,7 +71,7 @@ In het volgende dubbele reactie fragment `modelId` van een apparaat bevat de mod
 
 ### <a name="get-digital-twin-api"></a>Digitale dubbele API ophalen
 
-De oplossing kan de ophalen van de [digitale dubbele](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API gebruiken om de model-id op te halen van het model dat is geïmplementeerd door het IOT Plug en Play-apparaat.
+De oplossing kan de ophalen van de [digitale dubbele](/rest/api/iothub/service/digitaltwin/getdigitaltwin) API gebruiken om de model-id op te halen van het model dat is geïmplementeerd door het IOT Plug en Play-apparaat.
 
 In het volgende digitale dubbele-reactie fragment `$metadata.$model` bevat de model-id van een IoT Plug en Play-apparaat:
 
@@ -121,7 +121,7 @@ Oplossingen kunnen de [model opslagplaats](concepts-model-repository.md) gebruik
 
 Voer de volgende stappen uit nadat u de model-ID voor een nieuwe apparaat-verbinding hebt geïdentificeerd:
 
-1. Haal de model definitie op met behulp van de model-ID uit de model opslagplaats. Zie [modellen ophalen](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)voor meer informatie.
+1. Haal de model definitie op met behulp van de model-ID uit de model opslagplaats. Zie [modellen ophalen](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)voor meer informatie.
 
 1. Met de model definitie van het verbonden apparaat kunt u de mogelijkheden van het apparaat opsommen.
 
@@ -144,5 +144,5 @@ Voer de volgende stappen uit nadat u de model-ID voor een nieuwe apparaat-verbin
 Nu u hebt geleerd hoe u IoT Plug en Play-modellen integreert in een IoT-oplossing, kunt u de volgende stappen volgen:
 
 - [Interactie met een apparaat vanuit uw oplossing](quickstart-service-node.md)
-- [IoT digitale dubbele REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [IoT digitale dubbele REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

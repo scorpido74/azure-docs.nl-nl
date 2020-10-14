@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541353"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044289"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -21,7 +21,7 @@ Azure Digital apparaatdubbels gebruikt **gebeurtenis routes** voor het verzenden
 Tijdens de preview zijn er twee belang rijke situaties voor het verzenden van Azure Digital Apparaatdubbels-gegevens:
 * Het verzenden van gegevens van een dubbele in de Azure Digital Apparaatdubbels-grafiek naar een andere. Als u bijvoorbeeld een eigenschap op één digitaal nadien wijzigt, wilt u wellicht een melding ontvangen en een andere digitale navolgende digitaal bijwerken.
 * Verzenden van gegevens naar downstream gegevens Services voor extra opslag of verwerking (ook wel bekend als *gegevens*uitvoer). Bijvoorbeeld
-  - Een zieken huis wil mogelijk Azure Digital Apparaatdubbels-gebeurtenis gegevens naar [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md)verzenden om de tijdreeks gegevens van handwashing gebeurtenissen voor bulk analyse vast te leggen.
+  - Een zieken huis wil mogelijk Azure Digital Apparaatdubbels-gebeurtenis gegevens naar [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md)verzenden om de tijdreeks gegevens van handwashing gebeurtenissen voor bulk analyse vast te leggen.
   - Een bedrijf dat al gebruikmaakt van [Azure Maps](../azure-maps/about-azure-maps.md) kan gebruikmaken van Azure Digital apparaatdubbels om de oplossing te verbeteren. Ze kunnen snel een Azure-kaart inschakelen na het instellen van Azure Digital Apparaatdubbels, Azure-toewijzings entiteiten in azure Digital Apparaatdubbels als [digitale apparaatdubbels](concepts-twins-graph.md) in het dubbele diagram, of krachtige query's uitvoeren met behulp van hun Azure Maps en Azure Digital apparaatdubbels-gegevens samen.
 
 Gebeurtenis routes worden gebruikt voor beide scenario's.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548257"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744316"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Zelfstudie: Azure Active Directory-integratie met Bonusly
 
@@ -222,11 +222,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Bonusly, moeten ze 
 
 1. Klik op **Add User**.
 
-    ![Gebruiker toevoegen](./media/bonus-tutorial/ic781044.png "Gebruiker toevoegen")
+    ![Schermopname van Gebruikers beheren, waar u Gebruiker toevoegen kunt selecteren.](./media/bonus-tutorial/ic781044.png "Gebruiker toevoegen")
 
 1. Voer in het dialoogvenster **Add User** de volgende stappen uit:
 
-    ![Gebruiker toevoegen](./media/bonus-tutorial/ic781045.png "Gebruiker toevoegen")  
+    ![Schermopname van het dialoogvenster Gebruiker toevoegen, waar u deze informatie kunt invoeren.](./media/bonus-tutorial/ic781045.png "Gebruiker toevoegen")  
 
     a. Voer in het tekstvak **First name** de voornaam van de gebruiker in, zoals **Britta**.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 8cbfc374a5964983c43594fef5d97986e51c0d83
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e4895b227bfc699e94155515e829d0bf33aaf9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971690"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043048"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Inzicht in de runtime van Azure IoT Edge en de architectuur ervan
 
@@ -71,7 +71,7 @@ Als u een bericht wilt ontvangen, registreert u een call back waarmee berichten 
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-Voor meer informatie over de ModuleClient-klasse en de communicatie methoden raadpleegt u de API-verwijzing voor uw voorkeurs taal van de SDK: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)of [Node.js](/javascript/api/azure-iot-device/moduleclient).
+Voor meer informatie over de ModuleClient-klasse en de communicatie methoden raadpleegt u de API-verwijzing voor uw voorkeurs taal van de SDK: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)of [Node.js](/javascript/api/azure-iot-device/moduleclient).
 
 De oplossings ontwikkelaar is verantwoordelijk voor het opgeven van de regels die bepalen hoe IoT Edge hub berichten tussen modules doorgeeft. Routerings regels worden gedefinieerd in de Cloud en naar IoT Edge hub gepusht in de module dubbele. Dezelfde syntaxis voor IoT Hub routes wordt gebruikt voor het definiëren van routes tussen modules in Azure IoT Edge. Zie [informatie over het implementeren van modules en het tot stand brengen van routes in IOT Edge](module-composition.md)voor meer informatie.
 
@@ -126,15 +126,15 @@ Meer informatie over het Azure IoT Edge Security Framework vindt u in de [IOT Ed
 
 ## <a name="runtime-quality-telemetry"></a>Telemetrie-kwaliteit van runtime
 
-IoT Edge verzamelt geanonimiseerd-telemetrie van de runtime van de host en systeem modules om de product kwaliteit te verbeteren. Deze informatie wordt telemetrie in runtime Quality (RQT) genoemd. RQT wordt regel matig verzonden als apparaat-naar-Cloud-berichten IoT Hub van de IoT Edge agent. RQT-berichten worden niet weer gegeven in de normale telemetrie van de klant en verbruiken geen quota voor berichten.
+IoT Edge verzamelt anonieme telemetrie van de runtime van de host en systeem modules om de product kwaliteit te verbeteren. Deze informatie wordt telemetrie voor de runtime kwaliteit genoemd. De verzamelde telemetrie wordt periodiek verzonden als apparaat-naar-Cloud-berichten IoT Hub van de IoT Edge agent. Deze berichten worden niet weer gegeven in de normale telemetrie van de klant en verbruiken geen quota voor berichten.
 
-Een volledige lijst met metrische gegevens die door edgeAgent en edgeHub zijn verzameld, is beschikbaar in de [sectie beschik bare metrische gegevens van het artikel Access IOT Edge runtime Metrics](how-to-access-built-in-metrics.md#available-metrics). Een subset van deze metrische gegevens wordt door de IoT Edge-agent verzameld als onderdeel van RQT. De metrische gegevens die als onderdeel van RQT zijn verzameld, bevatten de tag `ms_telemetry` .
+De IoT Edge agent en hub genereren metrische gegevens die u kunt verzamelen om de prestaties van het apparaat te begrijpen. Een subset van deze metrische gegevens wordt door de IoT Edge-agent verzameld als onderdeel van de telemetrie-kwaliteit van de uitvoering. De metrische gegevens die worden verzameld voor de telemetrie van de runtime kwaliteit, worden aangeduid met het label `ms_telemetry` . Zie voor meer informatie over alle beschik bare metrische gegevens [toegang tot ingebouwde metrische](how-to-access-built-in-metrics.md)gegevens.
 
-Als onderdeel van de anoniem maken worden persoonlijke of organisatie gegevens, zoals apparaat-en module namen, verwijderd voordat ze worden geüpload.
+Alle persoonlijke of organisatief Identificeer bare gegevens, zoals apparaat-en module namen, worden vóór het uploaden verwijderd om ervoor te zorgen dat de anonieme aard van de telemetrie van de runtime kwaliteit wordt gegarandeerd.
 
-De standaard frequentie van RQT is één bericht dat wordt verzonden naar IoT Hub elke 24 uur en lokale verzameling door edgeAgent elk uur.
+De IoT Edge-agent verzamelt elk uur de telemetrie en stuurt één bericht naar IoT Hub om de 24 uur.
 
-Als u zich wilt afmelden voor RQT, zijn er twee manieren om dit te doen:
+Als u het verzenden van runtime-telemetrie van uw apparaten wilt afmelden, zijn er twee manieren om dit te doen:
 
 * Stel de `SendRuntimeQualityTelemetry` omgevings variabele in op `false` **edgeAgent**of
 * Schakel de optie in de Azure Portal uit tijdens de implementatie.

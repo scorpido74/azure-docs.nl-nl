@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 3950cc16cd8661ee4e509cf14d12f561cb29c4ea
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940702"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043388"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,7 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 
 | Functie | Details |
 | ---| --- |
+| <a href="/azure/azure-sql/database/elastic-transactions-overview">Gedistribueerde transacties</a> | Gedistribueerde trans acties over beheerde exemplaren. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Exemplaargroepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op exemplaar niveau maken met behulp van de instructie een <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">aanmelding maken vanuit een externe provider</a> . |
 | [Transactionele replicatie](../managed-instance/replication-transactional-overview.md) | Repliceer de wijzigingen van uw tabellen in andere data bases in een SQL Managed instance, SQL Database of SQL Server. Of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere exemplaren van SQL Managed instance of SQL Server. Zie [replicatie configureren in Azure SQL Managed instance](../managed-instance/replication-between-two-instances-configure-tutorial.md)voor meer informatie. |

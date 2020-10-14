@@ -11,28 +11,28 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 7e5dd5d8ddf8df507cebaaeba4a544f58250a891
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 65cd35dd60ed05da51b6da56882af4522b1b7573
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975205"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043409"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Gedistribueerde trans acties in Cloud databases (preview-versie)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Met Elastic data base-trans acties voor Azure SQL Database en Azure SQL Managed Instance kunt u trans acties uitvoeren die meerdere data bases omvatten. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen die gebruikmaken van ADO.NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action](https://msdn.microsoft.com/library/system.transactions.aspx) -klassen. Zie [.NET Framework 4.6.1 (web installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de tape wisselaar op te halen.
-Daarnaast zijn gedistribueerde trans acties van Azure SQL Managed instance beschikbaar in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql).
+Daarnaast zijn voor beheerde instantie gedistribueerde trans acties beschikbaar in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql).
 
 In een on-premises-scenario moet micro soft Distributed Transaction Coordinator (MSDTC) meestal worden uitgevoerd. Omdat MSDTC niet beschikbaar is voor platform-as-a-service-toepassingen in azure, is de mogelijkheid om gedistribueerde trans acties te coördineren, nu rechtstreeks geïntegreerd in SQL Database of een beheerd exemplaar. Toepassingen kunnen verbinding maken met elke Data Base om gedistribueerde trans acties te starten. een van de data bases of servers zal de gedistribueerde trans actie transparant coördineren, zoals wordt weer gegeven in de volgende afbeelding.
 
-In dit document worden "gedistribueerde trans acties" en "Elastic data base trans actions" beschouwd als synoniemen en worden ze op een andere manier gebruikt.
+In dit document worden "gedistribueerde trans acties" en "Elastic data base trans actions" beschouwd als synoniemen en worden ze door elkaar gebruikt.
 
   ![Gedistribueerde trans acties met Azure SQL Database met Elastic data base-trans acties ][1]
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
-Met Elastic data base transacties kunnen toepassingen atomische wijzigingen aanbrengen in gegevens die in verschillende data bases zijn opgeslagen. Het voor beeld is gericht op de ontwikkelings ervaringen aan client zijde in C# en .NET. Een server ervaring (code die is geschreven in opgeslagen procedures of scripts aan de server zijde) met behulp van [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) is alleen beschikbaar voor beheerde exemplaren en voor SQL database deze een later tijdstip is gepland.
+Met Elastic data base transacties kunnen toepassingen atomische wijzigingen aanbrengen in gegevens die in verschillende data bases zijn opgeslagen. Het voor beeld is gericht op de ontwikkelings ervaringen aan client zijde in C# en .NET. Een server ervaring (code die is geschreven in opgeslagen procedures of scripts aan de server zijde) met behulp van [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) is alleen beschikbaar voor beheerde exemplaren.
 > [!IMPORTANT]
 > In de preview-periode wordt het uitvoeren van elastische database transacties tussen Azure SQL Database en Azure SQL Managed instance op dit moment niet ondersteund. Elastische-database transactie kan alleen over meerdere sets SQL-data bases of een set beheerde exemplaren beschikken.
 
@@ -136,7 +136,7 @@ Het volgende codevoorbeeld illustreert deze aanpak. Hierbij wordt ervan uitgegaa
 
 ## <a name="transact-sql-development-experience"></a>Ontwikkelings ervaring voor Transact-SQL
 
-Een gedistribueerde trans actie aan de server zijde met T-SQL is alleen beschikbaar voor Azure SQL Managed instance. Gedistribueerde trans actie kan alleen worden uitgevoerd tussen beheerde instanties die tot dezelfde [Server vertrouwens groep](https://aka.ms/mitrusted-groups)behoren. In dit scenario moeten beheerde exemplaren een [gekoppelde server](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) gebruiken om naar elkaar te verwijzen.
+Een gedistribueerde trans actie op de server met behulp van Transact-SQL is alleen beschikbaar voor Azure SQL Managed instance. Gedistribueerde trans actie kan alleen worden uitgevoerd tussen beheerde instanties die tot dezelfde [Server vertrouwens groep](https://aka.ms/mitrusted-groups)behoren. In dit scenario moeten beheerde exemplaren een [gekoppelde server](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) gebruiken om naar elkaar te verwijzen.
 
 De volgende Transact-SQL-voorbeeld code maakt gebruik van de [begin GEdistribueerde trans actie](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) om gedistribueerde trans actie te starten.
 
@@ -174,8 +174,8 @@ De volgende Transact-SQL-voorbeeld code maakt gebruik van de [begin GEdistribuee
 
 ## <a name="combining-net-and-transact-sql-development-experience"></a>Ontwikkel ervaring met .NET en Transact-SQL combi neren
 
-.NET-toepassingen die gebruikmaken van System. Trans Action-klassen kunnen TransactionScope-klasse combi neren met de Transact-SQL-instructie BEGIN gedistribueerde trans actie. Binnen TransactionScope wordt de binnenste trans actie die wordt uitgevoerd, DITRIBUTED-trans actie expliciet gepromoveerd tot gedistribueerde trans acties. Als er in de TransactionScope een tweede SqlConnecton wordt geopend, wordt deze impliciet gepromoveerd tot gedistribueerde trans actie. Zodra de gedistribueerde trans actie is gestart, worden alle volgende transactie aanvragen, ongeacht of ze afkomstig zijn van .NET of Transact-SQL, toegevoegd aan de bovenliggende gedistribueerde trans actie. Als gevolg hiervan zullen alle geneste transactie bereiken die worden geïnitieerd door de BEGIN instructie eindigen op dezelfde trans actie-en COMMIT/ROLLBACK-instructies, van invloed zijn op het algemene resultaat:
- * De instructie COMMIT heeft geen invloed op het transactie bereik dat is geïnitieerd door de instructie BEGIN, d.w.z. er worden geen resultaten doorgevoerd voordat de methode complete () wordt aangeroepen op het TransactionScope-object. Als TransactionScope-object wordt vernietigd voordat het is voltooid, worden alle wijzigingen die in het bereik zijn aangebracht, teruggedraaid.
+.NET-toepassingen die gebruikmaken van System. Trans Action-klassen kunnen TransactionScope-klasse combi neren met de Transact-SQL-instructie BEGIN gedistribueerde trans actie. Binnen TransactionScope wordt de interne trans actie die de BEGIN DITRIBUTED-trans actie uitvoert, expliciet gepromoveerd tot gedistribueerde trans actie. Als er in de TransactionScope een tweede SqlConnecton wordt geopend, wordt deze impliciet gepromoveerd tot gedistribueerde trans actie. Zodra de gedistribueerde trans actie is gestart, worden alle volgende transactie aanvragen, ongeacht of ze afkomstig zijn van .NET of Transact-SQL, toegevoegd aan de bovenliggende gedistribueerde trans actie. Als gevolg hiervan zullen alle geneste transactie bereiken die worden geïnitieerd door de BEGIN instructie eindigen op dezelfde trans actie-en COMMIT/ROLLBACK-instructies, van invloed zijn op het algemene resultaat:
+ * De instructie COMMIT heeft geen invloed op het transactie bereik dat is geïnitieerd door de instructie BEGIN, dat wil zeggen dat er geen resultaten worden doorgevoerd voordat de methode complete () wordt aangeroepen op het TransactionScope-object. Als TransactionScope-object wordt vernietigd voordat het is voltooid, worden alle wijzigingen die in het bereik zijn aangebracht, teruggedraaid.
  * De instructie ROLLBACK leidt ertoe dat de volledige TransactionScope terugdraait. Elke poging om nieuwe trans acties in TransactionScope te registreren, zal daarna mislukken en er wordt geprobeerd om voltooid () aan te roepen op TransactionScope-object.
 
 Hier volgt een voor beeld waarin trans actie expliciet wordt bevorderd tot gedistribueerde trans actie met Transact-SQL.
@@ -203,7 +203,7 @@ Hier volgt een voor beeld waarin trans actie expliciet wordt bevorderd tot gedis
     }
 ```
 
-In het volgende voor beeld ziet u een trans actie die impliciet wordt aangeraden voor gedistribueerde trans actie zodra de tweede SqlConnecton is gestart in de TransactionScope.
+In het volgende voor beeld ziet u een trans actie die impliciet wordt bevorderd tot gedistribueerde trans actie zodra de tweede SqlConnecton is gestart in de TransactionScope.
 
 ```csharp
     using (TransactionScope s = new TransactionScope())
@@ -244,7 +244,7 @@ Gebruik de volgende Power shell-cmdlets voor het beheren van communicatie relati
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Trans acties op meerdere servers voor Azure SQL Managed instance
 
-Gedistribueerde trans acties worden ondersteund op verschillende servers in Azure SQL Managed instance. Wanneer trans acties intermanaged instance grenzen overschrijden, moeten de deelnemende instanties eerst worden ingevoerd in een onderlinge beveiligings-en communicatie relatie. Dit doet u door een [Server vertrouwensrelatie groep](https://aka.ms/mitrusted-groups) in te stellen die kan worden uitgevoerd op Azure Portal.
+Gedistribueerde trans acties worden ondersteund op verschillende servers in Azure SQL Managed instance. Wanneer trans acties intermanaged instance grenzen overschrijden, moeten de deelnemende instanties eerst worden ingevoerd in een onderlinge beveiligings-en communicatie relatie. Dit doet u door de [vertrouwens groep](https://aka.ms/mitrusted-groups)van de server in te stellen, die u kunt uitvoeren op Azure Portal.
 
   ![Server vertrouwens groepen in azure Portal][3]
 
@@ -258,9 +258,9 @@ Gebruik dynamische beheer weergaven (Dmv's) om de status en voortgang van uw lop
 
 Deze Dmv's zijn bijzonder nuttig:
 
-* **sys.DM \_ Tran \_ actieve \_ trans acties**: een lijst met momenteel actieve trans acties en hun status. De kolom UOW (eenheid van werk) kan de verschillende onderliggende trans acties identificeren die deel uitmaken van dezelfde gedistribueerde trans actie. Alle trans acties binnen dezelfde gedistribueerde trans actie hebben dezelfde UOW-waarde. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms174302.aspx) voor meer informatie.
-* **sys.DM \_ Tran- \_ database \_ transacties**: biedt aanvullende informatie over trans acties, zoals plaatsing van de trans actie in het logboek. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms186957.aspx) voor meer informatie.
-* **sys.DM \_ Tran- \_ vergren delingen**: bevat informatie over de vergren delingen die momenteel worden bewaard door lopende trans acties. Raadpleeg de [dmv-documentatie](https://msdn.microsoft.com/library/ms190345.aspx) voor meer informatie.
+* **sys.DM \_ Tran \_ actieve \_ trans acties**: een lijst met momenteel actieve trans acties en hun status. De kolom UOW (eenheid van werk) kan de verschillende onderliggende trans acties identificeren die deel uitmaken van dezelfde gedistribueerde trans actie. Alle trans acties binnen dezelfde gedistribueerde trans actie hebben dezelfde UOW-waarde. Zie de [dmv-documentatie](https://msdn.microsoft.com/library/ms174302.aspx)voor meer informatie.
+* **sys.DM \_ Tran- \_ database \_ transacties**: biedt aanvullende informatie over trans acties, zoals plaatsing van de trans actie in het logboek. Zie de [dmv-documentatie](https://msdn.microsoft.com/library/ms186957.aspx)voor meer informatie.
+* **sys.DM \_ Tran- \_ vergren delingen**: bevat informatie over de vergren delingen die momenteel worden bewaard door lopende trans acties. Zie de [dmv-documentatie](https://msdn.microsoft.com/library/ms190345.aspx)voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -276,12 +276,12 @@ De volgende beperkingen zijn momenteel van toepassing op gedistribueerde trans a
 * Trans acties via WCF-services worden niet ondersteund. U hebt bijvoorbeeld een WCF-service methode waarmee een trans actie wordt uitgevoerd. Het sluiten van de aanroep binnen een transactie bereik mislukt als [System. service model. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 * Azure SQL Managed instance moet deel uitmaken van een [Server vertrouwens groep](https://aka.ms/mitrusted-groups) om deel te nemen aan gedistribueerde trans acties.
 * Beperkingen van [Server vertrouwens groepen](https://aka.ms/mitrusted-groups) beïnvloeden gedistribueerde trans acties.
-* Beheerde instanties die deel nemen aan gedistribueerde trans acties moeten verbinding hebben via een particulier eind punt (met behulp van een privé-IP-adres van het virtuele netwerk waar ze worden geïmplementeerd) en moeten onderling kunnen worden verwezen met behulp van particuliere FQDN-namen. Client toepassingen die afhankelijk zijn van Transact-SQL kunnen een persoonlijk of openbaar eind punt gebruiken om trans acties uit te voeren voor alle exemplaren in de vertrouwens groep van de server. Deze beperking wordt uitgelegd in het volgende diagram.
+* Beheerde instanties die deel nemen aan gedistribueerde trans acties, moeten verbinding hebben via particuliere eind punten (met behulp van een privé IP-adres van het virtuele netwerk waar ze worden geïmplementeerd) en moeten onderling worden gerefereerd met behulp van particuliere FQDN-namen. Client toepassingen kunnen gedistribueerde trans acties op privé-eind punten gebruiken. Daarnaast kunnen client toepassingen gedistribueerde trans acties op open bare eind punten gebruiken wanneer Transact-SQL gebruikmaakt van gekoppelde servers die verwijzen naar privé-eind punten. Deze beperking wordt uitgelegd in het volgende diagram.
   ![Connectiviteits beperking van het particuliere eind punt][4]
 ## <a name="next-steps"></a>Volgende stappen
 
-* Neem voor vragen contact op met ons op de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
-* Voor functie aanvragen moet u deze toevoegen aan het [SQL database feedback forum](https://feedback.azure.com/forums/217321-sql-database/) of het [Managed instance-forum](https://feedback.azure.com/forums/915676-sql-managed-instance).
+* Neem voor vragen contact op met de [micro soft Q&een vraag pagina voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
+* Voor functie aanvragen voegt u deze toe aan het [SQL database feedback forum](https://feedback.azure.com/forums/217321-sql-database/) of het [Managed instance-forum](https://feedback.azure.com/forums/915676-sql-managed-instance).
 
 
 
@@ -289,5 +289,5 @@ De volgende beperkingen zijn momenteel van toepassing op gedistribueerde trans a
 [1]: ./media/elastic-transactions-overview/distributed-transactions.png
 [2]: ./media/elastic-transactions-overview/sql-mi-distributed-transactions.png
 [3]: ./media/elastic-transactions-overview/server-trust-groups-azure-portal.png
-[4]: ./media/elastic-transactions-overview/sql-mi-private-endpoint-limitation.png
+[4]: ./media/elastic-transactions-overview/managed-instance-distributed-transactions-private-endpoint-limitations.png
  

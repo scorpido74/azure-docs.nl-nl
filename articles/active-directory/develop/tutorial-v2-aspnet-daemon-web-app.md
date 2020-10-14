@@ -1,5 +1,6 @@
 ---
-title: Een multitenant daemon bouwen die het Microsoft-identiteitsplatformeindpunt gebruikt
+title: 'Zelfstudie: Een multitenant-daemon bouwen die toegang heeft tot Microsoft Graph-bedrijfsgegevens | Azure'
+titleSuffix: Microsoft identity platform
 description: In deze zelfstudie leert u hoe u een ASP.NET-web-API die wordt beveiligd door Azure Active Directory aanroept vanuit een Windows-desktoptoepassing (WPF). De WPF-client verifieert een gebruiker, vraagt een toegangstoken aan en roept de web-API aan.
 services: active-directory
 author: jmprieur
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982845"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611092"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Zelfstudie: Een multitenant daemon bouwen die het Microsoft-identiteitsplatformeindpunt gebruikt
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Zelfstudie: Een multitenant-daemon bouwen die het Microsoft-identiteitsplatform gebruikt
 
 In deze zelfstudie leert u hoe u het Microsoft-identiteitsplatfom kunt gebruiken voor toegang tot de gegevens van zakelijke Microsoft-klanten in een langlopend, niet-interactief proces. De voorbeeld-daemon gebruikt de [OAuth2-clientreferenties](v2-oauth2-client-creds-grant-flow.md) om een toegangstoken te verkrijgen. De daemon gebruikt vervolgens het token om [Microsoft Graph](https://graph.microsoft.io) aan te roepen en toegang te krijgen tot bedrijfsgegevens.
 
@@ -30,28 +31,23 @@ In deze zelfstudie leert u hoe u het Microsoft-identiteitsplatfom kunt gebruiken
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
+## <a name="prerequisites"></a>Vereisten
+
+- [Visual Studio 2017 of 2019](https://visualstudio.microsoft.com/downloads/).
+- Een Azure AD-tenant. Zie [Een Azure AD-tenant verkrijgen](quickstart-create-new-tenant.md) voor meer informatie.
+- Eén of meer gebruikersaccounts in uw Azure AD-tenant. Dit voorbeeld werkt niet met een Microsoft-account. Als u bent aangemeld bij de [Azure-portal](https://portal.azure.com) met een Microsoft-account en nog nooit een gebruikersaccount hebt gemaakt in uw map, moet u dat nu doen.
+
+## <a name="scenario"></a>Scenario
+
 De app is gebouwd als een ASP.NET MVC-toepassing. De OWIN OpenID Connect-middleware wordt gebruikt om gebruikers aan te melden.
 
 Het daemon-component in dit voorbeeld is een API-controller, `SyncController.cs`. Wanneer de controller wordt aangeroepen, wordt er een lijst met gebruikers in de Azure AD-tenant (Azure Active Directory) van de gebruiker opgehaald uit Microsoft Graph. `SyncController.cs` wordt geactiveerd door een AJAX-aanroep in de webtoepassing. [Microsoft Authentication Library (MSAL) voor .NET](msal-overview.md) wordt gebruikt om een toegangstoken op te halen voor Microsoft Graph.
-
->[!NOTE]
-> Als u voor het eerst gebruikmaakt van het Microsoft-identiteitsplatform raden we u aan te beginnen met de [Snelstartgids voor .NET Core-deamon](quickstart-v2-netcore-daemon.md).
-
-## <a name="scenario"></a>Scenario
 
 Omdat de app een multitenant-app voor zakelijke Microsoft-klanten is, moet deze een manier bieden voor klanten om de toepassing te 'registreren' of 'te verbinden' met hun bedrijfsgegevens. Tijdens de verbindingsstroom kent een bedrijfsbeheerder eerst rechtstreeks aan de app *toepassingstoestemming* toe, zodat deze toegang heeft tot bedrijfsgegevens op een niet-interactieve manier, zonder dat er een gebruiker moet zijn aangemeld. Het merendeel van de logica in dit voorbeeld toont hoe deze verbindingsstroom kan worden gerealiseerd met het [beheerderstoestemming](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)-eindpunt van het identiteitsplatform.
 
 ![Diagram waarin de UserSync-app wordt weergegeven met drie lokale items die verbinding maken met Azure. Hierbij wordt voor Startup.Auth een token interactief opgehaald om verbinding te maken met Azure AD, wordt voor AccountController toestemming van de beheerder verkregen om verbinding te maken met Azure AD en worden met SyncController gebruikers gelezen om verbinding te maken met Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 Lees de [documentatie voor het clientreferentieprotocol voor het identiteitsplatformeindpunt](v2-oauth2-client-creds-grant-flow.md) voor meer informatie over de in dit voorbeeld gebruikte concepten.
-
-## <a name="prerequisites"></a>Vereisten
-
-Om het voorbeeld in deze snelstartgids uit te voeren hebt u het volgende nodig:
-
-- [Visual Studio 2017 of 2019](https://visualstudio.microsoft.com/downloads/).
-- Een Azure AD-tenant. Zie [Een Azure AD-tenant verkrijgen](quickstart-create-new-tenant.md) voor meer informatie.
-- Eén of meer gebruikersaccounts in uw Azure AD-tenant. Dit voorbeeld werkt niet met een Microsoft-account (voorheen Windows Live-account). Als u bent aangemeld bij de [Azure-portal](https://portal.azure.com) met een Microsoft-account en nog nooit een gebruikersaccount hebt gemaakt in uw map, moet u dat nu doen.
 
 ## <a name="clone-or-download-this-repository"></a>Deze opslagplaats klonen of downloaden
 
@@ -256,17 +252,8 @@ Als u een fout vindt in MSAL.NET, meld het probleem dan in [MSAL.NET GitHub-prob
 Ga naar de [pagina Gebruikersspraak](https://feedback.azure.com/forums/169401-azure-active-directory) om een aanbeveling te doen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de verschillende [Verificatiestromen en toepassingsscenario's](authentication-flows-app-scenarios.md) die het Microsoft-identiteitsplatform ondersteunt.
 
-Voor meer informatie raadpleegt u de volgende conceptdocumentatie:
+Meer informatie over het bouwen van daemon-apps die gebruikmaken van het Microsoft-identiteitsplatform voor toegang tot beveiligde web-API's:
 
-- [Tenancy in Azure Active Directory](single-and-multi-tenant-apps.md)
-- [Inzicht in ervaringen met Azure AD-toepassingtoestemming](application-consent-experience.md)
-- [Een Azure Active Directory-gebruiker aanmelden met behulp van het patroon voor multitenant-toepassingen](howto-convert-app-to-be-multi-tenant.md)
-- [Toestemming van gebruiker en beheerder](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Toepassings- en service-principal-objecten in Azure Active Directory](app-objects-and-service-principals.md)
-- [Snelstart: Een toepassing registreren bij het Microsoft-identiteitsplatform](quickstart-register-app.md)
-- [Snelstart: Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
-- [Een token ophalen voor een toepassing met clientreferentiestromen](msal-client-applications.md)
-
-Zie de [Snelstartgids voor .NET Core-deamon](quickstart-v2-netcore-daemon.md) voor een eenvoudigere multitenant-console daemontoepassing.
+> [!div class="nextstepaction"]
+> [Scenario: Een daemon-app die web-API's aanroept](scenario-daemon-overview.md)

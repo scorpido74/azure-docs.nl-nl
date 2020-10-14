@@ -3,12 +3,12 @@ title: Live video analyseren met Live Video Analytics op IoT Edge en Azure Custo
 description: Meer informatie over het gebruik van Custom Vision om een containermodel te bouwen dat een speelgoedwagen kan detecteren en de AI-uitbreidbaarheid van Live Video Analytics op IoT Edge (LVA) kan gebruiken om het model op de rand te implementeren om speelgoedwagens te detecteren in een live-videostream.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0e980ac73d77b6fbbfdb8178f285904d3bf29920
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929308"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804143"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Zelfstudie: Live video analyseren met Live Video Analytics op IoT Edge en Azure Custom Vision
 
@@ -56,7 +56,6 @@ Vereisten voor deze zelfstudie:
 
 ## <a name="review-the-sample-video"></a>De voorbeeldvideo bekijken
 
-
 In deze zelfstudie wordt gebruikgemaakt van een bestand met een [video van een speelgoedwagen](https://lvamedia.blob.core.windows.net/public/t2.mkv/) om een livestream te simuleren. U kunt de video bekijken via een toepassing zoals [VLC Media Player](https://www.videolan.org/vlc/). Selecteer CTRL + N en plak vervolgens een link naar [de video van een speelgoedwagen](https://lvamedia.blob.core.windows.net/public/t2.mkv) om het afspelen te starten. Merk op dat rond seconde 36 van de video een speelgoedwagen verschijnt. Het aangepaste model is getraind om deze specifieke speelgoedwagen te detecteren. In deze zelfstudie gebruikt u Live Video Analytics op IoT Edge om dergelijke speelgoedwagens te detecteren en bijbehorende deductiegebeurtenissen te publiceren naar IoT Edge Hub.
 
 ## <a name="overview"></a>Overzicht
@@ -81,33 +80,7 @@ Aanvullende opmerkingen:
 Als het model klaar is voor gebruik, kunt u het exporteren naar een Docker-container met behulp van de knop Exporteren op het tabblad Prestaties. Zorg ervoor dat u Linux kiest als containerplatformtype. Dit is het platform waarop de container wordt uitgevoerd. De computer waarop u de container downloadt, kan Windows of Linux zijn. De volgende instructies zijn gebaseerd op een containerbestand dat op een Windows-computer gedownload is.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Dockerfile":::
- 
-1. U moet een zip-bestand downloaden naar de lokale computer met de naam `<projectname>.DockerFile.Linux.zip`. 
-1. Controleer of Docker is geïnstalleerd. Zo niet, installeer dan [Docker](https://docs.docker.com/get-docker/) voor uw Windows-computer.
-1. Pak het gedownloade bestand uit op een locatie naar keuze. Gebruik de opdrachtregel om naar de uitgepakte map te gaan.
-    
-    Voer de volgende opdrachten uit 
-    
-    1. `docker build -t cvtruck` 
-    
-        Met deze opdracht worden een aantal pakketten gedownload en wordt de docker-installatiekopie gebouwd en gelabeld als `cvtruck:latest`. 
-    
-        > [!NOTE]
-        > U ziet het volgende als het succesvol is `- Successfully built <docker image id> and Successfully tagged cvtruck:latest.` Als de build-opdracht mislukt, probeer het dan opnieuw. Soms worden afhankelijke pakketten de eerste keer niet gedownload.
-    1. `docker  image ls`
-
-        Met deze opdracht wordt gecontroleerd of de nieuwe installatiekopie zich in het lokale register bevindt.
-    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
-    
-        Deze opdracht publiceert de opengestelde poort (80) van de docker naar de poort (80) van uw lokale machine.
-    1. `docker container ls`
-    
-        Deze opdracht controleert de toewijzing van de poorten, en of de docker-container correct wordt uitgevoerd op uw machine. De uitvoer moet er ongeveer als volgt uitzien:
-
-        ```
-        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Custom Vision-overzicht"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -148,10 +121,7 @@ Als het model klaar is voor gebruik, kunt u het exporteren naar een Docker-conta
 1. Klik met de rechtermuisknop op het bestand "src/edge/ deployment.customvision.template.json" en klik op **IoT Edge-implementatiemanifest genereren**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="IoT Edge-implementatiemanifest genereren":::
-  
-    Hiermee maakt u een manifestbestand in de map src/edge/config met de naam " deployment.customvision.amd64.json".
-1. Open het bestand "src/edge/ deployment.customvision.template.json" en zoek het JSON-blok registryCredentials. In dit blok vindt u het adres van uw Azure-containerregister samen met de gebruikersnaam en het wachtwoord.
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Custom Vision-overzicht" en zoek het JSON-blok registryCredentials. In dit blok vindt u het adres van uw Azure-containerregister samen met de gebruikersnaam en het wachtwoord.
 1. Push de lokale Custom Vision-container naar uw Azure-containerregister door op de opdrachtregel te volgen.
 
     1. Meld u aan bij het register met de volgende opdracht:
@@ -170,11 +140,10 @@ Als het model klaar is voor gebruik, kunt u het exporteren naar een Docker-conta
 1. Stel de IoT Hub-verbindingsreeks in door naast het deelvenster AZURE IOT HUB in de linkerbenedenhoek te klikken op het pictogram "Meer acties". U kunt de tekenreeks uit het bestand appsettings.json kopiëren. (Hier volgt een andere aanbevolen methode om ervoor te zorgen dat u de juiste IoT Hub hebt geconfigureerd in VScode via de opdracht [IOT hub selecteren](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)).
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Verbindingsreeks":::
-1. Klik vervolgens met de rechtermuisknop op "src/edge/config/ deployment.customvision.amd64.json" en klik op **Implementatie voor één apparaat maken**. 
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Custom Vision-overzicht" en klik op **Implementatie voor één apparaat maken**. 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Implementatie voor één apparaat maken":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Custom Vision-overzicht":::
 1. Vervolgens wordt u gevraagd om een IoT Hub-apparaat te selecteren. Selecteer lva-sample-device in de vervolgkeuzelijst.
 1. Vernieuw in ongeveer 30 seconden de Azure IOT-hub in het gedeelte linksonder en u moet het edge-apparaat hebben met de volgende modules geïmplementeerd:
 
@@ -187,43 +156,21 @@ Als het model klaar is voor gebruik, kunt u het exporteren naar een Docker-conta
 Klik met de rechtermuisknop op het Live Video Analytics-apparaat en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**. Deze stap is nodig om de IoT Hub-gebeurtenissen te controleren in het venster UITVOER van Visual Studio Code.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Bewaking van ingebouwd gebeurteniseindpunt starten":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Custom Vision-overzicht":::
 
 ## <a name="run-the-sample-program"></a>Het voorbeeldprogramma uitvoeren
 
 Als u de grafiektopologie voor deze zelfstudie in een browser opent, ziet u dat de waarde van InferencingUrl is ingesteld op http://cv:80/image, wat betekent dat de deductieserver resultaten in de live video weergeeft na het detecteren van speelgoedwagens, indien aanwezig.
 
-1. Selecteer de toets F5 om een foutopsporingssessie te starten. U ziet de berichten die worden afgedrukt in het venster TERMINAL.
-1. De code operations.json begint met het uitvoeren van aanroepen naar de directe methoden GraphTopologyList en GraphInstanceList. Als u na het voltooien van vorige quickstarts resources hebt opgeschoond, worden er lege lijsten geretourneerd en wordt het proces gepauzeerd. Selecteer de Enter-toets om door te gaan.
-    
-   In het TERMINAL-venster wordt de volgende set aanroepen van directe methoden weergegeven:
-    
-   * Een aanroep van GraphTopologySet waarin gebruik wordt gemaakt van de voorgaande topologyUrl.
-   * Een aanroep van GraphInstanceSet met behulp van de volgende hoofdtekst:
-        
-   ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "CustomVisionWithHttpExtension",
-            "description": "Sample graph description",
-            "parameters": [
-              { 
-                "name": "inferencingUrl",
-                "value": "http://cv:80/image"
-              },
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/t2.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+1. Open in Visual Studio Code het tabblad **Extensies** (of druk op Ctrl+Shift+X) en zoek naar Azure IoT Hub.
+1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Custom Vision-overzicht":::
+1. Zoek 'Uitgebreid bericht tonen' en schakel deze optie in.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Custom Vision-overzicht"
               }
             ]
           }

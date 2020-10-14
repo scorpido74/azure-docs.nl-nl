@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067702"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044374"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Query-eenheden in azure Digital Apparaatdubbels 
 
-Een Azure Digital Apparaatdubbels **query Unit (qu)** is een eenheid op aanvraag die wordt gebruikt voor het uitvoeren van uw [Azure Digital apparaatdubbels-query's](how-to-query-graph.md) met behulp van de [query-API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query). 
+Een Azure Digital Apparaatdubbels **query Unit (qu)** is een eenheid op aanvraag die wordt gebruikt voor het uitvoeren van uw [Azure Digital apparaatdubbels-query's](how-to-query-graph.md) met behulp van de [query-API](/rest/api/digital-twins/dataplane/query). 
 
 De systeem bronnen, zoals CPU, IOPS en geheugen die nodig zijn om query bewerkingen uit te voeren die worden ondersteund door Azure Digital Apparaatdubbels, worden abstract. Hiermee kunt u in plaats daarvan het gebruik bijhouden in query-eenheden.
 
@@ -28,7 +28,7 @@ In dit artikel wordt uitgelegd hoe u query-eenheden begrijpt en verbruik van que
 
 ## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>Het verbruik van de query-eenheid in azure Digital Apparaatdubbels zoeken 
 
-Wanneer u een query uitvoert met behulp van de Azure Digital Apparaatdubbels- [query-API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query), kunt u de reactie header controleren om het aantal QUs bij te houden dat de query verbruikt. Zoek naar "query-kosten" in het antwoord teruggestuurd vanuit Azure Digital Apparaatdubbels. 
+Wanneer u een query uitvoert met behulp van de Azure Digital Apparaatdubbels- [query-API](/rest/api/digital-twins/dataplane/query), kunt u de reactie header controleren om het aantal QUs bij te houden dat de query verbruikt. Zoek naar "query-kosten" in het antwoord teruggestuurd vanuit Azure Digital Apparaatdubbels. 
 
 Met de Azure Digital Apparaatdubbels [sdk's](how-to-use-apis-sdks.md) kunt u de header van de query lading extra heren van het wissel bare antwoord. In deze sectie wordt beschreven hoe u een query uitvoert voor Digital apparaatdubbels en hoe u het bewissel bare antwoord kunt herhalen om de koptekst van de query-toerekenbaar uit te pakken. 
 
@@ -68,6 +68,6 @@ await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
 Ga voor meer informatie over het uitvoeren van query's in azure Digital Apparaatdubbels naar:
 * [*Concepten: query taal*](concepts-query-language.md)
 * [*Instructies: een query uitvoeren op de dubbele grafiek*](how-to-query-graph.md)
-* [Naslag documentatie voor query-API](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query/querytwins)
+* [Naslag documentatie voor query-API](/rest/api/digital-twins/dataplane/query/querytwins)
 
 U kunt Azure Digital Apparaatdubbels-query limieten vinden in [*Naslag informatie: Service limieten in open bare preview*](reference-service-limits.md).

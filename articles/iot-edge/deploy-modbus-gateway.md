@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76511141"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043898"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-apparaten verbinden via een IoT Edge apparaat-gateway
 
@@ -35,7 +35,7 @@ In dit artikel wordt ervan uitgegaan dat u het Modbus-protocol TCP gebruikt. Voo
 
 Als u de functionaliteit van de Modbus-gateway wilt testen, heeft Microsoft een voorbeeldmodule die u kunt gebruiken. U kunt de module openen vanuit Azure Marketplace, [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)of met de afbeeldings-URI `mcr.microsoft.com/azureiotedge/modbus:1.0` .
 
-Als u uw eigen module wilt maken en deze wilt aanpassen voor uw omgeving, is er een open-source [Azure IOT Edge Modbus-module](https://github.com/Azure/iot-edge-modbus) project op github. Volg de instructies in dit project om uw eigen containerinstallatiekopie te maken. Als u een container installatie kopie wilt maken, raadpleegt u [C#-modules ontwikkelen in Visual Studio](how-to-visual-studio-develop-csharp-module.md) of [modules ontwikkelen in Visual Studio code](how-to-vs-code-develop-module.md). Deze artikelen bevatten instructies voor het maken van nieuwe modules en het publiceren van container installatie kopieën in een REGI ster.
+Als u uw eigen module wilt maken en deze wilt aanpassen voor uw omgeving, is er een open-source [Azure IOT Edge Modbus-module](https://github.com/Azure/iot-edge-modbus) project op github. Volg de instructies in dit project om uw eigen containerinstallatiekopie te maken. Als u een container installatie kopie wilt maken, raadpleegt u [C#-modules ontwikkelen in Visual Studio](./how-to-visual-studio-develop-module.md) of [modules ontwikkelen in Visual Studio code](how-to-vs-code-develop-module.md). Deze artikelen bevatten instructies voor het maken van nieuwe modules en het publiceren van container installatie kopieën in een REGI ster.
 
 ## <a name="try-the-solution"></a>Probeer de oplossing
 
@@ -51,7 +51,7 @@ In deze sectie wordt uitgelegd hoe u de voor beeld-Modbus-module van micro soft 
 
    1. Klik op de vervolg keuzelijst **toevoegen** en selecteer **Marketplace-module**.
    2. Zoek `Modbus` en selecteer de **Modbus TCP-module** van micro soft.
-   3. De module wordt automatisch geconfigureerd voor uw IoT Hub en wordt weer gegeven in de lijst met IoT Edge modules. De routes worden ook automatisch geconfigureerd. Selecteer **Controleren + maken**.
+   3. De module wordt automatisch geconfigureerd voor uw IoT Hub en wordt weer gegeven in de lijst met IoT Edge modules. De routes worden ook automatisch geconfigureerd. Selecteer **Controleren en maken**.
    4. Controleer het implementatie manifest en selecteer **maken**.
 
 5. Selecteer de module Modbus, `ModbusTCPModule` in de lijst en selecteer het tabblad **module dubbele instellingen** . De vereiste JSON voor de module dubbele gewenste eigenschappen wordt automatisch ingevuld.

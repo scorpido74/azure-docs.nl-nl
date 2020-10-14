@@ -9,55 +9,55 @@ ms.date: 06/29/2020
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85570177"
 ---
 #### <a name="process-automation"></a>Procesautomatisering
 
 | Resource | Limiet |Notities|
 | --- | --- |---|
-| Maximum aantal nieuwe taken dat elke 30 seconden per Azure Automation account (niet-geplande taken) kan worden verzonden |100 |Wanneer deze limiet is bereikt, mislukken de volgende aanvragen om een taak te maken. De client ontvangt een fout bericht.|
-| Maximum aantal gelijktijdig uitgevoerde taken in hetzelfde exemplaar van de tijd per Automation-account (niet-geplande taken) |200 |Wanneer deze limiet is bereikt, mislukken de volgende aanvragen om een taak te maken. De client ontvangt een fout bericht.|
-| Maximale opslag grootte van de meta gegevens van de taak voor een periode van 30 dagen | 10 GB (ongeveer 4.000.000 taken)|Wanneer deze limiet is bereikt, mislukken de volgende aanvragen om een taak te maken. |
-| Maximale taak stroom limiet|1 MiB|Eén stroom kan niet groter zijn dan 1 MB.|
-| Maxi maal aantal modules dat elke 30 seconden per Automation-account kan worden geïmporteerd |5 ||
+| Maximumaantal nieuwe taken dat elke 30 seconden per Azure Automation-account kan worden verzonden (niet-geplande taken) |100 |Wanneer deze limiet wordt bereikt, mislukken de volgende verzoeken om een taak te maken. De client ontvangt een foutmelding.|
+| Maximumaantal gelijktijdige actieve taken om dezelfde tijd per Automation-account (niet-geplande taken) |200 |Wanneer deze limiet wordt bereikt, mislukken de volgende verzoeken om een taak te maken. De client ontvangt een foutmelding.|
+| Maximale opslaggrootte van taakmetagegevens voor een doorlopende periode van 30 dagen | 10 GB (ongeveer 4 miljoen taken)|Wanneer deze limiet wordt bereikt, mislukken de volgende verzoeken om een taak te maken. |
+| Maximale limiet voor taakstreams|1 MiB|Eén stream kan niet groter zijn dan 1 MB.|
+| Maximumaantal modules dat elke 30 seconden per Automation-account kan worden geïmporteerd |5 ||
 | Maximale grootte van een module |100 MB ||
-| Uitvoerings tijd van taak, gratis laag |500 minuten per abonnement per kalender maand ||
-| Maximale hoeveelheid schijf ruimte die is toegestaan per sandbox<sup>1</sup> |1 GB |Is alleen van toepassing op Azure-sandboxes.|
-| Maximale hoeveelheid geheugen die is toegewezen aan een sandbox<sup>1</sup> |400 MB |Is alleen van toepassing op Azure-sandboxes.|
-| Maximum aantal netwerk sockets dat is toegestaan per sandbox<sup>1</sup> |1000 |Is alleen van toepassing op Azure-sandboxes.|
-| Maxi maal toegestane runtime per runbook<sup>1</sup> |3 uur |Is alleen van toepassing op Azure-sandboxes.|
-| Maximum aantal Automation-accounts in een abonnement |Geen limiet ||
-| Maximum aantal Hybrid Worker groepen per Automation-account|4000||
-|Maximum aantal gelijktijdige taken dat kan worden uitgevoerd op één Hybrid Runbook Worker|50 ||
-| Maximale parameter grootte voor runbook-taak   | 512 KB||
-| Maximum aantal runbook-para meters   | 50|Als u de limiet van 50-para meter bereikt, kunt u een JSON-of XML-teken reeks door geven aan een para meter en deze parseren met het runbook.|
-| Maximale grootte van webhook-nettolading |  512 KB|
-| Maximum aantal dagen dat taak gegevens behouden blijven|30 dagen|
-| Maximale grootte van Power shell-werk stroom status |5 MB| Is van toepassing op Power shell workflow-runbooks bij het controle punt van een werk stroom.|
+| Taak-runtime, Gratis laag |500 minuten per abonnement per kalendermaand ||
+| Maximale hoeveelheid schijfruimte die per sandbox is toegestaan<sup>1</sup> |1 GB |Alleen van toepassing op Azure-sandboxes.|
+| Maximale hoeveelheid geheugen die aan een sandbox wordt gegeven<sup>1</sup> |400 MB |Alleen van toepassing op Azure-sandboxes.|
+| Maximumaantal netwerksockets dat per sandbox is toegestaan<sup>1</sup> |1000 |Alleen van toepassing op Azure-sandboxes.|
+| Maximale runtime die per runbook is toegestaan<sup>1</sup> |3 uur |Alleen van toepassing op Azure-sandboxes.|
+| Maximumaantal Automation-accounts in een abonnement |Geen limiet ||
+| Maximumaantal hybride werkrolgroepen per Automation-account|4000||
+|Maximumaantal gelijktijdige taken dat op één hybride runbook-werkrol kan worden uitgevoerd|50 ||
+| Maximale parametergrootte voor runbook-taken   | 512 KB||
+| Maximumaantal runbook-parameters   | 50|Als u de limiet van 50 parameters hebt bereikt, kunt u een JSON- of XML-tekenreeks doorgeven aan een parameter en deze parseren met het runbook.|
+| Maximale grootte voor webhookpayloads |  512 KB|
+| Maximumaantal dagen dat taakgegevens worden bewaard|30 dagen|
+| Maximale grootte voor PowerShell-werkstroomstatussen |5 MB| Van toepassing op PowerShell-werkstroom-runbooks wanneer controlepunten worden geplaatst in de werkstroom.|
 
-<sup>1</sup> Een sandbox is een gedeelde omgeving die kan worden gebruikt door meerdere taken. Taken die gebruikmaken van dezelfde sandbox zijn gebonden aan de resource beperkingen van de sandbox.
+<sup>1</sup> Een sandbox is een gedeelde omgeving die door meerdere taken kan worden gebruikt. Taken die dezelfde sandbox gebruiken, zijn gebonden door de resourcebeperkingen van de sandbox.
 
 #### <a name="change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris
 
-De volgende tabel bevat de limieten voor bijgehouden items per computer voor het bijhouden van wijzigingen.
+De volgende tabel toont de limieten voor bijgehouden items per machine voor het bijhouden van wijzigingen.
 
-| **Resource** | **Ondergrens**| **Opmerkingen** |
+| **Resource** | **Limiet**| **Opmerkingen** |
 |---|---|---|
-|Bestand|500||
+|File|500||
 |Register|250||
-|Windows-software|250|Bevat geen software-updates.|
-|Linux-pakketten|1.250||
+|Windows-software|250|Software-updates niet inbegrepen.|
+|Linux-pakketten|1\.250||
 |Services|250||
 |Daemon|250||
 
 #### <a name="update-management"></a>Updatebeheer
 
-De volgende tabel bevat de limieten voor de Updatebeheer.
+De volgende tabel toont de limieten voor Updatebeheer.
 
-| **Resource** | **Ondergrens**| **Opmerkingen** |
+| **Resource** | **Limiet**| **Opmerkingen** |
 |---|---|---|
 |Aantal machines per update-implementatie|1000||

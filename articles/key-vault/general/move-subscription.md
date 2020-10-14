@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394734"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042402"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Een Azure Key Vault verplaatsen naar een ander abonnement
 
@@ -36,6 +36,9 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
 * Nieuwe aan tenant B gekoppelde vermeldingen van het toegangsbeleid toe te voegen.
 
 ## <a name="limitations"></a>Beperkingen
+
+> [!IMPORTANT]
+> **Sleutel kluizen die worden gebruikt voor schijf versleuteling, kunnen niet worden verplaatst** Als u sleutel kluis met schijf versleuteling voor een virtuele machine gebruikt, kan de sleutel kluis niet worden verplaatst naar een andere resource groep of een abonnement wanneer schijf versleuteling is ingeschakeld. U moet schijf versleuteling uitschakelen voordat u de sleutel kluis verplaatst naar een nieuwe resource groep of een nieuw abonnement. 
 
 Sommige service-principals (gebruikers en toepassingen) zijn gekoppeld aan een specifieke Tenant. Als u de sleutel kluis verplaatst naar een abonnement in een andere Tenant, is er een kans dat u de toegang tot een specifieke Service-Principal niet kunt herstellen. Controleer of alle essentiële service-principals aanwezig zijn in de Tenant waar u de sleutel kluis wilt verplaatsen.
 

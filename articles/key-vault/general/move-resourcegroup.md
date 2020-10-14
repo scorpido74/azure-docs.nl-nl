@@ -11,18 +11,22 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another resource group.
-ms.openlocfilehash: fe8051d551077666c06ac033f22303fd643ac602
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea152e1d78ab1ea610eee5420394c89524673993
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585730"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042379"
 ---
 # <a name="moving-an-azure-key-vault-across-resource-groups"></a>Een Azure Key Vault verplaatsen tussen resource groepen
 
 ## <a name="overview"></a>Overzicht
 
 Het verplaatsen van een sleutel kluis over resource groepen is een ondersteunde functie voor sleutel kluis. Het verplaatsen van een sleutel kluis tussen resource groepen heeft geen invloed op de configuratie van de sleutel kluis firewall of het toegangs beleid. Verbonden toepassingen en service-principals moeten blijven werken zoals bedoeld.
+
+> [!IMPORTANT]
+> **Sleutel kluizen die worden gebruikt voor schijf versleuteling, kunnen niet worden verplaatst.**
+> Als u sleutel kluis met schijf versleuteling voor een virtuele machine gebruikt, kan de sleutel kluis niet worden verplaatst naar een andere resource groep of een abonnement wanneer schijf versleuteling is ingeschakeld. U moet schijf versleuteling uitschakelen voordat u de sleutel kluis verplaatst naar een nieuwe resource groep of een nieuw abonnement. 
 
 ## <a name="design-considerations"></a>Overwegingen bij het ontwerp
 

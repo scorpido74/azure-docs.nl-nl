@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76548693"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042997"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Security Manager
 
@@ -75,7 +75,7 @@ De IoT Edge Security daemon maakt gebruik van de beschik bare hardware-root van 
 
 #### <a name="cloud-interface"></a>Cloud interface
 
-Met de Cloud interface kan de IoT Edge Security daemon toegang krijgen tot Cloud Services, zoals Cloud complimenten, zoals beveiligings vernieuwing.  Zo gebruikt de IoT Edge Security daemon momenteel deze interface om toegang te krijgen tot de Azure IoT Hub [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/) voor levenscyclus beheer van de apparaat-id.  
+Met de Cloud interface kan de IoT Edge Security daemon toegang krijgen tot Cloud Services, zoals Cloud complimenten, zoals beveiligings vernieuwing.  Zo gebruikt de IoT Edge Security daemon momenteel deze interface om toegang te krijgen tot de Azure IoT Hub [Device Provisioning Service](../iot-dps/index.yml) voor levenscyclus beheer van de apparaat-id.  
 
 #### <a name="management-api"></a>Beheer-API
 

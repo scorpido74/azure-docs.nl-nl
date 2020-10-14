@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905274"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042589"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemeen schappelijke gegevens model indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,6 +51,8 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Map verzameling | de hoofd locatie van de verzameling | Ja, als u een manifest gebruikt | Tekenreeks | corpusPath |
 | Verzameling entiteit | Pad naar entiteits verwijzing | ja | Tekenreeks | vennootschap |
 | Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
+
+Als de definitie van de entiteit die u wilt gebruiken in uw bron transformatie zich in dezelfde map bevindt als de map Data, kunt u de selectie van entiteit gebruiken uit verzameling opheffen en eenvoudigweg typen in de entiteit van de entiteit die u wilt gebruiken als entiteits verwijzing.
 
 ### <a name="sink-settings"></a>Sink-instellingen
 

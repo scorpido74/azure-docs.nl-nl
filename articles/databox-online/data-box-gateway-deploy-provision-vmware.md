@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371283"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743944"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Zelfstudie: Azure Data Box Gateway inrichten in VMware
 
@@ -145,11 +145,11 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 
     Op dezelfde pagina klikt u op **Harde schijf toevoegen** en selecteert u vervolgens **Bestaande harde schijf**. Selecteer het VMDK-bestand in de gegevensopslag. Hiermee wordt een besturingssysteemschijf toegevoegd. 
 
-     ![Pagina Instellingen aanpassen](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Pagina Instellingen aanpassen 2](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Schuif omlaag totdat u de **nieuwe vaste schijf** ziet en vouw deze uit om de instellingen te kunnen zien. Stel het **knooppunt van het virtuele apparaat** in op **IDE-controller 0**.
 
-     ![Pagina Instellingen aanpassen](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![Pagina Instellingen aanpassen 3](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. (Optioneel) *Voer deze stap alleen uit als u VMware ESXi-Server 6.7 gebruikt*. Op de pagina **Instellingen aanpassen** klikt u op **VM-opties**. Ga naar **Opstartopties > Firmware** en wijzig deze in **BIOS**. De waarde is standaard ingesteld op EFI. Klik op **Volgende**.
 
@@ -158,7 +158,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 18. Op de pagina **Gereed om te voltooien** controleert u alle instellingen voor de nieuwe virtuele machine. Controleer of CPU 4 is, het geheugen 8192 MB is, de netwerkinterface 1 is en harde schijf 2 IDE-controller 0 is. Klik op **Voltooien**.
    
     ![Pagina Gereed om te voltooien](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![Pagina Gereed om te voltooien](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Pagina Gereed om te voltooien 2](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Uw virtuele machine is nu ingericht. U ziet als resultaat nu een melding dat de nieuwe virtuele machine is toegevoegd aan de lijst met virtuele machines.
 

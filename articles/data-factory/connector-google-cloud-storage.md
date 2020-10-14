@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 24f9b7655398cbd6a2621edb61d67d4fc4edfb52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a916da121c8ffee1729ede6dd700ca4f6872fbf7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332029"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043490"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Gegevens uit Google Cloud Storage kopiëren met behulp van Azure Data Factory
 
@@ -47,7 +47,11 @@ De volgende instellingen zijn vereist voor uw Google Cloud Storage-account:
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
-Als u gegevens wilt kopiëren uit Google Cloud Storage, moet u ervoor zorgen dat u de benodigde machtigingen hebt. De in het service account gedefinieerde machtigingen kunnen `storage.buckets.get` , `storage.buckets.list` of `storage.objects.get` voor object bewerkingen bevatten.
+Als u gegevens wilt kopiëren uit Google Cloud Storage, moet u ervoor zorgen dat u de volgende machtigingen hebt gekregen voor object bewerkingen: ` storage.objects.get` en ` storage.objects.list` .
+
+Als u Data Factory gebruikers interface gebruikt om te schrijven, ` storage.buckets.list` is extra machtiging vereist voor bewerkingen, zoals het testen van de verbinding met de gekoppelde service en het bladeren vanuit de hoofdmap. Als u deze machtiging niet wilt verlenen, kunt u de opties verbinding met bestandspad testen of bladeren vanuit opgegeven pad kiezen in de gebruikers interface.
+
+Zie voor de volledige lijst met Google Cloud Storage-rollen en de bijbehorende machtigingen [iam-rollen voor Cloud opslag](https://cloud.google.com/storage/docs/access-control/iam-roles) op de Google cloud-site.
 
 ## <a name="getting-started"></a>Aan de slag
 

@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: Beschrijft het migratie proces van Azure dev Spaces om te Bridgepen naar Kubernetes
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Bridge to Kubernetes
-ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019933"
+ms.locfileid: "92044697"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Bridge migreren naar Kubernetes
 
@@ -108,7 +108,6 @@ Bridge to Kubernetes heeft de flexibiliteit om te werken met toepassingen die wo
 
 1. Migreer hand matig aanpassingen, zoals omgevings variabele-instellingen, in *azds. yaml* naar het bestand *Values. yml* van het project.
 1. Beschrijving Verwijder het `azds.yaml` bestand uit uw project.
-1. Implementeer uw toepassing opnieuw.
 1. Configureer de brug naar Kubernetes op uw geïmplementeerde toepassing. Zie [Bridge gebruiken voor Kubernetes in Visual Studio][use-btk-vs]voor meer informatie over het gebruik van Bridge voor Kubernetes in Visual Studio. Zie [Bridge gebruiken voor Kubernetes in VS code][use-btk-vsc]voor VS code.
 1. Start fout opsporing met behulp van de zojuist gemaakte brug naar Kubernetes debug/start profile.
 1. U kunt het script opnieuw uitvoeren als dat nodig is om het opnieuw te implementeren in uw cluster.

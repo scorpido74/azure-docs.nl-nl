@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f5994aa4114f12b55f2e232ea5a35fa2df87626
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f5a8abf4272cf90691e60f97416023a76252e41
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547712"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740453"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>Zelfstudie: Azure Active Directory-integratie met Bugsnag
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Bugsnag](common/both-replyurl.png)
+    ![Schermopname van de Basic SAML-configuratie, waar u de antwoord-URL kunt invoeren en 'Opslaan' kunt selecteren.](common/both-replyurl.png)
 
     In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://app.bugsnag.com/user/sign_in/saml/<org_slug>/acs`
 
@@ -109,7 +109,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Bugsnag](common/both-signonurl.png)
+    ![Schermopname toont 'Aanvullende URL's instellen', waar u een aanmeldings-URL kunt invoeren.](common/both-signonurl.png)
 
     Typ het volgende in het tekstvak **Aanmeldings-URL**: `https://app.bugsnag.com/user/identity_provider`
 

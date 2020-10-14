@@ -5,17 +5,17 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75436998"
 ---
-|  | **Persoonlijke peering** | **Microsoft-peering** |  **Open bare peering** (afgeschaft voor nieuwe circuits) |
+|  | **Persoonlijke peering** | **Microsoft-peering** |  **Openbare peering** (afgeschaft voor nieuwe circuits) |
 | --- | --- | --- | --- |
-| **Aantal. aantal voor voegsels die worden ondersteund per peering** |4000 standaard, 10.000 met ExpressRoute Premium |200 |200 |
-| **IP-adresbereiken ondersteund** |Een geldig IP-adres in uw WAN. |Open bare IP-adressen die eigendom zijn van u of uw connectiviteits provider. |Open bare IP-adressen die eigendom zijn van u of uw connectiviteits provider. |
-| **Als aantal vereisten** |Privé en openbaar als getallen. Als u ervoor kiest om er een te gebruiken, moet u eigenaar zijn van het open bare nummer. |Privé en openbaar als getallen. U moet echter wel het eigendom van open bare IP-adressen bewijzen. |Privé en openbaar als getallen. U moet echter wel het eigendom van open bare IP-adressen bewijzen. |
+| **Maximumaantal voorvoegsels ondersteund per peering** |4000 standaard, 10.000 met ExpressRoute Premium |200 |200 |
+| **Ondersteunde IP-adresbereiken** |Elk geldig IP-adres in uw WAN. |Openbare IP-adressen waarvan u of uw connectiviteitsprovider eigenaar is. |Openbare IP-adressen waarvan u of uw connectiviteitsprovider eigenaar is. |
+| **Vereisten voor AS-nummers** |Persoonlijke en openbare AS-nummers. Als u ervoor kiest een openbaar AS-nummer te gebruiken, moet u er eigenaar van zijn. |Persoonlijke en openbare AS-nummers. U moet echter bewijzen dat u eigenaar bent van openbare IP-adressen. |Persoonlijke en openbare AS-nummers. U moet echter bewijzen dat u eigenaar bent van openbare IP-adressen. |
 | **Ondersteunde IP-protocollen**| IPv4 |  IPv4, IPv6 | IPv4 |
-| **IP-adressen van routerings interface** |RFC1918 en open bare IP-adressen |Open bare IP-adressen die aan u zijn geregistreerd in routerings registers. |Open bare IP-adressen die aan u zijn geregistreerd in routerings registers. |
-| **Ondersteuning voor MD5-hash** |Ja |Ja |Ja |
+| **IP-adressen met routeringsinterface** |RFC1918- en openbare IP-adressen |Openbare IP-adressen die bij u zijn geregistreerd in routeringsregisters. |Openbare IP-adressen die bij u zijn geregistreerd in routeringsregisters. |
+| **Ondersteuning voor MD5-hashes** |Ja |Ja |Ja |
