@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: b3cc70eadfaa1295cd67fa3f2b36c97f107b4bad
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046992"
+ms.locfileid: "92057532"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
 
@@ -29,19 +29,19 @@ Het type en de frequentie van de back-up is afhankelijk van de back-upopslag voo
 
 #### <a name="basic-storage-servers"></a>Basis opslag servers
 
-De basis opslag servers zijn de back-upserver voor de [basis-SKU-servers](concepts-pricing-tiers.md). Back-ups op eenvoudige opslag servers zijn gebaseerd op moment opnamen. Er wordt dagelijks een volledige database momentopname uitgevoerd. Er zijn geen differentiële back-ups die worden uitgevoerd voor basis opslag servers en alle back-ups van moment opnamen zijn alleen volledige database back-ups. 
+De basis opslag is de back-end-opslag die de [Basic-laag servers](concepts-pricing-tiers.md)ondersteunt. Back-ups op eenvoudige opslag servers zijn gebaseerd op moment opnamen. Er wordt dagelijks een volledige database momentopname uitgevoerd. Er zijn geen differentiële back-ups die worden uitgevoerd voor basis opslag servers en alle back-ups van moment opnamen zijn alleen volledige database back-ups. 
 
 Back-ups van transactielogboeken worden elke vijf minuten uitgevoerd. 
 
 #### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Opslag servers voor algemeen gebruik met Maxi maal 4 TB opslag
 
-Voor servers die ondersteuning bieden voor Maxi maal 4 TB aan maximale opslag voor algemeen gebruik worden volledige back-ups per week uitgevoerd. Differentiële back-ups worden twee keer per dag uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. De back-ups in algemene opslag ruimte tot 4 TB opslag worden niet op basis van een moment opname gemaakt en gebruiken de i/o-band breedte op het moment van de back-up. Voor grote data bases (> 1 TB) voor opslag van 4 TB raden wij u aan om 
+De opslag voor algemeen gebruik is de back-end-opslag die [Algemeen](concepts-pricing-tiers.md) en de server met [geoptimaliseerd geheugen](concepts-pricing-tiers.md) ondersteunt. Voor servers met een algemene opslag van Maxi maal 4 TB worden er één keer per week volledige back-ups uitgevoerd. Differentiële back-ups worden twee keer per dag uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. De back-ups in algemene opslag ruimte tot 4 TB opslag worden niet op basis van een moment opname gemaakt en gebruiken de i/o-band breedte op het moment van de back-up. Voor grote data bases (> 1 TB) voor opslag van 4 TB raden wij u aan om 
 
-- Meer IOPs inrichten voor het account voor back-up-IOs  
-- U kunt ook migreren naar de opslag voor algemeen gebruik die ondersteuning biedt voor Maxi maal 16 TB opslag als de opslag ruimte beschikbaar is in de [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)die uw voor keur hebben. Er zijn geen extra kosten verbonden aan opslag voor algemene doel einden, die ondersteuning biedt voor Maxi maal 16 TB aan opslag ruimte. Open een ondersteunings ticket van Azure Portal voor hulp bij de migratie naar 16 TB aan opslag ruimte. 
+- Meer IOPs inrichten voor het account voor back-up-IOs of
+- U kunt ook migreren naar de opslag voor algemeen gebruik die ondersteuning biedt voor Maxi maal 16 TB opslag als de onderliggende opslag infastructure beschikbaar is in uw voor keuren [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage). Er zijn geen extra kosten verbonden aan opslag voor algemene doel einden, die ondersteuning biedt voor Maxi maal 16 TB aan opslag ruimte. Open een ondersteunings ticket van Azure Portal voor hulp bij de migratie naar 16 TB aan opslag ruimte. 
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Opslag servers voor algemeen gebruik met Maxi maal 16 TB opslag
-In een subset van [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kunnen alle nieuw ingerichte servers ondersteuning bieden voor algemeen gebruik, tot 16 TB aan opslag ruimte. Back-ups op deze opslag servers met 16 TB zijn op moment opnamen gebaseerd. De eerste volledige momentopnameback-up wordt gepland direct nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende momentopnameback-ups zijn alleen differentiële back-ups. 
+In een subset van [Azure-regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)kunnen alle nieuw ingerichte servers ondersteuning bieden voor algemeen gebruik, tot 16 TB aan opslag ruimte. Met andere woorden, opslag tot 16 TB opslag is de standaard opslag voor algemeen gebruik voor alle [regio's](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) waar deze wordt ondersteund. Back-ups op deze opslag servers met 16 TB zijn op moment opnamen gebaseerd. De eerste volledige momentopnameback-up wordt gepland direct nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende momentopnameback-ups zijn alleen differentiële back-ups. 
 
 Differentiële momentopnameback-ups worden minstens één keer per dag uitgevoerd. Differentiële momentopnameback-ups worden niet uitgevoerd volgens een vast schema. Back-ups van differentiële moment opnamen worden elke 24 uur uitgevoerd, tenzij het transactie logboek (binlog in MySQL) 50-GB overschrijdt sinds de laatste differentiële back-up. Op één dag zijn maximaal zes differentiële momentopnamen toegestaan. 
 

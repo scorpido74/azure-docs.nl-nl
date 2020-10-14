@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998362"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940766"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Confidential Computing-knooppunten in Azure Kubernetes Service (openbare preview)
 
@@ -40,7 +40,7 @@ Azure Kubernetes Service (AKS) biedt ondersteuning voor het toevoegen van [DCsv2
 
 #### <a name="sgx-device-plugin"></a>SGX Device Plugin <a id="sgx-plugin"></a>
 
-SGX Device Plugin implementeert de interface voor de Kubernetes-apparaatinvoegtoepassing voor het EPC-geheugen. Deze invoegtoepassing maakt van het EPC-geheugen feitelijk een extra resourcetype in Kubernetes. Gebruikers kunnen limieten voor deze resource opgeven, net als voor andere resources. Naast de planningsfunctie kan SGX met behulp van de apparaatinvoegtoepassing machtigingen voor apparaatstuurprogramma's toewijzen aan de containers voor vertrouwelijke werkbelastingen. Een voorbeeld van een implementatie van de op het EPC-geheugen gebaseerde implementatiesample (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) vindt u [hier](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml)
+SGX Device Plugin implementeert de interface voor de Kubernetes-apparaatinvoegtoepassing voor het EPC-geheugen. Deze invoegtoepassing maakt van het EPC-geheugen feitelijk een extra resourcetype in Kubernetes. Gebruikers kunnen limieten voor deze resource opgeven, net als voor andere resources. Naast de planningsfunctie kan SGX met behulp van de apparaatinvoegtoepassing machtigingen voor apparaatstuurprogramma's toewijzen aan de containers voor vertrouwelijke werkbelastingen. Een voorbeeld van een implementatie van de op het EPC-geheugen gebaseerde implementatiesample (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) vindt u [hier](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)
 
 #### <a name="sgx-quote-helper-service"></a>Helper-service voor SGX-offertes <a id="sgx-quote"></a>
 

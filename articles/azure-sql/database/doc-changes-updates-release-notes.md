@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ebbdd103350e1de36d45ecf84acf15d477fa34db
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043388"
+ms.locfileid: "92058128"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -98,6 +98,8 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 
 |Probleem  |Gedetecteerde datum  |Status  |Opgelost op  |
 |---------|---------|---------|---------|
+|[Gedistribueerde trans acties kunnen worden uitgevoerd nadat het beheerde exemplaar is verwijderd uit de vertrouwens groep van de server](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Sep 2020|Heeft tijdelijke oplossing||
+|[Gedistribueerde trans acties kunnen niet worden uitgevoerd nadat de bewerking voor het schalen van het beheerde exemplaar](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Sep 2020|Heeft tijdelijke oplossing||
 |[Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) in Azure SQL en de `BACKUP` / `RESTORE` instructie in het beheerde exemplaar kunnen de Azure AD-identiteit voor het beheren van de verificatie bij Azure Storage niet gebruiken|Sep 2020|Heeft tijdelijke oplossing||
 |[Service-Principal heeft geen toegang tot Azure AD en Azure](#service-principal-cannot-access-azure-ad-and-akv)|Aug 2020|Heeft tijdelijke oplossing||
 |[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Opgelost|Juni 2020|
@@ -127,6 +129,14 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 |Data base mail-functie met externe e-mail servers (niet-Azure) via een beveiligde verbinding||Opgelost|Okt 2019|
 |Inge sloten data bases worden niet ondersteund in een SQL-beheerd exemplaar||Opgelost|Aug 2019|
 
+### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Gedistribueerde trans acties kunnen worden uitgevoerd nadat het beheerde exemplaar is verwijderd uit de vertrouwens groep van de server
+
+[Server vertrouwens groepen](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) worden gebruikt om een vertrouwens relatie tot stand te brengen tussen beheerde exemplaren die vereisten zijn voor het uitvoeren van [gedistribueerde trans acties](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Nadat u het beheerde exemplaar uit de vertrouwens groep van de server hebt verwijderd of de groep hebt verwijderd, kunt u nog steeds gedistribueerde trans acties uitvoeren. Er is een tijdelijke oplossing die u kunt Toep assen om ervoor te zorgen dat gedistribueerde trans acties worden uitgeschakeld en dat door de [gebruiker geïnitieerde hand matige failover](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) wordt uitgevoerd op een beheerd exemplaar.
+
+### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>Gedistribueerde trans acties kunnen niet worden uitgevoerd nadat de bewerking voor het schalen van het beheerde exemplaar
+
+Door bewerkingen voor het schalen van beheerde instanties die de service tier of het aantal vCores omvatten, worden de instellingen voor de vertrouwens groep van de server op de back-end opnieuw ingesteld en worden [gedistribueerde trans acties](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)uitgeschakeld Als tijdelijke oplossing verwijdert en maakt u een nieuwe [vertrouwens groep voor servers](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) op Azure Portal.
+
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>Met de instructies voor BULK INSERT en BACKUP/Restore kan geen beheerde identiteit worden gebruikt voor toegang tot Azure Storage
 
 De instructie BULK INSERT kan niet `DATABASE SCOPED CREDENTIAL` met beheerde identiteit worden gebruikt voor verificatie bij Azure Storage. U kunt dit probleem omzeilen door te scha kelen naar verificatie van de hand tekening voor gedeelde toegang. Het volgende voor beeld werkt niet voor Azure SQL (zowel het Data Base-als het beheerde exemplaar):
@@ -146,7 +156,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 In sommige gevallen kan er sprake zijn van een probleem met een service-principal die wordt gebruikt voor toegang tot Azure AD en Azure Key Vault-Services (Azure). Als gevolg hiervan heeft dit probleem gevolgen voor het gebruik van Azure AD-verificatie en transparante database versleuteling (TDE) met SQL Managed instance. Dit kan worden veroorzaakt als een probleem met een onregelmatige verbinding of dat er geen instructies kunnen worden uitgevoerd, zoals aanmelden/gebruiker maken van externe PROVIDER of uitvoeren als aanmelding/gebruiker. Het instellen van TDE met door de klant beheerde sleutel op een nieuw exemplaar van Azure SQL Managed kan in sommige gevallen ook niet worden gebruikt.
 
-**Tijdelijke oplossing**: als u wilt voor komen dat dit probleem optreedt in uw SQL Managed instance voordat u update-opdrachten uitvoert, of als u dit probleem al hebt ondervonden na het bijwerken van opdrachten, gaat u naar Azure Portal en opent u SQL Managed instance [Active Directory-beheer Blade](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal). Controleer of het fout bericht ' beheerde exemplaar moet een Service-Principal hebben om toegang te krijgen tot Azure Active Directory. Klik hier om een service-principal te maken. Als dit fout bericht wordt weer gegeven, klikt u erop en volgt u de instructies voor stap voor stap, totdat deze fout is opgelost.
+**Tijdelijke oplossing**: als u wilt voor komen dat dit probleem zich voordoet in uw SQL Managed instance voordat u update-opdrachten uitvoert, of als u dit probleem al hebt ondervonden nadat u de opdrachten hebt bijgewerkt, gaat u naar Azure Portal en opent u de [Blade beheerder](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)SQL Managed instance Active Directory. Controleer of het fout bericht ' beheerde exemplaar moet een Service-Principal hebben om toegang te krijgen tot Azure Active Directory. Klik hier om een service-principal te maken. Als dit fout bericht wordt weer gegeven, klikt u erop en volgt u de instructies voor stap voor stap, totdat deze fout is opgelost.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Hand matige back-up herstellen zonder CONTROLESOM kan mislukken
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 18e3f29a90ae2c6c66858e14ee91fb447a4a0045
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968647"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057753"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Toegang tot Azure Storage als een netwerkshare vanuit een container in App Service
 
@@ -90,7 +90,7 @@ U moet dit doen voor andere directory's die u wilt koppelen aan een Azure Files 
 
 Nadat u uw [Azure Storage-account, de bestands share en de map](#prerequisites)hebt gemaakt, kunt u uw app nu configureren met Azure Storage.
 
-Als u een opslag account wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type kan AzureBlob of Azure files zijn. Azure files wordt in dit voor beeld gebruikt. De instelling van het koppelingspad komt overeen met de map die u wilt koppelen van Azure Storage. Als u deze instelt op/, wordt de hele Azure Storage gekoppeld.
+Als u een opslag account wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type kan AzureBlob of Azure files zijn. Azure files wordt in dit voor beeld gebruikt. De instelling van het koppelingspad komt overeen met de map in de container die u wilt koppelen aan Azure Storage. Als u deze instelt op/, wordt de volledige container gekoppeld aan Azure Storage.
 
 
 > [!CAUTION]

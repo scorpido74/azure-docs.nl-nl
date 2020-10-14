@@ -1,18 +1,18 @@
 ---
 title: Uw Azure-resources verkennen
 description: Meer informatie over het gebruik van de resource Graph-query taal om uw resources te verkennen en te ontdekken hoe ze zijn verbonden.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056581"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056239"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
-Azure resource Graph biedt de mogelijkheid om uw Azure-resources snel en op schaal te verkennen en te detecteren. Het is ontworpen voor snelle reacties en is een fantastische manier om meer te weten te komen over uw omgeving en over de eigenschappen van uw Azure-resources.
+Azure resource Graph biedt de mogelijkheid om uw Azure-resources snel en op schaal te verkennen en te detecteren. Het is ontworpen voor snelle reacties en is een fantastische manier om meer te weten te komen over uw omgeving en over de eigenschappen die beschikbaar zijn in uw Azure-resources.
 
 ## <a name="explore-virtual-machines"></a>Virtuele machines verkennen
 
@@ -104,7 +104,7 @@ De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
 ]
 ```
 
-De eigenschappen geven ons aanvullende informatie over de virtuele-machine bron zelf, alles uit de SKU, het besturings systeem, de schijven, tags en de resource groep en het abonnement waarvan het deel uitmaakt.
+De eigenschappen geven ons aanvullende informatie over de virtuele-machine resource zelf. Deze eigenschappen zijn onder andere: besturings systeem, schijven, tags en de resource groep en het abonnement waarvan het deel uitmaakt.
 
 ### <a name="virtual-machines-by-location"></a>Virtuele machines op locatie
 
@@ -165,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuele machines die zijn verbonden met Premium beheerde schijven
 
-Als we de details willen ophalen van voor Premium beheerde schijven die zijn gekoppeld aan deze **Standard_B2s** virtuele machines, kunnen we de query uitbreiden om ons de bron-id van deze beheerde schijven te geven.
+Om de details te verkrijgen van Premium-beheerde schijven die zijn gekoppeld aan deze **Standard_B2s** virtuele machines, wordt de query uitgebreid om de resource-id van die beheerde schijven te retour neren.
 
 ```kusto
 Resources

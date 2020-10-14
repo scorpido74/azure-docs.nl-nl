@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82233785"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856089"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Een CI/CD-pijplijn voor PHP maken met Azure DevOps Starter
 
@@ -125,4 +125,4 @@ U kunt Azure App Service en andere gerelateerde resources verwijderen wanneer u 
 De build en pijplijnen zijn automatisch gemaakt toen u het CI/CD-proces configureerde. U kunt deze build- en release-pipelines desgewenst wijzigen in overeenstemming met de behoeften van uw team. Raadpleeg deze zelfstudie voor meer informatie over de CI/CD-pijplijn:
 
 > [!div class="nextstepaction"]
-> [CD-proces aanpassen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD-proces aanpassen](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

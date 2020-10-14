@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 596a6657018658d2d00abe7f221ffae9a6730a7a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554961"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Zelfstudie: Azure Active Directory-integratie met Flatter Files
 
@@ -121,11 +121,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Flatter Files moet u
 
 2. Klik op **DASHBOARD**. 
    
-    ![Eenmalige aanmelding configureren](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![Schermopname met "DASHBOARD" geselecteerd in de app "Flatter Files".](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. Klik op **Instellingen** en voer de volgende stappen uit op het tabblad **Bedrijf**: 
    
-    ![Eenmalige aanmelding configureren](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![Schermopname met het tabblad "Company" met "Use S A M L 2.0 for Authentication" geselecteerd en de knop "Configure S A M L" geselecteerd.](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. Selecteer **SAML 2.0 gebruiken voor verificatie**.
     
@@ -207,7 +207,7 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 2. Klik in het navigatievenster links op **Settings** en vervolgens op het tabblad **Users**.
    
-    ![Een Flatter Files-gebruiker maken](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
+    ![Schermopname met de pagina "Settings" met het tabblad "Users" geselecteerd.](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
 3. Klik op **Add User**. 
 

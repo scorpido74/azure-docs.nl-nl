@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297260"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826187"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Hightail
 
@@ -155,15 +155,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op het pictogram **Gebruiker** in de rechterbovenhoek van de pagina. 
 
-    ![Eenmalige aanmelding configureren](./media/hightail-tutorial/configure1.png)
+    ![Schermopname met het pictogram Gebruiker.](./media/hightail-tutorial/configure1.png)
 
 1. Klik op het tabblad **Beheerdersconsole weergeven**.
 
-    ![Eenmalige aanmelding configureren](./media/hightail-tutorial/configure2.png)
+    ![Schermopname met de knop Beheerdersconsole weergeven voor de gebruiker.](./media/hightail-tutorial/configure2.png)
 
 1. Klik in het menu aan de bovenkant op het tabblad **SAML** en voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/hightail-tutorial/configure3.png)
+    ![Schermopname met het tabblad SAML, waar u de aanmeldingsgegevens-U R L en het SAML-certificaat kunt invoeren.](./media/hightail-tutorial/configure3.png)
 
     a. Plak in het tekstvak **Aanmeldings-URL** de waarde van de uit de Azure Portal gekopieerde **Aanmeldings-URL**.
 

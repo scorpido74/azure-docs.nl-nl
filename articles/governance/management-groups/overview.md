@@ -4,12 +4,12 @@ description: Informatie over de managementgroepen, hoe hun machtigingen werken e
 ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533802"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951873"
 ---
 # <a name="what-are-azure-management-groups"></a>Wat zijn Azure-beheergroepen?
 
@@ -202,6 +202,6 @@ Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het 
 
 Voor meer informatie over beheergroepen gaat u naar:
 
-- [Beheergroepen maken om Azure-resources te ordenen](./create.md)
+- [Beheergroepen maken om Azure-resources te ordenen](./create-management-group-portal.md)
 - [Uw beheergroepen wijzigen, verwijderen of beheren](./manage.md)
 - Bekijk opties voor [Uw resourcehiërarchie beveiligen](./how-to/protect-resource-hierarchy.md)

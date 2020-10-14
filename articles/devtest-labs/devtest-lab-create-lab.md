@@ -3,12 +3,12 @@ title: Een lab maken in Azure DevTest Labs | Microsoft Docs
 description: In dit artikel wordt stapsgewijs uitgelegd hoe u een Lab maakt met behulp van de Azure Portal en Azure DevTest Labs.
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 962997bcc66188c66fd9db856fe44e4926f8e70c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019644"
+ms.locfileid: "92058330"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Een lab maken in Azure DevTest Labs
 
@@ -35,7 +35,11 @@ Vul op de pagina **een DevTest Labs maken** de volgende instellingen in.
 
 ### <a name="basic-settings"></a>Basisinstellingen
 
-Standaard wordt het tabblad **basis instellingen** weer geven. Vul deze waarden in:
+Standaard wordt het tabblad **basis instellingen** weer geven. 
+
+![basis instellingen](./media/devtest-lab-create-lab/basic-settings.png)
+
+Vul deze waarden in:
 
 |Naam|Beschrijving|
 |---|---|
@@ -49,29 +53,41 @@ Standaard wordt het tabblad **basis instellingen** weer geven. Vul deze waarden 
 
 Schakel over naar de pagina **automatisch afsluiten** om de instellingen weer te geven. Met automatisch afsluiten kunt u automatisch alle machines in een Lab afsluiten op een gepland tijdstip per dag.
 
+![Tabblad automatisch afsluiten](./media/devtest-lab-create-lab/auto-shutdown.png)
+
 Op de pagina kunt u **automatisch afsluiten** inschakelen en de para meters definiëren voor het automatisch afsluiten van alle virtuele machines van het lab. De functie Auto-shutdown is voornamelijk een kostenbesparende functie waar u kunt opgeven wanneer de VM automatisch moet worden afgesloten. U kunt de instellingen voor automatisch afsluiten tijdens het maken van het lab wijzigen door de stappen te volgen die worden beschreven in het artikel [alle beleids regels beheren voor een lab in azure DevTest Labs](./devtest-lab-set-lab-policy.md#set-auto-shutdown).
 
 ### <a name="networking"></a>Netwerken
 
-Wanneer u een Lab maakt, wordt er een standaard netwerk voor u gemaakt.
+Wanneer u een Lab maakt, wordt er een standaard netwerk voor u gemaakt. Ga naar het tabblad **netwerken** en wijzig de instelling naar wens. Selecteer bijvoorbeeld een bestaand virtueel netwerk.
 
-Ga naar het tabblad **netwerken** en wijzig de instelling naar wens. Selecteer bijvoorbeeld een bestaand virtueel netwerk.
+![Tabblad Netwerken ](./media/devtest-lab-create-lab/networking.png)
 
 ### <a name="tags"></a>Tags
 
 Voer informatie over **Naam** en **Waarde** in voor **Tags** als u aangepaste tags wilt maken die worden toegevoegd aan elke resource die u in het lab maakt. Tags zijn handig om labresources te beheren en te organiseren per categorie. Zie [Tags toevoegen aan een lab](devtest-lab-add-tag.md) voor meer informatie over tags, inclusief het toevoegen van tags na het maken van het lab.
 
+![Tabblad Labels ](./media/devtest-lab-create-lab/tags.png)
+
 ### <a name="review-and-create"></a>Controleren en maken
 
 Wanneer u klaar bent, selecteert u **maken**. U kunt de status van het proces voor het maken van het lab bewaken door het gebied **meldingen** rechtsboven op de portal-pagina te bekijken. 
+
+![Tabblad maken](./media/devtest-lab-create-lab/create-1.png)
 
 ## <a name="completed-the-creation"></a>Het maken is voltooid
 
 Zodra dit is voltooid, wordt de knop **Ga naar resource** weer gegeven onder aan de pagina en in het meldings venster. U kunt ook de pagina **DevTest Labs** vernieuwen om de zojuist gemaakte Lab weer te geven in de lijst met Labs.  
 
+![De service maken](./media/devtest-lab-create-lab/create-2.png)
+
 Druk op de knop **Go to resource** en u gaat naar de start pagina van uw nieuwe DevTest Labs-account.
 
+![Resource](./media/devtest-lab-create-lab/go-to-resource.png)
+
 U kunt ook zoeken naar **DevTest Labs** in het Azure Portal. Selecteer uw nieuwe account in de lijst en ga naar de start pagina. 
+
+![De service is gemaakt](./media/devtest-lab-create-lab/created.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

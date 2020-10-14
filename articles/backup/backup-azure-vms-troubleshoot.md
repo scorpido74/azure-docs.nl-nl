@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316729"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058111"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -31,8 +31,7 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
 * In het **gebeurtenis logboek** kunnen back-upfouten worden weer gegeven die afkomstig zijn van andere back-upproducten, bijvoorbeeld Windows Server back-up, en niet door Azure backup. Gebruik de volgende stappen om te bepalen of het probleem met Azure Backup:
   * Als er een fout is opgetreden bij de **back-upbewerking** in de gebeurtenis bron of het bericht, controleert u of de back-ups van de Azure IaaS VM zijn geslaagd en of er een herstel punt is gemaakt met het gewenste type moment opname.
   * Als Azure Backup werkt, wordt het probleem waarschijnlijk veroorzaakt door een andere back-upoplossing.
-  * Hier volgt een voor beeld van een Logboeken fout 517 waarbij Azure Backup goed werkte, maar ' Windows Server Back-up ' is mislukt:<br>
-    ![Windows Server Back-up mislukt](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * Hier volgt een voor beeld van een Logboeken fout 517 waarbij Azure Backup goed werkte, maar ' Windows Server Back-up ' is mislukt: ![ Windows Server back-up](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Als Azure Backup is mislukt, zoekt u naar de bijbehorende fout code in de sectie veelvoorkomende fouten in VM-back-ups in dit artikel.
 
 ## <a name="common-issues"></a>Algemene problemen
@@ -106,31 +105,33 @@ Fout bericht: de momentopname bewerking is mislukt, omdat de status van de VSS-s
 Deze fout treedt op omdat de VSS-schrijvers een slechte status hebben. Azure Backup extensies communiceren met VSS-schrijvers om moment opnamen van de schijven te maken. Volg deze stappen om dit probleem op te lossen:
 
 Stap 1: Start de VSS-schrijvers opnieuw op met een onjuiste status.
-- Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid ```vssadmin list writers``` .
-- De uitvoer bevat alle VSS-schrijvers en hun status. Voor elke VSS Writer met een status die niet **[1] stabiel**is, start u de service van de betreffende VSS Writer opnieuw. 
-- Als u de service opnieuw wilt starten, voert u de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
+
+* Voer uit vanaf een opdracht prompt met verhoogde bevoegdheid ```vssadmin list writers``` .
+* De uitvoer bevat alle VSS-schrijvers en hun status. Voor elke VSS Writer met een status die niet **[1] stabiel**is, start u de service van de betreffende VSS Writer opnieuw.
+* Als u de service opnieuw wilt starten, voert u de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
 
 > [!NOTE]
 > Het opnieuw starten van sommige services kan invloed hebben op uw productie omgeving. Zorg ervoor dat het goedkeurings proces wordt gevolgd en dat de service opnieuw wordt gestart op de geplande downtime.
- 
-   
+
 Stap 2: als het probleem niet is opgelost door de VSS-schrijvers opnieuw op te starten, voert u de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheden (als beheerder) om te voor komen dat de threads worden gemaakt voor BLOB-moment opnamen.
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+
 Stap 3: als de stappen 1 en 2 het probleem niet hebben opgelost, wordt de fout mogelijk veroorzaakt door een time-out voor VSS-schrijvers vanwege een beperkt aantal IOPS.<br>
 
 Als u wilt controleren, gaat u naar ***systeem-en logboeken toepassings logboeken*** en controleert u of het volgende fout bericht wordt weer gegeven:<br>
 *Er is een time-out opgetreden voor de provider van schaduw kopieën terwijl er wordt geschreven naar het volume dat wordt gekopieerd. Dit komt waarschijnlijk door buitensporige activiteiten op het volume door een toepassing of een systeem service. Probeer het later opnieuw wanneer de activiteit op het volume is verminderd.*<br>
 
 Oplossing:
-- Controleer op mogelijkheden voor het verdelen van de belasting over de VM-schijven. Hierdoor wordt de belasting van enkele schijven verminderd. U kunt [de limiet voor IOPs controleren door Diagnostische gegevens op opslag niveau in te scha kelen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
-- Wijzig het back-upbeleid voor het uitvoeren van back-ups tijdens piek uren, wanneer de belasting van de virtuele machine op het laagste niveau is.
-- Voer een upgrade uit voor de Azure-schijven ter ondersteuning van hogere IOPs. [Meer informatie vindt u hier](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+
+* Controleer op mogelijkheden voor het verdelen van de belasting over de VM-schijven. Hierdoor wordt de belasting van enkele schijven verminderd. U kunt [de limiet voor IOPs controleren door Diagnostische gegevens op opslag niveau in te scha kelen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
+* Wijzig het back-upbeleid voor het uitvoeren van back-ups tijdens piek uren, wanneer de belasting van de virtuele machine op het laagste niveau is.
+* Voer een upgrade uit voor de Azure-schijven ter ondersteuning van hogere IOPs. [Meer informatie vindt u hier](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - Momentopname bewerking is mislukt omdat de VSS-service (Volume Shadow Copy Service) een ongeldige status heeft
 
@@ -140,31 +141,32 @@ Fout bericht: de momentopname bewerking is mislukt omdat de VSS-service (Volume 
 Deze fout treedt op omdat de VSS-service een ongeldige status heeft. Azure Backup extensies communiceren met de VSS-service om moment opnamen van de schijven te maken. Volg deze stappen om dit probleem op te lossen:
 
 Start de VSS-service (Volume Shadow Copy) opnieuw.
-- Navigeer naar Services. msc en start de Volume Shadow Copy-service opnieuw.<br>
-of<br>
-- Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
+
+* Navigeer naar Services. msc en start de Volume Shadow Copy-service opnieuw.<br>
+(of)<br>
+* Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
- 
 Als het probleem zich blijft voordoen, start u de VM opnieuw op met de geplande uitval tijd.
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>Het maken van een UserErrorSkuNotAvailable-VM is mislukt omdat de geselecteerde VM-grootte niet beschikbaar is
 
-Fout code: UserErrorSkuNotAvailable-fout bericht: het maken van de VM is mislukt omdat de geselecteerde VM-grootte niet beschikbaar is. 
- 
+Fout code: UserErrorSkuNotAvailable-fout bericht: het maken van de VM is mislukt omdat de geselecteerde VM-grootte niet beschikbaar is.
+
 Deze fout treedt op omdat de grootte van de virtuele machine die tijdens de herstel bewerking is geselecteerd, niet wordt ondersteund. <br>
 
 Gebruik de optie [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) tijdens de herstel bewerking om dit probleem op te lossen. Gebruik deze schijven om een VM te maken op basis van de lijst met [beschik bare ondersteunde VM-grootten](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) met behulp van [Power shell-cmdlets](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks).
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>Het maken van een UserErrorMarketPlaceVMNotSupported-VM is mislukt omdat de markt plaatsings aanvraag niet aanwezig is
 
-Fout code: UserErrorMarketPlaceVMNotSupported-fout bericht: het maken van de virtuele machine is mislukt omdat de aankoop aanvraag voor de markt plaats niet aanwezig is. 
- 
+Fout code: UserErrorMarketPlaceVMNotSupported-fout bericht: het maken van de virtuele machine is mislukt omdat de aankoop aanvraag voor de markt plaats niet aanwezig is.
+
 Azure Backup ondersteunt het maken van back-ups en het herstellen van Vm's die beschikbaar zijn in azure Marketplace. Deze fout treedt op wanneer u een virtuele machine probeert te herstellen (met een specifieke instelling voor het abonnement/de uitgever) die niet meer beschikbaar is in azure Marketplace, kunt u [hier meer informatie](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)vinden.
-- U kunt dit probleem oplossen door de optie [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) te gebruiken tijdens de herstel bewerking en vervolgens [Power shell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) -of [Azure cli](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) -CMDLETS te gebruiken om de virtuele machine te maken met de meest recente Marketplace-informatie die overeenkomt met de virtuele machine.
-- Als de uitgever geen Marketplace-informatie heeft, kunt u de gegevens schijven gebruiken om uw gegevens op te halen en kunt u deze koppelen aan een bestaande virtuele machine.
+
+* U kunt dit probleem oplossen door de optie [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) te gebruiken tijdens de herstel bewerking en vervolgens [Power shell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) -of [Azure cli](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) -CMDLETS te gebruiken om de virtuele machine te maken met de meest recente Marketplace-informatie die overeenkomt met de virtuele machine.
+* Als de uitgever geen Marketplace-informatie heeft, kunt u de gegevens schijven gebruiken om uw gegevens op te halen en kunt u deze koppelen aan een bestaande virtuele machine.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-fout bij het parseren van de configuratie voor de back-upextensie
 
@@ -244,7 +246,7 @@ Deze opdracht zorgt ervoor dat de momentopnamen worden gemaakt via host in plaat
 
 **Stap 2**: Probeer het back-upschema te wijzigen in een keer wanneer de virtuele machine minder belasting heeft (zoals minder CPU of IOps)
 
-**Stap 3**: Probeer [de grootte van de virtuele machine te verg Roten](https://azure.microsoft.com/blog/resize-virtual-machines/) en voer de bewerking opnieuw uit
+**Stap 3**: Probeer [de grootte van de virtuele machine te verg Roten](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) en voer de bewerking opnieuw uit
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: kan de bewerking niet uitvoeren omdat de VM niet meer bestaat/400094, BCMV2VMNotFound-de virtuele machine bestaat niet/er is geen virtuele machine van Azure gevonden
 
@@ -315,12 +317,12 @@ Als u een Azure Policy hebt dat de [Tags in uw omgeving bepaalt](../governance/p
 
 ## <a name="restore"></a>Herstellen
 
-#### <a name="disks-appear-offline-after-file-restore"></a>Schijven worden offline weer gegeven na het herstellen van bestanden
+### <a name="disks-appear-offline-after-file-restore"></a>Schijven worden offline weer gegeven na het herstellen van bestanden
 
-Als u na het terugzetten de schijven offline hebt gezet, kunt u het volgende doen: 
+Als u na het terugzetten de schijven offline hebt gezet, kunt u het volgende doen:
+
 * Controleer of de computer waarop het script wordt uitgevoerd, voldoet aan de vereisten van het besturings systeem. [Meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
 * Zorg ervoor dat u niet naar dezelfde bron herstelt. u [vindt hier meer informatie](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine).
-
 
 | Foutdetails | Tijdelijke oplossing |
 | --- | --- |

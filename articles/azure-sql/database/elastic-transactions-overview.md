@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 65cd35dd60ed05da51b6da56882af4522b1b7573
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043409"
+ms.locfileid: "92058043"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Gedistribueerde trans acties in Cloud databases (preview-versie)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -145,14 +145,14 @@ De volgende Transact-SQL-voorbeeld code maakt gebruik van de [begin GEdistribuee
     -- Configure the Linked Server
     -- Add one Azure SQL Managed Instance as Linked Server
     EXEC sp_addlinkedserver
-        @server='managedinstance02', -- Linked server name
+        @server='RemoteServer', -- Linked server name
         @srvproduct='',
         @provider='sqlncli', -- SQL Server Native Client
-        @datasrc='sql-managed-instance-02.48ea8fd5ac90.database.windows.net' -- Managed Instance endpoint
+        @datasrc='managed-instance-server.46e7afd5bc81.database.windows.net' -- Managed Instance endpoint
 
     -- Add credentials and options to this Linked Server
     EXEC sp_addlinkedsrvlogin
-        @rmtsrvname = 'managedinstance02', -- Linked server name
+        @rmtsrvname = 'RemoteServer', -- Linked server name
         @useself = 'false',
         @rmtuser = '<login_name>',         -- login
         @rmtpassword = '<secure_password>' -- password
@@ -244,7 +244,7 @@ Gebruik de volgende Power shell-cmdlets voor het beheren van communicatie relati
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Trans acties op meerdere servers voor Azure SQL Managed instance
 
-Gedistribueerde trans acties worden ondersteund op verschillende servers in Azure SQL Managed instance. Wanneer trans acties intermanaged instance grenzen overschrijden, moeten de deelnemende instanties eerst worden ingevoerd in een onderlinge beveiligings-en communicatie relatie. Dit doet u door de [vertrouwens groep](https://aka.ms/mitrusted-groups)van de server in te stellen, die u kunt uitvoeren op Azure Portal.
+Gedistribueerde trans acties worden ondersteund op verschillende servers in Azure SQL Managed instance. Wanneer trans acties intermanaged instance grenzen overschrijden, moeten de deelnemende instanties eerst worden ingevoerd in een onderlinge beveiligings-en communicatie relatie. Dit doet u door een [Server vertrouwensrelatie groep](https://aka.ms/mitrusted-groups)te maken die kan worden uitgevoerd op Azure Portal. Als beheerde exemplaren zich niet in hetzelfde virtuele netwerk bevinden, moet de [peering van het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) worden ingesteld en binnenkomende en uitgaande regels van de netwerk beveiligings groep moeten poorten 5024 en 11000-12000 toestaan voor alle deelnemende virtuele netwerken.
 
   ![Server vertrouwens groepen in azure Portal][3]
 

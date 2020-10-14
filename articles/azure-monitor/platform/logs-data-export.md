@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 10/13/2020
-ms.openlocfilehash: 59febbac1a83e45c8b2bf9c233c3772f561eb111
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/14/2020
+ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049842"
+ms.locfileid: "92055933"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics werkruimte gegevens exporteren in Azure Monitor (preview-versie)
 Met Log Analytics werkruimte gegevens exporteren in Azure Monitor kunt u voortdurend gegevens exporteren uit geselecteerde tabellen in uw Log Analytics-werk ruimte naar een Azure Storage-account of Azure-Event Hubs wanneer het wordt verzameld. Dit artikel bevat informatie over deze functie en de stappen voor het configureren van gegevens export in uw werk ruimten.
@@ -254,6 +254,10 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | AADDomainServicesLogonLogoff | |
 | AADDomainServicesPolicyChange | |
 | AADDomainServicesPrivilegeUse | |
+| AADManagedIdentitySignInLogs | |
+| AADNonInteractiveUserSignInLogs | |
+| AADProvisioningLogs | |
+| AADServicePrincipalSignInLogs | |
 | ADAssessmentRecommendation | |
 | ADFActivityRun | |
 | ADFPipelineRun | |
@@ -268,7 +272,8 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | ADXQuery | |
 | AegDeliveryFailureLogs | |
 | AegPublishFailureLogs | |
-| Waarschuwing | Sommige gegevens in deze tabel worden opgenomen via het opslag account. Dit gedeelte ontbreekt momenteel in de export. |
+| Waarschuwing |Gedeeltelijke ondersteuning. Sommige gegevens in deze tabel worden opgenomen via het opslag account. Deze gegevens worden momenteel niet geëxporteerd. |
+| Afwijkingen | |
 | ApiManagementGatewayLogs | |
 | AppCenterError | |
 | AppPlatformSystemLogs | |
@@ -277,6 +282,7 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | AppServiceConsoleLogs | |
 | AppServiceFileAuditLogs | |
 | AppServiceHTTPLogs | |
+| AppServiceIPSecAuditLogs | |
 | AppServicePlatformLogs | |
 | Audit logs bevat | |
 | AutoscaleEvaluationsLog | |
@@ -291,7 +297,7 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | CommonSecurityLog | |
 | CommonSecurityLog | |
 | ComputerGroup | |
-| ConfigurationData | Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Dit gedeelte ontbreekt momenteel in de export. |
+| ConfigurationData | Gedeeltelijke ondersteuning. Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Deze gegevens worden momenteel niet geëxporteerd. |
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
@@ -312,15 +318,43 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | DnsEvents | |
 | DnsInventory | |
 | Dynamics365Activity | |
-| Gebeurtenis | Sommige gegevens in deze tabel worden opgenomen via het opslag account. Dit gedeelte ontbreekt momenteel in de export. |
+| Gebeurtenis | Gedeeltelijke ondersteuning. Sommige gegevens in deze tabel worden opgenomen via het opslag account. Deze gegevens worden momenteel niet geëxporteerd. |
 | ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |
-| Hartslag | Ondersteund | |
+| HDInsightAmbariClusterAlerts | |
+| HDInsightAmbariSystemMetrics | |
+| HDInsightGatewayAuditLogs | |
+| HDInsightHadoopAndYarnLogs | |
+| HDInsightHadoopAndYarnMetrics | |
+| HDInsightHBaseLogs | |
+| HDInsightHBaseMetrics | |
+| HDInsightHiveAndLLAPLogsSample | |
+| HDInsightKafkaLogs | |
+| HDInsightKafkaMetrics | |
+| HDInsightOozieLogs | |
+| HDInsightSecurityLogs | |
+| HDInsightSparkApplicationEvents | |
+| HDInsightSparkBlockManagerEvents | |
+| HDInsightSparkEnvironmentEvents | |
+| HDInsightSparkEventsLog | |
+| HDInsightSparkExecutorEvents | |
+| HDInsightSparkExtraEvents | |
+| HDInsightSparkJobEvents | |
+| HDInsightSparkLogs | |
+| HDInsightSparkSQLExecutionEvents | |
+| HDInsightSparkStageEvents | |
+| HDInsightSparkStageTaskAccumulables | |
+| HDInsightSparkTaskEvents | |
+| HDInsightStormLogs | |
+| HDInsightStormMetrics | |
+| HDInsightStormTopologyMetrics | |
+| Hartslag | |
 | HuntingBookmark | |
-| InsightsMetrics | Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Dit gedeelte ontbreekt momenteel in de export. |
+| InsightsMetrics | Gedeeltelijke ondersteuning. Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Dit gedeelte ontbreekt momenteel in de export. |
 | IntuneAuditLogs | |
+| IntuneDeviceComplianceOrg | |
 | IntuneOperationalLogs | |
 | KubeEvents | |
 | KubeHealth | |
@@ -329,24 +363,30 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | KubePodInventory | |
 | KubeServices | |
 | KubeServices | |
+| LAQueryLogs | |
 | McasShadowItReporting | |
 | MicrosoftAzureBastionAuditLogs | |
 | MicrosoftDataShareReceivedSnapshotLog | |
 | MicrosoftDataShareSentSnapshotLog | |
 | MicrosoftDataShareShareLog | |
 | MicrosoftHealthcareApisAuditLogs | |
+| NWConnectionMonitorDestinationListenerResult | |
+| NWConnectionMonitorDNSResult | |
+| NWConnectionMonitorPathResult | |
 | NWConnectionMonitorPathResult | |
 | NWConnectionMonitorTestResult | |
-| OfficeActivity | Enkele van de gegevens die via webhooks van O365 in LA moeten worden opgenomen. Dit gedeelte ontbreekt momenteel in de export. |
-| Bewerking | Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Dit gedeelte ontbreekt momenteel in de export. |
-| Prestaties | Ondersteund | |
-| SCCMAssessmentRecommendation | | 
+| NWConnectionMonitorTestResult | |
+| OfficeActivity | Gedeeltelijke ondersteuning. Enkele van de gegevens die via webhooks van Office 365 worden opgenomen in Log Analytics. Deze gegevens worden momenteel niet geëxporteerd. |
+| Bewerking | Gedeeltelijke ondersteuning. Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Deze gegevens worden momenteel niet geëxporteerd. |
+| Prestaties | Gedeeltelijke ondersteuning. Op dit moment worden alleen Windows-prestatie gegevens ondersteund. De Linux-prestatie gegevens worden momenteel niet geëxporteerd. |
+| ProtectionStatus | |
+| SCCMAssessmentRecommendation | |
 | SCOMAssessmentRecommendation | |
 | SecurityAlert | |
 | Security Baseline Baseline | |
 | Summary | |
 | SecurityDetection | |
-| SecurityEvent | Ondersteund | |
+| SecurityEvent | |
 | SecurityIncident | |
 | SecurityIoTRawEvent | |
 | SecurityNestedRecommendation | |
@@ -359,24 +399,29 @@ Ondersteunde tabellen zijn momenteel beperkt tot de velden die hieronder zijn op
 | SPAssessmentRecommendation | |
 | SQLAssessmentRecommendation | |
 | SucceededIngestion | |
-| Syslog |Gedeeltelijk | Sommige gegevens in deze tabel worden opgenomen via het opslag account. Dit gedeelte ontbreekt momenteel in de export. |
+| SynapseGatewayEvents | |
+| SynapseRBACEvents | |
+| Syslog | Gedeeltelijke ondersteuning. Sommige gegevens in deze tabel worden opgenomen via het opslag account. Deze gegevens worden momenteel niet geëxporteerd. |
 | ThreatIntelligenceIndicator | |
-| Bijwerken |Gedeeltelijk | Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Dit gedeelte ontbreekt momenteel in de export. |
+| Bijwerken | Gedeeltelijke ondersteuning. Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Deze gegevens worden momenteel niet geëxporteerd. |
 | Updaterunprogress Installation | |
 | UpdateSummary | |
 | Gebruik | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
+| Watch list | |
 | WindowsEvent | |
 | WindowsFirewall | |
-| WireData |Gedeeltelijk | Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Dit gedeelte ontbreekt momenteel in de export. |
+| WireData | Gedeeltelijke ondersteuning. Sommige gegevens worden opgenomen via interne services die niet voor export worden ondersteund. Deze gegevens worden momenteel niet geëxporteerd. |
 | WorkloadMonitoringPerf | |
 | WorkloadMonitoringPerf | |
+| WVDAgentHealthStatus | |
 | WVDCheckpoints | |
 | WVDConnections | |
 | WVDErrors | |
 | WVDFeeds | |
 | WVDManagement | |
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

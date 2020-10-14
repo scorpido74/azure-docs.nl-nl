@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291276"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057651"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Inhoud streamen met CDN-integratie
 
@@ -54,7 +54,7 @@ In dit onderwerp vindt u informatie over het inschakelen van [CDN-integratie](#e
 
 Nadat een streaming-eind punt is ingericht met CDN ingeschakeld, is er een gedefinieerde wacht tijd op Media Services voordat de DNS-update wordt uitgevoerd om het streaming-eind punt toe te wijzen aan het CDN-eind punt.
 
-Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt de status **gestopt** hebben. Zodra het streaming-eind punt is gestart, kan het tot twee uur duren voordat de integratie van Azure CDN is ingeschakeld en dat de wijzigingen in alle CDN-Pop's actief zijn. U kunt echter het streaming-eind punt starten en streamen zonder onderbrekingen van het streaming-eind punt. Zodra de integratie is voltooid, wordt de stroom geleverd vanuit het CDN. Tijdens de inrichtings periode bevinden uw streaming-eind punt zich in de **Start** status en kunt u gedegradeerde prestaties waarnemen.
+Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt de status **gestopt** hebben. Zodra het streaming-eind punt is gestart, kan het tot vier uur duren voordat de integratie van Azure CDN is ingeschakeld en dat de wijzigingen in alle CDN-Pop's actief zijn. U kunt echter het streaming-eind punt starten en streamen zonder onderbrekingen van het streaming-eind punt. Zodra de integratie is voltooid, wordt de stroom geleverd vanuit het CDN. Tijdens de inrichtings periode bevinden uw streaming-eind punt zich in de **Start** status en kunt u gedegradeerde prestaties waarnemen.
 
 Wanneer het standaard streaming-eind punt wordt gemaakt, wordt het standaard geconfigureerd met standaard Verizon. U kunt Premium Verizon-of Standard Akamai-providers configureren met behulp van REST Api's.
 
