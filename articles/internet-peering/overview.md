@@ -1,5 +1,5 @@
 ---
-title: Peering met micro soft instellen
+title: Peering instellen met Microsoft
 titleSuffix: Azure
 description: Overzicht van peering
 services: internet-peering
@@ -9,48 +9,48 @@ ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75908921"
 ---
-# <a name="internet-peering-overview"></a>Overzicht van Internet peering
+# <a name="internet-peering-overview"></a>Overzicht van internetpeering
 
-Peering is de onderlinge verbinding tussen het wereld wijde netwerk (AS8075) van micro soft en uw netwerk voor het uitwisselen van Internet verkeer van/naar micro soft onlineservices en Microsoft Azure Services. Vervoerders of service providers kunnen vragen om verbinding te maken met micro soft op een van onze Edge-locaties. Elke aanvraag wordt door micro soft gecontroleerd om te controleren of deze voldoet aan ons beleid voor peering. U kunt op twee manieren een peering met het micro soft-netwerk instellen:
+Peering is de onderlinge verbinding tussen het wereldwijde netwerk (AS8075) van Microsoft en uw netwerk voor het uitwisselen van internetverkeer van/naar Microsoft Online Services en Microsoft Azure Services. Mobiele providers of serviceproviders kunnen verbinding met Microsoft aanvragen op een van onze Edge-locaties. Elke aanvraag wordt door Microsoft beoordeeld om te zien of deze voldoet aan ons peeringbeleid. U kunt een peering met het netwerk van Microsoft instellen op twee manieren:
 
 * **Directe peering:**
 
-    Peering wordt tot stand gebracht via directe fysieke verbindingen tussen micro soft-netwerken in een micro soft Edge en uw netwerk. BGP-sessies worden geconfigureerd via deze verbindingen volgens ons routerings beleid en met behulp van de vooraf-onderhandelde overeenkomst. Dit wordt ook wel PNI genoemd.
+    Peering wordt tot stand gebracht via rechtstreekse fysieke verbindingen tussen het Microsoft-netwerk op een Microsoft Edge en uw netwerk. BGP-sessies worden geconfigureerd via deze verbindingen volgens ons routeringsbeleid en met behulp van een vooraf onderhandelde overeenkomst. Dit wordt ook wel PNI genoemd.
 
 * **Exchange-peering:**
 
-    Dit verwijst naar de standaard open bare peering-verbindingen op Internet Exchange (IX). De fysieke verbindingen tussen het micro soft-netwerk en uw netwerk bevinden zich via de switch structuur die wordt geëxploiteerd door de IX. BGP-sessies worden geconfigureerd met behulp van de IP-ruimte die wordt opgegeven door de IX.
+    Dit verwijst naar de standaard openbare peering-verbindingen op Internet Exchanges (IX). De fysieke verbindingen tussen het Microsoft-netwerk en uw netwerk lopen via de switch-infrastructuur die wordt beheerd door de IX. BGP-sessies worden geconfigureerd met behulp van de IP-ruimte die wordt geleverd door de IX.
 
-## <a name="benefits-of-peering-with-microsoft"></a>Voor delen van peering met micro soft
-* Verlaag uw doorvoer kosten door micro soft-verkeer te leveren met behulp van peering met micro soft.
-* Verbeter de prestaties van uw klanten door de netwerk-hops en latentie naar het micro soft Edge-netwerk te verminderen.
-* Bescherm klant verkeer tegen storingen in het netwerk van uw netwerk of door Voer van de provider door te koppelen aan micro soft op redundante locaties.
-* Meer informatie over de prestaties van uw peering-verbindingen en hoe u inzichten kunt gebruiken om problemen met uw netwerk op te lossen.
+## <a name="benefits-of-peering-with-microsoft"></a>Voordelen van peering met Microsoft
+* Verlaag uw doorvoerkosten door Microsoft-verkeer te leveren met behulp van peering met Microsoft.
+* Verbeter de prestaties van uw klanten door de netwerk-hops en latentie naar het Microsoft Edge-netwerk te verminderen.
+* Bescherm het verkeer van klanten tegen storingen in uw netwerk of het netwerk van de provider door peering met Microsoft op redundante locaties.
+* Meer informatie over metrische prestatiegegevens van uw peering-verbindingen en hoe u inzichten kunt gebruiken om problemen met uw netwerk op te lossen.
 
-## <a name="benefits-of-using-azure-to-set-up-peering"></a>Voor delen van het gebruik van Azure voor het instellen van peering
+## <a name="benefits-of-using-azure-to-set-up-peering"></a>Voordelen van het gebruik van Azure voor het instellen van peering
 
-U kunt een aanvraag indienen voor peering met behulp van Azure PowerShell of portal van micro soft. Peering is op deze manier ingesteld als een Azure-resource en biedt de volgende voor delen:
-* Vereenvoudigde en geautomatiseerde stappen voor het instellen en beheren van peering met micro soft.
-* Snelle en eenvoudige manier om al uw peerings op één plek weer te geven en te beheren.
-* Houd de status-en bandbreedte gegevens voor al uw verbindingen bij.
-* U kunt hetzelfde abonnement gebruiken om toegang te krijgen tot uw Azure-Cloud Services.
+U kunt peering met Microsoft aanvragen via Azure PowerShell of Azure Portal. Peering die op deze manier is ingesteld, wordt beheerd als een Azure-resource en biedt de volgende voordelen:
+* Vereenvoudigde en automatiseerbare stappen voor het instellen en beheren van peering met Microsoft.
+* Snelle en eenvoudige manier om al uw peerings op één plaats weer te geven en te beheren.
+* Houd de status- en bandbreedtegegevens voor al uw verbindingen bij.
+* U kunt hetzelfde abonnement gebruiken voor toegang tot uw Azure Cloud Services.
 
-Als u al met micro soft gevestigde peerings hebt, worden deze **verouderde peerings**genoemd. U kunt ervoor kiezen om dergelijke peerings als Azure-resource te beheren, zodat u optimaal gebruik kunt maken van de bovenstaande voor delen. Volg de koppelingen in de **volgende stappen** hieronder om een nieuwe peering-aanvraag in te dienen of verouderde peering te converteren naar een Azure-resource.
+Als u al peerings met Microsoft tot stand hebt gebracht, worden deze aangeduid als **verouderde peerings**. U kunt ervoor kiezen om dergelijke peerings als Azure-resource te beheren, zodat u optimaal kunt profiteren van de bovenstaande voordelen. Als u een nieuwe peeringaanvraag wilt indienen of een verouderde peering wilt converteren naar een Azure-resource, gebruikt u de koppelingen in de sectie **Volgende stappen** hieronder.
 
 ## <a name="peering-policy"></a>Peeringbeleid
-Micro soft heeft een selectief, maar heeft het beleid voor peering doorgaans geopend. Peers worden geselecteerd op basis van de prestaties, de mogelijkheden en de plaats waar er sprake is van wederzijds voor deel en zijn onderworpen aan bepaalde technische, commerciële en juridische vereisten. Zie [beleid voor peering](policy.md)voor meer informatie.
+Microsoft heeft een selectief, maar doorgaans open peeringbeleid. Peers worden geselecteerd op basis van de prestaties, de mogelijkheden en de plaats waar er sprake is van wederzijds voordeel. Peers zijn onderworpen aan bepaalde technische, commerciële en juridische vereisten. Zie het [peeringbeleid](policy.md) voor meer informatie.
 
 ## <a name="faq"></a>Veelgestelde vragen
-Zie [Internet peering-faq's](faqs.md)(Engelstalig) voor veelgestelde vragen over peering.
+Zie [Veelgestelde vragen over internetpeering](faqs.md) voor veelgestelde vragen over peering.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor meer informatie over de stappen om direct peering in te stellen met micro soft, volgt u het [scenario voor directe peering](walkthrough-direct-all.md)
-* Voor meer informatie over de stappen voor het instellen van Exchange-peering met micro soft, volgt u de [Stapsgewijze instructies](walkthrough-exchange-all.md) voor het uitwisselen van Exchange
+* Voor meer informatie over de stappen voor het instellen van directe peering met Microsoft, volgt u het [directe peering-scenario](walkthrough-direct-all.md)
+* Voor meer informatie over de stappen voor het instellen van Exchange-peering met Microsoft, volgt u de [kennismaking met Exchange-peering](walkthrough-exchange-all.md)
 * Informatie over enkele van de andere belangrijke [netwerkmogelijkheden](https://docs.microsoft.com/azure/networking/networking-overview) van Azure.

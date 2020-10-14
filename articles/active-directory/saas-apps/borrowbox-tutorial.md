@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: d7cab94520464662589ca952e9d50102f450ab8d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c0ffa67725c3178155c495754ca67270c946778b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548296"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Zelfstudie: Azure Active Directory-integratie met BorrowBox
 
@@ -100,11 +100,11 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met BorrowBox 
 
 4. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Informatie over eenmalige aanmelding voor het [Application Name]-domein en de -URL's](common/preintegrated.png)
+    ![[Schermopname van de basale SAML-configuratie.] Informatie over het domein en URL's voor eenmalige aanmelding](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor het [Application Name]-domein en de -URL's](common/metadata-upload-additional-signon.png)
+    ![[Schermopname van Extra URL's instellen, waar u een aanmeldings-URL kunt invoeren.] Informatie over het domein en URL's voor eenmalige aanmelding](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`
 

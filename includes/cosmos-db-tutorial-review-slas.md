@@ -6,21 +6,21 @@ ms.date: 03/22/2019
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "71210196"
 ---
-De Azure Portal bewaakt de door Voer van uw Cosmos DB-account, opslag, Beschik baarheid, latentie en consistentie. Grafieken voor metrische gegevens die zijn gekoppeld aan een [Azure Cosmos DB Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) tonen de sla-waarde vergeleken met de werkelijke prestaties. Met deze reeks metrische gegevens kunt u uw Sla's transparant bewaken.
+De doorvoer, opslag, beschikbaarheid, latentie en consistentie van uw Cosmos DB-account worden in Azure Portal bewaakt. Grafieken voor metrische gegevens die zijn gekoppeld aan een [Azure Cosmos DB Service Level Agreement (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) tonen de SLA-waarde in vergelijking met de werkelijke prestaties. Deze suite van metrische gegevens zorgt voor een transparante bewaking van uw SLA's.
 
-Metrische gegevens en Sla's controleren: 
+Metrische gegevens en SLA's weergeven: 
 
-1. Selecteer **metrische gegevens** in het navigatie menu van uw Cosmos DB-account.
+1. Selecteer **Metrische gegevens** in het navigatiemenu van uw Cosmos DB-account.
    
-2. Selecteer een tabblad, zoals **latentie**, en selecteer aan de rechter kant een tijds bestek. Vergelijk de **werkelijke** en **Sla** -regels in de grafieken.
+2. Selecteer een tabblad, bijvoorbeeld **Latentie**, en selecteer aan de rechterkant een tijdsbestek. Vergelijk de lijnen **Werkelijk** en **SLA** in de grafieken met elkaar.
    
    ![Azure Cosmos DB-pakket met metrische gegevens](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-metrics-suite.png)
    
-3. Controleer de metrische gegevens op de andere tabbladen. 
+3. Bekijk de metrische gegevens op de andere tabbladen. 
 

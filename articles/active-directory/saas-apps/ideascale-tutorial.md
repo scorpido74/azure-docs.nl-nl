@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32dd392965e8bf33c835b435b5a2a01460740d2b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547491"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Zelfstudie: Azure Active Directory-integratie met IdeaScale
 
@@ -137,7 +137,7 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Id
 
 3. Ga naar **Beveiliging \> Instellingen voor eenmalige aanmelding**.
 
-    ![Instellingen voor eenmalige aanmelding](./media/ideascale-tutorial/ic790848.png "Instellingen voor eenmalige aanmelding")
+    ![Schermopname met daarin de instellingen voor eenmalige aanmelding geselecteerd in het menu Beveiliging.](./media/ideascale-tutorial/ic790848.png "Instellingen voor eenmalige aanmelding")
 
 4. Selecteer **SAML 2.0** als **Type eenmalige aanmelding**.
 
@@ -145,7 +145,7 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Id
 
 5. Voer in het dialoogvenster **Instellingen voor eenmalige aanmelding** de volgende stappen uit:
 
-    ![Instellingen voor eenmalige aanmelding](./media/ideascale-tutorial/ic790850.png "Instellingen voor eenmalige aanmelding")
+    ![Schermopname van het dialoogvenster met instellingen voor eenmalige aanmelding.](./media/ideascale-tutorial/ic790850.png "Instellingen voor eenmalige aanmelding")
 
     a. Plak in het tekstvak **SAML idP entiteits-id** de waarde van de **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 

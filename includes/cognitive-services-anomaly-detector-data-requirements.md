@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/20/2019
 ms.openlocfilehash: 41ac1478b1028a847fc0d5e7e70802375e910837
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "67176369"
 ---
 > [!NOTE]
-> Voor de [beste resultaten](../articles/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices.md) bij het gebruik van de afwijkende detector API moeten de gegevens van de JSON-indelings reeks het volgende bevatten:
-> * gegevens punten gescheiden met hetzelfde interval, met niet meer dan 10% van het verwachte aantal punten dat ontbreekt.
-> * ten minste 12 gegevens punten als uw gegevens geen duidelijk seizoensgebonden patroon hebben.
-> * Er zijn ten minste vier patroon exemplaren als uw gegevens een helder seizoensgebonden patroon hebben. 
+> Voor de [beste resultaten](../articles/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices.md) wanneer u de Anomaly Detector-API gebruikt, moeten de tijdreeksgegevens in JSON-indeling het volgende bevatten:
+> * gegevenspunten die door hetzelfde interval zijn gescheiden, waarbij niet meer dan 10% van het verwachte aantal punten ontbreekt;
+> * ten minste twaalf gegevenspunten als uw gegevens geen duidelijk seizoensgebonden karakter hebben;
+> * ten minste viermaal een patroon als uw gegevens wel een duidelijk seizoensgebonden karakter hebben. 

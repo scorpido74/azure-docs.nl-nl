@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522343"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047689"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure Digital Apparaatdubbels-functies voor klant gegevens aanvragen
 
@@ -35,7 +35,7 @@ Azure Digital Apparaatdubbels slaat de [Azure Active Directory](../active-direct
 
 ## <a name="deleting-customer-data"></a>Klant gegevens verwijderen
 
-Azure Digital Apparaatdubbels-beheerders kunnen de Azure Portal gebruiken om gegevens te verwijderen die betrekking hebben op gebruikers. Het is ook mogelijk om delete-bewerkingen uit te voeren op afzonderlijke digitale apparaatdubbels met behulp van de Azure Digital Apparaatdubbels REST-Api's. Zie [Azure Digital APPARAATDUBBELS rest api's documentation](https://docs.microsoft.com/rest/api/azure-digitaltwins/)(Engelstalig) voor meer informatie over de beschik bare api's.
+Azure Digital Apparaatdubbels-beheerders kunnen de Azure Portal gebruiken om gegevens te verwijderen die betrekking hebben op gebruikers. Het is ook mogelijk om delete-bewerkingen uit te voeren op afzonderlijke digitale apparaatdubbels met behulp van de Azure Digital Apparaatdubbels REST-Api's. Zie [Azure Digital APPARAATDUBBELS rest api's documentation](/rest/api/azure-digitaltwins/)(Engelstalig) voor meer informatie over de beschik bare api's.
 
 ## <a name="exporting-customer-data"></a>Klant gegevens exporteren
 
@@ -45,4 +45,4 @@ Klant gegevens, met inbegrip van gebruikers rollen en roltoewijzingen, kunnen wo
 
 ## <a name="links-to-additional-documentation"></a>Koppelingen naar aanvullende documentatie
 
-Zie de [documentatie van Azure Digital APPARAATDUBBELS rest api's](https://docs.microsoft.com/rest/api/azure-digitaltwins/)voor een volledige lijst met de api's van de Azure Digital apparaatdubbels-service.
+Zie de [documentatie van Azure Digital APPARAATDUBBELS rest api's](/rest/api/azure-digitaltwins/)voor een volledige lijst met de api's van de Azure Digital apparaatdubbels-service.

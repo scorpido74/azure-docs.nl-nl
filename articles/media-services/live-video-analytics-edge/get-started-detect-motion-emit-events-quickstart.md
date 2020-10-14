@@ -3,12 +3,12 @@ title: Aan de slag met Live Video Analytics in IoT Edge - Azure
 description: Deze quickstart laat zien hoe u aan de slag kunt met Live Video Analytics in IoT Edge. Leer hoe u beweging kunt detecteren in een live-videostream.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884936"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773387"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Quickstart: Over Live Video Analytics in IoT Edge
 
@@ -43,12 +43,8 @@ Voor deze quickstart wordt u aangeraden gebruik te maken van het [installatiescr
 1. Als u Cloud Shell voor het eerst gebruikt, wordt u gevraagd een abonnement te selecteren voor het maken van een opslagaccount en een Microsoft Azure Files-share. Selecteer **Opslag maken** om een opslagaccount te maken voor de gegevens van uw Cloud Shell-sessie. Dit opslagaccount is gescheiden van het account dat door het script wordt gemaakt voor gebruik bij uw Azure Media Services-account.
 1. Selecteer in de vervolgkeuzelijst aan de linkerkant van het Cloud Shell-venster **Bash** als uw omgeving.
 
-    ![Omgevingsselector](./media/quickstarts/env-selector.png)
-
-1. Voer de volgende opdracht uit.
-
-    ```
-    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Live Video Analytics op basis van bewegingsdetectie"
     ```
     
 Als het script is voltooid, ziet u alle vereiste resources in uw abonnement. In de scriptuitvoer bevat een tabel met resources de naam van de IoT-hub. Zoek naar het resourcetype `Microsoft.Devices/IotHubs` en noteer de naam. U hebt deze naam nodig in de volgende stap. 
@@ -76,7 +72,16 @@ Nu zijn de modules geïmplementeerd, maar zijn er geen mediagrafieken actief.
 
 Volg deze instructies om verbinding te maken met uw IoT-hub met behulp van de Azure IoT Tools-extensie.
 
-1. Selecteer **Verkenner** > **weergeven** in Visual Studio Code. Of selecteer Ctrl+Shift+E.
+1. Open in Visual Studio Code het tabblad **Extensies** (of druk op Ctrl+Shift+X) en zoek naar Azure IoT Hub.
+1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Live Video Analytics op basis van bewegingsdetectie":::
+1. Zoek Uitgebreid bericht tonen en schakel dit in.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Live Video Analytics op basis van bewegingsdetectie":::
+1. <!--In Visual Studio Code-->Selecteer **Weergave** > **Explorer**. Of selecteer Ctrl+Shift+E.
 1. Selecteer **Azure IoT Hub** in de linkerbenedenhoek van het tabblad **Verkenner**.
 1. Selecteer het pictogram **Meer opties** om het contextmenu weer te geven. Selecteer vervolgens **IoT Hub-verbindingsreeks instellen**.
 1. Wanneer er een invoervak verschijn,. voert u uw IoT Hub-verbindingsreeks in. U kunt de verbindingstekenreeks ophalen van *~/clouddrive/lva-sample/appSettings.json* in Cloud Shell.

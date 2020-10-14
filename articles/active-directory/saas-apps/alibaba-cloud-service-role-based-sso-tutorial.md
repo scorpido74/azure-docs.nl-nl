@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521974"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715888"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Zelfstudie: Eenmalige aanmelding via Azure Active Directory integreren met Alibaba Cloud Service (eenmalige aanmelding op basis van rollen)
 
@@ -132,11 +132,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Selecteer op het tabblad **Gebruikers en groepen** de optie u2 in de lijst met gebruikers en klik op **Selecteren**. Klik vervolgens op **Toewijzen**.
 
-    ![Testconfiguratie](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![Schermopname toont het deelvenster Toewijzing voor Alibaba waarvoor geen gebruikers en groepen zijn geselecteerd.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Bekijk de toegewezen rol en test Alibaba Cloud Service (eenmalige aanmelding op basis van rollen).
 
-    ![Testconfiguratie](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![Schermopname toont de rol die is toegewezen aan de gebruiker u2.](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >Nadat u de gebruiker (u2) hebt toegewezen, wordt de gemaakte rol automatisch aan de gebruiker gekoppeld. Als u meerdere rollen hebt gemaakt, moet u de juiste rol aan de gebruiker koppelen, indien nodig. Als u eenmalige aanmelding op basis van rollen wilt implementeren vanuit Azure AD naar meerdere Alibaba Cloud-accounts, herhaalt u de voorgaande stappen.
@@ -164,25 +164,25 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     b. Klik op **Machtigingen wijzigen** om de vereiste machtigingen te verkrijgen voor het maken van een rol.
 
-    ![Configuratie van Graph](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![Schermopname toont Graph Explorer-verificatie met een link voor wijzigingsmachtigingen.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. Selecteer de volgende machtigingen in de lijst en klik op **Machtigingen wijzigen**, zoals wordt weergegeven in de volgende afbeelding.
 
-    ![Configuratie van Graph](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![Schermopname toont de machtigingen die u kunt selecteren: Directory.AccessAsUser.All, Directory.Read.All en Directory.ReadWrite.All.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >Nadat de machtigingen zijn verleend, meldt u zich opnieuw aan bij de Graph Explorer.
 
     d. Selecteer op de pagina Graph Explorer de optie **GET** in de eerste vervolgkeuzelijst en **Bèta** in de tweede vervolgkeuzelijst. Voer `https://graph.microsoft.com/beta/servicePrincipals` in het veld naast de vervolgkeuzelijsten in en klik op **Query uitvoeren**.
 
-    ![Configuratie van Graph](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![Schermopname toont de Graph Explorer met GET en Beta geselecteerd en de knop 'Query uitvoeren' opgeroepen.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >Als u meerdere directory's gebruikt, kunt u `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` invoeren in het veld van de query.
 
     e. Extraheer de eigenschap appRoles van de ‘service-principal’ in de sectie **Preview van reactie** voor later gebruik.
 
-    ![Configuratie van Graph](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![Schermopname toont niet-versleutelde tekst in de sectie Antwoordpreview, waar u de eigenschap appRoles kunt ophalen.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >U kunt de eigenschap appRoles vinden door `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` in te voeren in het veld van de query. Houd er rekening mee dat `objectID` de object-id is die u hebt gekopieerd van de Azure AD-pagina **Eigenschappen**.
@@ -234,19 +234,19 @@ Nadat de voorgaande configuraties zijn voltooid, test u Alibaba Cloud Service (e
 
 1. Ga in Azure Portal naar de pagina **Alibaba Cloud Service (eenmalige aanmelding op basis van rollen)** , selecteer **Eenmalige aanmelding** en klik op **Testen**.
 
-    ![Testconfiguratie](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![Schermopname toont 'Test eenmalige aanmelding met Alibaba Cloudservice' met een testknop.](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. Klik op **Aanmelden als huidige gebruiker**.
 
-    ![Testconfiguratie](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![Schermopname toont de link 'Aanmelden als huidige gebruiker'.](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. Selecteer u2 op de pagina voor het selecteren van accounts.
 
-    ![Testconfiguratie](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![Schermopname toont de optie 'S S O aanmelden' waarbij de gebruiker u2 is geselecteerd.](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. De volgende pagina wordt weergegeven, waarmee wordt aangegeven dat eenmalige aanmelding op basis van rollen is geslaagd.
 
-    ![Testconfiguratie](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![Schermopname toont de pagina 'Producten en services', waarmee wordt aangegeven dat de test is geslaagd. ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central micro fulfillment Center | Microsoft Docs
-description: Meer informatie over het bouwen van een micro fulfillment Center-toepassing met behulp van onze micro-fulfillment Center-toepassings sjabloon in IoT Central
+title: Micro-uitvoeringscentrum van Azure IoT Central | Microsoft Docs
+description: Meer informatie over het bouwen van een toepassing voor het micro-uitvoeringscentrum met behulp van onze toepassingssjabloon voor het micro-uitvoeringscentrum in IoT Central
 author: avneet723
 ms.author: avneets
 ms.date: 10/13/2019
@@ -10,50 +10,50 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81000425"
 ---
-# <a name="micro-fulfillment-center-architecture"></a>Architectuur van micro fulfill Center
+# <a name="micro-fulfillment-center-architecture"></a>Architectuur voor het micro-uitvoeringscentrum
 
-Met oplossingen van micro fulfill Center kunt u alle aspecten van een volledig geautomatiseerd fulfillment-centrum digitaal verbinden, bewaken en beheren om de kosten te verlagen door uitval tijd te elimineren en de beveiliging en algemene efficiëntie te verg Roten. Deze oplossingen kunnen worden gemaakt met behulp van een van de toepassings sjablonen in IoT Central en de architectuur hieronder als richt lijn.
+Met de oplossingen van het micro-uitvoeringscentrum kunt u digitaal verbinding maken en alle aspecten van een volledige geautomatiseerd uitvoeringscentrum bewaken en beheren om door middel van minder uitval kosten te besparen, en tegelijkertijd de beveiliging en algemene efficiëntie te verbeteren. Deze oplossingen kunnen worden gemaakt met behulp van een van de toepassingssjablonen in IoT Central en de onderstaande architectuur als leidraad.
 
-![Azure IoT Central Store-analyses](./media/architecture/micro-fulfillment-center-architecture-frame.png)
+![Azure IoT Central-winkelanalyses](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- Set IoT Sens oren die telemetriegegevens naar een gateway apparaat verzenden
-- Gateway apparaten die telemetrie en geaggregeerde inzichten verzenden naar IoT Central
-- Continue gegevens export naar de gewenste Azure-service voor manipulatie
-- Gegevens kunnen worden gestructureerd in de gewenste indeling en naar een opslag service worden verzonden
-- Zakelijke toepassingen kunnen gegevens opvragen en inzichten genereren die de werking van Powers
+- Set IoT-sensoren die telemetriegegevens naar een gatewayapparaat verzenden
+- Gatewayapparaten die telemetrie en geaggregeerde inzichten naar IoT Central verzenden
+- Continue gegevensexport naar de gewenste Azure-service voor bewerking
+- Gegevens kunnen worden gestructureerd in de gewenste indeling en naar een opslagservice worden verzonden
+- Bedrijfstoepassingen kunnen gegevens opvragen en inzichten genereren voor het aansturen van retailbewerkingen
  
-Laten we eens kijken naar belang rijke onderdelen die doorgaans een deel spelen in een oplossing voor micro-fulfillment Center.
+Laten we eens kijken naar de belangrijkste onderdelen die in het algemeen een rol spelen in een oplossing voor het micro-uitvoeringscentrum.
 
-## <a name="robotic-carriers"></a>Automatische vervoerders
+## <a name="robotic-carriers"></a>Geautomatiseerde orderpickers
 
-Een micro-fulfillment Center-oplossing heeft waarschijnlijk een grote set robot-providers die verschillende soorten telemetrie-signalen genereren. Deze signalen kunnen worden opgenomen door een gateway apparaat, geaggregeerd en vervolgens naar IoT Central worden verzonden, zoals wordt weer gegeven door de linkerkant van het architectuur diagram.  
+Een oplossing voor het micro-uitvoeringscentrum heeft waarschijnlijk een grote set automatische orderpickers die verschillende soorten telemetriesignalen genereren. Deze signalen kunnen worden opgenomen door een gatewayapparaat, worden geaggregeerd en vervolgens naar IoT Central worden verzonden, zoals wordt weergegeven aan de linkerkant van het architectuurdiagram.  
 
-## <a name="condition-monitoring-sensors"></a>Sens oren voor voorwaarde bewaking
+## <a name="condition-monitoring-sensors"></a>Sensoren voor het bewaken van omstandigheden
 
-Een IoT-oplossing begint met een set Sens oren die zinvolle signalen in uw fulfillment Center vastleggen. Het wordt weer gegeven door verschillende Sens oren helemaal links in het architectuur diagram hierboven.
+Een IoT-oplossing begint met een set sensoren die zinvolle signalen vanuit uw uitvoeringscentrum vastleggen. Dit wordt weergegeven door verschillende sensoren helemaal links in het bovenstaande architectuurdiagram.
 
-## <a name="gateway-devices"></a>Gateway apparaten
+## <a name="gateway-devices"></a>Gatewayapparaten
 
-Veel IoT Sens oren kunnen onbewerkte signalen rechtstreeks in de Cloud of op een gateway apparaat die zich in de buurt bevindt. Het gateway apparaat voert gegevens aggregatie aan de rand uit voordat Summary Insights wordt verzonden naar een IoT Central-toepassing. De gateway apparaten zijn ook verantwoordelijk voor het door sturen van opdracht-en controle bewerkingen naar de sensor apparaten, indien van toepassing. 
+Veel IoT-sensoren kunnen onbewerkte signalen rechtstreeks verzenden naar de cloud of naar een gatewayapparaat dat zich in de buurt bevindt. Met het gatewayapparaat wordt gegevensaggregatie aan de rand uitgevoerd voordat samenvattingsinzichten naar een IoT Central-toepassing worden verzonden. De gatewayapparaten zijn ook verantwoordelijk voor het doorsturen van opdracht- en controlebewerkingen naar de sensorapparaten, indien van toepassing. 
 
-## <a name="iot-central-application"></a>IoT Central toepassing
+## <a name="iot-central-application"></a>IoT Central-toepassing
 
-De Azure IoT Central-toepassing neemt gegevens op uit verschillende soorten IoT Sens oren, robots, als gateway apparaten in de fulfillment Center-omgeving en genereert een set zinvolle inzichten.
+De Azure IoT Central-toepassing neemt gegevens op van verschillende soorten IoT-sensoren, robots en gatewayapparaten in de uitvoeringscentrumomgeving en genereert een set zinvolle inzichten.
 
-Azure IoT Central biedt ook een aangepaste ervaring met de opslag operator, zodat deze de infrastructuur apparaten op afstand kunnen bewaken en beheren.
+Azure IoT Central biedt ook een aangepaste ervaring voor winkeloperators, zodat zij de infrastructuurapparaten op afstand kunnen bewaken en beheren.
 
-## <a name="data-transform"></a>Gegevens transformatie
-De Azure IoT Central-toepassing binnen een oplossing kan worden geconfigureerd voor het exporteren van RAW of geaggregeerde inzichten naar een set Azure PaaS-Services (platform-as-a-Service) waarmee gegevens kunnen worden gemanipuleerd en deze inzichten worden verrijkd voordat ze in een bedrijfs toepassing worden geaanvoer. 
+## <a name="data-transform"></a>Gegevenstransformatie
+De Azure IoT Central-toepassing in een oplossing kan worden geconfigureerd voor het exporteren van onbewerkte of geaggregeerde inzichten naar een set Azure PaaS-services (Platform-as-a-Service) waarmee gegevens kunnen worden bewerkt en deze inzichten kunnen worden verrijkt voordat ze in een bedrijfstoepassing worden opgenomen. 
 
 ## <a name="business-application"></a>Zakelijke toepassing
-De IoT-gegevens kunnen worden gebruikt om verschillende soorten zakelijke toepassingen uit te scha kelen die in een bedrijfs omgeving worden geïmplementeerd. Een fulfillment Center Manager of werk nemer kan deze toepassingen gebruiken om zakelijke inzichten te visualiseren en in real-time zinvolle acties uit te voeren. Volg de [zelf studie](./tutorial-in-store-analytics-create-app.md)als u wilt weten hoe u een real-time Power bi dash board kunt maken voor uw Retail team.
+De IoT-gegevens kunnen worden gebruikt om verschillende soorten zakelijke toepassingen binnen een retailomgeving aan te sturen. Een manager of werknemer van een uitvoeringscentrum kan deze toepassingen gebruiken om zakelijke inzichten te visualiseren en in realtime zinvolle acties uit te voeren. Als u wilt weten hoe u een real-time Power BI-dashboard voor uw retailteam kunt maken, volgt u de [zelfstudie](./tutorial-in-store-analytics-create-app.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-* Ga aan de slag met de toepassings sjabloon [micro-fulfillment Center](https://aka.ms/checkouttemplate) . 
-* Bekijk de [zelf studie](https://aka.ms/mfc-tutorial) waarin u wordt begeleid bij het bouwen van een oplossing met behulp van de micro-fulfillment Center app-sjabloon.
+* Aan de slag met de toepassingssjabloon [Micro-uitvoeringscentrum](https://aka.ms/checkouttemplate). 
+* Bekijk de [zelfstudie](https://aka.ms/mfc-tutorial) die u begeleidt bij het bouwen van een oplossing met behulp van de app-sjabloon Micro-uitvoeringscentrum.

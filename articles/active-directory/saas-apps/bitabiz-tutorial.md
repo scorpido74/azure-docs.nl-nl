@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531053"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Zelfstudie: Azure Active Directory-integratie met BitaBIZ
 
@@ -132,15 +132,15 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 2. Klik op **BEHEERDER INSTELLEN**.
 
-    ![BitaBIZ-configuratie](./media/bitabiz-tutorial/settings1.png)
+    ![Schermopname die een deel van een browservenster toont met Beheerder instellen geselecteerd.](./media/bitabiz-tutorial/settings1.png)
 
 3. Klik in de sectie **Waarde toevoegen** op **Microsoft-integraties**.
 
-    ![BitaBIZ-configuratie](./media/bitabiz-tutorial/settings2.png)
+    ![Schermopname die Waarde toevoegen toont met Microsoft-integraties geselecteerd.](./media/bitabiz-tutorial/settings2.png)
 
 4. Schuif omlaag naar de sectie **Microsoft Azure AD (eenmalige aanmelding inschakelen)** en voer de volgende stappen uit:
 
-    ![BitaBIZ-configuratie](./media/bitabiz-tutorial/settings3.png)
+    ![Schermopname die de sectie Microsoft Azure AD toont, waarin u de informatie kunt invoeren die in deze stap is beschreven.](./media/bitabiz-tutorial/settings3.png)
 
     a. Kopieer de waarde in het tekstvak **Entiteits-id (‘id’ in Azure AD)** en plak deze in het tekstvak **Id** in de sectie **Standaard-SAML-configuratie** in de Azure-portal. 
 
@@ -218,19 +218,19 @@ In het geval van BitaBIZ is het inrichten een handmatige taak.
 
 2. Klik op **BEHEERDER INSTELLEN**.
 
-    ![BitaBIZ - Gebruiker toevoegen](./media/bitabiz-tutorial/settings1.png)
+    ![Schermopname die een deel van het browservenster toont met Beheerder instellen geselecteerd.](./media/bitabiz-tutorial/settings1.png)
 
 3. Klik in de sectie **Organisatie** op **Gebruikers toevoegen**.
 
-    ![BitaBIZ - Gebruiker toevoegen](./media/bitabiz-tutorial/user1.png)
+    ![Schermopname die de sectie Organisatie toont met Gebruikers toevoegen geselecteerd.](./media/bitabiz-tutorial/user1.png)
 
 4. Klik op **Nieuwe werknemer toevoegen**.
 
-    ![BitaBIZ - Gebruiker toevoegen](./media/bitabiz-tutorial/user2.png)
+    ![Schermopname die Gebruikers toevoegen toont met Nieuwe werknemer toevoegen geselecteerd.](./media/bitabiz-tutorial/user2.png)
 
 5. Voer de volgende stappen uit op de dialoogpagina **Nieuwe werknemer toevoegen**:
 
-    ![BitaBIZ - Gebruiker toevoegen](./media/bitabiz-tutorial/user3.png)
+    ![Schermopname die de pagina toont waarop u de informatie kunt invoeren die in deze stap is beschreven.](./media/bitabiz-tutorial/user3.png)
 
     a. Typ in het tekstvak **Voornaam** de voornaam van de gebruiker, zoals Britta.
 

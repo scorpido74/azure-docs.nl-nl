@@ -1,5 +1,5 @@
 ---
-title: Volgende stappen voor Anomalie Detector snel gestart
+title: Volgende stappen voor de quickstarts voor Anomaly Detector
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 11/19/2019
 ms.author: aahi
 ms.openlocfilehash: eb00d680e6312bb7f380e27d2fa6bb6fe34fa616
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "74482999"
 ---
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een abonnement voor Cognitive Services wilt opschonen en verwijderen, u de bron- of brongroep verwijderen. Als u de resourcegroep verwijdert, worden ook andere resources verwijderd die aan de resourcegroep zijn gekoppeld.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook andere resources verwijderd die aan de resourcegroep zijn gekoppeld.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -27,8 +27,8 @@ Als u een abonnement voor Cognitive Services wilt opschonen en verwijderen, u de
 Concepten:
 
 * [Wat is de Anomaly Detector-API?](../overview.md)
-* [Anomaliedetectiemethoden](../how-to/identify-anomalies.md)
-* [Aanbevolen procedures bij het gebruik van de Api voor anomaliedetector.](../concepts/anomaly-detection-best-practices.md) 
+* [Methoden voor anomaliedetectie](../how-to/identify-anomalies.md)
+* [Best practices voor het gebruik van de Anomaly Detector-API.](../concepts/anomaly-detection-best-practices.md) 
 
 Zelfstudies:
 

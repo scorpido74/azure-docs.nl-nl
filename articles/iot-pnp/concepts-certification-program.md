@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9580f1c7a29b19bb926a7079b95cb3ed0b314d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579772"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048097"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Wat is het Azure Certified Device-programma?
 
@@ -60,7 +60,7 @@ _Certificering van Azure Certified-apparaten_ valideert dat een apparaat verbind
 - Zie de [certificerings vereisten](https://aka.ms/acdrequirements)voor meer informatie.
 - Zie [overzicht van apparaten inrichten](../iot-dps/about-iot-dps.md)voor meer informatie over het gebruik van DPS om uw apparaat te verbinden met Azure IOT hub.
 
-### <a name="iot-plug-and-play"></a>IoT Plug and Play
+### <a name="iot-plug-and-play"></a>IoT Plug en Play
 
 _IoT Plug en Play-certificering_, een incrementele certificering aan de certificering van het Azure Certified-apparaat, vereenvoudigt het proces van het bouwen van apparaten zonder aangepaste apparaatcode. Met IoT Plug en Play kunnen hardware-partners apparaten bouwen die eenvoudig kunnen worden geïntegreerd met cloud oplossingen op basis van Azure IoT Central en oplossingen van derden.
 
@@ -102,7 +102,7 @@ Voor elk apparaat dat u wilt certificeren, gebruikt u de formulieren in de certi
 
 Deze fase communiceert met uw apparaat en voert een reeks tests uit nadat het apparaat gebruikmaakt van DPS om verbinding te maken met IoT Hub. Bij voltooiing kunt u een set logboek bestanden weer geven met de test resultaten van uw apparaat.
 
-De certificerings Portal bevat instructies over het maken van verbinding met het IoT Hub-exemplaar dat wordt gebruikt voor het testen. U kunt de DPS-verbinding tot stand brengen via een van de [ondersteunde Attestation-methoden](https://aka.ms/acdAttestation).
+De certificerings Portal bevat instructies over het maken van verbinding met het IoT Hub-exemplaar dat wordt gebruikt voor het testen. U kunt de DPS-verbinding tot stand brengen via een van de [ondersteunde Attestation-methoden](../iot-dps/concepts-service.md#attestation-mechanism).
 
 Het Azure Certified Device team kan contact opnemen met de opbouw functie voor apparaten voor verdere hand matige validatie van het apparaat.
 

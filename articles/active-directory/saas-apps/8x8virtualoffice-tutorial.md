@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538651"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met 8x8
 
@@ -147,11 +147,11 @@ Het volgende deel van de zelfstudie is afhankelijk van uw soort abonnement op 8x
 
 1. Klik op de startpagina op **Identity Management**.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+    ![Schermopname waarin de tegel Identity Management is gemarkeerd.](./media/8x8virtualoffice-tutorial/configure1.png)
 
 1. Schakel **Single Sign On (SSO)** in en selecteer **Microsoft Azure AD**.
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+    ![Schermopname met de opties voor eenmalige aanmelding (SSO) en Microsoft Azure AD.](./media/8x8virtualoffice-tutorial/configure2.png)
 
 1. Kopieer de drie URL's en het handtekeningcertificaat van de pagina **Eenmalige aanmelding met SAML instellen** in Azure AD naar de sectie **Microsoft Azure AD SAML Settings** in 8x8 Configuration Manager.
 
@@ -173,23 +173,23 @@ Het volgende deel van de zelfstudie is afhankelijk van uw soort abonnement op 8x
 
 1. Selecteer **Virtual Office-accountbeheer** in het toepassingsvenster.
 
-    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+    ![Schermopname waarop de tegel Virtual Office-accountbeheer is gemarkeerd.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
 1. Selecteer het **bedrijfs**account dat u wilt beheren en klik op **Aanmelden**.
 
-    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
+    ![Schermopname waarop de opties voor het bedrijf en de aanmeldingsknop zijn gemarkeerd.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Klik op het tabblad **ACCOUNTS** in de menulijst.
 
-    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+    ![Schermopname waarop het tabblad ACCOUNTS in de menulijst is gemarkeerd.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
 1. Klik op **Eenmalige aanmelding** in de lijst met accounts.
 
-    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+    ![Schermopname waarop de optie voor eenmalige aanmelding is gemarkeerd.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Selecteer **Eenmalige aanmelding** bij de verificatiemethoden en klik op **SAML**.
 
-    ![Configureren aan de toepassingszijde](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+    ![Schermopname waarop SAML onder Eenmalige aanmelding is gemarkeerd.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
 1. In het gedeelte voor **SAML-eenmalige aanmelding** voert u de volgende stappen uit:
 

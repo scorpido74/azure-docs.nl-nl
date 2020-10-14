@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549242"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775662"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Zelfstudie: Costpoint integreren met Azure Active Directory
 
@@ -43,7 +43,7 @@ In deze zelfstudie configureert en test u eenmalige aanmelding van Azure AD in e
 
 Costpoint SAML SSO-configuratie wordt uitgelegd in de handleiding **DeltekCostpoint711Security.pdf**. Download deze handleiding op de ondersteuningssite van Deltek Costpoint en raadpleeg de sectie **Eenmalige aanmelding instellen met SAML** > **Eenmalige aanmelding van SAML instellen tussen Costpoint en Microsoft Azure**. Volg de instructies en genereer een **XML-bestand met federatieve metagegevens voor Costpoint SP**. 
 
-![Hulpprogramma voor Costpoint-configuratie](./media/costpoint-tutorial/config-utility.png)
+![Schermopname van het 'hulpprogramma voor productconfiguratie'; het tabblad 'WebLogic-beveiliging' is geselecteerd.](./media/costpoint-tutorial/config-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>Costpoint toevoegen vanuit de galerie
 
@@ -166,7 +166,7 @@ In deze sectie geeft u B.Simon de mogelijkheid om eenmalige aanmelding van Azure
 
 ### <a name="create-a-costpoint-test-user"></a>Een Costpoint-testgebruiker maken
 
-In deze sectie maakt u een gebruiker in Costpoint. Ga ervanuit dat de gebruikers-id **B.SIMON** is, en dat de naam van de gebruiker **B.Simon** is. Neem contact op met het [klantondersteuningsteam van Costpoint](https://www.deltek.com/about/contact-us) om de gebruiker toe te voegen aan het Costpoint-platform. De gebruiker moet worden gemaakt en geactiveerd voordat deze eenmalige aanmelding kan gebruiken.
+In deze sectie maakt u een gebruiker in Costpoint. Stel dat de gebruikers-id **B.SIMON** is, en dat de naam van de gebruiker **B.Simon** is. Neem contact op met het [klantondersteuningsteam van Costpoint](https://www.deltek.com/about/contact-us) om de gebruiker toe te voegen aan het Costpoint-platform. De gebruiker moet worden gemaakt en geactiveerd voordat deze eenmalige aanmelding kan gebruiken.
 
 Nadat de gebruiker is gemaakt, moet de geselecteerde **Verificatiemethode** van de gebruiker **Active Directory** zijn. Ook moet het selectievakje **Eenmalige aanmelding voor SAML** zijn geselecteerd, en moet de gebruikersnaam van Azure Active Directory **Active Directory of Certificaat-id** zijn (zoals weergegeven in de volgende schermopname).
 

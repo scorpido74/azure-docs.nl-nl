@@ -1,6 +1,7 @@
 ---
-title: Aanmelden met Microsoft toevoegen aan een Python-webapp voor Microsoft-identiteitsplatform | Azure
-description: Informatie over het implementeren van Microsoft-aanmelding in een Python-webapp met behulp van OAuth2
+title: 'Snelstart: Aanmelden met Microsoft toevoegen aan een Python-web-app | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze snelstart leert u hoe een Python-web-app gebruikers kan aanmelden, een toegangstoken kan ophalen uit het Microsoft-identiteitsplatform en de Microsoft Graph-API aanroept.
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120317"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613336"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Quickstart: Aanmelden met Microsoft toevoegen aan een Python-webapp
 
@@ -26,8 +27,7 @@ Wanneer u de handleiding hebt voltooid, accepteert uw toepassing aanmeldingen va
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u dit voorbeeld wilt uitvoeren, hebt u het volgende nodig:
-
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Python 2.7+](https://www.python.org/downloads/release/python-2713) of [Python 3+](https://www.python.org/downloads/release/python-364/)
 - [Flask](http://flask.pocoo.org/), [Flask-Session](https://pypi.org/project/Flask-Session/), [aanvragen](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
@@ -97,7 +97,7 @@ Als u dit voorbeeld wilt uitvoeren, hebt u het volgende nodig:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Download het project en pak het zip-bestand uit in een lokale map dichter bij de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -162,11 +162,11 @@ U kunt de verwijzing toevoegen aan MSAL Python door de volgende code toe te voeg
 import msal
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over web-apps waarmee gebruikers zich kunnen aanmelden en die web-API's aanroepen:
+Meer informatie over web-apps waarmee gebruikers worden aangemeld in onze meerdelige scenarioreeks.
 
 > [!div class="nextstepaction"]
-> [Scenario: Web-apps waarmee gebruikers zich aanmelden](scenario-web-app-sign-user-overview.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Scenario: Web-app waarmee gebruikers worden aangemeld](scenario-web-app-sign-user-overview.md)

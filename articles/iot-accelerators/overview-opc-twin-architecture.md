@@ -1,6 +1,6 @@
 ---
-title: OPC, dubbele architectuur-Azure | Microsoft Docs
-description: Dit artikel bevat een overzicht van de OPC-dubbele architectuur. Het bevat informatie over de detectie, activering, bladeren en controle van de-server.
+title: OPC Twin-architectuur - Azure | Microsoft Docs
+description: In dit artikel vindt u een overzicht van de architectuur van OPC Twin. Hierin wordt het detecteren, activeren, bladeren en bewaken van de server beschreven.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,33 +8,36 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b8d4424c92ff24c36650e34a5d050bdc5f0f9091
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 602d2f77564709294d28b797ff3f03f12b3b32d8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73819857"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91533380"
 ---
-# <a name="opc-twin-architecture"></a>OPC, dubbele architectuur
+# <a name="opc-twin-architecture"></a>OPC Twin-architectuur
 
-De volgende diagrammen illustreren de OPC-dubbele architectuur.
+> [!IMPORTANT]
+> Zie [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
+
+De volgende diagrammen illustreren de OPC Twin-architectuur.
 
 ## <a name="discover-and-activate"></a>Detecteren en activeren
 
-1. De operator schakelt netwerk scan in voor de module of maakt een eenmalige detectie met behulp van een detectie-URL. De gedetecteerde eind punten en toepassings gegevens worden via telemetrie verzonden naar de onboarding-agent voor verwerking.  De taak OPC UA-agent voor het voorbereiden van het apparaat verwerkt OPC UA server-detectie gebeurtenissen die worden verzonden door de methode OPC-dubbele IoT Edge in de modus detectie of scan. De detectie gebeurtenissen resulteren in het registreren van toepassingen en updates in het OPC UA-Device Registry.
+1. De operator schakelt een netwerkscan in voor de module of voert een eenmalige detectie uit met behulp van een detectie-URL. De gedetecteerde eindpunten en toepassingsgegevens worden via telemetrie verzonden naar de onboarding-agent voor verwerking.  De onboarding-agent voor het OPC UA-apparaat verwerkt OPC UA-serverdetectiegebeurtenissen die worden verzonden door de methode OPC Twin IoT Edge-module als deze actief is in de detectie- of scanmodus. De detectiegebeurtenissen resulteren in het registreren van toepassingen en updates in het register van het OPC UA-apparaat.
 
-   ![Hoe OPC dubbele Works](media/overview-opc-twin-architecture/opc-twin1.png)
+   ![Diagram waarin de OPC Twin-architectuur wordt weergegeven met de OPC Twin IoT Edge-module in de detectie- of scanmodus.](media/overview-opc-twin-architecture/opc-twin1.png)
 
-1. De operator inspecteert het certificaat van het gedetecteerde eind punt en activeert het geregistreerde eind punt voor toegang. 
+1. De operator inspecteert het certificaat van het gedetecteerde eindpunt en activeert het geregistreerde eindpunt voor toegang. 
 
-   ![Hoe OPC dubbele Works](media/overview-opc-twin-architecture/opc-twin2.png)
+   ![Diagram waarin de OPC Twin-architectuur wordt weergegeven met de IoT Edge 'Twin identity'.](media/overview-opc-twin-architecture/opc-twin2.png)
 
 ## <a name="browse-and-monitor"></a>Bladeren en bewaken
 
-1. Eenmaal geactiveerd, kan de operator de dubbele service REST API gebruiken om te bladeren of te controleren op het server informatie model, object variabelen lezen/schrijven en aanroep methoden.  De gebruiker gebruikt een vereenvoudigd OPC UA API, die volledig wordt weer gegeven in HTTP en JSON.
+1. Na de activering kan de operator de REST API van de Twin-service gebruiken om te bladeren of het serverinformatiemodel te inspecteren, objectvariabelen te lezen/schrijven en methoden aan te roepen.  De gebruiker gebruikt een vereenvoudigd OPC UA-API, die volledig wordt weergegeven in HTTP en JSON.
 
-   ![Hoe OPC dubbele Works](media/overview-opc-twin-architecture/opc-twin3.png)
+   ![Diagram waarin de configuratie van de OPC Twin-architectuur wordt weergegeven voor het bladeren door en het controleren van het servergegevensmodel.](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. De dubbele service REST-interface kan ook worden gebruikt voor het maken van bewaakte items en abonnementen in de OPC-Uitgever. Met de OPC-Publisher kan telemetrie worden verzonden vanuit OPC UA-server systemen naar IoT Hub. Zie [What is OPC Publisher](overview-opc-publisher.md)(Engelstalig) voor meer informatie over OPC Publisher.
+1. De REST-interface van de Twin-service kan ook worden gebruikt voor het maken van bewaakte items en abonnementen in de OPC Publisher. Met de OPC Publisher kunnen telemetrie worden verzonden vanuit OPC UA-serversystemen naar IoT Hub. Zie [wat is OPC Publisher](overview-opc-publisher.md)voor meer informatie over de OPC Publisher.
 
-   ![Hoe OPC dubbele Works](media/overview-opc-twin-architecture/opc-twin4.png)
+   ![De werking van OPC Twin](media/overview-opc-twin-architecture/opc-twin4.png)

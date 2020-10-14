@@ -1,6 +1,6 @@
 ---
-title: Gezondheids zorg oplossingen bouwen met Azure IoT Central | Microsoft Docs
-description: Meer informatie over het bouwen van een gezondheids zorg oplossing met behulp van Azure IoT Central-toepassings sjablonen.
+title: Oplossingen voor de gezondheidszorg ontwikkelen met Azure IoT Central | Microsoft Docs
+description: Meer informatie over het ontwikkelen van gezondheidszorgoplossingen met behulp van Azure IoT Central-toepassingssjablonen.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -9,39 +9,39 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 2aee5c56b267f9243b69a48dfd0f5f64196c5f23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "77021483"
 ---
 # <a name="building-healthcare-solutions-with-azure-iot-central"></a>Oplossingen voor de gezondheidszorg bouwen met Azure IoT Central 
 
 
 
-Meer informatie over het bouwen van gezondheids oplossingen met Azure IoT Central met behulp van toepassings sjablonen.
+Meer informatie over het ontwikkelen van gezondheidszorgoplossingen met behulp van Azure IoT Central-toepassingssjablonen.
 
-## <a name="what-is-continuous-patient-monitoring-template"></a>Wat is een continue patiënten-bewakings sjabloon?
+## <a name="what-is-continuous-patient-monitoring-template"></a>Wat is een sjabloon voor continue patiëntbewaking?
 
-In de IoT-ruimte in de gezondheids zorg is doorlopende patiënt bewaking een van de belangrijkste mogelijkheden van het verminderen van het risico van het vrijmaken van de informatie, het beheer van chronische ziekten effectiever en het verbeteren van de resultaten van patiënten. Doorlopende patiënt bewaking kan worden opgesplitst in twee hoofd categorieën:
+Binnen de IoT-gezondheidszorg is continue patiëntbewaking een van de belangrijkste middelen om de kans op een tweede ziekenhuisopname te voorkomen, chronische ziekten effectiever te beheren en de resultaten van patiënten te verbeteren. Continue patiëntbewaking kan in twee hoofdcategorieën worden onderverdeeld:
 
-1. **Bewaking in de patiënt**: door gebruik te maken van medische wearables en andere apparaten in het zieken huis kunnen zorg teams de vitale symptomen en medische omstandigheden controleren zonder dat ze een verpleegt te hoeven verzenden om meerdere keren per dag op een patiënt te controleren. Care teams kunnen inzicht krijgen in het moment dat een patiënt essentiële aandacht nodig heeft via meldingen en de prioriteit van hun tijd kan aanpassen.
-1. **Bewaking van externe patiënten**: door gebruik te maken van medische wearables en patiënten (voor delen) om patiënten buiten het zieken huis te bewaken, kan het risico van de hertoelating worden verlaagd. Gegevens van de chronische ziekte patiënten en de versterkings patiënten kunnen worden verzameld om ervoor te zorgen dat patiënten zich houden aan de onderhouds plannen en dat waarschuwingen over de verslechtering van de patiënt kunnen worden afgesteld op Care teams voordat ze van belang zijn.
+1. **Interne patiëntbewaking**: Met behulp van medische wearables en andere ziekenhuisapparaten kunnen zorgteams de vitale functies en medische omstandigheden van patiënten controleren zonder dat een verpleegster een patiënt meerdere keren per dag hoeft te controleren. Dankzij meldingen weten zorgteams wanneer een patiënt onmiddellijk aandacht nodig heeft, zodat ze hun tijd efficiënt kunnen indelen.
+1. **Externe patiëntbewaking**: Door het gebruik van medische wearables en patiëntgerapporteerde uitkomsten (PRO's) om patiënten buiten het ziekenhuis in de gaten te houden, kan de kans op een tweede ziekenhuisopname worden verkleind. Gegevens van chronisch zieke patiënten en revaliderende patiënten kunnen worden verzameld om ervoor te zorgen dat patiënten zich houden aan zorgplannen en dat waarschuwingen over de achteruitgaande gezondheid van patiënten bij zorgteams terechtkomen voordat de toestand van patiënten kritiek wordt.
 
-Deze toepassings sjabloon kan worden gebruikt voor het ontwikkelen van oplossingen voor beide categorieën van voortdurende patiënten-bewaking. De voordelen zijn:
+Deze toepassingssjabloon kan worden gebruikt voor het ontwikkelen van oplossingen voor beide categorieën van continue patiëntbewaking. Enkele voordelen:
 
-* Verbind de verschillende soorten medische Wearables naadloos met een IoT Central-exemplaar.
+* Verbind de verschillende soorten medische wearables naadloos met een IoT Central-exemplaar.
 * Bewaak en beheer de apparaten om ervoor te zorgen dat ze in orde blijven.
-* Aangepaste regels rond apparaatgegevens maken om de juiste waarschuwingen te activeren.
-* Exporteer uw patiënten-status gegevens naar de Azure-API voor FHIR, een compatibele gegevens opslag.
-* De geaggregeerde inzichten exporteren naar bestaande of nieuwe zakelijke toepassingen.
+* Maak aangepaste regels rond apparaatgegevens om de juiste waarschuwingen te activeren.
+* Exporteer gegevens over de gezondheid van uw patiënten naar de Azure API for FHIR, een compatibele gegevensopslag.
+* Exporteer de geaggregeerde inzichten naar bestaande of nieuwe zakelijke toepassingen.
 
 >[!div class="mx-imgBorder"] 
->![CPM-dash board](media/in-patient-dashboard.png)
+>![CPM-dashboard](media/in-patient-dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om aan de slag te gaan met het bouwen van een continue patiënten-bewakings oplossing:
+Om een oplossing voor continue patiëntbewaking te ontwikkelen, gaat u als volgt te werk:
 
-* [De toepassings sjabloon implementeren](tutorial-continuous-patient-monitoring.md)
-* [Bekijk een voorbeeld architectuur](concept-continuous-patient-monitoring-architecture.md)
+* [De toepassingssjabloon implementeren](tutorial-continuous-patient-monitoring.md)
+* [Een voorbeeldarchitectuur bekijken](concept-continuous-patient-monitoring-architecture.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554857"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826370"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Zelfstudie: Azure Active Directory-integratie met Fluxx Labs voor eenmalige aanmelding
 
@@ -139,15 +139,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Selecteer **Admin** onder de sectie **Settings**.
 
-    ![Fluxx Labs configureren](./media/fluxxlabs-tutorial/config1.png)
+    ![Schermopname van de sectie Instellingen, met het tabblad Beheerder geselecteerd.](./media/fluxxlabs-tutorial/config1.png)
 
 3. Selecteer in het deelvenster Admin **Plug-ins** > **Integrations** en selecteer vervolgens **SAML SSO-(Disabled)**
 
-    ![Fluxx Labs configureren](./media/fluxxlabs-tutorial/config2.png)
+    ![Schermopname van het tabblad Integraties, met S A M L S S O- (uitgeschakeld) geselecteerd.](./media/fluxxlabs-tutorial/config2.png)
 
 4. Voer in het kenmerkgedeelte de volgende stappen uit:
 
-    ![Fluxx Labs configureren](./media/fluxxlabs-tutorial/config3.png)
+    ![Schermopname van de sectie Kenmerken, met S A M L S S O aangevinkt, waarden ingevoerd in velden, en de knop Opslaan geselecteerd.](./media/fluxxlabs-tutorial/config3.png)
 
     a. Schakel het selectievakje **SAML SSO** in.
 
@@ -180,11 +180,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Fluxx Labs, moeten 
 
 2. Klik op het onderstaande weergegeven **pictogram**.
 
-    ![Fluxx Labs configureren](./media/fluxxlabs-tutorial/config6.png)
+    ![Schermopname van de beheerdersopties, met het pictogram Plus geselecteerd, onder Uw dashboard is leeg.](./media/fluxxlabs-tutorial/config6.png)
 
 3. Klik op het dashboard op het hieronder weergegeven pictogram om de kaart **New PEOPLE** te openen.
 
-    ![Fluxx Labs configureren](./media/fluxxlabs-tutorial/config4.png)
+    ![Schermopname van het menu Contactbeheer, met het pictogram Plus naast Personen geselecteerd.](./media/fluxxlabs-tutorial/config4.png)
 
 4. Voer in de sectie **NEW PEOPLE** de volgende stappen uit:
 

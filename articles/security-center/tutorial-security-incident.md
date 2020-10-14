@@ -1,6 +1,6 @@
 ---
-title: Zelfstudie voor het reageren op incidenten - Azure Security Center
-description: In deze zelfstudie leert u hoe u beveiligingswaarschuwingen kunt sorteren, hoe u de hoofdoorzaak en het bereik van een incident kunt bepalen en hoe u beveiligingsgegevens zoekt.
+title: Zelfstudie voor het reageren op waarschuwingen - Azure Security Center
+description: In deze zelfstudie leert u hoe u beveiligingswaarschuwingen kunt sorteren en de hoofdoorzaak en het bereik van een waarschuwing kunt vaststellen.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,115 +12,115 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336272"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614138"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Zelfstudie: Reageren op beveiligingsincidenten
-Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor schadelijke activiteiten. Bovendien kunt u waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center en aangepaste waarschuwingen maken op basis van uw eigen indicatoren of informatiebronnen. Wanneer een waarschuwing is gegenereerd, moet onmiddellijk actie worden ondernomen om het probleem te onderzoeken en te herstellen. In deze zelfstudie leert u het volgende:
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Zelfstudie: Beveiligingswaarschuwingen sorteren, onderzoeken en erop reageren
+Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor schadelijke activiteiten. U kunt ook waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center en aangepaste waarschuwingen maken op basis van uw eigen indicatoren of informatiebronnen. Wanneer een waarschuwing is gegenereerd, moet onmiddellijk actie worden ondernomen om het probleem te onderzoeken en te herstellen. 
+
+In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Beveiligingswaarschuwingen onderzoeken
-> * Verder onderzoek uitvoeren om de oorzaak en het bereik van een beveiligingsincident te bepalen
-> * Zoek beveiligingsgegevens die bij het onderzoek kunnen helpen
+> * Een beveiligingswaarschuwing onderzoeken om de hoofdoorzaak vast te stellen
+> * Reageren op een beveiligingswaarschuwing en de hoofdoorzaak verminderen
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 Om de functies in deze zelfstudie te doorlopen, moet Azure Defender zijn ingeschakeld. U kunt Azure Defender gratis uitproberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie. De quickstart [Aan de slag met Security Center](security-center-get-started.md) begeleidt u bij de upgrade.
 
-## <a name="scenario"></a>Scenario
-Contoso heeft enkele van de on-premises resources onlangs naar Azure gemigreerd, met inbegrip van een aantal line-of-business workloads en SQL-databases op virtuele machines. Het Contoso Core Computer Security Incident Response Team (CSIRT) heeft een probleem met het onderzoeken van mogelijke beveiligingskwesties. De oorzaak hiervan is dat het bedrijf geen beveiligingsintelligence heeft die is geïntegreerd in de aanwezige hulpmiddelen voor het reageren op incidenten. Doordat deze integratie niet is doorgevoerd, ontstaat er een probleem tijdens de detectiefase (teveel onjuist positieve resultaten), en tijdens de beoordelings- en diagnosefase. Als onderdeel van deze migratie besloten ze Security Center in te schakelen om hen te helpen dit probleem aan te pakken.
-
-De eerste fase van deze migratie werd afgesloten nadat alle resources waren voorbereid en alle aanbevelingen voor beveiliging van Security Center waren opgevolgd. Contoso CSIRT is het centrale punt voor het afhandelen van computerbeveiligingsincidenten. Het team bestaat uit een groep mensen met voldoende bevoegdheden voor het afhandelen van elk type beveiligingsincident. De teamleden hebben duidelijk gedefinieerde taken om ervoor te zorgen dat er geen onderdeel van een fase van een reactie over het hoofd wordt gezien.
-
-Voor dit scenario gaan we ons richten op de rollen van de volgende personen die deel uitmaken van Contoso CSIRT:
-
-![Levenscyclus van reacties op incidenten](./media/tutorial-security-incident/security-center-incident-response.png)
-
-Judy houdt zich bezig met beveiligingsbewerkingen. Ze is onder andere verantwoordelijk voor het volgende:
-
-* Het ononderbroken bewaken van en reageren op bedreigingen.
-* Indien nodig een probleem doorverwijzen naar de eigenaar van de workloads in de cloud of naar de beveiligingsanalist.
-
-Sam is een beveiligingsanalist en zijn verantwoordelijkheden omvatten:
-
-* Het onderzoeken van aanvallen.
-* Het oplossen van problemen die worden vermeld in beveiligingswaarschuwingen.
-* Samenwerken met eigenaren van workloads om te bepalen hoe een probleem kan worden opgelost en hoe de oplossing kan worden toegepast.
-
-Zoals u ziet, hebben Judy en Sam verschillende verantwoordelijkheden, en ze moeten samenwerken om de informatie te delen die ze van Security Center krijgen.
 
 ## <a name="triage-security-alerts"></a>Beveiligingswaarschuwingen onderzoeken
-Security Center biedt een overkoepelend overzicht van alle beveiligingswaarschuwingen. Beveiligingswaarschuwingen worden gerangschikt op basis van de ernst, en wanneer mogelijke worden gerelateerde waarschuwingen samengevoegd in één beveiligingsincident. Bij het uitsorteren van waarschuwingen en incidenten, gaat u als volgt te werk:
+Security Center biedt een overkoepelend overzicht van alle beveiligingswaarschuwingen. Beveiligingswaarschuwingen worden geclassificeerd op basis van de ernst van de gedetecteerde activiteit. 
 
-- Negeer waarschuwingen waarvoor geen verdere actie is vereist, bijvoorbeeld als de waarschuwing onterecht is
-- Los bekende aanvallen op, bijvoorbeeld wanneer netwerkverkeer wordt geblokkeerd vanuit een schadelijke IP-adres
-- Bepaal welke waarschuwingen verder moeten worden onderzocht
+Sorteer uw waarschuwingen op de pagina **Beveiligingswaarschuwingen** :
+
+:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+
+Gebruik deze pagina om de actieve beveiligingswaarschuwingen in uw omgeving te bekijken om te bepalen welke waarschuwing het eerst moet worden onderzocht.
+
+Ken bij het sorteren van beveiligingswaarschuwingen prioriteiten toe aan waarschuwingen op basis van de ernst van de waarschuwing door waarschuwingen met een hogere ernst eerst te behandelen. Lees meer informatie over de ernst van waarschuwingen in [Hoe worden waarschuwingen geclassificeerd?](security-center-alerts-overview.md#how-are-alerts-classified).
+
+> [!TIP]
+> U kunt Azure Security Center verbinden met de populairste SIEM-oplossingen, waaronder Azure Sentinel, en de waarschuwingen van een hulpprogramma naar keuze gebruiken. Meer informatie vindt u in [Waarschuwingen naar een SIEM exporteren](continuous-export.md).
 
 
-1. Selecteer in het hoofdmenu van Security Center onder **DETECTIE** de optie **Beveiligingswaarschuwingen**:
+## <a name="investigate-a-security-alert"></a>Een beveiligingswaarschuwing onderzoeken
 
-   ![Beveiligingswaarschuwingen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
+Wanneer u hebt besloten welke waarschuwing eerst moet worden onderzocht:
 
-2. Selecteer een beveiligingsincident (een verzameling waarschuwingen) in de lijst met waarschuwingen voor meer informatie over dit incident. **Veiligheidsincident gedetecteerd** wordt geopend.
+1. Selecteer de gewenste waarschuwing.
+1. Selecteer op de overzichtspagina van de waarschuwing de resource die u als eerste wilt onderzoeken.
+1. Begin met uw onderzoek vanuit het linkerdeelvenster, waarin informatie op hoog niveau over de beveiligingswaarschuwing wordt weergegeven.
 
-   ![Veiligheidsincident gedetecteerd](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
 
-3. Bovenin dit scherm staat de beschrijving van het incident, met de lijst van waarschuwingen die deel uitmaken van dit incident. Klik op de waarschuwing die u verder wilt onderzoeken, voor meer informatie.
+    In dit deelvenster wordt het volgende weergegeven:
+    - Ernst van waarschuwing, status en tijd van activiteit
+    - Beschrijving met uitleg over de precieze gedetecteerde activiteit
+    - Betrokken resources
+    - De keten van intenties van de activiteit op de MITRE ATT&CK-matrix afbreken
 
-   ![Waarschuwingsdetails van incident](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+1. Raadpleeg het tabblad **Meldingsdetails** voor gedetailleerde informatie over het onderzoeken van de verdachte activiteit.
 
-   Het type waarschuwing kan verschillen. Lees [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-type.md) voor meer informatie over het type waarschuwing en mogelijke herstelstappen. Voor waarschuwingen die veilig kunnen worden genegeerd, klikt u met de rechtermuisknop op de waarschuwing en selecteert u de optie **Sluiten**:
+1. Wanneer u de informatie op deze pagina hebt gecontroleerd, hebt u mogelijk voldoende om door te gaan met een antwoord. Als u meer informatie nodig hebt:
 
-   ![Waarschuwing](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+    - Neem contact op met de eigenaar van de resource om te controleren of de gedetecteerde activiteit een fout-positief is.
+    - Onderzoek de onbewerkte logboeken die door de aangevallen resource zijn gegenereerd
 
-4. Als de hoofdoorzaak en het bereik van de schadelijke activiteit onbekend is, gaat u verder met de volgende stap om verder onderzoek te doen.
+## <a name="respond-to-a-security-alert"></a>Reageren op een beveiligingswaarschuwing
+Nadat u een waarschuwing hebt onderzocht en de omvang ervan hebt begrepen, kunt u vanuit Azure Security Center reageren op de beveiligingswaarschwing:
 
-## <a name="investigate-an-alert-or-incident"></a>Een waarschuwing of incident onderzoeken
-1. Klik op de pagina **Beveiligingswaarschuwing** op de knop **Onderzoek starten** (als u al bent begonnen, verandert de naam in **Onderzoek voortzetten**).
+1.  Open het tabblad **Actie ondernemen** om de aanbevolen reacties te bekijken.
 
-   ![Onderzoek](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
-   De onderzoekskaart is een grafische weergave van de entiteiten die zijn verbonden met deze beveiligingswaarschuwing of dit incident. Door op een entiteit in de kaart te klikken, toont de informatie over die entiteit nieuwe entiteiten en wordt de kaart uitgebreid. De eigenschappen van de entiteit die in de kaart is geselecteerd, zijn gemarkeerd in het deelvenster aan de rechterkant van de pagina. Welke informatie op elk tabblad beschikbaar is, is afhankelijk van de geselecteerde entiteit. Bekijk tijdens het onderzoek alle relevante informatie om meer inzicht te krijgen in de tactiek van de aanvaller.
+1.  Raadpleeg de sectie **De bedreiging oplossen** voor de handmatige onderzoeksstappen die nodig zijn om het probleem te verhelpen.
+1.  Om uw resources te beveiligen en toekomstige aanvallen van dit type te voorkomen, moet u de beveiligingsaanbevelingen in de sectie **Toekomstige aanvallen voorkomen** volgen.
+1.  Gebruik de sectie **Geautomatiseerd antwoord activeren** als u een logische app met automatische reactie stappen wilt activeren.
+1.  Als de gedetecteerde activiteit *niet* schadelijk is, kunt u toekomstige waarschuwingen van dit type onderdrukken met behulp van de sectie **Vergelijkbare waarschuwingen onderdrukken**.
 
-2. Als u meer bewijs nodig hebt of meer onderzoek moet verrichten voor entiteiten die tijdens het onderzoek zijn gevonden, gaat u verder met de volgende stap.
+1.  Als u het onderzoek in de waarschuwing hebt voltooid en op de juiste manier hebt gereageerd, wijzigt u de status in **Genegeerd**.
 
-## <a name="search-data-for-investigation"></a>Gegevens zoeken voor onderzoek
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
 
-Met de zoekmogelijkheden van Security Center kunt u meer bewijs van gecompromitteerde systemen zoeken en meer informatie over de entiteiten die deel uitmaken van het onderzoek.
+    Hiermee verwijdert u de waarschuwing uit de hoofdlijst met waarschuwingen. U kunt het filter op de pagina met waarschuwingen gebruiken om alle waarschuwingen met de status **Genegeerd** weer te geven.
 
-Als u een zoekopdracht wilt uitvoeren, opent u het dashboard van **Security Center**, klikt u in het linkernavigatievenster op **Zoeken**, selecteert u de werkruimte die de entiteiten bevat die u wilt zoeken, typt u de zoekopdracht en klikt u op de zoekknop.
+1.  Geef eventueel feedback over een waarschuwing aan Microsoft:
+    1. De waarschuwing markeren als **Nuttig** of **Niet nuttig** en een
+    1. Selecteer een reden en voeg een opmerking toe.
 
-## <a name="clean-up-resources"></a>Resources opschonen
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Overzichtspagina voor beveiligingswaarschuwingen":::
 
-Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u de volgende quickstarts en zelfstudies ook wilt doornemen, houdt u automatische inrichting en Azure Defender ingeschakeld. Als u niet wilt doorgaan of Azure Defender wilt uitschakelen:
+    > [!TIP]
+    > We bekijken uw feedback om onze algoritmen te verbeteren en betere beveiligingswaarschuwingen te bieden.
+
+## <a name="end-the-tutorial"></a>De zelfstudie beëindigen
+
+Andere snelstartgidsen en zelfstudies in deze verzameling zijn gebaseerd op deze snelstartgids. Als u de volgende quickstarts en zelfstudies ook wilt doornemen, houdt u automatische inrichting en Azure Defender ingeschakeld. 
+
+Als u niet van plan bent om door te gaan of als u een van deze functies wilt uitschakelen:
 
 1. Ga terug naar het hoofdmenu van Security Center en selecteer **Prijzen en instellingen**.
-1. Selecteer het abonnement dat u wilt downgraden.
-1. Stel **Azure Defender** in op Uit.
-1. Selecteer **Opslaan**.
-
-Als u automatisch inrichten wilt uitschakelen:
-
-1. Ga terug naar het hoofdmenu van Security Center en selecteer **Beveiligingsbeleid**.
-2. Selecteer het abonnement waarvoor u automatisch inrichten wilt uitschakelen.
-3. Ga naar **Beveiligingsbeleid – Gegevensverzameling** en selecteer onder **Onboarding** de optie **Uit** om automatisch inrichten uit te schakelen.
+1. Selecteer het betreffende abonnement.
+1. Selecteer **Azure Defender uit** om te downgraden.
+1. Als u automatische inrichting wilt uitschakelen, opent u de pagina **Gegevensverzameling** en stelt u **Automatische inrichting** in op **Uit**.
 4. Selecteer **Opslaan**.
 
 >[!NOTE]
-> Wanneer u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van Azure-VM's waarop de agent is ingericht. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
+> Wanneer u automatische inrichting uitschakelt, wordt de Log Analytics-agent niet verwijderd van virtuele Azure-machines waarop de agent al staat. Door automatische inrichting uit te schakelen, wordt de beveiligingsbewaking voor uw resources beperkt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u geleerd over Security Center-functies waarmee u kunt reageren op beveiligingsincidenten, zoals:
+In deze zelfstudie hebt u geleerd over Security Center-functies die kunnen worden gebruikt als u reageert op een beveiligingswaarschuwing. Zie voor gerelateerd materiaal:
 
-> [!div class="checklist"]
-> * Beveiligingsincident dat een aggregatie is van gerelateerde waarschuwingen voor een resource
-> * Onderzoekskaart die een grafische weergave is van de entiteiten die zijn verbonden met een beveiligingswaarschuwing of incident
-> * Zoekmogelijkheden om meer bewijs te vinden van gecompromitteerde systemen
+- [Reageren op Azure Defender voor Key Vault-waarschuwingen](defender-for-key-vault-usage.md)
+- [Referentiegids met beveiligingswaarschuwingen](alerts-reference.md)
+- [Inleiding tot Azure Defender](azure-defender.md)

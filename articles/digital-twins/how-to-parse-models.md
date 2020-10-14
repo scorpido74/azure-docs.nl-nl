@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 496ca7edfbfb81d8d8838d704b128701a5960e5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9e489d58b2c4bee0cd9551d15bfa59c3610d959
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974920"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047196"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Modellen parseren en valideren met de DTDL parser-bibliotheek
 
@@ -20,11 +20,11 @@ ms.locfileid: "91974920"
 
 U kunt dit doen door een .NET-bibliotheek voor DTDL-parsering aan de client zijde te maken op NuGet: [**micro soft. Azure. DigitalTwins. parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
-U kunt de parser-bibliotheek rechtstreeks in uw C#-code gebruiken of het voorbeeld project language-neutraal code gebruiken dat is gebaseerd op de parser-bibliotheek: [**DTDL validator**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
+U kunt de parser-bibliotheek rechtstreeks in uw C#-code gebruiken of het voorbeeld project language-neutraal code gebruiken dat is gebaseerd op de parser-bibliotheek: [**DTDL validator**](/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
 
 ## <a name="use-the-dtdl-validator-sample"></a>Het voor beeld van de DTDL-validator gebruiken
 
-De [**validatie functie DTDL**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) is een voorbeeld project dat model documenten kan valideren om er zeker van te zijn dat de DTDL geldig is. Het is gebaseerd op de .NET parser-bibliotheek en is neutraal. U kunt het downloaden met behulp van de knop voor het laden van een *zip* -voorbeeld koppeling.
+De [**validatie functie DTDL**](/samples/azure-samples/dtdl-validator/dtdl-validator) is een voorbeeld project dat model documenten kan valideren om er zeker van te zijn dat de DTDL geldig is. Het is gebaseerd op de .NET parser-bibliotheek en is neutraal. U kunt het downloaden met behulp van de knop voor het laden van een *zip* -voorbeeld koppeling.
 
 De bron code bevat voor beelden voor het gebruik van de parser-bibliotheek. U kunt het voor beeld validator als een opdracht regel programma gebruiken om een mapstructuur van DTDL-bestanden te valideren. Het biedt ook een interactieve modus.
 

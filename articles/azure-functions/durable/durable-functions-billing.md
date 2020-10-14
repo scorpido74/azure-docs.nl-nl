@@ -1,56 +1,56 @@
 ---
-title: Betaal Azure Functions van duurzame functies
+title: Facturering met Durable Functions - Azure Functions
 description: Meer informatie over het interne gedrag van Durable Functions en hoe deze van invloed zijn op facturering voor Azure Functions.
 author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "74233014"
 ---
-# <a name="durable-functions-billing"></a>Facturering Durable Functions
+# <a name="durable-functions-billing"></a>Facturering met Durable Functions
 
-[Durable functions](durable-functions-overview.md) wordt op dezelfde manier gefactureerd als Azure functions. Zie [Prijzen voor Azure Functions](https://azure.microsoft.com/pricing/details/functions/) voor meer informatie.
+[Durable Functions](durable-functions-overview.md) worden op dezelfde manier in rekening gebracht als Azure Functions. Zie [Prijzen voor Azure Functions](https://azure.microsoft.com/pricing/details/functions/) voor meer informatie.
 
-Bij het uitvoeren van Orchestrator-functies in Azure Functions [verbruiks abonnement](../functions-scale.md#consumption-plan)moet u rekening houden met een aantal facturerings gedrag. In de volgende secties worden deze gedragingen en hun effect in meer detail beschreven.
+Wanneer u orchestrator-functies in het [Verbruiksabonnement](../functions-scale.md#consumption-plan) van Azure Functions uitvoert, dient u op enkele factureringseigenschappen te letten. De volgende secties beschrijven deze behaviors en hun effecten in meer detail.
 
-## <a name="orchestrator-function-replay-billing"></a>Facturering van Orchestrator-functie replay
+## <a name="orchestrator-function-replay-billing"></a>Facturering van orchestrator-functie herhalen
 
-[Orchestrator-functies](durable-functions-orchestrations.md) kunnen meerdere keren worden herhaald gedurende de levens duur van een indeling. Elke herhaling wordt weer gegeven door de Azure Functions runtime als een afzonderlijke functie aanroep. Daarom wordt in het Azure Functions verbruiks plan voor elk herhaling van een Orchestrator-functie gefactureerd. Andere typen abonnementen worden niet in rekening gebracht voor de Orchestrator-functie replay.
+[Orchestrator-functies](durable-functions-orchestrations.md) kunnen meerdere keren opnieuw worden afgespeeld gedurende de levensduur van een orchestrator. Elke herhaling wordt weergegeven door de Azure Functions-runtime als een afzonderlijke functie-aanroep. Daarom wordt in het Azure Functions-verbruiksplan elke herhaling van een Orchestrator-functie gefactureerd. Andere typen abonnementen worden niet in rekening gebracht voor het herhalen van de orchestrator-functie.
 
-## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Wachtende en opleveren in Orchestrator-functies
+## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Wachten en opleveren in orchestrator-functies
 
-Wanneer een Orchestrator-functie wacht op het volt ooien van een asynchrone actie door **te wachten op** C# of **yield** in Java script, beschouwt de runtime dat bepaalde uitvoeringen zijn voltooid. De facturering voor de Orchestrator-functie stopt op dat moment. Het wordt pas hervat als de volgende Orchestrator-functie opnieuw wordt afgespeeld. Er worden geen kosten in rekening gebracht voor elke tijd die nodig is om een Orchestrator-functie te gebruiken of te leveren.
+Wanneer een orchestrator-functie wacht totdat een asynchrone actie is voltooid met behulp van **in afwachting van** in C# of **rendement** in JavaScript, beschouwt de runtime dat bepaalde uitvoeringen zijn voltooid. De facturering voor de orchestrator-functie stopt op dat moment. Het wordt pas hervat als de volgende orchestrator-functie opnieuw wordt afgespeeld. Er worden geen kosten in rekening gebracht voor tijd die nodig is om een orchestrator-functie te gebruiken of te leveren.
 
 > [!NOTE]
-> Functies die andere functies aanroepen, worden beschouwd als een anti patroon. Dit komt door een probleem met de _dubbele facturering_. Wanneer een functie rechtstreeks een functie aanroept, wordt beide tegelijk uitgevoerd. De aangeroepen functie voert code actief uit terwijl de aanroepende functie wacht op een antwoord. In dit geval moet u betalen voor het tijdstip waarop de aanroepende functie wacht voordat de aangeroepen functie wordt uitgevoerd.
+> Functies die andere functies aanroepen, worden beschouwd als een antipatroon. Dit komt door een probleem dat bekendstaat als _dubbele facturering_. Wanneer een functie rechtstreeks een functie aanroept, worden beiden tegelijk uitgevoerd. De aangeroepen functie voert code actief uit terwijl de aanroepende functie wacht op een antwoord. In dit geval moet u betalen voor de tijd die de aanroepende functie wacht voordat de aangeroepen functie wordt uitgevoerd.
 >
-> Er is geen dubbele facturering in Orchestrator-functies. De facturering van een Orchestrator-functie wordt gestopt tijdens het wachten op het resultaat van een activiteit functie of suborchestration.
+> Er is geen dubbele facturering in orchestrator-functies. De facturering van een orchestrator-functie wordt gestopt tijdens het wachten op het resultaat van een activiteitsfunctie of sub-orchestration.
 
 ## <a name="durable-http-polling"></a>Duurzame HTTP-polling
 
-Met Orchestrator-functies kunt u langlopende HTTP-aanroepen naar externe eind punten maken, zoals beschreven in het [artikel http-functies](durable-functions-http-features.md). De methode **CallHttpAsync** in C# en de methode **CallHttp** in Java script kunnen een http-eind punt intern pollen tijdens het [asynchrone 202-patroon](durable-functions-http-features.md#http-202-handling).
+Met orchestrator-functies kunt u langlopende HTTP-aanroepen naar externe eindpunten maken, zoals beschreven in het artikel [HTTP-functies](durable-functions-http-features.md). Met de **CallHttpAsync**-methode in C# en de **callHttp-methode** in JavaScript wordt een HTTP-eindpunt intern gecontroleerd tijdens het navolgen van het [asynchrone 202-patroon](durable-functions-http-features.md#http-202-handling).
 
-Er wordt momenteel geen directe facturering uitgevoerd voor interne HTTP-polling bewerkingen. Interne polling kan er echter toe leiden dat de Orchestrator-functie regel matig opnieuw speelt. Er worden standaard kosten in rekening gebracht voor deze interne functie herhalingen.
+Er wordt momenteel geen directe facturering uitgevoerd voor interne HTTP-pollingbewerkingen. Interne polling kan er echter toe leiden dat de orchestrator-functie regelmatig opnieuw wordt afgespeeld. Er worden standaardkosten in rekening gebracht voor deze interne functieherhalingen.
 
-## <a name="azure-storage-transactions"></a>Azure Storage trans acties
+## <a name="azure-storage-transactions"></a>Azure Storage-transacties
 
-Durable Functions gebruikt Azure Storage standaard om de status permanent te houden, berichten te verwerken en partities te beheren via BLOB-leases. Omdat u eigenaar bent van dit opslag account, worden de transactie kosten in rekening gebracht voor uw Azure-abonnement. Zie het artikel over de [taak hubs](durable-functions-task-hubs.md)voor meer informatie over de Azure Storage artefacten die worden gebruikt door Durable functions.
+Durable Functions gebruikt Azure Storage standaard om de status permanent te houden, berichten te verwerken en partities te beheren via blob-leases. Omdat u eigenaar bent van dit opslagaccount, worden de transactiekosten in rekening gebracht op uw Azure-abonnement. Voor meer informatie over de Azure Storage-artefacten die door Durable Functions worden gebruikt, raadpleegt u het [artikel over taakhubs](durable-functions-task-hubs.md).
 
-Verschillende factoren dragen bij aan de werkelijke Azure Storage kosten die worden gemaakt door uw Durable Functions-app:
+Verschillende factoren dragen bij aan de werkelijke Azure Storage-kosten die worden gemaakt door uw Durable Functions-app:
 
-* Een app met één functie is gekoppeld aan één Task hub, die een set Azure Storage resources deelt. Deze resources worden gebruikt door alle duurzame functies in een functie-app. Het werkelijke aantal functies in de functie-app heeft geen invloed op de kosten van Azure Storage trans acties.
-* Elk exemplaar van de functie-app pollt intern meerdere wacht rijen in het opslag account met behulp van een exponentieel uitstel polling-algoritme. Een exemplaar van een niet-actieve app controleert de wacht rijen minder vaak dan een actieve app, wat leidt tot minder transactie kosten. Zie de [sectie wachtrij-polling in het artikel prestaties en schalen](durable-functions-perf-and-scale.md#queue-polling)voor meer informatie over Durable functions polling van de wachtrij.
-* Bij het uitvoeren van de Azure Functions verbruiks-of Premium-abonnementen, pollt de [Azure functions Scale controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) regel matig alle taak-hub-wacht rijen op de achtergrond. Als een functie-app onder licht wordt geschaald, wordt deze wacht rijen alleen door een exemplaar van een enkele schaal controller gecontroleerd. Als de functie-app wordt geschaald naar een groot aantal exemplaren, kunnen er meer instanties van de schaal controller worden toegevoegd. Deze extra schaal controller-instanties kunnen de totale transactie kosten van de wachtrij verhogen.
-* Elk functie-app-exemplaar is een concurrentie positie voor een set BLOB-leases. Met deze instanties worden regel matig aanroepen naar de Azure-Blob service voor het vernieuwen van leases of het verkrijgen van nieuwe leases. Met het geconfigureerde aantal partities van de taak hub wordt het aantal BLOB-leases bepaald. Als u uitschaalt naar een groter aantal functie-app-exemplaren, worden de Azure Storage transactie kosten die zijn gekoppeld aan deze lease bewerkingen waarschijnlijk verhoogd.
+* Een app met één functie is gekoppeld aan één taakhub, die een set Azure Storage-resources deelt. Deze resources worden gebruikt door alle duurzame functies in een functie-app. Het werkelijke aantal functies in de functie-app heeft geen invloed op de kosten van Azure Storage-transacties.
+* Elke instantie van de functie-app voert intern polls uit voor meerdere wachtrijen in het opslagaccount met behulp van een polling-algoritme met exponentiële uitstelfunctie. Een instantie van een niet-actieve app controleert de wachtrijen minder vaak dan een actieve app, wat leidt tot minder transactiekosten. Zie de sectie [wachtrij-polling in het artikel prestaties en schalen](durable-functions-perf-and-scale.md#queue-polling) voor meer informatie over polling van de wachtrij in Durable Functions.
+* Bij het uitvoeren van de Azure Functions Consumption- of Premium-abonnementen, worden door de [Azure Functions Scale-controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) regelmatig polls uitgevoerd voor alle taakhub-wachtrijen op de achtergrond. Als een functie-app een lichte tot matige schaal heeft, zal slechts één enkele controller-exemplaar deze wachtrijen pollen. Als de functie-app wordt geschaald naar een groot aantal exemplaren, kunnen er meer schaalcontroller-exemplaren worden toegevoegd. Deze extra schaalcontroller-exemplaren kunnen de totale transactiekosten van de wachtrij verhogen.
+* Elke functie-app-instantie is een concurrent voor een set blob-leases. Deze exemplaren zullen periodiek de Azure Blob-service aanroepen om vastgehouden leases te verlengen of om te proberen nieuwe leases te verwerven. Met het geconfigureerde aantal partities van de taakhub wordt het aantal blob-leases bepaald. Als u uitschaalt naar een groter aantal functie-app-instanties, worden de transactiekosten van Azure Storage die aan deze leasebewerkingen zijn gekoppeld, waarschijnlijk verhoogd.
 
-Meer informatie over Azure Storage prijzen vindt u in de [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) documentatie. 
+In de documentatie [Azure Storage-prijzen](https://azure.microsoft.com/pricing/details/storage/) vindt u meer informatie over Azure Storage-prijzen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure Functions prijzen](https://azure.microsoft.com/pricing/details/functions/)
+> [ Meer informatie over de prijzen van Azure Functions](https://azure.microsoft.com/pricing/details/functions/)
