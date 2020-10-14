@@ -6,12 +6,12 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
-ms.openlocfilehash: 5195d63180d45ad408256264e3cf10174e55cd96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87551945"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014831"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Best practices voor langlopende bewerkingen
 
@@ -50,5 +50,4 @@ Met alleen-lezen query replica's, terwijl vernieuwingen worden uitgevoerd in bat
 [Asynchroon vernieuwen met de REST API](analysis-services-async-refresh.md)  
 [Uitschalen van Azure Analysis Services](analysis-services-scale-out.md)  
 [Analysis Services hoge Beschik baarheid](analysis-services-bcdr.md)  
-[Richt lijnen voor opnieuw proberen voor Azure-Services](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)   
-
+[Richt lijnen voor opnieuw proberen voor Azure-Services](/azure/architecture/best-practices/retry-service-specific)

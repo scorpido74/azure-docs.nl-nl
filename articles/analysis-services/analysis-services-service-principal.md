@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077368"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015314"
 ---
 # <a name="automation-with-service-principals"></a>Automatisering met service-principals
 
@@ -33,8 +33,8 @@ Service-principals kunnen worden gemaakt in de Azure Portal of met behulp van Po
 
 Referenties van de Service-Principal en certificaten kunnen veilig worden opgeslagen in Azure Automation voor runbook-bewerkingen. Voor meer informatie zie:
 
-[Referentie-assets in Azure Automation](../automation/automation-credentials.md)   
-[Verbindingsassets in Azure Automation](../automation/automation-certificates.md)
+[Referentie-assets in Azure Automation](../automation/shared-resources/credentials.md)   
+[Verbindingsassets in Azure Automation](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Service-principals toevoegen aan de server beheerdersrol
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO en ADOMD 
 
-Wanneer u verbinding maakt met clienttoepassingen en web-apps, bieden [AMO- en ADOMD-clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) versie 15.0.2 en hogere versies van installeerbare pakketten van NuGet, ondersteuning voor het gebruik van service-principals in verbindingsreeksen met de volgende syntaxis: `app:AppID` en wachtwoord of `cert:thumbprint`. 
+Wanneer u verbinding maakt met clienttoepassingen en web-apps, bieden [AMO- en ADOMD-clientbibliotheken](/analysis-services/client-libraries?view=azure-analysis-services-current) versie 15.0.2 en hogere versies van installeerbare pakketten van NuGet, ondersteuning voor het gebruik van service-principals in verbindingsreeksen met de volgende syntaxis: `app:AppID` en wachtwoord of `cert:thumbprint`. 
 
 In het volgende voorbeeld worden `appID` en een `password` gebruikt voor het uitvoeren van een bewerking voor het vernieuwen van een modeldatabase:
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-[Aanmelden met Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Aanmelden met Azure PowerShell](/powershell/azure/authenticate-azureps)   
 [Vernieuwen met Logic Apps](analysis-services-refresh-logic-app.md)  
 [Vernieuwen met Azure Automation](analysis-services-refresh-azure-automation.md)  
 [Een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md)  
-[Power BI Premium werkruimte-en gegevensset taken automatiseren met Service-principals](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[Power BI Premium werkruimte-en gegevensset taken automatiseren met Service-principals](/power-bi/admin/service-premium-service-principal)

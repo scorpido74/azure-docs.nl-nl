@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994680"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014236"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -401,7 +401,7 @@ Elk item dat wordt verzonden `itemCount` , bevat een eigenschap die laat zien ho
 
 Het verplaatsen van bestaande Application Insights resources van de ene naar de andere regio wordt **momenteel niet ondersteund**. Historische gegevens die u hebt verzameld, kunnen niet naar een nieuwe regio **worden gemigreerd** . De enige gedeeltelijke tijdelijke oplossing is het volgende:
 
-1. Maak een gloed nieuwe Application Insights resource ([klassiek](app/create-new-resource.md) of [werk ruimte gebaseerd](/app/create-workspace-resource.md)) in de nieuwe regio.
+1. Maak een gloed nieuwe Application Insights resource ([klassiek](app/create-new-resource.md) of [werk ruimte gebaseerd](/azure/azure-monitor/app/create-workspace-resource)) in de nieuwe regio.
 2. Maak alle unieke aanpassingen die specifiek zijn voor de oorspronkelijke resource in de nieuwe resource opnieuw.
 3. Wijzig uw toepassing voor gebruik van de nieuwe regio bron [instrumentatie sleutel](app/create-new-resource.md#copy-the-instrumentation-key) of [Connection String](app/sdk-connection-string.md).  
 4. Test om te bevestigen dat alles naar verwachting werkt met uw nieuwe Application Insights-resource. 
@@ -414,7 +414,7 @@ Unieke aanpassingen die vaak hand matig moeten worden gemaakt of moeten worden b
 - Beschikbaarheids waarschuwingen opnieuw maken.
 - Maak de instellingen voor aangepaste Role-Based Access Control (RBAC) opnieuw die vereist zijn voor uw gebruikers om toegang te krijgen tot de nieuwe resource. 
 - Replicatie-instellingen met betrekking tot opname steekproef, gegevens retentie, dagelijks Cap en aangepaste metrische gegevens activering. Deze instellingen worden bepaald via het deel venster **gebruik en geschatte kosten** .
-- Een integratie die afhankelijk is van API-sleutels zoals [release annotaties](/app/annotations.md), [Live Metrics Channel Secure Control](app/live-stream.md#secure-the-control-channel) , enzovoort. U moet nieuwe API-sleutels genereren en de bijbehorende integratie bijwerken. 
+- Een integratie die afhankelijk is van API-sleutels zoals [release annotaties](/azure/azure-monitor/app/annotations), [Live Metrics Channel Secure Control](app/live-stream.md#secure-the-control-channel) , enzovoort. U moet nieuwe API-sleutels genereren en de bijbehorende integratie bijwerken. 
 - Continue export in klassieke resources moet opnieuw worden geconfigureerd.
 - Diagnostische instellingen in op werk ruimte gebaseerde resources moeten opnieuw worden geconfigureerd.
 

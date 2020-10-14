@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495727"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015563"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Gegevens analyseren met Azure Machine Learning
 
@@ -56,7 +56,7 @@ FROM [dbo].[vTargetMail]
 
 Wanneer de gegevens beschikbaar zijn in Azure Data Lake Storage, worden data stores in Azure Machine Learning gebruikt om [verbinding te maken met Azure Storage-services](https://docs.microsoft.com/azure/machine-learning/how-to-access-data). Volg de onderstaande stappen om een gegevens opslag en een bijbehorende gegevensset te maken:
 
-1. Start Azure machine learning Studio op basis van Azure Portal of Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
+1. Start Azure Machine Learning Studio vanuit Azure Portal of Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
 
 1. Klik op **gegevens opslag** in het linkerdeel venster van de sectie **beheren** en klik vervolgens op **nieuwe gegevens opslag**.
 

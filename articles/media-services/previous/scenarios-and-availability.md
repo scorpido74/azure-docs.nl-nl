@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259180"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014406"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
@@ -89,10 +89,10 @@ Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarh
 
 ## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Media Analytics gebruiken om inzichten aan uw video's te ontlenen waarvoor een actie kan worden uitgevoerd
 
-Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarmee organisaties en bedrijven gemakkelijker inzichten aan hun video's kunnen ontlenen waarvoor een actie kan worden uitgevoerd. Zie [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md) voor meer informatie.
+Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarmee organisaties en bedrijven gemakkelijker inzichten aan hun video's kunnen ontlenen waarvoor een actie kan worden uitgevoerd. Zie [Overzicht van Azure Media Services Analytics](./legacy-components.md) voor meer informatie.
 
 1. Upload een mediabestand van hoge kwaliteit naar een asset.
-2. Verwerk uw video's met één van de Media Analytics-services die worden beschreven in de sectie [Media Analytics-overzicht](media-services-analytics-overview.md).
+2. Verwerk uw video's met één van de Media Analytics-services die worden beschreven in de sectie [Media Analytics-overzicht](./legacy-components.md).
 3. Media Analytics-mediaprocessoren produceren MP4- of JSON-bestanden. Als een Mediaprocessor een MP4-bestand produceert, kunt u het bestand progressief downloaden. Als een mediaprocessor een JSON-bestand produceert, kunt u het bestand downloaden via Azure Blob Storage.
 
 Zie de sectie [Beschikbaarheid](#availability) voor informatie over beschikbaarheid in datacenters.
@@ -181,8 +181,8 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 |Naam|Status|Datacenters
 |---|---|---|
-|Standard|Algemene beschikbaarheid|Alles|
-|Premium|Algemene beschikbaarheid|Alles|
+|Standard|Algemene beschikbaarheid|Alle|
+|Premium|Algemene beschikbaarheid|Alle|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -198,12 +198,12 @@ AMS biedt twee coderingsprogramma's die op basis van behoefte kunnen worden gebr
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Media Encoder Standard|Algemene beschikbaarheid|Alles|
+|Media Encoder Standard|Algemene beschikbaarheid|Alle|
 |Media Encoder Premium Workflow|Algemene beschikbaarheid|Overal behalve China|
 
 ### <a name="analytics-media-processors"></a>Mediaprocessors voor analyse
 
-Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarmee organisaties en bedrijven gemakkelijker inzichten kunnen verkrijgen op basis van hun video's, waarvoor een actie kan worden uitgevoerd. Zie [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md) voor meer informatie.
+Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarmee organisaties en bedrijven gemakkelijker inzichten kunnen verkrijgen op basis van hun video's, waarvoor een actie kan worden uitgevoerd. Zie [Overzicht van Azure Media Services Analytics](./legacy-components.md) voor meer informatie.
 
 > [!NOTE]
 > Sommige analyse media-processors worden buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de pensioen datums.
@@ -212,14 +212,14 @@ Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarme
 
 |Naam van mediaprocessor|Status|Datacenters
 |---|---|---|
-|Azure Media Face Detector|Preview|Alles|
-|Azure Media Indexer|Algemene beschikbaarheid|Alles|
-|Azure Media Motion Detector|Preview|Alles|
-|Azure Media OCR|Preview|Alles|
-|Azure Media Redactor|Algemene beschikbaarheid|Alles|
-|Azure Media Video Thumbnails|Preview|Alles|
+|Azure Media Face Detector|Preview|Alle|
+|Azure Media Indexer|Algemene beschikbaarheid|Alle|
+|Azure Media Motion Detector|Preview|Alle|
+|Azure Media OCR|Preview|Alle|
+|Azure Media Redactor|Algemene beschikbaarheid|Alle|
+|Azure Media Video Thumbnails|Preview|Alle|
 
-### <a name="protection"></a>Beveiliging
+### <a name="protection"></a>Protection
 
 Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Zie [AMS-inhoud beveiligen](media-services-content-protection-overview.md) voor meer informatie.
 
@@ -227,10 +227,10 @@ Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment d
 
 |Versleuteling|Status|Datacenters|
 |---|---|---| 
-|Storage|Algemene beschikbaarheid|Alles|
-|AES-128-sleutels|Algemene beschikbaarheid|Alles|
-|FairPlay|Algemene beschikbaarheid|Alles|
-|PlayReady|Algemene beschikbaarheid|Alles|
+|Storage|Algemene beschikbaarheid|Alle|
+|AES-128-sleutels|Algemene beschikbaarheid|Alle|
+|FairPlay|Algemene beschikbaarheid|Alle|
+|PlayReady|Algemene beschikbaarheid|Alle|
 |Widevine|Algemene beschikbaarheid|Overal behalve in Duitsland, bij overheden en in China.
 
 ### <a name="reserved-units-rus"></a>Gereserveerde eenheden (RU's)
@@ -253,7 +253,7 @@ Zie de sectie [Schalen](#scaling) voor meer informatie.
 
 |RU-typenaam|Status|Datacenters
 |---|---|---|
-|S1|Algemene beschikbaarheid|Alles|
+|S1|Algemene beschikbaarheid|Alle|
 |S2|Algemene beschikbaarheid|Overal behalve in BR - zuid en India - west|
 |S3|Algemene beschikbaarheid|Overal behalve in India - west|
 

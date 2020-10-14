@@ -3,12 +3,12 @@ title: Live video Analytics op IoT Edge opmerkingen bij de release-Azure
 description: Dit onderwerp bevat opmerkingen bij de release van live video Analytics over IoT Edge releases, verbeteringen, fout oplossingen en bekende problemen.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250467"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015631"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Opmerkingen bij de release van live video op IoT Edge
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>Module-updates
 
-* Een nieuw knoop punt voor de grafiek extensie, [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) is beschikbaar om te integreren met de module [ruimtelijke analyse](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview)(preview) van Cognitive Services.
+* Een nieuw knoop punt voor de grafiek extensie, [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) is beschikbaar om te integreren met de module [ruimtelijke analyse](/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview)(preview) van Cognitive Services.
 * Ondersteuning toegevoegd voor Linux ARM64-apparaten: gebruik [hand matige stappen](deploy-iot-edge-device.md) voor het implementeren van op dergelijke apparaten.
 
 ### <a name="documentation-updates"></a>Documentatie-updates

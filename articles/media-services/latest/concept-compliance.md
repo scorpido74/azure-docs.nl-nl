@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269723"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015818"
 ---
 # <a name="media-services-regulatory-compliance"></a>Media Services naleving van regelgeving
 
@@ -33,11 +33,11 @@ Media Services Government services zijn compatibel met DoD CC SRG IL 2, DoD CC S
 
 Een beoordeling van Media Services door 3PAO en JAB is niet gepland voor 2020.
 
-Meer informatie over de naleving van Azure-Services vindt u in het artikel [Azure Services by FedRAMP en DoD CC srg audit Scope](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) .
+Meer informatie over de naleving van Azure-Services vindt u in het artikel [Azure Services by FedRAMP en DoD CC srg audit Scope](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) .
 
 ## <a name="azure-compliance-documentation"></a>Documentatie voor Azure-naleving
 
-Als uw organisatie moet voldoen aan de wettelijke of reglementaire normen voor wereld wijde, Amerikaanse overheid, regionale, financiële services, status, media en productie, start u met de [documentatie voor Azure-naleving](https://docs.microsoft.com/azure/compliance/).
+Als uw organisatie moet voldoen aan de wettelijke of reglementaire normen voor wereld wijde, Amerikaanse overheid, regionale, financiële services, status, media en productie, start u met de [documentatie voor Azure-naleving](../../compliance/index.yml).
 
 U vindt ook aanvullende compliance-resources, zoals controle rapporten, een controle lijst voor privacy en AVG (AVG), nalevings schema's, land-en regionale richt lijnen, implementatie en toewijzingen, evenals technische documenten en analyse rapporten.
 

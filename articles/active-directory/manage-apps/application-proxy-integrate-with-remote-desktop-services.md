@@ -1,27 +1,22 @@
 ---
-title: Extern bureaublad publiceren met Azure AD-app proxy | Microsoft Docs
-description: Bevat informatie over het configureren van een app-proxy met RDS
+title: Extern bureaublad publiceren met Azure Active Directory-toepassingsproxy
+description: Bevat informatie over het configureren van een app-proxy met Extern bureaublad-services (RDS)
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
-ms.custom: it-pro
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396757"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015273"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Remote Desktop publiceren met Azure AD-toepassingsproxy
 
@@ -146,6 +141,6 @@ Als u Passthrough-verificatie wilt gebruiken, zijn er slechts twee wijzigingen i
 2. Sla stap 8 volledig over in [direct RDS-verkeer naar toepassings proxy](#direct-rds-traffic-to-application-proxy).
 
 ## <a name="next-steps"></a>Volgende stappen
-
-[Externe toegang tot share point inschakelen met Azure AD-toepassingsproxy](application-proxy-integrate-with-sharepoint-server.md) 
- [Beveiligings overwegingen voor het extern openen van apps met behulp van Azure AD-toepassingsproxy](application-proxy-security.md)
+- [Externe toegang tot SharePoint inschakelen met Azure AD-toepassingsproxy](application-proxy-integrate-with-sharepoint-server.md)
+- [Beveiligings overwegingen voor het extern openen van apps met behulp van Azure AD-toepassingsproxy](application-proxy-security.md)
+- [Aanbevolen procedures voor taak verdeling meerdere app-servers](application-proxy-high-availability-load-balancing.md#best-practices-for-load-balancing-among-multiple-app-servers)

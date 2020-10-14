@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9b36f4e292eb4bcae424d463f76e8a69eefd2968
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 97f24537f2fa68f1a9be83e2c9abdc8101edb8d0
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995529"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014542"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -116,13 +116,13 @@ Synapse-koppeling wordt niet aanbevolen als u op zoek bent naar traditionele Dat
 
 ## <a name="limitations"></a>Beperkingen
 
-* De huidige koppeling van Azure Synapse voor Azure Cosmos DB wordt ondersteund voor SQL API en Azure Cosmos DB API voor MongoDB. Het wordt niet ondersteund voor Gremlin-API en Table-API. Ondersteuning voor Cassandra-API bevindt zich in een persoonlijke preview. Neem voor meer informatie contact op met het team van de Azure Synapse-koppeling op cosmosdbsynapselink@microsoft.com .  
+* De huidige koppeling van Azure Synapse voor Azure Cosmos DB wordt ondersteund voor SQL API en Azure Cosmos DB API voor MongoDB. Het wordt niet ondersteund voor Gremlin-API en Table-API. Ondersteuning voor Cassandra-API bevindt zich in een persoonlijke preview. Neem contact op met het team van de [Azure Synapse-koppeling](mailto:cosmosdbsynapselink@microsoft.com)voor meer informatie.  
 
 * Op dit moment kan de analytische opslag alleen worden ingeschakeld voor nieuwe containers. Als u een analytische archief wilt gebruiken voor bestaande containers, migreert u gegevens vanuit uw bestaande containers naar nieuwe containers met [Azure Cosmos DB-migratie hulpprogramma's](cosmosdb-migrationchoices.md). U kunt de Synapse-koppeling inschakelen voor nieuwe en bestaande Azure Cosmos DB accounts.
 
-* Het openen van de Azure Cosmos DB Analytics Store met Synapse SQL Server is momenteel onder gated preview. Als u toegang wilt aanvragen, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
+* Het openen van de Azure Cosmos DB Analytics Store met Synapse SQL Server is momenteel onder gated preview. Als u toegang wilt aanvragen, moet u een e-mail sturen naar het [Azure Synapse link-team](mailto:cosmosdbsynapselink@microsoft.com).
 
-* In de preview-versie wordt voor Synapse-koppeling ingeschakelde database accounts geen back-up en herstel van containers ondersteund. Als u werk belastingen hebt waarvoor een back-up-en herstel functionaliteit nodig is, wordt aangeraden de Synapse-koppeling niet in te scha kelen voor deze database accounts. 
+* Voor de containers waarop het analytische archief is ingeschakeld, wordt automatische back-up en herstel van uw gegevens in de analytische opslag op dit moment niet ondersteund. Wanneer de Synapse-koppeling is ingeschakeld voor een database account, blijven Azure Cosmos DB automatisch [back-ups](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) van uw gegevens in het transactionele archief (alleen) van containers maken op het geplande back-upinterval, zoals altijd. Het is belang rijk te weten dat wanneer een container waarop een analytische opslag is ingeschakeld, wordt hersteld naar een nieuw account, de container wordt hersteld met alleen transactionele opslag en er geen analytische opslag is ingeschakeld. 
 
 * Het is momenteel niet mogelijk om toegang te krijgen tot de Azure Cosmos DB Analytics Store met Synapse SQL provisioned.
 

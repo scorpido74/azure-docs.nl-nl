@@ -10,12 +10,12 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266031"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014383"
 ---
 # <a name="deliver-content-to-customers"></a>Inhoud leveren aan klanten
 
@@ -69,7 +69,7 @@ Locators hebben verval datums. In de Azure Portal wordt een verval datum van 100
 > 
 > 
 
-Als u de vervaldatum van een locator wilt bijwerken, gebruikt u [REST](/rest/api/media/operations/locator#update_a_locator)- of [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-API's. Wanneer u de vervaldatum van een SAS-locator bijwerkt, wordt de URL gewijzigd.
+Als u de vervaldatum van een locator wilt bijwerken, gebruikt u [REST](/rest/api/media/operations/locator#update_a_locator)- of [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator)-API's. Wanneer u de vervaldatum van een SAS-locator bijwerkt, wordt de URL gewijzigd.
 
 Locators zijn niet ontworpen voor het beheren van toegangs beheer per gebruiker. U kunt verschillende toegangs rechten verlenen aan afzonderlijke gebruikers met behulp van DRM-oplossingen (Digital Rights Management). Zie [media beveiligen](/previous-versions/azure/dn282272(v=azure.100))voor meer informatie.
 

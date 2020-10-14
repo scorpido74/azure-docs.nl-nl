@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b4c48f25f1d4bd3822a93d2c780dd148d9e29827
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940528"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015152"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Toegang tot Key Vault sleutels, certificaten en geheimen bieden met behulp van een toegangs beheer op basis van rollen (preview) van Azure
 
@@ -37,7 +37,7 @@ Afzonderlijke sleutels, geheimen en machtigingen voor certificaten moeten alleen
 
 -   Toepassingen met meerdere lagen die het toegangs beheer tussen lagen moeten scheiden
 
--   Gedeelde sleutel kluis met veelvoorkomende geheimen, wanneer toepassingen toegang nodig hebben tot subsets van geheimen in die sleutel kluis
+-   Afzonderlijk geheim delen tussen meerdere toepassingen
 
 Meer informatie over de richt lijnen voor Azure Key Vault beheer vindt u in:
 
@@ -224,7 +224,7 @@ Zie voor meer informatie over het maken van aangepaste rollen:
 
 -   Latentie van roltoewijzingen: bij huidige verwachte prestaties duurt het Maxi maal tien minuten (600 seconden) nadat roltoewijzingen zijn gewijzigd voor het Toep assen van de rol
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 - [Overzicht van Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [Zelf studie voor aangepaste rollen](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)

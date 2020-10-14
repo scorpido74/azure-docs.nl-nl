@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400788"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014899"
 ---
 # <a name="authentication-and-user-permissions"></a>Verificatie en gebruikersmachtigingen
 
-Azure Analysis Services maakt gebruik van Azure Active Directory (Azure AD) voor identiteits-en gebruikers verificatie. Elke gebruiker die een Azure Analysis Services server maakt, beheert of er verbinding mee maakt, moet een geldige gebruikers identiteit hebben in een [Azure AD-Tenant](../active-directory/fundamentals/active-directory-administer.md) in hetzelfde abonnement.
+Azure Analysis Services maakt gebruik van Azure Active Directory (Azure AD) voor identiteits-en gebruikers verificatie. Elke gebruiker die een Azure Analysis Services server maakt, beheert of er verbinding mee maakt, moet een geldige gebruikers identiteit hebben in een [Azure AD-Tenant](../active-directory/fundamentals/active-directory-whatis.md) in hetzelfde abonnement.
 
-Azure Analysis Services ondersteunt [Azure AD B2B-samen werking](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md). Met B2B kunnen gebruikers van buiten een organisatie worden uitgenodigd als gast gebruikers in een Azure AD-adres lijst. Gasten kunnen afkomstig zijn uit een andere Azure AD-Tenant Directory of een geldig e-mail adres. Zodra de gebruiker is uitgenodigd en de uitnodiging is verzonden via e-mail vanuit Azure, wordt de identiteit van de gebruiker toegevoegd aan de Tenant Directory. Deze identiteiten kunnen worden toegevoegd aan beveiligings groepen of als leden van een server beheerder of databaserol.
+Azure Analysis Services ondersteunt [Azure AD B2B-samen werking](../active-directory/external-identities/what-is-b2b.md). Met B2B kunnen gebruikers van buiten een organisatie worden uitgenodigd als gast gebruikers in een Azure AD-adres lijst. Gasten kunnen afkomstig zijn uit een andere Azure AD-Tenant Directory of een geldig e-mail adres. Zodra de gebruiker is uitgenodigd en de uitnodiging is verzonden via e-mail vanuit Azure, wordt de identiteit van de gebruiker toegevoegd aan de Tenant Directory. Deze identiteiten kunnen worden toegevoegd aan beveiligings groepen of als leden van een server beheerder of databaserol.
 
 ![Architectuur van Azure Analysis Services-verificatie](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
 ## <a name="authentication"></a>Verificatie
 
-Alle client toepassingen en hulpprogram ma's gebruiken een of meer van de Analysis Services- [client bibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD) om verbinding te maken met een server. 
+Alle client toepassingen en hulpprogram ma's gebruiken een of meer van de Analysis Services- [client bibliotheken](/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD) om verbinding te maken met een server. 
 
 Alle drie client bibliotheken ondersteunen zowel interactieve als Azure AD-stroom en niet-interactieve verificatie methoden. De twee niet-interactieve methoden, Active Directory wacht woord en Active Directory geïntegreerde verificatie methoden kunnen worden gebruikt in toepassingen die gebruikmaken van AMOMD en MSOLAP. Deze twee methoden resulteren nooit in pop-updialoogvensters.
 
@@ -34,11 +34,11 @@ Afhankelijk van de client toepassing of het hulp programma dat u gebruikt, kan h
 
 Power BI Desktop, Visual Studio en SSMS ondersteunen Active Directory universele verificatie, een interactieve methode die ook Azure Multi-Factor Authentication (MFA) ondersteunt. Azure MFA helpt bij het beveiligen van de toegang tot gegevens en toepassingen tijdens een eenvoudig aanmeldings proces. Het biedt krachtige verificatie met verschillende verificatie opties (telefoon oproep, tekst bericht, Smart Cards met pincode of melding van een mobiele app). Bij interactieve MFA met Azure AD kunnen er pop-upvensters worden weergegeven voor validatie. **Universele verificatie wordt aanbevolen**.
 
-Als u zich aanmeldt bij Azure met behulp van een Windows-account en universele verificatie niet is geselecteerd of beschikbaar (Excel), is [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) vereist. Met Federatie worden Azure AD-en Microsoft 365-gebruikers geverifieerd met on-premises referenties en kunnen ze toegang krijgen tot Azure-resources.
+Als u zich aanmeldt bij Azure met behulp van een Windows-account en universele verificatie niet is geselecteerd of beschikbaar (Excel), is [Active Directory Federation Services (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) vereist. Met Federatie worden Azure AD-en Microsoft 365-gebruikers geverifieerd met on-premises referenties en kunnen ze toegang krijgen tot Azure-resources.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-Azure Analysis Services-servers ondersteunen verbindingen van [SSMS v-17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en hoger met behulp van Windows-verificatie, Active Directory wachtwoord verificatie en Active Directory universele verificatie. Over het algemeen is het raadzaam om Active Directory universele verificatie te gebruiken omdat:
+Azure Analysis Services-servers ondersteunen verbindingen van [SSMS v-17.1](/sql/ssms/download-sql-server-management-studio-ssms) en hoger met behulp van Windows-verificatie, Active Directory wachtwoord verificatie en Active Directory universele verificatie. Over het algemeen is het raadzaam om Active Directory universele verificatie te gebruiken omdat:
 
 *  Ondersteunt interactieve en niet-interactieve verificatie methoden.
 
@@ -81,4 +81,4 @@ Rollen op dit niveau zijn van toepassing op gebruikers of accounts die taken moe
 [Toegang tot resources beheren met Azure Active Directory groepen](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Database rollen en-gebruikers beheren](analysis-services-database-users.md)  
 [Serverbeheerders beheren](analysis-services-server-admins.md)  
-[Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../role-based-access-control/overview.md)  
+[Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../role-based-access-control/overview.md)

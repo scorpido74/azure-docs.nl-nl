@@ -8,16 +8,16 @@ ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506992"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014049"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Back-up en herstel van Analysis Services-Data Base
 
-Het maken van een back-up van tabellaire model databases in Azure Analysis Services is veel hetzelfde als voor on-premises Analysis Services. Het belangrijkste verschil is waar u uw back-upbestanden opslaat. Back-upbestanden moeten worden opgeslagen in een container in een [Azure-opslag account](../storage/common/storage-create-storage-account.md). U kunt een opslag account en een container gebruiken die u al hebt, of ze kunnen worden gemaakt bij het configureren van opslag instellingen voor uw server.
+Het maken van een back-up van tabellaire model databases in Azure Analysis Services is veel hetzelfde als voor on-premises Analysis Services. Het belangrijkste verschil is waar u uw back-upbestanden opslaat. Back-upbestanden moeten worden opgeslagen in een container in een [Azure-opslag account](../storage/common/storage-account-create.md). U kunt een opslag account en een container gebruiken die u al hebt, of ze kunnen worden gemaakt bij het configureren van opslag instellingen voor uw server.
 
 > [!NOTE]
 > Het maken van een opslag account kan resulteren in een nieuwe factureer bare service. Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie.
@@ -75,10 +75,10 @@ Voordat u een back-up maakt, moet u de opslag instellingen voor uw server config
 
 
 ### <a name="powershell"></a>PowerShell
-[Back-up-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) -cmdlet gebruiken.
+[Back-up-ASDatabase](/powershell/module/sqlserver/backup-asdatabase) -cmdlet gebruiken.
 
 ## <a name="restore"></a>Herstellen
-Bij het herstellen moet het back-upbestand zich in het opslag account bevinden dat u hebt geconfigureerd voor uw server. Als u een back-upbestand van een on-premises locatie naar uw opslag account wilt verplaatsen, gebruikt u [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) of het [AzCopy](../storage/common/storage-use-azcopy.md) -opdracht regel programma. 
+Bij het herstellen moet het back-upbestand zich in het opslag account bevinden dat u hebt geconfigureerd voor uw server. Als u een back-upbestand van een on-premises locatie naar uw opslag account wilt verplaatsen, gebruikt u [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) of het [AzCopy](../storage/common/storage-use-azcopy-v10.md) -opdracht regel programma. 
 
 
 
@@ -102,11 +102,11 @@ Bij het herstellen moet het back-upbestand zich in het opslag account bevinden d
 
 ### <a name="powershell"></a>PowerShell
 
-Gebruik de cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) .
+Gebruik de cmdlet [Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase) .
 
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-[Azure-opslag accounts](../storage/common/storage-create-storage-account.md)  
+[Azure-opslag accounts](../storage/common/storage-account-create.md)  
 [Hoge Beschik baarheid](analysis-services-bcdr.md)      
 [Veelgestelde vragen over de netwerk verbinding Analysis Services](analysis-services-network-faq.md)
