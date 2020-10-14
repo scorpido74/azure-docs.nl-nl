@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 8152244d2e05d6e05843a2b84151d6b6a8df7f26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c209d59e3e0552db5d7e7dd64af2ce5d233881a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555578"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826293"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>Zelfstudie: Azure Active Directory-integratie met EasyTerritory
 
@@ -99,7 +99,7 @@ Om Azure AD-eenmalige aanmelding te configureren met EasyTerritory, moet u de vo
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij EasyTerritory](common/idp-intiated.png)
+    ![Schermopname toont de 'Basic SAML-configuratie' waarin de knoppen 'Id', 'Antwoord-URL' en 'Opslaan ' zijn gemarkeerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://apps.easyterritory.com/<tenant id>/dev/`
 

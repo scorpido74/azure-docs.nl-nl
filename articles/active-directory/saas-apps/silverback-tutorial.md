@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 43f7cddfa6fb887fd421d1f90a41145c6182654d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4df9b28d7a0d3e6b96aca3c99b5dacda3d41a676
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517079"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Zelfstudie: Azure Active Directory-integratie met Silverback
 
@@ -160,7 +160,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -213,7 +213,7 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Silverback, moe
 
     c. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, zoals **Simon**.
 
-    d. Typ in het tekstvak **E-mailadres** het e-mailadres van de gebruiker, zoals **Brittasimon@contoso.com** .
+    d. Voer in het tekstvak **Email Address** het e-mailadres van de gebruiker in, bijvoorbeeld **Brittasimon\@contoso.com**.
 
     e. Voer in het tekstvak **Wachtwoord** uw wachtwoord in.
 

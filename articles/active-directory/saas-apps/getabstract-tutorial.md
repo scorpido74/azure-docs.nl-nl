@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6881681eef553dd2e21ba68a2bf722c7af1fc4a7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550840"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821182"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Zelfstudie: Azure Active Directory-integratie met Getabstract
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding van domeinen en URL’s van Getabstract](common/idp-intiated.png)
+    ![Schermopname met de sectie "Standaard S A M L-configuratie" met de velden "Id" en "Antwoord-U R L" en de knop "Opslaan" geselecteerd.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL:
 

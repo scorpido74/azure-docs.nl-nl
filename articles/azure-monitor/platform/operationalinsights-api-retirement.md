@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: cf48e26133326d43754b38df6f3b2caaf7a587ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9a7ba63246f747a132c315e22452ca9c7144448
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978085"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058179"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API-versie buiten gebruik stellen
 Micro soft biedt een kennisgeving van ten minste twaalf maanden voor het buiten gebruik stellen van een API om de overgang naar een nieuwere/ondersteunde versie te versoepelen. We hebben een nieuwe versie (2020-08-01) uitgebracht voor de Api's van de **OperationalInsights** -resource provider en zullen eerdere API-versies op 31 oktober 2023 buiten gebruik stellen. Aangezien nieuwe functies en functionaliteit en optimalisaties alleen worden toegevoegd aan de huidige API, moet u zo snel mogelijk een upgrade naar de nieuwste API-versie uitvoeren.
@@ -67,4 +67,4 @@ Afhankelijk van de configuratie methode die u gebruikt, moet u de nieuwe versie 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Naslag informatie voor de OperationalInsights-API](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/allversions).
+- Zie de [Naslag informatie voor de OperationalInsights-werkruimte-API](https://docs.microsoft.com/rest/api/loganalytics/workspaces).

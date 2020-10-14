@@ -3,12 +3,12 @@ title: Overzicht van Azure Management - Azure Governance
 description: Overzicht van de beheergebieden voor de Azure-toepassingen en -resources met koppelingen naar inhoud in Azure-beheerhulpprogramma's.
 ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662136"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949493"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Wat zijn de Azure Management-gebieden?
 
@@ -44,7 +44,7 @@ Met [Azure Cost Management](../cost-management-billing/cost-management-billing-o
 
 ## <a name="secure"></a>Beveiligen
 
-De beveiliging van uw resources en gegevens beheren. Een beveiligingsprogramma omvat het beoordelen van bedreigingen, verzamelen en analyseren van gegevens en naleving van uw toepassingen en bronnen. Beveiligingsbewaking en bedreigingsanalyse worden door [Azure Security Center](../security-center/security-center-intro.md) geboden, dat ook geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbescherming voor verschillende hybride cloudworkloads maakt. Zie [Inleiding tot Azure Security](../security/fundamentals/overview.md) voor uitgebreide informatie en richtlijnen over de beveiliging van Azure-resources.
+De beveiliging van uw resources en gegevens beheren. Een beveiligingsprogramma omvat het beoordelen van bedreigingen, verzamelen en analyseren van gegevens en naleving van uw toepassingen en bronnen. Beveiligingsbewaking en bedreigingsanalyse worden door [Azure Security Center](../security-center/security-center-introduction.md) geboden, dat ook geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbescherming voor verschillende hybride cloudworkloads maakt. Zie [Inleiding tot Azure Security](../security/fundamentals/overview.md) voor uitgebreide informatie en richtlijnen over de beveiliging van Azure-resources.
 
 ## <a name="protect"></a>Beschermen
 

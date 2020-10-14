@@ -3,17 +3,17 @@ title: Een zoekservice maken in de portal
 titleSuffix: Azure Cognitive Search
 description: In deze portal-quickstart leert u hoe u een Azure Cognitive Search-resource kunt instellen in de Azure-portal. Resourcegroepen, regio's en de SKU of prijscategorie kiezen.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/05/2020
-ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741003"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057719"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Een Azure Cognitive Search-service maken in de portal
 
@@ -178,7 +178,7 @@ Nadat u een service hebt ingericht, kunt u in de portal verdergaan met het maken
 > [!div class="nextstepaction"]
 > [Snelstart: Een Azure Cognitive Search-index maken in de portal](search-get-started-portal.md)
 
-Wilt u optimaliseren en op uw cloudverbruik besparen?
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
 
 > [!div class="nextstepaction"]
 > [Analyseer kosten met Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

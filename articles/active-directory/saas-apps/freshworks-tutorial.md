@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: eb59d7ecd6183d144fd275a50f3682a2b961df98
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c953297d4e66f737250451b9a5f42ce7f45dd2e4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550960"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821252"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Freshworks
 
@@ -95,7 +95,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
      ![image](common/edit-certificate.png)
 
-     ![Configuratie van Freshworks](./media/freshworks-tutorial/response.png)
+     ![Schermopname met het dialoogvenster "S A M L-handtekeningcertificaat" met de knop "Bewerken" geselecteerd.](./media/freshworks-tutorial/response.png)
 
     a. Selecteer **SAML-antwoord ondertekenen** voor **Optie voor ondertekening**.
 
@@ -141,7 +141,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Klik aan de linkerkant van het menu op het  **beveiligingspictogram**  en schakel vervolgens de optie **Eenmalige aanmelding** in en selecteer **Eenmalige aanmelding op basis van SAML** onder **Verificatiemethoden**.
 
-    ![Configuratie van Freshworks](./media/freshworks-tutorial/configure01.png)
+    ![Schermopname met de sectie "Beveiliging - Verificatiemethoden" met de optie "Eenmalige aanmelding" ingeschakeld en "Eenmalige aanmelding op basis van S A M L" geselecteerd.](./media/freshworks-tutorial/configure01.png)
 
 3. Voer in het gedeelte **Single sign-on** de volgende stappen uit:
 

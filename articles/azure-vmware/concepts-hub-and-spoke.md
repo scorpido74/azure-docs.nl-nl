@@ -2,17 +2,18 @@
 title: 'Concept: een implementatie van een Azure VMware-oplossing integreren in een hub-en spoke-architectuur'
 description: Meer informatie over de aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing in een bestaande of een nieuwe hub-en spoke-architectuur in Azure.
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/14/2020
+ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019232"
+ms.locfileid: "92058468"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-oplossing integreren in een hub-en spoke-architectuur
 
 In dit artikel bieden we aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing in een bestaande of een nieuwe [hub-en spoke-architectuur](/azure/architecture/reference-architectures/hybrid-networking/shared-services) in Azure. 
+
 
 In het hub-en-spoke-scenario wordt uitgegaan van een hybride cloud omgeving met workloads op:
 
@@ -25,6 +26,9 @@ In het hub-en-spoke-scenario wordt uitgegaan van een hybride cloud omgeving met 
 De *hub* is een Azure-Virtual Network die fungeert als een centraal punt van connectiviteit met uw on-premises en Azure VMware-oplossing privécloud. De *spokes* zijn virtuele netwerken die zijn gekoppeld aan de hub om intervirtuele netwerk communicatie in te scha kelen.
 
 Verkeer tussen het on-premises Data Center, de privécloud van Azure VMware-oplossing en de hub loopt via Azure ExpressRoute-verbindingen. Spoke Virtual Networks bevatten doorgaans IaaS werk belastingen, maar kunnen PaaS-services zoals [app service Environment](../app-service/environment/intro.md)hebben, die directe integratie met Virtual Network hebben, of andere PaaS-services waarvoor [Azure private link](../private-link/index.yml) is ingeschakeld.
+
+>[!IMPORTANT]
+>U kunt een bestaande ExpressRoute-gateway gebruiken om verbinding te maken met de Azure VMware-oplossing zolang deze de limiet van vier ExpressRoute-circuits per virtueel netwerk niet overschrijdt.  Om toegang te krijgen tot de Azure VMware-oplossing van on-premises via ExpressRoute, moet u echter beschikken over ExpressRoute Global Reach, omdat de ExpressRoute-gateway geen transitieve route ring biedt tussen de verbonden circuits.
 
 In het diagram ziet u een voor beeld van een hub-en spoke-implementatie in azure die is verbonden met on-premises en Azure VMware-oplossing via ExpressRoute Global Reach.
 
@@ -105,14 +109,17 @@ Bekijk het specifieke artikel over de Azure VMware-oplossing op [Application Gat
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
 
 
-### <a name="jumpbox-and-azure-bastion"></a>JumpBox en Azure Bastion
+### <a name="jump-box-and-azure-bastion"></a>Jump box en Azure Bastion
 
-Toegang tot de Azure VMware-oplossings omgeving met JumpBox, een Windows 10-of Windows Server-VM die is geïmplementeerd in het subnet van de gedeelde service binnen het virtuele netwerk van de hub.
+Toegang tot de Azure VMware-oplossings omgeving met een Jump box, een Windows 10-of Windows Server-VM die is geïmplementeerd in het subnet van de gedeelde service binnen het virtuele hub-netwerk.
 
-Implementeer [Microsoft Azure Bastion](../bastion/index.yml) -service in het virtuele netwerk van de hub als beveiligings best practice. Azure Bastion biedt naadloze RDP-en SSH-toegang tot Vm's die zijn geïmplementeerd op Azure zonder dat open bare IP-adressen op deze resources hoeven te worden ingericht. Nadat u de Azure Bastion-service hebt ingericht, kunt u vanuit de Azure Portal toegang krijgen tot de geselecteerde VM. Nadat de verbinding tot stand is gebracht, wordt er een nieuw tabblad geopend, waarin het JumpBox-bureau blad wordt weer gegeven, en op dat bureau blad hebt u toegang tot het beheer vlak van de privécloud-oplossing van Azure VMware.
+>[!IMPORTANT]
+>Azure Bastion is de aanbevolen service om verbinding te maken met het Jump box om te voor komen dat de Azure VMware-oplossing aan Internet wordt blootgesteld. U kunt Azure Bastion niet gebruiken om verbinding te maken met virtuele machines van Azure VMware-oplossingen omdat ze geen Azure IaaS-objecten zijn.  
+
+Implementeer [Microsoft Azure Bastion](../bastion/index.yml) -service in het virtuele netwerk van de hub als beveiligings best practice. Azure Bastion biedt naadloze RDP-en SSH-toegang tot Vm's die zijn geïmplementeerd op Azure zonder dat open bare IP-adressen op deze resources hoeven te worden ingericht. Nadat u de Azure Bastion-service hebt ingericht, kunt u vanuit de Azure Portal toegang krijgen tot de geselecteerde VM. Nadat de verbinding tot stand is gebracht, wordt er een nieuw tabblad geopend, met daarin het bureau blad van de Jump box en van dat bureau blad, hebt u toegang tot het beheer vlak van de privécloud-oplossing van Azure VMware.
 
 > [!IMPORTANT]
-> Geef geen openbaar IP-adres aan de JumpBox-VM of open de poort 3389/TCP voor het open bare Internet. 
+> Geef geen openbaar IP-adres toe aan de VM met het Jump box of stel de poort 3389/TCP beschikbaar op het open bare Internet. 
 
 
 :::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::

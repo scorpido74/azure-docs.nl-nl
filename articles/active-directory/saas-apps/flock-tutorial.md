@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c14d70f7489115b980479e7225cc3b47f80b3f2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64156741437a6805b7060d2aaa67b8de5b4aad13
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554957"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Zelfstudie: Azure Active Directory-integratie met Flock
 
@@ -128,7 +128,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 2. Selecteer het tabblad **Verificatie** in het linkernavigatievenster en selecteer vervolgens **SAML-verificatie**.
 
-    ![Flock-configuratie](./media/flock-tutorial/configure1.png)
+    ![Schermopname met het tabblad Verificatie met S A M L-verificatie geselecteerd.](./media/flock-tutorial/configure1.png)
 
 3. Voer in het gedeelte **SAML-verificatie** de volgende stappen uit:
 
@@ -203,11 +203,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Flock, moeten ze wo
 
 2. Klik op **Team beheren** in het linkernavigatievenster.
 
-    ![Werknemer toevoegen](./media/flock-tutorial/user1.png)
+    ![Schermopname met Team beheren geselecteerd.](./media/flock-tutorial/user1.png)
 
 3. Klik op het tabblad **Lid toevoegen** en selecteer vervolgens **Teamleden**.
 
-    ![Werknemer toevoegen](./media/flock-tutorial/user2.png)
+    ![Schermopname met het tabblad Lid toevoegen en Teamleden geselecteerd.](./media/flock-tutorial/user2.png)
 
 4. Voer het e-mailadres van de gebruiker, bijvoorbeeld **Brittasimon\@contoso.com**, en selecteer vervolgens **Gebruikers toevoegen**.
 

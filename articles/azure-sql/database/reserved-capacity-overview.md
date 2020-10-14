@@ -11,20 +11,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 08/29/2019
-ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321591"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058264"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Bespaar kosten voor resources met gereserveerde capaciteit-Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
 Bespaar geld met Azure SQL Database en SQL Managed instance door door te gaan naar een reserve ring voor reken resources vergeleken met prijzen voor betalen per gebruik. Met gereserveerde capaciteit maakt u een toezeg ging voor SQL Database en/of SQL Managed instance voor een periode van één of drie jaar om een aanzienlijke korting op de reken kosten te krijgen. Als u gereserveerde capaciteit wilt kopen, moet u de Azure-regio, het implementatie type, de prestatie-laag en de periode opgeven.
 
-U hoeft de reserve ring niet toe te wijzen aan een specifieke data base of een beheerd exemplaar. Bij bestaande implementaties die al worden uitgevoerd of die nieuw zijn geïmplementeerd, krijgt u automatisch het voor deel. Door een reserve ring te kopen, legt u het gebruik voor de reken kosten voor een periode van één of drie jaar toe. Zodra u een reserve ring koopt, worden de reken kosten die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Een reserve ring geldt niet voor software, netwerken of opslag kosten die zijn gekoppeld aan de service. Aan het einde van de reserverings termijn verloopt het facturerings voordeel en wordt de data base of het beheerde exemplaar gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet automatisch verlengd. Voor prijs informatie raadpleegt u de [aanbieding gereserveerde capaciteit](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+U hoeft de reserve ring niet toe te wijzen aan een specifieke data base of een beheerd exemplaar. Bij bestaande implementaties die al worden uitgevoerd of die nieuw zijn geïmplementeerd, krijgt u automatisch het voor deel. Door een reserve ring te kopen, legt u het gebruik voor de reken kosten voor een periode van één of drie jaar toe. Zodra u een reserve ring koopt, worden de reken kosten die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. 
+
+Een reserve ring is van toepassing op zowel primaire als factureer bare secundaire reken replica's, maar heeft geen betrekking op software, netwerken of opslag kosten die zijn gekoppeld aan de service. Aan het einde van de reserverings termijn verloopt het facturerings voordeel en wordt de data base of het beheerde exemplaar gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet automatisch verlengd. Voor prijs informatie raadpleegt u de [aanbieding gereserveerde capaciteit](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
 U kunt gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com). Betaal [vooraf of per maand](../../cost-management-billing/reservations/prepare-buy-reservation.md) voor de reservering. Gereserveerde capaciteit kopen:
 
@@ -32,6 +34,9 @@ U kunt gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.
 - Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com). Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement. Gereserveerde capaciteit.
 
 Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) en [inzicht krijgen in het gebruik van Azure-reserve ringen voor uw abonnement voor betalen per gebruik](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)voor meer informatie over hoe klanten en betalen per gebruik in rekening worden gebracht voor reserverings aankopen.
+
+> [!NOTE]
+> Bij gereserveerde capaciteit van aankopen worden geen specifieke infrastructuur resources (virtuele machines of knoop punten) voor uw gebruik toegewezen of gereserveerd.
 
 ## <a name="determine-correct-size-before-purchase"></a>Bepaal de juiste grootte vóór de aankoop
 
@@ -54,11 +59,11 @@ Stel bijvoorbeeld dat u één algemeen doel, GEN5-16 vCore elastische pool en tw
     |------------|--------------|
     |Abonnement|Het abonnement dat wordt gebruikt voor het betalen van de capaciteits reservering. Voor de betalings wijze voor het abonnement worden de kosten vooraf in rekening gebracht voor de reserve ring. Het abonnements type moet een Enter prise Agreement (aanbiedings nummer MS-AZR-0017P of MS-AZR-0148P) of een afzonderlijke overeenkomst met betalen per gebruik-prijs (aanbiedings nummer MS-AZR-0003P of MS-AZR-0023P) zijn. Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding. Voor een individueel abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card of factuur betalings methode voor het abonnement.|
     |Bereik       |Het bereik van de vCore-reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u <br/><br/>**Gedeeld**, de vCore-reserverings korting wordt toegepast op de data base of het beheerde exemplaar dat wordt uitgevoerd in abonnementen binnen uw facturerings context. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bestaat het gedeelde bereik uit alle abonnementen op gebruiksbasis gemaakt door de accountbeheerder.<br/><br/>**Eén abonnement**, de vCore-reserverings korting wordt toegepast op de data bases of beheerde exemplaren in dit abonnement. <br/><br/>**Eén resource groep**, de reserverings korting wordt toegepast op de exemplaren van data bases of beheerde exemplaren in het geselecteerde abonnement en de geselecteerde resource groep in dat abonnement.|
-    |Regio      |De Azure-regio die wordt gedekt door de capaciteits reservering.|
+    |Region      |De Azure-regio die wordt gedekt door de capaciteits reservering.|
     |Implementatie type|Het SQL-resource type waarvoor u de reserve ring wilt aanschaffen.|
     |Prestatie niveau|De servicelaag voor de data bases of beheerde exemplaren. |
     |Termijn        |Eén jaar of drie jaar.|
-    |Hoeveelheid    |De hoeveelheid reken resources die worden gekocht binnen de capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld meerdere data bases uitvoert of plant met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, geeft u de hoeveelheid op als 16 om het voor deel voor alle data bases te maximaliseren. |
+    |Aantal    |De hoeveelheid reken resources die worden gekocht binnen de capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld meerdere data bases uitvoert of plant met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, geeft u de hoeveelheid op als 16 om het voor deel voor alle data bases te maximaliseren. |
 
 1. Controleer de kosten van de capaciteits reservering in het gedeelte **kosten** .
 1. Selecteer **Aankoop**.
@@ -93,4 +98,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 - [Korting op Azure-reserveringen begrijpen](../../cost-management-billing/reservations/understand-reservation-charges.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
-- [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70897825dfebe03e920ff5948ad597b57bdd7d7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618957"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058247"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Resource limieten voor Azure SQL Database en Azure Synapse Analytics-servers
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,7 +59,7 @@ Wanneer het CPU-gebruik van de data base hoog wordt, wordt de query latentie ver
 Wanneer het gebruik van hoge berekeningen wordt tegengekomen, zijn de volgende opties voor risico beperking:
 
 - De reken grootte van de data base of elastische pool verg Roten om de data base te voorzien van meer compute-resources. Zie bronnen van [één data base schalen](single-database-scale.md) en [elastische pool resources schalen](elastic-pool-scale.md).
-- Query's optimaliseren om het CPU-resource gebruik van elke query te verminderen. Zie [query tuning/Hinting](performance-guidance.md#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
+- Query's optimaliseren om het CPU-resource gebruik van elke query te verminderen. Zie [Afstemmen van query's en query-hints](performance-guidance.md#query-tuning-and-hinting) voor meer informatie.
 
 ### <a name="storage"></a>Storage
 
@@ -78,7 +78,7 @@ Het maximum aantal sessies en werk rollen wordt bepaald door de servicelaag en d
 Wanneer u het gebruik van hoge sessies of werk nemers ondervindt, kunt u de volgende beperkende opties gebruiken:
 
 - De servicelaag of de reken grootte van de data base of elastische pool wordt verhoogd. Zie bronnen van [één data base schalen](single-database-scale.md) en [elastische pool resources schalen](elastic-pool-scale.md).
-- Het optimaliseren van query's om het resource gebruik van elke query te verminderen als de oorzaak van het verhoogde werk nemer is vanwege de conflicten voor reken bronnen. Zie [query tuning/Hinting](performance-guidance.md#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
+- Het optimaliseren van query's om het resource gebruik van elke query te verminderen als de oorzaak van het verhoogde werk nemer is vanwege de conflicten voor reken bronnen. Zie [Afstemmen van query's en query-hints](performance-guidance.md#query-tuning-and-hinting) voor meer informatie.
 - De instelling van de [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximale mate van parallellisme) verlagen.
 - Optimaliseer de query werk belasting zodat het aantal keren en de duur van query's wordt beperkt.
 
@@ -137,11 +137,11 @@ Als een query bijvoorbeeld 1000 IOPS genereert zonder IO resource governance, ma
 
 De min/max-waarden voor IOPS en door Voer die door de [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) weer gave worden geretourneerd, fungeren als limieten/cap's, niet als garanties. Daarnaast garandeert resource governance geen specifieke opslag latentie. De best Haal bare latentie, IOPS en door Voer voor een bepaalde gebruikers werkbelasting zijn niet alleen afhankelijk van de beheer limieten voor i/o-resources, maar ook op basis van de combi natie van i/o-grootten en de mogelijkheden van de onderliggende opslag. SQL Database maakt gebruik van IOs die variëren van grootte tussen 512 KB en 4 MB. Met het oog op het afdwingen van IOPS-limieten wordt elke IO verwerkt ongeacht de grootte, met uitzonde ring van data bases met gegevens bestanden in Azure Storage. In dat geval wordt IOs groter dan 256 KB verwerkt als meerdere 256-KB IOs, om te worden uitgelijnd met Azure Storage IO-accounting.
 
-Voor Basic-, Standard-en Algemeen-data bases, die gebruikmaken van gegevens bestanden in Azure Storage, `primary_group_max_io` kan de waarde mogelijk niet worden behaald als een Data Base niet genoeg gegevens bestanden bevat om cumulatief te bieden aan dit aantal IOPS, of als gegevens niet gelijkmatig over de bestanden worden gedistribueerd, of als het prestatie niveau van onderliggende blobs de limiet voor IOPS/door Voer overschrijdt. Op dezelfde manier kan de waarde niet worden behaald door een werk belasting als gevolg van een kleine log IOs die door veelvuldige trans acties wordt gegenereerd, `primary_max_log_rate` vanwege de limiet voor IOPS voor de onderliggende Azure Storage-blob.
+Voor Basic-, Standard-en Algemeen-data bases, die gebruikmaken van gegevens bestanden in Azure Storage, `primary_group_max_io` kan de waarde mogelijk niet worden behaald als een Data Base niet genoeg gegevens bestanden bevat om cumulatief te bieden aan dit aantal IOPS, of als gegevens niet gelijkmatig over de bestanden worden gedistribueerd, of als het prestatie niveau van onderliggende blobs de limiet voor IOPS/door Voer overschrijdt. Op dezelfde manier, met Small log IOs gegenereerd door veelvuldige trans acties, `primary_max_log_rate` kan de waarde mogelijk niet worden behaald door een werk belasting als gevolg van de limiet voor IOPS voor de onderliggende Azure Storage blob. Voor data bases die gebruikmaken van Azure Premium Storage, Azure SQL Database gebruikt voldoende grote opslag-blobs om benodigde IOPS/door voer te verkrijgen, ongeacht de grootte van de data base. Voor grotere data bases worden meerdere gegevens bestanden gemaakt om het totale aantal IOPS/doorvoer capaciteit te verg Roten.
 
 Waarden van resource gebruik, zoals `avg_data_io_percent` en `avg_log_write_percent` , gerapporteerd in de weer gaven [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database),  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , worden berekend als percentage van de maximale resource governance-limieten. Daarom is het mogelijk om te voor komen dat andere factoren dan de bron beheer limiet voor IOPS/door Voer, het afnemen van IOPS/door Voer, het afvlakken en latentie verhogen naarmate de werk belasting toeneemt, ook al is het gerapporteerde resource gebruik minder dan 100%.
 
-Als u de IOPS, door Voer en latentie per database bestand voor lezen en schrijven wilt zien, gebruikt u de functie [sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Deze functie behaalt alle i/o-bewerkingen op de data base, inclusief de i/o van de achtergrond die niet is verwerkt `avg_data_io_percent` , maar gebruikt IOPS en door Voer van de onderliggende opslag en kan invloed hebben op de waargenomen opslag latentie. De functie kan ook een extra latentie bedekken die kan worden geïntroduceerd door IO-resource beheer voor lees-en schrijf bewerkingen, respectievelijk in de `io_stall_queued_read_ms` `io_stall_queued_write_ms` kolommen en.
+Als u de IOPS, door Voer en latentie per database bestand voor lezen en schrijven wilt zien, gebruikt u de functie [sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Deze functie behaalt alle i/o-bewerkingen op de data base, inclusief de i/o van de achtergrond die niet is verwerkt `avg_data_io_percent` , maar gebruikt IOPS en door Voer van de onderliggende opslag en kan invloed hebben op de waargenomen opslag latentie. De functie oppervlakken extra latentie die kan worden geïntroduceerd door i/o-resource beheer voor lees-en schrijf bewerkingen, respectievelijk in de `io_stall_queued_read_ms` `io_stall_queued_write_ms` kolommen en.
 
 ### <a name="transaction-log-rate-governance"></a>Beleid voor transactie logboek belasting
 

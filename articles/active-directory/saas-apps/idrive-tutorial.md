@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 83631c6c6503f32ba81195ecfe5df0b1a6c14092
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a8d79deb55a5693978569f5e3a940a03897efb80
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545274"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idrive"></a>Zelfstudie: Azure Active Directory-integratie met IDrive
 
@@ -99,11 +99,11 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure Ad met Voer de v
 
 4. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Informatie over eenmalige aanmelding voor het [Application Name]-domein en de -URL's](common/preintegrated.png)
+    ![Schermopname van de SAML-basisconfiguratie.](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding voor het [Application Name]-domein en de -URL's](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     Typ een URL in het tekstvak **Aanmeldings-URL**: `https://www.idrive.com/idrive/login/loginForm`
 

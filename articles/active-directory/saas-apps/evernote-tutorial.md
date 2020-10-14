@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 22225d9810c7b913505cb003a1ed2ce8f1a144e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555330"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826499"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Evernote
 
@@ -92,7 +92,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 7. Als u de opties voor **Handtekening** wilt wijzigen, klikt u op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
-    ![image](common/edit-certificate.png) 
+    ![Schermopname met het dialoogvenster "S A M L-handtekeningcertificaat" met de knop "Bewerken" geselecteerd.](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
@@ -181,7 +181,7 @@ In het geval van Evernote is inrichten een handmatige taak.
 
 3. Ga vanuit de **'Admin Console'** naar **‘Add users’**.
 
-    ![Testgebruiker toevoegen](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![Schermopname met het menu "Users" met "Add Users" geselecteerd.](./media/evernote-tutorial/create_aaduser_0001.png)
 
 4. **Voeg teamleden toe** in het tekstvak **Email**, typ het e-mailadres van het gebruikersaccount en klik op **Invite.**
 

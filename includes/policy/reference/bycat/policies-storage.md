@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d7768f4d82b355c96bfe12f671457a6272b91480
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f4d53888e736a4c897b376ab68659ce490de3b09
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982635"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820581"
 ---
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -23,5 +23,6 @@ ms.locfileid: "90982635"
 |[Voor het opslagaccount moet een door de klant beheerde sleutel worden gebruikt voor versleuteling](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fac406b-40ca-413b-bf8e-0bf964659c25) |Beveilig uw opslagaccount met meer flexibiliteit met behulp van door klant beheerde sleutels (CMK's). Wanneer u een CMK opgeeft, wordt die sleutel gebruikt voor het beveiligen en beheren van de toegang tot de sleutel waarmee uw gegevens worden versleuteld. Het gebruik van CMK's biedt extra mogelijkheden voor het beheren van de rotatie van de sleutelversleutelingssleutel of het cryptografisch wissen van gegevens. |Controle, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountCustomerManagedKeyEnabled_Audit.json) |
 |[Opslagaccounts moeten toegang uit vertrouwde Microsoft-services toestaan](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |Sommige Microsoft-services die communiceren met opslagaccounts, werken vanuit netwerken waaraan geen toegang kan worden verleend via netwerkregels. Om dit type service goed te laten werken, moet u de set vertrouwde Microsoft-services toestaan om de netwerkregels over te slaan. Deze services gebruiken vervolgens sterke verificatie om toegang te krijgen tot het opslagaccount. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json) |
 |[Opslagaccounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |Gebruik de nieuwe Azure Resource Manager voor verbeterde beveiliging van uw opslagaccounts, met onder andere sterker toegangsbeheer (RBAC), betere controle, implementatie en governance op basis van Azure Resource Manager, toegang tot beheerde identiteiten, toegang tot Key Vault voor geheimen, verificatie op basis van Azure AD en ondersteuning voor tags en resourcegroepen voor eenvoudiger beveiligingsbeheer |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json) |
+|[Voor opslagaccounts moet versleuteling van infrastructuur zijn ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4733ea7b-a883-42fe-8cac-97454c2a9e4a) |Schakel versleuteling van de infrastructuur in voor een hogere mate van zekerheid dat de gegevens veilig zijn. Wanneer infrastructuurversleuteling is ingeschakeld, worden gegevens in een opslagaccount twee keer versleuteld. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountInfrastructureEncryptionEnabled_Audit.json) |
 |[Netwerktoegang tot opslagaccounts moet zijn beperkt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Netwerktoegang tot opslagaccounts moet worden beperkt. Configureer netwerkregels zo dat alleen toepassingen van toegestane netwerken toegang hebben tot het opslagaccount. Om verbindingen van specifieke internet- of lokale clients toe te staan, kan toegang worden verleend aan verkeer van specifieke Azure Virtual Networks of aan openbare IP-adresbereiken voor internet |Controleren, Weigeren, Uitgeschakeld |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
 |[Opslagaccounts moeten netwerktoegang beperken met behulp van regels voor virtuele netwerken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a1a9cdf-e04d-429a-8416-3bfb72a1b26f) |Bescherm uw opslagaccounts tegen mogelijke dreigingen met regels voor virtuele netwerken als voorkeursmethode voor filteren op IP-basis. Als u filteren op IP-basis niet toestaat, kunnen openbare IP-adressen geen toegang krijgen tot uw opslagaccounts. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountOnlyVnetRulesEnabled_Audit.json) |
