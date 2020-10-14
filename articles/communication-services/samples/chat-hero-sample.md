@@ -2,19 +2,19 @@
 title: Hero-voorbeeld van groeps-chat
 titleSuffix: An Azure Communication Services sample overview
 description: Overzicht van hero-voorbeeld voor chatten waarin gebruik wordt gemaakt van Azure Communication Services om ontwikkelaars in staat te stellen meer te weten te komen over de interne mechanismen van het voorbeeld en hoe u dit kunt wijzigen.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460557"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962986"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Aan de slag met het hero-voorbeeld van groeps-chat
 
@@ -78,7 +78,6 @@ U kunt het voorbeeld lokaal testen door meerdere browsersessies te openen met de
 2. `git clone https://github.com/Azure/Communication.git`
 3. Haal de `Connection String` op uit Azure Portal. Zie [Een Azure Communications-resource maken](../quickstarts/create-communication-resource.md) voor meer informatie over verbindingsreeksen
 4. Nadat u de `Connection String`hebt opgehaald, voegt u de verbindingsreeks toe aan het bestand **Chat/appsettings.json** dat zich in de map Chat bevindt. Voer in de variabele uw verbindingsreeks in: `ResourceConnectionString`.
-5. Werk de ENVIRONMENT_URL in `./Chat/ClientApp/src/constants.tsx` bij met de locatie van uw resource. (bijvoorbeeld https://<RESOURCE_NAME>.communication.azure.com)
 
 ### <a name="local-run"></a>Lokaal uitvoeren
 
@@ -115,6 +114,6 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Azure Communication GitHub](https://github.com/Azure/communication): u vindt meer voorbeelden en informatie op de officiële GitHub-pagina
 - [Redux](https://redux.js.org/): statusbeheer op de client
-- [FluentUI](https://developer.microsoft.com/fluentui#/): door Microsoft ondersteunde bibliotheek voor de gebruikersinterface
+- [FluentUI](https://aka.ms/fluent-ui): door Microsoft ondersteunde bibliotheek voor de gebruikersinterface
 - [React](https://reactjs.org/): bibliotheek voor het ontwikkelen van gebruikersinterfaces
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true): een framework voor het bouwen van webtoepassingen

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521855"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Zelfstudie: Azure Active Directory-integratie met Hosted Graphite
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Hosted Graphite](common/idp-intiated.png)
+    ![Schermopname die de Standaard SAML-configuratie toont, waar u de id en URL kunt invoeren en vervolgens Opslaan selecteert.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.hostedgraphite.com/metadata/<user id>`
 
@@ -108,7 +108,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Hosted Graphite](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.hostedgraphite.com/login/saml/<user id>/`
 
@@ -135,23 +135,23 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 2. Ga naar de **SAML-installatiepagina** in de zijbalk (**Toegang-> SAML-instellen**).
 
-    ![Eenmalige aanmelding in de app configureren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+    ![Schermopname met het menu Toegang waarin SAML-installatie is geselecteerd.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
 3. Controleer of deze URL's overeenkomen met uw configuratie uitgevoerd op de sectie **SAML-basisconfiguratie** van de Azure Portal.
 
-    ![Eenmalige aanmelding in de app configureren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+    ![Schermopname van de basale SAML-configuratie.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
 4. In tekstvakken **Entiteit of verlener-id** en **Aanmeldings-URL voor eenmalige aanmelding** plakt u de waarde van **Azure Active Directory-id** en **Aanmeldings-URL** die u hebt gekopieerd vanuit de Azure Portal.
 
-    ![Eenmalige aanmelding in de app configureren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+    ![Schermopname met vermeldingen voor de id-provider.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
 5. Selecteer **Alleen-lezen** als **Standaard gebruikersrol**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+    ![Schermopname met de standaard gebruikersrol, Alleen-lezen.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
 6. Open in Kladblok het met Base 64 gecodeerde certificaat dat u hebt gedownload uit de Azure-portal, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **X.509 Certificate**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+    ![Schermopname met het certificaat X dot 509.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 7. Klik op de knop **Save**.
 

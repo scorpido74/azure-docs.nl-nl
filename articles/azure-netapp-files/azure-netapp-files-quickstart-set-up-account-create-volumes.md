@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 088961d58cee2f1bb0c6ac042d9d8ee2ad50ba14
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533890"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931356"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Quickstart: Azure NetApp Files instellen en een NFS-volume maken 
 
@@ -164,7 +164,7 @@ Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor m
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Het volgende code fragment laat zien hoe u een NetApp-account maakt in een Azure Resource Manager sjabloon (ARM-sjabloon) met behulp van de [Microsoft.NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
+Het volgende code fragment laat zien hoe u een NetApp-account maakt in een Azure Resource Manager sjabloon (ARM-sjabloon) met behulp van de [Microsoft.NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -238,7 +238,7 @@ Het volgende code fragment laat zien hoe u een NetApp-account maakt in een Azure
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure Resource Manager sjabloon (ARM-sjabloon) met behulp van de [Microsoft.NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
+Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure Resource Manager sjabloon (ARM-sjabloon) met behulp van de [Microsoft.NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -387,7 +387,7 @@ Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
 
-De volgende codefragmenten laten zien hoe u een VNet instelt en een Azure NetApp Files-volume maakt in een Azure Resource Manager-sjabloon (ARM-sjabloon). VNet-installatie maakt gebruik van de [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) resource. Voor het maken van volumes wordt gebruikgemaakt van de [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
+De volgende codefragmenten laten zien hoe u een VNet instelt en een Azure NetApp Files-volume maakt in een Azure Resource Manager-sjabloon (ARM-sjabloon). VNet-installatie maakt gebruik van de [Microsoft.Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) resource. Voor het maken van volumes wordt gebruikgemaakt van de [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
 
@@ -465,4 +465,4 @@ Gebruik de Azure Portal, PowerShell of de Azure CLI om de resourcegroep te verwi
 > [!div class="nextstepaction"]
 > [Opslaghiërarchie van Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)   
 > [Serviceniveaus voor Azure NetApp Files](azure-netapp-files-service-levels.md)   
-> [Een NFS-volume maken](azure-netapp-files-create-volumes.md)   
+> [Een NFS-volume maken](azure-netapp-files-create-volumes.md)

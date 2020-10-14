@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318616"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856208"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Een CI/CD-pijplijn in Azure Pipelines maken voor Node.js met Azure DevOps Starter
 
@@ -73,7 +73,7 @@ In DevOps Starter wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt ee
 
     ![Azure DevOps-dashboard](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Vanuit uw Azure DevOps-project kunt u teamleden uitnodigen om samen te werken, en een kanbanbord maken om uw werk bij te houden. Klik [hier](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops) voor meer informatie.
+1. Vanuit uw Azure DevOps-project kunt u teamleden uitnodigen om samen te werken, en een kanbanbord maken om uw werk bij te houden. Klik [hier](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops) voor meer informatie.
 
 ![Overzicht van Azure DevOps](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -195,5 +195,4 @@ U kunt Azure App Service en gerelateerde resources die u hebt gemaakt, verwijder
 De build- en release-pijplijnen worden automatisch gemaakt wanneer u het CI/CD-proces configureert. U kunt deze build- en release-pijplijnen desgewenst wijzigen in overeenstemming met de behoeften van uw team. Voor meer informatie over de CI/CD-pijplijn raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [CD-proces aanpassen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
-
+> [CD-proces aanpassen](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

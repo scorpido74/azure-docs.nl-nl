@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549144"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820485"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met HRworks Single Sign-On
 
@@ -156,15 +156,15 @@ Als u Azure AD-gebruikers de gelegenheid wilt geven om zich aan te melden bij HR
 
 1. Klik links in het menu op **Administrator** > **Persons** > **Persons** > **New person**.
 
-     ![Eenmalige aanmelding configureren](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Schermopname met de pagina H R works met Persons en New person geselecteerd.](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. Klik in het pop-upvenster op **Next**.
 
-    ![Eenmalige aanmelding configureren](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![Schermopname met een lijst met landen waaruit u kunt kiezen voor de persoon.](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. Vul in de pop-up **Create new person with country for legal terms** de benodigde gegevens in, zoals **First name** en **Last name**, en klik op **Create**.
 
-    ![Eenmalige aanmelding configureren](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![Schermopname met tekstvakken waarin u de voor- en achternaam van de persoon kunt invoeren.](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen
 

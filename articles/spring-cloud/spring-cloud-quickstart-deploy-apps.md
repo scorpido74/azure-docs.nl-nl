@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280586"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045395"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Quickstart: Apps bouwen en implementeren in Azure Spring Cloud
 
@@ -261,7 +261,7 @@ We hebben een manier nodig om via een webbrowser toegang te krijgen tot de toepa
 1. Voer de volgende opdracht uit om de Git-opslagplaats te klonen:
 
     ```
-    git clone https://github.com/Azure-Samples/PiggyMetrics
+    git clone https://github.com/Azure-Samples/piggymetrics
     ```
   
 1. Wijzig de map en bouw het project door de volgende opdracht uit te voeren:
@@ -276,7 +276,7 @@ We hebben een manier nodig om via een webbrowser toegang te krijgen tot de toepa
 1. Genereer configuraties door de volgende opdracht uit te voeren in de hoofdmap van Piggy Metrics die de bovenliggende POM bevat. Als u zich al hebt aangemeld bij Azure CLI, worden de referenties automatisch opgehaald met de opdracht. Als u dit niet doet, wordt u aangemeld via promptinstructies. Zie onze [wiki-pagina](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) voor meer informatie.
 
     ```
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.3.0:config
     ```
     
     U wordt gevraagd om het volgende te selecteren:

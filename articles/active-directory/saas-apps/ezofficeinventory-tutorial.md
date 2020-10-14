@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f9f56967c03556def3aa221f84ccd290c6090fd1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff6ba71f4606b3caf51007a9d75f3ca36bc99cda
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551146"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826484"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met EZOfficeInventory
 
@@ -151,7 +151,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in de rechterbovenhoek van de pagina op **Profiel** en navigeer vervolgens naar **Instellingen** > **Invoegtoepassingen**.
 
-    ![EZOfficeInventory-configuratie](./media/ezofficeinventory-tutorial/configure01.png)
+    ![Schermopname met de pagina "Instellingen" met het tabblad "Invoegtoepassingen" geselecteerd.](./media/ezofficeinventory-tutorial/configure01.png)
 
 1. Schuif omhoog naar de sectie **SAML-integratie** en voer de volgende stappen uit:
 

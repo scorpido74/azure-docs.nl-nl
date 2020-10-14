@@ -1,15 +1,15 @@
 ---
 title: 'Quickstart: Uw eerste .NET Core-query'
 description: In deze quickstart voert u de stappen uit om de Resource Graph NuGet-pakketten voor .NET Core in te schakelen en uw eerste query uit te voeren.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f825b22712956c0b94531ddb163301167f30f00
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89005867"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057464"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Quickstart: uw eerste Resource Graph-query uitvoeren met .NET Core
 

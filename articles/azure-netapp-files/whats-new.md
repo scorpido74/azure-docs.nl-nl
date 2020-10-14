@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: beb1cc9957f7b43bc6ad9b9b6ee6c7707eb0c2d6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91571545"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932410"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Wat is er nieuw in Azure NetApp Files
 
@@ -31,7 +31,7 @@ Azure NetApp Files wordt regelmatig bijgewerkt. In dit artikel wordt een overzic
 
   Azure NetApp Files ondersteunt nu replicatie tussen regio's. Met deze nieuwe mogelijkheid voor herstel na noodgevallen kunt u Azure NetApp Files-volumes op een snelle en rendabele manier van de ene Azure-regio naar een andere repliceren. Zo worden uw gegevens beschermd tegen onvoorziene regionale storingen. Azure NetApp Files replicatie tussen regio's maakt gebruik van NetApp SnapMirror®-technologie; alleen gewijzigde blokken worden in een gecomprimeerde, efficiënte indeling via het netwerk verzonden. Deze bedrijfseigen technologie minimaliseert de hoeveelheid gegevens die nodig zijn replicatie tussen regio's uit te voeren, waardoor kosten voor gegevensoverdracht worden bespaard. Ook wordt de replicatietijd verkort, zodat u een kleinere RPO (Recovery Point Objective) kunt verwezenlijken.
 
-* [Handmatige QoS-capaciteitspool](manage-manual-qos-capacity-pool.md) (preview)  
+* [Handmatige QoS-capaciteitspool](manual-qos-capacity-pool-introduction.md) (preview)  
 
     In een handmatige QoS-capaciteitspool kunt u de capaciteit en doorvoer voor een volume onafhankelijk toewijzen. De totale doorvoer van alle volumes die met een handmatige QoS-capaciteitspool zijn gemaakt, wordt beperkt door de totale doorvoer van de pool. Deze wordt bepaald door de combinatie van poolgrootte en de doorvoer op serviceniveau. Een capaciteitspool van het [QoS-type](azure-netapp-files-understand-storage-hierarchy.md#qos_types) kan ook 'auto' (automatisch) zijn. Dit is de standaardinstelling. In een auto-QoS-capaciteitspool wordt de doorvoer automatisch toegewezen aan de volumes in de pool. Dit is evenredig aan het quotum van de grootte dat aan de volumes is toegewezen.
 

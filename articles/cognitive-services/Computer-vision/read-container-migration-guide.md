@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530456"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973118"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migreer naar de Read v3.x OCR-containers
 
@@ -65,10 +65,10 @@ Kern en geheugen komen overeen met de instellingen voor `--cpus` en `--memory` d
 >[!NOTE]
 > MongoDB wordt niet meer ondersteund in 3.x-versies van de container. In plaats daarvan ondersteunen de containers Azure Storage en offline bestandssystemen.
 
-| Implementatie |  Vereiste argument(en) voor Common Language Runtime |
+| Implementatie |    Vereiste argument(en) voor Common Language Runtime |
 |---------|---------|
-|Bestandsniveau (standaard)   | Er zijn geen argumenten voor Common Language Runtime vereist. `/share` de map wordt gebruikt. |
-|Azure Blob | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|Bestandsniveau (standaard)    | Er zijn geen argumenten voor Common Language Runtime vereist. `/share` de map wordt gebruikt. |
+|Azure Blob    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>Wachtrij-implementaties
 
@@ -78,7 +78,7 @@ In v3.x van de container wordt RabbitMQ momenteel niet ondersteund. De ondersteu
 |---------|---------|-------|
 | In het geheugen (standaard) | Er zijn geen argumenten voor Common Language Runtime vereist. | Ontwikkelen en testen |
 | Azure-wachtrijen | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Productie |
-| RabbitMQ  | Niet beschikbaar | Productie |
+| RabbitMQ    | Niet beschikbaar | Productie |
 
 Voor extra redundantie gebruikt de Read v3.x-container een zichtbaarheidstimer om ervoor te zorgen dat aanvragen goed kunnen worden verwerkt in het geval van een crash, wanneer deze wordt uitgevoerd in een configuratie met meerdere containers. 
 
@@ -86,7 +86,7 @@ Stel de timer in met `Queue:Azure:QueueVisibilityTimeoutInMilliseconds`, waarmee
 
 | Standaardwaarde | Aanbevolen waarde |
 |---------|---------|
-| 30.000 |   120.000 |
+| 30.000 |    120.000 |
 
 
 ## <a name="next-steps"></a>Volgende stappen

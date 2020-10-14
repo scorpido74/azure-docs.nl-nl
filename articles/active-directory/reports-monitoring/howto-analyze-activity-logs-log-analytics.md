@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231228"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056137"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-activiteiten logboeken analyseren met Azure Monitor-logboeken
 
@@ -47,7 +47,7 @@ Als u wilt volgen, hebt u het volgende nodig:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Ga naar de werk ruimte Log Analytics
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 2. Selecteer **Azure Active Directory**en selecteer vervolgens **Logboeken** in het gedeelte **bewaking** om uw log Analytics-werk ruimte te openen. De werk ruimte wordt geopend met een standaard query.
 
@@ -100,16 +100,13 @@ U kunt ook waarschuwingen instellen voor uw query. Als u bijvoorbeeld een waarsc
 
 5. Zodra u de waarschuwing hebt geconfigureerd, selecteert u **waarschuwing maken** om deze in te scha kelen. 
 
-## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Vooraf gemaakte weer gaven voor Azure AD-activiteiten logboeken installeren en gebruiken
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>Vooraf gemaakte werkmappen gebruiken voor Azure AD-activiteiten logboeken
 
-U kunt ook de vooraf gemaakte log Analytics-weer gaven voor Azure AD-activiteiten logboeken downloaden. De weer gaven bieden verschillende rapporten met betrekking tot algemene scenario's met betrekking tot controle-en aanmeldings gebeurtenissen. U kunt ook een waarschuwing ontvangen voor de gegevens in de rapporten, met behulp van de stappen die in de vorige sectie zijn beschreven.
+De werkmappen bieden verschillende rapporten die betrekking hebben op algemene scenario's met betrekking tot het controleren, aanmelden en inrichten van gebeurtenissen. U kunt ook een waarschuwing ontvangen voor de gegevens in de rapporten, met behulp van de stappen die in de vorige sectie zijn beschreven.
 
-* **Gebeurtenissen voor het inrichten van Azure AD-accounts**: deze weer gave bevat rapporten met betrekking tot het controleren van inrichtings activiteiten, zoals het aantal nieuwe gebruikers dat is ingericht en het inrichten van fouten, het aantal gebruikers dat is bijgewerkt en het bijwerken van fouten en het aantal gebruikers dat is ingericht en de bijbehorende fouten.    
-* **Gebeurtenissen voor aanmeldingen**: deze weer gave bevat de meest relevante rapporten met betrekking tot het controleren van de aanmeldings activiteit, zoals aanmeldingen per toepassing, gebruiker, apparaat en een samen vatting van het aantal aanmeldingen in de loop van de tijd.
-* **Gebruikers die toestemming uitvoeren**: deze weer gave bevat rapporten met betrekking tot de toestemming van de gebruiker, zoals de toestemming verleend door de gebruiker, aanmeldingen door gebruikers die toestemming hebben verleend, evenals aanmeldingen per toepassing voor alle op toestemming gebaseerde toepassingen. 
-
-Ontdek hoe u [Log Analytics-weergaven voor activiteitenlogboeken van Azure AD installeert en gebruikt](howto-install-use-log-analytics-views.md). 
-
+* **Inrichtings analyse**: deze [werkmap](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) bevat rapporten met betrekking tot het controleren van inrichtings activiteiten, zoals het aantal nieuwe gebruikers dat is ingericht en het inrichten van fouten, het aantal gebruikers dat is bijgewerkt en de mislukte update en het aantal gebruikers dat de inrichting heeft en de bijbehorende fouten.    
+* **Gebeurtenissen voor aanmeldingen**: deze werkmap bevat de meest relevante rapporten met betrekking tot het controleren van de aanmeldings activiteit, zoals aanmeldingen per toepassing, gebruiker, apparaat en een samen vatting van het aantal aanmeldingen in de loop van de tijd.
+* **Inzichten**op basis van voorwaardelijke toegang: met de Insights- [werkmap](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) voor voorwaardelijke toegang kunt u de gevolgen van het beleid voor voorwaardelijke toegang in uw organisatie in de loop van de tijd begrijpen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

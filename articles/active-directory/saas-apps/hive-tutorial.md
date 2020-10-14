@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6050b9f4a14f39245c7424f47dae081e9efc6ff1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544074"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826143"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Hive
 
@@ -147,11 +147,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op uw **User Profile** en vervolgens op **Your workspace**.
 
-    ![Configuratie van Hive](./media/hive-tutorial/configure1.png)
+    ![Schermafbeelding met de Hive-website met Your workspace geselecteerd in het menu.](./media/hive-tutorial/configure1.png)
 
 1. Klik op **Auth** en voer de volgende stappen uit:
 
-    ![Configuratie van Hive](./media/hive-tutorial/configure2.png)
+    ![Schermafbeelding met de pagina Auth waar u de beschreven taken kunt uitvoeren.](./media/hive-tutorial/configure2.png)
 
     a. Kopieer de waarde voor **Your Workspace ID is** en voeg deze toe aan de **aanmeldings-URL** en **antwoord-URL** in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
