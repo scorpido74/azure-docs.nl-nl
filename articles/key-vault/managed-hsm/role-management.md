@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6654b97f914ce4c1e3e55d38f47bd5bde0a4891e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992261"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818023"
 ---
 # <a name="managed-hsm-role-management"></a>Rolbeheer van beheerde HSM
 
@@ -52,7 +52,7 @@ Zie [Aanmelden met de Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cl
 
 ### <a name="assign-roles-for-all-keys"></a>Rollen toewijzen voor alle sleutels
 
-Gebruik de opdracht `az keyvault role assignment create` om de rol **Crypto Officer van beheerde HSM** toe te wijzen aan de gebruiker die wordt geïdentificeerd door de user principal name **user2@contoso.com-** voor alle **sleutels** (bereik `/keys`) in ContosoHSM.
+Gebruik de opdracht `az keyvault role assignment create` om de rol **Crypto Officer van beheerde HSM** toe te wijzen aan de gebruiker die wordt geïdentificeerd door de naam voor de user principal name **user2\@contoso.com** voor alle **sleutels** (bereik `/keys`) in ContosoHSM.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>Rol toewijzen voor een specifieke sleutel
 
-Gebruik de opdracht `az keyvault role assignment create` om de rol **Crypto Officer van beheerde HSM** toe te wijzen aan de gebruiker die wordt geïdentificeerd door de user principal name **user2@contoso.com** voor een specifieke sleutel met de naam **myrsakey**.
+Gebruik de opdracht `az keyvault role assignment create` om de rol **Crypto Officer van beheerde HSM** toe te wijzen aan de gebruiker die wordt geïdentificeerd door de naam voor de user principal **user2\@contoso.com** voor een specifieke sleutel met de naam **myrsakey**.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>Een roltoewijzing verwijderen
 
-Gebruik de opdracht `az keyvault role assignment delete` om de rol **Crypto Officer van beheerde HSM** die is toegewezen aan de gebruiker **user2@contoso.com** voor de sleutel **myrsakey2** te verwijderen.
+Gebruik de opdracht `az keyvault role assignment delete` om de rol **Crypto Officer van beheerde HSM** die is toegewezen aan de gebruiker **user2\@contoso.com** voor de sleutel **user2contoso** te verwijderen.
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2

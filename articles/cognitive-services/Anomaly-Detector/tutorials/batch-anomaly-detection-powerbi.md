@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8e73ed8ac4712e84a900dcd85dbc8d756ccbdd62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905781"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660952"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelfstudie: Afwijkingen visualiseren met batchgewijs detecteren en Power BI
 
@@ -56,7 +56,7 @@ Power BI converteert de tijdstempels in de eerste kolom naar het gegevenstype `D
 
 Klik in de Power Query-editor op het lint **Transformeren**. Open in de groep **Alle kolommen** het vervolgkeuzemenu **Gegevenstype:** en selecteer **Tekst**.
 
-![Een afbeelding van het gegevensbronscherm van Navigator in Power BI](../media/tutorials/data-type-drop-down.png)
+![Een afbeelding van de vervolgkeuzelijst Gegevenstype](../media/tutorials/data-type-drop-down.png)
 
 Wanneer u een bericht krijgt over het wijzigen van het kolomtype, klikt u op **Huidige vervangen**. Klik daarna op **Sluiten en toepassen** of  **Toepassen** op het lint **Start**.
 
@@ -66,7 +66,7 @@ Als u het gegevensbestand wilt opmaken en verzenden naar de Anomaly Detector-API
 
 Zorg ervoor dat de nieuwe query is geselecteerd en klik op **Geavanceerde editor**.
 
-![Een afbeelding van de knop Geavanceerde editor in Power BI](../media/tutorials/advanced-editor-screen.png)
+![Een afbeelding van het scherm Geavanceerde editor](../media/tutorials/advanced-editor-screen.png)
 
 Gebruik in de Geavanceerde editor het volgende Power Query M-fragment om de kolommen op te halen uit de tabel en naar de API te verzenden. Daarna maakt de query een tabel op basis van het JSON-antwoord en retourneert deze. Vervang de variabele `apiKey` door de geldige Anomaly Detector-API-sleutel en `endpoint` door uw eindpunt. Nadat u de query hebt ingevoerd in de Geavanceerde editor, klikt u op **Gereed**.
 
@@ -80,7 +80,7 @@ Gebruik in de Geavanceerde editor het volgende Power Query M-fragment om de kolo
     jsonbody    = "{ ""Granularity"": ""daily"", ""Sensitivity"": 95, ""Series"": "& jsontext &" }",
     bytesbody   = Text.ToBinary(jsonbody),
     headers     = [#"Content-Type" = "application/json", #"Ocp-Apim-Subscription-Key" = apikey],
-    bytesresp   = bytesresp  = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
+    bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
@@ -114,7 +114,7 @@ Gebruik in de Geavanceerde editor het volgende Power Query M-fragment om de kolo
 
 Roep de query aan op uw gegevensblad door `Sheet1` onder **Parameter invoeren** te selecteren en op **Aanroepen** te klikken.
 
-![Een afbeelding van de knop Geavanceerde editor](../media/tutorials/invoke-function-screenshot.png)
+![Een afbeelding van de functie Aanroepen](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>Privacy en verificatie van gegevensbronnen
 
@@ -148,11 +148,11 @@ Voeg de volgende velden uit de **Aangeroepen functie** toe aan het veld **Waarde
 * LowerMargins
 * ExpectedValues
 
-![Een afbeelding van het scherm voor een nieuwe snelle meting](../media/tutorials/chart-settings.png)
+![Een afbeelding van de grafiekinstellingen](../media/tutorials/chart-settings.png)
 
 Nadat u de velden hebt toegevoegd, klikt u op het diagram en past u het formaat aan om alle gegevenspunten weer te geven. Uw grafiek ziet er ongeveer uit als de volgende schermopname:
 
-![Een afbeelding van het scherm voor een nieuwe snelle meting](../media/tutorials/chart-visualization.png)
+![Een afbeelding van de kaartvisualisatie](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>Afwijkende gegevenspunten weergeven
 
@@ -162,15 +162,15 @@ Klik aan de rechterkant van het Power BI-venster onder het deelvenster **VELDEN*
 
 Selecteer op het scherm dat wordt weergegeven **Gefilterde waarde** als de berekening. Stel **Basiswaarde** in op `Sum of Value`. Sleep `IsAnomaly` vervolgens van de velden **Aangeroepen functie** naar **Filter**. Selecteer `True` in het vervolgkeuzemenu **Filter**.
 
-![Een afbeelding van het scherm voor een nieuwe snelle meting](../media/tutorials/new-quick-measure-2.png)
+![Een tweede afbeelding van het scherm voor een nieuwe snelle meting](../media/tutorials/new-quick-measure-2.png)
 
 Nadat u op **OK** hebt geklikt, hebt u het veld `Value for True` onder aan de lijst met uw velden. Klik er met de rechtermuisknop op en wijzig de naam ervan in **Afwijking**. Voeg het toe aan de **Waarden** van de grafiek. Selecteer vervolgens het hulpprogramma voor **Opmaak** en stel het type X-as in op **Categorisch**.
 
-![Een afbeelding van het scherm voor een nieuwe snelle meting](../media/tutorials/format-x-axis.png)
+![Een afbeelding van de opmaak voor de X-as](../media/tutorials/format-x-axis.png)
 
 Pas kleuren toe op uw grafiek door te klikken op het hulpprogramma voor **Opmaak** en **Gegevenskleuren**. Uw grafiek moet er ongeveer als volgt uitzien:
 
-![Een afbeelding van het scherm voor een nieuwe snelle meting](../media/tutorials/final-chart.png)
+![Een afbeelding van de laatste grafiek](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

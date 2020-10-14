@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: bca696cc633a1d2a4fd64180135bb4b1e25f801c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 953b1d766788092564ae32f6c0ab1fb3e57c492f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540576"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713892"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met ARC Facilities
 
@@ -84,15 +84,15 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. ARC Facilities-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met het dialoogvenster Gebruikerskenmerken, waarin het pictogram Bewerken is gemarkeerd.](common/edit-attribute.png)
 
 1. Bovendien verwacht de ARC Facilities-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Voer in het gedeelte **Gebruikerskenmerken en -claims** in het dialoogvenster **Groepsclaims (preview)** de volgende stappen uit:
 
     a. Klik op de **pen** naast **Groepen die zijn geretourneerd in claim**.
 
-    ![image](./media/arc-facilities-tutorial/config01.png)
+    ![Schermopname van User Attributes & Claims (Gebruikerskenmerken en claims) met pen naast Groups returned in claim (In claim geretourneerde groepen) geselecteerd.](./media/arc-facilities-tutorial/config01.png)
 
-    ![image](./media/arc-facilities-tutorial/config02.png)
+    ![Schermopname met Group Claims met All groups en Group I D geselecteerd en een bijschrift bij de knop Save.](./media/arc-facilities-tutorial/config02.png)
 
     b. Selecteer **Alle groepen** in de lijst met keuzerondjes.
 

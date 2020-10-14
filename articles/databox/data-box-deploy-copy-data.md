@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053538"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766318"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Selecteer **SMB** om de toegangsreferenties op te halen voor de shares die aan uw opslagaccount zijn gekoppeld. 
 
-    ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![Toegangsreferenties voor SMB-shares ophalen](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. Kopieer in het dialoogvenster Verbinding maken met share en gegevens kopiëren de **Gebruikersnaam** en het **Wachtwoord** voor de share. Selecteer **OK**.
     
-    ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![Gebruikersnaam en wachtwoord voor een share ophalen](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. Om vanaf uw hostcomputer toegang te krijgen tot de shares die zijn gekoppeld aan uw opslagaccount (*utsac1* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
 
@@ -97,11 +97,11 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
 4. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>` op. Selecteer **OK** om Verkenner te openen.
     
-    ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![Verbinding maken met share via Verkenner](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     Als het goed is, worden de shares nu weergegeven als mappen.
     
-    ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![Shares weergegeven in Verkenner](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Nadat u verbinding met de Data Box-shares hebt gemaakt, moet u de gegevens kopiëren. Neem de volgende punten door voordat u gegevens gaat kopiëren:
 
 * Zorg dat u de gegevens kopieert naar shares die overeenkomen met de juiste gegevensindeling. U moet bijvoorbeeld de blok-blobgegevens naar de share voor blok-blobs kopiëren. Kopieer de VHD's naar pagina-blob. Als de gegevensindeling niet overeenkomt met het betreffende sharetype, zal het uploaden van gegevens naar Azure op een later tijdstip mislukken.
-* Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die worden vermeld in de [limieten voor Azure-opslag en Data Box](data-box-limits.md).
+* Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die worden vermeld in de [limieten voor Azure-opslagaccounts](data-box-limits.md#azure-storage-account-size-limits).
 * Als de gegevens die door Data Box worden geüpload gelijktijdig door andere toepassingen buiten Data Box worden geüpload, kan dit tot fouten voor de uploadtaak en beschadigde gegevens leiden.
 * We raden aan dat:
   * U niet zowel SMB als NFS tegelijkertijd gebruikt.
@@ -225,15 +225,15 @@ Ga voor meer informatie over opdrachten voor Robocopy naar [Robocopy en een paar
 
 Als er fouten zijn tijdens het kopieerproces, krijgt u een melding.
 
-![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-1.png)
+![Een melding over een fout tijdens het kopieerproces](media/data-box-deploy-copy-data/view-errors-1.png)
 
 Selecteer **Lijst met problemen downloaden**.
 
-![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-2.png)
+![Fouten opgetreden tijdens kopieerproces downloaden en bekijken 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Open de lijst om de details van de fout weer te geven en selecteer de oplossings-URL om de aanbevolen oplossing weer te geven.
 
-![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-3.png)
+![Fouten opgetreden tijdens kopieerproces downloaden en bekijken 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 

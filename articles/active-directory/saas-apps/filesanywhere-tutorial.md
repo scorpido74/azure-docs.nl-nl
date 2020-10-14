@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 072c02401a5d1ef49a3f25828f5b60fa8504d2ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c62967950d9f6d9ba9e3578357f65cc4988412c2
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555107"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Zelfstudie: Azure Active Directory-integratie met FilesAnywhere
 
@@ -101,7 +101,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met FilesAnywhere moet u
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over eenmalige aanmelding bij het FilesAnywhere-domein en FilesAnywhere-URL's](common/both-replyurl.png)
+    ![Schermopname met de sectie "Standaard S A M L-configuratie" met het veld "Antwoord-U R L" en de knop "Opslaan" geselecteerd.](common/both-replyurl.png)
 
     In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
@@ -116,7 +116,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met FilesAnywhere moet u
 
 6. In de FilesAnywhere-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram Bewerken om de kenmerken toe te voegen.
 
-    ![image](common/edit-attribute.png)
+    ![Schermopname met de sectie 'Gebruikerskenmerken' met de knop 'Bewerken' geselecteerd.](common/edit-attribute.png)
 
     Voordat gebruikers zich kunnen aanmelden bij FilesAnywhere, moeten zij de waarde van het kenmerk **clientid** verkrijgen van het [team van FilesAnywhere](mailto:support@FilesAnywhere.com). U moet het kenmerk "Client Id" toevoegen met de unieke waarde die is geleverd door FilesAnywhere.
 
@@ -128,7 +128,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met FilesAnywhere moet u
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![Schermopname van het dialoogvenster Gebruikersclaims met Nieuwe claim toevoegen en Opslaan geselecteerd.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

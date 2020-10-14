@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542680"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740357"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met Britive
 
@@ -129,11 +129,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Pictogram beheerdersinstellingen** en selecteer **Beveiliging**.
 
-    ![Configuratie Britive](./media/britive-tutorial/configure1.png)
+    ![Schermopname van de Britive-website met Settings en Security geselecteerd.](./media/britive-tutorial/configure1.png)
 
 1. Selecteer **SSO-configuratie** en voer de volgende stappen uit:
 
-    ![Configuratie Britive](./media/britive-tutorial/configure2.png)
+    ![Schermopname met de pagina S S O-configuratie waarop u de informatie voor deze stap kunt invoeren.](./media/britive-tutorial/configure2.png)
 
     a. Kopieer de waarde van de **Doelgroep-/entiteits-ID** en plak deze in het tekstvak voor de **id (entiteits-ID)** in de sectie **Standaard SAML-configuratie** in Azure Portal.
 
@@ -147,15 +147,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Pictogram beheerdersinstellingen** en selecteer **Gebruikersadministratie**.
 
-    ![Configuratie Britive](./media/britive-tutorial/user1.png)
+    ![Schermopname van de Britive-website met Settings en User Administration geselecteerd.](./media/britive-tutorial/user1.png)
 
 1. Klik op **GEBRUIKER TOEVOEGEN**.
 
-    ![Configuratie Britive](./media/britive-tutorial/user2.png)
+    ![Schermopname van de knop ADD USER.](./media/britive-tutorial/user2.png)
 
 1. Vul alle nodige details van de gebruiker in volgens de behoeften van uw organisatie en klik op **GEBRUIKER TOEVOEGEN**.
 
-    ![Configuratie Britive](./media/britive-tutorial/user3.png)
+    ![Schermopname met de pagina ADD USER waar u gegevens van een gebruikers invoert.](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen
 

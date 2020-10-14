@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550243"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Zelfstudie: Azure Active Directory-integratie met Attendance Management Services
 
@@ -128,11 +128,11 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met Attendance
 
 1. Klik op **SAML-verificatie** in de sectie **Beveiligingsbeheer**.
 
-    ![Attendance Management Services Configuratie](./media/attendancemanagementservices-tutorial/user1.png)
+    ![Schermopname met SAML-verificatie geselecteerd op een pagina met niet-Latijnse tekens.](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. Voer de volgende stappen uit:
 
-    ![Attendance Management Services Configuratie](./media/attendancemanagementservices-tutorial/user2.png)
+    ![Schermopname van het venster waarin u de taken kunt uitvoeren die in deze stap worden beschreven.](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. Selecteer **SAML-verificatie gebruiken**.
 
@@ -206,15 +206,15 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Attendance Manageme
 
 1. Klik op **Gebruikersbeheer** in de sectie **Beveiligingsbeheer**.
 
-    ![Werknemer toevoegen](./media/attendancemanagementservices-tutorial/user5.png)
+    ![Schermopname met Gebruikersbeheer geselecteerd op een pagina met niet-Latijnse tekens.](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. Klik op **Nieuwe regels aanmelding**.
 
-    ![Werknemer toevoegen](./media/attendancemanagementservices-tutorial/user3.png)
+    ![Schermopname met plusteken geselecteerd.](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. Voer in de sectie **OBCiD-gegevens** de volgende stappen uit:
 
-    ![Werknemer toevoegen](./media/attendancemanagementservices-tutorial/user4.png)
+    ![Schermopname van het venster waarin u de beschreven taken kunt uitvoeren.](./media/attendancemanagementservices-tutorial/user4.png)
 
     a. Typ in het tekstvak **OBCiD** het e-mailadres van de gebruiker, bijvoorbeeld `BrittaSimon\@contoso.com`.
 

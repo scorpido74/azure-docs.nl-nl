@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93d13023dfda8164bf0d327bee6106f9803e1bf7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555733"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775134"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Zelfstudie: Dropbox Business integreren met Azure Active Directory
 
@@ -145,27 +145,27 @@ In dit gedeelte hebt u Britta Simon in staat gesteld gebruik te maken van Azure-
 
 3. Als u Dropbox Business handmatig wilt instellen, open dan een nieuw browservenster en ga naar uw Dropbox Business-tenant en meld u aan bij uw Dropbox Business-tenant. en voer de volgende stappen uit:
 
-    ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/ic769509.png "Eenmalige aanmelding configureren")
+    ![Schermopname met de pagina voor het aanmelden bij Dropbox Business.](./media/dropboxforbusiness-tutorial/ic769509.png "Eenmalige aanmelding configureren")
 
 4. Klik op het **Gebruikerspictogram** en selecteer het tabblad **Instellingen**.
 
-    ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/configure1.png "Eenmalige aanmelding configureren")
+    ![Schermopname met de actie "USER ICON" en "Settings" geselecteerd.](./media/dropboxforbusiness-tutorial/configure1.png "Eenmalige aanmelding configureren")
 
 5. Klik in het navigatievenster aan de linkerkant op **Beheerconsole**.
 
-    ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/configure2.png "Eenmalige aanmelding configureren")
+    ![Schermopname met "Admin console" geselecteerd.](./media/dropboxforbusiness-tutorial/configure2.png "Eenmalige aanmelding configureren")
 
 6. Klik in de **Beheerconsole** op **Instellingen** in het navigatievenster links.
 
-    ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/configure3.png "Eenmalige aanmelding configureren")
+    ![Schermopname met "Settings" geselecteerd.](./media/dropboxforbusiness-tutorial/configure3.png "Eenmalige aanmelding configureren")
 
 7. Selecteer de optie **Eenmalige aanmelding** in het gedeelte **Verificatie**.
 
-    ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/configure4.png "Eenmalige aanmelding configureren")
+    ![Schermopname met de sectie "Authentication" met "Single sign-on" geselecteerd.](./media/dropboxforbusiness-tutorial/configure4.png "Eenmalige aanmelding configureren")
 
 8. Voer in het gedeelte **Eenmalige aanmelding** de volgende stappen uit:  
 
-    ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/configure5.png "Eenmalige aanmelding configureren")
+    ![Schermopname met de configuratie-instellingen voor eenmalige aanmelding.](./media/dropboxforbusiness-tutorial/configure5.png "Eenmalige aanmelding configureren")
 
     a. Selecteer de optie **Vereist** in de vervolgkeuzelijst voor de **Eenmalige aanmelding**.
 
