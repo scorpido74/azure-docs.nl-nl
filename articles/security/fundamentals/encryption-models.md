@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645755"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019729"
 ---
 # <a name="data-encryption-models"></a>Gegevensversleutelingmodellen
 
@@ -44,7 +44,7 @@ Er zijn drie scenario's voor versleuteling aan server zijde:
 
 Versleutelings modellen aan de server zijde verwijzen naar versleuteling die wordt uitgevoerd door de Azure-service. In dat model voert de resource provider de bewerkingen versleutelen en ontsleutelen uit. Azure Storage kunnen bijvoorbeeld gegevens ontvangen in bewerkingen met tekst zonder opmaak en de versleuteling en ontsleuteling intern uitvoeren. De resource provider kan gebruikmaken van versleutelings sleutels die door micro soft of door de klant worden beheerd, afhankelijk van de ingestelde configuratie.
 
-![server](./media/encryption-models/azure-security-encryption-atrest-fig3.png)
+![Server](./media/encryption-models/azure-security-encryption-atrest-fig3.png)
 
 Elk van de versleuteling aan de server zijde bij rest modellen impliceert de onderscheidende kenmerken van sleutel beheer. Dit omvat waar en hoe versleutelings sleutels worden gemaakt en opgeslagen, evenals de toegangs modellen en de procedures voor sleutel rotatie.  
 
@@ -149,7 +149,7 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | Azure Cognitive Search           | Ja                | Ja                | -                  |
 | Azure Cognitive Services         | Ja                | Ja                | -                  |
 | Azure Machine Learning           | Ja                | Ja                | -                  |
-| Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
+| Azure Machine Learning Studio (klassiek) | Ja         | Preview, RSA 2048-bits | -               |
 | Content Moderator                | Ja                | Ja                | -                  |
 | Face                             | Ja                | Ja                | -                  |
 | Taalbegrip           | Ja                | Ja                | -                  |
@@ -161,10 +161,10 @@ De Azure-Services die elk versleutelings model ondersteunen:
 | **Analyse**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | N.v.t.\*              | -                  |
 | Event Hubs                       | Ja                | Ja                | -                  |
-| Functies                        | Ja                | Ja                | -                  |
+| Functions                        | Ja                | Ja                | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
-| Azure HDInsight                  | Ja                | Alles                | -                  |
+| Azure HDInsight                  | Ja                | Alle                | -                  |
 | Azure Monitor Application Insights | Ja                | Ja                | -                  |
 | Azure Monitor Log Analytics      | Ja                | Ja                | -                  |
 | Azure Data Explorer              | Ja                | Ja                | -                  |
