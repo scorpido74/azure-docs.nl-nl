@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5a3b9160f1fb28c68bdbaa540c78b2890dbcab82
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812679"
 ---
 * U hebt een virtueel netwerk waarmee u verbinding wilt maken. Controleer of geen van de subnetten van uw on-premises netwerken overlapt met de virtuele netwerken waarmee u verbinding wilt maken. Zie de [snelstart](../articles/virtual-network/quick-create-portal.md) als u een virtueel netwerk in de Azure-portal wilt maken.
