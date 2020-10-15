@@ -4,12 +4,12 @@ description: Details van het ingebouwde initiatief voor Naleving van regelgeving
 ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 196522101cbc09a8c6a3ee12593a273e6565da88
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8c1e41036e71c91fbe4f8438c0271fb7f7db2e4a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823982"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930132"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>Details van het ingebouwde initiatief voor Naleving van regelgeving voor NIST SP 800-53 R4
 
@@ -23,7 +23,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 > [!IMPORTANT]
 > Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../overview.md)-definities.
-> Met deze beleidsregels kunt u de [naleving beoordelen](../how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsdefinities zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de nalevingsstandaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is naleving in Azure Policy slechts een gedeeltelijke weergave van uw algemene nalevingsstatus. De koppelingen tussen de beheeropties voor nalevingsdomeinen en Azure Policy definities voor deze nalevingsstandaard kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json).
+> Met deze beleidsregels kunt u de [compliance beoordelen](../how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsdefinities zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de nalevingsstandaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is naleving in Azure Policy slechts een gedeeltelijke weergave van uw algemene nalevingsstatus. De koppelingen tussen de beheeropties voor nalevingsdomeinen en Azure Policy definities voor deze nalevingsstandaard kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json).
 
 ## <a name="access-control"></a>Toegangsbeheer
 

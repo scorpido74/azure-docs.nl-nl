@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386041"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077487"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management-service gebruiken met een intern virtueel netwerk
 Met Azure Virtual Networks kunnen Azure API Management Api's beheren die niet toegankelijk zijn via internet. Er zijn een aantal VPN-technologieën beschikbaar om verbinding te maken. API Management kan in twee hoofd modi in een virtueel netwerk worden geïmplementeerd:
@@ -51,7 +51,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
 + Wanneer een API Management-service in een virtueel netwerk wordt geïmplementeerd, wordt een [lijst met poorten](./api-management-using-with-vnet.md#required-ports) gebruikt en moet deze worden geopend. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>Een API Management in een intern virtueel netwerk maken
-De API Management-service in een intern virtueel netwerk wordt gehost achter een [interne Load Balancer (klassiek)](/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Dit is de enige optie die beschikbaar is en niet kan worden gewijzigd.
+De API Management-service in een intern virtueel netwerk wordt gehost achter een [interne Load Balancer (klassiek)](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Dit is de enige optie die beschikbaar is en niet kan worden gewijzigd.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Een virtuele netwerk verbinding inschakelen met behulp van de Azure Portal
 
@@ -143,4 +143,4 @@ Lees de volgende artikelen voor meer informatie:
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags
