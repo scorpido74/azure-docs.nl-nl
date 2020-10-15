@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
-ms.openlocfilehash: e3c4beac5bd88ba0bbefa91fc83976416b24d2fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0bf7fa56ca511981820f63cd7178493a7d048e3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141071"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077504"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnostische gegevens inschakelen in azure Cloud Services met behulp van Power shell
 U kunt Diagnostische gegevens verzamelen, zoals toepassings logboeken, prestatie meter items etc. vanuit een Cloud service met de uitbrei ding Azure Diagnostics. In dit artikel wordt beschreven hoe u de Azure Diagnostics-extensie voor een Cloud service inschakelt met behulp van Power shell.  Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor de vereiste onderdelen voor dit artikel.
@@ -131,8 +131,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie voor meer informatie over het gebruik van Azure Diagnostics en andere technieken voor het oplossen van problemen, [Diagnostische gegevens inschakelen in Azure Cloud Services en virtual machines](cloud-services-dotnet-diagnostics.md).
-* Het [Configuratie schema voor diagnostische gegevens](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) bevat uitleg over de verschillende XML-configuratie opties voor de uitbrei ding van diagnostische gegevens.
-* Zie [een virtuele Windows-machine met behulp van Azure Resource Manager sjabloon maken](../virtual-machines/windows/extensions-diagnostics-template.md) voor informatie over het inschakelen van de uitbrei ding voor diagnostische gegevens voor virtual machines.
-
-
-
+* Het [Configuratie schema voor diagnostische gegevens](../azure-monitor/platform/diagnostics-extension-schema-windows.md) bevat uitleg over de verschillende XML-configuratie opties voor de uitbrei ding van diagnostische gegevens.
+* Zie [een virtuele Windows-machine met behulp van Azure Resource Manager sjabloon maken](../virtual-machines/extensions/diagnostics-template.md) voor informatie over het inschakelen van de uitbrei ding voor diagnostische gegevens voor virtual machines.

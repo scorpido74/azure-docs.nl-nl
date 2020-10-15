@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 67b855beae4ea36bf4ef7e6bb396c6b7ae1d89e3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbff4cc067ce831e9d9f69a457f348a94257e86d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874319"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076909"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -109,7 +109,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
 <a name="required-ports"> </a> Wanneer een API Management service-exemplaar wordt gehost in een VNET, worden de poorten in de volgende tabel gebruikt.
 
-| Bron/doel poort (en) | Richting          | Transport Protocol |   [Service Tags](../virtual-network/security-overview.md#service-tags) <br> Bron/doel   | Doel ( \* )                                                 | Virtual Network type |
+| Bron/doel poort (en) | Richting          | Transport Protocol |   [Service Tags](../virtual-network/network-security-groups-overview.md#service-tags) <br> Bron/doel   | Doel ( \* )                                                 | Virtual Network type |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Inkomend            | TCP                | INTERNET/VIRTUAL_NETWORK            | Client communicatie met API Management                      | Extern             |
 | */3443                     | Inkomend            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Beheer eindpunt voor Azure Portal en Power shell         | Externe & intern  |
@@ -153,7 +153,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
 + **Azure Load Balancer**: het toestaan van een inkomend verzoek van een service label `AZURE_LOAD_BALANCER` is geen vereiste voor de `Developer` SKU, omdat er slechts één reken eenheid achter wordt geïmplementeerd. Maar inkomend van [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) wordt van cruciaal belang bij het schalen naar een hogere SKU, `Premium` zoals bij het mislukken van de status test van Load Balancer, mislukt een implementatie.
 
-+ **Application Insights**: als [Azure-toepassing Insights](api-management-howto-app-insights.md) -bewaking is ingeschakeld op API Management, moeten er vanaf de Virtual Network een uitgaande verbinding met het [telemetrische eind punt](/azure/azure-monitor/app/ip-addresses#outgoing-ports) worden toegestaan. 
++ **Application Insights**: als [Azure-toepassing Insights](api-management-howto-app-insights.md) -bewaking is ingeschakeld op API Management, moeten er vanaf de Virtual Network een uitgaande verbinding met het [telemetrische eind punt](../azure-monitor/app/ip-addresses.md#outgoing-ports) worden toegestaan. 
 
 + **Verkeer naar een on-premises firewall forceren via Express route of virtueel netwerk apparaat**: een algemene klant configuratie is het definiëren van een eigen standaard route (0.0.0.0/0) die ervoor zorgt dat alle verkeer van het API Management overgedragen subnet wordt gestroomd via een on-premises firewall of een virtueel netwerk apparaat. Deze verkeers stroom invariably verbreekt de connectiviteit met Azure API Management, omdat het uitgaande verkeer on-premises of NAT zou worden geblokkeerd door een niet-herken bare set adressen die niet meer werken met verschillende Azure-eind punten. Voor de oplossing moet u een aantal dingen doen:
 
@@ -272,7 +272,7 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 * [Een Virtual Network van verschillende implementatie modellen verbinden](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [De API-Inspector gebruiken voor het traceren van aanroepen in azure API Management](api-management-howto-api-inspector.md)
 * [Veelgestelde vragen over Virtual Network](../virtual-network/virtual-networks-faq.md)
-* [Servicetags](../virtual-network/security-overview.md#service-tags)
+* [Servicetags](../virtual-network/network-security-groups-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
@@ -285,6 +285,6 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/security-overview.md
+[Network Security Group]: ../virtual-network/network-security-groups-overview.md
 [ServiceEndpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

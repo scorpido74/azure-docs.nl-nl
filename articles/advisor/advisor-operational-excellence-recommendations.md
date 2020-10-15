@@ -3,12 +3,12 @@ title: Verbeter de operationele Excellency met Advisor
 description: Gebruik Azure Advisor om uw operationele uitmuntendheid voor uw Azure-abonnementen te optimaliseren en verouderd.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258488"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077385"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Behaal de operationele uitmuntendheid met behulp van Azure Advisor
 
@@ -38,7 +38,7 @@ Als uw pool gebruikmaakt van een afgeschaft intern onderdeel, verwijdert u de gr
 
 ## <a name="repair-invalid-log-alert-rules"></a>Ongeldige regels voor logboek waarschuwingen herstellen
 
-Azure Advisor detecteert waarschuwings regels waarvoor ongeldige query's zijn opgegeven in de sectie voor waarde. U kunt waarschuwings regels voor logboeken maken in Azure Monitor en ze gebruiken om analyse query's uit te voeren op basis van opgegeven intervallen. De resultaten van de query bepalen of er een waarschuwing moet worden gegeven. Analytische query's kunnen na verloop van tijd ongeldig worden vanwege wijzigingen in resources, tabellen of opdrachten waarnaar wordt verwezen. Advisor raadt u aan de query in de waarschuwings regel te corrigeren om te voor komen dat deze automatisch wordt uitgeschakeld en de bewakings dekking van uw resources in azure te controleren. [Meer informatie over het oplossen van waarschuwings regels.](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor detecteert waarschuwings regels waarvoor ongeldige query's zijn opgegeven in de sectie voor waarde. U kunt waarschuwings regels voor logboeken maken in Azure Monitor en ze gebruiken om analyse query's uit te voeren op basis van opgegeven intervallen. De resultaten van de query bepalen of er een waarschuwing moet worden gegeven. Analytische query's kunnen na verloop van tijd ongeldig worden vanwege wijzigingen in resources, tabellen of opdrachten waarnaar wordt verwezen. Advisor raadt u aan de query in de waarschuwings regel te corrigeren om te voor komen dat deze automatisch wordt uitgeschakeld en de bewakings dekking van uw resources in azure te controleren. [Meer informatie over het oplossen van waarschuwings regels.](../azure-monitor/platform/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>Azure Policy aanbevelingen gebruiken
 
@@ -55,7 +55,7 @@ Azure Policy is een service in azure die u kunt gebruiken om beleid te maken, to
 **Schakel *een tag overnemen van resource groepen*in.** Met dit beleid kunt u de opgegeven tag en waarde van de bovenliggende resourcegroep toevoegen of vervangen wanneer een resource wordt gemaakt of bijgewerkt. U kunt bestaande resources herstellen door een herstel taak te activeren.
 
 ## <a name="no-validation-environment-enabled"></a>Geen validatieomgeving ingeschakeld
-Azure Advisor bepaalt dat er geen validatie omgeving is ingeschakeld in het huidige abonnement. Wanneer u uw hostgroepen maakt, hebt u \" Nee \" voor \" validatie omgeving geselecteerd \" op het tabblad Eigenschappen. Als er ten minste één hostgroep is waarvoor een validatie omgeving is ingeschakeld, zorgt u ervoor dat de bedrijfs continuïteit via Windows Virtual Desktop service-implementaties met vroegtijdige detectie van potentiële problemen. [Meer informatie](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+Azure Advisor bepaalt dat er geen validatie omgeving is ingeschakeld in het huidige abonnement. Wanneer u uw hostgroepen maakt, hebt u \" Nee \" voor \" validatie omgeving geselecteerd \" op het tabblad Eigenschappen. Als er ten minste één hostgroep is waarvoor een validatie omgeving is ingeschakeld, zorgt u ervoor dat de bedrijfs continuïteit via Windows Virtual Desktop service-implementaties met vroegtijdige detectie van potentiële problemen. [Meer informatie](../virtual-desktop/create-validation-host-pool.md)
 
 ## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Zorgen dat de productieomgeving (niet-validatie) profiteert van stabiele functionaliteit
 Azure Advisor detecteert dat er voor een of meer hostgroepen een validatie omgeving is ingeschakeld. Om validatie omgevingen het beste te kunnen gebruiken, moet u ten minste één, maar nooit meer dan de helft van uw hostgroepen in de validatie omgeving hebben. Als u een goede balans hebt tussen uw hostgroepen waarvoor de validatie omgeving is ingeschakeld en de groepen waarvoor deze functie is uitgeschakeld, kunt u het beste profiteren van de voor delen van de implementaties met meerdere fases die door Windows Virtual Desktop worden aangeboden met bepaalde updates. Om dit probleem op te lossen, opent u de eigenschappen van uw hostgroep en selecteert \" \" u niet naast de \" instelling validatie omgeving \" .
