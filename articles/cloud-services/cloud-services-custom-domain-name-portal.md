@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092725"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069922"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Een aangepaste domeinnaam configureren voor een Azure-cloudservice
 Wanneer u een Cloud service maakt, wijst Azure deze toe aan een subdomein van **cloudapp.net**. Als uw Cloud service bijvoorbeeld de naam Contoso heeft, hebben uw gebruikers toegang tot uw toepassing op een URL, zoals `http://contoso.cloudapp.net` . Azure wijst ook een virtueel IP-adres toe.
@@ -119,7 +119,7 @@ De volgende A-record stuurt bijvoorbeeld alle verkeer van **contoso.com** naar *
 In dit voor beeld ziet u hoe u een A-record maakt voor het hoofd domein. Als u een invoer van joker tekens wilt maken voor alle subdomeinen, voert u ' * * * * * * ' in als het subdomein.
 
 > [!WARNING]
-> IP-adressen in azure zijn standaard dynamisch. U wilt waarschijnlijk een [gereserveerd IP-adres](../virtual-network/virtual-networks-reserved-public-ip.md) gebruiken om ervoor te zorgen dat uw IP-adres niet wordt gewijzigd.
+> IP-adressen in azure zijn standaard dynamisch. U wilt waarschijnlijk een [gereserveerd IP-adres](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) gebruiken om ervoor te zorgen dat uw IP-adres niet wordt gewijzigd.
 > 
 > 
 
@@ -138,6 +138,3 @@ In dit voor beeld ziet u hoe u een A-record maakt voor het hoofd domein. Als u e
 [Azure-portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

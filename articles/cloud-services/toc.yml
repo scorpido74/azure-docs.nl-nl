@@ -194,7 +194,7 @@
     - name: Leertraject
       href: /learn/paths/azure-fundamentals/
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: Prijscalculator

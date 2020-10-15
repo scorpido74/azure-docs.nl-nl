@@ -4,10 +4,10 @@ description: Implementeer stappen voor het blauwdrukvoorbeeld IRS 1075 (Rev.11-2
 ms.date: 08/19/2020
 ms.topic: sample
 ms.openlocfilehash: 5f2c58b69519f27f759ddfc79d3333e55ed4eb54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653729"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Het blauwdrukvoorbeeld IRS 1075 implementeren
@@ -31,10 +31,10 @@ Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgevi
 
 1. Zoek het blauwdrukvoorbeeld **IRS 1075 (Rev.11-2016)** onder _Andere voorbeelden_ en selecteer **Dit voorbeeld gebruiken**.
 
-1. Voer de _basisinstellingen_ van het blauwdrukvoorbeeld in:
+1. Voer de _Basisinstellingen_ van het blauwdrukvoorbeeld in:
 
    - **Naam van blauwdruk**: Geef een naam op voor uw kopie van het blauwdrukvoorbeeld IRS 1075 (Rev.11-2016).
-   - **Definitielocatie**: Gebruik het beletselteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
+   - **Definitielocatie**: Gebruik het weglatingsteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
 
 1. Selecteer het tabblad _Artefacten_ boven aan de pagina of kies **Volgende: Artefacten** onder aan de pagina.
 
@@ -48,7 +48,7 @@ Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is ge
 
 1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
 
-1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **Notities over wijzigingen** op, zoals 'Eerste gepubliceerde versie op basis van het blauwdrukvoorbeeld NIST SP 800-53 R4'. Selecteer vervolgens **Publiceren** onderaan de pagina.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **Notities over wijzigingen** op, zoals 'Eerste gepubliceerde versie op basis van het blauwdrukvoorbeeld NIST SP 800-53 R4'. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
 ## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
 

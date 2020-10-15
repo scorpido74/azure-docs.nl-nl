@@ -2,17 +2,17 @@
 title: 'Azure AD-verificatie configureren voor de VPN-verbinding van de gebruiker: Virtual WAN'
 description: Meer informatie over het configureren van Azure Active Directory-verificatie voor gebruikers-VPN.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832515"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079170"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory-verificatie voor gebruikers-VPN configureren
 
@@ -22,15 +22,14 @@ Voor dit soort verbinding moet een client op de clientcomputer worden geconfigur
 
 In dit artikel leert u het volgende:
 
-> [!div class="checklist"]
-> * Een virtueel WAN maken
-> * Een virtuele hub maken
-> * Een VPN-gebruikers configuratie maken
-> * Een VPN-profiel voor virtuele WAN-gebruikers downloaden
-> * VPN-configuratie voor gebruiker Toep assen op een virtuele hub
-> * Een VNet verbinden met een virtuele hub
-> * De configuratie van de gebruiker VPN-client downloaden en Toep assen
-> * Uw virtuele WAN weer geven
+* Een virtueel WAN maken
+* Een virtuele hub maken
+* Een VPN-gebruikers configuratie maken
+* Een VPN-profiel voor virtuele WAN-gebruikers downloaden
+* VPN-configuratie voor gebruiker Toep assen op een virtuele hub
+* Een VNet verbinden met een virtuele hub
+* De configuratie van de gebruiker VPN-client downloaden en Toep assen
+* Uw virtuele WAN weer geven
 
 ![Virtual WAN-diagram](./media/virtual-wan-about/virtualwanp2s.png)
 

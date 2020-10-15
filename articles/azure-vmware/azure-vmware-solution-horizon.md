@@ -3,12 +3,12 @@ title: Distributie op Azure VMware-oplossing implementeren
 description: Meer informatie over het implementeren van VMware horizon op de Azure VMware-oplossing.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729046"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078881"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distributie op Azure VMware-oplossing implementeren 
 
@@ -197,11 +197,14 @@ Werk samen met uw VMware EUC-verkoop team om de Cloud kosten te bepalen op basis
 
 Op basis van de standaard implementatie architectuur bestaan de VM-Vm's uit de verbindings servers, UAGs, app-volume managers en worden geïmplementeerd in de Azure-Virtual Network van de klant. Extra Azure native instanties zijn vereist ter ondersteuning van de services voor hoge Beschik baarheid (HA), micro soft SQL of micro soft Active Directory (AD) in Azure. Hier volgt een lijst met Azure-exemplaren op basis van een voor beeld van een implementatie van 2.000-desktop. 
 
+>[!NOTE]
+>Als u storingen wilt kunnen afhandelen, implementeert u een andere server dan is vereist voor het aantal verbindingen (n + 1). Het mini maal aanbevolen aantal exemplaren van de verbindings server, het UAG-en app-volume beheer is 2, en het vereiste aantal zal toenemen op basis van de hoeveelheid gebruikers die de omgeving ondersteunt.  Eén verbindings server ondersteunt Maxi maal 4.000 sessies, hoewel 2.000 wordt aanbevolen als best practice. Maxi maal zeven verbindings servers worden ondersteund per pod met een aanbeveling van 12.000 actieve sessies in totaal per pod. Zie het Knowledge Base-artikel VMware horizon-KB- [formaat limieten en aanbevelingen](https://kb.vmware.com/s/article/2150348)voor de meest actuele aantallen.
+
 | Onderdeel van de horizon-infra structuur | Azure-exemplaar | Aantal exemplaren vereist (voor 2.000-Desk tops)    | Opmerking  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| Verbindings server                | D4sv3          | 2       | *Inclusief 1 exemplaar voor HA*             |    
-| UAG                              | F2sv2          | 2       | *Inclusief 1 exemplaar voor HA*             |
-| App-volume beheer              | D4sv3          | 2       | *Inclusief 1 exemplaar voor HA*             |
+| Verbindings server                | D4sv3          | 2       | *Zie de opmerking hierboven*                         |    
+| UAG                              | F2sv2          | 2       | *Zie de opmerking hierboven*                         |
+| App-volume beheer              | D4sv3          | 2       | *Zie de opmerking hierboven*                         |
 | Cloud connector                  | D4sv3          | 1       |                                          |
 | AD-controller                    | D4sv3          | 2       | *Optie voor het gebruik van MSFT AD service op Azure* |
 | MS-SQL Database                  | D4sv3          | 2       | *Optie voor het gebruik van SQL service op Azure*     |
