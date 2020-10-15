@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 182195190fed70b46185f98f595de6b6c32bbffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 515a6f7175aee23c6f720258b7fdaefe76b3b5d6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80619388"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077946"
 ---
 # <a name="working-remotely-using-azure-bastion"></a>Extern werken met Azure Bastion
 
@@ -26,10 +26,10 @@ Azure Bastion speelt een rol in de ondersteuning van externe werk scenario's doo
 
 Met name Azure Bastion biedt een veilige en naadloze RDP/SSH-verbinding met virtuele machines in het virtuele Azure-netwerk, direct in het Azure Portal, zonder het gebruik van een openbaar IP-adres. Zie [Wat is Azure Bastion](bastion-overview.md)? voor meer informatie over de Azure Bastion-architectuur en de belangrijkste functies.
 
-Azure Bastion wordt geïmplementeerd per virtueel netwerk, wat betekent dat bedrijven één Azure Bastion kunnen configureren en beheren om snel externe gebruikers toegang te bieden tot virtuele machines in een virtueel Azure-netwerk. Zie [een bastion-host maken](bastion-create-host-portal.md)voor meer informatie over het maken en beheren van Azure Bastion.
+Azure Bastion wordt geïmplementeerd per virtueel netwerk, wat betekent dat bedrijven één Azure Bastion kunnen configureren en beheren om snel externe gebruikers toegang te bieden tot virtuele machines in een virtueel Azure-netwerk. Zie [een bastion-host maken](./tutorial-create-host-portal.md)voor meer informatie over het maken en beheren van Azure Bastion.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Azure-Bastion configureren met behulp van de [Azure Portal](bastion-create-host-portal.md), [Power shell](bastion-create-host-powershell.md)of Azure cli.
+* Azure-Bastion configureren met behulp van de [Azure Portal](./tutorial-create-host-portal.md), [Power shell](bastion-create-host-powershell.md)of Azure cli.
 
 * Lees de [Veelgestelde vragen over Bastion](bastion-faq.md) voor meer informatie.

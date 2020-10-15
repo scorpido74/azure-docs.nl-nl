@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713772"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077436"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-beveiligings basislijn voor API Management
 
@@ -100,7 +100,7 @@ Gebruik Azure Security Center geïntegreerde bedreigings informatie om communica
 
 * [Azure DDoS Protection Standard configureren](../virtual-network/manage-ddos-protection.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/azure-defender.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -588,7 +588,7 @@ Configureer geavanceerde bewaking met API Management met behulp van het `log-to-
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Daarnaast kunt u met Azure Policy beperkingen opleggen aan het type resources da
 
 * [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](../governance/management-groups/create.md)
+* [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 * [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 * [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1114,7 +1114,7 @@ Beheerde identiteiten kunnen worden gebruikt voor het verkrijgen van certificate
 
 Schakel Soft-Delete in Key Vault in om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 
