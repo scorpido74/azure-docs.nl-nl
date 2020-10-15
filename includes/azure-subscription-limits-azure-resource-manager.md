@@ -1,5 +1,5 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 description: bestand opnemen
 services: azure-resource-manager
 author: tfitzmac
@@ -9,22 +9,22 @@ ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 94fd7e692be31ba247e3342246d3940ed08ef9b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80334986"
 ---
 | Resource | Limiet |
 | --- | --- |
-| Abonnementen per Azure Active Directory Tenant | Limited. |
-| [Cobeheerders](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) per abonnement |Limited. |
-| [Resource groepen](../articles/azure-resource-manager/management/overview.md) per abonnement |980 |
-| Grootte van de Azure Resource Manager-API-aanvraag |4.194.304 bytes. |
+| Abonnementen per Azure Active Directory-tenant | Onbeperkt. |
+| [Medebeheerders](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) per abonnement |Onbeperkt. |
+| [Resourcegroepen](../articles/azure-resource-manager/management/overview.md) per abonnement |980 |
+| Aanvraaggrootte voor Azure Resource Manager API |4\.194.304 bytes. |
 | Tags per abonnement<sup>1</sup> |50 |
-| Unieke label berekeningen per abonnement<sup>1</sup> | 10.000 |
-| [Implementaties op abonnements niveau](../articles/azure-resource-manager/templates/deploy-to-subscription.md) per locatie | 800<sup>2</sup> |
+| Unieke tagberekeningen per abonnement<sup>1</sup> | 10.000 |
+| [Implementaties van abonnementsniveau](../articles/azure-resource-manager/templates/deploy-to-subscription.md) per locatie | 800<sup>2</sup> |
 
-<sup>1</sup> U kunt Maxi maal 50 Tags rechtstreeks op een abonnement Toep assen. Het abonnement kan echter een onbeperkt aantal labels bevatten die worden toegepast op resource groepen en resources binnen het abonnement. Het aantal Tags per resource of resource groep is beperkt tot 50. Resource Manager retourneert alleen een [lijst met unieke label namen en-waarden](/rest/api/resources/tags) in het abonnement wanneer het aantal Tags 10.000 of minder is. U kunt nog steeds een resource vinden op label wanneer het aantal groter is dan 10.000.  
+<sup>1</sup>U kunt maximaal 50 tags rechtstreeks op een abonnement toepassen. Het abonnement kan echter een onbeperkt aantal tags bevatten die worden toegepast op resourcegroepen en resources binnen het abonnement. Het aantal tags per resource of resourcegroep is beperkt tot 50. Resource Manager retourneert alleen een [lijst met unieke tagnamen en -waarden](/rest/api/resources/tags) in het abonnement wanneer het aantal tags 10.000 of minder is. U kunt echter nog steeds resources zoeken aan de hand van tags wanneer er meer dan 10.000 tags zijn.  
 
-<sup>2</sup> Als u de limiet van 800 implementaties bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. Als u implementaties op abonnements niveau wilt verwijderen, gebruikt u de [subsleutel](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-delete) [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) of AZ-implementatie.
+<sup>2</sup>Als u de limiet van 800 implementaties bereikt, verwijdert u implementaties die niet meer nodig zijn uit de geschiedenis. Als u implementaties op abonnementsniveau wilt verwijderen, gebruikt u [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) of [az deployment sub delete](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-delete).

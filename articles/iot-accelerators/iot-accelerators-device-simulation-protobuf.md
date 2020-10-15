@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012327"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075957"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetrie serialiseren met protocol buffers
 
@@ -40,7 +40,7 @@ Als u de stappen in deze hand leiding wilt volgen, hebt u het volgende nodig:
 * .NET core. U kunt [.net core voor Mac, Linux en Windows](https://www.microsoft.com/net/download)downloaden.
 * Postman. U kunt [postman downloaden voor Mac, Windows of Linux](https://www.getpostman.com/apps).
 * Een [IOT-hub die is geïmplementeerd in uw Azure-abonnement](../iot-hub/iot-hub-create-through-portal.md). U hebt de connection string van de IoT-hub nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.
-* Een [Cosmos DB-Data Base die is geïmplementeerd in uw Azure-abonnement](../cosmos-db/create-sql-api-dotnet.md#create-account) dat gebruikmaakt van de SQL-API en die is geconfigureerd voor [sterke consistentie](../cosmos-db/manage-account.md). U hebt de connection string van de Cosmos DB-data base nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.
+* Een [Cosmos DB-Data Base die is geïmplementeerd in uw Azure-abonnement](../cosmos-db/create-sql-api-dotnet.md#create-account) dat gebruikmaakt van de SQL-API en die is geconfigureerd voor [sterke consistentie](../cosmos-db/how-to-manage-database-account.md). U hebt de connection string van de Cosmos DB-data base nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.
 * Een [Azure-opslag account dat is geïmplementeerd in uw Azure-abonnement](../storage/common/storage-account-create.md). U hebt de connection string van het opslag account nodig om de stappen in deze hand leiding uit te voeren. U kunt de connection string ophalen via de Azure Portal.
 
 ## <a name="prepare-your-development-environment"></a>Uw ontwikkelomgeving voorbereiden

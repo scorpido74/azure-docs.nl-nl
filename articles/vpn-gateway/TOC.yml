@@ -1,10 +1,11 @@
-- name: VPN Gateway-documentatie
+- name: VPN-gatewaydocumentatie
   href: index.yml
 - name: Overzicht
   items:
     - name: Wat is VPN Gateway?
       href: vpn-gateway-about-vpngateways.md
 - name: Zelfstudies
+  expanded: true
   items:
     - name: Een VPN-gateway maken en beheren
       href: vpn-gateway-tutorial-create-gateway-powershell.md
