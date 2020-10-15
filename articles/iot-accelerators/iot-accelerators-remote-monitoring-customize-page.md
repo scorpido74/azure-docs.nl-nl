@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
-ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e54cd0e3c5b9499a3bc1a499ae4cef62c73160e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318395"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070704"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste pagina toevoegen aan de gebruikers interface van de oplossings versneller voor externe controle
 
@@ -155,7 +155,7 @@ U kunt eventueel uw lokale actieve kopie van de Web-UI koppelen aan de oplossing
 
 1. Implementeer een **basis** exemplaar van de oplossings versneller met de **PCs** -cli. Noteer de naam van uw implementatie en de referenties die u hebt ingevoerd voor de virtuele machine. Zie [implementeren met de CLI](iot-accelerators-remote-monitoring-deploy-cli.md)voor meer informatie.
 
-1. Gebruik de Azure Portal of [AZ cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om SSH-toegang tot de virtuele machine in te scha kelen die als host fungeert voor de micro Services in uw oplossing. Bijvoorbeeld:
+1. Gebruik de Azure Portal of [AZ cli](/cli/azure/install-azure-cli?view=azure-cli-latest) om SSH-toegang tot de virtuele machine in te scha kelen die als host fungeert voor de micro Services in uw oplossing. Bijvoorbeeld:
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -163,7 +163,7 @@ U kunt eventueel uw lokale actieve kopie van de Web-UI koppelen aan de oplossing
 
     Schakel SSH-toegang alleen in tijdens testen en ontwikkeling. Als u SSH inschakelt, [moet u dit zo snel mogelijk weer uitschakelen](../security/fundamentals/network-best-practices.md).
 
-1. Gebruik de Azure Portal of [AZ cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om de naam en het open bare IP-adres van uw virtuele machine te vinden. Bijvoorbeeld:
+1. Gebruik de Azure Portal of [AZ cli](/cli/azure/install-azure-cli?view=azure-cli-latest) om de naam en het open bare IP-adres van uw virtuele machine te vinden. Bijvoorbeeld:
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table

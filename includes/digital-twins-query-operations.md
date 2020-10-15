@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 450ea0b8024192f6f351b4893fe6e8e07db236f7
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 333a7ec4ae0e5c8cbc94a603e2ccf81ee92e7d48
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931972"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078456"
 ---
 ## <a name="query-language-features"></a>Functies voor query taal
 
@@ -33,6 +33,7 @@ U kunt uw query's nog verder verbeteren met de volgende bewerkingen:
   - Tijdens de preview zijn Maxi maal vijf niveaus `JOIN` toegestaan.
 * Alleen de bovenste query resultaten selecteren ( `Select TOP` operator)
 * Het aantal items in een resultatenset tellen met `Select COUNT`
+* Projecties gebruiken om te kiezen welke kolommen worden geretourneerd door een query
 * Scalaire functies gebruiken: `IS_BOOL` , `IS_DEFINED` , `IS_NULL` , `IS_NUMBER` , `IS_OBJECT` , `IS_PRIMITIVE` , `IS_STRING` , `STARTSWITH` , `ENDSWITH` .
 * Vergelijkings operatoren voor query's gebruiken: `IN` / `NIN` , `=` , `!=` , `<` , `>` , `<=` , `>=` .
 * Gebruik een combi natie ( `AND` , `OR` , `NOT` operator) van `IS_OF_MODEL` , scalaire functies en vergelijkings operators.

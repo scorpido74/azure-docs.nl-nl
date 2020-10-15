@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5178bf6955203c6a5625b941dd0102f2f4458abc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773736"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078371"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regio's en beschikbaarheidszones in Azure
 
@@ -37,7 +37,7 @@ Als u meer wilt weten over regio's en Beschikbaarheidszones in azure, kunt u de 
 
 ## <a name="regions"></a>Regio's
 
-Een regio is een set data centers die worden geïmplementeerd binnen een latentie definitie en verbonden zijn via een toegewezen regionaal netwerk met lage latentie. Azure biedt u de flexibiliteit om toepassingen te implementeren waar u behoefte aan hebt, met inbegrip van meerdere regio's voor het leveren van flexibele tolerantie. Zie [overzicht van de tolerantie pijler](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)voor meer informatie.
+Een regio is een set data centers die worden geïmplementeerd binnen een latentie definitie en verbonden zijn via een toegewezen regionaal netwerk met lage latentie. Azure biedt u de flexibiliteit om toepassingen te implementeren waar u behoefte aan hebt, met inbegrip van meerdere regio's voor het leveren van flexibele tolerantie. Zie [overzicht van de tolerantie pijler](/azure/architecture/framework/resiliency/overview)voor meer informatie.
 
 ## <a name="availability-zones"></a>Beschikbaarheidszones
 
@@ -112,7 +112,7 @@ Zoals eerder vermeld, classificeert Azure Services in drie categorieën: basis, 
 > | Service Bus | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | Data Catalog |
 > | Virtuele-machineschaalsets | Azure IoT Hub | Data Factory: Data Factory v1 |
-> | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
+> | Virtuele machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
 > | Virtual Machines: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klassiek)|
 > | Virtual Machines: Bs-Series | Azure Private Link | Microsoft Genomics |
 > | Virtual Machines: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
@@ -170,9 +170,9 @@ Er zijn geen extra kosten verbonden aan het implementeren van virtuele machines 
 - [Een virtuele machine maken](../virtual-machines/windows/create-portal-availability-zone.md)
 - [Een beheerde schijf toevoegen met Power shell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Een door een zone redundante schaalset voor virtuele machines maken](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Taak verdeling van virtuele machines in zones met behulp van een Standard Load Balancer met een zone-redundante front-end](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Taak verdeling van Vm's binnen een zone met behulp van een Standard Load Balancer met een zonegebonden-front-end](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [Zone-redundante opslag](../storage/common/storage-redundancy-zrs.md)
+- [Taak verdeling van virtuele machines in zones met behulp van een Standard Load Balancer met een zone-redundante front-end](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Taak verdeling van Vm's binnen een zone met behulp van een Standard Load Balancer met een zonegebonden-front-end](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Zone-redundante opslag](../storage/common/storage-redundancy.md)
 - [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [Geo-noodherstel Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Geo-noodherstel Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

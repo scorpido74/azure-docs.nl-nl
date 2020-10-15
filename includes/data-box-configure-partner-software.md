@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67176701"
 ---
 De partnersoftware configureren om verbinding te maken met de client. Voor verbinding met de partnersoftware hebt u doorgaans de volgende gegevens nodig (dit kan variëren), die u hebt verzameld op de pagina **Verbinding maken en kopiëren** van de lokale webgebruikersinterface in de vorige stap:
 
-- Naam van opslagaccount
+- Naam van het opslagaccount
 - Toegangssleutel
 - Eindpunt van blob-service
  
