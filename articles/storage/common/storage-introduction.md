@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd45a393081d52985d99fac7ea5dccc5bd2a2712
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714977"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079221"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de kern Azure Storage services
 
@@ -105,7 +105,7 @@ Zie [Introduction to Azure Managed disks](../../virtual-machines/managed-disks-o
 
 ## <a name="types-of-storage-accounts"></a>Typen opslagaccounts
 
-Azure Storage biedt verschillende soorten opslag accounts. Elk type ondersteunt verschillende functies en heeft een eigen prijs model. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts.
+Azure Storage biedt verschillende soorten opslagaccounts. Elk type ondersteunt verschillende functies en heeft een eigen prijsmodel. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts.
 
 ## <a name="secure-access-to-storage-accounts"></a>Beveiligde toegang tot opslag accounts
 
@@ -173,8 +173,7 @@ U kunt toegang krijgen tot bronnen in een opslag account op basis van elke taal 
 - [Azure CLI-cmdlets voor Storage](https://docs.microsoft.com/cli/azure/storage)
 - [Hulp programma AzCopy Command-Line](https://aka.ms/downloadazcopy)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.
-- [Azure Storage-client Hulpprogramma's](../storage-explorers.md)
-- [Azure Developer-hulpprogramma's](https://azure.microsoft.com/tools/)
+- [Azure Resource Manager sjablonen voor Azure Storage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ## <a name="next-steps"></a>Volgende stappen
 

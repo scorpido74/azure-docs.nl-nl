@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: a0786c1ce5d3a693dabe422b65af7177e16c20b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3886f82180728bc6f454b1a49b5551bc4831869e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905513"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070891"
 ---
 # <a name="policies-in-azure-api-management"></a>Beleidsregels in Azure API Management
 
@@ -70,7 +70,7 @@ Zie de [beleids verwijzing](./api-management-policies.md) voor een volledige lij
 
 ## <a name="policy-samples"></a>Voor beelden van beleid
 
-Zie [beleids voorbeelden](policy-samples.md) voor meer code voorbeelden.
+Zie [beleids voorbeelden](./policy-reference.md) voor meer code voorbeelden.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -119,7 +119,7 @@ Zie voor meer informatie over het gebruik van beleid:
 
 + [Api's transformeren](transform-api.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)   
++ [Voor beelden van beleid](./policy-reference.md)   
 
 [Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
