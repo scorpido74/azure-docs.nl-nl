@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8dfc69bf251a811363426a3aeca7379d18458b47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667228"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950683"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Zelfstudie: Paginering toevoegen aan zoekresultaten met behulp van de .NET SDK
 
@@ -304,7 +304,7 @@ Zorg dat u de oplossing voor eenvoudige zoekpagina's open hebt.
     }
     ```
 
-1. De **RunQueryAsync**-methode die in de vorige les is geïntroduceerd, moet worden gewijzigd om de syntaxisfout op te lossen. We gebruiken de velden**Skip**, **Size** en **IncludeTotalResultCount** van de klasse [**SearchOptions**](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) om slechts één pagina met resultaten op te vragen, beginnend bij de instelling **Skip**. We moeten ook de pagineringsvariabelen voor onze weergave berekenen. Vervang de volledige methode door de volgende code.
+1. De **RunQueryAsync**-methode die in de vorige les is geïntroduceerd, moet worden gewijzigd om de syntaxisfout op te lossen. We gebruiken de velden**Skip**, **Size** en **IncludeTotalResultCount** van de klasse [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) om slechts één pagina met resultaten op te vragen, beginnend bij de instelling **Skip**. We moeten ook de pagineringsvariabelen voor onze weergave berekenen. Vervang de volledige methode door de volgende code.
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)

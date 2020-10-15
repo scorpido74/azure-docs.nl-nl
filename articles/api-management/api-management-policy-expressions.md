@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844237"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076858"
 ---
 # <a name="api-management-policy-expressions"></a>API Management-beleids expressies
 In dit artikel wordt de syntaxis van beleids expressies in C# 7 beschreven. Elke expressie heeft toegang tot de impliciet verschafte [context](api-management-policy-expressions.md#ContextVariables) variabele en een toegestane [subset](api-management-policy-expressions.md#CLRTypes) van .NET Framework typen.
@@ -253,4 +253,4 @@ Zie voor meer informatie over het gebruik van beleid:
 + [Beleid in API Management](api-management-howto-policies.md)
 + [Api's transformeren](transform-api.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Voor beelden van beleid](./policy-reference.md)

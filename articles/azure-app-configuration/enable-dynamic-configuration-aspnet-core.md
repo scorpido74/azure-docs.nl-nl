@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300286"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076994"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelfstudie: Dynamische configuratie in een ASP.NET Core-app gebruiken
 
@@ -161,7 +161,7 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te signaler
     ```
     ---
     > [!Tip]
-    > Zie  [Optiepatronen in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1) voor meer informatie over het optiepatroon bij het lezen van configuratiewaarden.
+    > Zie  [Optiepatronen in ASP.NET Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1) voor meer informatie over het optiepatroon bij het lezen van configuratiewaarden.
 
 4. Werk de methode `Configure` bij, waarbij de middleware `UseAzureAppConfiguration` wordt toegevoegd zodat de configuratie-instellingen die voor vernieuwing zijn geregistreerd, kunnen worden bijgewerkt terwijl de ASP.NET Core-web-app aanvragen blijft ontvangen.
 
