@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653635"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097334"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute voor Cloud Solution Providers (CSP)
 Microsoft biedt grootschalige services waarmee traditionele leveranciers en distributeurs (CSP) snel nieuwe services en oplossingen voor uw klanten kunnen inrichten, zonder dat ze hoeven te investeren in de ontwikkeling van deze nieuwe services. Microsoft biedt programma's en API's waarmee de Cloud Solution Provider (CSP) Microsoft Azure-resources kan beheren namens uw klanten. Zo kan de Cloud Solution Provider (CSP) deze nieuwe services rechtstreeks beheren. Een van deze resources is ExpressRoute. Met ExpressRoute kan de CSP verbinding maken tussen de bestaande resources van de klant en de Azure-services. ExpressRoute is een snelle, persoonlijke communicatie koppeling naar Services in Azure. 
@@ -21,7 +21,7 @@ Microsoft biedt grootschalige services waarmee traditionele leveranciers en dist
 ExpressRoute bestaat uit een paar circuits voor hoge Beschik baarheid die zijn gekoppeld aan één of meer abonnementen van een klant en kunnen niet worden gedeeld door meerdere klanten. Elk circuit moet worden beëindigd in een andere router om de hoge beschikbaarheid te houden.
 
 > [!NOTE]
-> Er zijn limieten voor de bandbreedte en verbinding in ExpressRoute, wat betekent dat er bij grote/complexe implementaties meerdere ExpressRoute-circuits per klant zijn vereist.
+> Er zijn limieten voor de band breedte en het aantal verbindingen dat mogelijk is op elk ExpressRoute-circuit. Als de behoeften van één klant hoger zijn dan deze limieten, hebben ze meerdere ExpressRoute-circuits nodig voor de implementatie van een hybride netwerk.
 > 
 > 
 
@@ -75,30 +75,30 @@ ExpressRoute ondersteunt netwerk snelheden van 50 MB/s tot 10 GB/s. Dit geeft kl
 ExpressRoute ondersteunt de verbinding van meerdere vNets met een enkel ExpressRoute-circuit voor beter gebruik van de verbindingen met hogere snelheid. Een enkel ExpressRoute-circuit kan worden gedeeld met meerdere Azure-abonnementen die eigendom zijn van dezelfde klant.
 
 ## <a name="configuring-expressroute"></a>ExpressRoute configureren
-ExpressRoute kan worden geconfigureerd voor ondersteuning van drie typen verkeer ([routeringsdomeinen](#expressroute-routing-domains)) via een enkel ExpressRoute-circuit. Dit verkeer is onderverdeeld in Microsoft-peering, openbare Azure-peering en privépeering. U kunt ervoor kiezen om één of alle soorten verkeer te verzenden via een enkel ExpressRoute-circuit of meerdere ExpressRoute-circuits, afhankelijk van de grootte van het ExpressRoute-circuit en de door uw klant vereiste isolatie. De beveiliging van uw klant mag niet toestaan dat openbaar verkeer en privéverkeer via hetzelfde circuit lopen.
+ExpressRoute kan worden geconfigureerd voor ondersteuning van drie typen verkeer ([routeringsdomeinen](#expressroute-routing-domains)) via een enkel ExpressRoute-circuit. Dit verkeer wordt gescheiden in privé-peering, micro soft-peering en open bare peering (afgeschaft). U kunt ervoor kiezen om één of alle soorten verkeer te verzenden via een enkel ExpressRoute-circuit of meerdere ExpressRoute-circuits, afhankelijk van de grootte van het ExpressRoute-circuit en de door uw klant vereiste isolatie. De beveiliging van uw klant mag niet toestaan dat openbaar verkeer en privéverkeer via hetzelfde circuit lopen.
 
 ### <a name="connect-through-model"></a>Het model 'Doorverbinden'
-In een configuratie met een verbinding bent u verantwoordelijk voor alle netwerk ondersteuning om uw klanten datacenter bronnen te koppelen aan de abonnementen die worden gehost in Azure. Al uw klanten die de mogelijkheden van Azure willen benutten, hebben een eigen ExpressRoute-verbinding nodig. Deze wordt door u beheerd. U gebruikt de methodes die de klant zou gebruiken om het ExpressRoute-circuit aan te schaffen. U volgt de stappen die worden beschreven in het artikel [ExpressRoute-werkstromen](expressroute-workflows.md), voor het inrichten van het circuit en de statussen van het circuit. Vervolgens configureert u de BGP-routes (Border Gateway Protocol) om het verkeer tussen het on-premises netwerk en Azure vNet te beheren.
+In een configuratie via een verbinding bent u verantwoordelijk voor alle netwerk ondersteuning om de datacenter bronnen van uw klant te koppelen aan de abonnementen die worden gehost in Azure. Elk van uw klanten die Azure-mogelijkheden willen gebruiken, hebben hun eigen ExpressRoute-verbinding nodig die door u wordt beheerd. U maakt gebruik van dezelfde methoden die de klant zou gebruiken om het ExpressRoute-circuit aan te schaffen. U voert dezelfde stappen uit die worden beschreven in het artikel [ExpressRoute werk stromen](expressroute-workflows.md) voor circuit inrichting en circuit statussen. Vervolgens configureert u de Border Gateway Protocol (BGP)-routes om het verkeer te beheren tussen het on-premises netwerk en Azure vNet.
 
 ### <a name="connect-to-model"></a>Het model 'Verbinden met'
-In een 'Verbinden met'-configuratie heeft uw klant al een bestaande verbinding met Azure of wordt er verbinding gemaakt met de internetserviceprovider die ExpressRoute rechtstreeks vanuit het datacenter van de klant (in plaats van via uw datacenter) koppelt aan Azure. Uw klant moet de stappen zoals hiervoor beschreven voor het model 'Doorverbinden' volgen om het inrichtingsproces te starten. Wanneer het circuit tot stand is gebracht, moet uw klant de on-premises routers configureren, zodat deze toegang hebben tot uw netwerk en Azure vNets.
+In een configuratie voor verbinden heeft uw klant al een bestaande verbinding met Azure of initieert deze een verbinding met de Internet serviceprovider die ExpressRoute vanuit hun eigen Data Center rechtstreeks naar Azure koppelt in plaats van uw Data Center. Uw klant moet de stappen zoals hiervoor beschreven voor het model 'Doorverbinden' volgen om het inrichtingsproces te starten. Zodra het circuit tot stand is gebracht, moet uw klant de on-premises routers configureren voor toegang tot zowel uw netwerk als Azure vNets.
 
 U kunt helpen bij het instellen van de verbinding en het configureren van de routes om de resources in uw datacenter(s) te laten communiceren met de clientresources in uw datacenter of met de resources die in Azure worden gehost.
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute-routeringsdomeinen
-ExpressRoute biedt drie routeringsdomeinen: openbare peering, privépeering en Microsoft-peering. Elk van de routerings domeinen is geconfigureerd met identieke routers in een actief-actief configuratie voor hoge Beschik baarheid. Klik [hier](expressroute-circuit-peerings.md) voor meer informatie over de ExpressRoute-routeringsdomeinen.
+ExpressRoute biedt twee routerings domeinen voor nieuwe circuits: persoonlijke peering en micro soft-peering. Elk van de routerings domeinen is geconfigureerd met identieke routers in een actief-actief configuratie voor hoge Beschik baarheid. Klik [hier](expressroute-circuit-peerings.md) voor meer informatie over de ExpressRoute-routeringsdomeinen.
 
 U kunt aangepaste routefilters definiëren, zodat alleen route(s) die u wilt toestaan of nodig hebt, zijn toegestaan. Voor meer informatie of om te zien hoe u deze wijzigingen aanbrengt, raadpleegt u het artikel: [Routering voor een ExpressRoute-circuit maken en wijzigen met behulp van PowerShell ](expressroute-howto-routing-classic.md) voor meer informatie over routeringsfilters.
 
 > [!NOTE]
-> Voor Microsoft-peering en openbare peering moet verbinding worden gemaakt via een openbaar IP-adres dat eigendom is van de klant of de CSP. Deze verbinding moet voldoen aan alle gedefinieerde regels. Zie voor meer informatie de pagina [Vereisten voor ExpressRoute](expressroute-prerequisites.md).  
+> Voor micro soft-peering moet de connectiviteit een openbaar IP-adres zijn dat eigendom is van de klant of CSP en moet voldoen aan alle gedefinieerde regels. Zie voor meer informatie de pagina [Vereisten voor ExpressRoute](expressroute-prerequisites.md).  
 > 
 > 
 
 ## <a name="routing"></a>Routering
 ExpressRoute maakt verbinding met de Azure-netwerken via de gateway van Azure Virtual Network. Netwerkgateways bieden routering voor virtuele netwerken in Azure.
 
-Als u virtuele netwerken in Azure maakt, wordt er ook een standaardrouteringstabel voor het vNet gemaakt om verkeer van/naar de subnetten van het vNet te leiden. Als de standaardrouteringstabel onvoldoende is voor de oplossing, kunnen er aangepaste routes worden gemaakt om uitgaand verkeer naar aangepaste toestellen te routeren of om routes naar specifieke subnetten of externe netwerken te blokkeren.
+Als u virtuele netwerken in Azure maakt, wordt er ook een standaardrouteringstabel voor het vNet gemaakt om verkeer van/naar de subnetten van het vNet te leiden. Als de standaard route tabel onvoldoende is voor de oplossing, kunnen er aangepaste routes worden gemaakt om uitgaand verkeer naar aangepaste toestellen te routeren of om routes naar specifieke subnetten of externe netwerken te blok keren.
 
 ### <a name="default-routing"></a>Standaardroutering
 De standaardroutetabel bevat de volgende routes:

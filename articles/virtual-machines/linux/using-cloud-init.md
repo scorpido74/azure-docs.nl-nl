@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 10/14/2020
 ms.author: danis
-ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978625"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096654"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -97,10 +97,10 @@ Deze SLES-installatie kopieën zijn bijgewerkt met het inrichten van Cloud-init,
 ### <a name="debian"></a>Debian
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| Debian (gen1) |Debian-10 | 10-cloudinit |Cloud-init-preview| Ja (alleen preview-versie) | Nee, in de preview-versie. |
-| Debian (Gen2) |Debian-10 | 10-cloudinit-Gen2 |Cloud-init-preview| Ja (alleen preview-versie) | Nee, in de preview-versie. |
-
-
+| Debian (gen1) |Debian-10 | 10-cloudinit |Cloud-init-preview| Ja (Opmerking: dit is een voorbeeld afbeelding die niet meer **mag** worden gebruikt. dit wordt 1e januari 2021 verwijderd) | Nee, in de preview-versie. |
+| Debian (Gen2) |Debian-10 | 10-cloudinit-Gen2 |Cloud-init-preview| Ja (Opmerking: dit is een voorbeeld afbeelding die niet meer **mag** worden gebruikt. dit wordt 1e januari 2021 verwijderd) | Nee, in de preview-versie. |
+| Debian (gen1) |Debian-10 | 10-cloudinit |10:0.20201013.422| ja | Ja, ondersteuning van pakket versie: `20.2-2~deb10u1` |
+| Debian (Gen2) |Debian-10 | 10-cloudinit-Gen2 |0.20201013.422| ja | Ja, ondersteuning van pakket versie: `20.2-2~deb10u1` |
 
 
 Momenteel biedt Azure Stack ondersteuning voor het inrichten van installatie kopieën die zijn ingeschakeld voor Cloud-init.

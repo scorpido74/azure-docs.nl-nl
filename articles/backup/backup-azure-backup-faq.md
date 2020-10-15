@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 50cbd1d28ca3f04b8963c58b443765d4280b14ed
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058077"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096620"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -57,6 +57,10 @@ Als u de back-up al hebt geconfigureerd en wilt overstappen van GRS naar LRS, ra
 
 - ILR wordt ondersteund voor Azure-VM's waarvan een back-up is gemaakt met Azure VM Backup. Raadpleeg dit [artikel](backup-azure-restore-files-from-vm.md) voor meer informatie
 - ILR wordt niet ondersteund voor online herstel punten van on-premises Vm's waarvan een back-up is gemaakt door Azure Backup Server (MABS) of System Center DPM.
+
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hoe kan ik gegevens van de Recovery Services kluis verplaatsen naar on-premises?
+
+Het is niet mogelijk om gegevens rechtstreeks vanuit de Recovery Services kluis naar on-premises te exporteren met behulp van Data Box. Gegevens moeten worden hersteld naar een opslag account en vervolgens kunnen worden verplaatst naar on-premises via [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) of [importeren/exporteren](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
 
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 

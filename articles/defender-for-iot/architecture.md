@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: ea62592ed155215b14666d0d56e09dbb1a83ed6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093460"
+ms.locfileid: "92096314"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender voor IoT-architectuur
 
@@ -29,12 +29,19 @@ In dit artikel wordt de functionele systeem architectuur van de Defender voor Io
 Defender voor IoT verbindt zowel de Azure-Cloud als on-premises onderdelen. De oplossing is ontworpen voor schaal baarheid in grote en geografisch gedistribueerde omgevingen met meerdere externe locaties. Deze oplossing maakt een gedistribueerde architectuur met meerdere lagen mogelijk per land, regio, bedrijfs eenheid of zone. 
 
 Azure Defender voor IoT bevat de volgende onderdelen: 
-- Azure Defender voor IoT Sens oren
-- Beheer consoles:
-    - Sensor console
-    - On-premises beheer console
-    - Azure Portal
-- Inge sloten beveiligings agent (beveiligings module en IoT SDK)
+
+**Met Cloud verbonden implementaties**
+
+- Azure Defender voor IoT-VM of-apparaat
+- Azure Portal voor Cloud beheer en integratie naar Azure Sentinel
+- On-premises beheer console voor beheer van lokale sites
+- Een Inge sloten beveiligings agent (optioneel)
+
+**Implementaties van Air-gapped (offline)**
+
+- Azure Defender voor IoT-VM of-apparaat
+- On-premises beheer console voor lokaal site beheer
+
 
 ![Defender voor IoT-architectuur](./media/architecture/defender-iot-security-architecture.png)
 

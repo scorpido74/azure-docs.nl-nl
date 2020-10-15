@@ -9,12 +9,12 @@ ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da941aa8b616fffeb2e283480c2a1e2f9cf7a093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45d345e8d8dbe45ecb4873904f31141111827647
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003113"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097351"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Logboek registratie en diagnose in ruimtelijke beankeringen van Azure
 
@@ -43,9 +43,9 @@ Er zijn twee retour aanroepen die van belang zijn voor de gebruiker. In het volg
 
 Deze gebeurtenis-Call backs worden geleverd om logboeken en fouten uit de sessie te verwerken:
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Hiermee geeft u het detail niveau op voor de gebeurtenissen die moeten worden ontvangen uit de runtime.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): biedt standaard logboek gebeurtenissen voor fout opsporing.
-- [Fout](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): bevat logboek gebeurtenissen die in de runtime worden beschouwd als fouten.
+- [LogLevel](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Hiermee geeft u het detail niveau op voor de gebeurtenissen die moeten worden ontvangen uit de runtime.
+- [OnLogDebug](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): biedt standaard logboek gebeurtenissen voor fout opsporing.
+- [Fout](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): bevat logboek gebeurtenissen die in de runtime worden beschouwd als fouten.
 
 ## <a name="diagnostics-logging"></a>Logboek registratie van diagnostische gegevens
 

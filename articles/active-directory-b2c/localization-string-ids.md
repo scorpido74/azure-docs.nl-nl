@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87d56f32877fbe5b817dab5d9ad98e1f1f71386c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054743"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096195"
 ---
 # <a name="localization-string-ids"></a>Id's van lokalisatiereeksen
 
@@ -143,7 +143,7 @@ Hieronder ziet u de Id's voor een inhouds definitie met een ID van `api.localacc
 | **cancel_message** | De gebruiker heeft het invoeren van zelfbevestigende informatie geannuleerd |
 | **preloader_alt** | Een ogenblik geduld |
 | **ver_but_send** | Verificatie code verzenden |
-| **alert_yes** | Ja |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Een of meer velden zijn onjuist ingevuld. Controleer uw vermeldingen en probeer het opnieuw. |
 | **jaareinde** | Year |
 | **verifying_blurb** | De gegevens worden verwerkt. een ogen blik geduld... |
@@ -161,7 +161,7 @@ Hieronder ziet u de Id's voor een inhouds definitie met een ID van `api.localacc
 | **ver_incorrect_format** | Onjuiste indeling. |
 | **ver_but_edit** | E-mail wijzigen |
 | **ver_but_verify** | Code verifiëren |
-| **alert_no** | Nee |
+| **alert_no** | No |
 | **ver_info_msg** | De verificatie code is verzonden naar het postvak in. Kopieer het naar het invoervak hieronder. |
 | **profieldag** | Dag |
 | **ver_fail_throttled** | Er zijn te veel aanvragen om dit e-mail adres te controleren. Wacht even en probeer het opnieuw. |
@@ -343,7 +343,42 @@ In het volgende voor beeld ziet u het gebruik van enkele van de elementen van de
 
 ## <a name="verification-display-control-user-interface-elements"></a>Gebruikers interface-elementen voor controle weergave
 
-Hier volgen de Id's voor een [besturings element voor controle weergave](display-control-verification.md)
+Hier volgen de Id's voor een [besturings element](display-control-verification.md) voor het controleren van de controle met de [pagina-indeling versie](page-layout.md) 2.1.0 of hoger.
+
+| Id | Standaardwaarde |
+| -- | ------------- |
+|intro_msg| Verificatie is nood zakelijk. Klik op de knop verzenden.|
+|success_send_code_msg | De verificatie code is verzonden naar het postvak in. Kopieer het naar het invoervak hieronder.|
+|failure_send_code_msg | Er zijn problemen met het controleren van uw e-mail adres. Geef een geldig e-mail adres op en probeer het opnieuw.|
+|success_verify_code_msg | E-mail adres geverifieerd. U kunt nu door gaan.|
+|failure_verify_code_msg | Er zijn problemen met het controleren van uw e-mail adres. Probeer het opnieuw.|
+|but_send_code | Verificatie code verzenden|
+|but_verify_code | Code verifiëren|
+|but_send_new_code | Nieuwe code verzenden|
+|but_change_claims | E-mail wijzigen|
+
+### <a name="verification-display-control-example"></a>Controle voorbeeld voor verificatie weergave
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>Controle van gebruikers interface-elementen voor verificatie weergave (afgeschaft)
+
+Hier volgen de Id's voor een [besturings element](display-control-verification.md) voor het controleren van de controle met de [pagina-indeling versie](page-layout.md) 2.0.0.
 
 | Id | Standaardwaarde |
 | -- | ------------- |
@@ -355,7 +390,7 @@ Hier volgen de Id's voor een [besturings element voor controle weergave](display
 |verification_control_but_verify_code |Code verifiëren |
 |verification_control_code_sent| De verificatie code is verzonden. Kopieer het naar het invoervak hieronder. |
 
-### <a name="verification-display-control-example"></a>Controle voorbeeld voor verificatie weergave
+### <a name="verification-display-control-example-deprecated"></a>Voor beeld van controle voor beeld weergave (afgeschaft)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -468,8 +503,8 @@ Hier volgen de Id's voor een [eenmalig wacht woord technische profiel](one-time-
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>

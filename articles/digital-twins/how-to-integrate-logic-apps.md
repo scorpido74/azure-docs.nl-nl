@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045292"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097521"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -93,9 +93,9 @@ U wordt naar de implementatie pagina voor de connector geleid. Wanneer de implem
 
 Vervolgens configureert u de connector die u hebt gemaakt om Azure Digital Apparaatdubbels te bereiken.
 
-Down load eerst een aangepaste Apparaatdubbels Swagger van Azure die is gewijzigd om met Logic Apps te werken. Down load het voor beeld met **aangepaste Swagger-apparaatdubbels van Azure** via [**deze koppeling**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) door te klikken op de knop voor het downloaden van het *zip-bestand* . Ga naar de map gedownloade *Azure_Digital_Twins_Custom_Swaggers.zip* en pak deze uit. 
+Down load eerst een aangepaste Apparaatdubbels Swagger van Azure die is gewijzigd om met Logic Apps te werken. Down load het voor beeld van een **aangepaste Swagger (Logic Apps Connector) van Azure Digital apparaatdubbels** door te [**klikken op de**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) knop voor het downloaden van het *zip-bestand* . Ga naar de map gedownloade *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* en pak deze uit. 
 
-De aangepaste Swagger voor deze zelf studie bevindt zich in de map _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ . Deze map bevat submappen met de naam *stabiel* en *Preview*, die beide verschillende versies van de Swagger bevatten, geordend op datum. De map met de meest recente datum bevat de laatste kopie van de Swagger. Welke versie u selecteert, is het Swagger-bestand _** met de naamdigitaltwins.jsop**_.
+De aangepaste Swagger voor deze zelf studie bevindt zich in de map _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps **_. Deze map bevat submappen met de naam *stabiel* en *Preview*, die beide verschillende versies van de Swagger bevatten, geordend op datum. De map met de meest recente datum bevat de laatste kopie van de Swagger. Welke versie u selecteert, is het Swagger-bestand met de naam _** digitaltwins.jsop * * _.
 
 > [!NOTE]
 > Tenzij u werkt met een preview-functie, wordt het over het algemeen aanbevolen de meest recente *stabiele* versie van de Swagger te gebruiken. Eerdere versies en Preview-versies van de Swagger worden echter ook nog steeds ondersteund. 
@@ -108,7 +108,7 @@ Configureer de volgende gegevens op de pagina *Logic apps aangepaste connector b
 * **Aangepaste connectors**
     - API-eind punt: REST (laat de standaard instelling)
     - Import modus: OpenAPI-bestand (standaard instelling behouden)
-    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer (*Azure_Digital_Twins_Custom_Swaggers \logicapps \...\digitaltwins.jsaan*) en klik op *openen*.
+    - Bestand: dit is het aangepaste Swagger-bestand dat u eerder hebt gedownload. Klik op *importeren*, zoek het bestand op uw computer (*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps \...\digitaltwins.jsaan*) en klik op *openen*.
 * **Algemene informatie**
     - Pictogram: Upload een pictogram dat u wilt
     - Achtergrond kleur van pictogram: Voer hexadecimale code in de notatie #xxxxxx in voor de kleur.

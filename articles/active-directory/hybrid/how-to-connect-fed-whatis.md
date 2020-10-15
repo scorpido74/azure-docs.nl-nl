@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97142e0c512f4f95235ad08c94c852906d3efd8
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660856"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095853"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect en federatie
 Met Azure Active Directory (Azure AD) Connect kunt u Federatie configureren met on-premises Active Directory Federation Services (AD FS) en Azure AD. Met aanmelden via de Federatie kunt u gebruikers in staat stellen om zich aan te melden bij Azure AD-Services met hun on-premises wacht woorden, en, in het bedrijfs netwerk, zonder dat ze hun wacht woord opnieuw hoeven in te voeren. U kunt met behulp van de optie Federatie met AD FS een nieuwe installatie van AD FS implementeren of u kunt een bestaande installatie opgeven in een Windows Server 2012 R2-farm.
@@ -34,7 +34,7 @@ In dit onderwerp vindt u informatie over de federatieve functionele aspecten van
 | **Opties voor Azure AD Connect gebruikers aanmelding** | |
 | [Informatie over aanmeldings opties voor gebruikers](plan-connect-user-signin.md) |Meer informatie over verschillende aanmeldings opties voor gebruikers en hoe deze van invloed zijn op de gebruikers ervaring van Azure-aanmelding. |
 | **AD FS installeren met behulp van Azure AD Connect** | |
-| [Vereisten](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Zie de vereisten voor een geslaagde AD FS installatie via Azure AD Connect. |
+| [Vereisten](how-to-connect-install-custom.md#ad-fs-configuration-prerequisites) |Zie de vereisten voor een geslaagde AD FS installatie via Azure AD Connect. |
 | [Een AD FS-farm configureren](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Installeer een nieuwe AD FS-farm met behulp van Azure AD Connect. |
 | [Communiceren met Azure AD met een alternatieve aanmeldings-ID](how-to-connect-fed-management.md#alternateid) | Federatie configureren met alternatieve aanmeldings-ID  |
 | **De configuratie van de AD FS wijzigen** | |
