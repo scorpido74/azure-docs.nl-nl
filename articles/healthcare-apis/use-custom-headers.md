@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081840"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Aangepaste HTTP-headers gebruiken om gegevens toe te voegen aan auditlogboeken
@@ -24,7 +24,7 @@ Als de gebruiker van de API bijvoorbeeld wordt geverifieerd door een extern syst
 
 U kunt deze gegevensstroom bekijken in het volgende diagram:
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Diagram met aangepaste headers":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Diagram met aangepaste headers&quot;:::
 
 U kunt aangepaste headers gebruiken om verschillende soorten informatie vast te leggen. Bijvoorbeeld:
 
@@ -47,9 +47,9 @@ Deze HTTP-headers zijn opgenomen in een eigenschappenverzameling die aan het log
 Deze informatie wordt vervolgens geserialiseerd naar JSON wanneer deze wordt toegevoegd aan de kolom met eigenschappen in het logboek. Bijvoorbeeld:
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234&quot; }
 ```
  
 Net als bij elke HTTP-header kan dezelfde headernaam worden herhaald met andere waarden. Bijvoorbeeld:
@@ -59,7 +59,7 @@ Net als bij elke HTTP-header kan dezelfde headernaam worden herhaald met andere 
 
 Wanneer u de waarden toevoegt aan het logboek, worden ze gecombineerd met een door komma's gescheiden lijst. Bijvoorbeeld:
 
-{ "X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "ZiekenhuisA, Noodgeval" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;ZiekenhuisA, Noodgeval" }
  
 U kunt maximaal 10 unieke headers toevoegen (herhalingen van dezelfde header met verschillende waarden tellen als één header). De totale maximumlengte van de waarde voor een header is 2048 tekens.
 

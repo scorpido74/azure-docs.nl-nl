@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557185"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91652445"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Quickstart: Een model converteren voor rendering
 
@@ -189,7 +189,7 @@ Het conversiescript genereert een *SAS*-URI (Shared Access Signature) voor het o
 De SAS-URI die door het conversiescript is gemaakt, is slechts voor 24 uur geldig. Wanneer het model is verlopen, moet u het echter niet opnieuw converteren. In plaats daarvan kunt u in het portal een nieuwe SAS maken, zoals wordt beschreven in de volgende stappen:
 
 1. Ga naar de [Azure-portal](https://www.portal.azure.com)
-1. Klik op de resource van uw **Opslagaccount**: ![Signature Access](./media/portal-storage-accounts.png)
+1. Klik op de resource van uw **Opslagaccount**: ![Schermopname waarin de geselecteerde Storage-accountresource is gemarkeerd.](./media/portal-storage-accounts.png)
 1. Klik in het volgende scherm op **Storage Explorer** in het deelvenster links en zoek uw uitvoermodel ( *.arrAsset*-bestand) in de Blob Storage-container *arroutput*. Klik met de rechtermuisknop op het bestand en selecteer **Shared Access Signature ophalen** in het contextmenu: ![Signature Access](./media/portal-storage-explorer.png)
 1. Er wordt een nieuw scherm geopend waarin u een verloopdatum kunt selecteren. Druk op **Maken** en kopieer de URI die in het volgende dialoogvenster wordt weergegeven. Deze nieuwe URI vervangt de tijdelijke URI die het script heeft gemaakt.
 

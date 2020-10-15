@@ -7,12 +7,12 @@ keywords: azure automation, DSC, powershell, statusconfiguratie, updatebeheer, b
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448059"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715974"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Een inleiding tot Azure Automation
 
@@ -64,7 +64,7 @@ Azure Automation bestaat uit een set gedeelde bronnen waarmee u uw omgevingen ee
 
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Azure Automation ondersteunt op rollen gebaseerd toegangsbeheer (RBAC) om toegang tot het Automation-account en de bijbehorende resources te reguleren. Zie [Op rollen gebaseerd toegangsbeheer voor Azure Automation](automation-role-based-access-control.md) voor meer informatie over het configureren van RBAC voor uw Automation-account, runbooks en taken.
+Azure Automation ondersteunt op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) om toegang tot het Automation-account en de bijbehorende resources te reguleren. Zie [Op rollen gebaseerd toegangsbeheer voor Azure Automation](automation-role-based-access-control.md) voor meer informatie over het configureren van Azure RBAC voor uw Automation-account, runbooks en taken.
 
 ### <a name="source-control-integration"></a>Integratie van bronbeheer
 
@@ -86,7 +86,7 @@ Azure Automation ondersteunt beheer gedurende de gehele levenscyclus van uw infr
 * **Wijzigingen vinden**: stel de wijzigingen vast die kunnen leiden tot een onjuiste configuratie en die kunnen zorgen voor een betere operationele naleving.
 * **Controle**: isoleer wijzigingen op machines die problemen veroorzaken en die oplossingen bieden voor of escaleren met beheersystemen.
 * **Beveiligen**: zet computers in quarantaine als er beveiligingswaarschuwingen worden gegenereerd. Stel in-guest vereisten in.
-* **Beheersen**: stel RBAC in voor teams. Herstel niet-gebruikte resources.
+* **Beheersen**: stel Azure RBAC in voor teams. Herstel niet-gebruikte resources.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

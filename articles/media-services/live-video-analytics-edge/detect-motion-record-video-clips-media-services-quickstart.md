@@ -3,12 +3,12 @@ title: Beweging detecteren, video opnemen in Azure Media Services
 description: In deze quickstart ziet u hoe u Live Video Analytics kunt gebruiken in IoT Edge om beweging in een live-videostream te detecteren en videoclips op te nemen in Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569000"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776473"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Quickstart: Beweging detecteren, video opnemen in Media Services
 
@@ -39,6 +39,16 @@ Wanneer u de onderstaande stappen hebt uitgevoerd, hebt u Live Video Analytics i
 ## <a name="use-direct-method-calls"></a>Aanroepen van directe methoden gebruiken
 
 U kunt de module gebruiken om live-videostreams te analyseren door directe methoden aan te roepen. Lees [Directe methoden voor Live Video Analytics in IoT Edge](direct-methods.md) om inzicht te krijgen in alle directe methoden van de module. 
+
+1. Open in Visual Studio Code het tabblad **Extensies** (of druk op Ctrl+Shift+X) en zoek naar Azure IoT Hub.
+1. Klik met de rechtermuisknop en selecteer **Extensie-instellingen**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Op gebeurtenissen gebaseerde video-opname naar assets op basis van bewegingsgebeurtenissen":::
+1. Zoek 'Uitgebreid bericht tonen' en schakel deze optie in.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Op gebeurtenissen gebaseerde video-opname naar assets op basis van bewegingsgebeurtenissen":::
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList aanroepen
 In deze stap worden alle [graaftopologieën](media-graph-concept.md#media-graph-topologies-and-instances) in de module opgesomd.

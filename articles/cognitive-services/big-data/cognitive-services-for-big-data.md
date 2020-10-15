@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201786"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776626"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Azure Cognitive Services voor Big Data
 
@@ -125,12 +125,14 @@ Cognitive Services voor Big Data is een voorbeeld van hoe we intelligente webser
 - [Meer informatie over hoe Cognitive Services werken op Apache Spark&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [Sneeuwluipaarden redden met Deep Learning en Computer Vision op Spark](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [Microsoft Research Podcast: MMLSpark, de basis van AI for Good met Mark Hamilton](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [Academisch technisch document: Grootschalige intelligente microservices](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>Webinars en video's
 
 - [De Azure Cognitive Services op Spark: Clusters met ingesloten intelligente services](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Keynote van de Spark Summit: Schaalbare AI for Good](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [De Cognitive Services voor Big Data in Cosmos DB](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [Korte presentatie over grootschalige intelligente microservices](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>Volgende stappen
 
