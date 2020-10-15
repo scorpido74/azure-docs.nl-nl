@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210357"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093273"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Externe services van de Azure API Management-service gebruiken
 De beschik bare beleids regels in azure API Management service kunnen een breed scala aan nuttige werk wijze hebben op basis van de inkomende aanvraag, het uitgaande antwoord en de basis configuratie-informatie. Als u echter met externe services van API Management beleid wilt werken, worden er veel meer mogelijkheden geopend.
@@ -178,7 +178,7 @@ De eerste stap bij het bouwen van de resource in het dash board is het configure
 ### <a name="making-the-requests"></a>De aanvragen indienen
 Zodra de bewerking is gemaakt, kunt u een beleid voor die bewerking specifiek configureren. 
 
-![Dashboard bewerking](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Scherm opname van het scherm met het beleids bereik.](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 De eerste stap bestaat uit het extra heren van alle query parameters uit de inkomende aanvraag, zodat u deze kunt door sturen naar de back-end. In dit voor beeld wordt in het dash board informatie weer gegeven op basis van een bepaalde tijd en heeft deze daarom een `fromDate` en- `toDate` para meter. U kunt het `set-variable` beleid gebruiken om de gegevens van de aanvraag-URL uit te pakken.
 

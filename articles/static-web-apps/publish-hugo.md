@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797714"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een Hugo-site publiceren in Azure Static Web Apps Preview
@@ -115,7 +115,7 @@ De volgende stappen laten zien hoe u een nieuwe statische site-app maakt en deze
 
 1. Selecteer voor _SKU_ de optie **Gratis**.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Ingevulde gegevens":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Een Azure Static Web Apps-resource maken in de portal":::
 
 1. Klik op de knop **Aanmelden bij GitHub**.
 
@@ -125,7 +125,7 @@ De volgende stappen laten zien hoe u een nieuwe statische site-app maakt en deze
 
 1. Selecteer **hoofd** voor de _Vertakking_.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Voltooide GitHub-gegevens":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Een Azure Static Web Apps-resource maken in de portal":::
 
 ### <a name="build"></a>Ontwikkelen
 
@@ -149,7 +149,7 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 1. Klik in het _Overzichtsvenster_ van de Azure-portal met onlangs gemaakte Azure Static Web App-resources op de _URL_-koppeling om de geïmplementeerde toepassing te openen.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Geïmplementeerde toepassing":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Een Azure Static Web Apps-resource maken in de portal":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
