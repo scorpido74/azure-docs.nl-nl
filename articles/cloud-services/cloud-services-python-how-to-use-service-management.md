@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851508"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073985"
 ---
 # <a name="use-service-management-from-python"></a>Service beheer van python gebruiken
 In deze hand leiding wordt beschreven hoe u via programma code veelvoorkomende Service beheer taken vanuit python kunt uitvoeren. De **maken** -klasse in de [Azure SDK voor python](https://github.com/Azure/azure-sdk-for-python) ondersteunt programmatische toegang tot veel van de functies voor Service beheer die beschikbaar zijn in de [Azure Portal][management-portal]. U kunt deze functie gebruiken om Cloud Services, implementaties, gegevens beheer Services en virtuele machines te maken, bij te werken en te verwijderen. Deze functionaliteit kan nuttig zijn bij het bouwen van toepassingen die programmatische toegang tot Service beheer nodig hebben.
@@ -194,7 +194,7 @@ sms.delete_deployment('myhostedservice', 'v1')
 ```
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>Een opslag service maken
-Een [opslag service](../storage/common/storage-create-storage-account.md) geeft u toegang tot Azure- [blobs](../storage/blobs/storage-python-how-to-use-blob-storage.md),- [tabellen](../cosmos-db/table-storage-how-to-use-python.md)en- [wacht rijen](../storage/queues/storage-python-how-to-use-queue-storage.md). Als u een opslag service wilt maken, moet u een naam voor de service (tussen 3 en 24 kleine letters en uniek in Azure) hebben. U hebt ook een beschrijving nodig, een label (Maxi maal 100 tekens, automatisch gecodeerd naar base64) en een locatie. In het volgende voor beeld ziet u hoe u een opslag service maakt door een locatie op te geven:
+Een [opslag service](../storage/common/storage-account-create.md) geeft u toegang tot Azure- [blobs](../storage/blobs/storage-quickstart-blobs-python.md),- [tabellen](../cosmos-db/table-storage-how-to-use-python.md)en- [wacht rijen](../storage/queues/storage-python-how-to-use-queue-storage.md). Als u een opslag service wilt maken, moet u een naam voor de service (tussen 3 en 24 kleine letters en uniek in Azure) hebben. U hebt ook een beschrijving nodig, een label (Maxi maal 100 tekens, automatisch gecodeerd naar base64) en een locatie. In het volgende voor beeld ziet u hoe u een opslag service maakt door een locatie op te geven:
 
 ```python
 from azure import *
@@ -446,9 +446,9 @@ sms.create_virtual_machine_deployment(service_name=name,
     vm_image_name = image_name)
 ```
 
-Zie [een virtuele Linux-machine vastleggen](../virtual-machines/linux/classic/capture-image-classic.md)voor meer informatie over het vastleggen van een virtuele Linux-machine in het klassieke implementatie model.
+Zie [een virtuele Linux-machine vastleggen](/previous-versions/azure/virtual-machines/linux/classic/capture-image-classic)voor meer informatie over het vastleggen van een virtuele Linux-machine in het klassieke implementatie model.
 
-Zie [een virtuele Windows-machine vastleggen](../virtual-machines/windows/classic/capture-image-classic.md)voor meer informatie over het vastleggen van een virtuele Windows-machine in het klassieke implementatie model.
+Zie [een virtuele Windows-machine vastleggen](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic)voor meer informatie over het vastleggen van een virtuele Windows-machine in het klassieke implementatie model.
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>Volgende stappen
 Nu u de basis principes van Service beheer hebt geleerd, kunt u toegang krijgen tot de [volledige API-referentie documentatie voor de Azure python-SDK](https://azure-sdk-for-python.readthedocs.org/) en eenvoudig complexe taken uitvoeren om uw python-toepassing te beheren.
@@ -474,7 +474,7 @@ Raadpleeg het [Python Developer Center](https://azure.microsoft.com/develop/pyth
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: /previous-versions/azure/ee460799(v=azure.100)
 
 
 [cloud service]:/azure/cloud-services/

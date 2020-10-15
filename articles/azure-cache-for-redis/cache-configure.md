@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000183"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089720"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -31,7 +31,7 @@ Azure cache voor redis-instellingen worden weer gegeven en geconfigureerd op de 
 U kunt de volgende instellingen weer geven en configureren met behulp van het **resource menu**.
 
 * [Overzicht](#overview)
-* [Activiteiten logboek](#activity-log)
+* [Activiteitenlogboek](#activity-log)
 * [Toegangsbeheer (IAM)](#access-control-iam)
 * [Tags](#tags)
 * [Problemen vaststellen en oplossen](#diagnose-and-solve-problems)
@@ -72,7 +72,7 @@ Klik op **activiteiten logboek** om de acties weer te geven die zijn uitgevoerd 
 
 ### <a name="access-control-iam"></a>Toegangsbeheer (IAM)
 
-De sectie **toegangs beheer (IAM)** biedt ondersteuning voor op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal. Met deze configuratie kunnen organisaties eenvoudig en nauw keurig voldoen aan de vereisten voor toegangs beheer. Zie op [rollen gebaseerd toegangs beheer in de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+De sectie **toegangs beheer (IAM)** biedt ondersteuning voor op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure in de Azure Portal. Met deze configuratie kunnen organisaties eenvoudig en nauw keurig voldoen aan de vereisten voor toegangs beheer. Zie voor meer informatie op [rollen gebaseerd toegangs beheer van Azure in de Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Tags
 

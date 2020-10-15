@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3df547307a49de9e50abe8eb655fbe4acd67a8be
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8221abe3ff726a7f94d49f69ae18368f87925901
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552676"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850826"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>Zelfstudie: iWellnessNow integreren met Azure Active Directory
 
@@ -87,7 +87,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     c. Nadat het bestand met metagegevens is geüpload, worden de waarden voor **Id** en **antwoord-URL** automatisch ingevuld in de sectie Standaard SAML-configuratie.
 
-    ![image](common/idp-intiated.png)
+    ![Schermopname van de Basic SAML-configuratie, waar u de antwoord-URL kunt invoeren en 'Opslaan' kunt selecteren.](common/idp-intiated.png)
 
     > [!Note]
     > Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, kunt u de waarden zelf invullen afhankelijk van uw behoeften.
@@ -102,7 +102,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<CustomerName>.iwellnessnow.com/`
 
