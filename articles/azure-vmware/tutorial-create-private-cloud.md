@@ -3,12 +3,12 @@ title: Zelfstudie - vSphere-cluster implementeren in Azure
 description: Meer informatie over het implementeren van een vSphere-cluster in Azure met behulp van Azure VMware Solution
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578310"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952281"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Zelfstudie: Een Azure VMware Solution-privécloud implementeren in Azure
 
@@ -43,7 +43,7 @@ U kunt een Azure VMware Solution-privécloud maken met behulp van [Azure Portal]
 
 ### <a name="azure-cli"></a>Azure CLI
 
-U kunt ook een Azure VMware Solution-privécloud maken met de Azure CLI met behulp van de Azure Cloud Shell in plaats van met Azure Portal.  Zie [Azure VMware-opdrachten](https://docs.microsoft.com/cli/azure/ext/vmware/vmware) voor een lijst met opdrachten die u kunt gebruiken met de Azure VMware-oplossing.
+U kunt ook een Azure VMware Solution-privécloud maken met de Azure CLI met behulp van de Azure Cloud Shell in plaats van met Azure Portal.  Zie [Azure VMware-opdrachten](/cli/azure/ext/vmware/vmware) voor een lijst met opdrachten die u kunt gebruiken met de Azure VMware-oplossing.
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell openen
 
@@ -96,7 +96,7 @@ Zodra een privécloud is verwijderd, is er geen manier om de virtuele machines e
 
 ## <a name="azure-vmware-commands"></a>Azure VMware-opdrachten
 
-Zie [Azure VMware-opdrachten](https://docs.microsoft.com/cli/azure/ext/vmware/vmware) voor een lijst met opdrachten die u kunt gebruiken met Azure VMware Solution.
+Zie [Azure VMware-opdrachten](/cli/azure/ext/vmware/vmware) voor een lijst met opdrachten die u kunt gebruiken met Azure VMware Solution.
 
 ## <a name="next-steps"></a>Volgende stappen
 

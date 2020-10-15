@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba669c86c406959a3f92949e5f806fa011527d47
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976004"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070908"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Externe bewakings gegevens visualiseren met behulp van Power BI
 
@@ -38,7 +38,7 @@ In deze zelf studie leert u hoe u uw gegevens voor uw externe bewakings oplossin
 
 4. Klik op de pagina overzicht op het item met het type Azure Cosmos DB account. vervolgens wordt u naar de pagina overzicht van de Cosmos DB-stroom geleid voor die IoT-oplossing.
 
-    ![Resource Group](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
+    ![Resourcegroep](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
 5. Klik in het deel venster aan de linkerkant op de sectie ' sleutels ' en noteer de volgende waarden die moeten worden gebruikt in Power BI:
 
@@ -94,9 +94,9 @@ Zodra de stroom is verbonden, bent u klaar om uw persoonlijke Dash boards te mak
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Het dash board publiceren en de gegevens vernieuwen
 
-Nadat u uw Dash boards hebt gemaakt, raden we u aan om [uw Power bi-Dash boards te publiceren](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) en te delen met anderen.
+Nadat u uw Dash boards hebt gemaakt, raden we u aan om [uw Power bi-Dash boards te publiceren](/power-bi/desktop-upload-desktop-files) en te delen met anderen.
 
-U moet ook [de gegevens](https://docs.microsoft.com/power-bi/refresh-data) op het gepubliceerde dash board vernieuwen om ervoor te zorgen dat u over de nieuwste gegevensset beschikt.
+U moet ook [de gegevens](/power-bi/refresh-data) op het gepubliceerde dash board vernieuwen om ervoor te zorgen dat u over de nieuwste gegevensset beschikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -107,4 +107,3 @@ Zie voor meer informatie over het aanpassen van de oplossing voor externe contro
 * [De gebruikers interface van de oplossing voor externe controle aanpassen](iot-accelerators-remote-monitoring-customize.md)
 * [Snelzoekgids voor ontwikkelaars](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Ontwikkelaarsgids voor het oplossen van problemen](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-

@@ -6,12 +6,12 @@ author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335599"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070636"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Toegang tot Kubernetes-resources via de Azure Portal (preview-versie)
 
@@ -20,7 +20,7 @@ De Azure Portal bevat een Kubernetes resource Viewer (preview) voor eenvoudige t
 De resource weergave Kubernetes van de Azure Portal vervangt de [AKS dashboard-invoeg toepassing][kubernetes-dashboard], die is ingesteld voor afschaffing.
 
 >[!NOTE]
->De capabilty wordt momenteel niet ondersteund in [particuliere Azure Kubernetes-Service clusters](https://docs.microsoft.com/azure/aks/private-clusters).
+>De capabilty wordt momenteel niet ondersteund in [particuliere Azure Kubernetes-Service clusters](./private-clusters.md).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

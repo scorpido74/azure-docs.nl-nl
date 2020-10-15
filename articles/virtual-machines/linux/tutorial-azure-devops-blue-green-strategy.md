@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f349ff62fe211f0610341864a4c7528ee6bfe9c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080128"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961524"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelfstudie: de blauw-groene implementatiestrategie configureren voor virtuele Linux-machines van Azure
 
@@ -25,7 +25,7 @@ ms.locfileid: "87080128"
 
 Azure Pipelines biedt een set hulpprogramma's voor het automatiseren van CI/CD voor implementaties op virtuele machines. U kunt vanuit de Azure-portal een pijplijn voor continue levering configureren voor een Azure-VM.
 
-In dit artikel wordt beschreven hoe u een CI/CD-pijplijn instelt die gebruikmaakt van de blauw-groene strategie voor implementatie op meerdere machines. De Azure-portal biedt ook ondersteuning voor andere strategieën, zoals [rolling](https://aka.ms/AA7jlh8) en [canary](https://aka.ms/AA7jdrz).
+In dit artikel wordt beschreven hoe u een CI/CD-pijplijn instelt die gebruikmaakt van de blauw-groene strategie voor implementatie op meerdere machines. De Azure-portal biedt ook ondersteuning voor andere strategieën, zoals [rolling](./tutorial-devops-azure-pipelines-classic.md) en [canary](./tutorial-azure-devops-canary-strategy.md).
 
 ### <a name="configure-cicd-on-virtual-machines"></a>CI/CD configureren op virtuele machines
 
@@ -73,8 +73,8 @@ Met behulp van de optie voor continue levering kunt u vanuit de Azure-portal bla
 
 ## <a name="other-deployment-strategies"></a>Andere implementatiestrategieën
 
-- [Strategie voor Rolling-implementatie configureren](https://aka.ms/AA7jlh8)
-- [Strategie voor Canary-implementatie configureren](https://aka.ms/AA7jdrz)
+- [Strategie voor Rolling-implementatie configureren](./tutorial-devops-azure-pipelines-classic.md)
+- [Strategie voor Canary-implementatie configureren](./tutorial-azure-devops-canary-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 

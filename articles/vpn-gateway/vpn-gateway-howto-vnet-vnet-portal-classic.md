@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4b1007fe89cf455b6af8ebba00f24e8019ad8013
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875542"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078286"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Een VNet-naar-VNet-verbinding configureren (klassiek)
 
@@ -32,8 +32,6 @@ Dit artikel helpt u bij het maken van een VPN-gateway verbinding tussen virtuele
 >
 
 ![Diagram van VNet-naar-VNet-connectiviteit](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>Over VNet-naar-VNet-verbindingen
 
@@ -61,7 +59,7 @@ U wilt virtuele netwerken wellicht koppelen om de volgende redenen:
 
 Zie voor meer informatie over verbindingen tussen VNets de [Aandachtspunten bij VNet-naar-VNet](#faq) aan het einde van dit artikel.
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>Werken met Azure PowerShell
+## <a name="prerequisites"></a>Vereisten
 
 We gebruiken de portal voor de meeste stappen, maar u moet Power shell gebruiken om de verbindingen tussen de VNets te maken. U kunt de verbindingen niet maken met behulp van de Azure Portal. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -87,7 +85,7 @@ In deze stap maakt u twee klassieke virtuele netwerken. Als u dit artikel gebrui
 Naam: TestVNet1<br>
 Adres ruimte: 10.11.0.0/16, 10.12.0.0/16 (optioneel)<br>
 Subnetnaam: standaard<br>
-Adres bereik van subnet: 10.11.0.1/24<br>
+Subnetadresbereik: 10.11.0.0/24<br>
 Resource groep: ClassicRG<br>
 Locatie: VS - oost<br>
 GatewaySubnet: 10.11.1.0/27
