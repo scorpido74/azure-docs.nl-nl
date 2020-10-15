@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764006"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089482"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Dasboards maken en delen in Azure Portal
 
@@ -30,7 +30,7 @@ De Azure Portal biedt een standaard dashboard als uitgangs punt. U kunt het stan
 
 In dit voor beeld maken we een nieuw persoonlijk dash board en wijzen we een naam toe. Volg deze stappen om aan de slag te gaan:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer in het menu Azure Portal de optie **dash board**. De standaard weergave is mogelijk al ingesteld op dash board.
 
@@ -142,7 +142,7 @@ Ga als volgt te werk om een bestaand dash board als sjabloon te gebruiken voor e
 
 ## <a name="publish-and-share-a-dashboard"></a>Een dash board publiceren en delen
 
-Wanneer u een dash board maakt, is dit standaard privé, wat betekent dat u het enige kunt zien. Als u Dash boards beschikbaar wilt maken voor anderen, kunt u ze publiceren en delen. Zie [Azure-Dash boards delen met behulp van Role-Based Access Control](azure-portal-dashboard-share-access.md)voor meer informatie.
+Wanneer u een dash board maakt, is dit standaard privé, wat betekent dat u het enige kunt zien. Als u Dash boards beschikbaar wilt maken voor anderen, kunt u ze publiceren en delen. Zie [Azure-Dash boards delen met behulp van toegangs beheer op basis van rollen](azure-portal-dashboard-share-access.md)voor meer informatie.
 
 ### <a name="open-a-shared-dashboard"></a>Een gedeeld dash board openen
 
@@ -178,5 +178,5 @@ Voer de volgende stappen uit om een persoonlijk of gedeeld dash board permanent 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure-dashboards delen met behulp van op rollen gebaseerd toegangsbeheer](azure-portal-dashboard-share-access.md)
+* [Azure-Dash boards delen met behulp van Azure op rollen gebaseerd toegangs beheer](azure-portal-dashboard-share-access.md)
 * [Op programmatische wijze Azure-dashboards maken](azure-portal-dashboards-create-programmatically.md)

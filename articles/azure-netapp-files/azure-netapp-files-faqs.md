@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932257"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089312"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -80,9 +80,9 @@ Ja, u kunt Maxi maal vijf regels in één NFS-export beleid configureren.
 
 Nee, op dit moment kunt u geen netwerk beveiligings groepen Toep assen op het gedelegeerde subnet van Azure NetApp Files of de netwerk interfaces die zijn gemaakt door de service.
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Kan ik Azure IAM gebruiken met Azure NetApp Files?
+### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Kan ik Azure RBAC gebruiken met Azure NetApp Files?
 
-Ja, Azure NetApp Files ondersteunt RBAC-functies met Azure IAM.
+Ja, Azure NetApp Files ondersteunt de functies van Azure RBAC.
 
 ## <a name="performance-faqs"></a>Veelgestelde vragen over prestaties
 
