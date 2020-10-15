@@ -1,6 +1,6 @@
 ---
-title: Kenmerken van de interactie tussen meerdere tenants-Azure AD | Microsoft Docs
-description: Meer informatie over de gegevens onafhankelijkheid van uw Azure Active Directory-organisaties
+title: Kenmerken van de interactie tussen meerdere tenants - Azure AD | Microsoft Docs
+description: Meer informatie over de gegevensonafhankelijkheid van uw Azure Active Directory-organisaties
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,44 +15,44 @@ ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1db812fb9c1503771bec0b1795ee8c15bb70014a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84727701"
 ---
-# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Meer informatie over de interactie tussen meerdere Azure Active Directory organisaties
+# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Meer informatie over de interactie tussen meerdere Azure Active Directory-organisaties
 
-In Azure Active Directory (Azure AD) is elke Azure AD-organisatie volledig onafhankelijk: een peer die logisch onafhankelijk is van de andere Azure AD-organisaties die u beheert. Deze onafhankelijkheid tussen organisaties omvat bron onafhankelijkheid, administratieve onafhankelijkheid en synchronisatie onafhankelijkheid. Er is geen bovenliggende/onderliggende relatie tussen organisaties.
+In Azure Active Directory (Azure AD) is elke Azure AD-organisatie volledig onafhankelijk: een peer die logisch onafhankelijk is van de andere Azure AD-organisaties die u beheert. Onder deze onafhankelijkheid van uw organisaties vallen ook resourceonafhankelijkheid, beheeronafhankelijkheid en synchronisatieonafhankelijkheid. Er is geen hiërarchische relatie tussen organisaties.
 
-## <a name="resource-independence"></a>Resource onafhankelijkheid
+## <a name="resource-independence"></a>Resourceonafhankelijkheid
 
-* Als u een Azure AD-resource in een organisatie maakt of verwijdert, heeft dit geen invloed op resources in een andere organisatie, met een gedeeltelijke uitzonde ring van externe gebruikers.
-* Als u een van uw domein namen registreert met één organisatie, kan deze niet worden gebruikt door een andere organisatie.
+* Wanneer u een Azure AD-resource maakt in of verwijdert uit een organisatie, heeft dat geen gevolgen voor de resources in andere organisaties. Externe gebruikers vormen hier een gedeeltelijke uitzondering op.
+* Als u een van uw domeinnamen registreert voor één organisatie, kan deze niet worden gebruikt door een andere organisatie.
 
-## <a name="administrative-independence"></a>Beheer onafhankelijkheid
+## <a name="administrative-independence"></a>Beheeronafhankelijkheid
 
-Als een niet-administratieve gebruiker van de organisatie Contoso een test organisatie ' test ' maakt, dan:
+Als een gebruiker (geen beheerder) van de organisatie Contoso de testorganisatie 'Test' maakt:
 
-* De gebruiker die een organisatie maakt, wordt standaard toegevoegd als een externe gebruiker in die nieuwe organisatie en heeft de rol van globale beheerder toegewezen in die organisatie.
-* De Administrators van de organisatie ' Contoso ' hebben geen directe beheerders bevoegdheden voor de test van de organisatie, tenzij een beheerder van ' test ' hen deze bevoegdheden verleent. Beheerders van ' Contoso ' kunnen de toegang tot de organisatie ' test ' echter beheren als ze de gebruikers account beheren die ' test ' heeft gemaakt.
-* Als u een Azure AD-rol toevoegt of verwijdert voor een gebruiker in de ene organisatie, heeft de wijziging geen invloed op de rollen die de gebruiker in een andere Azure AD-organisatie is toegewezen.
+* De gebruiker die een organisatie maakt, wordt standaard toegevoegd als externe gebruiker in die nieuwe organisatie, en krijgt de rol 'Globale beheerder' in die organisatie.
+* De beheerders van de organisatie Contoso hebben geen directe beheerdersrechten voor de organisatie Test, tenzij een beheerder van Test hun deze rechten verleent. Beheerders van Contoso kunnen de toegang tot de organisatie Test echter beheren als ze het beheer hebben over het gebruikersaccount waarmee Test is gemaakt.
+* Als u een Azure AD-rol toevoegt of verwijdert voor een gebruiker in de ene organisatie, heeft de wijziging geen invloed op de rollen die de gebruiker in een andere Azure AD-organisatie zijn toegewezen.
 
-## <a name="synchronization-independence"></a>Synchronisatie onafhankelijkheid
+## <a name="synchronization-independence"></a>Synchronisatieonafhankelijkheid
 
-U kunt elke Azure AD-organisatie onafhankelijk van elkaar configureren om gegevens op te halen uit één exemplaar van ofwel:
+U kunt elke Azure AD-organisatie onafhankelijk zodanig configureren dat de gegevens worden gesynchroniseerd vanuit één exemplaar van:
 
-* Het hulp programma Azure AD Connect om gegevens te synchroniseren met één AD-forest.
-* De Azure Active Directory-Connector voor Forefront Identity Manager, om gegevens te synchroniseren met een of meer on-premises forests en/of niet-Azure AD-gegevens bronnen.
+* Het hulpprogramma Azure AD Connect, om de gegevens met één AD-forest te synchroniseren.
+* De Azure Active Directory-connector voor Forefront Identity Manager, om gegevens met één of meer on-premises forests en/of niet-Azure AD-gegevensbronnen te synchroniseren.
 
 ## <a name="add-an-azure-ad-organization"></a>Een Azure AD-organisatie toevoegen
 
-Als u een Azure AD-organisatie wilt toevoegen aan de Azure Portal, meldt u zich aan bij [de Azure Portal](https://portal.azure.com) met een account dat een globale Azure AD-beheerder is en selecteert u **Nieuw**.
+Als u een Azure AD-organisatie wilt toevoegen in de Azure-portal, meldt u zich aan bij [de Azure-portal](https://portal.azure.com) met een account dat een globale beheerder van Azure AD is en selecteert u **Nieuw**.
 
 > [!NOTE]
-> In tegens telling tot andere Azure-resources zijn uw Azure AD-organisaties geen onderliggende resources van een Azure-abonnement. Als uw Azure-abonnement is geannuleerd of verlopen, hebt u nog steeds toegang tot de gegevens van uw Azure AD-organisatie met behulp van Azure PowerShell, de Microsoft Graph-API of het Microsoft 365-beheer centrum. U kunt ook [een ander abonnement koppelen aan de organisatie](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> In tegenstelling tot andere Azure-resources, zijn uw Azure AD-organisaties geen onderliggende resources van een Azure-abonnement. Als uw Azure-abonnement is geannuleerd of verlopen, hebt u nog wel toegang tot de gegevens van uw Azure AD-organisatie met behulp van Azure PowerShell, de Microsoft Graph API of het Microsoft 365-beheercentrum. U kunt ook [een ander abonnement koppelen aan de organisatie](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat is Azure Active Directory Licensing?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)voor meer informatie over Azure AD-licenties en aanbevolen procedures.
+Zie [Wat is Azure Active Directory licentieverlening?](../fundamentals/active-directory-licensing-whatis-azure-portal.md) voor overwegingen en best practices bij het nemen van een Azure AD-licentie.

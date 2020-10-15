@@ -1,22 +1,23 @@
 ---
-title: Zoek uw Text Analytics resource-eind punt en de sleutel-v3-client bibliotheek
+title: Het eindpunt en de sleutel van uw Text Analytics-resource zoeken - V3-clientbibliotheek
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het maken van een Cognitive Services Text Analytics resource.
+description: Leer hoe u een Cognitive Services Text Analytics-resource kunt maken.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: 46f3d3d016893e9f2344e729225e266b086da148
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: fd4b2c5ce843fd3e8f039213776ad98826c43a6c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140701"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779380"
 ---
 > [!IMPORTANT]
-> Ga naar Azure Portal. Als de Text Analytics bron die u in de sectie **vereisten** hebt gemaakt, is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **volgende stappen**. U vindt de sleutel en het eind punt op de pagina **sleutel en eind punt** van de resource, onder **resource beheer**. 
+> Ga naar Azure Portal. Als de Text Analytics-resource die u in de sectie **Vereisten** hebt gemaakt, succesvol is geïmplementeerd, klikt u op de knop **Ga naar resource** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
 >
-> Vergeet niet om de sleutel uit uw code te verwijderen wanneer u klaar bent en deze nooit openbaar te plaatsen. Overweeg voor productie een veilige manier om uw referenties op te slaan en te gebruiken. Bijvoorbeeld [Azure Key kluis](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Bijvoorbeeld [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

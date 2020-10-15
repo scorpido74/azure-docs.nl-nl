@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 32522958b21d31b09c019ebde0862c49e3535488
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376588"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779418"
 ---
 [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
@@ -64,7 +64,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Omgevingsvariabelen in Android Studio](../../media/android/java/android-studio-assets-and-env-file.png)
+![Schermopname van omgevingsvariabelen in Android Studio.](../../media/android/java/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
