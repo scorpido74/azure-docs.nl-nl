@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d7a2596d4f6a8aa9fb4c95dfb5a3ccab7d7206f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2707c5a6cb110d30b85b765f6c8b144e8cca7abe
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461303"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074716"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemen met Beschik baarheid van toepassingen en services voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -33,7 +33,7 @@ Ongeveer eenmaal per maand brengt micro soft een nieuwe versie van het gast best
 
 Zie [Azure Guest OS releases en SDK Compatibility Matrix](cloud-services-guestos-update-matrix.md)(Engelstalig) voor meer informatie over recente updates voor het gast besturingssysteem.
 
-Voor nuttige informatie over het opnieuw opstarten en verwijzingen naar technische details van gast-en host OS-updates raadpleegt u de MSDN blog post- [rolinstantie wordt opnieuw gestart als gevolg van upgrades van het besturings systeem](https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades).
+Voor nuttige informatie over het opnieuw opstarten en verwijzingen naar technische details van gast-en host OS-updates raadpleegt u de MSDN blog post- [rolinstantie wordt opnieuw gestart als gevolg van upgrades van het besturings systeem](/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Waarom duurt de eerste aanvraag voor mijn Cloud service nadat de service enige tijd langer inactief is dan gebruikelijk?
 Wanneer de webserver de eerste aanvraag ontvangt, wordt de code eerst opnieuw gecompileerd en wordt de aanvraag verwerkt. Daarom duurt de eerste aanvraag langer dan de andere. De groep van toepassingen wordt standaard afgesloten in gevallen van inactiviteit van de gebruiker. De groep van toepassingen wordt ook elke 1.740 minuten (29 uur) automatisch gerecycled.

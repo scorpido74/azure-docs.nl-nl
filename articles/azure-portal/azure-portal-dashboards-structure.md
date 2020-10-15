@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561598"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072472"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Structuur van Azure-dashboards
 In dit document wordt de structuur van een Azure-dash board beschreven, met behulp van het volgende dash board:
 
 ![voorbeelddashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Omdat gedeelde [Azure-Dash boards resources zijn](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), kan dit dash board worden weer gegeven als JSON.  In de volgende JSON staat het dash board dat hierboven is gevisualiseerd.
+Omdat gedeelde [Azure-Dash boards resources zijn](../azure-resource-manager/management/overview.md), kan dit dash board worden weer gegeven als JSON.  In de volgende JSON staat het dash board dat hierboven is gevisualiseerd.
 
 ```json
 
@@ -303,7 +303,7 @@ De naam is het segment van de resource-ID die het abonnement, het resource type 
 Alle Dash boards zijn van het type __micro soft. Portal/Dash boards__.
 
 ### <a name="the-location-property"></a>De locatie-eigenschap
-In tegens telling tot andere resources hebben Dash boards geen runtime-onderdeel.  Voor dash boards geeft de locatie de primaire geografische locatie aan waar de JSON-weer gave van het dash board wordt opgeslagen. De waarde moet een van de locatie codes zijn die kunnen worden opgehaald met behulp [van de locatie-API voor de abonnementen bron](https://docs.microsoft.com/rest/api/resources/subscriptions).
+In tegens telling tot andere resources hebben Dash boards geen runtime-onderdeel.  Voor dash boards geeft de locatie de primaire geografische locatie aan waar de JSON-weer gave van het dash board wordt opgeslagen. De waarde moet een van de locatie codes zijn die kunnen worden opgehaald met behulp [van de locatie-API voor de abonnementen bron](/rest/api/resources/subscriptions).
 
 ### <a name="the-tags-property"></a>De eigenschap Tags
 Tags zijn een gemeen schappelijke functie van Azure-resources waarmee u uw resource kunt ordenen door wille keurige naam paren te gebruiken. Voor dash boards is er één speciale tag met de naam __verborgen titel__. Als uw dash board deze eigenschap heeft gevuld, wordt deze als weergave naam gebruikt voor uw dash board in de portal. De naam van een Azure-resource-id kan niet worden gewijzigd, maar Tags kunnen. Met deze tag kunt u een renamable-weergave naam voor uw dash board hebben.

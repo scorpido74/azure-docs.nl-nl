@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327728"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093749"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in de Azure-portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -120,7 +120,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>Email
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -287,7 +287,32 @@ Als u updates wilt ontvangen over wijzigingen in deze IP-adressen, raden we u aa
 
 Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
 
+### <a name="service-tag"></a>Servicetag
+Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het service label en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels voor een ActionGroup wordt geminimaliseerd.
 
+1. Zoek in Azure Portal onder Azure Services naar *netwerk beveiligings groep*.
+2. Klik op **toevoegen** en maak een netwerk beveiligings groep.
+
+   1. Voeg de naam van de resource groep toe en voer vervolgens Details van het *exemplaar*in.
+   1. Klik op **controleren + maken** en klik vervolgens op *maken*.
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Voor beeld voor het maken van een netwerk beveiligings groep."border="true":::
+
+3. Ga naar de resource groep en klik vervolgens op de *netwerk beveiligings groep* die u hebt gemaakt.
+
+    1. Selecteer *inkomende beveiligings regels*.
+    1. Klik op **Toevoegen**.
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Voor beeld voor het toevoegen van een servicetag."border="true":::
+
+4. Er wordt een nieuw venster geopend in het rechterdeel venster.
+    1.  Bron **selecteren: servicetag**
+    1.  Bron service label: **ActionGroup**
+    1.  Klik op **Add**.
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Voor beeld voor het toevoegen van een servicetag."border="true":::
+
+Het gebruik van de **service tag** voor ActionGroup helpt bij het minimaliseren van de complexiteit van frequente updates voor IP-adressen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [gedrag van SMS-waarschuwingen](./alerts-sms-behavior.md).  

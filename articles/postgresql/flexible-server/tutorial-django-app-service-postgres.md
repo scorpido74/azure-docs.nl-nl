@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929358"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Zelfstudie: Django-app implementeren met App Service en Azure Database for PostgreSQL - Flexible Server (Preview)
@@ -270,11 +270,11 @@ Ga naar *http:\//\<app-name>.azurewebsites.net* en test de app opnieuw in produc
 
 Zoek in het [Azure-portal](https://portal.azure.com) naar de appnaam en selecteer de app in de resultaten.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Naar uw Python Django-app navigeren in Azure Portal":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Voorbeelduitvoer van Django-ontwikkelingsserver":::
 
 Het portal laat standaard de pagina **Overzicht** van uw app zien; hier vindt u een algemeen overzicht van de prestaties. Hier kunt u ook algemene beheertaken uitvoeren zoals bladeren, stoppen, opnieuw starten en verwijderen. De tabbladen aan de linkerkant van de pagina tonen de verschillende configuratiepagina's die u kunt openen.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Uw Python Django-app beheren op de overzichtspagina in Azure Portal":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Voorbeelduitvoer van Django-ontwikkelingsserver":::
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen

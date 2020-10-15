@@ -7,12 +7,12 @@ ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 431ea692ac734a875e27cb8ed4b015155e0e9b91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7523dd39303a211772dd39eef811f55739336ff0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042419"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093698"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>Ontwikkelaars handleiding voor IoT Plug en Play-service
 
@@ -30,14 +30,14 @@ Met de Sdk's van de service krijgt u toegang tot apparaatgegevens van een oploss
 
 - IOT hub-service-client. Met deze service wordt de model-ID als een dubbele eigenschap van een apparaat weer gegeven.
 
-- Digital Apparaatdubbels service-client. De nieuwe Digital Apparaatdubbels-API werkt op model voor [Digital Apparaatdubbels Definition Language (DTDL)](concepts-digital-twin.md) , zoals onderdelen, eigenschappen en opdrachten. De digitale twee Api's maken het gemakkelijker voor oplossingen bouwers om IoT-Plug en Play oplossingen te maken.
+- Digital Apparaatdubbels-client. De nieuwe Digital Apparaatdubbels-API werkt op model voor [Digital Apparaatdubbels Definition Language (DTDL)](concepts-digital-twin.md) , zoals onderdelen, eigenschappen en opdrachten. De digitale twee Api's maken het gemakkelijker voor oplossingen bouwers om IoT-Plug en Play oplossingen te maken.
 
-| Platform | IoT Hub-serviceclient | Digital Apparaatdubbels service-client |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [Documentatie](/dotnet/api/microsoft.azure.devices) <br/> [Voorbeelden](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [Voorbeelden](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [Documentatie](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> [Voorbeelden](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [Voorbeelden](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [Documentatie](/javascript/api/azure-iothub/twin?preserve-view=true&view=azure-node-latest) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Documentatie](/javascript/api/azure-iot-digitaltwins-service/?preserve-view=true&view=azure-node-latest) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
-| Python   | [Documentatie](/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?preserve-view=true&view=azure-python) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Documentatie](/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?preserve-view=true&view=azure-python) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
+| Platform | Documentatie | Voorbeelden |
+| -------- | ------------- | ------- |
+| .NET     | [Verwijzing](/dotnet/api/microsoft.azure.devices) | [Service-client](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) </br> [Digital Twins](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [Verwijzing](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> | [Service-client](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample) </br>[Digital Twins](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [Verwijzing](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest) | [Service-client](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [Verwijzing](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python) <br/> | [Service-client](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="iot-hub-service-client-examples"></a>Voor beelden van IoT Hub service-client
 
@@ -161,7 +161,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="digital-twin-examples"></a>Digitale dubbele voor beelden
+## <a name="iot-hub-digital-twin-examples"></a>IoT Hub digitale dubbele voor beelden
 
 U gebruikt de **DigitalTwinClient** -klasse om te communiceren met de status van het apparaat met behulp van digitale apparaatdubbels. Het [DTDL](concepts-digital-twin.md) -model voor het apparaat definieert de eigenschappen en opdrachten die het apparaat implementeert.
 
@@ -369,43 +369,6 @@ catch (HttpOperationException e)
         Console.WriteLine("Unable to execute command getMaxMinReport on component thermostat1.");
     }
 }
-```
-
-## <a name="rest-api"></a>REST-API
-
-De volgende voor beelden gebruiken de IoT Hub REST API om te communiceren met een verbonden IoT Plug en Play-apparaat. De huidige versie van de API is `2020-09-30` . Voeg `?api-version=2020-09-30` toe aan uw rest Pi-aanroepen.
-
-> [!NOTE]
-> Module apparaatdubbels worden momenteel niet ondersteund door de `digitalTwins` API.
-
-Als uw Thermo staat-apparaat wordt aangeroepen `t-123` , krijgt u de alle eigenschappen van alle interfaces die door uw apparaat worden geïmplementeerd met een rest API Get-aanroep:
-
-```REST
-GET /digitalTwins/t-123
-```
-
-Deze aanroep bevat de JSON-eigenschap `$metadata.$model` met de model-id die door het apparaat wordt aangekondigd.
-
-Alle eigenschappen voor alle interfaces zijn toegankelijk met de `GET /DigitalTwin/{device-id}` rest API-sjabloon, waarbij `{device-id}` de id voor het apparaat is:
-
-```REST
-GET /digitalTwins/{device-id}
-```
-
-U kunt IoT Plug en Play-opdrachten rechtstreeks aanroepen. Als het `Thermostat` onderdeel op het `t-123` apparaat een `restart` opdracht heeft, kunt u dit aanroepen met een rest API post-aanroep:
-
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
-
-Meer in het algemeen kunnen opdrachten worden aangeroepen via deze REST API sjabloon:
-
-- `device-id`: de id voor het apparaat.
-- `component-name`: de naam van de interface in de sectie implements in het model van het apparaat.
-- `command-name`: de naam van de opdracht.
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="read-device-telemetry"></a>Telemetrie van apparaat lezen
