@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: c348b800e9587f13e6ff004317a2aa12efb03394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936217"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090842"
 ---
 # <a name="tutorial-configure-security-agents"></a>Zelf studie: beveiligings agenten configureren
 
@@ -118,7 +118,7 @@ De volgende tabel bevat de eigenschappen van Defender voor IoT-beveiligings agen
 Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka.ms/iot-security-module-default).
 
 | Naam| Status | Geldige waarden| Standaardwaarden| Beschrijving |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Vereist: onwaar |Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT7M |Het maximale tijds interval voor berichten met een hoge prioriteit worden verzonden.|
 |lowPriorityMessageFrequency |Vereist: onwaar|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT5H |Maximale tijd waarna berichten met een lage prioriteit worden verzonden.|
 |snapshotFrequency |Vereist: False|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde PT13H |Tijds interval voor het maken van moment opnamen van de Apparaatstatus.|
@@ -129,7 +129,7 @@ Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka
 ### <a name="supported-security-events"></a>Ondersteunde beveiligings gebeurtenissen
 
 |Gebeurtenis naam| PropertyName | Standaardwaarde| Momentopname gebeurtenis| Status Details  |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|----------|-|---------|----|----|
 |Diagnostische gebeurtenis|eventPriorityDiagnostic| Aan| False| Aan een agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor uitgebreide logboek registratie.|
 |Configuratiefout |eventPriorityConfigurationError |Beperkt |False |Agent kan de configuratie niet parseren. Controleer de configuratie op basis van het schema.|
 |Statistieken voor verwijderde gebeurtenissen |eventPriorityDroppedEventsStatistics |Beperkt |True|Gerelateerde gebeurtenis statistieken voor de agent. |

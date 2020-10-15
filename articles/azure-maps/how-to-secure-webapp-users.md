@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319619"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090213"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Een webtoepassing beveiligen met gebruikers aanmelding
 
@@ -59,7 +59,7 @@ U moet de webtoepassing maken in azure AD voor gebruikers om zich aan te melden.
    * Zie [token ophalen voor de app](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) uit Azure AD-documentatie voor een niet-AspNetCore implementatie of andere.
    * Het eind punt van het beveiligde token is verantwoordelijk voor het retour neren van een toegangs token voor de geverifieerde en geautoriseerde gebruiker om Azure Maps REST-Api's aan te roepen.
 
-8. Configureer het toegangs beheer op basis van Azure-rollen voor gebruikers of groepen. Zie [toegang verlenen op basis van rollen voor gebruikers](#grant-role-based-access-for-users-to-azure-maps).
+8. Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) configureren voor gebruikers of groepen. Zie [toegang verlenen op basis van rollen voor gebruikers](#grant-role-based-access-for-users-to-azure-maps).
 
 9. Configureer de pagina Webtoepassing met de Azure Maps Web-SDK voor toegang tot het eind punt van het beveiligde token. 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851866"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073696"
 ---
 # <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
 
@@ -114,5 +114,5 @@ Volg deze koppelingen voor meer informatie:
 * [REST API voor Azure-ondersteuningstickets](/rest/api/support)
 * [Stuur ons uw feedback en suggesties](https://feedback.azure.com/forums/266794-support-feedback)
 * Neem contact met ons op [Twitter](https://twitter.com/azuresupport)
-* Hulp krijgen van uw peers op de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/products/azure)
+* Hulp krijgen van uw peers op de [pagina micro soft Q&een vraag](/answers/products/azure)
 * Meer informatie in de [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq)

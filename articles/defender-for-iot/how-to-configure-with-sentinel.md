@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 71147352c5b75195ed0dff2b05acc5315f3183cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936472"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090791"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>Uw gegevens verbinden vanuit Defender voor IoT naar Azure Sentinel (preview)
 
-De Azure Security Center voor IoT Data Connector in azure Sentinel is momenteel beschikbaar als open bare preview. Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/) voor meer informatie.
+De Azure Defender voor IoT-gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview. Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In deze hand leiding leert u hoe u uw Defender voor IoT-gegevens verbindt met Azure Sentinel.
 
@@ -32,6 +32,8 @@ In deze hand leiding leert u hoe u uw Defender voor IoT-gegevens verbindt met Az
 
 Verbind waarschuwingen van Defender voor IoT en stream ze rechtstreeks naar Azure Sentinel.
 
+Doordat Azure Defender voor IoT nauw keuriger wordt geïntegreerd met Azure Sentinel, de eerste cloud-native SIEM en de eerste SIEM met systeem eigen IoT en OT, biedt micro soft een eenvoudigere benadering van uniforme beveiliging in IT-en industriële netwerken. In combi natie met de machine learning van Azure Sentinel kunnen organisaties met behulp van deze integratie snel multi-fase-aanvallen detecteren die vaak door de grenzen worden gecrosseerd. Daarnaast maakt Azure Defender voor IoT de integratie met de mogelijkheden van Security Orchestration, Automation en Response (via) van Azure Sentinel automatische reactie en voor komen met behulp van ingebouwde, met de playbooks. 
+
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet **Lees** -en **Schrijf** machtigingen voor de werk ruimte hebben.
@@ -39,8 +41,6 @@ Verbind waarschuwingen van Defender voor IoT en stream ze rechtstreeks naar Azur
 - U moet de machtigingen **lezen** en **schrijven** hebben op de **Azure-IOT hub** u verbinding wilt maken.
 - U moet ook **Lees** -en **Schrijf** machtigingen hebben voor de **resource groep Azure IOT hub**.
 
-> [!NOTE]
-> U moet beschikken over de Azure Security Center Standard-laag licenties die worden uitgevoerd op uw abonnement om algemene Azure-resource waarschuwingen te verzenden. Met de gratis laag licenties die vereist zijn voor Defender voor IoT, worden alleen Defender voor IoT-gerelateerde waarschuwingen doorgestuurd naar Azure Sentinel.
 
 ## <a name="connect-to-defender-for-iot"></a>Verbinding maken met Defender voor IoT
 
@@ -53,7 +53,7 @@ Verbind waarschuwingen van Defender voor IoT en stream ze rechtstreeks naar Azur
 > [!NOTE]
 >Het kan 10 seconden of langer duren om de hub-lijst te vernieuwen nadat de verbinding is gewijzigd.
 
-## <a name="log-analytics-alert-display"></a>Log Analytics waarschuwings weergave
+## <a name="using-log-analytics-for-alert-display"></a>Log Analytics gebruiken voor het weer geven van waarschuwingen
 
 Het relevante schema in Log Analytics gebruiken om de Defender voor IoT-waarschuwingen weer te geven:
 

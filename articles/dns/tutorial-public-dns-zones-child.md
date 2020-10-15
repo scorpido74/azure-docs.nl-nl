@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
 ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89080512"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Zelfstudie: Een nieuwe onderliggende DNS-zone maken
@@ -74,14 +74,14 @@ U kunt ook een nieuwe onderliggende DNS-zone maken en deze in de bovenliggende D
 1.  Open in de Azure-portal onder **Alle resources** de DNS-zone *contoso.com* in de resourcegroep **MyResourceGroup**. U kunt *contoso.com* invoeren in het vak **Filteren op naam** zodat u deze eenvoudiger kunt vinden.
 1.  Selecteer op de pagina met het overzicht van de DNS-zone de knop **+Onderliggende zone**.
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="Schermafbeelding van knop Onderliggende zone." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="Schermafbeelding van de pagina DNS-zone maken." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
 
 1.  Vervolgens wordt de pagina DNS-zone maken geopend. De optie Onderliggende zone is al ingeschakeld. Het abonnement voor de bovenliggende zone en de bovenliggende zone zijn al op deze pagina ingevuld.
 1.  Typ de naam als *onderliggend* voor het voorbeeld in deze zelfstudie. U ziet dat de naam van de bovenliggende DNS-zone, contoso.com, automatisch als voorvoegsel aan de naam wordt toegevoegd.
 1.  Selecteer **Volgende: Tags** en vervolgens **Volgende: Beoordelen en maken**.
 1.  Controleer het overzicht op het tabblad **Beoordelen en maken**, corrigeer eventuele validatiefouten en selecteer vervolgens **Maken**.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Schermopname van geselecteerde onderliggende zone" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Schermafbeelding van de pagina DNS-zone maken." border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
 ## <a name="verify-child-dns-zone"></a>Onderliggende DNS-zone verifiëren
 U hebt nu een nieuwe onderliggende DNS-zone gemaakt: *subdomain.contoso.com*. Als u wilt controleren of de delegatie op de juiste wijze is uitgevoerd, controleert u of de records van de naamserver (NS) voor de onderliggende zone zich in de bovenliggende zone bevinden, zoals hieronder beschreven.  
 
@@ -90,7 +90,7 @@ U hebt nu een nieuwe onderliggende DNS-zone gemaakt: *subdomain.contoso.com*. Al
 1.  Open in de Azure-portal onder **Alle resources** de DNS-zone *subdomain.contoso.com* in de resourcegroep **MyResourceGroup**. U kunt *subdomain.contoso.com* invoeren in het vak **Filteren op naam** zodat u deze eenvoudiger kunt vinden.
 1.  Haal de naamservers op van de pagina met het overzicht van DNS-zones. In dit voorbeeld zijn de naamservers *ns1-08.azure-dns.com, ns2-08.azure-dns.net, ns3-08.azure-dns.org* en *ns4-08.azure-dns.info* aan de zone contoso.com toegewezen:
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="Schermopname van naamservers van de onderliggende zone" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="Schermafbeelding van de pagina DNS-zone maken." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
 **Controleer de NS-record in de bovenliggende DNS-zone:**
 
 In deze stap gaat u naar de bovenliggende DNS-zone *contoso.com* en controleert u of de vermelding voor de bijbehorende NS-recordset voor de naamservers van de onderliggende zones is gemaakt.
@@ -99,7 +99,7 @@ In deze stap gaat u naar de bovenliggende DNS-zone *contoso.com* en controleert 
 1.  Op de pagina met het overzicht van de DNS-zones, *contoso.com*, controleert u op de recordsets.
 1.  U ziet dat de recordset van het type NS en met de naam subdomain al in de bovenliggende DNS-zone is gemaakt. Controleer of de waarden voor deze recordset lijken op die in de lijst met naamservers die in de bovenstaande stap zijn opgehaald uit de onderliggende DNS-zone.
 
-     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="Schermopname van validatie van naamservers van de onderliggende zone" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
+     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="Schermafbeelding van de pagina DNS-zone maken." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>Resources opschonen
 Wanneer u de resources die u in deze zelfstudie hebt gemaakt, niet meer nodig hebt, verwijdert u ze door de resourcegroep **MyResourceGroup** te verwijderen. Open de resourcegroep **MyResourceGroup** en selecteer **Resourcegroep verwijderen**.
 

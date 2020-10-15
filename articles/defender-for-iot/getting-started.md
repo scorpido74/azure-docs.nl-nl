@@ -13,35 +13,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: aaed6cd789ca6178410c05b940a8f498e2c067a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3de253ee6f45f9296d6b09189fe4bc488be36ad
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936872"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090060"
 ---
-# <a name="get-started-with-defender-for-iot"></a>Aan de slag met Defender voor IoT
+# <a name="getting-started-with-azure-defender-for-iot"></a>Aan de slag met Azure Defender voor IoT
 
-Dit artikel bevat een uitleg van de verschillende onderdelen van de Defender voor IoT-service en legt uit hoe u aan de slag kunt met de service met twee mogelijke implementatie opties.
+In dit artikel worden de implementatie-en voorbereidings processen beschreven die nodig zijn om Azure Defender voor IoT uit te voeren. Er zijn ook aanvullende stappen vereist. U wordt aangeraden deze stappen te begrijpen en vertrouwd te raken met informatie in begeleide documenten.
 
-Bent u op zoek naar aan de slag met de beveiligings module voor Azure RTO'S? Ga naar de sectie [Snelstartgids voor beveiligings module voor Azure rto's](quickstart-azure-rtos-security-module.md) . 
+Zodra u alle stappen hebt voltooid, bewaakt Azure Defender voor IoT Sens oren uw netwerk. Afhankelijk van hoe u uw oplossing hebt ingesteld, kunnen detecties ook worden verzonden naar de on-premises beheer console of naar de IoT Hub.
 
-## <a name="deployment-options"></a>Implementatieopties
+Voer de volgende stappen uit om Azure Defender voor IoT actief en werkend te krijgen.
 
-Kies het service scenario dat het beste voldoet aan uw IoT-apparaat en omgevings vereisten.
+## <a name="1-set-up-azure"></a>1. Azure instellen
 
-### <a name="built-in-deployment"></a>Ingebouwde implementatie
+- Stel een Azure-account in. Zie [een Azure-account maken](https://docs.microsoft.com/learn/modules/create-an-azure-account/)voor meer informatie.
 
-Met de naadloze, ingebouwde implementatie optie kan Defender voor IoT snel worden geïntegreerd in uw IoT Hub en kan de configuratie van de IoT-hub, de apparaat-id en het beheer en de communicatie patronen voor hubs worden verbeterd.
+- Firewall of proxy: als u een firewall of soortgelijk netwerk apparaat hebt dat is geconfigureerd om specifieke verbindingen toe te staan, controleert u of *. azure-devices.net:443 wordt geopend voor de firewall of proxy. Als joker tekens niet worden ondersteund of als u meer controle wilt, moet u de specifieke IoT Hub FQDN openen in uw FW of proxy. Zie [referentie-IOT hub-eind punten](/azure/iot-hub/iot-hub-devguide-endpoints)voor meer informatie.
 
-Start een [ingebouwde implementatie](iot-hub-integration.md) met IOT hub bewaking en aanbevelingen.
-    <br>
+## <a name="2-deploy-hardware-software-and-onboard-to-sensor"></a>2. Implementeer hardware, software en onboarding naar sensor
 
-### <a name="enhanced-deployment"></a>Verbeterde implementatie
+- Hardware aanschaffen en software installeren. Volg de stappen die hier worden beschreven en zie dit artikel en de [hand leiding voor Defender voor IOT](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) en de [installatie handleiding](https://aka.ms/AzureDefenderforIoTInstallSensorISO)voor meer informatie.
 
-Voor verbeterde beveiligings functies implementeert u Defender voor IoT-agents naast het inschakelen van IoT Hub beveiliging op basis van op agents gebaseerde gebeurtenis verzameling, analyse en detectie van bedreigingen van belang rijke beveiligings gegevens van uw IoT-apparaten, evenals uitgebreide mogelijkheden voor het beheer van beveiligings postuur.
+  - Nadat u de sensor hebt geïnstalleerd, moet u de referenties voor de sensor aanmelden veilig vastleggen. U hebt de referenties nodig voor het uploaden van het activerings bestand naar de sensor.
 
-Start een [verbeterde implementatie](security-agents.md) met een uitgebreide oplossing voor beveiliging tegen bedreigingen en postuur beheer van een agent.
+  - Als u werkt met Sens oren die lokaal worden beheerd, moet u het IP-adres van de sensor of de sensor naam die in de installatie is gedefinieerd, veilig vastleggen. U kunt deze gebruiken bij het maken van een sensor naam tijdens de sensor registratie in de Defender voor IoT-Portal. U kunt deze later gebruiken om gemakkelijker te kunnen bijhouden en een consistente naam te geven tussen de registratie naam in de Azure Defender voor IoT-Portal en het IP-adres van de geïmplementeerde sensor die wordt weer gegeven in de sensor console.
+
+- Registreer de sensor met de Defender voor IoT-Portal en down load een sensor activerings bestand.
+
+- Upload het activerings bestand naar uw sensor.
+
+## <a name="3-perform-network-setup-for-sensor-monitoring-and-management"></a>3. Voer netwerk installatie uit voor sensor bewaking en-beheer
+
+- Verbind uw sensor met het netwerk. Beschreven in de [hand leiding voor netwerk installatie](https://aka.ms/AzureDefenderForIoTNetworkSetup).
+
+## <a name="4-start-discovering-your-network"></a>4. start met het detecteren van uw netwerk
+
+- Tweak systeem instellingen in de sensor console.
+
+- Sens oren verbinden met een on-premises beheer console.
+
+Zie de gebruikers handleiding voor [Azure Defender voor IOT-sensor](https://aka.ms/AzureDefenderforIoTUserGuide) en de [Gebruikers handleiding voor de on-premises beheer console van Defender voor IOT](https://aka.ms/DefenderForIoTManagementConsole)voor meer informatie.
+
+## <a name="5-populate-azure-sentinel-with-alert-information"></a>5. Azure Sentinel vullen met waarschuwings gegevens
+
+- Als u waarschuwings gegevens wilt verzenden naar Azure Sentinel, configureert u Azure Sentinel: [Verbind uw gegevens van Defender voor IOT naar Azure Sentinel](how-to-configure-with-sentinel.md).
+ 
 
 ## <a name="next-steps"></a>Volgende stappen
 

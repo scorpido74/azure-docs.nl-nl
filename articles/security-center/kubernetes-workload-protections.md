@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999310"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091148"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes-workloads beveiligen
 
@@ -67,21 +67,21 @@ Azure Security Center bevat een bundel van aanbevelingen die beschikbaar zijn wa
     > 
     > Als u de vereiste para meters niet opgeeft voor de aanbevelingen die moeten worden geconfigureerd, worden uw werk belastingen weer gegeven als beschadigd.
 
-    | Naam aanbeveling                                                                   | Beveiligings beheer                         | Configuratie vereist |
-    |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | De CPU-en geheugen limieten van de container moeten worden afgedwongen (preview-versie)                          | Toepassingen beveiligen tegen DDoS-aanval | Nee                     |
-    | Geprivilegieerde containers moeten worden vermeden (preview-versie)                                     | Toegang en machtigingen beheren            | Nee                     |
-    | Onveranderbaar (alleen-lezen) hoofd bestands systeem moet worden afgedwongen voor containers (preview-versie)     | Toegang en machtigingen beheren            | Nee                     |
-    | Container met bevoegdheids escalatie moet worden vermeden (preview-versie)                       | Toegang en machtigingen beheren            | Nee                     |
-    | Containers uitvoeren als hoofd gebruiker moet worden vermeden (preview-versie)                           | Toegang en machtigingen beheren            | Nee                     |
-    | Containers die gevoelige host-naam ruimten delen, moeten worden vermeden (preview-versie)              | Toegang en machtigingen beheren            | Nee                     |
-    | Er moeten mini maal bevoegde Linux-mogelijkheden worden afgedwongen voor containers (preview-versie)       | Toegang en machtigingen beheren            | **Ja**                |
-    | Het gebruik van pod HostPath-volume koppelingen moet worden beperkt tot een bekende lijst (preview-versie)    | Toegang en machtigingen beheren            | **Ja**                |
-    | Containers moeten worden geluisterd op toegestane poorten (preview-versie)                              | Onbevoegde netwerk toegang beperken     | **Ja**                |
-    | Services mogen alleen op toegestane poorten Luis teren (preview)                                | Onbevoegde netwerk toegang beperken     | **Ja**                |
-    | Het gebruik van hostnetwerkadapters en poorten moet worden beperkt (preview-versie)                     | Onbevoegde netwerk toegang beperken     | **Ja**                |
-    | Het negeren of uitschakelen van containers AppArmor profiel moet worden beperkt (preview-versie) | Beveiligingsconfiguraties herstellen        | **Ja**                |
-    | Container installatie kopieën moeten alleen worden geïmplementeerd vanuit vertrouwde registers (preview)            | Beveiligings problemen oplossen                | **Ja**                |
+    | Naam aanbeveling                                                         | Beveiligings beheer                         | Configuratie vereist |
+    |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
+    | De CPU-en geheugen limieten van de container moeten worden afgedwongen                          | Toepassingen beveiligen tegen DDoS-aanval | Nee                     |
+    | Geprivilegieerde containers moeten worden vermeden                                     | Toegang en machtigingen beheren            | Nee                     |
+    | Een onveranderbaar hoofd bestands systeem (alleen-lezen) moet worden afgedwongen voor containers     | Toegang en machtigingen beheren            | Nee                     |
+    | Container met bevoegdheids escalatie moet worden vermeden                       | Toegang en machtigingen beheren            | Nee                     |
+    | Containers uitvoeren als hoofd gebruiker moet worden vermeden                           | Toegang en machtigingen beheren            | Nee                     |
+    | Containers die gevoelige host-naam ruimten delen, moeten worden vermeden              | Toegang en machtigingen beheren            | Nee                     |
+    | Er moeten mini maal bevoegde Linux-mogelijkheden worden afgedwongen voor containers       | Toegang en machtigingen beheren            | **Ja**                |
+    | Het gebruik van pod HostPath-volume koppelingen moet worden beperkt tot een bekende lijst    | Toegang en machtigingen beheren            | **Ja**                |
+    | Containers moeten alleen op toegestane poorten Luis teren                              | Onbevoegde netwerk toegang beperken     | **Ja**                |
+    | Services worden alleen op toegestane poorten geluisterd                                | Onbevoegde netwerk toegang beperken     | **Ja**                |
+    | Het gebruik van hostnetwerkadapters en poorten moet worden beperkt                     | Onbevoegde netwerk toegang beperken     | **Ja**                |
+    | Het negeren of uitschakelen van containers AppArmor profiel moet worden beperkt | Beveiligingsconfiguraties herstellen        | **Ja**                |
+    | Container installatie kopieën moeten alleen worden geïmplementeerd vanuit vertrouwde registers            | Beveiligings problemen oplossen                | **Ja**                |
 
 
 1. Voor de aanbevelingen waarvoor para meters moeten worden aangepast, stelt u de para meters in:

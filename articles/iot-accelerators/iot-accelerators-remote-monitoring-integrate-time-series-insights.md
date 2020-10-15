@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536603"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072642"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integreer Azure Time Series Insights met Externe bewaking
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Implementeer vervolgens Time Series Insights als een extra bron in uw oplossing voor externe controle en verbind deze met de IoT-hub.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **een resource maken**  >  **Internet of Things**  >  **Time Series Insights**.
 
@@ -68,7 +68,7 @@ Implementeer vervolgens Time Series Insights als een extra bron in uw oplossing 
 
     ![Time Series Insights maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klik op **Maken**. Het kan even duren voordat de omgeving is gemaakt.
+1. Klik op **Create**. Het kan even duren voordat de omgeving is gemaakt.
 
 ## <a name="create-event-source"></a>Gebeurtenisbron maken
 
@@ -101,7 +101,7 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Zorg erv
 
     ![Gebeurtenis bron maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 ## <a name="configure-the-data-access-policy"></a>Het beleid voor gegevens toegang configureren
 
@@ -126,7 +126,7 @@ Om ervoor te zorgen dat alle gebruikers die toegang hebben tot uw oplossing voor
 1. Kies **Opslaan** om de roltoewijzing te maken. Na enkele ogen blikken wordt aan de beveiligingsprincipal de rol toegewezen in het beleid voor gegevens toegang.
 
 > [!NOTE]
-> Als u extra gebruikers toegang wilt verlenen tot de Time Series Insights Explorer, kunt u deze stappen gebruiken om [toegang tot gegevens te verlenen](../time-series-insights/time-series-insights-data-access.md#grant-data-access).
+> Als u extra gebruikers toegang wilt verlenen tot de Time Series Insights Explorer, kunt u deze stappen gebruiken om [toegang tot gegevens te verlenen](../time-series-insights/concepts-access-policies.md#grant-data-access).
 
 ## <a name="configure-azure-stream-analytics"></a>Azure Stream Analytics configureren 
 
@@ -217,7 +217,7 @@ Configureer de implementatie omgeving `basic` voor de bijgewerkte micro Services
 
 1. Haal het [meest recente docker yaml-bestand](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) op uit github opslag plaats met de nieuwste tag. 
 
-1. SSH naar de virtuele machine door de stappen te volgen die worden beschreven in het [maken en gebruiken van SSH-sleutels](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+1. SSH naar de virtuele machine door de stappen te volgen die worden beschreven in het [maken en gebruiken van SSH-sleutels](../virtual-machines/linux/ssh-from-windows.md).
 
 1. Zodra u verbinding hebt gemaakt, typt u `cd /app` .
 
@@ -300,4 +300,4 @@ Configureer de implementatie omgeving `standard` voor de bijgewerkte micro servi
 
 * Zie onze zelf studie over het [uitvoeren van een analyse van hoofd oorzaken](iot-accelerators-remote-monitoring-root-cause-analysis.md)voor meer informatie over het verkennen van uw gegevens en het vaststellen van een waarschuwing in de time series Insights Explorer.
 
-* Zie de documentatie op de [Azure time series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)voor informatie over het verkennen en opvragen van gegevens in de time series Insights Explorer.
+* Zie de documentatie op de [Azure time series Insights Explorer](../time-series-insights/time-series-insights-explorer.md)voor informatie over het verkennen en opvragen van gegevens in de time series Insights Explorer.

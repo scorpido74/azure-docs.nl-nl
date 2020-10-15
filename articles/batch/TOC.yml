@@ -43,7 +43,19 @@
         - name: Opslagplaats voor Batch-voorbeelden
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: Een Batch-account maken in Batch-servicemodus
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: Een Batch-account maken in gebruikersabonnementmodus
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: Een toepassing toevoegen aan een Azure Batch-account
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: Een Linux-groep maken en beheren
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: Een Windows-groep maken en beheren
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: Een functie en taken uitvoeren
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: Concepten
   items:
     - name: Beveiliging

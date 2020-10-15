@@ -3,18 +3,18 @@ title: Update-implementaties voor Azure Automation maken Updatebeheer
 description: In dit artikel wordt beschreven hoe u update-implementaties plant en hoe u de status ervan controleert.
 services: automation
 ms.subservice: update-management
-ms.date: 09/16/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: fa5cabd5410f0cbe7382db0289d98bc69d4a01fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f7d86ff668a151bdf83908c3199d01a0a53246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294713"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073747"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Updates implementeren en resultaten bekijken
 
-In dit artikel wordt beschreven hoe u een update-implementatie plant en het proces controleert nadat de implementatie is voltooid. U kunt een update-implementatie configureren vanaf een geselecteerde Azure-virtuele machine, van de geselecteerde server met Arc of van het Automation-account op alle geconfigureerde computers en servers. 
+In dit artikel wordt beschreven hoe u een update-implementatie plant en het proces controleert nadat de implementatie is voltooid. U kunt een update-implementatie configureren vanaf een geselecteerde Azure-virtuele machine, van de geselecteerde server met Arc of van het Automation-account op alle geconfigureerde computers en servers.
 
 In elk scenario kunt u een of meer computers richten op de implementatie die u maakt op basis van de geselecteerde machine of server, of in het geval van het maken van een implementatie van uw Automation-account. Wanneer u een update-implementatie plant vanaf een Azure VM of Arc-server, zijn de stappen hetzelfde als bij het implementeren van uw Automation-account, met de volgende uitzonde ringen:
 
@@ -59,7 +59,7 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
     > [!NOTE]
     > Deze optie is niet beschikbaar als u een Azure-VM of een Arc-server hebt geselecteerd. De machine is automatisch gericht op de geplande implementatie.
 
-6. Selecteer in de regio **computers die u wilt bijwerken** een opgeslagen zoek opdracht, een geïmporteerde groep of kies **machines** in het vervolg keuzemenu en selecteer afzonderlijke machines. Met deze optie kunt u de gereedheid van de Log Analytics-agent voor elke machine bekijken. Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken.
+6. Selecteer in de regio **computers die u wilt bijwerken** een opgeslagen zoek opdracht, een geïmporteerde groep of kies **machines** in het vervolg keuzemenu en selecteer afzonderlijke machines. Met deze optie kunt u de gereedheid van de Log Analytics-agent voor elke machine bekijken. Zie [Computergroepen in Azure Monitorlogboeken](../../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken. U kunt Maxi maal 500 computers in een geplande update-implementatie toevoegen.
 
     > [!NOTE]
     > Deze optie is niet beschikbaar als u een Azure-VM of een Arc-server hebt geselecteerd. De machine is automatisch gericht op de geplande implementatie.
@@ -89,7 +89,7 @@ Als u een nieuwe update-implementatie wilt plannen, voert u de volgende stappen 
 
     * Onderhoudsvensters bepalen hoeveel updates worden geïnstalleerd.
     * Updatebeheer stopt niet met het installeren van nieuwe updates als het einde van een onderhoudsvenster nadert.
-    * Updatebeheer wordt niet beëindigd als er updates worden uitgevoerd wanneer het onderhoudsvenster wordt overschreden.
+    * Updatebeheer wordt niet beëindigd als er updates worden uitgevoerd wanneer het onderhoudsvenster wordt overschreden. Alle resterende updates die moeten worden geïnstalleerd, worden niet geprobeerd. Als dit consistent gebeurt, moet u de duur van uw onderhouds venster opnieuw evalueren.
     * Als het onderhoudsvenster op Windows wordt overschreden, komt dat vaak doordat het installeren van een servicepack-update lang duurt.
 
     > [!NOTE]

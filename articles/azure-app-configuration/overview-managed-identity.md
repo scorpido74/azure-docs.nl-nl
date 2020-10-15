@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82981218"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072795"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Beheerde identiteiten gebruiken voor Azure-app configuratie
 
@@ -33,7 +33,7 @@ Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, gebrui
 
 - Gebruik [Azure Cloud shell](../cloud-shell/overview.md) van de Azure Portal.
 - Gebruik de Inge sloten Azure Cloud Shell via de knop ' Probeer het ', in de rechter bovenhoek van elk hieronder opgenomen code blok.
-- [Installeer de nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,1 of hoger) als u liever een lokale cli-console gebruikt.
+- [Installeer de nieuwste versie van Azure cli](/cli/azure/install-azure-cli) (2,1 of hoger) als u liever een lokale cli-console gebruikt.
 
 De volgende stappen helpen u bij het maken van een app-configuratie archief en het toewijzen van een identiteit met behulp van de CLI:
 
@@ -66,7 +66,7 @@ Als u een beheerde identiteit wilt instellen met behulp van de Azure CLI, gebrui
 
 - Gebruik [Azure Cloud shell](../cloud-shell/overview.md) van de Azure Portal.
 - Gebruik de Inge sloten Azure Cloud Shell via de knop ' Probeer het ', in de rechter bovenhoek van elk hieronder opgenomen code blok.
-- [Installeer de nieuwste versie van Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 of hoger) als u liever een lokale cli-console gebruikt.
+- [Installeer de nieuwste versie van Azure cli](/cli/azure/install-azure-cli) (2.0.31 of hoger) als u liever een lokale cli-console gebruikt.
 
 Met de volgende stappen wordt u begeleid bij het maken van een door de gebruiker toegewezen identiteit en een app-configuratie archief. vervolgens wijst u de identiteit toe aan de Store met behulp van de CLI:
 

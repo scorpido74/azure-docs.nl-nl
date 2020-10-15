@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3be01f6d8e1fb1f6ba541f8d1cb0c92d2a43b0da
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441592"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073101"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Pakket opname voor VPN-gateways configureren
 
@@ -318,7 +318,7 @@ De volgende voor beelden van JSON en een JSON-schema geven uitleg over elke eige
 
 ## <a name="set-up-packet-capture-by-using-powershell"></a>Pakket opname instellen met behulp van Power shell
 
-In de volgende voor beelden ziet u Power shell-opdrachten die pakket opnames starten en stoppen. Zie [Dit Power shell-document](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)voor meer informatie over de parameter opties.
+In de volgende voor beelden ziet u Power shell-opdrachten die pakket opnames starten en stoppen. Zie [Start-AzVirtualnetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)voor meer informatie over de parameter opties.
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Pakket opname starten voor een VPN-gateway
 
@@ -354,6 +354,9 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - De voorgestelde minimale pakket opname duur is 600 seconden. Vanwege synchronisatie problemen tussen meerdere onderdelen op het pad, bieden kortere pakket opnames mogelijk geen volledige gegevens.
 - Gegevens bestanden voor pakket opname worden gegenereerd in de PCAP-indeling. Gebruik wireshark of andere algemeen beschik bare toepassingen om PCAP-bestanden te openen.
 - Pakket opnames worden niet ondersteund op op beleid gebaseerde gateways.
+- Als de `SASurl` para meter niet juist is geconfigureerd, kan de tracering mislukken met opslag fouten. `SASurl`Zie [Stop-AzVirtualNetworkGatewayPacketCapture](https://docs.microsoft.com/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)voor voor beelden van het correct genereren van een para meter.
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
