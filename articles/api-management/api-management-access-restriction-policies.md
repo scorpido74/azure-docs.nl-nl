@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 05ca16ad828525f2b09e4adf8f75be4667254614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711a973f13c8e292578703518df4c4302c31eb57
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535182"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071384"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management access restriction policies (Beleid voor toegangsbeperking API Management)
 
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](./api-management-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> Toegangs restrictie beleid
 
@@ -558,4 +558,4 @@ Zie voor meer informatie over het gebruik van beleid:
 -   [Beleid in API Management](api-management-howto-policies.md)
 -   [Api's transformeren](transform-api.md)
 -   [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
--   [Voor beelden van beleid](policy-samples.md)
+-   [Voor beelden van beleid](./policy-reference.md)
