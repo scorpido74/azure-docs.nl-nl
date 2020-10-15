@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449617"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045785"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Windows-apparaten
 
@@ -87,13 +87,13 @@ In deze zelfstudie leert u de ontwikkelstappen voor Visual Studio 2019. Als u Vi
 
 1. Bereid Visual Studio 2019 voor op uw ontwikkelcomputer.
 
-   * Als u Visual Studio nog niet op uw ontwikkelcomputer hebt, [installeert u Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) met de volgende workloads:
+   * Als u Visual Studio nog niet op uw ontwikkelcomputer hebt, [installeert u Visual Studio 2019](/visualstudio/install/install-visual-studio) met de volgende workloads:
 
       * Azure-ontwikkeling
       * Desktopontwikkeling met C++
       * Platformoverschrijdende ontwikkelmogelijkheden van .NET Core
 
-   * Als u Visual Studio 2019 al hebt geïnstalleerd op uw ontwikkelcomputer, volgt u de stappen in [Visual Studio aanpassen](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) om de vereiste workloads toe te voegen.
+   * Als u Visual Studio 2019 al hebt geïnstalleerd op uw ontwikkelcomputer, volgt u de stappen in [Visual Studio aanpassen](/visualstudio/install/modify-visual-studio) om de vereiste workloads toe te voegen.
 
 2. Download en installeer de [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)-extensie voor Visual Studio 2019.
 
@@ -181,17 +181,17 @@ De oplossingssjabloon die u hebt gemaakt, bevat voorbeeldcode voor een IoT Edge-
 
 Elke module kan meerdere *invoer*- en *uitvoer*wachtrijen hebben die in hun code zijn gedeclareerd. Met de IoT Edge-hub die op het apparaat wordt uitgevoerd, worden berichten van de uitvoer van een module naar de invoer van een of meer modules gerouteerd. De specifieke code voor het declareren van invoer en uitvoer verschilt per taal, maar het concept is voor alle modules hetzelfde. Zie [Routes declareren](module-composition.md#declare-routes) voor meer informatie over routering tussen modules.
 
-De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) van de IoT Hub SDK voor .NET.
+De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](/dotnet/api/microsoft.azure.devices.client.moduleclient) van de IoT Hub SDK voor .NET.
 
 1. Zoek in het bestand **program.cs** de methode **SetInputMessageHandlerAsync** op.
 
-2. Met de methode [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) wordt een invoerwachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en zie hoe hiermee een invoerwachtrij met de naam **input1** wordt geïnitialiseerd.
+2. Met de methode [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) wordt een invoerwachtrij ingesteld voor het ontvangen van inkomende berichten. Bekijk deze methode en zie hoe hiermee een invoerwachtrij met de naam **input1** wordt geïnitialiseerd.
 
    ![De invoernaam zoeken in de SetInputMessageHandlserAsync-constructor](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
 3. Zoek vervolgens de methode **SendEventAsync**.
 
-4. Met de methode [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) worden ontvangen berichten verwerkt en wordt een uitvoerwachtrij ingesteld om de berichten door te geven. Bekijk deze methode en controleer of er een uitvoerwachtrij met de naam **output1** wordt geïnitialiseerd.
+4. Met de methode [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) worden ontvangen berichten verwerkt en wordt een uitvoerwachtrij ingesteld om de berichten door te geven. Bekijk deze methode en controleer of er een uitvoerwachtrij met de naam **output1** wordt geïnitialiseerd.
 
    ![De uitvoernaam zoeken in de SendEventAsync-constructor](./media/tutorial-develop-for-windows/declare-output-queue.png)
 

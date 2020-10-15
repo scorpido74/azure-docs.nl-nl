@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075270"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055848"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-voorbeeldscripts
 
@@ -23,7 +23,7 @@ Azure Remote Rendering bevat de volgende twee REST API's:
 De [ARR-opslagplaats](https://github.com/Azure/azure-remote-rendering) bevat voorbeeldscripts in de map *Scripts* voor het werken met de REST API's van de service. In dit artikel wordt het gebruik hiervan beschreven.
 
 > [!CAUTION]
-Als REST API-functies te vaak worden aangeroepen, wordt de server trager en wordt er uiteindelijk een fout geretourneerd. De HTTP-foutcode-id is in dit geval 429 ('Te veel aanvragen'). Als vuistregel moet er een vertraging van **5-10 seconden tussen opeenvolgende aanroepen** in acht worden genomen.
+> Als REST API-functies te vaak worden aangeroepen, wordt de server trager en wordt er uiteindelijk een fout geretourneerd. De HTTP-foutcode-id is in dit geval 429 ('Te veel aanvragen'). Als vuistregel moet er een vertraging van **5-10 seconden tussen opeenvolgende aanroepen** in acht worden genomen.
 
 ## <a name="prerequisites"></a>Vereisten
 

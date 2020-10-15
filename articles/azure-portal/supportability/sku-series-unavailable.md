@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763819"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078507"
 ---
 # <a name="region-or-sku-unavailable"></a>Regio of SKU is niet beschikbaar
 
@@ -80,8 +80,8 @@ Als u geen geschikte regio of SKU kunt vinden, maakt u een [ondersteunings aanvr
 
 ## <a name="send-us-your-suggestions"></a>Stuur ons uw suggesties
 
-We zijn altijd te openen voor feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). Daarnaast kunt u aan de slag met ons op [Twitter](https://twitter.com/azuresupport) of op de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/products/azure).
+We zijn altijd te openen voor feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). Daarnaast kunt u aan de slag met ons op [Twitter](https://twitter.com/azuresupport) of op de [pagina micro soft Q&een vraag](/answers/products/azure).
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq)

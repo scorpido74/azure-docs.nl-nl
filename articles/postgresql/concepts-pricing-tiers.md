@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 5760d5e140919c9309b22f6f597e73c88f7a9069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: e0ac1ec93dba23eb6ab3380e342141618a1ab6e4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710274"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069652"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijscategorieën in Azure Database for PostgreSQL - enkele server
 
@@ -51,7 +51,7 @@ De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikb
 | IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
 
 > [!NOTE]
-> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Zuid-Oost, VS-West
+> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië Zuid-Oost, VS-West 2 en Canada-centraal.
 >
 > Alle andere regio's ondersteunen Maxi maal 4 TB opslag ruimte en 6000 IOPS.
 >

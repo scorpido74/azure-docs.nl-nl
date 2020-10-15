@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3097f7b0b6b69dc470877d4951efbcbd3c7482b1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86249600"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078490"
 ---
 # <a name="api-management-transformation-policies"></a>Transformatiebeleid API Management
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](./api-management-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
 
 ##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> Transformatie beleid
 
@@ -732,4 +732,4 @@ Zie de volgende onderwerpen voor meer informatie:
 
 + [Beleid in API Management](api-management-howto-policies.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Voor beelden van beleid](./policy-reference.md)

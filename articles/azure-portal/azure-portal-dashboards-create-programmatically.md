@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764040"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077861"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmatisch Azure-Dash boards maken
 
@@ -78,13 +78,13 @@ Als u dit dash board voor elke virtuele machine in de toekomst wilt publiceren, 
 Er zijn twee benaderingen voor Api's die resources maken in Azure:
 
 * Met verplichte Api's maakt u één resource per keer. Zie [resources](/rest/api/resources/resources)voor meer informatie.
-* Een implementatie systeem op basis van een sjabloon dat meerdere, afhankelijke resources maakt met één API-aanroep. Zie  [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)voor meer informatie.
+* Een implementatie systeem op basis van een sjabloon dat meerdere, afhankelijke resources maakt met één API-aanroep. Zie  [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)voor meer informatie.
 
 Implementatie op basis van een sjabloon ondersteunt parameterisering en sjabloon. We gebruiken deze benadering in dit artikel.
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Programmatisch een dash board maken op basis van uw sjabloon met behulp van een sjabloon implementatie
 
-Azure biedt de mogelijkheid om de implementatie van meerdere resources te organiseren. U maakt een implementatie sjabloon waarmee de set resources wordt ingedrukt die moeten worden geïmplementeerd en de relaties ertussen.  De JSON-indeling van elke resource is hetzelfde als wanneer u ze één voor één maakt. Het verschil is dat in de sjabloon taal enkele concepten worden toegevoegd, zoals variabelen, para meters, basis functies en nog veel meer. Deze uitgebreide syntaxis wordt alleen ondersteund in de context van een sjabloon implementatie. Deze functie werkt niet als deze wordt gebruikt met de verplichte Api's die eerder zijn besproken. Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/resource-group-authoring-templates.md)voor meer informatie.
+Azure biedt de mogelijkheid om de implementatie van meerdere resources te organiseren. U maakt een implementatie sjabloon waarmee de set resources wordt ingedrukt die moeten worden geïmplementeerd en de relaties ertussen.  De JSON-indeling van elke resource is hetzelfde als wanneer u ze één voor één maakt. Het verschil is dat in de sjabloon taal enkele concepten worden toegevoegd, zoals variabelen, para meters, basis functies en nog veel meer. Deze uitgebreide syntaxis wordt alleen ondersteund in de context van een sjabloon implementatie. Deze functie werkt niet als deze wordt gebruikt met de verplichte Api's die eerder zijn besproken. Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie.
 
 Parameterisering moet worden uitgevoerd met de parameter syntaxis van de sjabloon.  U vervangt alle exemplaren van de resource-ID die u eerder hebt gevonden, zoals hier wordt weer gegeven.
 
@@ -125,7 +125,7 @@ U moet de vereiste meta gegevens van de sjabloon en de para meters boven aan de 
 Nadat u uw sjabloon hebt geconfigureerd, implementeert u deze met een van de volgende methoden:
 
 * [REST-API's](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [De pagina implementatie van Azure Portal sjabloon](https://portal.azure.com/#create/Microsoft.Template)
 

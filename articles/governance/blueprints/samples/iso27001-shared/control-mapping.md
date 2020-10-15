@@ -1,14 +1,14 @@
 ---
 title: Beheeropties voor blauwdrukvoorbeeld voor ISO 27001 conforme gedeelde services
-description: Toewijzing van beheeropties voor blauwdrukvoorbeeld voor ISO 27001 conforme gedeelde services. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
+description: Toewijzing van beheeropties voor blauwdrukvoorbeeld voor ISO 27001 conforme gedeelde services. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: e0e5aa7bbfb8178b2527e65f7e6371d815b0cccd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 7b13440db5574da84c296e27380739e58e640a67
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930115"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Toewijzing van beheeropties voor blauwdrukvoorbeeld voor ISO 27001 conforme gedeelde services
 
@@ -108,8 +108,7 @@ Met deze blauwdruk kunt u sterke wachtwoorden afdwingen door tien [Azure Policy]
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 Beleid voor het gebruik van cryptografische beheeropties
 
-Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties door dertien [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren.
-Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsregels die met deze blauwdruk worden toegewezen, vereisen versleuteling voor blobopslagaccounts en data lake-opslagaccounts; vereisen transparante gegevensversleuteling voor SQL-databases; controleren op ontbrekende versleuteling voor opslagaccounts, SQL-databases, schijven van virtuele machines en variabelen van Automation-accounts; controleren op onbeveiligde verbindingen met opslagaccounts, functie-apps, web-apps, API-apps en Redis Cache; controleren op zwakke versleuteling van wachtwoorden van virtuele machines; en controleren op niet-versleutelde Service Fabric-communicatie.
+Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties door dertien [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsregels die met deze blauwdruk worden toegewezen, vereisen versleuteling voor blobopslagaccounts en data lake-opslagaccounts; vereisen transparante gegevensversleuteling voor SQL-databases; controleren op ontbrekende versleuteling voor opslagaccounts, SQL-databases, schijven van virtuele machines en variabelen van Automation-accounts; controleren op onbeveiligde verbindingen met opslagaccounts, functie-apps, web-apps, API-apps en Redis Cache; controleren op zwakke versleuteling van wachtwoorden van virtuele machines; en controleren op niet-versleutelde Service Fabric-communicatie.
 
 - Functie-app mag alleen toegankelijk zijn via HTTPS
 - Webtoepassing mag alleen toegankelijk zijn via HTTPS
