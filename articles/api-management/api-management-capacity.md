@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f4eb90cc0e8867230c7fb1a2a169b5ba0126e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86205877"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071316"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Capaciteit van een Azure API Management-exemplaar
 
@@ -107,4 +107,4 @@ De **metriek** voor weinig capaciteit betekent niet noodzakelijkerwijs dat uw AP
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een Azure API Management service-exemplaar schalen of bijwerken](upgrade-and-scale.md)
-- [Optimaliseer en sla uw Cloud uitgaven op](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [Optimaliseer en sla uw Cloud uitgaven op](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

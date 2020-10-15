@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
 ms.openlocfilehash: ab6e3426096f6fbaf7dfa44984a26c939f3b91fc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75971860"
 ---
 Het inschakelen van een door het systeem toegewezen beheerde identiteit gebeurt met één klik. U kunt deze inschakelen tijdens het maken van een VM of in de eigenschappen van een bestaande VM.

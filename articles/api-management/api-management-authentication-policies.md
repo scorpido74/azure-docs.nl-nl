@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243712"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071282"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-verificatiebeleid
-In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](./api-management-policies.md)voor meer informatie over het toevoegen en configureren van beleid.
 
 ##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> Verificatie beleid
 
@@ -67,7 +67,7 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 -   **Beleids bereik:** alle bereiken
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> Verifiëren met client certificaat
- Gebruik het `authentication-certificate` beleid om te verifiëren met een back-end-service met behulp van het client certificaat. Het certificaat moet eerst worden [geïnstalleerd in API Management](https://go.microsoft.com/fwlink/?LinkID=511599) en wordt geïdentificeerd door de vinger afdruk.
+ Gebruik het `authentication-certificate` beleid om te verifiëren met een back-end-service met behulp van het client certificaat. Het certificaat moet eerst worden [geïnstalleerd in API Management](./api-management-howto-mutual-certificates.md) en wordt geïdentificeerd door de vinger afdruk.
 
 ### <a name="policy-statement"></a>Beleids verklaring
 
@@ -200,4 +200,4 @@ Zie voor meer informatie over het gebruik van beleid:
 + [Beleid in API Management](api-management-howto-policies.md)
 + [Api's transformeren](transform-api.md)
 + [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)
++ [Voor beelden van beleid](./policy-reference.md)

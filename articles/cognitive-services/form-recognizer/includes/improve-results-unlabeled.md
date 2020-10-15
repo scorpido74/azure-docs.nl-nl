@@ -6,14 +6,14 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75379285"
 ---
-Bekijk de `"confidence"` waarden voor elke sleutel/waarde resultaat onder het `"pageResults"` knoop punt. U moet ook de betrouwbaarheids scores in het `"readResults"` knoop punt bekijken die overeenkomen met de Lees bewerking voor tekst. Het vertrouwen van de Lees resultaten heeft geen invloed op het vertrouwen van de extractie resultaten voor sleutel/waarde, dus u moet beide controleren.
-* Als de betrouwbaarheids scores voor de Lees bewerking laag zijn, probeert u de kwaliteit van uw invoer documenten te verbeteren (Zie [invoer vereisten](../overview.md#input-requirements)).
-* Als de betrouwbaarheids scores voor de extractie bewerking voor sleutel/waarde laag zijn, moet u ervoor zorgen dat de documenten die worden geanalyseerd van hetzelfde type zijn als documenten die worden gebruikt in de Trainingsset. Als de documenten in de Trainingsset variaties in de weer gave hebben, kunt u overwegen deze te splitsen in verschillende mappen en een model voor elke variatie te trainen.
+Controleer de `"confidence"`-waarden voor elk sleutel-/waarderesultaat onder het knooppunt `"pageResults"`. U moet ook de betrouwbaarheidsscores in het knooppunt `"readResults"` bekijken; deze komen overeen met de bewerking Tekst lezen. Het vertrouwen van de leesresultaten heeft geen invloed op het vertrouwen van de resultaten van de sleutel/waarde-extractie, dus u moet beide controleren.
+* Als de betrouwbaarheidsscores voor de leesbewerking laag zijn, probeert u de kwaliteit van uw invoerdocumenten te verbeteren (zie [Invoervereisten](../overview.md#input-requirements)).
+* Als de betrouwbaarheidsscores voor de sleutel-/waarde-extractiebewerking laag zijn, controleer dan of de documenten die worden geanalyseerd van hetzelfde type zijn als de documenten die in de trainingsset worden gebruikt. Als de documenten in de trainingsset verschillend zijn, zou u ze in verschillende mappen kunnen verdelen en voor elke variant één model kunnen trainen.
 
-De betrouwbaarheids scores die u aanwijst, zijn afhankelijk van uw use-case, maar meestal is het een goed idee om een Score van 80% of hoger te bereiken. Voor meer gevoelige gevallen, zoals het lezen van medische records of facturerings overzichten, wordt een Score van 100% aanbevolen.
+De betrouwbaarheidsscores die u wilt bereiken, hangen af van uw gebruiksscenario, maar over het algemeen is het handig om u op een score van 80% of hoger te richten. Voor gevoeligere scenario's, zoals het lezen van medische dossiers of factureringsoverzichten, wordt een score van 100% aangeraden.
