@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029860"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078167"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Beheerde identiteiten gebruiken om App Configuration te openen
 
@@ -39,7 +39,7 @@ In dit artikel leert u het volgende:
 U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Azure Cloud shell geconfigureerd](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+* [Azure Cloud shell geconfigureerd](../cloud-shell/quickstart.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -73,7 +73,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
     ![Een beheerde identiteit toevoegen](./media/add-managed-identity.png)
 
-1. Optioneel: als u ook toegang tot Key Vault wilt verlenen, volgt u de instructies in [een Key Vault toegangs beleid toewijzen](/azure/key-vault/general/assign-access-policy-portal).
+1. Optioneel: als u ook toegang tot Key Vault wilt verlenen, volgt u de instructies in [een Key Vault toegangs beleid toewijzen](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="use-a-managed-identity"></a>Een beheerde identiteit gebruiken
 
@@ -185,7 +185,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     U hebt nu toegang tot Key Vault verwijzingen, net zoals elke andere app-configuratie sleutel. De configuratie provider gebruikt de `KeyVaultClient` die u hebt geconfigureerd om te verifiëren bij Key Vault en de waarde op te halen.
 
 > [!NOTE]
-> `ManagedIdentityCredential` ondersteunt alleen beheerde identiteits verificatie. Het werkt niet in lokale omgevingen. Als u de code lokaal wilt uitvoeren, kunt u overwegen om `DefaultAzureCredential` te gebruiken, die ook Service-Principal-verificatie ondersteunt. Controleer de [koppeling](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) voor meer informatie.
+> `ManagedIdentityCredential` ondersteunt alleen beheerde identiteits verificatie. Het werkt niet in lokale omgevingen. Als u de code lokaal wilt uitvoeren, kunt u overwegen om `DefaultAzureCredential` te gebruiken, die ook Service-Principal-verificatie ondersteunt. Controleer de [koppeling](/dotnet/api/azure.identity.defaultazurecredential) voor meer informatie.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
