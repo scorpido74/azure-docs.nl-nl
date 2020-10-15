@@ -166,6 +166,8 @@
               href: how-to-setup-authentication.md
             - name: Gebruikers en rollen beheren
               href: how-to-assign-roles.md
+            - name: Beheerde identiteit gebruiken voor toegangsbeheer
+              href: how-to-use-managed-identities.md
             - name: Azure AD-identiteit gebruiken in AKS-implementaties
               href: how-to-use-azure-ad-identity.md
         - name: Netwerkbeveiliging

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779239"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082247"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,12 +56,12 @@ dependencies {
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor aanroepen:
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor oproepen:
 
 | Naam                                  | Beschrijving                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| De CallClient is het belangrijkste invoerpunt voor de clientbibliotheek voor aanroepen.|
-| CallAgent | De CallAgent wordt gebruikt om aanroepen te starten en te beheren. |
+| CallClient| De CallClient is het belangrijkste ingangspunt voor de clientbibliotheek voor oproepen.|
+| CallAgent | De CallAgent wordt gebruikt om oproepen te starten en te beheren. |
 | CommunicationUserCredential | De CommunicationUserCredential wordt als de tokenreferentie gebruikt om de CallAgent te instantiëren.|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>Initialiseer de CallClient, maak een CallAgent en open de DeviceManager
@@ -517,7 +517,7 @@ Renderer-object na Api's
 // Create a view for a video stream
 renderer.createView()
 ```
-* Renderer verwijderen en alles `RendererView` aan deze renderer koppelen
+* De renderer en alle `RendererView` aan deze renderer verwijderen. Moet worden aangeroepen wanneer u alle gekoppelde weer gaven uit de gebruikers interface hebt verwijderd.
 ```java
 renderer.dispose()
 ```
