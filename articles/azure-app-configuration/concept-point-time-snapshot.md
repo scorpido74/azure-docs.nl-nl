@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601075"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073067"
 ---
 # <a name="point-in-time-snapshot"></a>Point-in-time-snapshot
 
@@ -23,7 +23,7 @@ Azure-app configuratie houdt een record bij van wijzigingen die zijn aangebracht
 
 U kunt Azure Portal of CLI gebruiken om vorige sleutel waarden op te halen. Gebruik in azure CLI `az appconfig revision list` om de juiste para meters toe te voegen om de vereiste waarden op te halen.  Geef het Azure-app configuratie-exemplaar op door de naam van de winkel op te geven ( `--name <app-config-store-name>` ) of door een Connection String () te gebruiken `--connection-string <your-connection-string>` . De uitvoer beperken door een bepaald punt in de tijd () op te geven `--datetime` en door het maximum aantal items op te geven dat moet worden geretourneerd ( `--top` ).
 
-Als Azure CLI niet lokaal is geïnstalleerd, kunt u eventueel [Azure Cloud shell](/azure/cloud-shell/overview)gebruiken.
+Als Azure CLI niet lokaal is geïnstalleerd, kunt u eventueel [Azure Cloud shell](../cloud-shell/overview.md)gebruiken.
 
 Alle vastgelegde wijzigingen in uw sleutel waarden ophalen.
 
@@ -58,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een ASP.NET Core-web-app maken](./quickstart-aspnet-core-app.md)  
+> [Een ASP.NET Core-web-app maken](./quickstart-aspnet-core-app.md)

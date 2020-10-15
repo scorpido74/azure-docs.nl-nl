@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4598cb1d54fbbeb09e3bc5f58f0cce949b3c848
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932539"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073798"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
 
@@ -33,7 +33,7 @@ De toepassing is een bulletinboard voor advertenties. Gebruikers maken een adver
 De toepassing maakt gebruik van het [wachtrijgerichte werkpatroon](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) om de CPU te ontlasten bij het maken van miniatuurweergaven voor een back-endproces (een CPU-intensieve bewerking).
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatieve architectuur: App Service en webjobs
-Deze zelfstudie laat zien hoe u de front-end en back-end uitvoert in een cloudservice van Azure. Het is ook mogelijk om de front-end uit te voeren in [Azure App Service](/azure/app-service/) en de functie [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) te gebruiken voor de back-end. Zie [Aan de slag met de Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) voor een zelfstudie waarin gebruik wordt gemaakt van WebJobs. Zie [Vergelijking van Azure App Service, Virtual Machines, Service Fabric en Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree) voor meer informatie over het kiezen van de services die het meest geschikt zijn voor uw scenario.
+Deze zelfstudie laat zien hoe u de front-end en back-end uitvoert in een cloudservice van Azure. Het is ook mogelijk om de front-end uit te voeren in [Azure App Service](../app-service/index.yml) en de functie [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) te gebruiken voor de back-end. Zie [Aan de slag met de Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) voor een zelfstudie waarin gebruik wordt gemaakt van WebJobs. Zie [Vergelijking van Azure App Service, Virtual Machines, Service Fabric en Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree) voor meer informatie over het kiezen van de services die het meest geschikt zijn voor uw scenario.
 
 ## <a name="what-youll-learn"></a>Wat u leert
 * De computer klaarmaken voor het ontwikkelen van Azure door de Azure SDK te installeren.
@@ -101,7 +101,7 @@ U hebt de toepassing volledig op uw lokale computer uitgevoerd, zonder verbindin
 
 In de volgende sectie configureert u de oplossing voor het gebruik van Azure-cloudbronnen voor wachtrijen, blobs en de toepassingsdatabase wanneer deze wordt uitgevoerd in de cloud. U kunt eventueel lokaal blijven uitvoeren maar wel cloudopslag en databaseresources gebruiken. Het is alleen een kwestie van verbindingsreeksen instellen. We leggen u uit hoe u dit doet.
 
-## <a name="deploy-the-application-to-azure"></a>De app implementeren in Azure
+## <a name="deploy-the-application-to-azure"></a>De toepassing implementeren in Azure
 U voert de volgende stappen uit voor het uitvoeren van de toepassing in de cloud:
 
 * Een Azure-cloudservice maken.
@@ -125,7 +125,7 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 5. Kies de regio waarin u de toepassing wilt implementeren.
 
     Dit veld geeft aan in welk datacenter uw cloudservice zal worden gehost. Voor een productietoepassing kiest u de regio die het dichtst bij uw klanten ligt. Voor deze zelfstudie kiest u de regio die het dichtst bij u ligt.
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
     Op de volgende afbeelding ziet u een cloudservice met de URL CSvccontosoads.cloudapp.net.
 
@@ -154,7 +154,7 @@ Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde d
 9. Klik op **Selecteren** voor de nieuwe server.
 
     ![Nieuwe server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klik op **Maken**.
+10. Klik op **Create**.
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 Een Azure-opslagaccount biedt resources voor het opslaan van wachtrij- en blobgegevens in de cloud.
@@ -169,7 +169,7 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
 
 4. Stel de vervolgkeuzelijst **Replicatie** in op **Lokaal redundante opslag**.
 
-    Wanneer geo-replicatie is ingeschakeld voor een opslagaccount, wordt de opgeslagen inhoud gerepliceerd naar een secundair datacenter om failover mogelijk te maken in het geval van een noodgeval op de primaire locatie. Geo-replicatie kan extra kosten met zich meebrengen. Voor test- en ontwikkelingsaccounts wilt u in het algemeen niet betalen voor geo-replicatie. Zie [Een opslagaccount maken, beheren of verwijderen](../storage/common/storage-create-storage-account.md) voor meer informatie.
+    Wanneer geo-replicatie is ingeschakeld voor een opslagaccount, wordt de opgeslagen inhoud gerepliceerd naar een secundair datacenter om failover mogelijk te maken in het geval van een noodgeval op de primaire locatie. Geo-replicatie kan extra kosten met zich meebrengen. Voor test- en ontwikkelingsaccounts wilt u in het algemeen niet betalen voor geo-replicatie. Zie [Een opslagaccount maken, beheren of verwijderen](../storage/common/storage-account-create.md) voor meer informatie.
 
 5. Klik in de **Resourcegroep** op **Bestaande gebruiken** en selecteer de resourcegroep die voor de cloudservice wordt gebruikt.
 6. Stel de vervolgkeuzelijst **Locatie** in op dezelfde regio die u voor de cloudservice hebt gekozen.
@@ -177,7 +177,7 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
     Wanneer de cloudservice en het opslagaccount zich in verschillende datacenters (verschillende regio's) bevinden, neemt de latentie toe en wordt de bandbreedte buiten het datacenter aan u in rekening gebracht. Bandbreedte binnen een datacenter is gratis.
 
     Azure-affiniteitsgroepen bieden een mechanisme om de afstand tussen resources in een datacenter te minimaliseren, waardoor ze de latentie kunnen verminderen. In deze zelfstudie worden geen affiniteitsgroepen gebruikt. Zie [Een affiniteitsgroep maken in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)) voor meer informatie.
-7. Klik op **Maken**.
+7. Klik op **Create**.
 
     ![Nieuw opslagaccount](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -290,7 +290,7 @@ De `<Instances>`-instelling geeft het aantal virtuele machines aan waarop de wer
 
     ![De stap Settings](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    De standaardinstellingen op het tabblad **Advanced** zijn afdoende voor deze zelfstudie. Zie [De wizard Azure-toepassing publiceren](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard) voor meer informatie over het tabblad Advanced.
+    De standaardinstellingen op het tabblad **Advanced** zijn afdoende voor deze zelfstudie. Zie [De wizard Azure-toepassing publiceren](/visualstudio/azure/vs-azure-tools-publish-azure-application-wizard) voor meer informatie over het tabblad Advanced.
 4. Klik in de stap **Summary** op **Publish**.
 
     ![De stap Summary](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -776,5 +776,5 @@ Zie de volgende bronnen voor meer informatie:
 
 * [Deel 1 Azure Cloud Services: Inleiding](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services beheren](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](https://docs.microsoft.com/azure/storage/)
+* [Azure Storage](../storage/index.yml)
 * [Een cloudserviceprovider kiezen](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

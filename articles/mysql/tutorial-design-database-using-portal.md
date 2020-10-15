@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
 ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906548"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Zelfstudie: een Azure Database for MySQL-database ontwerpen met Azure Portal
@@ -47,7 +47,7 @@ Een Azure Database voor MySQL-server wordt gemaakt met een gedefinieerde set [re
 
 3. Klik op de tegel **Azure Database for MySQL-server**. Vul het Azure Database for MySQL-formulier in.
    
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="Formulier Maken":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="Navigeren naar MySQL":::
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     ---|---|---
@@ -62,7 +62,7 @@ Een Azure Database voor MySQL-server wordt gemaakt met een gedefinieerde set [re
     Versie | *De nieuwste versie*| De nieuwste versie (tenzij u specifieke vereisten hebt en een andere versie moet gebruiken).
     Prijscategorie | **Algemeen**, **Gen 5**, **2 vCores**, **5 GB**, **7 dagen**, **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie**. Selecteer vervolgens het tabblad **Algemeen**. *Gen 5*, *2 vCores*, *5 GB* en *7 dagen* zijn de standaardwaarden voor **Bewerking voor compute**, **vCore**, **Opslag** en **Bewaarperiode voor back-up**. U kunt deze schuifregelaars laten zoals ze zijn. Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="Prijscategorie":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="Navigeren naar MySQL":::
 
    > [!TIP]
    > Als **automatische groei** voor uw server is ingeschakeld, hebt u meer opslagruimte als u de toewijzingslimiet nadert. Dit is niet van invloed op de workload.
@@ -75,7 +75,7 @@ Databases van Azure Database voor MySQL worden beveiligd door een firewall. Stan
 
 1. Klik op uw zojuist gemaakte server en klik vervolgens op **Verbindingsbeveiliging**.
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="Verbindingsbeveiliging":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="Navigeren naar MySQL":::
 2. U kunt **Mijn IP toevoegen** kiezen of hier firewallregels configureren. Vergeet niet op **Opslaan** te klikken nadat u de regels hebt gemaakt.
 U kunt nu verbinding maken met de server met behulp van het opdrachtregelprogramma mysql of met het GUI-hulpprogramma MySQL Workbench.
 
@@ -89,7 +89,7 @@ Ga naar Azure Portal om de volledig gekwalificeerde **servernaam** en **aanmeldi
 1. Klik in [Azure Portal](https://portal.azure.com/) op **Alle resources** in het menu aan de linkerkant, typ de naam en zoek naar uw Azure Database voor MySQL-server. Selecteer de naam van de server om de details te bekijken.
 
 2. Noteer op de pagina **Overzicht** de waarden voor de **servernaam** en de **aanmeldingsgegevens van de serverbeheerder**. U kunt op de knop Kopiëren naast elk veld klikken om de gegevens naar het klembord te kopiëren.
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="4-2 Servereigenschappen":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="Navigeren naar MySQL":::
 
 In dit voorbeeld is de servernaam *mydemoserver.mysql.database.azure.com* en zijn de aanmeldingsgegevens van de serverbeheerder *myadmin\@mydemoserver*.
 
@@ -168,11 +168,11 @@ Stel dat u per ongeluk een belangrijke databasetabel hebt verwijderd en dat de g
 
 1. Zoek uw Azure Database voor MySQL-server in Azure Portal. Klik op de pagina **Overzicht** op **Herstellen** op de werkbalk. De gelijknamige pagina wordt geopend.
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="10-1 Een database herstellen":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="Navigeren naar MySQL":::
 
 2. Vul in het formulier **Herstellen** de vereiste gegevens in.
 
-   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="10-2 Formulier Herstellen":::
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="Navigeren naar MySQL":::
 
    - **Herstelpunt**: selecteer een tijdstip in het verleden waarnaar u wilt herstellen, binnen de vermelde periode. Zorg ervoor dat u de lokale tijdzone converteert naar UTC.
    - **Herstellen naar nieuwe server**: geef de naam op van de nieuwe server waarnaar u wilt herstellen.

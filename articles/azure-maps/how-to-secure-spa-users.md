@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319687"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090281"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Een toepassing met één pagina beveiligen met aanmelding door gebruikers
 
@@ -67,7 +67,7 @@ Maak de webtoepassing in azure AD voor gebruikers om zich aan te melden. De webt
         </script>   
     ```
 
-7. Configureer het toegangs beheer op basis van Azure-rollen voor gebruikers of groepen. Zie de [volgende secties om RBAC in te scha kelen](#grant-role-based-access-for-users-to-azure-maps).
+7. Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) configureren voor gebruikers of groepen. Zie de [volgende secties voor het inschakelen van Azure RBAC](#grant-role-based-access-for-users-to-azure-maps).
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

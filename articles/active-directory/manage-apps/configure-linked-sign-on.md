@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597835"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073968"
 ---
 # <a name="understand-linked-sign-on"></a>Informatie over gekoppelde aanmelding
 
@@ -35,7 +35,7 @@ Enkele veelvoorkomende scenario's waarbij de koppelings optie waardevol is:
 
 Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om kennis snel te vinden. In de Quick Start, waar u eenmalige aanmelding configureert, vindt u ook de optie **gekoppeld** . 
 
-De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met deze optie stelt u alleen de locatie gebruikers worden verzonden naar wanneer ze de app selecteren in [mijn apps](https://myapps.microsoft.com/) of het start programma voor apps van de Microsoft 365.
+De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met deze optie stelt u alleen de locatie gebruikers worden verzonden naar wanneer ze de app selecteren in [mijn apps](https://myapps.microsoft.com/) of het start programma voor apps van de Microsoft 365.  Omdat het aanmelden geen aanmeldings functionaliteit biedt via Azure AD, is voorwaardelijke toegang niet beschikbaar voor toepassingen die zijn geconfigureerd met een gekoppelde eenmalige aanmelding.
 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet voor komt in de navigatie voor een toepassing in **bedrijfs toepassingen**. 

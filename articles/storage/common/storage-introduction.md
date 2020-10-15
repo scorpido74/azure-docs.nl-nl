@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cd45a393081d52985d99fac7ea5dccc5bd2a2712
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 337a4c1ba3e355c2ba1dd7ea6e34645112d1c7b1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079221"
+ms.locfileid: "92091301"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de kern Azure Storage services
 
@@ -61,7 +61,7 @@ Blob-opslag is ideaal voor:
 - De opslag van gegevens voor back-up en herstel, herstel na noodgevallen en archivering.
 - De opslag van gegevens voor analyse door een on-premises of in Azure gehoste service.
 
-Objecten in Blob-opslag zijn overal ter wereld toegankelijk via HTTP of HTTPS. Gebruikers of clienttoepassingen hebben toegang tot blobs via URL's, de [REST-API van Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI](https://docs.microsoft.com/cli/azure/storage) of een Azure Storage-clientbibliotheek. Deze clientbibliotheken zijn beschikbaar voor meerdere talen, waaronder [.NET](/dotnet/api/overview/azure/storage?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/overview/azure/storage), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/), [PHP](https://azure.github.io/azure-storage-php/) en [Ruby](https://azure.github.io/azure-storage-ruby).
+Objecten in Blob-opslag zijn overal ter wereld toegankelijk via HTTP of HTTPS. Gebruikers of clienttoepassingen hebben toegang tot blobs via URL's, de [REST-API van Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI](https://docs.microsoft.com/cli/azure/storage) of een Azure Storage-clientbibliotheek. Deze clientbibliotheken zijn beschikbaar voor meerdere talen, waaronder [.NET](/dotnet/api/overview/azure/storage), [Java](https://docs.microsoft.com/java/api/overview/azure/storage), [Node.js](https://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/), [PHP](https://azure.github.io/azure-storage-php/) en [Ruby](https://azure.github.io/azure-storage-ruby).
 
 Zie [Inleiding tot blob-opslag](../blobs/storage-blobs-introduction.md) voor meer informatie over blob-opslag.
 
@@ -115,7 +115,7 @@ Elke aanvraag voor Azure Storage moet worden geautoriseerd. Azure Storage onders
 - **Azure AD-autorisatie via SMB voor Azure Files.** Azure Files ondersteunt autorisatie op basis van een identiteit via SMB (Server Message Block) via Azure Active Directory Domain Services (Azure AD DS) of on-premises Active Directory Domain Services (preview). De Windows-Vm's die zijn gekoppeld aan een domein, hebben toegang tot Azure-bestands shares met Azure AD-referenties. Zie voor meer informatie [overzicht van Azure files verificatie op basis van identiteiten voor SMB-toegang](../files/storage-files-active-directory-overview.md) en [het plannen van een Azure files-implementatie](../files/storage-files-planning.md#identity).
 - **Autorisatie met gedeelde sleutel.** De Azure Storage Blob-, file-, Queue-en Table-Services ondersteunen autorisatie met gedeelde sleutel. Een client die gebruikmaakt van gedeelde sleutel autorisatie, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie [autoriseren met gedeelde sleutel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 - **Autorisatie met behulp van Shared Access signatures (SAS).** Een Shared Access Signature (SAS) is een teken reeks met een beveiligings token dat kan worden toegevoegd aan de URI voor een opslag resource. Met het beveiligings token worden beperkingen, zoals machtigingen en het toegangs interval ingekapseld. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.
-- **Anonieme toegang tot containers en blobs.** Een container en de bijbehorende blobs zijn mogelijk openbaar beschikbaar. Wanneer u opgeeft dat een container of BLOB openbaar is, kan iedereen deze anoniem lezen. Er is geen verificatie vereist. Zie [anonieme lees toegang tot containers en blobs beheren](../blobs/storage-manage-access-to-resources.md)voor meer informatie.
+- **Anonieme toegang tot containers en blobs.** Een container en de bijbehorende blobs zijn mogelijk openbaar beschikbaar. Wanneer u opgeeft dat een container of BLOB openbaar is, kan iedereen deze anoniem lezen. Er is geen verificatie vereist. Zie [Anonieme leestoegang tot containers en blobs beheren](../blobs/storage-manage-access-to-resources.md) voor meer informatie.
 
 ## <a name="encryption"></a>Versleuteling
 

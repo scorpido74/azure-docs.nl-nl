@@ -3,12 +3,12 @@ title: Beveiligingsmaatregelen
 description: Meer informatie over de beveiligings opties die worden gebruikt in de Azure Backup-service. Deze besturings elementen helpen de service om beveiligings problemen te voor komen, te detecteren en erop te reageren.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 40bd35bdf83d336aebd37cdda0a0b59164ac9f7a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 96899c0669f3063232c36ad3ae1fec76a90e0a5c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055882"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090859"
 ---
 # <a name="security-controls-for-azure-backup"></a>Beveiligings controles voor Azure Backup
 
@@ -39,7 +39,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Beveiligings beheer | Ja/Nee | Notities| Documentatie
 |---|---|--|--|
 | Verificatie| Ja | Verificatie is via Azure Active Directory. |  |
-| Autorisatie| Ja | De door klanten gemaakte en ingebouwde rollen van Azure worden gebruikt. Zie [Role-Based Access Control gebruiken om Azure backup herstel punten te beheren](./backup-rbac-rs-vault.md)voor meer informatie. |  |
+| Autorisatie| Ja | De door klanten gemaakte en ingebouwde rollen van Azure worden gebruikt. Zie [toegangs beheer op basis van rollen gebruiken voor het beheren van Azure backup herstel punten](./backup-rbac-rs-vault.md)voor meer informatie. |  |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Portal Dash boards delen met behulp van Role-Based Access Control
-description: In dit artikel wordt uitgelegd hoe u een dash board in de Azure Portal kunt delen met behulp van Role-Based Access Control.
+title: Azure Portal Dash boards delen met behulp van Azure op rollen gebaseerd toegangs beheer
+description: In dit artikel wordt uitgelegd hoe u een dash board kunt delen in de Azure Portal met behulp van Azure op rollen gebaseerd toegangs beheer.
 services: azure-portal
 documentationcenter: ''
 author: mgblythe
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 89c2b90b12a4fc16dd48571c00ff46dc62168d42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b74cae439ce351a4d720f215679cc0802eebe898
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077878"
+ms.locfileid: "92092202"
 ---
-# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-dashboards delen met behulp van op rollen gebaseerd toegangsbeheer
+# <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Azure-Dash boards delen met behulp van Azure op rollen gebaseerd toegangs beheer
 
 Nadat u een dash board hebt geconfigureerd, kunt u het publiceren en delen met andere gebruikers in uw organisatie. U kunt anderen uw dash board weer geven met behulp van [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/role-assignments-portal.md). Een gebruiker of groep gebruikers aan een rol toewijzen. Deze rol bepaalt of gebruikers het gepubliceerde dash board kunnen weer geven of wijzigen.
 
@@ -33,7 +33,7 @@ Alle gepubliceerde Dash boards worden geïmplementeerd als Azure-resources. Ze b
 
 ## <a name="understanding-access-control-for-dashboards"></a>Meer informatie over toegangs beheer voor dash boards
 
-Met Role-Based Access Control (RBAC) kunt u gebruikers toewijzen aan rollen op drie verschillende niveaus van bereik:
+Met op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u gebruikers toewijzen aan rollen op drie verschillende niveaus van bereik:
 
 * abonnement
 * resourcegroep

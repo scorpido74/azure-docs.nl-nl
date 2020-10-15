@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077861"
+ms.locfileid: "92089363"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmatisch Azure-Dash boards maken
 
@@ -55,7 +55,7 @@ Nadat u het dash board hebt geconfigureerd, is de volgende stap het publiceren v
 
 ![een dash board delen](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Als u **delen** selecteert, wordt u gevraagd welk abonnement en welke resource groep u wilt publiceren. U moet schrijf toegang hebben tot het abonnement en de resource groep die u kiest. Zie [roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+Als u **delen** selecteert, wordt u gevraagd welk abonnement en welke resource groep u wilt publiceren. U moet schrijf toegang hebben tot het abonnement en de resource groep die u kiest. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ![wijzigingen aanbrengen in delen en toegang](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

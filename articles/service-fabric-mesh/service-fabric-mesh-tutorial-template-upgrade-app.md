@@ -1,17 +1,17 @@
 ---
 title: 'Zelfstudie: Een app upgraden die wordt uitgevoerd in Azure Service Fabric Mesh'
 description: In deze zelfstudie leert u hoe u een Service Fabric kunt upgraden in een toepassing die wordt uitgevoerd in Service Fabric Mesh.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eea00fe80b71f97ea280a3a76de5012175bcd61c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75351736"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841982"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Zelfstudie: Een Service Fabric-toepassing upgraden die wordt uitgevoerd in Service Fabric Mesh
 

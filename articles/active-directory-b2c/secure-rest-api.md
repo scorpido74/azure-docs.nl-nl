@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385328"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089533"
 ---
 # <a name="secure-your-restful-services"></a>Uw REST-services beveiligen 
 
@@ -312,7 +312,7 @@ Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel e
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>De sleutel voor het OAuth2 Bearer-token beleid toevoegen
 
-Maak een beleids sleutel om de token waarde van de Bearer op te slaan.
+Als u een REST API technisch profiel wilt configureren met een OAuth2 Bearer-token, moet u een toegangs token verkrijgen van de REST API eigenaar. Maak vervolgens de volgende cryptografische sleutel om het Bearer-token op te slaan.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C Directory.

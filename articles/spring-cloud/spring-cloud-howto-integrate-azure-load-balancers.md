@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906931"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090825"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud integreren met Azure-oplossingen voor taakverdeling
 
@@ -28,10 +28,10 @@ Azure biedt al andere oplossingen voor Load Balancing. Er zijn drie opties voor 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure lente-Cloud: [een Azure lente-Cloud service maken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart)
-* Azure Traffic Manager: [Traffic Manager maken](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* Azure-app gateway: [een toepassings gateway maken](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* Azure front deur: [een voor deur maken](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* Azure lente-Cloud: [een Azure lente-Cloud service maken](./spring-cloud-quickstart.md)
+* Azure Traffic Manager: [Traffic Manager maken](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* Azure-app gateway: [een toepassings gateway maken](../application-gateway/quick-create-portal.md)
+* Azure front deur: [een voor deur maken](../frontdoor/quickstart-create-front-door.md)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-traffic-manager"></a>Azure lente-Cloud integreren met Azure Traffic Manager
 
@@ -92,6 +92,6 @@ Voor integratie met Azure lente-Cloud service en het configureren van de back-en
     ![Voor deur 2](media/spring-cloud-load-balancers/front-door-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Hoe kan ik een Traffic Manager maken?](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile/)
-* [Een toepassings gateway maken](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-* [Een voor deur maken](https://docs.microsoft.com/azure/frontdoor/quickstart-create-front-door)
+* [Hoe kan ik een Traffic Manager maken?](../traffic-manager/quickstart-create-traffic-manager-profile.md)
+* [Een toepassings gateway maken](../application-gateway/quick-create-portal.md)
+* [Een voor deur maken](../frontdoor/quickstart-create-front-door.md)
