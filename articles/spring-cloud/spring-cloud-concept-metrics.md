@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892646"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094055"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informatie over metrische gegevens voor Azure lente-Cloud
 
@@ -176,12 +176,12 @@ Zie voor meer informatie [DotNet-tellers](/dotnet/core/diagnostics/dotnet-counte
 
 * [Quickstart: Azure Spring Cloud-apps bewaken met logboeken, metrische gegevens en tracering](spring-cloud-quickstart-logs-metrics-tracing.md)
 
-* [Aan de slag met Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [Aan de slag met Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md)
 
-* [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [Logboeken en metrische gegevens analyseren met Diagnostische instellingen](./diagnostic-services.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelf studie: lente-cloud resources bewaken met behulp van waarschuwingen en actie groepen](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
+* [Zelf studie: lente-cloud resources bewaken met behulp van waarschuwingen en actie groepen](./spring-cloud-tutorial-alerts-action-groups.md)
 
-* [Quota's en service plannen voor Azure lente-Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
+* [Quota's en service plannen voor Azure lente-Cloud](./spring-cloud-quotas.md)

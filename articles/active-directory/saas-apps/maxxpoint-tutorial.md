@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 50cc53e7e8a5f39b53d6dcd39de61894cbbb3842
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d325eb0dbd5d30e94df07ebad21ff30316bcbb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518880"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Zelfstudie: Azure Active Directory-integratie met MaxxPoint
 
@@ -99,11 +99,11 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 4. In de sectie **SAML-basisconfiguratie** als u wilt de toepassing in **IDP**-gestart modus configureren, hoeft de gebruiker geen stappen uit te voeren omdat de app al vooraf geïntegreerd is in Azure.
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij MaxxPoint](common/preintegrated.png)
+    ![Schermopname van de basale SAML-configuratie.](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Domein- en URL-gegevens voor eenmalige aanmelding bij MaxxPoint](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 

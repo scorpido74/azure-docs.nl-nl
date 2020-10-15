@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892570"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093035"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Logboeken en metrische gegevens analyseren met Diagnostische instellingen
 
@@ -27,7 +27,7 @@ Met de diagnostische functionaliteit van Azure lente-Cloud kunt u Logboeken en m
 Kies de categorie van het logboek en de metrische gegevens die u wilt bewaken.
 
 > [!TIP]
-> Wilt u uw logboeken gewoon streamen? Bekijk deze [Azure cli-opdracht](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs).
+> Wilt u uw logboeken gewoon streamen? Bekijk deze [Azure cli-opdracht](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs).
 
 ## <a name="logs"></a>Logboeken
 
@@ -38,7 +38,7 @@ Kies de categorie van het logboek en de metrische gegevens die u wilt bewaken.
 
 ## <a name="metrics"></a>Metrische gegevens
 
-Zie voor een volledige lijst met metrische gegevens [lente-Cloud metrieken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
+Zie voor een volledige lijst met metrische gegevens [lente-Cloud metrieken](./spring-cloud-concept-metrics.md#user-metrics-options).
 
 Als u aan de slag wilt gaan, schakelt u een van deze services in om de gegevens te ontvangen. Zie aan de [slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie over het configureren van log Analytics.
 
@@ -110,7 +110,7 @@ Er zijn verschillende methoden om logboeken en metrische gegevens weer te geven,
 > [!NOTE]
 > `==` is hoofdletter gevoelig, maar `=~` niet.
 
-Zie [Azure monitor-logboek query's](../azure-monitor/log-query/query-language.md)voor meer informatie over de query taal die wordt gebruikt in log Analytics.
+Zie [Azure monitor-logboek query's](/azure/data-explorer/kusto/query/)voor meer informatie over de query taal die wordt gebruikt in log Analytics.
 
 ### <a name="use-your-storage-account"></a>Uw opslag account gebruiken
 
@@ -131,7 +131,7 @@ Zie voor meer informatie over het verzenden van diagnostische gegevens naar een 
 1. Als u toepassings logboeken wilt bekijken, zoekt u naar een Event Hub genaamd **Insights-logs-applicationconsole**.
 1. Als u metrische gegevens van de toepassing wilt bekijken, zoekt u naar een Event Hub met de naam **Insights-metrische gegevens-pt1m**.
 
-Voor meer informatie over het verzenden van diagnostische gegevens naar een Event Hub raadpleegt u [Azure Diagnostics gegevens streamen in het warme pad met behulp van Event hubs](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
+Voor meer informatie over het verzenden van diagnostische gegevens naar een Event Hub raadpleegt u [Azure Diagnostics gegevens streamen in het warme pad met behulp van Event hubs](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 ## <a name="analyze-the-logs"></a>De logboeken analyseren
 
@@ -178,7 +178,7 @@ AppPlatformLogsforSpring
 
 Azure Monitor biedt uitgebreide ondersteuning voor het uitvoeren van query's in toepassings logboeken met behulp van Log Analytics. Zie aan de [slag met logboek query's in azure monitor](../azure-monitor/log-query/get-started-queries.md)voor meer informatie over deze service. Zie [overzicht van logboek query's in azure monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over het bouwen van query's voor het analyseren van uw toepassings Logboeken.
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ's)
 
 ### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Hoe kan ik meerdere regels Java stack-traceringen omzetten in één regel?
 
