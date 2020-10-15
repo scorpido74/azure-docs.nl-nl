@@ -9,18 +9,18 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280093"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093290"
 ---
 # <a name="list-blobs-with-net"></a>Blobs weer geven met .NET
 
 Wanneer u blobs uit uw code opneemt, kunt u een aantal opties opgeven om te beheren hoe de resultaten van Azure Storage worden geretourneerd. U kunt het aantal resultaten opgeven dat moet worden geretourneerd in elke set resultaten en vervolgens de volgende sets ophalen. U kunt een voor voegsel opgeven voor het retour neren van blobs waarvan de naam met dat teken of teken reeks begint. En u kunt blobs in een platte lijst structuur of hiërarchisch vermelden. Een hiërarchische vermelding retourneert blobs alsof ze zijn ingedeeld in mappen.
 
-In dit artikel wordt beschreven hoe u blobs kunt weer geven met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
+In dit artikel wordt beschreven hoe u blobs kunt weer geven met behulp [van de Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage).  
 
 ## <a name="understand-blob-listing-options"></a>Informatie over de opties voor BLOB-vermeldingen
 
@@ -28,10 +28,10 @@ Als u de blobs in een opslag account wilt weer geven, roept u een van deze metho
 
 # <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
-- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
 
@@ -65,7 +65,7 @@ Als u de lijst met blobs wilt filteren, geeft u een teken reeks op voor de `pref
 
 U kunt BLOB-meta gegevens met de resultaten retour neren. 
 
-- Als u de .NET V12 SDK gebruikt, geeft u de **meta gegevens** waarde voor de [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) -inventarisatie op.
+- Als u de .NET V12 SDK gebruikt, geeft u de **meta gegevens** waarde voor de [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) -inventarisatie op.
 
 - Als u de .NET V11 SDK gebruikt, geeft u de **meta gegevens** waarde voor de [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) -inventarisatie op. Azure Storage bevat meta gegevens voor elke geretourneerde blob, dus u hoeft niet een van de **FetchAttributes** -methoden in deze context aan te roepen om de BLOB-meta gegevens op te halen.
 
@@ -153,7 +153,7 @@ Wanneer u een vermelding hiërarchisch aanroept, retourneert Azure Storage de vi
 
 # <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
-Als u blobs hiërarchisch wilt weer geven, roept u de [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)of de [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) -methode aan.
+Als u blobs hiërarchisch wilt weer geven, roept u de [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)of de [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) -methode aan.
 
 In het volgende voor beeld ziet u de blobs in de opgegeven container met behulp van een hiërarchische lijst, met een optionele segment grootte die is opgegeven en schrijft u de naam van de BLOB naar het console venster.
 

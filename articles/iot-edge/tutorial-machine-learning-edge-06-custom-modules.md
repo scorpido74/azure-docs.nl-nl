@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997928"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857432"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelfstudie: Aangepaste IoT Edge-modules maken en implementeren
 
@@ -809,14 +809,6 @@ Als u zich aanmeldt bij het IoT Edge-apparaat (de Linux-VM in ons geval), kunt u
 In dit artikel hebben we een IoT Edge-oplossing gemaakt in Visual Studio Code met drie modules: een classificatie, een router en een schrijver/uploader voor bestanden. We hebben de routes zo ingesteld dat de modules met elkaar kunnen communiceren op het edge-apparaat. De configuratie van het edge-apparaat is gewijzigd en de Dockerfiles zijn bijgewerkt om afhankelijkheden te installeren en bindingskoppelingen toe te voegen aan de containers van de modules. 
 
 Daarna hebben we de configuratie van de IoT Hub bijgewerkt om onze berichten te routeren op basis van het type en om de uploads van bestanden te verwerken. Nu alles aanwezig is, hebben we de modules geïmplementeerd op het IoT Edge-apparaat en hebben ze gezorgd voor de juiste uitvoering van de modules.
-
-Raadpleeg de volgende artikelen voor meer informatie:
-
-* [Meer informatie over het implementeren van modules en het vaststellen van routes naar IoT Edge](module-composition.md)
-* [Querysyntaxis voor het routeren van IoT Hub-berichten](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [Routering IoT Hub-berichten: nu met routering op berichttekst](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
-* [Bestanden uploaden met IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)
-* [Bestanden van uw apparaat uploaden naar de cloud met IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)
 
 Ga door naar het volgende artikel om te beginnen met het verzenden van gegevens en om uw oplossing in actie te zien.
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d58827632a36a69bc9b9592c607364daa6ef7d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64529a8c63a83976a0b2cb4170b53633185ee88c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904227"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093630"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Azure veer hulp bronnen voor ontwikkel aars
 
@@ -20,12 +20,12 @@ ms.locfileid: "90904227"
 
 Als ontwikkelaar kunt u de volgende Azure lente-Cloud bronnen nuttig vinden:
 
-* [Azure-roadmap](https://azure.microsoft.com/updates)
+* [Azure-route kaart](https://azure.microsoft.com/updates)
 * [Veelgestelde vragen](spring-cloud-faq.md)
 * [Handleiding voor het oplossen van problemen](spring-cloud-troubleshoot.md)
-* [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-spring-cloud.html)
+* [Microsoft Q&A-vragenpagina](/answers/topics/azure-spring-cloud.html)
 * [De architectuur van micro Services in de Cloud met behulp van Pivotal](https://docs.pivotal.io/spring-cloud-services/1-5/common/index.html)
 * [Steeltoe](https://steeltoe.io/)
 * [Java lente-Cloud website](https://spring.io/)
 * [Lente-Framework](https://cloud.spring.io/spring-cloud-azure/)
-* [Spring in Azure](https://docs.microsoft.com/azure/developer/java/spring-framework/)
+* [Spring in Azure](/azure/developer/java/spring-framework/)

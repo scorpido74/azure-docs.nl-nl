@@ -4,12 +4,12 @@ description: Meer informatie over Azure Database for PostgreSQL back-up met lang
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: ae18a5bb40d8993c82b2f3e03f231711ba3beebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995592"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093885"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL back-up met lange termijn retentie (preview-versie)
 
@@ -17,7 +17,7 @@ Azure Backup-en Azure Data Base-Services hebben samen een back-upoplossing op be
 
 Naast lange termijn retentie heeft de oplossing ook veel andere mogelijkheden, zoals hieronder wordt weer gegeven:
 
-- Op RBAC gebaseerde toegang tot de data base met behulp van Azure Active Directory en Managed Service Identity (MSI)-verificatie.
+- Toegangs beheer op basis van rollen (Azure RBAC) van Azure naar de data base met behulp van Azure Active Directory en Managed Service Identity (MSI)-verificatie.
 - Door klanten gecontroleerde geplande en on-demand back-ups op het niveau van de afzonderlijke data base.
 - Herstel op database niveau naar een wille keurige post gres-server of rechtstreeks naar de Blob-opslag.
 - Langetermijnretentie.

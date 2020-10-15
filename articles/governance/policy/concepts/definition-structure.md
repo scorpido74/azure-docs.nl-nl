@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019950"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074257"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -111,7 +111,7 @@ De volgende resource provider modus wordt volledig ondersteund:
 De volgende resource provider modi worden momenteel ondersteund als een **Preview**:
 
 - `Microsoft.ContainerService.Data` voor het beheren van regels voor toegangs beheer in de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md). Definities die gebruikmaken van deze resource provider modus **moeten** het [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effect gebruiken. Deze modus is _afgeschaft_.
-- `Microsoft.KeyVault.Data` voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/general/overview.md).
+- `Microsoft.KeyVault.Data` voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/general/overview.md). Zie [Azure Key Vault integreren met Azure Policy](../../../key-vault/general/azure-policy.md)voor meer informatie over deze beleids definities.
 
 > [!NOTE]
 > De modi van de resource provider ondersteunen alleen ingebouwde beleids definities en bieden geen ondersteuning voor [uitzonde ringen](./exemption-structure.md).
@@ -609,8 +609,20 @@ De volgende functies zijn alleen beschikbaar in beleids regels:
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **Range**: [required] string-teken reeks die een bereik van IP-adressen aangeeft.
+    - **targetRange**: [vereist] teken reeks-teken reeks die een bereik van IP-adressen aangeeft.
+
+    Retourneert of het opgegeven IP-adres bereik het doel-IP-adres bereik bevat. Lege bereiken of combi neren tussen IP-families is niet toegestaan en resulteert in een evaluatie fout.
+
+    Ondersteunde indelingen:
+    - Eén IP-adres (voor beelden: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+    - CIDR-bereik (voor beelden: `10.0.0.0/24` , `2001:0DB8::/110` )
+    - Het bereik dat is gedefinieerd door de begin-en eind-IP-adressen (voor beelden: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+
+
 #### <a name="policy-function-example"></a>Voor beeld van beleids functie
 
 In dit voor beeld van een beleids regel wordt de `resourceGroup` functie resource gebruikt voor het ophalen van de eigenschap **name** , gecombineerd met de `concat` functie Array en object, om een voor waarde op te bouwen `like` die de resource naam afdwingt om te beginnen met de naam van de resource groep.
