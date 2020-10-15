@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en PHP-Bing Video Search"
+title: 'Snelstart: Video’s zoeken met de REST API en PHP - Bing Video Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden via PHP.
 services: cognitive-services
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849617"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en PHP
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Snelstart: Video's zoeken met de Bing Video's zoeken-REST API en PHP
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige PHP-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. De voorbeeld code is geschreven voor gebruik met PHP 5,6.
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Video’s zoeken-API te maken. Deze eenvoudige PHP-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het JSON-antwoord weer. De voorbeeldcode is geschreven om te werken met PHP 5.6.
 
-Hoewel deze toepassing wordt geschreven in PHP, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,10 +33,10 @@ Hoewel deze toepassing wordt geschreven in PHP, is de API een REST-webservice di
 
 Met de [Bing Video’s zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) worden videoresultaten geretourneerd uit de zoekmachine van Bing.
 
-1. Schakel beveiligde HTTP-ondersteuning in uw `php.ini` bestand in door de regel niet op `;extension=php_openssl.dll` te heffen, zoals wordt beschreven in de volgende code.
+1. Schakel veilige HTTP-ondersteuning voor het `php.ini`-bestand in door de opmerkingen bij regel `;extension=php_openssl.dll` te verwijderen, zoals beschreven in de volgende code.
 2. Maak een nieuw PHP-project in uw favoriete IDE of editor.
 3. Voeg de onderstaande code toe.
-4. Vervang de waarde `$accessKey` door een geldige toegangssleutel voor uw abonnement. Voor de `$endpoint` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+4. Vervang de waarde `$accessKey` door een geldige toegangssleutel voor uw abonnement. Voor de `$endpoint`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in de Azure-portal.
 5. Voer het programma uit.
 
 ```php
@@ -212,7 +212,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md)
+> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md).
 
 ## <a name="see-also"></a>Zie ook 
 
