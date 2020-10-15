@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073696"
+ms.locfileid: "92091437"
 ---
 # <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
 
@@ -39,7 +39,7 @@ Azure biedt onbeperkte ondersteuning voor abonnements beheer, met inbegrip van f
 
 U krijgt hulp en **ondersteuning** in de Azure Portal. Deze is beschikbaar via het Azure Portal menu, de globale koptekst of het resource menu voor een service. Voordat u een ondersteunings aanvraag kunt indienen, moet u de juiste machtigingen hebben.
 
-### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+### <a name="azure-role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer voor Azure
 
 Als u een ondersteunings aanvraag wilt maken, moet u [eigenaar](../../role-based-access-control/built-in-roles.md#owner)of [bijdrager](../../role-based-access-control/built-in-roles.md#contributor) zijn of worden toegewezen aan de rol [Inzender voor ondersteunings aanvragen](../../role-based-access-control/built-in-roles.md#support-request-contributor) op abonnements niveau. Als u een ondersteunings aanvraag wilt maken zonder abonnement, bijvoorbeeld een Azure Active Directory scenario, moet u een [beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)zijn.
 

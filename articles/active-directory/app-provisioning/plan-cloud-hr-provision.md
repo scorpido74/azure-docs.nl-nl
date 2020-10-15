@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706351"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070381"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
@@ -31,7 +31,7 @@ Azure AD gebruikt deze integratie om de volgende workflows voor de Cloud toepass
 - **Terugschrijven naar de Cloud-app HR:** Schrijf de e-mail adressen en de kenmerken van de gebruikers naam van Azure AD terug naar de Cloud HR-app.
 
 > [!NOTE]
-> Dit implementatie plan laat zien hoe u uw workflows voor de werk stroom van de cloud kunt implementeren met Azure AD-gebruikers inrichting. Zie [een automatische gebruikers inrichting plannen](https://aka.ms/deploymentplans/provisioning)voor meer informatie over het implementeren van automatische gebruikers inrichting voor SaaS-apps (Software as a Service).
+> Dit implementatie plan laat zien hoe u uw workflows voor de werk stroom van de cloud kunt implementeren met Azure AD-gebruikers inrichting. Zie [een automatische gebruikers inrichting plannen](./plan-auto-user-provisioning.md)voor meer informatie over het implementeren van automatische gebruikers inrichting voor SaaS-apps (Software as a Service).
 
 ## <a name="enabled-hr-scenarios"></a>Ingeschakelde HR-scenario's
 
@@ -126,7 +126,7 @@ Houd rekening met de behoeften van uw organisatie terwijl u de strategie voor de
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
 
-Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen wat betreft impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans). Zorg er ook voor dat de belanghebbende rollen in het project goed zijn begrepen. Documenteer de belanghebbenden en hun project invoer en accountabilities.
+Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen wat betreft impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md). Zorg er ook voor dat de belanghebbende rollen in het project goed zijn begrepen. Documenteer de belanghebbenden en hun project invoer en accountabilities.
 
 Neem een vertegenwoordiger van de HR-organisatie op die invoer kan bieden aan bestaande HR-bedrijfs processen en worker-identiteit plus taak verwerkings vereisten.
 
@@ -378,7 +378,7 @@ Azure AD kan inzicht geven in het gebruik van gebruikers en de operationele stat
 
 Na een geslaagde [eerste cyclus](../app-provisioning/how-provisioning-works.md#initial-cycle)blijft de Azure AD-inrichtings service voor onbepaalde tijd back-to-back-incrementele updates uitvoeren, op intervallen die zijn gedefinieerd in de zelf studies die specifiek zijn voor elke app, totdat een van de volgende gebeurtenissen zich voordoet:
 
-- De service is hand matig gestopt. Er wordt een nieuwe eerste cyclus geactiveerd met behulp van de [Azure Portal](https://portal.azure.com/) of de juiste [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -opdracht.
+- De service is hand matig gestopt. Er wordt een nieuwe eerste cyclus geactiveerd met behulp van de [Azure Portal](https://portal.azure.com/) of de juiste [Microsoft Graph API](/graph/api/resources/synchronization-overview) -opdracht.
 - Er wordt een nieuwe eerste cyclus geactiveerd als gevolg van een wijziging in kenmerk toewijzingen of filter bereik.
 - Het inrichtings proces gaat in quarantaine vanwege een hoge fout frequentie. Het blijft langer dan vier weken in quarantaine, op het moment dat het automatisch wordt uitgeschakeld.
 
@@ -416,6 +416,6 @@ Raadpleeg de volgende artikelen voor informatie over het oplossen van problemen 
 ### <a name="next-steps"></a>Volgende stappen
 
 - [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
-- [Overzicht van Azure AD-synchronisatie-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Overzicht van Azure AD-synchronisatie-API](/graph/api/resources/synchronization-overview)
 - [Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan](skip-out-of-scope-deletions.md)
 - [Azure AD Connect-inrichtings agent: release geschiedenis van versie](provisioning-agent-release-version-history.md)

@@ -3,12 +3,12 @@ title: Problemen met de Azure Backup-Agent oplossen
 description: In dit artikel vindt u informatie over het oplossen van problemen met de installatie en registratie van de Azure Backup-Agent.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e2e807a8b849af435fe82d54bbfdd96b729fa38
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019620"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091454"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -67,7 +67,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 
 | Fout   | Aanbevolen acties |
 | ---     | ---    |
-|Kan het kluis referentie bestand niet downloaden. (ID: 403) | <ul><li> Down load de kluis referenties met behulp van een andere browser of voer de volgende stappen uit: <ul><li> Start Internet Explorer. Selecteer F12. </li><li> Ga naar het tabblad **netwerk** en wis de cache en cookies. </li> <li> Vernieuw de pagina.<br></li></ul> <li> Controleer of het abonnement is uitgeschakeld/verlopen.<br></li> <li> Controleer of een firewall regel de down load blokkeert. <br></li> <li> Zorg ervoor dat u geen limiet hebt bereikt voor de kluis (50 machines per kluis).<br></li>  <li> Zorg ervoor dat de gebruiker beschikt over de Azure Backup machtigingen die nodig zijn om de kluis referenties te downloaden en een server bij de kluis te registreren. Zie [Role-Based Access Control gebruiken om Azure backup herstel punten te beheren](backup-rbac-rs-vault.md).</li></ul> |
+|Kan het kluis referentie bestand niet downloaden. (ID: 403) | <ul><li> Down load de kluis referenties met behulp van een andere browser of voer de volgende stappen uit: <ul><li> Start Internet Explorer. Selecteer F12. </li><li> Ga naar het tabblad **netwerk** en wis de cache en cookies. </li> <li> Vernieuw de pagina.<br></li></ul> <li> Controleer of het abonnement is uitgeschakeld/verlopen.<br></li> <li> Controleer of een firewall regel de down load blokkeert. <br></li> <li> Zorg ervoor dat u geen limiet hebt bereikt voor de kluis (50 machines per kluis).<br></li>  <li> Zorg ervoor dat de gebruiker beschikt over de Azure Backup machtigingen die nodig zijn om de kluis referenties te downloaden en een server bij de kluis te registreren. Zie [op rollen gebaseerd toegangs beheer van Azure gebruiken om Azure backup herstel punten te beheren](backup-rbac-rs-vault.md).</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>De Microsoft Azure Recovery Services-agent kan geen verbinding maken met Microsoft Azure Backup
 

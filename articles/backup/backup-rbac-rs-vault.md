@@ -1,19 +1,19 @@
 ---
-title: Back-ups beheren met Role-Based Access Control
-description: Gebruik op rollen gebaseerde Access Control voor het beheren van de toegang tot bewerkingen voor back-upbeheer in Recovery Services kluis.
+title: Back-ups beheren met op rollen gebaseerd toegangs beheer van Azure
+description: Gebruik Azure op rollen gebaseerd toegangs beheer voor het beheren van de toegang tot back-upbeheer bewerkingen in Recovery Services kluis.
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376125"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090876"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Role-Based Access Control gebruiken om Azure Backup herstel punten te beheren
+# <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Op rollen gebaseerd toegangs beheer van Azure gebruiken voor het beheren van Azure Backup herstel punten
 
-Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
+Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met op rollen gebaseerd toegangsbeheer van Azure kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
 
 > [!IMPORTANT]
 > Rollen die door Azure Backup worden verschaft, zijn beperkt tot acties die kunnen worden uitgevoerd in Azure Portal of via REST API of Recovery Services kluis Power shell of CLI-cmdlets. Acties die worden uitgevoerd in de gebruikers interface van de Azure Backup Agent of System Center Data Protection Manager gebruikers interface Azure Backup Server of de gebruikers interface zijn niet van invloed op deze rollen.
@@ -77,9 +77,9 @@ In de volgende tabel worden de acties voor back-upbeheer en de bijbehorende rol 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): aan de slag met RBAC in de Azure Portal.
+* [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): aan de slag met Azure RBAC in de Azure Portal.
 * Meer informatie over het beheren van toegang met:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure-CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Access Control probleem oplossing op basis van rollen](../role-based-access-control/troubleshooting.md): suggesties ophalen voor het oplossen van veelvoorkomende problemen.
+* [Probleem oplossing voor toegangs beheer op basis van rollen in azure](../role-based-access-control/troubleshooting.md): suggesties ophalen voor het oplossen van veelvoorkomende problemen.

@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836731"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091165"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Meer informatie over de verschillen tussen Cloud Services en Service Fabric voordat u toepassingen migreert.
 Microsoft Azure Service Fabric is het Cloud toepassings platform van de volgende generatie voor zeer schaal bare, zeer betrouw bare gedistribueerde toepassingen. Het bevat een groot aantal nieuwe functies voor het verpakken, implementeren, bijwerken en beheren van gedistribueerde Cloud toepassingen. 
@@ -69,7 +69,7 @@ Met directe communicatie kunnen lagen rechtstreeks communiceren via het eind pun
 
 Service Fabric biedt een service detectie mechanisme, de Naming Service, die kan worden gebruikt voor het omzetten van eindpunt adressen van services. 
 
-![Service Fabric directe communicatie][6]
+![Diagram dat laat zien hoe Service Fabric een service detectie mechanisme biedt, de Naming Service, die kan worden gebruikt voor het omzetten van eindpunt adressen van services.][6]
 
 ### <a name="queues"></a>Wachtrijen
 Een gemeen schappelijk communicatie mechanisme tussen lagen in stateless omgevingen, zoals Cloud Services, is het gebruik van een externe opslag wachtrij om werk taken van de ene laag naar de andere te blijvend. Een veelvoorkomend scenario is een weblaag die taken verzendt naar een Azure-wachtrij of Service Bus waar werk rollen instanties de taken in de wachtrij kunnen plaatsen en verwerken.

@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325484"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072778"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
 Informatie over resource limieten voor Azure NetApp Files helpt u bij het beheren van uw volumes.
 
-## <a name="resource-limits"></a>Bronlimieten
+## <a name="resource-limits"></a>Resourcelimieten
 
 In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven:
 
@@ -65,7 +65,7 @@ De service past de maxfiles-limiet voor een volume dynamisch aan op basis van de
 |    > 3 TiB maar <= 4 TiB    |    80.000.000     |
 |    > 4 TiB                 |    100.000.000    |
 
-Als u al ten minste 4 TiB aan quota voor een volume hebt toegewezen, kunt u een [ondersteunings aanvraag](#limit_increase) initiëren om de maxfiles limiet van meer dan 100.000.000 te verhogen.
+Als u al ten minste 4 TiB aan quota voor een volume hebt toegewezen, kunt u een [ondersteunings aanvraag](#limit_increase) initiëren om de maxfiles limiet van meer dan 100.000.000 te verhogen. Voor elke 100.000.000 bestanden die u wilt verg Roten (of een fractie), moet u het overeenkomstige volume quotum met 4 TiB verhogen.  Als u de limiet voor maxfiles van 100.000.000-bestanden bijvoorbeeld verhoogt naar 200.000.000-bestanden (of een wille keurig aantal tussen), moet u het volume quotum verhogen van 4 TiB tot 8 TiB.
 
 ## <a name="request-limit-increase"></a>Toename van aanvraag limiet <a name="limit_increase"></a> 
 
