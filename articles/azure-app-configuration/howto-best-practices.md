@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588055"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078048"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Aanbevolen procedures voor Azure-app configuratie
 
@@ -42,7 +42,7 @@ Het is belang rijk om ervoor te zorgen dat sleutels uw toepassings code bevat om
 
 App-configuratie behandelt alle sleutels die ermee zijn opgeslagen als onafhankelijke entiteiten. App-configuratie probeert geen relatie tussen sleutels af te leiden of sleutel waarden over te nemen op basis van de hiërarchie. U kunt meerdere sets sleutels samen voegen, met behulp van labels die zijn gekoppeld aan de juiste configuratie stacks in uw toepassings code.
 
-We bekijken een voorbeeld. Stel dat u een instelling hebt met de naam **Asset1**, waarvan de waarde kan variëren op basis van de ontwikkelings omgeving. U maakt een sleutel met de naam ' Asset1 ' met een leeg label en een label met de naam ' ontwikkeling '. In het eerste label plaatst u de standaard waarde voor **Asset1**en plaatst u een specifieke waarde voor ' ontwikkeling ' in de laatste.
+We kijken naar een voorbeeld. Stel dat u een instelling hebt met de naam **Asset1**, waarvan de waarde kan variëren op basis van de ontwikkelings omgeving. U maakt een sleutel met de naam ' Asset1 ' met een leeg label en een label met de naam ' ontwikkeling '. In het eerste label plaatst u de standaard waarde voor **Asset1**en plaatst u een specifieke waarde voor ' ontwikkeling ' in de laatste.
 
 In uw code haalt u eerst de sleutel waarden zonder labels op en vervolgens haalt u dezelfde set sleutel waarden een tweede keer op met het label ' ontwikkeling '. Wanneer u de waarden de tweede keer ophaalt, worden de vorige waarden van de sleutels overschreven. Met het configuratie systeem van .NET Core kunt u meerdere sets configuratie gegevens boven op elkaar stapelen. Als een sleutel in meer dan één set bestaat, wordt de laatste set die deze bevat, gebruikt. Met een modern programmeer raamwerk, zoals .NET core, krijgt u deze gestapelde mogelijkheid gratis als u een systeem eigen configuratie provider gebruikt om toegang te krijgen tot de app-configuratie. Het volgende code fragment laat zien hoe u stacking in een .NET core-toepassing kunt implementeren:
 
@@ -69,7 +69,7 @@ Een betere optie is het gebruik van de functie Managed Identities in Azure Activ
 U kunt een van de volgende methoden gebruiken om toegang te krijgen tot de app-configuratie voor web-apps of functies:
 
 * Voer in de Azure Portal de connection string in voor uw app-configuratie archief in de toepassings instellingen van App Service.
-* Sla de connection string op in de Key Vault van uw app-configuratie en [refereer deze vanuit app service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Sla de connection string op in de Key Vault van uw app-configuratie en [refereer deze vanuit app service](../app-service/app-service-key-vault-references.md).
 * Gebruik Azure Managed Identities om toegang te krijgen tot de app-configuratie opslag. Zie [integratie met door Azure beheerde identiteiten](howto-integrate-azure-managed-service-identity.md)voor meer informatie.
 * Push configuratie van app-configuratie naar App Service. App-configuratie biedt een export functie (in Azure Portal en de Azure CLI) waarmee gegevens rechtstreeks naar App Service worden verzonden. Met deze methode hoeft u de toepassings code helemaal niet te wijzigen.
 
@@ -85,7 +85,7 @@ Buitensporige aanvragen voor app-configuratie kunnen leiden tot beperking of ove
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Configuratie gegevens importeren in de app-configuratie
 
-App-configuratie biedt de mogelijkheid om uw configuratie-instellingen bulksgewijs te [importeren](https://aka.ms/azconfig-importexport1) uit uw huidige configuratie bestanden met behulp van de Azure portal of cli. U kunt ook dezelfde opties gebruiken om waarden te exporteren uit de app-configuratie, bijvoorbeeld tussen gerelateerde winkels. Als u een doorlopende synchronisatie met uw GitHub opslag plaats wilt instellen, kunt u de [actie github](https://aka.ms/azconfig-gha2) gebruiken zodat u uw bestaande broncode beheer procedures kunt blijven gebruiken terwijl u de voor delen van app-configuratie krijgt.
+App-configuratie biedt de mogelijkheid om uw configuratie-instellingen bulksgewijs te [importeren](./howto-import-export-data.md) uit uw huidige configuratie bestanden met behulp van de Azure portal of cli. U kunt ook dezelfde opties gebruiken om waarden te exporteren uit de app-configuratie, bijvoorbeeld tussen gerelateerde winkels. Als u een doorlopende synchronisatie met uw GitHub opslag plaats wilt instellen, kunt u de [actie github](./concept-github-action.md) gebruiken zodat u uw bestaande broncode beheer procedures kunt blijven gebruiken terwijl u de voor delen van app-configuratie krijgt.
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>Implementatie met meerdere regio's in app-configuratie
 

@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889240"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069842"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>De oplossing voor bewaking op afstand met Azure Data Lake Store integreren
 
@@ -67,7 +67,7 @@ Maak een Azure Stream Analytics taak om de gegevens van uw IoT-hub naar uw Azure
 
 1. Zorg ervoor dat u de hosting omgeving als de standaard- **Cloud**verlaat.
 
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
     ![Stream Analytics-taak maken](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -180,4 +180,4 @@ Azure Stream Analytics maakt gebruik van een SQL-achtige query taal om een invoe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Azure Data Lake Analytics kunnen worden gebruikt om big data analyse uit te voeren op uw Data Lake Store gegevens sets. Meer informatie vindt u in de [Data Lake Analytics-documentatie](https://docs.microsoft.com/azure/data-lake-analytics).
+Azure Data Lake Analytics kunnen worden gebruikt om big data analyse uit te voeren op uw Data Lake Store gegevens sets. Meer informatie vindt u in de [Data Lake Analytics-documentatie](../data-lake-analytics/index.yml).
