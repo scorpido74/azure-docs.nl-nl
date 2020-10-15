@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018838"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091012"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Overzicht van Azure-pagina-blobs
 
@@ -90,7 +90,7 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 # <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
-Als u na het maken het formaat van een pagina-BLOB wilt wijzigen, gebruikt u de methode [formaat wijzigen](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) . De aangevraagde grootte moet een meervoud van 512 bytes zijn.
+Als u na het maken het formaat van een pagina-BLOB wilt wijzigen, gebruikt u de methode [formaat wijzigen](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize) . De aangevraagde grootte moet een meervoud van 512 bytes zijn.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 

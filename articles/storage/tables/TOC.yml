@@ -164,10 +164,10 @@
   items:
     - name: Azure-updates
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Azure Storage in Microsoft Q&A
+    - name: Tabelopslag in Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
-    - name: Azure Storage op Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Tabelopslag in Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: Prijzen voor tabelopslag
       href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
     - name: Azure-prijscalculator

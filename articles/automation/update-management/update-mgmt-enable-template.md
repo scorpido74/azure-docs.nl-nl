@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: 312457a6220920d550f05e3a1cd1dc5ec2f4449a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 148ed0eab3e74d96ea6dbf1f507cd0ea53ad2fdc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327839"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073781"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Updatebeheer inschakelen met behulp van Azure Resource Manager-sjabloon
 
@@ -66,7 +66,7 @@ De JSON-sjabloon bevat standaardwaarden voor de andere parameters die waarschijn
 
 Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belangrijk dat u de volgende configuratiedetails begrijpt. Deze kennis helpt fouten te voorkomen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld.
 
-* Bekijk deze [aanvullende informatie](../../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) om de configuratieopties voor de werkruimte volledig te begrijpen, zoals de modus voor toegangsbeheer, de prijscategorie, retentie en het capaciteitsreserveringsniveau.
+* Bekijk deze [aanvullende informatie](../../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace) om de configuratieopties voor de werkruimte volledig te begrijpen, zoals de modus voor toegangsbeheer, de prijscategorie, retentie en het capaciteitsreserveringsniveau.
 
 * Bekijk [werkruimtetoewijzingen](../how-to/region-mappings.md) om de ondersteunde regio's inline of in een parameterbestand op te geven. Bij het koppelen van een Log Analytics-werkruimte aan een Automation-Account in uw abonnement, worden slechts bepaalde regio's ondersteund.
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563893"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093086"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
 
@@ -62,7 +62,7 @@ Houd rekening met de behoeften van uw organisatie terwijl u de strategie voor de
 
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
 
-Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden](https://aka.ms/deploymentplans) en de rol van belanghebbenden in het project goed begrijpen. 
+Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden](../fundamentals/active-directory-deployment-plans.md) en de rol van belanghebbenden in het project goed begrijpen. 
 
 Voor dit abonnement voegt u de volgende belanghebbenden toe aan uw lijst:
 
@@ -102,7 +102,7 @@ Gebruik deze structuur om opties te bepalen voor apparaten die eigendom zijn van
 
 iOS-en Android-apparaten kunnen alleen worden geregistreerd bij Azure AD. De volgende tabel geeft een hoog niveau van overwegingen voor Windows-client apparaten. Gebruik dit als een overzicht en verken de verschillende integratie methoden uitvoerig.
 
-| Overweging | Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling |
+| Overweging | Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling |
 | - | - | - | - |
 | **Client besturingssystemen**| | |  |
 | Windows 10-apparaten| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png) |
@@ -183,7 +183,7 @@ U kunt bepalen dat Azure AD-deelname de beste oplossing voor een apparaat is, en
 | - | - | - |
 | On-premises domein toegevoegd| Azure AD-Join| Het apparaat loskoppelen van het on-premises domein voordat u deelneemt aan Azure AD |
 | Hybride Azure AD-deelname| Azure AD-Join| Het apparaat loskoppelen van on-premises domein en van Azure AD voordat u deelneemt aan Azure AD |
-| Azure AD-geregistreerd| Azure AD-Join| De registratie van het apparaat ongedaan maken voordat u deelneemt aan Azure AD |
+| Geregistreerd bij Azure AD| Azure AD-Join| De registratie van het apparaat ongedaan maken voordat u deelneemt aan Azure AD |
 
 
 ## <a name="hybrid-azure-ad-join"></a>Hybride Azure AD-koppeling
@@ -237,7 +237,7 @@ Beheerders kunnen deze geregistreerde en gekoppelde apparaten beveiligen en verd
 
 Ondersteunde en niet-ondersteunde platforms voor geïntegreerde apparaten bekijken:
 
-| Hulpprogramma’s voor apparaatbeheer| Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling|
+| Hulpprogramma’s voor apparaatbeheer| Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling|
 | - | - | - | - |
 | [Beheer van mobiele apparaten (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Voor beeld: Microsoft Intune| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)|  |
 | [Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 en hoger)| | ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)| ![Vinkje voor deze waarden.](./media/plan-device-deployment/check.png)|  |

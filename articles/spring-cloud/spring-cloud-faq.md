@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945393"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094004"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -54,7 +54,7 @@ Welk item moet ik gebruiken en wat zijn de limieten binnen elke laag?
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hoe kan ik feedback geven en problemen melden?
 
-Als u problemen ondervindt met Azure lente Cloud, maakt u een [ondersteunings aanvraag voor Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Als u een functie aanvraag wilt verzenden of feedback wilt geven, gaat u naar [Azure feedback](https://feedback.azure.com/forums/34192--general-feedback).
+Als u problemen ondervindt met Azure lente Cloud, maakt u een [ondersteunings aanvraag voor Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). Als u een functie aanvraag wilt verzenden of feedback wilt geven, gaat u naar [Azure feedback](https://feedback.azure.com/forums/34192--general-feedback).
 
 ## <a name="development"></a>Ontwikkeling
 
@@ -70,9 +70,9 @@ Azure lente-Cloud ondersteunt Java 8 en 11. Zie [Java runtime en versies van het
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Waar kan ik de logboeken en metrische gegevens van mijn lente-Cloud weer geven?
 
-Zoek metrische gegevens op het tabblad Overzicht van de app en het tabblad [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) .
+Zoek metrische gegevens op het tabblad Overzicht van de app en het tabblad [Azure monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) .
 
-Azure lente Cloud ondersteunt het exporteren van Lente-Cloud toepassings logboeken en-metrische gegevens naar Azure Storage, EventHub en [log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). De tabel naam in Log Analytics is *AppPlatformLogsforSpring*. Zie [diagnostische services](diagnostic-services.md)voor meer informatie over het inschakelen van deze functie.
+Azure lente Cloud ondersteunt het exporteren van Lente-Cloud toepassings logboeken en-metrische gegevens naar Azure Storage, EventHub en [log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries). De tabel naam in Log Analytics is *AppPlatformLogsforSpring*. Zie [diagnostische services](diagnostic-services.md)voor meer informatie over het inschakelen van deze functie.
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Wordt gedistribueerde tracering door Azure lente Cloud ondersteund?
 
@@ -106,7 +106,7 @@ U kunt de diagnostische instellingen van de lente-Cloud verwijderen met behulp v
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Welke versies van Java runtime worden ondersteund in azure lente-Cloud?
 
-Azure lente Cloud biedt ondersteuning voor Java LTS-versies met de meest recente builds, op dit moment 2020, Java 8 build 252 en Java 11 build 7 worden ondersteund. Zie [de JDK voor Azure en Azure stack installeren](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+Azure lente Cloud biedt ondersteuning voor Java LTS-versies met de meest recente builds, op dit moment 2020, Java 8 build 252 en Java 11 build 7 worden ondersteund. Zie [de JDK voor Azure en Azure stack installeren](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>Wie heeft deze Java-Runtimes gemaakt?
 
@@ -118,14 +118,14 @@ LTS-en MTS JDK-releases hebben een driemaandelijkse beveiligings updates, proble
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Hoe lang worden de versies van Java 8 en Java 11 LTS ondersteund?
 
-Zie [Java lange termijn ondersteuning voor Azure en Azure stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Zie [Java lange termijn ondersteuning voor Azure en Azure stack](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Java 8 LTS wordt ondersteund tot december 2030.
 * Java 11 LTS wordt tot september 2027 ondersteund.
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Hoe kan ik een ondersteunde Java-runtime voor lokale ontwikkeling downloaden?
 
-Zie [de JDK voor Azure en Azure stack installeren](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Zie [de JDK voor Azure en Azure stack installeren](/azure/developer/java/fundamentals/java-jdk-install).
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Wat is het beleid voor het buiten gebruik stellen voor oudere Java-Runtimes?
 
@@ -136,7 +136,7 @@ De open bare kennisgeving wordt om de 12 maanden verzonden voordat een oude runt
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Hoe kan ik ondersteuning krijgen voor problemen met het Java-runtime niveau?
 
-U kunt een ondersteunings ticket openen met ondersteuning voor Azure.  Zie [een Azure-ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+U kunt een ondersteunings ticket openen met ondersteuning voor Azure.  Zie [een Azure-ondersteunings aanvraag maken](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>Wat is het besturings systeem voor het uitvoeren van mijn apps?
 

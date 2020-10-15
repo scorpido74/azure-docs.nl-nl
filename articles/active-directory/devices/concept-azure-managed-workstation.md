@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601381"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093307"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Meer informatie over veilige, door Azure beheerde werk stations
 
@@ -64,7 +64,7 @@ Alle gebruikers en Opera tors profiteren van het gebruik van een beveiligd werk 
 * Zeer gevoelig werk station, zoals een snelle betalings Terminal
 * Handels geheimen voor werk stations verwerken
 
-Om het risico te beperken, moet u verhoogde beveiligings controles implementeren voor bevoegde werk stations die gebruikmaken van deze accounts. Zie voor meer informatie de [Azure Active Directory functie-implementatie handleiding](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 plan](https://aka.ms/o365secroadmap)en het [beveiligen van een privileged Access-schema](https://aka.ms/sparoadmap)).
+Om het risico te beperken, moet u verhoogde beveiligings controles implementeren voor bevoegde werk stations die gebruikmaken van deze accounts. Zie voor meer informatie de [Azure Active Directory functie-implementatie handleiding](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 plan](/microsoft-365/security/office-365-security/security-roadmap)en het [beveiligen van een privileged Access-schema](/windows-server/identity/securing-privileged-access/securing-privileged-access)).
 
 ## <a name="why-use-dedicated-workstations"></a>Waarom speciale werk stations gebruiken?
 

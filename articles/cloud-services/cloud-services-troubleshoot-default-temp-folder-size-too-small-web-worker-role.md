@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 77c4f627668b91c4bc21ad73b3511c1775943229
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d18e174eac30bbcf87010531821a4017efb088ba
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460198"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075107"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>De standaard TEMP-map is te klein voor de web-of worker-rol van de Cloud service
 De standaard tijdelijke map van een Cloud Service medewerker of Web Role heeft een maximale grootte van 100 MB. deze kan op een bepaald moment vol raken. In dit artikel wordt beschreven hoe u kunt voor komen dat er geen ruimte meer is voor de tijdelijke map.
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees een blog waarin wordt beschreven [hoe u de tijdelijke map ASP.net van Azure Web Role verg root](https://docs.microsoft.com/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder).
+Lees een blog waarin wordt beschreven [hoe u de tijdelijke map ASP.net van Azure Web Role verg root](/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder).
 
-Bekijk meer [artikelen over probleem oplossing](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) voor Cloud Services.
+Bekijk meer [artikelen over probleem oplossing](/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) voor Cloud Services.
 
-Bekijk [de blog serie van Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)voor informatie over het oplossen van problemen met Cloud service rollen met behulp van Azure PaaS computer diagnostische gegevens.
+Bekijk [de blog serie van Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)voor informatie over het oplossen van problemen met Cloud service rollen met behulp van Azure PaaS computer diagnostische gegevens.

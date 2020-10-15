@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0c4da177644a1cdb648c00e8309c18031a905d7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fbcacf4e3c26f117be4ab5b64b35f670435e6b6
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825944"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092746"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Overzicht van de Microsoft Authentication Library (MSAL)
-Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars [tokens](developer-glossary.md#security-token) verkrijgen van het micro soft Identity platform-eind punt om toegang te krijgen tot beveiligde web-api's. Deze web-Api's kunnen de Microsoft Graph, andere micro soft-Api's, Web-Api's van derden of uw eigen web-API zijn. MSAL is beschikbaar voor .NET, java script, Java, Python, Android en iOS, die ondersteuning bieden voor veel verschillende toepassings architecturen en-platforms.
+Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars [tokens](developer-glossary.md#security-token) verkrijgen van het micro soft Identity platform-eind punt om gebruikers te verifiëren en beveiligde web-api's te gebruiken. Het kan worden gebruikt om veilige toegang te bieden tot Microsoft Graph, andere micro soft-Api's, Web-Api's van derden of uw eigen web-API. MSAL ondersteunt veel verschillende toepassings architecturen en platformen, waaronder .NET, java script, Java, Python, Android en iOS.
 
 MSAL biedt u een groot aantal manieren om tokens te verkrijgen, met een consistente API voor een aantal platforms. Het gebruik van MSAL biedt de volgende voor delen:
 

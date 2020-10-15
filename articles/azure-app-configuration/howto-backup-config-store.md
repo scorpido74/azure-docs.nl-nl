@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207136"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074852"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisch back-ups maken van app-configuratie archieven
 
@@ -124,7 +124,7 @@ In dit artikel maakt u gebruik van C#-functies die de volgende eigenschappen heb
 - Azure Functions runtime versie 3. x
 - De functie wordt elke 10 minuten geactiveerd door de timer
 
-We hebben [een functie getest en gepubliceerd](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) die u kunt gebruiken zonder wijzigingen aan te brengen in de code om het voor u gemakkelijker te maken om een back-up van uw gegevens te starten. Down load de project bestanden en [Publiceer deze naar uw eigen Azure function-app vanuit Visual Studio](/azure/azure-functions/functions-develop-vs#publish-to-azure).
+We hebben [een functie getest en gepubliceerd](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) die u kunt gebruiken zonder wijzigingen aan te brengen in de code om het voor u gemakkelijker te maken om een back-up van uw gegevens te starten. Down load de project bestanden en [Publiceer deze naar uw eigen Azure function-app vanuit Visual Studio](../azure-functions/functions-develop-vs.md#publish-to-azure).
 
 > [!IMPORTANT]
 > Breng geen wijzigingen aan in de omgevings variabelen in de code die u hebt gedownload. U maakt de vereiste app-instellingen in de volgende sectie.
@@ -133,13 +133,13 @@ We hebben [een functie getest en gepubliceerd](https://github.com/Azure/AppConfi
 ### <a name="build-your-own-function"></a>Bouw uw eigen functie
 
 Als de hierboven vermelde voorbeeld code niet aan uw vereisten voldoet, kunt u ook uw eigen functie maken. De functie moet in staat zijn om de volgende taken uit te voeren om de back-up te volt ooien:
-- Lees de inhoud van uw wachtrij regel matig om te zien of deze meldingen van Event Grid bevat. Raadpleeg de [opslag wachtrij-SDK](/azure/storage/queues/storage-quickstart-queues-dotnet) voor meer informatie over de implementatie.
-- Als uw wachtrij [gebeurtenis meldingen bevat van Event grid](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema), extraheert u alle unieke `<key, label>` gegevens uit gebeurtenis berichten. De combi natie van sleutel en label is de unieke id voor wijzigingen in de sleutel waarde in het primaire archief.
+- Lees de inhoud van uw wachtrij regel matig om te zien of deze meldingen van Event Grid bevat. Raadpleeg de [opslag wachtrij-SDK](../storage/queues/storage-quickstart-queues-dotnet.md) voor meer informatie over de implementatie.
+- Als uw wachtrij [gebeurtenis meldingen bevat van Event grid](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema), extraheert u alle unieke `<key, label>` gegevens uit gebeurtenis berichten. De combi natie van sleutel en label is de unieke id voor wijzigingen in de sleutel waarde in het primaire archief.
 - Alle instellingen van het primaire archief lezen. Werk alleen de instellingen in het secundaire archief bij die een corresponderende gebeurtenis in de wachtrij hebben. Verwijder alle instellingen uit het secundaire archief die aanwezig waren in de wachtrij, maar niet in het primaire archief. U kunt de [app-configuratie-SDK](https://github.com/Azure/AppConfiguration#sdks) gebruiken om via een programma toegang te krijgen tot uw configuratie archieven.
 - Berichten uit de wachtrij verwijderen als er geen uitzonde ringen zijn tijdens de verwerking.
 - Implementeer fout afhandeling volgens uw behoeften. Raadpleeg het voor gaande code voorbeeld voor een aantal veelvoorkomende uitzonde ringen die u mogelijk wilt verwerken.
 
-Zie voor meer informatie over het maken van een functie: [een functie in azure maken die wordt geactiveerd door een timer](/azure/azure-functions/functions-create-scheduled-function) en [Azure functions ontwikkelen met behulp van Visual Studio](/azure/azure-functions/functions-develop-vs).
+Zie voor meer informatie over het maken van een functie: [een functie in azure maken die wordt geactiveerd door een timer](../azure-functions/functions-create-scheduled-function.md) en [Azure functions ontwikkelen met behulp van Visual Studio](../azure-functions/functions-develop-vs.md).
 
 
 > [!IMPORTANT]
@@ -167,16 +167,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>Toegang verlenen tot de beheerde identiteit van de functie-app
 
-Gebruik de volgende opdracht of de [Azure Portal](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) om een door het systeem toegewezen beheerde identiteit voor uw functie-app toe te voegen.
+Gebruik de volgende opdracht of de [Azure Portal](../app-service/overview-managed-identity.md#add-a-system-assigned-identity) om een door het systeem toegewezen beheerde identiteit voor uw functie-app toe te voegen.
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> Voor het uitvoeren van de vereiste functie voor het maken van resources en het beheer van rollen moet uw account `Owner` machtigingen hebben op het juiste bereik (uw abonnement of resource groep). Als u hulp nodig hebt bij roltoewijzing, leert u [hoe u Azure-roltoewijzingen toevoegt of verwijdert met behulp van de Azure Portal](/azure/role-based-access-control/role-assignments-portal).
+> Voor het uitvoeren van de vereiste functie voor het maken van resources en het beheer van rollen moet uw account `Owner` machtigingen hebben op het juiste bereik (uw abonnement of resource groep). Als u hulp nodig hebt bij roltoewijzing, leert u [hoe u Azure-roltoewijzingen toevoegt of verwijdert met behulp van de Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-Gebruik de volgende opdrachten of de [Azure Portal](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) om de beheerde identiteit van uw functie-app toegang te verlenen tot uw app-configuratie archieven. Gebruik deze rollen:
+Gebruik de volgende opdrachten of de [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) om de beheerde identiteit van uw functie-app toegang te verlenen tot uw app-configuratie archieven. Gebruik deze rollen:
 - Wijs de `App Configuration Data Reader` rol toe aan het configuratie archief van de primaire app.
 - Wijs de `App Configuration Data Owner` rol toe aan het configuratie archief van de secundaire app.
 
@@ -196,7 +196,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-Gebruik de volgende opdracht of de [Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) om de beheerde identiteit van uw functie-app toegang tot uw wachtrij te verlenen. Wijs de `Storage Queue Data Contributor` rol toe aan de wachtrij.
+Gebruik de volgende opdracht of de [Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) om de beheerde identiteit van uw functie-app toegang tot uw wachtrij te verlenen. Wijs de `Storage Queue Data Contributor` rol toe aan de wachtrij.
 
 ```azurecli-interactive
 az role assignment create \
@@ -216,7 +216,7 @@ az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 U hebt de gebeurtenis geactiveerd. Na enkele ogen blikken wordt de gebeurtenis melding door Event Grid naar uw wachtrij verzonden. *Nadat de volgende geplande uitvoering van de functie is uitgevoerd*, bekijkt u de configuratie-instellingen in het secundaire archief om te zien of deze de bijgewerkte sleutel waarde uit het primaire archief bevat.
 
 > [!NOTE]
-> U kunt [de functie hand matig activeren](/azure/azure-functions/functions-manually-run-non-http) tijdens het testen en oplossen van problemen zonder te wachten op de geplande timer trigger.
+> U kunt [de functie hand matig activeren](../azure-functions/functions-manually-run-non-http.md) tijdens het testen en oplossen van problemen zonder te wachten op de geplande timer trigger.
 
 Nadat u hebt gecontroleerd of de back-upfunctie is uitgevoerd, kunt u zien dat de sleutel nu aanwezig is in uw secundaire archief.
 
@@ -243,9 +243,9 @@ Als u de nieuwe instelling niet ziet in uw secundaire archief:
 
 - Zorg ervoor dat de back-upfunctie is geactiveerd *nadat* u de instelling in uw primaire archief hebt gemaakt.
 - Het is mogelijk dat Event Grid de gebeurtenis melding niet op tijd kon verzenden naar de wachtrij. Controleer of de wachtrij nog steeds de gebeurtenis melding van uw primaire archief bevat. Als dit het geval is, moet u de back-upfunctie opnieuw activeren.
-- Controleer [Azure functions logboeken](/azure/azure-functions/functions-create-scheduled-function#test-the-function) op fouten of waarschuwingen.
-- Gebruik de [Azure Portal](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) om ervoor te zorgen dat de Azure function-app de juiste waarden bevat voor de toepassings instellingen die Azure functions probeert te lezen.
-- U kunt ook bewaking en waarschuwingen voor Azure Functions instellen met behulp van [Azure-toepassing Insights](/azure/azure-functions/functions-monitoring?tabs=cmd). 
+- Controleer [Azure functions logboeken](../azure-functions/functions-create-scheduled-function.md#test-the-function) op fouten of waarschuwingen.
+- Gebruik de [Azure Portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) om ervoor te zorgen dat de Azure function-app de juiste waarden bevat voor de toepassings instellingen die Azure functions probeert te lezen.
+- U kunt ook bewaking en waarschuwingen voor Azure Functions instellen met behulp van [Azure-toepassing Insights](../azure-functions/functions-monitoring.md?tabs=cmd). 
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen

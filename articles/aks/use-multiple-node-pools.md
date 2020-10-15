@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van meerdere knooppunt gr
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 024b7adb254980ec87084b4794a9ced3eaea95eb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563174"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074512"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppuntgroepen maken en beheren voor een cluster in Azure Kubernetes Service (AKS)
 
@@ -148,7 +148,7 @@ az aks nodepool add \
 ## <a name="upgrade-a-node-pool"></a>Een knooppunt groep upgraden
 
 > [!NOTE]
-> Upgrade-en schaal bewerkingen op een cluster of knooppunt groep kunnen niet tegelijkertijd plaatsvinden, als er een fout wordt geretourneerd. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](https://aka.ms/aks-pending-upgrade).
+> Upgrade-en schaal bewerkingen op een cluster of knooppunt groep kunnen niet tegelijkertijd plaatsvinden, als er een fout wordt geretourneerd. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](./troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade).
 
 Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt. De relatie tussen het upgraden van de Kubernetes-versie van het besturings vlak en de knooppunt groep wordt uitgelegd in de [volgende sectie](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 

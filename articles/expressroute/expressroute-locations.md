@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 0611297164f3fe0afb1e18afe3abbbac00fd9c9a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d9bf37a132b4af0e6a17c0ab850a7b82c56c5f6d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016362"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093154"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute-connectiviteit
 
@@ -105,7 +105,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **du datamena** |Ondersteund |Ondersteund | Dubai2 |
 | **eir** |Ondersteund |Ondersteund |Dublin|
 | **[Wereld wijde communicatie met Epsilon](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Ondersteund |Ondersteund |Singapore, Singapore2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Ondersteund |Ondersteund |Amsterdam, Atlanta, Chicago, Rotterdam, Dublin, Frankfurt, Genève, Hongkong SAR, Londen, London2, Los Angeles, los Angeles2, Melbourne, Miami, Milaan, New York, Osaka, Parijs, Sao Paulo, Seattle, silicone dal, Singapore, Stockholm, Sydney, Tokio, Toronto, Washington DC |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Ondersteund |Ondersteund |Amsterdam, Atlanta, Berlijn, Chicago, Rotterdam, Dublin, Frankfurt, Genève, Hongkong SAR, Londen, London2, Los Angeles, los Angeles2, Melbourne, Miami, Milaan, New York, Osaka, Parijs, Sao Paulo, Seattle, Silicon dal, Singapore, Stockholm, Sydney, Tokio, Toronto, Washington DC |
 | **Etisalat VAE** |Ondersteund |Ondersteund |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Ondersteund |Ondersteund |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londen |
 | **FarEasTone** |Ondersteund |Ondersteund |Taipei|

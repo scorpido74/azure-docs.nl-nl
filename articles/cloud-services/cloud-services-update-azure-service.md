@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75360341"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075039"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Een Cloud service bijwerken
 
@@ -21,7 +21,7 @@ Het bijwerken van een Cloud service, met inbegrip van de rollen en het gast best
 ## <a name="update-an-azure-service"></a>Een Azure-service bijwerken
 Met Azure worden uw rolinstanties ingedeeld in logische groepen met de naam upgrade domeinen (UD). Upgrade domeinen (UD) zijn logische sets van rolinstanties die als groep worden bijgewerkt.  Azure werkt een Cloud service één UD tegelijk bij, waardoor instanties in andere UDs geen verkeer meer kunnen verwerken.
 
-Het standaard aantal upgrade domeinen is 5. U kunt een ander aantal upgrade domeinen opgeven door het kenmerk upgradeDomainCount in het definitie bestand (. csdef) van de service op te nemen. Zie [Azure Cloud Services definition schema (csdef-bestand)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)voor meer informatie over het kenmerk upgradeDomainCount.
+Het standaard aantal upgrade domeinen is 5. U kunt een ander aantal upgrade domeinen opgeven door het kenmerk upgradeDomainCount in het definitie bestand (. csdef) van de service op te nemen. Zie [Azure Cloud Services definition schema (csdef-bestand)](./schema-csdef-file.md)voor meer informatie over het kenmerk upgradeDomainCount.
 
 Wanneer u een in-place update van een of meer functies in uw service uitvoert, worden door Azure de sets rolinstanties bijgewerkt op basis van het upgrade domein waartoe ze behoren. Alle exemplaren in een opgegeven upgrade domein worden door Azure bijgewerkt. deze worden vervolgens gestopt, bijgewerkt, teruggezet, waarna ze weer online worden gezet. vervolgens gaat u naar het volgende domein. Als u alleen de exemplaren stopt die worden uitgevoerd in het huidige upgrade domein, zorgt Azure ervoor dat er een update wordt uitgevoerd met de minste mogelijke gevolgen voor de actieve service. Zie [hoe de update verloopt](#howanupgradeproceeds) verderop in dit artikel voor meer informatie.
 
@@ -182,7 +182,4 @@ In het volgende diagram ziet u hoe een service dan twee rollen bevat, wanneer de
 ## <a name="next-steps"></a>Volgende stappen
 [Cloud Services beheren](cloud-services-how-to-manage-portal.md)  
 [Cloud Services bewaken](cloud-services-how-to-monitor.md)  
-[Cloud Services configureren](cloud-services-how-to-configure-portal.md)  
-
-
-
+[Cloud Services configureren](cloud-services-how-to-configure-portal.md)

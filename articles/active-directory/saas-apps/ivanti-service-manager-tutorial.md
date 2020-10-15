@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: db7838224b004d50234586d14e43e77a9c2ce26b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a656ec60fd3cb1e6b94da2122d8f493f426cef07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552738"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Zelfstudie: Integratie van Azure Active Directory met Ivanti Service Manager (ISM)
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD met Ivanti Ser
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Ivanti Service Manager (ISM)](common/idp-intiated.png)
+    ![Schermopname van de Basic SAML-configuratie, waar u de antwoord-URL kunt invoeren en 'Opslaan' kunt selecteren.](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon:
     
@@ -114,7 +114,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure AD met Ivanti Ser
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Gegevens van domein en URL's voor eenmalige aanmelding van Ivanti Service Manager (ISM)](common/metadata-upload-additional-signon.png)
+    ![Schermopname die Extra URL's instellen toont, waar u een aanmeldings-URL kunt invoeren.](common/metadata-upload-additional-signon.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<customer>.saasit.com/`
 
