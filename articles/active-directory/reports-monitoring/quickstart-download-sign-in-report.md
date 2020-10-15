@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86bc72f69903134afa3750ad6b72486a713b6cc0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68989660"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Snelstart: Een aanmeldrapport downloaden met behulp van de Azure Portal
 
-In deze snelstartgids leert u hoe u de aanmeldgegevens download voor uw tenant voor de afgelopen 24 uur. U kunt Maxi maal 250.000 records downloaden van de Azure Portal. De records worden standaard gesorteerd op de meest recente gegevens, maar u krijgt de meest recente 250.000 records. 
+In deze snelstartgids leert u hoe u de aanmeldgegevens download voor uw tenant voor de afgelopen 24 uur. U kunt maximaal 250.000 records downloaden vanuit de Azure-portal. De records worden gesorteerd op meest recent zodat u standaard de meest recente 250.000 records krijgt. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,16 +37,16 @@ U hebt de volgende zaken nodig:
 
 ## <a name="quickstart-download-a-sign-in-report"></a>Snelstart: Een aanmeldrapport downloaden
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory** in het linker navigatiedeelvenster en gebruik de knop **Schakelen tussen mappen** om uw actieve map te selecteren.
 3. Selecteer in het dashboard, **Azure Active Directory** en selecteer vervolgens **Aanmeldingen**. 
 4. Kies **afgelopen 24 uur** in de **Datum** filter vervolgkeuzelijst en selecteer **Toepassen** om de aanmeldingen voor de afgelopen 24 uur weer te geven. 
-5. Selecteer de knop **downloaden** , selecteer **CSV** als bestands indeling en geef een bestands naam op om een CSV-bestand met de gefilterde records te downloaden. 
+5. Selecteer de knop **Downloaden**, selecteer **CSV** als de bestandsindeling en geef een bestandsnaam op om een CSV-bestand met de gefilterde records te downloaden. 
 
 ![Rapporten](./media/quickstart-download-sign-in-report/download-sign-ins.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aanmeldactiviteitenrapporten in Azure Active Directory Portal](concept-sign-ins.md)
+* [Aanmeldactiviteitenrapporten in de Azure Active Directory-portal](concept-sign-ins.md)
 * [Azure Active Directory-rapportretentie](reference-reports-data-retention.md)
 * [Azure Active Directory reporting latencies](reference-reports-latencies.md) (Rapportagevertraging in Azure Active Directory)

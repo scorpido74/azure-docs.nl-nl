@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88941725"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016992"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Zelfstudie: Gebeurtenissen van Azure Media Services opslaan in Azure Log Analytics
 
@@ -43,11 +43,11 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 > * Een [Azure-abonnement](how-to-set-azure-subscription.md)
 > * Een [Media Services](create-account-howto.md)-account en een resourcegroep.
 > * Een installatie van [FFmpeg](https://ffmpeg.org/download.html) voor uw besturingssysteem.
-> * Een [Log Analytics-werkruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+> * Een [Log Analytics-werkruimte](../../azure-monitor/learn/quick-create-workspace.md)
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>Abonneren op een Media Services-gebeurtenis met een logische app
 
-1. Als u dat nog niet hebt gedaan, maakt u in de Azure-portal een [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)-werkruimte. U hebt de werkruimte-id en een van de sleutels nodig, dus laat het browservenster geopend. Open de portal vervolgens in een ander tabblad of venster.
+1. Als u dat nog niet hebt gedaan, maakt u in de Azure-portal een [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md)-werkruimte. U hebt de werkruimte-id en een van de sleutels nodig, dus laat het browservenster geopend. Open de portal vervolgens in een ander tabblad of venster.
 
 1. Ga naar uw Azure Media Services-account en selecteer **Gebeurtenissen**. U ziet nu alle methoden voor het abonneren op Azure Media Services-gebeurtenissen.
     > [!div class="mx-imgBorder"]
@@ -140,7 +140,7 @@ Nu u bent geabonneerd op een of meer gebeurtenissen kunt u een actie maken.
     > [!div class="mx-imgBorder"]
     > ![Body en functiestappen controleren](media/tutorial-events-log-analytics/verify-changes-to-json.png)
 
-1. Wanneer u alle resources in de resourcegroep onderzoekt, ziet u een logische app en twee API-connectors voor logische apps, één voor de gebeurtenissen en één voor Log Analytics. Lees [Event Grid-systeemonderwerpen](https://docs.microsoft.com/azure/event-grid/system-topics)voor meer informatie over Event Grid-systeemonderwerpen.
+1. Wanneer u alle resources in de resourcegroep onderzoekt, ziet u een logische app en twee API-connectors voor logische apps, één voor de gebeurtenissen en één voor Log Analytics. Lees [Event Grid-systeemonderwerpen](../../event-grid/system-topics.md)voor meer informatie over Event Grid-systeemonderwerpen.
     > [!div class="mx-imgBorder"]
     > ![Alle nieuwe resources in de resourcegroep bekijken](media/tutorial-events-log-analytics/contoso-rg-listing.png)
 
@@ -231,4 +231,4 @@ Als u de resources die u tijdens deze zelfstudie hebt gemaakt niet meer nodig he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt verschillende query's maken en deze opslaan. Deze kunnen worden toegevoegd aan het [Azure-dashboard](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards).
+U kunt verschillende query's maken en deze opslaan. Deze kunnen worden toegevoegd aan het [Azure-dashboard](../../azure-monitor/learn/tutorial-logs-dashboards.md).
