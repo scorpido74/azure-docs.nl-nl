@@ -1,14 +1,14 @@
 ---
 title: Beheeropties voor UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden
-description: Toewijzing van beheeropties voor de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
+description: Toewijzing van beheeropties voor de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b798ac98e057b85cce0faa835575dbb0d50f9c8c
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540384"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931269"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Toewijzing van beheeropties voor de UK OFFICIAL- en UK NHS-blauwdrukvoorbeelden
 
@@ -33,8 +33,7 @@ Deze blauwdruk zorgt voor een beveiligde overdracht van gegevens met Azure-servi
 
 ## <a name="23-data-at-rest-protection"></a>2.3 Beveiliging van data-at-rest
 
-Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren.
-Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsregels die met deze blauwdruk worden toegewezen, vereisen versleuteling voor data lake-opslagaccounts; vereisen transparante gegevensversleuteling voor SQL-databases; controleren op ontbrekende versleuteling voor opslagaccounts, SQL-databases, schijven van virtuele machines en variabelen van Automation-accounts; controleren op onbeveiligde verbindingen met opslagaccounts en Redis Cache; controleren op zwakke versleuteling van wachtwoorden van virtuele machines; en controleren op niet-versleutelde Service Fabric-communicatie.
+Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsregels die met deze blauwdruk worden toegewezen, vereisen versleuteling voor data lake-opslagaccounts; vereisen transparante gegevensversleuteling voor SQL-databases; controleren op ontbrekende versleuteling voor opslagaccounts, SQL-databases, schijven van virtuele machines en variabelen van Automation-accounts; controleren op onbeveiligde verbindingen met opslagaccounts en Redis Cache; controleren op zwakke versleuteling van wachtwoorden van virtuele machines; en controleren op niet-versleutelde Service Fabric-communicatie.
 
 - Schijfversleuteling moet worden toegepast op virtuele machines
 - Automation-accountvariabelen moeten worden versleuteld
@@ -76,7 +75,8 @@ Met deze blauwdruk kunt u informatiesysteemassets beveiligen door [Azure Policy]
 
 ## <a name="9-secure-user-management"></a>9 Beveiligd gebruikersbeheer 
 
-Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) helpt u te beheren wie toegang heeft tot Azure-resources. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk kunt u toegangsrechten beperken en beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen voor de controle van externe accounts met eigenaars- en/of lees-/schrijfrechten en accounts met eigenaars-, lees- en/of schrijfrechten waarvoor geen meervoudige verificatie is ingeschakeld.
+Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) helpt u te beheren wie toegang heeft tot Azure-resources.
+Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk kunt u toegangsrechten beperken en beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen voor de controle van externe accounts met eigenaars- en/of lees-/schrijfrechten en accounts met eigenaars-, lees- en/of schrijfrechten waarvoor geen meervoudige verificatie is ingeschakeld.
 
 - MFA moet zijn ingeschakeld voor accounts met eigenaarsmachtigingen voor uw abonnement
 - MFA moet zijn ingeschakeld voor accounts met schrijfmachtigingen voor uw abonnement
@@ -101,7 +101,8 @@ Met deze blauwdruk worden Azure Policy-definities toegewezen om het gebruik van 
 - Een Azure Active Directory-beheerder moet worden ingericht voor SQL-servers
 - Service Fabric-clusters mogen alleen gebruikmaken van Azure Active Directory voor clientverificatie
 
-Met deze blauwdruk worden ook Azure Policy-definities toegewezen voor het controleren van accounts die prioriteit moeten krijgen om te worden beoordeeld, waaronder afgeschreven accounts en externe accounts. Zo nodig kunnen accounts voor aanmelding worden geblokkeerd (of verwijderd), waardoor de toegangsrechten tot Azure-resources onmiddellijk worden verwijderd. Deze blauwdruk wijst twee Azure Policy-definities toe voor het controleren van afgeschreven accounts die voor verwijdering moeten worden aangemerkt.
+Met deze blauwdruk worden ook Azure Policy-definities toegewezen voor het controleren van accounts die prioriteit moeten krijgen om te worden beoordeeld, waaronder afgeschreven accounts en externe accounts. Zo nodig kunnen accounts voor aanmelding worden geblokkeerd (of verwijderd), waardoor de toegangsrechten tot Azure-resources onmiddellijk worden verwijderd.
+Deze blauwdruk wijst twee Azure Policy-definities toe voor het controleren van afgeschreven accounts die voor verwijdering moeten worden aangemerkt.
 
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
@@ -137,7 +138,8 @@ Met deze blauwdruk kunt u ook de toegang tot Azure-resources beheren door Azure 
 
 ## <a name="11-external-interface-protection"></a>11 Externe interfacebeveiliging
 
-Behalve het gebruik van meer dan 25 beleidsregels voor het juiste beveiligde gebruikersbeheer, kunt u met deze blauwdruk service-interfaces beveiligen tegen onbevoegde toegang door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen waarmee onbeperkte opslagaccounts worden bewaakt. Opslagaccounts met onbeperkte toegang kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem. Deze blauwdruk wijst ook een beleid toe dat adaptieve toepassingsregelaars op virtuele machines mogelijk maakt.
+Behalve het gebruik van meer dan 25 beleidsregels voor het juiste beveiligde gebruikersbeheer, kunt u met deze blauwdruk service-interfaces beveiligen tegen onbevoegde toegang door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen waarmee onbeperkte opslagaccounts worden bewaakt.
+Opslagaccounts met onbeperkte toegang kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem. Deze blauwdruk wijst ook een beleid toe dat adaptieve toepassingsregelaars op virtuele machines mogelijk maakt.
 
 - Netwerktoegang tot opslagaccounts moet zijn beperkt
 - Besturingselementen voor adaptieve toepassingen om veilige toepassingen in de toegestane lijst op te nemen, moeten worden ingeschakeld op uw computers
@@ -151,7 +153,8 @@ Behalve het gebruik van meer dan 25 beleidsregels voor het juiste beveiligde geb
 
 ## <a name="13-audit-information-for-users"></a>13 Controle-informatie voor gebruikers
 
-Met deze blauwdruk kunt u ervoor zorgen dat systeemgebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)definities toe te wijzen die logboekinstellingen op Azure-resources controleren. Een toegewezen beleid controleert ook of de virtuele machines geen logboeken verzenden naar een opgegeven logboekanalysewerkruimte.
+Met deze blauwdruk kunt u ervoor zorgen dat systeemgebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)definities toe te wijzen die logboekinstellingen op Azure-resources controleren.
+Een toegewezen beleid controleert ook of de virtuele machines geen logboeken verzenden naar een opgegeven logboekanalysewerkruimte.
 
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers
 - Diagnostische instelling voor controleren

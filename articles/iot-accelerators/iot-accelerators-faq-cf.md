@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82792374"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078252"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Veelgestelde vragen over de oplossings versneller Connected Factory
 
@@ -125,7 +125,7 @@ Meld u aan bij de virtuele machine via SSH en Inspecteer de logboek bestanden ti
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hoe kan ik controleren of de simulatie gegevens verzendt naar de Cloud?
 
-Met de [Azure IOT Explorer](https://github.com/Azure/azure-iot-explorer) -of de [Azure IOT cli-uitbreidings monitor-gebeurtenissen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) opdracht kunt u de gegevens die naar IOT hub worden verzonden, inspecteren vanaf bepaalde apparaten. Als u deze hulpprogram ma's wilt gebruiken, moet u de connection string voor de IoT-hub in uw implementatie weten. Zie [Hoe kan ik de Connection String van de IOT-hub die wordt gebruikt door mijn oplossing vinden?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Met de [Azure IOT Explorer](https://github.com/Azure/azure-iot-explorer) -of de [Azure IOT cli-uitbreidings monitor-gebeurtenissen](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) opdracht kunt u de gegevens die naar IOT hub worden verzonden, inspecteren vanaf bepaalde apparaten. Als u deze hulpprogram ma's wilt gebruiken, moet u de connection string voor de IoT-hub in uw implementatie weten. Zie [Hoe kan ik de Connection String van de IOT-hub die wordt gebruikt door mijn oplossing vinden?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Inspecteer de gegevens die worden verzonden door een van de uitgevers-apparaten:
 
@@ -194,6 +194,6 @@ Telemetriegegevens van niet-OPC UA-apparaten verzenden naar een verbonden Factor
 
 U kunt ook enkele van de andere functies en mogelijkheden van de IoT-oplossingsversnellers bekijken:
 
-* [Overzicht van de oplossingsversneller Voorspeld onderhoud](iot-accelerators-predictive-overview.md)
+* [Overzicht van de oplossingsversneller Voorspeld onderhoud](./iot-accelerators-predictive-walkthrough.md)
 * [Connected Factory Solution Accelerator implementeren](quickstart-connected-factory-deploy.md)
-* [Fundamentele IoT-beveiliging](/azure/iot-fundamentals/iot-security-ground-up)
+* [Fundamentele IoT-beveiliging](../iot-fundamentals/iot-security-ground-up.md)

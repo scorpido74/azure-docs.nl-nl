@@ -3,12 +3,12 @@ title: Verbeter de prestaties van Azure-apps met Advisor
 description: Gebruik aanbevelingen voor prestaties in Azure Advisor om de snelheid en reactie tijd van uw bedrijfskritische toepassingen te verbeteren.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405153"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077810"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met behulp van Azure Advisor
 
@@ -142,22 +142,22 @@ Cache-instanties worden het beste uitgevoerd wanneer ze niet worden uitgevoerd o
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Regio's met verkeer toevoegen aan uw Azure Cosmos DB-account
 
-Advisor detecteert Azure Cosmos DB accounts die verkeer hebben van een regio die momenteel niet is geconfigureerd. Het wordt aanbevolen om die regio toe te voegen. Hierdoor wordt de latentie verbeterd van aanvragen die afkomstig zijn uit die regio en wordt de beschik baarheid in het geval van regionale storingen gegarandeerd. [Meer informatie over de distributie van globale gegevens met Azure Cosmos DB.](https://aka.ms/cosmos/globaldistribution)
+Advisor detecteert Azure Cosmos DB accounts die verkeer hebben van een regio die momenteel niet is geconfigureerd. Het wordt aanbevolen om die regio toe te voegen. Hierdoor wordt de latentie verbeterd van aanvragen die afkomstig zijn uit die regio en wordt de beschik baarheid in het geval van regionale storingen gegarandeerd. [Meer informatie over de distributie van globale gegevens met Azure Cosmos DB.](../cosmos-db/distribute-data-globally.md)
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Uw Azure Cosmos DB-indexerings beleid configureren met behulp van aangepaste, opgenomen of uitgesloten paden
 
-Advisor identificeert Azure Cosmos DB containers die gebruikmaken van het standaard indexerings beleid, maar kunnen wel profiteren van een aangepast indexerings beleid. Deze bepaling is gebaseerd op het werkbelasting patroon. Met het standaard indexerings beleid worden alle eigenschappen geïndexeerd. Een aangepast indexerings beleid met expliciet opgenomen of uitgesloten paden die in query filters worden gebruikt, kan het RUs-en opslag verbruik voor indexering verminderen. [Meer informatie over het wijzigen van index beleid.](https://aka.ms/cosmosdb/modify-index-policy)
+Advisor identificeert Azure Cosmos DB containers die gebruikmaken van het standaard indexerings beleid, maar kunnen wel profiteren van een aangepast indexerings beleid. Deze bepaling is gebaseerd op het werkbelasting patroon. Met het standaard indexerings beleid worden alle eigenschappen geïndexeerd. Een aangepast indexerings beleid met expliciet opgenomen of uitgesloten paden die in query filters worden gebruikt, kan het RUs-en opslag verbruik voor indexering verminderen. [Meer informatie over het wijzigen van index beleid.](/azure/cosmos-db/index-policy)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Stel het pagina formaat van uw Azure Cosmos DB-query (MaxItemCount) in op-1 
 
-Azure Advisor identificeert Azure Cosmos DB containers die gebruikmaken van een query pagina grootte van 100. Het wordt aanbevolen een pagina grootte van-1 te gebruiken voor snellere scans. [Meer informatie over MaxItemCount.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure Advisor identificeert Azure Cosmos DB containers die gebruikmaken van een query pagina grootte van 100. Het wordt aanbevolen een pagina grootte van-1 te gebruiken voor snellere scans. [Meer informatie over MaxItemCount.](../cosmos-db/sql-api-query-metrics.md)
 
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>U kunt de functie versneld schrijven gebruiken in uw HBase-cluster om de prestaties van het cluster te verbeteren
 Azure Advisor analyseert de systeem Logboeken in de afgelopen 7 dagen en identificeert of uw cluster de volgende scenario's heeft aangetroffen:
 1. Hoge latentie voor WAL-synchronisatietijd 
 2. Hoog aantal schrijfaanvragen (minstens drie periodes van één uur met meer dan 1000 avg_write_requests/second/node)
 
-Deze kenmerken geven aan dat uw cluster een hoge latentie voor schrijven heeft. Dit kan worden veroorzaakt door een zware werk belasting die op uw cluster wordt uitgevoerd. Als u de prestaties van uw cluster wilt verbeteren, kunt u overwegen om gebruik te maken van de functie voor versneld schrijven van Azure HDInsight HBase. Met de functie Versnelde schrijfbewerkingen voor HDInsight Apache HBase-clusters worden Premium SSD-beheerde schijven gekoppeld aan elke RegionServer (werkknooppunt) in plaats van dat er cloudopslag wordt gebruikt. Het gevolg hiervan is een lage latentie voor schrijven en een hogere tolerantie voor uw toepassingen. Meer informatie over deze functie vindt u [hier](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+Deze kenmerken geven aan dat uw cluster een hoge latentie voor schrijven heeft. Dit kan worden veroorzaakt door een zware werk belasting die op uw cluster wordt uitgevoerd. Als u de prestaties van uw cluster wilt verbeteren, kunt u overwegen om gebruik te maken van de functie voor versneld schrijven van Azure HDInsight HBase. Met de functie Versnelde schrijfbewerkingen voor HDInsight Apache HBase-clusters worden Premium SSD-beheerde schijven gekoppeld aan elke RegionServer (werkknooppunt) in plaats van dat er cloudopslag wordt gebruikt. Het gevolg hiervan is een lage latentie voor schrijven en een hogere tolerantie voor uw toepassingen. Meer informatie over deze functie vindt u [hier](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>De cache-periode (beleid) van de Azure Data Explorer-tabel controleren voor betere prestaties (preview-versie)
 Deze aanbeveling heeft betrekking op Azure Data Explorer-tabellen die een groot aantal query's hebben die verder dan de geconfigureerde cacheperiode (beleid) zoeken (u ziet de top 10 van tabellen op querypercentage dat toegang heeft tot de gegevens buiten de cache). De aanbevolen actie voor het verbeteren van de prestaties van het cluster: Beperk query's voor deze tabel tot het minimale tijdsbereik dat nodig is (binnen het gedefinieerde beleid). Als er gegevens uit het hele tijdsbereik vereist zijn, verhoogt u de cacheperiode tot de aanbevolen waarde.
@@ -169,11 +169,11 @@ Advisor-analyse geeft aan dat uw MySQL-server mogelijk niet langer I/O-overhead 
 Advisor identificeert de Server groepen waar de gegevens niet zijn gedistribueerd, maar blijven op de coördinator. Op basis hiervan adviseert Advisor dat voor volledige grootschalige-voor delen (Citus) gegevens worden gedistribueerd op worker-knoop punten voor uw server groepen. Hierdoor worden de prestaties van de query verbeterd door gebruik te maken van resource van elk knoop punt in de Server groep. [Meer informatie](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>Verbeter de gebruikers ervaring en connectiviteit door Vm's dichter bij de implementatie locatie van Windows Virtual Desktop te implementeren
-We hebben vastgesteld dat uw VM's zich in een andere regio of op grote afstand bevinden van de locatie waar uw gebruikers verbinding maken met behulp van Windows Virtual Desktop (WVD). Dit kan leiden tot langere reactietijden van de verbinding en het heeft invloed op de algemene gebruikerservaring voor WVD. Wanneer u VM's voor uw hostgroepen maakt, moet u proberen een regio dichter bij de gebruiker te kiezen. Als ze zich dicht bij elkaar bevinden, garandeert dat langdurige tevredenheid over de WVD-service en een betere kwaliteit van de ervaring in het algemeen. Meer [informatie over verbindings latentie vindt u hier](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+We hebben vastgesteld dat uw VM's zich in een andere regio of op grote afstand bevinden van de locatie waar uw gebruikers verbinding maken met behulp van Windows Virtual Desktop (WVD). Dit kan leiden tot langere reactietijden van de verbinding en het heeft invloed op de algemene gebruikerservaring voor WVD. Wanneer u VM's voor uw hostgroepen maakt, moet u proberen een regio dichter bij de gebruiker te kiezen. Als ze zich dicht bij elkaar bevinden, garandeert dat langdurige tevredenheid over de WVD-service en een betere kwaliteit van de ervaring in het algemeen. Meer [informatie over verbindings latentie vindt u hier](../virtual-desktop/connection-latency.md).
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Upgraden naar de nieuwste versie van de Insluitende lezer SDK.
 Er zijn voor dit abonnement resources gevonden die gebruikmaken van verouderde versies van de Insluitende lezer SDK De nieuwste versie van de Insluitende lezer SDK biedt u bijgewerkte beveiliging, prestaties en een uitgebreide set functies voor het aanpassen en uitbreiden van uw integratie-ervaring.
-Meer informatie over de [SDK voor insluitende lezer](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore).
+Meer informatie over de [SDK voor insluitende lezer](../cognitive-services/immersive-reader/index.yml).
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Aanbevelingen voor toegang tot prestatie verbeteringen in Advisor

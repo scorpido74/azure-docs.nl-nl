@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571374"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078966"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Cross-Tenant VNets verbinden met een virtuele WAN-hub
 
@@ -54,7 +54,7 @@ Om het bovenliggende abonnement met de virtuele hub te wijzigen en toegang te kr
 1. Voeg vervolgens het externe Tenant abonnement en het bovenliggende Tenant abonnement toe aan de huidige sessie van Power shell. Voer de volgende opdracht uit. Als u bent aangemeld bij het bovenliggende item, hoeft u alleen de opdracht voor de externe Tenant uit te voeren.
 
    ```azurepowershell-interactive
-   Add-AzAccount “xxxxx-b34a-4df9-9451-4402dcaecc5b”
+   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. Controleer of de roltoewijzing is geslaagd door u aan te melden bij Azure PowerShell met de bovenliggende referenties en voer de volgende opdracht uit:
@@ -72,25 +72,25 @@ In de volgende stappen schakelt u tussen de context van de twee abonnementen wan
 1. Zorg ervoor dat u zich in de context van uw externe account bevindt door de volgende opdracht uit te voeren:
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[remote ID]”
+   Select-AzSubscription -SubscriptionId "[remote ID]"
    ```
 
 1. Maak een lokale variabele voor het opslaan van de meta gegevens van het virtuele netwerk waarmee u verbinding wilt maken met de hub.
 
    ```azurepowershell-interactive
-   $remote = Get-AzVirtualNetwork -Name "[v-net name]" -ResourceGroupName "[resource group name]"
+   $remote = Get-AzVirtualNetwork -Name "[vnet name]" -ResourceGroupName "[resource group name]"
    ```
 
 1. Schakel terug naar het bovenliggende account.
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[parent ID]”
+   Select-AzSubscription -SubscriptionId "[parent ID]"
    ```
 
 1. Verbind het VNet met de hub.
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[Parent Resource Group Name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
    ```
 
 1. U kunt de nieuwe verbinding weer geven in Power shell of in de Azure Portal.

@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een AKS-cluster (private Azure K
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015646"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078150"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een persoonlijk Azure Kubernetes service-cluster maken
 
@@ -21,8 +21,7 @@ Het besturings vlak of de API-server bevindt zich in een door Azure Kubernetes s
 
 Een persoonlijk cluster is beschikbaar in open bare regio's waar [AKS wordt ondersteund](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
-* Azure China 21Vianet wordt momenteel niet ondersteund.
-* US Gov-Texas wordt momenteel niet ondersteund vanwege ontbrekende ondersteuning van persoonlijke koppelingen.
+US Gov-Texas wordt momenteel niet ondersteund vanwege ontbrekende ondersteuning van persoonlijke koppelingen.
 
 ## <a name="prerequisites"></a>Vereisten
 

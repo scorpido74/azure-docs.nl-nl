@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec043c97da8056fee4af8f6ead84f4df05c0f304
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803514"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079017"
 ---
 # <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>Technische activa maken voor een Azure Marketplace-aanbieding voor virtuele machines
 
@@ -146,9 +146,9 @@ In dit artikel wordt beschreven hoe u de ingebouwde Windows RDP-ondersteuning ge
 
 ### <a name="connect-to-a-linux-based-vm"></a>Verbinding maken met een op Linux gebaseerde VM
 
-Als u verbinding wilt maken met een VM op basis van Linux, hebt u een SSH-client (Secure Shell Protocol) nodig. In de volgende stappen wordt de Free [putty](https://www.ssh.com/ssh/putty/) shh-terminal gebruikt.
+Als u verbinding wilt maken met een VM op basis van Linux, hebt u een SSH-client (Secure Shell Protocol) nodig. De volgende stappen maken gebruik van de gratis [putty](https://www.ssh.com/ssh/putty/) SSH-terminal.
 
-1. Ga naar de [Azure Portal](https://ms.portal.azure.com/).
+1. Ga naar [Azure Portal](https://ms.portal.azure.com/).
 2. Zoek en selecteer virtuele machines.
 3. Selecteer de virtuele machine waarmee u verbinding wilt maken.
 4. Start de virtuele machine als deze nog niet wordt uitgevoerd.
