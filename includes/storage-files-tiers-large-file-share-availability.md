@@ -9,14 +9,14 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 27e3f0ef7539f3fb875c087ff7d1351916877d19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81536476"
 ---
-Standaard bestands shares met een capaciteit van 100 TiB hebben bepaalde beperkingen.
+Standaardbestandsshares met een capaciteit van 100 TiB hebben bepaalde beperkingen.
 
-- Op dit moment worden alleen lokaal redundante opslag (LRS) en ZRS-accounts (zone redundant Storage) ondersteund.
-- Wanneer u grote bestands shares inschakelt, kunt u opslag accounts niet converteren naar geo-redundante opslag (GRS) of GZRS-accounts (geo-zone-redundante opslag).
-- Wanneer u grote bestands shares inschakelt, kunt u het niet uitschakelen.
+- Op dit moment worden alleen accounts met lokaal redundante opslag (LRS) en zone-redundante opslag (ZRS) ondersteund.
+- Wanneer u grote bestandsshares inschakelt, kunt u opslagaccounts niet converteren naar accounts met geografisch redundante opslag (GRS) of geografisch zone-redundante opslag (GZRS).
+- Wanneer u grote bestandsshares inschakelt, kunt u deze niet meer uitschakelen.

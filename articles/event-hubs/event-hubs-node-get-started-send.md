@@ -4,12 +4,12 @@ description: Dit artikel bevat een overzicht van het maken van een JavaScript-to
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0acceffca79a36ceabf709aa6d7faf1bf79b0c83
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282167"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728944"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Gebeurtenissen verzenden naar of gebeurtenissen ontvangen van Event Hubs met behulp van JavaScript (azure/event-hubs versie 5)
 In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het JavaScript-pakket **azure/event-hubs versie 5**. 
@@ -104,8 +104,10 @@ Gefeliciteerd! U hebt nu gebeurtenissen verzonden naar een Event Hub.
 ## <a name="receive-events"></a>Gebeurtenissen ontvangen
 In deze sectie ontvangt u gebeurtenissen van een Event Hub met behulp van een controlepuntarchief voor Azure Blob Storage-opslag in een Java script-toepassing. Er worden in een Azure Storage-blob regelmatig controlepunten voor metagegevens uitgevoerd voor ontvangen berichten. Met deze aanpak kunt u later eenvoudig berichten blijven ontvangen vanaf de plek waar u was gebleven.
 
-> [!NOTE]
-> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Bekijk de [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js)- en [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)-voorbeelden in GitHub voor een voorbeeld van het instellen van een specifieke versie van de Storage-API. Voor meer informatie over de versies van de Azure Storage-service die in Azure Stack Hub worden ondersteund, raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](/azure-stack/user/azure-stack-acs-differences).
+> [!WARNING]
+> Als u deze code op Azure Stack Hub uitvoert, treden er runtimefouten op tenzij u zich richt op een specifieke versie van de Storage-API. Dat komt doordat de Event Hubs-SDK de meest recente Azure Storage-API gebruikt die beschikbaar is in Azure maar die niet beschikbaar is op uw Azure Stack Hub-platform. Azure Stack Hub biedt mogelijk ondersteuning voor een andere versie van de Storage Blob-SDK dan de versies die doorgaans in Azure beschikbaar zijn. Als u Azure Blob-opslag gebruikt als controlepuntopslag, controleert u de [ondersteunde versie van de Azure Storage-API voor uw build van Azure Stack Hub](/azure-stack/user/azure-stack-acs-differences?#api-version) en stelt u die versie in uw code als doel in. 
+>
+> Als u bijvoorbeeld op Azure Stack Hub versie 2005 uitvoert, is de hoogste beschikbare versie van de Storage-service versie 2019-02-02. De Event Hubs-SDK-clientbibliotheek maakt standaard gebruik van de hoogste beschikbare versie op Azure (2019-07-07 op het moment van de release van de SDK). In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2019-02-02. Bekijk de [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js)- en [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)-voorbeelden in GitHub voor een voorbeeld van het instellen van een specifieke versie van de Storage-API. 
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Een Azure-opslagaccount en een blobcontainer maken

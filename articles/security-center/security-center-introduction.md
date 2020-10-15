@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323671"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742074"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -43,7 +43,8 @@ Met Security Center kunt u zich tegen deze bedreigingen beveiligen. Het biedt na
 
 -   **Beveilig uw infrastructuur sneller**: In Security Center wordt alles gedaan met de snelheid van de cloud. Omdat Security Center in het eigen systeem is geïntegreerd, is het eenvoudig te implementeren en kan het u automatische inrichting en beveiliging bieden met Azure-services.
 
-[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+> [!NOTE]
+> Deze service ondersteunt [Azure Lighthouse](../lighthouse/overview.md), waarmee serviceproviders zich kunnen aanmelden bij een eigen tenant om abonnementen en resourcegroepen te beheren die klanten hebben gedelegeerd. Voor Azure Security Center-scenario's moet een abonnement worden gedelegeerd in plaats van afzonderlijke resourcegroepen.
 
 ## <a name="architecture"></a>Architectuur
 

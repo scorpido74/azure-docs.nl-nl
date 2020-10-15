@@ -6,45 +6,45 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
 ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81422243"
 ---
-U moet een LUIS-account en een project maken met behulp van de preview-portal van LUIS als u de Snelstartgids voor de intentie herkenning wilt volt ooien. Voor deze Quick start is alleen een LUIS-abonnement vereist. Een spraak service-abonnement *is niet* vereist.
+Voor het voltooien van de quickstart voor het herkennen van intenties moet u een LUIS-account en een project maken met behulp van de LUIS-previewportal. Voor deze quickstart hebt u alleen een LUIS-abonnement nodig. Een spraakserviceabonnement is *niet* vereist.
 
-Het eerste wat u moet doen, is het maken van een LUIS-account en-app met behulp van de LUIS preview Portal. De LUIS-app die u maakt, maakt gebruik van een vooraf gebouwd domein voor Start Automation, dat intenties, entiteiten en voor beeld uitingen biedt. Wanneer u klaar bent, hebt u een LUIS-eind punt dat wordt uitgevoerd in de cloud die u kunt aanroepen met de spraak-SDK. 
+Eerst moet u een LUIS-account en -app maken in de LUIS-previewportal. Voor de LUIS-app die u maakt, wordt een vooraf samengesteld domein gebruikt voor automatisering van de startpagina. Dit domein biedt intenties, entiteiten en voorbeelduitingen. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud dat u kunt aanroepen met behulp van de Speech-SDK. 
 
 Volg deze instructies om uw LUIS-app te maken:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Snelstartgids: vooraf gebouwde domein-app bouwen<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Snelstart: Een vooraf samengestelde domein-app maken <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 Wanneer u klaar bent, hebt u vier dingen nodig:
 
-* Opnieuw publiceren met **Speech gebeuren** in-/uitschakelen
-* Uw primaire LUIS- **sleutel**
-* Uw LUIS- **locatie**
-* Uw LUIS **-App-ID**
+* Nieuwe publicatie met **Spraakvoorbereiding** ingeschakeld
+* Uw **primaire LUIS-sleutel**
+* Uw **LUIS-locatie**
+* De **app-id** van uw LUIS-app
 
-Hier vindt u deze informatie in de [Luis preview-Portal](https://preview.luis.ai/):
+Hier is de locatie van deze informatie in de [LUIS-previewportal](https://preview.luis.ai/):
 
-1. Selecteer uw app in de preview-portal van LUIS en selecteer vervolgens de knop **publiceren** .
+1. Selecteer uw app in de LUIS-previewportal en selecteer vervolgens de knop **Publiceren**.
 
-2. Selecteer de **productie** site als u de optie **Speech gebeuren** in-/uitschakelen gebruikt. **On** `en-US` Selecteer vervolgens de knop **publiceren** .
+2. Selecteer de **Productiesite**. Zet de optie **Spraakvoorbereiding** in de stand **Aan** als u `en-US` gebruikt. Selecteer vervolgens de knop **Publiceren**.
 
     > [!IMPORTANT]
-    > **Speech gebeuren** wordt sterk aanbevolen, omdat hiermee de nauw keurigheid van spraak herkenning wordt verbeterd.
+    > **Spraakvoorbereiding** wordt ten zeerste aangeraden, aangezien de nauwkeurigheid van spraakherkenning hiermee wordt verbeterd.
 
     > [!div class="mx-imgBorder"]
-    > ![LUIS publiceren naar eind punt](../../../media/luis/publish-app-popup.png)
+    > ![LUIS naar eindpunt publiceren](../../../media/luis/publish-app-popup.png)
 
-3. Selecteer **beheren**in de preview-portal van Luis en selecteer vervolgens **Azure-resources**. Op deze pagina vindt u uw LUIS-sleutel en-locatie (ook wel _regio_genoemd).
-
-   > [!div class="mx-imgBorder"]
-   > ![LUIS-sleutel en-locatie](../../../media/luis/luis-key-region.png)
-
-4. Nadat u uw sleutel en locatie hebt verkregen, hebt u de App-ID nodig. **Toepassings instellingen** selecteren: uw app-id is beschikbaar op deze pagina.
+3. Selecteer **Beheren** in de LUIS-previewportal en selecteer vervolgens **Azure-resources**. Op deze pagina vindt u uw LUIS-sleutel en -locatie (ook wel _regio_ genoemd).
 
    > [!div class="mx-imgBorder"]
-   > ![App-ID van LUIS](../../../media/luis/luis-app-id.png)
+   > ![LUIS-sleutel en -locatie](../../../media/luis/luis-key-region.png)
+
+4. Zodra u over uw sleutel en locatie beschikt, hebt u de app-id nodig. Selecteer **Toepassingsinstellingen** (uw app-id is op deze pagina beschikbaar).
+
+   > [!div class="mx-imgBorder"]
+   > ![LUIS-app-id](../../../media/luis/luis-app-id.png)

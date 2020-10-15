@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259521"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een Azure-containerregister met geo-replicatie voorbereiden
@@ -57,7 +57,7 @@ Configureer uw nieuwe register met de volgende instellingen. Op het tabblad **Ba
 
 Selecteer **Beoordelen en maken** en **Maken** om het exemplaar van het register te maken.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Een containerregister configureren in de Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Een containerregister maken met Azure Portal":::
 
 In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduiding voor de gekozen **containerregisternaam**.
 
@@ -70,19 +70,19 @@ Nu u een Premium-register hebt, kunt u geo-replicatie configureren. Uw web-app, 
 
 Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Replicaties** onder **Services**:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replicaties in de containerregister-UI van Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Een containerregister maken met Azure Portal":::
 
 Er wordt een kaart weergegeven met groene zeshoeken die Azure-regio's vertegenwoordigen die beschikbaar zijn voor geo-replicatie:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Kaart met regio's in Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Een containerregister maken met Azure Portal":::
 
 Repliceer uw register naar de regio VS - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken**:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Gebruikersinterface voor het maken van een replicatie in Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Een containerregister maken met Azure Portal":::
 
 Wanneer de replicatie is voltooid, geeft de portal *Gereed* weer voor beide regio's. Gebruik de knop **Vernieuwen** om de status van de replicatie te vernieuwen. Het kan een paar minuten duren voordat de replica's zijn gemaakt en gesynchroniseerd.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Gebruikersinterface voor de replicatiestatus in Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Een containerregister maken met Azure Portal":::
 
 
 ## <a name="enable-admin-account"></a>Beheerdersaccount schakelen
@@ -91,7 +91,7 @@ In volgende zelfstudies implementeert u een containerinstallatiekopie vanuit het
 
 Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Toegangssleutels** onder **Instellingen**: Selecteer onder **Gebruiker met beheerdersrechten** de optie **Inschakelen**.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Beheerdersaccount inschakelen in Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Een containerregister maken met Azure Portal":::
 
 
 ## <a name="container-registry-login"></a>Aanmelden bij het containerregister
@@ -110,7 +110,7 @@ De opdracht retourneert `Login Succeeded` nadat deze is voltooid.
 
 Het voorbeeld in deze zelfstudie bevat een kleine webtoepassing die is gebouwd in [ASP.NET Core][aspnet-core]. De app dient voor een HTML-pagina waarop de regio wordt weergegeven waaruit de installatiekopie is geïmplementeerd door Azure Container Registry.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Zelfstudie-app weergegeven in browser":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Een containerregister maken met Azure Portal":::
 
 Gebruik Git om het voorbeeld te downloaden naar een lokale map en `cd` naar de map:
 

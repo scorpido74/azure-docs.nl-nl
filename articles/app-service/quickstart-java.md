@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405068"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776320"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Quickstart: Een Java web-app maken in Azure App Service
 
@@ -257,26 +257,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 Het kan een minuut duren voordat deze opdracht is uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
-> [!div class="nextstepaction"]
-> [Verbinding maken met Azure SQL Database met Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [Verbinding maken met Azure DB voor MySQL met Java](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met Azure DB voor PostgreSQL met Java](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
+> [CI/CD instellen](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [Prijsinformatie](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [Logboeken en metrische gegevens aggregeren](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [Omhoog schalen](manage-scale-up.md)
+
+> [!div class="nextstepaction"]
 > [Resources voor Azure voor Java-ontwikkelaars](/java/azure/)
 
 > [!div class="nextstepaction"]
-> [Java-app configureren](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [CI/CD met Jenkins](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [Aangepast domein toewijzen](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [Meer informatie over Maven-invoegtoepassingen voor Azure](https://github.com/microsoft/azure-maven-plugins)
+> [De Java-app configureren](configure-language-java.md)
