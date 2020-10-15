@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a9285ebe2e749f5ac7f248a2703518c8ac237bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337667"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071673"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Een IoT DevKit-apparaat verbinden met de oplossings versneller voor externe controle
 
@@ -28,7 +28,7 @@ In deze hand leiding vindt u informatie over het uitvoeren van een voorbeeld toe
 
 Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren:
 
-* Bereid uw DevKit voor door de stappen in [Connect IOT DEVKIT AZ3166 te volgen op Azure IOT hub in de Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Bereid uw DevKit voor door de stappen in [Connect IOT DEVKIT AZ3166 te volgen op Azure IOT hub in de Cloud](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md).
 
 ## <a name="open-sample-project"></a>Voorbeeld project openen
 
@@ -128,5 +128,5 @@ Als u problemen ondervindt, raadpleeg dan [de veelgestelde vragen over IOT DevKi
 
 Nu u hebt geleerd hoe u een DevKit-apparaat verbindt met uw oplossings versneller voor externe controle, ziet u de volgende stappen:
 
-* [Overzicht van de Azure IoT-oplossings Accelerators](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Overzicht van de Azure IoT-oplossings Accelerators](./index.yml)
 * [De gebruikersinterface aanpassen](iot-accelerators-remote-monitoring-customize.md)

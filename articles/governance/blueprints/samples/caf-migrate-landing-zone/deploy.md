@@ -4,10 +4,10 @@ description: Implementeer stappen voor het blauwdrukvoorbeeld voor de CAF-migrat
 ms.date: 05/06/2020
 ms.topic: sample
 ms.openlocfilehash: 109c9a2c4c5670d6f5a676498ae1010a4ab0e418
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82871177"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Het Microsoft Cloud Adoption Framework voor het blauwdrukvoorbeeld voor de Azure-migratielandingszone implementeren
