@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259591"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089567"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Walkthrough: REST API claims-uitwisselingen toevoegen aan aangepaste beleids regels in Azure Active Directory B2C
 
@@ -75,7 +75,7 @@ Een claim biedt tijdelijke opslag van gegevens tijdens het uitvoeren van een Azu
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Het technische profiel van de REST API configureren 
+## <a name="add-the-restful-api-technical-profile"></a>Het technische profiel van de REST API toevoegen 
 
 Een onderliggend [technisch profiel](restful-technical-profile.md) biedt ondersteuning voor uw eigen rest-service. Azure AD B2C verzendt gegevens naar de REST-service in een `InputClaims` verzameling en ontvangt gegevens terug in een `OutputClaims` verzameling. Zoek het element **ClaimsProviders** in uw <em>**`TrustFrameworkExtensions.xml`**</em> bestand en voeg als volgt een nieuwe claim provider toe:
 
@@ -87,6 +87,7 @@ Een onderliggend [technisch profiel](restful-technical-profile.md) biedt onderst
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ Een onderliggend [technisch profiel](restful-technical-profile.md) biedt onderst
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 In dit voor beeld `userLanguage` wordt de naar de rest-service verzonden `lang` binnen de JSON-nettolading. De waarde van de `userLanguage` claim bevat de huidige gebruikers taal-id. Zie [claim resolver](claim-resolver-overview.md)voor meer informatie.
+
+### <a name="configure-the-restful-api-technical-profile"></a>Het technische profiel van de REST API configureren 
+
+Nadat u uw REST API hebt geïmplementeerd, stelt u de meta gegevens van het `REST-ValidateProfile` technische profiel in op uw eigen rest API, met inbegrip van:
+
+- **ServiceUrl**. Stel de URL van het REST API-eind punt in.
+- **SendClaimsIn**. Opgeven hoe de invoer claims worden verzonden naar de claim provider voor de REST.
+- **AuthenticationType**. Stel het type verificatie in dat wordt uitgevoerd door de claim provider voor de REST. 
+- **AllowInsecureAuthInProduction**. In een productie omgeving moet u deze meta gegevens instellen op `true`
+    
+Raadpleeg de [meta gegevens van het rest technische profiel](restful-technical-profile.md#metadata) voor meer configuraties.
 
 De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` Geef de wijzigingen op die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Zie [Secure rest API](secure-rest-api.md)(Engelstalig) voor meer informatie over het beveiligen van uw rest-api's voor productie.
 

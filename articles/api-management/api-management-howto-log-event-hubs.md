@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903388"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072404"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Gebeurtenissen vastleggen in azure Event Hubs in azure API Management
 Azure Event Hubs is een zeer schaalbare service voor inkomende gegevens die miljoenen gebeurtenissen per seconde kan opnemen, voor verwerking en analyse van de enorme hoeveelheden gegevens die worden geproduceerd door verbonden apparaten en toepassingen. Event Hubs fungeert als de "front deur" voor een gebeurtenis pijplijn en wanneer gegevens worden verzameld in een Event Hub, kan deze worden getransformeerd en opgeslagen met behulp van een realtime analyse provider of batches/opslag adapters. Event Hubs koppelt de productie van een gebeurtenissenstroom los van het gebruik van deze gebeurtenissen, zodat de consumenten ervan toegang hebben tot de gebeurtenissen op basis van hun eigen planning.
@@ -32,7 +32,7 @@ Zie [een event hubs naam ruimte en een event hub maken met behulp van de Azure P
 ## <a name="create-an-api-management-logger"></a>Een API Management logger maken
 Nu u een event hub hebt, is de volgende stap het configureren van een [logger](/rest/api/apimanagement/2019-12-01/logger) in uw API Management-service zodat deze gebeurtenissen kan registreren in de Event hub.
 
-API Management-logboeken worden geconfigureerd met behulp van de [API Management rest API](https://aka.ms/apimapi). Zie [Logboeken maken](/rest/api/apimanagement/2019-12-01/logger/createorupdate)voor voor beelden van gedetailleerde aanvragen.
+API Management-logboeken worden geconfigureerd met behulp van de [API Management rest API](/rest/api/apimanagement/ApiManagementREST/API-Management-REST). Zie [Logboeken maken](/rest/api/apimanagement/2019-12-01/logger/createorupdate)voor voor beelden van gedetailleerde aanvragen.
 
 ## <a name="configure-log-to-eventhub-policies"></a>Logboek-naar-eventhub-beleid configureren
 

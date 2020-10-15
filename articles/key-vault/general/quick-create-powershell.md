@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 41254accbfff8f1d68a8bbef4d74ed01c64891b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: ace6d21d2928eac1fb91903c5e395f1e3479a3ff
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803888"
+ms.locfileid: "91823458"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Quickstart: een sleutelkluis maken met behulp van PowerShell
 
@@ -52,7 +52,7 @@ Maak een sleutelkluis in de resourcegroep uit de vorige stap. U moet enkele gege
 - De locatie: **EastUS**.
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name <your-unique-key-vault-name> -ResourceGroupName "myResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-key-vault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 De uitvoer van deze cmdlet toont eigenschappen van de nieuw gemaakte sleutelkluis. Let op de onderstaande twee eigenschappen:
