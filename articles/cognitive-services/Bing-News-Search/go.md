@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: nieuws ontvangen met Bing News Search REST API en go'
+title: 'Snelstart: Nieuws ontvangen met de REST API voor Bing News Search en Go'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids wordt gebruikgemaakt van de go-taal om de Bing Nieuws zoeken-API aan te roepen. De resultaten zijn onder andere namen en Url's van nieuws bronnen die worden geïdentificeerd door de query teken reeks.
+description: In deze quickstart wordt gebruikgemaakt van de taal Go om de Bing News Search-API aan te roepen. De resultaten zijn onder andere namen en URL's van nieuwsbronnen die worden geïdentificeerd door de querytekenreeks.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.openlocfilehash: e18605b75e4fcfcd8f2793e06801c309f9f23965
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83869269"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Snelstartgids: Nieuws resultaten ophalen met behulp van de Bing News Search REST API en go
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Snelstart: Nieuwsresultaten ontvangen met de REST API voor Bing News Search en Go
 
-In deze Snelstartgids wordt gebruikgemaakt van de go-taal om de Bing Nieuws zoeken-API aan te roepen. De resultaten zijn onder andere namen en Url's van nieuws bronnen die worden geïdentificeerd door de query teken reeks.
+In deze quickstart wordt gebruikgemaakt van de taal Go om de Bing News Search-API aan te roepen. De resultaten zijn onder andere namen en URL's van nieuwsbronnen die worden geïdentificeerd door de querytekenreeks.
 
 ## <a name="prerequisites"></a>Vereisten
-* Installeer de [binaire bestanden voor Go](https://golang.org/dl/).
-* Installeer de go-spew-bibliotheek om een diepe mooie printer te gebruiken om de resultaten weer te geven. Gebruik deze opdracht om de bibliotheek te installeren: `$ go get -u https://github.com/davecgh/go-spew` .
+* Installeer de [Binaire Go-bestanden](https://golang.org/dl/).
+* Installeer de go-spew-bibliotheek, zodat u een krachtige PrettyPrinter kunt gebruiken voor de weergave van de resultaten. U kunt de bibliotheek installeren met deze opdracht: `$ go get -u https://github.com/davecgh/go-spew`.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Een project maken en bibliotheken importeren
 
-Maak een nieuw go-project in uw IDE of editor. Importeer vervolgens `net/http` voor aanvragen `ioutil` om de reactie te lezen, `encoding/json` om de JSON-tekst van de resultaten te verwerken en de `go-spew` bibliotheek om de JSON-resultaten te parseren. 
+Maak een nieuw Go-project in uw favoriete IDE of editor. Importeer vervolgens `net/http` voor aanvragen, `ioutil` om het antwoord te lezen, `encoding/json` om de JSON-tekst met resultaten te verwerken, en importeer de `go-spew`-bibliotheek om de JSON-resultaten te parseren. 
 
 ```go
 package main
@@ -44,9 +44,9 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>Een struct maken om de zoek resultaten van de nieuws te Format teren
+## <a name="create-a-struct-to-format-the-news-search-results"></a>Een struct maken om de zoekresultaten van het nieuws op te maken
 
-De `NewsAnswer` struct maakt de gegevens op die zijn opgenomen in de JSON van de reactie, met meerdere niveaus en complex. De volgende implementatie heeft betrekking op de essentiële onderdelen:
+In de `NewsAnswer`-struct worden de gegevens in de antwoord-JSON opgemaakt, die uit meerdere niveaus bestaat en complex is. De volgende implementatie heeft betrekking op de essentiële onderdelen:
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -86,7 +86,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>De hoofdfunctie declareren en variabelen definiëren  
 
-Met de volgende code wordt de functie main gedeclareerd en worden de vereiste variabelen toegewezen. Controleer of het eind punt juist is en vervang vervolgens de `token` waarde door een geldige abonnements sleutel van uw Azure-account. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+Met de volgende code wordt de hoofdfunctie gedeclareerd en worden de vereiste variabelen toegewezen. Controleer of het eindpunt juist is en vervang daarna de waarde `token` door een geldige abonnementssleutel uit uw Azure-account. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
 ```go
 func main() {
@@ -105,9 +105,9 @@ func main() {
 }
 ```
 
-## <a name="query-and-header"></a>Query en koptekst
+## <a name="query-and-header"></a>Query en header
 
-Voeg de query reeks en de toegangs sleutel header toe.
+Voeg de querytekenreeks en de toegangssleutelheader toe.
 
 ```go
 // Add the query to the request.  
@@ -120,7 +120,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Aanvraag ophalen
+## <a name="get-request"></a>GET-aanvraag
 
 Maak de client en verzend de GET-aanvraag. 
 
@@ -138,7 +138,7 @@ if err != nil {
 
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
-Verzend de aanvraag en lees de resultaten met behulp van `ioutil` .
+Verzend de aanvraag en lees de resultaten via `ioutil`.
 
 ```go
 resp, err := client.Do(req)
@@ -159,7 +159,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Het antwoord verwerken
 
-`Unmarshall`Met de functie wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Bing Nieuws zoeken-API. Vervolgens worden de knoop punten weer gegeven van de resultaten met de `go-spew` mooie printer.
+Met de functie `Unmarshall` wordt informatie opgehaald uit de JSON-tekst die wordt geretourneerd door de Bing News Search-API. Vervolgens geeft u de knooppunten van de resultaten weer met de PrettyPrinter `go-spew`.
 
 ```go
 // Create a new answer object 
