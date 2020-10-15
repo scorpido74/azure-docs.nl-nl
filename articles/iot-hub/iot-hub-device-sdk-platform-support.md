@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423079"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072268"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Ondersteuning voor Azure IoT Device Sdk's-platform
 
@@ -60,7 +60,7 @@ De [Azure IOT hub python Device SDK](https://github.com/Azure/azure-iot-sdk-pyth
 | OS                  | Programma's                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7. *, 3,5 of hoger |
-| MacOS-hoge-Sierra   | Python 2,7. *, 3,5 of hoger |
+| macOS High Sierra   | Python 2,7. *, 3,5 of hoger |
 | Windows 10-serie   | Python 2,7. *, 3,5 of hoger |
 
 Alleen python-versie 3.5.3 of hoger ondersteunen de asynchrone Api's. we raden u aan om versie 3,7 of hoger te gebruiken.
@@ -120,7 +120,7 @@ Micro soft werkt met een aantal partners om het Azure IoT-universum voortdurend 
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Verbinding maken met IoT Hub zonder een SDK
 
-Als u een van de IoT Hub apparaat-Sdk's niet kunt gebruiken, kunt u rechtstreeks verbinding maken met IoT Hub met behulp van de [IOT hub rest-api's](https://docs.microsoft.com/rest/api/iothub/) van elke toepassing die HTTPS-aanvragen en-antwoorden kan verzenden en ontvangen.
+Als u een van de IoT Hub apparaat-Sdk's niet kunt gebruiken, kunt u rechtstreeks verbinding maken met IoT Hub met behulp van een ondersteund communicatie protocol. Zie [ontwikkelen zonder Azure IOT SDK](iot-hub-devguide-no-sdk.md)voor meer informatie.
 
 ## <a name="support-and-other-resources"></a>Ondersteuning en andere bronnen
 

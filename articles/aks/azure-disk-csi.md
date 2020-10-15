@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: dfbef8da1349c2b86595f520e173aee9d455e3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68a892768e5cfa5be7fe6f9ad99fc4cded68b02d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299575"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071809"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Gebruik de Azure Disk container Storage interface (CSI)-Stuur Programma's in azure Kubernetes service (AKS) (preview)
 Het stuur programma voor de Azure Disk container Storage interface (CSI) is een stuur programma voor [CSI-specificatie](https://github.com/container-storage-interface/spec/blob/master/spec.md)dat door Azure Kubernetes service (AKS) wordt gebruikt voor het beheren van de levens cyclus van Azure-schijven.
@@ -408,7 +408,7 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

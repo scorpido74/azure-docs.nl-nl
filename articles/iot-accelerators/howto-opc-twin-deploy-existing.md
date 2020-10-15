@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282116"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071639"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>OPC van twee tot een bestaand project implementeren
 
@@ -33,7 +33,7 @@ De kern van de module is de identiteit van de Super Visor. De Super Visor beheer
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat Power shell-en [AzureRM Power](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) shell-extensies zijn geïnstalleerd. Als u dit nog niet hebt gedaan, kloont u deze GitHub-opslag plaats. Voer de volgende opdrachten uit in PowerShell:
+Zorg ervoor dat Power shell-en [AzureRM Power](/powershell/azure/azurerm/install-azurerm-ps) shell-extensies zijn geïnstalleerd. Als u dit nog niet hebt gedaan, kloont u deze GitHub-opslag plaats. Voer de volgende opdrachten uit in PowerShell:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

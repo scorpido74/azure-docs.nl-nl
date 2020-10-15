@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325620"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072149"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>NFSv4.1-standaarddomein configureren voor Azure NetApp Files
 
@@ -26,11 +26,11 @@ NFSv4 introduceert het concept van een verificatie domein. Azure NetApp Files on
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>Standaard gedrag van de toewijzing van gebruikers/groepen
 
-Basis toewijzing wordt standaard ingesteld op de `nobody` gebruiker omdat het NFSv4-domein is `localdomain` . Wanneer u een Azure NetApp Files NFSv 4.1-volume als root koppelt, ziet u bestands machtigingen als volgt:  
+Basis toewijzing wordt standaard ingesteld op de `nobody` gebruiker omdat het NFSv4-domein `localdomain` standaard is ingeschakeld. Wanneer u een Azure NetApp Files NFSv 4.1-volume als root koppelt, ziet u bestands machtigingen als volgt:  
 
 ![Standaard gedrag van de toewijzing van gebruikers/groepen voor NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Zoals in het bovenstaande voor beeld wordt weer gegeven, is de gebruiker voor de `file1` `root` standaard instelling, maar wordt het toegewezen `nobody` .  In dit artikel wordt beschreven hoe u de `file1` gebruiker instelt op `root` .  
+Zoals in het bovenstaande voor beeld wordt weer gegeven, is de gebruiker voor de `file1` `root` standaard instelling, maar wordt het toegewezen `nobody` .  In dit artikel wordt beschreven hoe u de `file1` gebruiker instelt op `root` door de `idmap Domain` instelling te wijzigen in `defaultv4iddomain.com` .  
 
 ## <a name="steps"></a>Stappen 
 

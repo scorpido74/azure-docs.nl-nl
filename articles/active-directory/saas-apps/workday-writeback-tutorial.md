@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017469"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072030"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Zelf studie: kenmerk terugschrijven van Azure AD naar workday configureren
 Het doel van deze zelf studie is om de stappen weer te geven die u moet uitvoeren om kenmerken van Azure AD naar workday te schrijven. De werk-app voor het terugschrijven van werk dagen ondersteunt het toewijzen van waarden aan de volgende workday-kenmerken:
@@ -144,16 +144,31 @@ Zodra de configuratie van de app voor workday-inrichting is voltooid, kunt u de 
 
 1. Stel op het tabblad **inrichten** de **inrichtings status** in **op aan**.
 
+1. Selecteer in de vervolg keuzelijst **bereik** de optie **alle gebruikers en groepen synchroniseren**. Met deze optie worden de toegewezen kenmerken van alle gebruikers van Azure AD naar workday teruggeschreven met de Write-app, afhankelijk van de bereik regels die zijn gedefinieerd onder **toewijzingen**van het  ->  **bron object bereik**. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Terugschrijf bereik selecteren](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > De workday-app voor het terugschrijven van werk dagen biedt geen ondersteuning voor de optie **synchronisatie alleen toegewezen gebruikers en groepen**.
+ 
+
 2. Klik op **Opslaan**.
 
 3. Met deze bewerking wordt de eerste synchronisatie gestart, wat een variabel aantal uur kan duren, afhankelijk van het aantal gebruikers in de bronmap. U kunt de voortgangs balk controleren om de voortgang van de synchronisatie cyclus bij te houden. 
 
-4. Controleer op elk gewenst moment het tabblad **controle logboeken** in de Azure Portal om te zien welke acties de inrichtings service heeft uitgevoerd. In de controle logboeken worden alle afzonderlijke synchronisatie gebeurtenissen vermeld die worden uitgevoerd door de inrichtings service, zoals welke gebruikers worden geïmporteerd uit de bron en worden geëxporteerd naar de doel toepassing.  
+4. Controleer op elk gewenst moment het tabblad **inrichtings logboeken** in de Azure Portal om te zien welke acties de inrichtings service heeft uitgevoerd. In de controle logboeken worden alle afzonderlijke synchronisatie gebeurtenissen vermeld die worden uitgevoerd door de inrichtings service, zoals welke gebruikers worden geïmporteerd uit de bron en worden geëxporteerd naar de doel toepassing.  
 
 5. Zodra de initiële synchronisatie is voltooid, wordt er een samenvattings rapport op het tabblad **inrichten** geschreven, zoals hieronder wordt weer gegeven.
 
      > [!div class="mx-imgBorder"]
      > ![Voortgangs balk inrichten](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
+
+* De terugschrijf-app maakt gebruik van een vooraf gedefinieerde waarde voor para meters **Communication_Usage_Type_ID** en **Phone_Device_Type_ID**. Als uw workday-Tenant een andere waarde voor deze kenmerken gebruikt, mislukt de terugschrijf bewerking. Een voorgestelde tijdelijke oplossing is om de Type_IDs in workday bij te werken. 
+* Wanneer de Write-app is geconfigureerd voor het bijwerken van secundaire telefoon nummers, wordt het bestaande secundaire telefoon nummer in workday niet vervangen. Er wordt één secundair telefoon nummer aan de werknemers record toegevoegd. Er is geen oplossing voor dit gedrag. 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

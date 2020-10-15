@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.custom: mvc
 ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76166180"
 ---
 # <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Een herstelanalyse uitvoeren op een secundaire regio van Azure-VM's
