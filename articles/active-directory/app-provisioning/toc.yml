@@ -6,18 +6,11 @@
     - name: Wat is toepassingsinrichting?
       href: user-provisioning.md
 - name: Zelfstudies
+  expanded: true
   items:
-    - name: G Suite
-      href: ../saas-apps/google-apps-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: ServiceNow
-      href: ../saas-apps/servicenow-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Amazon Web Services (AWS) - Inrichten van rollen
-      href: ../saas-apps/amazon-web-service-tutorial.md?context=azure/active-directory/app-provisioning/context/app-provisioning-context#configure-azure-ad-sso
-    - name: Workday
-      href: ../saas-apps/workday-inbound-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: SAP SuccessFactors
-      href: ../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Alle geïntegreerde galerie-apps
+    - name: Een SCIM-eindpunt bouwen en inrichting configureren
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Inrichtingszelfstudies voor specifieke apps
       href: /azure/active-directory/saas-apps
 - name: Concepten
   expanded: true
@@ -28,17 +21,15 @@
       href: plan-auto-user-provisioning.md
     - name: Cloud-implementatie van een HR-inrichting plannen
       href: plan-cloud-hr-provision.md
+    - name: Logboekregistratie begrijpen met Azure Monitor
+      href: application-provisioning-log-analytics.md
 - name: Instructiegidsen
   expanded: true
   items:
     - name: Inrichting configureren voor een galerie-app
       href: configure-automatic-user-provisioning-portal.md
-    - name: De kenmerktoewijzingen bewerken
-      items:
-        - name: Kenmerktoewijzingen aanpassen
-          href: customize-application-attributes.md
-        - name: Expressies schrijven voor kenmerktoewijzingen
-          href: functions-for-customizing-application-data.md
+    - name: Kenmerktoewijzingen aanpassen
+      href: customize-application-attributes.md
     - name: Gebruikers en groepen opnemen of uitsluiten in bereik
       items:
         - name: Bereik van gebruikers of groepen die moeten worden ingericht
@@ -57,6 +48,8 @@
           href: export-import-provisioning-configuration.md
         - name: Inrichtingsrapporten
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: Configuratie automatiseren met behulp van MS Graph
+      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: Problemen met toepassingsinrichting oplossen
       items:
         - name: Bekende problemen
@@ -65,26 +58,20 @@
           href: application-provisioning-config-problem.md
         - name: Quarantinestatus
           href: application-provisioning-quarantine-status.md
-        - name: Autorisatieprobleem (kan beheerdersreferenties niet opslaan)
-          href: application-provisioning-config-problem-storage-limit.md
         - name: Gebruikers zijn niet ingericht
           href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: Verkeerde gebruikers ingericht
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Bronkenmerk ontbreekt
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: Inrichtingslogboeken
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Een SCIM-eindpunt bouwen en inrichting configureren
-      href: use-scim-to-provision-users-and-groups.md
-    - name: Configuratie automatiseren met behulp van MS Graph
-      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
 - name: Naslaginformatie
   items:
     - name: Naleving van SCIM 2.0-protocol
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM- en Graph-scenario's
       href: scim-graph-scenarios.md
+    - name: Functieverwijzing voor het schrijven van expressies voor kenmerktoewijzingen
+      href: functions-for-customizing-application-data.md
     - name: HR-inrichting in de cloud
       items:
         - name: SuccessFactors-integratie
@@ -93,8 +80,6 @@
           href: sap-successfactors-attribute-reference.md
         - name: Verwijzing naar Workday-kenmerk
           href: workday-attribute-reference.md
-    - name: Azure AD Connect-inrichtingsagent
-      items:
         - name: Versiegeschiedenis van de inrichtingsagent
           href: provisioning-agent-release-version-history.md
 - name: Resources

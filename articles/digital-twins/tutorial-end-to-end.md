@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0db39884ef54310db849abcef1062adbaeb9f22e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e7d966aa5aa4b5a498c80cab26686411dd586185
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292668"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044595"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Zelfstudie: Een end-to-end-oplossing bouwen
 
@@ -446,7 +446,7 @@ Hier volgt een overzicht van het scenario dat u in deze zelfstudie hebt uitgebou
 
 Als u de resources die u in deze zelfstudie hebt gemaakt niet meer nodig hebt, kunt u ze verwijderen met de volgende stappen. 
 
-Met behulp van [Azure Cloud Shell](https://shell.azure.com) kunt u alle Azure-resources in een resourcegroep verwijderen met de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete). Hierdoor wordt verwijderd: de resourcegroep, de Azure Digital Twins-instantie, de IoT-hub en de hubapparaatregistratie, het gebeurtenisrasteronderwerp en de bijbehorende abonnementen, en de Azure Functions-app, inclusief beide functies en bijbehorende resources zoals opslag.
+Met behulp van [Azure Cloud Shell](https://shell.azure.com) kunt u alle Azure-resources in een resourcegroep verwijderen met de opdracht [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete). Hierdoor wordt verwijderd: de resourcegroep, de Azure Digital Twins-instantie, de IoT-hub en de hubapparaatregistratie, het gebeurtenisrasteronderwerp en de bijbehorende abonnementen, en de Azure Functions-app, inclusief beide functies en bijbehorende resources zoals opslag.
 
 > [!IMPORTANT]
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. 
