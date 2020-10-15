@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c88d21c6ad17c613c5d708bf697ae8717c9ec91
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087882"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075260"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Overzicht van Hybrid Runbook Worker
 
@@ -67,7 +67,7 @@ Als u een firewall gebruikt om de toegang tot internet te beperken, moet u de fi
 
 ### <a name="service-tags"></a>Servicetags
 
-Azure Automation ondersteunt de service tags voor het virtuele Azure-netwerk, te beginnen met de service label [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Service tags kunnen worden gebruikt in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door het opgeven van de servicetag naam **GuestAndHybridManagement**  in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de Automation-Service toestaan of weigeren. Deze servicetag biedt geen ondersteuning voor het toestaan van nauw keurigere controle door IP-adresbereiken te beperken tot een bepaalde regio.
+Azure Automation ondersteunt de service tags voor het virtuele Azure-netwerk, te beginnen met de service label [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Service tags kunnen worden gebruikt in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door het opgeven van de servicetag naam **GuestAndHybridManagement**  in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de Automation-Service toestaan of weigeren. Deze servicetag biedt geen ondersteuning voor het toestaan van nauw keurigere controle door IP-adresbereiken te beperken tot een bepaalde regio.
 
 Het servicetag voor de Azure Automation-Service biedt alleen IP-adressen die worden gebruikt voor de volgende scenario's:
 

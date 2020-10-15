@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236c24ac63aef6b802edf53f9c414a522c2308e4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550056"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015086"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>Zelfstudie: Integratie van eenmalige aanmelding bij Azure Active Directory met CylancePROTECT
 
@@ -144,7 +144,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-cylanceprotect-sso"></a>Eenmalige aanmelding configureren voor CylancePROTECT
 
-Om eenmalige aanmelding te configureren aan de kant van **CylancePROTECT**, moet u het gedownloade **Certificaat (Base64)** en de juiste uit de Azure-portal gekopieerde URL's verzenden naar het [CylancePROTECT-ondersteuningsteam](https://www.cylance.com/en-us/resources/support/support-overview.html). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld. Gebruik de documentatie voor Cylance voor meer informatie: [https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4).
+Om eenmalige aanmelding te configureren aan de kant van **CylancePROTECT**, moet u het gedownloade **Certificaat (Base64)** en de juiste uit de Azure-portal gekopieerde URL's verzenden naar het [CylancePROTECT-ondersteuningsteam](https://www.cylance.com/en-us/resources/support/support-overview.html). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld. Gebruik de documentatie voor Cylance voor meer informatie: [https://support.cylance.com/s/](https://support.cylance.com/s/).
 
 ### <a name="create-cylanceprotect-test-user"></a>Een CylancePROTECT-testgebruiker maken
 

@@ -1,22 +1,21 @@
 ---
-title: Overzicht van Azure Key Vault - Azure Key Vault | Microsoft Docs
+title: Overzicht van Azure Key Vault - Azure Key Vault
 description: Azure Key Vault is een archief met beveiligde geheimen dat zorgt voor het beheer van geheimen, sleutels en certificaten, volledig ondersteund door hardwarebeveiligingsmodules.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421642"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932002"
 ---
 # <a name="about-azure-key-vault"></a>Over Azure Key Vault
 
@@ -24,8 +23,9 @@ Met Azure Key Vault kunt u de volgende problemen oplossen:
 
 - **Geheimenbeheer** - Met Azure Key Vault kunt u veilig de toegang tot tokens, wachtwoorden, certificaten, API-sleutels en andere geheimen opslaan en strikt beheren
 - **Sleutelbeheer** - U kunt Azure Key Vault ook gebruiken als een oplossing voor sleutelbeheer. Met Azure Key Vault kunt u eenvoudig de versleutelingssleutels maken en beheren waarmee uw gegevens worden versleuteld. 
-- **Certificaatbeheer** - Azure Key Vault is ook een service waarmee u eenvoudig openbare en persoonlijke TLS/SSL-certificaten (Transport Layer Security/Secure Sockets Layer) kunt inrichten, beheren en implementeren voor gebruik met Azure en uw interne verbonden bronnen. 
-- **Sla geheimen op die worden ondersteund door Hardware Security Modules**: de geheimen, sleutels en certificaten in de Store zijn versleuteld met de softwaresleutel (standaardlaag) of de sleutel voor FIPS 140-2 level 2-gevalideerde HSM (premiumlaag) 
+- **Certificaatbeheer** - Azure Key Vault is ook een service waarmee u eenvoudig openbare en persoonlijke TLS/SSL-certificaten (Transport Layer Security/Secure Sockets Layer) kunt inrichten, beheren en implementeren voor gebruik met Azure en uw interne verbonden bronnen.
+
+Azure Key Vault heeft twee servicelagen: De Standard-laag, die wordt versleuteld met een softwaresleutel, en de Premium-laag, met sleutels die met HSM beveiligd zijn. Als u een vergelijking tussen de lagen Standard en Premium wilt zien, raadpleegt u de [pagina met prijzen voor Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="why-use-azure-key-vault"></a>Waarom zou ik Azure Key Vault gebruiken?
 
@@ -37,13 +37,11 @@ Met behulp van URI's hebben uw toepassingen veilig toegang tot de benodigde gege
 
 ### <a name="securely-store-secrets-and-keys"></a>Geheimen en sleutels veilig opslaan
 
-Geheimen en sleutels worden beveiligd door Azure. Hiervoor wordt gebruikgemaakt van algoritmen, sleutellengten en HSM's (Hardware Security Modules) die voldoen aan de industriestandaard. De gebruikte HSM's zijn Federal Information Processing Standards (FIPS) 140-2 Level 2 gevalideerd.
-
 Voor toegang tot een sleutelkluis is de juiste verificatie en autorisatie vereist voordat een aanroeper (gebruiker of toepassing) toegang kan krijgen. Met verificatie wordt de identiteit van de aanroeper vastgesteld, terwijl autorisatie bepaalt welke bewerkingen de aanroeper mag uitvoeren.
 
 Verificatie wordt uitgevoerd via Azure Active Directory. Autorisatie kan worden uitgevoerd via op rollen gebaseerd toegangsbeheer (RBAC) of Key Vault-toegangsbeleid. RBAC wordt gebruikt bij het beheren van de kluizen. Toegangsbeleid tot sleutelkluizen wordt gebruikt bij pogingen om toegang te krijgen tot gegevens in een kluis.
 
-Sleutelkluizen van Azure kunnen software- of hardware-HSM beveiligd zijn. Voor situaties waar extra zekerheid is vereist, kunt u sleutels in HSM's (Hardware Security Modules) importeren of genereren die nooit verdergaan dan de HSM-grens. Microsoft gebruikt nCipher-hardwarebeveiligingsmodules. U kunt nCipher-hulpprogramma's gebruiken om een sleutel te verplaatsen van uw HSM naar Azure Key Vault.
+Azure-sleutelkluizen kunnen worden beveiligd met software of, zoals bij de Premium-laag voor Azure Key Vault, met hardware door middel van HSM's (Hardware Security Modules). Met software beveiligde sleutels, geheimen en certificaten worden beveiligd door Azure. Hiervoor wordt gebruikgemaakt van algoritmen en sleutellengten die voldoen aan de industriestandaard.  Voor situaties waar extra zekerheid is vereist, kunt u sleutels in HSM's importeren of genereren die nooit verdergaan dan de HSM-grens. Azure Key Vault maakt gebruik van nCipher-HSM's. Deze zijn Federal Information Processing Standards (FIPS) 140-2 Level 2 gevalideerd. U kunt nCipher-hulpprogramma's gebruiken om een sleutel te verplaatsen van uw HSM naar Azure Key Vault.
 
 Tot slot is Azure Key Vault zodanig ontworpen dat Microsoft uw gegevens niet kan zien of extraheren.
 

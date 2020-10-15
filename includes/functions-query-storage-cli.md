@@ -5,29 +5,29 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: 4fe159660421113e0f0ac0586ae7e4a22d5bcda7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "77474137"
 ---
-### <a name="query-the-storage-queue"></a>Query uitvoeren op de opslag wachtrij
+### <a name="query-the-storage-queue"></a>Een query uitvoeren op de opslagwachtrij
 
-U kunt de [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) opdracht gebruiken om de opslag wachtrijen in uw account weer te geven, zoals in het volgende voor beeld:
+U kunt de opdracht [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) gebruiken om de opslagwachtrijen in uw account te bekijken, zoals in het volgende voorbeeld:
 
 ```azurecli-interactive
 az storage queue list --output tsv
 ```
 
-De uitvoer van deze opdracht bevat een wachtrij met `outqueue`de naam, die de wachtrij is die is gemaakt toen de functie werd uitgevoerd.
+De uitvoer van deze opdracht bevat een wachtrij met de naam `outqueue`. Dit is de wachtrij die is gemaakt toen de functie is uitgevoerd.
 
-Gebruik vervolgens de [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) opdracht om de berichten in deze wachtrij weer te geven, zoals in dit voor beeld:
+Gebruik hierna de opdracht [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) om de berichten in deze wachtrij weer te geven, zoals in dit voorbeeld:
 
 ```azurecli-interactive
 echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
 ```
 
-De geretourneerde teken reeks moet hetzelfde zijn als het bericht dat u hebt verzonden om de functie te testen.
+De geretourneerde tekenreeks moet hetzelfde zijn als het bericht dat u hebt verzonden om de functie te testen.
 
 > [!NOTE]  
-> In het vorige voor beeld wordt de geretourneerde teken reeks van base64 gedecodeerd. De reden hiervoor is dat de bindingen van de wachtrij opslag worden geschreven naar en gelezen van Azure Storage als [Base64-teken reeksen](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding).
+> In het vorige voorbeeld wordt de geretourneerde tekenreeks gedecodeerd vanuit Base 64. Dit gebeurt omdat bindingen naar/van de opslagwachtrij als [Base 64-tekenreeksen](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding) naar Azure Storage worden geschreven/gelezen.

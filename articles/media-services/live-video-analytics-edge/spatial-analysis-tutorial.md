@@ -3,12 +3,12 @@ title: Livevideo analyseren met Computer Vision voor ruimtelijke analyse, Azure
 description: In deze zelfstudie leert u hoe u Live Video Analytics samen met de AI-functie Computer Vision ruimtelijke analyse gebruikt van Azure Cognitive Services om een livevideofeed van een (gesimuleerde) IP-camera te analyseren.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824136"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015682"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Livevideo analyseren met Computer Vision voor ruimtelijke analyse (preview)
 
@@ -32,7 +32,7 @@ Lees deze artikelen voordat u begint:
 * [Terminologie van Live Video Analytics in IoT Edge](terminology.md)
 * [Mediagrafiekconcepten](media-graph-concept.md)
 * [Video-opname op basis van gebeurtenissen](event-based-video-recording-concept.md)
-* [Zelfstudie: Een IoT Edge-module ontwikkelen](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Zelfstudie: Een IoT Edge-module ontwikkelen](../../iot-edge/tutorial-develop-for-linux.md)
 * [Live Video Analytics implementeren op Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -55,12 +55,12 @@ Dit diagram laat zien hoe de signalen in deze zelfstudie stromen. Een [Edge-modu
 
 De node MediaGraphCognitiveServicesVisionExtension speelt de rol van proxy. Het converteert videoframes naar het opgegeven afbeeldingstype. Vervolgens wordt de afbeelding via **gedeeld geheugen** doorgestuurd naar een andere Edge-module die AI-bewerkingen achter een gRPC-eindpunt uitvoert. In dit voorbeeld is die Edge-module de module ruimtelijke analyse. Het processorknooppunt MediaGraphCognitiveServicesVisionExtension voert twee dingen uit:
 
-* Het verzamelt de resultaten en publiceert gebeurtenissen naar het sinkknooppunt [IoT Hub](media-graph-concept.md#iot-hub-message-sink). Het knooppunt verzendt die gebeurtenissen vervolgens naar [IoT Edge-hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub). 
+* Het verzamelt de resultaten en publiceert gebeurtenissen naar het sinkknooppunt [IoT Hub](media-graph-concept.md#iot-hub-message-sink). Het knooppunt verzendt die gebeurtenissen vervolgens naar [IoT Edge-hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
 * Het legt ook een videoclip van 30 seconden vast van de RTSP-bron met een [signaalpoortprocessor](media-graph-concept.md#signal-gate-processor) en slaat het op als een Media Services-asset.
 
 ## <a name="create-the-computer-vision-resource"></a>De Computer Vision-resource maken
 
-U moet een Azure-resource maken van het type Computer Vision op de [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) of via Azure CLI. U kunt de resource maken wanneer uw aanvraag voor toegang tot de container is goedgekeurd en uw Azure-abonnements-id is geregistreerd. Ga naar https://aka.ms/csgate om uw use-case en uw Azure-abonnements-id in te dienen.  U moet de Azure-resource maken met hetzelfde Azure-abonnement dat is opgegeven in het aanvraagformulier voor toegang.
+U moet een Azure-resource maken van het type Computer Vision op de [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) of via Azure CLI. U kunt de resource maken wanneer uw aanvraag voor toegang tot de container is goedgekeurd en uw Azure-abonnements-id is geregistreerd. Ga naar https://aka.ms/csgate om uw use-case en uw Azure-abonnements-id in te dienen.  U moet de Azure-resource maken met hetzelfde Azure-abonnement dat is opgegeven in het aanvraagformulier voor toegang.
 
 ### <a name="gathering-required-parameters"></a>Vereiste parameters verzamelen
 
@@ -75,7 +75,7 @@ Een sleutel wordt gebruikt om de container voor de ruimtelijke analyse te starte
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack Edge instellen
 
-Volg [deze stappen](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) om de Azure Stack Edge in te stellen en vervolg met onderstaande stappen om de modules Live Video Analytics en ruimtelijke analyse te implementeren.
+Volg [deze stappen](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) om de Azure Stack Edge in te stellen en vervolg met onderstaande stappen om de modules Live Video Analytics en ruimtelijke analyse te implementeren.
 
 ## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 
@@ -136,7 +136,7 @@ Er zijn een paar dingen waar u op moet letten in het bestand van de implementati
 1. `IpcMode` in IvaEdge en de ruimtelijkeanalysemodule createOptions moeten hetzelfde zijn en ingesteld op host.
 1. Zorg ervoor dat u de Volume Bounds hebt ingesteld, zodat de RTSP-simulator kan werken. Zie [Docker Volume Mounts instellen](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts) voor meer informatie.
 
-    1. [Maak verbinding met de SMB-share](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share) en kopieer het [voorbeeldbestand van de bulldozervideo](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) naar de lokale share.
+    1. [Maak verbinding met de SMB-share](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) en kopieer het [voorbeeldbestand van de bulldozervideo](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) naar de lokale share.
     1. Controleer of de module rtspsim de volgende configuratie bevat:
         
         ```json
