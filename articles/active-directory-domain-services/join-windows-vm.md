@@ -1,20 +1,20 @@
 ---
 title: Een virtuele Windows Server-machine toevoegen aan een door Azure AD Domain Services beheerd domein | Microsoft Docs
 description: In deze zelfstudie krijgt u informatie over het toevoegen van een virtuele Windows-machine aan een door Azure Active Directory Domain Services beheerd domein.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: 3df96f5576829694b5eb12fd1811de112279884d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723024"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963224"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een virtuele Windows-machine toevoegen aan een door Azure Active Directory Domain Services beheerd domein
 

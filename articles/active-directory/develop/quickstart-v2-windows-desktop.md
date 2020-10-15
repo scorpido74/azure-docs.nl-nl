@@ -1,6 +1,6 @@
 ---
-title: Quickstart voor Microsoft-identiteitsplatform op Windows-desktop
-description: Leer hoe met een .NET-toepassing (XAML) voor Windows-bureaublad een token kan worden opgehaald en een API kan worden aangeroepen die is beveiligd met een Microsoft-identiteitsplatform-eindpunt
+title: 'Snelstart: Gebruikers aanmelden en Microsoft Graph aanroepen in een Universeel Windows-platform-desktop-app | Azure'
+description: In deze quickstart leert u hoe met een .NET-toepassing (XAML) voor Windows-bureaublad een token kan worden opgehaald en een API kan worden aangeroepen die is beveiligd met een Microsoft-identiteitsplatform-eindpunt
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +11,22 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114554"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613268"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app
 
 In deze quickstart leert u hoe u een .NET-toepassing (WPF) voor Windows-bureaublad schrijft waarmee privé-, werk- en schoolaccounts kunnen worden aangemeld, een toegangstoken kan worden opgehaald en de Microsoft Graph API kan worden aangeroepen. (Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Vereisten
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) waarbij de werkbelasting [Universeel Windows-platformontwikkeling](/windows/uwp/get-started/get-set-up) is ingeschakeld
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties voor het starten van de snelstarttoepassing:
 > * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)

@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b802cab7d52fd886770c326e97d0378a0da64762
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75751572"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -39,7 +39,7 @@ Nee. Dit verkeer kan alleen worden gerouteerd via een site-to-site-verbinding.
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>Is er een wijziging in het aantal SSTP-verbindingen dat met RADIUS-verificatie wordt ondersteund? Wat is het maximumaantal ondersteunde SSTP- en IKEv2-verbindingen?
 
-Het maximumaantal SSTP-verbindingen dat op een gateway met RADIUS-verificatie wordt ondersteund, is niet gewijzigd. Het blijft 128 voor SSTP, maar is afhankelijk van de gateway-SKU voor IKEv2.Zie [Gateway-sku's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het aantal ondersteunde verbindingen.
+Het maximumaantal SSTP-verbindingen dat op een gateway met RADIUS-verificatie wordt ondersteund, is niet gewijzigd. Dit blijft 128 voor SSTP, maar is afhankelijk van de gateway-SKU voor IKEv2. Zie [Gateway-SKU's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) voor meer informatie over het aantal ondersteunde verbindingen.
  
 ### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>Wat is het verschil tussen certificaatverificatie met behulp van een RADIUS-server en de systeemeigen verificatie van Azure (door een vertrouwd certificaat naar Azure te uploaden)?
 
@@ -51,6 +51,6 @@ Wanneer u Azure gebruikt voor certificaatverificatie, voert de Azure VPN-gateway
 
 Ja, RADIUS-verificatie wordt ondersteund voor zowel IKEv2 als SSTP VPN. 
 
-### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Werkt RADIUS-verificatie met de OpenVPN-Client?
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>Werkt RADIUS-verificatie met de OpenVPN client?
 
-RADIUS-verificatie wordt alleen ondersteund voor het OpenVPN-protocol via Power shell.
+RADIUS-verificatie wordt ondersteund voor het OpenVPN-protocol via PowerShell.

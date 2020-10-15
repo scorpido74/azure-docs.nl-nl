@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945100"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631360"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Quickstart: Uw eerste metrische gegevens controleren met behulp van de webportal
 
@@ -38,6 +38,13 @@ Wanneer u een Metrics Advisor-instantie inricht, kunt u de API's en de webwerkru
 > * Als u de REST API wilt gebruiken om te werken met de service, hebt u de sleutel en het eindpunt nodig van de resource die u maakt. U vindt deze op het tabblad  **Sleutels en eindpunten** in de resource die u hebt gemaakt.
 
 Dit document maakt gebruik van een SQL-voorbeelddatabase voor het maken van uw eerste monitor.
+
+## <a name="sign-in-to-your-workspace"></a>Aanmelden bij uw werkruimte
+
+Nadat de resource is geïmplementeerd, meldt u zich aan bij de [Metrics Advisor-portal](https://go.microsoft.com/fwlink/?linkid=2143774). Selecteer uw werkruimte om te beginnen met het bewaken van uw metrische gegevens. 
+ 
+Op dit moment kunt u één Metrics Advisor-resource maken voor elke beschikbare regio. U kunt op elk gewenst moment schakelen tussen werkruimten in de Metrics Advisor-portal.
+
 
 ## <a name="onboard-time-series-data"></a>Tijdreeksgegevens onboarden
 
@@ -90,7 +97,7 @@ Zodra het gegevensschema is geladen en wordt weergegeven zoals hieronder, select
 |**Negeren**     | De geselecteerde kolom negeren.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Schemaconfiguratie" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Verbindingsinstellingen" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Instellingen voor automatisch verzamelen
 
@@ -110,7 +117,7 @@ Na de detectie kunt u klikken op de metrische gegevens in de feed om de **detail
 - Detectieconfiguratie bijwerken om de verwachte resultaten te verkrijgen
 - Melding voor gedetecteerde anomalieën instellen
 
-:::image type="content" source="../media/metric-details.png" alt-text="Details van metrische gegevens" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Verbindingsinstellingen" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>De diagnostische inzichten weergeven
 
@@ -118,13 +125,13 @@ Na het afstemmen van de detectieconfiguratie moeten gevonden anomalieën overeen
 
 Als u de diagnostische inzichten wilt weergeven, klikt u op de rode puntjes in de visualisaties van de tijdreeks. Deze rode puntjes vertegenwoordigen de gedetecteerde anomalieën. Er wordt een venster weergegeven met een koppeling naar de incidentanalysepagina. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Koppeling naar incident" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Verbindingsinstellingen" lightbox="../media/incident-link.png":::
 
 Als u op de koppeling klikt, wordt u gedraaid naar de incidentanalysepagina voor analyse van de betreffende anomalie, met een aantal diagnose-inzichten. Bovenaan ziet u statistische informatie over het incident, zoals de **ernst**, **betrokken anomalieën** en de betreffende **begin-** en **eindtijd**. 
 
 Vervolgens ziet u de bovenliggende anomalie van het incident en het automatische advies voor de hoofdoorzaak. Dit automatische advies voor de hoofdoorzaak wordt gegenereerd op basis van een analyse van de incidentstructuur van alle gerelateerde anomalieën, waaronder de afwijking, de distributie en de bijdrage aan de bovenliggende anomalieën. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Diagnostische gegevens voor incident" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Verbindingsinstellingen" lightbox="../media/incident-diagnostic.png":::
 
 Op basis hiervan kunt u al een duidelijk beeld krijgen van wat er gebeurt, de impact van het incident, en de meest waarschijnlijke hoofdoorzaak. Zo kan er direct actie worden ondernomen om het incident zo spoedig mogelijk op te lossen. 
 

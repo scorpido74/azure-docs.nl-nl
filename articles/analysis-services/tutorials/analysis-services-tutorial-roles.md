@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229358"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018692"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder en gebruikersrollen configureren
 
- In deze zelfstudie gebruikt u SQL Server Management Studio (SSMS) om verbinding te maken met uw server in Azure voor het configureren van de serverbeheerderrol en de modeldatabaserol. U maakt ook kennis met [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL is een scripttaal op basis van JSON voor tabelvormige modellen op het compatibiliteitsniveau van 1200 en hoger. Het kan worden gebruikt om veel in tabelvormige modelleertaken te automatiseren. TMSL wordt vaak gebruikt met PowerShell, maar in deze zelfstudie gebruikt u de XMLA-query-editor in SSMS. In deze zelfstudie voert u de volgende taken uit: 
+ In deze zelfstudie gebruikt u SQL Server Management Studio (SSMS) om verbinding te maken met uw server in Azure voor het configureren van de serverbeheerderrol en de modeldatabaserol. U maakt ook kennis met [Tabular Model Scripting Language (TMSL)](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL is een scripttaal op basis van JSON voor tabelvormige modellen op het compatibiliteitsniveau van 1200 en hoger. Het kan worden gebruikt om veel in tabelvormige modelleertaken te automatiseren. TMSL wordt vaak gebruikt met PowerShell, maar in deze zelfstudie gebruikt u de XMLA-query-editor in SSMS. In deze zelfstudie voert u de volgende taken uit: 
   
 > [!div class="checklist"]
 > * Uw servernaam ophalen uit de portal
@@ -33,7 +33,7 @@ Zie [Verificatie en gebruikersmachtigingen](../analysis-services-manage-users.md
 - Een [Azure Analysis Services-server](../analysis-services-create-server.md) gemaakt in uw abonnement.
 - [Machtigingen voor serverbeheerder](../analysis-services-server-admins.md).
 - [Voeg het voorbeeldmodel Adventure Works toe](../analysis-services-create-sample-model.md) aan uw server.
-- [Installeer de nieuwste versie van SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+- [Installeer de nieuwste versie van SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -82,7 +82,7 @@ In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Een gebruiker toevoegen aan de rol van modeldatabasebeheerder
 
-In deze taak u gaat u een gebruikers- of groepsaccount toevoegen aan de rol Internet Sales-beheerder die al in het model bestaat. Deze rol heeft de machtigingen voor volledig beheer (beheerder) voor de modeldatabase met het AdventureWorks-voorbeeld. Deze taak maakt gebruik van de TMSL-opdracht [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) in een script dat voor u is gemaakt.
+In deze taak u gaat u een gebruikers- of groepsaccount toevoegen aan de rol Internet Sales-beheerder die al in het model bestaat. Deze rol heeft de machtigingen voor volledig beheer (beheerder) voor de modeldatabase met het AdventureWorks-voorbeeld. Deze taak maakt gebruik van de TMSL-opdracht [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) in een script dat voor u is gemaakt.
 
 1. In **Objectverkenner** vouwt u **Databases** > **adventureworks** > **Rollen** uit. 
 2. Klik met de rechtermuisknop op **Internet Sales-beheerder**, klik vervolgens op **Scriptrol as** > **MAKEN OF VERVANGEN Naar** > **venster Nieuwe query-editor**.
@@ -98,7 +98,7 @@ In deze taak u gaat u een gebruikers- of groepsaccount toevoegen aan de rol Inte
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Een nieuwe modeldatabaserol toevoegen en een gebruiker of groep toevoegen
 
-In deze taak gebruikt u de opdracht [Maken](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) in een TMSL-script om een nieuwe Globale internetverkoop-rol te maken, *leesmachtigingen* voor de rol op te geven en een gebruikers- of groepsaccount uit uw Azure AD toe te voegen.
+In deze taak gebruikt u de opdracht [Maken](/analysis-services/tmsl/create-command-tmsl) in een TMSL-script om een nieuwe Globale internetverkoop-rol te maken, *leesmachtigingen* voor de rol op te geven en een gebruikers- of groepsaccount uit uw Azure AD toe te voegen.
 
 1. Klik in **Objectverkenner** met de rechtermuisknop op **adventureworks** en klik dan op **Nieuwe query** > **XMLA**. 
 2. Kopieer en plak het volgende TMSL-script in de query-editor:
@@ -144,4 +144,3 @@ In deze zelfstudie hebt u geleerd hoe verbinding kunt maken met uw Azure AS-serv
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Verbinden met Power BI Desktop](analysis-services-tutorial-pbid.md)
-

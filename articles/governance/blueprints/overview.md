@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure Blueprints
 description: Azure Blueprints is een service in waarmee u artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050774"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91614254"
 ---
 # <a name="what-is-azure-blueprints"></a>Wat is Azure Blueprints?
 
@@ -74,11 +74,16 @@ Wanneer een blauwdruk wordt gemaakt, bevindt deze zich in de modus **Concept**. 
 
 ## <a name="blueprint-assignment"></a>Blauwdruktoewijzing
 
-Elke **gepubliceerde** **versie** van een blauwdruk kan worden toegewezen (met een maximale naamlengte van 90 tekens) aan een bestaand abonnement. In de portal wordt standaard de **versie** van de blauwdruk gebruikt die het laatst is **gepubliceerd**. Als er artefactparameters (of blauwdrukparameters) zijn, worden de parameters tijdens het toewijzingsproces gedefinieerd.
+Elke **gepubliceerde** **versie** van een blauwdruk kan worden toegewezen (met een maximale naamlengte van 90 tekens) aan een bestaande beheergroep of bestaand abonnement. In de portal wordt standaard de **versie** van de blauwdruk gebruikt die het laatst is **gepubliceerd**. Als er artefactparameters of blauwdrukparameters zijn, worden de parameters tijdens het toewijzingsproces gedefinieerd.
+
+> [!NOTE]
+> Als u een blauwdrukdefinitie toewijst aan een beheergroep, betekent dit dat het toewijzingsobject bestaat bij de beheergroep. De implementatie van artefacten is nog steeds gericht op een abonnement. Als u een toewijzing van een beheergroep wilt uitvoeren, moet u [REST API maken of bijwerken](/rest/api/blueprints/assignments/createorupdate) gebruiken. De aanvraagtekst moet een waarde bevatten voor `properties.scope` om het doelabonnement te definiëren.
 
 ## <a name="permissions-in-azure-blueprints"></a>Machtigingen in Azure Blueprints
 
-Om blauwdrukken te kunnen gebruiken, moet u zijn gemachtigd via [op rollen gebaseerd toegangsbeheer](../../role-based-access-control/overview.md) (RBAC). Om blauwdrukken te maken, moet uw account de volgende machtigingen hebben:
+Om blauwdrukken te kunnen gebruiken, moet u zijn gemachtigd via [op rollen gebaseerd toegangsbeheer (Azure RBAC)](../../role-based-access-control/overview.md). Als u een blauwdruk wilt lezen of bekijken in de Azure-portal, moet uw account leestoegang hebben tot het bereik waarin de definitie van de blauwdruk zich bevindt.
+
+Om blauwdrukken te maken, moet uw account de volgende machtigingen hebben:
 
 - `Microsoft.Blueprint/blueprints/write` - Een blauwdrukdefinitie maken
 - `Microsoft.Blueprint/blueprints/artifacts/write` - Artefacten in een blauwdrukdefinitie maken

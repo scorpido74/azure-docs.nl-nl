@@ -1,49 +1,49 @@
 ---
-title: Waarschuwingen voor activiteiten logboeken ontvangen op Azure-service meldingen met behulp van de Resource Manager-sjabloon
-description: Ontvang een melding via SMS, e-mail of webhook wanneer de Azure-service wordt uitgevoerd.
+title: Waarschuwingen voor activiteitenlogboek ontvangen bij Azure-service meldingen met behulp van de Resource Manager-sjabloon
+description: Ontvang meldingen via een SMS, e-mail of webhook wanneer de Azure-service wordt uitgevoerd.
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 84c888195ab7e2f3288691948706d31160393d25
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 688314a2057964c66baeacbbc49736ea436f5ec5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918910"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630216"
 ---
-# <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Snelstartgids: waarschuwingen voor activiteiten logboeken maken voor service meldingen met behulp van een ARM-sjabloon
+# <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Snelstart: Waarschuwingen voor activiteitenlogboek maken bij servicemeldingen met behulp van een ARM-sjabloon
 
-In dit artikel wordt beschreven hoe u waarschuwingen voor activiteiten logboeken instelt voor service status meldingen met behulp van een Azure Resource Manager sjabloon (ARM-sjabloon).
+In dit artikel wordt beschreven hoe u waarschuwingen voor een activiteitenlogboek instelt voor servicestatusmeldingen behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Service status meldingen worden opgeslagen in het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md). Gezien het mogelijk grote volume aan gegevens dat in het activiteiten logboek is opgeslagen, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen kunt bekijken en instellen voor service status meldingen.
+Servicestatusmeldingen worden opgeslagen in het [Activiteitenlogboek van Azure](../azure-monitor/platform/platform-logs-overview.md). Gezien het mogelijk grote volume aan informatie dat in het activiteitenlogboek is opgeslagen, is er een afzonderlijke gebruikersinterface waarmee u gemakkelijk waarschuwingen voor servicestatusmeldingen kunt bekijken en instellen.
 
-U kunt een waarschuwing ontvangen wanneer Azure service status meldingen verzendt naar uw Azure-abonnement. U kunt de waarschuwing configureren op basis van:
+U kunt een waarschuwing ontvangen wanneer Azure servicestatusmeldingen verzendt naar uw Azure-abonnement. U kunt de waarschuwing configureren op basis van:
 
-- De klasse van service status meldingen (Service problemen, gepland onderhoud, status advies).
-- Het abonnement is betrokken.
-- De betrokken service (s).
-- De betrokken regio (en).
+- De klasse van servicestatusmeldingen (serviceproblemen, gepland onderhoud, statusadviezen).
+- Het betrokken abonnement.
+- De betrokken service(s).
+- De betrokken regio('s).
 
 > [!NOTE]
-> Met service status meldingen wordt geen waarschuwing verzonden over de resource status gebeurtenissen.
+> Service Health verzendt geen waarschuwingen in verband met resourcestatusgebeurtenissen.
 
 U kunt ook configureren naar wie de waarschuwing moet worden verzonden:
 
-- Selecteer een bestaande actie groep.
-- Een nieuwe actie groep maken (die kan worden gebruikt voor toekomstige waarschuwingen).
+- Selecteer een bestaande actiegroep.
+- Maak een nieuwe actiegroep maken (die kan worden gebruikt voor toekomstige waarschuwingen).
 
 Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-- Als u de opdrachten vanaf uw lokale computer wilt uitvoeren, installeert u Azure CLI of de Azure PowerShell-modules. Zie [de Azure cli installeren](/cli/azure/install-azure-cli) en [Azure PowerShell installeren](/powershell/azure/install-az-ps)voor meer informatie.
+- Als u de opdrachten vanaf uw lokale computer wilt uitvoeren, installeert u Azure CLI of de Azure PowerShell-modules. Zie [De Azure CLI installeren](/cli/azure/install-azure-cli) en [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie.
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
-Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt u alle service status meldingen in voor het doel abonnement. Sla deze sjabloon *op alsCreateServiceHealthAlert.jsop*.
+Met de volgende sjabloon maakt u een actiegroep met een e-maildoel en schakelt u alle servicestatusmeldingen voor het doelabonnement in. Sla deze sjabloon op als *CreateServiceHealthAlert.json*.
 
 ```json
 {
@@ -51,19 +51,19 @@ Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt
   "contentVersion": "1.0.0.0",
   "parameters": {
     "actionGroups_name": {
-      "defaultValue": "SubHealth",
-      "type": "String"
+      "type": "String",
+      "defaultValue": "SubHealth"
     },
     "activityLogAlerts_name": {
-      "defaultValue": "ServiceHealthActivityLogAlert",
-      "type": "String"
+      "type": "String",
+      "defaultValue": "ServiceHealthActivityLogAlert"
     },
-    "emailAddress":{
-      "type":"string"
+    "emailAddress": {
+      "type": "string"
     }
   },
   "variables": {
-    "alertScope":"[concat('/','subscriptions','/',subscription().subscriptionId)]"
+    "alertScope": "[concat('/','subscriptions','/',subscription().subscriptionId)]"
   },
   "resources": [
     {
@@ -72,8 +72,9 @@ Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt
       "apiVersion": "2019-06-01",
       "name": "[parameters('actionGroups_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "dependsOn": [],
+      "tags": {},
       "properties": {
         "groupShortName": "[parameters('actionGroups_name')]",
         "enabled": true,
@@ -85,8 +86,7 @@ Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt
         ],
         "smsReceivers": [],
         "webhookReceivers": []
-      },
-      "dependsOn": []
+      }
     },
     {
       "comments": "Service Health Activity Log Alert",
@@ -94,8 +94,11 @@ Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt
       "apiVersion": "2017-04-01",
       "name": "[parameters('activityLogAlerts_name')]",
       "location": "Global",
-      "tags": {},
       "scale": null,
+      "dependsOn": [
+        "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_name'))]"
+      ],
+      "tags": {},
       "properties": {
         "scopes": [
           "[variables('alertScope')]"
@@ -122,23 +125,20 @@ Met de volgende sjabloon maakt u een actie groep met een e-mail doel en schakelt
         },
         "enabled": true,
         "description": ""
-      },
-      "dependsOn": [
-        "[resourceId('microsoft.insights/actionGroups', parameters('actionGroups_name'))]"
-      ]
+      }
     }
   ]
 }
 ```
 
-De sjabloon definieert twee resources:
+In de sjabloon zijn twee resources gedefinieerd:
 
-- [Micro soft. Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
-- [Micro soft. Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
+- [Microsoft.Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
+- [Microsoft.Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Implementeer de sjabloon met een standaard methode voor het [implementeren van een arm-sjabloon](../azure-resource-manager/templates/deploy-portal.md) , zoals de volgende voor beelden met CLI en Power shell. Vervang de voorbeeld waarden voor **resource groep** en **emailAddress** met de juiste waarden voor uw omgeving.
+Implementeer de sjabloon met een standaardmethode voor [het implementeren van een ARM-sjabloon](../azure-resource-manager/templates/deploy-portal.md), zoals in de volgende voorbeelden waarin CLI en PowerShell wordt gebruikt. Vervang de voorbeeldwaarden voor **Resourcegroep** en **E-mailadres** door de juiste waarden voor uw omgeving.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -159,7 +159,7 @@ New-AzResourceGroupDeployment -Name CreateServiceHealthAlert -ResourceGroupName 
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-Controleer of de werk ruimte is gemaakt met behulp van een van de volgende opdrachten. Vervang de voorbeeld waarden voor de **resource groep** door de waarde die u hierboven hebt gebruikt.
+Controleer of de werkruimte is gemaakt met behulp van een van de volgende opdrachten. Vervang de voorbeeldwaarden voor **Resourcegroep** door de waarde die u hierboven hebt gebruikt.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -177,7 +177,7 @@ Get-AzActivityLogAlert -ResourceGroupName my-resource-group -Name ServiceHealthA
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met volgende snelstarts en zelfstudies, kunt u deze resources het beste intact laten. Als u deze niet meer nodig hebt, verwijdert u de resource groep, waarmee de waarschuwings regel en de gerelateerde resources worden verwijderd. De resource groep verwijderen met behulp van Azure CLI of Azure PowerShell
+Als u van plan bent om verder te gaan met volgende snelstarts en zelfstudies, kunt u deze resources het beste intact laten. Als u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee worden ook de waarschuwingsregel en de gerelateerde resources verwijderd. De resourcegroep verwijderen met behulp van Azure CLI of Azure PowerShell
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -195,11 +195,11 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Aanbevolen procedures voor het instellen van Azure service Health-waarschuwingen](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
-- Meer informatie over het [instellen van mobiele push meldingen voor Azure service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
-- Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md).
-- Meer informatie over [service status meldingen](service-notifications.md).
-- Meer informatie over beperking van de [meldings frequentie](../azure-monitor/platform/alerts-rate-limiting.md).
-- Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek.
-- Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](../azure-monitor/platform/alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.
-- Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).
+- Meer informatie over [best practices voor het instellen van Azure Service Health-waarschuwingen](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Meer informatie over het [instellen van mobiele pushmeldingen voor Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
+- Meer informatie over het [configureren van webhookmeldingen voor bestaande problematische beheersystemen](service-health-alert-webhook-guide.md).
+- Meer informatie over [servicestatusmeldingen](service-notifications.md).
+- Meer informatie over [meldingssnelheidsbeperking](../azure-monitor/platform/alerts-rate-limiting.md).
+- Bekijk het [webhookschema voor waarschuwingen voor het activiteitenlogboek](../azure-monitor/platform/activity-log-alerts-webhook.md).
+- Een [overzicht van waarschuwingen voor het activiteitenlogboek](../azure-monitor/platform/alerts-overview.md) en meer informatie over het ontvangen van waarschuwingen.
+- Meer informatie over [actiegroepen](../azure-monitor/platform/action-groups.md).

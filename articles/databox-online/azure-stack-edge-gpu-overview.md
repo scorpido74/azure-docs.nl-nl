@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320741"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91617159"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Wat is Azure Stack Edge Pro met GPU?
 
@@ -73,7 +73,7 @@ Het fysieke Azure Stack Edge Pro-apparaat, de Azure-resource en het doelopslagac
 
 - **Beschikbaarheid van resource**: voor deze preview-versie is de resource beschikbaar in de regio's US - oost, EU - west en Azië - zuidoost.
 
-- **Beschikbaarheid van het apparaat** - Om een lijst in te zien van alle landen waar het Azure Stack Edge Pro-apparaat beschikbaar is, gaat u naar de tab **Azure Stack Edge Pro** voor [Azure Stack Edge Pro prijzen](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) en vervolgens naar de sectie **Beschikbaarheid**.
+- **Beschikbaarheid van het apparaat** - Om een lijst in te zien van alle landen/regio's waar het Azure Stack Edge Pro-apparaat beschikbaar is, gaat u naar de tab **Azure Stack Edge Pro** voor [Azure Stack Edge Pro prijzen](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) en vervolgens naar de sectie **Beschikbaarheid**.
     
 - **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s. De regio's waar de opslagaccounts Azure Stack Edge Pro-gegevens opslaan, moeten zich voor optimale prestaties dicht bij het apparaat bevinden. Een opslagaccount dat zich ver van het apparaat vandaan bevindt, resulteert in lange latenties en tragere prestaties.
 
