@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761274"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046333"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Zelfstudie: een IoT Plug en Play-apparaat converteren naar een module (C#)
 
 In deze zelfstudie wordt uitgelegd hoe u code voor IoT Plug en Play-apparaten converteert zodat deze als een algemene module kan worden uitgevoerd.
 
-Een apparaat is een IoT Plug en Play-apparaat als het de eigen model-id publiceert wanneer het verbinding maakt met een IoT-hub en de eigenschappen en methoden implementeert die worden beschreven in het DTDL-model (Digital Twins Definition Language) dat wordt aangeduid door de model-id. Zie [Handleiding voor IoT Plug en Play-ontwikkelaars](concepts-developer-guide.md) voor meer informatie over de wijze waarop apparaten een DTDL en een model-id gebruiken. Modules maken op dezelfde wijze gebruik van model-id's en DTDL-modellen.
+Een apparaat is een IoT Plug en Play-apparaat als het de eigen model-id publiceert wanneer het verbinding maakt met een IoT-hub en de eigenschappen en methoden implementeert die worden beschreven in het DTDL-model (Digital Twins Definition Language) dat wordt aangeduid door de model-id. Zie [Handleiding voor IoT Plug en Play-ontwikkelaars](./concepts-developer-guide-device-csharp.md) voor meer informatie over de wijze waarop apparaten een DTDL en een model-id gebruiken. Modules maken op dezelfde wijze gebruik van model-id's en DTDL-modellen.
 
 In deze zelfstudie wordt uitgelegd hoe u de C#-voorbeeldcode voor apparaten voor een thermostaat converteert naar een algemene module om te laten zien hoe u een IoT Plug en Play-module implementeert.
 
@@ -224,7 +224,7 @@ Als u dit voorbeeld wilt converteren zodat het als een IoT Plug en Play IoT Edge
 Raadpleeg de volgende artikelen voor meer informatie over het implementeren van uw module die verpakt is in een container:
 
 * [Azure IoT Edge uitvoeren op Ubuntu-VM's](../iot-edge/how-to-install-iot-edge-ubuntuvm.md).
-* [De Azure IoT Edge-runtime installeren op Linux-systemen die op Debian zijn gebaseerd](../iot-edge/how-to-install-iot-edge-linux.md).
+* [De Azure IoT Edge-runtime installeren op Linux-systemen die op Debian zijn gebaseerd](../iot-edge/how-to-install-iot-edge.md).
 
 U kunt met de Azure IoT-verkenner het volgende bekijken:
 
@@ -238,4 +238,4 @@ U kunt met de Azure IoT-verkenner het volgende bekijken:
 In deze zelfstudie hebt u geleerd hoe u een IoT Plug en Play-apparaat met modules verbindt met een IoT-hub. Voor meer informatie over IoT Plug and Play-apparaatmodellen raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Handleiding voor ontwikkelaars van IoT Plug en Play-modellen](concepts-developer-guide.md)
+> [Handleiding voor ontwikkelaars van IoT Plug en Play-modellen](./concepts-developer-guide-device-csharp.md)

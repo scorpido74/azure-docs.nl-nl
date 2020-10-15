@@ -4,12 +4,12 @@ description: Informatie over het ingebouwde initiatief voor naleving van regelge
 ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 93d875c55a671fe68cec720bc78507fcbec638b9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 5da46631d0b6cfcd142ab32172de306115a080bd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91820015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932155"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>Informatie over het ingebouwde initiatief voor naleving van regelgeving in CIS Microsoft Azure Foundations Benchmark
 
@@ -23,7 +23,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 > [!IMPORTANT]
 > Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../overview.md)-definities.
-> Met deze beleidsregels kunt u de [naleving beoordelen](../how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsdefinities zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de nalevingsstandaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is naleving in Azure Policy slechts een gedeeltelijke weergave van uw algemene nalevingsstatus. De koppelingen tussen de beheeropties voor nalevingsdomeinen en Azure Policy definities voor deze nalevingsstandaard kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json).
+> Met deze beleidsregels kunt u de [compliance beoordelen](../how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsdefinities zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de nalevingsstandaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is naleving in Azure Policy slechts een gedeeltelijke weergave van uw algemene nalevingsstatus. De koppelingen tussen de beheeropties voor nalevingsdomeinen en Azure Policy definities voor deze nalevingsstandaard kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json).
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 08/25/2020
+ms.date: 10/09/2020
 ms.author: aahi
-ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930285"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Procedure: Sentiment detecteren met behulp van de Text Analytics API
 
@@ -78,13 +78,13 @@ De documenten mogen niet meer dan 5.120 tekens per document bevatten. Een verzam
 
 Maak een POST-aanvraag. Gebruik [Postman](text-analytics-how-to-call-api.md) of de **API-testconsole** in de volgende referentiekoppelingen om snel een aanvraag te structureren en verzenden. 
 
-#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
-
-[Referentie voor Sentimentanalyse v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
-
 #### <a name="version-31-preview1"></a>[Versie 3.1-preview.1](#tab/version-3-1)
 
 [Referentie voor Sentimentanalyse v3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
+
+#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
+
+[Referentie voor Sentimentanalyse v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
 
 ---
 
@@ -95,10 +95,6 @@ Stel het HTTPS-eindpunt voor sentimentanalyse in met behulp van een Text Analyti
 > [!NOTE]
 > U vindt de sleutel en het eindpunt voor uw Text Analytics-resource in Azure Portal. U vindt deze op de **Quickstart**-pagina van de resource, onder **Resourcebeheer**. 
 
-#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
-
 #### <a name="version-31-preview1"></a>[Versie 3.1-preview.1](#tab/version-3-1)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
@@ -108,6 +104,10 @@ Als u meninganalyseresultaten wenst, moet u de parameter `opinionMining=true` to
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
 
 Deze parameter is standaard ingesteld op `false`. 
+
+#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
 
 ---
 
@@ -141,44 +141,6 @@ De Text Analytics-API is stateless (staatloos). Er worden geen gegevens in uw ac
 Sentimentanalyse retourneert een sentimentlabel en een betrouwbaarheidsscore voor het hele document, en elke zin daarin. Scores die dichter bij 1 liggen, geven een hogere betrouwbaarheid in de classificatie van het label aan. Lagere scores geven een lagere betrouwbaarheid aan. Een document kan meerdere zinnen bevatten en het totaal van alle betrouwbaarheidsscores binnen elk document of zin is 1.
 
 Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of de uitvoer op het lokale systeem opslaan als een bestand. Vervolgens importeert u de uitvoerput in een toepassing waarin u de gegevens kunt sorteren, doorzoeken en bewerken. Vanwege meertalige en Emoji-ondersteuning kan het antwoord tekstverschuivingen bevatten. Zie [Verschuivingen verwerken](../concepts/text-offsets.md) voor meer informatie.
-
-#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
-
-### <a name="sentiment-analysis-v30-example-response"></a>Voorbeeld van antwoord van Sentimentanalyse v 3.0
-
-Antwoorden van Sentimentanalyse v3 bevatten sentimentlabels en -scores voor elke geanalyseerde zin en elk geanalyseerd document.
-
-```json
-{
-    "documents": [
-        {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
-                {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly."
-                }
-            ],
-            "warnings": []
-        }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
-}
-```
 
 #### <a name="version-31-preview1"></a>[Versie 3.1-preview.1](#tab/version-3-1)
 
@@ -266,6 +228,44 @@ Sentimentanalyse v3.1 biedt naast het antwoordobject op het tabblad **Versie 3.0
                             "isNegated": false
                         }
                     ]
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
+```
+
+#### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
+
+### <a name="sentiment-analysis-v30-example-response"></a>Voorbeeld van antwoord van Sentimentanalyse v 3.0
+
+Antwoorden van Sentimentanalyse v3 bevatten sentimentlabels en -scores voor elke geanalyseerde zin en elk geanalyseerd document.
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly."
                 }
             ],
             "warnings": []

@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485785"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelfstudie: Een listener voor beschikbaarheidsgroep configureren voor SQL Server in virtuele RHEL-machines in Azure
@@ -136,7 +136,7 @@ De taakverdelingsregels bepalen hoe de taakverdeling verkeer routeert naar de SQ
    | **Time-out voor inactiviteit (minuten)** |*4* |
    | **Zwevend IP (Direct Server Return)** |**Ingeschakeld** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Taakverdelingsregels toevoegen":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Back-endgroep toevoegen":::
 
 4. Klik op **OK**. 
 5. In Azure wordt de taakverdelingsregel geconfigureerd. De taakverdeler is nu geconfigureerd om verkeer naar het SQL Server-exemplaar te routeren dat de listener voor beschikbaarheidsgroep host. 

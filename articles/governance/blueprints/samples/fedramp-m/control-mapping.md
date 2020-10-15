@@ -1,14 +1,14 @@
 ---
 title: Beheeropties blauwdrukvoorbeeld FedRAMP Moderate
-description: Hier vindt u informatie over de toewijzing van beheeropties aan het blauwdrukvoorbeeld FedRAMP Moderate. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
+description: Hier vindt u informatie over de toewijzing van beheeropties aan het blauwdrukvoorbeeld FedRAMP Moderate. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
 ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: adc91813e40c18d2ecd67d912db214d77776b8a5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: fdc605b1021ce3ab1e188a29a9deb513c2eb5816
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530167"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929299"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Informatie over toewijzing van beheeropties aan het blauwdrukvoorbeeld FedRAMP Moderate
 
@@ -45,8 +45,7 @@ Just-In-Time-VM-toegang vergrendelt binnenkomend verkeer naar uw Azure-VM's, zod
 
 ## <a name="ac-4-information-flow-enforcement"></a>AC-4 Information Flow Enforcement
 
-Cross Origin Resource Sharing (CORS) kan toestaan dat App Services-resources worden aangevraagd vanuit een extern domein. Microsoft raadt u aan om alleen vereiste domeinen te laten communiceren met uw API, functie en webtoepassingen. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u de toegangsbeperkingen voor CORS-bronnen in Azure Security Center kunt bewaken.
-Met inzicht in CORS-implementaties kunt u controleren of de beheeropties voor informatiestromen zijn geïmplementeerd.
+Cross Origin Resource Sharing (CORS) kan toestaan dat App Services-resources worden aangevraagd vanuit een extern domein. Microsoft raadt u aan om alleen vereiste domeinen te laten communiceren met uw API, functie en webtoepassingen. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u de toegangsbeperkingen voor CORS-bronnen in Azure Security Center kunt bewaken. Met inzicht in CORS-implementaties kunt u controleren of de beheeropties voor informatiestromen zijn geïmplementeerd.
 
 - CORS mag er niet toe leiden dat elke resource toegang tot uw webtoepassing heeft
 
@@ -56,7 +55,7 @@ Als er slechts één eigenaar van een Azure-abonnement is, is er geen administra
 
 - Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement
 - Windows VM's controleren waarvoor de groep Administrators een van de opgegeven leden bevat
-- Windows-VM's controleren waarvoor de groep Administrators niet alle opgegeven leden bevat
+- Windows VM's controleren waarvoor de groep Administrators niet alle opgegeven leden bevat
 - Vereisten implementeren om Windows-VM's te controleren waarvoor de groep Administrators een van de opgegeven leden bevat
 - Vereisten implementeren om Windows-VM's te controleren waarop de groep Administrators niet alle opgegeven leden bevat
 - Er moet meer dan één eigenaar zijn toegewezen aan uw abonnement
@@ -83,7 +82,8 @@ Met deze blauw druk worden [Azure Policy](../../../policy/overview.md)-definitie
 
 ## <a name="au-12-audit-generation"></a>AU-12 Audit Generation
 
-Met deze blauwdruk kunt u ervoor zorgen dat systeemgebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)definities toe te wijzen die logboekinstellingen op Azure-resources controleren. Met deze beleidsdefinities wordt de implementatie gecontroleerd en afgedwongen van de Log Analytics-agent op virtuele Azure-machines en het controle-instellingen voor andere Azure-resourcetypen geconfigureerd. Met deze beleidsdefinities wordt ook de configuratie gecontroleerd van diagnostische logboeken om inzicht te bieden in bewerkingen die worden uitgevoerd binnen Azure-resources. Daarnaast worden controle en Advanced Data Security geconfigureerd op SQL-servers.
+Met deze blauwdruk kunt u ervoor zorgen dat systeemgebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)definities toe te wijzen die logboekinstellingen op Azure-resources controleren.
+Met deze beleidsdefinities wordt de implementatie gecontroleerd en afgedwongen van de Log Analytics-agent op virtuele Azure-machines en het controle-instellingen voor andere Azure-resourcetypen geconfigureerd. Met deze beleidsdefinities wordt ook de configuratie gecontroleerd van diagnostische logboeken om inzicht te bieden in bewerkingen die worden uitgevoerd binnen Azure-resources. Daarnaast worden controle en Advanced Data Security geconfigureerd op SQL-servers.
 
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
@@ -167,7 +167,8 @@ Met deze blauw druk kunt u sterke wachtwoorden afdwingen door [Azure Policy](../
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 Vulnerability Scanning
 
-Met deze blauwdruk kunt u beveiligingsproblemen met informatiesystemen beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die controleren op beveiligingsproblemen met het besturingssysteem, SQL en virtuele machines in Azure Security Center. Azure Security Center biedt rapportagemogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligingsstatus van geïmplementeerde Azure-resources. Met deze blauw druk worden ook beleidsdefinities toegewezen die Advanced Data Security controleren en afdwingen op SQL-servers. In Advanced Data Security is de evaluatie van beveiligingsproblemen en Advanced Threat Protection-functies opgenomen, waarmee u meer inzicht krijgt in beveiligingsproblemen in de door u geïmplementeerde resources.
+Met deze blauwdruk kunt u beveiligingsproblemen met informatiesystemen beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die controleren op beveiligingsproblemen met het besturingssysteem, SQL en virtuele machines in Azure Security Center.
+Azure Security Center biedt rapportagemogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligingsstatus van geïmplementeerde Azure-resources. Met deze blauw druk worden ook beleidsdefinities toegewezen die Advanced Data Security controleren en afdwingen op SQL-servers. In Advanced Data Security is de evaluatie van beveiligingsproblemen en Advanced Threat Protection-functies opgenomen, waarmee u meer inzicht krijgt in beveiligingsproblemen in de door u geïmplementeerde resources.
 
 - Advanced Data Security moet zijn ingeschakeld voor uw beheerde instanties
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers
@@ -185,8 +186,7 @@ De DDoS-standaardlaag (DDoS: Distributed Denial of service) van Azure biedt extr
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 Boundary Protection
 
-Met deze blauwdruk kunt u de systeemgrens beheren en bepalen door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen die controleert op aanbevelingen voor de beveiliging van netwerkbeveiligings groepen in Azure Security Center. Azure Security Center analyseert verkeerspatronen van virtuele machines die vanaf het internet toegankelijk zijn, en formuleert aanbevelingen voor netwerkbeveiligingsgroepsregels die de mogelijkheid op aanvallen beperken
-Daarnaast wordt met deze blauwdruk ook beleidsdefinities toegewezen waarmee onbeveiligde eindpunten, toepassingen en opslagaccounts worden bewaakt. Eindpunten en toepassingen die niet zijn beveiligd door een firewall, en opslagaccounts met onbeperkte toegang, kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem.
+Met deze blauwdruk kunt u de systeemgrens beheren en bepalen door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen die controleert op aanbevelingen voor de beveiliging van netwerkbeveiligings groepen in Azure Security Center. Azure Security Center analyseert verkeerspatronen van virtuele machines die vanaf het internet toegankelijk zijn, en formuleert aanbevelingen voor netwerkbeveiligingsgroepsregels die de mogelijkheid op aanvallen beperken Daarnaast wordt met deze blauwdruk ook beleidsdefinities toegewezen waarmee onbeveiligde eindpunten, toepassingen en opslagaccounts worden bewaakt. Eindpunten en toepassingen die niet zijn beveiligd door een firewall, en opslagaccounts met onbeperkte toegang, kunnen onbedoeld toegang verlenen tot gegevens in het informatiesysteem.
 
 - De regels voor netwerkbeveiligingsgroepen voor virtuele machines die zijn gericht op internet moeten strenger worden
 - Toegang via een eindpunt gericht op internet moet worden beperkt

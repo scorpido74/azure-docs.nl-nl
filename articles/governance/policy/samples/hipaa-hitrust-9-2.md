@@ -4,12 +4,12 @@ description: Details van het ingebouwde initiatief voor naleving van regelgeving
 ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 9f3dcdb14ce3d2a9d8353f87a2233fca1c3c8a47
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ed486a520033b9022abdf1f795e125d1740e3de9
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822560"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929252"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>Details van het ingebouwde initiatief voor naleving van regelgeving voor HIPAA HITRUST 9.2
 
@@ -23,7 +23,7 @@ Dit ingebouwde initiatief wordt geïmplementeerd als onderdeel van het [blauwdru
 
 > [!IMPORTANT]
 > Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../overview.md)-definities.
-> Met deze beleidsregels kunt u de [naleving beoordelen](../how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsdefinities zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de nalevingsstandaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is naleving in Azure Policy slechts een gedeeltelijke weergave van uw algemene nalevingsstatus. De koppelingen tussen de beheeropties voor nalevingsdomeinen en Azure Policy definities voor deze nalevingsstandaard kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json).
+> Met deze beleidsregels kunt u de [compliance beoordelen](../how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsdefinities zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de nalevingsstandaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is naleving in Azure Policy slechts een gedeeltelijke weergave van uw algemene nalevingsstatus. De koppelingen tussen de beheeropties voor nalevingsdomeinen en Azure Policy definities voor deze nalevingsstandaard kunnen na verloop van tijd veranderen. Als u de wijzigingsgeschiedenis wilt bekijken, raadpleegt u de [GitHub Commit-geschiedenis](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json).
 
 ## <a name="privilege-management"></a>Machtigingsbeheer
 
