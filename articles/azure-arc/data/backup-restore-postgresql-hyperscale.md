@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630420"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071435"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Back-ups maken en herstellen voor Azure Arc ingeschakelde PostgreSQL grootschalige-Server groepen
 
@@ -82,7 +82,12 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>Hand matige volledige back-up maken
 
+
 Maak vervolgens een hand matige volledige back-up.
+
+> [!CAUTION]
+> **Alleen voor gebruikers van de Azure Kubernetes-service (AKS):** we zijn op de hoogte van een probleem met het maken van back-ups van een server groep die wordt gehost op Azure Kubernetes service (AKS). We werken al aan het herstellen ervan. Voordat u een back-up maakt, moet u de meeste Server groepen verwijderen totdat de update is geïmplementeerd in een toekomstige release/update. Voor elk van de peulen van uw server groep (u vermeldt u het gehele aantal door **kubectl ophalen \<namespace name> van Peule-n **) te verwijderen door **kubectl delete pod \<server group pod name> -n \<namespace name> **uit te voeren. Verwijder geen peulen die geen deel uitmaken van uw server groep. Als u een Peul verwijdert, worden uw gegevens niet risico. Wacht totdat alle peulen weer online zijn en STATUS = actief zijn voordat u een back-up maakt. De status van de Pod wordt weer gegeven in de uitvoer van de opdracht kubectl Get Peule.
+
 
 Voer de volgende opdracht uit om een volledige back-up te maken van de volledige gegevens en logboek mappen van uw server groep:
 
