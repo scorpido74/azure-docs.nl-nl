@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400703"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089686"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuele netwerk-of VPN-verbindingen configureren en valideren
 
@@ -122,7 +122,7 @@ U kunt een verbinding maken tussen virtuele netwerken die zich in verschillende 
 
 Als u een verbinding wilt configureren tussen een klassiek virtueel netwerk en een virtueel netwerk van Resource Manager, raadpleegt u [virtuele netwerken van verschillende implementatie modellen verbinden met behulp van de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
 
-![Klassieke virtuele netwerk verbinding met een Azure Resource Manager virtueel netwerk](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![Diagram waarin een klassieke virtuele netwerk verbinding met een Azure Resource Manager virtueel netwerk wordt weer gegeven.](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
 Volg deze instructies om de configuratie te controleren wanneer u een klassiek virtueel netwerk verbindt met een Azure Resource Manager virtueel netwerk.
 

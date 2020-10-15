@@ -3,12 +3,12 @@ title: Richtlijnen en aanbevolen procedures
 description: Ontdek de aanbevolen procedures en richt lijnen voor het maken van een back-up van de Cloud en on-premises werk belasting naar de Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985528"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092304"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Back-ups in de Cloud en on-premises naar de Cloud
 
@@ -42,13 +42,13 @@ Azure Backup maakt gegevens beveiliging mogelijk voor verschillende werk belasti
 
 * **Schadelijke verwijderings beveiliging –** Bescherm tegen elke ongeluk en kwaad aardige pogingen voor het verwijderen van uw back-ups via het zacht verwijderen van back-ups. De verwijderde back-upgegevens worden 14 dagen gratis opgeslagen en kunnen worden hersteld op basis van deze status.
 
-* **Beveiligde versleutelde back-ups-** Azure Backup zorgt ervoor dat uw back-upgegevens op een veilige manier worden opgeslagen, waarbij ingebouwde beveiligings mogelijkheden van het Azure-platform, zoals RBAC en versleuteling, worden toegepast.
+* **Beveiligde versleutelde back-ups-** Azure Backup zorgt ervoor dat uw back-upgegevens op een veilige manier worden opgeslagen, met ingebouwde beveiligings mogelijkheden van het Azure-platform zoals Azure RBAC en versleuteling.
 
 * **Beheer van back-upgegevens levenscyclus-** Azure Backup oudere back-upgegevens worden automatisch opgeschoond om te voldoen aan het Bewaar beleid. U kunt uw gegevens ook vanuit operationele opslag naar de kluis opslag belaagen.
 
 ### <a name="management-plane"></a>Beheerlaag
 
-* **Toegangs beheer** : kluizen (Recovery Services en back-upkluizen) bieden de beheer mogelijkheden en zijn toegankelijk via de Azure Portal, het Back-upcentrum, de kluis dashboards, SDK, CLI en zelfs rest api's. Het is ook een RBAC-grens, waardoor u de mogelijkheid hebt om de toegang tot back-ups alleen te beperken tot geautoriseerde back-upbeheerders.
+* **Toegangs beheer** : kluizen (Recovery Services en back-upkluizen) bieden de beheer mogelijkheden en zijn toegankelijk via de Azure Portal, het Back-upcentrum, de kluis dashboards, SDK, CLI en zelfs rest api's. Het is ook een Azure RBAC-grens, waardoor u de mogelijkheid hebt om de toegang tot back-ups alleen te beperken tot geautoriseerde back-upbeheerders.
 
 * **Beleids beheer** : Azure backup beleid binnen elke kluis definieert wanneer de back-ups moeten worden geactiveerd en hoe lang ze moeten worden bewaard. U kunt deze beleids regels ook beheren en deze Toep assen op meerdere items.
 

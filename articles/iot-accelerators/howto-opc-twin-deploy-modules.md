@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 657373bdc899cb53c8dd934d18d144fe37eb370b
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874326"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071503"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC dubbele module en afhankelijkheden helemaal zelf implementeren
 
@@ -25,8 +25,8 @@ De OPC-dubbele module wordt uitgevoerd op IoT Edge en biedt verschillende Edge-s
 
 Er zijn verschillende opties voor het implementeren van modules op uw [Azure IOT Edge](https://azure.microsoft.com/services/iot-edge/) gateway.
 
-- [Implementeren vanaf de IoT Edge Blade van Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
-- [Implementeren met AZ CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
+- [Implementeren vanaf de IoT Edge Blade van Azure Portal](../iot-edge/how-to-deploy-modules-portal.md)
+- [Implementeren met AZ CLI](../iot-edge/how-to-deploy-cli-at-scale.md)
 
 > [!NOTE]
 > Zie de GitHub- [opslag plaats](https://github.com/Azure/azure-iiot-components)voor meer informatie over de implementatie details en instructies.
@@ -117,7 +117,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 1. Implementeer de OPC-dubbele [afhankelijkheden](howto-opc-twin-deploy-dependencies.md) en haal het resulterende `.env` bestand op. Houd er rekening mee `hub name` dat de `PCS_IOTHUBREACT_HUB_NAME` variabele in het resulterende bestand is geïmplementeerd `.env` .
 
-2. Registreer en start een [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) -of [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IOT Edge gateway en noteer deze `device id` .
+2. Registreer en start een [Linux](../iot-edge/how-to-install-iot-edge-linux.md) -of [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IOT Edge gateway en noteer deze `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Implementeren op een edge-apparaat
 
@@ -143,7 +143,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
-   Vul zo nodig de optionele velden in. Zie [EdgeAgent gewenste eigenschappen](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)voor meer informatie over de opties voor het maken van containers, het opnieuw opstarten van beleid en de gewenste status. Zie voor meer informatie over de module twee [gewenste eigenschappen definiëren of bijwerken](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
+   Vul zo nodig de optionele velden in. Zie [EdgeAgent gewenste eigenschappen](../iot-edge/module-edgeagent-edgehub.md#edgeagent-desired-properties)voor meer informatie over de opties voor het maken van containers, het opnieuw opstarten van beleid en de gewenste status. Zie voor meer informatie over de module twee [gewenste eigenschappen definiëren of bijwerken](../iot-edge/module-composition.md#define-or-update-desired-properties).
 
 7. Selecteer **Opslaan** en herhaal stap **5**.  
 
@@ -182,7 +182,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. Installeer [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)de nieuwste versie van de [Azure-opdracht regel interface (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
+1. Installeer [hier](/cli/azure/install-azure-cli?view=azure-cli-latest)de nieuwste versie van de [Azure-opdracht regel interface (AZ)](/cli/azure/?view=azure-cli-latest) .
 
 ### <a name="quickstart"></a>Snelstart
 
@@ -195,7 +195,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
    ```
 
    De `device id` para meter is hoofdletter gevoelig. De inhouds parameter verwijst naar het manifest bestand van de implementatie dat u hebt opgeslagen. 
-    ![AZ IoT Edge set-modules output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+    ![AZ IoT Edge set-modules output](/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. Zodra u modules hebt geïmplementeerd op uw apparaat, kunt u ze weer geven met de volgende opdracht:
 
@@ -203,7 +203,7 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   De para meter voor de apparaat-ID is hoofdletter gevoelig. ![AZ IOT hub module-uitvoer van de lijst met identiteiten](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   De para meter voor de apparaat-ID is hoofdletter gevoelig. ![AZ IOT hub module-uitvoer van de lijst met identiteiten](/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

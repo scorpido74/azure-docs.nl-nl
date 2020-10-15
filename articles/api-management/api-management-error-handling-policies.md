@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243542"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070942"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fout bij het verwerken van API Management-beleid
 
@@ -190,4 +190,4 @@ Zie voor meer informatie over het gebruik van beleid:
 -   [Beleid in API Management](api-management-howto-policies.md)
 -   [Api's transformeren](transform-api.md)
 -   [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
--   [Voor beelden van beleid](policy-samples.md)
+-   [Voor beelden van beleid](./policy-reference.md)

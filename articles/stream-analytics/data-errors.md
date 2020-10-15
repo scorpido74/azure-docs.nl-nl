@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053147"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071996"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics gegevens fouten
 
@@ -211,6 +211,10 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 ```
 
 ## <a name="output-data-errors"></a>Resultaten van uitvoer gegevens
+
+Azure Stream Analytics kunnen uitvoer gegevens fouten identificeren met of zonder een I/O-aanvraag aan de uitvoer sink, afhankelijk van de configuratie. Bijvoorbeeld: ontbrekende een vereiste kolom, zoals  `PartitionKey` , wanneer u Azure Table output gebruikt, kan worden geïdentificeerd zonder een I/O-aanvraag. Beperkings schendingen in SQL-uitvoer vereisen echter een I/O-aanvraag.
+
+Er zijn verschillende gegevens fouten die alleen kunnen worden gedetecteerd na het aanroepen van de uitvoer sink, waardoor de verwerking kan vertragen. U kunt dit oplossen door de configuratie van uw taak of de query die de gegevens fout veroorzaakt, te wijzigen.
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 

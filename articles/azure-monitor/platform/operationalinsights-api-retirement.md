@@ -6,15 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: c9a7ba63246f747a132c315e22452ca9c7144448
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: a03b7bd63385b7cc16e4dafb5cd12ccd212dc959
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058179"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089380"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API-versie buiten gebruik stellen
-Micro soft biedt een kennisgeving van ten minste twaalf maanden voor het buiten gebruik stellen van een API om de overgang naar een nieuwere/ondersteunde versie te versoepelen. We hebben een nieuwe versie (2020-08-01) uitgebracht voor de Api's van de **OperationalInsights** -resource provider en zullen eerdere API-versies op 31 oktober 2023 buiten gebruik stellen. Aangezien nieuwe functies en functionaliteit en optimalisaties alleen worden toegevoegd aan de huidige API, moet u zo snel mogelijk een upgrade naar de nieuwste API-versie uitvoeren.
+Micro soft biedt een kennisgeving van ten minste twaalf maanden voor het buiten gebruik stellen van een API om de overgang naar een nieuwere/ondersteunde versie te versoepelen. We hebben een nieuwe versie (2020-08-01) uitgebracht voor de Api's van de **OperationalInsights** -resource provider en zullen eerdere API-versies op 31 oktober 2023 buiten gebruik stellen.
+
+We raden u aan om versie 2020-08-01 nu te gaan gebruiken om te profiteren van de voor delen van nieuwe functionaliteit, zoals een [toegewezen cluster](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters), door de [klant beheerde sleutels](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys), [persoonlijke koppeling](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) en [gegevens export](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export). Daarnaast worden nieuwe functies en functionaliteit en optimalisaties alleen toegevoegd aan de huidige API.
 
 Na 31 oktober 2023 worden eerdere Api's-versies van 2020-08-01 niet meer ondersteund in Azure Monitor. Als u liever geen upgrade uitvoert, worden aanvragen die zijn verzonden vanuit eerdere versies, nog steeds verwerkt door de Azure Monitor-service tot en met 31 oktober 2023.
 
