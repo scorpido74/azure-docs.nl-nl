@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654ed7467410743e0db1abc2e51f1304b4f91a5d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292962"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093715"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -376,7 +376,7 @@ Deze functie is gebouwd om toegang te krijgen tot de VM-gegevens zonder dat u de
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Herstel punt selecteren (wie kan een script genereren)
 
-Het script biedt toegang tot VM-gegevens. het is dus belang rijk om te reguleren wie het in de eerste plaats kan genereren. U moet zich aanmelden bij de Azure Portal en RBAC- [machtigingen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) hebben voor het genereren van het script.
+Het script biedt toegang tot VM-gegevens. het is dus belang rijk om te reguleren wie het in de eerste plaats kan genereren. U moet zich aanmelden bij de Azure Portal en [Azure RBAC machtigen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) voor het genereren van het script.
 
 Bestands herstel heeft hetzelfde machtigings niveau nodig als vereist voor het terugzetten van de VM en het terugzetten van schijven. Met andere woorden, alleen geautoriseerde gebruikers kunnen de VM-gegevens weer geven om het script te kunnen genereren.
 

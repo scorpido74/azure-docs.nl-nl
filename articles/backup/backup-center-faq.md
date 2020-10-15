@@ -3,12 +3,12 @@ title: Back-upcentrum-Veelgestelde vragen
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over Back-upcentrum
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e227eb6a14d06791e52ec33e090afdcb01bab61
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995778"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094038"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Back-upcentrum: veelgestelde vragen
 
@@ -34,7 +34,7 @@ Nee. Het Back-upcentrum is klaar voor de doos. Als u echter [back-uprapporten](h
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Heb ik speciale machtigingen nodig om het Back-upcentrum te gebruiken?
 
-Het Back-upcentrum als zodanig heeft geen nieuwe machtigingen nodig. Als u het juiste niveau van RBAC-toegang hebt voor de resources die u beheert, kunt u Back-upcentrum voor deze bronnen gebruiken. Als u bijvoorbeeld informatie over uw back-ups wilt weer geven, hebt u **Lees** toegang tot uw kluizen nodig. Als u een back-up wilt configureren en andere back-upbewerkingen wilt uitvoeren, moet u de rollen **back-upinzender** of **back-upoperator** hebben. Meer informatie over [RBAC-rollen voor Azure backup](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
+Het Back-upcentrum als zodanig heeft geen nieuwe machtigingen nodig. Als u het juiste niveau van Azure RBAC-toegang hebt voor de resources die u beheert, kunt u Back-upcentrum voor deze bronnen gebruiken. Als u bijvoorbeeld informatie over uw back-ups wilt weer geven, hebt u **Lees** toegang tot uw kluizen nodig. Als u een back-up wilt configureren en andere back-upbewerkingen wilt uitvoeren, moet u de rollen **back-upinzender** of **back-upoperator** hebben. Meer informatie over [Azure-rollen voor Azure backup](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
 ## <a name="pricing"></a>Prijzen
 

@@ -1,5 +1,6 @@
 ---
 title: Migratie handleiding voor ADAL naar MSAL voor Android | Azure
+titleSuffix: Microsoft identity platform
 description: Informatie over het migreren van uw Android-app voor Azure Active Directory Authentication Library (ADAL) naar de micro soft Authentication Library (MSAL).
 services: active-directory
 author: mmacy
@@ -9,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 09/6/2019
+ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965995"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074665"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Migratie handleiding voor ADAL naar MSAL voor Android
 
@@ -31,7 +32,7 @@ ADAL werkt met het eind punt van Azure Active Directory v 1.0. De micro soft Aut
 Steun
   - Organisatie-identiteit (Azure Active Directory)
   - Niet-organisatie-identiteiten, zoals Outlook.com, Xbox Live, enzovoort
-  - (Alleen B2C) Federatieve aanmelding met Google, Facebook, Twitter en Amazon
+  - (Alleen Azure AD B2C) Federatieve aanmelding met Google, Facebook, Twitter en Amazon
 
 - Is standaarden compatibel met:
   - OAuth v 2.0
@@ -67,7 +68,7 @@ In de registratie van uw app in de portal ziet u een tabblad **API-machtigingen*
 
 ### <a name="user-consent"></a>Gebruikerstoestemming
 
-Met ADAL en het AAD v1-eind punt, werd gebruikers toestemming verleend voor het eerste gebruik van resources die ze hebben. Met MSAL en het micro soft-identiteits platform kan toestemming worden gevraagd incrementeel. Incrementele toestemming is handig voor machtigingen die een gebruiker kan beschouwen als hoge bevoegdheid of anders kan worden gevraagd als er geen duidelijke uitleg is over waarom de machtiging is vereist. In ADAL is het mogelijk dat deze machtigingen hebben geresulteerd in de gebruiker bij het aanmelden bij uw app.
+Met ADAL en het Azure AD v1-eind punt, werd gebruikers toestemming verleend voor bronnen waarvan ze eigenaar zijn, gekregen bij het eerste gebruik. Met MSAL en het micro soft-identiteits platform kan toestemming worden gevraagd incrementeel. Incrementele toestemming is handig voor machtigingen die een gebruiker kan beschouwen als hoge bevoegdheid of anders kan worden gevraagd als er geen duidelijke uitleg is over waarom de machtiging is vereist. In ADAL is het mogelijk dat deze machtigingen hebben geresulteerd in de gebruiker bij het aanmelden bij uw app.
 
 > [!TIP]
 > We raden u aan om incrementele toestemming te gebruiken in scenario's waarin u aanvullende context moet opgeven voor uw gebruiker over waarom uw app toestemming nodig heeft.
@@ -229,8 +230,6 @@ public interface SilentAuthenticationCallback {
      */
     void onError(final MsalException exception);
 }
-
-
 ```
 
 ## <a name="migrate-to-the-new-exceptions"></a>Migreren naar de nieuwe uitzonde ringen
@@ -240,16 +239,27 @@ In MSAL is er een hiërarchie met uitzonde ringen en elke groep heeft een eigen 
 
 | Uitzondering                                        | Beschrijving                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
-| `MsalException`                                  | Standaard ingeschakelde uitzonde ring veroorzaakt door MSAL.                           |
-| `MsalClientException`                            | Wordt gegenereerd als de fout aan de kant van de client is.                                 |
 | `MsalArgumentException`                          | Deze wordt gegenereerd als een of meer invoer argumenten ongeldig zijn.                 |
-| `MsalServiceException`                           | Wordt gegenereerd als de fout aan de server zijde is.                                 |
-| `MsalUserCancelException`                        | Wordt gegenereerd als de gebruiker de verificatie stroom heeft geannuleerd.                |
-| `MsalUiRequiredException`                        | Wordt gegenereerd als het token niet op de achtergrond kan worden vernieuwd.                    |
+| `MsalClientException`                            | Wordt gegenereerd als de fout aan de kant van de client is.                                 |
 | `MsalDeclinedScopeException`                     | Wordt gegenereerd als een of meer aangevraagde bereiken door de server zijn geweigerd. |
+| `MsalException`                                  | Standaard ingeschakelde uitzonde ring veroorzaakt door MSAL.                           |
 | `MsalIntuneAppProtectionPolicyRequiredException` | Dit wordt gegenereerd als het beveiligings beleid van de resource is ingeschakeld voor de bron.         |
+| `MsalServiceException`                           | Wordt gegenereerd als de fout aan de server zijde is.                                 |
+| `MsalUiRequiredException`                        | Wordt gegenereerd als het token niet op de achtergrond kan worden vernieuwd.                    |
+| `MsalUserCancelException`                        | Wordt gegenereerd als de gebruiker de verificatie stroom heeft geannuleerd.                |
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError naar MsalException error code
+### <a name="adalerror-to-msalexception-translation"></a>ADALError naar MsalException-vertaling
+
+| Als u deze fouten ondervindt in ADAL...  | ... Deze MSAL-uitzonde ringen worden onderschept:                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| *Geen equivalente ADALError* | `MsalArgumentException`                          |
+| <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
+| *Geen equivalente ADALError* | `MsalDeclinedScopeException`                     |
+| <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
+| *Geen equivalente ADALError* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
+| <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
+| *Geen equivalente ADALError* | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>Logboek registratie voor MSAL-logboek registratie ADAL
 

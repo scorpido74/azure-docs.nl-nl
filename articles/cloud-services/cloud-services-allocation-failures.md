@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142482"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074223"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Toewijzingsfouten oplossen die zijn opgetreden bij het implementeren van Cloud Services in Azure
 ## <a name="summary"></a>Samenvatting
@@ -43,7 +43,7 @@ Mogelijk wordt het volgende fout bericht weer gegeven:
 
 > De bewerking {Operation-id} van Azure is mislukt met de code compute. ConstrainedAllocationFailed. Details: toewijzing is mislukt; kan niet voldoen aan de beperkingen in de aanvraag. De aangevraagde nieuwe service-implementatie is gebonden aan een affiniteitsgroep, is gericht op een virtueel netwerk of er is een bestaande implementatie onder deze gehoste service. Met elk van deze voor waarden wordt de nieuwe implementatie beperkt tot specifieke Azure-resources. Probeer het later opnieuw of verklein de VM-grootte of het aantal rolinstanties. Indien mogelijk verwijdert u de bovengenoemde beperkingen of probeert u te implementeren in een andere regio. "
 
-### <a name="common-issues"></a>Algemene problemen
+### <a name="common-issues"></a>Veelvoorkomende problemen
 Hier volgen de algemene toewijzings scenario's die ervoor zorgen dat een toewijzings aanvraag wordt vastgemaakt aan één cluster.
 
 * Implementeren naar Faserings sleuf: als een Cloud service in een van de sleuven een implementatie heeft, wordt de volledige Cloud service vastgemaakt aan een specifiek cluster.  Dit betekent dat als een implementatie al in de productiesite bestaat, dan kan een nieuwe faseringsimplementatie alleen worden toegewezen in hetzelfde cluster als de productiesite. Als de capaciteit van het cluster bijna is bereikt, kan de aanvraag mislukken.
@@ -70,4 +70,4 @@ Hier volgen de algemene toewijzings scenario's die ervoor zorgen dat een toewijz
      ```
    * Volg de bovenstaande #2 en zorg ervoor dat u de nieuwe ReservedIP opgeeft in het CSCFG-service.
 4. Affiniteits groep voor nieuwe implementaties verwijderen-Affiniteits groepen worden niet meer aanbevolen. Volg de stappen voor 1 hierboven om een nieuwe cloudservice te implementeren. Zorg ervoor dat de Cloud service zich niet in een affiniteits groep bevindt.
-5. Converteren naar een regionaal Virtual Network-Zie [How to migrate from Affinity groups to a regional Virtual Network (VNet) (Engelstalig)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+5. Converteren naar een regionaal Virtual Network-Zie [How to migrate from Affinity groups to a regional Virtual Network (VNet) (Engelstalig)](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet).

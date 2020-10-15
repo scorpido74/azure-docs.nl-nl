@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce35f3af38b98f43ebbd0d3f42136ab8358b19a5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233717"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856021"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Zelfstudie: de ASP.NET Core-app implementeren in Azure Service Fabric met Azure DevOps Starter
 
@@ -158,4 +158,4 @@ U kunt de Azure CI/CD-pijplijn desgewenst wijzigen in overeenstemming met de beh
 Zie voor meer informatie over Service Fabric en microservices:
 
 > [!div class="nextstepaction"]
-> [Een microservices-benadering gebruiken voor het compileren van toepassingen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Een microservices-benadering gebruiken voor het compileren van toepassingen](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

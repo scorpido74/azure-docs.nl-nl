@@ -3,12 +3,12 @@ title: Azure-workloads optimaliseren met Advisor-Score
 description: Advisor-Score gebruiken om optimaal te profiteren van Azure
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335616"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074019"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Azure-workloads optimaliseren met Advisor-Score
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335616"
 Azure Advisor biedt best practice aanbevelingen voor uw workloads. Deze aanbevelingen zijn persoonlijk en kunnen actie ondernemen om u te helpen:
 * Verbeter de postuur van uw workloads en Optimaliseer uw Azure-implementaties
 * Proactief voor komen van belangrijkste problemen door aanbevolen procedures te volgen
-* Evalueer uw Azure-workloads met de vijf pijlers van het [Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)
+* Evalueer uw Azure-workloads met de vijf pijlers van het [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/)
 
 Als kern functie van Advisor wordt de **Advisor-Score** ontwikkeld om u te helpen deze doel stellingen effectief en efficiënt te bereiken. 
 
@@ -56,7 +56,7 @@ De berekening van de Advisor-Score kan in vier stappen worden samenvatten:
   * Resources met lange, specifieke aanbevelingen tellen meer bij aan uw score.
   * Resources die u uitstelt of negeert in Advisor, worden volledig verwijderd uit uw score berekening. 
     
-Advisor past dit model op een niveau van de Advisor toe (beveiliging maakt gebruik van een [beveiligd Score](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score) model), waarbij de Score van een adviseur Advisor voor elke categorie wordt toegepast en een eenvoudig gemiddelde het resultaat van de laatste Advisor.
+Advisor past dit model op een niveau van de Advisor toe (beveiliging maakt gebruik van een [beveiligd Score](../security-center/secure-score-security-controls.md#introduction-to-secure-score) model), waarbij de Score van een adviseur Advisor voor elke categorie wordt toegepast en een eenvoudig gemiddelde het resultaat van de laatste Advisor.
 
 
 ## <a name="advisor-score-faq"></a>Veelgestelde vragen over Advisor-Score

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997877"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857245"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Zelfstudie: Gegevens verzenden via een transparante gateway
 
@@ -238,5 +238,8 @@ In dit artikel hebben we onze ontwikkel-VM gebruikt voor het simuleren van een l
 
 Meer informatie is te vinden op de volgende pagina's:
 
-* [Een downstreamapparaat verbinden met een Azure IoT Edge-gateway](how-to-connect-downstream-device.md)
-* [Gegevens aan de rand opslaan met Azure Blob Storage in IoT Edge (preview)](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [Een downstreamapparaat verbinden met een Azure IoT Edge-gateway](how-to-connect-downstream-device.md)
+
+> [!div class="nextstepaction"]
+> [Gegevens aan de rand opslaan met Azure Blob Storage in IoT Edge (preview)](how-to-store-data-blob.md)
