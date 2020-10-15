@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Virtuele machine maken - Azure CLI
       href: quick-create-cli.md
@@ -493,6 +493,8 @@
                   items:
                     - name: Gegeneraliseerd
                       href: ../vm-generalized-image-version-cli.md
+                    - name: Gespecialiseerd
+                      href: ../vm-specialized-image-version-cli.md
                 - name: Afbeeldingsresources bijwerken
                   href: ../update-image-resources-cli.md
                 - name: App-registratie voor delen
@@ -577,6 +579,8 @@
           href: build-image-with-packer.md
         - name: Een bestaande schijf downloaden
           href: download-vhd.md
+        - name: Beheerde schijf van installatiekopieversie
+          href: ../managed-disk-from-image-version.md
     - name: Virtuele machines beveiligen
       items:
         - name: Aanbevelingen

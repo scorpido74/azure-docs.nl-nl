@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Aanmelding met Microsoft toevoegen aan een Android-app | Azure'
+title: 'Quickstart: Aanmelding met Microsoft toevoegen aan een Android-app | Azure'
 titleSuffix: Microsoft identity platform
 description: In deze quickstart leert u hoe u met Android-toepassingen een API kunt aanroepen waarvoor toegangstokens zijn vereist die zijn verstrekt door het Microsoft-identiteitsplatform.
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 37859a8571355dcd61175d7b1b4d9888e058bf3a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612894"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893506"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Snelstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Android-app
 
@@ -111,7 +111,7 @@ Deze bestanden worden nu in meer detail bekeken, met name de voor MSAL specifiek
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het Microsoft identity platform. De bibliotheek wordt door Gradle 3.0+ geïnstalleerd wanneer u het volgende aan **Gradle Scripts** > **build.gradle (Module: app)** onder **afhankelijkheden** toevoegt:
 
 ```gradle
-implementation 'com.microsoft.identity.client:msal:1.+'
+implementation 'com.microsoft.identity.client:msal:2.+'
 ```
 
 U kunt dit zien in het voorbeeldproject in build.gradle (Module: app):
@@ -119,7 +119,7 @@ U kunt dit zien in het voorbeeldproject in build.gradle (Module: app):
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.+'
+    implementation 'com.microsoft.identity.client:msal:2.+'
     ...
 }
 ```

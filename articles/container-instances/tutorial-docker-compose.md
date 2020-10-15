@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: ''
 ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708254"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Zelfstudie: Een groep met meerdere containers implementeren met behulp van Docker Compose 
@@ -212,7 +212,7 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 Als u de actieve toepassing in de cloud wilt zien, voert u het weergegeven IP-adres in een lokale webbrowser in. In dit voorbeeld voert u `52.179.23.131` in. De voorbeeldtoepassing wordt dan geladen, zoals wordt weergegeven in het volgende voorbeeld:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Installatiekopie van stem-app in ACI":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Installatiekopie van stem-app":::
 
 Als u de logboeken van de front-endcontainer wilt weergeven, voert u de opdracht [docker logs](https://docs.docker.com/engine/reference/commandline/logs) uit. Bijvoorbeeld:
 

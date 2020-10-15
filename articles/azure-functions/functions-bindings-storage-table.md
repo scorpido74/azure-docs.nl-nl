@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 50706e1b525a3e3a39701ef2135d44c02c35077e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70329d07a9966a5cbdafcd64000470c4edcbca9e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181133"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072047"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
 
@@ -273,8 +273,8 @@ public class Person : TableEntity
 ```
 
 ```csharp
-#r "Microsoft.Azure.Cosmos"
-using Microsoft.Azure.Cosmos.Table;
+#r "Microsoft.WindowsAzure.Storage"
+using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -575,11 +575,11 @@ De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen di
 
 * **Eén rij in**
 
-  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
+  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *function.json*. `T` is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
 
 * **Een of meer rijen lezen**
 
-  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
+  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *function.json*. `T` moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
 
   > [!NOTE]
   > `IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
@@ -588,11 +588,11 @@ De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen di
 
 * **Eén rij in**
 
-  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
+  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *function.json*. `T` is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
 
 * **Een of meer rijen lezen**
 
-  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
+  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *function.json*. `T` moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
 
   > [!NOTE]
   > `IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
@@ -914,7 +914,7 @@ public static MyPoco TableOutput(
 }
 ```
 
-Zie [output-C#-](#output)voor beeld voor een volledig voor beeld.
+Zie [Uitvoer: C#-voorbeeld](#output) voor een volledig voorbeeld.
 
 U kunt het- `StorageAccount` kenmerk gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie [invoer kenmerken](#input---attributes-and-annotations)voor meer informatie.
 
@@ -970,15 +970,15 @@ U kunt ook een `CloudTable` methode parameter gebruiken om naar de tabel te schr
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken `context.bindings.<name>` `<name>` van de waarde die is opgegeven in de `name` eigenschap van *function.jsop*.
+Open de uitvoergebeurtenis met behulp van `context.bindings.<name>` waarbij `<name>` de waarde is die is opgegeven voor de eigenschap `name` van *function.json*.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Er zijn twee opties voor het uitvoeren van een tabelrij bericht in tabel opslag van een functie:
 
-- **Retour waarde**: Stel de `name` eigenschap in *function.jsin op* aan `$return` . Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als tabelrij.
+- **Retourwaarde**: stel de eigenschap `name` in *function. json* in op `$return`. Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als tabelrij.
 
-- Verplicht **: Geef**een waarde door aan de methode [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) van de para meter die is gedeclareerd als een [out](/python/api/azure-functions/azure.functions.out?view=azure-python) -type. De waarde die is door gegeven aan `set` , wordt persistent gemaakt als een event hub-bericht.
+- **Imperatief**: geef een waarde door aan de methode [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) voor de parameter die is gedeclareerd als een type [Out](/python/api/azure-functions/azure.functions.out?view=azure-python). De waarde die aan `set` is doorgegeven, wordt persistent gemaakt als een Event Hub-bericht.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -990,9 +990,9 @@ Er zijn twee opties voor het uitvoeren van een rij in een tabel opslag van een f
 
 ---
 
-## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
+## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
 
-| Binding | Naslaginformatie |
+| Binding | Referentie |
 |---|---|
 | Tabel | [Fout codes voor tabellen](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tabel, wachtrij | [Opslag fout codes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

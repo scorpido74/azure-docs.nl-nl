@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056163"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072302"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
@@ -73,6 +73,8 @@ In het volgende voor beeld ziet u het schema van een gebeurtenis die is verbonde
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>Telemetrie-schema van apparaat
 
@@ -163,6 +165,10 @@ In het volgende voor beeld ziet u het schema van een gebeurtenis die is gemaakt 
   "metadataVersion": "1"
 }]
 ```
+
+
+> [!WARNING]
+> *Dubbele gegevens* die zijn gekoppeld aan een gebeurtenis voor het maken van een apparaat, zijn een standaard configuratie en *mogen* niet worden vertrouwd op `authenticationType` basis van de werkelijke en andere apparaateigenschappen in een nieuw apparaat. Voor `authenticationType` en andere apparaateigenschappen in een nieuw apparaat gebruikt u de API voor registreren in azure IOT sdk's.
 
 Zie [Azure Event grid-gebeurtenis schema voor IOT hub](../event-grid/event-schema-iot-hub.md)voor een gedetailleerde beschrijving van elke eigenschap.
 

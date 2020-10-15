@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282020"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071486"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC kluis Certificate Management-service bouwen en implementeren
 
@@ -31,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service
 
 De bewerking voor het maken en implementeren van het pakket is momenteel beperkt tot Windows.
 De voor beelden zijn allemaal geschreven voor C# .NET Standard, die u nodig hebt om de service en voor beelden te maken voor implementatie.
-Alle hulpprogram ma's die u nodig hebt voor .NET Standard, worden geleverd met de .NET core-hulpprogram ma's. Zie [aan de slag met .net core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+Alle hulpprogram ma's die u nodig hebt voor .NET Standard, worden geleverd met de .NET core-hulpprogram ma's. Zie [aan de slag met .net core](/dotnet/articles/core/getting-started).
 
 1. [Installeer .net Core 2.1 +][dotnet-install].
 2. [Installeer docker][docker-url] (optioneel, alleen als de lokale docker-build is vereist).
