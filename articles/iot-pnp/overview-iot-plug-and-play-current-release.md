@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4bd1bb93c9ce0f491c5bf1153917491b88d55109
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c7ebcdac3174f7eb497ae3e976386ab92212e1ba
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043711"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715561"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Wat er in de huidige IoT Plug en Play-versie is opgenomen
 
@@ -41,7 +41,10 @@ Zie [Conventies voor IoT Plug en Play](concepts-convention.md) voor meer informa
 
 - Azure CLI IoT-extensie 0.10.0.
 
-    De Azure IoT-extensie bevat opdrachten waarmee u apparaten kunt certificeren. Zie `az iot product -h`.
+    Zie [De Azure IoT-extensie voor de Azure CLI installeren en gebruiken](howto-use-iot-pnp-cli.md) voor meer informatie.
+
+    > [!TIP]
+    > De Azure IoT-extensie bevat opdrachten waarmee u apparaten kunt certificeren. Zie `az iot product -h`.
 
 ## <a name="libraries-and-sdks"></a>Bibliotheken en SDK's
 
@@ -61,7 +64,7 @@ Zie [Microsoft SDK's voor IoT Plug en Play](libraries-sdks.md) voor meer informa
 
 ## <a name="rest-apis"></a>REST-API’s
 
-REST API [2020-09-30](/rest/api/iothub).
+REST API [2020-09-30](https://docs.microsoft.com/rest/api/iothub).
 
 Zie [IoT Plug en Play-ontwikkelaarshandleiding](concepts-developer-guide-service.md) voor meer informatie.
 
