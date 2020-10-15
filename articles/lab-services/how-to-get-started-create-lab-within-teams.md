@@ -1,16 +1,16 @@
 ---
-title: Aan de slag en een Azure Lab Services Lab maken op basis van teams
-description: Meer informatie over hoe u aan de slag kunt gaan en een Azure Lab Services lab kunt maken op basis van teams.
+title: Aan de slag en een Azure Lab Services Lab maken in teams
+description: Meer informatie over hoe u aan de slag kunt gaan en een Azure Lab Services Lab maakt in teams.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 0604e2934ff6b011acfa9dd4a4b25fa58193e69b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044442"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092134"
 ---
-# <a name="get-started-and-create-a-lab-services-lab-from-teams"></a>Aan de slag en een Lab-service Lab maken op basis van teams
+# <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Aan de slag en een Lab-service Lab maken in teams
 
 In dit artikel wordt beschreven hoe u de **Azure Lab Services** -app toevoegt aan een team en hoe u een Lab maakt in een omgeving met MS-teams.
 
@@ -34,40 +34,38 @@ Als eigenaar van een team kunt u **Azure Lab Services** app rechtstreeks toevoeg
 
     > [!NOTE]
     > Alleen team **eigenaren** kunnen Labs maken voor het team.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/add.png" alt-text="Een tabblad toevoegen":::
 1. Selecteer een Lab Services-account, dat u wilt gebruiken voor het maken van klassikale Labs in dit team. 
 
     Azure Lab Services maakt gebruik van eenmalige aanmelding in de [Azure Lab Services-website](https://labs.azure.com) en haalt alle Lab-accounts op waartoe u toegang hebt. 
 
     De accounts die zich in dezelfde Tenant bevinden als teams en waarvoor u de toegang **eigenaar**, **bijdrager**of **Maker** hebt, worden weer gegeven. 
 
-   ![Welkom bij als](./media/integrate-with-teams/welcome.png) 
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Een tabblad toevoegen":::
 1. Druk op **Opslaan** en het tabblad wordt toegevoegd aan het kanaal.
 
-    Nu kunt u het tabblad **Azure Lab Services** selecteren vanuit uw kanaal en de laboratoria beheren zoals beschreven in de volgende stap.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Een tabblad toevoegen":::
+
+    Nu kunt u het tabblad **Azure Lab Services** selecteren vanuit uw kanaal en de laboratoria beheren, zoals beschreven in de volgende artikelen.
 
 Nadat het lab-account is geselecteerd, kunnen team eigenaren Labs maken voor het team. Het hele Lab wordt gemaakt en alle taken op het niveau van de test omgeving kunnen worden uitgevoerd binnen teams. Gebruikers hebben de mogelijkheid om meerdere Labs te maken binnen hetzelfde team en de team eigenaar, met de juiste toegang op het niveau van het account Lab, maar alleen de laboratoria die aan het specifieke team zijn gekoppeld.
-
-## <a name="deleting-classroom-labs"></a>Klassikale Labs verwijderen
-
-Een lab dat is gemaakt in teams kan worden verwijderd op de website van de [test services](https://labs.azure.com) door het lab rechtstreeks te verwijderen, zoals wordt beschreven in [klassikale labs beheren in Azure Lab Services](how-to-manage-classroom-labs.md). 
-
-Het verwijderen van het lab wordt ook geactiveerd wanneer het team wordt verwijderd. Als het team waarin het lab is gemaakt wordt verwijderd, wordt het lab automatisch 24 uur na de synchronisatie van de automatische gebruikers lijst geactiveerd. 
-
-Als u het tabblad verwijdert of de app verwijdert, wordt het lab niet verwijderd. Als het tabblad wordt verwijderd, hebben gebruikers in de lijst team lidmaatschap nog steeds toegang tot de virtuele machines op de [website van de test services](https://labs.azure.com) , tenzij het verwijderen van het lab expliciet wordt geactiveerd door het lab op de website te verwijderen of het team te verwijderen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Wanneer een lab in teams wordt gemaakt, wordt de gebruikers lijst in de test omgeving automatisch ingevuld en gesynchroniseerd met het team lidmaatschap. Iedereen in het team, met inbegrip van eigen aren, leden en gasten, wordt automatisch toegevoegd aan de gebruikers lijst van de test omgeving. Azure Lab-Services behouden een synchronisatie met het team lidmaatschap en een automatische synchronisatie wordt elke 24 uur geactiveerd. Zie deze artikelen voor meer informatie:
 
-[Gebruikers lijsten van Lab-Services beheren vanuit teams](how-to-manage-user-lists-within-teams.md)
+[Gebruikers lijsten van Lab-Services beheren in teams](how-to-manage-user-lists-within-teams.md)
 
 ### <a name="see-also"></a>Zie ook
 
 Zie ook de volgende artikelen:
 
 - [Overzicht van het gebruik van Azure Lab Services in teams](lab-services-within-teams-overview.md)
-- [Test gebruikers lijsten in teams beheren](how-to-manage-user-lists-within-teams.md)
 - [De VM-groep van het lab in teams beheren](how-to-manage-vm-pool-within-teams.md)
 - [Lab-schema's maken en beheren in teams](how-to-create-schedules-within-teams.md)
 - [Toegang tot een virtuele machine in teams – student View](how-to-access-vm-for-students-within-teams.md)
-
+- [Laboratoria verwijderen in teams](how-to-delete-lab-within-teams.md)

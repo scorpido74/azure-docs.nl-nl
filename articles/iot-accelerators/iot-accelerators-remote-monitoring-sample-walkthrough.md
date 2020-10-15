@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9477b11b52431211dc91a0ea6ff0767a9d495be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546319"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073594"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Overzicht van de verbetering voor de externe bewakingsoplossing
 
@@ -106,7 +106,7 @@ De service biedt een REST-eind punt voor ruwe bewerkingen op sleutel-waardeparen
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Implementaties van oplossings versneller gebruiken [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) om regels, waarschuwingen, configuratie-instellingen en alle andere koude opslag op te slaan.
+Implementaties van oplossings versneller gebruiken [Azure Cosmos DB](../cosmos-db/index.yml) om regels, waarschuwingen, configuratie-instellingen en alle andere koude opslag op te slaan.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Micro service Azure Stream Analytics Manager
 
@@ -120,11 +120,11 @@ De ASA-taken leveren de telemetrie van de verbonden apparaten om te Time Series 
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-[Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) is een engine voor gebeurtenis verwerking waarmee u grote hoeveel heden gegevens stromen van apparaten kunt controleren.
+[Azure stream Analytics](../stream-analytics/index.yml) is een engine voor gebeurtenis verwerking waarmee u grote hoeveel heden gegevens stromen van apparaten kunt controleren.
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-[Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/) slaat de telemetrie op van de apparaten die zijn verbonden met de oplossings versneller. Daarnaast kunt u met deze functie telemetrie van apparaten visualiseren en query's uitvoeren in de webgebruikersinterface van de oplossing.
+[Azure time series Insights](../time-series-insights/index.yml) slaat de telemetrie op van de apparaten die zijn verbonden met de oplossings versneller. Daarnaast kunt u met deze functie telemetrie van apparaten visualiseren en query's uitvoeren in de webgebruikersinterface van de oplossing.
 
 ### <a name="configuration-microservice"></a>Micro service configureren
 
@@ -136,7 +136,7 @@ De micro [service verificatie en autorisatie](https://github.com/Azure/remote-mo
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Implementaties van oplossings versnelling gebruiken [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) als een OpenID Connect Connect-provider. Azure Active Directory gebruikers gegevens opslaat en certificaten biedt om JWT-token handtekeningen te valideren.
+Implementaties van oplossings versnelling gebruiken [Azure Active Directory](../active-directory/index.yml) als een OpenID Connect Connect-provider. Azure Active Directory gebruikers gegevens opslaat en certificaten biedt om JWT-token handtekeningen te valideren.
 
 ## <a name="presentation"></a>Stijl
 

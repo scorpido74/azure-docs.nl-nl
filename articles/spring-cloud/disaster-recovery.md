@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892549"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092899"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Herstel na nood geval in de cloud van Azure lente
 
@@ -50,7 +50,7 @@ U hebt twee service-exemplaren van Azure lente-Cloud geïmplementeerd in twee ve
 
 2. Aangepast domein voor service instellen Volg [aangepast domein document](spring-cloud-tutorial-custom-domain.md) voor het instellen van een aangepast domein voor deze twee bestaande service-exemplaren. Nadat de installatie is voltooid, worden beide service-exemplaren gebonden aan het aangepaste domein: bcdr-test.contoso.com
 
-3. Een Traffic Manager en twee eind punten maken: [Maak een Traffic Manager profiel met behulp van de Azure Portal](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+3. Een Traffic Manager en twee eind punten maken: [Maak een Traffic Manager profiel met behulp van de Azure Portal](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 Dit is het Traffic Manager-profiel:
 * Traffic Manager DNS-naam: `http://asc-bcdr.trafficmanager.net`
@@ -68,4 +68,3 @@ Dit is het Traffic Manager-profiel:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Snelstart: Uw eerste Azure Spring Cloud-toepassing implementeren](spring-cloud-quickstart.md)
- 

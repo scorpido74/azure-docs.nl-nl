@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906957"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093970"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure lente Cloud CI/CD met GitHub-acties
 
 GitHub-acties ondersteunen een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling. Met GitHub-acties voor Azure lente-Cloud kunt u werk stromen maken in uw opslag plaats voor het bouwen, testen, inpakken, vrijgeven en implementeren van implementatie naar Azure. 
 
 ## <a name="prerequisites"></a>Vereisten
-In dit voor beeld is de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)vereist.
+In dit voor beeld is de [Azure cli](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)vereist.
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub-opslag plaats en verificatie instellen
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Implementeren met maven-invoeg toepassing
-Een andere mogelijkheid is om de [maven-invoeg toepassing](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) te gebruiken voor het implementeren van het jar en het bijwerken van de app-instellingen. De opdracht `mvn azure-spring-cloud:deploy` is idempotent en maakt zo nodig automatisch apps. U hoeft niet vooraf bijbehorende apps te maken.
+Een andere mogelijkheid is om de [maven-invoeg toepassing](./spring-cloud-quickstart.md) te gebruiken voor het implementeren van het jar en het bijwerken van de app-instellingen. De opdracht `mvn azure-spring-cloud:deploy` is idempotent en maakt zo nodig automatisch apps. U hoeft niet vooraf bijbehorende apps te maken.
 
 ```
 name: AzureSpringCloud
@@ -340,5 +340,5 @@ Als uw actie in een fout wordt uitgevoerd, bijvoorbeeld als u de Azure-referenti
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Key Vault voor GitHub acties voor lente-Cloud](./spring-cloud-github-actions-key-vault.md)
-* [Service-principals Azure Active Directory](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
+* [Service-principals Azure Active Directory](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [GitHub-acties voor Azure](https://github.com/Azure/actions/)

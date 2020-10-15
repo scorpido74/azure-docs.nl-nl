@@ -3,12 +3,12 @@ title: Overzicht van beveiligings functies
 description: Meer informatie over de beveiligings mogelijkheden in Azure Backup waarmee u uw back-upgegevens kunt beschermen en voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012548"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093341"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
 
@@ -16,7 +16,7 @@ Een van de belangrijkste stappen die u kunt nemen om uw gegevens te beschermen, 
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Beheer en controle van identiteits-en gebruikers toegang
 
-Opslag accounts die worden gebruikt door Recovery Services kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen. Met Azure Backup kunt u de beheerde bewerkingen beheren door middel van verfijnde toegang met behulp [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](./backup-rbac-rs-vault.md). Met RBAC kunt u taken in uw team gescheiden houden en alleen de hoeveelheid toegang verlenen die nodig is voor het uitvoeren van hun taken.
+Opslag accounts die worden gebruikt door Recovery Services kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen. Met Azure Backup kunt u de beheerde bewerkingen beheren door middel van verfijnde toegang met behulp [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](./backup-rbac-rs-vault.md). Met Azure RBAC kunt u taken binnen uw team gescheiden houden en alleen de hoeveelheid toegang verlenen aan gebruikers die nodig zijn om hun taken uit te voeren.
 
 Azure Backup biedt drie [ingebouwde rollen](../role-based-access-control/built-in-roles.md) voor het beheren van bewerkingen voor het beheer van back-ups:
 
@@ -24,7 +24,7 @@ Azure Backup biedt drie [ingebouwde rollen](../role-based-access-control/built-i
 * Back-upoperator: alles wat een bijdrager is behalve back-ups verwijderen en back-upbeleid beheren
 * Back-uplezer: machtigingen voor het weer geven van alle bewerkingen voor back-upbeheer
 
-Meer informatie over op [rollen gebaseerd toegangs beheer voor het beheren van Azure backup](./backup-rbac-rs-vault.md).
+Meer informatie over [toegangs beheer op basis van rollen voor Azure om Azure backup te beheren](./backup-rbac-rs-vault.md).
 
 Azure Backup heeft verschillende beveiligings mechanismen die zijn ingebouwd in de service om beveiligings problemen te voor komen, te detecteren en op te lossen. Meer informatie over [beveiligings controles voor Azure backup](./backup-security-controls.md).
 

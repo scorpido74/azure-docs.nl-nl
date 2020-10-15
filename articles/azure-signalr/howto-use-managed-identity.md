@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559403"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094072"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Beheerde identiteiten voor de Azure signalerings service
 
@@ -65,7 +65,7 @@ De Azure signalerings service is een volledig beheerde service. u kunt dus geen 
     - [Resource-ID van een Azure-service](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > Als u een toegangs token door uzelf in uw service valideert, kunt u een van de resource-indelingen kiezen. Zorg ervoor dat de **bron** waarde in **verificatie** -instellingen en de validatie consistent zijn. Als u gebruikmaakt van op rollen gebaseerd toegangs beheer (RBAC) voor een gegevenslaag, moet u de resource gebruiken die door de service provider wordt aangevraagd.
+    > Als u een toegangs token door uzelf in uw service valideert, kunt u een van de resource-indelingen kiezen. Zorg ervoor dat de **bron** waarde in **verificatie** -instellingen en de validatie consistent zijn. Als u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt voor een gegevenslaag, moet u de resource gebruiken die door de service provider wordt aangevraagd.
 
 ### <a name="validate-access-tokens"></a>Toegangs tokens valideren
 

@@ -8,19 +8,19 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: df59d944a15e22e9884b0d177deedb9968ea1aef
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994981"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072761"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
 Met Key Vault kunt u veilig toegang krijgen tot gevoelige informatie in uw toepassingen:
 
 - Sleutels, geheimen en certificaten zijn beveiligd zonder dat u zelf de code hoeft te schrijven en u kunt deze eenvoudig gebruiken vanuit uw toepassingen.
-- U kunt ervoor zorgen dat klanten hun eigen sleutels, geheimen en certificaten kunnen beheren, zodat u zich op de kern functies van de software kan concentreren. Op deze manier zijn uw toepassingen niet verantwoordelijk voor de verantwoordelijkheid of de mogelijke aansprakelijkheid voor de Tenant sleutels, geheimen en certificaten van uw klanten.
+- U kunt klanten toestaan hun eigen sleutels, geheimen en certificaten te beheren, zodat u zich op de basis van de functies voor de software van de kern kan concentreren. Op deze manier zijn uw toepassingen niet verantwoordelijk voor de verantwoordelijkheid of de mogelijke aansprakelijkheid voor de Tenant sleutels, geheimen en certificaten van uw klanten.
 - Uw toepassing kan gebruikmaken van sleutels voor ondertekening en versleuteling, maar blijft het sleutel beheer extern vanuit uw toepassing. Zie [about Keys](../keys/about-keys.md) (Engelstalig) voor meer informatie over sleutels
 - U kunt referenties, zoals wacht woorden, toegangs sleutels en SAS-tokens die deze opslaan in Key Vault als geheimen beheren, Zie [over geheimen](../secrets/about-secrets.md)
 - Certificaten beheren. Zie [over certificaten](../certificates/about-certificates.md) voor meer informatie.
