@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995838"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122200"
 ---
 # <a name="confidential-containers"></a>Vertrouwelijke containers
 
@@ -67,7 +67,7 @@ Scone-implementaties op vertrouwelijke computing knooppunten met AKS worden voll
 
 ### <a name="anjuna"></a>Anjuna
 
-[Anjuna](https://www.anjuna.io/) biedt software voor SGX-platforms waarmee u ongewijzigde containers kunt uitvoeren op AKS. Lees [hier](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)meer over de **aanstaande** functionaliteit en de gebruikers stroom.
+[Anjuna](https://www.anjuna.io/) biedt software voor SGX-platforms waarmee u ongewijzigde containers kunt uitvoeren op AKS. Meer informatie over de functionaliteit en Bekijk [hier](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)de voorbeeld toepassingen.
 
 Ga [hier](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp) aan de slag met een voor beeld-redis cache en een aangepaste python-toepassing
 

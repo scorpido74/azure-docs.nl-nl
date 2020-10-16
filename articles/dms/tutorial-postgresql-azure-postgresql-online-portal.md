@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 1f8f7c4ea051ff583b3e8f88e0331642cdf9f19a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e424d41a7b4c1d9394e789c60b60a6fa86a69c5
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291537"
+ms.locfileid: "91893778"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Zelfstudie: PostgreSQL online migreren naar Azure DB for PostgreSQL met behulp van DMS en de Azure-portal
 
@@ -281,7 +281,7 @@ Nadat de eerste volledige lading is voltooid, worden de databases gemarkeerd als
 
     ![Scherm Cutover voltooien](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Wanneer de databasemigratie de status **Voltooid** heeft, verbindt u uw toepassingen met het nieuwe doelexemplaar van Azure Database for PostgreSQL.
+3. Wanneer de databasemigratie de status **Voltooid** heeft, [maakt u de reeksen opnieuw](https://wiki.postgresql.org/wiki/Fixing_Sequences) (indien van toepassing) en verbindt u uw toepassingen met de nieuwe doelinstantie van Azure Database for PostgreSQL.
 
 ## <a name="next-steps"></a>Volgende stappen
 

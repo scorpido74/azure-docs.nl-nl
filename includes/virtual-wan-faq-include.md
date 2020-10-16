@@ -8,13 +8,17 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89570173"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91859688"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Is Azure Virtual WAN algemeen beschikbaar?
+
+Ja, Azure Virtual WAN is algemeen beschikbaar. Virtual WAN bestaat echter uit verschillende functies en scenario's. Er zijn functies of scenario's in Virtual WAN waarop Microsoft de tag Preview toepast. In dergelijke gevallen is de specifieke functie of het scenario zelf een preview-versie. Als u geen specifieke preview-functie gebruikt, is sprake van normale algemene beschikbaarheid. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over de ondersteuning van preview-versies.
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker over hub en spoke beschikken met SD-WAN/VPN-apparaten om Azure Virtual WAN te kunnen gebruiken?
 
 Virtual WAN biedt tal van functies die zijn ingebouwd in één onderdeel, zoals site-/site-naar-site-VPN-connectiviteit, gebruikers-/P2S-connectiviteit, ExpressRoute-connectiviteit, Virtual Network-connectiviteit, VPN ExpressRoute-interconnectiviteit, transitieve VNet-naar-VNet-connectiviteit, gecentraliseerde routering, Azure Firewall en Firewall Manager-beveiliging, bewaking, ExpressRoute-versleuteling en vele andere mogelijkheden. U hoeft niet al deze use-cases te hebben om Virtual WAN te gaan gebruiken. U kunt aan de slag met slechts één use-case. De Virtual WAN-architectuur is een hub- en spoke-architectuur met schaal en prestaties ingebouwd waarbij vertakkingen (VPN-/SD-WAN-apparaten), gebruikers (Azure VPN-clients, OpenVPN of IKEv2-clients), ExpressRoute-circuits en virtuele netwerken als spokes fungeren voor virtuele hubs. Alle hubs zijn verbonden in full mesh in een standaard virtuele WAN, waardoor de gebruiker de Microsoft-backbone eenvoudig kan gebruiken voor any-to-any-connectiviteit (elke willekeurige spoke). Voor hub en spoke met SD-WAN-/VPN-apparaten kunnen gebruikers het handmatig instellen in de Azure Virtual WAN-portal of gebruikmaken van de Azure Virtual-partner WAN CPE (SD-WAN/VPN) om connectiviteit met Azure in te stellen. Virtual WAN-partners bieden automatisering voor connectiviteit, dus de mogelijkheid om de apparaatgegevens te exporteren naar Azure, de Azure-configuratie te downloaden en verbinding te maken met de Azure Virtual WAN-hub. Voor punt-naar-site-connectiviteit of VPN-connectiviteit voor gebruikers ondersteunen we [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN of IKEv2-client. 

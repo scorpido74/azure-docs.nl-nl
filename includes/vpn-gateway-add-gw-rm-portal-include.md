@@ -1,6 +1,6 @@
 ---
 title: bestand opnemen
-description: bestand opnemen
+description: Include-bestand
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,47 +9,47 @@ ms.date: 03/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3c9dbca6a76bf0b10a83087fc31d9fa41c6bd03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78331239"
 ---
-1. Selecteer in het menu [Azure Portal](https://portal.azure.com) de optie **een resource maken**. 
+1. Selecteer **Een resource maken** in het menu van de [Azure-portal](https://portal.azure.com). 
 
-   ![Een resource maken in de Azure-portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
-2. In het veld **Marketplace doorzoeken** typt u ' Virtual Network gateway '. Zoek naar de gateway van het **virtuele netwerk** in het Zoek resultaat en selecteer de vermelding. Selecteer op de pagina **virtuele netwerk gateway** **maken**. Hiermee opent u de pagina **Gateway van het virtuele netwerk maken**.
-3. Vul op het tabblad **basis beginselen** de waarden in voor de gateway van uw virtuele netwerk.
+   ![Een resource maken in Azure Portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+2. In het veld **Marketplace doorzoeken** typt u 'gateway van virtueel netwerk'. Zoek **Gateway van virtueel netwerk** in de zoekresultaten en selecteer de vermelding. Selecteer op de pagina **Gateway van virtueel netwerk** de optie **Maken**. Hiermee opent u de pagina **Gateway van het virtuele netwerk maken**.
+3. Vul op het tabblad **Basisinformatie** de waarden in voor de gateway van het virtuele netwerk.
 
-   ![Pagina velden van een virtuele netwerk gateway maken](./media/vpn-gateway-add-gw-rm-portal-include/gateway1.png "Pagina velden van een virtuele netwerk gateway maken")
+   ![Velden op de pagina voor het maken van een gateway voor een virtueel netwerk](./media/vpn-gateway-add-gw-rm-portal-include/gateway1.png "Velden op de pagina voor het maken van een gateway voor een virtueel netwerk")
 
-   ![Pagina velden van een virtuele netwerk gateway maken](./media/vpn-gateway-add-gw-rm-portal-include/gateway2.png "Pagina velden van een virtuele netwerk gateway maken")
+   ![Velden op de pagina voor het maken van een gateway voor een virtueel netwerk](./media/vpn-gateway-add-gw-rm-portal-include/gateway2.png "Velden op de pagina voor het maken van een gateway voor een virtueel netwerk")
 
    **Projectgegevens**
 
-   - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken in de vervolg keuzelijst.
-   - **Resource groep**: deze instelling wordt ingevuld wanneer u het virtuele netwerk op deze pagina selecteert.
+   - **Abonnement**: Selecteer in de vervolgkeuzelijst het abonnement dat u wilt gebruiken.
+   - **Resourcegroep:** Deze instelling wordt automatisch ingevuld wanneer u het virtuele netwerk op deze pagina selecteert.
 
    **Exemplaardetails**
 
-   - **Naam**: naam van uw gateway. De naam van uw gateway is niet hetzelfde als de naam van een gateway-subnet. Het is de naam van het gateway-object dat u maakt.
-   - **Regio**: Selecteer de regio waarin u deze resource wilt maken. De regio voor de gateway moet hetzelfde zijn als het virtuele netwerk.
+   - **Naam**: naam van uw gateway. Een naam opgeven voor een gateway is niet hetzelfde als een naam opgeven voor een gatewaysubnet. Het is de naam van het gateway-object dat u maakt.
+   - **Regio**: Selecteer de regio waarin u deze resource wilt maken. De regio voor de gateway moet hetzelfde zijn als die voor het virtuele netwerk.
    - **Gatewaytype**: selecteer **VPN**. VPN-gateways maken gebruik van een gateway van het virtuele netwerk van het type **VPN**.
    - **VPN-type**selecteer het VPN-type dat wordt opgegeven voor uw configuratie. De meeste configuraties vereisen een op route gebaseerd VPN-type.
    - **SKU**: selecteer de gateway-SKU in de vervolgkeuzelijst. Welke SKU's worden weergegeven in de vervolgkeuzelijst, is afhankelijk van het VPN-type dat u selecteert. Zie [Gateway-SKU's](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor informatie over gateway-SKU's.
-   - **Genereren**: Zie [Gateway-sku's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het genereren van VPN gateway.
-   - **Virtueel netwerk**: Selecteer in de vervolg keuzelijst het virtuele netwerk waaraan u deze gateway wilt toevoegen.
-   - **Adres bereik van Gateway-subnet**: dit veld wordt alleen weer gegeven als uw VNet geen gateway-subnet heeft. Maak, indien mogelijk, het bereik/27 of groter (/26,/25 enz.). Het maken van een bereik dat kleiner is dan/28 wordt niet aanbevolen. Als u al een gateway-subnet hebt, kunt u GatewaySubnet-details weer geven door te navigeren naar uw virtuele netwerk. Klik op **subnetten** om het bereik weer te geven. Als u het bereik wilt wijzigen, kunt u de GatewaySubnet verwijderen en opnieuw maken.
+   - **Generatie**: Zie [Gateway-SKU's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) voor meer informatie over de generatie van VPN Gateway.
+   - **Virtueel netwerk**: Kies in de vervolgkeuzelijst het virtuele netwerk waaraan u deze gateway wilt toevoegen.
+   - **Adresbereik gatewaysubnet**: Dit veld wordt alleen weergegeven als uw VNet geen gatewaysubnet heeft. Maak, indien mogelijk, het bereik /27 of groter (/26, /25 enzovoort). Het maken van een bereik dat kleiner is dan /28 wordt afgeraden. Als u al een gatewaysubnet hebt, kunt u de gegevens van het gatewaysubnet weergeven door naar uw virtuele netwerk te navigeren. Klik op **Subnetten** om het bereik weer te geven. Als u het bereik wilt wijzigen, kunt u het gatewaysubnet verwijderen en opnieuw maken.
 
    **Openbaar IP-adres**: deze instelling geeft het object van het openbare IP-adres aan dat wordt gekoppeld aan de VPN-gateway. Het openbare IP-adres wordt dynamisch toegewezen aan dit object wanneer de VPN-gateway wordt gemaakt. Het openbare IP-adres verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het verandert niet wanneer de grootte van uw VPN Gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd.
 
-     - **Openbaar IP-adres**: verlof **nieuwe maken** geselecteerd.
-     - **Naam van openbaar IP-adres**: Typ in het tekstvak een naam voor het exemplaar van het open bare IP-adres.
-     - **Toewijzing**: VPN-gateway ondersteunt alleen dynamische.
+     - **Openbaar IP-adres**: Laat **Nieuwe maken** geselecteerd.
+     - **Openbare IP-adresnaam**: Typ in het tekstvak een naam voor het exemplaar van uw openbare IP-adres.
+     - **Toewijzing**: VPN-gateway ondersteunt alleen Dynamisch.
 
-   **Modus actief-actief**: Selecteer alleen actief **-actief modus inschakelen** als u een configuratie voor Active-Active gateway maakt. Anders selecteert u deze instelling niet.
+   **Modus actief-actief**: Selecteer **Modus actief-actief inschakelen** alleen als u een gatewayconfiguratie van het type actief-actief maakt. Anders selecteert u deze instelling niet.
 
    Selecteer **ASN van BGP configureren** niet, tenzij deze instelling voor uw configuratie specifiek vereist is. Als u deze instelling wel nodig hebt, is de ASN standaard 65515. U kunt deze waarde wijzigen.
-4. Selecteer **controleren + maken** om validatie uit te voeren. Wanneer de validatie is geslaagd, selecteert u **maken** om de VPN-gateway te implementeren. Het kan Maxi maal 45 minuten duren voordat een gateway volledig is gemaakt en geïmplementeerd. U kunt de implementatie status zien op de overzichts pagina voor uw gateway.
+4. Selecteer **Beoordelen en maken** om de validatie uit te voeren. Wanneer de validatie is geslaagd, selecteert u **Maken** om de VPN-gateway te implementeren. Het kan tot 45 minuten duren voordat een gateway volledig is gemaakt en geïmplementeerd. U kunt de implementatiestatus bekijken op de overzichtspagina van uw gateway.
 
 Nadat de gateway is aangemaakt, kunt u het IP-adres dat eraan is toegewezen bekijken door naar het virtuele netwerk in de portal te kijken. De gateway wordt weergegeven als verbonden apparaat.

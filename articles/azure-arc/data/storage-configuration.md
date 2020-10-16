@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420652a6385be2cade9723c20cff7c32a4a60b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317324"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127230"
 ---
 # <a name="storage-configuration"></a>Opslagconfiguratie
 
@@ -238,6 +238,6 @@ Voor de open bare Cloud beheerde Kubernetes Services kunnen we de volgende aanbe
 
 |Open bare Cloud service|Aanbeveling|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Azure Kubernetes service (AKS) heeft twee soorten opslag-Azure Files en Azure-schijven. Elk type opslag heeft twee prijs-en prestatie lagen: standaard (HDD) en Premium (SSD). De vier opslag klassen die in AKS zijn opgenomen `azurefile` , zijn (Azure files Standard-laag), ( `azurefile-premium` Azure files Premium-laag), (voor de laag `default` Azure-schijven) en `managed-premium` (Azure disks Premium-laag). De standaard opslag klasse is `default` (de Standard-laag van Azure disks). Er zijn aanzienlijke **[prijs verschillen](https://azure.microsoft.com/en-us/pricing/details/storage/)** tussen de typen en lagen die in uw beslissing moeten worden opgenomen. Voor werk belastingen met hoge prestaties raden we u aan `managed-premium` voor alle opslag klassen te gebruiken. Voor ontwikkel-en test werkbelastingen, het concept van concepten, enzovoort, `azurefile` is de minst dure optie. Alle vier de opties kunnen worden gebruikt voor situaties waarvoor externe, gedeelde opslag is vereist, aangezien deze allemaal network-attached storage apparaten in azure zijn. Meer informatie over [AKS-opslag](../../aks/concepts-storage.md).|
+|**Azure Kubernetes Service (AKS)**|Azure Kubernetes service (AKS) heeft twee typen opslag-Azure Files en Azure Managed Disks. Elk type opslag heeft twee prijs-en prestatie lagen: standaard (HDD) en Premium (SSD). De vier opslag klassen die in AKS zijn opgenomen `azurefile` , zijn (Azure files Standard-laag), ( `azurefile-premium` Azure files Premium-laag), (voor de laag `default` Azure-schijven) en `managed-premium` (Azure disks Premium-laag). De standaard opslag klasse is `default` (de Standard-laag van Azure disks). Er zijn aanzienlijke **[prijs verschillen](https://azure.microsoft.com/en-us/pricing/details/storage/)** tussen de typen en lagen die in uw beslissing moeten worden opgenomen. Voor werk belastingen met hoge prestaties raden we u aan `managed-premium` voor alle opslag klassen te gebruiken. Voor ontwikkel-en test werkbelastingen, het concept van concepten, enzovoort, `azurefile` is de minst dure optie. Alle vier de opties kunnen worden gebruikt voor situaties waarvoor externe, gedeelde opslag is vereist, aangezien deze allemaal network-attached storage apparaten in azure zijn. Meer informatie over [AKS-opslag](../../aks/concepts-storage.md).|
 |**AWS Elastic Kubernetes Service (EKS)**| De elastische Kubernetes-service van Amazon heeft één primaire opslag klasse, gebaseerd op het [EBS CSI-opslag stuur programma](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html). Dit wordt aanbevolen voor productie werkbelastingen. Er is een nieuw opslag stuur programma: [EFS CSI-opslag stuur programma](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) dat kan worden toegevoegd aan een EKS-cluster, maar het is momenteel in een bèta fase en kan worden gewijzigd. Hoewel AWS aangeeft dat dit opslag stuur programma wordt ondersteund voor productie, wordt het niet aanbevolen om het te gebruiken omdat het nog steeds in de bèta versie is en is onderhevig aan wijzigingen. De opslag klasse EBS is de standaard instelling en wordt aangeroepen `gp2` . Meer informatie over [EKS-opslag](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html).|
 |**Google Kubernetes Engine (GKE)**|De Google Kubernetes-Engine (GKE) heeft slechts één opslag klasse met de naam `standard` die wordt gebruikt voor [GCE permanente schijven](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk). Dit is de enige, het is ook de standaard instelling. Hoewel er een [lokale, statische volume toewijzings](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) functie is voor GKE die u kunt gebruiken met direct gekoppelde ssd's, is het niet raadzaam om deze te gebruiken omdat deze niet wordt onderhouden of wordt ondersteund door Google. Meer informatie over [GKE-opslag](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes).

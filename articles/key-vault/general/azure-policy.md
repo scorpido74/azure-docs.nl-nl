@@ -7,12 +7,12 @@ ms.date: 01/28/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef41516d516ce6498fc8c502a229084acdebfa1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586064"
+ms.locfileid: "91875513"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault integreren met Azure Policy
 
@@ -148,7 +148,10 @@ U beheert een sleutelkluis met 100 certificaten die wordt gebruikt door meerdere
 Als u een beleid met een 'deny'-effect toewijst, duurt het maximaal dertig minuten (gemiddeld) tot één uur (slechtste geval) voordat het maken van niet-compatibele resources wordt geweigerd. Bij een beleidsevaluatie van bestaande onderdelen in een kluis duurt het maximaal één uur (gemiddeld) tot twee uur (slechtste geval) voordat de compatibiliteitsresultaten zichtbaar zijn in de gebruikersinterface van de portal. Als de resultaten worden weergegeven als 'Niet gestart', kan dit de volgende oorzaken hebben:
 - De beleidsevaluatie is nog niet voltooid. In het slechtste geval duurt het maximaal twee uur voordat de eerste evaluatie is voltooid. 
 - Er bevinden zich geen sleutelkluizen binnen het bereik van de beleidstoewijzing.
-- Er bevinden zich geen sleutelkluizen met certificaten binnen het bereik van de beleidstoewijzing. 
+- Er bevinden zich geen sleutelkluizen met certificaten binnen het bereik van de beleidstoewijzing.
+
+> [!NOTE]
+> De [resourceprovidermodi](../../governance/policy/concepts/definition-structure.md#resource-provider-modes) van Azure Policy, zoals die voor Azure Key Vault, bevatten informatie over naleving op de pagina [Compatibiliteit van onderdelen](../../governance/policy/how-to/get-compliance-data.md#component-compliance).
 
 ## <a name="next-steps"></a>Volgende stappen
 

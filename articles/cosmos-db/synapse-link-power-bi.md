@@ -1,24 +1,24 @@
 ---
-title: SQL Server-Power BI en Synapse voor het analyseren van Azure Cosmos DB gegevens met Synapse-koppeling
-description: Meer informatie over het bouwen van een Synapse SQL serverloze data base en weer gaven via de Synapse-koppeling voor Azure Cosmos DB, het uitvoeren van query's op de Azure Cosmos-containers en het bouwen van een model met Power BI over die weer gaven.
+title: Power BI en serverloze Synapse SQL-groep voor het analyseren van Azure Cosmos DB gegevens met Synapse-koppeling
+description: Meer informatie over het bouwen van een serverloze Synapse SQL-groeps database en weer gaven via de Synapse-koppeling voor Azure Cosmos DB, het uitvoeren van een query op de Azure Cosmos-containers en het bouwen van een model met Power BI over die weer gaven.
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26a6ddf3ea3009c1463f40403c9d1860a7cb81f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935396"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126000"
 ---
-# <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI en Synapse SQL Server gebruiken om Azure Cosmos DB gegevens te analyseren met Synapse-koppeling (preview-versie)
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI en serverloze Synapse SQL-groep gebruiken om Azure Cosmos DB gegevens te analyseren met Synapse-koppeling (preview-versie) 
 
-In dit artikel leert u hoe u een Synapse SQL Server (dat, voorheen een **SQL on-demand**-data base genoemd) kunt bouwen voor Azure Cosmos db. U voert een query uit op de Azure Cosmos-containers en bouwt vervolgens een model met Power BI over die weer gaven om die query weer te geven.
+In dit artikel leert u hoe u een SQL-groep zonder server kunt bouwen (die voorheen **SQL on-demand**-data base werd genoemd) en weer gaven via de Synapse-koppeling voor Azure Cosmos db. U voert een query uit op de Azure Cosmos-containers en bouwt vervolgens een model met Power BI over die weer gaven om die query weer te geven.
 
 > [!NOTE]
-> Het gebruik van het Azure Cosmos DB analytic-archief met Synapse SQL Server is momenteel onder gated preview. Neem contact op met het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com)om toegang aan te vragen.
+> Het gebruik van het Azure Cosmos DB analytic-archief met een serverloze SQL-groep bevindt zich momenteel onder gated preview. Neem contact op met het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com)om toegang aan te vragen.
 
 In dit scenario gebruikt u dummy gegevens over de verkoop van Surface-producten in een Retail Store van partners. U gaat de omzet per winkel analyseren op basis van de nabijheid van grote gezinnen en de impact van de reclame voor een specifieke week. In dit artikel maakt u twee weer gaven met de naam **RetailSales** en **StoreDemographics** en een query ertussen. U kunt de voorbeeld product gegevens ophalen uit deze [github](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) opslag plaats.
 
@@ -40,11 +40,11 @@ Zorg ervoor dat u de volgende resources maakt voordat u begint:
 
 ## <a name="create-a-database-and-views"></a>Een Data Base en weer gaven maken
 
-Ga in de werk ruimte Synapse naar het tabblad **ontwikkelen** en selecteer in het **+** pictogram **SQL-script**.
+Ga in de Synapse-werk ruimte naar het tabblad **ontwikkelen** , selecteer het **+** pictogram en selecteer **SQL-script**.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Een SQL-script toevoegen aan de Synapse Analytics-werk ruimte":::
 
-Elke werk ruimte wordt geleverd met een Synapse SQL Server zonder eind punt. Nadat u een SQL-script hebt gemaakt, gaat u vanuit de werk balk aan de bovenkant verbinding maken met **SQL op aanvraag**.
+Elke werk ruimte wordt geleverd met een serverloos SQL-eind punt. Nadat u een SQL-script hebt gemaakt, gaat u vanuit de werk balk aan de bovenkant verbinding maken met **SQL op aanvraag**.
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Een SQL-script toevoegen aan de Synapse Analytics-werk ruimte":::
 
@@ -55,7 +55,7 @@ Maak een nieuwe Data Base met de naam **RetailCosmosDB**en een SQL-weer gave ove
 Create database RetailCosmosDB
 ```
 
-Maak vervolgens meerdere weer gaven in verschillende Synapse-koppelingen die zijn ingeschakeld voor Azure Cosmos-containers. Zo kunt u T-SQL gebruiken om lid te worden van en query's uitvoeren op Azure Cosmos DB gegevens in verschillende containers.  Zorg ervoor dat u de **RetailCosmosDB** -data base selecteert bij het maken van de weer gaven.
+Maak vervolgens meerdere weer gaven in verschillende Synapse-koppelingen die zijn ingeschakeld voor Azure Cosmos-containers. Met weer gaven kunt u T-SQL gebruiken om lid te worden van en query's uitvoeren op Azure Cosmos DB gegevens in verschillende containers.  Zorg ervoor dat u de **RetailCosmosDB** -data base selecteert bij het maken van de weer gaven.
 
 De volgende scripts laten zien hoe u weer gaven maakt voor elke container. Voor eenvoud gebruiken we de functie [automatische schema](analytical-store-introduction.md#analytical-schema) dematen van Synapse SQL serverloos via Synapse-koppeling ingeschakelde containers:
 
@@ -110,7 +110,7 @@ Selecteer **uitvoeren** die de volgende tabel als resultaat geeft:
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Model weergaven via containers met Power BI
 
-Open vervolgens het Power BI bureau blad en maak verbinding met het Synapse SQL serverloze eind punt met behulp van de volgende stappen:
+Open vervolgens het Power BI bureau blad en maak verbinding met het serverloze SQL-eind punt met behulp van de volgende stappen:
 
 1. Open de Power BI Desktop-toepassing. Selecteer **gegevens ophalen** en selecteer **meer**.
 
@@ -128,7 +128,7 @@ Open vervolgens het Power BI bureau blad en maak verbinding met het Synapse SQL 
 
 1. Sleep de kolom **StoreID** van de weer gave **RetailSales** naar de kolom **StoreID** in de weer gave **StoreDemographics** .
 
-1. Selecteer veel-op-een (*: 1) relatie omdat er meerdere rijen met dezelfde archief-ID in de **RetailSales** -weer gave zijn, maar de **StoreDemographics** slechts één rij Store ID heeft (het is een dimensie tabel)
+1. Selecteer de relatie veel op één (*: 1) omdat er meerdere rijen met dezelfde archief-ID zijn in de weer gave **RetailSales** . **StoreDemographics** heeft slechts één Store ID-rij (het is een dimensie tabel).
 
 Ga nu naar het **rapport** venster en maak een rapport om het relatieve belang van de huishoud grootte te vergelijken met de gemiddelde omzet per opslag op basis van de verstrooide weer gave van omzet-en LargeHH-index:
 
@@ -145,4 +145,4 @@ Nadat u deze opties hebt gekozen, ziet u een grafiek zoals in de volgende scherm
 
 ## <a name="next-steps"></a>Volgende stappen
 
-SQL Server-Synapse gebruiken om [Azure open gegevens sets te analyseren en de resultaten te visualiseren in azure Synapse Studio](../synapse-analytics/sql/tutorial-data-analyst.md)
+Een serverloze Synapse SQL-groep gebruiken voor [het analyseren van Azure open gegevens sets en het visualiseren van de resultaten in azure Synapse Studio](../synapse-analytics/sql/tutorial-data-analyst.md)

@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e261e8d5d9cd147f3157303b7a2a50db7c33e58
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660127"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123042"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure IoT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks
 
-In deze hand leiding wordt uitgelegd hoe u, als oplossings ontwikkelaar, uw IoT Central-toepassing kunt uitbreiden met aangepaste analyses en visualisaties. In het voor beeld wordt een [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) -werk ruimte gebruikt voor het analyseren van de IOT Central telemetrische stroom en voor het genereren van visualisaties zoals [box plots](https://wikipedia.org/wiki/Box_plot).
+In deze hand leiding wordt uitgelegd hoe u, als oplossings ontwikkelaar, uw IoT Central-toepassing kunt uitbreiden met aangepaste analyses en visualisaties. In het voor beeld wordt een [Azure Databricks](/azure/azure-databricks/) -werk ruimte gebruikt voor het analyseren van de IOT Central telemetrische stroom en voor het genereren van visualisaties zoals [box plots](https://wikipedia.org/wiki/Box_plot).
 
 In deze hand leiding wordt uitgelegd hoe u IoT Central uitbreidt dan wat u al kunt doen met de [ingebouwde analyse hulpprogramma's](./howto-create-custom-analytics.md).
 
@@ -33,7 +33,7 @@ Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-ab
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-### <a name="iot-central-application"></a>IoT Central toepassing
+### <a name="iot-central-application"></a>IoT Central-toepassing
 
 Maak een IoT Central-toepassing op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) met de volgende instellingen:
 

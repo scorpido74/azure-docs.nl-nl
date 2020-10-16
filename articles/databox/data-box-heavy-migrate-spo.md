@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396855"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127111"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>De Azure Data Box Heavy gebruiken om de inhoud van de bestands share te migreren naar share point online
 
@@ -21,9 +21,9 @@ Gebruik uw Azure Data Box Heavy en het hulp programma voor migratie van share po
 
 De Microsoft Azure Data Box is een service waarmee u een apparaat vanuit de Microsoft Azure-portal kunt best Ellen. U kunt vervolgens terabytes aan gegevens van uw servers naar het apparaat kopiëren. Nadat het is teruggestuurd naar micro soft, worden uw gegevens naar Azure gekopieerd. Afhankelijk van de grootte van de gegevens die u wilt overdragen, kunt u kiezen uit:
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) met 35-TB bruikbare capaciteit per bestelling voor kleine tot middel grote gegevens sets.
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) met 80-TB bruikbare capaciteit per apparaat voor gemiddeld tot grote gegevens sets.
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) met 770-TB bruikbare capaciteit per apparaat voor grote gegevens sets.
+- [Data Box Disk](./data-box-disk-overview.md) met 35-TB bruikbare capaciteit per bestelling voor kleine tot middel grote gegevens sets.
+- [Data Box](./data-box-overview.md) met 80-TB bruikbare capaciteit per apparaat voor gemiddeld tot grote gegevens sets.
+- [Data Box Heavy](./data-box-heavy-overview.md) met 770-TB bruikbare capaciteit per apparaat voor grote gegevens sets.
 
 In dit artikel wordt uitgelegd hoe u de Data Box Heavy kunt gebruiken om de bestands share-inhoud naar share point online te migreren.
 
@@ -37,7 +37,7 @@ In dit artikel wordt uitgelegd hoe u de Data Box Heavy kunt gebruiken om de best
 
 ### <a name="for-sharepoint-online"></a>Voor share point online
 
-- Bekijk de [minimale vereisten voor het hulp programma voor migratie van share point (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+- Bekijk de [minimale vereisten voor het hulp programma voor migratie van share point (SPMT)](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 ## <a name="workflow-overview"></a>Overzicht werk stroom
 
@@ -84,7 +84,7 @@ Voor de beste prestaties en connectiviteit wordt u aangeraden een virtuele Azure
 3. [Down load het hulp programma voor migratie van share point](https://spmtreleasescus.blob.core.windows.net/install/default.htm) en installeer het op uw virtuele Azure-machine.
 4. Start het hulp programma voor migratie van share point. Klik op aanmelden en voer de gebruikers naam en het wacht woord **in** voor uw werk-of school account.
 5. Wanneer u wordt gevraagd **waar uw gegevens zijn?**, selecteert u **Bestands share**. Geef het pad op naar uw Azure-bestands share waar uw gegevens zich bevinden.
-6. Volg de resterende vragen als normaal, inclusief de doel locatie. Ga voor meer informatie naar [het gebruik van het hulp programma voor migratie van share point](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+6. Volg de resterende vragen als normaal, inclusief de doel locatie. Ga voor meer informatie naar [het gebruik van het hulp programma voor migratie van share point](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 > [!IMPORTANT]
 > - De snelheid waarmee gegevens worden opgenomen in share point online, wordt beïnvloed door verschillende factoren, ongeacht of uw gegevens al in azure zijn. Als u deze factoren begrijpt, kunt u de efficiëntie van uw migratie plannen en maximaliseren.  Ga naar de [migratie snelheid van share point online en OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed)voor meer informatie.

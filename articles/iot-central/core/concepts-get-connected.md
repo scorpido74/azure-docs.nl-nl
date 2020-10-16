@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714230"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126838"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
 
@@ -185,7 +185,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Afzonderlijke op registratie gebaseerde connectiviteit van apparaten
 
-Gebruik individuele inschrijvingen voor klanten die elk hun eigen verificatie referenties verbinden. Een afzonderlijke inschrijving is een vermelding voor één apparaat dat verbinding mag maken. Afzonderlijke inschrijvingen kunnen X. 509 Leaf-certificaten of SAS-tokens (van een fysieke of virtuele Trusted Platform Module) gebruiken als Attestation-mechanismen. De apparaat-ID (ook wel registratie-ID genoemd) in een afzonderlijke inschrijving is alfanumerieke tekens en kan afbreek streepjes bevatten. Zie voor meer informatie [DPS individuele inschrijving](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
+Gebruik individuele inschrijvingen voor klanten die elk hun eigen verificatie referenties verbinden. Een afzonderlijke inschrijving is een vermelding voor één apparaat dat verbinding mag maken. Afzonderlijke inschrijvingen kunnen X. 509 Leaf-certificaten of SAS-tokens (van een fysieke of virtuele Trusted Platform Module) gebruiken als Attestation-mechanismen. De apparaat-ID (ook wel registratie-ID genoemd) in een afzonderlijke inschrijving is alfanumerieke tekens en kan afbreek streepjes bevatten. Zie voor meer informatie [DPS individuele inschrijving](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Wanneer u een afzonderlijke inschrijving voor een apparaat maakt, heeft dit voor rang op de standaard opties voor het inschrijven van groepen in uw IoT Central-toepassing.
@@ -204,7 +204,7 @@ IoT Central ondersteunt de volgende Attestation-mechanismen voor individuele ins
     > [!TIP]
     > Voor het testen kunt u [Hulpprogram ma's gebruiken voor de Azure IOT Device Provisioning Device SDK voor Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) om een zelfondertekend certificaat te genereren: `node create_test_cert.js device "mytestdevice"`
 
-- **Attestation van trusted platform module (TPM):** Een [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) is een type hardware Security module. Het gebruik van een TPM is een van de veiligste manieren om verbinding te maken met een apparaat. In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn goed geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Gebruik geen software-Tpm's in productie. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van een TPM, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **TPM** als mechanisme. Voer de TPM-goedkeurings sleutel in en sla de verbindings gegevens van het apparaat op.
+- **Attestation van trusted platform module (TPM):** Een [TPM](../../iot-dps/concepts-tpm-attestation.md) is een type hardware Security module. Het gebruik van een TPM is een van de veiligste manieren om verbinding te maken met een apparaat. In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn goed geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Gebruik geen software-Tpm's in productie. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van een TPM, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **TPM** als mechanisme. Voer de TPM-goedkeurings sleutel in en sla de verbindings gegevens van het apparaat op.
 
 ## <a name="automatically-associate-with-a-device-template"></a>Automatisch koppelen aan een sjabloon voor een apparaat
 

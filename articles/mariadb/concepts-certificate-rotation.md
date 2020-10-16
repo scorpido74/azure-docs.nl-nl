@@ -6,16 +6,19 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3182f7fa913cd61e6c51ea91be6b46e83a1ab949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa10b2170024760fe20d6ed037353b12a0a9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540099"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127247"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MariaDB
 
-Azure Database for MariaDB het basis certificaat voor de client toepassing/het stuur programma dat wordt ingeschakeld met SSL wijzigt, gebruikt om [verbinding te maken met de database server](concepts-connectivity-architecture.md). Het basis certificaat dat momenteel beschikbaar is, is ingesteld op het verlopen van 26 oktober 2020 (10/26/2020) als onderdeel van de aanbevolen procedures voor standaard onderhoud en beveiliging. In dit artikel vindt u meer informatie over de aanstaande wijzigingen, de bronnen die worden beïnvloed en de stappen die nodig zijn om ervoor te zorgen dat uw toepassing verbinding met uw database server onderhoudt.
+Azure Database for MariaDB het basis certificaat voor de client toepassing/het stuur programma dat wordt ingeschakeld met SSL wijzigt, gebruikt om [verbinding te maken met de database server](concepts-connectivity-architecture.md). Het basis certificaat dat momenteel beschikbaar is, is ingesteld op 15 februari 2021 (02/15/2021) als onderdeel van de aanbevolen procedures voor standaard onderhoud en beveiliging. In dit artikel vindt u meer informatie over de aanstaande wijzigingen, de bronnen die worden beïnvloed en de stappen die nodig zijn om ervoor te zorgen dat uw toepassing verbinding met uw database server onderhoudt.
+
+>[!NOTE]
+> Op basis van de feedback van klanten hebben we de afschaffing van het basis certificaat uitgebreid voor onze bestaande Baltimore-basis certificerings instantie van oktober 26, 2020 tot en met 15 februari 2021. We hopen dat deze uitbrei ding voldoende lever tijd biedt voor onze gebruikers om de client wijzigingen te implementeren als ze worden beïnvloed.
 
 ## <a name="what-update-is-going-to-happen"></a>Wat gebeurt er met de update?
 
@@ -24,12 +27,12 @@ In sommige gevallen gebruiken toepassingen een lokaal certificaat bestand dat is
 Conform de nalevings vereisten van de branche begon de leveranciers van de certificerings instantie CA-certificaten voor niet-compatibele Ca's te intrekken, waardoor het voor servers vereist dat certificaten worden gebruikt die zijn uitgegeven door compatibele Ca's en ondertekend zijn door CA-certificaten van die compatibele certificerings instanties. Omdat Azure Database for MariaDB momenteel een van deze niet-compatibele certificaten gebruikt, die client toepassingen gebruiken om hun SSL-verbindingen te valideren, moeten we ervoor zorgen dat de juiste acties worden ondernomen (hieronder beschreven) om de potentiële impact op uw MariaDB-servers te minimaliseren.
 
 
-Het nieuwe certificaat wordt vanaf 26 oktober 2020 (10/26/2020) gebruikt. Als u een CA-validatie of volledige validatie van het server certificaat gebruikt wanneer u verbinding maakt vanaf een MySQL-client (sslmode = controleren-CA of sslmode = controleren-Full), moet u de configuratie van de toepassing bijwerken vóór 26 oktober 2020 (10/26/2020).
+Het nieuwe certificaat wordt vanaf 15 februari 2021 (02/15/2021) gebruikt. Als u een CA-validatie of volledige validatie van het server certificaat gebruikt wanneer u verbinding maakt vanaf een MySQL-client (sslmode = controleren-CA of sslmode = controleren-Full), moet u de configuratie van de toepassing bijwerken vóór 15 februari 2021 (02/15/2021).
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Hoe kan ik weet of mijn Data Base wordt beïnvloed?
 
 Alle toepassingen die gebruikmaken van SSL/TLS en controleren of het basis certificaat het basis certificaat moet bijwerken. U kunt bepalen of uw verbindingen het basis certificaat verifiëren door uw connection string te controleren.
--   Als uw connection string bevat `sslmode=verify-ca` of `sslmode=verify-full` , moet u het certificaat bijwerken.
+-   Als uw connection string bevat `sslmode=verify-ca` of `sslmode=verify-identity` , moet u het certificaat bijwerken.
 -   Als uw Connection String bevat `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` , of `sslmode=require` , hoeft u geen certificaten bij te werken. 
 -   Als uw connection string geen sslmode opgeeft, hoeft u geen certificaten bij te werken.
 
@@ -83,6 +86,9 @@ Als u het Azure Database for MariaDB verleende certificaat gebruikt zoals hier w
 *   Ongeldig certificaat/ingetrokken certificaat
 *   Time-out opgetreden voor verbinding
 
+> [!NOTE]
+> Verwijder het **Baltimore-certificaat** niet en pas het pas toe nadat het certificaat is gewijzigd. Er wordt een communicatie verzonden zodra de wijziging is aangebracht, waarna deze de Baltimore-certificaat kan verwijderen. 
+
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 ### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. als ik SSL/TLS niet gebruik, moet ik dan nog steeds de basis-CA bijwerken?
@@ -91,8 +97,8 @@ Er zijn geen acties vereist als u SSL/TLS niet gebruikt.
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. als ik SSL/TLS gebruik, moet ik mijn database server opnieuw starten om de basis-CA bij te werken?
 Nee, u hoeft de database server niet opnieuw op te starten om het nieuwe certificaat te gebruiken. Certificaat update is een wijziging aan de client zijde en de binnenkomende client verbindingen moeten het nieuwe certificaat gebruiken om ervoor te zorgen dat ze verbinding kunnen maken met de database server.
 
-### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. Wat gebeurt er als ik het basis certificaat niet bijwerk vóór 26 oktober 2020 (10/26/2020)?
-Als u het basis certificaat niet bijwerkt vóór 26 oktober 2020, zullen uw toepassingen die verbinding maken via SSL/TLS en verificatie voor het basis certificaat niet kunnen communiceren met de MariaDB-database server en de toepassing verbindings problemen ondervindt met uw MariaDB-database server.
+### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-february-15-2021-02152021"></a>3. Wat gebeurt er als ik het basis certificaat niet bijwerk vóór 15 februari 2021 (02/15/2021)?
+Als u het basis certificaat niet bijwerkt vóór 15 februari 2021 (02/15/2021), kunnen uw toepassingen die verbinding maken via SSL/TLS en de verificatie voor het basis certificaat niet kunnen communiceren met de MariaDB-database server en de toepassing verbindings problemen ondervinden met uw MariaDB-database server.
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. Wat is de impact van het gebruik van App Service met Azure Database for MariaDB?
 Voor Azure app Services, het maken van verbinding met Azure Database for MariaDB, kunnen we twee mogelijke scenario's hebben. Dit is afhankelijk van hoe u SSL met uw toepassing gebruikt.
@@ -110,11 +116,11 @@ Voor connectors die gebruikmaken van zelf-hostende Integration Runtime waarbij u
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. moet ik de downtime van een database server onderhoud voor deze wijziging plannen?
 Nee. Omdat de wijziging hier alleen aan de client zijde wordt weer gegeven om verbinding te maken met de database server, is er geen uitval tijd nodig voor de database server voor deze wijziging.
 
-### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. Wat moet ik doen als ik vóór 26 oktober 2020 (10/26/2020) geen geplande downtime voor deze wijziging krijg?
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. Wat moet ik doen als ik vóór 15 februari 2021 (02/15/2021) geen geplande downtime voor deze wijziging krijg?
 Omdat de clients die zijn gebruikt voor het maken van een verbinding met de server, de certificaat gegevens moeten bijwerken zoals beschreven in de sectie oplossing [hier](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), hoeven we in dit geval geen downtime voor de server te gebruiken.
 
-### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. als ik een nieuwe server Maak na 26 oktober 2020, geldt dit?
-Voor servers die zijn gemaakt na 26 oktober 2020 (10/26/2020), kunt u het zojuist uitgegeven certificaat voor uw toepassingen gebruiken om verbinding te maken via SSL.
+### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. als ik een nieuwe server Maak na 15 februari 2021 (02/15/2021), wordt dit van invloed?
+Voor servers die zijn gemaakt na 15 februari 2021 (02/15/2021), kunt u het zojuist uitgegeven certificaat voor uw toepassingen gebruiken om verbinding te maken via SSL.
 
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. hoe vaak werkt micro soft hun certificaten bij of wat is het verloop beleid?
 Deze certificaten die worden gebruikt door Azure Database for MariaDB worden door vertrouwde certificerings instanties (CA) verschaft. Daarom is de ondersteuning van deze certificaten op Azure Database for MariaDB gekoppeld aan de ondersteuning van deze certificaten per CA. In dit geval kunnen er echter onvoorziene fouten voor komen in deze vooraf gedefinieerde certificaten, die op het eerst moeten worden opgelost.

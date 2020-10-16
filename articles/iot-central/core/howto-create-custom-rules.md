@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018181"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126753"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central uitbreiden met aangepaste regels met behulp van Stream Analytics, Azure Functions en SendGrid
 
-In deze hand leiding wordt uitgelegd hoe u als ontwikkel aars van oplossingen uw IoT Central-toepassing kunt uitbreiden met aangepaste regels en meldingen. Het voor beeld toont het verzenden van een melding naar een operator wanneer een apparaat stopt met het verzenden van telemetrie. De oplossing gebruikt een [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) query om te detecteren wanneer een apparaat stopt met het verzenden van telemetrie. De Stream Analytics taak gebruikt [Azure functions](https://docs.microsoft.com/azure/azure-functions/) om e-mail meldingen te verzenden met [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
+In deze hand leiding wordt uitgelegd hoe u als ontwikkel aars van oplossingen uw IoT Central-toepassing kunt uitbreiden met aangepaste regels en meldingen. Het voor beeld toont het verzenden van een melding naar een operator wanneer een apparaat stopt met het verzenden van telemetrie. De oplossing gebruikt een [Azure stream Analytics](../../stream-analytics/index.yml) query om te detecteren wanneer een apparaat stopt met het verzenden van telemetrie. De Stream Analytics taak gebruikt [Azure functions](../../azure-functions/index.yml) om e-mail meldingen te verzenden met [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
 In deze hand leiding wordt uitgelegd hoe u IoT Central uitbreidt dan wat u al kunt doen met de ingebouwde regels en acties.
 
@@ -34,7 +34,7 @@ Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-ab
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-### <a name="iot-central-application"></a>IoT Central toepassing
+### <a name="iot-central-application"></a>IoT Central-toepassing
 
 Maak een IoT Central-toepassing op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) met de volgende instellingen:
 
@@ -82,7 +82,7 @@ Gebruik de [Azure Portal om een stream Analytics-taak te maken](https://portal.a
 | Hostingomgeving | Cloud |
 | Streaming-eenheden | 3 |
 
-### <a name="function-app"></a>Function App
+### <a name="function-app"></a>Functie-app
 
 Gebruik de [Azure Portal om een functie-app te maken](https://portal.azure.com/#create/Microsoft.FunctionApp) met de volgende instellingen:
 
@@ -95,7 +95,7 @@ Gebruik de [Azure Portal om een functie-app te maken](https://portal.azure.com/#
 | Hostingabonnement | Verbruiksabonnement |
 | Locatie | VS - oost |
 | Runtimestack | .NET |
-| Storage | Nieuwe maken |
+| Opslag | Nieuwe maken |
 
 ### <a name="sendgrid-account"></a>SendGrid-account
 
@@ -256,7 +256,7 @@ Deze oplossing maakt gebruik van een Stream Analytics query om te detecteren wan
     | ------- | ----- |
     | Uitvoeralias | emailnotification |
     | Abonnement | Uw abonnement |
-    | Function App | Uw functie-app |
+    | Functie-app | Uw functie-app |
     | Functie  | HttpTrigger1 |
 
 1. Selecteer bij **taak topologie**de optie **query** en vervang de bestaande query door de volgende SQL:
@@ -326,7 +326,7 @@ Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotc
 
 Wacht tot de export status **actief** is voordat u doorgaat.
 
-## <a name="test"></a>Testen
+## <a name="test"></a>Test
 
 Als u de oplossing wilt testen, kunt u de continue gegevens export uitschakelen van IoT Central naar gesimuleerde gestopte apparaten:
 

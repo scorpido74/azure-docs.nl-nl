@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c0001add9ddbafb67dc7ac305c5fc171a8e24a51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d7d477e50ef4fc47042d57aa973d483a784465d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070578"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127332"
 ---
-# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
+# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introductie van stroomlogboeken voor netwerkbeveiligingsgroepen
 
 ## <a name="introduction"></a>Inleiding
 
@@ -317,7 +317,7 @@ Gebruik de relevante koppeling hieronder voor hulp lijnen voor het inschakelen v
 
 ## <a name="updating-parameters"></a>Para meters bijwerken
 
-**Azure-portal**
+**Azure Portal**
 
 Ga in het Azure Portal naar de sectie NSG-stroom Logboeken in Network Watcher. Klik vervolgens op de naam van de NSG. Hiermee wordt het deel venster instellingen voor het stroom logboek weer gegeven. Wijzig de gewenste para meters en druk op **Opslaan** om de wijzigingen te implementeren.
 
@@ -360,6 +360,10 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Problemen met door de gebruiker gedefinieerde binnenkomende TCP-regels**: [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview) worden geïmplementeerd als een [stateful firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Vanwege de beperkingen van het huidige platform worden door de gebruiker gedefinieerde regels die van invloed zijn op binnenkomende TCP-stromen echter op een staatloze manier geïmplementeerd. Als gevolg hiervan worden stromen beïnvloed door door de gebruiker gedefinieerde binnenkomende regels niet beëindigd. Daarnaast worden geen byte-en pakket aantallen voor deze stromen vastgelegd. Het aantal bytes en pakketten dat in de NSG-stroom Logboeken (en Traffic Analytics) wordt gerapporteerd, kan daarom afwijken van de werkelijke getallen. Een opt-in-vlag waarmee deze problemen worden opgelost, is gepland om uiterlijk op december 2020 te zijn. In de tussen tijd kunnen klanten die ernstige problemen ondervinden vanwege dit gedrag, via ondersteuning aanvragen voor intrekken, een ondersteunings aanvraag doen onder Network Watcher > NSG-stroom Logboeken.  
 
 **Binnenkomende stromen die zijn geregistreerd van Internet ip's naar vm's zonder open bare ip's**: vm's waaraan geen openbaar IP-adres is toegewezen via een openbaar IP-adres dat is gekoppeld aan de NIC als instantie niveau openbaar IP of die deel uitmaken van een basis Load Balancer back-end-groep, gebruiken [standaard SNAT](../load-balancer/load-balancer-outbound-connections.md) en hebben een IP-adres dat is toegewezen door Azure om uitgaande connectiviteit te vergemakkelijken. Als gevolg hiervan ziet u mogelijk stroom logboek vermeldingen voor stromen van IP-adressen van Internet, als de stroom bestemd is voor een poort in het bereik van poorten die zijn toegewezen voor SNAT. Hoewel Azure deze stromen naar de virtuele machine niet toestaat, wordt de poging geregistreerd en wordt deze weer gegeven in het NSG-stroom logboek van Network Watcher. U wordt aangeraden ongewenste binnenkomend Internet verkeer expliciet met NSG te blok keren.
+
+**Incompatibele Services**: vanwege de beperkingen van het huidige platform worden een kleine set Azure-Services niet ondersteund door NSG-stroom Logboeken. De huidige lijst met incompatibele Services is
+- [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 

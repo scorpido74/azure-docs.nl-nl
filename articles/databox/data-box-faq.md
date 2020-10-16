@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b65d1be9fa3ddb28a216d51e91ce2a8b20f15e6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051165"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127179"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
 
@@ -236,8 +236,8 @@ A.  Als u de gegevens naar Data Box kopieert, worden de gegevens naar een van de
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>V. Ik heb gemerkt dat ik de naamgevingsvereisten voor Azure niet voor mijn containers heb gevolgd. Worden mijn gegevens niet naar Azure geüpload?
 A.  Als de containernamen hoofdletters bevatten, worden die namen automatisch naar kleine letters omgezet. Als de namen anderszins niet aan de vereisten voldoen (speciale tekens, andere taal, enzovoort), dan worden er geen gegevens geüpload. Ga voor meer informatie over beproefde methoden voor de naamgeving van shares, containers en bestanden naar:
-- [Naamgeving van en verwijzing naar shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Conventies voor blok-blobs en pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+- [Naamgeving van en verwijzing naar shares](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Conventies voor blok-blobs en pagina-blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>V. Hoe kan ik de gegevens controleren die naar Data Box zijn gekopieerd?
 A.  Uw gegevens worden gevalideerd als u **Voorbereiding voor verzending** uitvoert nadat het kopiëren van gegevens is voltooid. Data Box genereert tijdens het validatieproces een lijst met bestanden en controlesommen voor de gegevens. U kunt de lijst met bestanden downloaden en de lijst verifiëren met de bestanden in de brongegevens. Ga voor meer informatie naar [Voorbereiding voor verzending](data-box-deploy-picked-up.md#prepare-to-ship).

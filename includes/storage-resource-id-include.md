@@ -9,15 +9,15 @@ ms.date: 07/15/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 39b61c78cbd0333183c80234256d6041a109d846
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68249919"
 ---
-Een Azure AD-Resource-ID geeft de doel groep aan waarvoor een token dat wordt uitgegeven, kan worden gebruikt om toegang te bieden tot een Azure-resource. In het geval van Azure Storage kan de resource-ID specifiek zijn voor één opslag account of van toepassing op elk opslag account. In de volgende tabel worden de waarden beschreven die u kunt opgeven voor de resource-ID:
+Een Azure AD-resource-id geeft de doelgroep aan waarvoor een token dat wordt uitgegeven, kan worden gebruikt om toegang te bieden tot een Azure-resource. In het geval van Azure Storage kan de resource-id specifiek voor één opslagaccount zijn of van toepassing zijn op een willekeurig opslagaccount. In de volgende tabel worden de waarden beschreven die u kunt opgeven voor de resource-id:
 
-|Resource-id  |Description  |
+|Resource-id  |Beschrijving  |
 |---------|---------|
-|`https://<account>.blob.core.windows.net` <br /><br /> `https://<account>.queue.core.windows.net`    | Het service-eind punt voor een gegeven opslag account. Gebruik deze waarde om een token te verkrijgen voor het goed keuren van aanvragen voor het specifieke Azure Storage account en de service. Vervang de waarde tussen haakjes door de naam van uw opslag account.      |
-|`https://storage.azure.com/`     | Gebruik om een token te verkrijgen voor het machtigen van aanvragen voor een Azure Storage-account.        |
+|`https://<account>.blob.core.windows.net` <br /><br /> `https://<account>.queue.core.windows.net`    | Het service-eindpunt voor een bepaald opslagaccount. Gebruik deze waarde om een token te verkrijgen voor het goedkeuren van aanvragen voor alleen dat specifieke Azure Storage-account en de service. Vervang de waarde tussen haakjes door de naam van uw opslagaccount.      |
+|`https://storage.azure.com/`     | Gebruik deze naam om een token te verkrijgen voor het autoriseren van aanvragen voor een Azure Storage-account.        |

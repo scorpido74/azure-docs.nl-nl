@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cfdf22ac9b97ff7187bc360efe07cfe16249bd6b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 95c9b6dee402bc0c2dd2cab8ef3200cfd9213d61
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042878"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126821"
 ---
 # <a name="device-model-repository"></a>Opslag plaats voor device model
 
@@ -30,7 +30,7 @@ Micro soft host een open bare DMR met de volgende kenmerken:
 
 ## <a name="custom-device-model-repository"></a>Aangepaste opslag plaats voor model apparaten
 
-U kunt hetzelfde DMR-patroon gebruiken in elk opslag medium, zoals het lokale bestands systeem of aangepaste HTTP-webservers, om een aangepaste DMR te maken. U kunt modellen van de aangepaste DMR op dezelfde manier ophalen als uit de open bare DRM door de basis-URL voor toegang tot de DMR te wijzigen.
+U kunt hetzelfde DMR-patroon gebruiken in elk opslag medium, zoals het lokale bestands systeem of aangepaste HTTP-webservers, om een aangepaste DMR te maken. U kunt modellen van de aangepaste DMR op dezelfde manier ophalen als uit de open bare DMR door de basis-URL voor toegang tot de DMR te wijzigen.
 
 > [!NOTE]
 > De hulpprogram ma's die worden gebruikt om de modellen in de open bare DMR te valideren, kunnen opnieuw worden gebruikt in aangepaste opslag plaatsen.

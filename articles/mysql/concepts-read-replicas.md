@@ -1,17 +1,17 @@
 ---
-title: Replica's lezen-Azure Database for MySQL.
+title: Replica's lezen-Azure Database for MySQL
 description: "Meer informatie over het lezen van replica's in Azure Database for MySQL: het kiezen van regio's, het maken van replica's, het verbinden van replica's, het bewaken van replicatie en het stoppen van de replicatie."
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876546"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126653"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -38,7 +38,7 @@ Omdat replica's alleen-lezen zijn, worden ze niet rechtstreeks op de Master gere
 De functie replica lezen maakt gebruik van MySQL-asynchrone replicatie. De functie is niet bedoeld voor synchrone replicatie scenario's. Er is een meet bare vertraging tussen de bron en de replica. De gegevens op de replica worden uiteindelijk consistent met de gegevens op de Master. Gebruik deze functie voor werk belastingen die deze vertraging kunnen bevatten.
 
 > [!IMPORTANT]
-> Azure Database for MySQL gebruikt op **rijen** gebaseerde binaire logboek registratie. Als voor de tabel een primaire sleutel ontbreekt, worden alle rijen in de tabel gescand op DML-bewerkingen. Dit veroorzaakt een verhoogde replicatie vertraging. Om ervoor te zorgen dat de replica wijzigingen kan aanbrengen in de bron, is het raadzaam om een primaire sleutel toe te voegen aan tabellen in de bron server voordat u de replica server maakt of de replica server opnieuw maakt als u er al een hebt.
+> Azure Database for MySQL maakt gebruik van op **rijen** gebaseerde binaire logboekregistratie. Als uw tabel geen primaire sleutel heeft, worden alle rijen in de tabel gescand op DML-bewerkingen. Dit leidt tot meer vertraging bij het repliceren. Om ervoor te zorgen dat de replica gelijke tred kan houden met wijzigingen in de bron, is het raadzaam om een primaire sleutel toe te voegen aan tabellen op de bronserver voordat u de replicaserver maakt, of de replicaserver opnieuw maakt als u er al een hebt.
 
 ## <a name="cross-region-replication"></a>Replicatie in meerdere regio's
 U kunt een lees replica maken in een andere regio dan de bron server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.
@@ -50,7 +50,7 @@ U kunt een bron server in een [Azure database for MySQL regio](https://azure.mic
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt in een van de volgende regio's een lees replica maken, ongeacht waar de bron server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2, West-Centraal vs.
+Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West-Centraal vs.
 
 ### <a name="paired-regions"></a>Gekoppelde regio's
 Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van de bron server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](../best-practices-availability-paired-regions.md).

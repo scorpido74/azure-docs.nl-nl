@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 6b717fd15b25ae4abd2af3520dba2e72f8f9f3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6fbf84ec3822195f62970dbf08115059ffb7e4a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556298"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122599"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Bestanden van uw apparaten uploaden naar de Cloud
 
@@ -54,7 +54,7 @@ Als u het uploaden van het apparaatbestand naar uw IoT Central-toepassing wilt u
 
 ## <a name="upload-a-file-from-a-device"></a>Een bestand van een apparaat uploaden
 
-IoT Central gebruikt de bestands upload mogelijkheid van IoT Hub om apparaten in staat te stellen bestanden te uploaden. Zie het voor beeld van een IoT Central voor het [uploaden](https://docs.microsoft.com/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/)van bestanden voor een voorbeeld code.
+IoT Central gebruikt de bestands upload mogelijkheid van IoT Hub om apparaten in staat te stellen bestanden te uploaden. Zie het voor beeld van een IoT Central voor het [uploaden](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/)van bestanden voor een voorbeeld code.
 
 ## <a name="next-steps"></a>Volgende stappen
 

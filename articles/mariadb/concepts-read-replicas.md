@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: ec06fff73b1a4209546af5ca845e28aaa9dfb0b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: fcf368c9fbbb185ac3f47faa5705e1933d085c81
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532343"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126446"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -47,7 +47,7 @@ U kunt een bron server in een [Azure database for MariaDB regio](https://azure.m
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt in een van de volgende regio's een lees replica maken, ongeacht waar de bron server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2, West-Centraal vs.
+Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West-Centraal vs.
 
 ### <a name="paired-regions"></a>Gekoppelde regio's
 Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van de bron server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](../best-practices-availability-paired-regions.md).

@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fb60a4b549a7203057dd60298d2ae0540450d6
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803786"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122650"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing
 
@@ -45,7 +45,7 @@ In een IoT Central-toepassing gebruikt een apparaatprofiel een mogelijkheidsprof
 - Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model. Importeer het mogelijkheidsprofiel hand matig in uw IoT Central-toepassing en voeg vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toe die uw IoT Central toepassing nodig heeft.
 - Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model en verbind uw echte apparaat met uw IoT Central-toepassing met behulp van een apparaat-eerste verbinding. IoT Central zoekt en importeert het mogelijkheidsprofiel uit de open bare opslag plaats voor u. U kunt vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toevoegen die uw IoT Central toepassing nodig heeft voor de sjabloon voor het apparaat.
 
-U kunt ook apparaatprofielen toevoegen aan een IoT Central-toepassing met behulp van de [rest API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) of de [cli](howto-manage-iot-central-from-cli.md).
+U kunt ook apparaatprofielen toevoegen aan een IoT Central-toepassing met behulp van de [rest API](/learn/modules/manage-iot-central-apps-with-rest-api/) of de [cli](howto-manage-iot-central-from-cli.md).
 
 Sommige [toepassings sjablonen](concepts-app-templates.md) bevatten al sjablonen voor apparaten die handig zijn in het scenario dat door de toepassings sjabloon wordt ondersteund. Zie bijvoorbeeld [in-Store Analytics-architectuur](../retail/store-analytics-architecture.md).
 

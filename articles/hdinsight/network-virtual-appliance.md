@@ -7,21 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f5d8cdc7dda72f21fc1cf372e3796b26a3054a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630930"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127417"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Virtueel netwerk apparaat configureren in azure HDInsight
 
 > [!Important]
-> De volgende informatie is **alleen** vereist als u een andere virtuele netwerk apparaten (NVA) dan Azure firewall wilt configureren.
+> De volgende informatie is **alleen** vereist als u een andere virtuele netwerk apparaten (NVA) dan [Azure firewall](https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic)wilt configureren.
 
-Azure Firewall wordt automatisch geconfigureerd om verkeer toe te staan voor veel van de algemene belang rijke scenario's. Als u een ander virtueel netwerk apparaat wilt gebruiken, moet u een aantal extra functies configureren. Houd rekening met de volgende factoren wanneer u uw virtuele netwerk apparaat configureert:
+Azure Firewall FQDN-label wordt automatisch geconfigureerd om verkeer toe te staan voor veel van de algemene essentiële FQDN-namen. Als u een ander virtueel netwerk apparaat wilt gebruiken, moet u een aantal extra functies configureren. Houd rekening met de volgende factoren wanneer u uw virtuele netwerk apparaat configureert:
 
 * Services die geschikt zijn voor service-eind punten kunnen worden geconfigureerd met Service-eind punten die leiden tot het overs laan van de NVA, meestal voor kosten-of prestatie overwegingen.
+* Als ResourceProviderConnection is ingesteld op *outbound*, kunt u privé-eind punten gebruiken voor de opslag-en SQL-servers voor meta Stores en hoeft u deze niet toe te voegen aan de NVA.
 * Afhankelijkheden van IP-adressen zijn voor niet-HTTP/S-verkeer (TCP-en UDP-verkeer).
 * FQDN HTTP/HTTPS-eind punten kunnen worden goedgekeurd in uw NVA-apparaat.
 * Wijs de route tabel toe die u hebt gemaakt voor uw HDInsight-subnet.
@@ -40,22 +41,25 @@ U kunt eventueel een of meer van de volgende service-eind punten inschakelen, wa
 
 | **Eindpunt** | **Details** |
 |---|---|
-| [Hier](hdinsight-management-ip-addresses.md) gepubliceerde ip's | Deze IP-adressen zijn voor HDInsight Control Place en moeten worden opgenomen in de UDR om asymmetrische route ring te voor komen |
-| Privé-IP-adressen van AAD-DS | Alleen nodig voor ESP-clusters|
+| [Hier](hdinsight-management-ip-addresses.md) gepubliceerde ip's | Deze IP-adressen zijn voor de HDInsight-resource provider en moeten worden opgenomen in de UDR om asymmetrische route ring te voor komen. Deze regel is alleen nodig als de ResourceProviderConnection is ingesteld op *binnenkomend*. Als de ResourceProviderConnection is ingesteld op *outbound* , zijn deze IP-adressen niet nodig in de UDR.  |
+| Privé-IP-adressen van AAD-DS | Alleen vereist voor ESP-clusters als de VNETs niet zijn gekoppeld.|
 
 
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-afhankelijkheden
 
-> [!Important]
-> De onderstaande lijst bevat alleen enkele FQDN-namen die nodig kunnen zijn voor besturingssysteem-en beveiligings patches of validatie van certificaten nadat het cluster is gemaakt en tijdens de levens duur van cluster bewerkingen. U kunt de lijst met afhankelijkheden van FQDN-namen (voornamelijk Azure Storage en Azure Service Bus) voor het configureren van uw NVA [in dit bestand](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)ophalen. Deze afhankelijkheden worden gebruikt door de HDInsight-resource provider (RP) om clusters te maken en te controleren en te beheren. Dit zijn onder andere telemetrie/Diagnostische logboeken, het inrichten van meta gegevens, aan het cluster gerelateerde configuraties, scripts, ARM-sjablonen, enzovoort. De lijst met FQDN-afhankelijkheden kan worden gewijzigd met het vrijgeven van toekomstige HDIngisht-updates.
+U kunt de lijst met FQDN-afhankelijkheden ophalen (voornamelijk Azure Storage en Azure Service Bus) voor het configureren van uw NVA [in deze opslag plaats](https://github.com/Azure-Samples/hdinsight-fqdn-lists/). Zie [hier](https://github.com/Azure-Samples/hdinsight-fqdn-lists/tree/master/Regional)voor de regio lijst. Deze afhankelijkheden worden gebruikt door de HDInsight-resource provider (RP) om clusters te maken en te controleren en te beheren. Dit zijn onder andere telemetrie/Diagnostische logboeken, het inrichten van meta gegevens, aan het cluster gerelateerde configuraties, scripts, enzovoort. Deze FQDN-afhankelijkheids lijst kan worden gewijzigd met het vrijgeven van toekomstige HDInsight-updates.
 
-| **Eindpunt**                                                          |
+De onderstaande lijst bevat alleen enkele FQDN-namen die nodig kunnen zijn voor besturingssysteem-en beveiligings patches of validatie van certificaten *nadat* het cluster is gemaakt en tijdens de levens duur van cluster bewerkingen:
+
+| **Runtime-afhankelijkheden FQDN**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |
 | ocsp.msocsp.com:80                                                    |
 | ocsp.digicert.com:80                                                  |
 | microsoft.com:80                                                      |
+|login.windows.net:443                                                  |
+|login.microsoftonline.com:443                                          |
 
 ## <a name="next-steps"></a>Volgende stappen
 

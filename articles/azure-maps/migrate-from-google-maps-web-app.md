@@ -1,20 +1,20 @@
 ---
-title: Een web-app migreren vanuit Google Maps | Microsoft Azure Maps
-description: Meer informatie over hoe u een web-app migreert vanuit Google Maps naar Microsoft Azure Maps
+title: 'Zelfstudie: Een web-app migreren vanuit Google Maps | Microsoft Azure Maps'
+description: Zelfstudie over hoe u een web-app migreert vanuit Google Maps naar Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/18/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319670"
+ms.locfileid: "91876495"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Een web-app migreren vanuit Google Maps
 

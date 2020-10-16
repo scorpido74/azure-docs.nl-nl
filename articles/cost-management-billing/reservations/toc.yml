@@ -118,6 +118,10 @@
       items:
         - name: Een reservering verlengen
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Problemen oplossen
+      items:
+        - name: Geen geschikte abonnementen
+          href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Naslaginformatie
   items:
     - name: Reserveringen REST API

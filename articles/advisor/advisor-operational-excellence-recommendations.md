@@ -3,12 +3,12 @@ title: Verbeter de operationele Excellency met Advisor
 description: Gebruik Azure Advisor om uw operationele uitmuntendheid voor uw Azure-abonnementen te optimaliseren en verouderd.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077385"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122616"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Behaal de operationele uitmuntendheid met behulp van Azure Advisor
 
@@ -53,6 +53,12 @@ Azure Policy is een service in azure die u kunt gebruiken om beleid te maken, to
 **Controle-Vm's afdwingen *die geen beheerde schijven gebruiken*.**
 
 **Schakel *een tag overnemen van resource groepen*in.** Met dit beleid kunt u de opgegeven tag en waarde van de bovenliggende resourcegroep toevoegen of vervangen wanneer een resource wordt gemaakt of bijgewerkt. U kunt bestaande resources herstellen door een herstel taak te activeren.
+
+Advisor raadt een aantal afzonderlijke Azure-beleids regels aan die klanten helpen bij het bezorgen van operationele uitmuntendheid door aanbevolen procedures vast te stellen. Als een klant besluit een aanbevolen beleid toe te wijzen, zullen we de aanbeveling onderdrukken. Als de klant besluit het beleid later te verwijderen, zal Advisor de aanbeveling blijven onderdrukken omdat de verwijdering wordt geïnterpreteerd als een sterk signaal van het volgende:
+
+1.  De klant heeft het beleid verwijderd omdat dit ondanks de aanbeveling van Advisor niet van toepassing is op de specifieke use-case. 
+2.  De klant is op de hoogte en vertrouwd met het beleid na het toewijzen en verwijderen, en kan het indien nodig opnieuw toewijzen of verwijderen zonder richt lijnen als dat later relevant is voor het gebruik. Als de klant deze in hun beste belang heeft gevonden om hetzelfde beleid opnieuw toe te wijzen, kunnen ze dit doen in Azure Policy zonder dat hiervoor een aanbeveling vereist is in Advisor. Houd er rekening mee dat deze logica specifiek van toepassing is op de beleids aanbeveling in de categorie operationele uitmuntendheid. Deze regels zijn niet van toepassing op beveiligings aanbevelingen.  
+
 
 ## <a name="no-validation-environment-enabled"></a>Geen validatieomgeving ingeschakeld
 Azure Advisor bepaalt dat er geen validatie omgeving is ingeschakeld in het huidige abonnement. Wanneer u uw hostgroepen maakt, hebt u \" Nee \" voor \" validatie omgeving geselecteerd \" op het tabblad Eigenschappen. Als er ten minste één hostgroep is waarvoor een validatie omgeving is ingeschakeld, zorgt u ervoor dat de bedrijfs continuïteit via Windows Virtual Desktop service-implementaties met vroegtijdige detectie van potentiële problemen. [Meer informatie](../virtual-desktop/create-validation-host-pool.md)

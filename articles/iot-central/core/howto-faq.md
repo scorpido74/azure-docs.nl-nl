@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: f9c7412afcc191470902cc256586f9db21f8e78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91852114"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126717"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>Veelgestelde vragen over IoT Central
 
@@ -61,7 +61,7 @@ Azure IoT Central maakt gebruik van Azure IoT Hub als een Cloud gateway die conn
 - Apparaatbeheer.
 - Connectiviteit van beveiligde apparaten.
 
-Zie voor meer informatie over IoT Hub [Azure IOT hub](https://docs.microsoft.com/azure/iot-hub/).
+Zie voor meer informatie over IoT Hub [Azure IOT hub](../../iot-hub/index.yml).
 
 **Waar kan ik meer informatie vinden over de Device Provisioning Service (DPS)?**
 

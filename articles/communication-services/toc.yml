@@ -34,6 +34,8 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: De aanroepende clientbibliotheek gebruiken
           href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: Voeg u aanroepende app toe aan een Teams-meeting
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
 - name: Zelfstudies
   expanded: false
   items:
@@ -62,6 +64,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Audio- en videoconcepten
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Interoperabiliteit met Teams
+          href: concepts/voice-video-calling/teams-interop.md
     - name: Architectuur van client en server
       href: concepts/client-and-server-architecture.md
     - name: Aanroepstromen

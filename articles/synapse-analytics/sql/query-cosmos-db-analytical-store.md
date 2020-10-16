@@ -1,5 +1,5 @@
 ---
-title: Query's uitvoeren op Azure Cosmos DB gegevens met behulp van SQL serverloze koppeling in azure Synapse (preview)
+title: Query's uitvoeren op Azure Cosmos DB gegevens met behulp van serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
 description: In dit artikel leert u hoe u Azure Cosmos DB query's kunt uitvoeren met behulp van SQL op aanvraag in azure Synapse link (preview).
 services: synapse analytics
 author: jovanpop-msft
@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102354"
+ms.locfileid: "92122718"
 ---
-# <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met behulp van SQL serverloze koppeling in azure Synapse (preview)
+# <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met serverloze SQL-groep in azure Synapse-koppeling (preview-versie)
 
-Met Synapse SQL serverloze (voorheen SQL on-demand) kunt u gegevens in uw Azure Cosmos DB containers [die in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
+Met een Synapse serverloze SQL-pool (voorheen SQL on-demand) kunt u gegevens in uw Azure Cosmos DB containers [die in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
 
-Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen SQL serverloze query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
+Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen serverloze SQL-groeps query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL Server zonder dat er gegevens worden opgevraagd van Azure Cosmos DB containers die Synapse-koppeling zijn ingeschakeld. In deze zelf studie vindt u meer informatie over [het](./tutorial-data-analyst.md) bouwen van SQL serverloze weer gaven via Azure Cosmos DB containers en het verbinden ervan met Power bi modellen. 
+In dit artikel leert u hoe u een query kunt schrijven met een serverloze SQL-groep waarmee gegevens worden opgevraagd van Azure Cosmos DB containers die Synapse-koppeling zijn ingeschakeld. In [deze](./tutorial-data-analyst.md) zelf studie vindt u meer informatie over het bouwen van SERVERloze SQL-pool weergaven over Azure Cosmos DB containers en het verbinden ervan met Power bi modellen. 
 
 ## <a name="overview"></a>Overzicht
 
-Voor de ondersteuning van het uitvoeren van query's en het analyseren van gegevens in Azure Cosmos DB Analytical Store gebruikt SQL Server de volgende `OPENROWSET` syntaxis:
+Voor het ondersteunen van het uitvoeren van query's en het analyseren van gegevens in Azure Cosmos DB Analytical Store gebruikt de serverloze SQL-pool de volgende `OPENROWSET` syntaxis:
 
 ```sql
 OPENROWSET( 
@@ -49,7 +49,7 @@ De connection string heeft de volgende indeling:
 De naam van de Azure Cosmos DB container is opgegeven zonder aanhalings tekens in de `OPENROWSET` syntaxis. Als de naam van de container speciale tekens bevat (bijvoorbeeld een streepje '-'), moet de naam tussen `[]` vier Kante haken worden geplaatst in de `OPENROWSET` syntaxis.
 
 > [!NOTE]
-> SQL serverloze biedt geen ondersteuning voor het uitvoeren van query's Azure Cosmos DB transactionele Store.
+> Een serverloze SQL-groep biedt geen ondersteuning voor het uitvoeren van query's Azure Cosmos DB transactionele opslag.
 
 ## <a name="sample-data-set"></a>Set voorbeeldgegevens
 
@@ -57,14 +57,14 @@ De voor beelden in dit artikel zijn gebaseerd op gegevens van het [Euro pees cen
 
 U kunt de licentie en de structuur van de gegevens op deze pagina's bekijken en voorbeeld gegevens downloaden voor [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) -en [Cord19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) -gegevens sets.
 
-Als u dit artikel wilt volgen, laat u zien hoe u met SQL serverloze query's kunt uitvoeren op Cosmos DB gegevens, moet u ervoor zorgen dat u de volgende resources maakt:
+Volg de instructies in dit artikel voor informatie over het opvragen van Cosmos DB gegevens met een serverloze SQL-groep, zorg ervoor dat u de volgende resources maakt:
 * Een Azure Cosmos DB database account dat [Synapse-koppeling is ingeschakeld](../../cosmos-db/configure-synapse-link.md)
 * Een Azure Cosmos DB-Data Base met de naam `covid`
 * Twee Azure Cosmos DB containers met de naam `EcdcCases` en `Cord19` met de bovenstaande voorbeeld gegevens sets geladen.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Azure Cosmos DB gegevens verkennen met een automatische schema-deinterferentie
 
-De gemakkelijkste manier om gegevens in Azure Cosmos DB te verkennen, is door gebruik te maken van de automatische functionaliteit voor het afwijzen van schema's. Door de `WITH` component van de instructie te weglaten `OPENROWSET` , kunt u SQL Server zichzelf het schema van de analytische opslag van de Azure Cosmos DB-container automatisch laten detecteren (afleiden).
+De gemakkelijkste manier om gegevens in Azure Cosmos DB te verkennen, is door gebruik te maken van de automatische functionaliteit voor het afwijzen van schema's. Door de `WITH` component van de instructie te weglaten `OPENROWSET` , kunt u een SERVERloze SQL-groep instrueren om het schema van de analytische opslag van de Azure Cosmos DB-container automatisch te detecteren (af te leiden).
 
 ```sql
 SELECT TOP 10 *
@@ -73,7 +73,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-In het bovenstaande voor beeld geven we SQL Server de opdracht om verbinding te maken met de `covid` Data base in azure Cosmos DB account dat is `MyCosmosDbAccount` geverifieerd met behulp van de Azure Cosmos DB sleutel (pop in het bovenstaande voor beeld). Vervolgens opent u de `EcdcCases` analytische opslag van de container in de `West US 2` regio. Omdat er geen projectie van specifieke eigenschappen is, `OPENROWSET` retourneert functie alle eigenschappen van de Azure Cosmos DB items.
+In het bovenstaande voor beeld geven we een serverloze SQL-groep om verbinding te maken met de `covid` Data base in azure Cosmos DB account dat is `MyCosmosDbAccount` geverifieerd met behulp van de Azure Cosmos DB sleutel (pop in het bovenstaande voor beeld). Vervolgens opent u de `EcdcCases` analytische opslag van de container in de `West US 2` regio. Omdat er geen projectie van specifieke eigenschappen is, `OPENROWSET` retourneert functie alle eigenschappen van de Azure Cosmos DB items.
 
 Als u gegevens uit de andere container in dezelfde Azure Cosmos DB-Data Base wilt verkennen, kunt u dezelfde connection string en de vereiste container referentie gebruiken als derde para meter:
 
@@ -120,7 +120,7 @@ Raadpleeg de [regels voor SQL-type toewijzingen](#azure-cosmos-db-to-sql-type-ma
 
 ## <a name="querying-nested-objects-and-arrays"></a>Query's uitvoeren op geneste objecten en matrices
 
-Met Azure Cosmos DB kunt u complexere gegevens modellen vertegenwoordigen door ze als geneste objecten of matrices samen te stellen. Met de functie voor automatische synchronisatie van de Synapse-koppeling voor Azure Cosmos DB wordt de schema weergave in de analytische out-of-the-box beheerd. Dit omvat het verwerken van geneste gegevens typen voor uitgebreide query's van SQL Server.
+Met Azure Cosmos DB kunt u complexere gegevens modellen vertegenwoordigen door ze als geneste objecten of matrices samen te stellen. Met de functie voor automatische synchronisatie van de Synapse-koppeling voor Azure Cosmos DB wordt de schema weergave in de analytische out-of-the-box beheerd. Dit omvat het verwerken van geneste gegevens typen voor uitgebreide query's vanuit een serverloze SQL-pool.
 
 De gegevensset van de koord bevat bijvoorbeeld JSON [-](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) documenten die volgen op de volgende structuur:
 
@@ -172,7 +172,7 @@ FROM
     ) AS docs;
 ```
 
-Meer informatie over het analyseren van [complexe gegevens typen in Synapse-koppeling](../how-to-analyze-complex-schema.md) en [geneste structuren in SQL Server](query-parquet-nested-types.md).
+Meer informatie over het analyseren van [complexe gegevens typen in Synapse-koppeling](../how-to-analyze-complex-schema.md) en [geneste structuren in een serverloze SQL-groep](query-parquet-nested-types.md).
 
 > [!IMPORTANT]
 > Als er onverwachte tekens worden weer geven in uw tekst zoals `MÃƒÂ©lade` in plaats van `Mélade` de database sortering is niet ingesteld op [utf8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) -sortering. 
@@ -203,7 +203,7 @@ Azure Cosmos DB gegevens kunnen geneste submatrixen hebben, zoals de matrix van 
 }
 ```
 
-In sommige gevallen moet u mogelijk de eigenschappen van het bovenste item (meta gegevens) toevoegen aan alle elementen van de matrix (auteurs). Met SQL Server kunt u geneste structuren plat maken door de functie toe te passen `OPENJSON` op de geneste matrix:
+In sommige gevallen moet u mogelijk de eigenschappen van het bovenste item (meta gegevens) toevoegen aan alle elementen van de matrix (auteurs). Met serverloze SQL-pool kunt u geneste structuren plat maken door de functie toe te passen `OPENJSON` op de geneste matrix:
 
 ```sql
 SELECT
@@ -238,7 +238,7 @@ Aanvullende informatie een eco-epidemi... | `[{"first":"Nicolas","last":"4#","su
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Toewijzingen van het SQL-type Azure Cosmos DB
 
-Het is belang rijk om eerst te weten dat hoewel Azure Cosmos DB transactionele Store schema-neutraal is, de analytische opslag geschematiseerde kan worden geoptimaliseerd voor de prestaties van analytische query's. Met de functie voor automatische synchronisatie van de Synapse-koppeling beheert Azure Cosmos DB de schema weergave in de analytische out-of-the-box. Dit omvat het verwerken van geneste gegevens typen. Aangezien SQL Server de analytische Store doorzoekt, is het belang rijk om te begrijpen hoe Azure Cosmos DB invoer gegevens typen worden toegewezen aan SQL-gegevens typen.
+Het is belang rijk om eerst te weten dat hoewel Azure Cosmos DB transactionele Store schema-neutraal is, de analytische opslag geschematiseerde kan worden geoptimaliseerd voor de prestaties van analytische query's. Met de functie voor automatische synchronisatie van de Synapse-koppeling beheert Azure Cosmos DB de schema weergave in de analytische out-of-the-box. Dit omvat het verwerken van geneste gegevens typen. Omdat serverloze SQL-pool de analytische opslag opvraagt, is het belang rijk om te begrijpen hoe Azure Cosmos DB invoer gegevens typen worden toegewezen aan SQL-gegevens typen.
 
 Azure Cosmos DB-accounts van de SQL-API (core) ondersteunen JSON-eigenschaps typen Number, String, Boolean, null, genest object of matrix. U moet SQL-typen kiezen die overeenkomen met deze JSON-typen als u `WITH` component gebruikt in `OPENROWSET` . Zie onder de SQL-kolom typen die moeten worden gebruikt voor verschillende eigenschaps typen in Azure Cosmos DB.
 
@@ -258,9 +258,9 @@ Voor het uitvoeren van query's op Azure Cosmos DB accounts van de Mongo DB-API-s
 ## <a name="known-issues"></a>Bekende problemen
 
 - Alias **moet** worden opgegeven na `OPENROWSET` -functie (bijvoorbeeld `OPENROWSET (...) AS function_alias` ). Het weglaten van een alias kan leiden tot een verbindings probleem en Synapse SQL-eind punt zonder server mogelijk tijdelijk niet beschikbaar. Dit probleem wordt opgelost in november 2020.
-- Synapse SQL zonder server ondersteunt momenteel geen [Azure Cosmos DB schema met volledige kwaliteit](../../cosmos-db/analytical-store-introduction.md#schema-representation). Gebruik Synapse serverloze SQL alleen voor toegang tot Cosmos DB goed gedefinieerd schema.
+- Een serverloze SQL-pool biedt momenteel geen ondersteuning voor [Azure Cosmos DB schema met volledige betrouw baarheid](../../cosmos-db/analytical-store-introduction.md#schema-representation). Gebruik serverloze SQL-pool alleen voor toegang tot Cosmos DB goed gedefinieerd schema.
 
-In de volgende tabel vindt u een lijst met mogelijke fouten en acties voor het oplossen van problemen:
+In de volgende tabel worden mogelijke fouten en acties voor het oplossen van problemen weer gegeven:
 
 | Fout | Hoofdoorzaak |
 | --- | --- |

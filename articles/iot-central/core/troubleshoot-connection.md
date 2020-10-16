@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322446"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127366"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Probleem oplossen waarbij gegevens van uw apparaten niet worden weergegeven in Azure IoT Central
 
@@ -34,9 +34,9 @@ In deze sectie kunt u bepalen of uw gegevens IoT Central.
 
 Als u dit nog niet hebt gedaan, installeert u het `az cli` hulp programma en de `azure-iot` uitbrei ding.
 
-`az cli`Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie over het installeren van de.
+`az cli`Zie [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie over het installeren van de.
 
-Als [install](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) u de `azure-iot` uitbrei ding wilt installeren, voert u de volgende opdracht uit:
+Als [install](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) u de `azure-iot` uitbrei ding wilt installeren, voert u de volgende opdracht uit:
 
 ```cmd/bash
 az extension add --name azure-iot
@@ -155,7 +155,7 @@ Als u problemen met uw verificatie stroom ziet:
 | 401 | Het autorisatie token kan niet worden gevalideerd. Het is bijvoorbeeld verlopen of is niet van toepassing op de URI van de aanvraag. Deze fout code wordt ook geretourneerd naar apparaten als onderdeel van de TPM-attest stroom. | Zorg ervoor dat uw apparaat de juiste referenties heeft. |
 | 404 | De Device Provisioning Service-instantie of een bron, zoals een registratie, bestaat niet. | [Een ticket indienen bij de klant ondersteuning](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 412 | De `ETag` in de aanvraag komt niet overeen met de `ETag` bestaande resource, conform RFC7232. | [Een ticket indienen bij de klant ondersteuning](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 429 | Bewerkingen worden beperkt door de service. Zie [IOT hub Device Provisioning Service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)voor specifieke service limieten. | Verminder de bericht frequentie, splits de verantwoordelijkheden op meerdere apparaten. |
+| 429 | Bewerkingen worden beperkt door de service. Zie [IOT hub Device Provisioning Service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)voor specifieke service limieten. | Verminder de bericht frequentie, splits de verantwoordelijkheden op meerdere apparaten. |
 | 500 | Er is een interne fout opgetreden. | Neem [een ticket met klant ondersteuning](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) om te zien of ze u verder kunnen helpen. |
 
 ## <a name="payload-shape-issues"></a>Problemen met shape Payload

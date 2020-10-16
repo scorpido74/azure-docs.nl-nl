@@ -9,31 +9,31 @@ ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: add0d392f39ab476c6d75f704d5b2e2e0faaa77c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67836804"
 ---
-## <a name="prepare-your-repository"></a>Uw opslag plaats voorbereiden
+## <a name="prepare-your-repository"></a>Uw opslagplaats voorbereiden
 
-Zorg ervoor dat de hoofdmap van uw opslag plaats de juiste bestanden bevat in het project om automatische builds op te halen van Azure App Service kudu-buildserver.
+Controleer of de hoofdmap van uw opslagplaats de juiste bestanden voor uw project bevat om automatische builds op te halen van Azure App Service Kudu-buildserver.
 
-| Runtime | Hoofdmap bestanden |
+| Runtime | Bestanden in hoofdmap |
 |-|-|
-| ASP.NET (alleen Windows) | _*. SLN_, _*. csproj_of _default. aspx_ |
-| ASP.NET Core | _*. SLN_ of _*. csproj_ |
-| PHP | _index. php_ |
+| ASP.NET (alleen Windows) | _*.sln_, _*.csproj_ of _default.aspx_ |
+| ASP.NET Core | _*.sln_ of _*.csproj_ |
+| PHP | _index.php_ |
 | Ruby (alleen Linux) | _Gemfile_ |
-| Node.js | _server.js_, _app.js_of _package.js_ met een begin script |
-| Python | _ \* . py_, _requirements.txt_of _runtime.txt_ |
-| HTML | _default.htm_, _default.html_, _default. asp_, _index.htm_, _index.html_of _iisstart.htm_ |
-| Webtaken | _\<job_name>/run.\<extension>_ onder _app \_ -gegevens/-taken/doorlopend_ voor doorlopend webjobs, of _app- \_ gegevens/-taken/geactiveerd_ voor getriggerde webjobs. Zie [kudu](https://github.com/projectkudu/kudu/wiki/WebJobs)voor meer informatie. |
-| Functions | Zie [continue implementatie voor Azure functions](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment). |
+| Node.js | _server.js_, _app.js_ of _package.json_ met een startscript |
+| Python | _\*.py_, _requirements.txt_ of _runtime.txt_ |
+| HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_ of _iisstart.htm_ |
+| WebJobs | _\<job_name>/run.\<extension>_ onder _App\_Data/jobs/continuous_ voor continue WebJobs, of _App\_Data/jobs/triggered_ voor geactiveerde WebJobs. Zie [Kudu WebJobs documentation](https://github.com/projectkudu/kudu/wiki/WebJobs) (Documentatie over Kudu WebJobs) voor meer informatie. |
+| Functies | Zie [Continue implementatie voor Azure Functions](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment). |
 
-Als u uw implementatie wilt aanpassen, neemt u een *. Deployment* -bestand op in de hoofdmap van de opslag plaats. Zie [implementaties](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) en [aangepast implementatie script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)aanpassen voor meer informatie.
+Als u uw implementatie wilt aanpassen, neemt u een *DEPLOYMENT*-bestand op in de hoofdmap van de opslagplaats. Zie [Customize deployments](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) (Implementaties aanpassen) en [Custom deployment script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) (Aangepast implementatiescript) voor meer informatie.
 
 > [!NOTE]
-> Als u in Visual Studio ontwikkelt, kunt [u Visual Studio een opslag plaats laten maken](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio). Het project kan direct worden geïmplementeerd met behulp van Git.
+> Als u in Visual Studio ontwikkelt, laat [u Visual Studio een opslagplaats voor u maken](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio). Het project kan direct worden geïmplementeerd met behulp van Git.
 >
 
