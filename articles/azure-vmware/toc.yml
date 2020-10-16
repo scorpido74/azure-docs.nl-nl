@@ -92,6 +92,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: VMware Horizon implementeren
           href: azure-vmware-solution-horizon.md
+    - name: VMware-ecosysteem
+      items:
+        - name: Back-upoplossingen voor VM's
+          href: ecosystem-back-up-vms.md
 - name: Resources
   items:
     - name: Problemen oplossen

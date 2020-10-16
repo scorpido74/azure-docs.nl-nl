@@ -40,7 +40,7 @@
     - name: Een Azure Spring Cloud-exemplaar inrichten met terraform
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: CI/CD met Jenkins
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+      href: /azure/developer/jenkins/deploy-to-azure-spring-cloud-using-azure-cli
     - name: Beheerde identiteit gebruiken om Key Vault te koppelen met een Azure Spring Cloud-app
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Azure Spring Cloud implementeren in een virtueel netwerk
@@ -114,15 +114,15 @@
 - name: Naslaginformatie
   items:
     - name: Azure CLI-invoegtoepassing
-      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+      href: /cli/azure/ext/spring-cloud/spring-cloud
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.springcloud'
+      href: /powershell/module/az.springcloud
     - name: Resources
       href: spring-cloud-resources.md
     - name: Veelgestelde vragen
       href: spring-cloud-faq.md
     - name: Naslaginformatie over REST-API
-      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+      href: /rest/api/azurespringclould/
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

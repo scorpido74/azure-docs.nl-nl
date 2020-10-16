@@ -386,7 +386,7 @@
       items:
         - name: Overzicht
           href: security-overview.md
-        - name: Op rollen gebaseerd toegangsbeheer
+        - name: Op rollen gebaseerd toegangsbeheer voor Azure
           href: backup-rbac-rs-vault.md
         - name: Voorlopig verwijderen
           items:

@@ -168,6 +168,7 @@
         - name: Taken voor taakvoorbereiding- en -voltooiing
           href: batch-job-prep-release.md
         - name: Gelijktijdige knooppunttaken
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: Taakafhankelijkheden
           href: batch-task-dependencies.md
