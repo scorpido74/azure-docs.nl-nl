@@ -6,18 +6,25 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2785f79d327402a40be0a905877b5113b3f751b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710444"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123266"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>TLS-connectiviteit configureren in Azure Database for PostgreSQL-één server
 
 Azure Database for PostgreSQL geeft de voor keur aan de verbinding tussen uw client toepassingen en de PostgreSQL-service met behulp van Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL). Het afdwingen van TLS-verbindingen tussen uw database server en uw client toepassingen helpt bij het beveiligen van ' man-in-the-middle '-aanvallen door de gegevens stroom tussen de server en uw toepassing te versleutelen.
 
 De PostgreSQL-database service is standaard geconfigureerd voor het vereisen van een TLS-verbinding. U kunt ervoor kiezen om het vereisen van TLS uit te scha kelen als uw client toepassing geen TLS-connectiviteit ondersteunt.
+
+>[!NOTE]
+> Op basis van de feedback van klanten hebben we de afschaffing van het basis certificaat uitgebreid voor onze bestaande Baltimore basis certificerings instantie van 15 februari 2021 (02/15/2021).
+
+> [!IMPORTANT] 
+> Het SSL-basis certificaat is ingesteld op verlopen vanaf 15 februari 2021 (02/15/2021). Werk uw toepassing bij om het [nieuwe certificaat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)te gebruiken. Zie [geplande certificaat updates](concepts-certificate-rotation.md) voor meer informatie.
+
 
 ## <a name="enforcing-tls-connections"></a>TLS-verbindingen afdwingen
 

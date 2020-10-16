@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471853"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123524"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Veelgestelde vragen over Azure Network Watcher
 De [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -service biedt een reeks hulpprogram ma's voor het bewaken, diagnosticeren, weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk. In dit artikel vindt u antwoorden op veelgestelde vragen over de service.
@@ -80,6 +80,14 @@ Network Watcher hoeft alleen maar één keer te worden ingeschakeld voor een abo
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Hoe kan ik de Network Watcher resource beheren? 
 De Network Watcher resource vertegenwoordigt de back-end-service voor Network Watcher en wordt volledig beheerd door Azure. Klanten hoeven deze niet te beheren. Bewerkingen zoals verplaatsen worden niet ondersteund voor de resource. [De resource kan echter worden verwijderd](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
+
+## <a name="service-availability-and-redundancy"></a>Beschik baarheid en redundantie van de service 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>Is de Network Watcher service zone flexibel? 
+Ja. De Network Watcher-service is standaard zone-flexibel. 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Hoe kan ik de Network Watcher-service zo configureren dat deze zone flexibel kan worden? 
+Er is geen klant configuratie nodig om zone tolerantie in te scha kelen. Zone-tolerantie voor Network Watcher resources is standaard beschikbaar en wordt beheerd door de service zelf. 
 
 ## <a name="nsg-flow-logs"></a>NSG-stroom logboeken
 

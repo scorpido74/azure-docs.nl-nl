@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3a3582891ab3d3e4bfb53cbba0c0b2826cba56b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537902"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123351"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for PostgreSQL-infra structuur
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL maakt gebruik van opslag [versleuteling van gegeve
 Infrastructuur dubbele versleuteling voegt een tweede laag versleuteling toe met door service beheerde sleutels. Er wordt gebruikgemaakt van de FIPS 140-2-gevalideerde cryptografische module, maar met een ander versleutelings algoritme. Dit biedt een extra beveiligingslaag voor uw gegevens in rust. De sleutel die in de infra structuur met dubbele versleuteling wordt gebruikt, wordt ook beheerd door de Azure Database for PostgreSQL-service. De infra structuur met dubbele versleuteling is niet standaard ingeschakeld, omdat de extra versleutelings versleuteling de prestaties kan beïnvloeden.
 
 > [!NOTE]
-> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for PostgreSQL de prijs categorieën ' Algemeen ' en ' geoptimaliseerd voor geheugen ' ondersteunt.
+> Deze functie wordt alleen ondersteund voor de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen in Azure Database for PostgreSQL.
 
 Infrastructuur laag versleuteling biedt het voor deel dat wordt geïmplementeerd op de laag die het dichtst bij het opslag apparaat of netwerk draden ligt. Azure Database for PostgreSQL implementeert de twee coderings lagen met door service beheerde sleutels. Hoewel u nog steeds technisch in de service slaag bent, wordt het zeer dicht bij de hardware die de gegevens in rust opslaat. U kunt ook de optie voor gegevens versleuteling op rest inschakelen met behulp van de door de [klant beheerde sleutel](concepts-data-encryption-postgresql.md) voor de ingerichte postgresql-server.  
 

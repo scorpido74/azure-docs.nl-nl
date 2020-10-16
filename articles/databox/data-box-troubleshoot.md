@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053450"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124671"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
@@ -56,7 +56,7 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - Voor beelden van geldige namen: `my-folder-1` , `my-really-extra-long-folder-111`
     - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
-    Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
+    Zie de Azure-naamgevings conventies voor [container namen](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
@@ -75,7 +75,7 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - Voor beelden van geldige namen: `my-folder-1` , `my-really-extra-long-folder-111`
     - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
-    Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
+    Zie de Azure-naamgevings conventies voor [container namen](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
@@ -93,7 +93,7 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - Voor beelden van geldige namen: `my-folder-1` , `my-really-extra-long-folder-111`
     - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
-    Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
+    Zie de Azure-naamgevings conventies voor [container namen](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
     
 ### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
 
@@ -104,7 +104,7 @@ Dit zijn fouten met betrekking tot container-en share namen.
 - Down load op de pagina verbinding maken en kopiëren van de lokale webinterface en controleer de fout bestanden om de mapnamen met problemen te identificeren. 
 - Wijzig de naam van de map of containers om er zeker van te zijn dat ze compatibel zijn met Azure-naamgevings conventies.
 
-Zie de Azure-naamgevings conventies voor [directory's](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   en [containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [directory's](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   en [containers](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)voor meer informatie.
 
 ## <a name="container-or-share-size-limit-errors"></a>Fouten in de container of share grootte beperken
 
@@ -190,7 +190,7 @@ De volgende sectie bevat een overzicht van alle niet-kritieke fouten met betrekk
 Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
 Verwijder de bestanden om niet-ondersteunde tekens te verwijderen of de naam ervan te wijzigen.
 
-Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [BLOB-namen](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
@@ -201,7 +201,7 @@ Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com
 Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
 Verwijder de bestanden om niet-ondersteunde tekens te verwijderen of de naam ervan te wijzigen.
 
-Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [BLOB-namen](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
 
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
@@ -213,7 +213,7 @@ Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com
 Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
 Verwijder de bestanden om niet-ondersteunde tekens te verwijderen of de naam ervan te wijzigen.
 
-Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [BLOB-namen](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) en [bestands namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)voor meer informatie.
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
@@ -223,7 +223,7 @@ Zie de Azure-naamgevings conventies voor [BLOB-namen](https://docs.microsoft.com
 **Voorgestelde oplossing:** De blobs of de bestanden die u hebt gekopieerd, overschrijden het maximum aantal padsegmenten. Een padsegment is de teken reeks tussen opeenvolgende scheidings tekens, bijvoorbeeld de slash/.
 
 - Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
-- Zorg ervoor dat de [namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) van de BLOB en de [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan de Azure-naamgevings conventies.
+- Zorg ervoor dat de [namen](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) van de BLOB en de [bestands namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan de Azure-naamgevings conventies.
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
@@ -244,7 +244,7 @@ Zie de Azure-naamgevings conventies voor BLOB-namen en bestands namen voor meer 
 **Voorgestelde oplossing:** Een van de padsegmenten in de BLOB of bestands naam overschrijdt het maximum aantal tekens. Een padsegment is de teken reeks tussen opeenvolgende scheidings tekens, bijvoorbeeld de slash/.
 
 - Down load en controleer de fout bestanden op de pagina **verbinding maken en kopiëren** van de lokale webgebruikersinterface.
-- Zorg ervoor dat de [namen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) van de BLOB en de [bestands namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan de Azure-naamgevings conventies.
+- Zorg ervoor dat de [namen](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) van de BLOB en de [bestands namen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) voldoen aan de Azure-naamgevings conventies.
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE

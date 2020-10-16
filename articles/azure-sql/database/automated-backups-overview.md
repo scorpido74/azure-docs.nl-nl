@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728655"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124183"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -50,7 +50,7 @@ Voor een SQL Database kan de redundantie van de back-upopslag worden geconfigure
 > Zone-redundante opslag is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage). 
 
 > [!NOTE]
-> Configureer bare opslag redundantie van back-ups voor Azure SQL Database is momenteel alleen beschikbaar in de open bare preview in de Azure-regio Zuidoost-Azië. Deze functie is nog niet beschikbaar voor de grootschalige-laag. 
+> Configureer bare back-upopslag redundantie voor Azure SQL Database is momenteel algemeen beschikbaar in de Azure-regio Zuidoost-Azië. Deze functie is nog niet beschikbaar voor de grootschalige-laag. 
 
 ### <a name="backup-usage"></a>Back-upgebruik
 

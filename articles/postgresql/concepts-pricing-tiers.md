@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: e0ac1ec93dba23eb6ab3380e342141618a1ab6e4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069652"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123249"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijscategorieën in Azure Database for PostgreSQL - enkele server
 
@@ -39,7 +39,7 @@ Nadat u een server hebt gemaakt, kunt u binnen enkele seconden het aantal vCores
 
 Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderliggende hardware vertegenwoordigen. China-oost 1, China-noord 1, US DoD-centraal en US DoD-oost logische Cpu's van generatie 4 gebruiken die zijn gebaseerd op Intel E5-2673 v3 (Haswell) 2,4-GHz processors. Alle andere regio's maken gebruik van generatie 5 logische Cpu's die zijn gebaseerd op Intel E5-2673 v4 (Broadwell) 2,3-GHz processors.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for PostgreSQL-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de PostgreSQL-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
@@ -51,7 +51,7 @@ De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikb
 | IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
 
 > [!NOTE]
-> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië Zuid-Oost, VS-West 2 en Canada-centraal.
+> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, Brazilië-zuid, centraal VS, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Zuid-Oost, VS-West 2 , Canada-oost en Canada-centraal.
 >
 > Alle andere regio's ondersteunen Maxi maal 4 TB opslag ruimte en 6000 IOPS.
 >

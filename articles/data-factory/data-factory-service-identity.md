@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7134fc5d591fffdfb9aea13767e597dddc92b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434942"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123746"
 ---
 # <a name="managed-identity-for-data-factory"></a>Beheerde identiteit voor Data Factory
 
@@ -57,7 +57,7 @@ Als uw data factory geen beheerde identiteit heeft die is gekoppeld aan de instr
 
 ### <a name="generate-managed-identity-using-powershell"></a>Beheerde identiteit genereren met behulp van Power shell
 
-Roep **set-AzDataFactoryV2** opdracht opnieuw uit. vervolgens ziet u dat er nieuwe identiteits velden worden gegenereerd:
+Roep **set-AzDataFactoryV2** opdracht. vervolgens ziet u dat er nieuwe identiteits velden worden gegenereerd:
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>

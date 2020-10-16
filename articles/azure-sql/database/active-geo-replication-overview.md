@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445060"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124755"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Standaard is de redundantie opslag ruimte van de back-up van de secundaire data 
 > Het transactie logboek op de primaire waarde kan worden beperkt om redenen die niet te maken hebben met een lagere reken grootte op een secundaire. Dit type beperking kan optreden, zelfs als de secundaire computer dezelfde of een hogere reken grootte heeft dan de primaire. Zie [Trans Action log rate governance](resource-limits-logical-server.md#transaction-log-rate-governance)(Engelstalig) voor meer informatie, waaronder wacht typen voor verschillende soorten logboek frequentie beperking.
 
 > [!NOTE]
-> Azure SQL Database Configurable Backup Storage Redundancy is momenteel alleen in de Azure-regio Azië - zuidoost beschikbaar als openbare preview. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upredundantie, wordt het maken van een secundaire data base in een andere Azure-regio niet ondersteund. 
+> Azure SQL Database Configureer bare redundantie van back-upopslag is momenteel algemeen beschikbaar in de Azure-regio Zuidoost-Azië. Wanneer de bron database is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het maken van een secundaire data base in een andere Azure-regio niet ondersteund. 
 
 Zie [Wat zijn SQL database service lagen](purchasing-models.md)voor meer informatie over de SQL database Compute sizes.
 
@@ -266,7 +266,7 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
+> De module PowerShell Azure Resource Manager wordt nog steeds ondersteund in Azure SQL Database, maar alle toekomstige ontwikkeling is voor de Az.Sql-module. Zie [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) voor deze cmdlets. De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn vrijwel identiek.
 
 | Cmdlet | Beschrijving |
 | --- | --- |

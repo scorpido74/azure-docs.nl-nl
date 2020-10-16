@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611653"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123712"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Gebruik de Azure Portal om uw Azure Data Box en Azure Data Box Heavy te beheren
 
@@ -222,8 +222,8 @@ Dit zijn de statussen voor een import volgorde.
 |Ontvangen     | Uw apparaat is ontvangen en gescand in het Azure-datacenter. <br> Zodra de verzending is geïnspecteerd, wordt de apparaatupload gestart.      |
 |Gegevens kopiëren     | Het kopiëren van gegevens is in voortgang. Houd de kopieervoortgang voor uw order bij in de Azure-portal. <br> Wacht totdat het kopiëren van gegevens is voltooid. |
 |Voltooid       |De order is voltooid.<br> Verifieer dat uw gegevens zich in Azure bevinden voordat u de on-premises gegevens van servers verwijdert.         |
-|Voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten opgetreden tijdens het kopiëren. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met fouten](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Voltooid met waarschuwingen| De gegevens kopie is voltooid, maar de gegevens zijn gewijzigd. De gegevens bevatten niet-kritieke BLOB-of bestandsnaam fouten die zijn opgelost door het wijzigen van de naam van het bestand of de blob. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Noteer de wijzigingen in uw gegevens. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met waarschuwingen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
+|Voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten opgetreden tijdens het kopiëren. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met fouten](./data-box-logs.md#upload-completed-with-errors).   |
+|Voltooid met waarschuwingen| De gegevens kopie is voltooid, maar de gegevens zijn gewijzigd. De gegevens bevatten niet-kritieke BLOB-of bestandsnaam fouten die zijn opgelost door het wijzigen van de naam van het bestand of de blob. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Noteer de wijzigingen in uw gegevens. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met waarschuwingen](./data-box-logs.md#upload-completed-with-warnings).   |
 |Geannuleerd            |De order is geannuleerd. <br> U hebt de order zelf geannuleerd, of er is een fout opgetreden waardoor de service de order heeft geannuleerd. Als de order niet binnen 90 dagen kan worden voltooid, wordt deze ook geannuleerd en wordt u op de hoogte gesteld.     |
 |Opschonen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
 
@@ -238,9 +238,9 @@ Dit zijn de statussen voor een export volgorde.
 |Verwerkt     | De order is verwerkt. Op basis van uw bestelling wordt het apparaat voor bereid voor het kopiëren van gegevens in het Data Center. Er worden apparaat shares gemaakt.         |
 |De gegevens kopie wordt uitgevoerd     | Er wordt een gegevens kopie van de opgegeven Azure Storage accounts naar het apparaat uitgevoerd. Houd de kopieervoortgang voor uw order bij in de Azure-portal. <br> Wacht totdat het kopiëren van gegevens is voltooid. |
 |Kopiëren is voltooid     | De gegevens kopie van de opgegeven Azure Storage accounts naar het apparaat is voltooid. Een uitgebreid logboek bestand (als de optie in de volg orde is ingeschakeld) en er in uw opslag account een kopie logboek wordt gemaakt. Het uitgebreide logboek bevat de informatie over alle bestanden (naam, pad, reken controlesom) die naar het apparaat worden gekopieerd. Het Kopieer logboek bevat de samen vatting van het kopieer proces, met inbegrip van een lijst met bestanden die niet kunnen worden gekopieerd als gevolg van fouten.<br> De gegevens van het opslag account blijven ongewijzigd. |
-|Kopiëren voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten opgetreden tijdens het kopiëren. <br> Controleer de Kopieer Logboeken in het Azure Storage-account met behulp van het pad in de Azure Portal. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is voltooid met fouten](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Kopiëren voltooid met waarschuwingen| De gegevens kopie van Azure Storage account is voltooid, maar de gegevens bevatten niet-kritieke fouten. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Noteer de niet-kritieke fouten. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is voltooid met waarschuwingen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
-|Kopiëren is mislukt met fouten| Het kopiëren van gegevens uit Azure Storage account is mislukt en de volg orde wordt beëindigd. Er wordt geen apparaat verzonden.<br> Controleer de Kopieer Logboeken in het Azure Storage-account met behulp van het pad in de Azure Portal. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is mislukt met fouten](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Kopiëren voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten opgetreden tijdens het kopiëren. <br> Controleer de Kopieer Logboeken in het Azure Storage-account met behulp van het pad in de Azure Portal. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is voltooid met fouten](./data-box-logs.md#upload-completed-with-errors).   |
+|Kopiëren voltooid met waarschuwingen| De gegevens kopie van Azure Storage account is voltooid, maar de gegevens bevatten niet-kritieke fouten. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Noteer de niet-kritieke fouten. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is voltooid met waarschuwingen](./data-box-logs.md#upload-completed-with-warnings).   |
+|Kopiëren is mislukt met fouten| Het kopiëren van gegevens uit Azure Storage account is mislukt en de volg orde wordt beëindigd. Er wordt geen apparaat verzonden.<br> Controleer de Kopieer Logboeken in het Azure Storage-account met behulp van het pad in de Azure Portal. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is mislukt met fouten](./data-box-logs.md#upload-completed-with-errors).   |
 |Verzonden     |De order is verzonden. Gebruik het volgnummer dat in uw order in de portal wordt weergegeven om de verzending bij te houden.        |
 |Afgeleverd     |De verzending is afgeleverd op het adres dat in de order is opgegeven.        |
 |Opgehaald     |Uw retourzending is opgehaald en gescand door de vervoerder.         |

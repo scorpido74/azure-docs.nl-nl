@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9305ff5904588241ff8319f28eab2ce20ad77876
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826137"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125112"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: veelgestelde vragen
 
@@ -66,7 +66,7 @@ Als u bijvoorbeeld gegevens op uw locatie in Canada wilt verplaatsen naar een Az
 
 ### <a name="option-1"></a>Optie 1: 
 
-Een [ondersteunde schijf](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) met gegevens verzenden met de [Azure import/export-service](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) van de bron locatie in Canada naar het Azure westus Data Center.
+Een [ondersteunde schijf](../storage/common/storage-import-export-requirements.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#supported-disks) met gegevens verzenden met de [Azure import/export-service](../storage/common/storage-import-export-service.md) van de bron locatie in Canada naar het Azure westus Data Center.
 
 ### <a name="option-2"></a>Optie 2:
 
@@ -77,7 +77,7 @@ Een [ondersteunde schijf](https://docs.microsoft.com/azure/storage/common/storag
 3. U kunt vervolgens een hulp programma als AzCopy gebruiken om de gegevens naar een opslag account in Westus te kopiëren. Met deze stap worden [standaard](https://azure.microsoft.com/pricing/details/storage/) kosten voor opslag en [band breedte](https://azure.microsoft.com/pricing/details/bandwidth/) in rekening gebracht die niet zijn opgenomen in de facturering van data Box disk.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>V. Met wie moet ik contact opnemen als ik een probleem krijg met Data Box-schijven?
-A. Neem bij problemen met Data Box-schijven contact op met [Microsoft Ondersteuning](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
+A. Neem bij problemen met Data Box-schijven contact op met [Microsoft Ondersteuning](./data-box-disk-contact-microsoft-support.md).
 
 ## <a name="configure-and-connect"></a>Configureren en verbinding maken
  
@@ -147,7 +147,7 @@ A.  U kunt het kopieerproces als volgt versnellen:
 - Gebruik meerdere gegevensstromen. In bijvoorbeeld Robocopy kunt u de optie voor meerdere threads gebruiken. Ga naar [Tutorial: Copy data to Azure Data Box Disk and verify](data-box-disk-deploy-copy-data.md#copy-data-to-disks) (Zelfstudie: Gegevens naar Azure Data Box kopiëren en verifiëren) voor meer informatie over de opdracht die u moet gebruiken.
 - Gebruik meerdere sessies.
 - In plaats van te kopiëren via een netwerkshare (waarbij de netwerksnelheid beperkend kan zijn), zorgt u ervoor dat de gegevens lokaal aanwezig zijn op de computer waarmee de schijven zijn verbonden.
-- Zorg ervoor dat u USB 3.0 of hoger gebruikt gedurende het hele kopieerproces. Download en gebruik het hulpprogramma [USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) om de USB-controllers en de USB-apparaten te identificeren die met de computer zijn verbonden.
+- Zorg ervoor dat u USB 3.0 of hoger gebruikt gedurende het hele kopieerproces. Download en gebruik het hulpprogramma [USBView](/windows-hardware/drivers/debugger/usbview) om de USB-controllers en de USB-apparaten te identificeren die met de computer zijn verbonden.
 - Voer een benchmark-test uit van de prestaties van de computer die wordt gebruikt om de gegevens te kopiëren. Download en gebruik het hulpprogramma [Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) om een benchmark-test uit te voeren van de prestaties van de serverhardware. Selecteer de nieuwste versie van x86 of x64, selecteer het tabblad **artefacten** en down load het MSI-bestand.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>V. Hoe kan ik het kopiëren van de gegevens versnellen als de brongegevens uit kleine bestanden (kB's of enkele MB's) bestaan?

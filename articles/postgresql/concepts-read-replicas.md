@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.date: 10/15/2020
+ms.openlocfilehash: 3b660875288db1f16f13d58b1538a876e2ff2666
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939831"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123288"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -43,7 +43,7 @@ U kunt een primaire server in een [Azure database for PostgreSQL regio](https://
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt altijd een lees replica maken in een van de volgende regio's, ongeacht waar de primaire server zich bevindt. Dit zijn de universele replica regio's:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2, West-Centraal vs.
+Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West-Centraal vs.
 
 ### <a name="paired-regions"></a>Gekoppelde regio's
 Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van de primaire server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](../best-practices-availability-paired-regions.md).

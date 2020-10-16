@@ -1,26 +1,26 @@
 ---
-title: 'Power shell: een externe gebruiker toevoegen aan een lab in Azure DevTest Labs'
-description: Dit artikel bevat een Azure PowerShell script waarmee een externe gebruiker wordt toegevoegd aan een lab in Azure DevTest Labs.
+title: 'PowerShell: een externe gebruiker toevoegen aan een lab in Azure DevTest Labs'
+description: Dit artikel bevat een Azure PowerShell-script waarmee een externe gebruiker aan een lab in Azure DevTest Labs wordt toegevoegd.
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
 ms.openlocfilehash: 76fbb5e4d7f5db39a0aadba9098ebf1064b3cda5
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136215"
 ---
-# <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>Power shell gebruiken om een externe gebruiker toe te voegen aan een lab in Azure DevTest Labs
+# <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>PowerShell gebruiken om een externe gebruiker aan een lab in Azure DevTest Labs toe te voegen
 
-Met dit Power shell-voorbeeld script wordt een externe gebruiker toegevoegd aan een lab in Azure DevTest Labs. 
+Met dit PowerShell-script wordt een externe gebruiker aan een lab in Azure DevTest Labs toegevoegd. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-* **Een Lab**. Het script vereist dat u een bestaand Lab hebt. 
+* **Een lab**. Het script vereist dat u een bestaand lab hebt. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -32,11 +32,11 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | Het gebruikers object wordt opnieuw geprobeerd vanuit Azure Active Directory. |
-| [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | Hiermee wordt de opgegeven rol toegewezen aan de opgegeven Principal, bij het opgegeven bereik. |
+| [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | Het gebruikersobject wordt opnieuw geprobeerd vanuit Azure Active Directory. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | Wijst de opgegeven rol voor het opgegeven bereik aan de opgegeven principal toe. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende Azure Lab Services Power shell-voorbeeld scripts vindt u in de [Azure Lab Services Power shell](../samples-powershell.md)-voor beelden.
+Er zijn extra voorbeelden van Azure Lab Services PowerShell-scripts te vinden in de [PowerShell-voorbeelden van Azure Lab Services CLI](../samples-powershell.md).

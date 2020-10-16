@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ec674c35a4e218c105febf6471ae8427f3c1c3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531022"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125727"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for MySQL-infra structuur
 
@@ -20,7 +20,7 @@ Azure Database for MySQL maakt gebruik van opslag [versleuteling van gegevens op
 Infrastructuur dubbele versleuteling voegt een tweede laag versleuteling toe met door service beheerde sleutels. Er wordt gebruikgemaakt van de FIPS 140-2-gevalideerde cryptografische module, maar met een ander versleutelings algoritme. Dit biedt een extra beveiligingslaag voor uw gegevens in rust. De sleutel die in de infra structuur met dubbele versleuteling wordt gebruikt, wordt ook beheerd door de Azure Database for MySQL-service. De infra structuur met dubbele versleuteling is niet standaard ingeschakeld, omdat de extra versleutelings versleuteling de prestaties kan beïnvloeden.
 
 > [!NOTE]
-> Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for MySQL de prijs categorieën ' Algemeen ' en ' geoptimaliseerd voor geheugen ' ondersteunt.
+> Deze functie wordt alleen ondersteund voor de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen in Azure Database for PostgreSQL.
 
 Infrastructuur laag versleuteling biedt het voor deel dat wordt geïmplementeerd op de laag die het dichtst bij het opslag apparaat of netwerk draden ligt. Azure Database for MySQL implementeert de twee coderings lagen met door service beheerde sleutels. Hoewel u nog steeds technisch in de service slaag bent, wordt het zeer dicht bij de hardware die de gegevens in rust opslaat. U kunt nog steeds gegevens versleuteling op rest inschakelen met behulp van de door de [klant beheerde sleutel](concepts-data-encryption-mysql.md) voor de ingerichte mysql-server. 
 

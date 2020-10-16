@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2a72e22b600f7dd7737a877e2fdf5d34c4dd4b4c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876087"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975991"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>Zelfstudie: Routefilters voor Microsoft-peering configureren: Azure CLI
 
@@ -48,10 +48,10 @@ Via een routefilter kunt u services identificeren die u wilt gebruiken via Micro
 Als u routefilters aan Microsoft 365-services wilt koppelen, moet u gemachtigd zijn om Microsoft 365-services te gebruiken via ExpressRoute. Als u niet gemachtigd bent om Microsoft 365-services te gebruiken via ExpressRoute, mislukt de bewerking voor het koppelen van routefilters. Zie [Azure ExpressRoute voor Microsoft 365](/microsoft-365/enterprise/azure-expressroute) voor meer informatie over het autorisatieproces.
 
 > [!IMPORTANT]
-> Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017, heeft alle servicevoorvoegsels die worden geadverteerd via Microsoft-peering, zelfs als er geen routefilters zijn gedefinieerd. Microsoft-peering voor ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017, heeft geen voorvoegsels die worden geadverteerd totdat een routefilter aan het circuit is gekoppeld.
+> Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017, heeft alle servicevoorvoegsels die worden geadverteerd via Microsoft-peering, zelfs als er geen routefilters zijn gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017, heeft geen voorvoegsels die worden geadverteerd totdat een routefilter aan het circuit is gekoppeld.
 > 
 
-## <a name="prerequisites"></a><a name="workflow"></a>Vereisten
+## <a name="prerequisites"></a>Vereisten
 
 Als u via Microsoft-peering verbinding met services wilt maken, moet u de volgende configuratiestappen uitvoeren:
 
@@ -143,7 +143,7 @@ Zodra een routefilter is losgekoppeld van het ExpressRoute-circuit, worden er ge
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-## <a name="clean-up-resources"></a><a name="delete"></a>Resources opschonen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 U kunt een routefilter alleen verwijderen als het niet aan een circuit is gekoppeld. Zorg ervoor dat het routefilter niet is gekoppeld aan een circuit voordat u het probeert te verwijderen. U kunt een routefilter verwijderen met de volgende opdracht:
 

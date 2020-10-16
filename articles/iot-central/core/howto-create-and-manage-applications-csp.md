@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653346"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123110"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Een Azure IoT Central-toepassing maken en beheren vanuit de CSP-Portal
 
@@ -63,7 +63,7 @@ Omdat Azure IoT Central context heeft dat u de klant die u hebt geselecteerd in 
 
 Een Azure Active Directory-Tenant bevat gebruikers identiteiten, referenties en andere informatie over de organisatie. Meerdere Azure-abonnementen kunnen worden gekoppeld aan één Azure Active Directory Tenant.
 
-Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)voor meer informatie.
+Zie [Azure Active Directory](../../active-directory/index.yml)voor meer informatie.
 
 ## <a name="azure-subscription"></a>Azure-abonnement
 
@@ -71,7 +71,7 @@ Met een Azure-abonnement kunt u exemplaren maken van Azure-services. Azure IoT C
 
 Als u geen Azure-abonnement hebt, kunt u er een maken in het micro soft partner centrum. Nadat u het Azure-abonnement hebt gemaakt, gaat u terug naar de pagina **Toepassing maken**. Uw nieuwe abonnement wordt weergegeven in de vervolgkeuzelijst.**Azure-abonnement**.
 
-Zie [Azure-abonnementen](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)voor meer informatie.
+Zie [Azure-abonnementen](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)voor meer informatie.
 
 ## <a name="location"></a>Locatie
 
