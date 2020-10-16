@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180640"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107722"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
@@ -137,7 +137,7 @@ De functie-app resource wordt gedefinieerd met behulp van een resource van het t
 
 Een functie-app moet deze toepassings instellingen bevatten:
 
-| Naam van de instelling                 | Beschrijving                                                                               | Voorbeeldwaarden                        |
+| Naam van de instelling                 | Description                                                                               | Voorbeeldwaarden                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Een connection string naar een opslag account dat door de functions-runtime wordt gebruikt voor interne wachtrij gebruik | Zie [Storage-account](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | De versie van de Azure Functions runtime                                                | `~2`                                  |
@@ -516,7 +516,7 @@ Linux-apps moeten ook een `linuxFxVersion` eigenschap bevatten onder `siteConfig
 }
 ```
 
-Als u [een aangepaste container installatie kopie implementeert](./functions-create-function-linux-custom-image.md), moet u deze opgeven met `linuxFxVersion` en configuratie toevoegen waarmee de installatie kopie kan worden opgehaald, zoals in [Web App for containers](../app-service/containers/index.yml). Stel ook `WEBSITES_ENABLE_APP_SERVICE_STORAGE` in op `false` , omdat de inhoud van uw app wordt opgegeven in de container zelf:
+Als u [een aangepaste container installatie kopie implementeert](./functions-create-function-linux-custom-image.md), moet u deze opgeven met `linuxFxVersion` en configuratie toevoegen waarmee de installatie kopie kan worden opgehaald, zoals in [Web App for containers](../app-service/index.yml). Stel ook `WEBSITES_ENABLE_APP_SERVICE_STORAGE` in op `false` , omdat de inhoud van uw app wordt opgegeven in de container zelf:
 
 ```json
 {
@@ -649,7 +649,7 @@ U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure-portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>De knop Implementeren in Azure

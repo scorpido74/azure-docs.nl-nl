@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87311752"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104577"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>ITP in Safari en andere browsers waar cookies van derden worden geblokkeerd, afhandelen
 
@@ -49,7 +49,7 @@ SPAs hebben twee extra beperkingen:
 * [De omleidings-URI moet worden `spa` gemarkeerd als type](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) CORS inschakelen voor eind punten van de aanmelding.
 * Vernieuwings tokens die zijn uitgegeven via de autorisatie code stroom naar `spa` omleidings-uri's, hebben een levens duur van 24 uur in plaats van een levens duur van 90 dagen.
 
-![Code stroom voor SPA-apps](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Diagram van de OAuth 2-autorisatie code stroom tussen een app met één pagina en het eind punt van het beveiligings token service." border="false":::
 
 ## <a name="performance-and-ux-implications"></a>Prestaties en UX-implicaties
 

@@ -6,15 +6,15 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578509"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106617"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Gegevens van Azure Data Lake Storage Gen1 in Azure Data Catalog registreren
-In dit artikel leert u hoe u Azure Data Lake Storage Gen1 integreert met Azure Data Catalog, zodat uw gegevens binnen een organisatie kunnen worden gedetecteerd door deze te integreren met Data Catalog. Zie [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)voor meer informatie over het catalogiseren van gegevens. Zie [Azure Data Catalog algemene scenario's](../data-catalog/data-catalog-common-scenarios.md)voor meer informatie over scenario's waarin u Data Catalog kunt gebruiken.
+In dit artikel leert u hoe u Azure Data Lake Storage Gen1 integreert met Azure Data Catalog, zodat uw gegevens binnen een organisatie kunnen worden gedetecteerd door deze te integreren met Data Catalog. Zie [Azure Data Catalog](../data-catalog/overview.md)voor meer informatie over het catalogiseren van gegevens. Zie [Azure Data Catalog algemene scenario's](../data-catalog/data-catalog-common-scenarios.md)voor meer informatie over scenario's waarin u Data Catalog kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaan:
@@ -40,7 +40,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
     ![Welkomstscherm](./media/data-lake-store-with-data-catalog/welcome.screen.png "Welkomstscherm")
 1. Selecteer **Azure data Lake Store**op de pagina een gegevens bron selecteren en klik vervolgens op **volgende**.
 
-    ![Gegevensbron selecteren](./media/data-lake-store-with-data-catalog/select-source.png "Gegevensbron selecteren")
+    ![Gegevens bron selecteren](./media/data-lake-store-with-data-catalog/select-source.png "Gegevensbron selecteren")
 1. Geef op de volgende pagina de Data Lake Storage Gen1-account naam op die u wilt registreren in Data Catalog. Wijzig de andere opties als standaard en klik vervolgens op **verbinding maken**.
 
     ![Verbinding maken met gegevensbron](./media/data-lake-store-with-data-catalog/connect-to-source.png "Verbinding maken met gegevensbron")

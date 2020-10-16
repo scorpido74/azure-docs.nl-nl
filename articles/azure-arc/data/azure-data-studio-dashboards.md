@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876240"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107569"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio Dash boards
 
-[Azure Data Studio](https://aka.ms/azuredatastudio) biedt een soort gelijke ervaring als de Azure portal voor het weer geven van informatie over uw Azure-Arc-resources.  Deze weer gaven worden **Dash boards** genoemd en hebben een indeling en opties die vergelijkbaar zijn met wat u zou kunnen zien over een bepaalde resource in de Azure Portal, maar bieden u de flexibiliteit om de gegevens lokaal in uw omgeving te zien in gevallen waarin u geen verbinding hebt met Azure.
+[Azure Data Studio](/sql/azure-data-studio/what-is) biedt een soort gelijke ervaring als de Azure portal voor het weer geven van informatie over uw Azure-Arc-resources.  Deze weer gaven worden **Dash boards** genoemd en hebben een indeling en opties die vergelijkbaar zijn met wat u zou kunnen zien over een bepaalde resource in de Azure Portal, maar bieden u de flexibiliteit om de gegevens lokaal in uw omgeving te zien in gevallen waarin u geen verbinding hebt met Azure.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "91876240"
 
 ### <a name="prerequisites"></a>Vereisten
 
-- [Azure Data Studio](https://aka.ms/getazuredatastudio) downloaden
+- [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) downloaden
 - De Azure Arc-extensie is geïnstalleerd
 
 ### <a name="determine-the-data-controller-server-api-endpoint-url"></a>De URL van het data controller Server API-eind punt bepalen
@@ -62,7 +62,7 @@ https://52.154.152.24:30080
 
 Noteer uw IP-adres zoals u dit in de volgende stap gaat gebruiken.
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Verbinden
 
 1. Azure Data Studio openen
 

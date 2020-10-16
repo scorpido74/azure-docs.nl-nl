@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeafe41888163c27f583529bed1998f067e107f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819388"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107620"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen
 
@@ -43,7 +43,7 @@ Om B2B-gebruikers toegang te bieden tot on-premises toepassingen die zijn beveil
 - **Autorisatie via een B2B-gebruikers object in de on-premises Directory**. De toepassing moet gebruikers toegangs controles kunnen uitvoeren en toegang verlenen tot de juiste resources. IWA en KCD vereisen een gebruikers object in het on-premises Windows Server-Active Directory om deze autorisatie te volt ooien. Zoals beschreven in de werking van [eenmalige aanmelding met KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), moet dit gebruikers object door de toepassings proxy worden geïmiteerd en moet er een Kerberos-token bij de app worden ontvangen. 
 
    > [!NOTE]
-   > Wanneer u de Azure AD-toepassingsproxy configureert, moet u ervoor zorgen dat de **gedelegeerde aanmeldings-id** is ingesteld op **User Principal name** (standaard) voor IWA eenmalige aanmelding.
+   > Wanneer u de Azure AD-toepassingsproxy configureert, moet u ervoor zorgen dat de **gedelegeerde aanmeldings-id** is ingesteld op **User Principal name** (standaard) in de configuratie voor eenmalige aanmelding voor geïntegreerde Windows-verificatie (IWA).
 
    Voor het B2B-gebruikers scenario zijn er twee methoden beschikbaar die u kunt gebruiken om de gast gebruikers objecten te maken die vereist zijn voor autorisatie in de on-premises Directory:
 

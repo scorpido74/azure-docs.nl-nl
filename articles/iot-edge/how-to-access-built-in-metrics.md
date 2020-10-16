@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b6f4e50cac2f809172c2525ea9136a63e6bd9066
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979578"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107008"
 ---
-# <a name="access-built-in-metrics"></a>Toegang tot ingebouwde metrische gegevens
+# <a name="access-built-in-metrics"></a>Ingebouwde metrische gegevens openen
 
 De IoT Edge runtime-onderdelen, IoT Edge hub en IoT Edge agent, produceren ingebouwde metrische gegevens in de [Prometheus Exposition-indeling](https://prometheus.io/docs/instrumenting/exposition_formats/). U kunt op afstand toegang krijgen tot deze gegevens om de status van een IoT Edge apparaat te controleren en te begrijpen.
 
-Vanaf de release-1.0.10 worden metrische gegevens standaard automatisch beschikbaar gesteld op **poort 9600** van de **EdgeHub** -en **edgeAgent** -modules ( `http://edgeHub:9600/metrics` en `http://edgeAgent:9600/metics` ). Deze poorten zijn standaard niet toegewezen aan de host.
+Vanaf de release-1.0.10 worden metrische gegevens standaard automatisch beschikbaar gesteld op **poort 9600** van de **EdgeHub** -en **edgeAgent** -modules ( `http://edgeHub:9600/metrics` en `http://edgeAgent:9600/metrics` ). Deze poorten zijn standaard niet toegewezen aan de host.
 
 Toegang tot metrische gegevens van de host door de metrische poort van de module weer te geven en toe te wijzen `createOptions` . In het volgende voor beeld wordt de standaard poort voor metrische gegevens toegewezen aan poort 9601 op de host:
 
@@ -50,7 +50,7 @@ Kies verschillende en unieke host-poort nummers als u de metrische gegevens van 
 
 Metrische gegevens bevatten Tags waarmee u de aard van de metrische gegevens die worden verzameld, kunt identificeren. Alle metrische gegevens bevatten de volgende Tags:
 
-| Label | Beschrijving |
+| Label | Description |
 |-|-|
 | iothub | De hub waarmee het apparaat is praten |
 | edge_device | De ID van het huidige apparaat |
@@ -62,7 +62,7 @@ De quantiles voor het ingebouwde histogram en de samenvattings gegevens zijn 0,1
 
 De **edgeHub** -module levert de volgende metrische gegevens:
 
-| Naam | Dimensies | Beschrijving |
+| Name | Dimensies | Beschrijving |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (bewerkings bron)<br> `id` (module-ID) | Type: teller<br> Totaal aantal GetTwin-aanroepen |
 | `edgehub_messages_received_total` | `route_output` (uitvoer die bericht heeft verzonden)<br> `id` | Type: teller<br> Totaal aantal berichten ontvangen van clients |
@@ -85,7 +85,7 @@ De **edgeHub** -module levert de volgende metrische gegevens:
 
 De **edgeAgent** -module levert de volgende metrische gegevens:
 
-| Naam | Dimensies | Beschrijving |
+| Name | Dimensies | Beschrijving |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Type: meter<br> De hoeveelheid tijd die de module in de implementatie heeft opgegeven en de status actief heeft |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Type: meter<br> De hoeveelheid tijd die de module in de implementatie heeft opgegeven |

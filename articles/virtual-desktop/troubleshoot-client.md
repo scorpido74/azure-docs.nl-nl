@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88134476"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108963"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Problemen met de Extern bureaublad-client oplossen
 
@@ -83,6 +83,20 @@ Als de webclient om referenties wordt gevraagd, volgt u deze instructies:
 3. Wis browser cookies. Zie [cookie bestanden verwijderen in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)voor meer informatie.
 4. Wis de browsercache. Zie [browser cache voor uw browser wissen](https://binged.it/2RKyfdU)voor meer informatie.
 5. Open uw browser in de persoonlijke modus.
+
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Windows-client blokkeert Windows virtueel bureau blad (klassiek) feed
+
+Volg de volgende instructies als de Windows client-feed geen Windows virtueel bureau blad-apps (Classic) weergeeft:
+
+1. Controleer of het beleid voor voorwaardelijke toegang de app-Id's bevat die zijn gekoppeld aan virtueel bureau blad van Windows (klassiek).
+2. Controleer of het beleid voor voorwaardelijke toegang alle toegang blokkeert, met uitzonde ring van de Windows-app-Id's voor virtueel bureau blad (klassiek). Als dat het geval is, moet u de App-ID **9cdead84-a844-4324-93f2-b2e6bb768d07** toevoegen aan het beleid, zodat de client de feeds kan detecteren.
+
+Als u de App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07 niet kunt vinden in de lijst, moet u de resource provider voor het virtuele bureau blad van Windows registreren. De resource provider registreren:
+
+1. Meld u aan bij Azure Portal.
+2. Ga naar het **abonnement**en selecteer vervolgens uw abonnement.
+3. Selecteer **resource provider**in het menu aan de linkerkant van de pagina.
+4. Zoek en selecteer **micro soft. DesktopVirtualization**en selecteer **opnieuw registreren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

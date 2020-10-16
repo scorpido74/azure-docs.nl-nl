@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/24/2020
 ms.author: glenga
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 33e3e45626818a8786d32d3864b67bb0f9004b91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 541b72fdd97c48388d5f954d5ee13399d24bf22a
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652606"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116690"
 ---
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91652606"
 | SendGrid | [Uitvoer](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp#example) | |
 | Service Bus |[Trigger](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp#example) | [Koppeling](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=C%23) |
 | SignalR| [Trigger](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=csharp#example)<br/>[Invoer](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=csharp#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp) | |
-| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#input)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#output) | |
+| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=csharp)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=csharp) | |
 | Timer | [Trigger](../articles/azure-functions/functions-bindings-timer.md?tabs=csharp#example) | [Koppeling](https://www.serverlesslibrary.net/?language=C%23&filtertext=timer) |
 | Twilio | [Uitvoer](../articles/azure-functions/functions-bindings-twilio.md?tabs=csharp#example---functions-2x-and-higher) | [Koppeling](https://www.serverlesslibrary.net/?language=C%23&filtertext=twilio) |
 
@@ -44,7 +44,7 @@ ms.locfileid: "91652606"
 | SendGrid | [Uitvoer](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=java#example) | |
 | Service Bus |[Trigger](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=java#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=java#example) | [Koppeling](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Java) |
 | SignalR| [Trigger](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=java#example)<br/>[Invoer](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=java#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=java) | |
-| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#input)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#output) | |
+| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=java)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=java) | |
 | Timer | [Trigger](../articles/azure-functions/functions-bindings-timer.md?tabs=java#example) | [Koppeling](https://www.serverlesslibrary.net/?language=Java&filtertext=timer) |
 | Twilio | [Uitvoer](../articles/azure-functions/functions-bindings-twilio.md?tabs=java#example---functions-2x-and-higher) | [Koppeling](https://www.serverlesslibrary.net/?language=Java&filtertext=twilio) |
 
@@ -62,7 +62,7 @@ ms.locfileid: "91652606"
 | SendGrid | [Uitvoer](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=javascript#example) | |
 | Service Bus |[Trigger](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=javascript#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=javascript#example) | [Koppeling](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=JavaScript) |
 | SignalR| [Trigger](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=javascript#example)<br/>[Invoer](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=javascript#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=javascript) | |
-| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#input)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#output) | |
+| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=javascript)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=javascript) | |
 | Timer | [Trigger](../articles/azure-functions/functions-bindings-timer.md?tabs=javascript#example) | [Koppeling](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=timer) |
 | Twilio | [Uitvoer](../articles/azure-functions/functions-bindings-twilio.md?tabs=javascript#example---functions-2x-and-higher) | [Koppeling](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=twilio) |
 
@@ -80,7 +80,7 @@ ms.locfileid: "91652606"
 | SendGrid | [Uitvoer](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=powershell#example) | |
 | Service Bus |[Trigger](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=powershell#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=powershell#example) | [Koppeling](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=PowerShell) |
 | SignalR| [Trigger](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=powershell#example)<br/>[Invoer](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=powershell#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=powershell) | |
-| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#input)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#output) | |
+| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=powershell)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=powershell) | |
 | Timer | [Trigger](../articles/azure-functions/functions-bindings-timer.md?tabs=powershell#example) | [Koppeling](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=timer) |
 | Twilio | [Uitvoer](../articles/azure-functions/functions-bindings-twilio.md?tabs=powershell#example---functions-2x-and-higher) | [Koppeling](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=twilio) |
 
@@ -98,7 +98,7 @@ ms.locfileid: "91652606"
 | SendGrid | [Uitvoer](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=python#example) | |
 | Service Bus |[Trigger](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=python#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=python#example) | [Koppeling](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Python) |
 | SignalR| [Trigger](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=python#example)<br/>[Invoer](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=python#example)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=python) | |
-| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#input)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#output) | |
+| Table Storage| [Invoer](../articles/azure-functions/functions-bindings-storage-table-input.md?tabs=python)<br/>[Uitvoer](../articles/azure-functions/functions-bindings-storage-table-output.md?tabs=python) | |
 | Timer | [Trigger](../articles/azure-functions/functions-bindings-timer.md?tabs=python#example) | [Koppeling](https://www.serverlesslibrary.net/?language=Python&filtertext=timer) |
 | Twilio | [Uitvoer](../articles/azure-functions/functions-bindings-twilio.md?tabs=python#example---functions-2x-and-higher) | [Koppeling](https://www.serverlesslibrary.net/?language=Python&filtertext=twilio) |
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949847"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107824"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Servicelimieten in Azure Cognitive Search
 
@@ -37,7 +37,7 @@ De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen en an
 
 ## <a name="index-limits"></a>Index limieten
 
-| Resource | Gratis | Basis &nbsp; <sup>1</sup>  | S1 | S2 | S3 | S3 &nbsp; HD | L1 | L2 |
+| Resource | Gratis | Basis &nbsp; <sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maximale aantal indexen |3 |5 of 15 |50 |200 |200 |1000 per partitie of 3000 per service |10 |10 |
 | Maximum aantal eenvoudige velden per index |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
@@ -101,10 +101,9 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 > [!NOTE]
 > Zoals vermeld in de [index limieten](#index-limits), worden ook de bovengrens van 3000 elementen voor alle complexe verzamelingen per document afgedwongen, te beginnen met de nieuwste versie van de Ga-API die complexe typen () op een later niveau ondersteunt `2019-05-06` . Dit betekent dat als u een Indexeer functie hebt gemaakt met een eerdere API-versie, u deze limiet niet onderhevig hebt. Een Indexeer functie die is gemaakt met een eerdere API-versie en die vervolgens is bijgewerkt met een API `2019-05-06` -versie of hoger, wordt nog steeds **uitgesloten** van de limieten voor het behouden van de maximale compatibiliteit. Klanten moeten op de hoogte zijn van de nadelige gevolgen van het hebben van zeer grote complexe verzamelingen (zoals eerder aangegeven). we raden u aan om nieuwe Indexeer functies te maken met de nieuwste versie van de GA-API.
 
-### <a name="shared-private-link-resource-limits"></a>Resource limieten voor gedeelde persoonlijke koppelingen
+## <a name="shared-private-link-resource-limits"></a>Resource limieten voor gedeelde persoonlijke koppelingen
 
-> [!NOTE]
-> Indexeer functies kunnen veilig toegang krijgen tot bronnen via privé-eind punten die worden beheerd via de resource-API van de [gedeelde persoonlijke koppeling](/rest/api/searchmanagement/sharedprivatelinkresources) zoals beschreven in [deze hand leiding](search-indexer-howto-access-private.md)
+Indexeer functies hebben toegang tot andere Azure-bronnen [via privé-eind punten](search-indexer-howto-access-private.md) die worden beheerd via de resource-API van de [gedeelde persoonlijke koppeling](/rest/api/searchmanagement/sharedprivatelinkresources). In deze sectie worden de limieten beschreven die zijn gekoppeld aan deze mogelijkheid.
 
 | Resource | Gratis | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -113,7 +112,7 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 | Maximum aantal privé-eind punten | N.v.t. | 10 of 30 | 100 | 400 | 400 | N.v.t. | 20 | 20 |
 | Maximum aantal afzonderlijke resource typen<sup>2</sup> | N.v.t. | 4 | 7 | 15 | 15 | N.v.t. | 4 | 4 |
 
-<sup>1</sup> AI-verrijking en afbeeldings analyse zijn reken intensief en verbruiken een onevenredige hoeveelheid beschik bare verwerkings kracht en daarom kunnen lagere zoek service lagen de prestaties en stabiliteit van de zoek service nadelig beïnvloeden.
+<sup>1</sup> AI-verrijking en afbeeldings analyse zijn reken intensief en verbruiken een onevenredige hoeveelheid beschik bare verwerkings kracht. Daarom worden particuliere verbindingen op lagere lagen uitgeschakeld om een nadelige invloed op de prestaties en stabiliteit van de zoek service zelf te voor komen.
 
 <sup>2</sup> het aantal afzonderlijke resource typen wordt berekend als het aantal unieke `groupId` waarden dat wordt gebruikt voor alle gedeelde persoonlijke koppelings resources voor een bepaalde zoek service, onafhankelijk van de status van de resource.
 

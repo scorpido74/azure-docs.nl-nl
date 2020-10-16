@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: 9ee5959c124636e64ef73b901fbc461f36cd27f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.author: alzam
+ms.openlocfilehash: 451323b8ea4006ba6e2b63d12cc54b2b7c0b60c6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817306"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109031"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-tenant maken voor P2S OpenVPN-protocolverbindingen
 
@@ -75,6 +75,9 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
     ```
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
+> [!NOTE]
+> Als u een globaal beheerders account gebruikt dat niet systeem eigen is voor de Azure AD-Tenant om toestemming te geven, vervangt u ' common ' door de Azure AD-Directory-id in de URL. Mogelijk moet u ook ' common ' vervangen door uw directory-id in bepaalde andere gevallen.
+>
 
 5. Selecteer het account van de **globale beheerder** als u hierom wordt gevraagd.
 

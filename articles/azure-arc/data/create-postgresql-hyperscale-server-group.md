@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317341"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108300"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een PostgreSQL Hyperscale-servergroep met Azure Arc maken
 
@@ -130,7 +130,7 @@ Bijvoorbeeld:
 ]
 ```
 
-U kunt het eind punt PostgreSQL-exemplaar gebruiken om verbinding te maken met de PostgreSQL grootschalige-Server groep vanuit uw favoriete hulp programma:  [Azure Data Studio](https://aka.ms/getazuredatastudio), [Pgcli](https://www.pgcli.com/) psql, pgAdmin, enzovoort.
+U kunt het eind punt PostgreSQL-exemplaar gebruiken om verbinding te maken met de PostgreSQL grootschalige-Server groep vanuit uw favoriete hulp programma:  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [Pgcli](https://www.pgcli.com/) psql, pgAdmin, enzovoort.
 
 Als u een virtuele machine van Azure gebruikt om te testen, volgt u de onderstaande instructies:
 

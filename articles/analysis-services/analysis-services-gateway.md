@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016090"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107603"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway
 
@@ -29,22 +29,6 @@ Voor Azure Analysis Services is het voorbereiden van de installatie met de gatew
 - **Een gateway bron maken in azure** : in deze stap maakt u een gateway bron in Azure.
 
 - **De gateway bron verbinden met servers** : Zodra u een gateway resource hebt, kunt u aan de slag gaan met het verbinden van de servers. U kunt meerdere servers en andere resources verbinden, mits deze zich in dezelfde regio bevinden.
-
-
-
-## <a name="how-it-works"></a>Uitleg
-De gateway die u op een computer in uw organisatie installeert, wordt uitgevoerd als een Windows-service, **on-premises gegevens gateway**. Deze lokale service is geregistreerd bij de Gateway-cloudservice via Azure Service Bus. Vervolgens maakt u een on-premises gegevens gateway resource voor een Azure-abonnement. Uw Azure Analysis Services-servers worden vervolgens verbonden met uw Azure gateway-resource. Wanneer modellen op uw server verbinding moeten maken met uw on-premises gegevens bronnen voor query's of verwerking, passeren een query en gegevens stroom de gateway resource, Azure Service Bus, de lokale on-premises gegevens Gateway Service en uw gegevens bronnen. 
-
-![Uitleg](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
-
-Query's en gegevensstroom:
-
-1. Er wordt een query gemaakt door de cloudservice met de versleutelde referenties voor de on-premises gegevensbron. De query wordt vervolgens ter verwerking naar de gateway verzonden.
-2. De gateway-Cloud service analyseert de query en duwt de aanvraag naar het [Azure service bus](https://azure.microsoft.com/documentation/services/service-bus/).
-3. De on-premises gegevensgateway peilt Azure Service Bus om te kijken of er aanvragen klaarstaan.
-4. De gateway haalt de query op, ontsleutelt de referenties en maakt met behulp hiervan verbinding met de gegevensbronnen.
-5. De gateway stuurt de query voor uitvoering naar de gegevensbron.
-6. De resultaten worden vanuit de gegevensbron teruggezonden naar de gateway en vervolgens naar de cloudservice en uw server.
 
 ## <a name="installing"></a>Wordt geïnstalleerd
 
@@ -76,16 +60,6 @@ Hieronder vindt u een volledig gekwalificeerde domein naam die wordt gebruikt do
 | *.msftncsi.com |443 |Gebruikt voor het testen van de internetverbinding als de gateway onbereikbaar is voor de Power BI-service. |
 | *.microsoftonline-p.com |443 |Wordt gebruikt voor verificatie, afhankelijk van de configuratie. |
 | dc.services.visualstudio.com    |443 |Wordt door AppInsights gebruikt voor het verzamelen van telemetrie. |
-
-### <a name="forcing-https-communication-with-azure-service-bus"></a>HTTPS-communicatie met Azure Service Bus afdwingen
-
-U kunt afdwingen dat de gateway communiceert met Azure Service Bus door gebruik te maken van HTTPS in plaats van direct TCP; Dit kan echter de prestaties aanzienlijk verminderen. U kunt het *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* bestand wijzigen door de waarde te wijzigen van `AutoDetect` in `Https` . Dit bestand bevindt zich doorgaans in *C:\Program Files\On-premises data gateway*.
-
-```
-<setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
-    <value>Https</value>
-</setting>
-```
 
 ## <a name="next-steps"></a>Volgende stappen 
 

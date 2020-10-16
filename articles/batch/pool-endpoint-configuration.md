@@ -3,12 +3,12 @@ title: Knoop punten in Azure Batch groep configureren
 description: Toegang tot SSH-of RDP-poorten op reken knooppunten in een Azure Batch pool configureren of uitschakelen.
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7df7da539be75ef1befdff4b4e1fe5244c1702
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83780294"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109303"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Externe toegang tot reken knooppunten in een Azure Batch groep configureren of uitschakelen
 
@@ -19,7 +19,7 @@ In uw omgeving moet u deze standaard instellingen voor externe toegang mogelijk 
 ## <a name="about-the-pool-endpoint-configuration"></a>Over de eindpunt configuratie van de pool
 De eindpunt configuratie bestaat uit een of meer [Network Address Translation (NAT) groepen](/rest/api/batchservice/pool/add#inboundnatpool) van frontend-poorten. (Verwar een NAT-groep niet met de batch-pool van reken knooppunten.) U stelt elke NAT-pool zo in dat de standaard verbindings instellingen voor de reken knooppunten van de pool worden overschreven. 
 
-Elke configuratie van een NAT-groep bevat een of meer [regels voor netwerk beveiligings groepen (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Met elke NSG regel kan bepaald netwerk verkeer naar het eind punt worden toegestaan of geweigerd. U kunt ervoor kiezen om al het verkeer toe te staan of te weigeren, verkeer dat wordt geïdentificeerd [door een servicetag](../virtual-network/security-overview.md#service-tags) (zoals ' Internet ') of verkeer van specifieke IP-adressen of subnetten.
+Elke configuratie van een NAT-groep bevat een of meer [regels voor netwerk beveiligings groepen (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Met elke NSG regel kan bepaald netwerk verkeer naar het eind punt worden toegestaan of geweigerd. U kunt ervoor kiezen om al het verkeer toe te staan of te weigeren, verkeer dat wordt geïdentificeerd [door een servicetag](../virtual-network/network-security-groups-overview.md#service-tags) (zoals ' Internet ') of verkeer van specifieke IP-adressen of subnetten.
 
 ### <a name="considerations"></a>Overwegingen
 * De configuratie van de pool-eind punt maakt deel uit van de [netwerk configuratie](/rest/api/batchservice/pool/add#networkconfiguration)van de pool. De netwerk configuratie kan eventueel instellingen bevatten voor het toevoegen van de groep aan een [virtueel Azure-netwerk](batch-virtual-network.md). Als u de pool in een virtueel netwerk hebt ingesteld, kunt u NSG-regels maken die gebruikmaken van adres instellingen in het virtuele netwerk.
@@ -121,4 +121,4 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [Werkstroom van de batch-service en primaire resources](batch-service-workflow-features.md) als pools, knooppunten, jobs en taken.
-- Zie [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over NSG-regels in Azure.
+- Zie [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/network-security-groups-overview.md)voor meer informatie over NSG-regels in Azure.

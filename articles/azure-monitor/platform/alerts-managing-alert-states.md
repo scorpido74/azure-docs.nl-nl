@@ -5,16 +5,16 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b91c3d59a5a37457d67fdfbc646334fccb331df5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358960"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104798"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Statussen van waarschuwingen en slimme groepen beheren
 
-Waarschuwingen in Azure Monitor hebben nu een [waarschuwings status en een monitor voorwaarde](https://aka.ms/azure-alerts-overview) , en op dezelfde manier hebben slimme groepen de status van een [slimme groep](https://aka.ms/smart-groups). Wijzigingen in de status worden nu vastgelegd in de geschiedenis die is gekoppeld aan de betreffende waarschuwing of slimme groep. Dit artikel begeleidt u bij het wijzigen van de status, zowel voor een waarschuwing als voor een slimme groep.
+Waarschuwingen in Azure Monitor hebben nu een [waarschuwings status en een monitor voorwaarde](./alerts-overview.md) , en op dezelfde manier hebben slimme groepen de status van een [slimme groep](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json). Wijzigingen in de status worden nu vastgelegd in de geschiedenis die is gekoppeld aan de betreffende waarschuwing of slimme groep. Dit artikel begeleidt u bij het wijzigen van de status, zowel voor een waarschuwing als voor een slimme groep.
 
 ## <a name="change-the-state-of-an-alert"></a>De status van een waarschuwing wijzigen
 
@@ -46,4 +46,3 @@ Waarschuwingen in Azure Monitor hebben nu een [waarschuwings status en een monit
 
 1. Zodra dit is gebeurd, wordt de status wijziging vastgelegd in de geschiedenis van de respectieve slimme groep. Dit kan worden weer gegeven door de betreffende detail pagina te openen en het gedeelte geschiedenis te controleren.     
 ![Scherm afbeelding toont de geschiedenis van de wijzigingen voor de slimme groep.](./media/alerts-managing-alert-states/state-sg-history.jpg)
-

@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508789"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108742"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Azure Data Lake Storage Gen1-resources beheren met Storage Explorer
 
-[Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens, zoals tekst of binaire gegevens. U kunt overal toegang tot de gegevens krijgen via HTTP of HTTPS. Met Data Lake Storage Gen1 in Azure Storage Explorer kunt u Data Lake Storage Gen1 gegevens en-resources openen en beheren, samen met andere Azure-entiteiten, zoals blobs en wacht rijen. U kunt nu hetzelfde hulpprogramma gebruiken om uw verschillende Azure entiteiten op één plek te beheren.
+[Azure data Lake Storage gen1](./data-lake-store-overview.md) is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens, zoals tekst of binaire gegevens. U kunt overal toegang tot de gegevens krijgen via HTTP of HTTPS. Met Data Lake Storage Gen1 in Azure Storage Explorer kunt u Data Lake Storage Gen1 gegevens en-resources openen en beheren, samen met andere Azure-entiteiten, zoals blobs en wacht rijen. U kunt nu hetzelfde hulpprogramma gebruiken om uw verschillende Azure entiteiten op één plek te beheren.
 
 Een ander voor deel is dat u geen abonnements machtiging nodig hebt om Data Lake Storage Gen1 gegevens te beheren. In Storage Explorer kunt u het Data Lake Storage Gen1 pad koppelen aan het **lokale en gekoppelde** knoop punt, zolang iemand de machtiging verleent.
 
@@ -24,7 +24,7 @@ Een ander voor deel is dat u geen abonnements machtiging nodig hebt om Data Lake
 U moet de volgende vereiste zaken hebben om de stappen in dit artikel uit te voeren:
 
 * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial).
-* Een Data Lake Storage Gen1-account. Zie [aan de slag met Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)voor instructies over het maken van een account.
+* Een Data Lake Storage Gen1-account. Zie [aan de slag met Azure data Lake Storage gen1](./data-lake-store-get-started-portal.md)voor instructies over het maken van een account.
 
 ## <a name="install-storage-explorer"></a>Storage Explorer installeren
 
@@ -195,7 +195,7 @@ Als u een URL hebt, kunt u de URL invoeren in het adrespad in Verkenner of in de
 ## <a name="next-steps"></a>Volgende stappen
 
 * De [meest recente releaseopmerkingen en video's van Storage Explorer](https://www.storageexplorer.com) bekijken.
-* Meer informatie over het [beheren van Azure Cosmos db in azure Storage Explorer](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
-* [Aan de slag met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Aan de slag met Azure data Lake Storage gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
+* Meer informatie over het [beheren van Azure Cosmos db in azure Storage Explorer](../cosmos-db/storage-explorer.md).
+* [Aan de slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+* [Aan de slag met Azure data Lake Storage gen1](./data-lake-store-overview.md).
 * Bekijk een (Engelstalige) [YouTube-video over het gebruik van Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

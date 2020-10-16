@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715326"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102150"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -77,14 +77,14 @@ Zie [hier](../insights/monitor-vm-azure.md#guest-operating-system)voor meer info
 > Als u de metrische gegevens van de gast hebt geconfigureerd om te worden verzonden naar een Log Analytics-werk ruimte, worden de metrische gegevens weer gegeven onder de Log Analytics werkruimte resource en worden **alleen** data weer gegeven nadat u een waarschuwings regel hebt gemaakt waarmee deze worden gecontroleerd. Volg hiervoor de stappen voor het [configureren van een metrische waarschuwing voor logboeken](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
 
 > [!NOTE] 
-> Het bewaken van een gast metriek voor meerdere virtuele machines met één waarschuwings regel wordt momenteel niet ondersteund door metrische waarschuwingen. U kunt dit doen met een [waarschuwings regel](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)voor het logboek. Als u dit wilt doen, controleert u of de gegevens van de gast worden verzameld naar een Log Analytics-werk ruimte en maakt u een waarschuwings regel voor het logboek in de werk ruimte.
+> Het bewaken van een gast metriek voor meerdere virtuele machines met één waarschuwings regel wordt momenteel niet ondersteund door metrische waarschuwingen. U kunt dit doen met een [waarschuwings regel](./alerts-unified-log.md)voor het logboek. Als u dit wilt doen, controleert u of de gegevens van de gast worden verzameld naar een Log Analytics-werk ruimte en maakt u een waarschuwings regel voor het logboek in de werk ruimte.
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Kan de metrische gegevens niet vinden voor waarschuwing
 
-Als u op zoek bent naar een specifieke metriek, maar deze niet kan zien bij het maken van een waarschuwings regel, controleert u het volgende:
-- Als u geen metrische gegevens voor de resource kunt zien, [controleert u of het resource type wordt ondersteund voor metrische waarschuwingen](./alerts-metric-near-real-time.md).
-- Als er bepaalde metrische gegevens voor de resource worden weer gegeven, maar geen specifieke metriek kunt vinden, [controleert u of de metrische gegevens beschikbaar](./metrics-supported.md)zijn en, als dit het geval is, raadpleegt u de metrische beschrijving om te controleren of deze alleen beschikbaar is in specifieke versies of edities van de resource.
-- Als de metriek niet beschikbaar is voor de resource, kan deze beschikbaar zijn in de resource logboeken en kunnen worden bewaakt met behulp van logboek waarschuwingen. Zie hier voor meer informatie over het [verzamelen en analyseren van resource logboeken van een Azure-resource](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs).
+Als u een specifieke metrische waarschuwing wilt instellen maar deze niet ziet bij het maken van een waarschuwingsregel, controleert u het volgende:
+- Als u geen metrische gegevens ziet voor de resource, [controleert u of het resourcetype metrische waarschuwingen ondersteunt](./alerts-metric-near-real-time.md).
+- Als u bepaalde metrische gegevens niet ziet terwijl andere wel worden weergegeven, [controleert u of de metrische gegevens beschikbaar zijn](./metrics-supported.md). Zo ja, dan raadpleegt u de beschrijving om te controleren of de metrische gegevens alleen beschikbaar zijn in specifieke versies of edities van de resource.
+- Als de metrische gegevens niet beschikbaar zijn voor de resource, zijn ze mogelijk wel beschikbaar in de resourcelogboeken en kunt u ze bewaken met behulp van logboekwaarschuwingen. Hier vindt u meer informatie over het [verzamelen en analyseren van resourcelogboeken van een Azure-resource](../learn/tutorial-resource-logs.md).
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Kan de metrische dimensie niet vinden om te waarschuwen
 

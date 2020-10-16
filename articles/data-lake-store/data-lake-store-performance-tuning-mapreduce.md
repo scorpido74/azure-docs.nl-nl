@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653e0b557f7c5c04184628b3266e8f2909130f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190218"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108283"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor MapReduce in HDInsight en Azure Data Lake Storage Gen1
 
@@ -20,8 +20,8 @@ ms.locfileid: "88190218"
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 * **Een Azure data Lake Storage gen1-account**. Zie [aan de slag met Azure data Lake Storage gen1](data-lake-store-get-started-portal.md) voor instructies over het maken van een account.
 * **Azure HDInsight-cluster** met toegang tot een Data Lake Storage gen1-account. Zie [een HDInsight-cluster met data Lake Storage gen1 maken](data-lake-store-hdinsight-hadoop-use-portal.md). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
-* **MapReduce gebruiken in HDInsight**. Zie [MapReduce gebruiken in Hadoop op HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce) voor meer informatie.
-* **Bekijk de richt lijnen voor het afstemmen van de prestaties voor data Lake Storage gen1**. Zie [Data Lake Storage gen1 richt lijnen voor het afstemmen van prestaties](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) voor algemene concepten.
+* **MapReduce gebruiken in HDInsight**. Zie [MapReduce gebruiken in Hadoop op HDInsight](../hdinsight/hadoop/hdinsight-use-mapreduce.md) voor meer informatie.
+* **Bekijk de richt lijnen voor het afstemmen van de prestaties voor data Lake Storage gen1**. Zie [Data Lake Storage gen1 richt lijnen voor het afstemmen van prestaties](./data-lake-store-performance-tuning-guidance.md) voor algemene concepten.
 
 ## <a name="parameters"></a>Parameters
 

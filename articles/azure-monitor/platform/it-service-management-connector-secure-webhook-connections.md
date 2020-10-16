@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328850"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107756"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van beveiligde export
 
@@ -51,7 +51,7 @@ Secure export ondersteunt BMC helix. Enkele voor delen van de integratie zijn:
 
 * **Betere verificatie**: Azure AD biedt een veiligere verificatie zonder de time-outs die zich vaak voordoen in ITSMC.
 * **Waarschuwingen die zijn opgelost in het ITSM-hulp programma**: metrische waarschuwingen implementeren ' fireed ' en ' opgeloste ' statussen. Wanneer aan de voor waarde wordt voldaan, wordt de status van de waarschuwing geactiveerd. Als niet meer aan de voor waarde wordt voldaan, is de waarschuwings status opgelost. In ITSMC kunnen waarschuwingen niet automatisch worden opgelost. Met beveiligde export stromen de omgezette status naar het ITSM-hulp programma en worden deze automatisch bijgewerkt.
-* **[Gebruikelijk waarschuwings schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)**: in ITSMC verschilt het schema van de nettolading van de waarschuwing op basis van het waarschuwings type. Bij beveiligde export is er een gemeen schappelijk schema voor alle waarschuwings typen. Dit algemene schema bevat de CI voor alle waarschuwings typen. Alle waarschuwings typen kunnen hun CI binden met de CMDB.
+* **[Gebruikelijk waarschuwings schema](./alerts-common-schema.md)**: in ITSMC verschilt het schema van de nettolading van de waarschuwing op basis van het waarschuwings type. Bij beveiligde export is er een gemeen schappelijk schema voor alle waarschuwings typen. Dit algemene schema bevat de CI voor alle waarschuwings typen. Alle waarschuwings typen kunnen hun CI binden met de CMDB.
 
 Ga met de volgende stappen aan de slag met het ITSM-connector-hulp programma:
 
@@ -63,7 +63,7 @@ Ga met de volgende stappen aan de slag met het ITSM-connector-hulp programma:
 
 Volg deze stappen om de toepassing te registreren bij Azure AD:
 
-1. Volg de stappen in [een toepassing registreren bij het micro soft Identity-platform](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+1. Volg de stappen in [een toepassing registreren bij het micro soft Identity-platform](../../active-directory/develop/quickstart-register-app.md).
 1. Selecteer **toepassing zichtbaar**maken in azure AD.
 1. Selecteer **instellen** voor de URI van de **toepassings-id**.
 
@@ -75,7 +75,7 @@ Volg deze stappen om de toepassing te registreren bij Azure AD:
 Nadat uw toepassing is geregistreerd bij Azure AD, kunt u werk items maken in uw ITSM-hulp programma op basis van Azure-waarschuwingen met behulp van de actie beveiligde webhook in actie groepen.
 
 Actie groepen bieden een modulaire en herbruikbare manier om acties voor Azure-waarschuwingen te activeren. U kunt actie groepen met metrische waarschuwingen, waarschuwingen voor activiteiten logboeken en waarschuwingen voor Azure Log Analytics gebruiken in de Azure Portal.
-Zie voor meer informatie over actie groepen [actie groepen maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+Zie voor meer informatie over actie groepen [actie groepen maken en beheren in de Azure Portal](./action-groups.md).
 
 Gebruik de volgende procedure in de BMC Helix-omgeving:
 
@@ -89,7 +89,7 @@ Volg deze instructies voor beveiligde webhook om een webhook aan een actie toe t
 
 1. Zoek in het [Azure Portal](https://portal.azure.com/)naar en selecteer **monitor**. In het deel venster **monitor** worden al uw bewakings instellingen en-gegevens in één weer gave geconsolideerd.
 1. Selecteer **waarschuwingen**  >  **acties beheren**.
-1. Selecteer [actie groep toevoegen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)en vul de velden in.
+1. Selecteer [actie groep toevoegen](./action-groups.md#create-an-action-group-by-using-the-azure-portal)en vul de velden in.
 1. Voer een naam in het vak Naam van de **actie groep** in en voer een naam in het vak **korte naam** in. De korte naam wordt gebruikt in plaats van een volledige naam van de actiegroep als er meldingen via deze groep worden verzonden.
 1. Selecteer **beveiligde webhook**.
 1. Selecteer deze details:
@@ -140,4 +140,4 @@ Zorg ervoor dat u aan de volgende vereisten voldoet:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [ITSM-werk items maken op basis van Azure-waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)
+* [ITSM-werk items maken op basis van Azure-waarschuwingen](./itsmc-overview.md)

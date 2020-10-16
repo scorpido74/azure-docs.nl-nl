@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een logische app die gebruikmaak
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322088"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108878"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Het algemene waarschuwings schema integreren met Logic Apps
 
@@ -17,7 +17,7 @@ In dit artikel wordt beschreven hoe u een logische app maakt die gebruikmaakt va
 
 ## <a name="overview"></a>Overzicht
 
-Het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs) voorziet in een gestandaardiseerd en uitbreidbaar JSON-schema voor al uw verschillende typen waarschuwingen. Het algemene waarschuwings schema is het nuttigst wanneer u programmatisch gebruikmaakt van webhooks, runbooks en Logic apps. In dit artikel laten we zien hoe een enkele logische app kan worden ontworpen om al uw waarschuwingen te verwerken. Dezelfde principes kunnen worden toegepast op andere programmatische methoden. De logische app die in dit artikel wordt beschreven, maakt duidelijk gedefinieerde variabelen voor de [essentiële velden](alerts-common-schema-definitions.md#essentials)en beschrijft ook hoe u de specifieke logica van [waarschuwings typen](alerts-common-schema-definitions.md#alert-context) kunt verwerken.
+Het [algemene waarschuwings schema](./alerts-common-schema.md) voorziet in een gestandaardiseerd en uitbreidbaar JSON-schema voor al uw verschillende typen waarschuwingen. Het algemene waarschuwings schema is het nuttigst wanneer u programmatisch gebruikmaakt van webhooks, runbooks en Logic apps. In dit artikel laten we zien hoe een enkele logische app kan worden ontworpen om al uw waarschuwingen te verwerken. Dezelfde principes kunnen worden toegepast op andere programmatische methoden. De logische app die in dit artikel wordt beschreven, maakt duidelijk gedefinieerde variabelen voor de [essentiële velden](alerts-common-schema-definitions.md#essentials)en beschrijft ook hoe u de specifieke logica van [waarschuwings typen](alerts-common-schema-definitions.md#alert-context) kunt verwerken.
 
 
 ## <a name="prerequisites"></a>Vereisten 
@@ -138,5 +138,4 @@ In dit artikel wordt ervan uitgegaan dat de lezer bekend is met
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over actiegroepen](./action-groups.md).
-* Meer [informatie over het algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs).
-
+* Meer [informatie over het algemene waarschuwings schema](./alerts-common-schema.md).

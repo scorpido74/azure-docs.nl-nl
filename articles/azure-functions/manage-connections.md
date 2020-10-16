@@ -4,12 +4,12 @@ description: Meer informatie over hoe u prestatie problemen in Azure Functions k
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 7ce933511532fdb1bfb5189e5a900e87f3d83fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213969"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106090"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verbindingen in Azure Functions beheren
 
@@ -103,7 +103,25 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+Als u werkt met functions v3. x, hebt u een refernce nodig om umentDB. core te Microsoft.Azure.Doc. Voeg een verwijzing toe in de code:
 
+```cs
+#r "Microsoft.Azure.DocumentDB.Core"
+```
+Maak ook een bestand met de naam ' function. proj ' voor de trigger en voeg de onderstaande inhoud toe:
+
+```cs
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.12.0" />
+    </ItemGroup>
+</Project>
+
+```
 ### <a name="cosmosclient-code-example-javascript"></a>Voor beeld van CosmosClient-code (Java script)
 [CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) maakt verbinding met een Azure Cosmos DB-exemplaar. De Azure Cosmos DB-documentatie raadt u [aan om een singleton Azure Cosmos DB-client te gebruiken voor de levens duur van uw toepassing](../cosmos-db/performance-tips.md#sdk-usage). In het volgende voor beeld ziet u een patroon om dit te doen in een functie:
 

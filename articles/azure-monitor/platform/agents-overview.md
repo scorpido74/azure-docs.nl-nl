@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de9623eb0eb14957c1554b7b0f74baa256a15d47
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825764"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108385"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -60,7 +60,7 @@ Gebruik de Azure Monitor agent als u het volgende moet doen:
 - Gegevens verzenden naar Azure Monitor logboeken en Azure Monitor metrieken voor analyse met Azure Monitor. 
 - Gegevens verzenden naar Azure Storage voor archiveren.
 - Gegevens verzenden naar hulpprogram ma's van derden met behulp van [Azure Event hubs](diagnostics-extension-stream-event-hubs.md).
-- Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md)  of [Azure Sentinel](../../sentinel/overview.md). (Niet beschikbaar in de preview-versie.)
+- Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-introduction.md)  of [Azure Sentinel](../../sentinel/overview.md). (Niet beschikbaar in de preview-versie.)
 
 De beperkingen van de Azure Monitor-agent zijn:
 
@@ -81,7 +81,7 @@ Gebruik de Log Analytics agent als u het volgende moet doen:
 * Logboeken en prestatie gegevens verzamelen van virtuele of fysieke machines binnen of buiten Azure. 
 * Gegevens verzenden naar een Log Analytics-werk ruimte om te profiteren van de functies die worden ondersteund door [Azure monitor-logboeken](data-platform-logs.md) , zoals [logboek query's](../log-query/log-query-overview.md).
 * Gebruik [Azure monitor voor VM's](../insights/vminsights-overview.md) waarmee u uw virtuele machines op schaal kunt bewaken en de processen en afhankelijkheden van andere bronnen en externe processen bewaakt.  
-* Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md)  of [Azure Sentinel](../../sentinel/overview.md).
+* Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-introduction.md)  of [Azure Sentinel](../../sentinel/overview.md).
 * Gebruik [Azure Automation update beheer](../../automation/update-management/update-mgmt-overview.md), [Azure Automation status configuratie](../../automation/automation-dsc-overview.md)of [Azure Automation wijzigingen bijhouden en inventaris](../../automation/change-tracking.md) om een uitgebreid beheer van uw Azure-vm's te leveren
 * Gebruik verschillende [oplossingen](../monitor-reference.md#insights-and-core-solutions) voor het bewaken van een bepaalde service of toepassing.
 
@@ -212,4 +212,3 @@ Meer informatie over elk van de agents vindt u op het volgende:
 - [Overzicht van de Log Analytics-agent](log-analytics-agent.md)
 - [Overzicht van Azure Diagnostics-extensie](diagnostics-extension-overview.md)
 - [Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent](collect-custom-metrics-linux-telegraf.md)
-

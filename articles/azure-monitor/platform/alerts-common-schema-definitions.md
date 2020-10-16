@@ -5,16 +5,16 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 2d3da9273651b23a80b0f5e2874581a744caf533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a1851b71ac017349ff131811d946ec2c077440b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330873"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105988"
 ---
 # <a name="common-alert-schema-definitions"></a>Definities van algemeen waarschuwingsschema
 
-In dit artikel worden de [algemene schema definities voor waarschuwingen](https://aka.ms/commonAlertSchemaDocs) voor Azure monitor beschreven, met inbegrip van de schema's voor webhooks, Azure Logic Apps, Azure Functions en Azure Automation runbooks. 
+In dit artikel worden de [algemene schema definities voor waarschuwingen](./alerts-common-schema.md) voor Azure monitor beschreven, met inbegrip van de schema's voor webhooks, Azure Logic Apps, Azure Functions en Azure Automation runbooks. 
 
 Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak van de waarschuwing. Deze exemplaren worden beschreven in het gemeen schappelijke schema in de volgende secties:
 * **Essentials**: een set gestandaardiseerde velden, gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven op welke resource de waarschuwing zich bevindt, samen met aanvullende veelvoorkomende meta gegevens van waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
@@ -71,7 +71,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 ## <a name="essentials"></a>Essentials
 
-| Veld | Beschrijving|
+| Veld | Description|
 |:---|:---|
 | alertId | De GUID die het waarschuwings exemplaar uniek identificeert. |
 | alertRule | De naam van de waarschuwings regel die het waarschuwings exemplaar heeft gegenereerd. |
@@ -541,5 +541,5 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs).
-- Meer informatie [over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen](./alerts-common-schema-integrations.md). 
+- Meer informatie over het [algemene waarschuwings schema](./alerts-common-schema.md).
+- Meer informatie [over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen](./alerts-common-schema-integrations.md).
