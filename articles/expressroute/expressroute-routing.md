@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ddc15e9da3eaa3609b039f2f92e424b9d9449c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569608"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106311"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connecitiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -163,7 +163,7 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | VS - west-centraal | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | VS - noord-centraal | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
 | South Central US | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
-| Central US | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| VS - centraal | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
 | Canada - midden | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
 | Canada - oost | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Zuid-Amerika** | |
@@ -185,11 +185,11 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | Azië - oost | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 | 12076:55010 |
 | Azië - zuidoost | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 | 12076:55011 |
 | **Japan** | |
-| Japan East | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
+| Japan - oost | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 | 12076:55012 |
 | Japan - west | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 | 12076:55013 |
 | **Australië** | |
 | Australië - oost | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 | 12076:55015 |
-| Australia Southeast | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
+| Australië - zuidoost | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 | 12076:55016 |
 | **Australië - overheid** | |
 | Australië - centraal | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 | 12076:55032 |
 | Australië - centraal 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 | 12076:55033 |
@@ -258,6 +258,7 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype voor Bedrijven Online |12076:5130 |
+| Azure Active Directory |12076:5160 |
 | Andere online services van Office 365 |12076:5200 |
 
 ## <a name="next-steps"></a>Volgende stappen

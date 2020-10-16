@@ -3,12 +3,12 @@ title: De agent voor Azure Arc-servers beheren
 description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de computer agent die verbonden is met Azure Arc ingeschakeld.
 ms.date: 09/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5161bd097809f1feb6f84b07e07c63d06d0a9c94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af020d0ca586b950b444f2a3149ad207b5696050
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254989"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108929"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
 
@@ -163,7 +163,7 @@ U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opni
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Verbinden
 
 Met deze para meter geeft u een resource op in Azure Resource Manager waarmee de machine wordt gemaakt in Azure. De resource bevindt zich in het opgegeven abonnement en de resource groep en de gegevens over de machine worden opgeslagen in de Azure-regio die is opgegeven door de `--location` instelling. De standaard resource naam is de hostnaam van de computer, indien niet opgegeven.
 
@@ -344,4 +344,4 @@ sudo azcmagent_proxy remove
 
 * Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-policy.md)en nog veel meer.
 
-* Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)te gebruiken.
+* Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u bewakings gegevens van het besturings systeem en werk belasting wilt verzamelen, deze wilt beheren met Automation-runbooks of-functies zoals Updatebeheer, of om andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-introduction.md)te gebruiken.

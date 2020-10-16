@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over Azure AD-toepassingsproxy | Microsoft Docs
+title: Veelgestelde vragen over Azure Active Directory-toepassingsproxy
 description: Hier vindt u antwoorden op veelgestelde vragen over het gebruik van Azure AD-toepassingsproxy voor het publiceren van interne, on-premises toepassingen naar externe gebruikers.
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589160"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104560"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -84,7 +84,6 @@ Toepassings proxy vereist Windows Server 2012 R2 of hoger. Er is momenteel een b
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
 
-
 ## <a name="application-configuration"></a>Toepassingsconfiguratie
 
 ### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Ik ontvang een fout bericht over een ongeldig certificaat of mogelijk een onjuist wacht woord
@@ -124,6 +123,12 @@ Zie voor meer informatie het technisch document [over Kerberos-beperkte overdrac
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Werkt NTLM-verificatie met Azure AD-toepassingsproxy?
 
 NTLM-verificatie kan niet worden gebruikt als een methode voor verificatie vooraf of eenmalige aanmelding. NTLM-verificatie kan alleen worden gebruikt wanneer er direct kan worden onderhandeld tussen de client en de gepubliceerde webtoepassing. Het gebruik van NTLM-verificatie zorgt er meestal voor dat een aanmeldings prompt wordt weer gegeven in de browser.
+
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>Kan ik de aanmeldings-id ' on-premises user principal name ' of ' on-premises SAM-account naam ' gebruiken in het scenario voor eenmalige aanmelding bij B2B-IWA?
+
+Nee, dit is niet mogelijk, omdat een gast gebruiker in azure AD niet over het kenmerk beschikt dat vereist is voor een van de hierboven genoemde aanmeldings identiteiten.
+
+In dit geval is er sprake van een terugval op ' User Principal Name '. Raadpleeg [Grant B2B-gebruikers in azure AD-toegang tot uw on-premises toepassingen](../external-identities/hybrid-cloud-to-on-premises.md)voor meer informatie over het B2B-scenario.
 
 ## <a name="pass-through-authentication"></a>Pass-through-verificatie
 
@@ -198,5 +203,5 @@ Dit scenario wordt niet rechtstreeks ondersteund. De opties voor dit scenario zi
 1. Publiceer zowel de HTTP-en HTTPS-Url's als afzonderlijke toepassingen met een Joker teken, maar geef elk een ander aangepast domein. Deze configuratie werkt, omdat deze verschillende externe URL'S hebben.
 
 2. Publiceer de HTTPS-URL via een Joker toepassing. Publiceer de HTTP-toepassingen afzonderlijk met de volgende Power shell-cmdlets voor toepassings proxy:
-   - [Toepassings proxy toepassings beheer](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [Application proxy-connector beheer](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [Toepassings proxy toepassings beheer](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Application proxy-connector beheer](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

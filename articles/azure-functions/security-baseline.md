@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394088"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107518"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-beveiligings basislijn voor Azure Functions
 
@@ -90,7 +90,7 @@ Daarnaast kunt u een front-end-gateway, zoals Azure Web Application firewall, co
 
 - [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
+- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/azure-defender.md)
 
 - [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -545,7 +545,7 @@ U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een p
 
 - [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](../governance/management-groups/create.md)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 - [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -649,7 +649,7 @@ Volg daarnaast aanbevelingen van Azure Security Center om uw Azure function-apps
 
 - [Continue beveiligings validatie toevoegen aan uw CI/CD-pijp lijn](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -727,7 +727,7 @@ Daarnaast kunt u met Azure Policy beperkingen opleggen aan het type resources da
 
 - [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](../governance/management-groups/create.md)
+- [Beheergroepen maken](../governance/management-groups/create-management-group-portal.md)
 
 - [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
@@ -1087,7 +1087,7 @@ Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat Soft-Delete i
 
 - [Versleuteling-at-rest in Azure Storage](../storage/common/storage-service-encryption.md)
 
-- [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Soft-Delete in Key Vault inschakelen](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: Ja
 

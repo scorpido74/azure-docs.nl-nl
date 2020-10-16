@@ -3,15 +3,15 @@ title: Azure Multi-Factor Authentication instellen voor virtueel bureau blad van
 description: Azure Multi-Factor Authentication instellen voor verbeterde beveiliging in Windows virtueel bureau blad.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089918"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108980"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure Multi-Factor Authentication voor Windows Virtual Desktop inschakelen
 
@@ -64,6 +64,8 @@ U kunt als volgt een beleid voor voorwaardelijke toegang maken waarvoor multi-fa
 
    >[!IMPORTANT]
    > Selecteer de app met de naam Windows Virtual Desktop Azure Resource Manager provider (50e95039-B200-4007-bc97-8d5790743a63) niet. Deze app wordt alleen gebruikt voor het ophalen van de gebruikers feed en hoeft geen MFA te hebben.
+   > 
+   > Als u Windows virtueel bureau blad (klassiek) gebruikt, kunt u dit oplossen door de App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07 toe te voegen aan het beleid als het beleid voor voorwaardelijke toegang alle toegang blokkeert en alleen virtuele Windows-bureau blad-app-Id's uitsluit. Door deze app-ID niet toe te voegen, wordt de feed-detectie van Windows virtueel bureau blad-bronnen (klassiek) geblokkeerd.
 
 10. Ga naar **voor waarden**  >  **client-apps**en selecteer waar u het beleid wilt Toep assen:
     

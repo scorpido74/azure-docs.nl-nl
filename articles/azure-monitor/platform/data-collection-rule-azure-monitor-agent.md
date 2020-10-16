@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968410"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108011"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Gegevens verzameling configureren voor de Azure Monitor-agent (preview)
 Met regels voor gegevens verzameling (DCR) kunt u gegevens in Azure Monitor definiëren en opgeven waar deze moeten worden verzonden. In dit artikel wordt beschreven hoe u een regel voor het verzamelen van gegevens maakt voor het verzamelen van gegevens van virtuele machines met behulp van de Azure Monitor-agent.
@@ -64,8 +64,8 @@ Klik op **gegevens bron toevoegen** en vervolgens op **+ maken** om de details t
 ## <a name="createusingrestapi"></a>Maken met REST-API
 Volg de onderstaande stappen om een DCR en koppelingen te maken met behulp van de REST API. 
 1.Maak het DCR-bestand hand matig met de JSON-indeling die wordt weer gegeven in voor [beeld van DCR](data-collection-rule-overview.md#sample-data-collection-rule).
-2.Maak de regel met behulp van de [rest API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples).
-3.Maak een koppeling voor elke virtuele machine met de gegevens verzamelings regel met behulp van de [rest API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples).
+2.Maak de regel met behulp van de [rest API](/rest/api/monitor/datacollectionrules/create#examples).
+3.Maak een koppeling voor elke virtuele machine met de gegevens verzamelings regel met behulp van de [rest API](/rest/api/monitor/datacollectionruleassociations/create#examples).
 
 ## <a name="next-steps"></a>Volgende stappen
 

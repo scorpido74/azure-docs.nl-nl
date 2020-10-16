@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534196"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107875"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -64,7 +64,7 @@ Met op rollen gebaseerd toegangs beheer (RBAC) kunt u gebruikers en groepen alle
 
 De gegevens waartoe een gebruiker toegang heeft, wordt bepaald door een combi natie van factoren die in de volgende tabel worden weer gegeven. Elk wordt beschreven in de volgende secties.
 
-| Factor | Beschrijving |
+| Factor | Description |
 |:---|:---|
 | [Toegangsmodus](#access-mode) | De methode die de gebruiker gebruikt voor toegang tot de werk ruimte.  Hiermee definieert u het bereik van de beschik bare gegevens en de toegangs beheer modus die wordt toegepast. |
 | [Toegangs beheer modus](#access-control-mode) | Instelling in de werk ruimte die definieert of machtigingen worden toegepast op het niveau van de werk ruimte of de resource. |
@@ -91,7 +91,7 @@ Gebruikers hebben twee opties om toegang tot de gegevens te krijgen:
     > - Service Fabric
     > - Application Insights
     >
-    > U kunt testen of Logboeken goed zijn gekoppeld aan hun resource door een query uit te voeren en de records te controleren waarin u bent geïnteresseerd. Als de juiste resource-ID wordt weer gegeven in de eigenschap [_ResourceId](log-standard-properties.md#_resourceid) , zijn de gegevens beschikbaar voor resource gerichte query's.
+    > U kunt testen of Logboeken goed zijn gekoppeld aan hun resource door een query uit te voeren en de records te controleren waarin u bent geïnteresseerd. Als de juiste resource-ID wordt weer gegeven in de eigenschap [_ResourceId](./log-standard-columns.md#_resourceid) , zijn de gegevens beschikbaar voor resource gerichte query's.
 
 Azure Monitor bepaalt automatisch de juiste modus, afhankelijk van de context waarin u de zoek opdracht in Logboeken uitvoert. Het bereik wordt altijd weer gegeven in de linkerbovenhoek van Log Analytics.
 
@@ -164,4 +164,3 @@ Houd bij het plannen van de migratie naar dit model rekening met het volgende:
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u de beveiligings machtigingen en-besturings elementen wilt implementeren die worden aanbevolen in deze hand leiding, raadpleegt u de [toegang tot logboeken beheren](manage-access.md).
-

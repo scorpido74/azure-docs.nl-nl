@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048114"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108351"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Apparaatdubbels integreren met de Azure signalerings service
 
@@ -195,7 +195,7 @@ U hoeft niets anders te doen in deze console, maar laat deze draaien terwijl u d
 ### <a name="configure-the-sample-client-web-app"></a>De voor beeld-client-web-app configureren
 
 Vervolgens stelt u het voor **beeld van de web-app voor Signa lering integratie** in met de volgende stappen:
-1. Open met behulp van Visual Studio of een wille keurige code-editor de map ungezipted _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ die u hebt gedownload in de sectie [*vereisten*](#prerequisites) .
+1. Open met behulp van Visual Studio of een wille keurige code-editor de map ungezipted _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ die u hebt gedownload in het gedeelte [*de voorbeeld toepassingen downloaden*](#download-the-sample-applications) .
 
 1. Open het bestand *src/App.js* en vervang de URL in `HubConnectionBuilder` door de http-eind punt-URL van de **onderhandelings** functie die u eerder hebt opgeslagen:
 

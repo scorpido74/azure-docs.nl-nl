@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441048"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109252"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Azure Data Lake Storage Gen1 gebruiken voor big data vereisten
 
@@ -48,9 +48,9 @@ Dit duidt op gegevens die kunnen worden gegenereerd door verschillende bronnen, 
 
 Hieronder vindt u de hulpprogram ma's die u kunt gebruiken:
 
-* [Azure stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md) gebeurtenissen die in Event hubs zijn opgenomen, kunnen naar Azure data Lake Storage gen1 worden geschreven met behulp van een Azure data Lake Storage gen1 uitvoer.
+* [Azure stream Analytics](../stream-analytics/stream-analytics-define-outputs.md) gebeurtenissen die in Event hubs zijn opgenomen, kunnen naar Azure data Lake Storage gen1 worden geschreven met behulp van een Azure data Lake Storage gen1 uitvoer.
 * [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md) : u kunt gegevens rechtstreeks naar Data Lake Storage gen1 schrijven vanuit het Storm-cluster.
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) : u kunt gebeurtenissen ontvangen van Event hubs en deze vervolgens naar Data Lake Storage gen1 schrijven met behulp van de [Data Lake Storage gen1 .NET SDK](data-lake-store-get-started-net-sdk.md).
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) : u kunt gebeurtenissen ontvangen van Event hubs en deze vervolgens naar Data Lake Storage gen1 schrijven met behulp van de [Data Lake Storage gen1 .NET SDK](data-lake-store-get-started-net-sdk.md).
 
 ### <a name="relational-data"></a>Relationele gegevens
 U kunt ook gegevens van relationele data bases bron. Over een bepaalde tijd verzamelen relationele data bases enorme hoeveel heden gegevens die belang rijke inzichten kunnen geven als ze worden verwerkt via een big data pijp lijn. U kunt de volgende hulpprogram ma's gebruiken om dergelijke gegevens naar Data Lake Storage Gen1 te verplaatsen.
@@ -131,4 +131,4 @@ U kunt een combi natie van Services gebruiken om visuele weer gaven te maken van
 ![Gegevens visualiseren in Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "Gegevens visualiseren in Data Lake Storage Gen1")
 
 * U kunt beginnen met [Azure Data Factory om gegevens te verplaatsen van data Lake Storage gen1 naar Azure Synapse Analytics (voorheen SQL Data Warehouse)](../data-factory/copy-activity-overview.md)
-* Daarna kunt u [Power bi integreren met Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) om een visuele weer gave van de gegevens te maken.
+* Daarna kunt u [Power bi integreren met Azure Synapse Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) om een visuele weer gave van de gegevens te maken.

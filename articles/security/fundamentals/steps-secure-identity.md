@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399802"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107807"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
-Als u dit document leest, bent u op de hoogte van de significantie van de beveiliging. Waarschijnlijk hebt u de verantwoordelijkheid voor het beveiligen van uw organisatie. Als u anderen van het belang van beveiliging wilt overzien, kunt u ze verzenden om het meest recente [micro soft Security Intelligence-rapport](https://go.microsoft.com/fwlink/p/?linkid=2073747)te lezen.
+Als u dit document leest, bent u op de hoogte van de significantie van de beveiliging. Waarschijnlijk hebt u de verantwoordelijkheid voor het beveiligen van uw organisatie. Als u anderen van het belang van beveiliging wilt overzien, kunt u ze verzenden om het meest recente [micro soft Security Intelligence-rapport](https://www.microsoft.com/security/business/security-intelligence-report)te lezen.
 
 Dit document helpt u een veiliger postuur te krijgen met behulp van de mogelijkheden van Azure Active Directory met behulp van een controle lijst van vijf stappen voor het inoculate van uw organisatie tegen Cyber aanvallen.
 

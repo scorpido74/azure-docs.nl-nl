@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210209"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108232"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continue levering met behulp van Azure DevOps
 
@@ -256,7 +256,7 @@ Als u een build-pijp lijn in azure wilt maken, gebruikt u de `az functionapp dev
 
     - U moet de Project beheerder zijn in azure DevOps.
 
-    - U moet gemachtigd zijn om een GitHub-persoonlijk toegangs token (PAT) te maken dat voldoende machtigingen heeft. Zie [GITHUB Pat permission requirements](https://aka.ms/azure-devops-source-repos) (Engelstalig) voor meer informatie.
+    - U moet gemachtigd zijn om een GitHub-persoonlijk toegangs token (PAT) te maken dat voldoende machtigingen heeft. Zie [GITHUB Pat permission requirements](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication) (Engelstalig) voor meer informatie.
 
     - U moet gemachtigd zijn om de hoofd vertakking in uw GitHub-opslag plaats in te voeren, zodat u het automatisch gegenereerde YAML-bestand kunt door voeren.
 

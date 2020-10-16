@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88929483"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108487"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java maakt gebruik van een Maven-archetype om het lokale functions-project te maken, samen met uw eerste HTTP-geactiveerde functie. Gebruik de volgende opdracht om uw Java-project te maken: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Zie de [opdracht regel Quick](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)start voor een voor beeld van het gebruik van de Maven-archetype.  
+> Java maakt gebruik van een Maven-archetype om het lokale functions-project te maken, samen met uw eerste HTTP-geactiveerde functie. Gebruik de volgende opdracht om uw Java-project te maken: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Zie de [opdracht regel Quick](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)start voor een voor beeld van het gebruik van de Maven-archetype.  
 
 Wanneer u een project naam opgeeft, wordt een nieuwe map met die naam gemaakt en geïnitialiseerd. Anders wordt de huidige map geïnitialiseerd.  
 In versie 3. x/2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw project kiezen. 
@@ -230,9 +230,9 @@ Zie [Azure functions bindings uitbreidingen registreren](functions-bindings-regi
 
 Deze instellingen worden standaard niet automatisch gemigreerd wanneer het project wordt gepubliceerd naar Azure. Gebruik de `--publish-local-settings` Switch [Wanneer u publiceert](#publish) om ervoor te zorgen dat deze instellingen worden toegevoegd aan de functie-app in Azure. Houd er rekening mee dat waarden in **Connections Tring** nooit worden gepubliceerd.
 
-De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de sectie omgevings variabelen van deze taalspecifieke naslag onderwerpen voor meer informatie:
+De instellingen van de functie-app kunnen in uw code ook worden gelezen als omgevingsvariabelen. Raadpleeg het gedeelte Omgevingsvariabelen van deze taalspecifieke referentie-onderwerpen voor meer informatie:
 
-* [Vooraf gecompileerde C#](functions-dotnet-class-library.md#environment-variables)
+* [C# vooraf gecompileerd](functions-dotnet-class-library.md#environment-variables)
 * [C#-script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
@@ -309,7 +309,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumenten:
 
-| Argument     | Beschrijving                            |
+| Argument     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Versie 2. x en hoger.) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
 | **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x en hoger gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
@@ -597,7 +597,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure-portal]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

@@ -4,12 +4,12 @@ description: Slimme groepen zijn aggregaties van waarschuwingen waarmee u waarsc
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77665490"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108776"
 ---
 # <a name="smart-groups"></a>Slimme groepen
 
@@ -33,7 +33,7 @@ De volgende statussen van de Smart Group worden ondersteund.
 | Bevestigd | Een beheerder heeft de slimme groep gecontroleerd en ermee begonnen. |
 | Gesloten | Het probleem is opgelost. Nadat een Smart-groep is gesloten, kunt u deze opnieuw openen door deze te wijzigen in een andere status. |
 
-[Meer informatie over het wijzigen van de status van uw slimme groep.](https://aka.ms/managing-alert-smart-group-states)
+[Meer informatie over het wijzigen van de status van uw slimme groep.](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 
 > [!NOTE]
 >  Als u de status van een Smart groep wijzigt, wordt de status van de waarschuwingen voor afzonderlijke leden niet gewijzigd.
@@ -58,7 +58,5 @@ De naam van een Smart Group is de naam van de eerste waarschuwing. U kunt een sl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Slimme groepen beheren](https://aka.ms/managing-smart-groups)
-- [De status van de waarschuwing en de slimme groep wijzigen](https://aka.ms/managing-alert-smart-group-states)
-
-
+- [Slimme groepen beheren](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [De status van de waarschuwing en de slimme groep wijzigen](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)

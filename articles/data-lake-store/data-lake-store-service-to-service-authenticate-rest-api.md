@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 725490316ef4fcbce197d5a29b7665b7de7014c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4947bab58a6d23bcc3e3212a9e3e7dc0c4fa8578
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85857121"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106702"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van REST API
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ De uitvoer van de aanvraag bevat een autorisatie token (aangegeven door `access-
 {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 ```
 
-In dit artikel wordt de **niet-interactieve** benadering gebruikt. Zie [Service-naar-service-aanroepen met referenties](https://msdn.microsoft.com/library/azure/dn645543.aspx) voor meer informatie over niet-interactieve (service-naar-service) aanroepen.
+In dit artikel wordt de **niet-interactieve** benadering gebruikt. Zie [Service-naar-service-aanroepen met referenties](/previous-versions/azure/dn645543(v=azure.100)) voor meer informatie over niet-interactieve (service-naar-service) aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

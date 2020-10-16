@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071156"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108470"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 De volgende para meters zijn geldig voor het aanroepen van `Push-OutputBinding` :
 
-| Naam | Type | Positie | Beschrijving |
+| Naam | Type | Positie | Description |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Tekenreeks | 1 | De naam van de uitvoer binding die u wilt instellen. |
 | **`-Value`** | Object | 2 | De waarde van de uitvoer binding die u wilt instellen, die wordt geaccepteerd vanuit de pipeline-ByValue. |
@@ -143,7 +143,7 @@ De volgende algemene para meters worden ook ondersteund:
 * `PipelineVariable`
 * `OutVariable` 
 
-Zie [about CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)(Engelstalig) voor meer informatie.
+Zie [about CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters)(Engelstalig) voor meer informatie.
 
 #### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding voor beeld: HTTP-antwoorden
 
@@ -560,7 +560,7 @@ Er zijn een aantal gelijktijdigheids modellen die u kunt verkennen, afhankelijk 
 
 U kunt deze omgevings variabelen instellen in de [app-instellingen](functions-app-settings.md) van uw functie-app.
 
-Afhankelijk van uw use-case kunnen Durable Functions de schaal baarheid aanzienlijk verbeteren. Zie [Durable functions toepassings patronen](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)voor meer informatie.
+Afhankelijk van uw use-case kunnen Durable Functions de schaal baarheid aanzienlijk verbeteren. Zie [Durable functions toepassings patronen](./durable/durable-functions-overview.md?tabs=powershell#application-patterns)voor meer informatie.
 
 >[!NOTE]
 > U krijgt mogelijk de waarschuwingen ' aanvragen worden in de wachtrij geplaatst vanwege geen beschik bare runspaces '. Dit is geen fout. Het bericht vertelt u dat aanvragen in de wachtrij worden geplaatst en worden verwerkt wanneer de vorige aanvragen zijn voltooid.
