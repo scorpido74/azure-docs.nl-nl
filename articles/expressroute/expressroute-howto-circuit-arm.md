@@ -1,20 +1,20 @@
 ---
-title: 'Snelstart: Een circuit maken en wijzigen met ExpressRoute - Azure PowerShell'
-description: Een ExpressRoute-circuit maken, inrichten, controleren, bijwerken, verwijderen en de inrichting ervan ongedaan maken.
+title: 'Quickstart: Een circuit maken en wijzigen met ExpressRoute - Azure PowerShell'
+description: In deze quickstart leert u hoe u een ExpressRoute-circuit kunt maken, inrichten, controleren, verwijderen en de inrichting ervan ongedaan kunt maken.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: quickstart
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5397dd2745a0d4e61804cf631014846ae15ec4e1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761903"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971537"
 ---
-# <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Snelstart: Een ExpressRoute-circuit maken en wijzigen met behulp van de Azure PowerShell
+# <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Quickstart: Een ExpressRoute-circuit maken en wijzigen met behulp van de Azure PowerShell
 
 Deze quickstart laat zien hoe u een ExpressRoute-circuit maakt met behulp van PowerShell-cmdlets en het Azure Resource Manager-implementatiemodel. U kunt ook de status van een circuit controleren, een circuit bijwerken of verwijderen, of de inrichting ervan ongedaan maken.
 
@@ -77,7 +77,7 @@ get-help New-AzExpressRouteCircuit -detailed
 ```
 
 
-### <a name="list-all-expressroute-circuits"></a>Alle ExpressRoute-circuits weergeven
+### <a name="list-all-expressroute-circuits"></a>Alle ExpressRoute-circuits opvragen
 Als u een lijst wilt weergeven met alle ExpressRoute-circuits die u hebt gemaakt, voert u de opdracht **Get-AzExpressRouteCircuit** uit:
 
 ```azurepowershell-interactive
@@ -315,7 +315,7 @@ Let op de volgende informatie:
 
 * Voordat u een downgrade uitvoert van Premium naar Standard, moet u ervoor zorgen dat het aantal virtuele netwerken dat is gekoppeld aan het circuit, kleiner is dan 10. Als u dat niet doet, mislukt de aanvraag en wordt u gefactureerd tegen Premium-tarieven.
 * Alle virtuele netwerken in andere geopolitieke regio's moeten eerst worden ontkoppeld. Als u dat niet doet, mislukt de aanvraag en blijven we u factureren tegen Premium-tarieven.
-* De routetabel moet kleiner zijn dan 4000 routes voor persoonlijke peering. Als uw routetabel groter is dan 4000 routes, wordt de BGP-sessie beëindigd. De BGP-sessie wordt pas weer ingeschakeld als het aantal geadverteerde voorvoegsels minder is dan 4000.
+* De routetabel moet kleiner zijn dan 4.000 routes voor persoonlijke peering. Als uw routetabel groter is dan 4.000 routes, wordt de BGP-sessie beëindigd. De BGP-sessie wordt pas weer ingeschakeld als het aantal geadverteerde voorvoegsels minder is dan 4.000.
 
 U kunt de ExpressRoute Premium-invoegtoepassing uitschakelen voor het bestaande circuit met behulp van het volgende PowerShell-cmdlet:
 
@@ -371,7 +371,7 @@ Let op de volgende informatie:
 * Als de serviceprovider van het circuit de inrichtingsstatus **Inrichten** of **Ingericht** heeft, moet u contact opnemen met de serviceprovider om de inrichting van het circuit aan hun zijde ongedaan te maken. We blijven resources reserveren en kosten in rekening brengen, totdat de serviceprovider de inrichting van het circuit helemaal ongedaan heeft gemaakt en ons op de hoogte heeft gesteld.
 * Als de serviceprovider dit heeft gedaan (de inrichtingsstatus bij de serviceprovider is ingesteld op **NotProvisioned**), kunt u het circuit verwijderen. De facturering voor het circuit wordt dan gestopt.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Resources opschonen
+## <a name="clean-up-resources"></a>Resources opschonen
 
 U kunt uw ExpressRoute-circuit verwijderen door de volgende opdracht uit te voeren:
 
