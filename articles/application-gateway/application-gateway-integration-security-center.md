@@ -9,12 +9,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277195"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131204"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Overzicht van de integratie tussen Application Gateway en Azure Security Center
 
@@ -44,7 +44,7 @@ Als u geen bestaande Application Gateway hebt of een nieuwe wilt maken, klikt u 
 
 Als u een bestaande toepassings gateway hebt, kunt u deze kiezen onder **bestaande oplossing gebruiken**
 
-![Pagina om een Web Application Firewall toe te voegen][4]
+![Scherm afbeelding van de pagina een Web Application firewall toevoegen. Onder bestaande oplossing gebruiken wordt een toepassings gateway weer gegeven.][4]
 
 Als u een webtoepassing toevoegt aan een toepassings gateway via Security Center, wordt de resource niet toegevoegd als lid van een back-end-groep. Dit moet rechtstreeks op de toepassings gateway resource worden uitgevoerd.
 
@@ -62,7 +62,7 @@ Klik op **App koppelen** om **koppelings toepassingen**te openen. hier ziet u de
 
 Security Center houdt toepassingen bij die zijn toegevoegd aan een toepassings gateway als een beveiligde resource.  Hiermee wordt de status van deze resource gecontroleerd en wordt gegarandeerd dat deze wordt beveiligd door een toepassings gateway. De volgende stap is het toevoegen van het privé-IP-adres, het open bare IP-adres of de NIC van uw virtuele machine aan de back-end-groep van de toepassings gateway. Tot dit is gebeurd, wordt een extra aanbeveling van het **volt ooien** van de beveiliging van de toepassing weer gegeven totdat de resource is toegevoegd.
 
-![Pagina om een Web Application Firewall toe te voegen][5]
+![Scherm afbeelding van de pagina Toepassings beveiliging volt ooien, waarbij één toepassing wordt weer gegeven. In de tekst wordt uitgelegd welke stappen u moet ondernemen om de toepassing te beveiligen.][5]
 
 ## <a name="security-alerts"></a>Beveiligings waarschuwingen
 

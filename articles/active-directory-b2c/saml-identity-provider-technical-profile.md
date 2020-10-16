@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4f2b4d6da8d4d69a44ca3aabd755c72fd87aaa8e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 956773872babbd30dea1e17a9a3d7ede7a022850
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054896"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131731"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een SAML-identiteits provider definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -148,7 +148,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 | --------- | -------- | ----------- |
 | PartnerEntity | Ja | URL van de meta gegevens van de SAML-ID-provider. Kopieer de meta gegevens van de identiteits provider en voeg deze toe in het CDATA-element `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | Nee | Geeft aan of voor het technische profiel alle uitgaande verificatie aanvragen moeten worden ondertekend. Mogelijke waarden: `true` of `false` . De standaardwaarde is `true`. Wanneer de waarde is ingesteld op `true` , moet de cryptografie sleutel **SamlMessageSigning** worden opgegeven en alle uitgaande verificatie aanvragen worden ondertekend. Als de waarde is ingesteld op `false` , worden de para meters **SigAlg** en **Signature** (query teken reeks of post parameter) uit de aanvraag wegge laten. Deze meta gegevens bepalen ook het kenmerk **AuthnRequestsSigned** van meta gegevens, dat wordt uitgevoerd in de meta gegevens van het Azure AD B2C technische profiel dat wordt gedeeld met de ID-provider. Azure AD B2C de aanvraag niet ondertekent als de waarde van **WantsSignedRequests** in de meta gegevens van het technische profiel is ingesteld op `false` en de meta gegevens **WantAuthnRequestsSigned** van de identiteits provider is ingesteld op `false` of niet is opgegeven. |
-| XmlSignatureAlgorithm | Nee | De methode die Azure AD B2C gebruikt voor het ondertekenen van de SAML-aanvraag. Met deze meta gegevens bepaalt u de waarde van de para meter  **SigAlg** (query teken reeks of post parameter) in de SAML-aanvraag. Mogelijke waarden: `Sha256` , `Sha384` , `Sha512` of `Sha1` . Zorg ervoor dat u het handtekening algoritme aan beide zijden met dezelfde waarde configureert. Gebruik alleen de algoritme die door uw certificaat wordt ondersteund. |
+| XmlSignatureAlgorithm | Nee | De methode die Azure AD B2C gebruikt voor het ondertekenen van de SAML-aanvraag. Met deze meta gegevens bepaalt u de waarde van de para meter  **SigAlg** (query teken reeks of post parameter) in de SAML-aanvraag. Mogelijke waarden: `Sha256` , `Sha384` , `Sha512` , of `Sha1` (standaard). Zorg ervoor dat u het handtekening algoritme aan beide zijden met dezelfde waarde configureert. Gebruik alleen de algoritme die door uw certificaat wordt ondersteund. |
 | WantsSignedAssertions | Nee | Geeft aan of voor het technische profiel alle binnenkomende verklaringen moeten worden ondertekend. Mogelijke waarden: `true` of `false` . De standaardwaarde is `true`. Als de waarde is ingesteld op `true` , moet alle bevestigingen die `saml:Assertion` door de id-Azure AD B2C provider zijn verzonden, worden ondertekend. Als de waarde is ingesteld op `false` , mag de ID-provider de bevestigingen niet ondertekenen, maar zelfs als dit wel het geval is, kan Azure AD B2C de hand tekening niet valideren. Deze meta gegevens bepalen ook de **WantsAssertionsSigned**van de meta gegevens, die wordt uitgevoerd in de meta gegevens van het Azure AD B2C technische profiel dat wordt gedeeld met de ID-provider. Als u de validatie van beweringen uitschakelt, kunt u ook de validatie van de reactie handtekening uitschakelen (Zie **ResponsesSigned**) voor meer informatie. |
 | ResponsesSigned | Nee | Mogelijke waarden: `true` of `false` . De standaardwaarde is `true`. Als de waarde is ingesteld op `false` , mag de ID-provider het SAML-antwoord niet ondertekenen, maar zelfs als dat wel het geval is, Azure AD B2C de hand tekening niet valideren. Als de waarde is ingesteld op `true` , wordt het SAML-antwoord verzonden door de ID-provider naar Azure AD B2C ondertekend en moet het worden gevalideerd. Als u de SAML-antwoord validatie uitschakelt, kunt u ook de validatie van de hand tekening van de bevestiging uitschakelen (Zie **WantsSignedAssertions**) voor meer informatie. |
 | WantsEncryptedAssertions | Nee | Geeft aan of alle binnenkomende verklaringen moeten worden versleuteld met het technische profiel. Mogelijke waarden: `true` of `false` . De standaardwaarde is `false`. Als de waarde is ingesteld op `true` , moeten bevestigingen die door de ID-provider naar Azure AD B2C worden verzonden, worden ondertekend en moet de cryptografie sleutel **SamlAssertionDecryption** worden opgegeven. Als de waarde is ingesteld op `true` , bevat de meta gegevens van het technische profiel van Azure AD B2C de sectie **versleuteling** . De ID-provider leest de meta gegevens en versleutelt de SAML-reactie bevestiging met de open bare sleutel die is opgenomen in de meta gegevens van het technische profiel van Azure AD B2C. Als u de beweringen versleuteling inschakelt, moet u mogelijk ook de validatie van de reactie handtekening uitschakelen (Zie **ResponsesSigned**) voor meer informatie. |

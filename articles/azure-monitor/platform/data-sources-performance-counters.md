@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955485"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131187"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-en Linux-prestatie gegevens bronnen in Azure Monitor
 Prestatie meter items in Windows en Linux bieden inzicht in de prestaties van hardwareonderdelen, besturings systemen en toepassingen.  Azure Monitor kunt prestatie meter items op regel matige intervallen verzamelen voor analyse van bijna realtime (NRT), naast het samen voegen van prestatie gegevens voor langere termijn analyse en rapportage.
@@ -27,7 +27,7 @@ Voor Windows-prestatie meter items kunt u een specifiek exemplaar voor elk prest
 
 | Exemplaarnaam | Beschrijving |
 | --- | --- |
-| \_Eind |Totaal van alle exemplaren |
+| \_Totaal |Totaal van alle exemplaren |
 | \* |Alle instanties |
 | (/&#124;/var) |Komt overeen met instanties met de naam:/of/var |
 
@@ -156,7 +156,7 @@ Hieronder volgt de standaard configuratie voor metrische gegevens over prestatie
 <source>
     type oms_omi
     object_name "Logical Disk"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 5m
 </source>
@@ -164,7 +164,7 @@ Hieronder volgt de standaard configuratie voor metrische gegevens over prestatie
 <source>
     type oms_omi
     object_name "Processor"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 30s
 </source>
@@ -178,7 +178,7 @@ Hieronder volgt de standaard configuratie voor metrische gegevens over prestatie
 </source>
 ```
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 Azure Monitor verzamelt alle opgegeven prestatie meter items op het opgegeven steekproef interval voor alle agents waarop dat item is geïnstalleerd.  De gegevens worden niet geaggregeerd en de onbewerkte gegevens zijn beschikbaar in alle logboek query weergaven voor de duur die is opgegeven door de log Analytics-werk ruimte.
 
 ## <a name="performance-record-properties"></a>Eigenschappen van prestatie record

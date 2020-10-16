@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 42b23876761afa213b07f07b3a61e125dcf0824b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046805"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131680"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Veelgestelde vragen over metrische gegevens adviseur
 
@@ -31,7 +31,7 @@ De [demo website](https://anomaly-detector.azurewebsites.net/) is openbaar besch
 
 :::image type="content" source="media/pricing.png" alt-text="Bericht wanneer een F0-resource al bestaat":::
 
-Tijdens de open bare preview-fase kan slechts één exemplaar van de para meters Advisor worden gemaakt onder een abonnement, in één regio.
+Tijdens de open bare preview-periode kan slechts één exemplaar van de para meters Advisor per regio worden gemaakt onder een abonnement.
 
 Als u al een exemplaar hebt gemaakt in dezelfde regio met hetzelfde abonnement, kunt u een andere regio of een ander abonnement proberen om een nieuw exemplaar te maken. U kunt ook een bestaande instantie verwijderen om een nieuwe te maken.
 
@@ -108,6 +108,40 @@ Als er geen drempels zijn, kunt u Slimme detectie gebruiken. dit wordt mogelijk 
 
 Als uw gegevens normaal gesp roken onstabiel zijn en een heleboel schommelingen hebben en u wilt worden gewaarschuwd wanneer het te stabiel of zelfs een vlakke lijn wordt, kan ' drempel waarde wijzigen ' worden geconfigureerd om dergelijke gegevens punten te detecteren wanneer de wijziging te klein is.
 Raadpleeg de [configuraties voor anomalie detectie](how-tos/configure-metrics.md#anomaly-detection-methods) voor meer informatie.
+
+## <a name="advanced-concepts"></a>Geavanceerde concepten
+
+### <a name="how-does-metric-advisor-build-an-incident-tree-for-multi-dimensional-metrics"></a>Hoe bouwt metrische Advisor een incident structuur voor multi-dimensionale metrieken?
+
+Een metriek kan worden opgesplitst in meerdere tijd reeksen per dimensie. De metriek `Response latency` wordt bijvoorbeeld bewaakt voor alle services die eigendom zijn van het team. De `Service` categorie kan worden gebruikt als een dimensie om de metrische gegevens te verrijken, zodat we `Response latency` splitsen op `Service1` , enzovoort `Service2` . Elke service kan worden geïmplementeerd op verschillende computers in meerdere data centers, zodat de metriek kan worden gesplitst door `Machine` en `Data center` .
+
+|Service| Data centrum| Machine  | 
+|----|------|----------------   |
+| S1 |  DC1 |   Categorie |
+| S1 |  DC1 |   M2 |
+| S1 |  DC2 |   B3 |
+| S1 |  DC2 |   M4 |
+| S2 |  DC1 |   Categorie |
+| S2 |  DC1 |   M2 |
+| S2 |  DC2 |   M5 |
+| S2 |  DC2 |   M6 |
+| ...|      |      |
+
+Vanaf het totaal `Response latency` kunnen we inzoomen op de metrische waarde door `Service` `Data center` en `Machine` . Het is echter mogelijk dat het handiger is voor service-eigen aars om het pad te gebruiken `Service`  ->  `Data center`  ->  `Machine` , of dat het beter is voor infrastructuur technici om het pad te gebruiken `Data Center`  ->  `Machine`  ->  `Service` . Alles is afhankelijk van de afzonderlijke zakelijke vereisten van uw gebruikers. 
+
+In metrische Advisor kunnen gebruikers een wille keurig pad opgeven dat ze willen inzoomen of samen vouwen vanaf één knoop punt van de hiërarchische topologie. Nauw keuriger is de hiërarchische topologie een Directed Acyclic Graph in plaats van een boom structuur. Er is een volledige hiërarchische topologie die bestaat uit alle mogelijke dimensie combinaties, zoals: 
+
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="Bericht wanneer een F0-resource al bestaat" lightbox="media/dimension-combinations-view.png":::
+
+In theorie geldt dat als de `Service` dimensie `Ls` DISTINCT-waarden heeft, de dimensie `Data center` `Ldc` DISTINCT-waarden heeft en de dimensie `Machine` `Lm` DISTINCT-waarden bevat, en dat er `(Ls + 1) * (Ldc + 1) * (Lm + 1)` dimensie combinaties kunnen zijn in de hiërarchische topologie. 
+
+Maar gewoonlijk zijn niet alle dimensie combinaties geldig, waardoor de complexiteit aanzienlijk kan worden verminderd. Als gebruikers de metriek op dit moment samen voegen, beperken we het aantal dimensies niet. Als u de totaliserings functionaliteit van metrische gegevens Advisor moet gebruiken, mag het aantal dimensies niet meer zijn dan 6. We beperken echter het aantal tijd reeksen dat is uitgevouwen door dimensies voor een metrieke waarde van minder dan 10.000.
+
+Het hulp programma voor **incident structuur** op de pagina Diagnostische gegevens bevat alleen knoop punten waar een afwijkend probleem is gedetecteerd, in plaats van de hele topologie. Zo kunt u zich richten op het huidige probleem. Het kan ook zijn dat niet alle afwijkingen binnen de metriek worden weer gegeven. in plaats daarvan worden de belangrijkste afwijkingen weer gegeven op basis van de bijdrage. Op deze manier kunnen we snel de impact, het bereik en het pad van de abnormale gegevens achterhalen. Waardoor het aantal afwijkingen dat we moeten concentreren, aanzienlijk vermindert en gebruikers helpen hun belangrijkste problemen te begrijpen en te vinden. 
+ 
+Als er bijvoorbeeld sprake is van een afwijkend `Service = S2 | Data Center = DC2 | Machine = M5` , heeft de afwijking van de afwijkende invloed op het bovenliggende knoop punt `Service= S2` , dat ook de anomalie heeft gedetecteerd, maar de anomalie heeft geen invloed op het hele Data Center op `DC2` en alle services op `M5` . De incident structuur wordt opgebouwd zoals in de onderstaande scherm afbeelding, de meest afwijkende fouten worden vastgelegd `Service = S2` en de hoofd oorzaak kan worden geanalyseerd in twee paden die beide leiden tot `Service = S2 | Data Center = DC2 | Machine = M5` .
+
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5 gelabelde hoek punten met twee verschillende paden die zijn verbonden door randen met een gemeen schappelijk knoop punt met de naam s2. De belangrijkste afwijkingen worden vastgelegd op service = S2 en de hoofd oorzaak kan worden geanalyseerd door de twee paden die beide leiden tot service = S2 | Data Center = DC2 | Machine = M5" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Overzicht van Metrics Advisor](overview.md)

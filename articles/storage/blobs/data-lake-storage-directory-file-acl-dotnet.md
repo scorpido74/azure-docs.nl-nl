@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6533809be614210a88bfa605e24209d094bb679d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b0a7dd87caca227f96a0df8ca84634355d18021
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019297"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131578"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>.NET gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -172,42 +172,6 @@ public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Een directory-ACL beheren
-
-Haal de toegangs beheer lijst (ACL) van een directory op door de methode [DataLakeDirectoryClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) aan te roepen en de ACL in te stellen door de methode [DataLakeDirectoryClient. SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) aan te roepen.
-
-> [!NOTE]
-> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
-
-In dit voor beeld wordt de ACL van een directory met de naam opgehaald en ingesteld `my-directory` . De teken reeks `user::rwx,group::r-x,other::rw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
-
-```cs
-public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
-{
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.GetDirectoryClient("my-directory");
-
-    PathAccessControl directoryAccessControl =
-        await directoryClient.GetAccessControlAsync();
-
-    foreach (var item in directoryAccessControl.AccessControlList)
-    {
-        Console.WriteLine(item.ToString());
-    }
-
-
-    IList<PathAccessControlItem> accessControlList
-        = PathAccessControlExtensions.ParseAccessControlList
-        ("user::rwx,group::r-x,other::rw-");
-
-    directoryClient.SetAccessControlList(accessControlList);
-
-}
-
-```
-
-U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, geeft u een lege teken reeks () door aan `""` de methode [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) .
-
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
 Maak eerst een bestands verwijzing in de doel directory door een instantie van de klasse [DataLakeFileClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient) te maken. Upload een bestand door de methode [DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) aan te roepen. Zorg ervoor dat u de upload voltooit door de methode [DataLakeFileClient. FlushAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.flushasync) aan te roepen.
@@ -235,13 +199,13 @@ public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
 ```
 
 > [!TIP]
-> Als de bestands grootte groot is, moet uw code meerdere aanroepen naar de [DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync). U kunt in plaats daarvan de methode [DataLakeFileClient. UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync?view=azure-dotnet#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) gebruiken. Op die manier kunt u het volledige bestand in één aanroep uploaden. 
+> Als de bestands grootte groot is, moet uw code meerdere aanroepen naar de [DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync). U kunt in plaats daarvan de methode [DataLakeFileClient. UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) gebruiken. Op die manier kunt u het volledige bestand in één aanroep uploaden. 
 >
 > Zie de volgende sectie voor een voor beeld.
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Een groot bestand uploaden naar een map
 
-Gebruik de methode [DataLakeFileClient. UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync?view=azure-dotnet#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) om grote bestanden te uploaden zonder meerdere aanroepen naar de methode [DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) te hoeven maken.
+Gebruik de methode [DataLakeFileClient. UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.uploadasync#Azure_Storage_Files_DataLake_DataLakeFileClient_UploadAsync_System_IO_Stream_) om grote bestanden te uploaden zonder meerdere aanroepen naar de methode [DataLakeFileClient. AppendAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.appendasync) te hoeven maken.
 
 ```cs
 public async Task UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
@@ -258,40 +222,6 @@ public async Task UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 
 }
 
-```
-
-## <a name="manage-a-file-acl"></a>Een bestands-ACL beheren
-
-Haal de toegangs beheer lijst (ACL) van een bestand op door de methode [DataLakeFileClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.getaccesscontrolasync) aan te roepen en de ACL in te stellen door de methode [DataLakeFileClient. SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.setaccesscontrollist) aan te roepen.
-
-> [!NOTE]
-> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
-
-In dit voor beeld wordt de ACL van een bestand met de naam opgehaald en ingesteld `my-file.txt` . De teken reeks `user::rwx,group::r-x,other::rw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
-
-```cs
-public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
-{
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.GetDirectoryClient("my-directory");
-
-    DataLakeFileClient fileClient = 
-        directoryClient.GetFileClient("hello.txt");
-
-    PathAccessControl FileAccessControl =
-        await fileClient.GetAccessControlAsync();
-
-    foreach (var item in FileAccessControl.AccessControlList)
-    {
-        Console.WriteLine(item.ToString());
-    }
-
-    IList<PathAccessControlItem> accessControlList
-        = PathAccessControlExtensions.ParseAccessControlList
-        ("user::rwx,group::r-x,other::rw-");
-
-    fileClient.SetAccessControlList(accessControlList);
-}
 ```
 
 ## <a name="download-from-a-directory"></a>Downloaden uit een directory 
@@ -364,7 +294,84 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 }
 ```
 
-## <a name="set-an-acl-recursively-preview"></a>Recursief instellen van een ACL (preview-versie)
+## <a name="manage-access-control-lists-acls"></a>Toegangs beheer lijsten (Acl's) beheren
+
+U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwerken.
+
+> [!NOTE]
+> Als u Azure Active Directory (Azure AD) gebruikt om toegang te verlenen, moet u ervoor zorgen dat aan uw beveiligingsprincipal de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)is toegewezen. Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+### <a name="manage-a-directory-acl"></a>Een directory-ACL beheren
+
+Haal de toegangs beheer lijst (ACL) van een directory op door de methode [DataLakeDirectoryClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.getaccesscontrolasync) aan te roepen en de ACL in te stellen door de methode [DataLakeDirectoryClient. SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.setaccesscontrollist) aan te roepen.
+
+> [!NOTE]
+> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+
+In dit voor beeld wordt de ACL van een directory met de naam opgehaald en ingesteld `my-directory` . De teken reeks `user::rwx,group::r-x,other::rw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+
+```cs
+public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
+{
+    DataLakeDirectoryClient directoryClient =
+        fileSystemClient.GetDirectoryClient("my-directory");
+
+    PathAccessControl directoryAccessControl =
+        await directoryClient.GetAccessControlAsync();
+
+    foreach (var item in directoryAccessControl.AccessControlList)
+    {
+        Console.WriteLine(item.ToString());
+    }
+
+
+    IList<PathAccessControlItem> accessControlList
+        = PathAccessControlExtensions.ParseAccessControlList
+        ("user::rwx,group::r-x,other::rw-");
+
+    directoryClient.SetAccessControlList(accessControlList);
+
+}
+
+```
+
+U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, geeft u een lege teken reeks () door aan `""` de methode [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) .
+
+### <a name="manage-a-file-acl"></a>Een bestands-ACL beheren
+
+Haal de toegangs beheer lijst (ACL) van een bestand op door de methode [DataLakeFileClient. GetAccessControlAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.getaccesscontrolasync) aan te roepen en de ACL in te stellen door de methode [DataLakeFileClient. SetAccessControlList](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefileclient.setaccesscontrollist) aan te roepen.
+
+> [!NOTE]
+> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+
+In dit voor beeld wordt de ACL van een bestand met de naam opgehaald en ingesteld `my-file.txt` . De teken reeks `user::rwx,group::r-x,other::rw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+
+```cs
+public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
+{
+    DataLakeDirectoryClient directoryClient =
+        fileSystemClient.GetDirectoryClient("my-directory");
+
+    DataLakeFileClient fileClient = 
+        directoryClient.GetFileClient("hello.txt");
+
+    PathAccessControl FileAccessControl =
+        await fileClient.GetAccessControlAsync();
+
+    foreach (var item in FileAccessControl.AccessControlList)
+    {
+        Console.WriteLine(item.ToString());
+    }
+
+    IList<PathAccessControlItem> accessControlList
+        = PathAccessControlExtensions.ParseAccessControlList
+        ("user::rwx,group::r-x,other::rw-");
+
+    fileClient.SetAccessControlList(accessControlList);
+}
+```
+
+### <a name="set-an-acl-recursively-preview"></a>Recursief instellen van een ACL (preview-versie)
 
 U kunt Acl's recursief toevoegen, bijwerken en verwijderen voor de bestaande onderliggende items van een bovenliggende map zonder dat u deze wijzigingen afzonderlijk voor elk onderliggend item hoeft aan te brengen. Zie [acl's (Access Control Lists) recursief instellen voor Azure data Lake Storage Gen2](recursive-access-control-lists.md)voor meer informatie.
 

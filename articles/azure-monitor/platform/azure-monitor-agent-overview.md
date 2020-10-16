@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263773"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132700"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Overzicht van Azure Monitor-agent (preview)
 De Azure Monitor-agent (AMA) verzamelt bewakings gegevens van het gast besturingssysteem van virtuele machines en levert deze aan Azure Monitor. In deze artikelen vindt u een overzicht van de Azure Monitor-agent, inclusief hoe u deze kunt installeren en hoe u gegevens verzameling kunt configureren.
@@ -84,7 +84,7 @@ De Azure Monitor-agent verzendt gegevens naar Azure Monitor metrieken of een Log
 
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
-Zie [ondersteunde besturings systemen](agents-overview.md#supported-operating-systems) voor een lijst met versies van het Windows-en Linux-besturings systeem die momenteel worden ondersteund door de log Analytics-agent.
+Zie [ondersteunde besturings systemen](agents-overview.md#supported-operating-systems) voor een lijst met versies van het Windows-en Linux-besturings systeem die momenteel worden ondersteund door de Azure monitor-agent.
 
 
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564839"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132071"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor ID-token hints definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -87,13 +87,13 @@ De volgende meta gegevens zijn relevant voor het gebruik van symmetrische sleute
 | uitgever | Ja | Identificeert de beveiligings token service (token uitgever). Deze waarde moet gelijk zijn aan de `iss` claim binnen de claim van de JWT-token. | 
 | IdTokenAudience | Ja | Identificeert de beoogde ontvanger van het token. Moet gelijk zijn aan de `aud` claim met de JWT-token claim. | 
 
-De volgende meta gegevens zijn relevant voor het gebruik van een symmetrische sleutel. 
+De volgende meta gegevens zijn relevant voor het gebruik van een asymmetrische sleutel. 
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | METAGEGEVENSARCHIEFMETHODE| Ja | Een URL die verwijst naar een configuratie document voor de certificaat Uitgever, dat ook wel een OpenID Connect goed bekend configuratie-eind punt wordt genoemd.   |
 | uitgever | Nee | Identificeert de beveiligings token service (token uitgever). Deze waarde kan worden gebruikt om de waarde die is geconfigureerd in de meta gegevens te overschrijven en moet identiek zijn aan de `iss` claim binnen de JWT-token claim. |  
-| IdTokenAudience | Nee | Identificeert de beoogde ontvanger van het token. Deze waarde kan worden gebruikt om de waarde die is geconfigureerd in de meta gegevens te overschrijven en moet identiek zijn aan de `aud` claim binnen de JWT-token claim. |  
+| IdTokenAudience | Nee | Identificeert de beoogde ontvanger van het token. Moet gelijk zijn aan de `aud` claim met de JWT-token claim. |  
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
@@ -219,7 +219,7 @@ Het volgende technische profiel valideert het token en extraheert de claims. Wij
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <!-- <Item Key="IdTokenAudience">your_optional_audience_override</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

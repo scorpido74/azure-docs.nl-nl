@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074257"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132479"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -231,7 +231,7 @@ In de **blok kering** definieert u het effect dat optreedt wanneer aan de voor w
 }
 ```
 
-### <a name="logical-operators"></a>Logische operatoren
+### <a name="logical-operators"></a>Logische operators
 
 Ondersteunde logische Opera tors zijn:
 
@@ -438,7 +438,7 @@ Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/te
 
 Met de gereviseerde beleids regel `if()` controleert u de lengte van de **naam** voordat u probeert een `substring()` waarde op te halen die korter is dan drie tekens. Als de **naam** te kort is, wordt de waarde ' niet beginnend met ABC ' geretourneerd in plaats van **ABC**. Een resource met een korte naam die niet met **ABC** begint, mislukt nog steeds de beleids regel, maar veroorzaakt geen fout meer tijdens de evaluatie.
 
-### <a name="count"></a>Count
+### <a name="count"></a>Aantal
 
 Voor waarden die tellen hoeveel leden van een matrix in de resource-nettolading voldoen aan een voor waarde-expressie, kunnen worden gevormd met de expressie **Count** . Bij algemene scenario's wordt gecontroleerd of ten minste één van ', ' precies één van ', ' alle of ' geen van ' de matrix leden voldoen aan de voor waarde. met **Count** wordt elk lid van een [ \[ \* \] alias](#understanding-the--alias) matrix geëvalueerd voor een voorwaarde expressie en worden de _werkelijke_ resultaten opgeteld, die vervolgens worden vergeleken met de operator voor expressies. Expressies met **aantallen** kunnen Maxi maal drie keer worden toegevoegd aan een enkele **policyRule** -definitie.
 
@@ -589,8 +589,8 @@ De volgende functie is beschikbaar voor gebruik in een beleids regel, maar versc
 De volgende functies zijn alleen beschikbaar in beleids regels:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [required] string-teken reeks in de indeling Universal ISO 8601 datetime `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
-  - **numberOfDaysToAdd**: [vereist] geheel getal-aantal dagen dat moet worden toegevoegd.
+  - **DateTime**: [required] string-string in de indeling Universal ISO 8601 datetime ' jjjj-mm-ddTuu: mm: SS. FFFFFFFZ'
+  - **numberOfDaysToAdd**: [vereist] geheel getal-aantal dagen dat moet worden toegevoegd
 - `field(fieldName)`
   - **FieldName**: [required] string: naam van het [veld](#fields) dat moet worden opgehaald
   - Retourneert de waarde van het veld van de resource die wordt geëvalueerd door de if-voor waarde.

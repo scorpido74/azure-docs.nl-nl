@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: cba67e571370d48a04a4e95198462953acdd4d59
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108351"
+ms.locfileid: "92131544"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Apparaatdubbels integreren met de Azure signalerings service
 
@@ -39,8 +39,8 @@ U gaat de Azure signalerings Service koppelen aan Azure Digital Apparaatdubbels 
 ## <a name="download-the-sample-applications"></a>De voorbeeld toepassingen downloaden
 
 Down load eerst de vereiste voor beeld-apps. U hebt het volgende nodig:
-* Voor [**beelden van Azure Digital apparaatdubbels**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): dit voor beeld bevat een *AdtSampleApp* met twee Azure-functies voor het verplaatsen van gegevens over een Azure Digital apparaatdubbels-exemplaar (u vindt hier meer informatie over dit scenario [*: Verbind een end-to-end oplossing*](tutorial-end-to-end.md)). Het bevat ook een *DeviceSimulator* -voorbeeld toepassing voor het simuleren van een IOT-apparaat, waarbij elke seconde een nieuwe temperatuur waarde wordt gegenereerd. 
-    - Ga naar de voorbeeld koppeling en klik op de knop *zip downloaden* om een kopie van het voor beeld naar uw computer te downloaden, zoals _**Azure_Digital_Twins_samples.zip**_. Pak de map uit.
+* [**Azure Digital apparaatdubbels end-to-end-voor beelden**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): dit voor beeld bevat een *AdtSampleApp* met twee Azure-functies voor het verplaatsen van gegevens over een Azure Digital apparaatdubbels-exemplaar (u vindt meer informatie in dit scenario in de [*zelf studie: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md)). Het bevat ook een *DeviceSimulator* -voorbeeld toepassing voor het simuleren van een IOT-apparaat, waarbij elke seconde een nieuwe temperatuur waarde wordt gegenereerd. 
+    - Ga naar de voorbeeld koppeling en klik op de knop *zip downloaden* om een kopie van het voor beeld naar uw computer te downloaden, zoals _**Azure_Digital_Twins_end_to_end_samples.zip**_. Pak de map uit.
 * Voor beeld van een web-app voor de [**Signa lering-integratie**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): dit is een voor beeld van een reactie op een web-app die gebruikmaakt van Azure Digital apparaatdubbels-telemetriegegevens van een Azure signalerings service.
     -  Ga naar de voorbeeld koppeling en klik op de knop *zip downloaden* om een kopie van het voor beeld naar uw computer te downloaden, zoals _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Pak de map uit.
 
@@ -63,7 +63,7 @@ Ga eerst naar de browser waar de Azure Portal is geopend en voer de volgende sta
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario. Toont gegevens die vanuit een apparaat naar IoT Hub worden gestroomd, via een Azure-functie (pijl B) naar een Azure Digital Apparaatdubbels-exemplaar (sectie A) en vervolgens via Event Grid naar een andere Azure-functie voor verwerking (pijl C). Sectie D toont gegevens stromen van hetzelfde Event Grid in pijl C naar een Azure-functie met het label ' Broadcast '. broadcast communiceert met een andere Azure-functie met het label Negotiate en zowel broadcast als Negotiate communiceren met computer apparaten." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-Start vervolgens Visual Studio (of een andere code-editor van uw keuze) en open de code oplossing in de map *Azure_Digital_Twins_samples > ADTSampleApp* . Voer vervolgens de volgende stappen uit om de functies te maken:
+Start vervolgens Visual Studio (of een andere code-editor van uw keuze) en open de code oplossing in de map *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* . Voer vervolgens de volgende stappen uit om de functies te maken:
 
 1. Maak een nieuwe C#-klasse met de naam **SignalRFunctions.cs** in het *SampleFunctionsApp* -project.
 
@@ -129,7 +129,7 @@ Start vervolgens Visual Studio (of een andere code-editor van uw keuze) en open 
     }
     ```
 
-1. Voer in het *console venster package manager* van Visual Studio of een opdracht venster op uw computer in de map *Azure_Digital_Twins_samples \adtsampleapp\samplefunctionsapp* de volgende opdracht uit om het `SignalRService` NuGet-pakket te installeren op het project:
+1. Voer in het *console venster package manager* van Visual Studio of een opdracht venster op uw computer in de map *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* de volgende opdracht uit om het `SignalRService` NuGet-pakket te installeren op het project:
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -145,7 +145,7 @@ Publiceer vervolgens uw functie in azure, met behulp van de stappen die worden b
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario. Toont gegevens die vanuit een apparaat naar IoT Hub worden gestroomd, via een Azure-functie (pijl B) naar een Azure Digital Apparaatdubbels-exemplaar (sectie A) en vervolgens via Event Grid naar een andere Azure-functie voor verwerking (pijl C). Sectie D toont gegevens stromen van hetzelfde Event Grid in pijl C naar een Azure-functie met het label ' Broadcast '. broadcast communiceert met een andere Azure-functie met het label Negotiate en zowel broadcast als Negotiate communiceren met computer apparaten.":::
 
-1. Voeg ten slotte uw Azure-seingevings **Connection String** van vóór de app-instellingen van de functie toe met behulp van de volgende Azure cli-opdracht. De opdracht kan worden uitgevoerd in [Azure Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest):
+1. Voeg ten slotte uw Azure-seingevings **Connection String** van vóór de app-instellingen van de functie toe met behulp van de volgende Azure cli-opdracht. De opdracht kan worden uitgevoerd in [Azure Cloud shell](https://shell.azure.com)of lokaal als u de Azure cli [op uw computer hebt geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true):
  
     ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -184,7 +184,7 @@ In deze sectie ziet u het resultaat in actie. Eerst start u de voor beeld- **app
 
 Tijdens de end-to-end-zelf studie hebt u [de Device Simulator geconfigureerd voor het](tutorial-end-to-end.md#configure-and-run-the-simulation) verzenden van gegevens via een IOT hub en naar uw Azure Digital apparaatdubbels-exemplaar.
 
-Nu hoeft u alleen maar het simulator-project te starten, dat zich bevindt in *Azure_Digital_Twins_samples > DeviceSimulator > DeviceSimulator. SLN*. Als u Visual Studio gebruikt, kunt u het project openen en dit vervolgens uitvoeren met deze knop op de werk balk:
+Nu hoeft u alleen maar het simulator-project te starten, dat zich bevindt in *Azure_Digital_Twins_end_to_end_samples > DeviceSimulator > DeviceSimulator. SLN*. Als u Visual Studio gebruikt, kunt u het project openen en dit vervolgens uitvoeren met deze knop op de werk balk:
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario. Toont gegevens die vanuit een apparaat naar IoT Hub worden gestroomd, via een Azure-functie (pijl B) naar een Azure Digital Apparaatdubbels-exemplaar (sectie A) en vervolgens via Event Grid naar een andere Azure-functie voor verwerking (pijl C). Sectie D toont gegevens stromen van hetzelfde Event Grid in pijl C naar een Azure-functie met het label ' Broadcast '. broadcast communiceert met een andere Azure-functie met het label Negotiate en zowel broadcast als Negotiate communiceren met computer apparaten.":::
 
@@ -232,7 +232,7 @@ Hiermee opent u een browser venster waarin de voor beeld-app wordt uitgevoerd. H
 
 Als u de resources die in dit artikel zijn gemaakt niet meer nodig hebt, volgt u deze stappen om ze te verwijderen. 
 
-Met de Azure Cloud Shell of lokale Azure CLI kunt u alle Azure-resources in een resource groep verwijderen met de opdracht [AZ Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) . Als u de resource groep verwijdert, wordt ook verwijderd...
+Met de Azure Cloud Shell of lokale Azure CLI kunt u alle Azure-resources in een resource groep verwijderen met de opdracht [AZ Group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) . Als u de resource groep verwijdert, wordt ook verwijderd...
 * het Azure Digital Apparaatdubbels-exemplaar (van de end-to-end-zelf studie)
 * de IoT hub en de registratie van het hub-apparaat (van de end-to-end-zelf studie)
 * het event grid-onderwerp en de bijbehorende abonnementen
@@ -252,7 +252,7 @@ Als u uw Azure Digital Apparaatdubbels-exemplaar verwijdert, kunt u ook de Azure
 az ad app delete --id <your-application-ID>
 ```
 
-Verwijder tot slot de voorbeeld mappen van het project dat u hebt gedownload naar uw lokale machine (*Azure_Digital_Twins_samples.zip* en *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
+Verwijder tot slot de voorbeeld mappen van het project dat u hebt gedownload naar uw lokale machine (*Azure_Digital_Twins_end_to_end_samples.zip* en *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
 ## <a name="next-steps"></a>Volgende stappen
 

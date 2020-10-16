@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da8dc11212d33627a165dc5e11acc64087fb6c43
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776082"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131816"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -67,7 +67,7 @@ Als u de beheerde identiteit niet inschakelt, wordt deze fout ook weer gegeven, 
 * Een label project starten.
 
 > [!NOTE]
-> [Ml van ondersteunde gegevens etikettering](how-to-create-labeling-projects.md#use-ml-assisted-labeling) biedt geen ondersteuning voor standaard opslag accounts die zijn beveiligd achter een virtueel netwerk. U moet een niet-standaard opslag account gebruiken voor de etiket tering van ondersteunde gegevens. Het niet-standaard opslag account kan worden beveiligd achter het virtuele netwerk. 
+> [Ml van ondersteunde gegevens etikettering](how-to-create-labeling-projects.md#use-ml-assisted-labeling) biedt geen ondersteuning voor standaard opslag accounts die zijn beveiligd achter een virtueel netwerk. U moet een niet-standaard opslagaccount gebruiken voor het labelen van gegevens met behulp van ML. Het niet-standaard opslagaccount kan worden beveiligd achter het virtuele netwerk. 
 
 De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag typen in een virtueel netwerk:
 
@@ -106,7 +106,7 @@ Voor __Azure Blob Storage__wordt de door de werk ruimte beheerde identiteit ook 
 
 U kunt zowel RBAC-als POSIX-toegangscontrole lijsten (Acl's) gebruiken om de toegang tot gegevens binnen een virtueel netwerk te beheren.
 
-Als u RBAC wilt gebruiken, voegt u de door de werk ruimte beheerde identiteit toe aan de rol [BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Zie [toegangs beheer op basis van rollen](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control)voor meer informatie.
+Als u RBAC wilt gebruiken, voegt u de door de werk ruimte beheerde identiteit toe aan de rol [BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Zie [toegangs beheer op basis van rollen](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)voor meer informatie.
 
 Als u Acl's wilt gebruiken, kan de door de werk ruimte beheerde identiteit toegang krijgen net als elk ander beveiligings principe. Zie [toegangs beheer lijsten voor bestanden en mappen](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)voor meer informatie.
 

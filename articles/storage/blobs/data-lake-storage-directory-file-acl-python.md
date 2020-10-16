@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98a1fbf30e7b653598aac6b83c0d8155582e2051
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017112"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131476"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -164,39 +164,6 @@ def delete_directory():
      print(e) 
 ```
 
-## <a name="manage-directory-permissions"></a>Mapmachtigingen beheren
-
-Haal de toegangs beheer lijst (ACL) van een directory op door de **DataLakeDirectoryClient.get_access_control** -methode aan te roepen en de ACL in te stellen door de **DataLakeDirectoryClient.set_access_control** -methode aan te roepen.
-
-> [!NOTE]
-> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
-
-In dit voor beeld wordt de ACL van een directory met de naam opgehaald en ingesteld `my-directory` . De teken reeks `rwxr-xrw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
-
-```python
-def manage_directory_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_dir_permissions = "rwxr-xrw-"
-        
-        directory_client.set_access_control(permissions=new_dir_permissions)
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-    
-    except Exception as e:
-     print(e) 
-```
-
-U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, roept u de **FileSystemClient._get_root_directory_client** -methode aan.
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map 
 
@@ -252,40 +219,6 @@ def upload_file_to_directory_bulk():
       print(e) 
 ```
 
-## <a name="manage-file-permissions"></a>Bestands machtigingen beheren
-
-Haal de toegangs beheer lijst (ACL) van een bestand op door de **DataLakeFileClient.get_access_control** -methode aan te roepen en de ACL in te stellen door de **DataLakeFileClient.set_access_control** -methode aan te roepen.
-
-> [!NOTE]
-> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
-
-In dit voor beeld wordt de ACL van een bestand met de naam opgehaald en ingesteld `my-file.txt` . De teken reeks `rwxr-xrw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
-
-```python
-def manage_file_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_file_permissions = "rwxr-xrw-"
-        
-        file_client.set_access_control(permissions=new_file_permissions)
-        
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e) 
-```
-
 ## <a name="download-from-a-directory"></a>Downloaden uit een directory 
 
 Open een lokaal bestand om te schrijven. Maak vervolgens een **DataLakeFileClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Roep de **DataLakeFileClient.read_file** om bytes te lezen uit het bestand en schrijf vervolgens die bytes naar het lokale bestand. 
@@ -333,7 +266,82 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="set-an-acl-recursively-preview"></a>Recursief instellen van een ACL (preview-versie)
+## <a name="manage-access-control-lists-acls"></a>Toegangs beheer lijsten (Acl's) beheren
+
+U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwerken.
+
+> [!NOTE]
+> Als u Azure Active Directory (Azure AD) gebruikt om toegang te verlenen, moet u ervoor zorgen dat aan uw beveiligingsprincipal de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)is toegewezen. Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+### <a name="manage-directory-acls"></a>Directory-Acl's beheren
+
+Haal de toegangs beheer lijst (ACL) van een directory op door de **DataLakeDirectoryClient.get_access_control** -methode aan te roepen en de ACL in te stellen door de **DataLakeDirectoryClient.set_access_control** -methode aan te roepen.
+
+> [!NOTE]
+> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+In dit voor beeld wordt de ACL van een directory met de naam opgehaald en ingesteld `my-directory` . De teken reeks `rwxr-xrw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+
+```python
+def manage_directory_permissions():
+    try:
+        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+
+        directory_client = file_system_client.get_directory_client("my-directory")
+        
+        acl_props = directory_client.get_access_control()
+        
+        print(acl_props['permissions'])
+        
+        new_dir_permissions = "rwxr-xrw-"
+        
+        directory_client.set_access_control(permissions=new_dir_permissions)
+        
+        acl_props = directory_client.get_access_control()
+        
+        print(acl_props['permissions'])
+    
+    except Exception as e:
+     print(e) 
+```
+
+U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, roept u de **FileSystemClient._get_root_directory_client** -methode aan.
+
+### <a name="manage-file-permissions"></a>Bestands machtigingen beheren
+
+Haal de toegangs beheer lijst (ACL) van een bestand op door de **DataLakeFileClient.get_access_control** -methode aan te roepen en de ACL in te stellen door de **DataLakeFileClient.set_access_control** -methode aan te roepen.
+
+> [!NOTE]
+> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van  [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+In dit voor beeld wordt de ACL van een bestand met de naam opgehaald en ingesteld `my-file.txt` . De teken reeks `rwxr-xrw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+
+```python
+def manage_file_permissions():
+    try:
+        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+
+        directory_client = file_system_client.get_directory_client("my-directory")
+        
+        file_client = directory_client.get_file_client("uploaded-file.txt")
+
+        acl_props = file_client.get_access_control()
+        
+        print(acl_props['permissions'])
+        
+        new_file_permissions = "rwxr-xrw-"
+        
+        file_client.set_access_control(permissions=new_file_permissions)
+        
+        acl_props = file_client.get_access_control()
+        
+        print(acl_props['permissions'])
+
+    except Exception as e:
+     print(e) 
+```
+
+### <a name="set-an-acl-recursively-preview"></a>Recursief instellen van een ACL (preview-versie)
 
 U kunt Acl's recursief toevoegen, bijwerken en verwijderen voor de bestaande onderliggende items van een bovenliggende map zonder dat u deze wijzigingen afzonderlijk voor elk onderliggend item hoeft aan te brengen. Zie [acl's (Access Control Lists) recursief instellen voor Azure data Lake Storage Gen2](recursive-access-control-lists.md)voor meer informatie.
 

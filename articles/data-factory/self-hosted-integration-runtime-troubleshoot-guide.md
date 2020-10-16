@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: abnarain
-ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069472"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131299"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problemen met zelf-hostende Integration runtime oplossen
 
@@ -616,6 +616,37 @@ In het onderstaande voor beeld ziet u hoe een geschikt scenario eruit zou zien.
     ![TCP 4-Handshake-werk stroom](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
 
+### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>E-mail ontvangen om de netwerk configuratie bij te werken om communicatie met nieuwe IP-adressen toe te staan
+
+#### <a name="symptoms"></a>Symptomen
+
+U kunt de volgende e-mail melding ontvangen, waarmee u wordt geadviseerd om de netwerk configuratie bij te werken om communicatie met nieuwe IP-adressen voor Azure Data Factory op 8 november 2020 mogelijk te maken:
+
+   ![E-mailmelding](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+
+#### <a name="resolution"></a>Oplossing
+
+Deze melding is voor **uitgaande communicatie** van uw **Integration runtime** die **on-premises** of binnen een **virtueel particulier netwerk van Azure** naar de ADF-service wordt uitgevoerd. Als u bijvoorbeeld zelf-hostende IR-of Azure-SQL Server Integration Services (SSIS) IR in azure VNET hebt die toegang nodig heeft tot de ADF-service, moet u controleren of u dit nieuwe IP-adres bereik moet toevoegen in uw **NSG-regels (netwerk beveiligings groep)** . Als uw regel voor uitgaande NSG gebruikmaakt van service tags, heeft dit geen invloed.
+
+#### <a name="more-details"></a>Meer informatie
+
+Deze nieuwe IP-bereiken **hebben alleen invloed op uitgaande communicatie** regels van uw **on-premises firewall** of het **virtuele particuliere Azure-netwerk** naar de ADF-service (Zie [firewall configuratie en lijst instellen voor IP-adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) voor referentie), voor SCENARIO'S waarin u een zelf-hostende IR of SSIS IR in een on-premises netwerk of Azure Virtual Network hebt die moet communiceren met de ADF-service
+
+Voor bestaande gebruikers die **Azure VPN**gebruiken:
+
+1. Controleer alle uitgaande NSG-regels in uw particuliere netwerk waar SSIS of Azure SSIS is geconfigureerd. Als er geen uitgaande beperkingen zijn, is dit niet van invloed op deze problemen.
+1. Als u uitgaande regel beperkingen hebt, controleert u of u een service label gebruikt of niet. Als u service tags gebruikt, hoeft u niets te wijzigen of toe te voegen omdat de nieuwe IP-bereiken onder bestaande service tags vallen. 
+  
+    ![Doel controle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+
+1. Als u IP-adressen rechtstreeks in uw regel instelling gebruikt, controleert u of u alle IP-bereiken in [service Tags IP-adres bereik downloaden koppeling](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)hebt toegevoegd. De nieuwe IP-adresbereiken zijn al in dit bestand geplaatst. Voor nieuwe gebruikers: u hoeft alleen de relevante zelf-hostende IR-of SSIS-IR-configuratie in ons document op te volgen om NSG regels te configureren.
+
+Voor bestaande gebruikers met SSIS IR of zelf-hostende **IR:**
+
+- Valideer met uw netwerk infrastructuur team en controleer of het nieuwe IP-adres bereik moet worden toegevoegd aan de communicatie voor uitgaande regels.
+- Voor firewall regels die zijn gebaseerd op FQDN-namen, zijn geen updates vereist wanneer u de instellingen gebruikt die zijn beschreven in [firewall configuratie en de lijst toestaan voor IP-adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway). 
+- Sommige on-premises firewalls ondersteunen service tags als u het bijgewerkte configuratie bestand van de Azure-service tags gebruikt, zijn er geen andere wijzigingen nodig.
+
 ## <a name="self-hosted-ir-sharing"></a>Zelf-hostende IR-deling
 
 ### <a name="share-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Zelf-hostende IR van een andere Tenant delen wordt niet ondersteund 
@@ -635,7 +666,7 @@ Voor meer informatie over het oplossen van problemen kunt u de volgende bronnen 
 
 *  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack overflow-forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)

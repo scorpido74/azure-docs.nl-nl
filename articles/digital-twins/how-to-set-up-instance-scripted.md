@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047417"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132513"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
 
@@ -28,11 +28,11 @@ Deze versie van dit artikel voert u deze stappen uit door een voor beeld van een
 
 ## <a name="prerequisites-download-the-script"></a>Vereisten: het script downloaden
 
-Het voorbeeld script is geschreven in Power shell. Het maakt deel uit van de [**Azure Digital apparaatdubbels**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)-voor beelden, die u kunt downloaden naar uw computer door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel.
+Het voorbeeld script is geschreven in Power shell. Het maakt deel uit van de [**end-to-end-voor beelden van Azure Digital apparaatdubbels**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die u kunt downloaden naar uw computer door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel.
 
-Hiermee wordt het voorbeeld project gedownload naar uw computer als _**Azure_Digital_Twins_samples.zip**_. Ga naar de map op de computer en pak deze uit om de bestanden uit te pakken.
+Hiermee wordt het voorbeeld project gedownload naar uw computer als _**Azure_Digital_Twins_end_to_end_samples.zip**_. Ga naar de map op de computer en pak deze uit om de bestanden uit te pakken.
 
-Het implementatie script bevindt zich in de map ungezipte op _Azure_Digital_Twins_samples > scripts > **deploy.ps1** _.
+Het implementatie script bevindt zich in de map ungezipte op _Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1** _.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -55,7 +55,7 @@ Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud 
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van de Power shell-versie":::
 
-    Ga naar het _**deploy.ps1**_ bestand op uw computer (in _Azure_Digital_Twins_samples > scripts > **deploy.ps1** _) en klik op openen. Hiermee wordt het bestand geüpload naar Cloud Shell, zodat u het kunt uitvoeren in het Cloud Shell-venster.
+    Ga naar het _**deploy.ps1**_ bestand op uw computer (in _Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1** _) en klik op openen. Hiermee wordt het bestand geüpload naar Cloud Shell, zodat u het kunt uitvoeren in het Cloud Shell-venster.
 
 4. Voer het script uit door de `./deploy.ps1` opdracht in het venster Cloud shell te verzenden. (Als u wilt plakken in Cloud Shell, kunt u **CTRL + SHIFT + v** op Windows en Linux gebruiken of **Cmd + Shift + v** op macOS. U kunt ook het snelmenu gebruiken.)
 

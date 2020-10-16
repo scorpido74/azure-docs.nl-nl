@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/13/2018
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6faf9fb3d15709d3897db9a77bf14ebf238e8fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116363"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131748"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord wijzigingen configureren met aangepast beleid in Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](cu
         <ClaimType Id="oldPassword">
           <DisplayName>Old Password</DisplayName>
           <DataType>string</DataType>
-          <UserHelpText>Enter password</UserHelpText>
+          <UserHelpText>Enter your old password</UserHelpText>
           <UserInputType>Password</UserInputType>
         </ClaimType>
       </ClaimsSchema>
@@ -179,7 +179,7 @@ Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Az
 
 1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_profile_edit_password_change*.
 2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de **antwoord-URL** worden weer gegeven `https://jwt.ms` .
-3. Klik op **Nu uitvoeren**. Meld u aan met de acouunt die u eerder hebt gemaakt. U hebt nu de mogelijkheid om het wacht woord te wijzigen.
+3. Klik op **Nu uitvoeren**. Meld u aan met het account dat u eerder hebt gemaakt. U hebt nu de mogelijkheid om het wacht woord te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

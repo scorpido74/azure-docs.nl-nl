@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048046"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131493"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetrie opnemen in azure Digital Apparaatdubbels
 
@@ -228,7 +228,7 @@ Vul op de pagina **gebeurtenis abonnement maken** de velden als volgt in:
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Een diagram waarin een stroom diagram wordt weer gegeven. In de grafiek verzendt een IoT Hub apparaat een temperatuur telemetrie via IoT Hub naar een Azure-functie, waarmee een temperatuur eigenschap wordt bijgewerkt op een dubbele in azure Digital Apparaatdubbels.":::
 
 Controleer de onderstaande gegevens op de pagina _Azure-functie selecteren_ die wordt geopend.
- 1. **Abonnement**: uw Azure-abonnement
+ 1. **Abonnement**: Uw Azure-abonnement
  2. **Resource groep**: de resource groep
  3. **Functie-app**: naam van uw functie-app
  4. **Sleuf**: _productie_
@@ -242,7 +242,7 @@ Selecteer de knop _maken_ om een gebeurtenis abonnement te maken.
 
 ## <a name="send-simulated-iot-data"></a>Gesimuleerde IoT-gegevens verzenden
 
-Als u de nieuwe functie insluitingen wilt testen, gebruikt u de hand leiding van Device Simulator [*: verbinding maken met een end-to-end-oplossing*](./tutorial-end-to-end.md). Deze zelf studie wordt aangedreven door een voorbeeld project dat is geschreven in C#. De voorbeeld code bevindt zich hier: [Azure Digital apparaatdubbels](/samples/azure-samples/digital-twins-samples/digital-twins-samples)-voor beelden. U gebruikt het **DeviceSimulator** -project in die opslag plaats.
+Als u de nieuwe functie insluitingen wilt testen, gebruikt u de hand leiding van Device Simulator [*: verbinding maken met een end-to-end-oplossing*](./tutorial-end-to-end.md). Deze zelf studie wordt aangedreven door een voorbeeld project dat is geschreven in C#. De voorbeeld code bevindt zich hier: [Azure Digital apparaatdubbels end-to-end-voor beelden](/samples/azure-samples/digital-twins-samples/digital-twins-samples). U gebruikt het **DeviceSimulator** -project in die opslag plaats.
 
 In de end-to-end zelf studie voert u de volgende stappen uit:
 1. [*Het gesimuleerde apparaat bij IoT Hub registreren*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
